@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Engineering Project | HSC Software Engineering</title>
+  <meta name="description" content="Complete HSC notes on Software Engineering Project — Agile, Scrum, requirements, design, Git, documentation, testing, and project evaluation." />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">💻</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="secure-software-architecture.html">Secure Architecture <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-for-the-web.html">Web Programming <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-automation.html">Automation <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-engineering-project.html" class="active">SE Project <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-fundamentals.html">Fundamentals <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="object-oriented-paradigm.html">OOP <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="programming-mechatronics.html">Mechatronics <span class="badge badge-11">Y11</span></a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 12</div>
+      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
+      <a href="software-automation.html">⚙️ Software Automation</a>
+      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 11</div>
+      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">🧩 Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+    </div>
+    <button id="theme-toggle-mobile" class="btn" style="width:100%;justify-content:center;background:rgba(255,255,255,.07);color:#CBD5E1;border:1px solid rgba(255,255,255,.12);">🌙 Toggle Theme</button>
+  </div>
+
+  <header class="topic-header">
+    <div class="topic-header-inner">
+      <nav class="topic-breadcrumb">
+        <a href="../index.html">Home</a> <span>›</span>
+        <a href="../index.html#year12">Year 12</a> <span>›</span>
+        <span>Software Engineering Project</span>
+      </nav>
+      <h1>📋 Software Engineering Project</h1>
+      <p style="color:#94A3B8; max-width:600px; margin-top:.5rem; font-size:.95rem; line-height:1.6;">
+        Apply the software development lifecycle — from requirements and design through implementation, testing, and evaluation.
+      </p>
+      <div class="topic-header-meta">
+        <span class="meta-pill year12">📘 Year 12 — HSC</span>
+        <span class="meta-pill">🕐 Major Project</span>
+        <span class="meta-pill">9 sections</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#sdlc">1. Software Development Lifecycle</a></li>
+        <li><a href="#methodologies">2. Methodologies</a></li>
+        <li><a href="#agile-scrum">3. Agile &amp; Scrum</a></li>
+        <li><a href="#requirements">4. Requirements Engineering</a></li>
+        <li><a href="#design">5. System Design</a></li>
+        <li><a href="#version-control">6. Version Control (Git)</a></li>
+        <li><a href="#documentation">7. Documentation</a></li>
+        <li><a href="#testing-strategy">8. Testing Strategy</a></li>
+        <li><a href="#evaluation">9. Project Evaluation</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-content">
+      <div class="content-body">
+
+        <!-- 1. SDLC -->
+        <section id="sdlc">
+          <h2>Software Development Lifecycle (SDLC)</h2>
+          <p>The SDLC is a structured process for planning, creating, testing, and deploying software. It provides a systematic approach to software development.</p>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">📋</div>
+              <h4>1. Planning</h4>
+              <p>Define project scope, objectives, resources, timeline, and feasibility. Identify stakeholders and risks.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔍</div>
+              <h4>2. Requirements Analysis</h4>
+              <p>Gather and document what the system must do (functional requirements) and how it must perform (non-functional requirements).</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">✏️</div>
+              <h4>3. Design</h4>
+              <p>Architect the system: data structures, algorithms, interfaces, database schema, and technical stack.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">💻</div>
+              <h4>4. Implementation</h4>
+              <p>Write the code according to design specifications. Follow coding standards; conduct code reviews.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🧪</div>
+              <h4>5. Testing</h4>
+              <p>Verify the system works as intended. Unit, integration, system, and acceptance testing.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🚀</div>
+              <h4>6. Deployment &amp; Maintenance</h4>
+              <p>Release to production. Maintain, update, and improve the system over time. Handle bug reports.</p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 2. Methodologies -->
+        <section id="methodologies">
+          <h2>Development Methodologies</h2>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Aspect</th><th>Waterfall</th><th>Agile</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Approach</strong></td><td>Sequential, linear phases</td><td>Iterative, incremental cycles</td></tr>
+                <tr><td><strong>Requirements</strong></td><td>Defined completely upfront</td><td>Evolve throughout development</td></tr>
+                <tr><td><strong>Flexibility</strong></td><td>Low — changes are expensive</td><td>High — changes are welcomed</td></tr>
+                <tr><td><strong>Delivery</strong></td><td>Single delivery at the end</td><td>Working software delivered every sprint</td></tr>
+                <tr><td><strong>Customer Involvement</strong></td><td>Mainly at start and end</td><td>Continuous throughout</td></tr>
+                <tr><td><strong>Testing</strong></td><td>At the end</td><td>Continuous</td></tr>
+                <tr><td><strong>Best For</strong></td><td>Well-defined, stable requirements (e.g., safety-critical systems)</td><td>Dynamic requirements; rapid delivery</td></tr>
+                <tr><td><strong>Risk</strong></td><td>Problems discovered late</td><td>Problems discovered early</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Waterfall Model</h3>
+          <div class="highlight-box">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:.82rem; color:var(--text-secondary); text-align:center; line-height:2;">
+              Requirements → Design → Implementation → Testing → Deployment → Maintenance
+            </p>
+          </div>
+          <p>Each phase must be fully completed before the next begins. Returns to a previous phase are costly. Suitable when requirements are well-understood and unlikely to change.</p>
+
+          <h3>Spiral Model</h3>
+          <p>Combines Waterfall's structure with iterative development. Each spiral loop covers: Planning → Risk Analysis → Engineering → Evaluation. Emphasises risk management. Good for large, complex, high-risk projects.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 3. Agile & Scrum -->
+        <section id="agile-scrum">
+          <h2>Agile &amp; Scrum</h2>
+
+          <h3>Agile Manifesto Values</h3>
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">🧑‍🤝‍🧑</div>
+              <h4>Individuals and interactions</h4>
+              <p>…over processes and tools</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">💻</div>
+              <h4>Working software</h4>
+              <p>…over comprehensive documentation</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🤝</div>
+              <h4>Customer collaboration</h4>
+              <p>…over contract negotiation</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔀</div>
+              <h4>Responding to change</h4>
+              <p>…over following a plan</p>
+            </div>
+          </div>
+
+          <div class="callout info">
+            <span class="callout-icon">ℹ️</span>
+            <div class="callout-content">
+              <strong>Note</strong>
+              <p>The Agile Manifesto values the items on the <em>left</em> more, but does not discard the items on the right entirely.</p>
+            </div>
+          </div>
+
+          <h3>Scrum Framework</h3>
+          <p><strong>Scrum</strong> is the most widely used Agile framework. Work is organised into fixed-length iterations called <strong>sprints</strong> (typically 1–4 weeks).</p>
+
+          <h4>Scrum Roles</h4>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Product Owner</strong> — represents stakeholders; manages and prioritises the Product Backlog; defines "what" to build</div>
+            <div class="key-term-item"><strong>Scrum Master</strong> — facilitates Scrum process; removes impediments; coaches the team on Agile practices</div>
+            <div class="key-term-item"><strong>Development Team</strong> — self-organising, cross-functional team of 3–9 people who build the product</div>
+          </div>
+
+          <h4>Scrum Artefacts</h4>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Product Backlog</strong> — ordered list of all desired features/work items (user stories, bugs, tasks)</div>
+            <div class="key-term-item"><strong>Sprint Backlog</strong> — subset of Product Backlog items selected for the current sprint</div>
+            <div class="key-term-item"><strong>Increment</strong> — working, potentially shippable product at the end of each sprint</div>
+          </div>
+
+          <h4>Scrum Ceremonies (Events)</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Event</th><th>When</th><th>Duration</th><th>Purpose</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Sprint Planning</strong></td><td>Start of sprint</td><td>≤ 8 hours</td><td>Select backlog items; plan the sprint</td></tr>
+                <tr><td><strong>Daily Scrum (Stand-up)</strong></td><td>Every day</td><td>15 minutes</td><td>Sync team; identify blockers</td></tr>
+                <tr><td><strong>Sprint Review</strong></td><td>End of sprint</td><td>≤ 4 hours</td><td>Demo increment to stakeholders; gather feedback</td></tr>
+                <tr><td><strong>Sprint Retrospective</strong></td><td>After Sprint Review</td><td>≤ 3 hours</td><td>Inspect process; identify improvements for next sprint</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>User Stories</h3>
+          <div class="def-card">
+            <div class="def-term">User Story</div>
+            <div class="def-meaning">A brief description of a feature from the perspective of a user. Format: <strong>"As a [user type], I want [goal], so that [benefit]."</strong></div>
+          </div>
+          <p>Examples:</p>
+          <ul>
+            <li>"As a <strong>student</strong>, I want to <strong>search for notes by topic</strong>, so that I can <strong>quickly find what I need to study</strong>."</li>
+            <li>"As an <strong>admin</strong>, I want to <strong>reset user passwords</strong>, so that I can <strong>help locked-out users</strong>."</li>
+          </ul>
+
+          <h3>Kanban</h3>
+          <p>Kanban is an Agile approach that visualises work on a board with columns (e.g., To Do → In Progress → Review → Done). Work in Progress (WIP) limits prevent overloading the team. Kanban is more flow-based than Scrum; there are no sprints.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 4. Requirements -->
+        <section id="requirements">
+          <h2>Requirements Engineering</h2>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">⚙️</div>
+              <h4>Functional Requirements</h4>
+              <p>What the system <strong>must do</strong>. Specific behaviours, features, and functions. Example: "The system must allow users to register with an email and password."</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">📊</div>
+              <h4>Non-Functional Requirements</h4>
+              <p>How the system <strong>must perform</strong>. Quality attributes. Examples: "The login page must load in under 2 seconds." "The system must be available 99.9% of the time."</p>
+            </div>
+          </div>
+
+          <h3>Non-Functional Requirement Categories</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Performance</strong> — response time, throughput, latency</div>
+            <div class="key-term-item"><strong>Scalability</strong> — ability to handle growth in users/data</div>
+            <div class="key-term-item"><strong>Reliability</strong> — uptime, fault tolerance, error recovery</div>
+            <div class="key-term-item"><strong>Security</strong> — authentication, authorisation, encryption</div>
+            <div class="key-term-item"><strong>Usability</strong> — ease of use, accessibility</div>
+            <div class="key-term-item"><strong>Maintainability</strong> — ease of updating and debugging</div>
+            <div class="key-term-item"><strong>Portability</strong> — ability to run on different platforms</div>
+          </div>
+
+          <h3>Requirements Elicitation Techniques</h3>
+          <ul>
+            <li><strong>Interviews</strong> — structured conversations with stakeholders</li>
+            <li><strong>Surveys / Questionnaires</strong> — gather input from many stakeholders efficiently</li>
+            <li><strong>Workshops</strong> — collaborative sessions to define requirements</li>
+            <li><strong>Observation</strong> — watch users perform current tasks</li>
+            <li><strong>Prototyping</strong> — build mockups to validate requirements with users</li>
+            <li><strong>Document analysis</strong> — review existing systems, processes, and documentation</li>
+          </ul>
+
+          <h3>Use Case Diagrams</h3>
+          <p>Use case diagrams (a type of UML diagram) show the interactions between <strong>actors</strong> (users or external systems) and the system's <strong>use cases</strong> (functions). They provide a high-level view of system functionality.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Actor</strong> — a role that interacts with the system (stick figure)</div>
+            <div class="key-term-item"><strong>Use case</strong> — a function or feature of the system (oval)</div>
+            <div class="key-term-item"><strong>Association</strong> — line connecting actor to use case</div>
+            <div class="key-term-item"><strong>Include</strong> — a use case always includes another (dashed arrow with «include»)</div>
+            <div class="key-term-item"><strong>Extend</strong> — a use case optionally extends another (dashed arrow with «extend»)</div>
+            <div class="key-term-item"><strong>System boundary</strong> — rectangle enclosing all use cases</div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 5. Design -->
+        <section id="design">
+          <h2>System Design</h2>
+
+          <h3>Data Flow Diagrams (DFDs)</h3>
+          <p>DFDs show how data flows through a system — from inputs, through processes, to outputs and data stores. They have different levels of detail:</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Context diagram (Level 0)</strong> — single process showing the whole system and external entities</div>
+            <div class="key-term-item"><strong>Level 1 DFD</strong> — breaks down the main process into sub-processes</div>
+            <div class="key-term-item"><strong>Level 2 DFD</strong> — further detail on each sub-process</div>
+            <div class="key-term-item"><strong>External entity</strong> — box (sources/destinations of data outside the system)</div>
+            <div class="key-term-item"><strong>Process</strong> — rounded rectangle (transforms data)</div>
+            <div class="key-term-item"><strong>Data store</strong> — open-ended rectangle (stored data)</div>
+            <div class="key-term-item"><strong>Data flow</strong> — arrow (movement of data)</div>
+          </div>
+
+          <h3>Structure Charts</h3>
+          <p>Structure charts show the hierarchical decomposition of a program into modules and sub-modules. They illustrate the call hierarchy (which modules call which) and data coupling (data passed between modules).</p>
+
+          <h3>Database Design — ERDs</h3>
+          <p>An <strong>Entity-Relationship Diagram (ERD)</strong> models the entities in a system and the relationships between them. Used to design relational database schemas.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Entity</strong> — a real-world object (table in a database)</div>
+            <div class="key-term-item"><strong>Attribute</strong> — a property of an entity (column)</div>
+            <div class="key-term-item"><strong>Primary key</strong> — unique identifier for each record</div>
+            <div class="key-term-item"><strong>Foreign key</strong> — attribute that references a primary key in another table</div>
+            <div class="key-term-item"><strong>Relationship</strong> — association between two entities (one-to-one, one-to-many, many-to-many)</div>
+          </div>
+
+          <h3>Algorithm Design</h3>
+          <p>Algorithms should be designed before coding. Common tools:</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Pseudocode — Binary Search</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>FUNCTION binary_search(sorted_list, target):
+    left ← 0
+    right ← length(sorted_list) - 1
+
+    WHILE left ≤ right:
+        mid ← (left + right) DIV 2
+        IF sorted_list[mid] = target THEN
+            RETURN mid
+        ELSE IF sorted_list[mid] < target THEN
+            left ← mid + 1
+        ELSE
+            right ← mid - 1
+
+    RETURN -1  // not found</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 6. Version Control -->
+        <section id="version-control">
+          <h2>Version Control with Git</h2>
+
+          <div class="def-card">
+            <div class="def-term">Version Control System (VCS)</div>
+            <div class="def-meaning">A system that tracks changes to files over time. Allows teams to collaborate, revert to previous versions, and maintain a complete history of changes. <strong>Git</strong> is the most widely used VCS.</div>
+          </div>
+
+          <h3>Key Git Commands</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Git — Essential Commands</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="cm"># Initialise a repository</span>
+git init
+
+<span class="cm"># Clone a remote repository</span>
+git clone https://github.com/user/repo.git
+
+<span class="cm"># Check status of working directory</span>
+git status
+
+<span class="cm"># Stage changes for commit</span>
+git add filename.py      # specific file
+git add .               # all changes
+
+<span class="cm"># Commit staged changes</span>
+git commit -m "Add user authentication feature"
+
+<span class="cm"># Push to remote repository</span>
+git push origin main
+
+<span class="cm"># Pull latest changes</span>
+git pull origin main
+
+<span class="cm"># Create and switch to a new branch</span>
+git checkout -b feature/user-login
+
+<span class="cm"># Merge a branch into main</span>
+git checkout main
+git merge feature/user-login
+
+<span class="cm"># View commit history</span>
+git log --oneline</code></pre>
+          </div>
+
+          <h3>Git Branching Strategies</h3>
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">🌿</div>
+              <h4>Feature Branching</h4>
+              <p>Each new feature is developed on its own branch. Merged into <code>main</code> when complete via a pull request. Keeps <code>main</code> always stable.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🌊</div>
+              <h4>Git Flow</h4>
+              <p>Uses <code>main</code>, <code>develop</code>, <code>feature/*</code>, <code>release/*</code>, and <code>hotfix/*</code> branches. Strict but provides clear structure for larger teams.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔀</div>
+              <h4>Pull Requests (PRs)</h4>
+              <p>A request to merge one branch into another. Provides a chance for code review, discussion, and automated tests before merging.</p>
+            </div>
+          </div>
+
+          <h3>Collaboration &amp; Code Review</h3>
+          <ul>
+            <li><strong>Code review</strong> — peers examine code for bugs, security issues, style violations, and improvements before merging</li>
+            <li><strong>Issues/Tickets</strong> — track bugs and features in tools like GitHub Issues or Jira</li>
+            <li><strong>Commit messages</strong> — should be clear and descriptive: "Fix login bug when email contains uppercase letters"</li>
+            <li><strong>.gitignore</strong> — lists files that should not be tracked (secrets, build artefacts, dependencies)</li>
+          </ul>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 7. Documentation -->
+        <section id="documentation">
+          <h2>Documentation</h2>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Type</th><th>Audience</th><th>Contents</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>Technical Documentation</strong></td>
+                  <td>Developers</td>
+                  <td>Architecture diagrams, API docs, code comments, data models</td>
+                </tr>
+                <tr>
+                  <td><strong>User Documentation</strong></td>
+                  <td>End users</td>
+                  <td>User manuals, how-to guides, FAQs, tutorials</td>
+                </tr>
+                <tr>
+                  <td><strong>Project Documentation</strong></td>
+                  <td>Stakeholders / Project managers</td>
+                  <td>Requirements spec, design docs, project plan, meeting minutes</td>
+                </tr>
+                <tr>
+                  <td><strong>Inline Code Comments</strong></td>
+                  <td>Developers</td>
+                  <td>Explain complex logic, non-obvious decisions, and edge cases</td>
+                </tr>
+                <tr>
+                  <td><strong>Docstrings / API Docs</strong></td>
+                  <td>Developers</td>
+                  <td>Function parameters, return values, exceptions — used to generate API documentation</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Well-documented function with docstring</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">def</span> <span class="fn">calculate_bmi</span>(weight_kg: float, height_m: float) -> float:
+    <span class="str">"""
+    Calculate Body Mass Index (BMI).
+
+    Args:
+        weight_kg: Body weight in kilograms (must be positive).
+        height_m: Height in metres (must be positive).
+
+    Returns:
+        float: The BMI value rounded to 2 decimal places.
+
+    Raises:
+        ValueError: If weight or height is not positive.
+
+    Example:
+        >>> calculate_bmi(70, 1.75)
+        22.86
+    """</span>
+    <span class="kw">if</span> weight_kg <= <span class="num">0</span> <span class="kw">or</span> height_m <= <span class="num">0</span>:
+        <span class="kw">raise</span> ValueError(<span class="str">"Weight and height must be positive"</span>)
+    <span class="kw">return</span> round(weight_kg / (height_m ** <span class="num">2</span>), <span class="num">2</span>)</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 8. Testing Strategy -->
+        <section id="testing-strategy">
+          <h2>Testing Strategy</h2>
+
+          <h3>Test Plan</h3>
+          <p>A <strong>test plan</strong> documents the overall approach to testing a project. It includes:</p>
+          <ul>
+            <li>Scope — what will and won't be tested</li>
+            <li>Testing types to be performed</li>
+            <li>Test environment and tools</li>
+            <li>Test schedule and resources</li>
+            <li>Pass/fail criteria</li>
+          </ul>
+
+          <h3>Test Cases</h3>
+          <p>Each test case should specify:</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Field</th><th>Description</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td>ID</td><td>Unique identifier</td><td>TC-001</td></tr>
+                <tr><td>Description</td><td>What is being tested</td><td>Login with valid credentials</td></tr>
+                <tr><td>Preconditions</td><td>State before the test</td><td>User account exists</td></tr>
+                <tr><td>Test Steps</td><td>Exact steps to perform</td><td>1. Navigate to /login 2. Enter email 3. Enter password 4. Click Submit</td></tr>
+                <tr><td>Test Data</td><td>Specific input values</td><td>email: alice@example.com, password: Password123!</td></tr>
+                <tr><td>Expected Result</td><td>What should happen</td><td>User redirected to dashboard; session created</td></tr>
+                <tr><td>Actual Result</td><td>What did happen</td><td>(filled in during testing)</td></tr>
+                <tr><td>Status</td><td>Pass / Fail</td><td>Pass</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Boundary Value Analysis</h3>
+          <p>Test values at and just inside/outside the boundaries of input ranges. Errors often occur at boundaries. For a field accepting ages 18–65, test: 17, 18, 19, 64, 65, 66.</p>
+
+          <h3>Equivalence Partitioning</h3>
+          <p>Divide input data into classes where the system should behave the same way. Test one value from each partition. For a password field (8–20 chars): test too short (5), valid (12), too long (25).</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 9. Evaluation -->
+        <section id="evaluation">
+          <h2>Project Evaluation</h2>
+
+          <p>Evaluation determines how well the completed project meets its objectives and requirements. It is an essential part of the SE project assessment.</p>
+
+          <h3>What to Evaluate</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Functionality</strong> — does it do what it was supposed to?</div>
+            <div class="key-term-item"><strong>Correctness</strong> — does it produce correct results?</div>
+            <div class="key-term-item"><strong>Usability</strong> — how easy is it for users to use?</div>
+            <div class="key-term-item"><strong>Performance</strong> — is it fast enough?</div>
+            <div class="key-term-item"><strong>Reliability</strong> — does it work consistently without errors?</div>
+            <div class="key-term-item"><strong>Security</strong> — are appropriate measures in place?</div>
+            <div class="key-term-item"><strong>Maintainability</strong> — how easy would it be to extend or modify?</div>
+          </div>
+
+          <h3>Evaluation Against Requirements</h3>
+          <p>For each requirement documented in the planning phase, state whether it was met and provide evidence:</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Requirement</th><th>Met?</th><th>Evidence</th></tr></thead>
+              <tbody>
+                <tr><td>Users can register with email/password</td><td>✅ Yes</td><td>Test case TC-001 passes; screenshot of registration flow</td></tr>
+                <tr><td>Login page loads in &lt; 2 seconds</td><td>✅ Yes</td><td>Performance test shows average 850ms load time</td></tr>
+                <tr><td>Password reset via email</td><td>⚠️ Partial</td><td>Functionality works but email delivery is slow in testing</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Reflection and Improvements</h3>
+          <p>A strong evaluation includes honest reflection on:</p>
+          <ul>
+            <li>Challenges encountered and how they were addressed</li>
+            <li>What could be improved with more time/resources</li>
+            <li>What was learned during the project</li>
+            <li>How the methodology worked and what could be done differently</li>
+          </ul>
+
+          <div class="callout success">
+            <span class="callout-icon">✅</span>
+            <div class="callout-content">
+              <strong>SE Project Key Takeaways</strong>
+              <ul>
+                <li><strong>Agile</strong> is iterative; <strong>Waterfall</strong> is sequential</li>
+                <li><strong>Scrum</strong>: Product Backlog → Sprint Planning → Sprint → Review → Retrospective</li>
+                <li><strong>Functional requirements</strong> = what it does; <strong>Non-functional</strong> = how well it does it</li>
+                <li><strong>Git</strong>: commit early and often; use branches for features</li>
+                <li>Document your design decisions and testing evidence</li>
+                <li>Evaluation must compare outcomes against your stated requirements</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand"><div class="footer-logo">💻</div><span class="footer-name">SoftEng Notes</span></div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">SE Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="software-automation.html">← Automation</a>
+        <a href="../index.html#year11">Year 11 Topics →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 HSC SoftEng Notes · NESA NSW Aligned</span>
+      <a href="../index.html" style="color:#475569;text-decoration:none;">← Home</a>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

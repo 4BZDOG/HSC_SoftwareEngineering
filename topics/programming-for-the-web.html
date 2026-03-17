@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programming for the Web | HSC Software Engineering</title>
+  <meta name="description" content="Complete HSC notes on Programming for the Web — web architecture, HTTP, HTML/CSS/JavaScript, REST APIs, databases, and web security." />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">💻</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="secure-software-architecture.html">Secure Architecture <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-for-the-web.html" class="active">Web Programming <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-automation.html">Automation <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-engineering-project.html">SE Project <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-fundamentals.html">Fundamentals <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="object-oriented-paradigm.html">OOP <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="programming-mechatronics.html">Mechatronics <span class="badge badge-11">Y11</span></a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 12</div>
+      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
+      <a href="software-automation.html">⚙️ Software Automation</a>
+      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 11</div>
+      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">🧩 Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+    </div>
+    <button id="theme-toggle-mobile" class="btn" style="width:100%;justify-content:center;background:rgba(255,255,255,.07);color:#CBD5E1;border:1px solid rgba(255,255,255,.12);">🌙 Toggle Theme</button>
+  </div>
+
+  <header class="topic-header">
+    <div class="topic-header-inner">
+      <nav class="topic-breadcrumb">
+        <a href="../index.html">Home</a> <span>›</span>
+        <a href="../index.html#year12">Year 12</a> <span>›</span>
+        <span>Programming for the Web</span>
+      </nav>
+      <h1>🌐 Programming for the Web</h1>
+      <p style="color:#94A3B8; max-width:600px; margin-top:.5rem; font-size:.95rem; line-height:1.6;">
+        Understand how the web works — from HTTP protocols to HTML/CSS/JavaScript, APIs, databases, and web security.
+      </p>
+      <div class="topic-header-meta">
+        <span class="meta-pill year12">📘 Year 12 — HSC</span>
+        <span class="meta-pill">🕐 ~5 weeks</span>
+        <span class="meta-pill">9 sections</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#web-architecture">1. Web Architecture</a></li>
+        <li><a href="#http">2. HTTP Protocol</a></li>
+        <li><a href="#html">3. HTML5</a></li>
+        <li><a href="#css">4. CSS3</a></li>
+        <li><a href="#javascript">5. JavaScript</a></li>
+        <li><a href="#client-server">6. Client vs Server Side</a></li>
+        <li><a href="#apis">7. APIs &amp; REST</a></li>
+        <li><a href="#databases">8. Databases</a></li>
+        <li><a href="#web-security">9. Web Security</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-content">
+      <div class="content-body">
+
+        <!-- 1. Web Architecture -->
+        <section id="web-architecture">
+          <h2>Web Architecture</h2>
+
+          <h3>Client-Server Model</h3>
+          <p>The web operates on a <strong>client-server model</strong>. A <strong>client</strong> (usually a browser) sends requests to a <strong>server</strong>, which processes the request and sends back a response.</p>
+
+          <div class="highlight-box">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:.85rem; color:var(--text-secondary); line-height:2; text-align:center;">
+              [ Browser (Client) ] ——HTTP Request——→ [ Web Server ]<br>
+              [ Browser (Client) ] ←——HTTP Response—— [ Web Server ]<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↕<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[ Database Server ]
+            </p>
+          </div>
+
+          <h3>Three-Tier Architecture</h3>
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">🖥️</div>
+              <h4>Presentation Tier (Front-end)</h4>
+              <p>What the user sees and interacts with. Built with HTML, CSS, and JavaScript running in the browser.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">⚙️</div>
+              <h4>Application Tier (Back-end)</h4>
+              <p>Business logic and processing. Handles requests from clients, processes data, and communicates with the database. Built with Python, Node.js, PHP, Java, etc.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🗄️</div>
+              <h4>Data Tier (Database)</h4>
+              <p>Stores and retrieves data. Relational (MySQL, PostgreSQL) or NoSQL (MongoDB). Only the application tier should communicate directly with the database.</p>
+            </div>
+          </div>
+
+          <h3>DNS — Domain Name System</h3>
+          <p>DNS translates human-readable domain names (e.g., <code>www.example.com</code>) into IP addresses. It is the "phonebook of the internet".</p>
+
+          <h3>IP Addresses and Ports</h3>
+          <ul>
+            <li>An <strong>IP address</strong> identifies a device on a network (e.g., <code>192.168.1.1</code> for IPv4, or <code>2001:db8::1</code> for IPv6)</li>
+            <li>A <strong>port</strong> identifies a specific service on that device. HTTP uses port 80; HTTPS uses port 443; SSH uses port 22.</li>
+            <li>A URL such as <code>https://example.com:443/path</code> combines protocol, domain, port, and path.</li>
+          </ul>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 2. HTTP -->
+        <section id="http">
+          <h2>HTTP Protocol</h2>
+          <p><strong>Hypertext Transfer Protocol (HTTP)</strong> is the foundation of data communication on the web. <strong>HTTPS</strong> is HTTP secured with TLS encryption.</p>
+
+          <h3>HTTP Methods (Verbs)</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Method</th><th>Action</th><th>Safe?</th><th>Idempotent?</th><th>Example Use</th></tr></thead>
+              <tbody>
+                <tr><td><strong>GET</strong></td><td>Retrieve a resource</td><td>✅</td><td>✅</td><td>Fetch a webpage or API data</td></tr>
+                <tr><td><strong>POST</strong></td><td>Create a new resource</td><td>❌</td><td>❌</td><td>Submit a form, create a user</td></tr>
+                <tr><td><strong>PUT</strong></td><td>Replace a resource entirely</td><td>❌</td><td>✅</td><td>Update a user profile completely</td></tr>
+                <tr><td><strong>PATCH</strong></td><td>Partially update a resource</td><td>❌</td><td>✅</td><td>Update only a user's email</td></tr>
+                <tr><td><strong>DELETE</strong></td><td>Remove a resource</td><td>❌</td><td>✅</td><td>Delete a post</td></tr>
+                <tr><td><strong>HEAD</strong></td><td>Like GET but returns headers only</td><td>✅</td><td>✅</td><td>Check if a resource exists</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout info">
+            <span class="callout-icon">ℹ️</span>
+            <div class="callout-content">
+              <strong>Safe vs Idempotent</strong>
+              <p><strong>Safe</strong>: does not modify server state. <strong>Idempotent</strong>: same request made multiple times produces the same result as one request.</p>
+            </div>
+          </div>
+
+          <h3>HTTP Status Codes</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Code Range</th><th>Category</th><th>Common Examples</th></tr></thead>
+              <tbody>
+                <tr><td><strong>1xx</strong></td><td>Informational</td><td>100 Continue</td></tr>
+                <tr><td><strong>2xx</strong></td><td>Success</td><td>200 OK, 201 Created, 204 No Content</td></tr>
+                <tr><td><strong>3xx</strong></td><td>Redirection</td><td>301 Moved Permanently, 302 Found, 304 Not Modified</td></tr>
+                <tr><td><strong>4xx</strong></td><td>Client Error</td><td>400 Bad Request, 401 Unauthorised, 403 Forbidden, 404 Not Found</td></tr>
+                <tr><td><strong>5xx</strong></td><td>Server Error</td><td>500 Internal Server Error, 502 Bad Gateway, 503 Service Unavailable</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>HTTP Request &amp; Response Structure</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">HTTP Request</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>GET /api/users/42 HTTP/1.1
+Host: api.example.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9...
+Accept: application/json
+User-Agent: Mozilla/5.0</code></pre>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">HTTP Response</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 97
+Date: Mon, 17 Mar 2025 10:00:00 GMT
+
+{
+  "id": 42,
+  "name": "Alice Smith",
+  "email": "alice@example.com"
+}</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 3. HTML -->
+        <section id="html">
+          <h2>HTML5</h2>
+          <p><strong>HyperText Markup Language (HTML)</strong> defines the structure and content of a web page using <strong>elements</strong> (tags).</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">HTML5 — Document Structure</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;nav&gt;...&lt;/nav&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;section&gt;
+        &lt;h1&gt;Main Heading&lt;/h1&gt;
+        &lt;p&gt;Paragraph text.&lt;/p&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;...&lt;/footer&gt;
+    &lt;script src="main.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <h3>Semantic HTML</h3>
+          <p>HTML5 introduced <strong>semantic elements</strong> that describe the meaning of the content, not just its appearance. This improves accessibility and SEO.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Element</th><th>Purpose</th></tr></thead>
+              <tbody>
+                <tr><td><code>&lt;header&gt;</code></td><td>Page or section header</td></tr>
+                <tr><td><code>&lt;nav&gt;</code></td><td>Navigation links</td></tr>
+                <tr><td><code>&lt;main&gt;</code></td><td>Main content area (unique to page)</td></tr>
+                <tr><td><code>&lt;section&gt;</code></td><td>Thematic grouping of content</td></tr>
+                <tr><td><code>&lt;article&gt;</code></td><td>Self-contained content (blog post, news item)</td></tr>
+                <tr><td><code>&lt;aside&gt;</code></td><td>Related but separate content (sidebar)</td></tr>
+                <tr><td><code>&lt;footer&gt;</code></td><td>Page or section footer</td></tr>
+                <tr><td><code>&lt;figure&gt;</code> / <code>&lt;figcaption&gt;</code></td><td>Images with captions</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Forms &amp; Input</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">HTML — Form Example</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>&lt;form action="/login" method="POST"&gt;
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required&gt;
+
+  &lt;label for="password"&gt;Password:&lt;/label&gt;
+  &lt;input type="password" id="password" name="password"
+         minlength="8" required&gt;
+
+  &lt;button type="submit"&gt;Log In&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 4. CSS -->
+        <section id="css">
+          <h2>CSS3</h2>
+          <p><strong>Cascading Style Sheets (CSS)</strong> controls the visual presentation of HTML elements.</p>
+
+          <h3>The Box Model</h3>
+          <p>Every HTML element is rendered as a rectangular box consisting of:</p>
+          <div class="highlight-box">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:.82rem; color:var(--text-secondary); text-align:center; line-height:2;">
+              ┌────────────── margin ──────────────┐<br>
+              │ ┌────────── border ───────────┐   │<br>
+              │ │ ┌──────── padding ──────┐   │   │<br>
+              │ │ │                       │   │   │<br>
+              │ │ │       content         │   │   │<br>
+              │ │ │                       │   │   │<br>
+              │ │ └───────────────────────┘   │   │<br>
+              │ └─────────────────────────────┘   │<br>
+              └────────────────────────────────────┘
+            </p>
+          </div>
+
+          <h3>Selectors</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Selector</th><th>Example</th><th>Selects</th></tr></thead>
+              <tbody>
+                <tr><td>Element</td><td><code>p { }</code></td><td>All &lt;p&gt; elements</td></tr>
+                <tr><td>Class</td><td><code>.card { }</code></td><td>Elements with class="card"</td></tr>
+                <tr><td>ID</td><td><code>#header { }</code></td><td>Element with id="header"</td></tr>
+                <tr><td>Descendant</td><td><code>nav a { }</code></td><td>&lt;a&gt; elements inside &lt;nav&gt;</td></tr>
+                <tr><td>Pseudo-class</td><td><code>a:hover { }</code></td><td>&lt;a&gt; when the mouse is over it</td></tr>
+                <tr><td>Attribute</td><td><code>input[type="text"] { }</code></td><td>Text inputs</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Flexbox Layout</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">CSS — Flexbox</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>.container {
+  display: flex;
+  flex-direction: row;        /* or column */
+  justify-content: center;    /* main axis alignment */
+  align-items: center;        /* cross axis alignment */
+  gap: 1rem;                  /* space between items */
+  flex-wrap: wrap;            /* allow wrapping */
+}
+
+.item {
+  flex: 1;                    /* grow to fill space equally */
+}</code></pre>
+          </div>
+
+          <h3>Responsive Design &amp; Media Queries</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">CSS — Media Queries (Mobile-First)</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>/* Default: mobile styles */
+.grid { grid-template-columns: 1fr; }
+
+/* Tablet and above */
+@media (min-width: 768px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 5. JavaScript -->
+        <section id="javascript">
+          <h2>JavaScript</h2>
+          <p>JavaScript is the programming language of the web. It runs in the browser and enables <strong>dynamic, interactive</strong> web pages.</p>
+
+          <h3>DOM Manipulation</h3>
+          <p>The <strong>Document Object Model (DOM)</strong> represents the HTML page as a tree of objects that JavaScript can read and modify.</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">JavaScript — DOM Manipulation</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="cm">// Select elements</span>
+<span class="kw">const</span> btn = document.querySelector(<span class="str">'#myButton'</span>);
+<span class="kw">const</span> items = document.querySelectorAll(<span class="str">'.item'</span>);
+
+<span class="cm">// Modify content</span>
+document.querySelector(<span class="str">'h1'</span>).textContent = <span class="str">'Hello World'</span>;
+document.querySelector(<span class="str">'.card'</span>).classList.add(<span class="str">'active'</span>);
+
+<span class="cm">// Create and append elements</span>
+<span class="kw">const</span> li = document.createElement(<span class="str">'li'</span>);
+li.textContent = <span class="str">'New Item'</span>;
+document.querySelector(<span class="str">'ul'</span>).appendChild(li);
+
+<span class="cm">// Event listeners</span>
+btn.addEventListener(<span class="str">'click'</span>, <span class="kw">function</span>(event) {
+  alert(<span class="str">'Button clicked!'</span>);
+});</code></pre>
+          </div>
+
+          <h3>Fetch API — Making HTTP Requests</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">JavaScript — Fetch API with async/await</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="cm">// GET request</span>
+<span class="kw">async function</span> <span class="fn">getUser</span>(id) {
+  <span class="kw">try</span> {
+    <span class="kw">const</span> response = <span class="kw">await</span> fetch(<span class="str">`/api/users/${id}`</span>);
+
+    <span class="kw">if</span> (!response.ok) {
+      <span class="kw">throw new</span> Error(<span class="str">`HTTP error: ${response.status}`</span>);
+    }
+
+    <span class="kw">const</span> data = <span class="kw">await</span> response.json();
+    console.log(data); <span class="cm">// { id: 1, name: "Alice" }</span>
+    <span class="kw">return</span> data;
+  } <span class="kw">catch</span> (error) {
+    console.error(<span class="str">'Failed to fetch user:'</span>, error);
+  }
+}
+
+<span class="cm">// POST request</span>
+<span class="kw">async function</span> <span class="fn">createUser</span>(userData) {
+  <span class="kw">const</span> response = <span class="kw">await</span> fetch(<span class="str">'/api/users'</span>, {
+    method: <span class="str">'POST'</span>,
+    headers: { <span class="str">'Content-Type'</span>: <span class="str">'application/json'</span> },
+    body: JSON.stringify(userData)
+  });
+  <span class="kw">return</span> response.json();
+}</code></pre>
+          </div>
+
+          <h3>Promises and Async/Await</h3>
+          <p>JavaScript is <strong>single-threaded</strong> and non-blocking. Asynchronous operations (like network requests) use Promises to handle eventual results without blocking execution.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Concept</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Synchronous</strong></td><td>Code executes line by line; each line waits for the previous</td></tr>
+                <tr><td><strong>Asynchronous</strong></td><td>Operations that take time are scheduled; code continues executing</td></tr>
+                <tr><td><strong>Promise</strong></td><td>An object representing the eventual result of an async operation (pending → fulfilled/rejected)</td></tr>
+                <tr><td><strong>async/await</strong></td><td>Syntactic sugar over Promises for cleaner asynchronous code</td></tr>
+                <tr><td><strong>Callback</strong></td><td>Older pattern: a function passed to an async function to be called when done</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 6. Client vs Server Side -->
+        <section id="client-server">
+          <h2>Client-Side vs Server-Side</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Aspect</th><th>Client-Side</th><th>Server-Side</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Runs on</strong></td><td>User's browser</td><td>Web server</td></tr>
+                <tr><td><strong>Languages</strong></td><td>HTML, CSS, JavaScript</td><td>Python, Node.js, PHP, Ruby, Java, Go</td></tr>
+                <tr><td><strong>Can access</strong></td><td>DOM, browser APIs, user input</td><td>Databases, file system, external services</td></tr>
+                <tr><td><strong>Visible to user</strong></td><td>Yes (source code viewable)</td><td>No (code stays on server)</td></tr>
+                <tr><td><strong>Security</strong></td><td>Never trust — always validate server-side too</td><td>More trusted; protect database access</td></tr>
+                <tr><td><strong>Performance</strong></td><td>Fast UI updates without server round-trip</td><td>Can handle heavy computation</td></tr>
+                <tr><td><strong>Example</strong></td><td>Form validation, animations, dynamic updates</td><td>User authentication, database queries, business logic</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Rendering Strategies</h3>
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">🖥️</div>
+              <h4>Server-Side Rendering (SSR)</h4>
+              <p>HTML is generated on the server and sent to the client. Good for SEO and initial load. Examples: Django templates, PHP, Next.js (SSR mode).</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">⚡</div>
+              <h4>Client-Side Rendering (CSR)</h4>
+              <p>Browser downloads a minimal HTML shell and a JavaScript bundle. JS renders the UI. Faster interactions after initial load. Examples: React SPA, Vue SPA.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔀</div>
+              <h4>Hybrid / Static Site Generation</h4>
+              <p>Pages are pre-rendered at build time. Fast and secure. Best for content that doesn't change often. Examples: Next.js, Gatsby, Hugo.</p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 7. APIs -->
+        <section id="apis">
+          <h2>APIs &amp; REST</h2>
+
+          <div class="def-card">
+            <div class="def-term">API — Application Programming Interface</div>
+            <div class="def-meaning">A defined contract that allows two software systems to communicate. A web API allows a client to interact with a server by making HTTP requests to defined <strong>endpoints</strong>.</div>
+          </div>
+
+          <h3>REST — Representational State Transfer</h3>
+          <p>REST is an architectural <em>style</em> (not a protocol) for designing networked APIs. A RESTful API uses standard HTTP methods and treats everything as a <strong>resource</strong> with a URL.</p>
+
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Stateless</strong> — each request contains all information needed; no session state on the server</div>
+            <div class="key-term-item"><strong>Resource-based</strong> — everything is a resource identified by a URI</div>
+            <div class="key-term-item"><strong>Standard HTTP methods</strong> — GET, POST, PUT, PATCH, DELETE</div>
+            <div class="key-term-item"><strong>JSON or XML</strong> — data transferred in a standard format</div>
+            <div class="key-term-item"><strong>Uniform interface</strong> — consistent, predictable structure</div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">REST API Design — User Resource</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>GET    /api/users          → List all users
+POST   /api/users          → Create a new user
+GET    /api/users/{id}     → Get a specific user
+PUT    /api/users/{id}     → Replace a user
+PATCH  /api/users/{id}     → Update fields of a user
+DELETE /api/users/{id}     → Delete a user
+
+GET    /api/users/{id}/posts  → List posts by a user</code></pre>
+          </div>
+
+          <h3>JSON — JavaScript Object Notation</h3>
+          <p>JSON is the most common data format for web APIs. It is lightweight, human-readable, and language-independent.</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">JSON Example</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>{
+  "id": 101,
+  "name": "Alice Smith",
+  "email": "alice@example.com",
+  "roles": ["user", "moderator"],
+  "address": {
+    "city": "Sydney",
+    "state": "NSW"
+  },
+  "active": true
+}</code></pre>
+          </div>
+
+          <h3>Python Flask REST API Example</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python / Flask — Simple REST API</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">from</span> flask <span class="kw">import</span> Flask, jsonify, request
+
+app = Flask(__name__)
+
+users = [
+    {<span class="str">"id"</span>: <span class="num">1</span>, <span class="str">"name"</span>: <span class="str">"Alice"</span>},
+    {<span class="str">"id"</span>: <span class="num">2</span>, <span class="str">"name"</span>: <span class="str">"Bob"</span>}
+]
+
+<span class="op">@</span>app.route(<span class="str">'/api/users'</span>, methods=[<span class="str">'GET'</span>])
+<span class="kw">def</span> <span class="fn">get_users</span>():
+    <span class="kw">return</span> jsonify(users)
+
+<span class="op">@</span>app.route(<span class="str">'/api/users/&lt;int:user_id&gt;'</span>, methods=[<span class="str">'GET'</span>])
+<span class="kw">def</span> <span class="fn">get_user</span>(user_id):
+    user = next((u <span class="kw">for</span> u <span class="kw">in</span> users <span class="kw">if</span> u[<span class="str">"id"</span>] == user_id), <span class="kw">None</span>)
+    <span class="kw">if</span> user:
+        <span class="kw">return</span> jsonify(user)
+    <span class="kw">return</span> jsonify({<span class="str">"error"</span>: <span class="str">"Not found"</span>}), <span class="num">404</span>
+
+<span class="op">@</span>app.route(<span class="str">'/api/users'</span>, methods=[<span class="str">'POST'</span>])
+<span class="kw">def</span> <span class="fn">create_user</span>():
+    data = request.get_json()
+    new_user = {<span class="str">"id"</span>: len(users) + <span class="num">1</span>, <span class="str">"name"</span>: data[<span class="str">"name"</span>]}
+    users.append(new_user)
+    <span class="kw">return</span> jsonify(new_user), <span class="num">201</span></code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 8. Databases -->
+        <section id="databases">
+          <h2>Databases</h2>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Feature</th><th>Relational (SQL)</th><th>NoSQL</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Structure</strong></td><td>Tables with rows and columns</td><td>Documents, key-value, graph, column-family</td></tr>
+                <tr><td><strong>Schema</strong></td><td>Fixed (defined in advance)</td><td>Flexible (schema-less)</td></tr>
+                <tr><td><strong>Query Language</strong></td><td>SQL (Structured Query Language)</td><td>API-specific (e.g., MongoDB query language)</td></tr>
+                <tr><td><strong>Relationships</strong></td><td>Foreign keys, JOINs</td><td>Embedded documents or references</td></tr>
+                <tr><td><strong>Best For</strong></td><td>Complex queries, transactions (ACID)</td><td>Large scale, unstructured data, rapid development</td></tr>
+                <tr><td><strong>Examples</strong></td><td>MySQL, PostgreSQL, SQLite, SQL Server</td><td>MongoDB, Redis, DynamoDB, Cassandra</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Basic SQL</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">SQL — Core Operations</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="cm">-- CREATE a table</span>
+<span class="kw">CREATE TABLE</span> users (
+    id       INTEGER <span class="kw">PRIMARY KEY</span> AUTOINCREMENT,
+    name     TEXT <span class="kw">NOT NULL</span>,
+    email    TEXT <span class="kw">UNIQUE NOT NULL</span>,
+    created  DATETIME <span class="kw">DEFAULT</span> CURRENT_TIMESTAMP
+);
+
+<span class="cm">-- INSERT data</span>
+<span class="kw">INSERT INTO</span> users (name, email)
+<span class="kw">VALUES</span> (<span class="str">'Alice'</span>, <span class="str">'alice@example.com'</span>);
+
+<span class="cm">-- SELECT with filtering</span>
+<span class="kw">SELECT</span> name, email <span class="kw">FROM</span> users
+<span class="kw">WHERE</span> id > <span class="num">10</span>
+<span class="kw">ORDER BY</span> name <span class="kw">ASC</span>;
+
+<span class="cm">-- UPDATE</span>
+<span class="kw">UPDATE</span> users <span class="kw">SET</span> email = <span class="str">'newemail@example.com'</span>
+<span class="kw">WHERE</span> id = <span class="num">1</span>;
+
+<span class="cm">-- DELETE</span>
+<span class="kw">DELETE FROM</span> users <span class="kw">WHERE</span> id = <span class="num">5</span>;
+
+<span class="cm">-- JOIN two tables</span>
+<span class="kw">SELECT</span> users.name, posts.title
+<span class="kw">FROM</span> posts
+<span class="kw">INNER JOIN</span> users <span class="kw">ON</span> posts.user_id = users.id;</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 9. Web Security -->
+        <section id="web-security">
+          <h2>Web Security</h2>
+
+          <h3>Common Web Vulnerabilities</h3>
+
+          <div class="callout danger">
+            <span class="callout-icon">🚨</span>
+            <div class="callout-content">
+              <strong>SQL Injection (SQLi)</strong>
+              <p>Malicious SQL is injected into input fields and executed by the database. <strong>Prevention</strong>: always use parameterised queries/prepared statements. Never concatenate user input into SQL.</p>
+            </div>
+          </div>
+
+          <div class="callout danger">
+            <span class="callout-icon">🚨</span>
+            <div class="callout-content">
+              <strong>Cross-Site Scripting (XSS)</strong>
+              <p>Attacker injects malicious JavaScript into a page viewed by other users, potentially stealing cookies or redirecting to phishing pages. <strong>Prevention</strong>: encode output; use Content Security Policy (CSP) headers; never use <code>innerHTML</code> with user data.</p>
+            </div>
+          </div>
+
+          <div class="callout danger">
+            <span class="callout-icon">🚨</span>
+            <div class="callout-content">
+              <strong>Cross-Site Request Forgery (CSRF)</strong>
+              <p>Tricks authenticated users into submitting requests they didn't intend (e.g., transferring funds). <strong>Prevention</strong>: use CSRF tokens; same-site cookie attribute; verify <code>Origin</code> and <code>Referer</code> headers.</p>
+            </div>
+          </div>
+
+          <h3>Security Headers</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Header</th><th>Purpose</th></tr></thead>
+              <tbody>
+                <tr><td><code>Strict-Transport-Security</code></td><td>Forces HTTPS for all connections (HSTS)</td></tr>
+                <tr><td><code>Content-Security-Policy</code></td><td>Restricts sources of scripts, styles, images (prevents XSS)</td></tr>
+                <tr><td><code>X-Content-Type-Options: nosniff</code></td><td>Prevents MIME type sniffing</td></tr>
+                <tr><td><code>X-Frame-Options: DENY</code></td><td>Prevents clickjacking via iframes</td></tr>
+                <tr><td><code>Referrer-Policy</code></td><td>Controls how much referrer info is shared</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout success">
+            <span class="callout-icon">✅</span>
+            <div class="callout-content">
+              <strong>Web Programming Key Takeaways</strong>
+              <ul>
+                <li>HTTP is stateless; HTTPS adds encryption via TLS</li>
+                <li>REST APIs use HTTP methods to CRUD resources</li>
+                <li>Always validate input server-side; never trust client-side validation alone</li>
+                <li>Use parameterised queries to prevent SQL injection</li>
+                <li>Encode all output to prevent XSS</li>
+                <li>JSON is the standard data format for modern web APIs</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo">💻</div>
+          <span class="footer-name">SoftEng Notes</span>
+        </div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">SE Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="secure-software-architecture.html">← Secure Architecture</a>
+        <a href="software-automation.html">Next: Automation →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 HSC SoftEng Notes · NESA NSW Aligned</span>
+      <a href="../index.html" style="color:#475569;text-decoration:none;">← Home</a>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

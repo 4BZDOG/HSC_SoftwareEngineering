@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Software Architecture | HSC Software Engineering</title>
+  <meta name="description" content="Complete notes on Secure Software Architecture for NSW HSC Software Engineering — CIA triad, encryption, authentication, network security, secure coding." />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">💻</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="secure-software-architecture.html" class="active">Secure Architecture <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-for-the-web.html">Web Programming <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-automation.html">Automation <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-engineering-project.html">SE Project <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-fundamentals.html">Fundamentals <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="object-oriented-paradigm.html">OOP <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="programming-mechatronics.html">Mechatronics <span class="badge badge-11">Y11</span></a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 12</div>
+      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
+      <a href="software-automation.html">⚙️ Software Automation</a>
+      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 11</div>
+      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">🧩 Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+    </div>
+    <button id="theme-toggle-mobile" class="btn" style="width:100%;justify-content:center;background:rgba(255,255,255,.07);color:#CBD5E1;border:1px solid rgba(255,255,255,.12);">🌙 Toggle Theme</button>
+  </div>
+
+  <!-- Topic Header -->
+  <header class="topic-header">
+    <div class="topic-header-inner">
+      <nav class="topic-breadcrumb">
+        <a href="../index.html">Home</a> <span>›</span>
+        <a href="../index.html#year12">Year 12</a> <span>›</span>
+        <span>Secure Software Architecture</span>
+      </nav>
+      <h1>🔒 Secure Software Architecture</h1>
+      <p style="color:#94A3B8; max-width:600px; margin-top:.5rem; font-size:.95rem; line-height:1.6;">
+        Understand the principles, techniques, and tools used to design, build, and maintain secure software systems.
+      </p>
+      <div class="topic-header-meta">
+        <span class="meta-pill year12">📘 Year 12 — HSC</span>
+        <span class="meta-pill">🕐 ~4 weeks</span>
+        <span class="meta-pill">10 sections</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Layout -->
+  <div class="page-layout">
+
+    <!-- Sidebar TOC -->
+    <aside class="sidebar">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#cia-triad">1. The CIA Triad</a></li>
+        <li><a href="#threats">2. Types of Cyber Threats</a></li>
+        <li><a href="#authentication">3. Authentication &amp; Authorisation</a></li>
+        <li><a href="#encryption">4. Encryption</a></li>
+        <li><a href="#protocols">5. Security Protocols</a></li>
+        <li><a href="#secure-coding">6. Secure Coding Practices</a></li>
+        <li><a href="#network-security">7. Network Security</a></li>
+        <li><a href="#social-engineering">8. Social Engineering</a></li>
+        <li><a href="#privacy">9. Privacy &amp; Legislation</a></li>
+        <li><a href="#testing">10. Security Testing</a></li>
+      </ul>
+    </aside>
+
+    <!-- Content -->
+    <main class="page-content">
+      <div class="content-body">
+
+        <!-- 1. CIA Triad -->
+        <section id="cia-triad">
+          <h2>The CIA Triad</h2>
+          <p>The CIA triad is the foundational model of information security. Every security decision should be evaluated against its three principles.</p>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">🔐</div>
+              <h4>Confidentiality</h4>
+              <p>Ensuring that information is accessible only to those authorised to have access. Achieved through encryption, access controls, and authentication.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">✅</div>
+              <h4>Integrity</h4>
+              <p>Maintaining the accuracy and completeness of data. Data must not be altered by unauthorised parties. Achieved via checksums, hashing, and digital signatures.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🟢</div>
+              <h4>Availability</h4>
+              <p>Ensuring that authorised users have reliable access to systems and data when needed. Protected through redundancy, backups, and DDoS mitigation.</p>
+            </div>
+          </div>
+
+          <div class="callout key">
+            <span class="callout-icon">📝</span>
+            <div class="callout-content">
+              <strong>Exam Tip</strong>
+              <p>When answering exam questions about security, always consider which aspect(s) of the CIA triad are relevant. A breach that leaks data violates <strong>Confidentiality</strong>; one that corrupts data violates <strong>Integrity</strong>; one that crashes a server violates <strong>Availability</strong>.</p>
+            </div>
+          </div>
+
+          <h3>Additional Security Principles</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Non-repudiation</strong> — inability to deny an action (digital signatures provide this)</div>
+            <div class="key-term-item"><strong>Least Privilege</strong> — users/processes should have only the permissions they need</div>
+            <div class="key-term-item"><strong>Defence in Depth</strong> — multiple overlapping layers of security controls</div>
+            <div class="key-term-item"><strong>Security by Design</strong> — security built in from the start, not added later</div>
+            <div class="key-term-item"><strong>Fail-Safe Defaults</strong> — deny access by default; only allow what is explicitly permitted</div>
+            <div class="key-term-item"><strong>Open Design</strong> — security should not rely on secrecy of the mechanism itself (Kerckhoffs's principle)</div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 2. Threats -->
+        <section id="threats">
+          <h2>Types of Cyber Threats</h2>
+          <p>Understanding the threat landscape is the first step in building secure systems.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Threat Type</th>
+                  <th>Description</th>
+                  <th>CIA Impact</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Malware</strong></td>
+                  <td>Malicious software designed to harm systems</td>
+                  <td>C, I, A</td>
+                  <td>Ransomware, viruses, trojans, spyware</td>
+                </tr>
+                <tr>
+                  <td><strong>Phishing</strong></td>
+                  <td>Deceptive messages trick users into revealing credentials</td>
+                  <td>C</td>
+                  <td>Fake bank emails, spear phishing</td>
+                </tr>
+                <tr>
+                  <td><strong>SQL Injection</strong></td>
+                  <td>Inserting malicious SQL code into input fields</td>
+                  <td>C, I</td>
+                  <td><code>' OR 1=1 --</code> in a login form</td>
+                </tr>
+                <tr>
+                  <td><strong>Cross-Site Scripting (XSS)</strong></td>
+                  <td>Injecting malicious scripts into web pages viewed by others</td>
+                  <td>C</td>
+                  <td>Stealing session cookies via injected JS</td>
+                </tr>
+                <tr>
+                  <td><strong>DoS / DDoS</strong></td>
+                  <td>Overwhelming a system with traffic to deny service</td>
+                  <td>A</td>
+                  <td>Botnet flooding a web server</td>
+                </tr>
+                <tr>
+                  <td><strong>Man-in-the-Middle</strong></td>
+                  <td>Attacker intercepts communication between two parties</td>
+                  <td>C, I</td>
+                  <td>Intercepting HTTP traffic on public Wi-Fi</td>
+                </tr>
+                <tr>
+                  <td><strong>Brute Force</strong></td>
+                  <td>Systematically trying all possible passwords</td>
+                  <td>C</td>
+                  <td>Dictionary attacks on login forms</td>
+                </tr>
+                <tr>
+                  <td><strong>Zero-Day Exploit</strong></td>
+                  <td>Exploiting an unknown, unpatched vulnerability</td>
+                  <td>C, I, A</td>
+                  <td>Attacks before a vendor patch is released</td>
+                </tr>
+                <tr>
+                  <td><strong>Insider Threat</strong></td>
+                  <td>Malicious actions by trusted employees or contractors</td>
+                  <td>C, I, A</td>
+                  <td>Employee leaking confidential data</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>STRIDE Threat Model</h3>
+          <p>STRIDE is a systematic framework developed by Microsoft for identifying security threats:</p>
+          <div class="info-grid">
+            <div class="info-card"><div class="info-card-icon">🥸</div><h4>Spoofing</h4><p>Pretending to be someone else. Violates <em>Authentication</em>.</p></div>
+            <div class="info-card"><div class="info-card-icon">✏️</div><h4>Tampering</h4><p>Modifying data maliciously. Violates <em>Integrity</em>.</p></div>
+            <div class="info-card"><div class="info-card-icon">🙈</div><h4>Repudiation</h4><p>Denying actions were taken. Violates <em>Non-repudiation</em>.</p></div>
+            <div class="info-card"><div class="info-card-icon">👁️</div><h4>Information Disclosure</h4><p>Exposing data to unauthorised parties. Violates <em>Confidentiality</em>.</p></div>
+            <div class="info-card"><div class="info-card-icon">💥</div><h4>Denial of Service</h4><p>Making a system unavailable. Violates <em>Availability</em>.</p></div>
+            <div class="info-card"><div class="info-card-icon">🔑</div><h4>Elevation of Privilege</h4><p>Gaining higher access than permitted. Violates <em>Authorisation</em>.</p></div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 3. Authentication -->
+        <section id="authentication">
+          <h2>Authentication &amp; Authorisation</h2>
+
+          <div class="callout info">
+            <span class="callout-icon">ℹ️</span>
+            <div class="callout-content">
+              <strong>Authentication vs Authorisation</strong>
+              <p><strong>Authentication (AuthN)</strong> — verifying <em>who</em> you are (identity). <strong>Authorisation (AuthZ)</strong> — determining <em>what</em> you are allowed to do (permissions).</p>
+            </div>
+          </div>
+
+          <h3>Authentication Factors</h3>
+          <p>Strong authentication combines multiple factor types:</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Something you know</strong> — passwords, PINs, security questions</div>
+            <div class="key-term-item"><strong>Something you have</strong> — hardware token, smart card, phone (OTP app)</div>
+            <div class="key-term-item"><strong>Something you are</strong> — biometrics: fingerprint, face, retina scan</div>
+            <div class="key-term-item"><strong>Somewhere you are</strong> — geolocation (less common)</div>
+          </div>
+
+          <h3>Multi-Factor Authentication (MFA)</h3>
+          <p>MFA requires two or more factors from different categories. Even if a password is compromised, a second factor (e.g., an OTP sent to a phone) prevents unauthorised access. Two-Factor Authentication (2FA) is the most common form.</p>
+
+          <h3>Password Security</h3>
+          <div class="key-terms">
+            <div class="key-term-item">Never store passwords in plaintext — always hash them</div>
+            <div class="key-term-item">Use a slow hashing algorithm: <code>bcrypt</code>, <code>argon2</code>, or <code>scrypt</code></div>
+            <div class="key-term-item">Add a unique random <strong>salt</strong> before hashing to prevent rainbow table attacks</div>
+            <div class="key-term-item">Enforce minimum length (≥ 12 chars) and complexity</div>
+            <div class="key-term-item">Implement account lockout after failed attempts</div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Secure Password Hashing with bcrypt</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">import</span> bcrypt
+
+<span class="cm"># Hashing a password (salt is generated automatically)</span>
+password = <span class="str">"MySecurePassword123!"</span>.encode(<span class="str">'utf-8'</span>)
+hashed = bcrypt.hashpw(password, bcrypt.gensalt(rounds=<span class="num">12</span>))
+
+<span class="cm"># Verifying a password</span>
+<span class="kw">def</span> <span class="fn">verify_password</span>(plain_password, hashed_password):
+    <span class="kw">return</span> bcrypt.checkpw(
+        plain_password.encode(<span class="str">'utf-8'</span>),
+        hashed_password
+    )
+
+<span class="cm"># NEVER do this:</span>
+<span class="cm"># db.save(password=plain_text_password)  ← INSECURE!</span></code></pre>
+          </div>
+
+          <h3>Authorisation Models</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Model</th><th>Description</th><th>Example</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Role-Based Access Control (RBAC)</strong></td>
+                  <td>Permissions assigned to roles; users assigned to roles</td>
+                  <td>Admin, Editor, Viewer roles in a CMS</td>
+                </tr>
+                <tr>
+                  <td><strong>Attribute-Based Access Control (ABAC)</strong></td>
+                  <td>Access based on attributes of user, resource, and environment</td>
+                  <td>A doctor can view records only for their patients</td>
+                </tr>
+                <tr>
+                  <td><strong>Discretionary Access Control (DAC)</strong></td>
+                  <td>Resource owners control access to their resources</td>
+                  <td>Unix file permissions (owner, group, other)</td>
+                </tr>
+                <tr>
+                  <td><strong>Mandatory Access Control (MAC)</strong></td>
+                  <td>System enforces access based on security labels</td>
+                  <td>Military classification levels (Secret, Top Secret)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 4. Encryption -->
+        <section id="encryption">
+          <h2>Encryption</h2>
+          <p>Encryption transforms readable data (plaintext) into an unreadable format (ciphertext) using an algorithm and a key. Only authorised parties with the correct key can decrypt it.</p>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">🔑</div>
+              <h4>Symmetric Encryption</h4>
+              <p>Same key is used for both encryption and decryption. Fast and efficient for large data. Key distribution is a challenge. Examples: <strong>AES</strong>, DES (deprecated), 3DES.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🗝️</div>
+              <h4>Asymmetric Encryption</h4>
+              <p>Two mathematically related keys: a <strong>public key</strong> (share freely) and a <strong>private key</strong> (keep secret). Slower than symmetric. Examples: <strong>RSA</strong>, ECC, DSA.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">#️⃣</div>
+              <h4>Hashing</h4>
+              <p>One-way transformation producing a fixed-length <strong>digest</strong>. Cannot be reversed. Used for password storage and integrity checks. Examples: <strong>SHA-256</strong>, SHA-3, MD5 (deprecated).</p>
+            </div>
+          </div>
+
+          <div class="callout warning">
+            <span class="callout-icon">⚠️</span>
+            <div class="callout-content">
+              <strong>Hashing is NOT Encryption</strong>
+              <p>Hashing is a one-way process — you cannot "decrypt" a hash. Encryption is two-way. Do not use hashing for data you need to recover; use it for passwords and integrity verification only.</p>
+            </div>
+          </div>
+
+          <h3>How Asymmetric Encryption Works</h3>
+          <ol class="steps">
+            <li class="step">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Key Generation</h4>
+                <p>Alice generates a key pair: one public key and one private key.</p>
+              </div>
+            </li>
+            <li class="step">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Public Key Distribution</h4>
+                <p>Alice shares her public key widely (e.g., on a certificate authority).</p>
+              </div>
+            </li>
+            <li class="step">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Encryption</h4>
+                <p>Bob encrypts a message using Alice's <em>public</em> key.</p>
+              </div>
+            </li>
+            <li class="step">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h4>Decryption</h4>
+                <p>Only Alice's <em>private</em> key can decrypt the ciphertext. No one else can read it.</p>
+              </div>
+            </li>
+          </ol>
+
+          <h3>Digital Signatures</h3>
+          <p>Digital signatures use <em>asymmetric encryption in reverse</em> to provide authentication and non-repudiation:</p>
+          <ul>
+            <li>The sender signs a message by encrypting its hash with their <strong>private key</strong>.</li>
+            <li>Anyone with the sender's <strong>public key</strong> can verify the signature.</li>
+            <li>If the signature is valid, the message is authentic and hasn't been tampered with.</li>
+          </ul>
+
+          <h3>Hybrid Encryption</h3>
+          <p>In practice, asymmetric encryption is used to securely exchange a <strong>session key</strong>, which is then used for fast symmetric encryption of the actual data. This is how TLS/HTTPS works.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Algorithm</th><th>Type</th><th>Key Size</th><th>Use Case</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>AES-256</td><td>Symmetric</td><td>256-bit</td><td>File/disk encryption, TLS</td><td>✅ Recommended</td></tr>
+                <tr><td>RSA-2048</td><td>Asymmetric</td><td>2048-bit</td><td>Key exchange, certificates</td><td>✅ Acceptable</td></tr>
+                <tr><td>ECC-256</td><td>Asymmetric</td><td>256-bit</td><td>TLS, mobile devices</td><td>✅ Recommended</td></tr>
+                <tr><td>SHA-256</td><td>Hash</td><td>256-bit output</td><td>Passwords, integrity</td><td>✅ Recommended</td></tr>
+                <tr><td>MD5</td><td>Hash</td><td>128-bit output</td><td>Legacy</td><td>❌ Broken</td></tr>
+                <tr><td>DES</td><td>Symmetric</td><td>56-bit</td><td>Legacy</td><td>❌ Broken</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 5. Protocols -->
+        <section id="protocols">
+          <h2>Security Protocols</h2>
+
+          <h3>SSL / TLS</h3>
+          <p><strong>Transport Layer Security (TLS)</strong> — and its predecessor SSL — provides encrypted, authenticated communication over a network. HTTPS = HTTP + TLS.</p>
+
+          <div class="key-terms">
+            <div class="key-term-item"><strong>TLS Handshake</strong> — establishes a shared session key using asymmetric encryption</div>
+            <div class="key-term-item"><strong>Certificate Authority (CA)</strong> — trusted third party that issues and validates digital certificates</div>
+            <div class="key-term-item"><strong>Certificate</strong> — binds a public key to an identity; signed by a CA</div>
+            <div class="key-term-item"><strong>HTTPS</strong> — HTTP secured with TLS; protects confidentiality and integrity</div>
+          </div>
+
+          <h3>Other Important Protocols</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Protocol</th><th>Purpose</th><th>Replaces</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>SSH</strong></td><td>Secure remote terminal access</td><td>Telnet (unencrypted)</td></tr>
+                <tr><td><strong>SFTP/FTPS</strong></td><td>Secure file transfer</td><td>FTP (unencrypted)</td></tr>
+                <tr><td><strong>HTTPS</strong></td><td>Secure web browsing</td><td>HTTP (unencrypted)</td></tr>
+                <tr><td><strong>WPA3</strong></td><td>Wi-Fi encryption</td><td>WEP/WPA2</td></tr>
+                <tr><td><strong>OAuth 2.0</strong></td><td>Delegated authorisation (e.g. "Sign in with Google")</td><td>Sharing passwords</td></tr>
+                <tr><td><strong>JWT</strong></td><td>Stateless authentication tokens</td><td>Session cookies</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 6. Secure Coding -->
+        <section id="secure-coding">
+          <h2>Secure Coding Practices</h2>
+          <p>Secure code is not added at the end — it must be built into every stage of development.</p>
+
+          <h3>Input Validation</h3>
+          <p>Never trust input from users or external systems. Always validate and sanitise input before use.</p>
+          <div class="callout danger">
+            <span class="callout-icon">🚨</span>
+            <div class="callout-content">
+              <strong>The #1 Rule: Never Trust User Input</strong>
+              <p>Validate on both the client side (UX) and the server side (security). Client-side validation can always be bypassed.</p>
+            </div>
+          </div>
+
+          <h3>SQL Injection Prevention</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Vulnerable vs Secure SQL</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="cm"># ❌ VULNERABLE — string concatenation opens SQL injection</span>
+username = request.form[<span class="str">'username'</span>]
+query = <span class="str">f"SELECT * FROM users WHERE username = '{username}'"</span>
+cursor.execute(query)  <span class="cm"># Attacker can enter: ' OR 1=1 --</span>
+
+<span class="cm"># ✅ SECURE — parameterised queries prevent SQL injection</span>
+username = request.form[<span class="str">'username'</span>]
+query = <span class="str">"SELECT * FROM users WHERE username = ?"</span>
+cursor.execute(query, (username,))  <span class="cm"># Input is treated as data, not code</span></code></pre>
+          </div>
+
+          <h3>Cross-Site Scripting (XSS) Prevention</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — XSS Prevention via HTML Escaping</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">import</span> html
+
+<span class="cm"># ❌ VULNERABLE — raw user input rendered in HTML</span>
+user_comment = <span class="str">'&lt;script&gt;document.cookie = "stolen"&lt;/script&gt;'</span>
+html_output = <span class="str">f"&lt;p&gt;{user_comment}&lt;/p&gt;"</span>  <span class="cm"># Script will execute!</span>
+
+<span class="cm"># ✅ SECURE — escape special HTML characters</span>
+safe_comment = html.escape(user_comment)
+html_output = <span class="str">f"&lt;p&gt;{safe_comment}&lt;/p&gt;"</span>
+<span class="cm"># Output: &lt;p&gt;&amp;lt;script&amp;gt;...&amp;lt;/script&amp;gt;&lt;/p&gt;</span></code></pre>
+          </div>
+
+          <h3>Key Secure Coding Principles</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Parameterised Queries</strong> — prevent SQL injection</div>
+            <div class="key-term-item"><strong>Output Encoding</strong> — prevent XSS by encoding user data in output</div>
+            <div class="key-term-item"><strong>Input Validation</strong> — whitelist acceptable values; reject everything else</div>
+            <div class="key-term-item"><strong>Error Handling</strong> — never expose stack traces or system details to users</div>
+            <div class="key-term-item"><strong>Principle of Least Privilege</strong> — database accounts should have minimal permissions</div>
+            <div class="key-term-item"><strong>Secure Dependencies</strong> — keep libraries and frameworks up to date; audit regularly</div>
+            <div class="key-term-item"><strong>Secrets Management</strong> — never hardcode passwords, API keys, or tokens in source code</div>
+            <div class="key-term-item"><strong>HTTPS Everywhere</strong> — always use TLS; redirect HTTP to HTTPS</div>
+          </div>
+
+          <h3>OWASP Top 10</h3>
+          <p>The <strong>Open Web Application Security Project (OWASP)</strong> publishes a list of the most critical web application security risks:</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>#</th><th>Vulnerability</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr><td>A01</td><td>Broken Access Control</td><td>Users can act outside their intended permissions</td></tr>
+                <tr><td>A02</td><td>Cryptographic Failures</td><td>Weak or missing encryption; sensitive data exposure</td></tr>
+                <tr><td>A03</td><td>Injection</td><td>SQL, NoSQL, command, LDAP injection flaws</td></tr>
+                <tr><td>A04</td><td>Insecure Design</td><td>Missing or ineffective security controls in design</td></tr>
+                <tr><td>A05</td><td>Security Misconfiguration</td><td>Default passwords, open cloud storage, verbose errors</td></tr>
+                <tr><td>A06</td><td>Vulnerable Components</td><td>Using components with known vulnerabilities</td></tr>
+                <tr><td>A07</td><td>Identification Failures</td><td>Weak authentication, credential stuffing vulnerabilities</td></tr>
+                <tr><td>A08</td><td>Software Integrity Failures</td><td>Untrusted code or data pipelines</td></tr>
+                <tr><td>A09</td><td>Logging Failures</td><td>Insufficient logging and monitoring</td></tr>
+                <tr><td>A10</td><td>Server-Side Request Forgery</td><td>Server fetches attacker-controlled URLs</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 7. Network Security -->
+        <section id="network-security">
+          <h2>Network Security</h2>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">🧱</div>
+              <h4>Firewall</h4>
+              <p>Monitors and controls incoming/outgoing network traffic based on predefined rules. Can be hardware- or software-based. Types: packet filtering, stateful inspection, application-layer (WAF).</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🕵️</div>
+              <h4>Intrusion Detection System (IDS)</h4>
+              <p>Monitors network/system activity for malicious behaviour and policy violations. Raises alerts when suspicious activity is detected. <em>Detects</em> but does not prevent.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🛡️</div>
+              <h4>Intrusion Prevention System (IPS)</h4>
+              <p>Like an IDS but actively blocks detected threats. Sits inline on the network. Can also be combined: IDPS.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🌐</div>
+              <h4>DMZ (Demilitarised Zone)</h4>
+              <p>A network segment that sits between the internal network and the internet. Public-facing servers (web, email) are placed here to limit exposure of the internal network.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔒</div>
+              <h4>VPN</h4>
+              <p>Creates an encrypted tunnel over a public network. Allows remote workers to securely access internal resources. Uses protocols like OpenVPN, IPSec, or WireGuard.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔍</div>
+              <h4>Network Monitoring</h4>
+              <p>Continuously observing network traffic for anomalies, intrusions, and performance issues. Tools include Wireshark, Nagios, and SIEM platforms.</p>
+            </div>
+          </div>
+
+          <h3>Defence in Depth</h3>
+          <p>Security should not rely on a single control. Multiple layers of protection are required:</p>
+          <div class="highlight-box">
+            <p style="text-align:center; font-family:'JetBrains Mono', monospace; font-size:.85rem; color:var(--text-secondary); line-height:2;">
+              [ Internet ]<br>
+              ↓ Firewall / WAF<br>
+              ↓ DMZ (Web Servers, Email Servers)<br>
+              ↓ Internal Firewall<br>
+              ↓ IDS / IPS<br>
+              ↓ Internal Network (Application Servers)<br>
+              ↓ Database Firewall<br>
+              ↓ [ Database ]
+            </p>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 8. Social Engineering -->
+        <section id="social-engineering">
+          <h2>Social Engineering</h2>
+          <p>Social engineering exploits human psychology rather than technical vulnerabilities. It is often the easiest way to breach an organisation's security.</p>
+
+          <div class="callout warning">
+            <span class="callout-icon">⚠️</span>
+            <div class="callout-content">
+              <strong>The Weakest Link</strong>
+              <p>"The weakest link in the security chain is the human element." — Kevin Mitnick. Technical controls are effective only when humans are also educated and vigilant.</p>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Technique</th><th>Description</th><th>Prevention</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>Phishing</strong></td>
+                  <td>Mass email impersonating legitimate organisations to steal credentials</td>
+                  <td>Security awareness training; email filtering; MFA</td>
+                </tr>
+                <tr>
+                  <td><strong>Spear Phishing</strong></td>
+                  <td>Targeted phishing using personalised information about the victim</td>
+                  <td>Employee training; verify email senders; DMARC/SPF records</td>
+                </tr>
+                <tr>
+                  <td><strong>Vishing</strong></td>
+                  <td>Voice phishing — phone calls impersonating IT support, banks, etc.</td>
+                  <td>Verification procedures; never give credentials over phone</td>
+                </tr>
+                <tr>
+                  <td><strong>Pretexting</strong></td>
+                  <td>Creating a fabricated scenario to extract information</td>
+                  <td>Strict identity verification; need-to-know policies</td>
+                </tr>
+                <tr>
+                  <td><strong>Baiting</strong></td>
+                  <td>Leaving infected USB drives in public places</td>
+                  <td>Disable auto-run; prohibit unknown USB devices</td>
+                </tr>
+                <tr>
+                  <td><strong>Tailgating</strong></td>
+                  <td>Following an authorised person through a secure door</td>
+                  <td>Access cards; security guards; mantraps</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 9. Privacy -->
+        <section id="privacy">
+          <h2>Privacy &amp; Legislation</h2>
+
+          <h3>Australian Privacy Principles (APPs)</h3>
+          <p>The <strong>Privacy Act 1988 (Cth)</strong> regulates the handling of personal information by Australian Government agencies and private sector organisations. It contains <strong>13 Australian Privacy Principles</strong> covering:</p>
+          <ul>
+            <li>Open and transparent management of personal information</li>
+            <li>Anonymity and pseudonymity</li>
+            <li>Collection of solicited and unsolicited personal information</li>
+            <li>Dealing with information: use, disclosure, and quality</li>
+            <li>Security and access to personal information</li>
+            <li>Cross-border disclosure of personal information</li>
+          </ul>
+
+          <h3>Notifiable Data Breaches (NDB) Scheme</h3>
+          <p>Organisations covered by the Privacy Act must notify the <strong>Office of the Australian Information Commissioner (OAIC)</strong> and affected individuals when a data breach is likely to cause serious harm.</p>
+
+          <h3>GDPR (General Data Protection Regulation)</h3>
+          <p>The EU's GDPR applies to any organisation handling EU residents' data. Key principles:</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Lawfulness, fairness, and transparency</strong></div>
+            <div class="key-term-item"><strong>Purpose limitation</strong> — data collected for specific, stated purposes only</div>
+            <div class="key-term-item"><strong>Data minimisation</strong> — collect only what is necessary</div>
+            <div class="key-term-item"><strong>Right to be forgotten</strong> — users can request deletion of their data</div>
+            <div class="key-term-item"><strong>Breach notification</strong> — within 72 hours</div>
+          </div>
+
+          <h3>Ethical Responsibilities of Software Engineers</h3>
+          <p>Developers have ethical and professional obligations regarding user data:</p>
+          <ul>
+            <li>Collect only the minimum data necessary (data minimisation)</li>
+            <li>Be transparent about what data is collected and why</li>
+            <li>Obtain informed consent before collecting sensitive data</li>
+            <li>Implement appropriate security controls to protect user data</li>
+            <li>Promptly disclose and remediate security vulnerabilities</li>
+            <li>Consider accessibility and inclusivity in security design</li>
+          </ul>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 10. Testing -->
+        <section id="testing">
+          <h2>Security Testing</h2>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">🔍</div>
+              <h4>Vulnerability Scanning</h4>
+              <p>Automated tools scan systems for known vulnerabilities. Examples: Nessus, OpenVAS. Quick but may produce false positives.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">⚔️</div>
+              <h4>Penetration Testing (Pen Test)</h4>
+              <p>Authorised simulated attack on a system to find exploitable vulnerabilities. Performed by ethical hackers (white-hat). Types: black-box, white-box, grey-box.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔎</div>
+              <h4>Code Review</h4>
+              <p>Manual or automated inspection of source code for security flaws. Static Application Security Testing (SAST) tools automate this.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🌊</div>
+              <h4>Fuzzing</h4>
+              <p>Sending random, invalid, or unexpected inputs to a program to trigger crashes or unexpected behaviour that reveals vulnerabilities.</p>
+            </div>
+          </div>
+
+          <h3>Pen Testing Types</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Type</th><th>Tester's Knowledge</th><th>Use Case</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Black-box</strong></td><td>No internal knowledge (simulates external attacker)</td><td>Testing external defences</td></tr>
+                <tr><td><strong>White-box</strong></td><td>Full knowledge of architecture and source code</td><td>Thorough internal review</td></tr>
+                <tr><td><strong>Grey-box</strong></td><td>Partial knowledge (simulates insider or authenticated user)</td><td>Realistic threat scenarios</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout success">
+            <span class="callout-icon">✅</span>
+            <div class="callout-content">
+              <strong>Summary: Key Security Concepts to Remember</strong>
+              <ul>
+                <li><strong>CIA Triad</strong>: Confidentiality, Integrity, Availability</li>
+                <li><strong>Symmetric</strong> encryption uses one key; <strong>Asymmetric</strong> uses a key pair</li>
+                <li><strong>Hashing</strong> is one-way — used for passwords and integrity</li>
+                <li><strong>MFA</strong> combines multiple authentication factors</li>
+                <li><strong>Defence in Depth</strong> uses multiple security layers</li>
+                <li><strong>OWASP Top 10</strong> lists the most critical web vulnerabilities</li>
+                <li><strong>Never trust user input</strong> — always validate and sanitise</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </div><!-- /content-body -->
+    </main>
+  </div><!-- /page-layout -->
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo">💻</div>
+          <span class="footer-name">SoftEng Notes</span>
+        </div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">SE Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="../index.html">← Back to Home</a>
+        <a href="programming-for-the-web.html">Next: Web Programming →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 HSC SoftEng Notes · NESA NSW Aligned</span>
+      <a href="../index.html" style="color:#475569; text-decoration:none;">← Home</a>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

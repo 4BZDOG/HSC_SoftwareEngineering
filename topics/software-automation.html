@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Automation | HSC Software Engineering</title>
+  <meta name="description" content="Complete HSC notes on Software Automation — automated testing, CI/CD pipelines, DevOps, scripting, build tools, and deployment strategies." />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">💻</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="secure-software-architecture.html">Secure Architecture <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-for-the-web.html">Web Programming <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-automation.html" class="active">Automation <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-engineering-project.html">SE Project <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-fundamentals.html">Fundamentals <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="object-oriented-paradigm.html">OOP <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="programming-mechatronics.html">Mechatronics <span class="badge badge-11">Y11</span></a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 12</div>
+      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
+      <a href="software-automation.html">⚙️ Software Automation</a>
+      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 11</div>
+      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">🧩 Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+    </div>
+    <button id="theme-toggle-mobile" class="btn" style="width:100%;justify-content:center;background:rgba(255,255,255,.07);color:#CBD5E1;border:1px solid rgba(255,255,255,.12);">🌙 Toggle Theme</button>
+  </div>
+
+  <header class="topic-header">
+    <div class="topic-header-inner">
+      <nav class="topic-breadcrumb">
+        <a href="../index.html">Home</a> <span>›</span>
+        <a href="../index.html#year12">Year 12</a> <span>›</span>
+        <span>Software Automation</span>
+      </nav>
+      <h1>⚙️ Software Automation</h1>
+      <p style="color:#94A3B8; max-width:600px; margin-top:.5rem; font-size:.95rem; line-height:1.6;">
+        Automate the software development lifecycle — from testing and building to deployment and monitoring.
+      </p>
+      <div class="topic-header-meta">
+        <span class="meta-pill year12">📘 Year 12 — HSC</span>
+        <span class="meta-pill">🕐 ~4 weeks</span>
+        <span class="meta-pill">8 sections</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#why-automate">1. Why Automate?</a></li>
+        <li><a href="#testing-types">2. Types of Testing</a></li>
+        <li><a href="#automated-testing">3. Automated Testing</a></li>
+        <li><a href="#tdd">4. Test-Driven Development</a></li>
+        <li><a href="#cicd">5. CI/CD Pipelines</a></li>
+        <li><a href="#devops">6. DevOps</a></li>
+        <li><a href="#scripting">7. Scripting</a></li>
+        <li><a href="#containers">8. Containers &amp; Deployment</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-content">
+      <div class="content-body">
+
+        <!-- 1. Why Automate? -->
+        <section id="why-automate">
+          <h2>Why Automate?</h2>
+          <p>Manual processes are slow, inconsistent, and error-prone. Automation enables teams to:</p>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">🚀</div>
+              <h4>Faster Delivery</h4>
+              <p>Automated pipelines can run tests and deploy code in minutes, enabling multiple releases per day.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔍</div>
+              <h4>Catch Bugs Early</h4>
+              <p>Automated tests run on every code change, catching regressions before they reach production.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔁</div>
+              <h4>Consistency &amp; Repeatability</h4>
+              <p>Automated processes run the same way every time, eliminating "works on my machine" problems.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🧑‍💻</div>
+              <h4>Developer Productivity</h4>
+              <p>Developers focus on writing code, not manual tasks. Automation handles repetitive operations.</p>
+            </div>
+          </div>
+
+          <h3>The Automation Pyramid</h3>
+          <div class="highlight-box">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:.82rem; color:var(--text-secondary); text-align:center; line-height:2.2;">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;▲ Manual Testing (least, most expensive)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;█████ UI / End-to-End Tests<br>
+              &nbsp;&nbsp;█████████ Integration Tests<br>
+              █████████████ Unit Tests (most, fastest, cheapest)
+            </p>
+          </div>
+          <p>The pyramid shape indicates the ideal <em>proportion</em> of tests. Many fast unit tests form the base; few slow end-to-end tests sit at the top.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 2. Testing Types -->
+        <section id="testing-types">
+          <h2>Types of Testing</h2>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Type</th><th>What it Tests</th><th>Who Runs It</th><th>Speed</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Unit Testing</strong></td>
+                  <td>Individual functions/methods in isolation</td>
+                  <td>Developer</td>
+                  <td>Very fast (ms)</td>
+                </tr>
+                <tr>
+                  <td><strong>Integration Testing</strong></td>
+                  <td>Interactions between components/modules</td>
+                  <td>Developer / QA</td>
+                  <td>Fast (seconds)</td>
+                </tr>
+                <tr>
+                  <td><strong>System Testing</strong></td>
+                  <td>Complete system against requirements</td>
+                  <td>QA</td>
+                  <td>Slower (minutes)</td>
+                </tr>
+                <tr>
+                  <td><strong>Acceptance Testing (UAT)</strong></td>
+                  <td>System meets user requirements</td>
+                  <td>Client / end users</td>
+                  <td>Slow (manual)</td>
+                </tr>
+                <tr>
+                  <td><strong>Regression Testing</strong></td>
+                  <td>Existing functionality still works after changes</td>
+                  <td>Developer / CI</td>
+                  <td>Varies</td>
+                </tr>
+                <tr>
+                  <td><strong>Performance Testing</strong></td>
+                  <td>Speed, stability, and scalability under load</td>
+                  <td>QA / DevOps</td>
+                  <td>Slow</td>
+                </tr>
+                <tr>
+                  <td><strong>Security Testing</strong></td>
+                  <td>Vulnerabilities and weaknesses</td>
+                  <td>Security team</td>
+                  <td>Slow</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>White-Box vs Black-Box Testing</h3>
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">📋</div>
+              <h4>Black-Box Testing</h4>
+              <p>Tests functionality without knowledge of internal code. Focuses on inputs and expected outputs. Tests the "what", not the "how". Good for functional and acceptance testing.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔬</div>
+              <h4>White-Box Testing</h4>
+              <p>Tests based on internal logic and code structure. Requires knowledge of the code. Ensures all code paths are exercised. Good for unit and integration testing.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">⚖️</div>
+              <h4>Grey-Box Testing</h4>
+              <p>Partial knowledge of internals. Combines benefits of both approaches. Common in integration and API testing.</p>
+            </div>
+          </div>
+
+          <h3>Test Coverage</h3>
+          <p><strong>Code coverage</strong> measures the percentage of source code executed during testing. High coverage doesn't guarantee quality — 100% coverage can still miss edge cases — but low coverage signals inadequate testing.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Statement coverage</strong> — every line executed at least once</div>
+            <div class="key-term-item"><strong>Branch coverage</strong> — every true/false path taken</div>
+            <div class="key-term-item"><strong>Path coverage</strong> — every unique path through code</div>
+            <div class="key-term-item"><strong>Function coverage</strong> — every function called</div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 3. Automated Testing -->
+        <section id="automated-testing">
+          <h2>Automated Testing</h2>
+          <p>Automated tests are written as code. They run automatically, report pass/fail, and can be integrated into a CI/CD pipeline.</p>
+
+          <h3>Unit Testing with pytest (Python)</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — pytest Unit Tests</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="cm"># calculator.py  — the code being tested</span>
+<span class="kw">def</span> <span class="fn">add</span>(a, b):
+    <span class="kw">return</span> a + b
+
+<span class="kw">def</span> <span class="fn">divide</span>(a, b):
+    <span class="kw">if</span> b == <span class="num">0</span>:
+        <span class="kw">raise</span> ValueError(<span class="str">"Cannot divide by zero"</span>)
+    <span class="kw">return</span> a / b</code></pre>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — pytest Test File</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="cm"># test_calculator.py</span>
+<span class="kw">import</span> pytest
+<span class="kw">from</span> calculator <span class="kw">import</span> add, divide
+
+<span class="kw">def</span> <span class="fn">test_add_positive_numbers</span>():
+    <span class="kw">assert</span> add(<span class="num">2</span>, <span class="num">3</span>) == <span class="num">5</span>
+
+<span class="kw">def</span> <span class="fn">test_add_negative_numbers</span>():
+    <span class="kw">assert</span> add(<span class="op">-</span><span class="num">1</span>, <span class="op">-</span><span class="num">2</span>) == <span class="op">-</span><span class="num">3</span>
+
+<span class="kw">def</span> <span class="fn">test_add_zero</span>():
+    <span class="kw">assert</span> add(<span class="num">5</span>, <span class="num">0</span>) == <span class="num">5</span>
+
+<span class="kw">def</span> <span class="fn">test_divide_normal</span>():
+    <span class="kw">assert</span> divide(<span class="num">10</span>, <span class="num">2</span>) == <span class="num">5.0</span>
+
+<span class="kw">def</span> <span class="fn">test_divide_by_zero_raises_error</span>():
+    <span class="kw">with</span> pytest.raises(ValueError, match=<span class="str">"Cannot divide by zero"</span>):
+        divide(<span class="num">10</span>, <span class="num">0</span>)
+
+<span class="cm"># Run all tests: pytest test_calculator.py -v</span></code></pre>
+          </div>
+
+          <h3>Good Test Design: FIRST Principles</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Fast</strong> — tests should run quickly</div>
+            <div class="key-term-item"><strong>Independent</strong> — tests don't depend on each other</div>
+            <div class="key-term-item"><strong>Repeatable</strong> — same result every time</div>
+            <div class="key-term-item"><strong>Self-validating</strong> — pass or fail without manual inspection</div>
+            <div class="key-term-item"><strong>Timely</strong> — written at the right time (before or with code)</div>
+          </div>
+
+          <h3>Testing Terminology</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Test case</strong></td><td>A specific scenario with defined input, expected output, and conditions</td></tr>
+                <tr><td><strong>Test suite</strong></td><td>A collection of related test cases</td></tr>
+                <tr><td><strong>Assertion</strong></td><td>A statement that checks a condition is true; fails the test if false</td></tr>
+                <tr><td><strong>Mock / Stub</strong></td><td>Fake objects that simulate dependencies (databases, APIs) in unit tests</td></tr>
+                <tr><td><strong>Fixture</strong></td><td>Set-up code that prepares the environment before tests run</td></tr>
+                <tr><td><strong>Test runner</strong></td><td>Tool that discovers and executes tests (pytest, JUnit, Jest)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 4. TDD -->
+        <section id="tdd">
+          <h2>Test-Driven Development (TDD)</h2>
+
+          <div class="def-card">
+            <div class="def-term">TDD</div>
+            <div class="def-meaning">A development methodology where you write the <strong>test first</strong>, before writing any production code. Code is written only to make the test pass.</div>
+          </div>
+
+          <h3>The Red-Green-Refactor Cycle</h3>
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">🔴</div>
+              <h4>Red — Write a Failing Test</h4>
+              <p>Write a test for the next small piece of functionality. The test must fail (because the code doesn't exist yet). This confirms the test is actually testing something.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🟢</div>
+              <h4>Green — Make it Pass</h4>
+              <p>Write the <em>minimum</em> amount of code to make the test pass. Don't over-engineer at this stage — just make it green.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔵</div>
+              <h4>Refactor — Improve the Code</h4>
+              <p>Clean up the code while keeping all tests passing. Remove duplication, improve naming, apply design patterns. Tests give you confidence to refactor safely.</p>
+            </div>
+          </div>
+
+          <h3>Benefits of TDD</h3>
+          <ul>
+            <li>Forces you to think about requirements before coding</li>
+            <li>Produces better-designed, more modular code</li>
+            <li>Creates a comprehensive test suite as a by-product</li>
+            <li>Provides confidence when refactoring</li>
+            <li>Reduces debugging time by catching errors immediately</li>
+          </ul>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 5. CI/CD -->
+        <section id="cicd">
+          <h2>CI/CD Pipelines</h2>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">🔄</div>
+              <h4>Continuous Integration (CI)</h4>
+              <p>Developers frequently merge code changes to a shared repository. Each merge triggers an automated build and test suite. Catches integration errors quickly.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">📦</div>
+              <h4>Continuous Delivery (CD)</h4>
+              <p>Automatically builds, tests, and prepares code for release. Code is always in a deployable state, but deployment to production is a manual step.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🚀</div>
+              <h4>Continuous Deployment</h4>
+              <p>Every change that passes all automated tests is automatically deployed to production. Requires very high test confidence.</p>
+            </div>
+          </div>
+
+          <h3>Typical CI/CD Pipeline Stages</h3>
+          <ol class="steps">
+            <li class="step">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <h4>Code Commit</h4>
+                <p>Developer pushes code to a version control system (Git). This triggers the pipeline.</p>
+              </div>
+            </li>
+            <li class="step">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <h4>Build</h4>
+                <p>Source code is compiled/packaged. Dependencies are installed. A build artefact is produced.</p>
+              </div>
+            </li>
+            <li class="step">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <h4>Automated Tests</h4>
+                <p>Unit tests, integration tests, and linting run. If any test fails, the pipeline stops and the developer is notified.</p>
+              </div>
+            </li>
+            <li class="step">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <h4>Security Scanning</h4>
+                <p>Static analysis, dependency vulnerability checks (e.g., SAST tools, <code>safety</code> for Python).</p>
+              </div>
+            </li>
+            <li class="step">
+              <div class="step-num">5</div>
+              <div class="step-content">
+                <h4>Deploy to Staging</h4>
+                <p>Artefact is deployed to a staging environment that mirrors production.</p>
+              </div>
+            </li>
+            <li class="step">
+              <div class="step-num">6</div>
+              <div class="step-content">
+                <h4>Deploy to Production</h4>
+                <p>With Continuous Delivery, a human approves. With Continuous Deployment, this is fully automated.</p>
+              </div>
+            </li>
+          </ol>
+
+          <h3>GitHub Actions CI/CD Example</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">YAML — GitHub Actions Workflow (.github/workflows/ci.yml)</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pytest pytest-cov
+
+      - name: Run tests with coverage
+        run: pytest --cov=src --cov-report=xml
+
+      - name: Lint with flake8
+        run: flake8 src/</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 6. DevOps -->
+        <section id="devops">
+          <h2>DevOps</h2>
+
+          <div class="def-card">
+            <div class="def-term">DevOps</div>
+            <div class="def-meaning">A culture and set of practices that brings together software <strong>Dev</strong>elopment and IT <strong>Op</strong>erations to shorten the development lifecycle and deliver high-quality software continuously.</div>
+          </div>
+
+          <h3>Key DevOps Practices</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Version control</strong> — all code (and infrastructure) in Git</div>
+            <div class="key-term-item"><strong>CI/CD</strong> — automate build, test, deploy</div>
+            <div class="key-term-item"><strong>Infrastructure as Code (IaC)</strong> — define servers with code (Terraform, Ansible)</div>
+            <div class="key-term-item"><strong>Monitoring &amp; logging</strong> — observe system behaviour in production</div>
+            <div class="key-term-item"><strong>Feature flags</strong> — deploy code without exposing it to users immediately</div>
+            <div class="key-term-item"><strong>Blue/Green deployment</strong> — run two production environments; switch traffic on successful deploy</div>
+            <div class="key-term-item"><strong>Canary deployment</strong> — gradually roll out changes to a subset of users</div>
+          </div>
+
+          <h3>DevOps vs Traditional Development</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Aspect</th><th>Traditional</th><th>DevOps</th></tr></thead>
+              <tbody>
+                <tr><td>Release frequency</td><td>Monthly/quarterly</td><td>Daily/multiple per day</td></tr>
+                <tr><td>Team structure</td><td>Siloed Dev and Ops teams</td><td>Cross-functional teams</td></tr>
+                <tr><td>Testing</td><td>Manual, at end of cycle</td><td>Automated, continuous</td></tr>
+                <tr><td>Feedback loop</td><td>Slow (weeks/months)</td><td>Fast (minutes/hours)</td></tr>
+                <tr><td>Infrastructure</td><td>Manual server configuration</td><td>Infrastructure as Code</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 7. Scripting -->
+        <section id="scripting">
+          <h2>Scripting for Automation</h2>
+          <p>Scripts are programs that automate repetitive tasks such as file management, data processing, deployments, and system maintenance.</p>
+
+          <h3>Python Scripting</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Automation Script Example</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">import</span> os
+<span class="kw">import</span> shutil
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime
+
+<span class="kw">def</span> <span class="fn">backup_files</span>(source_dir, backup_dir):
+    <span class="str">"""Copy all .py files from source to timestamped backup directory."""</span>
+    timestamp = datetime.now().strftime(<span class="str">"%Y%m%d_%H%M%S"</span>)
+    dest = os.path.join(backup_dir, <span class="str">f"backup_{timestamp}"</span>)
+    os.makedirs(dest, exist_ok=<span class="kw">True</span>)
+
+    count = <span class="num">0</span>
+    <span class="kw">for</span> filename <span class="kw">in</span> os.listdir(source_dir):
+        <span class="kw">if</span> filename.endswith(<span class="str">'.py'</span>):
+            shutil.copy(
+                os.path.join(source_dir, filename),
+                os.path.join(dest, filename)
+            )
+            count += <span class="num">1</span>
+
+    print(<span class="str">f"Backed up {count} files to {dest}"</span>)
+    <span class="kw">return</span> dest
+
+backup_files(<span class="str">"./src"</span>, <span class="str">"./backups"</span>)</code></pre>
+          </div>
+
+          <h3>Bash Scripting</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Bash — Deployment Script</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>#!/bin/bash
+# deploy.sh — pull latest code, install deps, restart service
+
+set -e  # Exit immediately on error
+
+echo "=== Starting deployment ==="
+
+# Pull latest code
+git pull origin main
+
+# Install/update dependencies
+pip install -r requirements.txt
+
+# Run database migrations
+python manage.py migrate
+
+# Run tests (abort deployment if they fail)
+pytest tests/ -q
+
+# Restart web server
+systemctl restart myapp
+
+echo "=== Deployment complete ==="</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 8. Containers -->
+        <section id="containers">
+          <h2>Containers &amp; Deployment</h2>
+
+          <h3>Containers vs Virtual Machines</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Aspect</th><th>Virtual Machine (VM)</th><th>Container</th></tr></thead>
+              <tbody>
+                <tr><td><strong>What it virtualises</strong></td><td>Entire hardware (CPU, RAM, storage)</td><td>OS user space (processes, files)</td></tr>
+                <tr><td><strong>Size</strong></td><td>Gigabytes</td><td>Megabytes</td></tr>
+                <tr><td><strong>Boot time</strong></td><td>Minutes</td><td>Seconds or less</td></tr>
+                <tr><td><strong>Isolation</strong></td><td>Strong (separate OS)</td><td>Lighter (shares kernel)</td></tr>
+                <tr><td><strong>Portability</strong></td><td>Less portable</td><td>Highly portable ("build once, run anywhere")</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Docker</h3>
+          <p>Docker is the most popular container platform. A <strong>Dockerfile</strong> defines how to build a container image.</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Dockerfile — Python Web App</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="cm"># Use official Python base image</span>
+FROM python:3.12-slim
+
+<span class="cm"># Set working directory</span>
+WORKDIR /app
+
+<span class="cm"># Install dependencies first (better caching)</span>
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+<span class="cm"># Copy application code</span>
+COPY . .
+
+<span class="cm"># Expose the port the app runs on</span>
+EXPOSE 5000
+
+<span class="cm"># Run the application</span>
+CMD ["python", "app.py"]</code></pre>
+          </div>
+
+          <h3>Deployment Strategies</h3>
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">🔵🟢</div>
+              <h4>Blue/Green Deployment</h4>
+              <p>Two identical environments. New version deployed to "green" while "blue" is live. Traffic switched instantly. Easy rollback by switching back.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🐦</div>
+              <h4>Canary Deployment</h4>
+              <p>New version gradually rolled out to a small percentage of users. Monitor for errors before full rollout. Risk is limited to the canary group.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔄</div>
+              <h4>Rolling Deployment</h4>
+              <p>Instances gradually replaced with the new version one by one. No downtime. Slower than blue/green; running two versions simultaneously during transition.</p>
+            </div>
+          </div>
+
+          <div class="callout success">
+            <span class="callout-icon">✅</span>
+            <div class="callout-content">
+              <strong>Software Automation Key Takeaways</strong>
+              <ul>
+                <li><strong>Unit tests</strong> test individual functions in isolation; they should be fast and numerous</li>
+                <li><strong>CI</strong> automatically tests every code commit; <strong>CD</strong> automates deployment</li>
+                <li><strong>TDD</strong>: write failing test → write code → refactor (Red-Green-Refactor)</li>
+                <li><strong>DevOps</strong> breaks down silos between development and operations</li>
+                <li>Containers (Docker) ensure consistent environments across dev, staging, and production</li>
+                <li>Use deployment strategies (blue/green, canary) to minimise release risk</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand"><div class="footer-logo">💻</div><span class="footer-name">SoftEng Notes</span></div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">SE Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="programming-for-the-web.html">← Web Programming</a>
+        <a href="software-engineering-project.html">Next: SE Project →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 HSC SoftEng Notes · NESA NSW Aligned</span>
+      <a href="../index.html" style="color:#475569;text-decoration:none;">← Home</a>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

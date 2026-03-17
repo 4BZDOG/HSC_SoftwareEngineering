@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HSC Software Engineering Notes | NESA NSW</title>
+  <meta name="description" content="Comprehensive, premium HSC Software Engineering notes covering the full NESA NSW syllabus for Year 11 and Year 12." />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo">💻</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li>
+          <a href="topics/secure-software-architecture.html">
+            Secure Architecture <span class="badge badge-12">Y12</span>
+          </a>
+        </li>
+        <li>
+          <a href="topics/programming-for-the-web.html">
+            Web Programming <span class="badge badge-12">Y12</span>
+          </a>
+        </li>
+        <li>
+          <a href="topics/software-automation.html">
+            Automation <span class="badge badge-12">Y12</span>
+          </a>
+        </li>
+        <li>
+          <a href="topics/programming-fundamentals.html">
+            Fundamentals <span class="badge badge-11">Y11</span>
+          </a>
+        </li>
+        <li>
+          <a href="topics/object-oriented-paradigm.html">
+            OOP <span class="badge badge-11">Y11</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Mobile Menu ── -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 12 — HSC</div>
+      <a href="topics/secure-software-architecture.html">🔒 Secure Software Architecture</a>
+      <a href="topics/programming-for-the-web.html">🌐 Programming for the Web</a>
+      <a href="topics/software-automation.html">⚙️ Software Automation</a>
+      <a href="topics/software-engineering-project.html">📋 Software Engineering Project</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 11 — Preliminary</div>
+      <a href="topics/programming-fundamentals.html">📐 Programming Fundamentals</a>
+      <a href="topics/object-oriented-paradigm.html">🧩 The Object-Oriented Paradigm</a>
+      <a href="topics/programming-mechatronics.html">🤖 Programming Mechatronics</a>
+    </div>
+    <div class="mobile-menu-section">
+      <button id="theme-toggle-mobile" class="btn" style="width:100%; justify-content:center; background:rgba(255,255,255,.07); color:#CBD5E1; border:1px solid rgba(255,255,255,.12);">🌙 Toggle Theme</button>
+    </div>
+  </div>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div class="hero-pill">
+        <span>✦</span>
+        NESA NSW Syllabus Aligned
+      </div>
+      <h1>Master <span>HSC Software<br>Engineering</span> with Confidence</h1>
+      <p>Comprehensive notes covering every syllabus dot point for the NSW HSC Software Engineering course — written clearly, structured logically, and designed to help you excel.</p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">7</div>
+          <div class="hero-stat-label">Topics Covered</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-label">Syllabus Aligned</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">Y11–12</div>
+          <div class="hero-stat-label">Full Course</div>
+        </div>
+      </div>
+
+      <div class="hero-cta">
+        <a href="#year12" class="btn btn-primary">📘 Start Year 12</a>
+        <a href="#year11" class="btn btn-outline">📗 Start Year 11</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Features Bar ── -->
+  <div class="features-bar">
+    <div class="feature-item">
+      <div class="feature-icon">📑</div>
+      <div class="feature-text">
+        <strong>Full Syllabus Coverage</strong>
+        <span>Every dot point addressed</span>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">💡</div>
+      <div class="feature-text">
+        <strong>Worked Examples</strong>
+        <span>Code samples &amp; diagrams</span>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🔍</div>
+      <div class="feature-text">
+        <strong>Key Terms Defined</strong>
+        <span>Clear, precise definitions</span>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🌙</div>
+      <div class="feature-text">
+        <strong>Dark Mode</strong>
+        <span>Easy on the eyes</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Main Content ── -->
+  <main class="main-content" style="padding-top: 3rem; padding-bottom: 4rem;">
+
+    <!-- Search -->
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input
+        type="search"
+        id="topic-search"
+        class="search-input"
+        placeholder="Search topics…"
+        aria-label="Search topics"
+      />
+    </div>
+
+    <!-- Year 12 -->
+    <div id="year12">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span>📘</span>
+          Year 12 — HSC Course
+          <span class="year-badge year-badge-12">HSC</span>
+        </h2>
+        <span style="font-size:.82rem; color:var(--text-muted);">4 topics</span>
+      </div>
+
+      <div class="topics-grid">
+        <a href="topics/secure-software-architecture.html" class="topic-card year12">
+          <div class="card-icon">🔒</div>
+          <div class="card-title">Secure Software Architecture</div>
+          <p class="card-desc">Understand cyber threats, the CIA triad, encryption, authentication, secure coding practices, network security, and privacy legislation.</p>
+          <div class="card-meta">
+            <div class="card-topics">
+              <span class="topic-tag">Encryption</span>
+              <span class="topic-tag">Authentication</span>
+              <span class="topic-tag">CIA Triad</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <a href="topics/programming-for-the-web.html" class="topic-card year12">
+          <div class="card-icon">🌐</div>
+          <div class="card-title">Programming for the Web</div>
+          <p class="card-desc">Master web architecture, HTTP/HTTPS, HTML/CSS/JavaScript, APIs, database integration, client-server models, and web security vulnerabilities.</p>
+          <div class="card-meta">
+            <div class="card-topics">
+              <span class="topic-tag">HTML/CSS</span>
+              <span class="topic-tag">JavaScript</span>
+              <span class="topic-tag">REST APIs</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <a href="topics/software-automation.html" class="topic-card year12">
+          <div class="card-icon">⚙️</div>
+          <div class="card-title">Software Automation</div>
+          <p class="card-desc">Explore automated testing, CI/CD pipelines, DevOps principles, build tools, scripting for automation, and deployment strategies.</p>
+          <div class="card-meta">
+            <div class="card-topics">
+              <span class="topic-tag">CI/CD</span>
+              <span class="topic-tag">Testing</span>
+              <span class="topic-tag">DevOps</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <a href="topics/software-engineering-project.html" class="topic-card year12">
+          <div class="card-icon">📋</div>
+          <div class="card-title">Software Engineering Project</div>
+          <p class="card-desc">Apply project management methodologies, requirements engineering, Agile/Scrum, version control, documentation, testing, and evaluation.</p>
+          <div class="card-meta">
+            <div class="card-topics">
+              <span class="topic-tag">Agile</span>
+              <span class="topic-tag">Scrum</span>
+              <span class="topic-tag">Git</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Year 11 -->
+    <div id="year11" class="section-spacer">
+      <div class="section-header">
+        <h2 class="section-title">
+          <span>📗</span>
+          Year 11 — Preliminary Course
+          <span class="year-badge year-badge-11">Preliminary</span>
+        </h2>
+        <span style="font-size:.82rem; color:var(--text-muted);">3 topics</span>
+      </div>
+
+      <div class="topics-grid">
+        <a href="topics/programming-fundamentals.html" class="topic-card year11">
+          <div class="card-icon">📐</div>
+          <div class="card-title">Programming Fundamentals</div>
+          <p class="card-desc">Build your foundation with variables, data types, control structures, functions, arrays, sorting &amp; searching algorithms, recursion, and file I/O.</p>
+          <div class="card-meta">
+            <div class="card-topics">
+              <span class="topic-tag">Algorithms</span>
+              <span class="topic-tag">Control Flow</span>
+              <span class="topic-tag">Data Types</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <a href="topics/object-oriented-paradigm.html" class="topic-card year11">
+          <div class="card-icon">🧩</div>
+          <div class="card-title">The Object-Oriented Paradigm</div>
+          <p class="card-desc">Learn classes, objects, the four pillars of OOP (encapsulation, inheritance, polymorphism, abstraction), UML diagrams, and design patterns.</p>
+          <div class="card-meta">
+            <div class="card-topics">
+              <span class="topic-tag">Classes</span>
+              <span class="topic-tag">Inheritance</span>
+              <span class="topic-tag">UML</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+
+        <a href="topics/programming-mechatronics.html" class="topic-card year11">
+          <div class="card-icon">🤖</div>
+          <div class="card-title">Programming Mechatronics</div>
+          <p class="card-desc">Explore microcontrollers, sensors, actuators, digital/analog signals, embedded systems programming, real-time systems, and IoT communication protocols.</p>
+          <div class="card-meta">
+            <div class="card-topics">
+              <span class="topic-tag">Arduino</span>
+              <span class="topic-tag">Sensors</span>
+              <span class="topic-tag">Embedded</span>
+            </div>
+            <span class="card-arrow">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Quick Tips Banner -->
+    <div class="highlight-box" style="margin-top: 3rem; text-align:center;">
+      <p style="font-size:1rem; font-weight:600; color:var(--text-primary); margin-bottom:.5rem;">📌 How to Use These Notes</p>
+      <p style="font-size:.88rem; color:var(--text-secondary); max-width:600px; margin:0 auto;">
+        Each topic page follows the NESA syllabus dot points exactly. Use the <strong>sidebar table of contents</strong> to jump to specific sections. Key terms, code examples, and summary tables are highlighted throughout.
+      </p>
+    </div>
+
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo">💻</div>
+          <span class="footer-name">SoftEng Notes</span>
+        </div>
+        <p class="footer-desc">Comprehensive HSC Software Engineering notes aligned to the NESA NSW syllabus. Designed to help Year 11 and Year 12 students succeed.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Year 12</h4>
+        <a href="topics/secure-software-architecture.html">Secure Architecture</a>
+        <a href="topics/programming-for-the-web.html">Web Programming</a>
+        <a href="topics/software-automation.html">Software Automation</a>
+        <a href="topics/software-engineering-project.html">SE Project</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Year 11</h4>
+        <a href="topics/programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="topics/object-oriented-paradigm.html">OOP</a>
+        <a href="topics/programming-mechatronics.html">Mechatronics</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="https://curriculum.nsw.edu.au/learning-areas/tas/software-engineering-11-12-2022" target="_blank" rel="noopener">NESA Syllabus ↗</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 HSC SoftEng Notes · NESA NSW Aligned</span>
+      <span>For educational purposes only</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

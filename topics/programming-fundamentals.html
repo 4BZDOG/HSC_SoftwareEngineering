@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programming Fundamentals | HSC Software Engineering</title>
+  <meta name="description" content="Complete Year 11 HSC notes on Programming Fundamentals — data types, control structures, algorithms, sorting, searching, recursion, and file I/O." />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">💻</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="secure-software-architecture.html">Secure Architecture <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-for-the-web.html">Web Programming <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-automation.html">Automation <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-engineering-project.html">SE Project <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-fundamentals.html" class="active">Fundamentals <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="object-oriented-paradigm.html">OOP <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="programming-mechatronics.html">Mechatronics <span class="badge badge-11">Y11</span></a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 12</div>
+      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
+      <a href="software-automation.html">⚙️ Software Automation</a>
+      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 11</div>
+      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">🧩 Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+    </div>
+    <button id="theme-toggle-mobile" class="btn" style="width:100%;justify-content:center;background:rgba(255,255,255,.07);color:#CBD5E1;border:1px solid rgba(255,255,255,.12);">🌙 Toggle Theme</button>
+  </div>
+
+  <header class="topic-header">
+    <div class="topic-header-inner">
+      <nav class="topic-breadcrumb">
+        <a href="../index.html">Home</a> <span>›</span>
+        <a href="../index.html#year11">Year 11</a> <span>›</span>
+        <span>Programming Fundamentals</span>
+      </nav>
+      <h1>📐 Programming Fundamentals</h1>
+      <p style="color:#94A3B8; max-width:600px; margin-top:.5rem; font-size:.95rem; line-height:1.6;">
+        Build the foundation for all programming — data types, control flow, functions, data structures, algorithms, and problem-solving techniques.
+      </p>
+      <div class="topic-header-meta">
+        <span class="meta-pill year11">📗 Year 11 — Preliminary</span>
+        <span class="meta-pill">🕐 ~8 weeks</span>
+        <span class="meta-pill">9 sections</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#problem-solving">1. Problem Solving</a></li>
+        <li><a href="#data-types">2. Data Types &amp; Variables</a></li>
+        <li><a href="#operators">3. Operators &amp; Expressions</a></li>
+        <li><a href="#control-structures">4. Control Structures</a></li>
+        <li><a href="#functions">5. Functions &amp; Procedures</a></li>
+        <li><a href="#data-structures">6. Data Structures</a></li>
+        <li><a href="#algorithms">7. Sorting Algorithms</a></li>
+        <li><a href="#searching">8. Searching Algorithms</a></li>
+        <li><a href="#recursion">9. Recursion &amp; File I/O</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-content">
+      <div class="content-body">
+
+        <!-- 1. Problem Solving -->
+        <section id="problem-solving">
+          <h2>Problem Solving &amp; Algorithm Design</h2>
+
+          <div class="def-card">
+            <div class="def-term">Algorithm</div>
+            <div class="def-meaning">A finite, ordered set of instructions for solving a well-defined problem. An algorithm must be <strong>unambiguous</strong>, <strong>finite</strong>, and produce a <strong>correct result</strong>.</div>
+          </div>
+
+          <h3>Problem-Solving Steps</h3>
+          <ol class="steps">
+            <li class="step">
+              <div class="step-num">1</div>
+              <div class="step-content"><h4>Understand the Problem</h4><p>Read carefully. Identify inputs, outputs, and constraints. What are the edge cases?</p></div>
+            </li>
+            <li class="step">
+              <div class="step-num">2</div>
+              <div class="step-content"><h4>Design an Algorithm</h4><p>Use pseudocode or a flowchart to describe the solution step-by-step before writing code.</p></div>
+            </li>
+            <li class="step">
+              <div class="step-num">3</div>
+              <div class="step-content"><h4>Implement in Code</h4><p>Translate the algorithm into a programming language. Follow coding conventions.</p></div>
+            </li>
+            <li class="step">
+              <div class="step-num">4</div>
+              <div class="step-content"><h4>Test &amp; Debug</h4><p>Test with various inputs including edge cases. Fix any errors.</p></div>
+            </li>
+            <li class="step">
+              <div class="step-num">5</div>
+              <div class="step-content"><h4>Evaluate</h4><p>Is the solution correct? Is it efficient? Is it readable and maintainable?</p></div>
+            </li>
+          </ol>
+
+          <h3>Pseudocode</h3>
+          <p>Pseudocode is an informal, high-level description of an algorithm using plain English-like statements. It focuses on logic, not syntax.</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Pseudocode — Find the Largest Number</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>INPUT: list of numbers
+OUTPUT: the largest number
+
+largest ← first number in list
+FOR EACH number IN list:
+    IF number > largest THEN
+        largest ← number
+OUTPUT largest</code></pre>
+          </div>
+
+          <h3>Flowcharts</h3>
+          <p>Flowcharts use standard symbols to represent algorithms visually:</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Oval</strong> — Start / End (terminal)</div>
+            <div class="key-term-item"><strong>Rectangle</strong> — Process / Action</div>
+            <div class="key-term-item"><strong>Diamond</strong> — Decision (yes/no question)</div>
+            <div class="key-term-item"><strong>Parallelogram</strong> — Input / Output</div>
+            <div class="key-term-item"><strong>Arrow</strong> — Flow of control</div>
+            <div class="key-term-item"><strong>Cylinder</strong> — Data storage</div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 2. Data Types -->
+        <section id="data-types">
+          <h2>Data Types &amp; Variables</h2>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Data Type</th><th>Description</th><th>Python Example</th><th>Size/Range</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Integer (int)</strong></td><td>Whole numbers</td><td><code>age = 17</code></td><td>Unlimited in Python</td></tr>
+                <tr><td><strong>Float</strong></td><td>Decimal numbers</td><td><code>gpa = 3.7</code></td><td>~15 significant digits</td></tr>
+                <tr><td><strong>String (str)</strong></td><td>Text characters</td><td><code>name = "Alice"</code></td><td>Variable length</td></tr>
+                <tr><td><strong>Boolean (bool)</strong></td><td>True or False</td><td><code>is_logged_in = True</code></td><td>1 bit</td></tr>
+                <tr><td><strong>None</strong></td><td>Absence of a value</td><td><code>result = None</code></td><td>—</td></tr>
+                <tr><td><strong>Complex</strong></td><td>Complex numbers</td><td><code>z = 3 + 4j</code></td><td>—</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Type Conversion (Casting)</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Type Conversion</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="cm"># Explicit (manual) conversion</span>
+age_str = <span class="str">"17"</span>
+age_int = int(age_str)          <span class="cm"># "17" → 17</span>
+price = float(<span class="str">"9.99"</span>)           <span class="cm"># "9.99" → 9.99</span>
+num_str = str(<span class="num">42</span>)              <span class="cm"># 42 → "42"</span>
+
+<span class="cm"># Implicit (automatic) conversion</span>
+result = <span class="num">5</span> + <span class="num">2.0</span>               <span class="cm"># int + float = float (7.0)</span>
+
+<span class="cm"># Check type</span>
+print(type(age_int))            <span class="cm"># &lt;class 'int'&gt;</span>
+print(isinstance(age_int, int)) <span class="cm"># True</span></code></pre>
+          </div>
+
+          <h3>Variable Naming Rules</h3>
+          <ul>
+            <li>Must start with a letter or underscore</li>
+            <li>Can contain letters, digits, and underscores</li>
+            <li>Case-sensitive (<code>age</code> ≠ <code>Age</code>)</li>
+            <li>Cannot use reserved keywords (<code>if</code>, <code>for</code>, <code>class</code>, etc.)</li>
+            <li>Use <code>snake_case</code> for Python variables: <code>student_name</code></li>
+            <li>Use descriptive names: <code>total_marks</code> not <code>tm</code></li>
+          </ul>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 3. Operators -->
+        <section id="operators">
+          <h2>Operators &amp; Expressions</h2>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Category</th><th>Operators</th><th>Examples</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Arithmetic</strong></td><td><code>+  -  *  /  //  %  **</code></td><td><code>7 // 2 = 3</code>, <code>7 % 2 = 1</code>, <code>2 ** 3 = 8</code></td></tr>
+                <tr><td><strong>Comparison</strong></td><td><code>==  !=  &lt;  &gt;  &lt;=  &gt;=</code></td><td><code>5 == 5</code> → True</td></tr>
+                <tr><td><strong>Logical</strong></td><td><code>and  or  not</code></td><td><code>True and False</code> → False</td></tr>
+                <tr><td><strong>Assignment</strong></td><td><code>=  +=  -=  *=  /=</code></td><td><code>x += 5</code> → <code>x = x + 5</code></td></tr>
+                <tr><td><strong>Identity</strong></td><td><code>is  is not</code></td><td><code>x is None</code></td></tr>
+                <tr><td><strong>Membership</strong></td><td><code>in  not in</code></td><td><code>"a" in "cat"</code> → True</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Operator Precedence (highest to lowest)</h3>
+          <p><code>( )</code> → <code>**</code> → <code>* / // %</code> → <code>+ -</code> → Comparisons → <code>not</code> → <code>and</code> → <code>or</code></p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 4. Control Structures -->
+        <section id="control-structures">
+          <h2>Control Structures</h2>
+          <p>Control structures determine the <strong>order of execution</strong> of instructions in a program.</p>
+
+          <h3>Selection — if/elif/else</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Selection</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>score = <span class="num">72</span>
+
+<span class="kw">if</span> score >= <span class="num">90</span>:
+    grade = <span class="str">'A'</span>
+<span class="kw">elif</span> score >= <span class="num">80</span>:
+    grade = <span class="str">'B'</span>
+<span class="kw">elif</span> score >= <span class="num">70</span>:
+    grade = <span class="str">'C'</span>
+<span class="kw">elif</span> score >= <span class="num">60</span>:
+    grade = <span class="str">'D'</span>
+<span class="kw">else</span>:
+    grade = <span class="str">'F'</span>
+
+print(<span class="str">f"Grade: {grade}"</span>)  <span class="cm"># Grade: C</span></code></pre>
+          </div>
+
+          <h3>Iteration — while loop</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — while loop</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>count = <span class="num">1</span>
+<span class="kw">while</span> count <= <span class="num">5</span>:
+    print(<span class="str">f"Count: {count}"</span>)
+    count += <span class="num">1</span>
+
+<span class="cm"># while True with break — sentinel loop</span>
+<span class="kw">while True</span>:
+    user_input = input(<span class="str">"Enter number (or 'quit'): "</span>)
+    <span class="kw">if</span> user_input == <span class="str">'quit'</span>:
+        <span class="kw">break</span>
+    print(int(user_input) * <span class="num">2</span>)</code></pre>
+          </div>
+
+          <h3>Iteration — for loop</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — for loop</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="cm"># Iterate over a range</span>
+<span class="kw">for</span> i <span class="kw">in</span> range(<span class="num">1</span>, <span class="num">6</span>):       <span class="cm"># 1, 2, 3, 4, 5</span>
+    print(i)
+
+<span class="cm"># Iterate over a list</span>
+fruits = [<span class="str">"apple"</span>, <span class="str">"banana"</span>, <span class="str">"cherry"</span>]
+<span class="kw">for</span> fruit <span class="kw">in</span> fruits:
+    print(fruit.upper())
+
+<span class="cm"># Enumerate (index + value)</span>
+<span class="kw">for</span> index, fruit <span class="kw">in</span> enumerate(fruits):
+    print(<span class="str">f"{index}: {fruit}"</span>)</code></pre>
+          </div>
+
+          <h3>Nested Loops</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Nested loop (multiplication table)</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">for</span> row <span class="kw">in</span> range(<span class="num">1</span>, <span class="num">4</span>):
+    <span class="kw">for</span> col <span class="kw">in</span> range(<span class="num">1</span>, <span class="num">4</span>):
+        print(<span class="str">f"{row * col:3}"</span>, end=<span class="str">""</span>)
+    print()
+<span class="cm"># Output:
+#   1  2  3
+#   2  4  6
+#   3  6  9</span></code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 5. Functions -->
+        <section id="functions">
+          <h2>Functions &amp; Procedures</h2>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">⚙️</div>
+              <h4>Function</h4>
+              <p>A named block of code that performs a task and <strong>returns a value</strong>. Called to compute a result.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔧</div>
+              <h4>Procedure</h4>
+              <p>A named block of code that performs a task but <strong>does not return a value</strong>. Called for its side effects (e.g., printing, modifying state).</p>
+            </div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Functions</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="cm"># Function with parameters and return value</span>
+<span class="kw">def</span> <span class="fn">calculate_area</span>(length, width):
+    <span class="str">"""Return the area of a rectangle."""</span>
+    area = length * width
+    <span class="kw">return</span> area
+
+result = calculate_area(<span class="num">5</span>, <span class="num">3</span>)  <span class="cm"># result = 15</span>
+
+<span class="cm"># Default parameters</span>
+<span class="kw">def</span> <span class="fn">greet</span>(name, greeting=<span class="str">"Hello"</span>):
+    <span class="kw">return</span> <span class="str">f"{greeting}, {name}!"</span>
+
+print(greet(<span class="str">"Alice"</span>))          <span class="cm"># Hello, Alice!</span>
+print(greet(<span class="str">"Bob"</span>, <span class="str">"Hi"</span>))    <span class="cm"># Hi, Bob!</span>
+
+<span class="cm"># Multiple return values</span>
+<span class="kw">def</span> <span class="fn">min_max</span>(numbers):
+    <span class="kw">return</span> min(numbers), max(numbers)
+
+smallest, largest = min_max([<span class="num">4</span>, <span class="num">1</span>, <span class="num">7</span>, <span class="num">2</span>])  <span class="cm"># 1, 7</span></code></pre>
+          </div>
+
+          <h3>Scope</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Scope</th><th>Definition</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Local</strong></td><td>Variable defined inside a function; accessible only within that function</td><td><code>def f(): x = 5</code> — <code>x</code> is local to <code>f</code></td></tr>
+                <tr><td><strong>Global</strong></td><td>Variable defined at module level; accessible anywhere in the file</td><td><code>MAX = 100</code> at top of file</td></tr>
+                <tr><td><strong>Built-in</strong></td><td>Names pre-defined in Python (<code>print</code>, <code>len</code>, <code>range</code>)</td><td>Always accessible</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 6. Data Structures -->
+        <section id="data-structures">
+          <h2>Data Structures</h2>
+
+          <h3>Lists (Arrays)</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Lists</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>numbers = [<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>, <span class="num">40</span>, <span class="num">50</span>]
+
+<span class="cm"># Indexing (0-based)</span>
+print(numbers[<span class="num">0</span>])      <span class="cm"># 10 (first element)</span>
+print(numbers[<span class="op">-</span><span class="num">1</span>])     <span class="cm"># 50 (last element)</span>
+
+<span class="cm"># Slicing</span>
+print(numbers[<span class="num">1</span>:<span class="num">4</span>])    <span class="cm"># [20, 30, 40]</span>
+
+<span class="cm"># Common methods</span>
+numbers.append(<span class="num">60</span>)     <span class="cm"># Add to end</span>
+numbers.insert(<span class="num">2</span>, <span class="num">25</span>) <span class="cm"># Insert at index 2</span>
+numbers.remove(<span class="num">30</span>)    <span class="cm"># Remove first occurrence of 30</span>
+numbers.sort()          <span class="cm"># Sort in-place</span>
+length = len(numbers)   <span class="cm"># Get length</span></code></pre>
+          </div>
+
+          <h3>Dictionaries</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Dictionaries (key-value pairs)</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>student = {
+    <span class="str">"name"</span>: <span class="str">"Alice"</span>,
+    <span class="str">"age"</span>: <span class="num">17</span>,
+    <span class="str">"subjects"</span>: [<span class="str">"Maths"</span>, <span class="str">"English"</span>, <span class="str">"Software Engineering"</span>]
+}
+
+<span class="cm"># Access values</span>
+print(student[<span class="str">"name"</span>])            <span class="cm"># Alice</span>
+print(student.get(<span class="str">"grade"</span>, <span class="str">"N/A"</span>)) <span class="cm"># N/A (safe access)</span>
+
+<span class="cm"># Add/modify</span>
+student[<span class="str">"grade"</span>] = <span class="str">"A"</span>
+
+<span class="cm"># Iterate</span>
+<span class="kw">for</span> key, value <span class="kw">in</span> student.items():
+    print(<span class="str">f"{key}: {value}"</span>)</code></pre>
+          </div>
+
+          <h3>Tuples, Sets, and Strings</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Structure</th><th>Ordered</th><th>Mutable</th><th>Duplicates</th><th>Use When</th></tr></thead>
+              <tbody>
+                <tr><td><strong>List</strong> <code>[ ]</code></td><td>✅</td><td>✅</td><td>✅</td><td>General-purpose sequence</td></tr>
+                <tr><td><strong>Tuple</strong> <code>( )</code></td><td>✅</td><td>❌</td><td>✅</td><td>Fixed data (coordinates, RGB values)</td></tr>
+                <tr><td><strong>Set</strong> <code>{ }</code></td><td>❌</td><td>✅</td><td>❌</td><td>Unique items; set operations</td></tr>
+                <tr><td><strong>Dictionary</strong> <code>{ : }</code></td><td>✅ (3.7+)</td><td>✅</td><td>Keys: ❌</td><td>Key-value lookup</td></tr>
+                <tr><td><strong>String</strong> <code>" "</code></td><td>✅</td><td>❌</td><td>✅</td><td>Text data</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>2D Arrays (Lists of Lists)</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — 2D Array</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>matrix = [
+    [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>],
+    [<span class="num">4</span>, <span class="num">5</span>, <span class="num">6</span>],
+    [<span class="num">7</span>, <span class="num">8</span>, <span class="num">9</span>]
+]
+
+<span class="cm"># Access element at row 1, column 2</span>
+print(matrix[<span class="num">1</span>][<span class="num">2</span>])  <span class="cm"># 6</span>
+
+<span class="cm"># Traverse the entire 2D array</span>
+<span class="kw">for</span> row <span class="kw">in</span> matrix:
+    <span class="kw">for</span> element <span class="kw">in</span> row:
+        print(element, end=<span class="str">" "</span>)
+    print()</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 7. Sorting Algorithms -->
+        <section id="algorithms">
+          <h2>Sorting Algorithms</h2>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Algorithm</th><th>Best Case</th><th>Average Case</th><th>Worst Case</th><th>Space</th><th>Stable?</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Bubble Sort</strong></td><td>O(n)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>✅</td></tr>
+                <tr><td><strong>Selection Sort</strong></td><td>O(n²)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>❌</td></tr>
+                <tr><td><strong>Insertion Sort</strong></td><td>O(n)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>✅</td></tr>
+                <tr><td><strong>Merge Sort</strong></td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n)</td><td>✅</td></tr>
+                <tr><td><strong>Quick Sort</strong></td><td>O(n log n)</td><td>O(n log n)</td><td>O(n²)</td><td>O(log n)</td><td>❌</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Bubble Sort</h3>
+          <p>Repeatedly steps through the list, compares adjacent elements, and swaps them if out of order. The largest element "bubbles" to the end each pass.</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Bubble Sort</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">def</span> <span class="fn">bubble_sort</span>(arr):
+    n = len(arr)
+    <span class="kw">for</span> i <span class="kw">in</span> range(n):
+        swapped = <span class="kw">False</span>
+        <span class="kw">for</span> j <span class="kw">in</span> range(<span class="num">0</span>, n - i - <span class="num">1</span>):
+            <span class="kw">if</span> arr[j] > arr[j + <span class="num">1</span>]:
+                arr[j], arr[j + <span class="num">1</span>] = arr[j + <span class="num">1</span>], arr[j]
+                swapped = <span class="kw">True</span>
+        <span class="kw">if not</span> swapped:
+            <span class="kw">break</span>  <span class="cm"># Already sorted — optimisation</span>
+    <span class="kw">return</span> arr
+
+numbers = [<span class="num">64</span>, <span class="num">34</span>, <span class="num">25</span>, <span class="num">12</span>, <span class="num">22</span>, <span class="num">11</span>, <span class="num">90</span>]
+print(bubble_sort(numbers))  <span class="cm"># [11, 12, 22, 25, 34, 64, 90]</span></code></pre>
+          </div>
+
+          <h3>Selection Sort</h3>
+          <p>Finds the minimum element from the unsorted part and places it at the beginning. Performs n-1 passes, selecting the minimum each time.</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Selection Sort</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">def</span> <span class="fn">selection_sort</span>(arr):
+    n = len(arr)
+    <span class="kw">for</span> i <span class="kw">in</span> range(n):
+        min_index = i
+        <span class="kw">for</span> j <span class="kw">in</span> range(i + <span class="num">1</span>, n):
+            <span class="kw">if</span> arr[j] < arr[min_index]:
+                min_index = j
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+    <span class="kw">return</span> arr</code></pre>
+          </div>
+
+          <h3>Insertion Sort</h3>
+          <p>Builds a sorted portion from the left. Each new element is inserted into its correct position in the already-sorted portion. Efficient for small or nearly-sorted lists.</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Insertion Sort</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">def</span> <span class="fn">insertion_sort</span>(arr):
+    <span class="kw">for</span> i <span class="kw">in</span> range(<span class="num">1</span>, len(arr)):
+        key = arr[i]
+        j = i - <span class="num">1</span>
+        <span class="kw">while</span> j >= <span class="num">0</span> <span class="kw">and</span> arr[j] > key:
+            arr[j + <span class="num">1</span>] = arr[j]
+            j -= <span class="num">1</span>
+        arr[j + <span class="num">1</span>] = key
+    <span class="kw">return</span> arr</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 8. Searching -->
+        <section id="searching">
+          <h2>Searching Algorithms</h2>
+
+          <h3>Linear Search</h3>
+          <p>Checks each element one by one from the beginning. Works on any list (sorted or unsorted). Time complexity: <strong>O(n)</strong> worst case.</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Linear Search</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">def</span> <span class="fn">linear_search</span>(arr, target):
+    <span class="kw">for</span> index, value <span class="kw">in</span> enumerate(arr):
+        <span class="kw">if</span> value == target:
+            <span class="kw">return</span> index  <span class="cm"># found at this index</span>
+    <span class="kw">return</span> <span class="op">-</span><span class="num">1</span>         <span class="cm"># not found</span></code></pre>
+          </div>
+
+          <h3>Binary Search</h3>
+          <p>Requires a <strong>sorted</strong> list. Repeatedly halves the search space. Much faster than linear search for large sorted lists. Time complexity: <strong>O(log n)</strong>.</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Binary Search</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">def</span> <span class="fn">binary_search</span>(arr, target):
+    left, right = <span class="num">0</span>, len(arr) - <span class="num">1</span>
+
+    <span class="kw">while</span> left <= right:
+        mid = (left + right) // <span class="num">2</span>
+
+        <span class="kw">if</span> arr[mid] == target:
+            <span class="kw">return</span> mid         <span class="cm"># found!</span>
+        <span class="kw">elif</span> arr[mid] < target:
+            left = mid + <span class="num">1</span>    <span class="cm"># target is in right half</span>
+        <span class="kw">else</span>:
+            right = mid - <span class="num">1</span>   <span class="cm"># target is in left half</span>
+
+    <span class="kw">return</span> <span class="op">-</span><span class="num">1</span>  <span class="cm"># not found</span>
+
+sorted_list = [<span class="num">11</span>, <span class="num">12</span>, <span class="num">22</span>, <span class="num">25</span>, <span class="num">34</span>, <span class="num">64</span>, <span class="num">90</span>]
+print(binary_search(sorted_list, <span class="num">25</span>))  <span class="cm"># 3 (index)</span></code></pre>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Algorithm</th><th>Requires Sorted?</th><th>Time Complexity</th><th>Best For</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Linear Search</strong></td><td>No</td><td>O(n)</td><td>Small or unsorted lists</td></tr>
+                <tr><td><strong>Binary Search</strong></td><td>Yes</td><td>O(log n)</td><td>Large sorted lists</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 9. Recursion & File I/O -->
+        <section id="recursion">
+          <h2>Recursion &amp; File I/O</h2>
+
+          <h3>Recursion</h3>
+          <div class="def-card">
+            <div class="def-term">Recursion</div>
+            <div class="def-meaning">A function that calls <strong>itself</strong> to solve a smaller version of the same problem. Every recursive function must have a <strong>base case</strong> (stopping condition) to prevent infinite recursion.</div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Recursive Factorial</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">def</span> <span class="fn">factorial</span>(n):
+    <span class="cm"># Base case: factorial of 0 or 1 is 1</span>
+    <span class="kw">if</span> n <= <span class="num">1</span>:
+        <span class="kw">return</span> <span class="num">1</span>
+    <span class="cm"># Recursive case: n! = n × (n-1)!</span>
+    <span class="kw">return</span> n * factorial(n - <span class="num">1</span>)
+
+<span class="cm"># factorial(5) → 5 × 4 × 3 × 2 × 1 = 120</span>
+print(factorial(<span class="num">5</span>))  <span class="cm"># 120</span></code></pre>
+          </div>
+
+          <div class="callout warning">
+            <span class="callout-icon">⚠️</span>
+            <div class="callout-content">
+              <strong>Always Define a Base Case</strong>
+              <p>Without a base case, a recursive function will call itself indefinitely until Python raises a <code>RecursionError: maximum recursion depth exceeded</code>.</p>
+            </div>
+          </div>
+
+          <h3>File I/O</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Reading and Writing Files</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="cm"># Writing to a file</span>
+<span class="kw">with</span> open(<span class="str">"data.txt"</span>, <span class="str">"w"</span>) <span class="kw">as</span> file:
+    file.write(<span class="str">"Line 1\n"</span>)
+    file.write(<span class="str">"Line 2\n"</span>)
+
+<span class="cm"># Reading entire file</span>
+<span class="kw">with</span> open(<span class="str">"data.txt"</span>, <span class="str">"r"</span>) <span class="kw">as</span> file:
+    content = file.read()
+    print(content)
+
+<span class="cm"># Reading line by line</span>
+<span class="kw">with</span> open(<span class="str">"data.txt"</span>, <span class="str">"r"</span>) <span class="kw">as</span> file:
+    <span class="kw">for</span> line <span class="kw">in</span> file:
+        print(line.strip())  <span class="cm"># strip() removes trailing newline</span>
+
+<span class="cm"># Appending to a file</span>
+<span class="kw">with</span> open(<span class="str">"data.txt"</span>, <span class="str">"a"</span>) <span class="kw">as</span> file:
+    file.write(<span class="str">"Line 3\n"</span>)</code></pre>
+          </div>
+
+          <div class="callout info">
+            <span class="callout-icon">ℹ️</span>
+            <div class="callout-content">
+              <strong>File Modes</strong>
+              <ul>
+                <li><code>"r"</code> — read (file must exist)</li>
+                <li><code>"w"</code> — write (creates or <strong>overwrites</strong>)</li>
+                <li><code>"a"</code> — append (adds to end of file)</li>
+                <li><code>"x"</code> — exclusive create (fails if file exists)</li>
+                <li>Add <code>"b"</code> for binary mode: <code>"rb"</code>, <code>"wb"</code></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="callout success">
+            <span class="callout-icon">✅</span>
+            <div class="callout-content">
+              <strong>Programming Fundamentals Key Takeaways</strong>
+              <ul>
+                <li>Design algorithms with pseudocode <em>before</em> writing code</li>
+                <li>Use <strong>for</strong> loops for known iterations; <strong>while</strong> for condition-based loops</li>
+                <li>Functions promote reuse and modularity; always define a <strong>docstring</strong></li>
+                <li>Understand list indexing (<code>arr[0]</code> is first, <code>arr[-1]</code> is last)</li>
+                <li>Binary search is O(log n) but requires a sorted list; linear search is O(n)</li>
+                <li>Recursion requires a base case to prevent infinite loops</li>
+                <li>Always use <code>with open(...)</code> for safe file handling</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand"><div class="footer-logo">💻</div><span class="footer-name">SoftEng Notes</span></div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">SE Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="../index.html">← Home</a>
+        <a href="object-oriented-paradigm.html">Next: OOP →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 HSC SoftEng Notes · NESA NSW Aligned</span>
+      <a href="../index.html" style="color:#475569;text-decoration:none;">← Home</a>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

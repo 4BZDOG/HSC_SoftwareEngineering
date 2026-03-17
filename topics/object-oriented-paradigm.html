@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Object-Oriented Paradigm | HSC Software Engineering</title>
+  <meta name="description" content="Complete Year 11 HSC notes on OOP — classes, objects, encapsulation, inheritance, polymorphism, abstraction, UML diagrams, and design patterns." />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">💻</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="secure-software-architecture.html">Secure Architecture <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-for-the-web.html">Web Programming <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-automation.html">Automation <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-engineering-project.html">SE Project <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-fundamentals.html">Fundamentals <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="object-oriented-paradigm.html" class="active">OOP <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="programming-mechatronics.html">Mechatronics <span class="badge badge-11">Y11</span></a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 12</div>
+      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
+      <a href="software-automation.html">⚙️ Software Automation</a>
+      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 11</div>
+      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">🧩 Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+    </div>
+    <button id="theme-toggle-mobile" class="btn" style="width:100%;justify-content:center;background:rgba(255,255,255,.07);color:#CBD5E1;border:1px solid rgba(255,255,255,.12);">🌙 Toggle Theme</button>
+  </div>
+
+  <header class="topic-header">
+    <div class="topic-header-inner">
+      <nav class="topic-breadcrumb">
+        <a href="../index.html">Home</a> <span>›</span>
+        <a href="../index.html#year11">Year 11</a> <span>›</span>
+        <span>The Object-Oriented Paradigm</span>
+      </nav>
+      <h1>🧩 The Object-Oriented Paradigm</h1>
+      <p style="color:#94A3B8; max-width:600px; margin-top:.5rem; font-size:.95rem; line-height:1.6;">
+        Model the world as interacting objects — master the four pillars of OOP, UML class diagrams, and design patterns.
+      </p>
+      <div class="topic-header-meta">
+        <span class="meta-pill year11">📗 Year 11 — Preliminary</span>
+        <span class="meta-pill">🕐 ~6 weeks</span>
+        <span class="meta-pill">8 sections</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#oop-intro">1. What is OOP?</a></li>
+        <li><a href="#classes-objects">2. Classes &amp; Objects</a></li>
+        <li><a href="#encapsulation">3. Encapsulation</a></li>
+        <li><a href="#inheritance">4. Inheritance</a></li>
+        <li><a href="#polymorphism">5. Polymorphism</a></li>
+        <li><a href="#abstraction">6. Abstraction</a></li>
+        <li><a href="#uml">7. UML Class Diagrams</a></li>
+        <li><a href="#exceptions">8. Exception Handling</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-content">
+      <div class="content-body">
+
+        <!-- 1. OOP Intro -->
+        <section id="oop-intro">
+          <h2>What is Object-Oriented Programming?</h2>
+
+          <div class="def-card">
+            <div class="def-term">Object-Oriented Programming (OOP)</div>
+            <div class="def-meaning">A programming paradigm that organises software as a collection of <strong>objects</strong> — each with its own data (attributes) and behaviour (methods) — that interact with each other.</div>
+          </div>
+
+          <h3>The Four Pillars of OOP</h3>
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">🔒</div>
+              <h4>Encapsulation</h4>
+              <p>Bundling data and methods together; hiding internal details from outside access.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🌳</div>
+              <h4>Inheritance</h4>
+              <p>A class can derive properties and behaviour from a parent class, promoting code reuse.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🎭</div>
+              <h4>Polymorphism</h4>
+              <p>The same interface can be used for different underlying object types. "Many forms".</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🎭</div>
+              <h4>Abstraction</h4>
+              <p>Hiding complex implementation details and exposing only what is necessary. "Need to know".</p>
+            </div>
+          </div>
+
+          <h3>OOP vs Procedural Programming</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Aspect</th><th>Procedural</th><th>Object-Oriented</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Organisation</strong></td><td>Functions that operate on data</td><td>Objects that combine data and behaviour</td></tr>
+                <tr><td><strong>Reuse</strong></td><td>Function calls</td><td>Inheritance and composition</td></tr>
+                <tr><td><strong>Data access</strong></td><td>Global or passed as parameters</td><td>Controlled via access modifiers</td></tr>
+                <tr><td><strong>Scalability</strong></td><td>Harder to manage in large programs</td><td>Better for large, complex systems</td></tr>
+                <tr><td><strong>Examples</strong></td><td>C, Pascal</td><td>Python, Java, C++, C#</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 2. Classes & Objects -->
+        <section id="classes-objects">
+          <h2>Classes &amp; Objects</h2>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">📐</div>
+              <h4>Class</h4>
+              <p>A <strong>blueprint</strong> or template for creating objects. Defines what attributes (data) and methods (behaviour) objects of that type will have. Like a cookie cutter.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🍪</div>
+              <h4>Object (Instance)</h4>
+              <p>A specific <strong>instance</strong> created from a class. Each object has its own attribute values. Like a cookie made from the cutter.</p>
+            </div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Defining and Using a Class</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">class</span> <span class="cl">BankAccount</span>:
+    <span class="str">"""Represents a simple bank account."""</span>
+
+    <span class="cm"># Class attribute (shared by all instances)</span>
+    interest_rate = <span class="num">0.03</span>
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, owner, balance=<span class="num">0</span>):
+        <span class="cm"># Instance attributes (unique to each object)</span>
+        self.owner = owner
+        self.balance = balance
+
+    <span class="kw">def</span> <span class="fn">deposit</span>(self, amount):
+        <span class="str">"""Add funds to the account."""</span>
+        <span class="kw">if</span> amount > <span class="num">0</span>:
+            self.balance += amount
+        <span class="kw">return</span> self.balance
+
+    <span class="kw">def</span> <span class="fn">withdraw</span>(self, amount):
+        <span class="str">"""Remove funds if sufficient balance exists."""</span>
+        <span class="kw">if</span> amount > self.balance:
+            <span class="kw">raise</span> ValueError(<span class="str">"Insufficient funds"</span>)
+        self.balance -= amount
+        <span class="kw">return</span> self.balance
+
+    <span class="kw">def</span> <span class="fn">__str__</span>(self):
+        <span class="kw">return</span> <span class="str">f"Account({self.owner}, ${self.balance:.2f})"</span>
+
+
+<span class="cm"># Creating objects (instantiation)</span>
+alice_account = BankAccount(<span class="str">"Alice"</span>, <span class="num">1000</span>)
+bob_account   = BankAccount(<span class="str">"Bob"</span>)
+
+<span class="cm"># Using methods</span>
+alice_account.deposit(<span class="num">500</span>)
+alice_account.withdraw(<span class="num">200</span>)
+print(alice_account)          <span class="cm"># Account(Alice, $1300.00)</span>
+print(alice_account.balance)  <span class="cm"># 1300.0</span></code></pre>
+          </div>
+
+          <h3>The __init__ Constructor</h3>
+          <p><code>__init__</code> is a special (dunder) method called automatically when an object is created. It initialises the object's attributes. <code>self</code> refers to the current instance.</p>
+
+          <h3>Dunder (Magic) Methods</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Method</th><th>Called When</th><th>Use Case</th></tr></thead>
+              <tbody>
+                <tr><td><code>__init__</code></td><td>Object created</td><td>Initialise attributes</td></tr>
+                <tr><td><code>__str__</code></td><td><code>print(obj)</code> or <code>str(obj)</code></td><td>Human-readable string representation</td></tr>
+                <tr><td><code>__repr__</code></td><td>Developer representation</td><td>Debugging string</td></tr>
+                <tr><td><code>__len__</code></td><td><code>len(obj)</code></td><td>Return length of object</td></tr>
+                <tr><td><code>__eq__</code></td><td><code>obj1 == obj2</code></td><td>Define equality comparison</td></tr>
+                <tr><td><code>__add__</code></td><td><code>obj1 + obj2</code></td><td>Operator overloading</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 3. Encapsulation -->
+        <section id="encapsulation">
+          <h2>Encapsulation</h2>
+
+          <div class="def-card">
+            <div class="def-term">Encapsulation</div>
+            <div class="def-meaning">Bundling data (attributes) and methods together within a class, and <strong>restricting direct access</strong> to some of the object's components. The internal state is accessed and modified only through defined methods (getters and setters).</div>
+          </div>
+
+          <h3>Access Modifiers in Python</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Convention</th><th>Syntax</th><th>Access Level</th></tr></thead>
+              <tbody>
+                <tr><td>Public</td><td><code>self.name</code></td><td>Accessible from anywhere</td></tr>
+                <tr><td>Protected</td><td><code>self._name</code></td><td>Convention: internal use (1 underscore)</td></tr>
+                <tr><td>Private</td><td><code>self.__name</code></td><td>Name-mangled; not directly accessible (2 underscores)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout info">
+            <span class="callout-icon">ℹ️</span>
+            <div class="callout-content">
+              <strong>Python's Approach</strong>
+              <p>Python uses naming conventions rather than strict access modifiers. The double-underscore <code>__attr</code> triggers name-mangling to <code>_ClassName__attr</code>, making accidental access harder but not impossible. "We're all consenting adults here."</p>
+            </div>
+          </div>
+
+          <h3>Getters and Setters</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Encapsulation with Properties</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">class</span> <span class="cl">Student</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, name, age):
+        self.name = name
+        self.__age = age  <span class="cm"># private attribute</span>
+
+    <span class="op">@property</span>
+    <span class="kw">def</span> <span class="fn">age</span>(self):
+        <span class="str">"""Getter: returns the age."""</span>
+        <span class="kw">return</span> self.__age
+
+    <span class="op">@age.setter</span>
+    <span class="kw">def</span> <span class="fn">age</span>(self, value):
+        <span class="str">"""Setter: validates before setting age."""</span>
+        <span class="kw">if not</span> isinstance(value, int) <span class="kw">or</span> value < <span class="num">0</span>:
+            <span class="kw">raise</span> ValueError(<span class="str">"Age must be a positive integer"</span>)
+        self.__age = value
+
+student = Student(<span class="str">"Alice"</span>, <span class="num">17</span>)
+print(student.age)    <span class="cm"># 17 (via getter)</span>
+student.age = <span class="num">18</span>     <span class="cm"># via setter — validates input</span>
+<span class="cm"># student.age = -5  → raises ValueError</span></code></pre>
+          </div>
+
+          <h3>Benefits of Encapsulation</h3>
+          <ul>
+            <li>Protects object's internal state from unintended modification</li>
+            <li>Allows validation logic in setters</li>
+            <li>Implementation can change without affecting external code</li>
+            <li>Reduces complexity by hiding unnecessary details</li>
+          </ul>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 4. Inheritance -->
+        <section id="inheritance">
+          <h2>Inheritance</h2>
+
+          <div class="def-card">
+            <div class="def-term">Inheritance</div>
+            <div class="def-meaning">A mechanism where a <strong>child class</strong> (subclass) derives attributes and methods from a <strong>parent class</strong> (superclass). Promotes code reuse and establishes an "is-a" relationship.</div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Inheritance Example</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">class</span> <span class="cl">Animal</span>:
+    <span class="str">"""Base class for all animals."""</span>
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, name, species):
+        self.name = name
+        self.species = species
+
+    <span class="kw">def</span> <span class="fn">eat</span>(self):
+        print(<span class="str">f"{self.name} is eating"</span>)
+
+    <span class="kw">def</span> <span class="fn">speak</span>(self):
+        print(<span class="str">"..."</span>)  <span class="cm"># generic — overridden by subclasses</span>
+
+    <span class="kw">def</span> <span class="fn">__str__</span>(self):
+        <span class="kw">return</span> <span class="str">f"{self.name} ({self.species})"</span>
+
+
+<span class="kw">class</span> <span class="cl">Dog</span>(Animal):  <span class="cm"># Dog inherits from Animal</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, name, breed):
+        super().__init__(name, <span class="str">"Canis lupus familiaris"</span>)
+        self.breed = breed  <span class="cm"># additional attribute</span>
+
+    <span class="kw">def</span> <span class="fn">speak</span>(self):       <span class="cm"># override parent method</span>
+        print(<span class="str">f"{self.name} says: Woof!"</span>)
+
+    <span class="kw">def</span> <span class="fn">fetch</span>(self):       <span class="cm"># new method unique to Dog</span>
+        print(<span class="str">f"{self.name} fetches the ball!"</span>)
+
+
+<span class="kw">class</span> <span class="cl">Cat</span>(Animal):
+    <span class="kw">def</span> <span class="fn">speak</span>(self):
+        print(<span class="str">f"{self.name} says: Meow!"</span>)
+
+
+<span class="cm"># Using the classes</span>
+dog = Dog(<span class="str">"Rex"</span>, <span class="str">"Labrador"</span>)
+cat = Cat(<span class="str">"Whiskers"</span>, <span class="str">"Felis catus"</span>)
+
+dog.eat()     <span class="cm"># Inherited: Rex is eating</span>
+dog.speak()   <span class="cm"># Overridden: Rex says: Woof!</span>
+dog.fetch()   <span class="cm"># Dog-specific: Rex fetches the ball!</span>
+cat.speak()   <span class="cm"># Whiskers says: Meow!</span></code></pre>
+          </div>
+
+          <h3>Types of Inheritance</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Type</th><th>Description</th><th>Python Support</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Single</strong></td><td>One subclass, one superclass (A → B)</td><td>✅</td></tr>
+                <tr><td><strong>Multi-level</strong></td><td>Chain of inheritance (A → B → C)</td><td>✅</td></tr>
+                <tr><td><strong>Multiple</strong></td><td>One subclass inherits from multiple superclasses</td><td>✅ (with MRO)</td></tr>
+                <tr><td><strong>Hierarchical</strong></td><td>Multiple subclasses from one superclass (A → B, A → C)</td><td>✅</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>super()</h3>
+          <p><code>super()</code> returns the parent class and allows calling its methods. Essential when overriding <code>__init__</code> to ensure the parent's initialisation also runs.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 5. Polymorphism -->
+        <section id="polymorphism">
+          <h2>Polymorphism</h2>
+
+          <div class="def-card">
+            <div class="def-term">Polymorphism</div>
+            <div class="def-meaning">"Many forms" — the ability for different object types to be treated as instances of a common interface, each responding to the same method call in their own way.</div>
+          </div>
+
+          <h3>Method Overriding (Runtime Polymorphism)</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Polymorphism via method overriding</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">class</span> <span class="cl">Shape</span>:
+    <span class="kw">def</span> <span class="fn">area</span>(self):
+        <span class="kw">raise</span> NotImplementedError(<span class="str">"Subclasses must implement area()"</span>)
+
+<span class="kw">class</span> <span class="cl">Circle</span>(Shape):
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, radius):
+        self.radius = radius
+    <span class="kw">def</span> <span class="fn">area</span>(self):
+        <span class="kw">return</span> <span class="num">3.14159</span> * self.radius ** <span class="num">2</span>
+
+<span class="kw">class</span> <span class="cl">Rectangle</span>(Shape):
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, width, height):
+        self.width = width
+        self.height = height
+    <span class="kw">def</span> <span class="fn">area</span>(self):
+        <span class="kw">return</span> self.width * self.height
+
+<span class="kw">class</span> <span class="cl">Triangle</span>(Shape):
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, base, height):
+        self.base = base
+        self.height = height
+    <span class="kw">def</span> <span class="fn">area</span>(self):
+        <span class="kw">return</span> <span class="num">0.5</span> * self.base * self.height
+
+
+<span class="cm"># Polymorphism: same method call, different results</span>
+shapes = [Circle(<span class="num">5</span>), Rectangle(<span class="num">4</span>, <span class="num">6</span>), Triangle(<span class="num">3</span>, <span class="num">8</span>)]
+<span class="kw">for</span> shape <span class="kw">in</span> shapes:
+    print(<span class="str">f"{type(shape).__name__}: area = {shape.area():.2f}"</span>)
+<span class="cm"># Circle: area = 78.54
+# Rectangle: area = 24.00
+# Triangle: area = 12.00</span></code></pre>
+          </div>
+
+          <h3>Duck Typing</h3>
+          <p>In Python, polymorphism is achieved through <strong>duck typing</strong>: "If it walks like a duck and quacks like a duck, it's a duck." Python doesn't require formal inheritance — if an object has the required method, it will work.</p>
+
+          <h3>Operator Overloading</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Operator Overloading</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">class</span> <span class="cl">Vector</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, x, y):
+        self.x = x
+        self.y = y
+
+    <span class="kw">def</span> <span class="fn">__add__</span>(self, other):       <span class="cm"># overload +</span>
+        <span class="kw">return</span> Vector(self.x + other.x, self.y + other.y)
+
+    <span class="kw">def</span> <span class="fn">__str__</span>(self):
+        <span class="kw">return</span> <span class="str">f"Vector({self.x}, {self.y})"</span>
+
+v1 = Vector(<span class="num">1</span>, <span class="num">2</span>)
+v2 = Vector(<span class="num">3</span>, <span class="num">4</span>)
+print(v1 + v2)  <span class="cm"># Vector(4, 6)</span></code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 6. Abstraction -->
+        <section id="abstraction">
+          <h2>Abstraction</h2>
+
+          <div class="def-card">
+            <div class="def-term">Abstraction</div>
+            <div class="def-meaning">Hiding complex implementation details and showing only the necessary features of an object. Users interact with objects through a simplified interface without needing to understand how things work internally.</div>
+          </div>
+
+          <h3>Abstract Classes in Python</h3>
+          <p>An <strong>abstract class</strong> cannot be instantiated directly. It defines a <strong>contract</strong> — methods that all subclasses must implement. Python uses the <code>abc</code> module for abstract base classes.</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Abstract Base Class</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">from</span> abc <span class="kw">import</span> ABC, abstractmethod
+
+<span class="kw">class</span> <span class="cl">Vehicle</span>(ABC):  <span class="cm"># Abstract base class</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, make, model):
+        self.make = make
+        self.model = model
+
+    <span class="op">@abstractmethod</span>
+    <span class="kw">def</span> <span class="fn">start_engine</span>(self):
+        <span class="str">"""All vehicles must implement this."""</span>
+        pass  <span class="cm"># subclasses provide implementation</span>
+
+    <span class="op">@abstractmethod</span>
+    <span class="kw">def</span> <span class="fn">fuel_type</span>(self):
+        pass
+
+    <span class="kw">def</span> <span class="fn">describe</span>(self):  <span class="cm"># Concrete method (shared)</span>
+        <span class="kw">return</span> <span class="str">f"{self.make} {self.model}"</span>
+
+
+<span class="kw">class</span> <span class="cl">Car</span>(Vehicle):
+    <span class="kw">def</span> <span class="fn">start_engine</span>(self):
+        print(<span class="str">"Car engine: Vroom!"</span>)
+    <span class="kw">def</span> <span class="fn">fuel_type</span>(self):
+        <span class="kw">return</span> <span class="str">"Petrol"</span>
+
+<span class="kw">class</span> <span class="cl">ElectricCar</span>(Vehicle):
+    <span class="kw">def</span> <span class="fn">start_engine</span>(self):
+        print(<span class="str">"Electric motor: Whoosh!"</span>)
+    <span class="kw">def</span> <span class="fn">fuel_type</span>(self):
+        <span class="kw">return</span> <span class="str">"Electric"</span>
+
+<span class="cm"># v = Vehicle("X", "Y")  ← TypeError: Can't instantiate abstract class</span>
+car = Car(<span class="str">"Toyota"</span>, <span class="str">"Camry"</span>)
+car.start_engine()  <span class="cm"># Car engine: Vroom!</span></code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 7. UML -->
+        <section id="uml">
+          <h2>UML Class Diagrams</h2>
+          <p><strong>Unified Modelling Language (UML)</strong> class diagrams visually represent the structure of a system's classes, their attributes, methods, and relationships.</p>
+
+          <h3>Class Notation</h3>
+          <div class="highlight-box">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--text-secondary); text-align:center; line-height:2;">
+              ┌────────────────────┐<br>
+              │    &lt;&lt;ClassName&gt;&gt;   │  ← Class name (bold, centred)<br>
+              ├────────────────────┤<br>
+              │ - __age : int      │  ← Attributes<br>
+              │ + name : str       │  ← Visibility: + public, - private, # protected<br>
+              ├────────────────────┤<br>
+              │ + get_age() : int  │  ← Methods<br>
+              │ + deposit(amount)  │<br>
+              └────────────────────┘
+            </p>
+          </div>
+
+          <h3>Relationships</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Relationship</th><th>UML Arrow</th><th>Meaning</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Inheritance</strong></td><td>Solid line with hollow arrowhead →</td><td>"Is-a" relationship</td><td>Dog <em>is-a</em> Animal</td></tr>
+                <tr><td><strong>Realisation</strong></td><td>Dashed line with hollow arrowhead</td><td>Implements an interface</td><td>Car <em>implements</em> Vehicle</td></tr>
+                <tr><td><strong>Association</strong></td><td>Solid line</td><td>Objects are related</td><td>Student <em>takes</em> Course</td></tr>
+                <tr><td><strong>Aggregation</strong></td><td>Solid line with hollow diamond</td><td>"Has-a" (can exist independently)</td><td>Car <em>has</em> Engine (engine can exist without car)</td></tr>
+                <tr><td><strong>Composition</strong></td><td>Solid line with filled diamond</td><td>Strong "has-a" (cannot exist independently)</td><td>House <em>has</em> Rooms (rooms don't exist without house)</td></tr>
+                <tr><td><strong>Dependency</strong></td><td>Dashed arrow</td><td>One class uses another</td><td>Order <em>depends on</em> Product</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Multiplicity</h3>
+          <p>Indicates how many instances can be related:</p>
+          <div class="key-terms">
+            <div class="key-term-item"><code>1</code> — exactly one</div>
+            <div class="key-term-item"><code>0..1</code> — zero or one (optional)</div>
+            <div class="key-term-item"><code>1..*</code> — one or more</div>
+            <div class="key-term-item"><code>0..*</code> or <code>*</code> — zero or more</div>
+            <div class="key-term-item"><code>2..5</code> — between 2 and 5</div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 8. Exception Handling -->
+        <section id="exceptions">
+          <h2>Exception Handling</h2>
+
+          <div class="def-card">
+            <div class="def-term">Exception</div>
+            <div class="def-meaning">An error that occurs during program execution that disrupts the normal flow of instructions. Examples: <code>ZeroDivisionError</code>, <code>FileNotFoundError</code>, <code>TypeError</code>, <code>ValueError</code>, <code>IndexError</code>.</div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Exception Handling</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">try</span>:
+    numerator = int(input(<span class="str">"Enter numerator: "</span>))
+    denominator = int(input(<span class="str">"Enter denominator: "</span>))
+    result = numerator / denominator
+    print(<span class="str">f"Result: {result}"</span>)
+
+<span class="kw">except</span> ZeroDivisionError:
+    print(<span class="str">"Error: Cannot divide by zero!"</span>)
+
+<span class="kw">except</span> ValueError:
+    print(<span class="str">"Error: Please enter valid integers!"</span>)
+
+<span class="kw">except</span> Exception <span class="kw">as</span> e:
+    print(<span class="str">f"Unexpected error: {e}"</span>)
+
+<span class="kw">else</span>:
+    <span class="cm"># Runs only if no exception occurred</span>
+    print(<span class="str">"Calculation successful!"</span>)
+
+<span class="kw">finally</span>:
+    <span class="cm"># Always runs (cleanup code)</span>
+    print(<span class="str">"Division operation completed."</span>)</code></pre>
+          </div>
+
+          <h3>Custom Exceptions</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Python — Custom Exception Class</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">class</span> <span class="cl">InsufficientFundsError</span>(Exception):
+    <span class="str">"""Raised when a bank withdrawal exceeds the balance."""</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, amount, balance):
+        self.amount = amount
+        self.balance = balance
+        super().__init__(
+            <span class="str">f"Cannot withdraw ${amount:.2f}: balance is ${balance:.2f}"</span>
+        )
+
+<span class="cm"># Using the custom exception</span>
+<span class="kw">def</span> <span class="fn">withdraw</span>(balance, amount):
+    <span class="kw">if</span> amount > balance:
+        <span class="kw">raise</span> InsufficientFundsError(amount, balance)
+    <span class="kw">return</span> balance - amount
+
+<span class="kw">try</span>:
+    new_balance = withdraw(<span class="num">100</span>, <span class="num">150</span>)
+<span class="kw">except</span> InsufficientFundsError <span class="kw">as</span> e:
+    print(e)  <span class="cm"># Cannot withdraw $150.00: balance is $100.00</span></code></pre>
+          </div>
+
+          <div class="callout success">
+            <span class="callout-icon">✅</span>
+            <div class="callout-content">
+              <strong>OOP Key Takeaways</strong>
+              <ul>
+                <li>The four pillars: <strong>Encapsulation</strong>, <strong>Inheritance</strong>, <strong>Polymorphism</strong>, <strong>Abstraction</strong></li>
+                <li>A <strong>class</strong> is a blueprint; an <strong>object</strong> is an instance of a class</li>
+                <li><code>__init__</code> initialises object attributes; <code>self</code> refers to the current instance</li>
+                <li><strong>Inheritance</strong> enables "is-a" relationships and code reuse; use <code>super()</code> to call parent methods</li>
+                <li><strong>Polymorphism</strong>: different objects respond to the same method in their own way</li>
+                <li>UML class diagrams show <code>+ public</code>, <code>- private</code>, <code># protected</code> members</li>
+                <li>Always handle exceptions with <code>try/except</code> — never let programs crash unexpectedly</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand"><div class="footer-logo">💻</div><span class="footer-name">SoftEng Notes</span></div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">SE Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="programming-fundamentals.html">← Fundamentals</a>
+        <a href="programming-mechatronics.html">Next: Mechatronics →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 HSC SoftEng Notes · NESA NSW Aligned</span>
+      <a href="../index.html" style="color:#475569;text-decoration:none;">← Home</a>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

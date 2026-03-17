@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programming Mechatronics | HSC Software Engineering</title>
+  <meta name="description" content="Complete Year 11 HSC notes on Programming Mechatronics — microcontrollers, sensors, actuators, digital/analog signals, embedded systems, and IoT." />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">💻</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="secure-software-architecture.html">Secure Architecture <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-for-the-web.html">Web Programming <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-automation.html">Automation <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-engineering-project.html">SE Project <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-fundamentals.html">Fundamentals <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="object-oriented-paradigm.html">OOP <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="programming-mechatronics.html" class="active">Mechatronics <span class="badge badge-11">Y11</span></a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 12</div>
+      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
+      <a href="software-automation.html">⚙️ Software Automation</a>
+      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 11</div>
+      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">🧩 Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+    </div>
+    <button id="theme-toggle-mobile" class="btn" style="width:100%;justify-content:center;background:rgba(255,255,255,.07);color:#CBD5E1;border:1px solid rgba(255,255,255,.12);">🌙 Toggle Theme</button>
+  </div>
+
+  <header class="topic-header">
+    <div class="topic-header-inner">
+      <nav class="topic-breadcrumb">
+        <a href="../index.html">Home</a> <span>›</span>
+        <a href="../index.html#year11">Year 11</a> <span>›</span>
+        <span>Programming Mechatronics</span>
+      </nav>
+      <h1>🤖 Programming Mechatronics</h1>
+      <p style="color:#94A3B8; max-width:600px; margin-top:.5rem; font-size:.95rem; line-height:1.6;">
+        Combine software and hardware — program microcontrollers, interface with sensors and actuators, and build embedded systems.
+      </p>
+      <div class="topic-header-meta">
+        <span class="meta-pill year11">📗 Year 11 — Preliminary</span>
+        <span class="meta-pill">🕐 Depth Study</span>
+        <span class="meta-pill">8 sections</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#what-is-mechatronics">1. What is Mechatronics?</a></li>
+        <li><a href="#microcontrollers">2. Microcontrollers</a></li>
+        <li><a href="#digital-analog">3. Digital vs Analog Signals</a></li>
+        <li><a href="#sensors">4. Sensors</a></li>
+        <li><a href="#actuators">5. Actuators</a></li>
+        <li><a href="#arduino-programming">6. Arduino Programming</a></li>
+        <li><a href="#protocols">7. Communication Protocols</a></li>
+        <li><a href="#embedded-iot">8. Embedded Systems &amp; IoT</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-content">
+      <div class="content-body">
+
+        <!-- 1. What is Mechatronics? -->
+        <section id="what-is-mechatronics">
+          <h2>What is Mechatronics?</h2>
+
+          <div class="def-card">
+            <div class="def-term">Mechatronics</div>
+            <div class="def-meaning">A multidisciplinary engineering field that combines <strong>mechanical engineering</strong>, <strong>electrical engineering</strong>, <strong>computer science</strong>, and <strong>control systems</strong> to design and create intelligent systems and products.</div>
+          </div>
+
+          <h3>Components of a Mechatronic System</h3>
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">🔌</div>
+              <h4>Sensors (Input)</h4>
+              <p>Detect physical properties from the environment (temperature, light, distance, motion) and convert them to electrical signals for the controller.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🧠</div>
+              <h4>Microcontroller (Processing)</h4>
+              <p>The "brain" of the system. Receives sensor data, runs the program, and sends commands to actuators.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">⚡</div>
+              <h4>Actuators (Output)</h4>
+              <p>Convert electrical signals back into physical actions (movement, light, sound). Examples: motors, LEDs, speakers, servos.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔄</div>
+              <h4>Feedback Loop</h4>
+              <p>Sensors monitor the output of actuators, feeding information back to the controller to adjust behaviour. This is the basis of a <strong>closed-loop control system</strong>.</p>
+            </div>
+          </div>
+
+          <h3>Open-Loop vs Closed-Loop Control</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Type</th><th>Description</th><th>Feedback?</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>Open-Loop</strong></td>
+                  <td>Controller sends a fixed command; no monitoring of outcome</td>
+                  <td>❌ No</td>
+                  <td>A toaster — set timer, doesn't check if toast is done</td>
+                </tr>
+                <tr>
+                  <td><strong>Closed-Loop</strong></td>
+                  <td>Controller monitors output and adjusts commands accordingly</td>
+                  <td>✅ Yes</td>
+                  <td>Air conditioning — checks room temperature and adjusts</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Examples of Mechatronic Systems</h3>
+          <div class="key-terms">
+            <div class="key-term-item">Automatic door — PIR sensor + motor</div>
+            <div class="key-term-item">Robot arm — servo motors + encoders + controller</div>
+            <div class="key-term-item">3D printer — stepper motors + limit switches + thermistor</div>
+            <div class="key-term-item">Smart irrigation — soil moisture sensor + water pump + timer</div>
+            <div class="key-term-item">Line-following robot — IR sensors + DC motors</div>
+            <div class="key-term-item">Anti-lock braking system (ABS) — wheel speed sensors + braking actuators</div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 2. Microcontrollers -->
+        <section id="microcontrollers">
+          <h2>Microcontrollers</h2>
+
+          <div class="def-card">
+            <div class="def-term">Microcontroller</div>
+            <div class="def-meaning">A compact integrated circuit that contains a <strong>processor</strong>, <strong>memory</strong> (RAM and flash), and <strong>programmable I/O peripherals</strong> on a single chip. Designed for embedded applications — controlling a specific device or system.</div>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Feature</th><th>Microcontroller</th><th>Microprocessor</th><th>Raspberry Pi</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Purpose</strong></td><td>Control-oriented embedded tasks</td><td>General-purpose computing</td><td>Full computer on a board</td></tr>
+                <tr><td><strong>Memory</strong></td><td>On-chip RAM + Flash (small)</td><td>External RAM required</td><td>SD card + RAM (large)</td></tr>
+                <tr><td><strong>OS</strong></td><td>None (bare metal) or RTOS</td><td>Windows/Linux/macOS</td><td>Linux (Raspberry Pi OS)</td></tr>
+                <tr><td><strong>Power</strong></td><td>Very low</td><td>High</td><td>Medium</td></tr>
+                <tr><td><strong>Cost</strong></td><td>Very cheap</td><td>Moderate</td><td>Moderate</td></tr>
+                <tr><td><strong>Examples</strong></td><td>Arduino Uno (ATmega328P), ESP32, STM32</td><td>Intel Core, AMD Ryzen</td><td>Raspberry Pi 4/5</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Arduino Platform</h3>
+          <p>Arduino is the most popular platform for learning embedded programming. It consists of:</p>
+          <ul>
+            <li><strong>Hardware</strong>: Arduino board (e.g., Uno, Mega, Nano) with I/O pins</li>
+            <li><strong>Software</strong>: Arduino IDE + C/C++-based programming language</li>
+            <li><strong>Ecosystem</strong>: Large library of code for common sensors and devices</li>
+          </ul>
+
+          <h3>Arduino Uno Key Specifications</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Microcontroller:</strong> ATmega328P (8-bit)</div>
+            <div class="key-term-item"><strong>Clock speed:</strong> 16 MHz</div>
+            <div class="key-term-item"><strong>Flash memory:</strong> 32 KB (program storage)</div>
+            <div class="key-term-item"><strong>SRAM:</strong> 2 KB (runtime variables)</div>
+            <div class="key-term-item"><strong>Digital I/O pins:</strong> 14 (6 with PWM)</div>
+            <div class="key-term-item"><strong>Analog input pins:</strong> 6 (10-bit ADC)</div>
+            <div class="key-term-item"><strong>Operating voltage:</strong> 5V</div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 3. Digital vs Analog -->
+        <section id="digital-analog">
+          <h2>Digital vs Analog Signals</h2>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">💡</div>
+              <h4>Digital Signal</h4>
+              <p>Has only two discrete states: <strong>HIGH (1)</strong> and <strong>LOW (0)</strong>. On Arduino: HIGH = 5V, LOW = 0V. Clean, noise-resistant. Examples: button pressed/not pressed, LED on/off.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">〰️</div>
+              <h4>Analog Signal</h4>
+              <p>Continuous range of values. Can be any value within a range (e.g., 0–5V). Represents real-world quantities like temperature or light intensity. Examples: potentiometer, temperature sensor output.</p>
+            </div>
+          </div>
+
+          <h3>ADC — Analog-to-Digital Conversion</h3>
+          <p>Microcontrollers can only process digital data. An <strong>Analog-to-Digital Converter (ADC)</strong> converts analog voltages to digital numbers.</p>
+          <ul>
+            <li>Arduino Uno has a <strong>10-bit ADC</strong>: converts 0–5V to values 0–1023</li>
+            <li>Resolution = 5V / 1024 ≈ <strong>4.9 mV per step</strong></li>
+            <li>Formula: <code>voltage = (analog_value / 1023) × 5.0</code></li>
+          </ul>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Arduino C++ — Reading an Analog Sensor</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">const int</span> SENSOR_PIN = A0;  <span class="cm">// Analog pin A0</span>
+
+<span class="kw">void</span> <span class="fn">setup</span>() {
+    Serial.begin(<span class="num">9600</span>);  <span class="cm">// Start serial communication</span>
+}
+
+<span class="kw">void</span> <span class="fn">loop</span>() {
+    <span class="kw">int</span> raw_value = analogRead(SENSOR_PIN);  <span class="cm">// Read 0-1023</span>
+    <span class="kw">float</span> voltage = (raw_value / <span class="num">1023.0</span>) * <span class="num">5.0</span>;  <span class="cm">// Convert to volts</span>
+
+    Serial.print(<span class="str">"Raw: "</span>);
+    Serial.print(raw_value);
+    Serial.print(<span class="str">" | Voltage: "</span>);
+    Serial.print(voltage, <span class="num">2</span>);
+    Serial.println(<span class="str">"V"</span>);
+
+    delay(<span class="num">500</span>);  <span class="cm">// Wait 500ms</span>
+}</code></pre>
+          </div>
+
+          <h3>PWM — Pulse Width Modulation</h3>
+          <div class="def-card">
+            <div class="def-term">PWM (Pulse Width Modulation)</div>
+            <div class="def-meaning">A technique to simulate an analog output using a digital pin by rapidly switching it ON and OFF. The <strong>duty cycle</strong> (percentage of time the signal is HIGH) controls the effective voltage. Higher duty cycle = more power delivered.</div>
+          </div>
+
+          <div class="highlight-box">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:.8rem; color:var(--text-secondary); text-align:center; line-height:2;">
+              100% duty cycle: ██████████ (full brightness/speed)<br>
+              50% duty cycle:  █░░░░█░░░░ (half brightness/speed)<br>
+              25% duty cycle:  █░░░░░░░░░ (quarter brightness)
+            </p>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Arduino C++ — PWM to fade an LED</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">const int</span> LED_PIN = <span class="num">9</span>;  <span class="cm">// Must be a PWM pin (~)</span>
+
+<span class="kw">void</span> <span class="fn">setup</span>() {
+    pinMode(LED_PIN, OUTPUT);
+}
+
+<span class="kw">void</span> <span class="fn">loop</span>() {
+    <span class="cm">// Fade in</span>
+    <span class="kw">for</span> (<span class="kw">int</span> brightness = <span class="num">0</span>; brightness <= <span class="num">255</span>; brightness++) {
+        analogWrite(LED_PIN, brightness);  <span class="cm">// 0-255 maps to 0-5V</span>
+        delay(<span class="num">10</span>);
+    }
+    <span class="cm">// Fade out</span>
+    <span class="kw">for</span> (<span class="kw">int</span> brightness = <span class="num">255</span>; brightness >= <span class="num">0</span>; brightness--) {
+        analogWrite(LED_PIN, brightness);
+        delay(<span class="num">10</span>);
+    }
+}</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 4. Sensors -->
+        <section id="sensors">
+          <h2>Sensors</h2>
+          <p>Sensors convert physical quantities into electrical signals that a microcontroller can read and process.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Sensor</th><th>Type</th><th>Output</th><th>Measures</th><th>Common Use</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Push Button</strong></td><td>Digital</td><td>HIGH/LOW</td><td>User input</td><td>Start/stop, UI control</td></tr>
+                <tr><td><strong>LDR (Light Dependent Resistor)</strong></td><td>Analog</td><td>Voltage</td><td>Light intensity</td><td>Automatic lighting</td></tr>
+                <tr><td><strong>Thermistor / LM35</strong></td><td>Analog</td><td>Voltage</td><td>Temperature</td><td>Thermostat, weather station</td></tr>
+                <tr><td><strong>DHT11 / DHT22</strong></td><td>Digital</td><td>Serial data</td><td>Temp + Humidity</td><td>Smart home, greenhouse</td></tr>
+                <tr><td><strong>HC-SR04 (Ultrasonic)</strong></td><td>Digital</td><td>Pulse width</td><td>Distance</td><td>Obstacle avoidance, parking</td></tr>
+                <tr><td><strong>PIR (Passive Infrared)</strong></td><td>Digital</td><td>HIGH/LOW</td><td>Motion</td><td>Security, automatic lights</td></tr>
+                <tr><td><strong>Potentiometer</strong></td><td>Analog</td><td>Voltage</td><td>Rotation/position</td><td>Volume control, joystick</td></tr>
+                <tr><td><strong>IR Receiver</strong></td><td>Digital</td><td>Serial data</td><td>Infrared light</td><td>Remote control</td></tr>
+                <tr><td><strong>MPU-6050 (IMU)</strong></td><td>Digital (I2C)</td><td>3-axis data</td><td>Acceleration + gyroscope</td><td>Drone, balance robot</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Ultrasonic Distance Sensor (HC-SR04)</h3>
+          <p>The HC-SR04 measures distance by sending an ultrasonic pulse and measuring the time for the echo to return.</p>
+          <div class="highlight-box">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:.82rem; color:var(--text-secondary); text-align:center; line-height:2;">
+              Distance (cm) = (Time of echo in μs) / 58<br>
+              <br>
+              Or: Distance = (Speed of sound × Time) / 2<br>
+              Speed of sound ≈ 343 m/s at 20°C
+            </p>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Arduino C++ — Ultrasonic Distance Sensor</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">const int</span> TRIG_PIN = <span class="num">9</span>;
+<span class="kw">const int</span> ECHO_PIN = <span class="num">10</span>;
+
+<span class="kw">void</span> <span class="fn">setup</span>() {
+    Serial.begin(<span class="num">9600</span>);
+    pinMode(TRIG_PIN, OUTPUT);
+    pinMode(ECHO_PIN, INPUT);
+}
+
+<span class="kw">void</span> <span class="fn">loop</span>() {
+    <span class="cm">// Send trigger pulse (10μs HIGH)</span>
+    digitalWrite(TRIG_PIN, LOW);
+    delayMicroseconds(<span class="num">2</span>);
+    digitalWrite(TRIG_PIN, HIGH);
+    delayMicroseconds(<span class="num">10</span>);
+    digitalWrite(TRIG_PIN, LOW);
+
+    <span class="cm">// Measure echo duration</span>
+    <span class="kw">long</span> duration = pulseIn(ECHO_PIN, HIGH);
+
+    <span class="cm">// Calculate distance in cm</span>
+    <span class="kw">float</span> distance = duration / <span class="num">58.0</span>;
+
+    Serial.print(<span class="str">"Distance: "</span>);
+    Serial.print(distance, <span class="num">1</span>);
+    Serial.println(<span class="str">" cm"</span>);
+
+    delay(<span class="num">200</span>);
+}</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 5. Actuators -->
+        <section id="actuators">
+          <h2>Actuators</h2>
+          <p>Actuators convert electrical energy into physical action (movement, light, sound, heat).</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Actuator</th><th>Type</th><th>Control Method</th><th>Application</th></tr></thead>
+              <tbody>
+                <tr><td><strong>LED</strong></td><td>Light</td><td>Digital (on/off) or PWM (brightness)</td><td>Indicators, displays, lighting</td></tr>
+                <tr><td><strong>Buzzer</strong></td><td>Sound</td><td>Digital or tone()</td><td>Alarms, notifications</td></tr>
+                <tr><td><strong>DC Motor</strong></td><td>Rotation</td><td>PWM + motor driver (L298N, L293D)</td><td>Wheels, fans, pumps</td></tr>
+                <tr><td><strong>Servo Motor</strong></td><td>Precise rotation</td><td>PWM (angle control 0°–180°)</td><td>Robot joints, steering, grippers</td></tr>
+                <tr><td><strong>Stepper Motor</strong></td><td>Precise rotation</td><td>Stepper driver (A4988)</td><td>3D printers, CNC, camera pans</td></tr>
+                <tr><td><strong>Relay</strong></td><td>Switch</td><td>Digital (HIGH/LOW)</td><td>Controlling high-voltage devices</td></tr>
+                <tr><td><strong>LCD Display</strong></td><td>Display</td><td>I2C or parallel</td><td>Status display, menus</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Servo Motor Control</h3>
+          <p>A servo motor can be rotated to a precise angle between 0° and 180°. It uses a PWM signal with a specific pulse width to control position.</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Arduino C++ — Servo Motor</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code>#include &lt;Servo.h&gt;
+
+Servo myServo;
+
+<span class="kw">void</span> <span class="fn">setup</span>() {
+    myServo.attach(<span class="num">9</span>);  <span class="cm">// Servo connected to pin 9</span>
+}
+
+<span class="kw">void</span> <span class="fn">loop</span>() {
+    <span class="cm">// Sweep from 0° to 180°</span>
+    <span class="kw">for</span> (<span class="kw">int</span> angle = <span class="num">0</span>; angle <= <span class="num">180</span>; angle += <span class="num">5</span>) {
+        myServo.write(angle);
+        delay(<span class="num">50</span>);
+    }
+    <span class="cm">// Sweep back from 180° to 0°</span>
+    <span class="kw">for</span> (<span class="kw">int</span> angle = <span class="num">180</span>; angle >= <span class="num">0</span>; angle -= <span class="num">5</span>) {
+        myServo.write(angle);
+        delay(<span class="num">50</span>);
+    }
+}</code></pre>
+          </div>
+
+          <h3>Motor Drivers</h3>
+          <p>DC motors require more current than an Arduino pin can supply (max 40mA per pin). A <strong>motor driver IC</strong> (such as the L298N or L293D) acts as a power interface between the microcontroller and the motor. It also allows direction control (H-bridge circuit).</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 6. Arduino Programming -->
+        <section id="arduino-programming">
+          <h2>Arduino Programming</h2>
+          <p>Arduino sketches (programs) are written in a C/C++ dialect. Every sketch has two required functions:</p>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">🔧</div>
+              <h4>setup()</h4>
+              <p>Runs <strong>once</strong> when the Arduino powers on or resets. Used to initialise pins, start serial communication, configure libraries.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🔄</div>
+              <h4>loop()</h4>
+              <p>Runs <strong>repeatedly</strong> in an infinite loop after setup() completes. Contains the main program logic.</p>
+            </div>
+          </div>
+
+          <h3>Digital I/O</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Arduino C++ — Digital I/O: Button + LED</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">const int</span> LED_PIN    = <span class="num">13</span>;
+<span class="kw">const int</span> BUTTON_PIN = <span class="num">2</span>;
+
+<span class="kw">void</span> <span class="fn">setup</span>() {
+    pinMode(LED_PIN, OUTPUT);
+    pinMode(BUTTON_PIN, INPUT_PULLUP);  <span class="cm">// use internal pull-up resistor</span>
+    Serial.begin(<span class="num">9600</span>);
+}
+
+<span class="kw">void</span> <span class="fn">loop</span>() {
+    <span class="kw">int</span> buttonState = digitalRead(BUTTON_PIN);
+
+    <span class="cm">// INPUT_PULLUP: LOW when pressed, HIGH when released</span>
+    <span class="kw">if</span> (buttonState == LOW) {
+        digitalWrite(LED_PIN, HIGH);  <span class="cm">// LED on</span>
+        Serial.println(<span class="str">"Button pressed"</span>);
+    } <span class="kw">else</span> {
+        digitalWrite(LED_PIN, LOW);   <span class="cm">// LED off</span>
+    }
+}</code></pre>
+          </div>
+
+          <h3>Traffic Light Project Example</h3>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Arduino C++ — Traffic Light Sequence</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">const int</span> RED_PIN    = <span class="num">11</span>;
+<span class="kw">const int</span> YELLOW_PIN = <span class="num">10</span>;
+<span class="kw">const int</span> GREEN_PIN  = <span class="num">9</span>;
+
+<span class="kw">void</span> <span class="fn">setLight</span>(<span class="kw">int</span> red, <span class="kw">int</span> yellow, <span class="kw">int</span> green) {
+    digitalWrite(RED_PIN, red);
+    digitalWrite(YELLOW_PIN, yellow);
+    digitalWrite(GREEN_PIN, green);
+}
+
+<span class="kw">void</span> <span class="fn">setup</span>() {
+    pinMode(RED_PIN, OUTPUT);
+    pinMode(YELLOW_PIN, OUTPUT);
+    pinMode(GREEN_PIN, OUTPUT);
+}
+
+<span class="kw">void</span> <span class="fn">loop</span>() {
+    setLight(HIGH, LOW, LOW);   <span class="cm">// Red   — stop</span>
+    delay(<span class="num">5000</span>);
+
+    setLight(HIGH, HIGH, LOW);  <span class="cm">// Red+Yellow — prepare</span>
+    delay(<span class="num">1000</span>);
+
+    setLight(LOW, LOW, HIGH);   <span class="cm">// Green — go</span>
+    delay(<span class="num">4000</span>);
+
+    setLight(LOW, HIGH, LOW);   <span class="cm">// Yellow — slow down</span>
+    delay(<span class="num">1500</span>);
+}</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 7. Communication Protocols -->
+        <section id="protocols">
+          <h2>Communication Protocols</h2>
+          <p>Communication protocols define how devices exchange data. Different protocols have different trade-offs in speed, complexity, and the number of wires required.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Protocol</th><th>Type</th><th>Wires</th><th>Speed</th><th>Use Case</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>UART</strong> (Serial)</td>
+                  <td>Asynchronous</td>
+                  <td>2 (TX, RX)</td>
+                  <td>Up to 115200 baud</td>
+                  <td>Arduino Serial monitor, GPS, Bluetooth modules</td>
+                </tr>
+                <tr>
+                  <td><strong>I2C</strong></td>
+                  <td>Synchronous, multi-device</td>
+                  <td>2 (SDA, SCL)</td>
+                  <td>100 kHz – 400 kHz</td>
+                  <td>Multiple sensors on same bus (OLED, IMU, RTC)</td>
+                </tr>
+                <tr>
+                  <td><strong>SPI</strong></td>
+                  <td>Synchronous, high-speed</td>
+                  <td>4 (MOSI, MISO, SCK, SS)</td>
+                  <td>Up to MHz</td>
+                  <td>SD cards, LCD displays, fast ADCs</td>
+                </tr>
+                <tr>
+                  <td><strong>1-Wire</strong></td>
+                  <td>Synchronous</td>
+                  <td>1 (data + power)</td>
+                  <td>Low</td>
+                  <td>Temperature sensors (DS18B20)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>I2C Protocol Detail</h3>
+          <p>I2C uses just two wires to communicate with multiple devices. Each device has a unique <strong>7-bit address</strong>, allowing up to 128 devices on the same bus.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>SDA</strong> — Serial Data line (bidirectional)</div>
+            <div class="key-term-item"><strong>SCL</strong> — Serial Clock line (controlled by master)</div>
+            <div class="key-term-item"><strong>Master</strong> — initiates and controls communication (usually the microcontroller)</div>
+            <div class="key-term-item"><strong>Slave</strong> — responds to master requests (sensors, displays)</div>
+            <div class="key-term-item"><strong>Pull-up resistors</strong> — required on both SDA and SCL lines</div>
+          </div>
+
+          <div class="callout info">
+            <span class="callout-icon">ℹ️</span>
+            <div class="callout-content">
+              <strong>Finding I2C Device Addresses</strong>
+              <p>If you're unsure of a device's I2C address, upload an I2C Scanner sketch to your Arduino. It scans all addresses (0x03 to 0x77) and reports which ones respond.</p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 8. Embedded Systems & IoT -->
+        <section id="embedded-iot">
+          <h2>Embedded Systems &amp; IoT</h2>
+
+          <h3>Embedded Systems</h3>
+          <div class="def-card">
+            <div class="def-term">Embedded System</div>
+            <div class="def-meaning">A computer system with a dedicated function within a larger mechanical or electrical system. It is "embedded" as part of a complete device. Optimised for specific tasks: low power, small size, real-time constraints.</div>
+          </div>
+
+          <h3>Real-Time Systems</h3>
+          <p>Many embedded systems must respond to events within strict time constraints:</p>
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card-icon">⚡</div>
+              <h4>Hard Real-Time</h4>
+              <p>Missing a deadline causes system failure or danger. Example: airbag control system must deploy within milliseconds of collision detection.</p>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon">🕐</div>
+              <h4>Soft Real-Time</h4>
+              <p>Missing a deadline degrades performance but doesn't cause failure. Example: video streaming — late frames reduce quality but don't crash the system.</p>
+            </div>
+          </div>
+
+          <h3>Internet of Things (IoT)</h3>
+          <div class="def-card">
+            <div class="def-term">IoT — Internet of Things</div>
+            <div class="def-meaning">A network of physical devices ("things") embedded with sensors, software, and connectivity that enables them to collect and exchange data over the internet.</div>
+          </div>
+
+          <div class="key-terms">
+            <div class="key-term-item"><strong>ESP8266 / ESP32</strong> — Wi-Fi enabled microcontrollers popular for IoT projects</div>
+            <div class="key-term-item"><strong>MQTT</strong> — lightweight messaging protocol designed for IoT (publish/subscribe model)</div>
+            <div class="key-term-item"><strong>Cloud platforms</strong> — AWS IoT, Google Cloud IoT, ThingSpeak for data logging</div>
+            <div class="key-term-item"><strong>Edge computing</strong> — processing data locally on the device rather than sending to the cloud</div>
+          </div>
+
+          <h3>IoT Security Concerns</h3>
+          <div class="callout warning">
+            <span class="callout-icon">⚠️</span>
+            <div class="callout-content">
+              <strong>IoT Security Risks</strong>
+              <ul>
+                <li>Default credentials not changed (e.g., admin/admin)</li>
+                <li>Unencrypted data transmission over public networks</li>
+                <li>Insecure firmware with vulnerabilities</li>
+                <li>Large attack surface (millions of connected devices)</li>
+                <li>Difficulty patching/updating in the field</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>Programming with MicroPython</h3>
+          <p>MicroPython is a lean implementation of Python 3 designed to run on microcontrollers. It's easier to read than Arduino's C++, making it great for learning.</p>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">MicroPython — Blink LED (Raspberry Pi Pico)</span>
+              <div class="code-dots"><span></span><span></span><span></span></div>
+            </div>
+            <pre><code><span class="kw">from</span> machine <span class="kw">import</span> Pin
+<span class="kw">import</span> utime
+
+<span class="cm"># Built-in LED on Raspberry Pi Pico is pin 25</span>
+led = Pin(<span class="num">25</span>, Pin.OUT)
+
+<span class="kw">while True</span>:
+    led.high()         <span class="cm"># Turn LED on</span>
+    utime.sleep(<span class="num">0.5</span>)  <span class="cm"># Wait 500ms</span>
+    led.low()          <span class="cm"># Turn LED off</span>
+    utime.sleep(<span class="num">0.5</span>)</code></pre>
+          </div>
+
+          <div class="callout success">
+            <span class="callout-icon">✅</span>
+            <div class="callout-content">
+              <strong>Mechatronics Key Takeaways</strong>
+              <ul>
+                <li>A mechatronic system has: <strong>Sensors (input) → Microcontroller (process) → Actuators (output)</strong></li>
+                <li><strong>Closed-loop</strong> systems use feedback to correct output; open-loop do not</li>
+                <li>Digital signals are HIGH/LOW; analog signals are continuous — use ADC to convert</li>
+                <li><strong>PWM</strong> simulates analog output by varying the duty cycle</li>
+                <li>Arduino's <code>setup()</code> runs once; <code>loop()</code> runs continuously</li>
+                <li>Use motor drivers (L298N) to control DC motors — never connect directly to Arduino pins</li>
+                <li><strong>I2C</strong> connects many devices with just 2 wires; each device has a unique address</li>
+                <li>IoT devices must be secured: change defaults, encrypt communications, patch firmware</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand"><div class="footer-logo">💻</div><span class="footer-name">SoftEng Notes</span></div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">SE Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <a href="object-oriented-paradigm.html">← OOP</a>
+        <a href="../index.html">← Back to Home</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 HSC SoftEng Notes · NESA NSW Aligned</span>
+      <a href="../index.html" style="color:#475569;text-decoration:none;">← Home</a>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
