@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programming Mechatronics | HSC Software Engineering</title>
+  <meta name="description" content="Detailed Year 11 HSC Software Engineering notes on Programming Mechatronics, following NESA command verbs, outcomes, and Australian English standards." />
+  <link rel="stylesheet" href="../css/styles.css?v=3" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">💻</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="course-tools.html">Course Tools <span class="badge badge-all">Specs</span></a></li>
+        <li><a href="secure-software-architecture.html">Secure Architecture <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-for-the-web.html">Web Programming <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-automation.html">Automation <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-fundamentals.html">Fundamentals <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="object-oriented-paradigm.html">OOP <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="programming-mechatronics.html" class="active">Mechatronics <span class="badge badge-11">Y11</span></a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Resources</div>
+      <a href="course-tools.html">🛠️ Course Tools & Specifications</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 12</div>
+      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
+      <a href="software-automation.html">⚙️ Software Automation</a>
+      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 11</div>
+      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">🧩 Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+    </div>
+    <button id="theme-toggle-mobile" class="btn btn-mobile-theme">🌙 Toggle Theme</button>
+  </div>
+
+  <header class="topic-header">
+    <div class="topic-header-inner">
+      <nav class="topic-breadcrumb">
+        <a href="../index.html">Home</a> <span>›</span>
+        <a href="../index.html#year11">Year 11</a> <span>›</span>
+        <span>Programming Mechatronics</span>
+      </nav>
+      <h1>🤖 Programming Mechatronics</h1>
+      <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
+        Integrating mechanical engineering, electronics, and computer science to design and engineer autonomous, intelligent systems.
+      </p>
+      <div class="topic-header-meta">
+        <span class="meta-pill year11">📗 Year 11 — Preliminary</span>
+        <span class="meta-pill">🕐 ~8 weeks</span>
+        <span class="meta-pill">Outcomes: SE-11-01 to SE-11-07</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#applications">🦾 1. Mechatronic Applications</a></li>
+        <li><a href="#hardware">🕹️ 2. Microcontrollers vs CPUs</a></li>
+        <li><a href="#sensors-actuators">🌡️ 3. Sensors, Actuators & Manipulators</a></li>
+        <li><a href="#data-processing">📊 4. Mechatronic Data Processing</a></li>
+        <li><a href="#engineering">🔌 5. Engineering & Wiring Reqs</a></li>
+        <li><a href="#control-logic">🧠 6. Control Algorithms</a></li>
+        <li><a href="#ui-specialist">📱 7. UI & Specialist Design</a></li>
+        <li><a href="#testing">🧪 8. Prototyping & Unit Testing</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-content">
+      <div class="content-body">
+
+        <!-- 1. Outline Applications -->
+        <section id="applications">
+          <h2 class="syllabus-phase">🦾 Mechatronic Applications</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-03)</em></p>
+          <p>📌 <em><strong>Outline</strong> applications of mechatronic systems in a variety of specialised fields. Mechatronics involves the synergy of mechanical, electrical, and software engineering to create intelligent machines.</em></p>
+          
+          <div class="key-terms">
+            <div class="key-term-item"><strong>✈️ Aerospace</strong><span>Unmanned Aerial Vehicles (UAVs) use mechatronics for flight stabilisation, GPS navigation, and autonomous landing routines.</span></div>
+            <div class="key-term-item"><strong>🦾 Healthcare</strong><span>Advanced prosthetics utilise electromyography (EMG) sensors to detect muscle signals, allowing users to control bionic limbs with high precision.</span></div>
+            <div class="key-term-item"><strong>🚗 Automotive</strong><span>Modern vehicles incorporate mechatronic subsystems such as Anti-lock Braking Systems (ABS) and Electronic Stability Control (ESC) to enhance driver safety.</span></div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 2. Hardware Requirements -->
+        <section id="hardware">
+          <h2 class="syllabus-phase">🕹️ Microcontrollers & Hardware</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-03)</em></p>
+          <p>📌 <em><strong>Identify</strong> hardware requirements and <strong>Assess</strong> the relationship between microcontrollers and traditional CPUs.</em></p>
+
+          <h3>Microcontrollers vs CPUs</h3>
+          <p>A <strong>Microcontroller</strong> (e.g., ATmega328P on an Arduino) is an integrated circuit containing a processor, memory (RAM/Flash), and I/O peripherals on a single chip. In contrast, a traditional <strong>CPU</strong> requires external components (RAM, Storage, Northbridge) to function. Microcontrollers are preferred for mechatronics because they allow direct, real-time control of hardware pins, are cost-effective, and have significantly lower power requirements than general-purpose CPUs.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Concept</th>
+                  <th>Description & Relationship</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Instruction Set</strong></td>
+                  <td>The predefined set of basic commands (Opcodes) that a processor understands. Mechatronic code must be compiled for a specific instruction set (e.g., ARM or AVR).</td>
+                </tr>
+                <tr>
+                  <td>🛠️ <strong>Registers</strong></td>
+                  <td><strong>Data Registers</strong> store temporary values being processed (like a sensor reading), while <strong>Address Registers</strong> hold the memory location of the next instruction.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 3. Sensors, Actuators & Manipulators -->
+        <section id="sensors-actuators">
+          <h2 class="syllabus-phase">🌡️ Sensors, Actuators & Manipulators</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-06)</em></p>
+          <p>📌 <em><strong>Identify and Describe</strong> the hardware used in mechatronic systems to sense and react to the physical world.</em></p>
+          
+          <div class="info-grid">
+            <div class="info-card">
+              <h4>🌡️ Sensors (Inputs)</h4>
+              <p>Devices that convert physical properties into electrical signals.</p>
+              <ul>
+                <li><strong>Motion:</strong> PIR (Passive Infrared) sensors detect heat radiation moving across a background.</li>
+                <li><strong>Light:</strong> LDRs (Light Dependent Resistors) change resistance based on ambient light levels.</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h4>🎯 Actuators (Outputs)</h4>
+              <p>Components that convert electrical energy into physical motion.</p>
+              <ul>
+                <li><strong>Hydraulic:</strong> Utilise pressurised fluid to generate high force (e.g., in excavators).</li>
+                <li><strong>Electric:</strong> DC motors or Servos that provide rotational movement.</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h4>🦾 Manipulators</h4>
+              <p>The parts of the system that physically interact with objects.</p>
+              <ul>
+                <li><strong>Robotic Gripper:</strong> An end effector designed to grasp and release objects.</li>
+                <li><strong>Degrees of Freedom:</strong> The number of independent directions in which a robot can move.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">MicroPython — Sensing and Moving</span></div>
+            <pre><code><span class="kw">from</span> machine <span class="kw">import</span> Pin, PWM
+<span class="kw">import</span> utime
+
+sensor = Pin(14, Pin.IN)  <span class="cm"># Motion sensor</span>
+servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
+
+<span class="kw">while True</span>:
+    <span class="kw">if</span> sensor.value() == 1:
+        servo.duty_u16(5000) <span class="cm"># Move to specific angle</span>
+    <span class="kw">else</span>:
+        servo.duty_u16(2000) <span class="cm"># Return to home</span>
+    utime.sleep(0.1)</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 4. Mechatronic Data Processing -->
+        <section id="data-processing">
+          <h2 class="syllabus-phase">📊 Mechatronic Data Processing</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-04)</em></p>
+          <p>📌 <em><strong>Use</strong> and <strong>Understand</strong> how data is obtained and processed, including diagnostic data for system optimisation.</em></p>
+          
+          <h3>Processing and Diagnostic Data</h3>
+          <p>Mechatronic systems process raw analog signals (via ADCs) into digital data for decision-making. <strong>Diagnostic Data</strong> involves monitoring internal states—such as motor temperature, battery voltage, or current draw—to identify potential hardware failures before they occur. <strong>Optimisation Data</strong> is used to refine control algorithms, such as adjusting the duty cycle of a PWM signal to achieve maximum motor efficiency with minimal heat generation. Engineers use this data to perform "Predictive Maintenance", replacing components before a system-critical failure happens.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 5. Engineering Requirements -->
+        <section id="engineering">
+          <h2 class="syllabus-phase">🔌 Engineering & Wiring Requirements</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-06)</em></p>
+          <p>📌 <em><strong>Determine</strong> the physical needs of a system and <strong>Develop</strong> wiring diagrams using standard symbols.</em></p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Requirement</th>
+                  <th>Engineering Detail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Power & Battery</strong></td>
+                  <td>Engineers must calculate the total "Current Draw" (mA). Actuators often require separate power supplies from the controller to avoid "brownouts" or damage.</td>
+                </tr>
+                <tr>
+                  <td><strong>Material Choice</strong></td>
+                  <td>Choosing based on weight, strength, and environmental conditions.<br>🌏 <em>Example: Using carbon fibre for lightweight drone frames vs steel for industrial grippers.</em></td>
+                </tr>
+                <tr>
+                  <td>🛠️ <strong>Wiring Diagrams</strong></td>
+                  <td>Must utilise standard symbols (e.g., Resistor ⎓, Capacitor ╢, Motor Ⓜ). Diagrams ensure clear data and power supply documentation (SE-11-06).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout info">
+            <p><strong>Online Tool Suggestion:</strong> Students should use <strong>Tinkercad Circuits</strong> or <strong>Wokwi</strong> to develop wiring diagrams and simulate Arduino/ESP32 hardware connections virtually before building.</p>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 6. Control Algorithms -->
+        <section id="control-logic">
+          <h2 class="syllabus-phase">🧠 Control Algorithms</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-02)</em></p>
+          <p>📌 <em><strong>Develop</strong> and <strong>Apply</strong> algorithms to control mechatronic interactions.</em></p>
+          
+          <h3>Open vs Closed Loop Systems</h3>
+          <p>The choice of control system depends on the task requirements for accuracy and self-correction. Engineers often use 🛠️ <strong>Decision Trees</strong> (Course Spec p.10) to map out these control paths.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>System Type</th>
+                  <th>Analysis / Description</th>
+                  <th>Pros/Cons</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Open Loop</strong></td>
+                  <td>Operates on a fixed sequence or timer without feedback.<br>🌏 <em>Example: A sprinkler system on a timer.</em></td>
+                  <td>Pros: Simple, low cost. <br> Cons: Cannot adjust to changes (e.g., if it rains).</td>
+                </tr>
+                <tr>
+                  <td><strong>Closed Loop</strong></td>
+                  <td>Uses sensor feedback to adjust output in real-time.<br>🌏 <em>Example: A thermostat maintaining room temperature.</em></td>
+                  <td>Pros: Accurate, self-correcting. <br> Cons: Complex, potential for instability.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Autonomous Control</h3>
+          <p>Autonomous control requires algorithms that handle decision-making without human intervention. This involves "Sensor Fusion" (combining data from multiple sensors) and complex logic (e.g., PID control) to navigate motion constraints and maintain degrees of freedom safely. 🛠️ <strong>Flowcharts</strong> (Course Spec p.14) are essential for designing these autonomous sequences.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 7. UI & Specialist Requirements -->
+        <section id="ui-specialist">
+          <h2 class="syllabus-phase">📱 UI & Specialist Design</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
+          <p>📌 <em><strong>Design</strong> and <strong>Implement</strong> user interfaces and <strong>Determine</strong> accessibility requirements.</em></p>
+          
+          <h3>Designing for Disability</h3>
+          <p>Engineers must determine specialist requirements to make mechatronic systems inclusive. This includes <strong>Haptic Feedback</strong> for visually impaired users, <strong>Sip-and-Puff</strong> controls for those with limited limb mobility, or <strong>Voice Interfaces</strong> for hands-free operation. Design thinking ensures that mechatronic solutions enhance the quality of life and autonomy for people with disability (SE-11-05). Engineers use 🛠️ <strong>Storyboards</strong> (Course Spec p.9) to plan these accessible interface transitions.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 8. Prototyping and Unit Testing -->
+        <section id="testing">
+          <h2 class="syllabus-phase">🧪 Prototyping & Unit Testing</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
+          <p>📌 <em><strong>Develop</strong> simulations and <strong>Create</strong> unit tests to ensure the repeatability of control algorithms.</em></p>
+
+          <h3>Simulation vs Prototyping</h3>
+          <p>Simulations allow engineers to test code in a risk-free environment, while physical prototypes identify mechanical failures like friction or vibration issues.</p>
+
+          <div class="callout success">
+            <p>🛠️ <strong>Unit Testing (SE-11-06):</strong> By creating unit tests for specific components—such as testing a 'Get_Temperature' function separately from the 'Turn_On_Fan' function—engineers can ensure that each logical part of the mechatronic system is reliable and maintainable. Students can use <strong>Wokwi</strong> to perform these unit tests in a simulated environment.</p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <span>© 2025 HSC SoftEng Notes · Preliminary Mechatronics · NESA Syllabus Aligned</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js?v=3"></script>
+</body>
+</html>

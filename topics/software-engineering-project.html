@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Engineering Project | HSC Software Engineering</title>
+  <meta name="description" content="In-depth HSC Software Engineering notes on the Major Project, aligned with NESA command verbs, HSC outcomes, and Australian English standards." />
+  <link rel="stylesheet" href="../css/styles.css?v=3" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">💻</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="course-tools.html">Course Tools <span class="badge badge-all">Specs</span></a></li>
+        <li><a href="secure-software-architecture.html">Secure Architecture <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-for-the-web.html">Web Programming <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-automation.html">Automation <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-engineering-project.html" class="active">SEP <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-fundamentals.html">Fundamentals <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="object-oriented-paradigm.html">OOP <span class="badge badge-11">Y11</span></a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Resources</div>
+      <a href="course-tools.html">🛠️ Course Tools & Specifications</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 12</div>
+      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
+      <a href="software-automation.html">⚙️ Software Automation</a>
+      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 11</div>
+      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">🧩 Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+    </div>
+    <button id="theme-toggle-mobile" class="btn btn-mobile-theme">🌙 Toggle Theme</button>
+  </div>
+
+  <header class="topic-header">
+    <div class="topic-header-inner">
+      <nav class="topic-breadcrumb">
+        <a href="../index.html">Home</a> <span>›</span>
+        <a href="../index.html#year12">Year 12</a> <span>›</span>
+        <span>Software Engineering Project</span>
+      </nav>
+      <h1>📋 Software Engineering Project</h1>
+      <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
+        Applying the software development lifecycle to address an identified real-world problem. Emphasising project-management, software design, and client collaboration.
+      </p>
+      <div class="topic-header-meta">
+        <span class="meta-pill year12">📘 Year 12 — HSC</span>
+        <span class="meta-pill">🕐 Major Project</span>
+        <span class="meta-pill">Outcomes: SE-12-01 to 09</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Phase 1 — Identifying &amp; Defining</li>
+        <li><a href="#identifying-defining">🎯 1. Identifying &amp; Defining</a></li>
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Phase 2 — Research &amp; Planning</li>
+        <li><a href="#implementation-methods">🚀 2. Implementation Methods</a></li>
+        <li><a href="#development-approaches">🏗️ 3. Development Approaches</a></li>
+        <li><a href="#project-management">📅 4. Project Management &amp; Comms</a></li>
+        <li><a href="#quality-backend">🛡️ 5. QA &amp; Back-End Engineering</a></li>
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Phase 3 — Producing &amp; Implementing</li>
+        <li><a href="#producing">💻 6. Producing &amp; Implementing</a></li>
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Phase 4 — Testing &amp; Evaluating</li>
+        <li><a href="#testing-evaluating">🧪 7. Testing &amp; Evaluating</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-content">
+      <div class="content-body">
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PHASE 1: IDENTIFYING AND DEFINING                      -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Phase 1</span>
+          <span class="part-name">🎯 Identifying and Defining</span>
+        </div>
+
+        <!-- 1. Identifying & Defining -->
+        <section id="identifying-defining">
+          <h2 class="syllabus-phase">🎯 Identifying and Defining</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-06)</em></p>
+          <p>📌 <em><strong>Define and analyse</strong> the requirements of a problem to ensure the software engineering solution is viable and purposeful.</em></p>
+
+          <h3>Problem Requirements</h3>
+          <p>Before coding begins, a software engineer must define the core requirements (Outcome SE-12-01):</p>
+          <ul>
+            <li><strong>Demonstrating needs or opportunities:</strong> Clearly identifying the real-world problem the software solves for the client.</li>
+            <li><strong>Assessing scheduling and financial feasibility:</strong> Determining if the project can be completed within the allocated timeframe and budget.</li>
+            <li><strong>Generating requirements:</strong> Defining <em>functionality</em> (what the system must do) and <em>performance</em> (how well/fast it must do it).</li>
+            <li><strong>Defining data structures and types:</strong> Specifying how information will be securely collected and stored.</li>
+            <li><strong>Defining boundaries:</strong> Establishing the scope to prevent "scope creep" during development.</li>
+          </ul>
+
+          <h3>Tools for Idea Generation &amp; Solution Development</h3>
+          <p><strong>Explore</strong> the tools used to develop ideas and guide the project lifecycle (Outcome SE-12-06):</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>💡 Idea Generation</strong><span>Brainstorming, mind-mapping, and Storyboards (Course Spec p. 9) to visualise user interfaces.</span></div>
+            <div class="key-term-item"><strong>📋 Data Definition</strong><span>Utilising Data dictionaries (Course Spec p. 8) to select appropriate data types and formats.</span></div>
+            <div class="key-term-item"><strong>💻 Development</strong><span>Algorithm design (flowcharts/pseudocode), code generation, and rigorous testing and debugging.</span></div>
+            <div class="key-term-item"><strong>🚀 Post-Development</strong><span>Installation and ongoing maintenance procedures.</span></div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PHASE 2: RESEARCH AND PLANNING                         -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Phase 2</span>
+          <span class="part-name">🔬 Research and Planning</span>
+        </div>
+
+        <!-- 2. Implementation Methods -->
+        <section id="implementation-methods">
+          <h2 class="syllabus-phase">🚀 Software Implementation Methods</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-01)</em></p>
+          <p>📌 <em><strong>Investigate</strong> types of software implementation methods used when transitioning a client from an old system to a new solution (Outcome SE-12-01).</em></p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Investigation &amp; Analysis</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Direct (Big Bang)</strong></td>
+                  <td>The old system is completely shut down and replaced by the new system instantly. High risk, but cost-effective if successful.</td>
+                </tr>
+                <tr>
+                  <td><strong>Phased</strong></td>
+                  <td>The new system is introduced in stages or modules. Lower risk, as issues can be resolved per module, but implementation takes longer.</td>
+                </tr>
+                <tr>
+                  <td><strong>Parallel</strong></td>
+                  <td>Both the old and new systems run simultaneously until the new system is proven stable. Safest method, but highly resource-intensive and costly.</td>
+                </tr>
+                <tr>
+                  <td><strong>Pilot</strong></td>
+                  <td>The new system is trialled by a small subset of users (e.g., one department). Once refined, it is rolled out to the rest of the enterprise.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 3. Development Approaches -->
+        <section id="development-approaches">
+          <h2 class="syllabus-phase">🏗️ Research and Planning: Development Approaches</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-01)</em></p>
+          <p>📌 <em><strong>Research and use</strong> standard software development approaches to structure the engineering lifecycle.</em></p>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h4>🌊 Waterfall Approach</h4>
+              <p>A sequential model with a <strong>logical progression of steps</strong>. Stages flow downwards like 'falling water' (Requirements → Design → Implementation → Testing → Maintenance). <br><br><strong>Pros:</strong> Highly documented, clear milestones. <br><strong>Cons:</strong> Inflexible to changing requirements. <br><strong>Scale:</strong> Best for massive, stable developments (e.g., government infrastructure).</p>
+            </div>
+            <div class="info-card">
+              <h4>🏃 Agile Approach</h4>
+              <p>An iterative <strong>workflow</strong> focusing on the rapid <strong>rate of developing a final solution</strong>. Allows for <strong>method tailoring</strong> to adapt to evolving client needs. <br><br><strong>Scale:</strong> Ideal for dynamic, medium-scale developments (e.g., commercial web apps) where requirements frequently shift.</p>
+            </div>
+            <div class="info-card">
+              <h4>🧬 WAgile Approach</h4>
+              <p><strong>Research</strong> WAgile, understanding it is a <strong>hybrid model</strong>. It combines Waterfall's rigorous upfront planning with Agile's iterative coding. <br><br><strong>Intervention:</strong> Applied 'when' regulatory compliance requires strict documentation, but 'how' the code is written remains agile. <br><strong>Scale:</strong> Complex enterprise developments.</p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 4. Project Management & Communication -->
+        <section id="project-management">
+          <h2 class="syllabus-phase">📅 Project Management &amp; Communication</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-05, SE-12-09)</em></p>
+          
+          <h3>Project Management</h3>
+          <p><strong>Apply</strong> project management to plan and conduct the development of a software solution. This involves scheduling and tracking using software tools, notably 🛠️ <strong>Gantt charts</strong> (Course Spec p. 11), to allocate time to tasks, and using collaborative tools (e.g., GitHub, Jira) to track team progress (Outcome SE-12-09).</p>
+
+          <h3>Communication &amp; Social Issues</h3>
+          <p><strong>Explore</strong> communication issues associated with project work. Engineers must prioritise <strong>involving and empowering the client</strong> through constant dialogue, <strong>enabling feedback</strong> during Agile iterations, and <strong>negotiating</strong> realistic deadlines and features (Outcome SE-12-09). <br><br>Furthermore, engineers must <strong>explore social and ethical issues</strong>, such as equitably dividing work when collaborating, acting professionally when working individually, and transparently responding to stakeholder concerns regarding data security (Outcome SE-12-05).</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 5. Quality Assurance & Back-End -->
+        <section id="quality-backend">
+          <h2 class="syllabus-phase">🛡️ Quality Assurance &amp; Back-End Engineering</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-06, SE-12-07)</em></p>
+
+          <h3>Quality Assurance (QA)</h3>
+          <p><strong>Investigate</strong> how software engineering solutions are quality assured. QA involves defining clear criteria on which quality will be judged (e.g., load times, error rates). It requires a <strong>continual checking process</strong> to ensure requirements are met, whilst strictly addressing compliance and legislative requirements (e.g., Australian Privacy Principles) (Outcome SE-12-01).</p>
+
+          <h3>Modelling Tools</h3>
+          <p><strong>Demonstrate</strong> the use of 🛠️ <strong>modelling tools</strong> to map out software logic. This includes Data Flow Diagrams (DFDs), Structure Charts, and Decision Trees (Course Spec p. 5-10) (Outcome SE-12-06).</p>
+
+          <h3>Back-End Engineering Contribution</h3>
+          <p><strong>Explain</strong> the contribution of back-end engineering to the success and ease of software development (Outcome SE-12-07):</p>
+
+          <h4>🖥️ Technology Used</h4>
+          <p>The selection of server-side frameworks and database technologies fundamentally determines a project's performance, scalability, and long-term maintainability. For example, a <strong>Django</strong> (Python) framework provides a built-in ORM, authentication system, and admin panel — dramatically reducing development time for data-driven applications. Alternatively, <strong>Node.js</strong> enables non-blocking I/O suited to high-concurrency environments, such as real-time chat applications. Database choice is equally critical: a relational database such as <strong>PostgreSQL</strong> enforces data integrity through foreign keys and ACID transactions, whereas a NoSQL database such as <strong>MongoDB</strong> offers flexible document schemas suited to rapidly evolving data models.</p>
+
+          <h4>⚠️ Error Handling</h4>
+          <p>Robust error handling ensures the server remains stable and informative when unexpected inputs or system failures occur. Without it, an unhandled exception could crash the entire server process — making the application unavailable to all users simultaneously. For example, a <code>try/except</code> block in Python can catch a database connection timeout and return a user-friendly <strong>503 Service Unavailable</strong> HTTP response, rather than exposing a raw stack trace to the client. Additionally, structured logging (e.g., Python's <code>logging</code> module) records error details for post-mortem debugging, without leaking sensitive system information to end-users.</p>
+
+          <h4>🔗 Interfacing with Front End</h4>
+          <p>Back-end engineers design <strong>Application Programming Interfaces (APIs)</strong> that define precisely how the front-end client requests and receives data. A <strong>RESTful API</strong> uses standard HTTP methods (GET, POST, PUT, DELETE) with JSON payloads, allowing any front-end technology — React, Angular, or a mobile app — to consume the same endpoints without modification. For example, a GET request to <code>/api/students/42</code> would return a JSON object containing that student's profile. Efficient API design minimises data transfer by returning only required fields, and uses HTTP status codes correctly (200 OK, 404 Not Found, 401 Unauthorised) so the front end can respond appropriately to every outcome.</p>
+
+          <h4>🔐 Security Engineering</h4>
+          <p>The back end is the primary line of defence against malicious attacks. <strong>Password security</strong> is implemented through cryptographic hashing algorithms such as <strong>bcrypt</strong>, which store a one-way hash rather than plaintext — meaning a complete database breach still cannot reveal user credentials. <strong>Input sanitisation</strong> and parameterised SQL queries prevent SQL injection attacks, where an attacker might otherwise embed SQL commands in a form field to manipulate or delete database records. Additionally, implementing <strong>HTTPS with TLS certificates</strong> encrypts all data in transit, protecting against man-in-the-middle attacks on public networks.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PHASE 3: PRODUCING AND IMPLEMENTING                    -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Phase 3</span>
+          <span class="part-name">💻 Producing and Implementing</span>
+        </div>
+
+        <!-- 6. Producing & Implementing -->
+        <section id="producing">
+          <h2 class="syllabus-phase">💻 Producing and Implementing</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-04, SE-12-06, SE-12-09)</em></p>
+
+          <p>📌 <em><strong>Design, construct and implement</strong> a solution to a software problem using appropriate development approaches. Engineers must <strong>develop, construct and document algorithms</strong> and allocate appropriate resources to support development (Outcome SE-12-02).</em></p>
+
+          <h3>Programmed Data Backup &amp; Version Control</h3>
+          <p><strong>Demonstrate</strong> the use of programmed data backup to ensure data integrity during development. Additionally, <strong>implement version control</strong> (e.g., Git) to safely track code changes, manage collaborative merges, and document the project's evolution (Outcome SE-12-04, SE-12-09).</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Programmed Data Backup Script</span></div>
+            <pre><code><span class="kw">import</span> shutil
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime
+
+<span class="kw">def</span> <span class="fn">programmed_backup</span>(db_filepath, backup_directory):
+    <span class="str">"""Automates the backup of the project database with a timestamp."""</span>
+    timestamp = datetime.now().strftime(<span class="str">"%Y%m%d_%H%M%S"</span>)
+    backup_file = <span class="str">f"{backup_directory}/db_backup_{timestamp}.sqlite3"</span>
+    
+    <span class="kw">try</span>:
+        shutil.copy2(db_filepath, backup_file)
+        print(<span class="str">f"✅ Backup successful: {backup_file}"</span>)
+    <span class="kw">except</span> IOError <span class="kw">as</span> e:
+        print(<span class="str">f"❌ Backup failed: {e}"</span>)
+
+<span class="cm"># Execute backup before deploying a new feature</span>
+programmed_backup(<span class="str">'app_data.sqlite3'</span>, <span class="str">'./backups'</span>)</code></pre>
+          </div>
+
+          <h3>Strategies for Difficulties</h3>
+          <p><strong>Explore</strong> strategies to respond to difficulties when developing. This includes searching for solutions online (e.g., official documentation, StackOverflow), seeking <strong>collaboration with peers</strong> for code reviews, or <strong>outsourcing</strong> specific technical components (e.g., paying for an external API service rather than building it from scratch) (Outcome SE-12-09).</p>
+
+          <h3>Innovative UI Solutions</h3>
+          <p><strong>Propose</strong> an additional innovative solution using a <strong>prototype</strong> and a <strong>user interface (UI)</strong> design. Prototyping allows clients to interact with a mock-up of the system, providing early validation of the UI layout before heavy backend coding commences (Outcome SE-12-06).</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PHASE 4: TESTING AND EVALUATING                        -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Phase 4</span>
+          <span class="part-name">🧪 Testing and Evaluating</span>
+        </div>
+
+        <!-- 7. Testing & Evaluating -->
+        <section id="testing-evaluating">
+          <h2 class="syllabus-phase">🧪 Testing and Evaluating</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-08, SE-12-09)</em></p>
+
+          <p>📌 <em><strong>Apply</strong> methodologies to test and evaluate code, and <strong>Analyse and respond</strong> to client feedback. Evaluating the effectiveness of a solution ensures it meets the initial problem requirements.</em></p>
+
+          <h3>Effectiveness &amp; Testing Data</h3>
+          <p>Evaluation involves generating a <strong>test plan</strong> and executing it using rigorous testing data based on <strong>path testing</strong> (ensuring every line of code executes) and <strong>boundary testing</strong> (testing the extreme limits of input constraints). Engineers evaluate success by <strong>comparing actual output with expected output</strong>, and develop a final report to synthesise client feedback (Outcome SE-12-08, SE-12-09).</p>
+
+          <h3>Language-Dependent Code Optimisation</h3>
+          <p><strong>Use</strong> language-dependent code optimisation techniques to refine execution speed and readability. In Python, this often involves using list comprehensions instead of standard loops, or utilising built-in C-optimised functions (Outcome SE-12-08).</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Code Optimisation &amp; Boundary Testing</span></div>
+            <pre><code><span class="kw">import</span> unittest
+
+<span class="cm"># OPTIMISED CODE: Using list comprehension instead of a slow for-loop</span>
+<span class="kw">def</span> <span class="fn">get_valid_ages</span>(age_list):
+    <span class="str">"""Returns ages between 18 and 65 (inclusive) using fast list comprehension."""</span>
+    <span class="kw">return</span>[age <span class="kw">for</span> age <span class="kw">in</span> age_list <span class="kw">if</span> <span class="num">18</span> &lt;= age &lt;= <span class="num">65</span>]
+
+<span class="cm"># TESTING: Applying boundary testing methodology</span>
+<span class="kw">class</span> <span class="fn">TestAgeValidation</span>(unittest.TestCase):
+    <span class="kw">def</span> <span class="fn">test_boundaries</span>(self):
+        <span class="cm"># Boundary data: 17 (invalid), 18 (valid), 65 (valid), 66 (invalid)</span>
+        test_data =[<span class="num">17</span>, <span class="num">18</span>, <span class="num">40</span>, <span class="num">65</span>, <span class="num">66</span>]
+        expected_output =[<span class="num">18</span>, <span class="num">40</span>, <span class="num">65</span>]
+        actual_output = get_valid_ages(test_data)
+        
+        <span class="cm"># Comparing actual output with expected output</span>
+        self.assertEqual(actual_output, expected_output)
+
+<span class="kw">if</span> __name__ == <span class="str">'__main__'</span>:
+    unittest.main()</code></pre>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <span>© 2026 HSC SoftEng Notes · HSC Software Engineering Project · Australian English Standards</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js?v=3"></script>
+</body>
+</html>

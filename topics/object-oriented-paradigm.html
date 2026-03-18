@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Object-Oriented Paradigm | HSC Software Engineering</title>
+  <meta name="description" content="In-depth Year 11 HSC Software Engineering notes on OOP, following NESA command verbs, outcomes, and Australian English standards." />
+  <link rel="stylesheet" href="../css/styles.css?v=3" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">💻</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="course-tools.html">Course Tools <span class="badge badge-all">Specs</span></a></li>
+        <li><a href="secure-software-architecture.html">Secure Architecture <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-for-the-web.html">Web Programming <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-automation.html">Automation <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-fundamentals.html">Fundamentals <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="object-oriented-paradigm.html" class="active">OOP <span class="badge badge-11">Y11</span></a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Resources</div>
+      <a href="course-tools.html">🛠️ Course Tools & Specifications</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 12</div>
+      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
+      <a href="software-automation.html">⚙️ Software Automation</a>
+      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 11</div>
+      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">🧩 Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+    </div>
+    <button id="theme-toggle-mobile" class="btn btn-mobile-theme">🌙 Toggle Theme</button>
+  </div>
+
+  <header class="topic-header">
+    <div class="topic-header-inner">
+      <nav class="topic-breadcrumb">
+        <a href="../index.html">Home</a> <span>›</span>
+        <a href="../index.html#year11">Year 11</a> <span>›</span>
+        <span>The Object-Oriented Paradigm</span>
+      </nav>
+      <h1>🧩 The Object-Oriented Paradigm</h1>
+      <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
+        Mastering the design and implementation of software through interacting objects, modularity, and advanced abstraction techniques.
+      </p>
+      <div class="topic-header-meta">
+        <span class="meta-pill year11">📗 Year 11 — Preliminary</span>
+        <span class="meta-pill">🕐 ~6 weeks</span>
+        <span class="meta-pill">Outcomes: SE-11-01, 02, 04, 06, 07, 08</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#intro">⚡ 1. OOP vs Procedural</a></li>
+        <li><a href="#pillars">🧱 2. The Four Pillars of OOP</a></li>
+        <li><a href="#modelling">📦 3. System Modelling Tools</a></li>
+        <li><a href="#design-process">🎨 4. The Design Process</a></li>
+        <li><a href="#development">⚙️ 5. Implementation & Optimisation</a></li>
+        <li><a href="#collaboration">🤝 6. Collaborative Code Development</a></li>
+        <li><a href="#testing">🧪 7. Testing & Quality Assurance</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-content">
+      <div class="content-body">
+
+        <!-- 1. Compare Paradigms -->
+        <section id="intro">
+          <h2 class="syllabus-phase">⚡ Understanding the Paradigm</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
+          <p>📌 <em><strong>Compare</strong> procedural programming with the Object-Oriented Paradigm (OOP). While procedural programming focuses on a top-down sequence of actions (functions) acting upon data, OOP organises code into objects that combine data (attributes) and behaviour (methods).</em></p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Aspect</th>
+                  <th>Procedural Programming</th>
+                  <th>Object-Oriented Programming</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Core Focus</strong></td>
+                  <td>Step-by-step logic and function calls.</td>
+                  <td>Interaction between modular objects.</td>
+                </tr>
+                <tr>
+                  <td><strong>Data Handling</strong></td>
+                  <td>Data is separate and often global.</td>
+                  <td>Data and methods are encapsulated.</td>
+                </tr>
+                <tr>
+                  <td><strong>Reusability</strong></td>
+                  <td>Limited; relies on copying functions.</td>
+                  <td>High; via inheritance and classes.</td>
+                </tr>
+                <tr>
+                  <td><strong>Maintenance</strong></td>
+                  <td>Challenging; one change ripples through.</td>
+                  <td>Easier; changes are isolated in classes.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 2. Apply the Pillars -->
+        <section id="pillars">
+          <h2 class="syllabus-phase">🧱 Apply: The Four Pillars of OOP</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-02)</em></p>
+          <p>📌 <em><strong>Apply</strong> the key features of an OOP language to engineer modular, secure, and maintainable software solutions.</em></p>
+
+          <h3>Encapsulation</h3>
+          <p>Encapsulation is the process of bundling data and the methods that operate on that data into a single unit, known as a class. It involves "data hiding" by using access modifiers (like private attributes in Python) to prevent external code from directly modifying an object's internal state. This ensures that data can only be changed through validated methods (setters), which maintains the integrity and security of the system (Outcome SE-11-04).</p>
+
+          <h3>Abstraction</h3>
+          <p>Abstraction focuses on hiding complex implementation details and showing only the essential features of an object to the user. In software engineering, this allows developers to interact with a class through a simplified interface without needing to understand the underlying code logic. It reduces system complexity and allows the internal implementation to change without affecting the parts of the program that use it (Outcome SE-11-01).</p>
+
+          <h3>Inheritance & Generalisation</h3>
+          <p>Inheritance allows a new class (subclass) to adopt the attributes and methods of an existing class (superclass). <strong>Generalisation</strong> is the engineering process of identifying common traits among multiple classes and moving them into a shared parent class. This promotes massive code reuse and establishes a logical hierarchy within the software architecture (Outcome SE-11-02).</p>
+
+          <h3>Polymorphism</h3>
+          <p>Polymorphism, meaning "many forms", allows different classes to be treated as instances of the same superclass through a uniform interface. A programmer can call the same method name on different objects, and each object will respond in its own specific way. This makes the code highly flexible and easier to extend with new object types (Outcome SE-11-08).</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Applying OOP Pillars</span></div>
+            <pre><code><span class="kw">class</span> <span class="fn">Account</span>: <span class="cm"># Generalisation / Abstraction</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, owner, balance):
+        self.owner = owner
+        self.__balance = balance <span class="cm"># Encapsulation (Private)</span>
+
+    <span class="kw">def</span> <span class="fn">get_balance</span>(self): <span class="kw">return</span> self.__balance
+
+<span class="kw">class</span> <span class="fn">Savings</span>(Account): <span class="cm"># Inheritance</span>
+    <span class="kw">def</span> <span class="fn">apply_interest</span>(self):
+        <span class="cm"># Logic for interest...</span>
+        <span class="kw">pass</span>
+
+<span class="kw">def</span> <span class="fn">show_info</span>(acc): <span class="cm"># Polymorphism</span>
+    print(<span class="str">f"Owner: {acc.owner}"</span>)</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 3. Modelling Tools -->
+        <section id="modelling">
+          <h2 class="syllabus-phase">📦 System Modelling Tools</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-06)</em></p>
+          <p>📌 <em><strong>Use</strong> modelling tools from the course specifications to represent the structure and logic of OOP systems.</em></p>
+          
+          <ul>
+            <li>🛠️ <strong>Class Diagrams (p. 9):</strong> The primary tool for OOP. It represents classes as three-part boxes (Name, Attributes, Methods) and uses solid lines with hollow arrows to show inheritance (Outcome SE-11-06).</li>
+            <li>🛠️ <strong>Data Flow Diagrams (p. 5):</strong> Useful for showing how data moves between objects and external entities, focusing on the "transformation" of data (Outcome SE-11-06).</li>
+            <li>🛠️ <strong>Structure Charts (p. 7):</strong> While often procedural, they are used in OOP to map out complex method calls and parameter passing between modules (Outcome SE-11-06).</li>
+          </ul>
+
+          <div class="callout info">
+            <p><strong>Online Tool Suggestion:</strong> Students should use <strong>Lucidchart</strong>, <strong>Draw.io</strong>, or <strong>Mermaid.js</strong> to create professional UML Class Diagrams and DFDs.</p>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 4. Design Process -->
+        <section id="design-process">
+          <h2 class="syllabus-phase">🎨 The OOP Design Process</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-01)</em></p>
+          <p>📌 <em><strong>Describe</strong> the structured process used to engineer software in an object-oriented environment.</em></p>
+          
+          <h3>Top-down and Bottom-up Design</h3>
+          <p>Top-down design starts with the high-level system requirements and breaks them down into smaller sub-systems or classes. Conversely, bottom-up design involves building and testing robust base classes first, then combining them to create the final application. Effective OOP engineering often uses a hybrid approach, ensuring individual objects are functional (bottom-up) while meeting the overall system architecture (top-down) (Outcome SE-11-01).</p>
+
+          <div class="key-terms">
+            <div class="key-term-item"><strong>📝 Task Definition</strong><span>Formally outlining the problem scope and defining the specific objects required to solve it.</span></div>
+            <div class="key-term-item"><strong>🏛️ Facade Pattern</strong><span>A design technique that provides a simplified "front-end" interface to a complex set of classes, making the system easier to use and maintain.</span></div>
+            <div class="key-term-item"><strong>🔄 Agility</strong><span>Implementing an iterative development cycle where code is regularly reviewed and updated based on testing and user feedback.</span></div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 5. Implementation & Optimisation -->
+        <section id="development">
+          <h2 class="syllabus-phase">⚙️ Implementation & Optimisation</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-08)</em></p>
+          <p>📌 <em><strong>Investigate</strong> how objects communicate and <strong>Explain</strong> techniques for refining code performance.</em></p>
+
+          <h3>Message Passing</h3>
+          <p>In OOP, objects do not exist in isolation; they interact by "passing messages"—which is essentially one object calling a method of another. This allows for "decoupling", where an object needs to know <em>what</em> another object can do, but not <em>how</em> it does it. For example, a <code>User</code> object might pass a <code>save()</code> message to a <code>Database</code> object. This investigated feature is what enables the high modularity of OOP languages (Outcome SE-11-08).</p>
+
+          <h3>Code Optimisation</h3>
+          <p>Code optimisation is the engineering practice of modifying software to make it more efficient, typically by reducing memory usage (RAM) or increasing execution speed (CPU). In OOP, this involves refining algorithms within methods, removing redundant object instantiations, and ensuring that inheritance hierarchies are not unnecessarily deep. Optimised code is more maintainable and performs better on target hardware (Outcome SE-11-08).</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Clean Implementation</span></div>
+            <pre><code><span class="kw">class</span> <span class="fn">SystemManager</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self):
+        self.active = <span class="kw">True</span> <span class="cm"># Initialise state</span>
+
+    <span class="kw">def</span> <span class="fn">run_task</span>(self): <span class="cm"># One logical task per subroutine</span>
+        <span class="kw">if</span> self.active:
+            self.__log_event() <span class="cm"># Modular call</span>
+
+    <span class="kw">def</span> <span class="fn">__log_event</span>(self): <span class="cm"># Private helper</span>
+        <span class="kw">pass</span> <span class="cm"># Ease of maintenance</span></code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 6. Collaborative Development -->
+        <section id="collaboration">
+          <h2 class="syllabus-phase">🤝 Collaborative Code Development</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-06)</em></p>
+          <p>📌 <em><strong>Outline</strong> the features of the object-oriented paradigm that support engineering in teams.</em></p>
+          
+          <ul>
+            <li><strong>Consistency:</strong> Using classes and standard naming conventions (e.g., CamelCase for classes) ensures the codebase is predictable for all team members.</li>
+            <li><strong>Code Commenting:</strong> Professional documentation within classes (Docstrings) explains the purpose of methods to other developers.</li>
+            <li><strong>Version Control:</strong> Tools like Git allow multiple engineers to work on different classes simultaneously and merge their work into a single repository (Outcome SE-11-06).</li>
+            <li><strong>Feedback:</strong> Peer reviews of class structures and logic ensure that code is modular, reusable, and free of logic errors.</li>
+          </ul>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 7. Testing -->
+        <section id="testing">
+          <h2 class="syllabus-phase">🧪 Testing & Quality Assurance</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-07)</em></p>
+          <p>📌 <em><strong>Apply</strong> and <strong>Analyse</strong> methodologies to evaluate the effectiveness and security of OOP solutions.</em></p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Methodology</th>
+                  <th>Analysis / Engineering Purpose</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Black Box Testing</strong></td>
+                  <td>Testing inputs and outputs without knowledge of the code. Ensures the software meets functional requirements.</td>
+                </tr>
+                <tr>
+                  <td><strong>White Box Testing</strong></td>
+                  <td>Testing with full access to the internal class logic. Used to ensure all conditional branches (IF/ELSE) are secure.</td>
+                </tr>
+                <tr>
+                  <td><strong>Grey Box Testing</strong></td>
+                  <td>A hybrid approach where the tester has partial knowledge of the internals (like the data structure) to build better test cases.</td>
+                </tr>
+                <tr>
+                  <td><strong>Unit -> System</strong></td>
+                  <td>The process of testing individual classes (Unit), then groups of classes (Subsystem), then the full integrated program (System).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout success">
+            <p><strong>Quality Assurance (SE-11-06):</strong> QA is the systematic process of ensuring software meets specified engineering standards. This includes regular backups, rigorous testing, and the use of <strong>Stubs</strong> (dummy subroutines) to test high-level logic before all classes are fully developed (Outcome SE-11-07).</p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <span>© 2025 HSC SoftEng Notes · Preliminary OOP · Australian English Standards</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Tools & Specifications | HSC Software Engineering</title>
+  <meta name="description" content="Detailed specifications for HSC Software Engineering tools and techniques, including DFDs, SQL, MLOps, and more." />
+  <link rel="stylesheet" href="../css/styles.css?v=3" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">💻</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="course-tools.html" class="active">Course Tools <span class="badge badge-all">Specs</span></a></li>
+        <li><a href="secure-software-architecture.html">Secure Architecture <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-for-the-web.html">Web Programming <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-automation.html">Automation <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-fundamentals.html">Fundamentals <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="object-oriented-paradigm.html">OOP <span class="badge badge-11">Y11</span></a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Resources</div>
+      <a href="course-tools.html">🛠️ Course Tools & Specifications</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 12</div>
+      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
+      <a href="software-automation.html">⚙️ Software Automation</a>
+      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 11</div>
+      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">🧩 Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+    </div>
+    <button id="theme-toggle-mobile" class="btn btn-mobile-theme">🌙 Toggle Theme</button>
+  </div>
+
+  <header class="topic-header">
+    <div class="topic-header-inner">
+      <nav class="topic-breadcrumb">
+        <a href="../index.html">Home</a> <span>›</span>
+        <span>Course Tools & Specifications</span>
+      </nav>
+      <h1>🛠️ Course Tools & Specifications</h1>
+      <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
+        Standard symbols, syntax, and methodologies required for the NSW HSC Software Engineering course.
+      </p>
+      <div class="topic-header-meta">
+        <span class="meta-pill">📘 Year 11 & 12</span>
+        <span class="meta-pill">Course Specs 2025</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="toc-title">Specifications</div>
+      <ul class="toc-list">
+        <li><a href="#modelling-tools">🏗️ 1. Modelling Tools</a></li>
+        <li><a href="#project-management">📋 2. Project Management</a></li>
+        <li><a href="#programming-paradigms">⌨️ 3. Programming Paradigms</a></li>
+        <li><a href="#algorithms-logic">📝 4. Algorithms & Logic</a></li>
+        <li><a href="#data-structures">🕹️ 5. Control Structures</a></li>
+        <li><a href="#relational-databases">🗄️ 6. Relational Databases (SQL)</a></li>
+        <li><a href="#mechatronics">🦾 7. Mechatronics Wiring</a></li>
+        <li><a href="#web-machine-learning">🌐 8. Web & Machine Learning</a></li>
+        <li><a href="#testing-methods">🧪 9. Testing & Representation</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-content">
+      <div class="content-body">
+
+        <!-- 1. Modelling Tools -->
+        <section id="modelling-tools">
+          <h2 class="syllabus-phase">📊 System and Data Modelling Tools</h2>
+          
+          <h3>📊 Data Flow Diagrams (DFD)</h3>
+          <p>Used to represent the flow of data through an information system.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>⭕ Circle</strong><span>Process — uses input to generate output.</span></div>
+            <div class="key-term-item"><strong>🗃️ Open Rectangle</strong><span>Data Store — file or non-computer storage.</span></div>
+            <div class="key-term-item"><strong>🏢 Rectangle</strong><span>External Entity — source or sink of data.</span></div>
+            <div class="key-term-item"><strong>↩️ Curved Arrow</strong><span>Data Flow — movement of data between elements.</span></div>
+          </div>
+          <div class="callout info">
+            <strong>Level 0 DFD</strong>: Represents an overview of the entire system; does not show data stores or internal processes.
+          </div>
+
+          <h3>🌐 Structure Charts</h3>
+          <p>Represent a system by showing separate subroutines and their relationships.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>🔘 Empty Circle Arrow</strong><span>Data Movement — passes parameters between modules.</span></div>
+            <div class="key-term-item"><strong>⚫ Filled Circle Arrow</strong><span>Control Flag — passes status variables between modules.</span></div>
+            <div class="key-term-item"><strong>🔷 Diamond</strong><span>Decision — indicates optional or conditional execution.</span></div>
+            <div class="key-term-item"><strong>🔁 Curved Arrow</strong><span>Repetition — indicates a looping structure.</span></div>
+          </div>
+
+          <h3>📊 Data Dictionary</h3>
+          <p>Comprehensive description of each variable, including: Name, Data Type, Format, Size (bytes/display), Description, Example, and Validation.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 2. Project Management -->
+        <section id="project-management">
+          <h2 class="syllabus-phase">📋 Project Management Tools</h2>
+          <h3>📈 Gantt Charts</h3>
+          <p>Displays component tasks on an estimated timeline, showing dependencies and milestones.</p>
+          <h3>📝 Process Diaries / Log Books</h3>
+          <p>Regular interval documentation of progress, tasks achieved, stumbling blocks, and reflective comments.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 3. Programming Paradigms -->
+        <section id="programming-paradigms">
+          <h2 class="syllabus-phase">⌨️ Programming Paradigms</h2>
+          <div class="info-grid">
+            <div class="info-card">
+              <h4>🧩 Object-Oriented</h4>
+              <p>Classes, objects, attributes, methods, inheritance, polymorphism, and encapsulation.</p>
+            </div>
+            <div class="info-card">
+              <h4>📝 Logic</h4>
+              <p>Facts, rules, and displaying solutions/rules used by the system.</p>
+            </div>
+            <div class="info-card">
+              <h4>📊 Imperative</h4>
+              <p>Control structures, assignment statements, expressions, and subroutines.</p>
+            </div>
+            <div class="info-card">
+              <h4>⚙️ Functional</h4>
+              <p>Recursion, first-class objects, abstraction, and encapsulation.</p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 4. Algorithms & Logic -->
+        <section id="algorithms-logic">
+          <h2 class="syllabus-phase">📝 Algorithms and Logic</h2>
+          <h3>💻 Pseudocode Standards</h3>
+          <p>Keywords in <strong>CAPITALS</strong>, structural elements in pairs (BEGIN/END, IF/ENDIF), and indentation for control structures.</p>
+          
+          <h3>🌊 Flowchart Symbols</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>🔵 Oval</strong><span>Terminator — marks the Start or End of a flowchart.</span></div>
+            <div class="key-term-item"><strong>📐 Parallelogram</strong><span>Input/Output — represents data entering or leaving the system.</span></div>
+            <div class="key-term-item"><strong>▭ Rectangle</strong><span>Process — a computation or action step.</span></div>
+            <div class="key-term-item"><strong>🔶 Diamond</strong><span>Decision — a branching condition (Yes/No or True/False).</span></div>
+            <div class="key-term-item"><strong>🗂️ Double-sided Rectangle</strong><span>Subprogram — a call to a separate subroutine or function.</span></div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 5. Control Structures -->
+        <section id="data-structures">
+          <h2 class="syllabus-phase">🕹️ Control Structures</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Structure</th><th>Pseudocode Example</th></tr></thead>
+              <tbody>
+                <tr><td>Binary Selection</td><td><code>IF condition THEN ... ELSE ... ENDIF</code></td></tr>
+                <tr><td>Multi-way Selection</td><td><code>CASEWHERE expression ... OTHERWISE ... END CASE</code></td></tr>
+                <tr><td>Pre-test Loop</td><td><code>WHILE condition is true ... ENDWHILE</code></td></tr>
+                <tr><td>Post-test Loop</td><td><code>REPEAT ... UNTIL condition is true</code></td></tr>
+                <tr><td>Counted Loop</td><td><code>FOR variable = start TO finish STEP increment ... NEXT variable</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 6. Relational Databases -->
+        <section id="relational-databases">
+          <h2 class="syllabus-phase">🗄️ Relational Databases (SQL)</h2>
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">Standard SQL Syntax</span>
+            </div>
+            <pre><code>SELECT field(s)
+FROM table(s)
+WHERE search criteria
+GROUP BY field(s)
+ORDER BY field(s) ASC/DESC</code></pre>
+          </div>
+          <p>Includes functions like <code>SUM</code>, <code>AVG</code>, <code>COUNT</code>, <code>MAX</code>, <code>MIN</code> and operators like <code>CONTAINS</code>, <code>EQUALS</code>, <code>AND</code>, <code>OR</code>, <code>NOT</code>.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 7. Mechatronics Wiring -->
+        <section id="mechatronics">
+          <h2 class="syllabus-phase">🦾 Wiring Diagrams for Mechatronics</h2>
+          <p>Standard symbols for electronic components:</p>
+          <div class="info-grid">
+            <div class="info-card"><h4>📚 Capacitor, Diode, Resistor</h4></div>
+            <div class="info-card"><h4>🚀 LED, Lightbulb, Amplifier</h4></div>
+            <div class="info-card"><h4>🌐 Motor, Speaker, Integrated Circuit</h4></div>
+            <div class="info-card"><h4>🔐 Voltage Source (AC/DC)</h4></div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 8. Web & Machine Learning -->
+        <section id="web-machine-learning">
+          <h2 class="syllabus-phase">🌐 Web and Machine Learning</h2>
+          <h3>🌐 Programming for the Web</h3>
+          <ul>
+            <li>Front-end frameworks (React, Vue, etc.)</li>
+            <li>Cross-site scripting (XSS) prevention and sanitisation.</li>
+            <li>CSS Syntax (Selectors, Properties, Values).</li>
+          </ul>
+
+          <h3>📋 Machine Learning (MLOps)</h3>
+          <p>The three stages of MLOps:</p>
+          <ol>
+            <li><strong>Design</strong>: Problem definition, metrics, data research.</li>
+            <li><strong>Model Development</strong>: Wrangling, engineering, training, validation.</li>
+            <li><strong>Operations</strong>: Deployment, monitoring, performance.</li>
+          </ol>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 9. Testing & Representation -->
+        <section id="testing-methods">
+          <h2 class="syllabus-phase">⚙️ Methods for Testing and Representation</h2>
+          <h3>⚙️ Testing Methods</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>🔧 Functional</strong><span>Verifies the system operates according to its functional requirements and produces expected outputs.</span></div>
+            <div class="key-term-item"><strong>✅ Acceptance</strong><span>Determines whether the system meets stakeholder requirements and is ready for deployment.</span></div>
+            <div class="key-term-item"><strong>📡 Live Data</strong><span>Tests using real-world production data to identify issues in a live environment.</span></div>
+            <div class="key-term-item"><strong>🎲 Simulated Data</strong><span>Uses artificially generated data that mirrors expected real-world scenarios.</span></div>
+            <div class="key-term-item"><strong>🧑‍💻 Beta</strong><span>Releases the product to a limited group of real users to identify bugs before full release.</span></div>
+            <div class="key-term-item"><strong>📦 Volume</strong><span>Evaluates system performance under large amounts of data to test scalability.</span></div>
+          </div>
+
+          <h3>🧠 Character Representation</h3>
+          <p>Characters are represented using <strong>ASCII</strong> or <strong>Unicode</strong>. Developers use binary internal formats for functions like case conversion or simple encryption.</p>
+        </section>
+
+        <div class="callout success">
+          <span class="callout-icon">📘</span>
+          <div class="callout-content">
+            <strong>Syllabus Alignment</strong>
+            <p>These specifications are based on the NESA Software Engineering 11–12 Course Specifications (updated Feb 2025).</p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo">💻</div>
+          <span class="footer-name">SoftEng Notes</span>
+        </div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
+      </div>
+      <div class="footer-col">
+        <h4>🔐 Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+      </div>
+      <div class="footer-col">
+        <h4>📈 Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+          <h4>🛡️ Navigate</h4>
+          <a href="../index.html">← Back to Home</a>
+          <a href="secure-software-architecture.html">Next Topic →</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 HSC SoftEng Notes · NESA NSW Aligned</span>
+    </div>
+  </footer>
+
+  <script src="../js/main.js?v=3"></script>
+</body>
+</html>

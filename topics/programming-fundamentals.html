@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programming Fundamentals | HSC Software Engineering</title>
+  <meta name="description" content="In-depth Year 11 HSC Software Engineering notes on Programming Fundamentals, following NESA command verbs, outcomes, and Australian English standards." />
+  <link rel="stylesheet" href="../css/styles.css?v=3" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">💻</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="course-tools.html">Course Tools <span class="badge badge-all">Specs</span></a></li>
+        <li><a href="secure-software-architecture.html">Secure Architecture <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-for-the-web.html">Web Programming <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="software-automation.html">Automation <span class="badge badge-12">Y12</span></a></li>
+        <li><a href="programming-fundamentals.html" class="active">Fundamentals <span class="badge badge-11">Y11</span></a></li>
+        <li><a href="object-oriented-paradigm.html">OOP <span class="badge badge-11">Y11</span></a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Resources</div>
+      <a href="course-tools.html">🛠️ Course Tools & Specifications</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 12</div>
+      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
+      <a href="software-automation.html">⚙️ Software Automation</a>
+      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 11</div>
+      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">🧩 Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+    </div>
+    <button id="theme-toggle-mobile" class="btn btn-mobile-theme">🌙 Toggle Theme</button>
+  </div>
+
+  <header class="topic-header">
+    <div class="topic-header-inner">
+      <nav class="topic-breadcrumb">
+        <a href="../index.html">Home</a> <span>›</span>
+        <a href="../index.html#year11">Year 11</a> <span>›</span>
+        <span>Programming Fundamentals</span>
+      </nav>
+      <h1>📐 Programming Fundamentals</h1>
+      <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
+        Mastering the methodologies of planning, designing, and engineering software solutions through computational thinking and structured data representation.
+      </p>
+      <div class="topic-header-meta">
+        <span class="meta-pill year11">📗 Year 11 — Preliminary</span>
+        <span class="meta-pill">🕐 ~10 weeks</span>
+        <span class="meta-pill">Outcomes: SE-11-01 to 07</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li><a href="#sdlc">🚀 1. Software Development Steps</a></li>
+        <li><a href="#collaboration">🤝 2. Collaboration Tools</a></li>
+        <li><a href="#strategies">🧠 3. Algorithmic Design</a></li>
+        <li><a href="#modelling">📊 4. Modelling Tools</a></li>
+        <li><a href="#data-rep">🔢 5. Data Representation</a></li>
+        <li><a href="#data-types">📋 6. Data Types & Dictionaries</a></li>
+        <li><a href="#data-structures">📚 7. Data Structures</a></li>
+        <li><a href="#management">⚙️ 8. Project Models</a></li>
+        <li><a href="#testing">🧪 9. Evaluation & Debugging</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-content">
+      <div class="content-body">
+
+        <!-- 1. Explore SDLC -->
+        <section id="sdlc">
+          <h2 class="syllabus-phase">🚀 Software Development Steps</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-01)</em></p>
+          <p>📌 <em><strong>Explore</strong> the fundamental software development steps used by programmers to systematically engineer solutions. Each stage ensures a logical progression from problem identification to a finalised product.</em></p>
+          
+          <div class="steps">
+            <div class="step">
+              <div class="step-num">1</div>
+              <div class="step-content"><h4>📝 Requirements Definition</h4><p>The programmer identifies what the software must achieve by consulting stakeholders.<br>🌏 <em>Example: Conducting interviews with school staff to determine features for a new attendance portal.</em></p></div>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <div class="step-content"><h4>📋 Determining Specifications</h4><p>Defining technical constraints such as hardware requirements, RAM limits, and supported operating systems.<br>🌏 <em>Example: Specifying that a game must run at 60fps on a Raspberry Pi 4.</em></p></div>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <div class="step-content"><h4>🎨 Design</h4><p>Algorithms are planned using pseudocode or flowcharts.<br>🌏 <em>Example: Creating a structure chart to map out how the 'Calculate Tax' subroutine interacts with the main program.</em></p></div>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <div class="step-content"><h4>💻 Development</h4><p>The design is translated into a programming language like Python.<br>🌏 <em>Example: Writing the 'if-else' logic to handle user login authentication.</em></p></div>
+            </div>
+            <div class="step">
+              <div class="step-num">5</div>
+              <div class="step-content"><h4>🧩 Integration</h4><p>Combining individual modules into a cohesive system.<br>🌏 <em>Example: Connecting the 'User Interface' module to the 'Database Management' module.</em></p></div>
+            </div>
+            <div class="step">
+              <div class="step-num">6</div>
+              <div class="step-content"><h4>🐛 Testing and Debugging</h4><p>Identifying and rectifying errors using test data.<br>🌏 <em>Example: Running a 'Dry Run' to find out why a loop runs one too many times (an off-by-one error).</em></p></div>
+            </div>
+            <div class="step">
+              <div class="step-num">7</div>
+              <div class="step-content"><h4>📦 Installation</h4><p>Deploying the software to the user.<br>🌏 <em>Example: Providing a .dmg or .exe installer and a user manual to the client.</em></p></div>
+            </div>
+            <div class="step">
+              <div class="step-num">8</div>
+              <div class="step-content"><h4>🛠️ Maintenance</h4><p>The ongoing process of patching bugs and adding features.<br>🌏 <em>Example: Releasing a security patch to protect user data from a newly discovered vulnerability.</em></p></div>
+            </div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 2. Research and Evaluate Collaboration Tools -->
+        <section id="collaboration">
+          <h2 class="syllabus-phase">🤝 Online Collaboration Tools</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-03, SE-11-06)</em></p>
+          <p>📌 <em><strong>Research and Evaluate</strong> the prevalence and use of online code collaboration tools like GitHub, GitLab, and Bitbucket in modern engineering environments.</em></p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>Evaluation/Analysis</th>
+                  <th>Industry Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Version Control</strong></td>
+                  <td>Allows multiple engineers to work on the same file without overwriting changes. Provides a safety net to revert to previous working states.</td>
+                  <td>Using <em>Git</em> to manage changes in a massive codebase like the Linux kernel.</td>
+                </tr>
+                <tr>
+                  <td><strong>Pull Requests</strong></td>
+                  <td>Enables peer review where code is checked for security and efficiency before being merged. This significantly reduces logic errors in production.</td>
+                  <td>An engineer at <em>Atlassian</em> reviewing a colleague's code before updating Jira.</td>
+                </tr>
+                <tr>
+                  <td><strong>Branching</strong></td>
+                  <td>Allows the main "stable" code to remain untouched while experimental features are developed in isolation.</td>
+                  <td>Creating a <em>'beta-feature'</em> branch to test a new AI chatbot in an app.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 3. Apply Algorithmic Design -->
+        <section id="strategies">
+          <h2 class="syllabus-phase">🧠 Algorithmic Design Strategies</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-02)</em></p>
+          <p>📌 <em><strong>Apply</strong> computational thinking by defining the features of standard algorithmic strategies.</em></p>
+          
+          <h3>Divide and Conquer</h3>
+          <p>This strategy involves breaking a complex problem into smaller, identical sub-problems until they are simple enough to solve directly. The solutions to these sub-problems are then combined to form the final result.<br>🌏 <em>Example: In a <strong>Merge Sort</strong>, a large list is repeatedly split in half until single elements remain, which are then merged back together in the correct order.</em> This approach is highly efficient for sorting and searching large datasets.</p>
+
+          <h3>Backtracking</h3>
+          <p>Backtracking is an incremental approach to problem-solving that builds a solution one step at a time. If the algorithm reaches a state where the current path cannot possibly lead to a valid solution (violating a constraint), it "backtracks" to the previous step and tries a different option.<br>🌏 <em>Example: A <strong>Sudoku Solver</strong> attempts a number in a cell; if it later finds a conflict, it returns to that cell and tries the next available number.</em> This strategy is essential for pathfinding and optimisation problems.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Algorithmic Strategies</span></div>
+            <pre><code><span class="cm"># Divide and Conquer: Recursive Binary Search</span>
+<span class="kw">def</span> <span class="fn">binary_search</span>(arr, target, low, high):
+    <span class="kw">if</span> low > high: <span class="kw">return</span> -1
+    mid = (low + high) // 2
+    <span class="kw">if</span> arr[mid] == target: <span class="kw">return</span> mid
+    <span class="kw">elif</span> arr[mid] > target:
+        <span class="kw">return</span> binary_search(arr, target, low, mid - 1)
+    <span class="kw">else</span>:
+        <span class="kw">return</span> binary_search(arr, target, mid + 1, high)
+
+<span class="cm"># Backtracking: Simplified Pathfinding logic</span>
+<span class="kw">def</span> <span class="fn">solve</span>(x, y):
+    <span class="kw">if</span> is_exit(x, y): <span class="kw">return</span> <span class="kw">True</span>
+    <span class="kw">if</span> is_wall(x, y): <span class="kw">return</span> <span class="kw">False</span>
+    <span class="kw">if</span> solve(x + 1, y): <span class="kw">return</span> <span class="kw">True</span> <span class="cm"># Try Right</span>
+    <span class="kw">return</span> <span class="kw">False</span> <span class="cm"># Backtrack</span></code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 4. Use Modelling Tools -->
+        <section id="modelling">
+          <h2 class="syllabus-phase">📊 Modelling and Refinement Tools</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-06)</em></p>
+          <p>📌 <em><strong>Use</strong> modelling tools to support top-down and bottom-up design methodologies.</em></p>
+          
+          <h3>Structure Charts</h3>
+          <p>Structure charts are a top-down tool used to show the hierarchy of subroutines in a system. They focus on modularity, showing which module calls another and what data (parameters) or control signals (flags) are passed between them.<br>🌏 <em>Example: A structure chart for an ATM would show the 'Main' module calling 'Verify PIN' and passing back a 'Valid/Invalid' flag.</em> This allows engineers to see high-level dependencies without getting bogged down in code logic.</p>
+
+          <h3>Abstraction and Refinement</h3>
+          <p><strong>Abstraction</strong> involves hiding implementation details to focus on high-level goals (the 'What'). <strong>Stepwise Refinement</strong> is the process of breaking those high-level goals into smaller, more specific details (the 'How').<br>🌏 <em>Example: An abstract instruction like 'Initialise System' is refined into 'Set counter to 0', 'Clear display', and 'Open file stream'.</em> Together, they allow for manageable development of complex systems.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 5. Investigate Number Systems -->
+        <section id="data-rep">
+          <h2 class="syllabus-phase">🔢 Data Representation & Number Systems</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-03, SE-11-04)</em></p>
+          <p>📌 <em><strong>Investigate</strong> the use of number systems for computing purposes. Computers store everything in binary, but humans use hexadecimal as a shorthand.</em></p>
+          
+          <ul>
+            <li><strong>Binary (Base 2):</strong> Used by hardware for electrical on/off states.</li>
+            <li><strong>Decimal (Base 10):</strong> The standard human system for counting.</li>
+            <li><strong>Hexadecimal (Base 16):</strong> Efficiently represents bytes (e.g., <code>#FFFFFF</code> for white in CSS).</li>
+          </ul>
+
+          <h3>Two's Complement</h3>
+          <p>Two's Complement is the standard method for representing signed (negative) integers in binary. To represent a negative number, the bits of the positive equivalent are inverted (0 to 1 and vice-versa) and 1 is added to the result.<br>🌏 <em>Example: To find -5 in 8-bit, start with 5 (00000101), invert (11111010), and add 1 (11111011).</em> This system is preferred as it allows for simple addition/subtraction circuits and eliminates the 'double zero' (+0 and -0) problem.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Number Investigation</span></div>
+            <pre><code><span class="cm"># Representing integers in different bases</span>
+number = 255
+print(bin(number)) <span class="cm"># 0b11111111 (Binary)</span>
+print(hex(number)) <span class="cm"># 0xff       (Hexadecimal)</span>
+
+<span class="cm"># Binary to Decimal for hardware addresses</span>
+print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 6. Investigate Data Types & Create Dictionaries -->
+        <section id="data-types">
+          <h2 class="syllabus-phase">📋 Data Types and Data Dictionaries</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-04)</em></p>
+          <p>📌 <em><strong>Investigate</strong> standard data types and <strong>Create</strong> data dictionaries to describe and structure data relationships.</em></p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Data Type</th>
+                  <th>Investigated Description</th>
+                  <th>Python Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Char / String</strong></td>
+                  <td>Char represents one character; String is a sequence of characters.</td>
+                  <td><code>"HSC"</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Boolean</strong></td>
+                  <td>Logical values used for binary decisions.</td>
+                  <td><code>is_valid = True</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Integer</strong></td>
+                  <td>Whole numbers stored using binary/Two's Complement.</td>
+                  <td><code>age = 17</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Real (Float)</strong></td>
+                  <td>Decimal numbers. <strong>Single Precision</strong> refers to 32-bit floats.</td>
+                  <td><code>gpa = 3.95</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Date / Time</strong></td>
+                  <td>Stored as seconds from an epoch (e.g., Jan 1st, 1970).</td>
+                  <td><code>import datetime</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p><strong>Data Dictionary:</strong> A metadata tool describing every variable's name, data type, size, description, and validation rules.<br>🌏 <em>Example: Documenting that 'User_ID' must be an integer between 1 and 9999.</em> (SE-11-04)</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 7. Use Data Structures -->
+        <section id="data-structures">
+          <h2 class="syllabus-phase">📚 Data Structures</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02, SE-11-04)</em></p>
+          <p>📌 <em><strong>Use and Implement</strong> data structures that support efficient data storage and retrieval.</em></p>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h4>Arrays (Multidimensional)</h4>
+              <p>Grids or tables of data.<br>🌏 <em>Example: A 2D array representing a chessboard or a spreadsheet.</em></p>
+              <div class="code-block">
+                <pre><code>board = [[0 <span class="kw">for</span> _ <span class="kw">in</span> range(8)] <span class="kw">for</span> _ <span class="kw">in</span> range(8)]</code></pre>
+              </div>
+            </div>
+            <div class="info-card">
+              <h4>Stacks (LIFO)</h4>
+              <p>Last-In-First-Out.<br>🌏 <em>Example: The 'Undo' feature in Word, where the last action performed is the first one reverted.</em></p>
+              <div class="code-block">
+                <pre><code>history = []; history.append(<span class="str">"Action"</span>); history.pop()</code></pre>
+              </div>
+            </div>
+            <div class="info-card">
+              <h4>Hash Tables</h4>
+              <p>Maps keys to values for instant access.<br>🌏 <em>Example: A username database where you lookup a name to get their profile data.</em></p>
+              <div class="code-block">
+                <pre><code>users = {<span class="str">"alice"</span>: {<span class="str">"age"</span>: 17, <span class="str">"year"</span>: 11}}</code></pre>
+              </div>
+            </div>
+            <div class="info-card">
+              <h4>Trees</h4>
+              <p>Hierarchical parent-child nodes.<br>🌏 <em>Example: The file system on your computer (C:\Users\Documents).</em></p>
+            </div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 8. Compare Project Management -->
+        <section id="management">
+          <h2 class="syllabus-phase">⚙️ Project Management Models</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-06)</em></p>
+          <p>📌 <em><strong>Compare</strong> the execution of the Waterfall and Agile project management models in engineering.</em></p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Analysis / Comparison</th>
+                  <th>Example Case</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Waterfall</strong></td>
+                  <td>A linear, rigid sequence of phases. Best when requirements are fixed and changes are unlikely. Documentation is exhaustive up-front.</td>
+                  <td>Building a flight-control system for NASA where failure is not an option.</td>
+                </tr>
+                <tr>
+                  <td><strong>Agile</strong></td>
+                  <td>Iterative and flexible. Work is done in 'sprints' with continuous user feedback. Better for projects where requirements evolve.</td>
+                  <td>Developing a new social media app where user trends change weekly.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 9. Test and Evaluate -->
+        <section id="testing">
+          <h2 class="syllabus-phase">🧪 Evaluation, Testing and Debugging</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
+          <p>📌 <em><strong>Test and Evaluate</strong> solutions based on functionality, performance, and readability using appropriate debugging tools.</em></p>
+
+          <h3>Test Data Selection</h3>
+          <p>Selecting the right data is critical for ensuring secure and robust code execution (SE-11-07).</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Test Data Set</th>
+                  <th>Analysis / Purpose</th>
+                  <th>Example (Range 1-100)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Boundary</strong></td>
+                  <td>Tests the exact limits of valid input ranges.</td>
+                  <td><code>1</code> and <code>100</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Abnormal</strong></td>
+                  <td>Tests how the program handles invalid types or out-of-range data.</td>
+                  <td><code>"Fifty"</code>, <code>-5</code>, <code>1000</code></td>
+                </tr>
+                <tr>
+                  <td><strong>Path Coverage</strong></td>
+                  <td>Ensures every logical branch (every IF/ELSE statement) is executed.</td>
+                  <td>Inputs that trigger both 'True' and 'False' cases.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Debugging Tools</h3>
+
+          <h4>🔴 Breakpoints</h4>
+          <p>A breakpoint is an instruction set within an IDE (such as Visual Studio Code or PyCharm) that <strong>pauses program execution at a specific line</strong>, allowing the engineer to inspect the current state of all variables and memory at that exact moment. For example, when debugging a loop that is supposed to accumulate a total but is producing an incorrect result, placing a breakpoint at the beginning of each iteration allows the engineer to examine the running total before and after each calculation — pinpointing precisely where the logic diverges from the expected behaviour without having to add print statements throughout the code.</p>
+
+          <h4>👁️ Watches</h4>
+          <p>A watch is a debugging feature that <strong>continuously monitors the value of a specific variable</strong> as the program executes, updating in real time with each statement. This is particularly useful when a variable is modified across multiple functions or modules. For example, setting a watch on a <code>total_price</code> variable allows an engineer to observe exactly at which line — and within which function — an incorrect GST calculation is being applied, rather than manually tracing through the entire codebase to find the source of the discrepancy.</p>
+
+          <h4>⏭️ Single Line Stepping</h4>
+          <p>Single line stepping (also known as "step-through" debugging) <strong>executes the program one statement at a time</strong>, pausing after each line. This allows engineers to trace the exact path of execution through complex control structures — such as nested conditionals or recursive functions — verifying that each branch evaluates as intended. For example, stepping through an <code>IF/ELIF/ELSE</code> chain confirms which condition is evaluating to True for a particular input, revealing logical errors in the control flow that would be completely invisible during normal, uninterrupted execution.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Evaluative Testing and Debugging</span></div>
+            <pre><code><span class="kw">def</span> <span class="fn">process_input</span>(value):
+    <span class="kw">try</span>:
+        n = int(value)
+        <span class="kw">if</span> 1 &lt;= n &lt;= 100: <span class="kw">return</span> <span class="str">"Valid"</span> <span class="cm"># Boundary check</span>
+        <span class="kw">else</span>: <span class="kw">return</span> <span class="str">"Out of Range"</span>
+    <span class="kw">except</span> ValueError:
+        <span class="kw">return</span> <span class="str">"Abnormal Data"</span> <span class="cm"># Handling faulty data</span>
+
+<span class="cm"># Example testing</span>
+print(process_input(100))   <span class="cm"># Boundary: Valid</span>
+print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal: Handled</span></code></pre>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-bottom">
+      <span>© 2025 HSC SoftEng Notes · NESA NSW Preliminary Aligned · Australian English Standards</span>
+    </div>
+  </footer>
+
+  <script src="../js/main.js?v=3"></script>
+</body>
+</html>
