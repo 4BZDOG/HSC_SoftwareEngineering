@@ -80,21 +80,84 @@
     <aside class="sidebar">
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
-        <li><a href="#intro">⚡ 1. OOP vs Procedural</a></li>
-        <li><a href="#pillars">🧱 2. The Four Pillars of OOP</a></li>
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Part 1 — Understanding OOP</li>
+        <li><a href="#key-features">🧩 1. Key Features of OOP</a></li>
+        <li><a href="#intro">⚡ 2. OOP vs Procedural</a></li>
         <li><a href="#modelling">📦 3. System Modelling Tools</a></li>
-        <li><a href="#design-process">🎨 4. The Design Process</a></li>
-        <li><a href="#development">⚙️ 5. Implementation & Optimisation</a></li>
-        <li><a href="#collaboration">🤝 6. Collaborative Code Development</a></li>
-        <li><a href="#testing">🧪 7. Testing & Quality Assurance</a></li>
+        <li><a href="#design-process">🎨 4. Design Process</a></li>
+        <li><a href="#effectiveness">📊 5. Assessing Code Effectiveness</a></li>
+        <li><a href="#message-passing">📨 6. Message-Passing Between Objects</a></li>
+        <li><a href="#optimisation">⚡ 7. Code Optimisation</a></li>
+        <li><a href="#collaboration">🤝 8. Collaborative Development Features</a></li>
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 2 — Programming in OOP</li>
+        <li><a href="#design-implement">💻 9. Design &amp; Implementation</a></li>
+        <li><a href="#code-practices">🔧 10. Implementation Practices</a></li>
+        <li><a href="#testing">🧪 11. Testing &amp; Quality Assurance</a></li>
       </ul>
     </aside>
 
     <main class="page-content">
       <div class="content-body">
 
-        <!-- 1. Compare Paradigms -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 1: UNDERSTANDING OOP                              -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Syllabus Part 1</span>
+          <span class="part-name">🧩 Understanding OOP</span>
+        </div>
+
+        <!-- 1. Apply Key Features -->
+        <section id="key-features">
+          <h2 class="syllabus-phase">🧩 Key Features of Object-Oriented Programming</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-02, SE-11-08)</em></p>
+          <p>📌 <em><strong>Apply</strong> the key features of an object-oriented programming language to design and implement software solutions.</em></p>
+
+          <h3>Objects and Classes</h3>
+          <p><strong>Objects</strong> are individual instances of data and behaviour that exist within a running program. A <strong>class</strong> is a blueprint or template that defines the structure and behaviour of all objects created from it. Classes specify what attributes (data) and methods (behaviour) objects will have. For example, a <code>Car</code> class defines that all car objects will have attributes like colour and speed, and methods like accelerate() and brake().</p>
+
+          <h3>Encapsulation</h3>
+          <p>Encapsulation is the process of bundling data (attributes) and the methods that operate on that data into a single unit (the class). It involves <strong>data hiding</strong> by using access modifiers (private, protected, public) to control which parts of the code can directly access an object's internal state. This ensures that data can only be changed through validated methods (setters), which maintains data integrity and security.</p>
+
+          <h3>Abstraction</h3>
+          <p>Abstraction focuses on hiding complex implementation details and showing only the essential features of an object to the user. A programmer interacts with an object through a simplified interface without needing to understand the underlying code logic. This reduces system complexity and allows internal implementation to change without affecting code that uses the object.</p>
+
+          <h3>Inheritance and Generalisation</h3>
+          <p><strong>Inheritance</strong> allows a new class (subclass or derived class) to adopt the attributes and methods of an existing class (superclass or base class). <strong>Generalisation</strong> is the process of identifying common traits among multiple classes and moving them into a shared parent class. This promotes massive code reuse and establishes a logical hierarchy within the software architecture.</p>
+
+          <h3>Polymorphism</h3>
+          <p>Polymorphism, meaning "many forms", allows different classes to be treated as instances of the same superclass through a uniform interface. A programmer can call the same method name on different objects, and each object will respond in its own specific way. This makes code highly flexible and easier to extend with new object types without modifying existing code.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Applying OOP Key Features</span></div>
+            <pre><code><span class="kw">class</span> <span class="fn">Account</span>: <span class="cm"># Class definition (blueprint)</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, owner, balance):
+        self.owner = owner
+        self.__balance = balance <span class="cm"># Encapsulation (private)</span>
+
+    <span class="kw">def</span> <span class="fn">get_balance</span>(self): <span class="cm"># Abstraction - interface</span>
+        <span class="kw">return</span> self.__balance
+
+<span class="kw">class</span> <span class="fn">SavingsAccount</span>(Account): <span class="cm"># Inheritance</span>
+    <span class="kw">def</span> <span class="fn">apply_interest</span>(self):
+        <span class="cm"># Specialised behaviour</span>
+        <span class="kw">pass</span>
+
+acc1 = Account(<span class="str">"Alice"</span>, 1000) <span class="cm"># Object instance</span>
+acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
+
+<span class="kw">def</span> <span class="fn">display_account</span>(acc): <span class="cm"># Polymorphism</span>
+    print(f<span class="str">"Owner: {acc.owner}"</span>)</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 2. Compare Procedural vs OOP -->
         <section id="intro">
+          <h2 class="syllabus-phase">⚡ Comparing Procedural and Object-Oriented Programming</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
+          <p>📌 <em><strong>Compare</strong> procedural programming with object-oriented programming. Understanding the differences helps engineers choose the right paradigm for each project.</em></p>
           <h2 class="syllabus-phase">⚡ Understanding the Paradigm</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p>📌 <em><strong>Compare</strong> procedural programming with the Object-Oriented Paradigm (OOP). While procedural programming focuses on a top-down sequence of actions (functions) acting upon data, OOP organises code into objects that combine data (attributes) and behaviour (methods).</em></p>
@@ -175,11 +238,11 @@
 
         <hr class="divider" />
 
-        <!-- 3. Modelling Tools -->
+        <!-- 3. System Modelling Tools -->
         <section id="modelling">
           <h2 class="syllabus-phase">📦 System Modelling Tools</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-11-06)</em></p>
-          <p>📌 <em><strong>Use</strong> modelling tools from the course specifications to represent the structure and logic of OOP systems.</em></p>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-06)</em></p>
+          <p>📌 <em><strong>Use</strong> data flow diagrams, structure charts and class diagrams to represent a system. These modelling tools allow engineers to visualise system architecture before implementation.</em></p>
           
           <ul>
             <li>🛠️ <strong>Class Diagrams (p. 9):</strong> The primary tool for OOP. It represents classes as three-part boxes (Name, Attributes, Methods) and uses solid lines with hollow arrows to show inheritance (Outcome SE-11-06).</li>
@@ -196,33 +259,96 @@
 
         <!-- 4. Design Process -->
         <section id="design-process">
-          <h2 class="syllabus-phase">🎨 The OOP Design Process</h2>
+          <h2 class="syllabus-phase">🎨 Design Process for OOP</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-01)</em></p>
-          <p>📌 <em><strong>Describe</strong> the structured process used to engineer software in an object-oriented environment.</em></p>
+          <p>📌 <em><strong>Describe</strong> the process of design used to develop code in an OOP language, including task definition, top-down and bottom-up approaches, facade pattern, and agility.</em></p>
+
+          <h3>Task Definition</h3>
+          <p>The initial phase where engineers formally outline the problem scope and define the specific objects and classes required to solve it. This involves understanding the requirements, identifying the key entities (objects) in the problem domain, and determining their relationships and responsibilities.</p>
           
           <h3>Top-down and Bottom-up Design</h3>
-          <p>Top-down design starts with the high-level system requirements and breaks them down into smaller sub-systems or classes. Conversely, bottom-up design involves building and testing robust base classes first, then combining them to create the final application. Effective OOP engineering often uses a hybrid approach, ensuring individual objects are functional (bottom-up) while meeting the overall system architecture (top-down) (Outcome SE-11-01).</p>
+          <p><strong>Top-down design</strong> starts with high-level system requirements and breaks them down into smaller sub-systems or classes. This approach defines the overall structure first, then fills in details for each class. <strong>Bottom-up design</strong> involves building and testing robust base classes first, then combining them to create the final application. Effective OOP engineering often uses a hybrid approach, ensuring individual objects are functional (bottom-up) while meeting the overall system architecture (top-down).</p>
 
-          <div class="key-terms">
-            <div class="key-term-item"><strong>📝 Task Definition</strong><span>Formally outlining the problem scope and defining the specific objects required to solve it.</span></div>
-            <div class="key-term-item"><strong>🏛️ Facade Pattern</strong><span>A design technique that provides a simplified "front-end" interface to a complex set of classes, making the system easier to use and maintain.</span></div>
-            <div class="key-term-item"><strong>🔄 Agility</strong><span>Implementing an iterative development cycle where code is regularly reviewed and updated based on testing and user feedback.</span></div>
+          <h3>Facade Pattern</h3>
+          <p>The facade pattern is a design technique that provides a simplified "front-end" interface to a complex set of classes, hiding the internal complexity from the user. By creating a single facade class that coordinates multiple internal classes, developers make the system easier to use, understand, and maintain. The user interacts only with the facade, not the complex subsystems behind it.</p>
+
+          <h3>Agility</h3>
+          <p>Agility in OOP design refers to implementing an iterative development cycle where code is regularly reviewed and updated based on testing, user feedback, and changing requirements. Agile approaches favour frequent refactoring, continuous improvement, and adaptive design rather than rigid upfront planning. This flexibility allows software to evolve as understanding of the problem deepens.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 5. Assess Effectiveness -->
+        <section id="effectiveness">
+          <h2 class="syllabus-phase">📊 Assessing Code Effectiveness</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-07)</em></p>
+          <p>📌 <em><strong>Assess</strong> the effectiveness of programming code developed to implement an algorithm. This involves evaluating whether the code correctly implements the algorithm, runs efficiently, and is maintainable.</em></p>
+
+          <h3>Evaluation Criteria</h3>
+          <ul>
+            <li><strong>Correctness:</strong> Does the code produce the expected output for all valid inputs? Does it correctly implement the algorithm's logic?</li>
+            <li><strong>Efficiency:</strong> Does the code run efficiently in terms of time complexity (execution speed) and space complexity (memory usage)? Can it handle large datasets?</li>
+            <li><strong>Maintainability:</strong> Is the code well-structured, clearly commented, and easy for other developers to understand and modify? Does it follow OOP principles?</li>
+            <li><strong>Robustness:</strong> Does the code handle edge cases and errors gracefully without crashing?</li>
+            <li><strong>Scalability:</strong> Can the code be extended with new features or adapted to larger problems without major restructuring?</li>
+          </ul>
+
+          <p>In OOP, effectiveness is enhanced through proper use of classes, inheritance, and encapsulation. A well-designed class hierarchy makes code more testable, reusable, and maintainable. Poor design—such as overly deep inheritance chains or god objects (classes that do too much)—reduces effectiveness.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 6. Message Passing -->
+        <section id="message-passing">
+          <h2 class="syllabus-phase">📨 Message-Passing Between Objects</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-08)</em></p>
+          <p>📌 <em><strong>Investigate</strong> how OOP languages handle message-passing between objects. In OOP, objects communicate by "passing messages"—which is essentially one object calling a method of another object.</em></p>
+
+          <h3>How Message-Passing Works</h3>
+          <p>When Object A calls a method on Object B, Object A is sending a "message" to Object B requesting it to perform a specific action. The syntax looks like <code>objectB.methodName(parameters)</code>. This allows for decoupling: Object A needs to know <em>what</em> Object B can do (its interface), but not <em>how</em> it does it (its implementation).</p>
+
+          <p>This investigated feature enables several OOP benefits:</p>
+          <ul>
+            <li><strong>Modularity:</strong> Each object is independent and can be tested, modified, or replaced without affecting other objects that use its interface.</li>
+            <li><strong>Flexibility:</strong> Polymorphism allows different objects to respond to the same message in different ways based on their class type.</li>
+            <li><strong>Scalability:</strong> New classes can be added without modifying existing code that sends messages through a common interface.</li>
+            <li><strong>Maintainability:</strong> Changes to an object's internal implementation don't affect other objects as long as the interface (method signatures) remains the same.</li>
+          </ul>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Message-Passing Example</span></div>
+            <pre><code><span class="kw">class</span> <span class="fn">BankAccount</span>:
+    <span class="kw">def</span> <span class="fn">withdraw</span>(self, amount):
+        <span class="cm"># Message: "withdraw 500 from this account"</span>
+        <span class="kw">if</span> amount &lt;= self.balance:
+            self.balance -= amount
+            <span class="kw">return</span> <span class="kw">True</span>
+        <span class="kw">return</span> <span class="kw">False</span>
+
+account = BankAccount()
+result = account.withdraw(500) <span class="cm"># Passing message to account object</span>
+<span class="cm"># The account handles the message; caller doesn't care how</span></code></pre>
           </div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 5. Implementation & Optimisation -->
-        <section id="development">
-          <h2 class="syllabus-phase">⚙️ Implementation & Optimisation</h2>
+        <!-- 7. Code Optimisation -->
+        <section id="optimisation">
+          <h2 class="syllabus-phase">⚡ Code Optimisation in Software Engineering</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-08)</em></p>
-          <p>📌 <em><strong>Investigate</strong> how objects communicate and <strong>Explain</strong> techniques for refining code performance.</em></p>
+          <p>📌 <em><strong>Explain</strong> code optimisation in software engineering. Code optimisation is the engineering practice of modifying software to make it more efficient, typically by reducing memory usage (RAM) or increasing execution speed (CPU).</em></p>
 
-          <h3>Message Passing</h3>
-          <p>In OOP, objects do not exist in isolation; they interact by "passing messages"—which is essentially one object calling a method of another. This allows for "decoupling", where an object needs to know <em>what</em> another object can do, but not <em>how</em> it does it. For example, a <code>User</code> object might pass a <code>save()</code> message to a <code>Database</code> object. This investigated feature is what enables the high modularity of OOP languages (Outcome SE-11-08).</p>
+          <h3>Optimisation Techniques in OOP</h3>
+          <ul>
+            <li><strong>Algorithm Refinement:</strong> Improving the efficiency of algorithms within methods by choosing faster data structures or reducing iterations.</li>
+            <li><strong>Lazy Instantiation:</strong> Creating objects only when needed, rather than upfront, to reduce memory overhead.</li>
+            <li><strong>Inheritance Hierarchy Optimisation:</strong> Ensuring inheritance chains are not unnecessarily deep, which can slow method lookups.</li>
+            <li><strong>Caching:</strong> Storing results of expensive operations to avoid recalculating them.</li>
+            <li><strong>Code Profiling:</strong> Identifying bottlenecks (slow parts) in code using profiling tools to target optimisation efforts where they matter most.</li>
+          </ul>
 
-          <h3>Code Optimisation</h3>
-          <p>Code optimisation is the engineering practice of modifying software to make it more efficient, typically by reducing memory usage (RAM) or increasing execution speed (CPU). In OOP, this involves refining algorithms within methods, removing redundant object instantiations, and ensuring that inheritance hierarchies are not unnecessarily deep. Optimised code is more maintainable and performs better on target hardware (Outcome SE-11-08).</p>
+          <p>Optimised code performs better on target hardware, consumes fewer resources, and provides a better user experience. However, optimisation must be balanced against code readability and maintainability—premature optimisation can make code harder to understand without providing meaningful performance gains.</p>
 
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Clean Implementation</span></div>
@@ -241,11 +367,11 @@
 
         <hr class="divider" />
 
-        <!-- 6. Collaborative Development -->
+        <!-- 8. Collaborative Development -->
         <section id="collaboration">
-          <h2 class="syllabus-phase">🤝 Collaborative Code Development</h2>
+          <h2 class="syllabus-phase">🤝 Collaborative Code Development Features</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-06)</em></p>
-          <p>📌 <em><strong>Outline</strong> the features of the object-oriented paradigm that support engineering in teams.</em></p>
+          <p>📌 <em><strong>Outline</strong> the features of OOP that support collaborative code development, including consistency, code commenting, version control, and feedback mechanisms.</em></p>
           
           <ul>
             <li><strong>Consistency:</strong> Using classes and standard naming conventions (e.g., CamelCase for classes) ensures the codebase is predictable for all team members.</li>
@@ -257,44 +383,117 @@
 
         <hr class="divider" />
 
-        <!-- 7. Testing -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 2: PROGRAMMING IN OOP                             -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Syllabus Part 2</span>
+          <span class="part-name">💻 Programming in OOP</span>
+        </div>
+
+        <!-- 9. Design and Implement -->
+        <section id="design-implement">
+          <h2 class="syllabus-phase">💻 Design and Implementation in OOP</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-05)</em></p>
+          <p>📌 <em><strong>Design and Implement</strong> computer programs involving branching, iteration and functions in an OOP language for an identified need or opportunity.</em></p>
+
+          <h3>Program Structure with Control Flow</h3>
+          <p>Effective OOP programs combine three fundamental control structures:</p>
+          <ul>
+            <li><strong>Branching:</strong> Using if/else and switch statements to make decisions based on object state or input. For example, a <code>BankAccount.withdraw()</code> method checks if sufficient balance exists.</li>
+            <li><strong>Iteration:</strong> Using for, while, and foreach loops to process collections of objects or repeat operations. For example, iterating through a list of Customer objects.</li>
+            <li><strong>Functions (Methods):</strong> Encapsulating logic in methods that accept parameters and return results. Each method should perform one logical task.</li>
+          </ul>
+
+          <h3>Real-World Application</h3>
+          <p>When designing OOP programs for actual needs, engineers must:</p>
+          <ul>
+            <li>Identify the objects in the problem domain (e.g., Student, Course, Enrolment for a school system).</li>
+            <li>Define classes with appropriate attributes and methods.</li>
+            <li>Design relationships between classes (inheritance, composition).</li>
+            <li>Implement logic using branching and iteration within methods.</li>
+            <li>Test each class independently before integration.</li>
+          </ul>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 10. Implementation Practices -->
+        <section id="code-practices">
+          <h2 class="syllabus-phase">🔧 Implementation and Modification Practices</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
+          <p>📌 <em><strong>Implement and Modify</strong> OOP programming code following best practices for maintainability, testability, and collaboration.</em></p>
+
+          <h3>Clear and Uncluttered Mainline</h3>
+          <p>The main program should be clean and easy to read, delegating complex logic to helper methods. Avoid embedding business logic directly in the main method. Instead, create objects and call their methods. This separation of concerns makes the flow of the program obvious and maintainable.</p>
+
+          <h3>One Logical Task Per Subroutine</h3>
+          <p>Each method should do one thing and do it well (the Single Responsibility Principle). A method named <code>processPayment()</code> should handle payment logic only, not also send emails and update inventory. This principle makes code easier to understand, test, and reuse.</p>
+
+          <h3>Use of Stubs</h3>
+          <p>A stub is a minimal implementation or placeholder for a subroutine, method, or class that will be fully developed later. Stubs allow high-level logic to be tested before all detailed methods are complete. For example, a <code>DatabaseConnection.save()</code> stub might just print "Saving..." while development of the actual database code continues elsewhere. This enables parallel development and testing.</p>
+
+          <h3>Control Structures and Data Structures</h3>
+          <p>Implementation must effectively use both control structures (if/else, loops) to direct program flow and data structures (arrays, lists, trees) to organise data. Choosing the right combination improves both efficiency and code clarity.</p>
+
+          <h3>Ease of Maintenance</h3>
+          <p>Code should be maintainable through:</p>
+          <ul>
+            <li>Clear naming conventions for classes, methods, and variables.</li>
+            <li>Proper encapsulation—hiding implementation details behind clear interfaces.</li>
+            <li>Comprehensive comments explaining non-obvious logic.</li>
+            <li>Avoiding deep nesting and overly complex methods.</li>
+            <li>Following consistent formatting and style.</li>
+          </ul>
+
+          <h3>Version Control</h3>
+          <p>Using version control systems (Git, GitLab, Bitbucket) is essential for OOP development. Version control allows multiple developers to work on different classes simultaneously, track changes, revert to previous versions if needed, and maintain an audit trail of who changed what and why. Commits should be frequent and have clear messages describing the changes made.</p>
+
+          <h3>Regular Backup</h3>
+          <p>Beyond version control, regular backups of the entire codebase ensure protection against data loss from hardware failures. Backups should be stored off-site or in the cloud to protect against local disasters. Automated backup systems are preferred to ensure consistency and reliability.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 11. Testing and Quality Assurance -->
         <section id="testing">
-          <h2 class="syllabus-phase">🧪 Testing & Quality Assurance</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-11-07)</em></p>
-          <p>📌 <em><strong>Apply</strong> and <strong>Analyse</strong> methodologies to evaluate the effectiveness and security of OOP solutions.</em></p>
+          <h2 class="syllabus-phase">🧪 Testing and Quality Assurance</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
+          <p>📌 <em><strong>Apply</strong> methodologies to test and evaluate code. Quality assurance ensures software meets specified engineering standards and works correctly.</em></p>
 
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Methodology</th>
-                  <th>Analysis / Engineering Purpose</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Black Box Testing</strong></td>
-                  <td>Testing inputs and outputs without knowledge of the code. Ensures the software meets functional requirements.</td>
-                </tr>
-                <tr>
-                  <td><strong>White Box Testing</strong></td>
-                  <td>Testing with full access to the internal class logic. Used to ensure all conditional branches (IF/ELSE) are secure.</td>
-                </tr>
-                <tr>
-                  <td><strong>Grey Box Testing</strong></td>
-                  <td>A hybrid approach where the tester has partial knowledge of the internals (like the data structure) to build better test cases.</td>
-                </tr>
-                <tr>
-                  <td><strong>Unit -> System</strong></td>
-                  <td>The process of testing individual classes (Unit), then groups of classes (Subsystem), then the full integrated program (System).</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <h3>Testing Hierarchy: Unit, Subsystem, and System</h3>
+          <p>Testing occurs at multiple levels, building from smallest to largest components:</p>
 
-          <div class="callout success">
-            <p><strong>Quality Assurance (SE-11-06):</strong> QA is the systematic process of ensuring software meets specified engineering standards. This includes regular backups, rigorous testing, and the use of <strong>Stubs</strong> (dummy subroutines) to test high-level logic before all classes are fully developed (Outcome SE-11-07).</p>
-          </div>
+          <h4>Unit Testing</h4>
+          <p>Testing individual classes or methods in isolation to ensure they perform their intended function correctly. For example, testing a <code>BankAccount.withdraw()</code> method with various inputs (sufficient balance, insufficient balance, negative amount, zero amount). Unit tests are the most granular and should be written by the developer who wrote the code.</p>
+
+          <h4>Subsystem Testing</h4>
+          <p>Testing groups of related classes that work together as a functional subsystem. For example, testing the interaction between <code>Customer</code>, <code>Order</code>, and <code>Payment</code> classes to ensure orders are created and payments are processed correctly. This level catches integration issues that unit tests might miss.</p>
+
+          <h4>System Testing</h4>
+          <p>Testing the entire integrated application end-to-end to ensure all components work together and meet the overall requirements. System testing includes testing the application's interaction with external systems (databases, APIs, etc.) and verifying that the entire workflow functions as expected.</p>
+
+          <h3>Testing Approaches: Black, White, and Grey Box</h3>
+
+          <h4>Black Box Testing</h4>
+          <p>Testing inputs and outputs without access to or knowledge of the internal code structure. The tester treats the software as a "black box" and tests it purely based on specifications. This approach ensures the software meets functional requirements from a user's perspective. For example, testing that a login system correctly accepts valid credentials and rejects invalid ones, without examining the authentication code.</p>
+
+          <h4>White Box Testing</h4>
+          <p>Testing with complete access to and understanding of the internal code structure. The tester examines the code logic, control flow, and data flow to ensure all paths and conditions are tested. This approach is critical for security, ensuring all potential vulnerabilities and logic errors are identified. For example, verifying that all conditional branches (IF/ELSE statements) in a method execute correctly under different conditions.</p>
+
+          <h4>Grey Box Testing</h4>
+          <p>A hybrid approach where the tester has partial knowledge of the internal structure (like knowing which classes exist and their general purpose) but not the implementation details. This allows more targeted testing than black box while being less resource-intensive than white box. For example, knowing the database schema but not the exact SQL queries used.</p>
+
+          <h3>Quality Assurance Process</h3>
+          <p>Quality Assurance (QA) is the systematic process of ensuring software meets specified engineering standards and quality criteria. QA includes:</p>
+          <ul>
+            <li><strong>Requirements Verification:</strong> Ensuring the code implements all specified requirements.</li>
+            <li><strong>Code Review:</strong> Peer examination of code for logic errors, adherence to standards, and maintainability.</li>
+            <li><strong>Automated Testing:</strong> Using test suites that run automatically on every code change to catch regressions.</li>
+            <li><strong>Documentation:</strong> Ensuring code is properly documented so maintainability is assured.</li>
+            <li><strong>Performance Testing:</strong> Verifying the code meets performance requirements under expected and peak loads.</li>
+            <li><strong>Security Testing:</strong> Identifying and fixing security vulnerabilities (part of Secure Software Development as per SE-12-X topics).</li>
+          </ul>
         </section>
 
       </div>
