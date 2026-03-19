@@ -840,8 +840,27 @@ logging.basicConfig(filename=<span class="str">'app.log'</span>, level=logging.E
   <script src="../js/main.js?v=3"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>
-    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
-    mermaid.contentLoaded();
+    const initMermaid = () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: isDark ? 'dark' : 'default',
+        securityLevel: 'loose',
+        flowchart: { useMaxWidth: true },
+        sequence: { useMaxWidth: true }
+      });
+      mermaid.contentLoaded();
+    };
+
+    // Initialize on load
+    initMermaid();
+
+    // Reinitialize when theme changes
+    const observer = new MutationObserver(initMermaid);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
   </script>
 </body>
 </html>

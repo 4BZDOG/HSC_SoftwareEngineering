@@ -297,6 +297,67 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
+  /* ── Diagram Block Collapsibility ── */
+  (() => {
+    const DIAGRAM_KEY = 'hsc-diagram-collapsed';
+    const collapsed = JSON.parse(localStorage.getItem(DIAGRAM_KEY) || '{}');
+
+    // Initialize diagram blocks
+    document.querySelectorAll('.diagram-block').forEach((block, idx) => {
+      const h4 = block.querySelector('h4');
+      if (!h4) return;
+
+      // Create wrapper for diagram content if not already wrapped
+      let body = block.querySelector('.diagram-body');
+      if (!body) {
+        body = document.createElement('div');
+        body.className = 'diagram-body';
+
+        // Move all siblings of h4 into body
+        const siblings = Array.from(block.children).filter(el => el !== h4);
+        siblings.forEach(el => body.appendChild(el));
+        block.appendChild(body);
+      }
+
+      // Restore saved collapse state
+      if (collapsed[idx]) {
+        block.classList.add('diagram-collapsed');
+        body.style.maxHeight = '0px';
+        body.style.opacity = '0';
+      } else {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        body.style.opacity = '1';
+      }
+
+      // Add click handler for toggling
+      h4.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isCollapsing = !block.classList.contains('diagram-collapsed');
+
+        if (isCollapsing) {
+          block.classList.add('diagram-collapsed');
+          body.style.maxHeight = '0px';
+          body.style.opacity = '0';
+          collapsed[idx] = true;
+        } else {
+          block.classList.remove('diagram-collapsed');
+          body.style.maxHeight = body.scrollHeight + 'px';
+          body.style.opacity = '1';
+          collapsed[idx] = false;
+        }
+
+        localStorage.setItem(DIAGRAM_KEY, JSON.stringify(collapsed));
+      });
+
+      // Adjust max-height when window resizes
+      window.addEventListener('resize', () => {
+        if (!block.classList.contains('diagram-collapsed')) {
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
+  })();
+
   /* ── Copy code button ── */
   document.querySelectorAll('.code-block').forEach(block => {
     const copyBtn = document.createElement('button');

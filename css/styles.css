@@ -1603,6 +1603,7 @@ footer {
   margin: 2rem 0;
   border-radius: var(--radius-md);
   overflow-x: auto;
+  transition: max-height var(--transition), opacity var(--transition);
 }
 
 [data-theme="dark"] .diagram-block {
@@ -1616,6 +1617,38 @@ footer {
   color: var(--primary);
   font-size: 1.1rem;
   font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+[data-theme="dark"] .diagram-block h4 {
+  color: var(--accent);
+}
+
+.diagram-block h4::after {
+  content: '▼';
+  display: inline-block;
+  margin-left: 0.5rem;
+  transition: transform var(--transition);
+  font-size: 0.75rem;
+}
+
+.diagram-block.diagram-collapsed h4::after {
+  transform: rotate(-90deg);
+}
+
+.diagram-body {
+  overflow: hidden;
+  transition: max-height var(--transition), opacity var(--transition);
+}
+
+.diagram-collapsed .diagram-body {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
 }
 
 .diagram-figure {
@@ -1662,15 +1695,25 @@ footer {
   border-radius: var(--radius-md);
   overflow-x: auto;
   margin: 1rem 0;
+  min-height: 200px;
 }
 
 [data-theme="dark"] .mermaid {
-  background: #1a1a2e;
+  background: #0f172a;
+  filter: brightness(1.1);
 }
 
 .mermaid svg {
   max-width: 100%;
   height: auto;
+}
+
+[data-theme="dark"] .mermaid svg text {
+  fill: #e2e8f0;
+}
+
+[data-theme="dark"] .mermaid svg g text {
+  fill: #e2e8f0;
 }
 
 .btn-mobile-theme {
