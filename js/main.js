@@ -55,19 +55,43 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Table of Contents — Active Highlight on Scroll ── */
   const tocLinks = document.querySelectorAll('.toc-list a');
   if (tocLinks.length > 0) {
-    const headings = Array.from(document.querySelectorAll('.content-body h2, .content-body h3'));
+    // Tag part-label list items (those without an anchor child)
+    document.querySelectorAll('.toc-list > li').forEach(li => {
+      if (!li.querySelector('a')) li.classList.add('toc-part-label');
+    });
+
+    const allTocLis = Array.from(document.querySelectorAll('.toc-list > li'));
+
+    function setActivePart(activeLi) {
+      document.querySelectorAll('.toc-part-label').forEach(pl => pl.classList.remove('toc-part-active'));
+      if (!activeLi) return;
+      const idx = allTocLis.indexOf(activeLi);
+      for (let i = idx; i >= 0; i--) {
+        if (allTocLis[i].classList.contains('toc-part-label')) {
+          allTocLis[i].classList.add('toc-part-active');
+          break;
+        }
+      }
+    }
+
+    // Observe sections directly (they carry the IDs the TOC hrefs target)
+    const sections = Array.from(document.querySelectorAll('.content-body section[id]'));
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          tocLinks.forEach(l => {
-            l.classList.toggle('active', l.getAttribute('href') === `#${id}`);
-          });
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        tocLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${id}`));
+
+        const activeLink = document.querySelector(`.toc-list a[href="#${id}"]`);
+        if (activeLink) {
+          // Scroll sidebar to keep active link visible
+          activeLink.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          setActivePart(activeLink.closest('li'));
         }
       });
-    }, { rootMargin: '-20% 0px -75% 0px' });
+    }, { rootMargin: '-10% 0px -80% 0px' });
 
-    headings.forEach(h => { if (h.id) observer.observe(h); });
+    sections.forEach(s => observer.observe(s));
   }
 
   /* ── Search (home page) ── */
@@ -111,6 +135,72 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.1 });
     animItems.forEach(el => anim.observe(el));
   }
+
+  /* ── Collapsible Major Part Blocks ── */
+  (function () {
+    const PART_KEY = 'hsc-parts';
+    const pageKey = window.location.pathname;
+
+    function getState() {
+      try { return JSON.parse(localStorage.getItem(PART_KEY) || '{}'); }
+      catch { return {}; }
+    }
+    function setState(key, collapsed) {
+      const s = getState();
+      if (collapsed) s[key] = 1; else delete s[key];
+      try { localStorage.setItem(PART_KEY, JSON.stringify(s)); } catch {}
+    }
+
+    document.querySelectorAll('.part-block').forEach((block, idx) => {
+      const stateKey = `${pageKey}::part-${idx}`;
+
+      // Inject chevron
+      const chevron = document.createElement('span');
+      chevron.className = 'part-chevron';
+      chevron.setAttribute('aria-hidden', 'true');
+      chevron.innerHTML = `<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>`;
+      block.appendChild(chevron);
+
+      // Wrap all following siblings until the next .part-block in an animated group
+      const group    = document.createElement('div');
+      const inner    = document.createElement('div');
+      group.className = 'part-group';
+      inner.className = 'part-group-inner';
+      group.appendChild(inner);
+
+      const siblings = [];
+      let el = block.nextElementSibling;
+      while (el && !el.classList.contains('part-block')) {
+        siblings.push(el);
+        el = el.nextElementSibling;
+      }
+      block.insertAdjacentElement('afterend', group);
+      siblings.forEach(s => inner.appendChild(s));
+
+      // Restore saved collapse state
+      const isCollapsed = getState()[stateKey] === 1;
+      if (isCollapsed) {
+        block.classList.add('part-collapsed');
+        group.classList.add('part-collapsed');
+      }
+
+      block.setAttribute('role', 'button');
+      block.setAttribute('aria-expanded', String(!isCollapsed));
+      block.setAttribute('tabindex', '0');
+
+      function toggle() {
+        const nowCollapsed = block.classList.toggle('part-collapsed');
+        group.classList.toggle('part-collapsed', nowCollapsed);
+        block.setAttribute('aria-expanded', String(!nowCollapsed));
+        setState(stateKey, nowCollapsed);
+      }
+
+      block.addEventListener('click', toggle);
+      block.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+      });
+    });
+  })();
 
   /* ── Collapsible Syllabus Sections ── */
   (function () {
@@ -174,17 +264,21 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    /* ── Auto-expand section when its TOC link is clicked ── */
+    /* ── Auto-expand part + section when TOC link is clicked ── */
     document.querySelectorAll('.toc-list a[href^="#"]').forEach(link => {
       link.addEventListener('click', () => {
         const target = document.querySelector(link.getAttribute('href'));
         if (!target) return;
+        // Expand collapsed part-group first
+        const partGroup = target.closest('.part-group');
+        if (partGroup?.classList.contains('part-collapsed')) {
+          partGroup.previousElementSibling?.click();
+        }
+        // Expand collapsed section
         const h2 = target.tagName === 'SECTION'
           ? target.querySelector('h2.syllabus-phase')
           : target.closest('section')?.querySelector('h2.syllabus-phase');
-        if (h2 && h2.classList.contains('section-collapsed')) {
-          h2.click();
-        }
+        if (h2?.classList.contains('section-collapsed')) h2.click();
       });
     });
   })();

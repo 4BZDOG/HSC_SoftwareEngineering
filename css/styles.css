@@ -876,7 +876,7 @@ h2.syllabus-phase:hover .section-chevron {
 .part-block {
   background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, var(--primary-dark) 100%);
   color: #fff;
-  padding: 1.5rem 2rem;
+  padding: 1.25rem 3.5rem 1.25rem 2rem; /* right padding makes room for chevron */
   border-radius: var(--radius-md);
   margin: 4rem 0 2rem;
   box-shadow: 0 8px 28px rgba(99, 102, 241, 0.4);
@@ -884,7 +884,18 @@ h2.syllabus-phase:hover .section-chevron {
   display: flex;
   flex-direction: column;
   gap: .3rem;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow 240ms ease, transform 200ms ease;
 }
+
+.part-block:hover {
+  box-shadow: 0 10px 36px rgba(99, 102, 241, 0.55);
+  transform: translateY(-1px);
+}
+
+.part-block:active { transform: translateY(0); }
 
 .part-block .part-number {
   font-size: .72rem;
@@ -902,9 +913,77 @@ h2.syllabus-phase:hover .section-chevron {
   line-height: 1.2;
 }
 
+/* Chevron injected by JS */
+.part-chevron {
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,.1);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 200ms ease, transform 200ms ease;
+}
+
+.part-chevron svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+  stroke: rgba(255,255,255,.9);
+  stroke-width: 2.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 380ms cubic-bezier(.4,0,.2,1);
+}
+
+.part-block.part-collapsed .part-chevron svg {
+  transform: rotate(-90deg);
+}
+
+.part-block:hover .part-chevron {
+  background: rgba(255,255,255,.2);
+}
+
+/* Collapsed indicator: slightly dim the title text */
+.part-block.part-collapsed .part-name {
+  opacity: .8;
+}
+
+/* ── Collapsible Part Group (wraps sections belonging to a part) ── */
+.part-group {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 420ms cubic-bezier(.4,0,.2,1);
+}
+
+.part-group.part-collapsed {
+  grid-template-rows: 0fr;
+}
+
+.part-group-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
 [data-theme="dark"] .part-block {
   background: linear-gradient(135deg, #0F172A 0%, var(--primary-dark) 100%);
   box-shadow: 0 8px 28px rgba(99, 102, 241, 0.2);
+}
+
+/* ── TOC Part Label Active State ── */
+.toc-part-label {
+  transition: color 200ms ease, opacity 200ms ease;
+}
+
+.toc-part-label.toc-part-active {
+  color: var(--primary) !important;
+  opacity: 1 !important;
 }
 
 .content-body h2::before {
