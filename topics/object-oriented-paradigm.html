@@ -196,6 +196,26 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
               </tbody>
             </table>
           </div>
+
+          <!-- OOP vs Procedural Comparison Diagram -->
+          <div class="diagram-block">
+            <h4>⚖️ Procedural vs Object-Oriented Paradigm Comparison</h4>
+            <div class="mermaid">
+              graph LR
+                A["Procedural<br/>━━━━━━<br/>• Functions<br/>• Global data<br/>• Top-down design<br/>• Focus: How<br/>• Data separate<br/>  from logic"] --> B["Shared<br/>━━━━━━<br/>• Modular code<br/>• Reusability<br/>• Structured<br/>• Maintainability"]
+
+                B --> C["Object-Oriented<br/>━━━━━━<br/>• Classes/Objects<br/>• Encapsulation<br/>• Inheritance<br/>• Focus: What<br/>• Data + Methods<br/>  together"]
+
+                style A fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+                style B fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px
+                style C fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Visually compare the two major programming paradigms. Procedural focuses on \"how\" to do things through functions, while OOP focuses on \"what\" things are through objects. Both share modular, structured, and maintainable approaches.<br>
+              <strong>Syllabus Link:</strong> SE-11-02<br>
+              <strong>Try This:</strong> Think of a project you know. Would procedural or OOP be better? Why? List the advantages that matter most for your use case.
+            </p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -234,6 +254,58 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
 
 <span class="kw">def</span> <span class="fn">show_info</span>(acc): <span class="cm"># Polymorphism</span>
     print(<span class="str">f"Owner: {acc.owner}"</span>)</code></pre>
+          </div>
+
+          <!-- OOP Class Diagram -->
+          <div class="diagram-block">
+            <h4>🧱 Class Hierarchy Example — Vehicle System</h4>
+            <div class="mermaid">
+              classDiagram
+                class Vehicle {
+                    -String manufacturer
+                    -float speed
+                    -float fuel_level
+                    +start()
+                    +stop()
+                    +accelerate()
+                }
+
+                class Car {
+                    -int num_doors
+                    -String trunk_size
+                    +open_trunk()
+                    +close_trunk()
+                }
+
+                class Motorcycle {
+                    -bool has_sidecar
+                    +wheelie()
+                }
+
+                class Truck {
+                    -float cargo_capacity
+                    -float current_load
+                    +load_cargo()
+                    +unload_cargo()
+                }
+
+                Vehicle <|-- Car
+                Vehicle <|-- Motorcycle
+                Vehicle <|-- Truck
+
+                class Engine {
+                    -String engine_type
+                    -float displacement
+                    +calculate_power()
+                }
+
+                Vehicle *-- Engine
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Show class relationships using Unified Modelling Language (UML). Triangles (▲) represent inheritance (is-a), diamonds represent composition (has-a). Private attributes (-) and public methods (+) are documented.<br>
+              <strong>Syllabus Link:</strong> SE-11-02, SE-11-08<br>
+              <strong>Try This:</strong> Create a class diagram for an animal system (Animal → Dog, Cat, Bird) or a gaming system (Character → Warrior, Mage, Archer).
+            </p>
           </div>
         </section>
 
@@ -510,5 +582,10 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
   </footer>
 
   <script src="../js/main.js?v=3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+    mermaid.contentLoaded();
+  </script>
 </body>
 </html>

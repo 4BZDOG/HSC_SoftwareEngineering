@@ -193,6 +193,47 @@
               </div>
             </div>
           </div>
+
+          <!-- Secure SDLC Diagram -->
+          <div class="diagram-block">
+            <h4>🔐 Secure SDLC with Security Checkpoints</h4>
+            <div class="mermaid">
+              flowchart TD
+                A["📋 Requirements"] --> B{{"🔐 Security<br/>Review?"}}
+                B -->|Issues| B1["🔧 Resolve"]
+                B1 --> B
+                B -->|Approved| C["🎨 Design"]
+                C --> D{{"⚠️ Threat<br/>Model?"}}
+                D -->|Vulnerabilities| D1["🛡️ Harden"]
+                D1 --> D
+                D -->|Secure| E["💻 Development"]
+                E --> F{{"👀 Code<br/>Review?"}}
+                F -->|Issues| F1["🐛 Fix"]
+                F1 --> E
+                F -->|Passed| G["🧪 Security Testing"]
+                G --> H{{"🎯 Pen Test<br/>Passed?"}}
+                H -->|Vulnerabilities| H1["🔧 Patch"]
+                H1 --> G
+                H -->|Secure| I["🚀 Deployment"]
+                I --> J["🔔 Monitoring"]
+
+                style A fill:#4CAF50,color:#fff
+                style C fill:#4CAF50,color:#fff
+                style E fill:#4CAF50,color:#fff
+                style G fill:#FF9800,color:#fff
+                style I fill:#2196F3,color:#fff
+                style J fill:#9C27B0,color:#fff
+                style B fill:#FFC107,color:#000,stroke-width:2px
+                style D fill:#FFC107,color:#000,stroke-width:2px
+                style F fill:#FFC107,color:#000,stroke-width:2px
+                style H fill:#FFC107,color:#000,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Show security integrated into every SDLC phase, not added later. Yellow gates require security sign-off before proceeding.<br>
+              <strong>Syllabus Link:</strong> SE-12-06<br>
+              <strong>Try This:</strong> Compare costs: fixing a bug at requirements vs. production. Security investments pay huge dividends!
+            </p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -661,5 +702,10 @@ logging.basicConfig(filename=<span class="str">'app.log'</span>, level=logging.E
   </footer>
 
   <script src="../js/main.js?v=3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+    mermaid.contentLoaded();
+  </script>
 </body>
 </html>
