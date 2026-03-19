@@ -1,0 +1,17 @@
+flowchart TD
+    A["🔍 Start<br/>Analyze target"] --> B["🔄 Loop Start"]
+    B --> C{{"index < length(list)?"}}
+    C -->|No| D["❌ Not Found<br/>Return -1"]
+    C -->|Yes| E{{"list[index] ==<br/>target?"}}
+    E -->|Yes| F["✅ Found<br/>Return index"]
+    E -->|No| G["➡️ Increment<br/>index++"]
+    G --> C
+
+    D --> H["🏁 End"]
+    F --> H
+
+    style A fill:#90EE90
+    style H fill:#FFB6C6
+    style F fill:#87CEEB
+    style D fill:#FFB347
+    style B fill:#FFE4B5

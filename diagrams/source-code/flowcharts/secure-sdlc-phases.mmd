@@ -1,0 +1,34 @@
+flowchart TD
+    A["📋 Requirements Analysis<br/>─────────────────<br/>Identify features"] --> B{{"🔐 Security Review<br/>Threat assessment?"}}
+
+    B -->|Issues Found| B1["🔧 Resolve<br/>Security needs"]
+    B1 --> B
+    B -->|Approved| C["🎨 Design Phase<br/>─────────────────<br/>Plan architecture"]
+
+    C --> D{{"⚠️ Threat Modeling<br/>Attack vectors?"}}
+    D -->|Vulnerabilities| D1["🛡️ Revise Design<br/>Security hardening"]
+    D1 --> D
+    D -->|Secure Design| E["💻 Development<br/>─────────────────<br/>Write code"]
+
+    E --> F{{"👀 Code Review<br/>Security audit?"}}
+    F -->|Issues Found| F1["🐛 Fix<br/>Vulnerabilities"]
+    F1 --> E
+    F -->|Passed| G["🧪 Security Testing<br/>─────────────────<br/>Pen testing"]
+
+    G --> H{{"🎯 Penetration Test<br/>Exploits resolved?"}}
+    H -->|Vulnerabilities| H1["🔧 Patch & Test<br/>Fix issues"]
+    H1 --> G
+    H -->|Secure| I["🚀 Deployment<br/>─────────────────<br/>Go live"]
+
+    I --> J["🔔 Monitoring<br/>─────────────────<br/>Security watch"]
+
+    style A fill:#4CAF50,color:#fff
+    style C fill:#4CAF50,color:#fff
+    style E fill:#4CAF50,color:#fff
+    style G fill:#FF9800,color:#fff
+    style I fill:#2196F3,color:#fff
+    style J fill:#9C27B0,color:#fff
+    style B fill:#FFC107,color:#000,stroke:#FF6F00,stroke-width:2px
+    style D fill:#FFC107,color:#000,stroke:#FF6F00,stroke-width:2px
+    style F fill:#FFC107,color:#000,stroke:#FF6F00,stroke-width:2px
+    style H fill:#FFC107,color:#000,stroke:#FF6F00,stroke-width:2px

@@ -1,0 +1,31 @@
+graph TB
+    Client["👤 CLIENT LAYER<br/>🌐 Web Browser<br/>HTML/CSS/JavaScript<br/>User interface"]
+
+    CDN["🔄 CDN & CACHE<br/>⚡ Content Delivery<br/>Static assets<br/>Images, CSS, JS<br/>Fast delivery"]
+
+    WebServer["🖥️ WEB SERVER LAYER<br/>🔧 Application Server<br/>Node.js/Python/PHP/Java<br/>Request routing<br/>Business logic<br/>API endpoints"]
+
+    Redis["💾 IN-MEMORY CACHE<br/>⚡ Redis/Memcached<br/>Session data<br/>Frequent queries<br/>Fast access"]
+
+    Database["💾 DATABASE LAYER<br/>📊 Data Storage<br/>PostgreSQL/MongoDB<br/>User accounts<br/>Persistent data<br/>Transactions"]
+
+    Storage["📁 FILE STORAGE<br/>☁️ S3/Cloud Storage<br/>User uploads<br/>Media files<br/>Documents"]
+
+    Monitoring["🔔 MONITORING<br/>📈 Performance<br/>Error tracking<br/>Analytics"]
+
+    Client -->|"1. HTTPS Request"| CDN
+    Client -->|"2. HTTPS Request"| WebServer
+    WebServer -->|"3. Query"| Redis
+    Redis -->|"4. Cache miss"| Database
+    Database -->|"5. Response"| Redis
+    WebServer -->|"6. Store/Retrieve"| Storage
+    WebServer -->|"7. JSON Response"| Client
+    WebServer -->|"8. Send metrics"| Monitoring
+
+    style Client fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+    style CDN fill:#FFF3E0,stroke:#E65100,stroke-width:2px
+    style WebServer fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px
+    style Redis fill:#FFE0B2,stroke:#E65100,stroke-width:2px
+    style Database fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
+    style Storage fill:#FCE4EC,stroke:#C2185B,stroke-width:2px
+    style Monitoring fill:#F0F4C3,stroke:#F57F17,stroke-width:2px

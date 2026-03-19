@@ -193,6 +193,47 @@
               </div>
             </div>
           </div>
+
+          <!-- Secure SDLC Diagram -->
+          <div class="diagram-block">
+            <h4>🔐 Secure SDLC with Security Checkpoints</h4>
+            <div class="mermaid">
+              flowchart TD
+                A["📋 Requirements"] --> B{{"🔐 Security<br/>Review?"}}
+                B -->|Issues| B1["🔧 Resolve"]
+                B1 --> B
+                B -->|Approved| C["🎨 Design"]
+                C --> D{{"⚠️ Threat<br/>Model?"}}
+                D -->|Vulnerabilities| D1["🛡️ Harden"]
+                D1 --> D
+                D -->|Secure| E["💻 Development"]
+                E --> F{{"👀 Code<br/>Review?"}}
+                F -->|Issues| F1["🐛 Fix"]
+                F1 --> E
+                F -->|Passed| G["🧪 Security Testing"]
+                G --> H{{"🎯 Pen Test<br/>Passed?"}}
+                H -->|Vulnerabilities| H1["🔧 Patch"]
+                H1 --> G
+                H -->|Secure| I["🚀 Deployment"]
+                I --> J["🔔 Monitoring"]
+
+                style A fill:#4CAF50,color:#fff
+                style C fill:#4CAF50,color:#fff
+                style E fill:#4CAF50,color:#fff
+                style G fill:#FF9800,color:#fff
+                style I fill:#2196F3,color:#fff
+                style J fill:#9C27B0,color:#fff
+                style B fill:#FFC107,color:#000,stroke-width:2px
+                style D fill:#FFC107,color:#000,stroke-width:2px
+                style F fill:#FFC107,color:#000,stroke-width:2px
+                style H fill:#FFC107,color:#000,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Show security integrated into every SDLC phase, not added later. Yellow gates require security sign-off before proceeding.<br>
+              <strong>Syllabus Link:</strong> SE-12-06<br>
+              <strong>Try This:</strong> Compare costs: fixing a bug at requirements vs. production. Security investments pay huge dividends!
+            </p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -269,6 +310,60 @@
               <p>Tracing every action back to a specific authenticated user through immutable audit logs, ensuring non-repudiation — a user cannot deny having performed an action that was logged. <strong>Implementation:</strong> Append-only audit log tables recording user ID, timestamp, action type, and affected resource for every sensitive operation. <strong>Example:</strong> A financial system records every account transfer with the authenticated user's ID, the exact timestamp, source account, destination account, and amount — providing an unalterable chain of evidence for forensic investigation.</p>
             </div>
           </div>
+
+          <!-- Risk Assessment and CIA Triad Diagram -->
+          <div class="diagram-block">
+            <h4>⚠️ Risk Assessment: Threats Mapped to Security Concepts</h4>
+            <div class="mermaid">
+              graph TB
+                  subgraph CIA["The CIA Triad + AAA"]
+                    CONF["🔒 Confidentiality<br/>Data Privacy<br/>Unauthorized Access"]
+                    INT["✅ Integrity<br/>Data Accuracy<br/>Tampering/Modification"]
+                    AVAIL["⚡ Availability<br/>Uptime/Service<br/>DoS/Outages"]
+                  end
+
+                  subgraph AAA["Authentication + Accountability"]
+                    AUTH["🪪 Authentication<br/>Verify Identity<br/>Impersonation"]
+                    AUTHZ["🔑 Authorisation<br/>Access Control<br/>Privilege Escalation"]
+                    ACC["📋 Accountability<br/>Audit Trail<br/>Denial of Action"]
+                  end
+
+                  subgraph Threats["Common Attack Vectors"]
+                    T1["Data Breach:<br/>CONF Risk"]
+                    T2["SQL Injection:<br/>INT Risk"]
+                    T3["DDoS Attack:<br/>AVAIL Risk"]
+                    T4["Credential Theft:<br/>AUTH Risk"]
+                    T5["Unauthorized Escalation:<br/>AUTHZ Risk"]
+                    T6["Audit Log Deletion:<br/>ACC Risk"]
+                  end
+
+                  subgraph Controls["Mitigating Controls"]
+                    M1["🔐 Encryption"]
+                    M2["🔗 Digital Signatures"]
+                    M3["🛡️ DDoS Protection"]
+                    M4["🔑 MFA"]
+                    M5["👥 RBAC"]
+                    M6["📝 Immutable Logs"]
+                  end
+
+                  T1 -->|Mitigate| M1
+                  T2 -->|Mitigate| M2
+                  T3 -->|Mitigate| M3
+                  T4 -->|Mitigate| M4
+                  T5 -->|Mitigate| M5
+                  T6 -->|Mitigate| M6
+
+                  style CIA fill:#FFE082,stroke:#F57F17,stroke-width:2px
+                  style AAA fill:#BBDEFB,stroke:#1976D2,stroke-width:2px
+                  style Threats fill:#FFCCBC,stroke:#E64A19,stroke-width:2px
+                  style Controls fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Map common security threats to the six fundamental security concepts and identify appropriate mitigating controls<br>
+              <strong>Syllabus Link:</strong> SE-12-04<br>
+              <strong>Try This:</strong> Identify which security concept (CIA+AAA) would be violated by a replay attack, and propose a technical control to prevent it
+            </p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -305,6 +400,39 @@
               <h4>🔬 Code Execution Sandboxes</h4>
               <p>Online coding platforms (e.g., Replit, LeetCode) execute user-submitted code inside sandboxes — preventing a malicious user's code from reading other users' data or compromising the host server. The sandbox enforces CPU time limits, memory limits, and network access restrictions.</p>
             </div>
+          </div>
+
+          <!-- Threat Model Diagram -->
+          <div class="diagram-block">
+            <h4>🎯 Threat Model: Data Flow with Attack Vectors</h4>
+            <div class="mermaid">
+              graph TB
+                  User["👤 User<br/>Browser"]
+                  Network["🌐 Network<br/>Internet"]
+                  Server["🖥️ Web Server<br/>Application"]
+                  DB["💾 Database<br/>User Data"]
+                  Auth["🔐 Auth Service<br/>Session Token"]
+
+                  User -->|1. XSS Risk:<br/>Malicious Scripts| Network
+                  Network -->|2. Man-in-Middle:<br/>Unencrypted Data| Server
+                  Server -->|3. SQL Injection<br/>Malformed Query| DB
+                  Server -->|4. Auth Bypass<br/>Token Forgery| Auth
+                  DB -.->|Data Breach<br/>Exposed Records| Network
+
+                  MITIGATIONS["🛡️ MITIGATIONS<br/>• HTTPS/TLS Encryption<br/>• Input Validation &amp; Sanitisation<br/>• Parameterised Queries<br/>• JWT Token Validation<br/>• Rate Limiting &amp; WAF<br/>• Database Encryption"]
+
+                  style User fill:#E3F2FD,stroke:#1976D2
+                  style Network fill:#FFF9C4,stroke:#F57F17
+                  style Server fill:#FFE082,stroke:#F57F17
+                  style DB fill:#FFCCBC,stroke:#E64A19
+                  style Auth fill:#F8BBD0,stroke:#C2185B
+                  style MITIGATIONS fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Identify attack vectors at each stage of a web application's data flow and map mitigations to each threat<br>
+              <strong>Syllabus Link:</strong> SE-12-03, SE-12-04<br>
+              <strong>Try This:</strong> Create a threat model for a banking app, identifying threats at login, fund transfer, and transaction history retrieval stages
+            </p>
           </div>
         </section>
 
@@ -407,6 +535,55 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+
+          <!-- Security Testing Strategy Matrix -->
+          <div class="diagram-block">
+            <h4>🧪 Security Testing Strategy Comparison Matrix</h4>
+            <div class="mermaid">
+              graph TB
+                  subgraph CostTime["Cost & Time"]
+                    CT1["Code Review:<br/>Medium-High Cost<br/>Manual &amp; Slow"]
+                    CT2["SAST:<br/>Low Cost<br/>Automated &amp; Fast"]
+                    CT3["DAST:<br/>Medium Cost<br/>Medium Speed"]
+                    CT4["Vuln Assessment:<br/>Medium Cost<br/>Medium Speed"]
+                    CT5["Penetration Testing:<br/>High Cost<br/>Very Slow"]
+                  end
+
+                  subgraph Coverage["Vulnerability Coverage"]
+                    C1["CR: Complex Logic<br/>🟢 Excellent"]
+                    C2["SAST: Patterns<br/>🟡 Good (FP)"]
+                    C3["DAST: Runtime<br/>🟢 Real Issues"]
+                    C4["VA: Known CVEs<br/>🟡 Complete"]
+                    C5["PT: Novel Chains<br/>🟢 Most Realistic"]
+                  end
+
+                  subgraph Context["Test Context"]
+                    X1["CR: Before Deploy<br/>Code Level"]
+                    X2["SAST: Before Deploy<br/>Code Level"]
+                    X3["DAST: Live App<br/>Network Level"]
+                    X4["VA: Infrastructure<br/>System Level"]
+                    X5["PT: Full System<br/>Real Attack"]
+                  end
+
+                  Decision["🎯 RECOMMENDATION<br/>Use All Methods!<br/>Layered Defense"]
+
+                  CT1 -.-> Decision
+                  CT2 -.-> Decision
+                  CT3 -.-> Decision
+                  CT4 -.-> Decision
+                  CT5 -.-> Decision
+
+                  style CostTime fill:#FFE082,stroke:#F57F17,stroke-width:2px
+                  style Coverage fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+                  style Context fill:#BBDEFB,stroke:#1976D2,stroke-width:2px
+                  style Decision fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Understand the strengths, costs, and coverage of different security testing approaches to make informed decisions about which to use<br>
+              <strong>Syllabus Link:</strong> SE-12-06, SE-12-08<br>
+              <strong>Try This:</strong> Plan a security testing budget for a startup web app by choosing which combination of testing methods provides the best value
+            </p>
           </div>
         </section>
 
@@ -661,5 +838,10 @@ logging.basicConfig(filename=<span class="str">'app.log'</span>, level=logging.E
   </footer>
 
   <script src="../js/main.js?v=3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+    mermaid.contentLoaded();
+  </script>
 </body>
 </html>

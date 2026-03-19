@@ -153,6 +153,36 @@
               <div class="step-content"><h4>🛠️ Maintenance</h4><p>The ongoing process of patching bugs and adding features.<br>🌏 <em>Example: Releasing a security patch to protect user data from a newly discovered vulnerability.</em></p></div>
             </div>
           </div>
+
+          <!-- SDLC Flowchart Diagram -->
+          <div class="diagram-block">
+            <h4>📊 SDLC Process Flow Diagram</h4>
+            <div class="mermaid">
+              flowchart TD
+                A["📋 Requirements Definition<br/>Identify stakeholder needs"] --> B["⚙️ Specifications<br/>Define technical constraints"]
+                B --> C["🎨 Design<br/>Plan algorithms & structure"]
+                C --> D["💻 Development<br/>Write code in programming language"]
+                D --> E["🧩 Integration<br/>Combine modules into system"]
+                E --> F["🧪 Testing & Debugging<br/>Identify and fix errors"]
+                F --> G["📦 Installation<br/>Deploy to users"]
+                G --> H["🛠️ Maintenance<br/>Apply patches & updates"]
+                H -.->|Feedback Loop| A
+
+                style A fill:#e1f5ff
+                style B fill:#e1f5ff
+                style C fill:#fff3e0
+                style D fill:#f3e5f5
+                style E fill:#e8f5e9
+                style F fill:#fce4ec
+                style G fill:#f1f8e9
+                style H fill:#ede7f6
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Visualize the complete SDLC phases showing how each stage builds on the previous one. Notice the feedback loop from Maintenance back to Requirements, showing that software development is iterative and continuous.<br>
+              <strong>Syllabus Link:</strong> SE-11-01<br>
+              <strong>Try This:</strong> Identify which SDLC phases would apply to a project you're working on. Mark which phase your project is currently in.
+            </p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -282,6 +312,35 @@ END FUNCTION</code></pre>
           <h3>Flowcharts</h3>
           <p>Flowcharts use visual symbols to represent algorithm steps and decision points. Rectangles represent processes, diamonds represent decisions, and arrows show flow direction. This visual representation makes complex logic easy to follow, helps identify loops and branches, and allows stakeholders to validate correctness before implementation.<br>🌏 <em>Example:</em> A flowchart for validating user age would show a diamond (decision point) — "Is age ≥ 18?" — with two paths: YES leads to "Show full menu" and NO leads to "Show restricted menu."</p>
 
+          <!-- Linear Search Algorithm Flowchart -->
+          <div class="diagram-block">
+            <h4>🔍 Linear Search Algorithm Flowchart</h4>
+            <div class="mermaid">
+              flowchart TD
+                A["🔍 Start<br/>Analyze target"] --> B["🔄 Loop Start"]
+                B --> C{{"index < length(list)?"}}
+                C -->|No| D["❌ Not Found<br/>Return -1"]
+                C -->|Yes| E{{"list[index] ==<br/>target?"}}
+                E -->|Yes| F["✅ Found<br/>Return index"]
+                E -->|No| G["➡️ Increment<br/>index++"]
+                G --> C
+
+                D --> H["🏁 End"]
+                F --> H
+
+                style A fill:#90EE90
+                style H fill:#FFB6C6
+                style F fill:#87CEEB
+                style D fill:#FFB347
+                style B fill:#FFE4B5
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Show how linear search scans through each item in a list until finding the target. Notice the loop structure and decision points that verify both position validity and item match.<br>
+              <strong>Syllabus Link:</strong> SE-11-02<br>
+              <strong>Try This:</strong> Trace through this flowchart manually with a sample list like [5, 2, 8, 1, 9] searching for target=8. Count how many steps it takes.
+            </p>
+          </div>
+
           <h3>Subprograms</h3>
           <p>A subprogram (function or procedure) is a reusable block of code that performs a specific task. Pseudocode and flowcharts must clearly show how subprograms are called, what parameters they accept, and what they return. This modular approach reduces code duplication, improves readability, and makes testing easier.<br>🌏 <em>Example: A main program calls FUNCTION validatePassword(pwd) which returns TRUE or FALSE, allowing the validation logic to be reused across multiple entry points.</em></p>
         </section>
@@ -296,6 +355,49 @@ END FUNCTION</code></pre>
           
           <h3>Structure Charts</h3>
           <p>Structure charts are a top-down tool used to show the hierarchy of subroutines in a system. They focus on modularity, showing which module calls another and what data (parameters) or control signals (flags) are passed between them.<br>🌏 <em>Example: A structure chart for an ATM would show the 'Main' module calling 'Verify PIN' and passing back a 'Valid/Invalid' flag.</em> This allows engineers to see high-level dependencies without getting bogged down in code logic.</p>
+
+          <!-- ATM Structure Chart Diagram -->
+          <div class="diagram-block">
+            <h4>🏦 ATM System Structure Chart Example</h4>
+            <div class="mermaid">
+              graph TD
+                Main["🏦 ATM System<br/>Main Module<br/>─────────────<br/>Start/Shutdown"]
+
+                Main --> Auth["🔐 Authenticate User<br/>━━━━━━━━━━━<br/>Verify credentials"]
+                Main --> Menu["📋 Display Menu<br/>━━━━━━━━━━━<br/>Show options"]
+                Main --> Trans["💳 Process Transaction<br/>━━━━━━━━━━━<br/>Handle request"]
+                Main --> Disp["💵 Dispense Cash<br/>━━━━━━━━━━━<br/>Deliver money"]
+
+                Auth --> VerifyPIN["🔑 Verify PIN<br/>Check database"]
+                Auth --> CheckCard["💳 Check Card<br/>Validity check"]
+
+                Trans --> Withdraw["💸 Withdraw<br/>Debit account"]
+                Trans --> Deposit["📥 Deposit<br/>Credit account"]
+                Trans --> Balance["📊 Check Balance<br/>Query account"]
+
+                Withdraw --> Update1["🔄 Update Account<br/>Apply transaction"]
+                Deposit --> Update2["🔄 Update Account<br/>Apply transaction"]
+                Balance --> Query["📖 Query Database<br/>Fetch balance"]
+
+                Update1 --> Record["📝 Record Transaction<br/>Audit log"]
+                Update2 --> Record["📝 Record Transaction<br/>Audit log"]
+
+                style Main fill:#4CAF50,color:#fff,stroke:#2E7D32,stroke-width:3px
+                style Auth fill:#2196F3,color:#fff
+                style Menu fill:#2196F3,color:#fff
+                style Trans fill:#2196F3,color:#fff
+                style Disp fill:#2196F3,color:#fff
+                style Record fill:#FF9800,color:#fff
+                style Update1 fill:#FF9800,color:#fff
+                style Update2 fill:#FF9800,color:#fff
+                style Query fill:#FF9800,color:#fff
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Show how a system breaks down into modules (top-down decomposition). The main module delegates to specialized submodules, which further break down into specific tasks. This reveals dependencies and shows which modules need to communicate.<br>
+              <strong>Syllabus Link:</strong> SE-11-02<br>
+              <strong>Try This:</strong> Create a similar structure chart for a school enrollment system with modules like StudentRegistration, EnrollmentProcessing, and FeeManagement.
+            </p>
+          </div>
 
           <h3>Abstraction and Refinement</h3>
           <p><strong>Abstraction</strong> involves hiding implementation details to focus on high-level goals (the 'What'). <strong>Stepwise Refinement</strong> is the process of breaking those high-level goals into smaller, more specific details (the 'How').<br>🌏 <em>Example: An abstract instruction like 'Initialise System' is refined into 'Set counter to 0', 'Clear display', and 'Open file stream'.</em> Together, they allow for manageable development of complex systems.</p>
@@ -427,6 +529,62 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
           </div>
 
           <p><strong>Data Dictionary:</strong> A metadata tool describing every variable's name, data type, size, description, and validation rules.<br>🌏 <em>Example: Documenting that 'User_ID' must be an integer between 1 and 9999.</em> (SE-11-04)</p>
+
+          <!-- Data Dictionary Example -->
+          <div class="diagram-block">
+            <h4>📋 Data Dictionary Example — Student Management System</h4>
+            <div class="code-block">
+              <table style="width:100%; border-collapse: collapse; margin: 0;">
+                <tr style="background: #f0f0f0;">
+                  <th style="border: 1px solid #ccc; padding: 0.75rem;">Field Name</th>
+                  <th style="border: 1px solid #ccc; padding: 0.75rem;">Data Type</th>
+                  <th style="border: 1px solid #ccc; padding: 0.75rem;">Size</th>
+                  <th style="border: 1px solid #ccc; padding: 0.75rem;">Description</th>
+                  <th style="border: 1px solid #ccc; padding: 0.75rem;">Validation Rules</th>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;"><strong>Student_ID</strong></td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Integer</td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">5 digits</td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Unique identifier for each student</td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">1000-99999, Cannot be NULL</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;"><strong>First_Name</strong></td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">String</td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Max 50 chars</td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Student's first name</td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Letters only, Cannot be NULL</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;"><strong>Email</strong></td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">String</td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Max 100 chars</td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Student email address</td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Must match email format (xxx@xxx.com)</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;"><strong>Grade_Level</strong></td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Integer</td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">2 digits</td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Current year level (11 or 12)</td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Must be 11 or 12</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;"><strong>Enrollment_Date</strong></td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Date</td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">YYYY-MM-DD</td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">When student enrolled</td>
+                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Cannot be in future, after 2008</td>
+                </tr>
+              </table>
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Document all variables used in a system before coding. Specifies type, size, acceptable values, and constraints. This prevents confusion and ensures consistent data handling.<br>
+              <strong>Syllabus Link:</strong> SE-11-04<br>
+              <strong>Try This:</strong> Create a data dictionary for a library book system. Include fields like ISBN, Title, Author, CopiesAvailable, and LastCheckedDate.
+            </p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -651,5 +809,10 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
   </footer>
 
   <script src="../js/main.js?v=3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+    mermaid.contentLoaded();
+  </script>
 </body>
 </html>

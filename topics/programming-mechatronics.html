@@ -242,6 +242,40 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
             <li>End Effector: the extruder nozzle</li>
           </ul>
           <p>Software must synchronise these components—heating the nozzle only when filament is loaded, coordinating multiple motors to move the print head smoothly, and monitoring temperature feedback.</p>
+
+          <!-- Robot Block Diagram -->
+          <div class="diagram-block">
+            <h4>🦾 Mechatronic System Architecture</h4>
+            <div class="mermaid">
+              graph LR
+                  A["SENSORS<br/>━━━━━━━━<br/>• Motion (PIR)<br/>• Distance<br/>• Temperature<br/>• Position<br/>• Encoders"]
+
+                  B["MICROCONTROLLER<br/>━━━━━━━━<br/>Arduino/ESP32<br/>• Read inputs<br/>• Process logic<br/>• Output commands<br/>• Real-time control"]
+
+                  C["ACTUATORS<br/>━━━━━━━━<br/>• DC Motors<br/>• Servos<br/>• Solenoids<br/>• Heaters"]
+
+                  D["END EFFECTORS<br/>━━━━━━━━<br/>• Gripper<br/>• Wheels<br/>• Nozzle<br/>• Manipulator"]
+
+                  E["POWER<br/>SUPPLY<br/>━━━━━━━━<br/>Battery"]
+
+                  A -->|Analog/Digital<br/>signals| B
+                  B -->|PWM/<br/>Commands| C
+                  C -->|Motion| D
+                  E -->|Power| B
+                  E -->|Power| C
+
+                  style A fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+                  style B fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+                  style C fill:#FFCCBC,stroke:#E64A19,stroke-width:2px
+                  style D fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
+                  style E fill:#F8BBD0,stroke:#C2185B,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Understand the complete data and power flow in a mechatronic system from sensing to actuation<br>
+              <strong>Syllabus Link:</strong> SE-11-03, SE-11-06<br>
+              <strong>Try This:</strong> Design a 3D printer system showing how sensors (temperature, position), the MCU, motors (actuators), and the nozzle (end effector) are integrated
+            </p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -387,6 +421,57 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           </ul>
 
           <p>Autonomous algorithms typically use flowcharts, state diagrams, and pseudocode to be designed clearly before implementation. Testing autonomous systems requires extensive simulation and careful incremental real-world validation.</p>
+
+          <!-- Traffic Light FSM Diagram -->
+          <div class="diagram-block">
+            <h4>🚦 Traffic Light State Machine with Emergency Override</h4>
+            <div class="mermaid">
+              stateDiagram-v2
+                  [*] --> RED
+
+                  RED --> GREEN: Timer 30s
+                  RED --> RED: Emergency active
+
+                  GREEN --> YELLOW: Timer 25s
+                  GREEN --> RED: Emergency active
+
+                  YELLOW --> RED: Timer 5s
+                  YELLOW --> RED: Emergency active
+
+                  EMERGENCY_OVERRIDE: RED<br/>flashing
+
+                  RED --> EMERGENCY_OVERRIDE: Emergency detected
+                  GREEN --> EMERGENCY_OVERRIDE: Emergency detected
+                  YELLOW --> EMERGENCY_OVERRIDE: Emergency detected
+
+                  EMERGENCY_OVERRIDE --> RED: Timer > 60s
+
+                  note right of RED
+                    Stop all traffic
+                    Duration: 30 seconds
+                  end note
+
+                  note right of GREEN
+                    Allow traffic through
+                    Duration: 25 seconds
+                  end note
+
+                  note right of YELLOW
+                    Caution - prepare to stop
+                    Duration: 5 seconds
+                  end note
+
+                  note right of EMERGENCY_OVERRIDE
+                    All-way flashing red
+                    Triggered by emergency
+                  end note
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Model a traffic light control system as a state machine showing state transitions, timers, and emergency override capability<br>
+              <strong>Syllabus Link:</strong> SE-11-02<br>
+              <strong>Try This:</strong> Add a fourth state "PEDESTRIAN_CROSSING" that transitions from YELLOW and extends the RED duration, then code this logic in Arduino
+            </p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -508,5 +593,10 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
   </footer>
 
   <script src="../js/main.js?v=3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+    mermaid.contentLoaded();
+  </script>
 </body>
 </html>

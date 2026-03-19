@@ -1,0 +1,38 @@
+stateDiagram-v2
+    [*] --> RED
+
+    RED --> GREEN: Timer expires (30s)
+    RED --> RED: Timer counting
+
+    GREEN --> YELLOW: Timer expires (25s)
+    GREEN --> GREEN: Timer counting
+
+    YELLOW --> RED: Timer expires (5s)
+    YELLOW --> YELLOW: Timer counting
+
+    RED --> EMERGENCY: Emergency signal
+    GREEN --> EMERGENCY: Emergency signal
+    YELLOW --> EMERGENCY: Emergency signal
+
+    EMERGENCY --> EMERGENCY: Flash red
+    EMERGENCY --> RED: Emergency cleared
+
+    note right of RED
+        ⚫ Stop
+        Duration: 30s
+    end note
+
+    note right of GREEN
+        🟢 Go
+        Duration: 25s
+    end note
+
+    note right of YELLOW
+        🟡 Caution
+        Duration: 5s
+    end note
+
+    note right of EMERGENCY
+        🚨 Flashing Red
+        All traffic stops
+    end note
