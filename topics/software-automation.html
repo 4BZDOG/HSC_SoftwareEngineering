@@ -283,6 +283,42 @@
             <strong>Decision Tree Example — Loan Approval:</strong> Root: Annual income &gt; $60,000? → Yes: Credit score &gt; 700? → Yes: Approve loan; No: Review manually. No: Employment status = Full-time? → Yes: Review manually; No: Reject loan.
           </div>
 
+          <!-- Decision Tree Diagram -->
+          <div class="diagram-block">
+            <h4>🌳 Email Spam Detection Decision Tree</h4>
+            <div class="mermaid">
+              graph TD
+                  A["Contains 'FREE'<br/>or 'URGENT'?"] -->|Yes| B["All CAPS<br/>words > 50%?"]
+                  A -->|No| C["Has suspicious<br/>links?"]
+                  B -->|Yes| D["🚨 SPAM<br/>Confidence: 95%"]
+                  B -->|No| E["Sender domain<br/>authenticated?"]
+                  C -->|Yes| F["Link domain<br/>known safe?"]
+                  C -->|No| G["Recipient in<br/>To: field?"]
+                  E -->|Yes| H["✅ LEGITIMATE<br/>Confidence: 92%"]
+                  E -->|No| I["User marked<br/>similar before?"]
+                  F -->|Yes| G
+                  F -->|No| D
+                  G -->|Yes| J["Email length<br/>&gt; 2000 chars?"]
+                  G -->|No| D
+                  I -->|Yes| D
+                  I -->|No| H
+                  J -->|Yes| D
+                  J -->|No| H
+
+                  style D fill:#FFCDD2,stroke:#C62828,stroke-width:2px
+                  style H fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
+                  style E fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+                  style F fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+                  style I fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+                  style J fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Understand how decision tree classification works in practice by tracing email classification paths<br>
+              <strong>Syllabus Link:</strong> SE-12-03, SE-12-08<br>
+              <strong>Try This:</strong> Modify the tree by adding new decision nodes (e.g., "Recipient has account?") or reordering the nodes to see how tree structure affects decision paths
+            </p>
+          </div>
+
           <h3>Neural Networks</h3>
           <p><strong>Artificial Neural Networks (ANNs)</strong> are designed to loosely mimic the biological structure of the human brain. They consist of layers of interconnected artificial <strong>neurones</strong> (nodes), each receiving weighted input signals, applying an <strong>activation function</strong>, and passing an output signal to the next layer.</p>
 
@@ -303,6 +339,35 @@
               <h4>🔙 Backpropagation Training</h4>
               <p>During training, the network's prediction is compared to the correct label (calculating <strong>loss</strong>). The error is propagated backwards through the network, and each connection weight is adjusted using <strong>gradient descent</strong> to minimise future errors. This process repeats across thousands of training examples.</p>
             </div>
+          </div>
+
+          <!-- Neural Network Topology Diagram -->
+          <div class="diagram-block">
+            <h4>🕸️ Neural Network Architecture: Loan Approval Prediction</h4>
+            <div class="mermaid">
+              graph LR
+                  I["INPUT LAYER<br/>━━━━━━━━<br/>Age<br/>Income<br/>Credit Score<br/>Debt Ratio"]
+
+                  H1["HIDDEN LAYER 1<br/>━━━━━━━━<br/>8 Neurons<br/>ReLU<br/>Activation"]
+
+                  H2["HIDDEN LAYER 2<br/>━━━━━━━━<br/>4 Neurons<br/>ReLU<br/>Activation"]
+
+                  O["OUTPUT LAYER<br/>━━━━━━━━<br/>1 Neuron<br/>Sigmoid<br/>P(Approve)"]
+
+                  I -->|weights| H1
+                  H1 -->|weights| H2
+                  H2 -->|weights| O
+
+                  style I fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+                  style H1 fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+                  style H2 fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+                  style O fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Visualise the layered structure of a neural network from input features through hidden layers to final binary classification output<br>
+              <strong>Syllabus Link:</strong> SE-12-03, SE-12-08<br>
+              <strong>Try This:</strong> Design a network for a multi-class problem (e.g., predicting sentiment: positive/negative/neutral) and modify the output layer to use 3 neurons with softmax activation
+            </p>
           </div>
         </section>
 
@@ -631,5 +696,10 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
   </footer>
 
   <script src="../js/main.js?v=3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+    mermaid.contentLoaded();
+  </script>
 </body>
 </html>

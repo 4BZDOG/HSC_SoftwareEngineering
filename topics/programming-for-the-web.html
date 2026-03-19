@@ -154,6 +154,77 @@
           <div class="callout info">
             <strong>DNS Resolution Order:</strong> Browser cache → OS cache → Router cache → ISP Resolver → Root Name Server → TLD Server (e.g., .com) → Authoritative Name Server → IP address returned.
           </div>
+
+          <!-- DNS Resolution Diagram -->
+          <div class="diagram-block">
+            <h4>🌐 DNS Resolution Process</h4>
+            <div class="mermaid">
+              sequenceDiagram
+                participant User as 👤 User<br/>Browser
+                participant BC as 🗂️ Browser<br/>Cache
+                participant ISP as 🔍 ISP<br/>Resolver
+                participant Root as 🌍 Root<br/>Name Server
+                participant TLD as 📝 TLD<br/>Server
+                participant Auth as 🔐 Authoritative<br/>NS
+
+                User->>BC: Type: www.google.com
+                BC-->>BC: Check cache<br/>(TTL valid?)
+                alt Cache Hit
+                  BC-->>User: Return IP<br/>(FAST)
+                else Cache Miss
+                  BC->>ISP: Query: www.google.com
+                  ISP->>Root: Where is .com?
+                  Root-->>ISP: Ask TLD server
+                  ISP->>TLD: Where is google.com?
+                  TLD-->>ISP: Ask Authoritative NS
+                  ISP->>Auth: Where is www.google.com?
+                  Auth-->>ISP: 142.250.70.142
+                  ISP-->>BC: 142.250.70.142
+                  BC-->>BC: Cache result<br/>(TTL=3600s)
+                  BC-->>User: IP Address
+                end
+
+                User->>User: Browser connects<br/>to 142.250.70.142
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Understand how domain names are translated to IP addresses through a hierarchical DNS resolver network<br>
+              <strong>Syllabus Link:</strong> SE-12-05<br>
+              <strong>Try This:</strong> Use `nslookup` or `dig` command to query DNS servers and observe the resolution path for different domains
+            </p>
+          </div>
+
+          <!-- HTTP Request/Response Diagram -->
+          <div class="diagram-block">
+            <h4>📨 HTTP Request/Response Sequence</h4>
+            <div class="mermaid">
+              sequenceDiagram
+                participant Browser as 🌐 Browser
+                participant Server as 🖥️ Web Server
+                participant DB as 💾 Database
+
+                Browser->>Server: HTTP GET /student/profile?id=42
+                Server->>DB: SELECT * FROM students WHERE id=42
+                DB-->>Server: Student record
+                Server-->>Browser: HTTP 200 OK<br/>HTML + CSS + JS
+
+                rect rgb(200, 150, 255)
+                Browser->>Browser: Render HTML<br/>Execute CSS<br/>Load Images
+                end
+
+                Note over Browser,Server: User Interaction
+                Browser->>Server: POST /submit/assignment<br/>(multipart form data)
+                Server->>Server: Validate input<br/>Process file
+                Server->>DB: INSERT assignment_submission
+                Server-->>Browser: HTTP 302 Redirect<br/>Location: /success
+                Browser->>Server: HTTP GET /success
+                Server-->>Browser: HTTP 200 Success page
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Visualize the complete HTTP request/response cycle. The browser initiates requests, the server processes them, and the browser renders the response.<br>
+              <strong>Syllabus Link:</strong> SE-12-03<br>
+              <strong>Try This:</strong> Open browser DevTools (F12), go to Network tab, refresh the page, and watch the actual HTTP requests and responses happen in real-time!
+            </p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -227,6 +298,35 @@
               </tbody>
             </table>
           </div>
+
+          <!-- Protocol Stack Diagram -->
+          <div class="diagram-block">
+            <h4>🏗️ Web Protocol Stack / OSI Layers</h4>
+            <div class="mermaid">
+              graph TB
+                A["🌐 HTTP/HTTPS<br/>Port 80/443<br/>Web protocol<br/>What: URLs, requests, responses"]
+                B["📨 TCP<br/>Port varies<br/>Reliable transmission<br/>How: Ordered packets, flow control"]
+                C["📦 IP<br/>Port varies<br/>Routing packets<br/>How: IP addresses, route selection"]
+                D["🔗 Ethernet/WiFi<br/>MAC addresses<br/>Physical transmission<br/>How: Frames, collision detection"]
+                E["⚡ Signals on Wire<br/>Electrons/Light<br/>Physical bits<br/>How: Voltage, frequencies"]
+
+                A -->|Uses| B
+                B -->|Uses| C
+                C -->|Uses| D
+                D -->|Uses| E
+
+                style A fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+                style B fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px
+                style C fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
+                style D fill:#FFF3E0,stroke:#E65100,stroke-width:2px
+                style E fill:#FCE4EC,stroke:#C2185B,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Show how web protocols stack on top of each other. Each layer uses the layer below it and provides services to the layer above.<br>
+              <strong>Syllabus Link:</strong> SE-12-03<br>
+              <strong>Try This:</strong> Trace a single HTTP request down the stack — how many layers does it pass through to reach the wire?
+            </p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -248,6 +348,52 @@
 
           <h4>🔑 Authentication and Authorisation</h4>
           <p><strong>Authentication</strong> is the process of verifying <em>who</em> a user is (e.g., verifying a username and password match a database record). <strong>Authorisation</strong> is the process of verifying <em>what</em> an authenticated user is permitted to do (e.g., checking if a logged-in user has the "admin" role before allowing access to the dashboard). Modern web applications use <strong>JSON Web Tokens (JWT)</strong> or <strong>OAuth 2.0</strong> to manage these processes securely across multiple services.</p>
+
+          <!-- Session Management and JWT Diagram -->
+          <div class="diagram-block">
+            <h4>🔐 Session Management with JWT Tokens</h4>
+            <div class="mermaid">
+              sequenceDiagram
+                participant Browser as 🌐 Browser
+                participant Server as 🖥️ Web Server
+                participant DB as 💾 Database
+
+                Browser->>Server: POST /login<br/>username, password
+
+                Server->>DB: SELECT user<br/>WHERE username=?
+                DB-->>Server: User record<br/>(with bcrypt hash)
+
+                Server->>Server: Compare passwords<br/>bcrypt.verify()
+
+                alt Auth Success
+                  Server->>Server: Create JWT<br/>header.payload.signature<br/>include: user_id, role, exp
+                  Server-->>Browser: HTTP 200<br/>Set-Cookie: jwt_token
+                else Auth Failed
+                  Server-->>Browser: HTTP 401<br/>Unauthorized
+                end
+
+                Browser->>Browser: Store JWT<br/>in localStorage<br/>or Cookie
+
+                Note over Browser,Server: Subsequent Requests
+
+                Browser->>Server: GET /dashboard<br/>Authorization: Bearer JWT
+
+                Server->>Server: Verify JWT signature<br/>Check expiration<br/>Extract user_id + role
+
+                alt Token Valid
+                  Server->>DB: SELECT user_dashboard<br/>WHERE id = user_id
+                  DB-->>Server: Dashboard data
+                  Server-->>Browser: HTTP 200<br/>Dashboard HTML
+                else Token Expired or Invalid
+                  Server-->>Browser: HTTP 401<br/>Redirect to /login
+                end
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Understand stateless session management using JSON Web Tokens (JWT) and password hashing with bcrypt<br>
+              <strong>Syllabus Link:</strong> SE-12-04, SE-12-07<br>
+              <strong>Try This:</strong> Implement JWT-based authentication in a Python Flask or Node.js Express app and trace the token through multiple requests
+            </p>
+          </div>
 
           <h4>#️⃣ Hash Values</h4>
           <p>A <strong>hash function</strong> is a one-way mathematical function that converts any input into a fixed-length output called a <strong>hash value</strong> (or digest). For example, the SHA-256 algorithm produces a 64-character hexadecimal hash. Hash functions are deterministic (same input always produces the same hash) but irreversible — it is computationally infeasible to reconstruct the original input from the hash. Web applications use hashing to store passwords securely: the hash of the password is stored, never the password itself. Algorithms like <strong>bcrypt</strong> add a random <strong>salt</strong> before hashing to prevent rainbow table attacks.</p>
@@ -566,6 +712,49 @@ git merge feature/user-login</code></pre>
               </tbody>
             </table>
           </div>
+
+          <!-- CMS Architecture Comparison Diagram -->
+          <div class="diagram-block">
+            <h4>🏗️ CMS Architecture: Coupled vs Headless</h4>
+            <div class="mermaid">
+              graph TB
+                  subgraph Traditional["Traditional CMS<br/>━━━━━━━━━━━━━━━"]
+                    TUI["Admin UI<br/>Build, edit, publish"]
+                    TBE["Back-End<br/>Database + Logic"]
+                    TFE["Front-End<br/>Theme/Template<br/>HTML + CSS"]
+                    TUI -->|Tightly Coupled| TBE
+                    TBE -->|Tightly Coupled| TFE
+                  end
+
+                  subgraph Headless["Headless CMS<br/>━━━━━━━━━━━━━━━"]
+                    HUI["Admin UI<br/>Build, edit, publish"]
+                    HBE["Back-End API<br/>Database + Logic"]
+                    HFE1["Web Front-End<br/>React/Vue/etc"]
+                    HFE2["Mobile App<br/>iOS/Android"]
+                    HFE3["IoT Dashboard<br/>Device UI"]
+                    HUI -->|Decoupled| HBE
+                    HBE -->|JSON API| HFE1
+                    HBE -->|JSON API| HFE2
+                    HBE -->|JSON API| HFE3
+                  end
+
+                  style Traditional fill:#FFCCBC,stroke:#E64A19,stroke-width:2px
+                  style Headless fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
+                  style TUI fill:#FFF9C4,stroke:#F57F17
+                  style TBE fill:#E3F2FD,stroke:#1976D2
+                  style TFE fill:#F8BBD0,stroke:#C2185B
+                  style HUI fill:#FFF9C4,stroke:#F57F17
+                  style HBE fill:#E3F2FD,stroke:#1976D2
+                  style HFE1 fill:#F8BBD0,stroke:#C2185B
+                  style HFE2 fill:#F8BBD0,stroke:#C2185B
+                  style HFE3 fill:#F8BBD0,stroke:#C2185B
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Compare traditional monolithic CMS architecture with headless CMS approach showing flexibility in serving multiple front-ends<br>
+              <strong>Syllabus Link:</strong> SE-12-06<br>
+              <strong>Try This:</strong> Deploy a headless CMS (e.g., Strapi) and consume its API from both a web front-end and a mobile app to experience the flexibility
+            </p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -863,5 +1052,10 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
   </footer>
 
   <script src="../js/main.js?v=3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
+    mermaid.contentLoaded();
+  </script>
 </body>
 </html>

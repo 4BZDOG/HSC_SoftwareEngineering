@@ -256,6 +256,41 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
     print(<span class="str">f"Owner: {acc.owner}"</span>)</code></pre>
           </div>
 
+          <!-- Encapsulation Access Control Diagram -->
+          <div class="diagram-block">
+            <h4>🔐 Encapsulation: Access Control and Data Hiding</h4>
+            <div class="mermaid">
+              graph TB
+                  subgraph BankAccount["BankAccount Class<br/>━━━━━━━━━━━"]
+                    direction LR
+                    PUB["🟢 PUBLIC<br/>• owner: String<br/>• get_balance()"]
+                    PROT["🟡 PROTECTED<br/>• _account_type"]
+                    PRIV["🔴 PRIVATE<br/>• __balance<br/>• __pin"]
+                    METHODS["📋 Setter Methods<br/>• __validate()<br/>• __update_log()"]
+                  end
+
+                  EXTERNAL["External Code<br/>user_account"]
+
+                  EXTERNAL -->|Can access| PUB
+                  EXTERNAL -->|Cannot access| PROT
+                  EXTERNAL -->|Cannot access| PRIV
+                  EXTERNAL -->|Calls| METHODS
+                  METHODS -->|Validates &lt;<br/>Updates| PRIV
+
+                  style BankAccount fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+                  style PUB fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
+                  style PROT fill:#FFE082,stroke:#F57F17,stroke-width:2px
+                  style PRIV fill:#FFCCBC,stroke:#E64A19,stroke-width:2px
+                  style METHODS fill:#BBDEFB,stroke:#1976D2,stroke-width:2px
+                  style EXTERNAL fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Demonstrate access modifiers (public, protected, private) and how encapsulation protects internal state by forcing external code to use validated setter methods<br>
+              <strong>Syllabus Link:</strong> SE-11-02, SE-11-04<br>
+              <strong>Try This:</strong> Design a Student class with private GPA, and implement a public method to safely update it (only if marks are within 0-100 range)
+            </p>
+          </div>
+
           <!-- OOP Class Diagram -->
           <div class="diagram-block">
             <h4>🧱 Class Hierarchy Example — Vehicle System</h4>
@@ -401,6 +436,37 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
 account = BankAccount()
 result = account.withdraw(500) <span class="cm"># Passing message to account object</span>
 <span class="cm"># The account handles the message; caller doesn't care how</span></code></pre>
+          </div>
+
+          <!-- Message Passing Sequence Diagram -->
+          <div class="diagram-block">
+            <h4>📨 Message-Passing Between Objects</h4>
+            <div class="mermaid">
+              sequenceDiagram
+                participant Client as 👤 Client Code
+                participant Account as 🏦 BankAccount<br/>Object
+                participant Validator as ✓ Balance<br/>Validator
+
+                Client->>Account: withdraw(500)<br/>[Message]
+                Note over Account: receive message<br/>process internally
+
+                Account->>Validator: check balance &gt;= 500?
+                Validator-->>Account: True/False
+
+                alt Balance Sufficient
+                  Account->>Account: self.balance -= 500
+                  Account-->>Client: return True
+                else Insufficient Balance
+                  Account-->>Client: return False
+                end
+
+                Note over Client,Account: Client doesn't know HOW<br/>balance checking works<br/>Only WHAT the interface does
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Visualise how objects communicate through method calls (messages) while maintaining encapsulation and loose coupling<br>
+              <strong>Syllabus Link:</strong> SE-11-04, SE-11-08<br>
+              <strong>Try This:</strong> Design a system where Student sends message to Enrollment to register for a Course, and trace all the internal validations without revealing implementation details
+            </p>
           </div>
         </section>
 
