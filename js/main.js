@@ -54,11 +54,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Table of Contents — Active Highlight on Scroll ── */
   const tocLinks = document.querySelectorAll('.toc-list a');
+  console.log(`[TOC] Found ${tocLinks.length} TOC links`);
   if (tocLinks.length > 0) {
     // Tag part-label list items (those without an anchor child)
+    const partLabels = [];
     document.querySelectorAll('.toc-list > li').forEach(li => {
-      if (!li.querySelector('a')) li.classList.add('toc-part-label');
+      if (!li.querySelector('a')) {
+        li.classList.add('toc-part-label');
+        partLabels.push(li);
+      }
     });
+    console.log(`[TOC] Found ${partLabels.length} part labels`);
 
     const allTocLis = Array.from(document.querySelectorAll('.toc-list > li'));
 
@@ -76,7 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Observe sections directly (they carry the IDs the TOC hrefs target)
     const sections = Array.from(document.querySelectorAll('.content-body section[id]'));
+    console.log(`[TOC] Found ${sections.length} sections to observe`);
     const observer = new IntersectionObserver(entries => {
+      console.log(`[TOC] IntersectionObserver triggered with ${entries.length} entries`);
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const id = entry.target.id;
@@ -151,8 +159,12 @@ document.addEventListener('DOMContentLoaded', () => {
       try { localStorage.setItem(PART_KEY, JSON.stringify(s)); } catch {}
     }
 
-    document.querySelectorAll('.part-block').forEach((block, idx) => {
+    const blocks = document.querySelectorAll('.part-block');
+    console.log(`[Part-Blocks] Found ${blocks.length} part-block elements`);
+
+    blocks.forEach((block, idx) => {
       const stateKey = `${pageKey}::part-${idx}`;
+      console.log(`[Part-Blocks] Processing block ${idx}: ${block.textContent.substring(0, 30)}`);
 
       // Inject chevron
       const chevron = document.createElement('span');
@@ -176,6 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       block.insertAdjacentElement('afterend', group);
       siblings.forEach(s => inner.appendChild(s));
+      console.log(`[Part-Blocks] Moved ${siblings.length} siblings into part-group-inner`);
 
       // Restore saved collapse state
       const isCollapsed = getState()[stateKey] === 1;
@@ -193,6 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         group.classList.toggle('part-collapsed', nowCollapsed);
         block.setAttribute('aria-expanded', String(!nowCollapsed));
         setState(stateKey, nowCollapsed);
+        console.log(`[Part-Blocks] Toggled block ${idx}: now collapsed = ${nowCollapsed}`);
       }
 
       block.addEventListener('click', toggle);
