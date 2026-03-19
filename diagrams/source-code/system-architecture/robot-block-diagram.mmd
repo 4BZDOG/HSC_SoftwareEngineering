@@ -1,0 +1,25 @@
+graph TB
+    Sensors["📡 SENSOR INPUTS<br/>━━━━━━━━━━━━<br/>📷 Camera<br/>🔊 Ultrasonic<br/>🧭 IMU Gyro<br/>🔄 Motor Encoder"]
+
+    MCU["🎮 MICROCONTROLLER<br/>━━━━━━━━━━━━<br/>Arduino/Pi<br/>Data processing<br/>Signal conversion<br/>Algorithm execution"]
+
+    Logic["🧠 CONTROL ALGORITHM<br/>━━━━━━━━━━━━<br/>Path planning<br/>Obstacle detection<br/>Decision making<br/>PID control"]
+
+    Actuators["⚙️ ACTUATOR OUTPUTS<br/>━━━━━━━━━━━━<br/>🔌 DC Motors<br/>📦 Servos<br/>💡 LEDs<br/>🔊 Buzzer"]
+
+    Power["🔋 POWER SYSTEM<br/>━━━━━━━━━━━━<br/>Battery pack<br/>Voltage regulator<br/>Power distribution<br/>Charging circuit"]
+
+    Sensors -->|"Analog/Digital<br/>Signals"| MCU
+    MCU -->|"Data<br/>Interpretation"| Logic
+    Logic -->|"Control<br/>Decisions"| MCU
+    MCU -->|"PWM/GPIO<br/>Commands"| Actuators
+
+    Power -->|"5V/12V<br/>Supply"| MCU
+    Power -->|"3.3V<br/>Supply"| Sensors
+    Power -->|"12V<br/>Supply"| Actuators
+
+    style Sensors fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+    style MCU fill:#FFF3E0,stroke:#E65100,stroke-width:2px
+    style Logic fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px
+    style Actuators fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
+    style Power fill:#FCE4EC,stroke:#C2185B,stroke-width:2px

@@ -1,0 +1,21 @@
+flowchart TD
+    A["📊 Sort Required"] --> B{{"Array size<br/>1000+ items?"}}
+
+    B -->|Yes| C["⚡ Merge Sort<br/>O(n log n)<br/>Better performance"]
+    B -->|No| D["📦 Bubble Sort<br/>O(n²)<br/>Simpler code"]
+
+    C --> E["🔄 Divide & Conquer"]
+    D --> F["🔁 Nested Loops"]
+
+    E --> G["✅ Sort Complete<br/>Efficient"]
+    F --> G
+
+    G --> H["📤 Output<br/>Sorted Array"]
+
+    style A fill:#E3F2FD
+    style C fill:#87CEEB
+    style D fill:#87CEEB
+    style E fill:#fff3e0
+    style F fill:#fff3e0
+    style G fill:#E8F5E9
+    style H fill:#90EE90

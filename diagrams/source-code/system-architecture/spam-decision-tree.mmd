@@ -1,0 +1,19 @@
+graph TD
+    Root{{"📧 Email Analysis<br/>Start classification"}}
+
+    Root -->|"'Click here'<br/>detected?"| Node1{{"💰 'Free money'<br/>in email?"}}
+    Root -->|"No clicks"| Node2{{"👤 Unknown<br/>sender?"}}
+
+    Node1 -->|"Yes"| Leaf1["🚫 SPAM<br/>Confidence: 95%<br/>Action: Quarantine"]
+    Node1 -->|"No"| Leaf2["✅ NOT SPAM<br/>Confidence: 78%<br/>Action: Inbox"]
+
+    Node2 -->|"Yes"| Leaf3["🚫 SPAM<br/>Confidence: 85%<br/>Action: Quarantine"]
+    Node2 -->|"No"| Leaf4["✅ NOT SPAM<br/>Confidence: 92%<br/>Action: Inbox"]
+
+    style Root fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+    style Node1 fill:#FFF3E0,stroke:#E65100,stroke-width:2px
+    style Node2 fill:#FFF3E0,stroke:#E65100,stroke-width:2px
+    style Leaf1 fill:#FF6B6B,color:#fff,stroke:#C62828
+    style Leaf3 fill:#FF6B6B,color:#fff,stroke:#C62828
+    style Leaf2 fill:#51CF66,color:#fff,stroke:#2E7D32
+    style Leaf4 fill:#51CF66,color:#fff,stroke:#2E7D32
