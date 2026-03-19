@@ -80,20 +80,37 @@
     <aside class="sidebar">
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Part 1 — Software Development</li>
         <li><a href="#sdlc">🚀 1. Software Development Steps</a></li>
-        <li><a href="#collaboration">🤝 2. Collaboration Tools</a></li>
-        <li><a href="#strategies">🧠 3. Algorithmic Design</a></li>
-        <li><a href="#modelling">📊 4. Modelling Tools</a></li>
-        <li><a href="#data-rep">🔢 5. Data Representation</a></li>
-        <li><a href="#data-types">📋 6. Data Types & Dictionaries</a></li>
-        <li><a href="#data-structures">📚 7. Data Structures</a></li>
-        <li><a href="#management">⚙️ 8. Project Models</a></li>
-        <li><a href="#testing">🧪 9. Evaluation & Debugging</a></li>
+        <li><a href="#collaboration">🤝 2. Online Collaboration Tools</a></li>
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 2 — Designing Algorithms</li>
+        <li><a href="#algorithmic-design">🧠 3. Computational Thinking & Algorithm Features</a></li>
+        <li><a href="#divide-conquer">📈 4. Divide & Conquer &amp; Backtracking</a></li>
+        <li><a href="#pseudocode">📝 5. Pseudocode &amp; Flowcharts</a></li>
+        <li><a href="#modelling">📊 6. Modelling Tools</a></li>
+        <li><a href="#analysis">🔍 7. Algorithm Analysis</a></li>
+        <li><a href="#paradigms">🎯 8. Programming Paradigms</a></li>
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 3 — Data for Software Engineering</li>
+        <li><a href="#number-systems">🔢 9. Number Systems &amp; Two's Complement</a></li>
+        <li><a href="#data-types">📋 10. Data Types &amp; Dictionaries</a></li>
+        <li><a href="#data-structures">📚 11. Data Structures</a></li>
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 4 — Developing Solutions</li>
+        <li><a href="#applying-skills">💻 12. Applying Computational Thinking</a></li>
+        <li><a href="#management">⚙️ 13. Project Management Models</a></li>
+        <li><a href="#testing">🧪 14. Testing, Debugging &amp; Errors</a></li>
       </ul>
     </aside>
 
     <main class="page-content">
       <div class="content-body">
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 1: SOFTWARE DEVELOPMENT                            -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Syllabus Part 1</span>
+          <span class="part-name">🚀 Software Development</span>
+        </div>
 
         <!-- 1. Explore SDLC -->
         <section id="sdlc">
@@ -177,12 +194,41 @@
 
         <hr class="divider" />
 
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 2: DESIGNING ALGORITHMS                            -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Syllabus Part 2</span>
+          <span class="part-name">🧠 Designing Algorithms</span>
+        </div>
+
         <!-- 3. Apply Algorithmic Design -->
-        <section id="strategies">
-          <h2 class="syllabus-phase">🧠 Algorithmic Design Strategies</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-02)</em></p>
-          <p>📌 <em><strong>Apply</strong> computational thinking by defining the features of standard algorithmic strategies.</em></p>
-          
+        <section id="algorithmic-design">
+          <h2 class="syllabus-phase">🧠 Computational Thinking and Algorithm Features</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
+          <p>📌 <em><strong>Apply</strong> computational thinking and algorithmic design by defining the key features of standard algorithms.</em></p>
+
+          <h3>Key Features of Standard Algorithms</h3>
+          <p>Every algorithm uses fundamental building blocks to solve problems. Understanding these features allows programmers to design robust, efficient solutions:</p>
+
+          <ul>
+            <li><strong>Sequence:</strong> Instructions executed in order, one after another. Example: Reading a file, processing each line, then saving results.</li>
+            <li><strong>Selection:</strong> Choosing different paths based on conditions (IF/ELSE, SWITCH statements). Example: Validating user input — if age &lt; 18, display "Too young"; otherwise, proceed.</li>
+            <li><strong>Iteration:</strong> Repeating instructions while a condition is true (FOR, WHILE loops). Example: Summing all numbers in a list by looping through each element.</li>
+            <li><strong>Storing Data:</strong> Using variables and data structures to hold values needed across multiple steps. Example: Keeping track of a running total as you iterate through numbers.</li>
+          </ul>
+
+          <p>Computational thinking is the systematic approach to problem-solving that breaks complex problems into manageable pieces and recognises patterns. By combining sequence, selection, iteration, and effective data storage, algorithms become clear, testable, and maintainable.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 4. Divide and Conquer & Backtracking -->
+        <section id="divide-conquer">
+          <h2 class="syllabus-phase">📈 Divide and Conquer and Backtracking Strategies</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
+          <p>📌 <em><strong>Apply</strong> divide and conquer and backtracking as algorithmic design strategies.</em></p>
+
           <h3>Divide and Conquer</h3>
           <p>This strategy involves breaking a complex problem into smaller, identical sub-problems until they are simple enough to solve directly. The solutions to these sub-problems are then combined to form the final result.<br>🌏 <em>Example: In a <strong>Merge Sort</strong>, a large list is repeatedly split in half until single elements remain, which are then merged back together in the correct order.</em> This approach is highly efficient for sorting and searching large datasets.</p>
 
@@ -212,11 +258,40 @@
 
         <hr class="divider" />
 
-        <!-- 4. Use Modelling Tools -->
+        <!-- 5. Pseudocode and Flowcharts -->
+        <section id="pseudocode">
+          <h2 class="syllabus-phase">📝 Developing Algorithms Using Pseudocode and Flowcharts</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
+          <p>📌 <em><strong>Develop</strong> structured algorithms using pseudocode and flowcharts, including the use of subprograms.</em></p>
+
+          <h3>Pseudocode</h3>
+          <p>Pseudocode is an informal, human-readable notation for writing algorithms — a bridge between natural language and programming code. It uses common programming keywords (IF, WHILE, FOR) mixed with English-like descriptions, making logic crystal clear without being tied to a specific programming language's syntax. This allows designers and developers to communicate algorithm logic to non-programmers, and to verify correctness before investing time in actual coding.<br>🌏 <em>Example:</em></p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode — Linear Search Algorithm</span></div>
+            <pre><code>FUNCTION searchList(list, target)
+    FOR index FROM 0 TO length(list) - 1
+        IF list[index] EQUALS target THEN
+            RETURN index
+        END IF
+    END FOR
+    RETURN -1  // Not found
+END FUNCTION</code></pre>
+          </div>
+
+          <h3>Flowcharts</h3>
+          <p>Flowcharts use visual symbols to represent algorithm steps and decision points. Rectangles represent processes, diamonds represent decisions, and arrows show flow direction. This visual representation makes complex logic easy to follow, helps identify loops and branches, and allows stakeholders to validate correctness before implementation.<br>🌏 <em>Example:</em> A flowchart for validating user age would show a diamond (decision point) — "Is age ≥ 18?" — with two paths: YES leads to "Show full menu" and NO leads to "Show restricted menu."</p>
+
+          <h3>Subprograms</h3>
+          <p>A subprogram (function or procedure) is a reusable block of code that performs a specific task. Pseudocode and flowcharts must clearly show how subprograms are called, what parameters they accept, and what they return. This modular approach reduces code duplication, improves readability, and makes testing easier.<br>🌏 <em>Example: A main program calls FUNCTION validatePassword(pwd) which returns TRUE or FALSE, allowing the validation logic to be reused across multiple entry points.</em></p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 6. Use Modelling Tools -->
         <section id="modelling">
-          <h2 class="syllabus-phase">📊 Modelling and Refinement Tools</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-06)</em></p>
-          <p>📌 <em><strong>Use</strong> modelling tools to support top-down and bottom-up design methodologies.</em></p>
+          <h2 class="syllabus-phase">📊 Modelling Tools for Design</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
+          <p>📌 <em><strong>Use</strong> modelling tools including structure charts, abstraction and refinement diagrams to support top-down and bottom-up design.</em></p>
           
           <h3>Structure Charts</h3>
           <p>Structure charts are a top-down tool used to show the hierarchy of subroutines in a system. They focus on modularity, showing which module calls another and what data (parameters) or control signals (flags) are passed between them.<br>🌏 <em>Example: A structure chart for an ATM would show the 'Main' module calling 'Verify PIN' and passing back a 'Valid/Invalid' flag.</em> This allows engineers to see high-level dependencies without getting bogged down in code logic.</p>
@@ -227,11 +302,60 @@
 
         <hr class="divider" />
 
-        <!-- 5. Investigate Number Systems -->
-        <section id="data-rep">
-          <h2 class="syllabus-phase">🔢 Data Representation & Number Systems</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-11-03, SE-11-04)</em></p>
-          <p>📌 <em><strong>Investigate</strong> the use of number systems for computing purposes. Computers store everything in binary, but humans use hexadecimal as a shorthand.</em></p>
+        <!-- 7. Analyse Algorithm Logic and Structure -->
+        <section id="analysis">
+          <h2 class="syllabus-phase">🔍 Analysing Algorithm Logic and Structure</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
+          <p>📌 <em><strong>Analyse</strong> the logic and structure of written algorithms, including determining inputs and outputs, purpose, desk checking, peer checking, and identifying connections to subroutines or functions.</em></p>
+
+          <h3>Determining Inputs, Outputs, and Purpose</h3>
+          <p>Before writing code, clearly identify what data the algorithm needs (inputs), what it produces (outputs), and why it exists (purpose). This clarity prevents bugs and ensures the solution addresses the right problem.<br>🌏 <em>Example: A sorting algorithm has INPUT: unsorted list; OUTPUT: sorted list; PURPOSE: arrange items in ascending order for efficient searching.</em></p>
+
+          <h3>Desk Checking and Peer Checking</h3>
+          <p><strong>Desk checking</strong> (or "dry running") involves manually tracing through an algorithm step-by-step with sample data, recording the value of each variable at each step to verify correctness before implementation. <strong>Peer checking</strong> is having another person review the algorithm logic to catch errors or inefficiencies that the original author might miss.<br>🌏 <em>Example: Desk checking a loop from 1 to 10 — write down i=1, i=2, ... to verify the loop executes exactly 10 times, not 9 or 11.</em></p>
+
+          <h3>Identifying Connections to Subroutines and Functions</h3>
+          <p>Analyse how an algorithm calls other functions and what data is passed between them. Document the purpose of each function call and the parameters it receives, ensuring data flows correctly through the program.<br>🌏 <em>Example: An algorithm that calculates employee pay might call FUNCTION calculateTax(salary) and FUNCTION applyBonus(basePay, bonusPercent), understanding what each returns and how it affects the final result.</em></p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 8. Programming Paradigms -->
+        <section id="paradigms">
+          <h2 class="syllabus-phase">🎯 Programming Paradigms</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
+          <p>📌 <em><strong>Experiment</strong> with object-oriented programming, imperative, logic and functional programming paradigms.</em></p>
+
+          <h3>Object-Oriented Programming (OOP)</h3>
+          <p>Data and functions are bundled together in "objects" that model real-world entities. Emphasises reusability, modularity, and maintainability. Classes define blueprints; instances are created from them.<br>🌏 <em>Example: A Car class has properties (colour, speed) and methods (accelerate(), brake()); multiple car objects can be created from this template.</em></p>
+
+          <h3>Imperative Programming</h3>
+          <p>Programs are sequences of explicit commands (statements) that change program state step-by-step. Python, Java, and C are imperative languages. Focus on "how" to solve the problem (procedures and control flow).<br>🌏 <em>Example: "Set count to 0; LOOP: add next number to count; increment loop counter; IF loop counter &lt; 10, GO TO LOOP."</em></p>
+
+          <h3>Logic Programming</h3>
+          <p>Programs state facts and rules; the interpreter derives new facts through logical inference. Less common than imperative, but used in artificial intelligence and database queries. Focus on "what" is true, not "how" to compute it.<br>🌏 <em>Example (Prolog): "parent(john, mary). parent(mary, bob). grandparent(X, Z) :- parent(X, Y), parent(Y, Z)." The system infers grandparent relationships.</em></p>
+
+          <h3>Functional Programming</h3>
+          <p>Programs are built from pure functions (same input always produces same output, no side effects) and immutable data. Emphasises recursion and function composition.<br>🌏 <em>Example (Lisp/Scheme): Computing factorial recursively as (factorial 5) = 5 × (factorial 4) × ... × 1, without modifying state.</em></p>
+
+          <p>Modern development often uses <strong>hybrid approaches</strong> — Python supports both OOP and functional styles; JavaScript supports imperative and functional paradigms. Experimenting with different paradigms strengthens problem-solving skills and helps you choose the best tool for each context.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 3: DATA FOR SOFTWARE ENGINEERING                   -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Syllabus Part 3</span>
+          <span class="part-name">📊 Data for Software Engineering</span>
+        </div>
+
+        <!-- 9. Investigate Number Systems -->
+        <section id="number-systems">
+          <h2 class="syllabus-phase">🔢 Number Systems and Two's Complement</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-03)</em></p>
+          <p>📌 <em><strong>Investigate</strong> the use of number systems for computing purposes, including binary, decimal and hexadecimal. <strong>Represent</strong> integers using two's complement.</em></p>
           
           <ul>
             <li><strong>Binary (Base 2):</strong> Used by hardware for electrical on/off states.</li>
@@ -256,11 +380,11 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
 
         <hr class="divider" />
 
-        <!-- 6. Investigate Data Types & Create Dictionaries -->
+        <!-- 10. Investigate Data Types & Create Dictionaries -->
         <section id="data-types">
           <h2 class="syllabus-phase">📋 Data Types and Data Dictionaries</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-11-04)</em></p>
-          <p>📌 <em><strong>Investigate</strong> standard data types and <strong>Create</strong> data dictionaries to describe and structure data relationships.</em></p>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-03, SE-11-04)</em></p>
+          <p>📌 <em><strong>Investigate</strong> standard data types including char/string, Boolean, real, single precision floating point, integer, and date/time. <strong>Create</strong> data dictionaries as a tool to describe data and data types, structure data, and record relationships.</em></p>
 
           <div class="table-wrap">
             <table>
@@ -306,48 +430,102 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
 
         <hr class="divider" />
 
-        <!-- 7. Use Data Structures -->
+        <!-- 11. Use Data Structures -->
         <section id="data-structures">
           <h2 class="syllabus-phase">📚 Data Structures</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-11-02, SE-11-04)</em></p>
-          <p>📌 <em><strong>Use and Implement</strong> data structures that support efficient data storage and retrieval.</em></p>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-03, SE-11-04)</em></p>
+          <p>📌 <em><strong>Use</strong> data structures of arrays, records, trees and sequential files to organize and store data efficiently.</em></p>
 
           <div class="info-grid">
             <div class="info-card">
-              <h4>Arrays (Multidimensional)</h4>
-              <p>Grids or tables of data.<br>🌏 <em>Example: A 2D array representing a chessboard or a spreadsheet.</em></p>
+              <h4>Arrays (Single and Multidimensional)</h4>
+              <p>Fixed-size collections of elements of the same type. Single-dimensional arrays store a list; multidimensional arrays form grids or tables.<br>🌏 <em>Example: scores = [45, 67, 89] (1D), or board = [[1,2,3],[4,5,6],[7,8,9]] (2D chessboard).</em></p>
               <div class="code-block">
-                <pre><code>board = [[0 <span class="kw">for</span> _ <span class="kw">in</span> range(8)] <span class="kw">for</span> _ <span class="kw">in</span> range(8)]</code></pre>
+                <pre><code><span class="cm"># Single dimension</span>
+scores = [45, 67, 89]
+<span class="cm"># Multidimensional</span>
+board = [[0 <span class="kw">for</span> _ <span class="kw">in</span> range(8)] <span class="kw">for</span> _ <span class="kw">in</span> range(8)]</code></pre>
               </div>
             </div>
             <div class="info-card">
+              <h4>Records</h4>
+              <p>Structured collections that group related data fields of different types under one name. A record is like a row in a database table or an object with named fields.<br>🌏 <em>Example: A Student record contains {Name (string), StudentID (integer), GPA (float), EnrolmentDate (date)}.</em></p>
+              <div class="code-block">
+                <pre><code><span class="cm"># In Python, using a class or dictionary</span>
+student = {
+    <span class="str">"name"</span>: <span class="str">"Alice"</span>,
+    <span class="str">"id"</span>: 12345,
+    <span class="str">"gpa"</span>: 3.95
+}</code></pre>
+              </div>
+            </div>
+            <div class="info-card">
+              <h4>Trees</h4>
+              <p>Hierarchical structures with a root node and parent-child relationships. Used for representing file systems, organizational charts, and search optimisation.<br>🌏 <em>Example: A file system tree where C:\ is root, containing Users, Program Files, etc.</em></p>
+            </div>
+            <div class="info-card">
+              <h4>Sequential Files</h4>
+              <p>Data stored in order in a file, accessed sequentially from beginning to end. Unlike databases, sequential access is required (cannot jump directly to record 100).<br>🌏 <em>Example: A CSV file of sales records is read line-by-line in order; to find a specific customer, the entire file must be scanned.</em></p>
+            </div>
+            <div class="info-card">
               <h4>Stacks (LIFO)</h4>
-              <p>Last-In-First-Out.<br>🌏 <em>Example: The 'Undo' feature in Word, where the last action performed is the first one reverted.</em></p>
+              <p>Last-In-First-Out data structure. Last element added is the first removed. Used for function call stacks, undo features, expression evaluation.<br>🌏 <em>Example: The 'Undo' feature in Word — each action is pushed; undoing pops the most recent action.</em></p>
               <div class="code-block">
                 <pre><code>history = []; history.append(<span class="str">"Action"</span>); history.pop()</code></pre>
               </div>
             </div>
             <div class="info-card">
               <h4>Hash Tables</h4>
-              <p>Maps keys to values for instant access.<br>🌏 <em>Example: A username database where you lookup a name to get their profile data.</em></p>
+              <p>Key-value mappings for instant lookup. Hash functions convert keys to array indices, enabling O(1) average-case access time.<br>🌏 <em>Example: A username-to-profile dictionary where lookup("alice") instantly returns her profile without scanning.</em></p>
               <div class="code-block">
                 <pre><code>users = {<span class="str">"alice"</span>: {<span class="str">"age"</span>: 17, <span class="str">"year"</span>: 11}}</code></pre>
               </div>
-            </div>
-            <div class="info-card">
-              <h4>Trees</h4>
-              <p>Hierarchical parent-child nodes.<br>🌏 <em>Example: The file system on your computer (C:\Users\Documents).</em></p>
             </div>
           </div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 8. Compare Project Management -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 4: DEVELOPING SOLUTIONS WITH CODE                  -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Syllabus Part 4</span>
+          <span class="part-name">💻 Developing Solutions with Code</span>
+        </div>
+
+        <!-- 12. Applying Computational Thinking & Skills -->
+        <section id="applying-skills">
+          <h2 class="syllabus-phase">💻 Applying Computational Thinking and Programming Skills</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
+          <p>📌 <em><strong>Apply</strong> skills in computational thinking and programming to develop a software solution, including converting an algorithm into code, using control structures, using data structures, using standard modules, and creating relevant subprograms with parameter passing.</em></p>
+
+          <h3>Converting Algorithm to Code</h3>
+          <p>Translating pseudocode or flowcharts into actual programming language syntax. Each algorithm step becomes a statement; pseudocode's IF becomes the language's if keyword; loops translate directly.</p>
+
+          <h3>Using Control Structures</h3>
+          <p>Implementing sequence (statements in order), selection (if/else, switch), and iteration (for, while loops) to direct program flow based on conditions and data.</p>
+
+          <h3>Using Data Structures</h3>
+          <p>Selecting and implementing appropriate data structures (arrays, records, trees, hash tables) to organise data so algorithms can access it efficiently.</p>
+
+          <h3>Using Standard Modules</h3>
+          <p>Leveraging built-in libraries and functions (e.g., Python's math module, datetime module, string methods) instead of reinventing functionality. Standard modules are tested, optimised, and consistent across projects.</p>
+
+          <h3>Creating Subprograms with Parameter Passing</h3>
+          <p>Writing functions and procedures that accept parameters (inputs), perform a specific task, and return results. Parameters can be passed by value (copy) or by reference (address), allowing functions to modify caller's data when needed.<br>🌏 <em>Example: FUNCTION calculateBonus(salary, percent) takes two parameters, calculates the bonus, and returns the result.</em></p>
+
+          <h3>Implementing Data Structures for Storage</h3>
+          <p>Creating concrete implementations of abstract data structures in code. This includes single and multidimensional arrays, linked lists, trees with nodes, stacks using lists, and hash tables using dictionaries.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 13. Compare Project Management -->
         <section id="management">
           <h2 class="syllabus-phase">⚙️ Project Management Models</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-06)</em></p>
-          <p>📌 <em><strong>Compare</strong> the execution of the Waterfall and Agile project management models in engineering.</em></p>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-05)</em></p>
+          <p>📌 <em><strong>Compare</strong> the execution of the Waterfall and Agile project management models as applied to software development.</em></p>
 
           <div class="table-wrap">
             <table>
@@ -376,11 +554,20 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
 
         <hr class="divider" />
 
-        <!-- 9. Test and Evaluate -->
+        <!-- 14. Test, Evaluate and Debug -->
         <section id="testing">
-          <h2 class="syllabus-phase">🧪 Evaluation, Testing and Debugging</h2>
+          <h2 class="syllabus-phase">🧪 Testing, Debugging and Error Handling</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
-          <p>📌 <em><strong>Test and Evaluate</strong> solutions based on functionality, performance, and readability using appropriate debugging tools.</em></p>
+          <p>📌 <em><strong>Test and Evaluate</strong> solutions, considering functionality, performance, readability, and documentation quality. <strong>Use</strong> debugging tools. <strong>Determine</strong> suitable test data sets and identify typical coding errors.</em></p>
+
+          <h3>Evaluation Criteria</h3>
+          <p>Software solutions are evaluated on multiple dimensions:</p>
+          <ul>
+            <li><strong>Functionality:</strong> Does the program produce correct outputs for all inputs?</li>
+            <li><strong>Performance:</strong> Does it run efficiently (time complexity, memory usage)?</li>
+            <li><strong>Readability:</strong> Is the code clear, well-structured, and easy to understand?</li>
+            <li><strong>Documentation Quality:</strong> Are functions documented? Are complex sections explained?</li>
+          </ul>
 
           <h3>Test Data Selection</h3>
           <p>Selecting the right data is critical for ensuring secure and robust code execution (SE-11-07).</p>
@@ -438,6 +625,18 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
 print(process_input(100))   <span class="cm"># Boundary: Valid</span>
 print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal: Handled</span></code></pre>
           </div>
+
+          <h3>Typical Errors in Code Development</h3>
+          <p>Understanding common error types helps programmers identify and fix problems systematically:</p>
+
+          <h4>Syntax Errors</h4>
+          <p><strong>Definition:</strong> Violations of the programming language's grammar rules. The interpreter/compiler cannot parse the code and refuses to run it.<br><strong>Likely Causes:</strong> Missing colons, mismatched brackets, incorrect indentation (Python), typos in keywords.<br>🌏 <em>Example: <code>if x > 5</code> (missing colon at the end) or <code>for i in range(10]</code> (mismatched bracket types).</em></p>
+
+          <h4>Logic Errors</h4>
+          <p><strong>Definition:</strong> The program runs without crashing, but produces wrong results because the algorithm is flawed.<br><strong>Likely Causes:</strong> Wrong operator (using + instead of ×), off-by-one loop errors, incorrect conditional logic, unreachable code.<br>🌏 <em>Example: A loop from 0 to 9 when you intended 1 to 10 (off-by-one error), or calculating tax as salary × 0.01 instead of salary × 0.10 (operator error).</em></p>
+
+          <h4>Runtime Errors</h4>
+          <p><strong>Definition:</strong> The program starts running but crashes during execution due to impossible operations or resource exhaustion.<br><strong>Likely Causes:</strong> Division by zero, accessing an array index that doesn't exist, null pointer dereference, stack overflow from infinite recursion, out of memory.<br>🌏 <em>Example: <code>score[index]</code> where index is 10 but the array only has 5 elements, or <code>result = 100 / denominator</code> when denominator is 0.</em></p>
         </section>
 
       </div>
