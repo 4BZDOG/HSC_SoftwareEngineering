@@ -1,0 +1,40 @@
+classDiagram
+    class Vehicle {
+        -String manufacturer
+        -float speed
+        -float fuel_level
+        +start()
+        +stop()
+        +accelerate()
+    }
+
+    class Car {
+        -int num_doors
+        -String trunk_size
+        +open_trunk()
+        +close_trunk()
+    }
+
+    class Motorcycle {
+        -bool has_sidecar
+        +wheelie()
+    }
+
+    class Truck {
+        -float cargo_capacity
+        -float current_load
+        +load_cargo()
+        +unload_cargo()
+    }
+
+    Vehicle <|-- Car
+    Vehicle <|-- Motorcycle
+    Vehicle <|-- Truck
+
+    class Engine {
+        -String engine_type
+        -float displacement
+        +calculate_power()
+    }
+
+    Vehicle *-- Engine
