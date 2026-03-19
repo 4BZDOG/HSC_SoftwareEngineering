@@ -81,19 +81,34 @@
     <aside class="sidebar">
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Part 1 — Understanding Hardware &amp; Software</li>
         <li><a href="#applications">🦾 1. Mechatronic Applications</a></li>
-        <li><a href="#hardware">🕹️ 2. Microcontrollers vs CPUs</a></li>
-        <li><a href="#sensors-actuators">🌡️ 3. Sensors, Actuators & Manipulators</a></li>
-        <li><a href="#data-processing">📊 4. Mechatronic Data Processing</a></li>
-        <li><a href="#engineering">🔌 5. Engineering & Wiring Reqs</a></li>
-        <li><a href="#control-logic">🧠 6. Control Algorithms</a></li>
-        <li><a href="#ui-specialist">📱 7. UI & Specialist Design</a></li>
-        <li><a href="#testing">🧪 8. Prototyping & Unit Testing</a></li>
+        <li><a href="#hardware">🕹️ 2. Microcontrollers &amp; Hardware Requirements</a></li>
+        <li><a href="#sensors-actuators">🌡️ 3. Sensors, Actuators &amp; Manipulators</a></li>
+        <li><a href="#data-processing">📊 4. Data Types &amp; Processing</a></li>
+        <li><a href="#software-control">⚙️ 5. Software Control &amp; Dependencies</a></li>
+        <li><a href="#engineering">🔌 6. Power, Materials &amp; Wiring</a></li>
+        <li><a href="#accessibility">♿ 7. Specialist Requirements &amp; Accessibility</a></li>
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 2 — Designing Control Algorithms</li>
+        <li><a href="#control-design">🧠 8. Algorithm Development &amp; Control Systems</a></li>
+        <li><a href="#autonomous-features">🤖 9. Autonomous Control Features</a></li>
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 3 — Programming &amp; Building</li>
+        <li><a href="#design-develop">💻 10. Design, Develop &amp; Produce Systems</a></li>
+        <li><a href="#implementation">🔧 11. Implementation &amp; Integration</a></li>
+        <li><a href="#prototyping">🧪 12. Prototyping, Simulation &amp; Testing</a></li>
       </ul>
     </aside>
 
     <main class="page-content">
       <div class="content-body">
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 1: UNDERSTANDING MECHATRONIC HARDWARE & SOFTWARE  -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Syllabus Part 1</span>
+          <span class="part-name">⚙️ Understanding Mechatronic Hardware and Software</span>
+        </div>
 
         <!-- 1. Outline Applications -->
         <section id="applications">
@@ -207,11 +222,35 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
 
         <hr class="divider" />
 
-        <!-- 5. Engineering Requirements -->
+        <!-- 5. Software Control and Dependencies -->
+        <section id="software-control">
+          <h2 class="syllabus-phase">⚙️ Software Control and Dependencies</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
+          <p>📌 <em><strong>Experiment</strong> with software to control interactions and dependencies within mechatronic systems, understanding motion constraints, degrees of freedom, and how subsystems combine.</em></p>
+
+          <h3>Motion Constraints and Degrees of Freedom</h3>
+          <p><strong>Motion Constraints</strong> are limitations on how a mechanical system can move, imposed by its physical design (e.g., a robotic arm pivot can only rotate within a specific range; a gripper can only open/close). <strong>Degrees of Freedom (DOF)</strong> refers to the number of independent directions in which a system can move. A gripper has 1 DOF (open/close); a planar robotic arm has 2 DOF (up/down, left/right); a full 3D robot arm has 6 DOF or more. Software must account for these constraints when generating movement commands—exceeding constraints can cause mechanical damage.</p>
+
+          <h3>Combination of Subsystems</h3>
+          <p>Complex mechatronic systems are built by combining simpler subsystems. For example, an automated warehouse robot combines: (1) a vision subsystem to identify items, (2) a navigation subsystem to move through the warehouse, (3) a gripper subsystem to pick items, and (4) a communication subsystem to report status. Software must coordinate these subsystems safely—ensuring the gripper only activates when the robot is stationary, and navigation only occurs when the gripper is closed.</p>
+
+          <h3>Combination of Sensors, Actuators, and End Effectors</h3>
+          <p>Viable subsystems require careful integration of sensors (inputs), actuators (outputs), and end effectors (the working tool). For example, a 3D printer subsystem combines:</p>
+          <ul>
+            <li>Sensors: position encoders, temperature sensors, filament detection</li>
+            <li>Actuators: stepper motors for X/Y/Z axes, heater elements</li>
+            <li>End Effector: the extruder nozzle</li>
+          </ul>
+          <p>Software must synchronise these components—heating the nozzle only when filament is loaded, coordinating multiple motors to move the print head smoothly, and monitoring temperature feedback.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 6. Power, Materials and Wiring -->
         <section id="engineering">
-          <h2 class="syllabus-phase">🔌 Engineering & Wiring Requirements</h2>
+          <h2 class="syllabus-phase">🔌 Power, Materials and Wiring Diagrams</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-06)</em></p>
-          <p>📌 <em><strong>Determine</strong> the physical needs of a system and <strong>Develop</strong> wiring diagrams using standard symbols.</em></p>
+          <p>📌 <em><strong>Determine</strong> power, battery and material requirements for mechatronic components, and <strong>Develop</strong> wiring diagrams considering data and power supply needs.</em></p>
 
           <div class="table-wrap">
             <table>
@@ -245,11 +284,60 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
 
         <hr class="divider" />
 
-        <!-- 6. Control Algorithms -->
-        <section id="control-logic">
-          <h2 class="syllabus-phase">🧠 Control Algorithms</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-02)</em></p>
-          <p>📌 <em><strong>Develop</strong> and <strong>Apply</strong> algorithms to control mechatronic interactions.</em></p>
+        <!-- 7. Specialist Requirements and Accessibility -->
+        <section id="accessibility">
+          <h2 class="syllabus-phase">♿ Specialist Requirements for People with Disability</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-05)</em></p>
+          <p>📌 <em><strong>Determine</strong> specialist requirements that influence the design and functions of mechatronic systems designed for people with disability. Inclusive design ensures that technology enhances autonomy and quality of life.</em></p>
+
+          <h3>Accessibility Considerations</h3>
+          <p>When designing mechatronic systems for users with disabilities, engineers must consider:</p>
+
+          <h4>Mobility Disabilities</h4>
+          <ul>
+            <li><strong>Prosthetics and Exoskeletons:</strong> Systems controlled by electromyography (muscle signals) or brain-computer interfaces, requiring real-time sensor fusion and responsive actuation.</li>
+            <li><strong>Wheelchair Automation:</strong> Systems with joystick sensitivity adjustment, voice command control, or autonomous navigation for obstacle avoidance.</li>
+          </ul>
+
+          <h4>Visual Impairments</h4>
+          <ul>
+            <li><strong>Haptic Feedback:</strong> Vibration patterns in controllers to provide tactile information instead of visual displays.</li>
+            <li><strong>Spatial Audio:</strong> Sound-based navigation cues to guide users around obstacles.</li>
+            <li><strong>Obstacle Detection:</strong> Ultrasonic or infrared sensors to alert users to hazards.</li>
+          </ul>
+
+          <h4>Speech and Hearing Impairments</h4>
+          <ul>
+            <li><strong>Visual Feedback Systems:</strong> LED indicators, screen displays for status information.</li>
+            <li><strong>Sign Language Recognition:</strong> Computer vision systems to interpret sign language commands.</li>
+            <li><strong>Text-Based Interfaces:</strong> Keyboard or touch input for users with speech difficulties.</li>
+          </ul>
+
+          <h4>Severe Mobility Limitations</h4>
+          <ul>
+            <li><strong>Sip-and-Puff Control:</strong> Systems activated by gentle air pressure from the mouth for users with very limited mobility.</li>
+            <li><strong>Eye Gaze Tracking:</strong> Head-mounted sensors detecting where the user looks to control a cursor or robotic arm.</li>
+            <li><strong>Brainwave Interfaces:</strong> EEG sensors interpreting brain activity to control external devices.</li>
+          </ul>
+
+          <p>Specialist requirements often add complexity and cost, but they fundamentally expand accessibility and enable people with disabilities to perform tasks they could not otherwise accomplish independently.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 2: DESIGNING CONTROL ALGORITHMS                   -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Syllabus Part 2</span>
+          <span class="part-name">🧠 Designing Control Algorithms</span>
+        </div>
+
+        <!-- 8. Control Algorithm Design -->
+        <section id="control-design">
+          <h2 class="syllabus-phase">🧠 Algorithm Development and Control Systems</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
+          <p>📌 <em><strong>Develop, modify and apply</strong> algorithms to control a mechatronic system. <strong>Explore</strong> the algorithmic patterns, code and applications for open and closed control systems.</em></p>
           
           <h3>Open vs Closed Loop Systems</h3>
           <p>The choice of control system depends on the task requirements for accuracy and self-correction. Engineers often use 🛠️ <strong>Decision Trees</strong> (Course Spec p.10) to map out these control paths.</p>
@@ -278,37 +366,134 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
             </table>
           </div>
 
-          <h3>Autonomous Control</h3>
-          <p>Autonomous control requires algorithms that handle decision-making without human intervention. This involves "Sensor Fusion" (combining data from multiple sensors) and complex logic (e.g., PID control) to navigate motion constraints and maintain degrees of freedom safely. 🛠️ <strong>Flowcharts</strong> (Course Spec p.14) are essential for designing these autonomous sequences.</p>
         </section>
 
         <hr class="divider" />
 
-        <!-- 7. UI & Specialist Requirements -->
-        <section id="ui-specialist">
-          <h2 class="syllabus-phase">📱 UI & Specialist Design</h2>
+        <!-- 9. Autonomous Control Features -->
+        <section id="autonomous-features">
+          <h2 class="syllabus-phase">🤖 Features of Autonomous Control Algorithms</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
+          <p>📌 <em><strong>Outline</strong> the features of an algorithm and program code used for autonomous control. Autonomous systems must make decisions independently, handle sensor data, and adapt to environmental changes.</em></p>
+
+          <h3>Key Features of Autonomous Algorithms</h3>
+          <ul>
+            <li><strong>Sensor Fusion:</strong> Combining data from multiple sensors (e.g., distance sensors, IMU accelerometers, temperature sensors) to build a comprehensive understanding of the environment. Simple algorithms average sensor readings; advanced algorithms use Kalman filters for optimal estimation.</li>
+            <li><strong>Decision Logic:</strong> Complex conditionals and state machines that determine what action to take based on current sensor readings and system state. Example: "IF obstacle detected within 20cm AND left sensor clear, TURN LEFT; ELSE IF right sensor clear, TURN RIGHT."</li>
+            <li><strong>PID Control Loop:</strong> Proportional-Integral-Derivative control adjusts actuator output based on error (difference between desired and actual state). Common in maintaining speed, temperature, or position.</li>
+            <li><strong>State Management:</strong> Tracking the current state of the system (idle, moving, gripper_open, gripper_closed) and transitioning between states safely based on sensor feedback and logic.</li>
+            <li><strong>Real-Time Response:</strong> Meeting strict timing requirements—responding to sensors and issuing commands within specified time windows. Delays in real-time systems can cause crashes or safety failures.</li>
+            <li><strong>Fallback Safety Logic:</strong> Default safe states (e.g., "all motors stop" if communication is lost) to prevent uncontrolled operation.</li>
+          </ul>
+
+          <p>Autonomous algorithms typically use flowcharts, state diagrams, and pseudocode to be designed clearly before implementation. Testing autonomous systems requires extensive simulation and careful incremental real-world validation.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 3: PROGRAMMING AND BUILDING                       -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Syllabus Part 3</span>
+          <span class="part-name">💻 Programming and Building</span>
+        </div>
+
+        <!-- 10. Design, Develop and Produce -->
+        <section id="design-develop">
+          <h2 class="syllabus-phase">💻 Design, Develop and Produce a Mechatronic System</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-02, SE-11-05, SE-11-06, SE-11-07)</em></p>
+          <p>📌 <em><strong>Design, develop and produce</strong> a mechatronic system for a real-world problem, integrating software control, mechanical engineering, electronics and mathematics.</em></p>
+
+          <h3>Integrated System Design</h3>
+          <p>Creating a complete mechatronic system requires simultaneous consideration of three domains:</p>
+
+          <h4>Software Control</h4>
+          <p>Algorithms and code that orchestrate sensor input, decision logic, and actuator output. Must be reliable, efficient, and responsive.</p>
+
+          <h4>Mechanical Engineering</h4>
+          <p>The physical structure, joints, materials, and mechanisms. Must support the required range of motion, handle the forces generated, and integrate smoothly with electronics.</p>
+
+          <h4>Electronics and Mathematics</h4>
+          <p>Power circuits, signal conditioning, control mathematics (PID tuning), and sensor calibration. Requires understanding electrical properties of components and mathematical models of system behaviour.</p>
+
+          <p>Success requires communication and iteration between all three disciplines. For example, software delays might come from inadequate motor response, which is a mechanical/control issue; noise in sensor readings might require better filtering (electrical) or algorithm adjustments (software).</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 11. Implementation and Integration -->
+        <section id="implementation">
+          <h2 class="syllabus-phase">🔧 Implementation and Integration</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
-          <p>📌 <em><strong>Design</strong> and <strong>Implement</strong> user interfaces and <strong>Determine</strong> accessibility requirements.</em></p>
-          
-          <h3>Designing for Disability</h3>
-          <p>Engineers must determine specialist requirements to make mechatronic systems inclusive. This includes <strong>Haptic Feedback</strong> for visually impaired users, <strong>Sip-and-Puff</strong> controls for those with limited limb mobility, or <strong>Voice Interfaces</strong> for hands-free operation. Design thinking ensures that mechatronic solutions enhance the quality of life and autonomy for people with disability (SE-11-05). Engineers use 🛠️ <strong>Storyboards</strong> (Course Spec p.9) to plan these accessible interface transitions.</p>
+          <p>📌 <em><strong>Implement</strong> algorithms and design programming code to drive mechatronic devices. <strong>Apply</strong> programming to integrate sensors, actuators and end effectors. <strong>Implement</strong> specific control algorithms for performance enhancement.</em></p>
+
+          <h3>Driving Mechatronic Devices</h3>
+          <p>Code must correctly interface with hardware:</p>
+          <ul>
+            <li><strong>PWM (Pulse Width Modulation):</strong> Varying the duty cycle (on-time vs off-time) of a square wave to control motor speed or LED brightness.</li>
+            <li><strong>Analog-to-Digital Conversion:</strong> Reading analog sensor values (e.g., 0-5V) as digital numbers (0-1023) for processing.</li>
+            <li><strong>Serial Communication:</strong> Sending commands to and receiving data from sensors, actuators, and other microcontrollers.</li>
+            <li><strong>Interrupt Handling:</strong> Responding immediately to urgent events (e.g., collision detection) without waiting for the main program loop.</li>
+          </ul>
+
+          <h3>Integrating Components into Viable Subsystems</h3>
+          <p>Each subsystem (gripper, movement, vision) must be coded, tested, and debugged in isolation before integration. Components share power supplies, communication buses, and may have timing dependencies—careful integration prevents conflicts.</p>
+
+          <h3>Control Algorithm Optimisation</h3>
+          <p>Specific algorithms enhance performance:</p>
+          <ul>
+            <li><strong>PID Tuning:</strong> Adjusting proportional, integral, and derivative gains to achieve fast, stable response without overshoot.</li>
+            <li><strong>Acceleration Ramping:</strong> Gradually increasing motor speed to reduce jerky movements and mechanical stress.</li>
+            <li><strong>Sensor Filtering:</strong> Averaging or smoothing noisy sensor readings to improve decision quality.</li>
+          </ul>
         </section>
 
         <hr class="divider" />
 
-        <!-- 8. Prototyping and Unit Testing -->
-        <section id="testing">
-          <h2 class="syllabus-phase">🧪 Prototyping & Unit Testing</h2>
+        <!-- 12. Prototyping, Simulation and Testing -->
+        <section id="prototyping">
+          <h2 class="syllabus-phase">🧪 Prototyping, Simulation and Testing</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
-          <p>📌 <em><strong>Develop</strong> simulations and <strong>Create</strong> unit tests to ensure the repeatability of control algorithms.</em></p>
+          <p>📌 <em><strong>Develop</strong> simulations and prototypes to test programming code. <strong>Design and implement</strong> closed loop control systems. <strong>Design and develop</strong> a user interface. <strong>Create and use</strong> unit tests for effectiveness and repeatability.</em></p>
 
           <h3>Simulation vs Prototyping</h3>
-          <p>Simulations allow engineers to test code in a risk-free environment, while physical prototypes identify mechanical failures like friction or vibration issues.</p>
+          <p><strong>Simulations</strong> (Wokwi, TinkerCAD, Gazebo) allow testing code in a risk-free virtual environment. Useful for debugging algorithms, testing edge cases, and exploring design variations before building hardware. However, simulations don't capture real-world issues like friction, vibration, electromagnetic interference, or component tolerances.</p>
+          <p><strong>Physical prototypes</strong> identify these real-world factors. Starting with a minimal viable prototype (MVP) and iteratively improving it is more cost-effective than building a perfect system immediately. Prototyping also allows testing with actual users and refining the design based on their feedback.</p>
 
-          <div class="callout success">
-            <p>🛠️ <strong>Unit Testing (SE-11-06):</strong> By creating unit tests for specific components—such as testing a 'Get_Temperature' function separately from the 'Turn_On_Fan' function—engineers can ensure that each logical part of the mechatronic system is reliable and maintainable. Students can use <strong>Wokwi</strong> to perform these unit tests in a simulated environment.</p>
-          </div>
+          <h3>Closed Loop Control System Design and Implementation</h3>
+          <p>Closed loop systems use sensor feedback to adjust actuator output continuously. Implementation requires:</p>
+          <ul>
+            <li>Clearly defining the <strong>setpoint</strong> (desired state) and <strong>feedback</strong> (actual state).</li>
+            <li>Calculating the <strong>error</strong> (setpoint - feedback).</li>
+            <li>Applying a control algorithm (PID, fuzzy logic, state machine) to generate corrective output.</li>
+            <li>Iterating: reading sensors, calculating, and updating actuators in a tight loop (typically 10-1000 Hz).</li>
+          </ul>
+
+          <h3>User Interface (UI) Design and Implementation</h3>
+          <p>Even autonomous systems often need interfaces for:</p>
+          <ul>
+            <li><strong>Manual Override:</strong> Emergency stop buttons, mode selection switches.</li>
+            <li><strong>Status Display:</strong> LED indicators, LCD screens showing system state, error codes, sensor readings.</li>
+            <li><strong>Configuration:</strong> Buttons to set parameters (speed, sensitivity, operating mode).</li>
+            <li><strong>Accessibility:</strong> Voice control, touchless interfaces for users with disabilities.</li>
+          </ul>
+          <p>UI code must be responsive and not interfere with real-time control loops. Separating UI from control logic (Model-View-Controller pattern) improves maintainability.</p>
+
+          <h3>Unit Testing for Effectiveness and Repeatability</h3>
+          <p>Mechatronic systems require rigorous testing of each component:</p>
+          <ul>
+            <li><strong>Sensor Tests:</strong> Verify sensors return expected values for known inputs (temperature sensor in ice vs boiling water).</li>
+            <li><strong>Actuator Tests:</strong> Confirm motors respond correctly to commands (PWM 50% = half speed).</li>
+            <li><strong>Algorithm Tests:</strong> Verify logic produces correct outputs (e.g., a collision avoidance routine turns away from obstacles).</li>
+            <li><strong>Integration Tests:</strong> Test subsystems working together (e.g., vision detects object + gripper activates + movement ceases).</li>
+            <li><strong>Stress Tests:</strong> Run systems continuously for extended periods to identify degradation or reliability issues.</li>
+          </ul>
+          <p><strong>Repeatability testing</strong> ensures the system behaves consistently across multiple trials—critical for autonomous systems where unpredictable behaviour is unacceptable. Logging sensor data and actuator commands during tests helps engineers debug failures and improve reliability.</p>
         </section>
+
+        <hr class="divider" />
+
 
       </div>
     </main>
