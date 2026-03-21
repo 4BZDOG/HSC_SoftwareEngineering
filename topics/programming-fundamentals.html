@@ -811,8 +811,64 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
   <script src="../js/main.js?v=3"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>
-    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
-    mermaid.contentLoaded();
+    const initMermaid = () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: isDark ? 'dark' : 'default',
+        securityLevel: 'loose',
+        flowchart: {
+          useMaxWidth: true,
+          htmlLabels: true,
+          curve: 'linear'
+        },
+        sequence: {
+          useMaxWidth: true,
+          diagramMarginX: 50,
+          diagramMarginY: 10
+        },
+        class: {
+          useMaxWidth: true,
+          htmlLabels: true
+        },
+        state: {
+          useMaxWidth: true
+        },
+        themeVariables: {
+          fontSize: '14px',
+          primaryColor: isDark ? '#1e293b' : '#e0e7ff',
+          primaryBorderColor: isDark ? '#475569' : '#c7d2fe',
+          secondBkgColor: isDark ? '#334155' : '#f0f4ff',
+          secondBorderColor: isDark ? '#64748b' : '#a5b4fc',
+          tertiaryColor: isDark ? '#475569' : '#ddd6fe',
+          noteBkgColor: isDark ? '#1e293b' : '#fff9e6',
+          noteBorderColor: isDark ? '#64748b' : '#ccc',
+          textColor: isDark ? '#e2e8f0' : '#0f172a',
+          primaryTextColor: isDark ? '#f1f5f9' : '#000'
+        }
+      });
+
+      mermaid.contentLoaded();
+
+      // Force SVG text color correction after rendering
+      setTimeout(() => {
+        document.querySelectorAll('.mermaid svg text').forEach(text => {
+          if (isDark) {
+            text.setAttribute('fill', '#e2e8f0');
+          }
+        });
+      }, 100);
+    };
+
+    initMermaid();
+
+    // Reinitialize when theme changes
+    const observer = new MutationObserver(initMermaid);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
   </script>
 </body>
 </html>
