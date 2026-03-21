@@ -2166,3 +2166,465 @@ footer {
   color: #CBD5E1;
   border: 1px solid rgba(255, 255, 255, .12);
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────────── */
+/*  DIAGRAM LIGHTBOX MODAL                                                              */
+/* ─────────────────────────────────────────────────────────────────────────────────── */
+
+.lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+
+.lightbox-modal.active,
+.lightbox-modal[aria-hidden="false"] {
+  display: flex;
+}
+
+.lightbox-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: background 300ms ease;
+}
+
+.lightbox-container {
+  position: relative;
+  width: 90vw;
+  height: 90vh;
+  max-width: 1200px;
+  max-height: 900px;
+  background: var(--bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2001;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.lightbox-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.lightbox-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.lightbox-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.lightbox-canvas {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  background: var(--surface);
+}
+
+.lightbox-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  transform-origin: center center;
+  cursor: grab;
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 2rem;
+}
+
+.lightbox-content.panning {
+  cursor: grabbing;
+}
+
+.lightbox-content > svg,
+.lightbox-content > img {
+  max-width: none;
+  max-height: none;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+[data-theme="dark"] .lightbox-content > svg {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.lightbox-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface-hover);
+  flex-wrap: wrap;
+}
+
+.lightbox-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.lightbox-btn:hover,
+.lightbox-btn:focus {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  outline: none;
+}
+
+.lightbox-btn:active {
+  transform: translateY(0);
+}
+
+.lightbox-zoom-level {
+  min-width: 65px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+  padding: 0.5rem;
+}
+
+.lightbox-info {
+  padding: 0.875rem 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.lightbox-info kbd {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* Responsive Lightbox */
+@media (max-width: 1024px) {
+  .lightbox-container {
+    width: 95vw;
+    height: 95vh;
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .lightbox-container {
+    width: 95vw;
+    height: 95vh;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: var(--radius-md);
+  }
+
+  .lightbox-header {
+    padding: 1rem;
+  }
+
+  .lightbox-title {
+    font-size: 1rem;
+  }
+
+  .lightbox-controls {
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .lightbox-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+
+  .lightbox-info {
+    font-size: 0.75rem;
+    padding: 0.625rem 1rem;
+  }
+
+  .lightbox-content {
+    padding: 1rem;
+  }
+}
+
+/* Dark mode lightbox adjustments */
+[data-theme="dark"] .lightbox-container {
+  background: #1a1a2e;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .lightbox-canvas {
+  background: linear-gradient(135deg, #0f172a 0%, #1a1a2e 100%);
+}
+
+[data-theme="dark"] .lightbox-header,
+[data-theme="dark"] .lightbox-info {
+  border-color: #334155;
+  background: #0f172a;
+}
+
+[data-theme="dark"] .lightbox-title {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .lightbox-close {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .lightbox-close:hover,
+[data-theme="dark"] .lightbox-close:focus {
+  background: #1e293b;
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .lightbox-controls {
+  background: #1a1a2e;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .lightbox-btn {
+  background: #0891b2;
+}
+
+[data-theme="dark"] .lightbox-btn:hover,
+[data-theme="dark"] .lightbox-btn:focus {
+  background: #0369a1;
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+}
+
+[data-theme="dark"] .lightbox-zoom-level {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .lightbox-info {
+  background: #0f172a;
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .lightbox-info kbd {
+  background: #1e293b;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
+
+/* ─────────────────────────────────────────────────────────────────────────────────── */
+/*  ENHANCED DARK MODE MERMAID DIAGRAM STYLING                                          */
+/* ─────────────────────────────────────────────────────────────────────────────────── */
+
+/* Dark mode Mermaid improvements */
+[data-theme="dark"] .mermaid {
+  background: linear-gradient(135deg, #0f172a 0%, #1a1a2e 100%);
+  border: 1px solid #334155;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Flowchart node backgrounds */
+[data-theme="dark"] .mermaid svg rect[fill="#FFFFFF"],
+[data-theme="dark"] .mermaid svg rect[fill="#fff"] {
+  fill: #1e293b !important;
+  stroke: #475569 !important;
+  stroke-width: 2px !important;
+}
+
+/* Class diagram boxes - darker backgrounds */
+[data-theme="dark"] .mermaid svg .classGroup rect,
+[data-theme="dark"] .mermaid svg .classGroup [class="rect"] {
+  fill: #1e293b !important;
+  stroke: #475569 !important;
+}
+
+/* Note/annotation boxes */
+[data-theme="dark"] .mermaid svg .note rect,
+[data-theme="dark"] .mermaid svg .noteGroup rect {
+  fill: #1e293b !important;
+  stroke: #475569 !important;
+}
+
+/* State machine state boxes */
+[data-theme="dark"] .mermaid svg .state-box,
+[data-theme="dark"] .mermaid svg [class*="state"] rect {
+  fill: #1e293b !important;
+  stroke: #475569 !important;
+}
+
+/* Sequence diagram participant/actor boxes */
+[data-theme="dark"] .mermaid svg .actor,
+[data-theme="dark"] .mermaid svg .participantBox {
+  fill: #1e293b !important;
+  stroke: #475569 !important;
+}
+
+/* Activity diagram boxes */
+[data-theme="dark"] .mermaid svg [class*="activity"] rect {
+  fill: #1e293b !important;
+  stroke: #475569 !important;
+}
+
+/* Entity relationship diagram boxes */
+[data-theme="dark"] .mermaid svg .entityBox {
+  fill: #1e293b !important;
+  stroke: #475569 !important;
+}
+
+/* Improve line/stroke visibility in dark mode */
+[data-theme="dark"] .mermaid svg line[stroke="#333"],
+[data-theme="dark"] .mermaid svg line[stroke="#333333"],
+[data-theme="dark"] .mermaid svg line[stroke="#999"],
+[data-theme="dark"] .mermaid svg line[stroke="#999999"] {
+  stroke: #cbd5e1 !important;
+  stroke-width: 1.5px !important;
+}
+
+[data-theme="dark"] .mermaid svg path[stroke="#333"],
+[data-theme="dark"] .mermaid svg path[stroke="#333333"],
+[data-theme="dark"] .mermaid svg path[stroke="#999"],
+[data-theme="dark"] .mermaid svg path[stroke="#999999"] {
+  stroke: #cbd5e1 !important;
+  stroke-width: 1.5px !important;
+}
+
+/* Connection and transition lines */
+[data-theme="dark"] .mermaid svg g > path[stroke] {
+  stroke: #cbd5e1 !important;
+  stroke-width: 1.5px !important;
+}
+
+/* Arrow heads and markers */
+[data-theme="dark"] .mermaid svg marker {
+  overflow: visible;
+}
+
+[data-theme="dark"] .mermaid svg marker path[stroke="#333"],
+[data-theme="dark"] .mermaid svg marker path[stroke="#333333"],
+[data-theme="dark"] .mermaid svg marker path[fill="#333"],
+[data-theme="dark"] .mermaid svg marker path[fill="#333333"] {
+  fill: #cbd5e1 !important;
+  stroke: #cbd5e1 !important;
+}
+
+/* Ensure text is light on dark backgrounds */
+[data-theme="dark"] .mermaid svg text,
+[data-theme="dark"] .mermaid svg tspan {
+  fill: #f1f5f9 !important;
+  font-weight: 500;
+}
+
+/* Darker fills that need light text */
+[data-theme="dark"] .mermaid svg [fill="#E3F2FD"] text,
+[data-theme="dark"] .mermaid svg [fill="#E3F2FD"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#F3E5F5"] text,
+[data-theme="dark"] .mermaid svg [fill="#F3E5F5"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#E8F5E9"] text,
+[data-theme="dark"] .mermaid svg [fill="#E8F5E9"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#FFF9C4"] text,
+[data-theme="dark"] .mermaid svg [fill="#FFF9C4"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#FFE082"] text,
+[data-theme="dark"] .mermaid svg [fill="#FFE082"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#FFCCBC"] text,
+[data-theme="dark"] .mermaid svg [fill="#FFCCBC"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#BBDEFB"] text,
+[data-theme="dark"] .mermaid svg [fill="#BBDEFB"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#C8E6C9"] text,
+[data-theme="dark"] .mermaid svg [fill="#C8E6C9"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#FFF3E0"] text,
+[data-theme="dark"] .mermaid svg [fill="#FFF3E0"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#FFEBEE"] text,
+[data-theme="dark"] .mermaid svg [fill="#FFEBEE"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#E1F5FE"] text,
+[data-theme="dark"] .mermaid svg [fill="#E1F5FE"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#FCE4EC"] text,
+[data-theme="dark"] .mermaid svg [fill="#FCE4EC"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#B3E5FC"] text,
+[data-theme="dark"] .mermaid svg [fill="#B3E5FC"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#FFAB91"] text,
+[data-theme="dark"] .mermaid svg [fill="#FFAB91"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#F0F4C3"] text,
+[data-theme="dark"] .mermaid svg [fill="#F0F4C3"] tspan {
+  fill: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+/* Label background improvements */
+[data-theme="dark"] .mermaid svg .label {
+  background: transparent;
+}
+
+/* Ensure foreign objects (containing HTML) are readable */
+[data-theme="dark"] .mermaid svg foreignObject {
+  background: #1e293b;
+}
+

@@ -694,84 +694,80 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
         flowchart: {
           useMaxWidth: true,
           htmlLabels: true,
-          curve: 'linear'
+          curve: 'linear',
+          diagramMarginX: 20,
+          diagramMarginY: 20
         },
         sequence: {
           useMaxWidth: true,
-          diagramMarginX: 50,
-          diagramMarginY: 10
+          diagramMarginX: 60,
+          diagramMarginY: 20,
+          actorMargin: 60
         },
         class: {
           useMaxWidth: true,
           htmlLabels: true
         },
         state: {
-          useMaxWidth: true
+          useMaxWidth: true,
+          diagramMarginX: 20,
+          diagramMarginY: 20
         },
         themeVariables: {
           fontSize: '14px',
+          fontFamily: 'Inter, system-ui, sans-serif',
           primaryColor: isDark ? '#1e293b' : '#e0e7ff',
           primaryBorderColor: isDark ? '#475569' : '#c7d2fe',
+          primaryTextColor: isDark ? '#f1f5f9' : '#0f172a',
           secondBkgColor: isDark ? '#334155' : '#f0f4ff',
-          secondBorderColor: isDark ? '#64748b' : '#a5b4fc',
+          secondBorderColor: isDark ? '#475569' : '#a5b4fc',
           tertiaryColor: isDark ? '#475569' : '#ddd6fe',
+          tertiaryBorderColor: isDark ? '#64748b' : '#ccc',
+          tertiaryTextColor: isDark ? '#cbd5e1' : '#0f172a',
           noteBkgColor: isDark ? '#1e293b' : '#fff9e6',
-          noteBorderColor: isDark ? '#64748b' : '#ccc',
-          textColor: isDark ? '#e2e8f0' : '#0f172a',
-          primaryTextColor: isDark ? '#f1f5f9' : '#000'
+          noteBorderColor: isDark ? '#475569' : '#ccc',
+          noteTextColor: isDark ? '#f1f5f9' : '#0f172a',
+          textColor: isDark ? '#f1f5f9' : '#0f172a',
+          lineColor: isDark ? '#475569' : '#ccc',
+          signalColor: isDark ? '#cbd5e1' : '#333',
+          signalTextColor: isDark ? '#f1f5f9' : '#000'
         }
       });
 
       mermaid.contentLoaded();
 
-      // Smart SVG text color correction after rendering
+      // Enhanced SVG contrast correction after rendering
       setTimeout(() => {
         if (isDark) {
-          // Define light background colors that need dark text
-          const lightFills = ['#E3F2FD', '#F3E5F5', '#E8F5E9', '#FFF9C4', '#FFE082', '#FFCCBC', '#BBDEFB', '#C8E6C9', '#FFF3E0', '#FFEBEE', '#E1F5FE', '#FCE4EC', '#B3E5FC', '#FFAB91'];
+          const lightFills = ['#E3F2FD', '#F3E5F5', '#E8F5E9', '#FFF9C4', '#FFE082', '#FFCCBC', '#BBDEFB', '#C8E6C9', '#FFF3E0', '#FFEBEE', '#E1F5FE', '#FCE4EC', '#B3E5FC', '#FFAB91', '#F0F4C3'];
 
-          // Fix text based on parent background color
-          document.querySelectorAll('.mermaid svg text').forEach(text => {
-            // Check parent group's fill color
+          // Fix light fill backgrounds to dark
+          document.querySelectorAll('.mermaid svg [fill]').forEach(el => {
+            const fill = el.getAttribute('fill');
+            if (fill && lightFills.includes(fill?.toUpperCase())) {
+              el.setAttribute('fill', '#1e293b');
+            }
+          });
+
+          // Fix text colors for contrast
+          document.querySelectorAll('.mermaid svg text, .mermaid svg tspan').forEach(text => {
             let parent = text.parentElement;
             let fill = parent ? parent.getAttribute('fill') : null;
 
             if (lightFills.includes(fill?.toUpperCase())) {
-              // Dark text on light backgrounds
               text.setAttribute('fill', '#0f172a');
               text.style.fill = '#0f172a';
+              text.style.fontWeight = '600';
             } else {
-              // Light text on dark backgrounds
               text.setAttribute('fill', '#f1f5f9');
               text.style.fill = '#f1f5f9';
             }
           });
 
-          // Fix all tspan elements
-          document.querySelectorAll('.mermaid svg tspan').forEach(tspan => {
-            let parent = tspan.closest('text');
-            let parentGroup = parent?.parentElement;
-            let fill = parentGroup ? parentGroup.getAttribute('fill') : null;
-
-            if (lightFills.includes(fill?.toUpperCase())) {
-              tspan.setAttribute('fill', '#0f172a');
-              tspan.style.fill = '#0f172a';
-            } else {
-              tspan.setAttribute('fill', '#f1f5f9');
-              tspan.style.fill = '#f1f5f9';
-            }
-          });
-
-          // Fix actor box text (participant boxes - they have light backgrounds)
-          document.querySelectorAll('.mermaid svg .actor text, .mermaid svg .participant text').forEach(text => {
-            text.setAttribute('fill', '#0f172a');
-            text.style.fill = '#0f172a';
-          });
-
-          // Fix label text (sequence diagram labels - typically on light backgrounds)
-          document.querySelectorAll('.mermaid svg .label text').forEach(text => {
-            text.setAttribute('fill', '#0f172a');
-            text.style.fill = '#0f172a';
+          // Ensure lines and strokes are visible
+          document.querySelectorAll('.mermaid svg [stroke="#333"], .mermaid svg [stroke="#999"]').forEach(el => {
+            el.setAttribute('stroke', '#cbd5e1');
+            el.setAttribute('stroke-width', el.getAttribute('stroke-width') || '1.5');
           });
         }
       }, 150);
@@ -787,5 +783,29 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
       attributeFilter: ['data-theme']
     });
   </script>
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- Diagram Lightbox Modal -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="lightbox-modal" id="diagram-lightbox" role="dialog" aria-labelledby="lightbox-title" aria-hidden="true">
+    <div class="lightbox-overlay"></div>
+    <div class="lightbox-container">
+      <div class="lightbox-header">
+        <h2 id="lightbox-title" class="lightbox-title">Diagram View</h2>
+        <button class="lightbox-close" aria-label="Close diagram view">✕</button>
+      </div>
+      <div class="lightbox-canvas">
+        <div class="lightbox-content" id="lightbox-content"></div>
+      </div>
+      <div class="lightbox-controls">
+        <button class="lightbox-btn" id="zoom-out" aria-label="Zoom out">−</button>
+        <span class="lightbox-zoom-level" id="zoom-level">100%</span>
+        <button class="lightbox-btn" id="zoom-in" aria-label="Zoom in">+</button>
+        <button class="lightbox-btn" id="reset-view" aria-label="Reset view">⟲</button>
+      </div>
+      <div class="lightbox-info">
+        <p>Scroll to zoom • Drag to pan • <kbd>Esc</kbd> to close</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
