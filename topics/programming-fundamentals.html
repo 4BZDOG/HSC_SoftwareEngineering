@@ -156,26 +156,32 @@
 
           <!-- SDLC Flowchart Diagram -->
           <div class="diagram-block">
-            <h4>📊 SDLC Process Flow Diagram</h4>
+            <h4>📊 SDLC <span class="diagram-highlight">Process Flow</span> Diagram</h4>
             <div class="mermaid">
               flowchart TD
-                A["📋 Requirements Definition<br/>Identify stakeholder needs"] --> B["⚙️ Specifications<br/>Define technical constraints"]
-                B --> C["🎨 Design<br/>Plan algorithms & structure"]
-                C --> D["💻 Development<br/>Write code in programming language"]
-                D --> E["🧩 Integration<br/>Combine modules into system"]
-                E --> F["🧪 Testing & Debugging<br/>Identify and fix errors"]
+                START(["🚀 START<br/>Begin Project"]) --> A["📋 Requirements<br/>Identify needs"]
+                A --> B["⚙️ Specifications<br/>Technical constraints"]
+                B --> C["🎨 Design<br/>Plan structure"]
+                C --> D["💻 Development<br/>Write code"]
+                D --> E["🧩 Integration<br/>Combine modules"]
+                E --> F["🧪 Testing<br/>Find errors"]
                 F --> G["📦 Installation<br/>Deploy to users"]
-                G --> H["🛠️ Maintenance<br/>Apply patches & updates"]
-                H -.->|Feedback Loop| A
+                G --> H["🛠️ Maintenance<br/>Support & patches"]
+                H --> DECISION{{"Feedback<br/>Loop<br/>Needed?"}}
+                DECISION -->|Yes| A
+                DECISION -->|No| END(["✅ END<br/>Project Complete"])
 
-                style A fill:#e1f5ff
-                style B fill:#e1f5ff
-                style C fill:#fff3e0
-                style D fill:#f3e5f5
-                style E fill:#e8f5e9
-                style F fill:#fce4ec
-                style G fill:#f1f8e9
-                style H fill:#ede7f6
+                style START fill:#90EE90,color:#000,stroke:#2E7D32,stroke-width:2px
+                style A fill:#e1f5ff,color:#01579b,stroke:#01579b
+                style B fill:#e1f5ff,color:#01579b,stroke:#01579b
+                style C fill:#fff3e0,color:#e65100,stroke:#e65100
+                style D fill:#f3e5f5,color:#4a148c,stroke:#4a148c
+                style E fill:#e8f5e9,color:#1b5e20,stroke:#1b5e20
+                style F fill:#fce4ec,color:#880e4f,stroke:#880e4f
+                style G fill:#f1f8e9,color:#33691e,stroke:#33691e
+                style H fill:#ede7f6,color:#311b92,stroke:#311b92
+                style DECISION fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
+                style END fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
             </div>
             <p class="diagram-caption">
               <strong>Purpose:</strong> Visualize the complete SDLC phases showing how each stage builds on the previous one. Notice the feedback loop from Maintenance back to Requirements, showing that software development is iterative and continuous.<br>
@@ -314,25 +320,28 @@ END FUNCTION</code></pre>
 
           <!-- Linear Search Algorithm Flowchart -->
           <div class="diagram-block">
-            <h4>🔍 Linear Search Algorithm Flowchart</h4>
+            <h4>🔍 Linear <span class="diagram-highlight">Search</span> Algorithm Flowchart</h4>
             <div class="mermaid">
               flowchart TD
-                A["🔍 Start<br/>Analyze target"] --> B["🔄 Loop Start"]
-                B --> C{{"index < length(list)?"}}
+                A(["🔍 START<br/>Analyze target"]) --> B["🔄 Loop Start<br/>Initialize index=0"]
+                B --> C{{"index <br/>length(list)?"}}
                 C -->|No| D["❌ Not Found<br/>Return -1"]
                 C -->|Yes| E{{"list[index] ==<br/>target?"}}
                 E -->|Yes| F["✅ Found<br/>Return index"]
                 E -->|No| G["➡️ Increment<br/>index++"]
                 G --> C
 
-                D --> H["🏁 End"]
+                D --> H(["🏁 END<br/>Algorithm Complete"])
                 F --> H
 
-                style A fill:#90EE90
-                style H fill:#FFB6C6
-                style F fill:#87CEEB
-                style D fill:#FFB347
-                style B fill:#FFE4B5
+                style A fill:#90EE90,color:#000,stroke:#2E7D32,stroke-width:2px
+                style H fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
+                style F fill:#87CEEB,color:#000,stroke:#01579b,stroke-width:2px
+                style D fill:#FFB347,color:#000,stroke:#e65100,stroke-width:2px
+                style B fill:#FFE4B5,color:#000,stroke:#e65100,stroke-width:1px
+                style C fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
+                style E fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
+                style G fill:#e0f0ff,color:#000,stroke:#0277bd,stroke-width:1px
             </div>
             <p class="diagram-caption">
               <strong>Purpose:</strong> Show how linear search scans through each item in a list until finding the target. Notice the loop structure and decision points that verify both position validity and item match.<br>
@@ -811,8 +820,84 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
   <script src="../js/main.js?v=3"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>
-    mermaid.initialize({ startOnLoad: true, theme: 'default', securityLevel: 'loose' });
-    mermaid.contentLoaded();
+    const initMermaid = () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: isDark ? 'dark' : 'default',
+        securityLevel: 'loose',
+        flowchart: {
+          useMaxWidth: true,
+          htmlLabels: true,
+          curve: 'linear'
+        },
+        sequence: {
+          useMaxWidth: true,
+          diagramMarginX: 50,
+          diagramMarginY: 10
+        },
+        class: {
+          useMaxWidth: true,
+          htmlLabels: true
+        },
+        state: {
+          useMaxWidth: true
+        },
+        themeVariables: {
+          fontSize: '14px',
+          primaryColor: isDark ? '#1e293b' : '#e0e7ff',
+          primaryBorderColor: isDark ? '#475569' : '#c7d2fe',
+          secondBkgColor: isDark ? '#334155' : '#f0f4ff',
+          secondBorderColor: isDark ? '#64748b' : '#a5b4fc',
+          tertiaryColor: isDark ? '#475569' : '#ddd6fe',
+          noteBkgColor: isDark ? '#1e293b' : '#fff9e6',
+          noteBorderColor: isDark ? '#64748b' : '#ccc',
+          textColor: isDark ? '#e2e8f0' : '#0f172a',
+          primaryTextColor: isDark ? '#f1f5f9' : '#000'
+        }
+      });
+
+      mermaid.contentLoaded();
+
+      // Force SVG text color correction after rendering
+      setTimeout(() => {
+        if (isDark) {
+          // Fix all text elements
+          document.querySelectorAll('.mermaid svg text').forEach(text => {
+            text.setAttribute('fill', '#f1f5f9');
+            text.style.fill = '#f1f5f9';
+          });
+
+          // Fix all tspan elements
+          document.querySelectorAll('.mermaid svg tspan').forEach(tspan => {
+            tspan.setAttribute('fill', '#f1f5f9');
+            tspan.style.fill = '#f1f5f9';
+          });
+
+          // Fix actor box text
+          document.querySelectorAll('.mermaid svg .actor text, .mermaid svg .participant text').forEach(text => {
+            text.setAttribute('fill', '#0f172a');
+            text.style.fill = '#0f172a';
+          });
+
+          // Fix label text with higher priority
+          document.querySelectorAll('.mermaid svg .label text').forEach(text => {
+            text.setAttribute('fill', '#f1f5f9');
+            text.style.fill = '#f1f5f9 !important';
+          });
+        }
+      }, 150);
+    };
+
+    initMermaid();
+
+    // Reinitialize when theme changes
+    const observer = new MutationObserver(initMermaid);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
   </script>
 </body>
 </html>

@@ -196,10 +196,11 @@
 
           <!-- Secure SDLC Diagram -->
           <div class="diagram-block">
-            <h4>🔐 Secure SDLC with Security Checkpoints</h4>
+            <h4>🔐 Secure <span class="diagram-highlight">SDLC</span> with Security Checkpoints</h4>
             <div class="mermaid">
               flowchart TD
-                A["📋 Requirements"] --> B{{"🔐 Security<br/>Review?"}}
+                START(["🚀 START<br/>Begin SDLC"]) --> A["📋 Requirements"]
+                A --> B{{"🔐 Security<br/>Review?"}}
                 B -->|Issues| B1["🔧 Resolve"]
                 B1 --> B
                 B -->|Approved| C["🎨 Design"]
@@ -216,17 +217,24 @@
                 H1 --> G
                 H -->|Secure| I["🚀 Deployment"]
                 I --> J["🔔 Monitoring"]
+                J --> END(["✅ COMPLETE<br/>Secure Release"])
 
-                style A fill:#4CAF50,color:#fff
-                style C fill:#4CAF50,color:#fff
-                style E fill:#4CAF50,color:#fff
-                style G fill:#FF9800,color:#fff
-                style I fill:#2196F3,color:#fff
-                style J fill:#9C27B0,color:#fff
-                style B fill:#FFC107,color:#000,stroke-width:2px
-                style D fill:#FFC107,color:#000,stroke-width:2px
-                style F fill:#FFC107,color:#000,stroke-width:2px
-                style H fill:#FFC107,color:#000,stroke-width:2px
+                style START fill:#90EE90,color:#000,stroke:#2e7d32,stroke-width:2px
+                style A fill:#4CAF50,color:#fff,stroke:#2e7d32,stroke-width:1px
+                style C fill:#4CAF50,color:#fff,stroke:#2e7d32,stroke-width:1px
+                style E fill:#4CAF50,color:#fff,stroke:#2e7d32,stroke-width:1px
+                style G fill:#FF9800,color:#fff,stroke:#e65100,stroke-width:1px
+                style I fill:#2196F3,color:#fff,stroke:#01579b,stroke-width:1px
+                style J fill:#9C27B0,color:#fff,stroke:#4a148c,stroke-width:1px
+                style B fill:#FFC107,color:#000,stroke-width:2px,stroke:#f57f17
+                style D fill:#FFC107,color:#000,stroke-width:2px,stroke:#f57f17
+                style F fill:#FFC107,color:#000,stroke-width:2px,stroke:#f57f17
+                style H fill:#FFC107,color:#000,stroke-width:2px,stroke:#f57f17
+                style B1 fill:#e1f5ff,color:#000,stroke:#01579b
+                style D1 fill:#e1f5ff,color:#000,stroke:#01579b
+                style F1 fill:#e1f5ff,color:#000,stroke:#01579b
+                style H1 fill:#e1f5ff,color:#000,stroke:#01579b
+                style END fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
             </div>
             <p class="diagram-caption">
               <strong>Purpose:</strong> Show security integrated into every SDLC phase, not added later. Yellow gates require security sign-off before proceeding.<br>
@@ -842,14 +850,72 @@ logging.basicConfig(filename=<span class="str">'app.log'</span>, level=logging.E
   <script>
     const initMermaid = () => {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
       mermaid.initialize({
         startOnLoad: true,
         theme: isDark ? 'dark' : 'default',
         securityLevel: 'loose',
-        flowchart: { useMaxWidth: true },
-        sequence: { useMaxWidth: true }
+        flowchart: {
+          useMaxWidth: true,
+          htmlLabels: true,
+          curve: 'linear'
+        },
+        sequence: {
+          useMaxWidth: true,
+          diagramMarginX: 50,
+          diagramMarginY: 10
+        },
+        class: {
+          useMaxWidth: true,
+          htmlLabels: true
+        },
+        state: {
+          useMaxWidth: true
+        },
+        themeVariables: {
+          fontSize: '14px',
+          primaryColor: isDark ? '#1e293b' : '#e0e7ff',
+          primaryBorderColor: isDark ? '#475569' : '#c7d2fe',
+          secondBkgColor: isDark ? '#334155' : '#f0f4ff',
+          secondBorderColor: isDark ? '#64748b' : '#a5b4fc',
+          tertiaryColor: isDark ? '#475569' : '#ddd6fe',
+          noteBkgColor: isDark ? '#1e293b' : '#fff9e6',
+          noteBorderColor: isDark ? '#64748b' : '#ccc',
+          textColor: isDark ? '#e2e8f0' : '#0f172a',
+          primaryTextColor: isDark ? '#f1f5f9' : '#000'
+        }
       });
+
       mermaid.contentLoaded();
+
+      // Force SVG text color correction after rendering
+      setTimeout(() => {
+        if (isDark) {
+          // Fix all text elements
+          document.querySelectorAll('.mermaid svg text').forEach(text => {
+            text.setAttribute('fill', '#f1f5f9');
+            text.style.fill = '#f1f5f9';
+          });
+
+          // Fix all tspan elements
+          document.querySelectorAll('.mermaid svg tspan').forEach(tspan => {
+            tspan.setAttribute('fill', '#f1f5f9');
+            tspan.style.fill = '#f1f5f9';
+          });
+
+          // Fix actor box text
+          document.querySelectorAll('.mermaid svg .actor text, .mermaid svg .participant text').forEach(text => {
+            text.setAttribute('fill', '#0f172a');
+            text.style.fill = '#0f172a';
+          });
+
+          // Fix label text with higher priority
+          document.querySelectorAll('.mermaid svg .label text').forEach(text => {
+            text.setAttribute('fill', '#f1f5f9');
+            text.style.fill = '#f1f5f9 !important';
+          });
+        }
+      }, 150);
     };
 
     // Initialize on load
