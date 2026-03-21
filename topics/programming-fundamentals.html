@@ -797,14 +797,16 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
           <h3>Typical Errors in Code Development</h3>
           <p>Understanding common error types helps programmers identify and fix problems systematically:</p>
 
-          <h4>Syntax Errors</h4>
-          <p><strong>Definition:</strong> Violations of the programming language's grammar rules. The interpreter/compiler cannot parse the code and refuses to run it.<br><strong>Likely Causes:</strong> Missing colons, mismatched brackets, incorrect indentation (Python), typos in keywords.<br>🌏 <em>Example: <code>if x > 5</code> (missing colon at the end) or <code>for i in range(10]</code> (mismatched bracket types).</em></p>
+          <div class="structured-content">
+            <h4>Syntax Errors</h4>
+            <p><strong>Definition:</strong> Violations of the programming language's grammar rules. The interpreter/compiler cannot parse the code and refuses to run it.<br><strong>Likely Causes:</strong> Missing colons, mismatched brackets, incorrect indentation (Python), typos in keywords.<br>🌏 <em>Example: <code>if x > 5</code> (missing colon at the end) or <code>for i in range(10]</code> (mismatched bracket types).</em></p>
 
-          <h4>Logic Errors</h4>
-          <p><strong>Definition:</strong> The program runs without crashing, but produces wrong results because the algorithm is flawed.<br><strong>Likely Causes:</strong> Wrong operator (using + instead of ×), off-by-one loop errors, incorrect conditional logic, unreachable code.<br>🌏 <em>Example: A loop from 0 to 9 when you intended 1 to 10 (off-by-one error), or calculating tax as salary × 0.01 instead of salary × 0.10 (operator error).</em></p>
+            <h4>Logic Errors</h4>
+            <p><strong>Definition:</strong> The program runs without crashing, but produces wrong results because the algorithm is flawed.<br><strong>Likely Causes:</strong> Wrong operator (using + instead of ×), off-by-one loop errors, incorrect conditional logic, unreachable code.<br>🌏 <em>Example: A loop from 0 to 9 when you intended 1 to 10 (off-by-one error), or calculating tax as salary × 0.01 instead of salary × 0.10 (operator error).</em></p>
 
-          <h4>Runtime Errors</h4>
-          <p><strong>Definition:</strong> The program starts running but crashes during execution due to impossible operations or resource exhaustion.<br><strong>Likely Causes:</strong> Division by zero, accessing an array index that doesn't exist, null pointer dereference, stack overflow from infinite recursion, out of memory.<br>🌏 <em>Example: <code>score[index]</code> where index is 10 but the array only has 5 elements, or <code>result = 100 / denominator</code> when denominator is 0.</em></p>
+            <h4>Runtime Errors</h4>
+            <p><strong>Definition:</strong> The program starts running but crashes during execution due to impossible operations or resource exhaustion.<br><strong>Likely Causes:</strong> Division by zero, accessing an array index that doesn't exist, null pointer dereference, stack overflow from infinite recursion, out of memory.<br>🌏 <em>Example: <code>score[index]</code> where index is 10 but the array only has 5 elements, or <code>result = 100 / denominator</code> when denominator is 0.</em></p>
+          </div>
         </section>
 
       </div>

@@ -603,25 +603,29 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <h3>Testing Hierarchy: Unit, Subsystem, and System</h3>
           <p>Testing occurs at multiple levels, building from smallest to largest components:</p>
 
-          <h4>Unit Testing</h4>
-          <p>Testing individual classes or methods in isolation to ensure they perform their intended function correctly. For example, testing a <code>BankAccount.withdraw()</code> method with various inputs (sufficient balance, insufficient balance, negative amount, zero amount). Unit tests are the most granular and should be written by the developer who wrote the code.</p>
+          <div class="structured-content">
+            <h4>Unit Testing</h4>
+            <p>Testing individual classes or methods in isolation to ensure they perform their intended function correctly. For example, testing a <code>BankAccount.withdraw()</code> method with various inputs (sufficient balance, insufficient balance, negative amount, zero amount). Unit tests are the most granular and should be written by the developer who wrote the code.</p>
 
-          <h4>Subsystem Testing</h4>
-          <p>Testing groups of related classes that work together as a functional subsystem. For example, testing the interaction between <code>Customer</code>, <code>Order</code>, and <code>Payment</code> classes to ensure orders are created and payments are processed correctly. This level catches integration issues that unit tests might miss.</p>
+            <h4>Subsystem Testing</h4>
+            <p>Testing groups of related classes that work together as a functional subsystem. For example, testing the interaction between <code>Customer</code>, <code>Order</code>, and <code>Payment</code> classes to ensure orders are created and payments are processed correctly. This level catches integration issues that unit tests might miss.</p>
 
-          <h4>System Testing</h4>
-          <p>Testing the entire integrated application end-to-end to ensure all components work together and meet the overall requirements. System testing includes testing the application's interaction with external systems (databases, APIs, etc.) and verifying that the entire workflow functions as expected.</p>
+            <h4>System Testing</h4>
+            <p>Testing the entire integrated application end-to-end to ensure all components work together and meet the overall requirements. System testing includes testing the application's interaction with external systems (databases, APIs, etc.) and verifying that the entire workflow functions as expected.</p>
+          </div>
 
           <h3>Testing Approaches: Black, White, and Grey Box</h3>
 
-          <h4>Black Box Testing</h4>
-          <p>Testing inputs and outputs without access to or knowledge of the internal code structure. The tester treats the software as a "black box" and tests it purely based on specifications. This approach ensures the software meets functional requirements from a user's perspective. For example, testing that a login system correctly accepts valid credentials and rejects invalid ones, without examining the authentication code.</p>
+          <div class="structured-content">
+            <h4>Black Box Testing</h4>
+            <p>Testing inputs and outputs without access to or knowledge of the internal code structure. The tester treats the software as a "black box" and tests it purely based on specifications. This approach ensures the software meets functional requirements from a user's perspective. For example, testing that a login system correctly accepts valid credentials and rejects invalid ones, without examining the authentication code.</p>
 
-          <h4>White Box Testing</h4>
-          <p>Testing with complete access to and understanding of the internal code structure. The tester examines the code logic, control flow, and data flow to ensure all paths and conditions are tested. This approach is critical for security, ensuring all potential vulnerabilities and logic errors are identified. For example, verifying that all conditional branches (IF/ELSE statements) in a method execute correctly under different conditions.</p>
+            <h4>White Box Testing</h4>
+            <p>Testing with complete access to and understanding of the internal code structure. The tester examines the code logic, control flow, and data flow to ensure all paths and conditions are tested. This approach is critical for security, ensuring all potential vulnerabilities and logic errors are identified. For example, verifying that all conditional branches (IF/ELSE statements) in a method execute correctly under different conditions.</p>
 
-          <h4>Grey Box Testing</h4>
-          <p>A hybrid approach where the tester has partial knowledge of the internal structure (like knowing which classes exist and their general purpose) but not the implementation details. This allows more targeted testing than black box while being less resource-intensive than white box. For example, knowing the database schema but not the exact SQL queries used.</p>
+            <h4>Grey Box Testing</h4>
+            <p>A hybrid approach where the tester has partial knowledge of the internal structure (like knowing which classes exist and their general purpose) but not the implementation details. This allows more targeted testing than black box while being less resource-intensive than white box. For example, knowing the database schema but not the exact SQL queries used.</p>
+          </div>
 
           <h3>Quality Assurance Process</h3>
           <p>Quality Assurance (QA) is the systematic process of ensuring software meets specified engineering standards and quality criteria. QA includes:</p>

@@ -327,32 +327,34 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <h3>Accessibility Considerations</h3>
           <p>When designing mechatronic systems for users with disabilities, engineers must consider:</p>
 
-          <h4>Mobility Disabilities</h4>
-          <ul>
-            <li><strong>Prosthetics and Exoskeletons:</strong> Systems controlled by electromyography (muscle signals) or brain-computer interfaces, requiring real-time sensor fusion and responsive actuation.</li>
-            <li><strong>Wheelchair Automation:</strong> Systems with joystick sensitivity adjustment, voice command control, or autonomous navigation for obstacle avoidance.</li>
-          </ul>
+          <div class="structured-content">
+            <h4>Mobility Disabilities</h4>
+            <ul>
+              <li><strong>Prosthetics and Exoskeletons:</strong> Systems controlled by electromyography (muscle signals) or brain-computer interfaces, requiring real-time sensor fusion and responsive actuation.</li>
+              <li><strong>Wheelchair Automation:</strong> Systems with joystick sensitivity adjustment, voice command control, or autonomous navigation for obstacle avoidance.</li>
+            </ul>
 
-          <h4>Visual Impairments</h4>
-          <ul>
-            <li><strong>Haptic Feedback:</strong> Vibration patterns in controllers to provide tactile information instead of visual displays.</li>
-            <li><strong>Spatial Audio:</strong> Sound-based navigation cues to guide users around obstacles.</li>
-            <li><strong>Obstacle Detection:</strong> Ultrasonic or infrared sensors to alert users to hazards.</li>
-          </ul>
+            <h4>Visual Impairments</h4>
+            <ul>
+              <li><strong>Haptic Feedback:</strong> Vibration patterns in controllers to provide tactile information instead of visual displays.</li>
+              <li><strong>Spatial Audio:</strong> Sound-based navigation cues to guide users around obstacles.</li>
+              <li><strong>Obstacle Detection:</strong> Ultrasonic or infrared sensors to alert users to hazards.</li>
+            </ul>
 
-          <h4>Speech and Hearing Impairments</h4>
-          <ul>
-            <li><strong>Visual Feedback Systems:</strong> LED indicators, screen displays for status information.</li>
-            <li><strong>Sign Language Recognition:</strong> Computer vision systems to interpret sign language commands.</li>
-            <li><strong>Text-Based Interfaces:</strong> Keyboard or touch input for users with speech difficulties.</li>
-          </ul>
+            <h4>Speech and Hearing Impairments</h4>
+            <ul>
+              <li><strong>Visual Feedback Systems:</strong> LED indicators, screen displays for status information.</li>
+              <li><strong>Sign Language Recognition:</strong> Computer vision systems to interpret sign language commands.</li>
+              <li><strong>Text-Based Interfaces:</strong> Keyboard or touch input for users with speech difficulties.</li>
+            </ul>
 
-          <h4>Severe Mobility Limitations</h4>
-          <ul>
-            <li><strong>Sip-and-Puff Control:</strong> Systems activated by gentle air pressure from the mouth for users with very limited mobility.</li>
-            <li><strong>Eye Gaze Tracking:</strong> Head-mounted sensors detecting where the user looks to control a cursor or robotic arm.</li>
-            <li><strong>Brainwave Interfaces:</strong> EEG sensors interpreting brain activity to control external devices.</li>
-          </ul>
+            <h4>Severe Mobility Limitations</h4>
+            <ul>
+              <li><strong>Sip-and-Puff Control:</strong> Systems activated by gentle air pressure from the mouth for users with very limited mobility.</li>
+              <li><strong>Eye Gaze Tracking:</strong> Head-mounted sensors detecting where the user looks to control a cursor or robotic arm.</li>
+              <li><strong>Brainwave Interfaces:</strong> EEG sensors interpreting brain activity to control external devices.</li>
+            </ul>
+          </div>
 
           <p>Specialist requirements often add complexity and cost, but they fundamentally expand accessibility and enable people with disabilities to perform tasks they could not otherwise accomplish independently.</p>
         </section>
