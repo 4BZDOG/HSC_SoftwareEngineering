@@ -740,12 +740,32 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
 
       // Force SVG text color correction after rendering
       setTimeout(() => {
-        document.querySelectorAll('.mermaid svg text').forEach(text => {
-          if (isDark) {
-            text.setAttribute('fill', '#e2e8f0');
-          }
-        });
-      }, 100);
+        if (isDark) {
+          // Fix all text elements
+          document.querySelectorAll('.mermaid svg text').forEach(text => {
+            text.setAttribute('fill', '#f1f5f9');
+            text.style.fill = '#f1f5f9';
+          });
+
+          // Fix all tspan elements
+          document.querySelectorAll('.mermaid svg tspan').forEach(tspan => {
+            tspan.setAttribute('fill', '#f1f5f9');
+            tspan.style.fill = '#f1f5f9';
+          });
+
+          // Fix actor box text
+          document.querySelectorAll('.mermaid svg .actor text, .mermaid svg .participant text').forEach(text => {
+            text.setAttribute('fill', '#0f172a');
+            text.style.fill = '#0f172a';
+          });
+
+          // Fix label text with higher priority
+          document.querySelectorAll('.mermaid svg .label text').forEach(text => {
+            text.setAttribute('fill', '#f1f5f9');
+            text.style.fill = '#f1f5f9 !important';
+          });
+        }
+      }, 150);
     };
 
     // Initialize on load

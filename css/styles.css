@@ -1997,6 +1997,52 @@ footer {
   fill: #1e293b !important;
 }
 
+/* Enhanced text color fixes for sequence diagrams */
+[data-theme="dark"] .mermaid svg text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .mermaid svg tspan {
+  fill: #f1f5f9 !important;
+}
+
+/* Override specific dark text fills */
+[data-theme="dark"] .mermaid svg text[fill="#333"],
+[data-theme="dark"] .mermaid svg text[fill="#333333"],
+[data-theme="dark"] .mermaid svg text[fill="#666"],
+[data-theme="dark"] .mermaid svg text[fill="#666666"],
+[data-theme="dark"] .mermaid svg text[fill="#555"],
+[data-theme="dark"] .mermaid svg text[fill="#555555"],
+[data-theme="dark"] .mermaid svg tspan[fill="#333"],
+[data-theme="dark"] .mermaid svg tspan[fill="#333333"],
+[data-theme="dark"] .mermaid svg tspan[fill="#666"],
+[data-theme="dark"] .mermaid svg tspan[fill="#666666"],
+[data-theme="dark"] .mermaid svg tspan[fill="#555"],
+[data-theme="dark"] .mermaid svg tspan[fill="#555555"] {
+  fill: #e2e8f0 !important;
+}
+
+/* Sequence diagram label text */
+[data-theme="dark"] .mermaid svg .label text {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .mermaid svg .actor text {
+  fill: #0f172a !important;
+}
+
+/* Reference and alt box text */
+[data-theme="dark"] .mermaid svg .refLabel text,
+[data-theme="dark"] .mermaid svg .altLabel text,
+[data-theme="dark"] .mermaid svg .optLabel text {
+  fill: #f1f5f9 !important;
+}
+
+/* Autonumber text */
+[data-theme="dark"] .mermaid svg .autonumber text {
+  fill: #f1f5f9 !important;
+}
+
 /* Class diagram improvements */
 [data-theme="dark"] .mermaid svg [stroke="#1976D2"] {
   stroke: #60a5fa !important;
