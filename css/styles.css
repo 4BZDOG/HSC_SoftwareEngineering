@@ -2043,6 +2043,36 @@ footer {
   fill: #f1f5f9 !important;
 }
 
+/* Flowchart improvements for dark mode */
+[data-theme="dark"] .mermaid svg [fill="#e1f5ff"],
+[data-theme="dark"] .mermaid svg [fill="#fff3e0"],
+[data-theme="dark"] .mermaid svg [fill="#f3e5f5"],
+[data-theme="dark"] .mermaid svg [fill="#e8f5e9"],
+[data-theme="dark"] .mermaid svg [fill="#fce4ec"],
+[data-theme="dark"] .mermaid svg [fill="#f1f8e9"],
+[data-theme="dark"] .mermaid svg [fill="#ede7f6"] {
+  fill: #1e293b !important;
+}
+
+/* Flowchart node text visibility */
+[data-theme="dark"] .mermaid svg [fill="#90EE90"],
+[data-theme="dark"] .mermaid svg [fill="#FFB6C6"],
+[data-theme="dark"] .mermaid svg [fill="#87CEEB"],
+[data-theme="dark"] .mermaid svg [fill="#FFB347"],
+[data-theme="dark"] .mermaid svg [fill="#FFE4B5"],
+[data-theme="dark"] .mermaid svg [fill="#fff9c4"] {
+  fill: #1e293b !important;
+}
+
+/* Ensure flowchart text is readable in dark mode */
+[data-theme="dark"] .mermaid svg [fill="#4CAF50"] text,
+[data-theme="dark"] .mermaid svg [fill="#FF9800"] text,
+[data-theme="dark"] .mermaid svg [fill="#2196F3"] text,
+[data-theme="dark"] .mermaid svg [fill="#9C27B0"] text,
+[data-theme="dark"] .mermaid svg [fill="#FFC107"] text {
+  fill: inherit !important;
+}
+
 /* Class diagram improvements */
 [data-theme="dark"] .mermaid svg [stroke="#1976D2"] {
   stroke: #60a5fa !important;

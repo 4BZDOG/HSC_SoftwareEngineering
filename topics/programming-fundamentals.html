@@ -156,26 +156,32 @@
 
           <!-- SDLC Flowchart Diagram -->
           <div class="diagram-block">
-            <h4>📊 SDLC Process Flow Diagram</h4>
+            <h4>📊 SDLC <span class="diagram-highlight">Process Flow</span> Diagram</h4>
             <div class="mermaid">
               flowchart TD
-                A["📋 Requirements Definition<br/>Identify stakeholder needs"] --> B["⚙️ Specifications<br/>Define technical constraints"]
-                B --> C["🎨 Design<br/>Plan algorithms & structure"]
-                C --> D["💻 Development<br/>Write code in programming language"]
-                D --> E["🧩 Integration<br/>Combine modules into system"]
-                E --> F["🧪 Testing & Debugging<br/>Identify and fix errors"]
+                START(["🚀 START<br/>Begin Project"]) --> A["📋 Requirements<br/>Identify needs"]
+                A --> B["⚙️ Specifications<br/>Technical constraints"]
+                B --> C["🎨 Design<br/>Plan structure"]
+                C --> D["💻 Development<br/>Write code"]
+                D --> E["🧩 Integration<br/>Combine modules"]
+                E --> F["🧪 Testing<br/>Find errors"]
                 F --> G["📦 Installation<br/>Deploy to users"]
-                G --> H["🛠️ Maintenance<br/>Apply patches & updates"]
-                H -.->|Feedback Loop| A
+                G --> H["🛠️ Maintenance<br/>Support & patches"]
+                H --> DECISION{{"Feedback<br/>Loop<br/>Needed?"}}
+                DECISION -->|Yes| A
+                DECISION -->|No| END(["✅ END<br/>Project Complete"])
 
-                style A fill:#e1f5ff
-                style B fill:#e1f5ff
-                style C fill:#fff3e0
-                style D fill:#f3e5f5
-                style E fill:#e8f5e9
-                style F fill:#fce4ec
-                style G fill:#f1f8e9
-                style H fill:#ede7f6
+                style START fill:#90EE90,color:#000,stroke:#2E7D32,stroke-width:2px
+                style A fill:#e1f5ff,color:#01579b,stroke:#01579b
+                style B fill:#e1f5ff,color:#01579b,stroke:#01579b
+                style C fill:#fff3e0,color:#e65100,stroke:#e65100
+                style D fill:#f3e5f5,color:#4a148c,stroke:#4a148c
+                style E fill:#e8f5e9,color:#1b5e20,stroke:#1b5e20
+                style F fill:#fce4ec,color:#880e4f,stroke:#880e4f
+                style G fill:#f1f8e9,color:#33691e,stroke:#33691e
+                style H fill:#ede7f6,color:#311b92,stroke:#311b92
+                style DECISION fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
+                style END fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
             </div>
             <p class="diagram-caption">
               <strong>Purpose:</strong> Visualize the complete SDLC phases showing how each stage builds on the previous one. Notice the feedback loop from Maintenance back to Requirements, showing that software development is iterative and continuous.<br>
@@ -314,25 +320,28 @@ END FUNCTION</code></pre>
 
           <!-- Linear Search Algorithm Flowchart -->
           <div class="diagram-block">
-            <h4>🔍 Linear Search Algorithm Flowchart</h4>
+            <h4>🔍 Linear <span class="diagram-highlight">Search</span> Algorithm Flowchart</h4>
             <div class="mermaid">
               flowchart TD
-                A["🔍 Start<br/>Analyze target"] --> B["🔄 Loop Start"]
-                B --> C{{"index < length(list)?"}}
+                A(["🔍 START<br/>Analyze target"]) --> B["🔄 Loop Start<br/>Initialize index=0"]
+                B --> C{{"index <br/>length(list)?"}}
                 C -->|No| D["❌ Not Found<br/>Return -1"]
                 C -->|Yes| E{{"list[index] ==<br/>target?"}}
                 E -->|Yes| F["✅ Found<br/>Return index"]
                 E -->|No| G["➡️ Increment<br/>index++"]
                 G --> C
 
-                D --> H["🏁 End"]
+                D --> H(["🏁 END<br/>Algorithm Complete"])
                 F --> H
 
-                style A fill:#90EE90
-                style H fill:#FFB6C6
-                style F fill:#87CEEB
-                style D fill:#FFB347
-                style B fill:#FFE4B5
+                style A fill:#90EE90,color:#000,stroke:#2E7D32,stroke-width:2px
+                style H fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
+                style F fill:#87CEEB,color:#000,stroke:#01579b,stroke-width:2px
+                style D fill:#FFB347,color:#000,stroke:#e65100,stroke-width:2px
+                style B fill:#FFE4B5,color:#000,stroke:#e65100,stroke-width:1px
+                style C fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
+                style E fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
+                style G fill:#e0f0ff,color:#000,stroke:#0277bd,stroke-width:1px
             </div>
             <p class="diagram-caption">
               <strong>Purpose:</strong> Show how linear search scans through each item in a list until finding the target. Notice the loop structure and decision points that verify both position validity and item match.<br>

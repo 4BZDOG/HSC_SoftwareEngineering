@@ -196,10 +196,11 @@
 
           <!-- Secure SDLC Diagram -->
           <div class="diagram-block">
-            <h4>🔐 Secure SDLC with Security Checkpoints</h4>
+            <h4>🔐 Secure <span class="diagram-highlight">SDLC</span> with Security Checkpoints</h4>
             <div class="mermaid">
               flowchart TD
-                A["📋 Requirements"] --> B{{"🔐 Security<br/>Review?"}}
+                START(["🚀 START<br/>Begin SDLC"]) --> A["📋 Requirements"]
+                A --> B{{"🔐 Security<br/>Review?"}}
                 B -->|Issues| B1["🔧 Resolve"]
                 B1 --> B
                 B -->|Approved| C["🎨 Design"]
@@ -216,17 +217,24 @@
                 H1 --> G
                 H -->|Secure| I["🚀 Deployment"]
                 I --> J["🔔 Monitoring"]
+                J --> END(["✅ COMPLETE<br/>Secure Release"])
 
-                style A fill:#4CAF50,color:#fff
-                style C fill:#4CAF50,color:#fff
-                style E fill:#4CAF50,color:#fff
-                style G fill:#FF9800,color:#fff
-                style I fill:#2196F3,color:#fff
-                style J fill:#9C27B0,color:#fff
-                style B fill:#FFC107,color:#000,stroke-width:2px
-                style D fill:#FFC107,color:#000,stroke-width:2px
-                style F fill:#FFC107,color:#000,stroke-width:2px
-                style H fill:#FFC107,color:#000,stroke-width:2px
+                style START fill:#90EE90,color:#000,stroke:#2e7d32,stroke-width:2px
+                style A fill:#4CAF50,color:#fff,stroke:#2e7d32,stroke-width:1px
+                style C fill:#4CAF50,color:#fff,stroke:#2e7d32,stroke-width:1px
+                style E fill:#4CAF50,color:#fff,stroke:#2e7d32,stroke-width:1px
+                style G fill:#FF9800,color:#fff,stroke:#e65100,stroke-width:1px
+                style I fill:#2196F3,color:#fff,stroke:#01579b,stroke-width:1px
+                style J fill:#9C27B0,color:#fff,stroke:#4a148c,stroke-width:1px
+                style B fill:#FFC107,color:#000,stroke-width:2px,stroke:#f57f17
+                style D fill:#FFC107,color:#000,stroke-width:2px,stroke:#f57f17
+                style F fill:#FFC107,color:#000,stroke-width:2px,stroke:#f57f17
+                style H fill:#FFC107,color:#000,stroke-width:2px,stroke:#f57f17
+                style B1 fill:#e1f5ff,color:#000,stroke:#01579b
+                style D1 fill:#e1f5ff,color:#000,stroke:#01579b
+                style F1 fill:#e1f5ff,color:#000,stroke:#01579b
+                style H1 fill:#e1f5ff,color:#000,stroke:#01579b
+                style END fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
             </div>
             <p class="diagram-caption">
               <strong>Purpose:</strong> Show security integrated into every SDLC phase, not added later. Yellow gates require security sign-off before proceeding.<br>
