@@ -218,6 +218,15 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           
           <h3>Processing and Diagnostic Data</h3>
           <p>Mechatronic systems process raw analog signals (via ADCs) into digital data for decision-making. <strong>Diagnostic Data</strong> involves monitoring internal states—such as motor temperature, battery voltage, or current draw—to identify potential hardware failures before they occur. <strong>Optimisation Data</strong> is used to refine control algorithms, such as adjusting the duty cycle of a PWM signal to achieve maximum motor efficiency with minimal heat generation. Engineers use this data to perform "Predictive Maintenance", replacing components before a system-critical failure happens.</p>
+
+          <h3>Analog-to-Digital Conversion (ADC)</h3>
+          <p>Sensors output continuous analog voltages. Microcontrollers use <strong>Analog-to-Digital Converters</strong> to sample these voltages and convert them to digital numbers for processing. An ADC typically has a resolution (e.g., 8-bit, 10-bit, 12-bit), determining how many discrete voltage levels it can represent.</p>
+          <p><strong>ADC Formula:</strong> <code><strong>Digital Value = (Measured Voltage / Reference Voltage) × (2^Resolution - 1)</strong></code></p>
+          <p>🌏 <em><strong>Example:</strong> A 10-bit ADC (1024 levels, 0-1023) with 5V reference, measuring 2.5V:</em></p>
+          <ul>
+            <li>Digital Value = (2.5 / 5) × (2^10 - 1) = 0.5 × 1023 = 511.5 ≈ 511 (raw value)</li>
+            <li>This 511 value is then used in software to make decisions—for example, if the voltage from a temperature sensor crosses a threshold, trigger a cooling system.</li>
+          </ul>
         </section>
 
         <hr class="divider" />
@@ -297,7 +306,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
               <tbody>
                 <tr>
                   <td><strong>Power & Battery</strong></td>
-                  <td>Engineers must calculate the total "Current Draw" (mA). Actuators often require separate power supplies from the controller to avoid "brownouts" or damage.</td>
+                  <td><strong>Current Draw Calculation:</strong> Total system current is calculated by summing the individual component currents: <code><strong>Total Current (mA) = Σ(Component Current)</strong></code><br>🌏 <em>Example: If a microcontroller draws 50 mA, two DC motors draw 300 mA each, and an LED draws 20 mA, total = 50 + 300 + 300 + 20 = 670 mA. A 5V supply must provide at least 670 mA capacity.</em><br>Actuators often require separate power supplies from the controller to avoid "brownouts" (voltage drops) or component damage caused by the high current demands of motors.</td>
                 </tr>
                 <tr>
                   <td><strong>Material Choice</strong></td>
@@ -400,6 +409,31 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
                 </tr>
               </tbody>
             </table>
+          </div>
+
+          <!-- Open vs Closed Loop Comparison Diagram -->
+          <div class="diagram-block">
+            <h4>🔄 Open vs Closed Loop <span class="diagram-highlight">Control Systems</span></h4>
+            <div class="mermaid">
+              graph TD
+                OL["<b>Open Loop System</b><br/>━━━━━━<br/>COMMAND → ACTUATOR → OUTPUT<br/>(No Feedback)<br/><br/>✓ Simple, fast<br/>✗ No self-correction"]
+
+                CL["<b>Closed Loop System</b><br/>━━━━━━<br/>SETPOINT → COMPARE → ADJUST<br/>↓<br/>SENSOR → FEEDBACK<br/><br/>✓ Accurate, adaptive<br/>✗ Complex, slower"]
+
+                OL -.->|Example| EX1["Sprinkler Timer<br/>On at 6am, Off at 6:30am<br/>(Ignores rain)"]
+
+                CL -.->|Example| EX2["Thermostat<br/>Maintains 22°C<br/>Adjusts heater based on<br/>temperature feedback"]
+
+                style OL fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+                style CL fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
+                style EX1 fill:#FFF9C4,stroke:#F57F17,stroke-width:1px
+                style EX2 fill:#FFF9C4,stroke:#F57F17,stroke-width:1px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Visually compare open and closed loop control systems. Open loop executes a fixed sequence; closed loop continuously adjusts based on feedback. The choice depends on accuracy requirements and environmental variability.<br>
+              <strong>Syllabus Link:</strong> SE-11-02<br>
+              <strong>Try This:</strong> Design a closed loop temperature control system for a greenhouse. What sensor would you use? What setpoint? How would the system respond if external temperature drops?
+            </p>
           </div>
 
         </section>

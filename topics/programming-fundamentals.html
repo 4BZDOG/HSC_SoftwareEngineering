@@ -284,12 +284,19 @@
     <span class="kw">else</span>:
         <span class="kw">return</span> binary_search(arr, target, mid + 1, high)
 
-<span class="cm"># Backtracking: Simplified Pathfinding logic</span>
-<span class="kw">def</span> <span class="fn">solve</span>(x, y):
+<span class="cm"># Backtracking: Maze Pathfinding (tries 4 directions)</span>
+visited = set()
+<span class="kw">def</span> <span class="fn">find_path</span>(x, y, maze):
     <span class="kw">if</span> is_exit(x, y): <span class="kw">return</span> <span class="kw">True</span>
-    <span class="kw">if</span> is_wall(x, y): <span class="kw">return</span> <span class="kw">False</span>
-    <span class="kw">if</span> solve(x + 1, y): <span class="kw">return</span> <span class="kw">True</span> <span class="cm"># Try Right</span>
-    <span class="kw">return</span> <span class="kw">False</span> <span class="cm"># Backtrack</span></code></pre>
+    <span class="kw">if</span> is_wall(x, y) <span class="kw">or</span> (x, y) <span class="kw">in</span> visited: <span class="kw">return</span> <span class="kw">False</span>
+
+    visited.add((x, y)) <span class="cm"># Mark as visited</span>
+    <span class="cm"># Try all 4 directions: right, down, left, up</span>
+    <span class="kw">for</span> dx, dy <span class="kw">in</span> [(1, 0), (0, 1), (-1, 0), (0, -1)]:
+        <span class="kw">if</span> find_path(x + dx, y + dy, maze):
+            <span class="kw">return</span> <span class="kw">True</span>
+
+    <span class="kw">return</span> <span class="kw">False</span> <span class="cm"># Backtrack to previous cell</span></code></pre>
           </div>
         </section>
 
@@ -450,6 +457,34 @@ END FUNCTION</code></pre>
           <h3>Functional Programming</h3>
           <p>Programs are built from pure functions (same input always produces same output, no side effects) and immutable data. Emphasises recursion and function composition.<br>🌏 <em>Example (Lisp/Scheme): Computing factorial recursively as (factorial 5) = 5 × (factorial 4) × ... × 1, without modifying state.</em></p>
 
+          <!-- Programming Paradigms Comparison Diagram -->
+          <div class="diagram-block">
+            <h4>🎯 Programming <span class="diagram-highlight">Paradigms Comparison</span></h4>
+            <div class="mermaid">
+              graph TB
+                OOP["<b>Object-Oriented</b><br/>━━━━━━━━<br/>• Objects with data + methods<br/>• Classes & inheritance<br/>• Real-world modelling<br/>• Java, Python, C++"]
+                IMP["<b>Imperative</b><br/>━━━━━━━━<br/>• Step-by-step commands<br/>• Explicit control flow<br/>• Procedures & loops<br/>• Python, C, JavaScript"]
+                LOG["<b>Logic</b><br/>━━━━━━━━<br/>• Facts & inference rules<br/>• Pattern matching<br/>• What is true (not how)<br/>• Prolog, Datalog"]
+                FUNC["<b>Functional</b><br/>━━━━━━━━<br/>• Pure functions & recursion<br/>• Immutable data<br/>• No side effects<br/>• Lisp, Haskell, Scheme"]
+
+                OOP --> USE["<strong>When to Use?</strong><br/>Complex systems with<br/>many interacting entities"]
+                IMP --> USE
+                LOG --> USE
+                FUNC --> USE
+
+                style OOP fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
+                style IMP fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+                style LOG fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+                style FUNC fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px
+                style USE fill:#FFEBEE,stroke:#C62828,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Compare the four major programming paradigms, each with distinct philosophies for solving problems. Modern languages often support multiple paradigms (hybrid approaches).<br>
+              <strong>Syllabus Link:</strong> SE-11-02<br>
+              <strong>Try This:</strong> Classify a project you know (a calculator app, an AI chatbot, a game) into one or more paradigms. Which paradigm(s) does it use best?
+            </p>
+          </div>
+
           <p>Modern development often uses <strong>hybrid approaches</strong> — Python supports both OOP and functional styles; JavaScript supports imperative and functional paradigms. Experimenting with different paradigms strengthens problem-solving skills and helps you choose the best tool for each context.</p>
         </section>
 
@@ -476,7 +511,17 @@ END FUNCTION</code></pre>
           </ul>
 
           <h3>Two's Complement</h3>
-          <p>Two's Complement is the standard method for representing signed (negative) integers in binary. To represent a negative number, the bits of the positive equivalent are inverted (0 to 1 and vice-versa) and 1 is added to the result.<br>🌏 <em>Example: To find -5 in 8-bit, start with 5 (00000101), invert (11111010), and add 1 (11111011).</em> This system is preferred as it allows for simple addition/subtraction circuits and eliminates the 'double zero' (+0 and -0) problem.</p>
+          <p>Two's Complement is the standard method for representing signed (negative) integers in binary. To represent a negative number, the bits of the positive equivalent are inverted (0 to 1 and vice-versa) and 1 is added to the result. This system is preferred as it allows for simple addition/subtraction circuits and eliminates the 'double zero' (+0 and -0) problem used in older systems.</p>
+
+          <strong>Worked Example — Representing -5 in 8-bit Two's Complement:</strong>
+          <ol>
+            <li><strong>Start with the positive number:</strong> 5 = <code>00000101</code></li>
+            <li><strong>Invert all bits (One's Complement):</strong> <code>11111010</code> (each 0 becomes 1, each 1 becomes 0)</li>
+            <li><strong>Add 1 to the result:</strong> <code>11111010 + 1 = 11111011</code></li>
+            <li><strong>Result:</strong> -5 in 8-bit Two's Complement = <code>11111011</code></li>
+          </ol>
+
+          <strong>Verification:</strong> If we add 5 and -5 in binary: <code>00000101 + 11111011 = 100000000</code> (the overflow bit carries out, leaving 00000000 = 0 ✓)</p>
 
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Number Investigation</span></div>

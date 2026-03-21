@@ -158,10 +158,7 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
         <section id="intro">
           <h2 class="syllabus-phase">⚡ Comparing Procedural and Object-Oriented Programming</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
-          <p>📌 <em><strong>Compare</strong> procedural programming with object-oriented programming. Understanding the differences helps engineers choose the right paradigm for each project.</em></p>
-          <h2 class="syllabus-phase">⚡ Understanding the Paradigm</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
-          <p>📌 <em><strong>Compare</strong> procedural programming with the Object-Oriented Paradigm (OOP). While procedural programming focuses on a top-down sequence of actions (functions) acting upon data, OOP organises code into objects that combine data (attributes) and behaviour (methods).</em></p>
+          <p>📌 <em><strong>Compare</strong> procedural programming with the Object-Oriented Paradigm (OOP). While procedural programming focuses on a top-down sequence of actions (functions) acting upon data, OOP organises code into objects that combine data (attributes) and behaviour (methods). Understanding these differences helps engineers choose the right paradigm for each project.</em></p>
 
           <div class="table-wrap">
             <table>
@@ -379,6 +376,39 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
 
           <h3>Facade Pattern</h3>
           <p>The facade pattern is a design technique that provides a simplified "front-end" interface to a complex set of classes, hiding the internal complexity from the user. By creating a single facade class that coordinates multiple internal classes, developers make the system easier to use, understand, and maintain. The user interacts only with the facade, not the complex subsystems behind it.</p>
+
+          <p>🌏 <em><strong>Example:</strong> A <strong>WebServerFacade</strong> that simplifies accessing a complex library system. Instead of manually handling authentication, database queries, caching, and logging:</em></p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Facade Pattern Example</span></div>
+            <pre><code><span class="cm"># Complex internal classes (hidden from user)</span>
+<span class="kw">class</span> <span class="fn">AuthenticationService</span>: <span class="cm"># Handles user login</span>
+    <span class="kw">def</span> <span class="fn">authenticate</span>(self, username, password): <span class="kw">pass</span>
+
+<span class="kw">class</span> <span class="fn">DatabaseService</span>: <span class="cm"># Queries the database</span>
+    <span class="kw">def</span> <span class="fn">query</span>(self, sql): <span class="kw">pass</span>
+
+<span class="kw">class</span> <span class="fn">CacheService</span>: <span class="cm"># Stores frequently accessed data</span>
+    <span class="kw">def</span> <span class="fn">get</span>(self, key): <span class="kw">pass</span>
+
+<span class="cm"># FACADE: Single simple interface</span>
+<span class="kw">class</span> <span class="fn">LibraryFacade</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self):
+        self.auth = AuthenticationService()
+        self.db = DatabaseService()
+        self.cache = CacheService()
+
+    <span class="kw">def</span> <span class="fn">get_book_info</span>(self, username, book_id):
+        <span class="cm"># User calls ONE method; facade handles everything inside</span>
+        <span class="kw">if</span> <span class="kw">not</span> self.auth.authenticate(username):
+            <span class="kw">return</span> <span class="kw">None</span>
+        <span class="kw">if</span> book_data := self.cache.get(book_id):
+            <span class="kw">return</span> book_data
+        <span class="kw">return</span> self.db.query(f<span class="str">"SELECT * FROM books WHERE id={book_id}"</span>)
+
+<span class="cm"># User only sees the simple facade interface</span>
+library = LibraryFacade()
+book = library.get_book_info(<span class="str">"john_doe"</span>, 42)</code></pre>
+          </div>
 
           <h3>Agility</h3>
           <p>Agility in OOP design refers to implementing an iterative development cycle where code is regularly reviewed and updated based on testing, user feedback, and changing requirements. Agile approaches favour frequent refactoring, continuous improvement, and adaptive design rather than rigid upfront planning. This flexibility allows software to evolve as understanding of the problem deepens.</p>
