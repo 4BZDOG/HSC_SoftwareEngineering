@@ -1331,9 +1331,14 @@ tbody tr:hover td { background: var(--bg-secondary); }
   padding: 1.125rem 1.25rem;
   border-radius: var(--radius-md);
   border: 1px solid transparent;
+  border-bottom: 2px solid var(--border);
   font-size: .85rem;
   line-height: 1.6;
   transition: all var(--transition);
+}
+
+.key-term-item:last-child {
+  border-bottom: 1px solid transparent;
 }
 
 .key-term-item:nth-child(odd) {
@@ -1363,6 +1368,46 @@ tbody tr:hover td { background: var(--bg-secondary); }
 .key-term-item > span {
   color: var(--text-secondary);
   font-size: .84rem;
+}
+
+/* Dark mode divider styling */
+[data-theme="dark"] .key-term-item {
+  border-bottom-color: rgba(148, 163, 184, 0.2);
+}
+
+/* ── Content Dividers for Structured Lists ── */
+.structured-content > h4 {
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border);
+}
+
+.structured-content > h4:first-child {
+  margin-top: 0;
+  border-bottom: none;
+}
+
+[data-theme="dark"] .structured-content > h4 {
+  border-bottom-color: rgba(148, 163, 184, 0.25);
+}
+
+/* ── Definition/Error Type Section Dividers ── */
+section h4 {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  border-top: 2px solid var(--border);
+}
+
+section h4:first-of-type {
+  margin-top: 0;
+  border-top: none;
+  padding-top: 0;
+}
+
+[data-theme="dark"] section h4 {
+  border-top-color: rgba(148, 163, 184, 0.25);
 }
 
 /* ── Steps / Process ── */
