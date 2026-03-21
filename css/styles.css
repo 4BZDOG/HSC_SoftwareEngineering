@@ -1113,18 +1113,27 @@ h2.syllabus-phase:hover .section-chevron {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #1E293B;
+  background: var(--bg-tertiary);
   padding: .6rem 1rem;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  border-bottom: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid var(--border);
+}
+
+[data-theme="dark"] .code-header {
+  background: #1E293B;
+  border-bottom-color: rgba(255,255,255,.08);
 }
 
 .code-lang {
   font-size: .72rem;
   font-weight: 700;
-  color: #94A3B8;
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: .06em;
+}
+
+[data-theme="dark"] .code-lang {
+  color: #94A3B8;
 }
 
 .code-dots {
@@ -1136,21 +1145,39 @@ h2.syllabus-phase:hover .section-chevron {
   width: 10px;
   height: 10px;
   border-radius: 50%;
+  background: var(--border-strong);
+}
+
+[data-theme="dark"] .code-dots span {
   background: #334155;
 }
 
+/* Light mode code blocks */
 pre {
-  background: #0D1117;
+  background: var(--bg-secondary);
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   padding: 1.25rem 1.25rem;
   overflow-x: auto;
   margin: 0;
+  border: 1px solid var(--border);
+  border-top: none;
 }
 
 pre code {
   font-family: 'JetBrains Mono', 'Fira Code', monospace;
   font-size: .83rem;
   line-height: 1.7;
+  color: var(--text-primary);
+}
+
+/* Dark mode code blocks */
+[data-theme="dark"] pre {
+  background: #0D1117;
+  border: 1px solid rgba(255,255,255,.08);
+  border-top: none;
+}
+
+[data-theme="dark"] pre code {
   color: #E2E8F0;
 }
 
@@ -1164,6 +1191,13 @@ code {
   border: 1px solid var(--border);
 }
 
+/* Inline code in dark mode */
+[data-theme="dark"] code {
+  background: #1E293B;
+  color: #60A5FA;
+  border-color: rgba(255,255,255,.1);
+}
+
 pre code {
   background: none;
   border: none;
@@ -1171,14 +1205,23 @@ pre code {
   color: inherit;
 }
 
-/* Syntax colours */
-.kw  { color: #C084FC; }  /* keywords */
-.fn  { color: #60A5FA; }  /* functions */
-.str { color: #86EFAC; }  /* strings */
-.num { color: #FDBA74; }  /* numbers */
-.cm  { color: #64748B; font-style: italic; }  /* comments */
-.cl  { color: #F0ABFC; }  /* classes */
-.op  { color: #94A3B8; }  /* operators */
+/* Syntax colours — Light mode */
+.kw  { color: #7C3AED; }  /* keywords */
+.fn  { color: #2563EB; }  /* functions */
+.str { color: #16A34A; }  /* strings */
+.num { color: #D97706; }  /* numbers */
+.cm  { color: #6B7280; font-style: italic; }  /* comments */
+.cl  { color: #C026D3; }  /* classes */
+.op  { color: #475569; }  /* operators */
+
+/* Syntax colours — Dark mode */
+[data-theme="dark"] .kw  { color: #C084FC; }  /* keywords */
+[data-theme="dark"] .fn  { color: #60A5FA; }  /* functions */
+[data-theme="dark"] .str { color: #86EFAC; }  /* strings */
+[data-theme="dark"] .num { color: #FDBA74; }  /* numbers */
+[data-theme="dark"] .cm  { color: #64748B; }  /* comments */
+[data-theme="dark"] .cl  { color: #F0ABFC; }  /* classes */
+[data-theme="dark"] .op  { color: #94A3B8; }  /* operators */
 
 /* ── Definition Cards ── */
 .def-card {
