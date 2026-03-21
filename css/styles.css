@@ -1712,9 +1712,9 @@ footer {
 }
 
 .diagram-block h4 {
-  margin: 0 0 1.5rem 0;
-  padding: 0.75rem 0;
-  color: var(--primary);
+  margin: 0 0 1rem 0;
+  padding: 0.875rem 0 0.875rem 1rem;
+  color: #ffffff;
   font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.5px;
@@ -1724,27 +1724,28 @@ footer {
   justify-content: space-between;
   user-select: none;
   transition: all var(--transition);
-  border-bottom: 2px solid transparent;
-  background: linear-gradient(90deg, var(--primary-light) 0%, transparent 100%);
-  padding-left: 1rem;
+  border-bottom: none;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--secondary) 100%);
   border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
 }
 
 .diagram-block h4:hover {
-  color: var(--secondary);
-  border-bottom-color: var(--secondary);
-  background: linear-gradient(90deg, var(--primary-light) 0%, rgba(131, 92, 246, 0.05) 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+  transform: translateY(-1px);
 }
 
 [data-theme="dark"] .diagram-block h4 {
-  color: #06B6D4;
-  background: linear-gradient(90deg, rgba(6, 182, 212, 0.1) 0%, transparent 100%);
+  color: #f1f5f9;
+  background: linear-gradient(135deg, #0369a1 0%, #0891b2 55%, #06b6d4 100%);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.25);
 }
 
 [data-theme="dark"] .diagram-block h4:hover {
-  color: #22D3EE;
-  border-bottom-color: #22D3EE;
-  background: linear-gradient(90deg, rgba(6, 182, 212, 0.15) 0%, rgba(34, 211, 238, 0.05) 100%);
+  color: #f1f5f9;
+  box-shadow: 0 6px 16px rgba(6, 182, 212, 0.4);
+  transform: translateY(-1px);
 }
 
 .diagram-block h4::before {
@@ -1755,20 +1756,25 @@ footer {
   border-radius: 50%;
   background: currentColor;
   margin-right: 0.5rem;
-  opacity: 0.6;
+  opacity: 0.85;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
 }
 
 .diagram-block h4::after {
   content: '▼';
   display: inline-block;
-  margin-left: 1rem;
+  margin-left: 0.75rem;
   transition: transform var(--transition);
   font-size: 0.7rem;
-  opacity: 0.6;
+  opacity: 0.85;
 }
 
 .diagram-block.diagram-collapsed h4::after {
   transform: rotate(-90deg);
+}
+
+.diagram-block.diagram-collapsed h4 {
+  margin-bottom: 0.5rem;
 }
 
 .diagram-body {
