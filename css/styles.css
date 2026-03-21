@@ -2043,6 +2043,39 @@ footer {
   fill: #f1f5f9 !important;
 }
 
+/* CRITICAL FIX: Dark text on light backgrounds in dark mode */
+/* Light fills need dark text for contrast */
+[data-theme="dark"] .mermaid svg [fill="#E3F2FD"] text,
+[data-theme="dark"] .mermaid svg [fill="#E3F2FD"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#F3E5F5"] text,
+[data-theme="dark"] .mermaid svg [fill="#F3E5F5"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#E8F5E9"] text,
+[data-theme="dark"] .mermaid svg [fill="#E8F5E9"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#FFF9C4"] text,
+[data-theme="dark"] .mermaid svg [fill="#FFF9C4"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#FFE082"] text,
+[data-theme="dark"] .mermaid svg [fill="#FFE082"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#FFCCBC"] text,
+[data-theme="dark"] .mermaid svg [fill="#FFCCBC"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#BBDEFB"] text,
+[data-theme="dark"] .mermaid svg [fill="#BBDEFB"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#C8E6C9"] text,
+[data-theme="dark"] .mermaid svg [fill="#C8E6C9"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#FFF3E0"] text,
+[data-theme="dark"] .mermaid svg [fill="#FFF3E0"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#FFEBEE"] text,
+[data-theme="dark"] .mermaid svg [fill="#FFEBEE"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#E1F5FE"] text,
+[data-theme="dark"] .mermaid svg [fill="#E1F5FE"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#FCE4EC"] text,
+[data-theme="dark"] .mermaid svg [fill="#FCE4EC"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#B3E5FC"] text,
+[data-theme="dark"] .mermaid svg [fill="#B3E5FC"] tspan,
+[data-theme="dark"] .mermaid svg [fill="#FFAB91"] text,
+[data-theme="dark"] .mermaid svg [fill="#FFAB91"] tspan {
+  fill: #0f172a !important;
+}
+
 /* Flowchart improvements for dark mode */
 [data-theme="dark"] .mermaid svg [fill="#e1f5ff"],
 [data-theme="dark"] .mermaid svg [fill="#fff3e0"],
