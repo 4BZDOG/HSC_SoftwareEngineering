@@ -252,12 +252,204 @@
           <h3>Key Features of Standard Algorithms</h3>
           <p>Every algorithm uses fundamental building blocks to solve problems. Understanding these features allows programmers to design robust, efficient solutions:</p>
 
-          <ul>
-            <li><strong>Sequence:</strong> Instructions executed in order, one after another. Example: Reading a file, processing each line, then saving results.</li>
-            <li><strong>Selection:</strong> Choosing different paths based on conditions (IF/ELSE, SWITCH statements). Example: Validating user input — if age &lt; 18, display "Too young"; otherwise, proceed.</li>
-            <li><strong>Iteration:</strong> Repeating instructions while a condition is true (FOR, WHILE loops). Example: Summing all numbers in a list by looping through each element.</li>
-            <li><strong>Storing Data:</strong> Using variables and data structures to hold values needed across multiple steps. Example: Keeping track of a running total as you iterate through numbers.</li>
-          </ul>
+          <!-- ── 1. Sequence ── -->
+          <h4>1. Sequence</h4>
+          <p><strong>Sequence</strong> means instructions are executed in order, one after another. Each step completes before the next begins — there is no branching or repetition.<br>
+          🌏 <em>Example: Reading a file, processing each line, then saving results.</em></p>
+
+          <div class="diagram-block">
+            <h4>📊 Flowchart — Sequence (File Processing)</h4>
+            <p class="diagram-subtitle">Three sequential steps executed in order</p>
+            <p class="diagram-description">
+              This flowchart illustrates pure sequential execution: the program opens a file, processes every line in order, then saves the results. No decisions or loops — each step follows the previous one directly.
+            </p>
+            <div class="mermaid">
+              flowchart TD
+                START(["▶ START"]) --> A["📂 Open file for reading"]
+                A --> B["🔄 Process each line"]
+                B --> C["💾 Save processed results"]
+                C --> STOP(["⏹ END"])
+
+                style START fill:#10B981,stroke:#059669,color:#fff
+                style STOP fill:#EF4444,stroke:#DC2626,color:#fff
+                style A fill:#6366F1,stroke:#4F46E5,color:#fff
+                style B fill:#6366F1,stroke:#4F46E5,color:#fff
+                style C fill:#6366F1,stroke:#4F46E5,color:#fff
+            </div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">pseudocode</span>
+            </div>
+            <pre><code>BEGIN
+    OPEN file "data.txt" FOR READING
+    READ all lines FROM file INTO linesList
+    FOR EACH line IN linesList
+        processedLine ← UPPERCASE(line)
+    END FOR
+    SAVE processedLines TO "output.txt"
+    CLOSE file
+END</code></pre>
+          </div>
+
+          <!-- ── 2. Selection ── -->
+          <h4>2. Selection</h4>
+          <p><strong>Selection</strong> means choosing different execution paths based on conditions using IF/ELSE or SWITCH statements. The program evaluates a condition and branches accordingly.<br>
+          🌏 <em>Example: Validating user input — if age &lt; 18, display "Too young"; otherwise, proceed.</em></p>
+
+          <div class="diagram-block">
+            <h4>📊 Flowchart — Selection (Age Validation)</h4>
+            <p class="diagram-subtitle">Branching logic based on a condition</p>
+            <p class="diagram-description">
+              This flowchart shows a decision diamond that checks whether the user's age meets the minimum requirement. The YES branch proceeds to the main menu, while the NO branch displays a rejection message. This is the fundamental IF/ELSE pattern.
+            </p>
+            <div class="mermaid">
+              flowchart TD
+                START(["▶ START"]) --> A["⌨️ INPUT age from user"]
+                A --> B{"🔀 Is age ≥ 18?"}
+                B -->|YES| C["✅ Display 'Welcome!'"]
+                C --> D["📋 Show full menu"]
+                B -->|NO| E["❌ Display 'Too young'"]
+                E --> F["🚪 Exit program"]
+                D --> STOP(["⏹ END"])
+                F --> STOP
+
+                style START fill:#10B981,stroke:#059669,color:#fff
+                style STOP fill:#EF4444,stroke:#DC2626,color:#fff
+                style B fill:#F59E0B,stroke:#D97706,color:#fff
+                style C fill:#10B981,stroke:#059669,color:#fff
+                style E fill:#EF4444,stroke:#DC2626,color:#fff
+                style A fill:#6366F1,stroke:#4F46E5,color:#fff
+                style D fill:#6366F1,stroke:#4F46E5,color:#fff
+                style F fill:#6366F1,stroke:#4F46E5,color:#fff
+            </div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">pseudocode</span>
+            </div>
+            <pre><code>BEGIN
+    OUTPUT "Enter your age: "
+    INPUT age
+    IF age ≥ 18 THEN
+        OUTPUT "Welcome!"
+        CALL ShowFullMenu()
+    ELSE
+        OUTPUT "Too young — access denied."
+        EXIT program
+    END IF
+END</code></pre>
+          </div>
+
+          <!-- ── 3. Iteration ── -->
+          <h4>3. Iteration</h4>
+          <p><strong>Iteration</strong> means repeating a set of instructions while a condition is true, using FOR or WHILE loops. The loop body executes multiple times until the exit condition is met.<br>
+          🌏 <em>Example: Summing all numbers in a list by looping through each element.</em></p>
+
+          <div class="diagram-block">
+            <h4>📊 Flowchart — Iteration (Sum a List)</h4>
+            <p class="diagram-subtitle">Loop through each element and accumulate a total</p>
+            <p class="diagram-description">
+              This flowchart demonstrates a counting loop: the program initialises a total to zero, then iterates through each number in the list, adding it to the running total. The decision diamond checks whether more elements remain. When all elements are processed, the final sum is displayed.
+            </p>
+            <div class="mermaid">
+              flowchart TD
+                START(["▶ START"]) --> A["📝 SET total ← 0"]
+                A --> B["📝 SET i ← 0"]
+                B --> C{"🔀 i &lt; length of list?"}
+                C -->|YES| D["➕ total ← total + list[i]"]
+                D --> E["📝 i ← i + 1"]
+                E --> C
+                C -->|NO| F["📤 OUTPUT total"]
+                F --> STOP(["⏹ END"])
+
+                style START fill:#10B981,stroke:#059669,color:#fff
+                style STOP fill:#EF4444,stroke:#DC2626,color:#fff
+                style C fill:#F59E0B,stroke:#D97706,color:#fff
+                style A fill:#6366F1,stroke:#4F46E5,color:#fff
+                style B fill:#6366F1,stroke:#4F46E5,color:#fff
+                style D fill:#6366F1,stroke:#4F46E5,color:#fff
+                style E fill:#6366F1,stroke:#4F46E5,color:#fff
+                style F fill:#6366F1,stroke:#4F46E5,color:#fff
+            </div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">pseudocode</span>
+            </div>
+            <pre><code>BEGIN
+    numbers ← [10, 25, 3, 47, 8]
+    total ← 0
+    FOR i ← 0 TO LENGTH(numbers) - 1
+        total ← total + numbers[i]
+    END FOR
+    OUTPUT "The sum is: " + total
+END</code></pre>
+          </div>
+
+          <!-- ── 4. Storing Data ── -->
+          <h4>4. Storing Data</h4>
+          <p><strong>Storing Data</strong> means using variables and data structures to hold values needed across multiple steps of an algorithm. Without stored state, programs cannot track progress or accumulate results.<br>
+          🌏 <em>Example: Keeping track of a running total as you iterate through numbers.</em></p>
+
+          <div class="diagram-block">
+            <h4>📊 Flowchart — Storing Data (Running Total)</h4>
+            <p class="diagram-subtitle">Variables persist values across loop iterations</p>
+            <p class="diagram-description">
+              This flowchart highlights the role of stored data: the variable <code>runningTotal</code> persists across each loop iteration, accumulating partial results. The variable <code>count</code> tracks how many numbers have been processed. Both are essential for computing the final average.
+            </p>
+            <div class="mermaid">
+              flowchart TD
+                START(["▶ START"]) --> A["📝 SET runningTotal ← 0<br/>SET count ← 0"]
+                A --> B["⌨️ INPUT number"]
+                B --> C{"🔀 number ≠ -1?"}
+                C -->|YES| D["➕ runningTotal ← runningTotal + number"]
+                D --> E["📝 count ← count + 1"]
+                E --> B
+                C -->|NO| F{"🔀 count &gt; 0?"}
+                F -->|YES| G["📊 average ← runningTotal / count<br/>OUTPUT average"]
+                F -->|NO| H["⚠️ OUTPUT 'No data entered'"]
+                G --> STOP(["⏹ END"])
+                H --> STOP
+
+                style START fill:#10B981,stroke:#059669,color:#fff
+                style STOP fill:#EF4444,stroke:#DC2626,color:#fff
+                style C fill:#F59E0B,stroke:#D97706,color:#fff
+                style F fill:#F59E0B,stroke:#D97706,color:#fff
+                style A fill:#6366F1,stroke:#4F46E5,color:#fff
+                style B fill:#6366F1,stroke:#4F46E5,color:#fff
+                style D fill:#6366F1,stroke:#4F46E5,color:#fff
+                style E fill:#6366F1,stroke:#4F46E5,color:#fff
+                style G fill:#10B981,stroke:#059669,color:#fff
+                style H fill:#EF4444,stroke:#DC2626,color:#fff
+            </div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-lang">pseudocode</span>
+            </div>
+            <pre><code>BEGIN
+    runningTotal ← 0
+    count ← 0
+    OUTPUT "Enter numbers (-1 to finish): "
+    INPUT number
+    WHILE number ≠ -1
+        runningTotal ← runningTotal + number
+        count ← count + 1
+        INPUT number
+    END WHILE
+    IF count > 0 THEN
+        average ← runningTotal / count
+        OUTPUT "Average: " + average
+    ELSE
+        OUTPUT "No data entered."
+    END IF
+END</code></pre>
+          </div>
 
           <p>Computational thinking is the systematic approach to problem-solving that breaks complex problems into manageable pieces and recognises patterns. By combining sequence, selection, iteration, and effective data storage, algorithms become clear, testable, and maintainable.</p>
         </section>
