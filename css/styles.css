@@ -341,14 +341,14 @@ body {
 }
 
 .page-content {
-  padding: 2rem 0 4rem;
+  padding: clamp(1.5rem, 2vw, 2rem) 0 clamp(2rem, 3vw, 4rem);
   min-width: 0;
 }
 
 /* ── Hero Section ── */
 .hero {
   background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #0F172A 100%);
-  padding: 4.5rem 1.5rem;
+  padding: clamp(2.5rem, 4vw, 4.5rem) 1.5rem;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -492,7 +492,7 @@ body {
 .main-content {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2.5rem 1.5rem 3rem 1.5rem;
+  padding: clamp(1.5rem, 2vw, 2.5rem) 1.5rem clamp(2rem, 2.5vw, 3rem) 1.5rem;
 }
 
 /* ── Section Headers ── */
@@ -641,9 +641,9 @@ body {
 /* ── Feature Banners ── */
 .features-bar {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  padding: 2.25rem 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  padding: clamp(1.75rem, 2.5vw, 2.25rem) 1.5rem;
   background: var(--bg-secondary);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -686,7 +686,7 @@ body {
 /* ── Topic Page Header ── */
 .topic-header {
   background: linear-gradient(135deg, #0F172A, #1E293B);
-  padding: 3rem 1.5rem;
+  padding: clamp(1.75rem, 2.5vw, 3rem) 1.5rem;
   position: relative;
   overflow: hidden;
 }
@@ -775,7 +775,7 @@ body {
   padding: .875rem 1.125rem .875rem 1.25rem;
   border-radius: var(--radius-md);
   margin: 1.5rem 0 0;
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
   font-weight: 800;
   letter-spacing: -.02em;
   box-shadow: 0 3px 14px rgba(99, 102, 241, 0.22);
@@ -1032,14 +1032,14 @@ h2.syllabus-phase:hover .section-chevron {
 }
 
 .content-body h3 {
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
   font-weight: 700;
   color: var(--text-primary);
   margin: 1.75rem 0 .75rem;
 }
 
 .content-body h4 {
-  font-size: 1rem;
+  font-size: clamp(0.95rem, 1.1vw, 1rem);
   font-weight: 600;
   color: var(--text-primary);
   margin: 1.25rem 0 .5rem;
@@ -1677,7 +1677,22 @@ footer {
 }
 
 /* ── Responsive ── */
-@media (max-width: 1024px) {
+/* ── Large Tablet & Desktop (1200px+) ── */
+@media (min-width: 1200px) {
+  .sidebar { display: block; }
+
+  .page-layout {
+    grid-template-columns: 260px 1fr;
+  }
+
+  .footer-inner {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+/* ── Large Tablet (1024px - 1199px) ── */
+@media (max-width: 1199px) {
   .page-layout {
     grid-template-columns: 1fr;
   }
@@ -1685,11 +1700,32 @@ footer {
   .sidebar { display: none; }
 
   .footer-inner {
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
   }
 }
 
+/* ── Ultra-Wide Screens (1400px+) ── */
+@media (min-width: 1400px) {
+  .page-layout {
+    gap: 2.5rem;
+    padding: 0 2rem;
+  }
+
+  .nav-inner {
+    padding: 0 2rem;
+  }
+
+  .hero {
+    padding: clamp(3.5rem, 4.5vw, 4.5rem) 2rem;
+  }
+
+  .features-bar {
+    padding: clamp(2rem, 3vw, 2.25rem) 2rem;
+  }
+}
+
+/* ── Tablet Portrait (768px and below) ── */
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .hamburger { display: flex; }
