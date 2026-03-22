@@ -348,10 +348,11 @@ body {
 /* ── Hero Section ── */
 .hero {
   background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #0F172A 100%);
-  padding: 5rem 1.5rem;
+  padding: 4.5rem 1.5rem;
   text-align: center;
   position: relative;
   overflow: hidden;
+  margin-bottom: 1rem;
 }
 
 .hero::before {
@@ -420,7 +421,7 @@ body {
 .hero-stats {
   display: flex;
   justify-content: center;
-  gap: 3rem;
+  gap: 2.5rem;
   margin-bottom: 2.5rem;
 }
 
@@ -491,7 +492,7 @@ body {
 .main-content {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 2.5rem 1.5rem 3rem 1.5rem;
 }
 
 /* ── Section Headers ── */
@@ -499,9 +500,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
   border-bottom: 1px solid var(--border);
+  gap: 1rem;
 }
 
 .section-title {
@@ -531,9 +533,9 @@ body {
 /* ── Topic Cards ── */
 .topics-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.25rem;
-  margin-bottom: 3rem;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
 }
 
 .topic-card {
@@ -542,12 +544,13 @@ body {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
-  padding: 1.5rem;
+  padding: 1.75rem;
   text-decoration: none;
   color: var(--text-primary);
   transition: all var(--transition);
   position: relative;
   overflow: hidden;
+  height: 100%;
 }
 
 .topic-card::before {
@@ -571,14 +574,14 @@ body {
 .topic-card.year11:hover { box-shadow: 0 12px 30px rgba(16,185,129,.2); }
 
 .card-icon {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
   flex-shrink: 0;
 }
 
@@ -589,18 +592,19 @@ body {
 [data-theme="dark"] .year11 .card-icon { background: rgba(16,185,129,.15); }
 
 .card-title {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  margin-bottom: .5rem;
+  margin-bottom: 0.75rem;
   color: var(--text-primary);
+  line-height: 1.3;
 }
 
 .card-desc {
-  font-size: .85rem;
+  font-size: 0.875rem;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.6;
   flex: 1;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .card-meta {
@@ -637,8 +641,8 @@ body {
 .features-bar {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  padding: 2rem 1.5rem;
+  gap: 1.5rem;
+  padding: 2.25rem 1.5rem;
   background: var(--bg-secondary);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -647,18 +651,18 @@ body {
 .feature-item {
   display: flex;
   align-items: center;
-  gap: .75rem;
+  gap: 1rem;
 }
 
 .feature-icon {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   background: var(--primary-light);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   flex-shrink: 0;
 }
 
@@ -666,14 +670,16 @@ body {
 
 .feature-text strong {
   display: block;
-  font-size: .85rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-primary);
+  margin-bottom: 0.25rem;
 }
 
 .feature-text span {
-  font-size: .78rem;
-  color: var(--text-muted);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
 }
 
 /* ── Topic Page Header ── */
@@ -810,10 +816,10 @@ body {
 .section-chevron {
   margin-left: auto;
   flex-shrink: 0;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: rgba(255,255,255,.12);
+  background: rgba(255,255,255,.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -823,9 +829,9 @@ body {
 
 .section-chevron svg {
   display: block;
-  width: 14px;
-  height: 14px;
-  stroke: rgba(255,255,255,.85);
+  width: 16px;
+  height: 16px;
+  stroke: rgba(255,255,255,.95);
   fill: none;
   stroke-width: 2.5;
   stroke-linecap: round;
@@ -837,7 +843,7 @@ h2.syllabus-phase.section-collapsed .section-chevron {
 }
 
 h2.syllabus-phase:hover .section-chevron {
-  background: rgba(255,255,255,.22);
+  background: rgba(255,255,255,.35);
 }
 
 /* ── Collapsible Section Body ── */
@@ -845,17 +851,24 @@ h2.syllabus-phase:hover .section-chevron {
   display: grid;
   grid-template-rows: 1fr;
   overflow: hidden;              /* clips leaking margins/padding */
-  transition: grid-template-rows 380ms cubic-bezier(.4,0,.2,1);
+  transition: grid-template-rows 380ms cubic-bezier(.4,0,.2,1),
+              background 260ms cubic-bezier(.4,0,.2,1);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  margin-top: 0.25rem;
 }
 
 .section-body.section-collapsed {
   grid-template-rows: 0fr;
+  background: transparent;
+  border-radius: 0;
+  margin-top: 0;
 }
 
 .section-body-inner {
   min-height: 0;                 /* allows grid row to compress to 0 */
   overflow: hidden;              /* clips child overflow within the row */
-  padding-top: .125rem;
+  padding: 1.75rem;
 }
 
 /* Neutralise the negative top-margin on outcome-subtitle so it can't
@@ -919,9 +932,9 @@ h2.syllabus-phase:hover .section-chevron {
   right: 1.25rem;
   top: 50%;
   transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
-  background: rgba(255,255,255,.1);
+  width: 36px;
+  height: 36px;
+  background: rgba(255,255,255,.18);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
@@ -932,9 +945,9 @@ h2.syllabus-phase:hover .section-chevron {
 
 .part-chevron svg {
   display: block;
-  width: 18px;
-  height: 18px;
-  stroke: rgba(255,255,255,.9);
+  width: 20px;
+  height: 20px;
+  stroke: rgba(255,255,255,.95);
   stroke-width: 2.5;
   fill: none;
   stroke-linecap: round;
@@ -947,7 +960,7 @@ h2.syllabus-phase:hover .section-chevron {
 }
 
 .part-block:hover .part-chevron {
-  background: rgba(255,255,255,.2);
+  background: rgba(255,255,255,.3);
 }
 
 /* Collapsed indicator: slightly dim the title text */
@@ -959,16 +972,25 @@ h2.syllabus-phase:hover .section-chevron {
 .part-group {
   display: grid;
   grid-template-rows: 1fr;
-  transition: grid-template-rows 420ms cubic-bezier(.4,0,.2,1);
+  transition: grid-template-rows 420ms cubic-bezier(.4,0,.2,1),
+              background 260ms cubic-bezier(.4,0,.2,1),
+              border-radius 260ms cubic-bezier(.4,0,.2,1);
+  background: linear-gradient(135deg, var(--primary-light) 0%, rgba(139,92,246,.06) 100%);
+  border-radius: var(--radius-lg);
+  margin: 1rem 0;
 }
 
 .part-group.part-collapsed {
   grid-template-rows: 0fr;
+  background: transparent;
+  border-radius: 0;
+  margin: 0;
 }
 
 .part-group-inner {
   min-height: 0;
   overflow: hidden;
+  padding: 1.5rem 0;
 }
 
 [data-theme="dark"] .part-block {
@@ -1553,8 +1575,8 @@ footer {
 /* ── Search ── */
 .search-bar {
   position: relative;
-  max-width: 500px;
-  margin: 0 auto 3rem;
+  max-width: 520px;
+  margin: 0 auto 3.5rem;
 }
 
 .search-input {
@@ -1586,7 +1608,10 @@ footer {
 }
 
 /* ── Utility ── */
-.section-spacer { margin-top: 3rem; }
+.section-spacer {
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+}
 
 .tag {
   display: inline-block;
@@ -1600,8 +1625,8 @@ footer {
   background: linear-gradient(135deg, var(--primary-light), rgba(139,92,246,.08));
   border: 1px solid rgba(99,102,241,.2);
   border-radius: var(--radius-xl);
-  padding: 1.5rem;
-  margin: 1.5rem 0;
+  padding: 1.75rem 2rem;
+  margin: 3rem 0 1.5rem 0;
 }
 
 [data-theme="dark"] .highlight-box {
@@ -1638,12 +1663,12 @@ footer {
   .nav-links { display: none; }
   .hamburger { display: flex; }
 
-  .hero { padding: 3rem 1.25rem; }
+  .hero { padding: 3.5rem 1.25rem; }
   .hero-stats { gap: 2rem; }
 
-  .topics-grid { grid-template-columns: 1fr; }
+  .topics-grid { grid-template-columns: 1fr; gap: 1.25rem; }
 
-  .features-bar { grid-template-columns: 1fr 1fr; }
+  .features-bar { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
 
   .footer-inner { grid-template-columns: 1fr; }
 
@@ -1662,10 +1687,14 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .hero h1 { font-size: 1.75rem; }
-  .hero-stats { flex-direction: column; gap: 1.25rem; align-items: center; }
-  .features-bar { grid-template-columns: 1fr; }
-  .hero-cta { flex-direction: column; align-items: center; }
+  .hero { padding: 3rem 1rem; margin-bottom: 0.5rem; }
+  .hero h1 { font-size: 1.75rem; margin-bottom: 1rem; }
+  .hero p { font-size: 1rem; margin-bottom: 2rem; }
+  .hero-stats { flex-direction: column; gap: 1.25rem; align-items: center; margin-bottom: 2rem; }
+  .features-bar { grid-template-columns: 1fr; gap: 1rem; padding: 2rem 1rem; }
+  .hero-cta { flex-direction: column; align-items: stretch; }
+  .btn { width: 100%; justify-content: center; }
+  .section-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; margin-bottom: 1.5rem; }
 }
 
 /* ── Course Tools & Utilities ── */
