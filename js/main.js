@@ -27,6 +27,28 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
   }
 
+  /* ── Transform Outcome Subtitles to Badges ── */
+  document.querySelectorAll('.outcome-subtitle').forEach(el => {
+    const content = el.innerHTML.trim();
+    // Match pattern: 🎯 <em>(SE-##-##, SE-##-##)</em> or similar
+    const outcomePattern = /\(([^)]+)\)/;
+    const match = content.match(outcomePattern);
+
+    if (match) {
+      const codes = match[1].split(',').map(code => code.trim());
+      const prefix = content.substring(0, match.index).trim(); // Emoji part
+
+      // Build new HTML with badges
+      let newHTML = prefix + ' ';
+      codes.forEach((code, i) => {
+        newHTML += `<span class="outcome-badge">${code}</span>`;
+        if (i < codes.length - 1) newHTML += ' ';
+      });
+
+      el.innerHTML = newHTML;
+    }
+  });
+
   /* ── Mobile Menu ── */
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -73,6 +95,27 @@ document.addEventListener('DOMContentLoaded', () => {
       updateProgress();
     }
   }
+
+  /* ── Diagram Enhancements ── */
+  document.querySelectorAll('.diagram-block').forEach((block, idx) => {
+    // Set CSS custom property for staggered animation timing
+    block.style.setProperty('--diagram-index', idx);
+
+    // Auto-detect diagram type from mermaid content
+    const mermaid = block.querySelector('.mermaid');
+    if (mermaid) {
+      const content = mermaid.textContent.toLowerCase();
+      let type = 'diagram';
+      if (content.includes('flowchart') || content.includes('graph td') || content.includes('graph lr')) {
+        type = 'flowchart';
+      } else if (content.includes('classDiagram') || content.includes('class ')) {
+        type = 'class';
+      } else if (content.includes('sequenceDiagram') || content.includes('participant')) {
+        type = 'sequence';
+      }
+      block.setAttribute('data-type', type);
+    }
+  });
 
   /* ── Table of Contents — Active Highlight on Scroll ── */
   const tocLinks = document.querySelectorAll('.toc-list a');
