@@ -1093,13 +1093,44 @@ h2.syllabus-phase:hover .section-chevron {
 
 /* Outcome codes subtitle (moved below headings) */
 .outcome-subtitle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
   font-size: .8rem;
   font-weight: 600;
-  color: var(--primary);
-  margin: 0.25rem 0 0.75rem 0;
-  text-transform: uppercase;
-  letter-spacing: .05em;
+  margin: 0.5rem 0 1rem 0;
   padding-left: 0;
+}
+
+/* Individual outcome badge */
+.outcome-badge {
+  display: inline-block;
+  background: var(--primary);
+  color: #ffffff;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(99, 102, 241, 0.22);
+  transition: all var(--transition);
+}
+
+.outcome-badge:hover {
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.35);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .outcome-badge {
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+}
+
+[data-theme="dark"] .outcome-badge:hover {
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.5);
 }
 
 /* Command verb headings (NESA syllabus directives) */
@@ -1808,6 +1839,23 @@ footer {
     padding: 0.875rem 1rem;
     font-size: .84rem;
   }
+
+  /* Diagram mobile styles */
+  .diagram-block {
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .mermaid {
+    padding: 1.5rem 1rem;
+    min-height: 240px;
+    font-size: 0.8rem;
+  }
+
+  .diagram-block h4 {
+    font-size: 0.95rem;
+    padding: 0.75rem 1rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1836,6 +1884,18 @@ footer {
 
 .footer-home-link { color: #475569; text-decoration: none; }
 
+/* ── Diagram Animation Keyframes ── */
+@keyframes diagramSlideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ── Diagram Blocks ── */
 .diagram-block {
   background: var(--bg);
@@ -1846,10 +1906,12 @@ footer {
   overflow-x: auto;
   transition: all var(--transition);
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  animation: diagramSlideInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .diagram-block:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  box-shadow: 0 6px 16px rgba(99,102,241,0.15);
+  transform: translateY(-2px);
 }
 
 [data-theme="dark"] .diagram-block {
@@ -2041,20 +2103,21 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ffffff;
-  padding: 2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fc 100%);
+  padding: 2.5rem;
   border-radius: var(--radius-lg);
-  border: 1px solid #e5e7eb;
+  border: 1.5px solid #e5e7eb;
   overflow-x: auto;
   overflow-y: visible;
   margin: 1.75rem 0;
-  min-height: 280px;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.03);
+  min-height: 300px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.04), 0 2px 6px rgba(99,102,241,0.08);
   transition: all var(--transition);
 }
 
 .mermaid:hover {
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05), 0 4px 8px rgba(0,0,0,0.08);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(99,102,241,0.14);
+  border-color: #d1d5e0;
 }
 
 .mermaid svg {
@@ -2071,12 +2134,13 @@ footer {
 /* ── Mermaid Dark Mode ── */
 [data-theme="dark"] .mermaid {
   background: linear-gradient(135deg, #0f172a 0%, #151e35 100%);
-  border-color: #334155;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 1px 2px rgba(0,0,0,0.1);
+  border-color: #475569;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.3), 0 2px 6px rgba(99,102,241,0.2);
 }
 
 [data-theme="dark"] .mermaid:hover {
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2), 0 4px 12px rgba(99, 102, 241, 0.15);
+  border-color: #64748b;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.3), 0 6px 16px rgba(99, 102, 241, 0.3);
 }
 
 [data-theme="dark"] .mermaid svg text,
