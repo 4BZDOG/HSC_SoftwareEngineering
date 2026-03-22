@@ -358,6 +358,223 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
+  /* ── Diagram Lightbox Feature ── */
+  (() => {
+    class DiagramLightbox {
+      constructor() {
+        this.modal = document.getElementById('diagram-lightbox');
+        this.overlay = document.querySelector('.lightbox-overlay');
+        this.container = document.querySelector('.lightbox-container');
+        this.content = document.getElementById('lightbox-content');
+        this.closeBtn = document.querySelector('.lightbox-close');
+        this.zoomInBtn = document.getElementById('zoom-in');
+        this.zoomOutBtn = document.getElementById('zoom-out');
+        this.resetBtn = document.getElementById('reset-view');
+        this.zoomLevel = document.getElementById('zoom-level');
+
+        this.zoom = 1;
+        this.panX = 0;
+        this.panY = 0;
+        this.minZoom = 0.5;
+        this.maxZoom = 3;
+        this.zoomStep = 0.1;
+        this.isDragging = false;
+        this.lastX = 0;
+        this.lastY = 0;
+
+        if (this.modal) this.init();
+      }
+
+      init() {
+        // Attach click handlers to all diagram blocks
+        document.querySelectorAll('.diagram-block').forEach(block => {
+          const mermaid = block.querySelector('.mermaid');
+          if (mermaid) {
+            mermaid.style.cursor = 'pointer';
+            mermaid.addEventListener('click', (e) => {
+              const svg = mermaid.querySelector('svg');
+              if (svg) this.open(svg);
+            });
+          }
+        });
+
+        // Modal controls
+        this.closeBtn.addEventListener('click', () => this.close());
+        this.overlay.addEventListener('click', () => this.close());
+        this.container.addEventListener('click', (e) => e.stopPropagation());
+
+        this.zoomInBtn.addEventListener('click', () => this.zoom_in());
+        this.zoomOutBtn.addEventListener('click', () => this.zoom_out());
+        this.resetBtn.addEventListener('click', () => this.reset());
+
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+          if (!this.isOpen()) return;
+
+          if (e.key === 'Escape') this.close();
+          if (e.key === '+' || e.key === '=') { e.preventDefault(); this.zoom_in(); }
+          if (e.key === '-' || e.key === '_') { e.preventDefault(); this.zoom_out(); }
+          if (e.key === '0') { e.preventDefault(); this.reset(); }
+        });
+
+        // Mouse wheel zoom
+        this.content.addEventListener('wheel', (e) => {
+          if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            if (e.deltaY < 0) this.zoom_in();
+            else this.zoom_out();
+          }
+        }, { passive: false });
+
+        // Pan functionality
+        this.content.addEventListener('mousedown', (e) => {
+          if (e.button !== 0) return; // Left mouse button only
+          this.isDragging = true;
+          this.lastX = e.clientX;
+          this.lastY = e.clientY;
+          this.content.classList.add('panning');
+          e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+          if (!this.isDragging || !this.isOpen()) return;
+
+          const deltaX = e.clientX - this.lastX;
+          const deltaY = e.clientY - this.lastY;
+
+          this.panX += deltaX;
+          this.panY += deltaY;
+          this.lastX = e.clientX;
+          this.lastY = e.clientY;
+
+          this.updateTransform();
+        });
+
+        document.addEventListener('mouseup', () => {
+          this.isDragging = false;
+          this.content.classList.remove('panning');
+        });
+
+        // Touch support for pan
+        let touchStartX = 0, touchStartY = 0, touchDistance = 0;
+
+        this.content.addEventListener('touchstart', (e) => {
+          if (e.touches.length === 1) {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+            this.isDragging = true;
+            this.lastX = touchStartX;
+            this.lastY = touchStartY;
+          } else if (e.touches.length === 2) {
+            this.isDragging = false;
+            touchDistance = Math.hypot(
+              e.touches[0].clientX - e.touches[1].clientX,
+              e.touches[0].clientY - e.touches[1].clientY
+            );
+          }
+        });
+
+        this.content.addEventListener('touchmove', (e) => {
+          if (e.touches.length === 1 && this.isDragging) {
+            const deltaX = e.touches[0].clientX - this.lastX;
+            const deltaY = e.touches[0].clientY - this.lastY;
+
+            this.panX += deltaX;
+            this.panY += deltaY;
+            this.lastX = e.touches[0].clientX;
+            this.lastY = e.touches[0].clientY;
+
+            this.updateTransform();
+          } else if (e.touches.length === 2) {
+            const current = Math.hypot(
+              e.touches[0].clientX - e.touches[1].clientX,
+              e.touches[0].clientY - e.touches[1].clientY
+            );
+
+            if (touchDistance > 0) {
+              const ratio = current / touchDistance;
+              if (ratio > 1.1) { this.zoom_in(); touchDistance = current; }
+              else if (ratio < 0.9) { this.zoom_out(); touchDistance = current; }
+            }
+          }
+        }, { passive: true });
+
+        this.content.addEventListener('touchend', () => {
+          this.isDragging = false;
+        });
+      }
+
+      open(element) {
+        // Clone the SVG for lightbox display
+        const clone = element.cloneNode(true);
+        this.content.innerHTML = '';
+        this.content.appendChild(clone);
+
+        // Reset zoom and pan
+        this.zoom = 1;
+        this.panX = 0;
+        this.panY = 0;
+        this.updateTransform();
+        this.updateZoomLevel();
+
+        // Show modal
+        this.modal.classList.add('active');
+        this.modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        // Focus management
+        this.closeBtn.focus();
+      }
+
+      close() {
+        this.modal.classList.remove('active');
+        this.modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        this.content.innerHTML = '';
+      }
+
+      zoom_in() {
+        if (this.zoom < this.maxZoom) {
+          this.zoom += this.zoomStep;
+          this.updateTransform();
+          this.updateZoomLevel();
+        }
+      }
+
+      zoom_out() {
+        if (this.zoom > this.minZoom) {
+          this.zoom -= this.zoomStep;
+          this.updateTransform();
+          this.updateZoomLevel();
+        }
+      }
+
+      reset() {
+        this.zoom = 1;
+        this.panX = 0;
+        this.panY = 0;
+        this.updateTransform();
+        this.updateZoomLevel();
+      }
+
+      updateTransform() {
+        this.content.style.transform =
+          `translate(${this.panX}px, ${this.panY}px) scale(${this.zoom})`;
+      }
+
+      updateZoomLevel() {
+        this.zoomLevel.textContent = `${Math.round(this.zoom * 100)}%`;
+      }
+
+      isOpen() {
+        return this.modal.classList.contains('active');
+      }
+    }
+
+    // Initialize lightbox
+    new DiagramLightbox();
+  })();
+
   /* ── Copy code button ── */
   document.querySelectorAll('.code-block').forEach(block => {
     const copyBtn = document.createElement('button');

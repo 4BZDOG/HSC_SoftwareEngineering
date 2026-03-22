@@ -158,10 +158,7 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
         <section id="intro">
           <h2 class="syllabus-phase">⚡ Comparing Procedural and Object-Oriented Programming</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
-          <p>📌 <em><strong>Compare</strong> procedural programming with object-oriented programming. Understanding the differences helps engineers choose the right paradigm for each project.</em></p>
-          <h2 class="syllabus-phase">⚡ Understanding the Paradigm</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
-          <p>📌 <em><strong>Compare</strong> procedural programming with the Object-Oriented Paradigm (OOP). While procedural programming focuses on a top-down sequence of actions (functions) acting upon data, OOP organises code into objects that combine data (attributes) and behaviour (methods).</em></p>
+          <p>📌 <em><strong>Compare</strong> procedural programming with the Object-Oriented Paradigm (OOP). While procedural programming focuses on a top-down sequence of actions (functions) acting upon data, OOP organises code into objects that combine data (attributes) and behaviour (methods). Understanding these differences helps engineers choose the right paradigm for each project.</em></p>
 
           <div class="table-wrap">
             <table>
@@ -379,6 +376,39 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
 
           <h3>Facade Pattern</h3>
           <p>The facade pattern is a design technique that provides a simplified "front-end" interface to a complex set of classes, hiding the internal complexity from the user. By creating a single facade class that coordinates multiple internal classes, developers make the system easier to use, understand, and maintain. The user interacts only with the facade, not the complex subsystems behind it.</p>
+
+          <p>🌏 <em><strong>Example:</strong> A <strong>WebServerFacade</strong> that simplifies accessing a complex library system. Instead of manually handling authentication, database queries, caching, and logging:</em></p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Facade Pattern Example</span></div>
+            <pre><code><span class="cm"># Complex internal classes (hidden from user)</span>
+<span class="kw">class</span> <span class="fn">AuthenticationService</span>: <span class="cm"># Handles user login</span>
+    <span class="kw">def</span> <span class="fn">authenticate</span>(self, username, password): <span class="kw">pass</span>
+
+<span class="kw">class</span> <span class="fn">DatabaseService</span>: <span class="cm"># Queries the database</span>
+    <span class="kw">def</span> <span class="fn">query</span>(self, sql): <span class="kw">pass</span>
+
+<span class="kw">class</span> <span class="fn">CacheService</span>: <span class="cm"># Stores frequently accessed data</span>
+    <span class="kw">def</span> <span class="fn">get</span>(self, key): <span class="kw">pass</span>
+
+<span class="cm"># FACADE: Single simple interface</span>
+<span class="kw">class</span> <span class="fn">LibraryFacade</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self):
+        self.auth = AuthenticationService()
+        self.db = DatabaseService()
+        self.cache = CacheService()
+
+    <span class="kw">def</span> <span class="fn">get_book_info</span>(self, username, book_id):
+        <span class="cm"># User calls ONE method; facade handles everything inside</span>
+        <span class="kw">if</span> <span class="kw">not</span> self.auth.authenticate(username):
+            <span class="kw">return</span> <span class="kw">None</span>
+        <span class="kw">if</span> book_data := self.cache.get(book_id):
+            <span class="kw">return</span> book_data
+        <span class="kw">return</span> self.db.query(f<span class="str">"SELECT * FROM books WHERE id={book_id}"</span>)
+
+<span class="cm"># User only sees the simple facade interface</span>
+library = LibraryFacade()
+book = library.get_book_info(<span class="str">"john_doe"</span>, 42)</code></pre>
+          </div>
 
           <h3>Agility</h3>
           <p>Agility in OOP design refers to implementing an iterative development cycle where code is regularly reviewed and updated based on testing, user feedback, and changing requirements. Agile approaches favour frequent refactoring, continuous improvement, and adaptive design rather than rigid upfront planning. This flexibility allows software to evolve as understanding of the problem deepens.</p>
@@ -603,25 +633,29 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <h3>Testing Hierarchy: Unit, Subsystem, and System</h3>
           <p>Testing occurs at multiple levels, building from smallest to largest components:</p>
 
-          <h4>Unit Testing</h4>
-          <p>Testing individual classes or methods in isolation to ensure they perform their intended function correctly. For example, testing a <code>BankAccount.withdraw()</code> method with various inputs (sufficient balance, insufficient balance, negative amount, zero amount). Unit tests are the most granular and should be written by the developer who wrote the code.</p>
+          <div class="structured-content">
+            <h4>Unit Testing</h4>
+            <p>Testing individual classes or methods in isolation to ensure they perform their intended function correctly. For example, testing a <code>BankAccount.withdraw()</code> method with various inputs (sufficient balance, insufficient balance, negative amount, zero amount). Unit tests are the most granular and should be written by the developer who wrote the code.</p>
 
-          <h4>Subsystem Testing</h4>
-          <p>Testing groups of related classes that work together as a functional subsystem. For example, testing the interaction between <code>Customer</code>, <code>Order</code>, and <code>Payment</code> classes to ensure orders are created and payments are processed correctly. This level catches integration issues that unit tests might miss.</p>
+            <h4>Subsystem Testing</h4>
+            <p>Testing groups of related classes that work together as a functional subsystem. For example, testing the interaction between <code>Customer</code>, <code>Order</code>, and <code>Payment</code> classes to ensure orders are created and payments are processed correctly. This level catches integration issues that unit tests might miss.</p>
 
-          <h4>System Testing</h4>
-          <p>Testing the entire integrated application end-to-end to ensure all components work together and meet the overall requirements. System testing includes testing the application's interaction with external systems (databases, APIs, etc.) and verifying that the entire workflow functions as expected.</p>
+            <h4>System Testing</h4>
+            <p>Testing the entire integrated application end-to-end to ensure all components work together and meet the overall requirements. System testing includes testing the application's interaction with external systems (databases, APIs, etc.) and verifying that the entire workflow functions as expected.</p>
+          </div>
 
           <h3>Testing Approaches: Black, White, and Grey Box</h3>
 
-          <h4>Black Box Testing</h4>
-          <p>Testing inputs and outputs without access to or knowledge of the internal code structure. The tester treats the software as a "black box" and tests it purely based on specifications. This approach ensures the software meets functional requirements from a user's perspective. For example, testing that a login system correctly accepts valid credentials and rejects invalid ones, without examining the authentication code.</p>
+          <div class="structured-content">
+            <h4>Black Box Testing</h4>
+            <p>Testing inputs and outputs without access to or knowledge of the internal code structure. The tester treats the software as a "black box" and tests it purely based on specifications. This approach ensures the software meets functional requirements from a user's perspective. For example, testing that a login system correctly accepts valid credentials and rejects invalid ones, without examining the authentication code.</p>
 
-          <h4>White Box Testing</h4>
-          <p>Testing with complete access to and understanding of the internal code structure. The tester examines the code logic, control flow, and data flow to ensure all paths and conditions are tested. This approach is critical for security, ensuring all potential vulnerabilities and logic errors are identified. For example, verifying that all conditional branches (IF/ELSE statements) in a method execute correctly under different conditions.</p>
+            <h4>White Box Testing</h4>
+            <p>Testing with complete access to and understanding of the internal code structure. The tester examines the code logic, control flow, and data flow to ensure all paths and conditions are tested. This approach is critical for security, ensuring all potential vulnerabilities and logic errors are identified. For example, verifying that all conditional branches (IF/ELSE statements) in a method execute correctly under different conditions.</p>
 
-          <h4>Grey Box Testing</h4>
-          <p>A hybrid approach where the tester has partial knowledge of the internal structure (like knowing which classes exist and their general purpose) but not the implementation details. This allows more targeted testing than black box while being less resource-intensive than white box. For example, knowing the database schema but not the exact SQL queries used.</p>
+            <h4>Grey Box Testing</h4>
+            <p>A hybrid approach where the tester has partial knowledge of the internal structure (like knowing which classes exist and their general purpose) but not the implementation details. This allows more targeted testing than black box while being less resource-intensive than white box. For example, knowing the database schema but not the exact SQL queries used.</p>
+          </div>
 
           <h3>Quality Assurance Process</h3>
           <p>Quality Assurance (QA) is the systematic process of ensuring software meets specified engineering standards and quality criteria. QA includes:</p>
@@ -660,84 +694,80 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
         flowchart: {
           useMaxWidth: true,
           htmlLabels: true,
-          curve: 'linear'
+          curve: 'linear',
+          diagramMarginX: 20,
+          diagramMarginY: 20
         },
         sequence: {
           useMaxWidth: true,
-          diagramMarginX: 50,
-          diagramMarginY: 10
+          diagramMarginX: 60,
+          diagramMarginY: 20,
+          actorMargin: 60
         },
         class: {
           useMaxWidth: true,
           htmlLabels: true
         },
         state: {
-          useMaxWidth: true
+          useMaxWidth: true,
+          diagramMarginX: 20,
+          diagramMarginY: 20
         },
         themeVariables: {
           fontSize: '14px',
+          fontFamily: 'Inter, system-ui, sans-serif',
           primaryColor: isDark ? '#1e293b' : '#e0e7ff',
           primaryBorderColor: isDark ? '#475569' : '#c7d2fe',
+          primaryTextColor: isDark ? '#f1f5f9' : '#0f172a',
           secondBkgColor: isDark ? '#334155' : '#f0f4ff',
-          secondBorderColor: isDark ? '#64748b' : '#a5b4fc',
+          secondBorderColor: isDark ? '#475569' : '#a5b4fc',
           tertiaryColor: isDark ? '#475569' : '#ddd6fe',
+          tertiaryBorderColor: isDark ? '#64748b' : '#ccc',
+          tertiaryTextColor: isDark ? '#cbd5e1' : '#0f172a',
           noteBkgColor: isDark ? '#1e293b' : '#fff9e6',
-          noteBorderColor: isDark ? '#64748b' : '#ccc',
-          textColor: isDark ? '#e2e8f0' : '#0f172a',
-          primaryTextColor: isDark ? '#f1f5f9' : '#000'
+          noteBorderColor: isDark ? '#475569' : '#ccc',
+          noteTextColor: isDark ? '#f1f5f9' : '#0f172a',
+          textColor: isDark ? '#f1f5f9' : '#0f172a',
+          lineColor: isDark ? '#475569' : '#ccc',
+          signalColor: isDark ? '#cbd5e1' : '#333',
+          signalTextColor: isDark ? '#f1f5f9' : '#000'
         }
       });
 
       mermaid.contentLoaded();
 
-      // Smart SVG text color correction after rendering
+      // Enhanced SVG contrast correction after rendering
       setTimeout(() => {
         if (isDark) {
-          // Define light background colors that need dark text
-          const lightFills = ['#E3F2FD', '#F3E5F5', '#E8F5E9', '#FFF9C4', '#FFE082', '#FFCCBC', '#BBDEFB', '#C8E6C9', '#FFF3E0', '#FFEBEE', '#E1F5FE', '#FCE4EC', '#B3E5FC', '#FFAB91'];
+          const lightFills = ['#E3F2FD', '#F3E5F5', '#E8F5E9', '#FFF9C4', '#FFE082', '#FFCCBC', '#BBDEFB', '#C8E6C9', '#FFF3E0', '#FFEBEE', '#E1F5FE', '#FCE4EC', '#B3E5FC', '#FFAB91', '#F0F4C3'];
 
-          // Fix text based on parent background color
-          document.querySelectorAll('.mermaid svg text').forEach(text => {
-            // Check parent group's fill color
+          // Fix light fill backgrounds to dark
+          document.querySelectorAll('.mermaid svg [fill]').forEach(el => {
+            const fill = el.getAttribute('fill');
+            if (fill && lightFills.includes(fill?.toUpperCase())) {
+              el.setAttribute('fill', '#1e293b');
+            }
+          });
+
+          // Fix text colors for contrast
+          document.querySelectorAll('.mermaid svg text, .mermaid svg tspan').forEach(text => {
             let parent = text.parentElement;
             let fill = parent ? parent.getAttribute('fill') : null;
 
             if (lightFills.includes(fill?.toUpperCase())) {
-              // Dark text on light backgrounds
               text.setAttribute('fill', '#0f172a');
               text.style.fill = '#0f172a';
+              text.style.fontWeight = '600';
             } else {
-              // Light text on dark backgrounds
               text.setAttribute('fill', '#f1f5f9');
               text.style.fill = '#f1f5f9';
             }
           });
 
-          // Fix all tspan elements
-          document.querySelectorAll('.mermaid svg tspan').forEach(tspan => {
-            let parent = tspan.closest('text');
-            let parentGroup = parent?.parentElement;
-            let fill = parentGroup ? parentGroup.getAttribute('fill') : null;
-
-            if (lightFills.includes(fill?.toUpperCase())) {
-              tspan.setAttribute('fill', '#0f172a');
-              tspan.style.fill = '#0f172a';
-            } else {
-              tspan.setAttribute('fill', '#f1f5f9');
-              tspan.style.fill = '#f1f5f9';
-            }
-          });
-
-          // Fix actor box text (participant boxes - they have light backgrounds)
-          document.querySelectorAll('.mermaid svg .actor text, .mermaid svg .participant text').forEach(text => {
-            text.setAttribute('fill', '#0f172a');
-            text.style.fill = '#0f172a';
-          });
-
-          // Fix label text (sequence diagram labels - typically on light backgrounds)
-          document.querySelectorAll('.mermaid svg .label text').forEach(text => {
-            text.setAttribute('fill', '#0f172a');
-            text.style.fill = '#0f172a';
+          // Ensure lines and strokes are visible
+          document.querySelectorAll('.mermaid svg [stroke="#333"], .mermaid svg [stroke="#999"]').forEach(el => {
+            el.setAttribute('stroke', '#cbd5e1');
+            el.setAttribute('stroke-width', el.getAttribute('stroke-width') || '1.5');
           });
         }
       }, 150);
@@ -753,5 +783,29 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
       attributeFilter: ['data-theme']
     });
   </script>
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- Diagram Lightbox Modal -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="lightbox-modal" id="diagram-lightbox" role="dialog" aria-labelledby="lightbox-title" aria-hidden="true">
+    <div class="lightbox-overlay"></div>
+    <div class="lightbox-container">
+      <div class="lightbox-header">
+        <h2 id="lightbox-title" class="lightbox-title">Diagram View</h2>
+        <button class="lightbox-close" aria-label="Close diagram view">✕</button>
+      </div>
+      <div class="lightbox-canvas">
+        <div class="lightbox-content" id="lightbox-content"></div>
+      </div>
+      <div class="lightbox-controls">
+        <button class="lightbox-btn" id="zoom-out" aria-label="Zoom out">−</button>
+        <span class="lightbox-zoom-level" id="zoom-level">100%</span>
+        <button class="lightbox-btn" id="zoom-in" aria-label="Zoom in">+</button>
+        <button class="lightbox-btn" id="reset-view" aria-label="Reset view">⟲</button>
+      </div>
+      <div class="lightbox-info">
+        <p>Scroll to zoom • Drag to pan • <kbd>Esc</kbd> to close</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -337,17 +337,19 @@
           <p class="outcome-subtitle">🎯 <em>(SE-12-04, SE-12-07)</em></p>
           <p>📌 <em><strong>Explain</strong> the processes and technologies used to secure data and identity on the web.</em></p>
 
-          <h4>🏅 SSL/TLS Certificates</h4>
-          <p>An <strong>SSL/TLS certificate</strong> is a digital document issued by a trusted <strong>Certificate Authority (CA)</strong> (e.g., Let's Encrypt, DigiCert) that verifies a website's identity and enables encrypted HTTPS connections. When a browser connects to a site, it checks that the certificate is: (1) issued by a trusted CA, (2) not expired, and (3) issued for the correct domain. Without a valid certificate, browsers display a "Not Secure" warning, deterring users and search engines alike.</p>
+          <div class="structured-content">
+            <h4>🏅 SSL/TLS Certificates</h4>
+            <p>An <strong>SSL/TLS certificate</strong> is a digital document issued by a trusted <strong>Certificate Authority (CA)</strong> (e.g., Let's Encrypt, DigiCert) that verifies a website's identity and enables encrypted HTTPS connections. When a browser connects to a site, it checks that the certificate is: (1) issued by a trusted CA, (2) not expired, and (3) issued for the correct domain. Without a valid certificate, browsers display a "Not Secure" warning, deterring users and search engines alike.</p>
 
-          <h4>🔢 Encryption Algorithms</h4>
-          <p>Encryption algorithms transform readable <strong>plaintext</strong> into unreadable <strong>ciphertext</strong>, protecting data from interception. <strong>Symmetric encryption</strong> (e.g., AES-256) uses a single shared key for both encryption and decryption — fast and efficient, but the key must be securely exchanged beforehand. <strong>Asymmetric encryption</strong> (e.g., RSA-2048) uses a mathematically linked key pair: a <strong>public key</strong> to encrypt and a <strong>private key</strong> to decrypt. TLS uses asymmetric encryption to securely exchange a session key, then switches to faster symmetric encryption for the remainder of the connection.</p>
+            <h4>🔢 Encryption Algorithms</h4>
+            <p>Encryption algorithms transform readable <strong>plaintext</strong> into unreadable <strong>ciphertext</strong>, protecting data from interception. <strong>Symmetric encryption</strong> (e.g., AES-256) uses a single shared key for both encryption and decryption — fast and efficient, but the key must be securely exchanged beforehand. <strong>Asymmetric encryption</strong> (e.g., RSA-2048) uses a mathematically linked key pair: a <strong>public key</strong> to encrypt and a <strong>private key</strong> to decrypt. TLS uses asymmetric encryption to securely exchange a session key, then switches to faster symmetric encryption for the remainder of the connection.</p>
 
-          <h4>🗝️ Encryption Keys</h4>
-          <p>An <strong>encryption key</strong> is a string of bits used by an algorithm to encrypt or decrypt data. <strong>Public keys</strong> are freely shared and used to encrypt data sent to the key's owner. <strong>Private keys</strong> are kept secret by the owner and used to decrypt data or create digital signatures. Key length determines security strength: a 256-bit AES key has 2<sup>256</sup> possible combinations, making brute-force attacks computationally infeasible.</p>
+            <h4>🗝️ Encryption Keys</h4>
+            <p>An <strong>encryption key</strong> is a string of bits used by an algorithm to encrypt or decrypt data. <strong>Public keys</strong> are freely shared and used to encrypt data sent to the key's owner. <strong>Private keys</strong> are kept secret by the owner and used to decrypt data or create digital signatures. Key length determines security strength: a 256-bit AES key has 2<sup>256</sup> possible combinations, making brute-force attacks computationally infeasible.</p>
 
-          <h4>🔑 Authentication and Authorisation</h4>
-          <p><strong>Authentication</strong> is the process of verifying <em>who</em> a user is (e.g., verifying a username and password match a database record). <strong>Authorisation</strong> is the process of verifying <em>what</em> an authenticated user is permitted to do (e.g., checking if a logged-in user has the "admin" role before allowing access to the dashboard). Modern web applications use <strong>JSON Web Tokens (JWT)</strong> or <strong>OAuth 2.0</strong> to manage these processes securely across multiple services.</p>
+            <h4>🔑 Authentication and Authorisation</h4>
+            <p><strong>Authentication</strong> is the process of verifying <em>who</em> a user is (e.g., verifying a username and password match a database record). <strong>Authorisation</strong> is the process of verifying <em>what</em> an authenticated user is permitted to do (e.g., checking if a logged-in user has the "admin" role before allowing access to the dashboard). Modern web applications use <strong>JSON Web Tokens (JWT)</strong> or <strong>OAuth 2.0</strong> to manage these processes securely across multiple services.</p>
+          </div>
 
           <!-- Session Management and JWT Diagram -->
           <div class="diagram-block">
@@ -395,11 +397,13 @@
             </p>
           </div>
 
-          <h4>#️⃣ Hash Values</h4>
-          <p>A <strong>hash function</strong> is a one-way mathematical function that converts any input into a fixed-length output called a <strong>hash value</strong> (or digest). For example, the SHA-256 algorithm produces a 64-character hexadecimal hash. Hash functions are deterministic (same input always produces the same hash) but irreversible — it is computationally infeasible to reconstruct the original input from the hash. Web applications use hashing to store passwords securely: the hash of the password is stored, never the password itself. Algorithms like <strong>bcrypt</strong> add a random <strong>salt</strong> before hashing to prevent rainbow table attacks.</p>
+          <div class="structured-content">
+            <h4>#️⃣ Hash Values</h4>
+            <p>A <strong>hash function</strong> is a one-way mathematical function that converts any input into a fixed-length output called a <strong>hash value</strong> (or digest). For example, the SHA-256 algorithm produces a 64-character hexadecimal hash. Hash functions are deterministic (same input always produces the same hash) but irreversible — it is computationally infeasible to reconstruct the original input from the hash. Web applications use hashing to store passwords securely: the hash of the password is stored, never the password itself. Algorithms like <strong>bcrypt</strong> add a random <strong>salt</strong> before hashing to prevent rainbow table attacks.</p>
 
-          <h4>✍️ Digital Signatures</h4>
-          <p>A <strong>digital signature</strong> is a cryptographic mechanism that proves the authenticity and integrity of a message or document. The sender hashes the content, then encrypts the hash with their <strong>private key</strong> to produce the signature. The recipient decrypts the signature using the sender's <strong>public key</strong> and compares it to their own hash of the received content. If they match, the message has not been tampered with and genuinely originated from the claimed sender. Digital signatures provide <strong>non-repudiation</strong> — the sender cannot later deny having sent the message.</p>
+            <h4>✍️ Digital Signatures</h4>
+            <p>A <strong>digital signature</strong> is a cryptographic mechanism that proves the authenticity and integrity of a message or document. The sender hashes the content, then encrypts the hash with their <strong>private key</strong> to produce the signature. The recipient decrypts the signature using the sender's <strong>public key</strong> and compares it to their own hash of the received content. If they match, the message has not been tampered with and genuinely originated from the claimed sender. Digital signatures provide <strong>non-repudiation</strong> — the sender cannot later deny having sent the message.</p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -1064,81 +1068,80 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
         flowchart: {
           useMaxWidth: true,
           htmlLabels: true,
-          curve: 'linear'
+          curve: 'linear',
+          diagramMarginX: 20,
+          diagramMarginY: 20
         },
         sequence: {
           useMaxWidth: true,
-          diagramMarginX: 50,
-          diagramMarginY: 10
+          diagramMarginX: 60,
+          diagramMarginY: 20,
+          actorMargin: 60
         },
         class: {
           useMaxWidth: true,
           htmlLabels: true
         },
         state: {
-          useMaxWidth: true
+          useMaxWidth: true,
+          diagramMarginX: 20,
+          diagramMarginY: 20
         },
         themeVariables: {
           fontSize: '14px',
+          fontFamily: 'Inter, system-ui, sans-serif',
           primaryColor: isDark ? '#1e293b' : '#e0e7ff',
           primaryBorderColor: isDark ? '#475569' : '#c7d2fe',
+          primaryTextColor: isDark ? '#f1f5f9' : '#0f172a',
           secondBkgColor: isDark ? '#334155' : '#f0f4ff',
-          secondBorderColor: isDark ? '#64748b' : '#a5b4fc',
+          secondBorderColor: isDark ? '#475569' : '#a5b4fc',
           tertiaryColor: isDark ? '#475569' : '#ddd6fe',
+          tertiaryBorderColor: isDark ? '#64748b' : '#ccc',
+          tertiaryTextColor: isDark ? '#cbd5e1' : '#0f172a',
           noteBkgColor: isDark ? '#1e293b' : '#fff9e6',
-          noteBorderColor: isDark ? '#64748b' : '#ccc',
-          textColor: isDark ? '#e2e8f0' : '#0f172a',
-          primaryTextColor: isDark ? '#f1f5f9' : '#000'
+          noteBorderColor: isDark ? '#475569' : '#ccc',
+          noteTextColor: isDark ? '#f1f5f9' : '#0f172a',
+          textColor: isDark ? '#f1f5f9' : '#0f172a',
+          lineColor: isDark ? '#475569' : '#ccc',
+          signalColor: isDark ? '#cbd5e1' : '#333',
+          signalTextColor: isDark ? '#f1f5f9' : '#000'
         }
       });
 
       mermaid.contentLoaded();
 
-      // Smart SVG text color correction after rendering
+      // Enhanced SVG contrast correction after rendering
       setTimeout(() => {
         if (isDark) {
-          // Define light background colors that need dark text
-          const lightFills = ['#E3F2FD', '#F3E5F5', '#E8F5E9', '#FFF9C4', '#FFE082', '#FFCCBC', '#BBDEFB', '#C8E6C9', '#FFF3E0', '#FFEBEE', '#E1F5FE', '#FCE4EC', '#B3E5FC', '#FFAB91'];
+          const lightFills = ['#E3F2FD', '#F3E5F5', '#E8F5E9', '#FFF9C4', '#FFE082', '#FFCCBC', '#BBDEFB', '#C8E6C9', '#FFF3E0', '#FFEBEE', '#E1F5FE', '#FCE4EC', '#B3E5FC', '#FFAB91', '#F0F4C3'];
 
-          // Fix text based on parent background color
-          document.querySelectorAll('.mermaid svg text').forEach(text => {
+          // Fix light fill backgrounds to dark
+          document.querySelectorAll('.mermaid svg [fill]').forEach(el => {
+            const fill = el.getAttribute('fill');
+            if (fill && lightFills.includes(fill?.toUpperCase())) {
+              el.setAttribute('fill', '#1e293b');
+            }
+          });
+
+          // Fix text colors for contrast
+          document.querySelectorAll('.mermaid svg text, .mermaid svg tspan').forEach(text => {
             let parent = text.parentElement;
             let fill = parent ? parent.getAttribute('fill') : null;
 
             if (lightFills.includes(fill?.toUpperCase())) {
               text.setAttribute('fill', '#0f172a');
               text.style.fill = '#0f172a';
+              text.style.fontWeight = '600';
             } else {
               text.setAttribute('fill', '#f1f5f9');
               text.style.fill = '#f1f5f9';
             }
           });
 
-          // Fix tspan elements
-          document.querySelectorAll('.mermaid svg tspan').forEach(tspan => {
-            let parent = tspan.closest('text');
-            let parentGroup = parent?.parentElement;
-            let fill = parentGroup ? parentGroup.getAttribute('fill') : null;
-
-            if (lightFills.includes(fill?.toUpperCase())) {
-              tspan.setAttribute('fill', '#0f172a');
-              tspan.style.fill = '#0f172a';
-            } else {
-              tspan.setAttribute('fill', '#f1f5f9');
-              tspan.style.fill = '#f1f5f9';
-            }
-          });
-
-          // Fix actor/participant text
-          document.querySelectorAll('.mermaid svg .actor text, .mermaid svg .participant text').forEach(text => {
-            text.setAttribute('fill', '#0f172a');
-            text.style.fill = '#0f172a';
-          });
-
-          // Fix label text
-          document.querySelectorAll('.mermaid svg .label text').forEach(text => {
-            text.setAttribute('fill', '#0f172a');
-            text.style.fill = '#0f172a';
+          // Ensure lines and strokes are visible
+          document.querySelectorAll('.mermaid svg [stroke="#333"], .mermaid svg [stroke="#999"]').forEach(el => {
+            el.setAttribute('stroke', '#cbd5e1');
+            el.setAttribute('stroke-width', el.getAttribute('stroke-width') || '1.5');
           });
         }
       }, 150);
@@ -1154,5 +1157,29 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
       attributeFilter: ['data-theme']
     });
   </script>
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- Diagram Lightbox Modal -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="lightbox-modal" id="diagram-lightbox" role="dialog" aria-labelledby="lightbox-title" aria-hidden="true">
+    <div class="lightbox-overlay"></div>
+    <div class="lightbox-container">
+      <div class="lightbox-header">
+        <h2 id="lightbox-title" class="lightbox-title">Diagram View</h2>
+        <button class="lightbox-close" aria-label="Close diagram view">✕</button>
+      </div>
+      <div class="lightbox-canvas">
+        <div class="lightbox-content" id="lightbox-content"></div>
+      </div>
+      <div class="lightbox-controls">
+        <button class="lightbox-btn" id="zoom-out" aria-label="Zoom out">−</button>
+        <span class="lightbox-zoom-level" id="zoom-level">100%</span>
+        <button class="lightbox-btn" id="zoom-in" aria-label="Zoom in">+</button>
+        <button class="lightbox-btn" id="reset-view" aria-label="Reset view">⟲</button>
+      </div>
+      <div class="lightbox-info">
+        <p>Scroll to zoom • Drag to pan • <kbd>Esc</kbd> to close</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

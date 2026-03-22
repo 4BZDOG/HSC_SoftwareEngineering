@@ -284,12 +284,19 @@
     <span class="kw">else</span>:
         <span class="kw">return</span> binary_search(arr, target, mid + 1, high)
 
-<span class="cm"># Backtracking: Simplified Pathfinding logic</span>
-<span class="kw">def</span> <span class="fn">solve</span>(x, y):
+<span class="cm"># Backtracking: Maze Pathfinding (tries 4 directions)</span>
+visited = set()
+<span class="kw">def</span> <span class="fn">find_path</span>(x, y, maze):
     <span class="kw">if</span> is_exit(x, y): <span class="kw">return</span> <span class="kw">True</span>
-    <span class="kw">if</span> is_wall(x, y): <span class="kw">return</span> <span class="kw">False</span>
-    <span class="kw">if</span> solve(x + 1, y): <span class="kw">return</span> <span class="kw">True</span> <span class="cm"># Try Right</span>
-    <span class="kw">return</span> <span class="kw">False</span> <span class="cm"># Backtrack</span></code></pre>
+    <span class="kw">if</span> is_wall(x, y) <span class="kw">or</span> (x, y) <span class="kw">in</span> visited: <span class="kw">return</span> <span class="kw">False</span>
+
+    visited.add((x, y)) <span class="cm"># Mark as visited</span>
+    <span class="cm"># Try all 4 directions: right, down, left, up</span>
+    <span class="kw">for</span> dx, dy <span class="kw">in</span> [(1, 0), (0, 1), (-1, 0), (0, -1)]:
+        <span class="kw">if</span> find_path(x + dx, y + dy, maze):
+            <span class="kw">return</span> <span class="kw">True</span>
+
+    <span class="kw">return</span> <span class="kw">False</span> <span class="cm"># Backtrack to previous cell</span></code></pre>
           </div>
         </section>
 
@@ -450,6 +457,34 @@ END FUNCTION</code></pre>
           <h3>Functional Programming</h3>
           <p>Programs are built from pure functions (same input always produces same output, no side effects) and immutable data. Emphasises recursion and function composition.<br>🌏 <em>Example (Lisp/Scheme): Computing factorial recursively as (factorial 5) = 5 × (factorial 4) × ... × 1, without modifying state.</em></p>
 
+          <!-- Programming Paradigms Comparison Diagram -->
+          <div class="diagram-block">
+            <h4>🎯 Programming <span class="diagram-highlight">Paradigms Comparison</span></h4>
+            <div class="mermaid">
+              graph TB
+                OOP["<b>Object-Oriented</b><br/>━━━━━━━━<br/>• Objects with data + methods<br/>• Classes & inheritance<br/>• Real-world modelling<br/>• Java, Python, C++"]
+                IMP["<b>Imperative</b><br/>━━━━━━━━<br/>• Step-by-step commands<br/>• Explicit control flow<br/>• Procedures & loops<br/>• Python, C, JavaScript"]
+                LOG["<b>Logic</b><br/>━━━━━━━━<br/>• Facts & inference rules<br/>• Pattern matching<br/>• What is true (not how)<br/>• Prolog, Datalog"]
+                FUNC["<b>Functional</b><br/>━━━━━━━━<br/>• Pure functions & recursion<br/>• Immutable data<br/>• No side effects<br/>• Lisp, Haskell, Scheme"]
+
+                OOP --> USE["<strong>When to Use?</strong><br/>Complex systems with<br/>many interacting entities"]
+                IMP --> USE
+                LOG --> USE
+                FUNC --> USE
+
+                style OOP fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
+                style IMP fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+                style LOG fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+                style FUNC fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px
+                style USE fill:#FFEBEE,stroke:#C62828,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Compare the four major programming paradigms, each with distinct philosophies for solving problems. Modern languages often support multiple paradigms (hybrid approaches).<br>
+              <strong>Syllabus Link:</strong> SE-11-02<br>
+              <strong>Try This:</strong> Classify a project you know (a calculator app, an AI chatbot, a game) into one or more paradigms. Which paradigm(s) does it use best?
+            </p>
+          </div>
+
           <p>Modern development often uses <strong>hybrid approaches</strong> — Python supports both OOP and functional styles; JavaScript supports imperative and functional paradigms. Experimenting with different paradigms strengthens problem-solving skills and helps you choose the best tool for each context.</p>
         </section>
 
@@ -476,7 +511,17 @@ END FUNCTION</code></pre>
           </ul>
 
           <h3>Two's Complement</h3>
-          <p>Two's Complement is the standard method for representing signed (negative) integers in binary. To represent a negative number, the bits of the positive equivalent are inverted (0 to 1 and vice-versa) and 1 is added to the result.<br>🌏 <em>Example: To find -5 in 8-bit, start with 5 (00000101), invert (11111010), and add 1 (11111011).</em> This system is preferred as it allows for simple addition/subtraction circuits and eliminates the 'double zero' (+0 and -0) problem.</p>
+          <p>Two's Complement is the standard method for representing signed (negative) integers in binary. To represent a negative number, the bits of the positive equivalent are inverted (0 to 1 and vice-versa) and 1 is added to the result. This system is preferred as it allows for simple addition/subtraction circuits and eliminates the 'double zero' (+0 and -0) problem used in older systems.</p>
+
+          <strong>Worked Example — Representing -5 in 8-bit Two's Complement:</strong>
+          <ol>
+            <li><strong>Start with the positive number:</strong> 5 = <code>00000101</code></li>
+            <li><strong>Invert all bits (One's Complement):</strong> <code>11111010</code> (each 0 becomes 1, each 1 becomes 0)</li>
+            <li><strong>Add 1 to the result:</strong> <code>11111010 + 1 = 11111011</code></li>
+            <li><strong>Result:</strong> -5 in 8-bit Two's Complement = <code>11111011</code></li>
+          </ol>
+
+          <strong>Verification:</strong> If we add 5 and -5 in binary: <code>00000101 + 11111011 = 100000000</code> (the overflow bit carries out, leaving 00000000 = 0 ✓)</p>
 
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Number Investigation</span></div>
@@ -797,14 +842,16 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
           <h3>Typical Errors in Code Development</h3>
           <p>Understanding common error types helps programmers identify and fix problems systematically:</p>
 
-          <h4>Syntax Errors</h4>
-          <p><strong>Definition:</strong> Violations of the programming language's grammar rules. The interpreter/compiler cannot parse the code and refuses to run it.<br><strong>Likely Causes:</strong> Missing colons, mismatched brackets, incorrect indentation (Python), typos in keywords.<br>🌏 <em>Example: <code>if x > 5</code> (missing colon at the end) or <code>for i in range(10]</code> (mismatched bracket types).</em></p>
+          <div class="structured-content">
+            <h4>Syntax Errors</h4>
+            <p><strong>Definition:</strong> Violations of the programming language's grammar rules. The interpreter/compiler cannot parse the code and refuses to run it.<br><strong>Likely Causes:</strong> Missing colons, mismatched brackets, incorrect indentation (Python), typos in keywords.<br>🌏 <em>Example: <code>if x > 5</code> (missing colon at the end) or <code>for i in range(10]</code> (mismatched bracket types).</em></p>
 
-          <h4>Logic Errors</h4>
-          <p><strong>Definition:</strong> The program runs without crashing, but produces wrong results because the algorithm is flawed.<br><strong>Likely Causes:</strong> Wrong operator (using + instead of ×), off-by-one loop errors, incorrect conditional logic, unreachable code.<br>🌏 <em>Example: A loop from 0 to 9 when you intended 1 to 10 (off-by-one error), or calculating tax as salary × 0.01 instead of salary × 0.10 (operator error).</em></p>
+            <h4>Logic Errors</h4>
+            <p><strong>Definition:</strong> The program runs without crashing, but produces wrong results because the algorithm is flawed.<br><strong>Likely Causes:</strong> Wrong operator (using + instead of ×), off-by-one loop errors, incorrect conditional logic, unreachable code.<br>🌏 <em>Example: A loop from 0 to 9 when you intended 1 to 10 (off-by-one error), or calculating tax as salary × 0.01 instead of salary × 0.10 (operator error).</em></p>
 
-          <h4>Runtime Errors</h4>
-          <p><strong>Definition:</strong> The program starts running but crashes during execution due to impossible operations or resource exhaustion.<br><strong>Likely Causes:</strong> Division by zero, accessing an array index that doesn't exist, null pointer dereference, stack overflow from infinite recursion, out of memory.<br>🌏 <em>Example: <code>score[index]</code> where index is 10 but the array only has 5 elements, or <code>result = 100 / denominator</code> when denominator is 0.</em></p>
+            <h4>Runtime Errors</h4>
+            <p><strong>Definition:</strong> The program starts running but crashes during execution due to impossible operations or resource exhaustion.<br><strong>Likely Causes:</strong> Division by zero, accessing an array index that doesn't exist, null pointer dereference, stack overflow from infinite recursion, out of memory.<br>🌏 <em>Example: <code>score[index]</code> where index is 10 but the array only has 5 elements, or <code>result = 100 / denominator</code> when denominator is 0.</em></p>
+          </div>
         </section>
 
       </div>
@@ -830,74 +877,80 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
         flowchart: {
           useMaxWidth: true,
           htmlLabels: true,
-          curve: 'linear'
+          curve: 'linear',
+          diagramMarginX: 20,
+          diagramMarginY: 20
         },
         sequence: {
           useMaxWidth: true,
-          diagramMarginX: 50,
-          diagramMarginY: 10
+          diagramMarginX: 60,
+          diagramMarginY: 20,
+          actorMargin: 60
         },
         class: {
           useMaxWidth: true,
           htmlLabels: true
         },
         state: {
-          useMaxWidth: true
+          useMaxWidth: true,
+          diagramMarginX: 20,
+          diagramMarginY: 20
         },
         themeVariables: {
           fontSize: '14px',
+          fontFamily: 'Inter, system-ui, sans-serif',
           primaryColor: isDark ? '#1e293b' : '#e0e7ff',
           primaryBorderColor: isDark ? '#475569' : '#c7d2fe',
+          primaryTextColor: isDark ? '#f1f5f9' : '#0f172a',
           secondBkgColor: isDark ? '#334155' : '#f0f4ff',
-          secondBorderColor: isDark ? '#64748b' : '#a5b4fc',
+          secondBorderColor: isDark ? '#475569' : '#a5b4fc',
           tertiaryColor: isDark ? '#475569' : '#ddd6fe',
+          tertiaryBorderColor: isDark ? '#64748b' : '#ccc',
+          tertiaryTextColor: isDark ? '#cbd5e1' : '#0f172a',
           noteBkgColor: isDark ? '#1e293b' : '#fff9e6',
-          noteBorderColor: isDark ? '#64748b' : '#ccc',
-          textColor: isDark ? '#e2e8f0' : '#0f172a',
-          primaryTextColor: isDark ? '#f1f5f9' : '#000'
+          noteBorderColor: isDark ? '#475569' : '#ccc',
+          noteTextColor: isDark ? '#f1f5f9' : '#0f172a',
+          textColor: isDark ? '#f1f5f9' : '#0f172a',
+          lineColor: isDark ? '#475569' : '#ccc',
+          signalColor: isDark ? '#cbd5e1' : '#333',
+          signalTextColor: isDark ? '#f1f5f9' : '#000'
         }
       });
 
       mermaid.contentLoaded();
 
-      // Smart SVG text color correction after rendering
+      // Enhanced SVG contrast correction after rendering
       setTimeout(() => {
         if (isDark) {
-          const lightFills = ['#E3F2FD', '#F3E5F5', '#E8F5E9', '#FFF9C4', '#FFE082', '#FFCCBC', '#BBDEFB', '#C8E6C9', '#FFF3E0', '#FFEBEE', '#E1F5FE', '#FCE4EC', '#B3E5FC', '#FFAB91'];
+          const lightFills = ['#E3F2FD', '#F3E5F5', '#E8F5E9', '#FFF9C4', '#FFE082', '#FFCCBC', '#BBDEFB', '#C8E6C9', '#FFF3E0', '#FFEBEE', '#E1F5FE', '#FCE4EC', '#B3E5FC', '#FFAB91', '#F0F4C3'];
 
-          document.querySelectorAll('.mermaid svg text').forEach(text => {
+          // Fix light fill backgrounds to dark
+          document.querySelectorAll('.mermaid svg [fill]').forEach(el => {
+            const fill = el.getAttribute('fill');
+            if (fill && lightFills.includes(fill?.toUpperCase())) {
+              el.setAttribute('fill', '#1e293b');
+            }
+          });
+
+          // Fix text colors for contrast
+          document.querySelectorAll('.mermaid svg text, .mermaid svg tspan').forEach(text => {
             let parent = text.parentElement;
             let fill = parent ? parent.getAttribute('fill') : null;
+
             if (lightFills.includes(fill?.toUpperCase())) {
               text.setAttribute('fill', '#0f172a');
               text.style.fill = '#0f172a';
+              text.style.fontWeight = '600';
             } else {
               text.setAttribute('fill', '#f1f5f9');
               text.style.fill = '#f1f5f9';
             }
           });
 
-          document.querySelectorAll('.mermaid svg tspan').forEach(tspan => {
-            let parent = tspan.closest('text');
-            let parentGroup = parent?.parentElement;
-            let fill = parentGroup ? parentGroup.getAttribute('fill') : null;
-            if (lightFills.includes(fill?.toUpperCase())) {
-              tspan.setAttribute('fill', '#0f172a');
-              tspan.style.fill = '#0f172a';
-            } else {
-              tspan.setAttribute('fill', '#f1f5f9');
-              tspan.style.fill = '#f1f5f9';
-            }
-          });
-
-          document.querySelectorAll('.mermaid svg .actor text, .mermaid svg .participant text').forEach(text => {
-            text.setAttribute('fill', '#0f172a');
-            text.style.fill = '#0f172a';
-          });
-
-          document.querySelectorAll('.mermaid svg .label text').forEach(text => {
-            text.setAttribute('fill', '#0f172a');
-            text.style.fill = '#0f172a';
+          // Ensure lines and strokes are visible
+          document.querySelectorAll('.mermaid svg [stroke="#333"], .mermaid svg [stroke="#999"]').forEach(el => {
+            el.setAttribute('stroke', '#cbd5e1');
+            el.setAttribute('stroke-width', el.getAttribute('stroke-width') || '1.5');
           });
         }
       }, 150);
@@ -912,5 +965,29 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
       attributeFilter: ['data-theme']
     });
   </script>
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- Diagram Lightbox Modal -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="lightbox-modal" id="diagram-lightbox" role="dialog" aria-labelledby="lightbox-title" aria-hidden="true">
+    <div class="lightbox-overlay"></div>
+    <div class="lightbox-container">
+      <div class="lightbox-header">
+        <h2 id="lightbox-title" class="lightbox-title">Diagram View</h2>
+        <button class="lightbox-close" aria-label="Close diagram view">✕</button>
+      </div>
+      <div class="lightbox-canvas">
+        <div class="lightbox-content" id="lightbox-content"></div>
+      </div>
+      <div class="lightbox-controls">
+        <button class="lightbox-btn" id="zoom-out" aria-label="Zoom out">−</button>
+        <span class="lightbox-zoom-level" id="zoom-level">100%</span>
+        <button class="lightbox-btn" id="zoom-in" aria-label="Zoom in">+</button>
+        <button class="lightbox-btn" id="reset-view" aria-label="Reset view">⟲</button>
+      </div>
+      <div class="lightbox-info">
+        <p>Scroll to zoom • Drag to pan • <kbd>Esc</kbd> to close</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

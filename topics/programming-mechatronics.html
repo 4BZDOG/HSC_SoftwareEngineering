@@ -218,6 +218,15 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           
           <h3>Processing and Diagnostic Data</h3>
           <p>Mechatronic systems process raw analog signals (via ADCs) into digital data for decision-making. <strong>Diagnostic Data</strong> involves monitoring internal states—such as motor temperature, battery voltage, or current draw—to identify potential hardware failures before they occur. <strong>Optimisation Data</strong> is used to refine control algorithms, such as adjusting the duty cycle of a PWM signal to achieve maximum motor efficiency with minimal heat generation. Engineers use this data to perform "Predictive Maintenance", replacing components before a system-critical failure happens.</p>
+
+          <h3>Analog-to-Digital Conversion (ADC)</h3>
+          <p>Sensors output continuous analog voltages. Microcontrollers use <strong>Analog-to-Digital Converters</strong> to sample these voltages and convert them to digital numbers for processing. An ADC typically has a resolution (e.g., 8-bit, 10-bit, 12-bit), determining how many discrete voltage levels it can represent.</p>
+          <p><strong>ADC Formula:</strong> <code><strong>Digital Value = (Measured Voltage / Reference Voltage) × (2^Resolution - 1)</strong></code></p>
+          <p>🌏 <em><strong>Example:</strong> A 10-bit ADC (1024 levels, 0-1023) with 5V reference, measuring 2.5V:</em></p>
+          <ul>
+            <li>Digital Value = (2.5 / 5) × (2^10 - 1) = 0.5 × 1023 = 511.5 ≈ 511 (raw value)</li>
+            <li>This 511 value is then used in software to make decisions—for example, if the voltage from a temperature sensor crosses a threshold, trigger a cooling system.</li>
+          </ul>
         </section>
 
         <hr class="divider" />
@@ -297,7 +306,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
               <tbody>
                 <tr>
                   <td><strong>Power & Battery</strong></td>
-                  <td>Engineers must calculate the total "Current Draw" (mA). Actuators often require separate power supplies from the controller to avoid "brownouts" or damage.</td>
+                  <td><strong>Current Draw Calculation:</strong> Total system current is calculated by summing the individual component currents: <code><strong>Total Current (mA) = Σ(Component Current)</strong></code><br>🌏 <em>Example: If a microcontroller draws 50 mA, two DC motors draw 300 mA each, and an LED draws 20 mA, total = 50 + 300 + 300 + 20 = 670 mA. A 5V supply must provide at least 670 mA capacity.</em><br>Actuators often require separate power supplies from the controller to avoid "brownouts" (voltage drops) or component damage caused by the high current demands of motors.</td>
                 </tr>
                 <tr>
                   <td><strong>Material Choice</strong></td>
@@ -327,32 +336,34 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <h3>Accessibility Considerations</h3>
           <p>When designing mechatronic systems for users with disabilities, engineers must consider:</p>
 
-          <h4>Mobility Disabilities</h4>
-          <ul>
-            <li><strong>Prosthetics and Exoskeletons:</strong> Systems controlled by electromyography (muscle signals) or brain-computer interfaces, requiring real-time sensor fusion and responsive actuation.</li>
-            <li><strong>Wheelchair Automation:</strong> Systems with joystick sensitivity adjustment, voice command control, or autonomous navigation for obstacle avoidance.</li>
-          </ul>
+          <div class="structured-content">
+            <h4>Mobility Disabilities</h4>
+            <ul>
+              <li><strong>Prosthetics and Exoskeletons:</strong> Systems controlled by electromyography (muscle signals) or brain-computer interfaces, requiring real-time sensor fusion and responsive actuation.</li>
+              <li><strong>Wheelchair Automation:</strong> Systems with joystick sensitivity adjustment, voice command control, or autonomous navigation for obstacle avoidance.</li>
+            </ul>
 
-          <h4>Visual Impairments</h4>
-          <ul>
-            <li><strong>Haptic Feedback:</strong> Vibration patterns in controllers to provide tactile information instead of visual displays.</li>
-            <li><strong>Spatial Audio:</strong> Sound-based navigation cues to guide users around obstacles.</li>
-            <li><strong>Obstacle Detection:</strong> Ultrasonic or infrared sensors to alert users to hazards.</li>
-          </ul>
+            <h4>Visual Impairments</h4>
+            <ul>
+              <li><strong>Haptic Feedback:</strong> Vibration patterns in controllers to provide tactile information instead of visual displays.</li>
+              <li><strong>Spatial Audio:</strong> Sound-based navigation cues to guide users around obstacles.</li>
+              <li><strong>Obstacle Detection:</strong> Ultrasonic or infrared sensors to alert users to hazards.</li>
+            </ul>
 
-          <h4>Speech and Hearing Impairments</h4>
-          <ul>
-            <li><strong>Visual Feedback Systems:</strong> LED indicators, screen displays for status information.</li>
-            <li><strong>Sign Language Recognition:</strong> Computer vision systems to interpret sign language commands.</li>
-            <li><strong>Text-Based Interfaces:</strong> Keyboard or touch input for users with speech difficulties.</li>
-          </ul>
+            <h4>Speech and Hearing Impairments</h4>
+            <ul>
+              <li><strong>Visual Feedback Systems:</strong> LED indicators, screen displays for status information.</li>
+              <li><strong>Sign Language Recognition:</strong> Computer vision systems to interpret sign language commands.</li>
+              <li><strong>Text-Based Interfaces:</strong> Keyboard or touch input for users with speech difficulties.</li>
+            </ul>
 
-          <h4>Severe Mobility Limitations</h4>
-          <ul>
-            <li><strong>Sip-and-Puff Control:</strong> Systems activated by gentle air pressure from the mouth for users with very limited mobility.</li>
-            <li><strong>Eye Gaze Tracking:</strong> Head-mounted sensors detecting where the user looks to control a cursor or robotic arm.</li>
-            <li><strong>Brainwave Interfaces:</strong> EEG sensors interpreting brain activity to control external devices.</li>
-          </ul>
+            <h4>Severe Mobility Limitations</h4>
+            <ul>
+              <li><strong>Sip-and-Puff Control:</strong> Systems activated by gentle air pressure from the mouth for users with very limited mobility.</li>
+              <li><strong>Eye Gaze Tracking:</strong> Head-mounted sensors detecting where the user looks to control a cursor or robotic arm.</li>
+              <li><strong>Brainwave Interfaces:</strong> EEG sensors interpreting brain activity to control external devices.</li>
+            </ul>
+          </div>
 
           <p>Specialist requirements often add complexity and cost, but they fundamentally expand accessibility and enable people with disabilities to perform tasks they could not otherwise accomplish independently.</p>
         </section>
@@ -398,6 +409,31 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
                 </tr>
               </tbody>
             </table>
+          </div>
+
+          <!-- Open vs Closed Loop Comparison Diagram -->
+          <div class="diagram-block">
+            <h4>🔄 Open vs Closed Loop <span class="diagram-highlight">Control Systems</span></h4>
+            <div class="mermaid">
+              graph TD
+                OL["<b>Open Loop System</b><br/>━━━━━━<br/>COMMAND → ACTUATOR → OUTPUT<br/>(No Feedback)<br/><br/>✓ Simple, fast<br/>✗ No self-correction"]
+
+                CL["<b>Closed Loop System</b><br/>━━━━━━<br/>SETPOINT → COMPARE → ADJUST<br/>↓<br/>SENSOR → FEEDBACK<br/><br/>✓ Accurate, adaptive<br/>✗ Complex, slower"]
+
+                OL -.->|Example| EX1["Sprinkler Timer<br/>On at 6am, Off at 6:30am<br/>(Ignores rain)"]
+
+                CL -.->|Example| EX2["Thermostat<br/>Maintains 22°C<br/>Adjusts heater based on<br/>temperature feedback"]
+
+                style OL fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+                style CL fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
+                style EX1 fill:#FFF9C4,stroke:#F57F17,stroke-width:1px
+                style EX2 fill:#FFF9C4,stroke:#F57F17,stroke-width:1px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Visually compare open and closed loop control systems. Open loop executes a fixed sequence; closed loop continuously adjusts based on feedback. The choice depends on accuracy requirements and environmental variability.<br>
+              <strong>Syllabus Link:</strong> SE-11-02<br>
+              <strong>Try This:</strong> Design a closed loop temperature control system for a greenhouse. What sensor would you use? What setpoint? How would the system respond if external temperature drops?
+            </p>
           </div>
 
         </section>
@@ -605,74 +641,80 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
         flowchart: {
           useMaxWidth: true,
           htmlLabels: true,
-          curve: 'linear'
+          curve: 'linear',
+          diagramMarginX: 20,
+          diagramMarginY: 20
         },
         sequence: {
           useMaxWidth: true,
-          diagramMarginX: 50,
-          diagramMarginY: 10
+          diagramMarginX: 60,
+          diagramMarginY: 20,
+          actorMargin: 60
         },
         class: {
           useMaxWidth: true,
           htmlLabels: true
         },
         state: {
-          useMaxWidth: true
+          useMaxWidth: true,
+          diagramMarginX: 20,
+          diagramMarginY: 20
         },
         themeVariables: {
           fontSize: '14px',
+          fontFamily: 'Inter, system-ui, sans-serif',
           primaryColor: isDark ? '#1e293b' : '#e0e7ff',
           primaryBorderColor: isDark ? '#475569' : '#c7d2fe',
+          primaryTextColor: isDark ? '#f1f5f9' : '#0f172a',
           secondBkgColor: isDark ? '#334155' : '#f0f4ff',
-          secondBorderColor: isDark ? '#64748b' : '#a5b4fc',
+          secondBorderColor: isDark ? '#475569' : '#a5b4fc',
           tertiaryColor: isDark ? '#475569' : '#ddd6fe',
+          tertiaryBorderColor: isDark ? '#64748b' : '#ccc',
+          tertiaryTextColor: isDark ? '#cbd5e1' : '#0f172a',
           noteBkgColor: isDark ? '#1e293b' : '#fff9e6',
-          noteBorderColor: isDark ? '#64748b' : '#ccc',
-          textColor: isDark ? '#e2e8f0' : '#0f172a',
-          primaryTextColor: isDark ? '#f1f5f9' : '#000'
+          noteBorderColor: isDark ? '#475569' : '#ccc',
+          noteTextColor: isDark ? '#f1f5f9' : '#0f172a',
+          textColor: isDark ? '#f1f5f9' : '#0f172a',
+          lineColor: isDark ? '#475569' : '#ccc',
+          signalColor: isDark ? '#cbd5e1' : '#333',
+          signalTextColor: isDark ? '#f1f5f9' : '#000'
         }
       });
 
       mermaid.contentLoaded();
 
-      // Smart SVG text color correction after rendering
+      // Enhanced SVG contrast correction after rendering
       setTimeout(() => {
         if (isDark) {
-          const lightFills = ['#E3F2FD', '#F3E5F5', '#E8F5E9', '#FFF9C4', '#FFE082', '#FFCCBC', '#BBDEFB', '#C8E6C9', '#FFF3E0', '#FFEBEE', '#E1F5FE', '#FCE4EC', '#B3E5FC', '#FFAB91'];
+          const lightFills = ['#E3F2FD', '#F3E5F5', '#E8F5E9', '#FFF9C4', '#FFE082', '#FFCCBC', '#BBDEFB', '#C8E6C9', '#FFF3E0', '#FFEBEE', '#E1F5FE', '#FCE4EC', '#B3E5FC', '#FFAB91', '#F0F4C3'];
 
-          document.querySelectorAll('.mermaid svg text').forEach(text => {
+          // Fix light fill backgrounds to dark
+          document.querySelectorAll('.mermaid svg [fill]').forEach(el => {
+            const fill = el.getAttribute('fill');
+            if (fill && lightFills.includes(fill?.toUpperCase())) {
+              el.setAttribute('fill', '#1e293b');
+            }
+          });
+
+          // Fix text colors for contrast
+          document.querySelectorAll('.mermaid svg text, .mermaid svg tspan').forEach(text => {
             let parent = text.parentElement;
             let fill = parent ? parent.getAttribute('fill') : null;
+
             if (lightFills.includes(fill?.toUpperCase())) {
               text.setAttribute('fill', '#0f172a');
               text.style.fill = '#0f172a';
+              text.style.fontWeight = '600';
             } else {
               text.setAttribute('fill', '#f1f5f9');
               text.style.fill = '#f1f5f9';
             }
           });
 
-          document.querySelectorAll('.mermaid svg tspan').forEach(tspan => {
-            let parent = tspan.closest('text');
-            let parentGroup = parent?.parentElement;
-            let fill = parentGroup ? parentGroup.getAttribute('fill') : null;
-            if (lightFills.includes(fill?.toUpperCase())) {
-              tspan.setAttribute('fill', '#0f172a');
-              tspan.style.fill = '#0f172a';
-            } else {
-              tspan.setAttribute('fill', '#f1f5f9');
-              tspan.style.fill = '#f1f5f9';
-            }
-          });
-
-          document.querySelectorAll('.mermaid svg .actor text, .mermaid svg .participant text').forEach(text => {
-            text.setAttribute('fill', '#0f172a');
-            text.style.fill = '#0f172a';
-          });
-
-          document.querySelectorAll('.mermaid svg .label text').forEach(text => {
-            text.setAttribute('fill', '#0f172a');
-            text.style.fill = '#0f172a';
+          // Ensure lines and strokes are visible
+          document.querySelectorAll('.mermaid svg [stroke="#333"], .mermaid svg [stroke="#999"]').forEach(el => {
+            el.setAttribute('stroke', '#cbd5e1');
+            el.setAttribute('stroke-width', el.getAttribute('stroke-width') || '1.5');
           });
         }
       }, 150);
@@ -688,5 +730,29 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
       attributeFilter: ['data-theme']
     });
   </script>
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- Diagram Lightbox Modal -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <div class="lightbox-modal" id="diagram-lightbox" role="dialog" aria-labelledby="lightbox-title" aria-hidden="true">
+    <div class="lightbox-overlay"></div>
+    <div class="lightbox-container">
+      <div class="lightbox-header">
+        <h2 id="lightbox-title" class="lightbox-title">Diagram View</h2>
+        <button class="lightbox-close" aria-label="Close diagram view">✕</button>
+      </div>
+      <div class="lightbox-canvas">
+        <div class="lightbox-content" id="lightbox-content"></div>
+      </div>
+      <div class="lightbox-controls">
+        <button class="lightbox-btn" id="zoom-out" aria-label="Zoom out">−</button>
+        <span class="lightbox-zoom-level" id="zoom-level">100%</span>
+        <button class="lightbox-btn" id="zoom-in" aria-label="Zoom in">+</button>
+        <button class="lightbox-btn" id="reset-view" aria-label="Reset view">⟲</button>
+      </div>
+      <div class="lightbox-info">
+        <p>Scroll to zoom • Drag to pan • <kbd>Esc</kbd> to close</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
