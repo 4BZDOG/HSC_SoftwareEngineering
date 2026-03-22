@@ -52,6 +52,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ── Reading Progress Bar ── */
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'reading-progress';
+    navbar.appendChild(progressBar);
+
+    const hasToc = document.querySelector('.toc-list');
+    if (hasToc) {
+      document.documentElement.classList.add('has-toc');
+      const updateProgress = () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+        progressBar.style.setProperty('--scroll-pct', pct);
+        progressBar.style.width = pct + '%';
+      };
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+    }
+  }
+
   /* ── Table of Contents — Active Highlight on Scroll ── */
   const tocLinks = document.querySelectorAll('.toc-list a');
   console.log(`[TOC] Found ${tocLinks.length} TOC links`);
