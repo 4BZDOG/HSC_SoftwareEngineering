@@ -442,6 +442,49 @@
               <strong>Try This:</strong> Create a threat model for a banking app, identifying threats at login, fund transfer, and transaction history retrieval stages
             </p>
           </div>
+
+          <!-- Secure Data Flow Diagram -->
+          <div class="diagram-block">
+            <h4>🔐 Secure System <span class="diagram-highlight">Data Flow</span> (Level 0 DFD)</h4>
+            <div class="mermaid">
+              graph LR
+                Customer["👤 CUSTOMER<br/>─────────<br/>External Entity"]
+                Browser["🌐 Web App<br/>─────────<br/>Process"]
+                APIGw["🛡️ API Gateway<br/>SSL/TLS<br/>─────────<br/>Process"]
+                AuthSvc["🔐 Auth Service<br/>Verify Token<br/>─────────<br/>Process"]
+                AppServer["🖥️ App Server<br/>Business Logic<br/>─────────<br/>Process"]
+                DataStore["💾 Encrypted DB<br/>AES-256<br/>─────────<br/>Data Store"]
+                LogStore["📝 Audit Logs<br/>Immutable<br/>─────────<br/>Data Store"]
+                ExtAPI["📡 Payment API<br/>OAuth 2.0<br/>─────────<br/>External Entity"]
+
+                Customer -->|HTTPS Request| Browser
+                Browser -->|Encrypted TLS| APIGw
+                APIGw -->|Token Valid?| AuthSvc
+                AuthSvc -->|Session OK| APIGw
+                APIGw -->|Sanitised Data| AppServer
+                AppServer -->|Parameterised Query| DataStore
+                DataStore -->|User Records| AppServer
+                AppServer -->|Log: User Action| LogStore
+                AppServer -->|OAuth Token| ExtAPI
+                ExtAPI -->|Payment Status| AppServer
+                AppServer -->|JSON Response| Browser
+                Browser -->|Rendered Page| Customer
+
+                style Customer fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+                style Browser fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+                style APIGw fill:#FFCCBC,stroke:#E64A19,stroke-width:2px
+                style AuthSvc fill:#F8BBD0,stroke:#C2185B,stroke-width:2px
+                style AppServer fill:#FFE082,stroke:#F57F17,stroke-width:2px
+                style DataStore fill:#C8E6C9,stroke:#2E7D32,stroke-width:3px
+                style LogStore fill:#FFE0B2,stroke:#E65100,stroke-width:2px
+                style ExtAPI fill:#E1BEE7,stroke:#7B1FA2,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Model the secure data flow through a modern web system using Level 0 DFD notation. External Entities are external users/systems; Processes include all application components; Data Stores hold persistent data; Data Flows show movement with security controls (TLS, OAuth, encryption)<br>
+              <strong>Syllabus Link:</strong> SE-12-02<br>
+              <strong>Try This:</strong> Create a Level 0 DFD for a hospital patient management system, showing how patient records flow through the system with encrypted storage and access logs
+            </p>
+          </div>
         </section>
 
         <hr class="divider" />
