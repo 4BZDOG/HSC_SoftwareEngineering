@@ -1685,9 +1685,9 @@ footer {
 
 /* ── Diagram Blocks ── */
 .diagram-block {
-  background: #f9f9f9;
-  border-left: 6px solid var(--primary);
-  padding: 2rem;
+  background: var(--bg);
+  border-left: 4px solid var(--primary);
+  padding: 1.75rem;
   margin: 2.5rem 0;
   border-radius: var(--radius-lg);
   overflow-x: auto;
@@ -1697,76 +1697,59 @@ footer {
 
 .diagram-block:hover {
   box-shadow: var(--shadow-lg);
-  border-left-color: var(--secondary);
 }
 
 [data-theme="dark"] .diagram-block {
-  background: #0f172a;
-  border-left-color: #06B6D4;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  background: #1e293b;
+  border-left-color: var(--primary);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
 }
 
 [data-theme="dark"] .diagram-block:hover {
-  box-shadow: 0 8px 16px rgba(0,0,0,0.5);
-  background: #1a1a2e;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  background: #243147;
 }
 
 .diagram-block h4 {
   margin: 0 0 1rem 0;
-  padding: 0.875rem 0 0.875rem 1rem;
+  padding: 0.75rem 1rem;
   color: #ffffff;
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.3px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
   user-select: none;
   transition: all var(--transition);
-  border-bottom: none;
   background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--secondary) 100%);
   border-radius: var(--radius-md);
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.18);
 }
 
 .diagram-block h4:hover {
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
   transform: translateY(-1px);
 }
 
 [data-theme="dark"] .diagram-block h4 {
-  color: #f1f5f9;
-  background: linear-gradient(135deg, #0369a1 0%, #0891b2 55%, #06b6d4 100%);
-  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.25);
+  background: linear-gradient(135deg, #312e81 0%, #4338CA 55%, #6366F1 100%);
+  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.2);
 }
 
 [data-theme="dark"] .diagram-block h4:hover {
-  color: #f1f5f9;
-  box-shadow: 0 6px 16px rgba(6, 182, 212, 0.4);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
   transform: translateY(-1px);
 }
 
-.diagram-block h4::before {
-  content: '';
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: currentColor;
-  margin-right: 0.5rem;
-  opacity: 0.85;
-  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
-}
-
 .diagram-block h4::after {
-  content: '▼';
+  content: '\25BC';
   display: inline-block;
   margin-left: 0.75rem;
   transition: transform var(--transition);
-  font-size: 0.7rem;
-  opacity: 0.85;
+  font-size: 0.65rem;
+  opacity: 0.7;
 }
 
 .diagram-block.diagram-collapsed h4::after {
@@ -1790,16 +1773,14 @@ footer {
 
 /* Highlight styling for key terms in titles */
 .diagram-highlight {
-  background: linear-gradient(120deg, var(--primary-light) 0%, var(--primary-light) 100%);
-  padding: 0.2rem 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.15rem 0.45rem;
   border-radius: var(--radius-sm);
   font-weight: 700;
-  color: var(--primary-dark);
 }
 
 [data-theme="dark"] .diagram-highlight {
-  background: linear-gradient(120deg, #3B82F6 0%, #2563EB 100%);
-  color: #F1F5F9;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .diagram-figure {
@@ -1838,7 +1819,7 @@ footer {
 
 [data-theme="dark"] .diagram-caption {
   border-top-color: #334155;
-  background: rgba(30, 41, 59, 0.3);
+  background: rgba(99, 102, 241, 0.06);
 }
 
 .diagram-caption strong {
@@ -1855,7 +1836,7 @@ footer {
 }
 
 [data-theme="dark"] .diagram-caption strong {
-  color: #F1F5F9;
+  color: #c7d2fe;
   background: rgba(99, 102, 241, 0.15);
 }
 
@@ -1867,7 +1848,7 @@ footer {
   display: none;
 }
 
-/* Mermaid diagram styling — Light Mode */
+/* ── Mermaid Diagrams ── */
 .mermaid {
   display: flex;
   justify-content: center;
@@ -1879,12 +1860,12 @@ footer {
   overflow-y: visible;
   margin: 1.5rem 0;
   min-height: 250px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.5);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.04);
   transition: all var(--transition);
 }
 
 .mermaid:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.5);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .mermaid svg {
@@ -1898,265 +1879,85 @@ footer {
   font-size: 0.875rem !important;
 }
 
-/* Mermaid diagram styling — Dark Mode */
+/* ── Mermaid Dark Mode ── */
 [data-theme="dark"] .mermaid {
-  background: linear-gradient(135deg, #0f172a 0%, #1a1a2e 100%);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
-  position: relative;
-}
-
-[data-theme="dark"] .mermaid::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background:
-    radial-gradient(circle at top-left, rgba(99, 102, 241, 0.08) 0%, transparent 100%),
-    radial-gradient(circle at bottom-right, rgba(6, 182, 212, 0.08) 0%, transparent 100%);
-  pointer-events: none;
-  border-radius: var(--radius-lg);
+  background: #131c2e;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
 }
 
 [data-theme="dark"] .mermaid:hover {
-  box-shadow: 0 6px 16px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
-}
-
-/* Dark mode SVG element styling */
-[data-theme="dark"] .mermaid svg {
-  filter: saturate(0.9) brightness(1.1);
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.3), 0 2px 8px rgba(0,0,0,0.2);
 }
 
 [data-theme="dark"] .mermaid svg text,
 [data-theme="dark"] .mermaid svg tspan {
   fill: #e2e8f0 !important;
-  font-family: inherit !important;
 }
 
-/* Override hardcoded light colors for dark mode */
-[data-theme="dark"] .mermaid svg [fill="#E3F2FD"],
-[data-theme="dark"] .mermaid svg [fill="#FFF9C4"],
-[data-theme="dark"] .mermaid svg [fill="#F3E5F5"],
-[data-theme="dark"] .mermaid svg [fill="#FCE4EC"],
-[data-theme="dark"] .mermaid svg [fill="#E8F5E9"],
-[data-theme="dark"] .mermaid svg [fill="#F1F8E9"],
-[data-theme="dark"] .mermaid svg [fill="#FFF3E0"],
-[data-theme="dark"] .mermaid svg [fill="#FFEBEE"],
-[data-theme="dark"] .mermaid svg [fill="#E1F5FE"],
-[data-theme="dark"] .mermaid svg [fill="#BBDEFB"],
-[data-theme="dark"] .mermaid svg [fill="#C8E6C9"],
-[data-theme="dark"] .mermaid svg [fill="#FFCCBC"],
-[data-theme="dark"] .mermaid svg [fill="#B3E5FC"],
-[data-theme="dark"] .mermaid svg [fill="#FFAB91"],
-[data-theme="dark"] .mermaid svg [fill="#F0F4C3"] {
-  fill: #1e293b !important;
-  opacity: 0.9 !important;
+[data-theme="dark"] .mermaid svg .label text {
+  fill: #e2e8f0 !important;
 }
 
-/* Improve text visibility in dark mode diagrams */
-[data-theme="dark"] .mermaid svg [fill="#000"],
-[data-theme="dark"] .mermaid svg [fill="#000000"],
-[data-theme="dark"] .mermaid svg text[fill="#000"],
-[data-theme="dark"] .mermaid svg text[fill="#000000"] {
-  fill: #f1f5f9 !important;
-}
-
-/* Enhanced stroke colors for dark mode */
-[data-theme="dark"] .mermaid svg line[stroke="#999"],
-[data-theme="dark"] .mermaid svg path[stroke="#999"] {
-  stroke: #475569 !important;
-}
-
-[data-theme="dark"] .mermaid svg [stroke="#333"],
-[data-theme="dark"] .mermaid svg [stroke="#333333"] {
-  stroke: #cbd5e1 !important;
-}
-
-/* Additional dark mode color fixes for common Mermaid elements */
 [data-theme="dark"] .mermaid svg rect[fill="#fff"],
-[data-theme="dark"] .mermaid svg rect[fill="#ffffff"] {
-  fill: #1e293b !important;
-  stroke: #475569 !important;
-}
-
+[data-theme="dark"] .mermaid svg rect[fill="#ffffff"],
+[data-theme="dark"] .mermaid svg rect[fill="#FFF"],
+[data-theme="dark"] .mermaid svg rect[fill="#FFFFFF"],
 [data-theme="dark"] .mermaid svg ellipse[fill="#fff"],
-[data-theme="dark"] .mermaid svg ellipse[fill="#ffffff"] {
-  fill: #1e293b !important;
-  stroke: #475569 !important;
-}
-
+[data-theme="dark"] .mermaid svg ellipse[fill="#ffffff"],
 [data-theme="dark"] .mermaid svg circle[fill="#fff"],
-[data-theme="dark"] .mermaid svg circle[fill="#ffffff"] {
-  fill: #1e293b !important;
-  stroke: #475569 !important;
-}
-
+[data-theme="dark"] .mermaid svg circle[fill="#ffffff"],
 [data-theme="dark"] .mermaid svg polygon[fill="#fff"],
 [data-theme="dark"] .mermaid svg polygon[fill="#ffffff"] {
   fill: #1e293b !important;
   stroke: #475569 !important;
 }
 
-[data-theme="dark"] .mermaid svg [fill="#FFF"],
-[data-theme="dark"] .mermaid svg [fill="#FFFFFF"] {
+[data-theme="dark"] .mermaid svg [fill="#000"],
+[data-theme="dark"] .mermaid svg [fill="#000000"] {
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .mermaid svg [stroke="#333"],
+[data-theme="dark"] .mermaid svg [stroke="#333333"],
+[data-theme="dark"] .mermaid svg [stroke="#999"],
+[data-theme="dark"] .mermaid svg [stroke="#999999"] {
+  stroke: #64748b !important;
+}
+
+/* Brightened strokes for dark mode visibility */
+[data-theme="dark"] .mermaid svg [stroke="#1976D2"] { stroke: #60a5fa !important; }
+[data-theme="dark"] .mermaid svg [stroke="#2E7D32"] { stroke: #4ade80 !important; }
+[data-theme="dark"] .mermaid svg [stroke="#E64A19"] { stroke: #fb923c !important; }
+[data-theme="dark"] .mermaid svg [stroke="#F57F17"] { stroke: #fbbf24 !important; }
+[data-theme="dark"] .mermaid svg [stroke="#6A1B9A"] { stroke: #d084fc !important; }
+[data-theme="dark"] .mermaid svg [stroke="#C62828"] { stroke: #f87171 !important; }
+[data-theme="dark"] .mermaid svg [stroke="#C2185B"] { stroke: #fb7185 !important; }
+
+/* Sequence diagram elements */
+[data-theme="dark"] .mermaid svg .actor {
   fill: #1e293b !important;
+  stroke: #475569 !important;
 }
 
-/* Enhanced text color fixes for sequence diagrams */
-[data-theme="dark"] .mermaid svg text {
-  fill: #f1f5f9 !important;
-}
-
-[data-theme="dark"] .mermaid svg tspan {
-  fill: #f1f5f9 !important;
-}
-
-/* Override specific dark text fills */
-[data-theme="dark"] .mermaid svg text[fill="#333"],
-[data-theme="dark"] .mermaid svg text[fill="#333333"],
-[data-theme="dark"] .mermaid svg text[fill="#666"],
-[data-theme="dark"] .mermaid svg text[fill="#666666"],
-[data-theme="dark"] .mermaid svg text[fill="#555"],
-[data-theme="dark"] .mermaid svg text[fill="#555555"],
-[data-theme="dark"] .mermaid svg tspan[fill="#333"],
-[data-theme="dark"] .mermaid svg tspan[fill="#333333"],
-[data-theme="dark"] .mermaid svg tspan[fill="#666"],
-[data-theme="dark"] .mermaid svg tspan[fill="#666666"],
-[data-theme="dark"] .mermaid svg tspan[fill="#555"],
-[data-theme="dark"] .mermaid svg tspan[fill="#555555"] {
-  fill: #e2e8f0 !important;
-}
-
-/* Sequence diagram label text */
-[data-theme="dark"] .mermaid svg .label text {
-  fill: #f1f5f9 !important;
-}
-
-[data-theme="dark"] .mermaid svg .actor text {
-  fill: #0f172a !important;
-}
-
-/* Reference and alt box text */
-[data-theme="dark"] .mermaid svg .refLabel text,
-[data-theme="dark"] .mermaid svg .altLabel text,
-[data-theme="dark"] .mermaid svg .optLabel text {
-  fill: #f1f5f9 !important;
-}
-
-/* Autonumber text */
-[data-theme="dark"] .mermaid svg .autonumber text {
-  fill: #f1f5f9 !important;
-}
-
-/* CRITICAL FIX: Dark text on light backgrounds in dark mode */
-/* Light fills need dark text for contrast */
-[data-theme="dark"] .mermaid svg [fill="#E3F2FD"] text,
-[data-theme="dark"] .mermaid svg [fill="#E3F2FD"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#F3E5F5"] text,
-[data-theme="dark"] .mermaid svg [fill="#F3E5F5"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#E8F5E9"] text,
-[data-theme="dark"] .mermaid svg [fill="#E8F5E9"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#FFF9C4"] text,
-[data-theme="dark"] .mermaid svg [fill="#FFF9C4"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#FFE082"] text,
-[data-theme="dark"] .mermaid svg [fill="#FFE082"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#FFCCBC"] text,
-[data-theme="dark"] .mermaid svg [fill="#FFCCBC"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#BBDEFB"] text,
-[data-theme="dark"] .mermaid svg [fill="#BBDEFB"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#C8E6C9"] text,
-[data-theme="dark"] .mermaid svg [fill="#C8E6C9"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#FFF3E0"] text,
-[data-theme="dark"] .mermaid svg [fill="#FFF3E0"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#FFEBEE"] text,
-[data-theme="dark"] .mermaid svg [fill="#FFEBEE"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#E1F5FE"] text,
-[data-theme="dark"] .mermaid svg [fill="#E1F5FE"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#FCE4EC"] text,
-[data-theme="dark"] .mermaid svg [fill="#FCE4EC"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#B3E5FC"] text,
-[data-theme="dark"] .mermaid svg [fill="#B3E5FC"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#FFAB91"] text,
-[data-theme="dark"] .mermaid svg [fill="#FFAB91"] tspan {
-  fill: #0f172a !important;
-}
-
-/* Flowchart improvements for dark mode */
-[data-theme="dark"] .mermaid svg [fill="#e1f5ff"],
-[data-theme="dark"] .mermaid svg [fill="#fff3e0"],
-[data-theme="dark"] .mermaid svg [fill="#f3e5f5"],
-[data-theme="dark"] .mermaid svg [fill="#e8f5e9"],
-[data-theme="dark"] .mermaid svg [fill="#fce4ec"],
-[data-theme="dark"] .mermaid svg [fill="#f1f8e9"],
-[data-theme="dark"] .mermaid svg [fill="#ede7f6"] {
-  fill: #1e293b !important;
-}
-
-/* Flowchart node text visibility */
-[data-theme="dark"] .mermaid svg [fill="#90EE90"],
-[data-theme="dark"] .mermaid svg [fill="#FFB6C6"],
-[data-theme="dark"] .mermaid svg [fill="#87CEEB"],
-[data-theme="dark"] .mermaid svg [fill="#FFB347"],
-[data-theme="dark"] .mermaid svg [fill="#FFE4B5"],
-[data-theme="dark"] .mermaid svg [fill="#fff9c4"] {
-  fill: #1e293b !important;
-}
-
-/* Ensure flowchart text is readable in dark mode */
-[data-theme="dark"] .mermaid svg [fill="#4CAF50"] text,
-[data-theme="dark"] .mermaid svg [fill="#FF9800"] text,
-[data-theme="dark"] .mermaid svg [fill="#2196F3"] text,
-[data-theme="dark"] .mermaid svg [fill="#9C27B0"] text,
-[data-theme="dark"] .mermaid svg [fill="#FFC107"] text {
-  fill: inherit !important;
-}
-
-/* Class diagram improvements */
-[data-theme="dark"] .mermaid svg [stroke="#1976D2"] {
-  stroke: #60a5fa !important;
-}
-
-[data-theme="dark"] .mermaid svg [stroke="#2E7D32"] {
-  stroke: #4ade80 !important;
-}
-
-[data-theme="dark"] .mermaid svg [stroke="#E64A19"] {
-  stroke: #fb923c !important;
-}
-
-[data-theme="dark"] .mermaid svg [stroke="#F57F17"] {
-  stroke: #fbbf24 !important;
-}
-
-[data-theme="dark"] .mermaid svg [stroke="#6A1B9A"] {
-  stroke: #d084fc !important;
-}
-
-/* Sequence diagram improvements */
 [data-theme="dark"] .mermaid svg [fill="#CCCCFF"] {
-  fill: #4f46e5 !important;
-  opacity: 0.3 !important;
+  fill: rgba(99, 102, 241, 0.2) !important;
 }
 
 [data-theme="dark"] .mermaid svg [fill="#CCFFFF"] {
-  fill: #06b6d4 !important;
-  opacity: 0.3 !important;
+  fill: rgba(99, 102, 241, 0.15) !important;
 }
 
-/* Flowchart shape improvements */
 [data-theme="dark"] .mermaid svg .labelBox {
   background: #1e293b !important;
   color: #e2e8f0 !important;
 }
 
-/* Text on colored backgrounds */
-[data-theme="dark"] .mermaid svg [fill="#FFE082"] text,
-[data-theme="dark"] .mermaid svg [fill="#F3E5F5"] text,
-[data-theme="dark"] .mermaid svg [fill="#C8E6C9"] text,
-[data-theme="dark"] .mermaid svg [fill="#FFCCBC"] text {
-  fill: #f1f5f9 !important;
-  opacity: 1 !important;
+[data-theme="dark"] .mermaid svg foreignObject {
+  background: #1e293b;
+}
+
+[data-theme="dark"] .mermaid svg .label {
+  background: transparent;
 }
 
 .btn-mobile-theme {
@@ -2422,18 +2223,18 @@ footer {
 
 /* Dark mode lightbox adjustments */
 [data-theme="dark"] .lightbox-container {
-  background: #1a1a2e;
+  background: #1e293b;
   border-color: #334155;
 }
 
 [data-theme="dark"] .lightbox-canvas {
-  background: linear-gradient(135deg, #0f172a 0%, #1a1a2e 100%);
+  background: #131c2e;
 }
 
 [data-theme="dark"] .lightbox-header,
 [data-theme="dark"] .lightbox-info {
   border-color: #334155;
-  background: #0f172a;
+  background: #1e293b;
 }
 
 [data-theme="dark"] .lightbox-title {
@@ -2446,23 +2247,23 @@ footer {
 
 [data-theme="dark"] .lightbox-close:hover,
 [data-theme="dark"] .lightbox-close:focus {
-  background: #1e293b;
+  background: #334155;
   color: #f1f5f9;
 }
 
 [data-theme="dark"] .lightbox-controls {
-  background: #1a1a2e;
+  background: #1e293b;
   border-color: #334155;
 }
 
 [data-theme="dark"] .lightbox-btn {
-  background: #0891b2;
+  background: var(--primary);
 }
 
 [data-theme="dark"] .lightbox-btn:hover,
 [data-theme="dark"] .lightbox-btn:focus {
-  background: #0369a1;
-  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+  background: var(--primary-dark);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
 [data-theme="dark"] .lightbox-zoom-level {
@@ -2470,161 +2271,12 @@ footer {
 }
 
 [data-theme="dark"] .lightbox-info {
-  background: #0f172a;
+  background: #1e293b;
   color: #cbd5e1;
 }
 
 [data-theme="dark"] .lightbox-info kbd {
-  background: #1e293b;
+  background: #334155;
   border-color: #475569;
   color: #f1f5f9;
 }
-
-
-/* ─────────────────────────────────────────────────────────────────────────────────── */
-/*  ENHANCED DARK MODE MERMAID DIAGRAM STYLING                                          */
-/* ─────────────────────────────────────────────────────────────────────────────────── */
-
-/* Dark mode Mermaid improvements */
-[data-theme="dark"] .mermaid {
-  background: linear-gradient(135deg, #0f172a 0%, #1a1a2e 100%);
-  border: 1px solid #334155;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
-}
-
-/* Flowchart node backgrounds */
-[data-theme="dark"] .mermaid svg rect[fill="#FFFFFF"],
-[data-theme="dark"] .mermaid svg rect[fill="#fff"] {
-  fill: #1e293b !important;
-  stroke: #475569 !important;
-  stroke-width: 2px !important;
-}
-
-/* Class diagram boxes - darker backgrounds */
-[data-theme="dark"] .mermaid svg .classGroup rect,
-[data-theme="dark"] .mermaid svg .classGroup [class="rect"] {
-  fill: #1e293b !important;
-  stroke: #475569 !important;
-}
-
-/* Note/annotation boxes */
-[data-theme="dark"] .mermaid svg .note rect,
-[data-theme="dark"] .mermaid svg .noteGroup rect {
-  fill: #1e293b !important;
-  stroke: #475569 !important;
-}
-
-/* State machine state boxes */
-[data-theme="dark"] .mermaid svg .state-box,
-[data-theme="dark"] .mermaid svg [class*="state"] rect {
-  fill: #1e293b !important;
-  stroke: #475569 !important;
-}
-
-/* Sequence diagram participant/actor boxes */
-[data-theme="dark"] .mermaid svg .actor,
-[data-theme="dark"] .mermaid svg .participantBox {
-  fill: #1e293b !important;
-  stroke: #475569 !important;
-}
-
-/* Activity diagram boxes */
-[data-theme="dark"] .mermaid svg [class*="activity"] rect {
-  fill: #1e293b !important;
-  stroke: #475569 !important;
-}
-
-/* Entity relationship diagram boxes */
-[data-theme="dark"] .mermaid svg .entityBox {
-  fill: #1e293b !important;
-  stroke: #475569 !important;
-}
-
-/* Improve line/stroke visibility in dark mode */
-[data-theme="dark"] .mermaid svg line[stroke="#333"],
-[data-theme="dark"] .mermaid svg line[stroke="#333333"],
-[data-theme="dark"] .mermaid svg line[stroke="#999"],
-[data-theme="dark"] .mermaid svg line[stroke="#999999"] {
-  stroke: #cbd5e1 !important;
-  stroke-width: 1.5px !important;
-}
-
-[data-theme="dark"] .mermaid svg path[stroke="#333"],
-[data-theme="dark"] .mermaid svg path[stroke="#333333"],
-[data-theme="dark"] .mermaid svg path[stroke="#999"],
-[data-theme="dark"] .mermaid svg path[stroke="#999999"] {
-  stroke: #cbd5e1 !important;
-  stroke-width: 1.5px !important;
-}
-
-/* Connection and transition lines */
-[data-theme="dark"] .mermaid svg g > path[stroke] {
-  stroke: #cbd5e1 !important;
-  stroke-width: 1.5px !important;
-}
-
-/* Arrow heads and markers */
-[data-theme="dark"] .mermaid svg marker {
-  overflow: visible;
-}
-
-[data-theme="dark"] .mermaid svg marker path[stroke="#333"],
-[data-theme="dark"] .mermaid svg marker path[stroke="#333333"],
-[data-theme="dark"] .mermaid svg marker path[fill="#333"],
-[data-theme="dark"] .mermaid svg marker path[fill="#333333"] {
-  fill: #cbd5e1 !important;
-  stroke: #cbd5e1 !important;
-}
-
-/* Ensure text is light on dark backgrounds */
-[data-theme="dark"] .mermaid svg text,
-[data-theme="dark"] .mermaid svg tspan {
-  fill: #f1f5f9 !important;
-  font-weight: 500;
-}
-
-/* Darker fills that need light text */
-[data-theme="dark"] .mermaid svg [fill="#E3F2FD"] text,
-[data-theme="dark"] .mermaid svg [fill="#E3F2FD"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#F3E5F5"] text,
-[data-theme="dark"] .mermaid svg [fill="#F3E5F5"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#E8F5E9"] text,
-[data-theme="dark"] .mermaid svg [fill="#E8F5E9"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#FFF9C4"] text,
-[data-theme="dark"] .mermaid svg [fill="#FFF9C4"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#FFE082"] text,
-[data-theme="dark"] .mermaid svg [fill="#FFE082"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#FFCCBC"] text,
-[data-theme="dark"] .mermaid svg [fill="#FFCCBC"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#BBDEFB"] text,
-[data-theme="dark"] .mermaid svg [fill="#BBDEFB"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#C8E6C9"] text,
-[data-theme="dark"] .mermaid svg [fill="#C8E6C9"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#FFF3E0"] text,
-[data-theme="dark"] .mermaid svg [fill="#FFF3E0"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#FFEBEE"] text,
-[data-theme="dark"] .mermaid svg [fill="#FFEBEE"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#E1F5FE"] text,
-[data-theme="dark"] .mermaid svg [fill="#E1F5FE"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#FCE4EC"] text,
-[data-theme="dark"] .mermaid svg [fill="#FCE4EC"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#B3E5FC"] text,
-[data-theme="dark"] .mermaid svg [fill="#B3E5FC"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#FFAB91"] text,
-[data-theme="dark"] .mermaid svg [fill="#FFAB91"] tspan,
-[data-theme="dark"] .mermaid svg [fill="#F0F4C3"] text,
-[data-theme="dark"] .mermaid svg [fill="#F0F4C3"] tspan {
-  fill: #0f172a !important;
-  font-weight: 600 !important;
-}
-
-/* Label background improvements */
-[data-theme="dark"] .mermaid svg .label {
-  background: transparent;
-}
-
-/* Ensure foreign objects (containing HTML) are readable */
-[data-theme="dark"] .mermaid svg foreignObject {
-  background: #1e293b;
-}
-
