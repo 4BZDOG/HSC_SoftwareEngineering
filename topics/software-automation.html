@@ -285,7 +285,11 @@
 
           <!-- Decision Tree Diagram -->
           <div class="diagram-block">
-            <h4>🌳 Email <span class="diagram-highlight">Spam Detection</span> Decision Tree</h4>
+            <h4>🌳 Decision Tree - Email Spam Detection</h4>
+            <p class="diagram-subtitle">Multi-level heuristic classification logic</p>
+            <p class="diagram-description">
+              This decision tree shows how email filtering systems classify messages as spam or legitimate using sequential heuristic checks: Does it contain urgency keywords? Are suspicious links present? Is the sender authenticated? Each path follows decision points, accumulating confidence levels. This demonstrates how automated systems make complex decisions through multiple rule-based checks.
+            </p>
             <div class="mermaid">
               graph TD
                   A["Contains 'FREE'<br/>or 'URGENT'?"] -->|Yes| B["All CAPS<br/>words > 50%?"]
@@ -343,7 +347,11 @@
 
           <!-- Neural Network Topology Diagram -->
           <div class="diagram-block">
-            <h4>🕸️ Neural Network <span class="diagram-highlight">Architecture</span>: Loan Approval Prediction</h4>
+            <h4>🕸️ System Diagram - Neural Network Architecture</h4>
+            <p class="diagram-subtitle">Deep learning model for loan approval prediction</p>
+            <p class="diagram-description">
+              This diagram shows a neural network's structure: input features (age, income, credit score, debt ratio) flow through hidden layers where neurons learn patterns using ReLU activation functions. The output layer uses sigmoid activation to produce a probability between 0 and 1, representing the predicted likelihood of loan approval. This demonstrates how machine learning automates decision-making.
+            </p>
             <div class="mermaid">
               graph LR
                   I["INPUT LAYER<br/>━━━━━━━━<br/>Age<br/>Income<br/>Credit Score<br/>Debt Ratio"]

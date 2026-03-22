@@ -157,7 +157,11 @@
 
           <!-- DNS Resolution Diagram -->
           <div class="diagram-block">
-            <h4>🌐 DNS <span class="diagram-highlight">Resolution</span> Process</h4>
+            <h4>🌐 Sequence Diagram - DNS Resolution</h4>
+            <p class="diagram-subtitle">Understanding hierarchical DNS resolver network</p>
+            <p class="diagram-description">
+              This diagram shows how domain names are translated to IP addresses through a hierarchical DNS resolver network. The user's browser first checks its local cache. If the domain isn't cached, it queries the ISP resolver, which recursively queries the Root Name Server, TLD server, and finally the Authoritative Name Server to obtain the IP address.
+            </p>
             <div class="mermaid">
               sequenceDiagram
                 participant User as 👤 User<br/>Browser
@@ -187,7 +191,7 @@
                 User->>User: Browser connects<br/>to 142.250.70.142
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Understand how domain names are translated to IP addresses through a hierarchical DNS resolver network<br>
+              <strong>Purpose:</strong> Trace the DNS resolution process from browser cache check through recursive queries to the authoritative name server<br>
               <strong>Syllabus Link:</strong> SE-12-05<br>
               <strong>Try This:</strong> Use `nslookup` or `dig` command to query DNS servers and observe the resolution path for different domains
             </p>
@@ -195,7 +199,11 @@
 
           <!-- HTTP Request/Response Diagram -->
           <div class="diagram-block">
-            <h4>📨 HTTP <span class="diagram-highlight">Request/Response</span> Sequence</h4>
+            <h4>📨 Sequence Diagram - HTTP Communication</h4>
+            <p class="diagram-subtitle">Client-server request-response cycle</p>
+            <p class="diagram-description">
+              This diagram shows how HTTP requests flow from the browser to the server, trigger database queries, and return responses that the browser renders. It demonstrates both simple data retrieval (GET requests) and form submission with file upload (POST requests), showing how the server processes user interaction and redirects to a success page.
+            </p>
             <div class="mermaid">
               sequenceDiagram
                 participant Browser as 🌐 Browser
@@ -220,7 +228,7 @@
                 Server-->>Browser: HTTP 200 Success page
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Visualize the complete HTTP request/response cycle. The browser initiates requests, the server processes them, and the browser renders the response.<br>
+              <strong>Purpose:</strong> Understand the HTTP request/response cycle from user action to server processing to browser rendering<br>
               <strong>Syllabus Link:</strong> SE-12-03<br>
               <strong>Try This:</strong> Open browser DevTools (F12), go to Network tab, refresh the page, and watch the actual HTTP requests and responses happen in real-time!
             </p>
@@ -301,7 +309,11 @@
 
           <!-- Protocol Stack Diagram -->
           <div class="diagram-block">
-            <h4>🏗️ Web <span class="diagram-highlight">Protocol Stack</span> / OSI Layers</h4>
+            <h4>🏗️ Diagram - Web Protocol Stack (OSI Layers)</h4>
+            <p class="diagram-subtitle">Layered abstraction of network communication</p>
+            <p class="diagram-description">
+              This diagram shows how web protocols are layered, with each layer providing services to the layer above it. HTTP/HTTPS at the application layer relies on TCP for reliable transmission, which relies on IP for routing, which relies on physical layers like Ethernet. Understanding this stack helps explain how the web works from user-facing protocols down to electrical signals.
+            </p>
             <div class="mermaid">
               graph TB
                 A["🌐 HTTP/HTTPS<br/>Port 80/443<br/>Web protocol<br/>What: URLs, requests, responses"]
@@ -322,7 +334,7 @@
                 style E fill:#FCE4EC,stroke:#C2185B,stroke-width:2px
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Show how web protocols stack on top of each other. Each layer uses the layer below it and provides services to the layer above.<br>
+              <strong>Purpose:</strong> Understand how each protocol layer provides abstraction and services to layers above it<br>
               <strong>Syllabus Link:</strong> SE-12-03<br>
               <strong>Try This:</strong> Trace a single HTTP request down the stack — how many layers does it pass through to reach the wire?
             </p>
@@ -353,7 +365,11 @@
 
           <!-- Session Management and JWT Diagram -->
           <div class="diagram-block">
-            <h4>🔐 Session Management with <span class="diagram-highlight">JWT Tokens</span></h4>
+            <h4>🔐 Sequence Diagram - Session Management</h4>
+            <p class="diagram-subtitle">Stateless authentication with JWT tokens</p>
+            <p class="diagram-description">
+              This diagram shows stateless session management using JWT tokens instead of server-side sessions. On login, the server creates a JWT containing the user's ID and role, signs it cryptographically, and sends it to the browser. For subsequent requests, the browser includes the JWT in the Authorization header. The server verifies the signature and expiration to authenticate the user without accessing the database.
+            </p>
             <div class="mermaid">
               sequenceDiagram
                 participant Browser as 🌐 Browser
@@ -391,7 +407,7 @@
                 end
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Understand stateless session management using JSON Web Tokens (JWT) and password hashing with bcrypt<br>
+              <strong>Purpose:</strong> Trace stateless authentication flow with JWT tokens and password verification<br>
               <strong>Syllabus Link:</strong> SE-12-04, SE-12-07<br>
               <strong>Try This:</strong> Implement JWT-based authentication in a Python Flask or Node.js Express app and trace the token through multiple requests
             </p>
@@ -472,7 +488,11 @@
 
           <!-- Data Flow Diagram for Web System -->
           <div class="diagram-block">
-            <h4>📊 Web System <span class="diagram-highlight">Data Flow Diagram</span></h4>
+            <h4>📊 Data Flow Diagram - Web System</h4>
+            <p class="diagram-subtitle">Understanding DFD notation and multi-tier architecture</p>
+            <p class="diagram-description">
+              This diagram shows how data flows through a web system using DFD notation. External entities (users and APIs) interact with processes (browser, server, authentication service) which access data stores (database). Each arrow shows the type of data flowing between components, demonstrating the separation of concerns and data dependencies in a three-tier architecture.
+            </p>
             <div class="mermaid">
               graph LR
                 User["👤 USER<br/>─────────<br/>External Entity"]
@@ -501,7 +521,7 @@
                 style API fill:#FFCCBC,stroke:#E64A19,stroke-width:2px
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Show how data flows through a web system using DFD notation — External Entities (rectangles) are users or external systems; Processes (circles/rounded boxes) are computations or services; Data Stores (open rectangles) hold persistent data; Data Flows (arrows) show movement of data between elements<br>
+              <strong>Purpose:</strong> Model data flow through a complete web system with external entities, processes, and data stores<br>
               <strong>Syllabus Link:</strong> SE-12-02<br>
               <strong>Try This:</strong> Create a DFD for an e-commerce system showing order flow from customer → shopping cart → payment processor → inventory database → shipping notification
             </p>
@@ -756,7 +776,11 @@ git merge feature/user-login</code></pre>
 
           <!-- CMS Architecture Comparison Diagram -->
           <div class="diagram-block">
-            <h4>🏗️ CMS <span class="diagram-highlight">Architecture</span>: Coupled vs Headless</h4>
+            <h4>🏗️ Data Flow Diagram - CMS Architecture</h4>
+            <p class="diagram-subtitle">Comparing coupled vs headless approaches</p>
+            <p class="diagram-description">
+              This diagram contrasts traditional monolithic CMS with headless CMS architecture. Traditional systems tightly couple the back-end database and logic to a single front-end presentation layer. Headless CMS decouples the back-end API from the presentation layer, allowing the same content API to serve multiple front-ends (web, mobile, IoT, etc.) independently.
+            </p>
             <div class="mermaid">
               graph TB
                   subgraph Traditional["Traditional CMS<br/>━━━━━━━━━━━━━━━"]
@@ -791,7 +815,7 @@ git merge feature/user-login</code></pre>
                   style HFE3 fill:#F8BBD0,stroke:#C2185B
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Compare traditional monolithic CMS architecture with headless CMS approach showing flexibility in serving multiple front-ends<br>
+              <strong>Purpose:</strong> Understand architectural differences and why headless CMS provides flexibility for multiple platforms<br>
               <strong>Syllabus Link:</strong> SE-12-06<br>
               <strong>Try This:</strong> Deploy a headless CMS (e.g., Strapi) and consume its API from both a web front-end and a mobile app to experience the flexibility
             </p>

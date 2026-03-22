@@ -196,7 +196,11 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
 
           <!-- OOP vs Procedural Comparison Diagram -->
           <div class="diagram-block">
-            <h4>⚖️ Procedural vs Object-Oriented Paradigm Comparison</h4>
+            <h4>⚖️ Diagram - Programming Paradigm Comparison</h4>
+            <p class="diagram-subtitle">Contrasting procedural and object-oriented approaches</p>
+            <p class="diagram-description">
+              This diagram compares two major programming paradigms. Procedural programming focuses on "how" — breaking problems into functions and procedures with separate data and logic. Object-Oriented programming focuses on "what" — modeling problems as objects that encapsulate both data and behavior. Both approaches share benefits like modularity, reusability, and maintainability.
+            </p>
             <div class="mermaid">
               graph LR
                 A["Procedural<br/>━━━━━━<br/>• Functions<br/>• Global data<br/>• Top-down design<br/>• Focus: How<br/>• Data separate<br/>  from logic"] --> B["Shared<br/>━━━━━━<br/>• Modular code<br/>• Reusability<br/>• Structured<br/>• Maintainability"]
@@ -208,7 +212,7 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
                 style C fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Visually compare the two major programming paradigms. Procedural focuses on \"how\" to do things through functions, while OOP focuses on \"what\" things are through objects. Both share modular, structured, and maintainable approaches.<br>
+              <strong>Purpose:</strong> Compare the fundamental differences between procedural and OOP paradigms<br>
               <strong>Syllabus Link:</strong> SE-11-02<br>
               <strong>Try This:</strong> Think of a project you know. Would procedural or OOP be better? Why? List the advantages that matter most for your use case.
             </p>
@@ -255,7 +259,11 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
 
           <!-- Encapsulation Access Control Diagram -->
           <div class="diagram-block">
-            <h4>🔐 Encapsulation: <span class="diagram-highlight">Access Control</span> and Data Hiding</h4>
+            <h4>🔐 Diagram - Encapsulation</h4>
+            <p class="diagram-subtitle">Public, protected, and private access control</p>
+            <p class="diagram-description">
+              This diagram shows how encapsulation uses access modifiers (public, protected, private) to control data visibility and prevent unauthorized modification. External code can access public interfaces but is protected from private implementation details. This separation allows internal implementation changes without breaking external code.
+            </p>
             <div class="mermaid">
               graph TB
                   subgraph BankAccount["BankAccount Class<br/>━━━━━━━━━━━"]
@@ -290,7 +298,11 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
 
           <!-- OOP Class Diagram -->
           <div class="diagram-block">
-            <h4>🧱 <span class="diagram-highlight">Class Hierarchy</span> Example — Vehicle System</h4>
+            <h4>🧱 Class Diagram - Vehicle System Hierarchy</h4>
+            <p class="diagram-subtitle">Inheritance and polymorphism in action</p>
+            <p class="diagram-description">
+              This class diagram shows a vehicle inheritance hierarchy where Vehicle is the parent class defining common properties (manufacturer, speed) and methods. Car and Truck inherit from Vehicle and add specialized attributes (numDoors, cargoCapacity). Both override the start() method differently, demonstrating polymorphism — same method name, different behavior depending on the subclass.
+            </p>
             <div class="mermaid">
               classDiagram
                 class Vehicle {
@@ -470,7 +482,11 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
 
           <!-- Message Passing Sequence Diagram -->
           <div class="diagram-block">
-            <h4>📨 <span class="diagram-highlight">Message-Passing</span> Between Objects</h4>
+            <h4>📨 Sequence Diagram - Message-Passing</h4>
+            <p class="diagram-subtitle">Objects communicating through method calls</p>
+            <p class="diagram-description">
+              This sequence diagram shows how objects communicate by passing messages (method calls). The MainClass sends a "createAccount()" message to BankAccount, which initializes state. Then MainClass sends "withdraw(500)" and BankAccount responds with the result. The caller never needs to know how the bank account handles the withdrawal — encapsulation hides implementation details.
+            </p>
             <div class="mermaid">
               sequenceDiagram
                 participant Client as 👤 Client Code

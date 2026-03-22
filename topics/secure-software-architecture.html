@@ -196,7 +196,11 @@
 
           <!-- Secure SDLC Diagram -->
           <div class="diagram-block">
-            <h4>🔐 Secure <span class="diagram-highlight">SDLC</span> with Security Checkpoints</h4>
+            <h4>🔐 Flowchart - Secure SDLC</h4>
+            <p class="diagram-subtitle">Security gates at each development phase</p>
+            <p class="diagram-description">
+              This flowchart shows the Secure SDLC with mandatory security review gates at each phase: requirements security review, threat modeling at design, code review before development, and penetration testing before deployment. The feedback loops demonstrate how security issues must be resolved before proceeding.
+            </p>
             <div class="mermaid">
               flowchart TD
                 START(["🚀 START<br/>Begin SDLC"]) --> A["📋 Requirements"]
@@ -321,7 +325,11 @@
 
           <!-- Risk Assessment and CIA Triad Diagram -->
           <div class="diagram-block">
-            <h4>⚠️ Risk Assessment: Threats Mapped to <span class="diagram-highlight">Security</span> Concepts</h4>
+            <h4>⚠️ Diagram - Risk Assessment</h4>
+            <p class="diagram-subtitle">Identifying vulnerabilities through CIA framework</p>
+            <p class="diagram-description">
+              This diagram maps security threats to fundamental security principles. The CIA Triad (Confidentiality, Integrity, Availability) plus Authentication and Accountability form the foundation of security assessment. Common threats like phishing, malware, and DoS attacks target specific aspects of this framework, helping identify where vulnerabilities and risks exist.
+            </p>
             <div class="mermaid">
               graph TB
                   subgraph CIA["The CIA Triad + AAA"]
@@ -412,7 +420,11 @@
 
           <!-- Threat Model Diagram -->
           <div class="diagram-block">
-            <h4>🎯 Threat Model: Data Flow with <span class="diagram-highlight">Attack Vectors</span></h4>
+            <h4>🎯 Threat Model - Web Application</h4>
+            <p class="diagram-subtitle">Identifying attack vectors in data flow</p>
+            <p class="diagram-description">
+              This diagram shows common attack vectors at each stage of data flow in a web application: XSS in the browser, MITM attacks over the network, SQL injection at the database layer, and authentication bypass. Each threat is paired with concrete mitigation strategies to demonstrate defense-in-depth principles.
+            </p>
             <div class="mermaid">
               graph TB
                   User["👤 User<br/>Browser"]
@@ -445,7 +457,11 @@
 
           <!-- Secure Data Flow Diagram -->
           <div class="diagram-block">
-            <h4>🔐 Secure System <span class="diagram-highlight">Data Flow</span> (Level 0 DFD)</h4>
+            <h4>🔐 Data Flow Diagram - Secure System (Level 0)</h4>
+            <p class="diagram-subtitle">Security controls embedded in architecture</p>
+            <p class="diagram-description">
+              This Level 0 Data Flow Diagram shows a secure system architecture with security controls integrated at each point: TLS encryption for network communication, OAuth for authentication, parameterized queries to prevent SQL injection, and audit logging for accountability. It demonstrates how security-by-design principles ensure data protection throughout the system.
+            </p>
             <div class="mermaid">
               graph LR
                 Customer["👤 CUSTOMER<br/>─────────<br/>External Entity"]
