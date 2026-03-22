@@ -1785,6 +1785,37 @@ footer {
   background: rgba(255, 255, 255, 0.18);
 }
 
+/* Diagram subtitle for secondary information */
+.diagram-subtitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0.75rem 0 0 0;
+  font-style: italic;
+  letter-spacing: -0.2px;
+}
+
+[data-theme="dark"] .diagram-subtitle {
+  color: #cbd5e1;
+}
+
+/* Description section above mermaid diagram */
+.diagram-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 1.25rem 0 1.5rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--surface-hover);
+  border-left: 3px solid var(--primary);
+  border-radius: var(--radius-md);
+  line-height: 1.6;
+}
+
+[data-theme="dark"] .diagram-description {
+  background: rgba(99, 102, 241, 0.04);
+  border-left-color: #6366F1;
+}
+
 .diagram-figure {
   margin: 2rem 0;
   text-align: center;

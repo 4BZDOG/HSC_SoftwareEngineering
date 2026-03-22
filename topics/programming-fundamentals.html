@@ -156,7 +156,11 @@
 
           <!-- SDLC Flowchart Diagram -->
           <div class="diagram-block">
-            <h4>📊 SDLC <span class="diagram-highlight">Process Flow</span> Diagram</h4>
+            <h4>📊 Flowchart - SDLC Process</h4>
+            <p class="diagram-subtitle">Seven phases of software development lifecycle</p>
+            <p class="diagram-description">
+              This flowchart shows the complete Software Development Lifecycle (SDLC) from Requirements through Maintenance. Each phase builds on the previous one, and the feedback loop from Maintenance back to Requirements demonstrates that software development is iterative — improvements and bug fixes cycle through the process continuously.
+            </p>
             <div class="mermaid">
               flowchart TD
                 START(["🚀 START<br/>Begin Project"]) --> A["📋 Requirements<br/>Identify needs"]
@@ -184,7 +188,7 @@
                 style END fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Visualize the complete SDLC phases showing how each stage builds on the previous one. Notice the feedback loop from Maintenance back to Requirements, showing that software development is iterative and continuous.<br>
+              <strong>Purpose:</strong> Understand the iterative SDLC phases and feedback loops that drive continuous improvement<br>
               <strong>Syllabus Link:</strong> SE-11-01<br>
               <strong>Try This:</strong> Identify which SDLC phases would apply to a project you're working on. Mark which phase your project is currently in.
             </p>
@@ -327,7 +331,11 @@ END FUNCTION</code></pre>
 
           <!-- Linear Search Algorithm Flowchart -->
           <div class="diagram-block">
-            <h4>🔍 Linear <span class="diagram-highlight">Search</span> Algorithm Flowchart</h4>
+            <h4>📈 Flowchart - Linear Search</h4>
+            <p class="diagram-subtitle">Sequential search through array elements</p>
+            <p class="diagram-description">
+              This flowchart shows how the linear search algorithm works: it starts at index 0 and checks each element against the target value. If a match is found, it returns the index. If the end of the list is reached without finding the target, it returns -1. The loop structure demonstrates the iterative nature of sequential searching.
+            </p>
             <div class="mermaid">
               flowchart TD
                 A(["🔍 START<br/>Analyze target"]) --> B["🔄 Loop Start<br/>Initialize index=0"]
@@ -351,7 +359,7 @@ END FUNCTION</code></pre>
                 style G fill:#e0f0ff,color:#000,stroke:#0277bd,stroke-width:1px
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Show how linear search scans through each item in a list until finding the target. Notice the loop structure and decision points that verify both position validity and item match.<br>
+              <strong>Purpose:</strong> Understand the loop structure and decision points that enable sequential searching<br>
               <strong>Syllabus Link:</strong> SE-11-02<br>
               <strong>Try This:</strong> Trace through this flowchart manually with a sample list like [5, 2, 8, 1, 9] searching for target=8. Count how many steps it takes.
             </p>
@@ -374,7 +382,11 @@ END FUNCTION</code></pre>
 
           <!-- ATM Structure Chart Diagram -->
           <div class="diagram-block">
-            <h4>🏦 ATM System Structure Chart Example</h4>
+            <h4>🏦 Structure Chart - ATM System</h4>
+            <p class="diagram-subtitle">Top-down module decomposition</p>
+            <p class="diagram-description">
+              This structure chart shows hierarchical decomposition of an ATM system. The main module delegates specialized tasks to child modules. Each arrow shows how data (🔘), control flags (⚫), decisions (🔷), or repetition (🔁) flow between modules according to course specifications. This organization reveals dependencies and communication patterns.
+            </p>
             <div class="mermaid">
               graph TD
                 Main["🏦 ATM System<br/>Main Module<br/>─────────────<br/>Start/Shutdown"]
@@ -409,7 +421,7 @@ END FUNCTION</code></pre>
                 style Query fill:#FF9800,color:#fff
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Show how a system breaks down into modules (top-down decomposition). The main module delegates to specialized submodules, which further break down into specific tasks. This reveals dependencies and shows which modules need to communicate.<br>
+              <strong>Purpose:</strong> Understand modular decomposition and how modules communicate through parameters and control signals<br>
               <strong>Syllabus Link:</strong> SE-11-02<br>
               <strong>Try This:</strong> Create a similar structure chart for a school enrollment system with modules like StudentRegistration, EnrollmentProcessing, and FeeManagement.
             </p>
