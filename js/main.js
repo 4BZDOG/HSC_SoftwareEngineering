@@ -4,6 +4,17 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* ── Skip Link (Accessibility) ── */
+  const mainContent = document.querySelector('.main-content, .content-body, main');
+  if (mainContent) {
+    if (!mainContent.id) mainContent.id = 'main-content';
+    const skipLink = document.createElement('a');
+    skipLink.href = '#' + mainContent.id;
+    skipLink.className = 'skip-link';
+    skipLink.textContent = 'Skip to main content';
+    document.body.insertBefore(skipLink, document.body.firstChild);
+  }
+
   /* ── Theme Toggle ── */
   const THEME_KEY = 'hsc-theme';
   const saved = localStorage.getItem(THEME_KEY) ||
@@ -95,6 +106,24 @@ document.addEventListener('DOMContentLoaded', () => {
       updateProgress();
     }
   }
+
+  /* ── Scroll-to-Top Button ── */
+  const scrollBtn = document.createElement('button');
+  scrollBtn.className = 'scroll-top-btn';
+  scrollBtn.setAttribute('aria-label', 'Scroll to top');
+  scrollBtn.innerHTML = '&#8593;'; // ↑ arrow
+  document.body.appendChild(scrollBtn);
+
+  const SCROLL_THRESHOLD = 400;
+  const updateScrollBtn = () => {
+    scrollBtn.classList.toggle('visible', window.scrollY > SCROLL_THRESHOLD);
+  };
+  window.addEventListener('scroll', updateScrollBtn, { passive: true });
+  updateScrollBtn();
+
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
   /* ── Diagram Enhancements ── */
   document.querySelectorAll('.diagram-block').forEach((block, idx) => {
