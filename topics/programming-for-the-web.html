@@ -470,6 +470,43 @@
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-06)</em></p>
           <p>📌 <em><strong>Model</strong> the elements that form a complete web development system, including the client, server, and database tiers.</em></p>
 
+          <!-- Data Flow Diagram for Web System -->
+          <div class="diagram-block">
+            <h4>📊 Web System <span class="diagram-highlight">Data Flow Diagram</span></h4>
+            <div class="mermaid">
+              graph LR
+                User["👤 USER<br/>─────────<br/>External Entity"]
+                Browser["🌐 Web Browser<br/>─────────<br/>Process"]
+                Server["🖥️ Web Server<br/>─────────<br/>Process"]
+                Auth["🔐 Auth Service<br/>─────────<br/>Process"]
+                DB["💾 Database<br/>─────────<br/>Data Store"]
+                API["📡 External API<br/>─────────<br/>External Entity"]
+
+                User -->|HTTP Request<br/>User Input| Browser
+                Browser -->|HTTP GET/POST<br/>Form Data| Server
+                Server -->|Verify Credentials| Auth
+                Auth -->|Session Valid| Server
+                Server -->|SQL Query<br/>SELECT/INSERT| DB
+                DB -->|Records<br/>User Data| Server
+                Server -->|API Call<br/>REST Request| API
+                API -->|JSON Response<br/>Data| Server
+                Server -->|HTTP 200<br/>HTML/JSON| Browser
+                Browser -->|Render Page<br/>Display Results| User
+
+                style User fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+                style Browser fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+                style Server fill:#FFE082,stroke:#F57F17,stroke-width:2px
+                style Auth fill:#F8BBD0,stroke:#C2185B,stroke-width:2px
+                style DB fill:#C8E6C9,stroke:#2E7D32,stroke-width:3px
+                style API fill:#FFCCBC,stroke:#E64A19,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Show how data flows through a web system using DFD notation — External Entities (rectangles) are users or external systems; Processes (circles/rounded boxes) are computations or services; Data Stores (open rectangles) hold persistent data; Data Flows (arrows) show movement of data between elements<br>
+              <strong>Syllabus Link:</strong> SE-12-02<br>
+              <strong>Try This:</strong> Create a DFD for an e-commerce system showing order flow from customer → shopping cart → payment processor → inventory database → shipping notification
+            </p>
+          </div>
+
           <h3>Client-Side (Front-End) Web Programming</h3>
           <p>The <strong>client side</strong> refers to all code that executes within the user's web browser. Front-end code consists of three complementary technologies: <strong>HTML</strong> (structure and content), <strong>CSS</strong> (visual presentation and layout), and <strong>JavaScript</strong> (interactivity and dynamic behaviour). The browser downloads these files from the server, parses them, and renders the visual page. Client-side code is visible to the user (via browser dev tools) and should never contain sensitive data such as API keys or database credentials.</p>
 

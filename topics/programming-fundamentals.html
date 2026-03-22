@@ -379,24 +379,24 @@ END FUNCTION</code></pre>
               graph TD
                 Main["🏦 ATM System<br/>Main Module<br/>─────────────<br/>Start/Shutdown"]
 
-                Main --> Auth["🔐 Authenticate User<br/>━━━━━━━━━━━<br/>Verify credentials"]
-                Main --> Menu["📋 Display Menu<br/>━━━━━━━━━━━<br/>Show options"]
-                Main --> Trans["💳 Process Transaction<br/>━━━━━━━━━━━<br/>Handle request"]
-                Main --> Disp["💵 Dispense Cash<br/>━━━━━━━━━━━<br/>Deliver money"]
+                Main -->|🔘 user_id| Auth["🔐 Authenticate User<br/>━━━━━━━━━━━<br/>Verify credentials"]
+                Main -->|⚫ valid| Menu["📋 Display Menu<br/>━━━━━━━━━━━<br/>Show options"]
+                Main -->|🔘 choice| Trans["💳 Process Transaction<br/>━━━━━━━━━━━<br/>Handle request"]
+                Main -->|⚫ approved| Disp["💵 Dispense Cash<br/>━━━━━━━━━━━<br/>Deliver money"]
 
-                Auth --> VerifyPIN["🔑 Verify PIN<br/>Check database"]
-                Auth --> CheckCard["💳 Check Card<br/>Validity check"]
+                Auth -->|🔘 pin| VerifyPIN["🔑 Verify PIN<br/>Check database"]
+                Auth -->|🔘 card_num| CheckCard["💳 Check Card<br/>Validity check"]
 
-                Trans --> Withdraw["💸 Withdraw<br/>Debit account"]
-                Trans --> Deposit["📥 Deposit<br/>Credit account"]
-                Trans --> Balance["📊 Check Balance<br/>Query account"]
+                Trans -->|🔷 choice=1| Withdraw["💸 Withdraw<br/>Debit account"]
+                Trans -->|🔷 choice=2| Deposit["📥 Deposit<br/>Credit account"]
+                Trans -->|🔷 choice=3| Balance["📊 Check Balance<br/>Query account"]
 
-                Withdraw --> Update1["🔄 Update Account<br/>Apply transaction"]
-                Deposit --> Update2["🔄 Update Account<br/>Apply transaction"]
-                Balance --> Query["📖 Query Database<br/>Fetch balance"]
+                Withdraw -->|🔘 amount| Update1["🔄 Update Account<br/>Apply transaction"]
+                Deposit -->|🔘 amount| Update2["🔄 Update Account<br/>Apply transaction"]
+                Balance -->|🔘 acct_id| Query["📖 Query Database<br/>Fetch balance"]
 
-                Update1 --> Record["📝 Record Transaction<br/>Audit log"]
-                Update2 --> Record["📝 Record Transaction<br/>Audit log"]
+                Update1 -->|🔁 repeat| Record["📝 Record Transaction<br/>Audit log"]
+                Update2 -->|🔁 repeat| Record["📝 Record Transaction<br/>Audit log"]
 
                 style Main fill:#4CAF50,color:#fff,stroke:#2E7D32,stroke-width:3px
                 style Auth fill:#2196F3,color:#fff
