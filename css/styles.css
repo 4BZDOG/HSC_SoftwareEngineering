@@ -981,18 +981,12 @@ h2.syllabus-phase:hover .section-chevron {
 .part-group {
   display: grid;
   grid-template-rows: 1fr;
-  transition: grid-template-rows 420ms cubic-bezier(.4,0,.2,1),
-              background 260ms cubic-bezier(.4,0,.2,1),
-              border-radius 260ms cubic-bezier(.4,0,.2,1);
-  background: linear-gradient(135deg, var(--primary-light) 0%, rgba(139,92,246,.06) 100%);
-  border-radius: var(--radius-lg);
+  transition: grid-template-rows 420ms cubic-bezier(.4,0,.2,1);
   margin: 1rem 0;
 }
 
 .part-group.part-collapsed {
   grid-template-rows: 0fr;
-  background: transparent;
-  border-radius: 0;
   margin: 0;
 }
 
@@ -1000,6 +994,15 @@ h2.syllabus-phase:hover .section-chevron {
   min-height: 0;
   overflow: hidden;
   padding: 1.5rem 0;
+  background: linear-gradient(135deg, var(--primary-light) 0%, rgba(139,92,246,.06) 100%);
+  border-radius: var(--radius-lg);
+  transition: background 260ms cubic-bezier(.4,0,.2,1),
+              border-radius 260ms cubic-bezier(.4,0,.2,1);
+}
+
+.part-group.part-collapsed .part-group-inner {
+  background: transparent;
+  border-radius: 0;
 }
 
 [data-theme="dark"] .part-block {
