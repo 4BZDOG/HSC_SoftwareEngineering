@@ -919,38 +919,46 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
 
       mermaid.contentLoaded();
 
-      // Enhanced SVG contrast correction after rendering
+      // Tinted dark mode color correction after rendering
       setTimeout(() => {
         if (isDark) {
-          const lightFills = ['#E3F2FD', '#F3E5F5', '#E8F5E9', '#FFF9C4', '#FFE082', '#FFCCBC', '#BBDEFB', '#C8E6C9', '#FFF3E0', '#FFEBEE', '#E1F5FE', '#FCE4EC', '#B3E5FC', '#FFAB91', '#F0F4C3'];
+          const darkFillMap = {
+            '#e3f2fd': '#172340', '#bbdefb': '#172340', '#e1f5ff': '#172340', '#b3e5fc': '#172340', '#e1f5fe': '#172340',
+            '#e8f5e9': '#17291c', '#c8e6c9': '#17291c', '#f1f8e9': '#17291c',
+            '#fff9c4': '#2a2617', '#ffe082': '#2a2617',
+            '#ffcdd2': '#2e1a1f', '#fce4ec': '#2e1a1f', '#ffebee': '#2e1a1f',
+            '#f3e5f5': '#231730', '#ede7f6': '#231730',
+            '#ffccbc': '#2e2217', '#fff3e0': '#2e2217', '#ffab91': '#2e2217', '#ffb347': '#2e2217', '#ffe4b5': '#2e2217',
+            '#f8bbd0': '#2e1a24',
+            '#90ee90': '#1a3a1a',
+            '#f0f4c3': '#262917',
+            '#87ceeb': '#172a3a',
+            '#e0f2f1': '#1e293b', '#eceff1': '#1e293b', '#f5f5f5': '#1e293b',
+            '#e0e7ff': '#1e2a4a', '#ddd6fe': '#231740', '#c7d2fe': '#1e2a4a',
+            '#f0f4ff': '#1a2340'
+          };
 
-          // Fix light fill backgrounds to dark
+          // Map light node fills to tinted dark variants
           document.querySelectorAll('.mermaid svg [fill]').forEach(el => {
             const fill = el.getAttribute('fill');
-            if (fill && lightFills.includes(fill?.toUpperCase())) {
-              el.setAttribute('fill', '#1e293b');
+            if (fill) {
+              const mapped = darkFillMap[fill.toLowerCase()];
+              if (mapped) el.setAttribute('fill', mapped);
             }
           });
 
-          // Fix text colors for contrast
+          // Set all text to light color for readability
           document.querySelectorAll('.mermaid svg text, .mermaid svg tspan').forEach(text => {
-            let parent = text.parentElement;
-            let fill = parent ? parent.getAttribute('fill') : null;
-
-            if (lightFills.includes(fill?.toUpperCase())) {
-              text.setAttribute('fill', '#0f172a');
-              text.style.fill = '#0f172a';
-              text.style.fontWeight = '600';
-            } else {
-              text.setAttribute('fill', '#f1f5f9');
-              text.style.fill = '#f1f5f9';
-            }
+            text.setAttribute('fill', '#e2e8f0');
+            text.style.fill = '#e2e8f0';
           });
 
-          // Ensure lines and strokes are visible
-          document.querySelectorAll('.mermaid svg [stroke="#333"], .mermaid svg [stroke="#999"]').forEach(el => {
-            el.setAttribute('stroke', '#cbd5e1');
-            el.setAttribute('stroke-width', el.getAttribute('stroke-width') || '1.5');
+          // Fix dark strokes for visibility
+          document.querySelectorAll('.mermaid svg [stroke]').forEach(el => {
+            const s = el.getAttribute('stroke');
+            if (s && (s.toLowerCase() === '#333' || s.toLowerCase() === '#333333' || s.toLowerCase() === '#999' || s.toLowerCase() === '#999999')) {
+              el.setAttribute('stroke', '#64748b');
+            }
           });
         }
       }, 150);
