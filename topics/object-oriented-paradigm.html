@@ -298,7 +298,11 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
 
           <!-- OOP Class Diagram -->
           <div class="diagram-block">
-            <h4>🧱 <span class="diagram-highlight">Class Hierarchy</span> Example — Vehicle System</h4>
+            <h4>🧱 Class Diagram - Vehicle System Hierarchy</h4>
+            <p class="diagram-subtitle">Inheritance and polymorphism in action</p>
+            <p class="diagram-description">
+              This class diagram shows a vehicle inheritance hierarchy where Vehicle is the parent class defining common properties (manufacturer, speed) and methods. Car and Truck inherit from Vehicle and add specialized attributes (numDoors, cargoCapacity). Both override the start() method differently, demonstrating polymorphism — same method name, different behavior depending on the subclass.
+            </p>
             <div class="mermaid">
               classDiagram
                 class Vehicle {
@@ -478,7 +482,11 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
 
           <!-- Message Passing Sequence Diagram -->
           <div class="diagram-block">
-            <h4>📨 <span class="diagram-highlight">Message-Passing</span> Between Objects</h4>
+            <h4>📨 Sequence Diagram - Message-Passing</h4>
+            <p class="diagram-subtitle">Objects communicating through method calls</p>
+            <p class="diagram-description">
+              This sequence diagram shows how objects communicate by passing messages (method calls). The MainClass sends a "createAccount()" message to BankAccount, which initializes state. Then MainClass sends "withdraw(500)" and BankAccount responds with the result. The caller never needs to know how the bank account handles the withdrawal — encapsulation hides implementation details.
+            </p>
             <div class="mermaid">
               sequenceDiagram
                 participant Client as 👤 Client Code

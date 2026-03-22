@@ -254,7 +254,11 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
 
           <!-- Robot Block Diagram -->
           <div class="diagram-block">
-            <h4>🦾 Mechatronic System <span class="diagram-highlight">Architecture</span></h4>
+            <h4>🦾 System Diagram - Mechatronic System</h4>
+            <p class="diagram-subtitle">Integration of sensors, control, and actuators</p>
+            <p class="diagram-description">
+              This diagram shows the complete flow of a mechatronic system: sensors collect data from the environment, the microcontroller processes that data and makes decisions, actuators execute commands based on the microcontroller's output, and end effectors perform the desired physical action. Power supply feeds all components to enable the entire integrated system.
+            </p>
             <div class="mermaid">
               graph LR
                   A["SENSORS<br/>━━━━━━━━<br/>• Motion (PIR)<br/>• Distance<br/>• Temperature<br/>• Position<br/>• Encoders"]
@@ -413,7 +417,11 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
 
           <!-- Open vs Closed Loop Comparison Diagram -->
           <div class="diagram-block">
-            <h4>🔄 Open vs Closed Loop <span class="diagram-highlight">Control Systems</span></h4>
+            <h4>🔄 Diagram - Control Systems Comparison</h4>
+            <p class="diagram-subtitle">Open-loop vs closed-loop feedback control</p>
+            <p class="diagram-description">
+              This diagram contrasts two control strategies. Open-loop systems execute commands without feedback (like a timed sprinkler), making them simple but unable to adapt. Closed-loop systems continuously sense the current state, compare it to the desired state, and adjust the output (like a thermostat), enabling accurate self-correction but requiring more complexity.
+            </p>
             <div class="mermaid">
               graph TD
                 OL["<b>Open Loop System</b><br/>━━━━━━<br/>COMMAND → ACTUATOR → OUTPUT<br/>(No Feedback)<br/><br/>✓ Simple, fast<br/>✗ No self-correction"]
@@ -460,7 +468,11 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
 
           <!-- Traffic Light FSM Diagram -->
           <div class="diagram-block">
-            <h4>🚦 Traffic Light <span class="diagram-highlight">State Machine</span> with Emergency Override</h4>
+            <h4>🚦 State Diagram - Traffic Light FSM</h4>
+            <p class="diagram-subtitle">State transitions with emergency override logic</p>
+            <p class="diagram-description">
+              This state diagram shows how a traffic light operates as a finite state machine with three states (RED, YELLOW, GREEN). Transitions occur based on timer conditions (30 seconds per state). The emergency override demonstrates responsive systems: when an emergency vehicle is detected, all lights transition to RED immediately, overriding normal timing.
+            </p>
             <div class="mermaid">
               stateDiagram-v2
                   [*] --> RED
