@@ -418,6 +418,41 @@
             </div>
           </div>
 
+          <!-- STRIDE Threat Modelling Flowchart -->
+          <h3>STRIDE Threat Modelling Process</h3>
+          <p>STRIDE is a structured framework for systematically identifying threats to a system. Each letter represents a category of threat that an attacker might exploit. The process follows a repeatable cycle that teams apply to every component in a Data Flow Diagram.</p>
+
+          <pre class="text-diagram">
+STRIDE Threat Modelling Process
+================================
+[Identify Assets]
+       |
+       v
+[Create Data Flow Diagram]
+       |
+       v
+[Apply STRIDE Categories]
+  S - Spoofing Identity
+  T - Tampering with Data
+  R - Repudiation
+  I - Information Disclosure
+  D - Denial of Service
+  E - Elevation of Privilege
+       |
+       v
+[Rate Each Threat] --> [Low]    --> [Document &amp; Monitor]
+       |
+       +-----------&gt; [Medium] --> [Mitigate in Next Sprint]
+       |
+       +-----------&gt; [High]   --> [Fix Before Release]
+       |
+       v
+[Implement Controls]
+       |
+       v
+[Verify &amp; Retest]
+          </pre>
+
           <!-- Threat Model Diagram -->
           <div class="diagram-block">
             <h4>🎯 Threat Model - Web Application</h4>
@@ -652,6 +687,61 @@
               <strong>Try This:</strong> Plan a security testing budget for a startup web app by choosing which combination of testing methods provides the best value
             </p>
           </div>
+
+          <!-- Security Testing Checklist -->
+          <h3>Practical Security Testing Checklist</h3>
+          <p>The following table provides a practical checklist of security tests that developers should run at each stage of development. Many can be automated and integrated into CI/CD pipelines.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Test Type</th>
+                  <th>Tool / Method</th>
+                  <th>What It Checks</th>
+                  <th>When to Run</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Static Analysis</strong></td>
+                  <td><code>bandit</code> (Python)</td>
+                  <td>Scans source code for common security issues: hardcoded passwords, use of weak cryptography, SQL injection patterns, insecure use of <code>eval()</code>, and subprocess injection.</td>
+                  <td>On every commit via CI/CD pipeline; before every pull request merge.</td>
+                </tr>
+                <tr>
+                  <td><strong>Dependency Scanning</strong></td>
+                  <td><code>safety</code> (Python)</td>
+                  <td>Checks all installed packages against a database of known vulnerabilities (CVEs). Flags libraries with unpatched security issues so they can be updated before deployment.</td>
+                  <td>On every commit; also run weekly to catch newly disclosed CVEs in existing dependencies.</td>
+                </tr>
+                <tr>
+                  <td><strong>Input Fuzzing</strong></td>
+                  <td>Manual / <code>hypothesis</code> library</td>
+                  <td>Sends unexpected, malformed, boundary-exceeding, and randomised inputs to functions and API endpoints to expose crashes, unhandled exceptions, and input validation gaps.</td>
+                  <td>During development of any function that processes external input; before major releases.</td>
+                </tr>
+                <tr>
+                  <td><strong>Authentication Testing</strong></td>
+                  <td>Manual / Burp Suite</td>
+                  <td>Verifies that authentication controls enforce lockout after failed attempts, reject weak passwords, invalidate sessions on logout, and resist brute-force and credential-stuffing attacks.</td>
+                  <td>When authentication logic is modified; as part of pre-release security review.</td>
+                </tr>
+                <tr>
+                  <td><strong>Session Management Testing</strong></td>
+                  <td>Manual / browser dev tools</td>
+                  <td>Checks that session tokens are sufficiently random, transmitted only over HTTPS, expire after inactivity, are invalidated on logout, and are not exposed in URLs or logs.</td>
+                  <td>When session handling code changes; before every production deployment.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Bash — Install and Run Static Analysis + Dependency Scanning</span></div>
+            <pre><code>pip install bandit safety &amp;&amp; bandit -r . &amp;&amp; safety check</code></pre>
+          </div>
+
         </section>
 
         <hr class="divider" />
@@ -742,6 +832,42 @@ logging.basicConfig(filename=<span class="str">'app.log'</span>, level=logging.E
         <span class="cm"># Unexpected system error — log internally, show nothing revealing to user</span>
         logging.error(<span class="str">f"System fault in process_comment: {e}"</span>, exc_info=<span class="kw">True</span>)
         <span class="kw">return</span> <span class="str">"An unexpected error occurred. Please try again later."</span></code></pre>
+          </div>
+
+          <h3>Input Validation and Output Encoding</h3>
+          <p>Input validation rejects data that does not conform to a strict specification before it enters the system. Output encoding transforms data before it is rendered in a context (HTML, SQL, shell) so that special characters cannot be interpreted as instructions. Together they are the two-layer defence against injection and XSS attacks.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Input Validation and Output Encoding</span></div>
+            <pre><code><span class="kw">import</span> re
+<span class="kw">import</span> html
+
+<span class="kw">def</span> <span class="fn">validate_email</span>(email: str) -> bool:
+    <span class="str">"""Validate email format using regex."""</span>
+    pattern = <span class="str">r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'</span>
+    <span class="kw">return</span> bool(re.match(pattern, email)) <span class="kw">and</span> len(email) <= <span class="num">254</span>
+
+<span class="kw">def</span> <span class="fn">sanitise_username</span>(username: str) -> str:
+    <span class="str">"""Allow only alphanumeric characters and underscores."""</span>
+    <span class="kw">if not</span> username <span class="kw">or</span> len(username) < <span class="num">3</span> <span class="kw">or</span> len(username) > <span class="num">20</span>:
+        <span class="kw">raise</span> ValueError(<span class="str">"Username must be 3-20 characters"</span>)
+    <span class="kw">if not</span> re.match(<span class="str">r'^[a-zA-Z0-9_]+$'</span>, username):
+        <span class="kw">raise</span> ValueError(<span class="str">"Username can only contain letters, numbers, underscores"</span>)
+    <span class="kw">return</span> username
+
+<span class="kw">def</span> <span class="fn">encode_output</span>(user_input: str) -> str:
+    <span class="str">"""Encode HTML special characters to prevent XSS."""</span>
+    <span class="kw">return</span> html.escape(user_input)
+
+<span class="cm"># Usage examples</span>
+print(validate_email(<span class="str">"student@school.edu.au"</span>))  <span class="cm"># True</span>
+print(sanitise_username(<span class="str">"john_doe123"</span>))          <span class="cm"># john_doe123</span>
+print(encode_output(<span class="str">"&lt;script&gt;alert('xss')&lt;/script&gt;"</span>))
+<span class="cm"># &amp;lt;script&amp;gt;alert(&amp;#x27;xss&amp;#x27;)&amp;lt;/script&amp;gt;</span></code></pre>
+          </div>
+
+          <div class="callout tip">
+            <strong>The Three Rules of Input Handling:</strong> Never Trust, Always Validate, Always Encode — never trust data from any external source (users, APIs, files); always validate that it matches the expected format before processing; always encode it for the output context (HTML, SQL, shell) before rendering or storing.
           </div>
 
           <h3>Safe API Design</h3>
