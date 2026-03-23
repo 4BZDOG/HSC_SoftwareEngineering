@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const codes = match[1].split(',').map(code => code.trim());
       const prefix = content.substring(0, match.index).trim(); // Emoji part
 
-      // Build new HTML with badges
-      let newHTML = prefix + ' ';
+      // Build new HTML with badges (no emoji prefix inside header)
+      let newHTML = '';
       codes.forEach((code, i) => {
         newHTML += `<span class="outcome-badge">${code}</span>`;
         if (i < codes.length - 1) newHTML += ' ';
