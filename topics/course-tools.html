@@ -79,37 +79,29 @@
     <aside class="sidebar">
       <div class="toc-title">Specifications</div>
       <ul class="toc-list">
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Design & Project Management</li>
-        <li><a href="#modelling-tools">🏗️ 1. Modelling Tools</a></li>
-        <li><a href="#project-management">📋 2. Project Management</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Programming & Algorithms</li>
-        <li><a href="#programming-paradigms">⌨️ 3. Programming Paradigms</a></li>
-        <li><a href="#algorithms-logic">📝 4. Algorithms & Logic</a></li>
-        <li><a href="#data-structures">🕹️ 5. Control Structures</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Data & Software Solutions</li>
-        <li><a href="#relational-databases">🗄️ 6. Relational Databases (SQL)</a></li>
-        <li><a href="#testing-methods">🧪 7. Testing & Representation</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Mechatronics & Emerging Tech</li>
-        <li><a href="#mechatronics">🦾 8. Mechatronics Wiring</a></li>
-        <li><a href="#web-machine-learning">🌐 9. Web & Machine Learning</a></li>
+        <li><a href="#modelling-tools">1. System &amp; Data Modelling Tools</a></li>
+        <li><a href="#project-management">2. Project Management Tools</a></li>
+        <li><a href="#programming-paradigms">3. Programming Paradigms</a></li>
+        <li><a href="#algorithms">4. Algorithms</a></li>
+        <li><a href="#control-structures">5. Control Structures</a></li>
+        <li><a href="#subroutines">6. Subroutines</a></li>
+        <li><a href="#relational-databases">7. Relational Databases</a></li>
+        <li><a href="#mechatronics">8. Wiring Diagrams</a></li>
+        <li><a href="#web-programming">9. Programming for the Web</a></li>
+        <li><a href="#machine-learning">10. Machine Learning</a></li>
+        <li><a href="#testing-methods">11. Methods for Testing</a></li>
+        <li><a href="#character-representation">12. Character Representation</a></li>
+        <li><a href="#python">13. Programming with Python</a></li>
       </ul>
     </aside>
 
     <main class="page-content">
       <div class="content-body">
 
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  FOCUS AREA 1: DESIGN & PROJECT MANAGEMENT              -->
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <div class="part-block">
-          <span class="part-number">Focus Area 1</span>
-          <span class="part-name">📐 Design & Project Management</span>
-        </div>
-
-        <!-- 1. Modelling Tools -->
+        <!-- 1. System and Data Modelling Tools -->
         <section id="modelling-tools">
           <h2 class="syllabus-phase">📊 System and Data Modelling Tools</h2>
-          
+
           <h3>📊 Data Flow Diagrams (DFD)</h3>
           <p>Used to represent the flow of data through an information system.</p>
           <div class="key-terms">
@@ -133,11 +125,26 @@
 
           <h3>📊 Data Dictionary</h3>
           <p>Comprehensive description of each variable, including: Name, Data Type, Format, Size (bytes/display), Description, Example, and Validation.</p>
+
+          <h3>🧩 Class Diagrams</h3>
+          <p>Used in object-oriented design to show classes, their attributes, methods, and relationships. Each class box is divided into three sections: the class name, attributes, and methods.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>— (solid line)</strong><span>Association — a relationship between two classes.</span></div>
+            <div class="key-term-item"><strong>▷ (open arrow)</strong><span>Inheritance — a subclass extends a superclass.</span></div>
+            <div class="key-term-item"><strong>◇ (open diamond)</strong><span>Aggregation — a "has-a" relationship (weak ownership).</span></div>
+            <div class="key-term-item"><strong>◆ (filled diamond)</strong><span>Composition — a strong "contains" relationship (lifecycle dependency).</span></div>
+          </div>
+
+          <h3>🖼️ Storyboard</h3>
+          <p>A visual sequence of screen layouts or interface states that communicates the intended user experience and navigation flow through a system. Used in the design phase to plan user interfaces before development begins.</p>
+
+          <h3>🌳 Decision Trees</h3>
+          <p>A tree-based diagram that maps out decision logic, showing possible conditions and the resulting outcomes for each branch. Each internal node represents a condition; each leaf node represents an outcome.</p>
         </section>
 
         <hr class="divider" />
 
-        <!-- 2. Project Management -->
+        <!-- 2. Project Management Tools -->
         <section id="project-management">
           <h2 class="syllabus-phase">📋 Project Management Tools</h2>
           <h3>📈 Gantt Charts</h3>
@@ -147,14 +154,6 @@
         </section>
 
         <hr class="divider" />
-
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  FOCUS AREA 2: PROGRAMMING & ALGORITHMS                  -->
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <div class="part-block">
-          <span class="part-number">Focus Area 2</span>
-          <span class="part-name">⌨️ Programming & Algorithms</span>
-        </div>
 
         <!-- 3. Programming Paradigms -->
         <section id="programming-paradigms">
@@ -181,13 +180,13 @@
 
         <hr class="divider" />
 
-        <!-- 4. Algorithms & Logic -->
-        <section id="algorithms-logic">
-          <h2 class="syllabus-phase">📝 Algorithms and Logic</h2>
-          <h3>💻 Pseudocode Standards</h3>
+        <!-- 4. Algorithms -->
+        <section id="algorithms">
+          <h2 class="syllabus-phase">📝 Algorithms</h2>
+          <h3>💻 Pseudocode</h3>
           <p>Keywords in <strong>CAPITALS</strong>, structural elements in pairs (BEGIN/END, IF/ENDIF), and indentation for control structures.</p>
-          
-          <h3>🌊 Flowchart Symbols</h3>
+
+          <h3>🌊 Flowcharts</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>🔵 Oval</strong><span>Terminator — marks the Start or End of a flowchart.</span></div>
             <div class="key-term-item"><strong>📐 Parallelogram</strong><span>Input/Output — represents data entering or leaving the system.</span></div>
@@ -200,33 +199,129 @@
         <hr class="divider" />
 
         <!-- 5. Control Structures -->
-        <section id="data-structures">
+        <section id="control-structures">
           <h2 class="syllabus-phase">🕹️ Control Structures</h2>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Structure</th><th>Pseudocode Example</th></tr></thead>
-              <tbody>
-                <tr><td>Binary Selection</td><td><code>IF condition THEN ... ELSE ... ENDIF</code></td></tr>
-                <tr><td>Multi-way Selection</td><td><code>CASEWHERE expression ... OTHERWISE ... END CASE</code></td></tr>
-                <tr><td>Pre-test Loop</td><td><code>WHILE condition is true ... ENDWHILE</code></td></tr>
-                <tr><td>Post-test Loop</td><td><code>REPEAT ... UNTIL condition is true</code></td></tr>
-                <tr><td>Counted Loop</td><td><code>FOR variable = start TO finish STEP increment ... NEXT variable</code></td></tr>
-              </tbody>
-            </table>
+
+          <h3>Sequence</h3>
+          <p>Statements execute one after another in the order they are written.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
+            <pre><code>BEGIN
+  statement1
+  statement2
+  statement3
+END</code></pre>
+          </div>
+
+          <h3>Selection</h3>
+          <h4>Binary Selection</h4>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
+            <pre><code>IF condition THEN
+  statements
+ELSE
+  statements
+ENDIF</code></pre>
+          </div>
+
+          <h4>Multi-way Selection</h4>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
+            <pre><code>CASEWHERE expression equals
+  value1: statements
+  value2: statements
+  OTHERWISE: statements
+END CASE</code></pre>
+          </div>
+
+          <h4>Nested IF</h4>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
+            <pre><code>IF condition1 THEN
+  IF condition2 THEN
+    statements
+  ELSE
+    statements
+  ENDIF
+ELSE
+  statements
+ENDIF</code></pre>
+          </div>
+
+          <h3>Repetition</h3>
+          <h4>Pre-test</h4>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
+            <pre><code>WHILE condition is true
+  statements
+ENDWHILE</code></pre>
+          </div>
+
+          <h4>Post-test</h4>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
+            <pre><code>REPEAT
+  statements
+UNTIL condition is true</code></pre>
+          </div>
+
+          <h4>FOR / NEXT</h4>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
+            <pre><code>FOR variable = start TO finish STEP increment
+  statements
+NEXT variable</code></pre>
           </div>
         </section>
 
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  FOCUS AREA 3: DATA & SOFTWARE SOLUTIONS                 -->
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <div class="part-block">
-          <span class="part-number">Focus Area 3</span>
-          <span class="part-name">🗄️ Data & Software Solutions</span>
-        </div>
+        <hr class="divider" />
 
-        <!-- 6. Relational Databases -->
+        <!-- 6. Subroutines -->
+        <section id="subroutines">
+          <h2 class="syllabus-phase">🔧 Subroutines</h2>
+
+          <h3>Using a subroutine with one parameter</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
+            <pre><code>SUBROUTINE name(param)
+  statements
+END SUBROUTINE
+
+// Calling the subroutine:
+name(value)</code></pre>
+          </div>
+
+          <h3>Using a subroutine with multiple parameters</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
+            <pre><code>SUBROUTINE name(param1, param2)
+  statements
+END SUBROUTINE
+
+// Calling the subroutine:
+name(value1, value2)</code></pre>
+          </div>
+
+          <h3>Passing a value back from a function</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
+            <pre><code>FUNCTION name(param)
+  statements
+  RETURN value
+END FUNCTION
+
+// Calling the function:
+result ← name(value)</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 7. Relational Databases -->
         <section id="relational-databases">
-          <h2 class="syllabus-phase">🗄️ Relational Databases (SQL)</h2>
+          <h2 class="syllabus-phase">🗄️ Relational Databases</h2>
+
+          <h3>SQL</h3>
           <div class="code-block">
             <div class="code-header">
               <span class="code-lang">Standard SQL Syntax</span>
@@ -238,39 +333,22 @@ GROUP BY field(s)
 ORDER BY field(s) ASC/DESC</code></pre>
           </div>
           <p>Includes functions like <code>SUM</code>, <code>AVG</code>, <code>COUNT</code>, <code>MAX</code>, <code>MIN</code> and operators like <code>CONTAINS</code>, <code>EQUALS</code>, <code>AND</code>, <code>OR</code>, <code>NOT</code>.</p>
+
+          <h3>Object-Relational Mapping (ORM)</h3>
+          <p>A technique that maps object-oriented class structures to relational database tables, allowing developers to interact with a database using objects rather than raw SQL. Each class maps to a table; each attribute maps to a column; each object instance maps to a row.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Class → Table</strong><span>Each class in the model corresponds to a database table.</span></div>
+            <div class="key-term-item"><strong>Attribute → Column</strong><span>Each attribute of the class becomes a column in the table.</span></div>
+            <div class="key-term-item"><strong>Object → Row</strong><span>Each instance of the class is stored as a row in the table.</span></div>
+          </div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 7. Testing & Representation -->
-        <section id="testing-methods">
-          <h2 class="syllabus-phase">⚙️ Methods for Testing and Representation</h2>
-          <h3>⚙️ Testing Methods</h3>
-          <div class="key-terms">
-            <div class="key-term-item"><strong>🔧 Functional</strong><span>Verifies the system operates according to its functional requirements and produces expected outputs.</span></div>
-            <div class="key-term-item"><strong>✅ Acceptance</strong><span>Determines whether the system meets stakeholder requirements and is ready for deployment.</span></div>
-            <div class="key-term-item"><strong>📡 Live Data</strong><span>Tests using real-world production data to identify issues in a live environment.</span></div>
-            <div class="key-term-item"><strong>🎲 Simulated Data</strong><span>Uses artificially generated data that mirrors expected real-world scenarios.</span></div>
-            <div class="key-term-item"><strong>🧑‍💻 Beta</strong><span>Releases the product to a limited group of real users to identify bugs before full release.</span></div>
-            <div class="key-term-item"><strong>📦 Volume</strong><span>Evaluates system performance under large amounts of data to test scalability.</span></div>
-          </div>
-
-          <h3>🧠 Character Representation</h3>
-          <p>Characters are represented using <strong>ASCII</strong> or <strong>Unicode</strong>. Developers use binary internal formats for functions like case conversion or simple encryption.</p>
-        </section>
-
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  FOCUS AREA 4: MECHATRONICS & EMERGING TECHNOLOGIES      -->
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <div class="part-block">
-          <span class="part-number">Focus Area 4</span>
-          <span class="part-name">🤖 Mechatronics & Emerging Technologies</span>
-        </div>
-
-        <!-- 8. Mechatronics Wiring -->
+        <!-- 8. Wiring Diagrams for Mechatronic Systems -->
         <section id="mechatronics">
-          <h2 class="syllabus-phase">🦾 Wiring Diagrams for Mechatronics</h2>
-          <p>Standard symbols for electronic components:</p>
+          <h2 class="syllabus-phase">🦾 Wiring Diagrams for Mechatronic Systems</h2>
+          <p>Standard symbols for electronic components used in wiring diagrams:</p>
           <div class="info-grid">
             <div class="info-card"><h4>📚 Capacitor, Diode, Resistor</h4></div>
             <div class="info-card"><h4>🚀 LED, Lightbulb, Amplifier</h4></div>
@@ -281,23 +359,143 @@ ORDER BY field(s) ASC/DESC</code></pre>
 
         <hr class="divider" />
 
-        <!-- 9. Web & Machine Learning -->
-        <section id="web-machine-learning">
-          <h2 class="syllabus-phase">🌐 Web and Machine Learning</h2>
-          <h3>🌐 Programming for the Web</h3>
-          <ul>
-            <li>Front-end frameworks (React, Vue, etc.)</li>
-            <li>Cross-site scripting (XSS) prevention and sanitisation.</li>
-            <li>CSS Syntax (Selectors, Properties, Values).</li>
-          </ul>
+        <!-- 9. Programming for the Web -->
+        <section id="web-programming">
+          <h2 class="syllabus-phase">🌐 Programming for the Web</h2>
 
-          <h3>📋 Machine Learning (MLOps)</h3>
-          <p>The three stages of MLOps:</p>
+          <h3>Front-end web development frameworks</h3>
+          <p>Libraries and frameworks such as React, Vue, and Angular that provide reusable components and structure for building user interfaces in the browser.</p>
+
+          <h3>Cross-site scripting (XSS)</h3>
+          <p>A security vulnerability where malicious scripts are injected into web pages viewed by other users. Mitigated by sanitising user input and escaping output before rendering it in the browser.</p>
+
+          <h3>Cascading Style Sheets (CSS)</h3>
+          <p>A stylesheet language used to describe the presentation of HTML documents. CSS rules use a selector, property, and value syntax.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">CSS Syntax</span></div>
+            <pre><code>selector {
+  property: value;
+}</code></pre>
+          </div>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Selector</strong><span>Targets the HTML element(s) to style (e.g. <code>p</code>, <code>.class</code>, <code>#id</code>).</span></div>
+            <div class="key-term-item"><strong>Property</strong><span>The style attribute to change (e.g. <code>color</code>, <code>font-size</code>, <code>margin</code>).</span></div>
+            <div class="key-term-item"><strong>Value</strong><span>The setting to apply to the property (e.g. <code>red</code>, <code>16px</code>, <code>auto</code>).</span></div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 10. Machine Learning -->
+        <section id="machine-learning">
+          <h2 class="syllabus-phase">🤖 Machine Learning</h2>
+
+          <h3>Machine learning automation through DevOps</h3>
+          <p>The integration of machine learning workflows with DevOps practices (MLOps). The three stages:</p>
           <ol>
             <li><strong>Design</strong>: Problem definition, metrics, data research.</li>
             <li><strong>Model Development</strong>: Wrangling, engineering, training, validation.</li>
             <li><strong>Operations</strong>: Deployment, monitoring, performance.</li>
           </ol>
+
+          <h3>Regression algorithms</h3>
+          <p>Supervised learning algorithms used to predict a continuous output value based on input features.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Linear Regression</strong><span>Models the relationship between variables using a straight line: <code>y = mx + b</code>.</span></div>
+            <div class="key-term-item"><strong>Logistic Regression</strong><span>Used for classification tasks; outputs a probability between 0 and 1.</span></div>
+            <div class="key-term-item"><strong>Polynomial Regression</strong><span>Extends linear regression to model curved (non-linear) relationships.</span></div>
+          </div>
+
+          <h3>Neural Networks</h3>
+          <p>Computational models inspired by biological neural networks, composed of layers of interconnected nodes (neurons).</p>
+
+          <h4>Training cycle</h4>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Forward pass</strong><span>Input data is passed through the network to generate a prediction.</span></div>
+            <div class="key-term-item"><strong>Loss calculation</strong><span>The error between the prediction and the expected output is measured.</span></div>
+            <div class="key-term-item"><strong>Backpropagation</strong><span>The error is propagated backwards through the network to update weights.</span></div>
+            <div class="key-term-item"><strong>Weight update</strong><span>Weights are adjusted using an optimiser (e.g. gradient descent) to reduce loss.</span></div>
+          </div>
+
+          <h4>Execution cycle</h4>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Inference</strong><span>The trained model receives new input and generates a prediction (forward pass only).</span></div>
+            <div class="key-term-item"><strong>Deployment</strong><span>The model is integrated into an application or service for real-world use.</span></div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 11. Methods for Testing a System -->
+        <section id="testing-methods">
+          <h2 class="syllabus-phase">🧪 Methods for Testing a System</h2>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>🔧 Functional</strong><span>Verifies the system operates according to its functional requirements and produces expected outputs.</span></div>
+            <div class="key-term-item"><strong>✅ Acceptance</strong><span>Determines whether the system meets stakeholder requirements and is ready for deployment.</span></div>
+            <div class="key-term-item"><strong>📡 Live Data</strong><span>Tests using real-world production data to identify issues in a live environment.</span></div>
+            <div class="key-term-item"><strong>🎲 Simulated Data</strong><span>Uses artificially generated data that mirrors expected real-world scenarios.</span></div>
+            <div class="key-term-item"><strong>🧑‍💻 Beta</strong><span>Releases the product to a limited group of real users to identify bugs before full release.</span></div>
+            <div class="key-term-item"><strong>📦 Volume</strong><span>Evaluates system performance under large amounts of data to test scalability.</span></div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 12. Character Representation -->
+        <section id="character-representation">
+          <h2 class="syllabus-phase">🔣 Character Representation</h2>
+          <p>Characters are represented using <strong>ASCII</strong> or <strong>Unicode</strong>. Developers use binary internal formats for functions like case conversion or simple encryption.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>ASCII</strong><span>7-bit encoding representing 128 characters (letters, digits, symbols, control codes).</span></div>
+            <div class="key-term-item"><strong>Unicode</strong><span>International standard encoding supporting over 140,000 characters across most writing systems.</span></div>
+            <div class="key-term-item"><strong>UTF-8</strong><span>Variable-width encoding for Unicode; backwards-compatible with ASCII.</span></div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 13. Programming with Python -->
+        <section id="python">
+          <h2 class="syllabus-phase">🐍 Programming with Python</h2>
+          <p>Python is the primary language used in the HSC Software Engineering course. Key syntax and conventions:</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Core Syntax</span></div>
+            <pre><code># Variables and assignment
+name = "Alice"
+age = 17
+
+# Input / Output
+name = input("Enter name: ")
+print("Hello,", name)
+
+# Selection
+if age >= 18:
+    print("Adult")
+elif age >= 13:
+    print("Teenager")
+else:
+    print("Child")
+
+# Iteration
+for i in range(1, 6):
+    print(i)
+
+count = 0
+while count < 5:
+    count += 1
+
+# Functions
+def greet(name):
+    return "Hello, " + name
+
+# Lists
+scores = [85, 92, 78]
+scores.append(95)
+
+# File I/O
+with open("data.txt", "r") as f:
+    content = f.read()</code></pre>
+          </div>
         </section>
 
         <div class="callout success">
