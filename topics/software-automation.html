@@ -220,6 +220,16 @@
               </tbody>
             </table>
           </div>
+
+          <div class="callout tip">
+            <strong>Training / Validation / Test Split:</strong> When building a supervised ML model, the labelled dataset is divided into three parts:
+            <ul>
+              <li><strong>Training Set (70%):</strong> The model learns patterns from this data — weights and parameters are adjusted based on training examples.</li>
+              <li><strong>Validation Set (15%):</strong> Used to tune hyperparameters (e.g., choosing K in KNN, or the number of layers in a neural network) and compare different model configurations during development.</li>
+              <li><strong>Test Set (15%):</strong> Held back entirely until the final evaluation — provides an unbiased measure of how the model performs on completely unseen data.</li>
+            </ul>
+            <strong>Tip:</strong> Never use test data during training or hyperparameter tuning. If the test set influences any decisions, it is effectively "seen" by the model and the final accuracy metric is no longer a reliable estimate of real-world performance.
+          </div>
         </section>
 
         <hr class="divider" />
@@ -492,6 +502,173 @@ print(f"Loan approved: {'Yes' if prediction[0] == 1 else 'No'}")</code></pre>
             </table>
           </div>
         </section>
+
+        <hr class="divider" />
+
+        <!-- Model Evaluation Metrics -->
+        <section id="model-evaluation">
+          <h2 class="syllabus-phase">📊 Model Evaluation Metrics</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-03)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Evaluate</strong> the performance of ML models using appropriate metrics — different problem types (classification vs regression) require different measures of accuracy.</em></p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Formula</th>
+                  <th>When to Use</th>
+                  <th>Example Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Accuracy</strong></td>
+                  <td>(TP + TN) / Total</td>
+                  <td>Balanced classification datasets</td>
+                  <td>0.92 = 92% correct</td>
+                </tr>
+                <tr>
+                  <td><strong>Precision</strong></td>
+                  <td>TP / (TP + FP)</td>
+                  <td>When false positives are costly (e.g. spam filter)</td>
+                  <td>0.88 = 88% of positives were real</td>
+                </tr>
+                <tr>
+                  <td><strong>Recall</strong></td>
+                  <td>TP / (TP + FN)</td>
+                  <td>When false negatives are costly (e.g. disease detection)</td>
+                  <td>0.95 = caught 95% of actual positives</td>
+                </tr>
+                <tr>
+                  <td><strong>F1-Score</strong></td>
+                  <td>2 × (Precision × Recall) / (Precision + Recall)</td>
+                  <td>Imbalanced datasets — balances precision and recall</td>
+                  <td>0.91 = harmonic mean of precision &amp; recall</td>
+                </tr>
+                <tr>
+                  <td><strong>MSE</strong></td>
+                  <td>Σ(y − ŷ)² / n</td>
+                  <td>Regression — penalises large errors heavily</td>
+                  <td>4.25 (lower is better)</td>
+                </tr>
+                <tr>
+                  <td><strong>R²</strong></td>
+                  <td>1 − (SS_res / SS_tot)</td>
+                  <td>Regression — proportion of variance explained</td>
+                  <td>0.94 = model explains 94% of variance</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Confusion Matrix</h3>
+          <p>A <strong>confusion matrix</strong> summarises the prediction results for a classification model, showing how many samples were correctly or incorrectly classified for each class.</p>
+
+          <pre class="text-diagram">
+                         PREDICTED
+                    |  Positive  |  Negative  |
+         ───────────┼────────────┼────────────┤
+ACTUAL   Positive   |  TP (hit)  |  FN (miss) |
+         Negative   |  FP (false |  TN (corr- |
+                    |   alarm)   |   ect rej) |
+          </pre>
+
+          <div class="callout tip">
+            <strong>True/False Positives and Negatives:</strong><br>
+            <strong>True Positive (TP):</strong> Model predicted positive — and it was correct (e.g. flagged spam that is actually spam).<br>
+            <strong>False Positive (FP):</strong> Model predicted positive — but it was wrong (e.g. flagged a legitimate email as spam — a "false alarm").<br>
+            <strong>True Negative (TN):</strong> Model predicted negative — and it was correct (e.g. correctly allowed a legitimate email through).<br>
+            <strong>False Negative (FN):</strong> Model predicted negative — but it was wrong (e.g. failed to catch a spam email — a "miss").<br><br>
+            In medical diagnosis, <strong>false negatives are dangerous</strong> (missing a disease), so recall is prioritised. In spam filtering, <strong>false positives are costly</strong> (blocking important emails), so precision is prioritised.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- Overfitting vs Underfitting -->
+        <section id="overfitting">
+          <h2 class="syllabus-phase">📉 Overfitting vs Underfitting</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-03)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Distinguish</strong> between underfitting and overfitting in ML models and explain strategies to achieve a well-generalising model.</em></p>
+
+          <pre class="text-diagram">
+UNDERFITTING             GOOD FIT               OVERFITTING
+(High Bias)              (Balanced)             (High Variance)
+
+  *   *                    *                     * * *
+    *   *      →        * * * *       ←       *       *
+  *   *                * * * * *             *  * * *  *
+Training err: HIGH     Training err: LOW     Training err: VERY LOW
+Test err:     HIGH     Test err:     LOW     Test err:     HIGH
+Model is too simple    Model generalises     Model memorised
+to learn patterns      well to new data      training noise
+          </pre>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Characteristic</th>
+                  <th>Underfitting</th>
+                  <th>Good Fit</th>
+                  <th>Overfitting</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Training Error</strong></td>
+                  <td>High</td>
+                  <td>Low</td>
+                  <td>Very Low</td>
+                </tr>
+                <tr>
+                  <td><strong>Test / Validation Error</strong></td>
+                  <td>High</td>
+                  <td>Low</td>
+                  <td>High</td>
+                </tr>
+                <tr>
+                  <td><strong>Bias</strong></td>
+                  <td>High</td>
+                  <td>Low</td>
+                  <td>Low</td>
+                </tr>
+                <tr>
+                  <td><strong>Variance</strong></td>
+                  <td>Low</td>
+                  <td>Low</td>
+                  <td>High</td>
+                </tr>
+                <tr>
+                  <td><strong>Cause</strong></td>
+                  <td>Model too simple; too few features</td>
+                  <td>Appropriate complexity</td>
+                  <td>Model too complex; too many parameters</td>
+                </tr>
+                <tr>
+                  <td><strong>Fix</strong></td>
+                  <td>More features, more complex model</td>
+                  <td>—</td>
+                  <td>Regularisation, more data, dropout</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout exam-tip">
+            <strong>Strategies to Prevent Overfitting:</strong>
+            <ul>
+              <li><strong>Regularisation (L1/L2):</strong> Adds a penalty to the loss function for large model weights, discouraging the model from fitting noise. L1 (Lasso) can reduce weights to zero (feature selection); L2 (Ridge) shrinks weights towards zero.</li>
+              <li><strong>Cross-Validation:</strong> Split data into multiple folds and train/validate across all combinations — ensures the model performs well on varied subsets of data, not just one split.</li>
+              <li><strong>More Training Data:</strong> A larger, more diverse dataset makes it harder for the model to memorise specific examples and forces it to learn genuine patterns.</li>
+              <li><strong>Dropout (Neural Networks):</strong> Randomly disables neurons during training, preventing co-adaptation and forcing the network to learn robust, distributed representations.</li>
+              <li><strong>Early Stopping:</strong> Monitor validation loss during training and stop training when it begins to increase — preventing the model from over-training on the training set.</li>
+            </ul>
+          </div>
+        </section>
+
+        <hr class="divider" />
 
         <!-- ═══════════════════════════════════════════════════════ -->
         <!--  PART 2: PROGRAMMING FOR AUTOMATION                     -->
