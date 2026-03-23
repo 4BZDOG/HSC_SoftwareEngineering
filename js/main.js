@@ -339,6 +339,14 @@ document.addEventListener('DOMContentLoaded', () => {
         h2.appendChild(nextSib);
       }
 
+      /* ── Move syllabus concept into the header ── */
+      const conceptEl = h2.nextElementSibling;
+      if (conceptEl && conceptEl.classList.contains('syllabus-concept')) {
+        // Strip the 📌 emoji prefix
+        conceptEl.innerHTML = conceptEl.innerHTML.replace(/📌\s*/, '');
+        h2.appendChild(conceptEl);
+      }
+
       /* ── Add chevron ── */
       const chevron = document.createElement('span');
       chevron.className = 'section-chevron';

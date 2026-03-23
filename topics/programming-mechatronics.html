@@ -71,7 +71,7 @@
       </p>
       <div class="topic-header-meta">
         <span class="meta-pill year11">📗 Year 11 — Preliminary</span>
-        <span class="meta-pill">🕐 ~8 weeks</span>
+        <span class="meta-pill">🕐 ~10 weeks</span>
         <span class="meta-pill">Outcomes: SE-11-01 to SE-11-07</span>
       </div>
     </div>
@@ -114,7 +114,7 @@
         <section id="applications">
           <h2 class="syllabus-phase">🦾 Mechatronic Applications</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-03)</em></p>
-          <p>📌 <em><strong>Outline</strong> applications of mechatronic systems in a variety of specialised fields. Mechatronics involves the synergy of mechanical, electrical, and software engineering to create intelligent machines.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Outline</strong> applications of mechatronic systems in a variety of specialised fields. Mechatronics involves the synergy of mechanical, electrical, and software engineering to create intelligent machines.</em></p>
           
           <div class="key-terms">
             <div class="key-term-item"><strong>✈️ Aerospace</strong><span>Unmanned Aerial Vehicles (UAVs) use mechatronics for flight stabilisation, GPS navigation, and autonomous landing routines.</span></div>
@@ -129,7 +129,7 @@
         <section id="hardware">
           <h2 class="syllabus-phase">🕹️ Microcontrollers & Hardware</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-03)</em></p>
-          <p>📌 <em><strong>Identify</strong> hardware requirements and <strong>Assess</strong> the relationship between microcontrollers and traditional CPUs.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Identify</strong> hardware requirements and <strong>Assess</strong> the relationship between microcontrollers and traditional CPUs.</em></p>
 
           <h3>Microcontrollers vs CPUs</h3>
           <p>A <strong>Microcontroller</strong> (e.g., ATmega328P on an Arduino) is an integrated circuit containing a processor, memory (RAM/Flash), and I/O peripherals on a single chip. In contrast, a traditional <strong>CPU</strong> requires external components (RAM, Storage, Northbridge) to function. Microcontrollers are preferred for mechatronics because they allow direct, real-time control of hardware pins, are cost-effective, and have significantly lower power requirements than general-purpose CPUs.</p>
@@ -162,7 +162,7 @@
         <section id="sensors-actuators">
           <h2 class="syllabus-phase">🌡️ Sensors, Actuators & Manipulators</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-06)</em></p>
-          <p>📌 <em><strong>Identify and Describe</strong> the hardware used in mechatronic systems to sense and react to the physical world.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Identify and Describe</strong> the hardware used in mechatronic systems to sense and react to the physical world.</em></p>
           
           <div class="info-grid">
             <div class="info-card">
@@ -214,7 +214,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
         <section id="data-processing">
           <h2 class="syllabus-phase">📊 Mechatronic Data Processing</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-04)</em></p>
-          <p>📌 <em><strong>Use</strong> and <strong>Understand</strong> how data is obtained and processed, including diagnostic data for system optimisation.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Use</strong> and <strong>Understand</strong> how data is obtained and processed, including diagnostic data for system optimisation.</em></p>
           
           <h3>Processing and Diagnostic Data</h3>
           <p>Mechatronic systems process raw analog signals (via ADCs) into digital data for decision-making. <strong>Diagnostic Data</strong> involves monitoring internal states—such as motor temperature, battery voltage, or current draw—to identify potential hardware failures before they occur. <strong>Optimisation Data</strong> is used to refine control algorithms, such as adjusting the duty cycle of a PWM signal to achieve maximum motor efficiency with minimal heat generation. Engineers use this data to perform "Predictive Maintenance", replacing components before a system-critical failure happens.</p>
@@ -235,7 +235,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
         <section id="software-control">
           <h2 class="syllabus-phase">⚙️ Software Control and Dependencies</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
-          <p>📌 <em><strong>Experiment</strong> with software to control interactions and dependencies within mechatronic systems, understanding motion constraints, degrees of freedom, and how subsystems combine.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Experiment</strong> with software to control interactions and dependencies within mechatronic systems, understanding motion constraints, degrees of freedom, and how subsystems combine.</em></p>
 
           <h3>Motion Constraints and Degrees of Freedom</h3>
           <p><strong>Motion Constraints</strong> are limitations on how a mechanical system can move, imposed by its physical design (e.g., a robotic arm pivot can only rotate within a specific range; a gripper can only open/close). <strong>Degrees of Freedom (DOF)</strong> refers to the number of independent directions in which a system can move. A gripper has 1 DOF (open/close); a planar robotic arm has 2 DOF (up/down, left/right); a full 3D robot arm has 6 DOF or more. Software must account for these constraints when generating movement commands—exceeding constraints can cause mechanical damage.</p>
@@ -297,7 +297,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
         <section id="engineering">
           <h2 class="syllabus-phase">🔌 Power, Materials and Wiring Diagrams</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-06)</em></p>
-          <p>📌 <em><strong>Determine</strong> power, battery and material requirements for mechatronic components, and <strong>Develop</strong> wiring diagrams considering data and power supply needs.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Determine</strong> power, battery and material requirements for mechatronic components, and <strong>Develop</strong> wiring diagrams considering data and power supply needs.</em></p>
 
           <div class="table-wrap">
             <table>
@@ -335,7 +335,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
         <section id="accessibility">
           <h2 class="syllabus-phase">♿ Specialist Requirements for People with Disability</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-05)</em></p>
-          <p>📌 <em><strong>Determine</strong> specialist requirements that influence the design and functions of mechatronic systems designed for people with disability. Inclusive design ensures that technology enhances autonomy and quality of life.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Determine</strong> specialist requirements that influence the design and functions of mechatronic systems designed for people with disability. Inclusive design ensures that technology enhances autonomy and quality of life.</em></p>
 
           <h3>Accessibility Considerations</h3>
           <p>When designing mechatronic systems for users with disabilities, engineers must consider:</p>
@@ -386,7 +386,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
         <section id="control-design">
           <h2 class="syllabus-phase">🧠 Algorithm Development and Control Systems</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
-          <p>📌 <em><strong>Develop, modify and apply</strong> algorithms to control a mechatronic system. <strong>Explore</strong> the algorithmic patterns, code and applications for open and closed control systems.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Develop, modify and apply</strong> algorithms to control a mechatronic system. <strong>Explore</strong> the algorithmic patterns, code and applications for open and closed control systems.</em></p>
           
           <h3>Open vs Closed Loop Systems</h3>
           <p>The choice of control system depends on the task requirements for accuracy and self-correction. Engineers often use 🛠️ <strong>Decision Trees</strong> (Course Spec p.10) to map out these control paths.</p>
@@ -452,7 +452,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
         <section id="autonomous-features">
           <h2 class="syllabus-phase">🤖 Features of Autonomous Control Algorithms</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
-          <p>📌 <em><strong>Outline</strong> the features of an algorithm and program code used for autonomous control. Autonomous systems must make decisions independently, handle sensor data, and adapt to environmental changes.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Outline</strong> the features of an algorithm and program code used for autonomous control. Autonomous systems must make decisions independently, handle sensor data, and adapt to environmental changes.</em></p>
 
           <h3>Key Features of Autonomous Algorithms</h3>
           <ul>
@@ -536,7 +536,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
         <section id="design-develop">
           <h2 class="syllabus-phase">💻 Design, Develop and Produce a Mechatronic System</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-02, SE-11-05, SE-11-06, SE-11-07)</em></p>
-          <p>📌 <em><strong>Design, develop and produce</strong> a mechatronic system for a real-world problem, integrating software control, mechanical engineering, electronics and mathematics.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Design, develop and produce</strong> a mechatronic system for a real-world problem, integrating software control, mechanical engineering, electronics and mathematics.</em></p>
 
           <h3>Integrated System Design</h3>
           <p>Creating a complete mechatronic system requires simultaneous consideration of three domains:</p>
@@ -559,7 +559,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
         <section id="implementation">
           <h2 class="syllabus-phase">🔧 Implementation and Integration</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
-          <p>📌 <em><strong>Implement</strong> algorithms and design programming code to drive mechatronic devices. <strong>Apply</strong> programming to integrate sensors, actuators and end effectors. <strong>Implement</strong> specific control algorithms for performance enhancement.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Implement</strong> algorithms and design programming code to drive mechatronic devices. <strong>Apply</strong> programming to integrate sensors, actuators and end effectors. <strong>Implement</strong> specific control algorithms for performance enhancement.</em></p>
 
           <h3>Driving Mechatronic Devices</h3>
           <p>Code must correctly interface with hardware:</p>
@@ -588,7 +588,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
         <section id="prototyping">
           <h2 class="syllabus-phase">🧪 Prototyping, Simulation and Testing</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
-          <p>📌 <em><strong>Develop</strong> simulations and prototypes to test programming code. <strong>Design and implement</strong> closed loop control systems. <strong>Design and develop</strong> a user interface. <strong>Create and use</strong> unit tests for effectiveness and repeatability.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Develop</strong> simulations and prototypes to test programming code. <strong>Design and implement</strong> closed loop control systems. <strong>Design and develop</strong> a user interface. <strong>Create and use</strong> unit tests for effectiveness and repeatability.</em></p>
 
           <h3>Simulation vs Prototyping</h3>
           <p><strong>Simulations</strong> (Wokwi, TinkerCAD, Gazebo) allow testing code in a risk-free virtual environment. Useful for debugging algorithms, testing edge cases, and exploring design variations before building hardware. However, simulations don't capture real-world issues like friction, vibration, electromagnetic interference, or component tolerances.</p>
