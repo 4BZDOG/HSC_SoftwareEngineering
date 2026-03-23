@@ -368,6 +368,165 @@
 
           <h3>Communication &amp; Social Issues</h3>
           <p><strong>Explore</strong> communication issues associated with project work. Engineers must prioritise <strong>involving and empowering the client</strong> through constant dialogue, <strong>enabling feedback</strong> during Agile iterations, and <strong>negotiating</strong> realistic deadlines and features (Outcome SE-12-09). <br><br>Furthermore, engineers must <strong>explore social and ethical issues</strong>, such as equitably dividing work when collaborating, acting professionally when working individually, and transparently responding to stakeholder concerns regarding data security (Outcome SE-12-05).</p>
+
+          <h3>Gantt Chart — Project Schedule</h3>
+          <p>A <strong>Gantt chart</strong> is a horizontal bar chart that maps project tasks against a timeline. It visually shows the start date, duration, and end date of each task, and can indicate task dependencies (where one task must complete before another begins). In the SEP, your Gantt chart must cover all four project phases.</p>
+
+          <div class="diagram-block">
+            <h4>📅 Gantt Chart — Library Management System (10-Week Schedule)</h4>
+            <p class="diagram-subtitle">Task scheduling across the four project phases</p>
+            <p class="diagram-description">
+              The Gantt chart below maps each project phase to a weekly timeline. Tasks are shown with their allocated week ranges. Critical dependencies (such as requirements being completed before design can begin) are reflected in the sequencing.
+            </p>
+            <pre class="text-diagram">Gantt Chart: Library Management System — 10-Week Schedule
+=============================================================
+Task                          | Wk1 | Wk2 | Wk3 | Wk4 | Wk5 | Wk6 | Wk7 | Wk8 | Wk9 | Wk10
+------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----
+PHASE 1 — Identifying &amp; Defining
+  Requirements gathering       | ███ | ███ |     |     |     |     |     |     |     |
+  Problem definition           | ███ | ███ |     |     |     |     |     |     |     |
+  Client consultation          |     | ███ | ███ |     |     |     |     |     |     |
+PHASE 2 — Research &amp; Planning
+  System design (structure)    |     |     | ███ | ███ |     |     |     |     |     |
+  Algorithm design (pseudocode)|     |     |     | ███ | ███ |     |     |     |     |
+  Gantt &amp; risk planning        |     |     | ███ | ███ |     |     |     |     |     |
+PHASE 3 — Producing &amp; Implementing
+  Core module development      |     |     |     |     | ███ | ███ | ███ |     |     |
+  UI/front-end implementation  |     |     |     |     |     | ███ | ███ |     |     |
+  Integration &amp; version control|     |     |     |     |     |     | ███ | ███ |     |
+PHASE 4 — Testing &amp; Evaluating
+  Testing &amp; bug fixing         |     |     |     |     |     |     |     | ███ | ███ |
+  Client review &amp; feedback     |     |     |     |     |     |     |     |     | ███ |
+  Final report &amp; submission    |     |     |     |     |     |     |     |     | ███ | ███
+=============================================================
+Key: ███ = Task active during this week</pre>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Demonstrate realistic time allocation across all four project phases.<br>
+              <strong>Syllabus Link:</strong> SE-12-05, SE-12-09<br>
+              <strong>Tip:</strong> Tools like <strong>GanttProject</strong> (free) or the Table feature in Microsoft Word can be used to produce a professional Gantt chart for your project documentation.
+            </p>
+          </div>
+
+          <h3>Risk Management</h3>
+          <p>Risk management involves identifying potential threats to project success, assessing their likelihood and impact, and planning mitigation strategies in advance. A risk register is maintained throughout the project and updated as new risks emerge or existing risks are resolved.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Risk</th>
+                  <th>Likelihood</th>
+                  <th>Impact</th>
+                  <th>Risk Level</th>
+                  <th>Mitigation Strategy</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Data loss due to hardware failure or accidental deletion</td>
+                  <td>Medium</td>
+                  <td>High</td>
+                  <td><strong style="color:#c0392b">High</strong></td>
+                  <td>Use Git version control with daily commits; maintain an automated backup script to a secondary drive.</td>
+                </tr>
+                <tr>
+                  <td>Scope creep — client requests additional features mid-project</td>
+                  <td>High</td>
+                  <td>Medium</td>
+                  <td><strong style="color:#c0392b">High</strong></td>
+                  <td>Formalise requirements in a signed document at Phase 1; use a change request log to evaluate new features.</td>
+                </tr>
+                <tr>
+                  <td>Technical skill gap — unfamiliarity with a required library</td>
+                  <td>Medium</td>
+                  <td>Medium</td>
+                  <td><strong style="color:#e67e22">Medium</strong></td>
+                  <td>Allocate one week for research and prototyping; consult official documentation and tutorial resources early.</td>
+                </tr>
+                <tr>
+                  <td>Time underestimation — tasks take longer than planned</td>
+                  <td>High</td>
+                  <td>Medium</td>
+                  <td><strong style="color:#c0392b">High</strong></td>
+                  <td>Build a 1-week buffer into the schedule; prioritise core features using MoSCoW (Must, Should, Could, Won't) method.</td>
+                </tr>
+                <tr>
+                  <td>Security vulnerability — SQL injection or authentication bypass</td>
+                  <td>Low</td>
+                  <td>High</td>
+                  <td><strong style="color:#e67e22">Medium</strong></td>
+                  <td>Use parameterised queries for all database operations; implement input validation on all user-facing forms.</td>
+                </tr>
+                <tr>
+                  <td>Client unavailability for feedback sessions</td>
+                  <td>Medium</td>
+                  <td>Low</td>
+                  <td><strong style="color:#27ae60">Low</strong></td>
+                  <td>Schedule client meetings at least one week in advance; use asynchronous feedback methods (e.g., email surveys) as a fallback.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Storyboards and Wireframes</h3>
+          <p>A <strong>storyboard</strong> visually maps the sequence of screens a user encounters when completing a task. A <strong>wireframe</strong> is a low-fidelity layout sketch of a single screen, showing the placement of UI elements without colour or detailed styling. Together, they allow client feedback on the interface before any front-end code is written.</p>
+
+          <div class="callout tip">
+            <strong>Storyboard vs Wireframe — Key Differences:</strong>
+            <ul>
+              <li><strong>Storyboard:</strong> Shows a <em>sequence of interactions</em> — e.g., the steps a user takes from the login screen to completing a book search. Think of it as a comic strip of your application's workflow.</li>
+              <li><strong>Wireframe:</strong> Shows the <em>layout of a single screen</em> — where headers, navigation, input fields, and buttons are positioned. It does not include colour, fonts, or images.</li>
+              <li><strong>Prototype:</strong> A clickable, interactive mock-up of the interface, often built in a tool like <strong>Figma</strong> or <strong>Canva</strong>. It simulates real user interaction without any back-end code.</li>
+              <li><strong>Why include them:</strong> They demonstrate to assessors that you consulted the client about the UI <em>before</em> coding, which is a hallmark of professional software engineering practice.</li>
+            </ul>
+          </div>
+
+          <h3>Data Flow Diagram (DFD)</h3>
+          <p>A <strong>Data Flow Diagram (DFD)</strong> models how data moves through a system. It shows external entities (users or other systems), processes that transform data, data stores (databases or files), and the data flows connecting them. A <strong>Level 0 DFD</strong> (Context Diagram) shows the entire system as a single process with all external entities. A <strong>Level 1 DFD</strong> expands the main process into its sub-processes.</p>
+
+          <div class="diagram-block">
+            <h4>📊 DFD Notation — Level 0 Context Diagram (Library System)</h4>
+            <p class="diagram-subtitle">External entities and the core system boundary</p>
+            <p class="diagram-description">
+              A Level 0 DFD (Context Diagram) shows the entire system as a single circle (process), with all external entities and the data flows between them and the system. It defines the system boundary — what is inside and outside the scope of the software.
+            </p>
+            <pre class="text-diagram">Level 0 DFD — Library Management System (Context Diagram)
+===========================================================
+
+  [Library Member] ----search request---→ (Library Management System)
+  [Library Member] ←---search results---- (Library Management System)
+  [Library Member] ----loan request------→ (Library Management System)
+  [Library Member] ←---loan confirmation- (Library Management System)
+
+  [Staff Member]   ----return record----→ (Library Management System)
+  [Staff Member]   ←---fine calculation-- (Library Management System)
+  [Staff Member]   ----report request---→ (Library Management System)
+  [Staff Member]   ←---overdue report---- (Library Management System)
+
+  [Admin]          ----manage books-----→ (Library Management System)
+  [Admin]          ←---system reports---- (Library Management System)
+
+Key:
+  [ ] = External Entity (outside the system boundary)
+  ( ) = Process (the system itself)
+  ----→ = Data Flow (direction of data movement)</pre>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Define the system boundary and identify all external entities and data flows at the highest level.<br>
+              <strong>Syllabus Link:</strong> SE-12-06<br>
+              <strong>Next Step:</strong> A Level 1 DFD would expand the central process into sub-processes (e.g., Search Books, Issue Loan, Generate Report) with data stores (e.g., Books DB, Members DB).
+            </p>
+          </div>
+
+          <div class="callout tip">
+            <strong>Process Diary Tips — Phase 2:</strong>
+            <ul>
+              <li><strong>Date every entry:</strong> Your process diary must show the chronological development of your project. Undated entries will not receive credit for demonstrating ongoing engagement.</li>
+              <li><strong>Record decisions and reasoning:</strong> Don't just state what you did — explain <em>why</em> you chose one approach over another (e.g., "I chose a phased implementation because..."). This demonstrates higher-order thinking.</li>
+              <li><strong>Include annotated screenshots:</strong> Annotate wireframes, Gantt charts, and planning documents to show your understanding of their purpose. A screenshot without annotation adds little evidence.</li>
+              <li><strong>Record client feedback:</strong> Summarise every client interaction. Include what feedback was given and how you responded to it in your planning and design.</li>
+              <li><strong>Reflect on setbacks:</strong> Note when tasks took longer than expected and how you adjusted the schedule. This demonstrates project management competency.</li>
+            </ul>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -444,6 +603,255 @@ programmed_backup(<span class="str">'app_data.sqlite3'</span>, <span class="str"
 
           <h3>Innovative UI Solutions</h3>
           <p><strong>Propose</strong> an additional innovative solution using a <strong>prototype</strong> and a <strong>user interface (UI)</strong> design. Prototyping allows clients to interact with a mock-up of the system, providing early validation of the UI layout before heavy backend coding commences (Outcome SE-12-06).</p>
+
+          <h3>Version Control Workflow</h3>
+          <p><strong>Version control</strong> is a fundamental professional practice. Git allows engineers to track every change made to the codebase, revert to earlier versions if bugs are introduced, and collaborate without overwriting each other's work. The workflow below demonstrates the standard Git feature-branch workflow used in professional software engineering.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Bash — Git Feature-Branch Workflow</span></div>
+            <pre><code class="language-bash"># ── INITIAL SETUP ──────────────────────────────────────────
+# Initialise a new repository and make the first commit
+git init library-management-system
+cd library-management-system
+git add README.md
+git commit -m "Initial commit: project structure"
+
+# ── FEATURE DEVELOPMENT ────────────────────────────────────
+# Always create a new branch for each feature
+git checkout -b feature/book-search
+
+# After writing code, stage and commit your changes
+git add src/search.py tests/test_search.py
+git commit -m "Add book search by title and ISBN with unit tests"
+
+# ── MERGING A FEATURE ──────────────────────────────────────
+# Switch back to main and merge the completed feature
+git checkout main
+git merge feature/book-search --no-ff -m "Merge feature/book-search into main"
+
+# ── USEFUL COMMANDS ────────────────────────────────────────
+git log --oneline --graph    # View commit history as a graph
+git diff HEAD~1 HEAD         # See changes since the last commit
+git status                   # Check which files are staged/unstaged
+git stash                    # Temporarily save uncommitted changes
+
+# ── TAGGING A RELEASE ──────────────────────────────────────
+git tag -a v1.0 -m "Version 1.0 — submitted for client review"
+git push origin main --tags</code></pre>
+          </div>
+
+          <div class="callout tip">
+            <strong>Version Control Best Practices for the SEP:</strong>
+            <ul>
+              <li><strong>Commit frequently:</strong> Commit after every logical unit of work (e.g., after implementing one function). Small commits are far easier to review and revert than large, multi-feature commits.</li>
+              <li><strong>Write meaningful commit messages:</strong> Use the imperative mood and describe <em>what</em> the commit does: "Add login form validation" not "fixed stuff" or "wip".</li>
+              <li><strong>Use branches for features:</strong> Never code a new feature directly on <code>main</code>. Always create a feature branch (<code>git checkout -b feature/my-feature</code>) so the main branch stays stable.</li>
+              <li><strong>Link to your process diary:</strong> Your commit history in GitHub serves as timestamped evidence of ongoing development — reference it in your process diary entries.</li>
+            </ul>
+          </div>
+
+          <h3>Modular Design — Python Example</h3>
+          <p>A well-engineered solution separates concerns into distinct modules and classes. The example below shows how the Library Management System is implemented using modular Python, with each class responsible for a single aspect of the system.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Modular Design: Library System</span></div>
+            <pre><code class="language-python">"""
+Library Management System — Modular Python Design
+Demonstrates separation of concerns across classes.
+"""
+
+# ── DATA LAYER ─────────────────────────────────────────────
+class Book:
+    """Represents a single book in the library catalogue."""
+    def __init__(self, isbn: str, title: str, author: str):
+        self.isbn = isbn
+        self.title = title
+        self.author = author
+        self.available = True
+
+    def __repr__(self):
+        status = "Available" if self.available else "On Loan"
+        return f"Book({self.title!r} by {self.author} — {status})"
+
+
+class Member:
+    """Represents a library member."""
+    MAX_LOANS = 5
+
+    def __init__(self, member_id: str, name: str, email: str):
+        self.member_id = member_id
+        self.name = name
+        self.email = email
+        self.active_loans = []
+
+    def can_borrow(self) -> bool:
+        return len(self.active_loans) &lt; self.MAX_LOANS
+
+
+# ── SERVICE LAYER ──────────────────────────────────────────
+class LoanService:
+    """Handles all business logic for issuing and returning loans."""
+
+    def __init__(self):
+        self.loans = []  # In a real system, this would query a database
+
+    def issue_loan(self, book: Book, member: Member) -> str:
+        """Issue a loan if the book is available and member can borrow."""
+        if not book.available:
+            return f"Error: '{book.title}' is currently on loan."
+        if not member.can_borrow():
+            return f"Error: {member.name} has reached the maximum loan limit."
+
+        book.available = False
+        member.active_loans.append(book.isbn)
+        self.loans.append({"isbn": book.isbn, "member_id": member.member_id})
+        return f"Success: '{book.title}' issued to {member.name}."
+
+    def return_book(self, book: Book, member: Member) -> str:
+        """Process a book return."""
+        if book.isbn not in member.active_loans:
+            return f"Error: No active loan found for '{book.title}'."
+        book.available = True
+        member.active_loans.remove(book.isbn)
+        return f"Success: '{book.title}' returned by {member.name}."
+
+
+# ── SEARCH MODULE ──────────────────────────────────────────
+class Catalogue:
+    """Manages the book catalogue and provides search functionality."""
+
+    def __init__(self):
+        self.books: list[Book] = []
+
+    def add_book(self, book: Book):
+        self.books.append(book)
+
+    def search_by_title(self, query: str) -> list[Book]:
+        """Case-insensitive partial title search."""
+        query = query.lower()
+        return [b for b in self.books if query in b.title.lower()]
+
+    def search_by_isbn(self, isbn: str) -> Book | None:
+        """Return the book matching the given ISBN, or None."""
+        return next((b for b in self.books if b.isbn == isbn), None)
+
+
+# ── MAIN PROGRAM ───────────────────────────────────────────
+if __name__ == "__main__":
+    catalogue = Catalogue()
+    loan_service = LoanService()
+
+    book1 = Book("978-0-7432-7356-5", "The Great Gatsby", "F. Scott Fitzgerald")
+    member1 = Member("S001", "Alice Chen", "alice@school.edu.au")
+
+    catalogue.add_book(book1)
+    print(catalogue.search_by_title("gatsby"))
+    print(loan_service.issue_loan(book1, member1))</code></pre>
+          </div>
+
+          <h3>Code Review Checklist</h3>
+          <p>A <strong>code review</strong> is the systematic examination of code by a peer before it is merged into the main branch. It catches bugs, ensures style consistency, and improves overall code quality. The checklist below should be applied during every code review in a collaborative project.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Checklist Item</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Functionality</strong></td>
+                  <td>Does the code correctly implement the specified requirements?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Functionality</strong></td>
+                  <td>Are all edge cases and error conditions handled appropriately?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Readability</strong></td>
+                  <td>Are variable and function names clear and descriptive?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Readability</strong></td>
+                  <td>Does the code follow PEP 8 style conventions (Python)?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Documentation</strong></td>
+                  <td>Do all functions and classes have docstrings explaining purpose, parameters, and return values?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Testing</strong></td>
+                  <td>Are unit tests provided for all new functions, covering normal, boundary, and invalid inputs?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Security</strong></td>
+                  <td>Is all user input validated and sanitised before processing or storing?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Security</strong></td>
+                  <td>Are there any hardcoded passwords, API keys, or sensitive credentials in the code?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Performance</strong></td>
+                  <td>Are there any obviously inefficient algorithms (e.g., nested loops on large datasets) that should be refactored?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Version Control</strong></td>
+                  <td>Is the commit message clear and descriptive? Does the branch name follow the naming convention?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Debugging Process</h3>
+          <p><strong>Debugging</strong> is the systematic process of identifying, isolating, and fixing defects in code. A structured debugging process is faster and more reliable than randomly changing code and hoping for improvement.</p>
+
+          <div class="diagram-block">
+            <h4>🐛 Debugging Process Flowchart</h4>
+            <p class="diagram-subtitle">Systematic approach to identifying and resolving defects</p>
+            <p class="diagram-description">
+              The flowchart below shows the structured debugging process. It begins with observing the bug and ends with verifying the fix has not introduced any new defects (regression testing).
+            </p>
+            <div class="mermaid">
+flowchart TD
+    A([🔴 Bug Observed]) --> B[Reproduce the bug reliably\nwith a minimal test case]
+    B --> C{Can you reproduce\nconsistently?}
+    C -- No --> D[Add logging/print statements\nto narrow down occurrence]
+    D --> C
+    C -- Yes --> E[Isolate the affected\nmodule or function]
+    E --> F[Form a hypothesis\nabout the root cause]
+    F --> G[Test the hypothesis\nusing a debugger or print statements]
+    G --> H{Hypothesis\ncorrect?}
+    H -- No --> F
+    H -- Yes --> I[Implement the fix]
+    I --> J[Run the original\nfailing test case]
+    J --> K{Test passes?}
+    K -- No --> F
+    K -- Yes --> L[Run the full test suite\nto check for regressions]
+    L --> M{All tests\npass?}
+    M -- No --> N[Address new regressions\nintroduced by the fix]
+    N --> F
+    M -- Yes --> O([✅ Bug Fixed &amp; Verified])
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Apply a methodical, evidence-based approach to debugging rather than making random code changes.<br>
+              <strong>Syllabus Link:</strong> SE-12-02, SE-12-08<br>
+              <strong>Python Tools:</strong> Use the built-in <code>pdb</code> debugger (<code>python -m pdb script.py</code>), VS Code's integrated debugger, or add <code>print()</code> statements to trace variable values at key points.
+            </p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -485,12 +893,660 @@ programmed_backup(<span class="str">'app_data.sqlite3'</span>, <span class="str"
         test_data =[<span class="num">17</span>, <span class="num">18</span>, <span class="num">40</span>, <span class="num">65</span>, <span class="num">66</span>]
         expected_output =[<span class="num">18</span>, <span class="num">40</span>, <span class="num">65</span>]
         actual_output = get_valid_ages(test_data)
-        
+
         <span class="cm"># Comparing actual output with expected output</span>
         self.assertEqual(actual_output, expected_output)
 
 <span class="kw">if</span> __name__ == <span class="str">'__main__'</span>:
     unittest.main()</code></pre>
+          </div>
+
+          <h3>Test Data Table</h3>
+          <p>A comprehensive test plan uses three categories of test data to verify correctness across all scenarios. <strong>Normal data</strong> tests typical valid inputs; <strong>boundary data</strong> tests values at the exact edges of valid ranges; <strong>invalid (erroneous) data</strong> tests inputs that should be rejected.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Test Case</th>
+                  <th>Input Data</th>
+                  <th>Category</th>
+                  <th>Expected Output</th>
+                  <th>Actual Output</th>
+                  <th>Pass/Fail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Valid book search — title exists</td>
+                  <td>query = "gatsby"</td>
+                  <td>Normal</td>
+                  <td>Returns list containing "The Great Gatsby"</td>
+                  <td>[Book('The Great Gatsby'...)]</td>
+                  <td>✅ Pass</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Valid book search — case insensitive</td>
+                  <td>query = "GATSBY"</td>
+                  <td>Normal</td>
+                  <td>Returns same result as lowercase query</td>
+                  <td>[Book('The Great Gatsby'...)]</td>
+                  <td>✅ Pass</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Loan issued — exactly at loan limit (boundary)</td>
+                  <td>member has 4 active loans; issue 1 more</td>
+                  <td>Boundary</td>
+                  <td>Loan issued successfully (5th loan allowed)</td>
+                  <td>"Success: book issued to Alice Chen."</td>
+                  <td>✅ Pass</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Loan refused — one over limit (boundary)</td>
+                  <td>member has 5 active loans; attempt 6th</td>
+                  <td>Boundary</td>
+                  <td>Error: maximum loan limit reached</td>
+                  <td>"Error: Alice Chen has reached the maximum loan limit."</td>
+                  <td>✅ Pass</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Empty search query</td>
+                  <td>query = ""</td>
+                  <td>Boundary</td>
+                  <td>Returns all books in catalogue (empty query matches all)</td>
+                  <td>All 12 books returned</td>
+                  <td>✅ Pass</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>Search for non-existent book</td>
+                  <td>query = "xyznotabook"</td>
+                  <td>Invalid</td>
+                  <td>Returns empty list []</td>
+                  <td>[]</td>
+                  <td>✅ Pass</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>Issue loan for already-loaned book</td>
+                  <td>book.available = False; attempt issue</td>
+                  <td>Invalid</td>
+                  <td>Error: book is currently on loan</td>
+                  <td>"Error: 'The Great Gatsby' is currently on loan."</td>
+                  <td>✅ Pass</td>
+                </tr>
+                <tr>
+                  <td>8</td>
+                  <td>Return a book not borrowed by that member</td>
+                  <td>member_id does not match loan record</td>
+                  <td>Invalid</td>
+                  <td>Error: no active loan found for this member</td>
+                  <td>"Error: No active loan found for 'The Great Gatsby'."</td>
+                  <td>✅ Pass</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Test Plan Template</h3>
+          <p>A <strong>test plan</strong> is a document that outlines the testing strategy, scope, resources, schedule, and exit criteria for a software project. It is prepared <em>before</em> testing begins to ensure testing is systematic and complete.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Section</th>
+                  <th>Content</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Project Name</strong></td>
+                  <td>Library Management System v1.0</td>
+                </tr>
+                <tr>
+                  <td><strong>Test Objectives</strong></td>
+                  <td>Verify all functional requirements are met; confirm boundary conditions are correctly enforced; ensure invalid inputs are gracefully handled.</td>
+                </tr>
+                <tr>
+                  <td><strong>Scope — In Scope</strong></td>
+                  <td>Book search, loan issuance, loan return, overdue fine calculation, member registration, report generation.</td>
+                </tr>
+                <tr>
+                  <td><strong>Scope — Out of Scope</strong></td>
+                  <td>Payment processing (deferred to v2.0), email notification system.</td>
+                </tr>
+                <tr>
+                  <td><strong>Testing Types</strong></td>
+                  <td>Unit testing (individual functions), integration testing (modules working together), system testing (end-to-end user workflows), user acceptance testing (client feedback session).</td>
+                </tr>
+                <tr>
+                  <td><strong>Test Data Categories</strong></td>
+                  <td>Normal (valid expected inputs), Boundary (values at the edge of valid ranges), Invalid/Erroneous (inputs that should be rejected).</td>
+                </tr>
+                <tr>
+                  <td><strong>Tools</strong></td>
+                  <td>Python <code>unittest</code> framework, VS Code debugger, manual testing via the application UI.</td>
+                </tr>
+                <tr>
+                  <td><strong>Entry Criteria</strong></td>
+                  <td>All Phase 3 code is complete and committed to the main branch.</td>
+                </tr>
+                <tr>
+                  <td><strong>Exit Criteria</strong></td>
+                  <td>All test cases pass; no critical or high-severity defects remain open; client has signed off on UAT results.</td>
+                </tr>
+                <tr>
+                  <td><strong>Schedule</strong></td>
+                  <td>Unit testing: Weeks 8–9. Integration testing: Week 9. UAT: Week 10.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Defect Log</h3>
+          <p>A <strong>defect log</strong> (also called a bug tracker or issue log) records every defect discovered during testing. Each entry includes enough information for the developer to reproduce and fix the defect. The defect log demonstrates to assessors that you conducted genuine testing and responded to the results.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Defect Description</th>
+                  <th>Severity</th>
+                  <th>Steps to Reproduce</th>
+                  <th>Expected</th>
+                  <th>Actual</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>BUG-001</td>
+                  <td>Search returns no results when query contains trailing whitespace</td>
+                  <td>Medium</td>
+                  <td>Enter "gatsby " (with trailing space) in search box</td>
+                  <td>The Great Gatsby returned</td>
+                  <td>Empty list returned</td>
+                  <td>✅ Fixed — added <code>query.strip()</code> in search function</td>
+                </tr>
+                <tr>
+                  <td>BUG-002</td>
+                  <td>Loan limit not enforced — member can borrow 6 books</td>
+                  <td>High</td>
+                  <td>Issue loans until member has 5; attempt a 6th loan</td>
+                  <td>Error: maximum loan limit reached</td>
+                  <td>6th loan issued without error</td>
+                  <td>✅ Fixed — off-by-one error in <code>can_borrow()</code> condition corrected</td>
+                </tr>
+                <tr>
+                  <td>BUG-003</td>
+                  <td>Overdue report includes books returned today as overdue</td>
+                  <td>Medium</td>
+                  <td>Return a book on the exact due date; generate overdue report</td>
+                  <td>Book not included in report</td>
+                  <td>Book incorrectly listed as overdue</td>
+                  <td>✅ Fixed — changed <code>&gt;</code> to <code>&gt;=</code> in date comparison</td>
+                </tr>
+                <tr>
+                  <td>BUG-004</td>
+                  <td>Application crashes with unhandled exception when ISBN contains letters</td>
+                  <td>Critical</td>
+                  <td>Enter "ABC123" as ISBN in the add-book form</td>
+                  <td>Validation error message displayed</td>
+                  <td>ValueError: invalid literal for int() with base 10</td>
+                  <td>✅ Fixed — added <code>try/except ValueError</code> block in ISBN validation</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Evaluation Criteria Checklist</h3>
+          <p>The final evaluation assesses whether the solution meets the original requirements. Evaluation must address every requirement documented in Phase 1, referencing specific test results and client feedback as evidence.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Evaluation Criterion</th>
+                  <th>Evidence</th>
+                  <th>Met?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>All functional requirements implemented and verified by testing</td>
+                  <td>All 8 test cases in the test data table pass; no open critical defects</td>
+                  <td>✅ Yes</td>
+                </tr>
+                <tr>
+                  <td>Search returns results within 2 seconds (performance requirement)</td>
+                  <td>Timed 10 searches on a 10,000-book catalogue; average response time was 0.3 seconds</td>
+                  <td>✅ Yes</td>
+                </tr>
+                <tr>
+                  <td>Passwords stored as bcrypt hashes (security requirement)</td>
+                  <td>Inspected the database — only hashes are stored, no plaintext passwords visible</td>
+                  <td>✅ Yes</td>
+                </tr>
+                <tr>
+                  <td>Interface usable by new staff within 15 minutes (usability requirement)</td>
+                  <td>Client representative completed a new-user walkthrough in 11 minutes with no assistance</td>
+                  <td>✅ Yes</td>
+                </tr>
+                <tr>
+                  <td>Code follows PEP 8 and all functions have docstrings (maintainability)</td>
+                  <td>Ran <code>pylint</code> — score 9.2/10; all public functions and classes have docstrings</td>
+                  <td>✅ Yes</td>
+                </tr>
+                <tr>
+                  <td>CSV export feature implemented (should-have requirement)</td>
+                  <td>Report module includes <code>export_to_csv()</code> function; tested with 50-record export</td>
+                  <td>✅ Yes</td>
+                </tr>
+                <tr>
+                  <td>Solution meets client's overall expectations (UAT sign-off)</td>
+                  <td>Client feedback: "The system is easy to use and covers all our needs. Minor improvement: add a print function for loan receipts (deferred to v2.0)."</td>
+                  <td>✅ Mostly — 1 enhancement deferred</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout exam-tip">
+            <strong>Exam Tip — Evaluation vs Testing:</strong> Many students confuse <em>testing</em> with <em>evaluation</em>. Testing verifies that the software works correctly (does it match expected outputs?). Evaluation assesses whether the completed solution meets the original client requirements and broader criteria such as usability, security, and maintainability. Your evaluation must explicitly reference the requirements from Phase 1 — this demonstrates the full SDLC has been applied.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  HSC ASSESSMENT GUIDANCE                                -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">HSC Guidance</span>
+          <span class="part-name">📝 HSC Assessment Guidance</span>
+        </div>
+
+        <section id="hsc-assessment-guidance">
+          <h2 class="syllabus-phase">📝 HSC Assessment Guidance</h2>
+          <p class="outcome-subtitle">🎯 <em>(All Outcomes: SE-12-01 to SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em>Understanding what assessors are looking for in each phase will help you maximise marks and avoid common pitfalls.</em></p>
+
+          <div class="callout warning">
+            <strong>Common Student Mistakes — Avoid These:</strong>
+            <ul>
+              <li><strong>Starting to code in Phase 1:</strong> The most common mistake. Phase 1 must be completed (requirements gathered, feasibility assessed, client consulted) before any code is written. Evidence of planning is required.</li>
+              <li><strong>Missing non-functional requirements:</strong> Functional requirements alone are insufficient. Assessors expect performance, security, usability, and maintainability requirements to be explicitly documented.</li>
+              <li><strong>No client consultation evidence:</strong> Simply stating "I consulted a client" is not enough. You must include dated meeting minutes, a signed requirements document, survey results, or email evidence.</li>
+              <li><strong>Test data with only normal cases:</strong> A test table that only tests valid inputs misses the point of testing. You must include boundary and invalid test cases and demonstrate that your code handles them correctly.</li>
+              <li><strong>Evaluation that does not reference Phase 1 requirements:</strong> Your evaluation must explicitly go back to each requirement from Phase 1 and assess whether it was met. An evaluation that says "I think the project went well" without referencing requirements receives minimal marks.</li>
+              <li><strong>Process diary written retrospectively:</strong> The process diary must be written throughout the project. Assessors can tell when it was written all at once at the end — dated entries over several weeks are essential.</li>
+              <li><strong>No version control history:</strong> An empty or near-empty GitHub commit history suggests the project was completed in one sitting. Regular commits with meaningful messages are expected.</li>
+            </ul>
+          </div>
+
+          <h3>What Markers Look for in Each Phase</h3>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h4>🎯 Phase 1 — Identifying &amp; Defining</h4>
+              <ul>
+                <li>Clear, genuine real-world problem statement</li>
+                <li>Evidence of client consultation (meeting minutes, survey)</li>
+                <li>Both functional AND non-functional requirements listed</li>
+                <li>Feasibility analysis (scheduling and resources)</li>
+                <li>Defined scope with explicit boundaries</li>
+                <li>User stories with acceptance criteria</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h4>🔬 Phase 2 — Research &amp; Planning</h4>
+              <ul>
+                <li>Justified choice of development approach (Agile/Waterfall)</li>
+                <li>Complete Gantt chart covering all phases</li>
+                <li>Risk register with mitigation strategies</li>
+                <li>Structure charts and/or DFDs</li>
+                <li>Storyboards or wireframes with annotations</li>
+                <li>Justified choice of implementation method</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h4>💻 Phase 3 — Producing &amp; Implementing</h4>
+              <ul>
+                <li>Code that matches the planned design</li>
+                <li>Regular Git commits with meaningful messages</li>
+                <li>Modular, well-documented code (docstrings, PEP 8)</li>
+                <li>Evidence of iterative development (multiple versions)</li>
+                <li>Process diary entries describing decisions made</li>
+                <li>Prototype or UI screenshots</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h4>🧪 Phase 4 — Testing &amp; Evaluating</h4>
+              <ul>
+                <li>Test data table with normal, boundary, and invalid cases</li>
+                <li>Defect log showing bugs found and fixed</li>
+                <li>Evaluation against every Phase 1 requirement</li>
+                <li>Client feedback documented and responded to</li>
+                <li>Reflection on limitations and future improvements</li>
+                <li>Final solution matches or exceeds requirements</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>Process Diary Example Excerpt</h3>
+          <p>The process diary is a chronological record of your development journey. It should demonstrate ongoing reflection, problem-solving, and client engagement throughout the project — not just a summary of what was done.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Activities Completed</th>
+                  <th>Decisions Made &amp; Reasoning</th>
+                  <th>Challenges &amp; Responses</th>
+                  <th>Next Steps</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Week 1<br>Mon 3 Feb</td>
+                  <td>Initial client meeting with the school librarian (Mrs Chen). Discussed current paper-based system and pain points.</td>
+                  <td>Identified loan tracking and overdue reporting as the two highest-priority problems. Decided to focus the project scope on these areas.</td>
+                  <td>Client had difficulty articulating technical requirements — used guided questions: "What does a typical day look like?" and "What is most frustrating about the current process?"</td>
+                  <td>Draft functional and non-functional requirements for client review by Week 2.</td>
+                </tr>
+                <tr>
+                  <td>Week 3<br>Wed 12 Feb</td>
+                  <td>Completed structure chart and Level 0 DFD. Began algorithm design for the book search module using pseudocode.</td>
+                  <td>Chose Agile approach over Waterfall because requirements may evolve as the client sees prototypes. This will allow me to adapt designs based on feedback each iteration.</td>
+                  <td>Initially designed the search as a sequential scan — after research, switched to a dictionary-based lookup for O(1) ISBN lookups, significantly improving efficiency on large catalogues.</td>
+                  <td>Build the search and loan modules in Phase 3 Week 5–6.</td>
+                </tr>
+                <tr>
+                  <td>Week 7<br>Tue 4 Mar</td>
+                  <td>Implemented <code>LoanService</code> class. Discovered BUG-002 (loan limit not enforced) during manual testing.</td>
+                  <td>Fixed the off-by-one error in <code>can_borrow()</code> — changed <code>&lt;</code> to <code>&lt;=</code> in the comparison. Added a unit test to prevent regression.</td>
+                  <td>The bug was caused by incorrect operator choice. Added this case to the test data table as a boundary test to ensure the limit is correctly enforced on future changes.</td>
+                  <td>Complete UI implementation; schedule Phase 4 UAT session with Mrs Chen for Week 10.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Submission Checklist</h3>
+          <p>Before submitting your Software Engineering Project, use this checklist to ensure your documentation package is complete:</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Required</th>
+                  <th>Completed?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Signed client requirements document</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Functional and non-functional requirements table</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>User stories with acceptance criteria</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Feasibility analysis (scheduling and resources)</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Gantt chart (all 4 phases)</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Risk register with mitigation strategies</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Structure chart or DFD (or both)</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Storyboard and/or wireframes</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Development approach justification</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Well-commented, PEP 8 compliant source code</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Git repository with regular commit history</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Test plan document</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Test data table (normal, boundary, invalid)</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Defect log</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Evaluation against all Phase 1 requirements</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Client feedback and UAT sign-off</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Process diary (dated, throughout project)</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Change request log (if requirements changed)</td><td>Recommended</td><td>☐</td></tr>
+                <tr><td>Data dictionary</td><td>Recommended</td><td>☐</td></tr>
+                <tr><td>Meeting minutes (all client meetings)</td><td>Recommended</td><td>☐</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PROJECT DOCUMENTATION EXAMPLES                         -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Documentation</span>
+          <span class="part-name">📁 Project Documentation Examples</span>
+        </div>
+
+        <section id="project-documentation">
+          <h2 class="syllabus-phase">📁 Project Documentation Examples</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-05, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em>Professional software engineering projects maintain comprehensive documentation throughout the development lifecycle. The examples below illustrate the standard and format expected in HSC submissions.</em></p>
+
+          <h3>Meeting Minutes Template</h3>
+          <p><strong>Meeting minutes</strong> are an official record of what was discussed and decided at each client meeting. They provide evidence of ongoing client consultation and demonstrate that requirements were gathered systematically.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th colspan="2" style="background-color:var(--accent);color:white;text-align:center">CLIENT MEETING MINUTES</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td width="30%"><strong>Project Name</strong></td>
+                  <td>Library Management System</td>
+                </tr>
+                <tr>
+                  <td><strong>Meeting Number</strong></td>
+                  <td>Meeting #1 of 3</td>
+                </tr>
+                <tr>
+                  <td><strong>Date &amp; Time</strong></td>
+                  <td>Monday, 3 February 2026 — 3:30 pm</td>
+                </tr>
+                <tr>
+                  <td><strong>Location</strong></td>
+                  <td>School Library — Resource Room</td>
+                </tr>
+                <tr>
+                  <td><strong>Attendees</strong></td>
+                  <td>Alex Tran (developer), Mrs Chen (client — school librarian)</td>
+                </tr>
+                <tr>
+                  <td><strong>Agenda Items</strong></td>
+                  <td>
+                    <ol>
+                      <li>Overview of the current paper-based system</li>
+                      <li>Identification of pain points and priorities</li>
+                      <li>Initial discussion of system scope and features</li>
+                    </ol>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Discussion Summary</strong></td>
+                  <td>Mrs Chen described the current process: loans are recorded in a paper ledger; overdue books are identified manually each Friday. The main pain points are: (1) time spent checking for overdue books, (2) no way to check availability without physically walking to the shelf, (3) no record of a member's loan history.</td>
+                </tr>
+                <tr>
+                  <td><strong>Decisions Made</strong></td>
+                  <td>Priority features agreed: digital loan tracking, automated overdue detection, and a searchable catalogue. Payment processing for fines deferred to a future version.</td>
+                </tr>
+                <tr>
+                  <td><strong>Action Items</strong></td>
+                  <td>Developer: Draft functional requirements by Week 2 for client review. Client: Provide a sample of current loan records to inform data structure design.</td>
+                </tr>
+                <tr>
+                  <td><strong>Next Meeting</strong></td>
+                  <td>Monday, 17 February 2026 — review drafted requirements and wireframes.</td>
+                </tr>
+                <tr>
+                  <td><strong>Client Signature</strong></td>
+                  <td>_______________________ (Mrs Chen)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Change Request Log</h3>
+          <p>A <strong>change request log</strong> records any modifications to the original requirements after the requirements document has been signed. It prevents scope creep by requiring formal approval for each change, and ensures all parties agree on the updated scope.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>CR#</th>
+                  <th>Date Requested</th>
+                  <th>Requested By</th>
+                  <th>Change Description</th>
+                  <th>Impact Assessment</th>
+                  <th>Decision</th>
+                  <th>Date Resolved</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CR-001</td>
+                  <td>18 Feb 2026</td>
+                  <td>Client (Mrs Chen)</td>
+                  <td>Add ability to reserve a book that is currently on loan</td>
+                  <td>Medium — requires a new Reservations table, updated UI, and notification logic. Estimated additional 5 hours development time.</td>
+                  <td><strong>Approved</strong> — prioritised as "Should Have" for v1.0</td>
+                  <td>5 Mar 2026</td>
+                </tr>
+                <tr>
+                  <td>CR-002</td>
+                  <td>3 Mar 2026</td>
+                  <td>Client (Mrs Chen)</td>
+                  <td>Add online payment processing for overdue fines</td>
+                  <td>High — requires third-party payment API integration, significant additional development, and security testing. Estimated additional 15 hours. Not feasible within current schedule.</td>
+                  <td><strong>Deferred to v2.0</strong> — outside current scope and timeline</td>
+                  <td>4 Mar 2026</td>
+                </tr>
+                <tr>
+                  <td>CR-003</td>
+                  <td>10 Mar 2026</td>
+                  <td>Developer</td>
+                  <td>Switch from SQLite to PostgreSQL for the database backend</td>
+                  <td>Low — database access is already abstracted through the service layer. SQLite is adequate for single-user deployment; PostgreSQL only needed for multi-user concurrent access.</td>
+                  <td><strong>Rejected</strong> — SQLite meets current requirements; PostgreSQL migration deferred until multi-user version is planned</td>
+                  <td>10 Mar 2026</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Data Dictionary</h3>
+          <p>A <strong>data dictionary</strong> formally defines every data item used in the system — its name, data type, size, valid range, and description. It ensures consistency between the design documents, database schema, and code. In Python, field sizes and types translate directly to database column definitions and validation logic.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Field Name</th>
+                  <th>Table / Class</th>
+                  <th>Data Type</th>
+                  <th>Size / Range</th>
+                  <th>Required?</th>
+                  <th>Description &amp; Validation Rules</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>member_id</code></td>
+                  <td>Member</td>
+                  <td>String (VARCHAR)</td>
+                  <td>8 characters</td>
+                  <td>Yes</td>
+                  <td>Unique identifier for each member. Format: "S" followed by 7 digits (e.g., "S0012345"). Generated automatically on registration.</td>
+                </tr>
+                <tr>
+                  <td><code>name</code></td>
+                  <td>Member</td>
+                  <td>String (VARCHAR)</td>
+                  <td>1–100 characters</td>
+                  <td>Yes</td>
+                  <td>Member's full name. Must not be blank. Stored as entered; displayed with title case.</td>
+                </tr>
+                <tr>
+                  <td><code>email</code></td>
+                  <td>Member</td>
+                  <td>String (VARCHAR)</td>
+                  <td>5–254 characters</td>
+                  <td>Yes</td>
+                  <td>Member's email address. Must match the pattern <code>x@x.x</code> (validated using regex). Must be unique in the Members table.</td>
+                </tr>
+                <tr>
+                  <td><code>isbn</code></td>
+                  <td>Book</td>
+                  <td>String (VARCHAR)</td>
+                  <td>13 characters</td>
+                  <td>Yes</td>
+                  <td>International Standard Book Number (ISBN-13). Must be exactly 13 digits. Unique in the Books table. Validated using ISBN-13 checksum algorithm.</td>
+                </tr>
+                <tr>
+                  <td><code>title</code></td>
+                  <td>Book</td>
+                  <td>String (VARCHAR)</td>
+                  <td>1–300 characters</td>
+                  <td>Yes</td>
+                  <td>Full title of the book. Must not be blank. Stored as entered; searched case-insensitively.</td>
+                </tr>
+                <tr>
+                  <td><code>available</code></td>
+                  <td>Book</td>
+                  <td>Boolean</td>
+                  <td>True / False</td>
+                  <td>Yes</td>
+                  <td>Whether the book is available for loan. Default: True on creation. Set to False when a loan is issued; reset to True when the book is returned.</td>
+                </tr>
+                <tr>
+                  <td><code>issue_date</code></td>
+                  <td>Loan</td>
+                  <td>Date</td>
+                  <td>Valid calendar date</td>
+                  <td>Yes</td>
+                  <td>The date the loan was issued. Set automatically to today's date using <code>datetime.date.today()</code>. Cannot be a future date.</td>
+                </tr>
+                <tr>
+                  <td><code>due_date</code></td>
+                  <td>Loan</td>
+                  <td>Date</td>
+                  <td>Valid calendar date</td>
+                  <td>Yes</td>
+                  <td>The date the book must be returned. Automatically calculated as <code>issue_date + 14 days</code>. Must be after issue_date.</td>
+                </tr>
+                <tr>
+                  <td><code>fine_amount</code></td>
+                  <td>Loan</td>
+                  <td>Float (DECIMAL)</td>
+                  <td>0.00 to 99.99</td>
+                  <td>No</td>
+                  <td>Overdue fine in Australian dollars. Default: 0.00. Calculated as $0.20 per day overdue. Null if the book is not yet overdue.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout tip">
+            <strong>Data Dictionary — Why It Matters for the HSC:</strong>
+            <ul>
+              <li>The data dictionary bridges your Phase 1 requirements (what data you need) with your Phase 3 implementation (how it is stored and validated in code).</li>
+              <li>Including a data dictionary demonstrates that you applied a <strong>systematic, professional approach</strong> to data design — a key marker of higher-band performance.</li>
+              <li>It also makes it easy to verify that your database schema, Python classes, and validation code are all consistent with each other.</li>
+              <li>Reference your data dictionary in your process diary when you make implementation decisions (e.g., "I chose VARCHAR(13) for ISBN because the data dictionary specifies a fixed 13-character format").</li>
+            </ul>
           </div>
         </section>
 
