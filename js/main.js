@@ -333,6 +333,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const sectionId = section.id || `sec-${idx}`;
       const stateKey = `${pageKey}::${sectionId}`;
 
+      /* ── Move outcome badges into the header ── */
+      const nextSib = h2.nextElementSibling;
+      if (nextSib && nextSib.classList.contains('outcome-subtitle')) {
+        h2.appendChild(nextSib);
+      }
+
       /* ── Add chevron ── */
       const chevron = document.createElement('span');
       chevron.className = 'section-chevron';
