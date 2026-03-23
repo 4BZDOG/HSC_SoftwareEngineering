@@ -367,6 +367,31 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
             <li>🛠️ <strong>Structure Charts (p. 7):</strong> While often procedural, they are used in OOP to map out complex method calls and parameter passing between modules (Outcome SE-11-06).</li>
           </ul>
 
+          <div class="diagram-block">
+            <h4>📐 Structure Chart — Student Management System</h4>
+            <p class="diagram-subtitle">Top-down decomposition of modules and function calls</p>
+            <p class="diagram-description">
+              A structure chart shows how a program is broken into modules (functions/methods) and how they call each other. Unlike a class diagram, it focuses on the hierarchy of calls, not on OOP relationships. Parameters passed between modules are shown on the connecting arrows.
+            </p>
+            <pre class="text-diagram">Structure Chart: Student Management System
+==========================================
+              [Main Program]
+              /            \
+   [Student Module]    [Report Module]
+    /     |     \           |      \
+[Add] [Update] [Delete]  [View]  [Export]
+  |       |
+[Validate] [Save to DB]</pre>
+            <div class="callout tip">
+              <p><strong>Structure Chart vs Class Diagram — What's the difference?</strong></p>
+              <ul>
+                <li><strong>Structure Chart:</strong> Shows how a program is broken into <em>modules/functions</em> and the hierarchy of calls between them. It is procedural in nature — "what calls what".</li>
+                <li><strong>Class Diagram:</strong> Shows OOP <em>relationships</em> between classes — inheritance (IS-A), composition (HAS-A), and associations. It models objects and their data, not just call sequences.</li>
+                <li>In an OOP project, you may use a <strong>structure chart</strong> to plan the top-level flow (e.g., which module runs first) and a <strong>class diagram</strong> to design the objects within each module.</li>
+              </ul>
+            </div>
+          </div>
+
           <div class="callout info">
             <p><strong>Online Tool Suggestion:</strong> Students should use <strong>Lucidchart</strong>, <strong>Draw.io</strong>, or <strong>Mermaid.js</strong> to create professional UML Class Diagrams and DFDs.</p>
           </div>
