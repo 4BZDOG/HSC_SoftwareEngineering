@@ -134,6 +134,156 @@
             <div class="key-term-item"><strong>💻 Development</strong><span>Algorithm design (flowcharts/pseudocode), code generation, and rigorous testing and debugging.</span></div>
             <div class="key-term-item"><strong>🚀 Post-Development</strong><span>Installation and ongoing maintenance procedures.</span></div>
           </div>
+
+          <h3>Project Structure Chart</h3>
+          <p>A <strong>structure chart</strong> breaks the software solution into its major components before coding begins. It shows how the top-level system is decomposed into modules, and how those modules relate to each other. The chart below illustrates a typical school library management system.</p>
+
+          <div class="diagram-block">
+            <h4>📐 Structure Chart — Library Management System</h4>
+            <p class="diagram-subtitle">Top-down decomposition of the student project</p>
+            <p class="diagram-description">
+              The structure chart below shows how the Library Management System is decomposed into functional modules. Each module represents a separate responsibility, allowing the engineer to plan which functions to build first and how they interact.
+            </p>
+            <pre class="text-diagram">Structure Chart: Library Management System
+==========================================
+                [Main Program]
+               /        |       \
+    [Book Module]  [Member Module]  [Report Module]
+      /    |   \       /    \          |       \
+[Add] [Search] [Return] [Register] [Update] [Loans] [Overdue]
+  |       |        |
+[Validate] [DB Lookup] [Fine Calc]</pre>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Plan the modular breakdown of the project before writing any code.<br>
+              <strong>Syllabus Link:</strong> SE-12-02, SE-12-06<br>
+              <strong>Tip:</strong> Each box in the structure chart typically becomes a Python function or class method in your implementation.
+            </p>
+          </div>
+
+          <h3>Requirements Analysis</h3>
+          <p>Requirements must be clearly categorised before development starts. <strong>Functional requirements</strong> describe <em>what</em> the system must do; <strong>non-functional requirements</strong> describe <em>how well</em> it must do it (quality attributes). Documenting both types ensures the solution is both complete and fit for purpose.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Requirement</th>
+                  <th>Example (Library System)</th>
+                  <th>Priority</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Functional</strong></td>
+                  <td>User registration</td>
+                  <td>A member must be able to create an account with their name, email, and student ID.</td>
+                  <td>Must Have</td>
+                </tr>
+                <tr>
+                  <td><strong>Functional</strong></td>
+                  <td>Book search</td>
+                  <td>Users can search the catalogue by title, author, or ISBN and view availability.</td>
+                  <td>Must Have</td>
+                </tr>
+                <tr>
+                  <td><strong>Functional</strong></td>
+                  <td>Loan management</td>
+                  <td>Staff can issue a loan, record a return, and calculate overdue fines automatically.</td>
+                  <td>Must Have</td>
+                </tr>
+                <tr>
+                  <td><strong>Functional</strong></td>
+                  <td>Reporting</td>
+                  <td>Generate a report of all overdue books, sortable by due date or member name.</td>
+                  <td>Should Have</td>
+                </tr>
+                <tr>
+                  <td><strong>Non-Functional</strong></td>
+                  <td>Performance</td>
+                  <td>Search results must return within 2 seconds for a catalogue of up to 10,000 books.</td>
+                  <td>Must Have</td>
+                </tr>
+                <tr>
+                  <td><strong>Non-Functional</strong></td>
+                  <td>Security</td>
+                  <td>All passwords must be stored as bcrypt hashes; no plaintext credentials in the database.</td>
+                  <td>Must Have</td>
+                </tr>
+                <tr>
+                  <td><strong>Non-Functional</strong></td>
+                  <td>Usability</td>
+                  <td>The interface must be operable by a new staff member with no training within 15 minutes.</td>
+                  <td>Should Have</td>
+                </tr>
+                <tr>
+                  <td><strong>Non-Functional</strong></td>
+                  <td>Maintainability</td>
+                  <td>Code must include docstrings for all functions and follow PEP 8 style guidelines.</td>
+                  <td>Should Have</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>User Stories and Acceptance Criteria</h3>
+          <p><strong>User stories</strong> capture requirements from the end-user's perspective in plain language. They follow the format: <em>"As a [role], I want [feature], so that [benefit]."</em> Each user story is accompanied by <strong>acceptance criteria</strong> — specific, testable conditions that confirm the story has been implemented correctly.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>User Story</th>
+                  <th>Acceptance Criteria</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>As a <strong>library member</strong>, I want to search for books by title so that I can quickly check if a book is available.</td>
+                  <td>
+                    <ul>
+                      <li>Search returns results within 2 seconds</li>
+                      <li>Results display title, author, and availability status</li>
+                      <li>Partial title matches are returned (e.g., "Harry" returns all Harry Potter books)</li>
+                      <li>A "no results found" message displays for unmatched queries</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td>As a <strong>staff member</strong>, I want to issue a loan so that the member can borrow the book and a return date is recorded.</td>
+                  <td>
+                    <ul>
+                      <li>System prevents issuing a loan if member already has 5 active loans</li>
+                      <li>Due date is automatically set to 14 days from issue date</li>
+                      <li>Book availability status changes to "On Loan" immediately</li>
+                      <li>A confirmation message is displayed on success</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <td>As an <strong>administrator</strong>, I want to generate an overdue report so that I can contact members with outstanding returns.</td>
+                  <td>
+                    <ul>
+                      <li>Report lists all loans where current date exceeds the due date</li>
+                      <li>Report can be filtered by member name or overdue duration</li>
+                      <li>Report can be exported as a CSV file</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout tip">
+            <strong>What Assessors Look for in Phase 1:</strong>
+            <ul>
+              <li><strong>Clear problem statement:</strong> You must demonstrate a genuine real-world need that your software addresses — not just "I made an app because it's interesting."</li>
+              <li><strong>Both requirement types:</strong> Assessors expect both functional AND non-functional requirements to be documented. Missing non-functional requirements is a very common mistake.</li>
+              <li><strong>Client involvement evidence:</strong> Include meeting minutes, interview notes, or a survey summary showing you consulted a real or simulated client when gathering requirements.</li>
+              <li><strong>Feasibility analysis:</strong> Address scheduling feasibility (can it be done in time?) and resource feasibility (do you have the tools and skills?) explicitly.</li>
+              <li><strong>SMART requirements:</strong> Requirements should be Specific, Measurable, Achievable, Realistic, and Time-bound — avoid vague language like "the system should be fast."</li>
+            </ul>
+          </div>
         </section>
 
         <hr class="divider" />
