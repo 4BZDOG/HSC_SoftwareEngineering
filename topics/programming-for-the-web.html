@@ -100,6 +100,7 @@
         <li><a href="#backend-contribution">⚙️ 15. Back-End Contribution</a></li>
         <li><a href="#backend-request">🔄 16. Web Request Process</a></li>
         <li><a href="#scripting">💻 17. Scripting &amp; Shell</a></li>
+        <li><a href="#dom-manipulation">🖱️ 17b. DOM &amp; Fetch API</a></li>
         <li><a href="#sql">🗄️ 18. SQL Queries</a></li>
         <li><a href="#orm">🔁 19. ORM vs SQL</a></li>
         <li><a href="#collaboration">🤝 20. Collaboration</a></li>
@@ -899,6 +900,243 @@ find templates/ -name "*.html" | xargs wc -l</code></pre>
           <div class="callout info">
             <strong>Key Shell Commands:</strong> <code>mkdir -p</code> creates nested directories recursively; <code>touch</code> creates empty files; <code>grep -rn</code> searches recursively with line numbers; <code>find</code> locates files by name, type, or modification time.
           </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 17b. JavaScript DOM Manipulation -->
+        <section id="dom-manipulation">
+          <h2 class="syllabus-phase">🖱️ JavaScript DOM Manipulation</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Develop</strong> client-side scripts that dynamically update page content using the Document Object Model (DOM).</em></p>
+
+          <p>The <strong>Document Object Model (DOM)</strong> is a programming interface that represents an HTML page as a tree of objects. JavaScript can read and modify any part of this tree — changing text, styles, attributes, and structure in real time without a page reload. Events such as <code>click</code>, <code>submit</code>, and <code>DOMContentLoaded</code> allow scripts to respond to user actions.</p>
+
+          <h3>Form Validation with DOM Manipulation</h3>
+          <p>A common use case is validating a registration form on the client side before submitting data to the server. The script below listens for the form's <code>submit</code> event, prevents the default browser action, and runs custom validation logic.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">JavaScript — DOM Manipulation &amp; Form Validation</span></div>
+            <pre><code class="language-javascript">// DOM Manipulation - updating page content dynamically
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('registrationForm');
+    const messageDiv = document.getElementById('message');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        if (validateForm(username, email, password)) {
+            messageDiv.innerHTML = '&lt;p class="success"&gt;Registration successful!&lt;/p&gt;';
+            messageDiv.style.display = 'block';
+        }
+    });
+});
+
+function validateForm(username, email, password) {
+    const errors = [];
+
+    if (username.length &lt; 3 || username.length &gt; 20) {
+        errors.push('Username must be 3-20 characters');
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errors.push('Invalid email format');
+    }
+    if (password.length &lt; 8) {
+        errors.push('Password must be at least 8 characters');
+    }
+
+    if (errors.length &gt; 0) {
+        document.getElementById('errors').innerHTML = errors.map(e =&gt; `&lt;li&gt;${e}&lt;/li&gt;`).join('');
+        return false;
+    }
+    return true;
+}</code></pre>
+          </div>
+
+          <div class="callout info">
+            <strong>Key DOM Methods:</strong> <code>document.getElementById()</code> selects an element by its <code>id</code> attribute; <code>element.addEventListener()</code> attaches an event listener; <code>event.preventDefault()</code> stops the browser's default behaviour (e.g., form submission); <code>element.innerHTML</code> sets or gets HTML content inside an element.
+          </div>
+
+          <h3>Form Validation Test Data</h3>
+          <p>When testing form validation, boundary cases, invalid formats, and malicious inputs should all be included in the test plan.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Test Case</th>
+                  <th>Input</th>
+                  <th>Expected Result</th>
+                  <th>Pass/Fail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Username too short (below minimum)</td>
+                  <td>username: <code>ab</code></td>
+                  <td>Error: "Username must be 3-20 characters"</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Username at minimum boundary</td>
+                  <td>username: <code>abc</code></td>
+                  <td>Validation passes for username field</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Username exceeds maximum boundary</td>
+                  <td>username: <code>averylongusernamethatiswaytoolong</code> (21+ chars)</td>
+                  <td>Error: "Username must be 3-20 characters"</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Invalid email format (missing @)</td>
+                  <td>email: <code>notanemail.com</code></td>
+                  <td>Error: "Invalid email format"</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Empty required field</td>
+                  <td>username: <code></code> (empty string)</td>
+                  <td>Error: "Username must be 3-20 characters"</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Password too short (below minimum)</td>
+                  <td>password: <code>pass</code> (4 chars)</td>
+                  <td>Error: "Password must be at least 8 characters"</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>SQL injection attempt</td>
+                  <td>username: <code>' OR '1'='1</code></td>
+                  <td>Client-side: treated as a string, regex check may pass — server must sanitise</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>XSS attempt in username field</td>
+                  <td>username: <code>&lt;script&gt;alert('xss')&lt;/script&gt;</code></td>
+                  <td>Client-side: length check fails (too long) or server escapes output — no script executes</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout warning">
+            <strong>Warning — Client-Side Validation Limitations:</strong> Client-side validation can be bypassed by disabling JavaScript or using browser developer tools to intercept requests. SQL injection and XSS attempts must also be handled on the server. Never rely solely on JavaScript validation for security.
+          </div>
+
+          <h3>Client-Side vs Server-Side Validation</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Aspect</th>
+                  <th>Client-Side (JavaScript)</th>
+                  <th>Server-Side (Python / Flask / Django)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Speed</strong></td>
+                  <td>Instant feedback — no network request needed</td>
+                  <td>Requires a round-trip to the server (adds latency)</td>
+                </tr>
+                <tr>
+                  <td><strong>Security</strong></td>
+                  <td>Can be bypassed — attacker can disable JS or send raw HTTP requests</td>
+                  <td>Cannot be bypassed — server always processes the data</td>
+                </tr>
+                <tr>
+                  <td><strong>Use case</strong></td>
+                  <td>UX improvement — immediate error messages guide the user</td>
+                  <td>Security enforcement — the authoritative check before data is stored</td>
+                </tr>
+                <tr>
+                  <td><strong>Required?</strong></td>
+                  <td>Optional but recommended for usability</td>
+                  <td>Always required — never optional</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout key">
+            <strong>Exam Tip — Always validate on the server:</strong> Client-side validation improves user experience by giving instant feedback, but it is purely cosmetic from a security perspective. An attacker can bypass any JavaScript check by sending a crafted HTTP request directly. Server-side validation is the only authoritative and secure check.
+          </div>
+
+          <h3>Fetch API &amp; AJAX (Asynchronous Requests)</h3>
+          <p>The <strong>Fetch API</strong> allows JavaScript to make HTTP requests to a server in the background without reloading the page — this pattern is known as <strong>AJAX</strong> (Asynchronous JavaScript and XML). Modern JavaScript uses the <strong>async/await</strong> syntax to write asynchronous code that reads like synchronous code, making it easier to follow and debug.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">JavaScript — Fetch API with async/await</span></div>
+            <pre><code class="language-javascript">// Fetching data from an API (async/await pattern)
+async function loadUserData(userId) {
+    try {
+        const response = await fetch(`/api/users/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        displayUser(data);
+    } catch (error) {
+        console.error('Failed to load user:', error);
+        showErrorMessage('Could not load user data. Please try again.');
+    }
+}
+
+function displayUser(user) {
+    document.getElementById('userName').textContent = user.name;
+    document.getElementById('userEmail').textContent = user.email;
+}</code></pre>
+          </div>
+
+          <div class="callout info">
+            <strong>async/await vs Callbacks:</strong> Early JavaScript used <em>callbacks</em> (functions passed as arguments) to handle asynchronous results, which could lead to deeply nested "callback hell". <em>Promises</em> improved readability by chaining <code>.then()</code> handlers. <strong>async/await</strong> (introduced in ES2017) is syntactic sugar over Promises — the <code>await</code> keyword pauses execution inside an <code>async</code> function until the Promise resolves, making asynchronous code read top-to-bottom like synchronous code. All three patterns are functionally equivalent; async/await is the modern standard.
+          </div>
+
+          <div class="callout key">
+            <strong>Exam Tip — Error handling in fetch requests:</strong> A <code>fetch()</code> call only rejects (throws an error) on network failure. An HTTP 404 or 500 response is considered a <em>successful</em> fetch — it does not throw automatically. Always check <code>response.ok</code> (which is <code>true</code> for status codes 200–299) and manually throw an error if needed, as shown above. Wrap in <code>try/catch</code> to handle both network errors and manually thrown errors.
+          </div>
+
+          <h3>CORS — Cross-Origin Resource Sharing</h3>
+
+          <div class="callout warning">
+            <strong>What is CORS and why does it exist?</strong>
+            <br/><br/>
+            Browsers enforce the <strong>same-origin policy</strong>: a script running on <code>https://myapp.com</code> is blocked from making fetch requests to <code>https://api.otherdomain.com</code> unless the server explicitly allows it. This protects users from malicious websites silently reading their data from other services.
+            <br/><br/>
+            <strong>Cross-Origin Resource Sharing (CORS)</strong> is the mechanism by which a server uses HTTP response headers to tell the browser which external origins are permitted to read its responses.
+            <br/><br/>
+            <strong>Configuring CORS in Flask:</strong>
+            <br/>
+            Install the <code>flask-cors</code> package and add: <code>from flask_cors import CORS</code>, then <code>CORS(app, origins=["https://myapp.com"])</code>. For development you may use <code>origins="*"</code> (allow all), but never use this in production.
+            <br/><br/>
+            <strong>Configuring CORS in Django:</strong>
+            <br/>
+            Install <code>django-cors-headers</code>, add <code>'corsheaders'</code> to <code>INSTALLED_APPS</code>, add <code>CorsMiddleware</code> to <code>MIDDLEWARE</code>, and set <code>CORS_ALLOWED_ORIGINS = ["https://myapp.com"]</code> in <code>settings.py</code>.
+            <br/><br/>
+            <strong>Common CORS errors students encounter:</strong>
+            <ul>
+              <li><em>"Access to fetch at '...' from origin '...' has been blocked by CORS policy"</em> — the server is not sending the correct <code>Access-Control-Allow-Origin</code> header.</li>
+              <li><em>Preflight (OPTIONS) request fails</em> — the server must also handle the HTTP OPTIONS method for routes that receive cross-origin requests with custom headers.</li>
+              <li><em>Credentials not included</em> — if using cookies or auth headers cross-origin, both the server must set <code>Access-Control-Allow-Credentials: true</code> and the fetch call must include <code>credentials: 'include'</code>.</li>
+            </ul>
+          </div>
+
         </section>
 
         <hr class="divider" />

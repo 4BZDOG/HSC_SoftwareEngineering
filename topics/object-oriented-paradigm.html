@@ -94,6 +94,7 @@
         <li><a href="#design-implement">💻 9. Design &amp; Implementation</a></li>
         <li><a href="#code-practices">🔧 10. Implementation Practices</a></li>
         <li><a href="#testing">🧪 11. Testing &amp; Quality Assurance</a></li>
+        <li><a href="#hsc-project-oop">📚 12. HSC Project OOP Design</a></li>
       </ul>
     </aside>
 
@@ -708,6 +709,131 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
             <li><strong>Performance Testing:</strong> Verifying the code meets performance requirements under expected and peak loads.</li>
             <li><strong>Security Testing:</strong> Identifying and fixing security vulnerabilities (part of Secure Software Development as per SE-12-X topics).</li>
           </ul>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 12. Practical HSC Project OOP Design -->
+        <section id="hsc-project-oop">
+          <h2 class="syllabus-phase">📚 Practical HSC Project OOP Design</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-02, SE-11-05, SE-11-06)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply</strong> OOP design principles to a realistic HSC project scenario. The Library Management System is a classic example that demonstrates all four OOP pillars in a coherent, assessable design.</em></p>
+
+          <h3>Library Management System — Class Diagram</h3>
+          <p>A Library Management System is an ideal HSC project because it has multiple entity types with clear IS-A and HAS-A relationships. The diagram below shows how <code>Book</code>, <code>Member</code>, and <code>Library</code> interact:</p>
+
+          <div class="diagram-block">
+            <h4>📖 Class Diagram — Library Management System</h4>
+            <p class="diagram-subtitle">UML class diagram showing relationships between core entities</p>
+            <p class="diagram-description">
+              This class diagram models a Library Management System with three core classes. Library acts as the central coordinator (facade), holding collections of Books and Members. Members can borrow multiple Books, creating a many-to-many relationship managed through the Library. Private attributes (prefixed with -) are accessed only via public methods (+), demonstrating encapsulation.
+            </p>
+            <div class="mermaid">
+              classDiagram
+                class Book {
+                    -String isbn
+                    -String title
+                    -String author
+                    -bool available
+                    +checkout() bool
+                    +return_book() void
+                    +get_details() dict
+                }
+                class Member {
+                    -int member_id
+                    -String name
+                    -String email
+                    -list borrowed_books
+                    +borrow(book) bool
+                    +return_book(book) void
+                    +get_history() list
+                }
+                class Library {
+                    -list books
+                    -list members
+                    +add_book(book) void
+                    +register_member(member) void
+                    +search(query) list
+                }
+                Library "1" --> "many" Book
+                Library "1" --> "many" Member
+                Member "1" --> "many" Book : borrows
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Demonstrate a complete OOP design with composition (Library HAS-A Books/Members) and association (Member borrows Books)<br>
+              <strong>Syllabus Link:</strong> SE-11-02, SE-11-06<br>
+              <strong>Try This:</strong> Extend this diagram by adding an <code>EBook</code> class that inherits from <code>Book</code> and adds a <code>file_format</code> attribute.
+            </p>
+          </div>
+
+          <h3>Python Implementation — Book and EBook Classes</h3>
+          <p>The following implementation demonstrates all four OOP pillars. Note how <strong>encapsulation</strong> is achieved with private attributes (double underscore prefix), <strong>abstraction</strong> through the property decorator, <strong>inheritance</strong> via <code>EBook(Book)</code>, and <strong>polymorphism</strong> by overriding <code>checkout()</code>:</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Library System OOP Implementation</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Book</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, isbn: str, title: str, author: str):
+        self.__isbn = isbn          <span class="cm"># Private attribute</span>
+        self.__title = title
+        self.__author = author
+        self.__available = <span class="kw">True</span>
+
+    @property
+    <span class="kw">def</span> <span class="fn">title</span>(self):               <span class="cm"># Getter (encapsulation)</span>
+        <span class="kw">return</span> self.__title
+
+    @property
+    <span class="kw">def</span> <span class="fn">available</span>(self):
+        <span class="kw">return</span> self.__available
+
+    <span class="kw">def</span> <span class="fn">checkout</span>(self) -> bool:
+        <span class="kw">if</span> self.__available:
+            self.__available = <span class="kw">False</span>
+            <span class="kw">return</span> <span class="kw">True</span>
+        <span class="kw">return</span> <span class="kw">False</span>
+
+    <span class="kw">def</span> <span class="fn">return_book</span>(self) -> <span class="kw">None</span>:
+        self.__available = <span class="kw">True</span>
+
+    <span class="kw">def</span> <span class="fn">__str__</span>(self):             <span class="cm"># String representation</span>
+        status = <span class="str">"Available"</span> <span class="kw">if</span> self.__available <span class="kw">else</span> <span class="str">"Checked out"</span>
+        <span class="kw">return</span> f<span class="str">"{self.__title} by {self.__author} [{status}]"</span>
+
+
+<span class="kw">class</span> <span class="fn">EBook</span>(Book):                 <span class="cm"># Inheritance</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, isbn, title, author, file_format: str):
+        super().__init__(isbn, title, author)
+        self.__file_format = file_format
+
+    <span class="kw">def</span> <span class="fn">download</span>(self) -> str:     <span class="cm"># Polymorphism - new behaviour</span>
+        <span class="kw">return</span> f<span class="str">"Downloading {self.title} as {self.__file_format}..."</span>
+
+    <span class="kw">def</span> <span class="fn">checkout</span>(self) -> bool:    <span class="cm"># Polymorphism - override</span>
+        <span class="cm"># EBooks can always be checked out (no physical limit)</span>
+        <span class="kw">return</span> <span class="kw">True</span></code></pre>
+          </div>
+
+          <div class="callout exam-tip">
+            <p><strong>OOP Design Checklist — Use This for Your HSC Project</strong></p>
+            <ul>
+              <li>Have you identified all objects/entities in your system?</li>
+              <li>Are attributes private with getters/setters where needed?</li>
+              <li>Is there appropriate use of inheritance (IS-A relationship)?</li>
+              <li>Is composition used for HAS-A relationships?</li>
+              <li>Are method names clear and do they follow single responsibility?</li>
+              <li>Have you drawn a UML class diagram in your documentation?</li>
+            </ul>
+          </div>
+
+          <div class="callout tip">
+            <p><strong>When NOT to Use OOP</strong></p>
+            <ul>
+              <li><strong>Simple scripts</strong> (e.g., a one-off data conversion) don't need classes — plain functions are simpler and faster to write.</li>
+              <li><strong>OOP shines</strong> when you have multiple similar objects that share structure but differ in state or behaviour (e.g., many <code>Book</code> objects in a library).</li>
+              <li><strong>Data-heavy transformations</strong> (e.g., mathematical pipelines, batch processing) may suit a functional or procedural style more naturally.</li>
+              <li><strong>For your HSC project:</strong> if your system involves 3 or more entity types that each have their own data <em>and</em> behaviour, OOP is the right choice and will earn better marks for design quality.</li>
+            </ul>
+          </div>
         </section>
 
       </div>

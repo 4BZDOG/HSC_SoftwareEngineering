@@ -668,6 +668,38 @@
           <h3>Sanitisation and Error Handling</h3>
           <p>Sanitisation transforms potentially malicious input into a safe form for use in the specific context where it will appear — HTML encoding for output in web pages, parameterised queries for database operations, path normalisation for file system operations. Error handling must never expose internal system details to the user — stack traces, database connection strings, server paths, or version information all provide attackers with a map of the system architecture.</p>
 
+          <div class="callout exam-tip">
+            <strong>HSC Exam Tip:</strong> When asked about preventing SQL injection, always mention BOTH parameterised queries AND input validation — one protects the database, the other prevents bad data entering the system.
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Parameterised SQL Queries (Vulnerable vs Secure)</span></div>
+            <pre><code><span class="kw">import</span> sqlite3
+
+<span class="cm"># VULNERABLE - Never do this! (SQL Injection risk)</span>
+<span class="kw">def</span> <span class="fn">get_user_unsafe</span>(username):
+    conn = sqlite3.connect(<span class="str">'users.db'</span>)
+    cursor = conn.cursor()
+    <span class="cm"># Attacker could input: admin' OR '1'='1</span>
+    query = <span class="str">f"SELECT * FROM users WHERE username = '{username}'"</span>
+    cursor.execute(query)  <span class="cm"># DANGEROUS!</span>
+    <span class="kw">return</span> cursor.fetchone()
+
+<span class="cm"># SECURE - Parameterised query</span>
+<span class="kw">def</span> <span class="fn">get_user_safe</span>(username):
+    conn = sqlite3.connect(<span class="str">'users.db'</span>)
+    cursor = conn.cursor()
+    <span class="cm"># Parameters are safely escaped by the database driver</span>
+    query = <span class="str">"SELECT * FROM users WHERE username = ?"</span>
+    cursor.execute(query, (username,))  <span class="cm"># Safe!</span>
+    <span class="kw">return</span> cursor.fetchone()
+
+<span class="cm"># SECURE - Using an ORM (Django example)</span>
+<span class="kw">def</span> <span class="fn">get_user_orm</span>(username):
+    <span class="cm"># Django ORM automatically uses parameterised queries</span>
+    <span class="kw">return</span> User.objects.filter(username=username).first()</code></pre>
+          </div>
+
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Defensive Input Validation, Sanitisation &amp; Error Handling</span></div>
             <pre><code><span class="kw">import</span> html
