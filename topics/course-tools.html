@@ -129,6 +129,20 @@
             <strong>Example:</strong> A top-level <em>Main</em> module calls <em>GetInput</em>, <em>ProcessData</em>, and <em>DisplayResult</em>. An arrow from <em>GetInput</em> back to <em>Main</em> carries the data parameter <em>userScore</em>.
           </div>
 
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Structure Chart — Online Bookshop (text notation)</span></div>
+            <pre><code>MainModule
+├── GetOrder          [🔘 orderDetails passed UP to MainModule]
+│     ├── ValidateISBN      [⚫ isValid flag returned]
+│     └── CheckStock        [⚫ stockAvailable flag returned]
+├── ProcessPayment    [🔘 amount, 🔁 retry loop if payment fails]
+│     ├── ChargeCard        [⚫ paymentSuccess flag returned]
+│     └── SendReceipt       [🔘 email, orderID]
+└── UpdateInventory   [🔘 ISBN, quantitySold]
+
+Legend: 🔘 data parameter  ⚫ control flag  🔁 loop  ◇ conditional call</code></pre>
+          </div>
+
           <h3>📋 Data Dictionary</h3>
           <p>A structured reference that documents every variable and data element in a system. Each entry includes: <strong>Name, Data Type, Format, Size, Description, Example value, and Validation rules</strong>.</p>
           <div class="table-wrap">
@@ -181,6 +195,10 @@
             <li><strong>Navigation arrows</strong> showing what triggers the transition to the next screen (e.g. "Click Submit")</li>
             <li>Notes on <strong>input fields, buttons, and displayed data</strong></li>
           </ul>
+
+          <div class="callout info">
+            <strong>Design phase:</strong> Storyboards are created <em>before any code is written</em> — during the Design phase of the SDLC. They allow clients to approve the interface and user flow before development begins, which avoids costly rework. For the HSC project, a storyboard typically shows 4–8 frames: a home/login screen, a main feature screen, an input form, and a results/output screen.
+          </div>
 
           <h3>🌳 Decision Trees</h3>
           <p>A tree-based diagram that models decision logic. Starting from a root condition, each branch represents a possible outcome of a test. Decision trees are useful for representing complex nested logic clearly.</p>
@@ -346,6 +364,49 @@ END</code></pre>
             <div class="key-term-item"><strong>▭ Rectangle</strong><span>Process — a computation, assignment, or action (e.g. <code>total ← total + score</code>).</span></div>
             <div class="key-term-item"><strong>🔶 Diamond</strong><span>Decision — a yes/no or true/false branch (e.g. <code>score ≥ 50?</code>).</span></div>
             <div class="key-term-item"><strong>🗂️ Double-sided Rectangle</strong><span>Subprogram — a call to a named subroutine or function.</span></div>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Flowchart — Find the largest number in a list (text diagram)</span></div>
+            <pre><code>        ╔══════════╗
+        ║  START   ║   ← Oval terminator
+        ╚════╤═════╝
+             │
+     ╔═══════╧════════╗
+     ║  largest ← 0   ║   ← Process rectangle
+     ║  i ← 1         ║
+     ╚═══════╤════════╝
+             │
+     ╔═══════╧════════╗
+     ║  INPUT number  ║   ← Parallelogram (input)
+     ╚═══════╤════════╝
+             │
+        ╔════╧═════╗
+        ║ number > ║   ← Diamond (decision)
+        ║ largest? ║
+        ╚═╤══════╤═╝
+       YES│      │NO
+          ▼      │
+  ╔═══════════╗  │
+  ║ largest ← ║  │   ← Process
+  ║  number   ║  │
+  ╚═════╤═════╝  │
+        └────────┘
+             │
+        ╔════╧═════╗
+        ║  i < n?  ║   ← Loop back if more numbers remain
+        ╚═╤══════╤═╝
+       YES│      │NO
+          │      ▼
+          │  ╔══════════════╗
+          │  ║ OUTPUT       ║   ← Parallelogram (output)
+          │  ║ largest      ║
+          │  ╚══════╤═══════╝
+          │         │
+          │    ╔════╧═════╗
+          │    ║   END    ║   ← Oval terminator
+          │    ╚══════════╝
+          │
+     (loop back to INPUT)</code></pre>
           </div>
           <div class="callout info">
             <strong>Pseudocode vs Flowcharts:</strong> Both express the same algorithm. Pseudocode is preferred for complex logic and is easier to convert to code. Flowcharts are better for visualising branching and communicating with non-programmers.
@@ -623,7 +684,10 @@ for s in passing:
             </div>
           </div>
           <div class="callout info">
-            <strong>Tip:</strong> In mechatronic systems (e.g. Arduino-based projects), wiring diagrams show how sensors, actuators, and microcontrollers are connected. Always trace the circuit from the positive voltage source through components to ground (GND).
+            <strong>Tracing a circuit — LED with current-limiting resistor:</strong><br><br>
+            <code>+5V → [Resistor 220Ω] → [LED Anode (+)] → [LED Cathode (−)] → GND</code><br><br>
+            In wiring diagrams, always trace from the <strong>positive supply (VCC/5V)</strong> through each component in series to <strong>ground (GND)</strong>. The resistor limits current so the LED doesn't burn out (LEDs typically need 20mA at 2V forward voltage; at 5V supply: R = (5 − 2) / 0.02 = <strong>150Ω minimum</strong> — 220Ω is the standard safe choice).<br><br>
+            In Arduino projects: digital output pin → resistor → LED → GND. When the pin outputs HIGH (5V), current flows and the LED illuminates.
           </div>
         </section>
 
@@ -799,14 +863,22 @@ p {
           <div class="table-wrap">
             <table>
               <thead>
-                <tr><th>Category</th><th>Description</th><th>Example (age field, valid range 0–120)</th></tr>
+                <tr><th>Category</th><th>Test Input</th><th>Expected Result</th><th>Reason</th></tr>
               </thead>
               <tbody>
-                <tr><td><strong>Valid / Normal</strong></td><td>Data within the expected range that should be accepted.</td><td><code>25</code>, <code>47</code>, <code>60</code></td></tr>
-                <tr><td><strong>Boundary</strong></td><td>Data at the exact edges of the valid range — often where off-by-one bugs hide.</td><td><code>0</code>, <code>1</code>, <code>119</code>, <code>120</code></td></tr>
-                <tr><td><strong>Invalid / Erroneous</strong></td><td>Data outside the valid range or of the wrong type — should be rejected with an error message.</td><td><code>-1</code>, <code>121</code>, <code>"abc"</code>, empty</td></tr>
+                <tr><td><strong>Valid — normal</strong></td><td><code>50</code></td><td>Accepted — "Score recorded"</td><td>Middle of valid range</td></tr>
+                <tr><td><strong>Valid — normal</strong></td><td><code>85</code></td><td>Accepted — "Score recorded"</td><td>Within range, typical value</td></tr>
+                <tr><td><strong>Boundary — lower limit</strong></td><td><code>0</code></td><td>Accepted — "Score recorded"</td><td>Exactly at minimum</td></tr>
+                <tr><td><strong>Boundary — upper limit</strong></td><td><code>100</code></td><td>Accepted — "Score recorded"</td><td>Exactly at maximum</td></tr>
+                <tr><td><strong>Boundary — just below min</strong></td><td><code>-1</code></td><td>Rejected — "Score must be 0–100"</td><td>One below minimum (off-by-one check)</td></tr>
+                <tr><td><strong>Boundary — just above max</strong></td><td><code>101</code></td><td>Rejected — "Score must be 0–100"</td><td>One above maximum (off-by-one check)</td></tr>
+                <tr><td><strong>Invalid — wrong type</strong></td><td><code>"abc"</code></td><td>Rejected — "Must enter a number"</td><td>String input where integer expected</td></tr>
+                <tr><td><strong>Invalid — extreme</strong></td><td><code>9999</code></td><td>Rejected — "Score must be 0–100"</td><td>Far outside valid range</td></tr>
               </tbody>
             </table>
+          </div>
+          <div class="callout info">
+            <strong>Exam tip:</strong> Always test at the boundary values and one step either side of them. Off-by-one errors (e.g. using <code>&gt;</code> instead of <code>&gt;=</code>) are one of the most common programming bugs and will only be caught by boundary test data.
           </div>
         </section>
 
@@ -840,6 +912,36 @@ p {
           </div>
           <div class="callout info">
             <strong>Case conversion trick:</strong> Notice that <code>'A'</code> = 65 and <code>'a'</code> = 97 — a difference of exactly 32 (0b00100000). To convert uppercase to lowercase in binary, you simply set bit 5 to 1. This is why character encoding matters to developers beyond just storing text.
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Character encoding examples</span></div>
+            <pre><code># Convert between characters and their ASCII codes
+print(ord('A'))        # → 65
+print(ord('a'))        # → 97
+print(chr(65))         # → 'A'
+print(chr(90))         # → 'Z'
+
+# Case conversion using the 32-bit difference
+upper = 'H'
+lower = chr(ord(upper) + 32)   # 72 + 32 = 104 → 'h'
+print(lower)                   # → 'h'
+
+# Simple Caesar cipher — shift each letter by 3
+message = "HELLO"
+ciphertext = ""
+for ch in message:
+    shifted = chr(ord(ch) + 3)
+    ciphertext += shifted
+print(ciphertext)    # → 'KHOOR'
+
+# Check if a character is uppercase, lowercase, or digit
+ch = 'G'
+if 65 <= ord(ch) <= 90:
+    print(f"{ch} is uppercase")
+elif 97 <= ord(ch) <= 122:
+    print(f"{ch} is lowercase")
+elif 48 <= ord(ch) <= 57:
+    print(f"{ch} is a digit")</code></pre>
           </div>
         </section>
 
@@ -999,6 +1101,36 @@ student["subject"] = "SoftEng" # Add new key
 # Iterate over key-value pairs
 for key, value in student.items():
     print(f"{key}: {value}")</code></pre>
+          </div>
+
+          <h3>Exception Handling</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — try / except</span></div>
+            <pre><code># Basic exception handling — prevent a crash on bad input
+try:
+    age = int(input("Enter your age: "))
+    print(f"In 10 years you will be {age + 10}")
+except ValueError:
+    print("Error: please enter a whole number.")
+
+# Handle multiple exception types
+try:
+    with open("data.txt", "r") as f:
+        data = f.read()
+    number = int(data.strip())
+    result = 100 / number
+    print(f"Result: {result}")
+except FileNotFoundError:
+    print("Error: data.txt not found.")
+except ValueError:
+    print("Error: file does not contain a valid integer.")
+except ZeroDivisionError:
+    print("Error: cannot divide by zero.")
+finally:
+    print("Processing complete.")   # Runs whether exception occurred or not</code></pre>
+          </div>
+          <div class="callout info">
+            <strong>When to use try/except:</strong> Wrap code that interacts with the outside world — user input, file I/O, network calls, and type conversions — since these can fail for reasons beyond your control. Do <em>not</em> use exceptions to control normal program flow; use IF/ELSE for expected conditions.
           </div>
         </section>
 
