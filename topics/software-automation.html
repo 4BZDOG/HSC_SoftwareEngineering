@@ -390,6 +390,31 @@
           <h3>Linear Regression</h3>
           <p><strong>Linear regression</strong> is a supervised learning algorithm used to predict a <strong>continuous numerical value</strong> based on one or more input features. It fits a straight line (or hyperplane in multiple dimensions) through the training data that minimises the total squared distance between each data point and the line — known as the <strong>Ordinary Least Squares (OLS)</strong> method. The resulting equation takes the form: <code>y = mx + c</code>, where <em>m</em> is the slope (coefficient) and <em>c</em> is the y-intercept. For example, a linear regression model trained on study hours and exam scores would output a predicted score for any given number of study hours.</p>
 
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Linear Regression with Train/Test Split (scikit-learn)</span></div>
+            <pre><code class="language-python">from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+import numpy as np
+
+# Sample data: study hours vs exam scores
+X = np.array([[1], [2], [3], [4], [5], [6], [7], [8]])
+y = np.array([45, 55, 60, 65, 70, 75, 80, 88])
+
+# Split into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train the model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Evaluate
+y_pred = model.predict(X_test)
+print(f"R² Score: {r2_score(y_test, y_pred):.3f}")
+print(f"MSE: {mean_squared_error(y_test, y_pred):.2f}")
+print(f"Predicted score for 9 hours: {model.predict([[9]])[0]:.1f}")</code></pre>
+          </div>
+
           <h3>Logistic Regression</h3>
           <p>Despite its name, <strong>logistic regression</strong> is a <strong>classification algorithm</strong> — not used for predicting continuous values. It calculates the probability that an input belongs to a particular class (typically binary: 0 or 1, True or False). The <strong>sigmoid function</strong> squashes any input value into a probability between 0 and 1. A threshold (typically 0.5) converts this probability into a class prediction. For example, a logistic regression model assessing whether a bank transaction is fraudulent outputs a probability of fraud; if it exceeds 0.5 (or a risk-adjusted threshold), the transaction is flagged. Logistic regression is highly interpretable — each feature's coefficient indicates its influence on the predicted probability.</p>
 
@@ -409,6 +434,29 @@
 
           <div class="callout info">
             <strong>KNN Example:</strong> To classify whether a new plant is Species A or B based on petal length and width, KNN finds the 5 most similar plants in the training set (K=5). If 4 of those 5 are Species A, the new plant is classified as Species A with high confidence.
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — K-Nearest Neighbour Classification (scikit-learn)</span></div>
+            <pre><code class="language-python">from sklearn.neighbors import KNeighborsClassifier
+from sklearn.preprocessing import StandardScaler
+
+# Features: [age, income], Labels: [0=no loan, 1=loan approved]
+X_train = [[25, 30000], [35, 55000], [45, 80000], [22, 25000], [50, 90000]]
+y_train = [0, 1, 1, 0, 1]
+
+# Scale features (important for KNN!)
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X_train)
+
+# Train with k=3
+knn = KNeighborsClassifier(n_neighbors=3)
+knn.fit(X_scaled, y_train)
+
+# Predict for new customer
+new_customer = scaler.transform([[30, 45000]])
+prediction = knn.predict(new_customer)
+print(f"Loan approved: {'Yes' if prediction[0] == 1 else 'No'}")</code></pre>
           </div>
 
           <div class="table-wrap">
