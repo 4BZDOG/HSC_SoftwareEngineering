@@ -270,11 +270,11 @@
                 B --> C["💾 Save processed results"]
                 C --> STOP(["⏹ END"])
 
-                style START fill:#10B981,stroke:#059669,color:#fff
-                style STOP fill:#EF4444,stroke:#DC2626,color:#fff
-                style A fill:#6366F1,stroke:#4F46E5,color:#fff
-                style B fill:#6366F1,stroke:#4F46E5,color:#fff
-                style C fill:#6366F1,stroke:#4F46E5,color:#fff
+                style START fill:#90EE90,color:#000,stroke:#2E7D32,stroke-width:2px
+                style STOP fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
+                style A fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
+                style B fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
+                style C fill:#fff3e0,color:#e65100,stroke:#e65100,stroke-width:1px
             </div>
           </div>
 
@@ -307,7 +307,7 @@ END</code></pre>
             <div class="mermaid">
               flowchart TD
                 START(["▶ START"]) --> A["⌨️ INPUT age from user"]
-                A --> B{"🔀 Is age ≥ 18?"}
+                A --> B{{"🔀 Is age ≥ 18?"}}
                 B -->|YES| C["✅ Display 'Welcome!'"]
                 C --> D["📋 Show full menu"]
                 B -->|NO| E["❌ Display 'Too young'"]
@@ -315,14 +315,14 @@ END</code></pre>
                 D --> STOP(["⏹ END"])
                 F --> STOP
 
-                style START fill:#10B981,stroke:#059669,color:#fff
-                style STOP fill:#EF4444,stroke:#DC2626,color:#fff
-                style B fill:#F59E0B,stroke:#D97706,color:#fff
-                style C fill:#10B981,stroke:#059669,color:#fff
-                style E fill:#EF4444,stroke:#DC2626,color:#fff
-                style A fill:#6366F1,stroke:#4F46E5,color:#fff
-                style D fill:#6366F1,stroke:#4F46E5,color:#fff
-                style F fill:#6366F1,stroke:#4F46E5,color:#fff
+                style START fill:#90EE90,color:#000,stroke:#2E7D32,stroke-width:2px
+                style STOP fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
+                style B fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
+                style C fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:1px
+                style E fill:#FFB347,color:#000,stroke:#e65100,stroke-width:1px
+                style A fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
+                style D fill:#fff3e0,color:#e65100,stroke:#e65100,stroke-width:1px
+                style F fill:#e0f0ff,color:#0277bd,stroke:#0277bd,stroke-width:1px
             </div>
           </div>
 
@@ -358,21 +358,21 @@ END</code></pre>
               flowchart TD
                 START(["▶ START"]) --> A["📝 SET total ← 0"]
                 A --> B["📝 SET i ← 0"]
-                B --> C{"🔀 i &lt; length of list?"}
+                B --> C{{"🔀 i &lt; length<br/>of list?"}}
                 C -->|YES| D["➕ total ← total + list[i]"]
                 D --> E["📝 i ← i + 1"]
                 E --> C
                 C -->|NO| F["📤 OUTPUT total"]
                 F --> STOP(["⏹ END"])
 
-                style START fill:#10B981,stroke:#059669,color:#fff
-                style STOP fill:#EF4444,stroke:#DC2626,color:#fff
-                style C fill:#F59E0B,stroke:#D97706,color:#fff
-                style A fill:#6366F1,stroke:#4F46E5,color:#fff
-                style B fill:#6366F1,stroke:#4F46E5,color:#fff
-                style D fill:#6366F1,stroke:#4F46E5,color:#fff
-                style E fill:#6366F1,stroke:#4F46E5,color:#fff
-                style F fill:#6366F1,stroke:#4F46E5,color:#fff
+                style START fill:#90EE90,color:#000,stroke:#2E7D32,stroke-width:2px
+                style STOP fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
+                style C fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
+                style A fill:#fff3e0,color:#e65100,stroke:#e65100,stroke-width:1px
+                style B fill:#fff3e0,color:#e65100,stroke:#e65100,stroke-width:1px
+                style D fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
+                style E fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
+                style F fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:1px
             </div>
           </div>
 
@@ -405,26 +405,26 @@ END</code></pre>
               flowchart TD
                 START(["▶ START"]) --> A["📝 SET runningTotal ← 0<br/>SET count ← 0"]
                 A --> B["⌨️ INPUT number"]
-                B --> C{"🔀 number ≠ -1?"}
+                B --> C{{"🔀 number ≠ -1?"}}
                 C -->|YES| D["➕ runningTotal ← runningTotal + number"]
                 D --> E["📝 count ← count + 1"]
                 E --> B
-                C -->|NO| F{"🔀 count &gt; 0?"}
+                C -->|NO| F{{"🔀 count &gt; 0?"}}
                 F -->|YES| G["📊 average ← runningTotal / count<br/>OUTPUT average"]
                 F -->|NO| H["⚠️ OUTPUT 'No data entered'"]
                 G --> STOP(["⏹ END"])
                 H --> STOP
 
-                style START fill:#10B981,stroke:#059669,color:#fff
-                style STOP fill:#EF4444,stroke:#DC2626,color:#fff
-                style C fill:#F59E0B,stroke:#D97706,color:#fff
-                style F fill:#F59E0B,stroke:#D97706,color:#fff
-                style A fill:#6366F1,stroke:#4F46E5,color:#fff
-                style B fill:#6366F1,stroke:#4F46E5,color:#fff
-                style D fill:#6366F1,stroke:#4F46E5,color:#fff
-                style E fill:#6366F1,stroke:#4F46E5,color:#fff
-                style G fill:#10B981,stroke:#059669,color:#fff
-                style H fill:#EF4444,stroke:#DC2626,color:#fff
+                style START fill:#90EE90,color:#000,stroke:#2E7D32,stroke-width:2px
+                style STOP fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
+                style C fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
+                style F fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
+                style A fill:#e0f0ff,color:#0277bd,stroke:#0277bd,stroke-width:1px
+                style B fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
+                style D fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
+                style E fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
+                style G fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:1px
+                style H fill:#FFB347,color:#000,stroke:#e65100,stroke-width:1px
             </div>
           </div>
 
