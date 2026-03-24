@@ -79,6 +79,7 @@
     <aside class="sidebar">
       <div class="toc-title">Specifications</div>
       <ul class="toc-list">
+        <li><a href="#ide-tools">0. IDE &amp; Development Tools</a></li>
         <li><a href="#modelling-tools">1. System &amp; Data Modelling Tools</a></li>
         <li><a href="#project-management">2. Project Management Tools</a></li>
         <li><a href="#programming-paradigms">3. Programming Paradigms</a></li>
@@ -92,11 +93,109 @@
         <li><a href="#testing-methods">11. Methods for Testing</a></li>
         <li><a href="#character-representation">12. Character Representation</a></li>
         <li><a href="#python">13. Programming with Python</a></li>
+        <li><a href="#git-workflow">14. Git &amp; Version Control</a></li>
+        <li><a href="#testing-frameworks">15. Testing Frameworks</a></li>
+        <li><a href="#cicd">16. CI/CD</a></li>
       </ul>
     </aside>
 
     <main class="page-content">
       <div class="content-body">
+
+        <!-- 0. IDE & Development Tools -->
+        <section id="ide-tools">
+          <h2 class="syllabus-phase">💻 IDE &amp; Development Tools</h2>
+          <p>An <strong>Integrated Development Environment (IDE)</strong> combines a code editor, build tools, debugger, and other features into a single application. A plain <strong>text editor</strong> (e.g. Notepad, nano) only edits text — you must run all other tools separately.</p>
+
+          <h3>IDE vs Text Editor — Feature Comparison</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Feature</th><th>Text Editor</th><th>IDE</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Syntax highlighting</td><td>Basic / plugin</td><td>Built-in, language-aware</td></tr>
+                <tr><td>IntelliSense / autocomplete</td><td>Rarely</td><td>Yes — context-aware suggestions</td></tr>
+                <tr><td>Integrated debugger</td><td>No</td><td>Yes — breakpoints, watch variables</td></tr>
+                <tr><td>Refactoring tools</td><td>No</td><td>Yes — rename, extract, inline</td></tr>
+                <tr><td>Extensions / plugins</td><td>Limited</td><td>Large ecosystem</td></tr>
+                <tr><td>Integrated terminal</td><td>Rarely</td><td>Yes — run commands without leaving the editor</td></tr>
+                <tr><td>Version control integration</td><td>No</td><td>Yes — diff, commit, branch from sidebar</td></tr>
+                <tr><td>Linter / static analysis</td><td>Plugin only</td><td>Built-in or first-class plugin</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>VS Code — Setup for Python</h3>
+          <p>Visual Studio Code is a lightweight, free IDE by Microsoft with a vast extension library. Recommended extensions for Python HSC work:</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Python (ms-python)</strong><span>Provides IntelliSense, linting, debugging, and environment selection for Python files.</span></div>
+            <div class="key-term-item"><strong>Pylance</strong><span>Fast, feature-rich language server that powers type checking and smart autocomplete beyond the base Python extension.</span></div>
+            <div class="key-term-item"><strong>GitLens</strong><span>Enhances the built-in Git support — shows inline blame annotations, commit history, and file comparison.</span></div>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">JSON — .vscode/settings.json basics</span></div>
+            <pre><code>{
+  "editor.fontSize": 14,
+  "editor.tabSize": 4,
+  "editor.formatOnSave": true,
+  "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "editor.rulers": [79],
+  "files.trimTrailingWhitespace": true
+}</code></pre>
+          </div>
+
+          <h3>PyCharm — Setup for Python</h3>
+          <p>PyCharm (JetBrains) is a full Python IDE with deeper analysis than VS Code. Key setup steps:</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Project Interpreter</strong><span>Set via <em>File → Settings → Project → Python Interpreter</em>. Create or select a virtual environment (venv) specific to your project so packages do not conflict.</span></div>
+            <div class="key-term-item"><strong>Run Configurations</strong><span>Defined in <em>Run → Edit Configurations</em>. Set the script path, working directory, and any environment variables. Allows one-click running or debugging of any file.</span></div>
+          </div>
+
+          <h3>Arduino IDE</h3>
+          <p>Used for programming Arduino microcontrollers (C/C++ dialect). Key features for HSC Mechatronics:</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Board Manager</strong><span>Install support packages for different boards — accessed via <em>Tools → Board → Board Manager</em>. Required when using non-standard boards (e.g. ESP32, Arduino Nano).</span></div>
+            <div class="key-term-item"><strong>Library Manager</strong><span>Install third-party sensor and component libraries via <em>Sketch → Include Library → Manage Libraries</em>. Examples: <code>Servo</code>, <code>DHT sensor library</code>.</span></div>
+            <div class="key-term-item"><strong>Serial Monitor</strong><span>Opens a terminal showing data sent over the USB serial port via <code>Serial.println()</code>. Essential for debugging sensor readings and program state at runtime.</span></div>
+          </div>
+
+          <h3>Thonny — MicroPython on Microcontrollers</h3>
+          <p>Thonny is a beginner-friendly Python IDE designed for education and MicroPython development on boards like Raspberry Pi Pico and ESP32.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>REPL (Read-Eval-Print Loop)</strong><span>An interactive shell at the bottom of Thonny. Type a Python expression and see the result instantly — useful for testing individual lines before adding them to a script.</span></div>
+            <div class="key-term-item"><strong>File Transfer</strong><span>The <em>Files</em> panel shows both your computer's filesystem and the microcontroller's filesystem side by side. Right-click a file and choose <em>Upload to /</em> to copy it to the board, or <em>Download</em> to retrieve it.</span></div>
+          </div>
+
+          <h3>IDE Features Summary Table</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Feature</th><th>VS Code</th><th>PyCharm</th><th>Arduino IDE</th><th>Thonny</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Autocomplete</td><td>Yes (Pylance)</td><td>Yes (built-in)</td><td>Limited</td><td>Basic</td></tr>
+                <tr><td>Syntax highlighting</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+                <tr><td>Integrated debugger</td><td>Yes</td><td>Yes</td><td>No</td><td>Yes (MicroPython)</td></tr>
+                <tr><td>Version control integration</td><td>Yes (Git)</td><td>Yes (Git)</td><td>No</td><td>No</td></tr>
+                <tr><td>Linter / static analysis</td><td>Yes (Pylint/Flake8)</td><td>Yes (built-in)</td><td>No</td><td>Limited</td></tr>
+                <tr><td>Refactoring</td><td>Basic</td><td>Advanced</td><td>No</td><td>No</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout info">
+            <strong>Which IDE for which HSC task?</strong><br><br>
+            Use <strong>VS Code</strong> for general Python development, web programming tasks, and any project where you want Git integration without a heavyweight install.<br>
+            Use <strong>PyCharm</strong> for larger Python projects that benefit from advanced refactoring, deeper type checking, and database tools (Community Edition is free).<br>
+            Use <strong>Arduino IDE</strong> for all Arduino-based mechatronics tasks — it handles board-specific compilation and serial communication.<br>
+            Use <strong>Thonny</strong> for MicroPython on Raspberry Pi Pico or ESP32 — its built-in file transfer and REPL make deploying to the board fast and simple.
+          </div>
+        </section>
+
+        <hr class="divider" />
 
         <!-- 1. System and Data Modelling Tools -->
         <section id="modelling-tools">
@@ -1131,6 +1230,305 @@ finally:
           </div>
           <div class="callout info">
             <strong>When to use try/except:</strong> Wrap code that interacts with the outside world — user input, file I/O, network calls, and type conversions — since these can fail for reasons beyond your control. Do <em>not</em> use exceptions to control normal program flow; use IF/ELSE for expected conditions.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 14. Git & Version Control Workflow -->
+        <section id="git-workflow">
+          <h2 class="syllabus-phase">🔀 Git &amp; Version Control Workflow</h2>
+          <p>Git is a distributed version control system that tracks every change to your code. Every commit is a snapshot — you can revert to any previous state, compare versions, and collaborate without overwriting each other's work.</p>
+
+          <h3>Core Git Commands Reference</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Command</th><th>What It Does</th><th>Example</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>git init</code></td><td>Initialise a new empty repository</td><td><code>git init myproject</code></td></tr>
+                <tr><td><code>git clone</code></td><td>Copy a remote repository to your machine</td><td><code>git clone https://github.com/user/repo.git</code></td></tr>
+                <tr><td><code>git status</code></td><td>Show which files are changed, staged, or untracked</td><td><code>git status</code></td></tr>
+                <tr><td><code>git add</code></td><td>Stage changes for the next commit</td><td><code>git add app.py</code> or <code>git add .</code></td></tr>
+                <tr><td><code>git commit</code></td><td>Save staged changes as a commit with a message</td><td><code>git commit -m "Add login feature"</code></td></tr>
+                <tr><td><code>git push</code></td><td>Upload local commits to the remote repository</td><td><code>git push origin main</code></td></tr>
+                <tr><td><code>git pull</code></td><td>Download and merge remote changes</td><td><code>git pull origin main</code></td></tr>
+                <tr><td><code>git fetch</code></td><td>Download remote changes without merging</td><td><code>git fetch origin</code></td></tr>
+                <tr><td><code>git branch</code></td><td>List, create, or delete branches</td><td><code>git branch feature/login</code></td></tr>
+                <tr><td><code>git checkout</code></td><td>Switch branches or restore files</td><td><code>git checkout feature/login</code></td></tr>
+                <tr><td><code>git switch</code></td><td>Switch branches (modern alternative to checkout)</td><td><code>git switch -c feature/login</code></td></tr>
+                <tr><td><code>git merge</code></td><td>Merge a branch into the current branch</td><td><code>git merge feature/login</code></td></tr>
+                <tr><td><code>git log</code></td><td>Show commit history</td><td><code>git log --oneline --graph</code></td></tr>
+                <tr><td><code>git diff</code></td><td>Show unstaged changes</td><td><code>git diff app.py</code></td></tr>
+                <tr><td><code>git stash</code></td><td>Temporarily save uncommitted changes</td><td><code>git stash pop</code></td></tr>
+                <tr><td><code>git tag</code></td><td>Create a labelled reference to a commit</td><td><code>git tag v1.0.0</code></td></tr>
+                <tr><td><code>git reset</code></td><td>Undo commits (use with caution!)</td><td><code>git reset --soft HEAD~1</code></td></tr>
+                <tr><td><code>git revert</code></td><td>Create a new commit that undoes a previous one (safe)</td><td><code>git revert abc1234</code></td></tr>
+                <tr><td><code>git remote</code></td><td>Manage remote repository connections</td><td><code>git remote -v</code></td></tr>
+                <tr><td><code>git rm</code></td><td>Remove a file from the repository and staging</td><td><code>git rm old_file.py</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Feature Branch Workflow</h3>
+          <pre class="text-diagram">Feature Branch Workflow
+──────────────────────────────────────────────────────────────
+main ──●──────────────────────────────────●── stable/deployable
+        \                                /
+         ● feature/login                ← merged via Pull Request
+          \                            /
+           ●──●──●  (develop here)   ●── all tests pass
+──────────────────────────────────────────────────────────────
+Steps:
+1. git switch -c feature/login      ← create feature branch
+2. write code, git add, git commit  ← develop and commit
+3. git push origin feature/login    ← push to remote
+4. Open Pull Request on GitHub      ← request code review
+5. Peer reviews → approves          ← quality gate
+6. Merge into main                  ← integrated and deployed
+7. git branch -d feature/login      ← clean up</pre>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Bash — Complete Feature Branch Workflow</span></div>
+            <pre><code># Start from an up-to-date main branch
+git switch main
+git pull origin main
+
+# Create and switch to a new feature branch
+git switch -c feature/student-search
+
+# ... write code ...
+
+# Stage and commit changes
+git add search.py templates/search.html
+git commit -m "Add student search by name and ID"
+
+# Push branch to remote
+git push -u origin feature/student-search
+
+# After PR is reviewed and approved:
+git switch main
+git pull origin main
+git merge feature/student-search
+git push origin main
+
+# Clean up
+git branch -d feature/student-search</code></pre>
+          </div>
+
+          <h3>Example .gitignore for Python Projects</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">.gitignore — Python project</span></div>
+            <pre><code># Virtual environments
+venv/
+.venv/
+env/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment variables (NEVER commit secrets)
+.env
+.env.local
+secrets.json
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+
+# Test coverage reports
+.coverage
+htmlcov/
+
+# Build outputs
+dist/
+build/
+*.egg-info/</code></pre>
+          </div>
+
+          <div class="callout info">
+            <strong>Good Commit Message Guide:</strong><br>
+            ✓ Use imperative mood: "Add login page" not "Added login page"<br>
+            ✓ Keep subject line under 50 characters<br>
+            ✓ Explain <em>why</em> the change was made, not just what<br>
+            ✓ Reference related issue numbers: "Fix input validation (closes #12)"<br>
+            ✗ Don't write: "fix", "wip", "changes", "update stuff"
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 15. Testing Frameworks -->
+        <section id="testing-frameworks">
+          <h2 class="syllabus-phase">🧪 Testing Frameworks</h2>
+          <p>Python has two primary testing frameworks. Both allow you to write automated tests that verify your code behaves correctly — automatically, every time you make a change.</p>
+
+          <h3>unittest — Built-in Python Testing</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — unittest example with setUp</span></div>
+            <pre><code>import unittest
+from bank_account import BankAccount   # the module we're testing
+
+class TestBankAccount(unittest.TestCase):
+
+    def setUp(self):
+        """Runs before each test method — creates fresh test data."""
+        self.account = BankAccount("Alice", 1000)
+
+    def tearDown(self):
+        """Runs after each test method — clean up if needed."""
+        pass
+
+    def test_initial_balance(self):
+        self.assertEqual(self.account.balance, 1000)
+
+    def test_deposit_increases_balance(self):
+        self.account.deposit(500)
+        self.assertEqual(self.account.balance, 1500)
+
+    def test_withdraw_decreases_balance(self):
+        self.account.withdraw(200)
+        self.assertEqual(self.account.balance, 800)
+
+    def test_withdraw_insufficient_funds_raises_error(self):
+        with self.assertRaises(ValueError):
+            self.account.withdraw(9999)
+
+    def test_deposit_negative_raises_error(self):
+        with self.assertRaises(ValueError):
+            self.account.deposit(-50)
+
+    def test_balance_cannot_go_negative(self):
+        self.account.withdraw(1000)
+        self.assertGreaterEqual(self.account.balance, 0)
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)</code></pre>
+          </div>
+
+          <h3>pytest — Modern Python Testing</h3>
+          <p>pytest is simpler to write and provides more detailed failure output than unittest. Tests are just functions prefixed with <code>test_</code>.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — pytest with fixture and parametrize</span></div>
+            <pre><code>import pytest
+from bank_account import BankAccount
+
+@pytest.fixture
+def account():
+    """pytest fixture — creates a BankAccount for each test."""
+    return BankAccount("Bob", 500)
+
+def test_deposit(account):
+    account.deposit(100)
+    assert account.balance == 600
+
+def test_withdraw(account):
+    account.withdraw(200)
+    assert account.balance == 300
+
+# Parametrize: run same test with multiple inputs
+@pytest.mark.parametrize("amount,expected", [
+    (100, 600),
+    (500, 1000),
+    (0.01, 500.01),
+])
+def test_deposit_parametrized(account, amount, expected):
+    account.deposit(amount)
+    assert account.balance == pytest.approx(expected)</code></pre>
+          </div>
+
+          <h3>unittest vs pytest Comparison</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Feature</th><th>unittest</th><th>pytest</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Syntax</td><td>Class-based, verbose</td><td>Function-based, minimal</td></tr>
+                <tr><td>Built into Python?</td><td>Yes</td><td>No — requires <code>pip install pytest</code></td></tr>
+                <tr><td>Failure output</td><td>Basic</td><td>Detailed diff with variable values</td></tr>
+                <tr><td>Fixtures</td><td><code>setUp</code>/<code>tearDown</code></td><td><code>@pytest.fixture</code> — more flexible</td></tr>
+                <tr><td>Parametrised tests</td><td>Requires subTest or loops</td><td><code>@pytest.mark.parametrize</code></td></tr>
+                <tr><td>HSC recommendation</td><td>Fine for simple projects</td><td>Preferred for clean, readable tests</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>TDD — Test-Driven Development</h3>
+          <pre class="text-diagram">TDD Cycle: Red → Green → Refactor
+──────────────────────────────────────────
+🔴 RED      Write a failing test FIRST
+            (the feature doesn't exist yet — test must fail)
+      ↓
+🟢 GREEN    Write the minimum code to make the test pass
+            (don't over-engineer — just make it pass)
+      ↓
+🔵 REFACTOR Improve the code's design without changing behaviour
+            (tests still pass — they protect against regressions)
+      ↓
+  Repeat for the next feature
+──────────────────────────────────────────</pre>
+
+          <div class="callout info">
+            <strong>Code Coverage:</strong> Run <code>coverage run -m pytest</code> then <code>coverage report</code> to see what percentage of your code is executed by tests. Aim for &gt;80% coverage. Missing lines shown with <code>coverage html</code> → open <code>htmlcov/index.html</code>.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 16. CI/CD -->
+        <section id="cicd">
+          <h2 class="syllabus-phase">⚙️ CI/CD — Continuous Integration &amp; Deployment</h2>
+          <p><strong>CI/CD</strong> automates the build, test, and deployment pipeline. Every time code is pushed, the pipeline runs automatically — catching bugs before they reach production.</p>
+
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Continuous Integration (CI)</strong><span>Automatically build and test code on every push. If any test fails, the team is immediately notified. Prevents "works on my machine" problems by testing on a fresh, consistent environment.</span></div>
+            <div class="key-term-item"><strong>Continuous Deployment (CD)</strong><span>Automatically deploy code to production (or staging) when all tests pass. The pipeline handles build, test, and deploy without manual steps.</span></div>
+          </div>
+
+          <h3>GitHub Actions — Automated Testing on Push</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">YAML — .github/workflows/tests.yml</span></div>
+            <pre><code>name: Run Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest coverage
+
+    - name: Run tests with coverage
+      run: |
+        coverage run -m pytest tests/ -v
+        coverage report --fail-under=80</code></pre>
+          </div>
+
+          <div class="callout info">
+            <strong>CI/CD Benefits for HSC Projects:</strong><br>
+            Even for solo HSC projects, a CI pipeline adds value — every push is automatically tested, so you always know whether your changes broke anything. It also demonstrates professional development practice in your folio documentation.
           </div>
         </section>
 

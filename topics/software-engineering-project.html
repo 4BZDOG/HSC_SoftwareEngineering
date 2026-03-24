@@ -96,6 +96,11 @@
         <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">HSC Guidance</li>
         <li><a href="#hsc-assessment-guidance">📝 8. HSC Assessment Guidance</a></li>
         <li><a href="#project-documentation">📁 9. Project Documentation</a></li>
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Additional Topics</li>
+        <li><a href="#team-roles">👥 10. Team Roles &amp; Dynamics</a></li>
+        <li><a href="#deployment">🚀 11. Deployment &amp; DevOps</a></li>
+        <li><a href="#post-project">📊 12. Post-Project Evaluation</a></li>
+        <li><a href="#tech-stack">🛠️ 13. Tech Stack Guide</a></li>
       </ul>
     </aside>
 
@@ -1547,6 +1552,184 @@ flowchart TD
               <li>It also makes it easy to verify that your database schema, Python classes, and validation code are all consistent with each other.</li>
               <li>Reference your data dictionary in your process diary when you make implementation decisions (e.g., "I chose VARCHAR(13) for ISBN because the data dictionary specifies a fixed 13-character format").</li>
             </ul>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- Team Roles & Dynamics -->
+        <section id="team-roles">
+          <h2 class="syllabus-phase">👥 Team Roles &amp; Dynamics</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-07)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Describe</strong> team roles in a software project and <strong>apply</strong> Agile ceremonies to manage communication and progress effectively.</em></p>
+
+          <h3>Common Software Project Roles</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Role</th><th>Responsibilities</th><th>Key Skills</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Project Manager</strong></td><td>Plan timeline, manage risks, coordinate stakeholders, track progress against scope</td><td>Leadership, communication, risk management</td></tr>
+                <tr><td><strong>Business Analyst</strong></td><td>Gather and document requirements, bridge between client and technical team, validate deliverables</td><td>Requirements elicitation, documentation, domain knowledge</td></tr>
+                <tr><td><strong>Software Developer</strong></td><td>Design, code, debug, and unit-test features according to specifications</td><td>Programming, algorithms, debugging, version control</td></tr>
+                <tr><td><strong>UI/UX Designer</strong></td><td>Design wireframes, prototypes, and visual assets; conduct usability testing</td><td>Figma/Sketch, user research, accessibility</td></tr>
+                <tr><td><strong>QA Tester</strong></td><td>Write test plans, execute manual and automated tests, report bugs with reproduction steps</td><td>Test design, attention to detail, tool automation</td></tr>
+                <tr><td><strong>DevOps Engineer</strong></td><td>Manage CI/CD pipelines, deployment infrastructure, monitoring, and incident response</td><td>Linux, Docker, cloud platforms, scripting</td></tr>
+                <tr><td><strong>Database Administrator</strong></td><td>Design schemas, optimise queries, manage backups, enforce data integrity</td><td>SQL, indexing, normalisation, backup strategies</td></tr>
+                <tr><td><strong>Technical Lead</strong></td><td>Make architecture decisions, conduct code reviews, mentor junior developers, set coding standards</td><td>System design, broad technical knowledge, communication</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Agile Ceremonies</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Sprint Planning</strong><span>At the start of each sprint (1–4 weeks): the team selects user stories from the backlog to complete in this sprint. Output: a sprint backlog with estimated tasks. Duration: typically 2–4 hours for a 2-week sprint.</span></div>
+            <div class="key-term-item"><strong>Daily Stand-up</strong><span>15-minute daily meeting. Each team member answers: (1) What did I do yesterday? (2) What will I do today? (3) Do I have any blockers? Duration: maximum 15 minutes — stand up to keep it short.</span></div>
+            <div class="key-term-item"><strong>Sprint Review</strong><span>At the end of each sprint: the team demonstrates completed work to stakeholders. Stakeholders provide feedback that may update the product backlog. Duration: 1–2 hours.</span></div>
+            <div class="key-term-item"><strong>Sprint Retrospective</strong><span>After the sprint review: the team reflects internally. What went well? What should improve? What will we commit to changing next sprint? Duration: 1 hour. Output: actionable improvement items.</span></div>
+          </div>
+
+          <div class="callout info">
+            <strong>Team Dynamics — Key Tips for HSC Projects:</strong><br>
+            Document all major decisions (why you chose one approach over another) in your process diary.<br>
+            Communicate blockers immediately — a small problem caught early is much cheaper to fix than a large one discovered late.<br>
+            Use Git branches for parallel work — never both edit the same file simultaneously without a merge plan.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- Deployment & DevOps -->
+        <section id="deployment">
+          <h2 class="syllabus-phase">🚀 Deployment &amp; DevOps</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-07)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Describe</strong> the deployment pipeline and <strong>apply</strong> deployment concepts to ensure software is reliably released to users.</em></p>
+
+          <h3>Deployment Environments</h3>
+          <pre class="text-diagram">Deployment Pipeline
+──────────────────────────────────────────────────────────────
+Development   →   Staging         →   UAT          →   Production
+(your laptop)     (mirrors prod)      (client tests)   (live users)
+
+Each environment serves a purpose:
+• Development : fast iteration, may have debug tools enabled
+• Staging     : identical to production — final integration testing
+• UAT         : User Acceptance Testing — client validates requirements
+• Production  : live system — must be stable, monitored, backed up
+──────────────────────────────────────────────────────────────</pre>
+
+          <h3>Hosting Options</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Platform</th><th>Best For</th><th>Cost</th><th>Complexity</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>GitHub Pages</strong></td><td>Static HTML/CSS/JS sites</td><td>Free</td><td>Very low</td></tr>
+                <tr><td><strong>Vercel</strong></td><td>Frontend frameworks (React, Vue), serverless functions</td><td>Free tier available</td><td>Low</td></tr>
+                <tr><td><strong>Heroku</strong></td><td>Python/Flask/Django web apps with database</td><td>Free tier removed; paid plans</td><td>Low-Medium</td></tr>
+                <tr><td><strong>AWS / Azure</strong></td><td>Scalable enterprise applications</td><td>Pay per use</td><td>High</td></tr>
+                <tr><td><strong>PythonAnywhere</strong></td><td>Python web apps — ideal for HSC Flask projects</td><td>Free tier available</td><td>Low</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Pre-Deployment Checklist</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>#</th><th>Check</th><th>Why</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>All tests pass</td><td>Catch regressions before users see them</td></tr>
+                <tr><td>2</td><td>No secrets in source code</td><td>Prevent credential leaks</td></tr>
+                <tr><td>3</td><td>Debug mode disabled</td><td>Debug mode exposes stack traces to users</td></tr>
+                <tr><td>4</td><td>Database migrations applied</td><td>Schema must match the new code</td></tr>
+                <tr><td>5</td><td>Dependencies pinned in requirements.txt</td><td>Reproducible builds across environments</td></tr>
+                <tr><td>6</td><td>Error logging configured</td><td>Know when errors occur in production</td></tr>
+                <tr><td>7</td><td>Git tag created for this release</td><td>Easy rollback point if issues arise</td></tr>
+                <tr><td>8</td><td>Backup taken before deploy</td><td>Last resort recovery if deploy fails</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- Post-Project Evaluation -->
+        <section id="post-project">
+          <h2 class="syllabus-phase">📊 Post-Project Evaluation</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-07, SE-12-08, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Evaluate</strong> the completed software project against original requirements and <strong>reflect</strong> on lessons learned to improve future practice.</em></p>
+
+          <h3>Evaluation Framework</h3>
+          <p>A thorough evaluation compares <strong>what you built</strong> against <strong>what you planned</strong> from Phase 1. For each functional and non-functional requirement, ask:</p>
+          <ul>
+            <li>Was this requirement fully met? Partially? Not met?</li>
+            <li>What evidence demonstrates it is met? (test results, screenshots, user feedback)</li>
+            <li>If not fully met, what limited the implementation?</li>
+          </ul>
+
+          <h3>Post-Mortem Report Structure</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Section</th><th>Content</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Executive Summary</strong></td><td>1-paragraph overview of what was built, whether goals were achieved, and overall outcome</td></tr>
+                <tr><td><strong>Timeline</strong></td><td>Planned vs actual dates for key milestones — what slipped and why</td></tr>
+                <tr><td><strong>What Went Well</strong></td><td>Specific practices, decisions, or tools that worked better than expected</td></tr>
+                <tr><td><strong>What Went Wrong</strong></td><td>Honest account of failures, delays, scope creep, technical issues</td></tr>
+                <tr><td><strong>Root Causes</strong></td><td>Underlying reasons for problems (not just symptoms) — over-scoping, poor estimation, unclear requirements</td></tr>
+                <tr><td><strong>Action Items</strong></td><td>Specific, measurable improvements for the next project</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout tip">
+            <strong>HSC Evaluation Report Tips:</strong><br>
+            Be specific — don't write "the project was successful." Write "Requirement 3 (search by author) was fully implemented and passed all 4 test cases in the test table."<br>
+            Acknowledge limitations honestly — markers reward self-awareness. If something didn't work, explain why and what you'd do differently.<br>
+            Link back to your original requirements document. Use the same requirement numbers to show systematic coverage.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- Tech Stack Guidance -->
+        <section id="tech-stack">
+          <h2 class="syllabus-phase">🛠️ Tech Stack Selection Guide</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-07)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Evaluate</strong> and select appropriate technologies for different HSC project types based on requirements, constraints, and team capability.</em></p>
+
+          <h3>Recommended Stacks for Common HSC Project Types</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Project Type</th><th>Recommended Stack</th><th>Key Libraries</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Desktop GUI App</strong></td><td>Python + tkinter or PyQt5</td><td>tkinter (built-in), PyQt5, sqlite3</td></tr>
+                <tr><td><strong>Web App</strong></td><td>Python Flask + SQLite + HTML/CSS/JS</td><td>Flask, Jinja2, sqlite3, Bootstrap</td></tr>
+                <tr><td><strong>Data Analysis Tool</strong></td><td>Python + pandas + matplotlib</td><td>pandas, matplotlib, numpy, seaborn</td></tr>
+                <tr><td><strong>Game</strong></td><td>Python + pygame</td><td>pygame, math, random</td></tr>
+                <tr><td><strong>Mechatronics</strong></td><td>MicroPython + Raspberry Pi Pico</td><td>machine, utime, ujson</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Technology Selection Criteria</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Requirements fit</strong><span>Does the technology support the features you need? (e.g., a web framework needs routing; a game needs a render loop).</span></div>
+            <div class="key-term-item"><strong>Team skill level</strong><span>Can you learn this in time? A familiar technology done well beats an unfamiliar one done poorly.</span></div>
+            <div class="key-term-item"><strong>Community &amp; documentation</strong><span>Is there good documentation and Stack Overflow coverage? You will hit problems — good resources reduce debugging time.</span></div>
+            <div class="key-term-item"><strong>Deployment constraints</strong><span>Where will this run? A web app needs hosting. A desktop app needs to run on school computers (no admin rights to install dependencies?).</span></div>
+          </div>
+
+          <div class="callout warning">
+            <strong>Scope Management:</strong> Build your MVP (Minimum Viable Product) first, then add features. The most common HSC project failure is over-scoping — committing to 20 features and delivering 8 poorly. Three features that all work reliably and are well-tested score better than ten features half-implemented. Write the core functionality first, then enhance.
           </div>
         </section>
 

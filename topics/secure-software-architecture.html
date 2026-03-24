@@ -100,6 +100,10 @@
         <li><a href="#collaboration">🤝 13. Collaboration Benefits</a></li>
         <li><a href="#enterprise">🏢 14. Enterprise Benefits</a></li>
         <li><a href="#ramifications">⚖️ 15. Social, Ethical &amp; Legal</a></li>
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 4 — Deep Dive</li>
+        <li><a href="#cryptography">🔑 16. Cryptography</a></li>
+        <li><a href="#api-security">🔐 17. API Security &amp; JWT</a></li>
+        <li><a href="#security-tools">🔍 18. Security Testing Tools</a></li>
       </ul>
     </aside>
 
@@ -1048,6 +1052,213 @@ print(encode_output(<span class="str">"&lt;script&gt;alert('xss')&lt;/script&gt;
 
           <h3>Digital Disruption</h3>
           <p>Highly secure, scalable digital platforms are a primary vehicle of digital disruption — displacing established industries by offering superior trust, convenience, and cost efficiency built on robust technical infrastructure. The disruption is bidirectional: secure fintech platforms (such as Afterpay, Revolut, and digital-only banks) disrupt traditional banking by offering comparable or superior financial services without physical branch infrastructure; conversely, a high-profile security failure by a disruptive digital entrant (such as a cryptocurrency exchange breach) can instantly restore consumer confidence in the incumbent institution it was displacing. For established enterprises, failing to invest in secure digital infrastructure creates vulnerability to disruption by more security-mature competitors — customers increasingly make choices based on perceived trustworthiness of digital platforms. The social dimension of digital disruption includes: geographic communities losing economic activity as digital services replace local businesses; skill displacement as digital processes automate roles that provided employment pathways; and concentration of market power in digital platform operators whose security and privacy practices affect vast user populations with limited alternatives.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- Cryptography -->
+        <section id="cryptography">
+          <h2 class="syllabus-phase">🔑 Cryptography</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-04, SE-12-05)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Describe</strong> symmetric and asymmetric encryption and hashing, and <strong>apply</strong> cryptographic techniques to protect data at rest and in transit.</em></p>
+
+          <h3>Symmetric Encryption</h3>
+          <p>The same key is used to both encrypt and decrypt data. Fast and efficient — used for encrypting files, database columns, and bulk data transfer.</p>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h4>AES (Advanced Encryption Standard)</h4>
+              <p>The gold standard for symmetric encryption. Block cipher operating on 128-bit blocks. Key sizes: 128, 192, or 256 bits. AES-256 is essentially unbreakable with current technology. Used by governments, banks, and SSL/TLS. AES-GCM mode also provides authentication (detects tampering).</p>
+            </div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — AES-GCM Encrypt/Decrypt (cryptography library)</span></div>
+            <pre><code>from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+import os
+
+# Generate a random 256-bit key (store this securely!)
+key = AESGCM.generate_key(bit_length=256)
+aesgcm = AESGCM(key)
+
+# Encrypt
+nonce = os.urandom(12)   # 12-byte random nonce (never reuse!)
+plaintext = b"Sensitive student data"
+ciphertext = aesgcm.encrypt(nonce, plaintext, None)
+
+print(f"Encrypted: {ciphertext.hex()}")
+
+# Decrypt
+recovered = aesgcm.decrypt(nonce, ciphertext, None)
+print(f"Decrypted: {recovered.decode()}")</code></pre>
+          </div>
+
+          <h3>Asymmetric Encryption</h3>
+          <p>Uses a mathematically linked <strong>key pair</strong>: a public key (shared openly) and a private key (kept secret). Data encrypted with the public key can only be decrypted with the private key.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Feature</th><th>Symmetric (AES)</th><th>Asymmetric (RSA)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Keys</td><td>One shared key</td><td>Public + private key pair</td></tr>
+                <tr><td>Speed</td><td>Fast — suitable for bulk data</td><td>Slow — only used for small data</td></tr>
+                <tr><td>Key distribution problem</td><td>How do you share the key securely?</td><td>Solved — public key can be shared openly</td></tr>
+                <tr><td>Use cases</td><td>File encryption, disk encryption, AES in TLS</td><td>Key exchange, digital signatures, SSL handshake</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Password Hashing</h3>
+          <p><strong>Hashing</strong> is a one-way transformation — you cannot reverse a hash to get the original data. Never store passwords in plaintext or with simple hashing (MD5/SHA-1 are broken for passwords). Always use a purpose-built password hashing algorithm that includes salting and is deliberately slow.</p>
+
+          <div class="callout danger">
+            <strong>Never use MD5 or SHA-1 for passwords.</strong> These are fast hashing algorithms — an attacker can test billions of guesses per second on modern GPUs. Use bcrypt, scrypt, or Argon2 which are deliberately slow and include a salt to prevent rainbow table attacks.
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Password hashing with bcrypt</span></div>
+            <pre><code>import bcrypt
+
+# Hashing a password (at registration)
+password = "MySecretP@ss"
+hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+print(hashed)   # b'$2b$12$...' — includes the salt
+
+# Verifying (at login) — never compare hashes directly
+def check_login(entered_password, stored_hash):
+    return bcrypt.checkpw(entered_password.encode('utf-8'), stored_hash)
+
+print(check_login("MySecretP@ss", hashed))   # True
+print(check_login("WrongPassword", hashed))  # False</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- API Security -->
+        <section id="api-security">
+          <h2 class="syllabus-phase">🔐 API Security &amp; Authentication</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-04, SE-12-05)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply</strong> authentication and authorisation mechanisms to secure web APIs — distinguishing between verifying identity and controlling access.</em></p>
+
+          <h3>Authentication vs Authorisation</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Concept</th><th>Question Answered</th><th>Example</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Authentication</strong></td><td>"Who are you?"</td><td>Logging in with username + password or API key</td></tr>
+                <tr><td><strong>Authorisation</strong></td><td>"What are you allowed to do?"</td><td>User can read posts but cannot delete others' posts</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>JWT (JSON Web Tokens)</h3>
+          <p>A JWT is a compact, URL-safe token consisting of three Base64-encoded parts separated by dots: <code>Header.Payload.Signature</code>. The server signs the token with a secret key — any tampering with the payload invalidates the signature.</p>
+          <pre class="text-diagram">JWT Authentication Flow
+────────────────────────────────────────────────────
+1. User sends POST /login with {username, password}
+2. Server verifies credentials → generates JWT
+   JWT = {header}.{payload}.{HMAC_signature}
+   Payload contains: {user_id, role, exp: timestamp}
+3. Server returns JWT to client
+4. Client stores JWT (localStorage or secure cookie)
+5. Client sends JWT in every request:
+   Authorization: Bearer eyJhbGciOiJIUzI1...
+6. Server verifies signature + checks expiry → grants access
+────────────────────────────────────────────────────</pre>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — JWT encode and decode (PyJWT)</span></div>
+            <pre><code>import jwt
+from datetime import datetime, timedelta, timezone
+
+SECRET_KEY = "your-secret-key-keep-private"   # In production: use env variable
+
+# Generate a token (at login)
+def create_token(user_id, role):
+    payload = {
+        "user_id": user_id,
+        "role": role,
+        "exp": datetime.now(timezone.utc) + timedelta(hours=24)
+    }
+    return jwt.encode(payload, SECRET_KEY, algorithm="HS256")
+
+# Verify and decode a token (on each protected request)
+def verify_token(token):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+        return payload
+    except jwt.ExpiredSignatureError:
+        return None   # Token has expired
+    except jwt.InvalidTokenError:
+        return None   # Token is tampered or invalid
+
+token = create_token(user_id=42, role="student")
+print(verify_token(token))
+# {'user_id': 42, 'role': 'student', 'exp': ...}</code></pre>
+          </div>
+
+          <div class="callout warning">
+            <strong>Never store API keys or JWT secrets in source code.</strong> Use environment variables or a secrets manager. If a key is committed to a public Git repository, assume it has been compromised and rotate it immediately.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- Security Testing Tools -->
+        <section id="security-tools">
+          <h2 class="syllabus-phase">🔍 Security Testing Tools</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-04, SE-12-05)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Describe</strong> tools used for security testing and <strong>apply</strong> static analysis tools to identify vulnerabilities in Python code.</em></p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Tool</th><th>Type</th><th>What It Finds</th><th>Cost</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>bandit</strong></td><td>Python static analysis</td><td>Hardcoded passwords, SQL injection, use of unsafe functions (<code>eval</code>, <code>pickle</code>), insecure random</td><td>Free</td></tr>
+                <tr><td><strong>safety</strong></td><td>Dependency checker</td><td>Python packages with known CVEs (Common Vulnerabilities and Exposures)</td><td>Free (basic)</td></tr>
+                <tr><td><strong>OWASP ZAP</strong></td><td>Web app scanner</td><td>XSS, SQL injection, CSRF, missing headers, insecure cookies</td><td>Free</td></tr>
+                <tr><td><strong>Burp Suite</strong></td><td>Intercepting proxy</td><td>Manual testing: inspect/modify HTTP requests, replay attacks, fuzzing</td><td>Free (Community)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Bash — Running bandit and safety</span></div>
+            <pre><code># Install both tools
+pip install bandit safety
+
+# Run bandit on your Python project
+bandit -r ./myproject/
+# Reports severity (HIGH/MEDIUM/LOW) and CWE identifiers
+
+# Check dependencies for known CVEs
+safety check
+# Scans requirements.txt against the safety vulnerability database</code></pre>
+          </div>
+
+          <div class="callout danger">
+            <strong>Responsible Disclosure:</strong> Only perform security testing on systems you own or have explicit written permission to test. Unauthorised security testing is illegal under the Australian Criminal Code (Computer Offences, Div. 477-478). Always get a signed scope-of-engagement document before any penetration testing.
+          </div>
+
+          <h3>Incident Response — What To Do When Breached</h3>
+          <ol>
+            <li><strong>Detect &amp; Contain:</strong> Isolate affected systems. Revoke compromised credentials. Stop the breach from spreading.</li>
+            <li><strong>Assess Impact:</strong> What data was accessed? How many users affected? What systems were compromised?</li>
+            <li><strong>Notify Stakeholders:</strong> Management, legal, and (where required by law) regulators and affected individuals.</li>
+            <li><strong>Eradicate Threat:</strong> Remove malware, close the vulnerability, patch all affected systems.</li>
+            <li><strong>Recover Systems:</strong> Restore from clean backups. Reset all potentially compromised credentials.</li>
+            <li><strong>Post-Incident Review:</strong> Root cause analysis, update security policies, implement additional controls.</li>
+          </ol>
+
+          <div class="callout info">
+            <strong>Australian Notifiable Data Breaches (NDB) Scheme:</strong> Under the Privacy Act 1988, organisations covered by the Act must notify the OAIC (Office of the Australian Information Commissioner) and affected individuals within 30 days of becoming aware of an eligible data breach — one likely to result in serious harm. Failure to notify carries civil penalties.
+          </div>
         </section>
 
       </div>
