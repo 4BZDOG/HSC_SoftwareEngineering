@@ -418,7 +418,7 @@ Reflective comment:
           <p>A programming paradigm is a fundamental style or approach to solving problems with code. Different paradigms suit different types of problems.</p>
           <div class="info-grid">
             <div class="info-card">
-              <h4>🧩 Object-Oriented</h4>
+              <h4>🧩 Object-Oriented Paradigm</h4>
               <p>Organises code into <strong>classes</strong> and <strong>objects</strong>. Key concepts: attributes, methods, inheritance, polymorphism, and encapsulation. Used in Python, Java, C#.</p>
               <pre style="font-size:.78rem;margin-top:.5rem"><code>class Dog:
     def __init__(self, name):
@@ -427,7 +427,7 @@ Reflective comment:
         return "Woof!"</code></pre>
             </div>
             <div class="info-card">
-              <h4>📝 Logic</h4>
+              <h4>📝 Logic Paradigm</h4>
               <p>Programs are expressed as <strong>facts</strong> and <strong>rules</strong>; the engine finds solutions automatically. Used in Prolog for AI and expert systems.</p>
               <pre style="font-size:.78rem;margin-top:.5rem"><code>% Prolog-style logic
 parent(tom, bob).
@@ -436,7 +436,7 @@ grandparent(X, Z) :-
     parent(X, Y), parent(Y, Z).</code></pre>
             </div>
             <div class="info-card">
-              <h4>🖥️ Imperative</h4>
+              <h4>🖥️ Imperative Paradigm</h4>
               <p>Programs describe <strong>how</strong> to do something as a sequence of commands — control structures, assignment, expressions, and subroutines. Most common paradigm; used in Python, C, Pascal.</p>
               <pre style="font-size:.78rem;margin-top:.5rem"><code>total = 0
 for i in range(1, 6):
@@ -444,7 +444,7 @@ for i in range(1, 6):
 print(total)  # 15</code></pre>
             </div>
             <div class="info-card">
-              <h4>⚙️ Functional</h4>
+              <h4>⚙️ Functional Paradigm</h4>
               <p>Treats computation as evaluating <strong>functions</strong>. Avoids changing state; uses recursion and first-class functions. Used in Haskell, Erlang; supported in Python.</p>
               <pre style="font-size:.78rem;margin-top:.5rem"><code># Python functional style
 nums = [1, 2, 3, 4, 5]
@@ -655,7 +655,7 @@ OUTPUT "Class average: ", average</code></pre>
             <strong>Procedure vs Function:</strong> A <em>procedure (subroutine)</em> performs an action but does not return a value. A <em>function</em> performs a calculation and <strong>returns</strong> a result to the caller.
           </div>
 
-          <h3>Using a subroutine with one parameter</h3>
+          <h3>1️⃣ Using a subroutine with one parameter</h3>
           <p>A parameter is a variable that receives a value when the subroutine is called. The value passed in is called an <em>argument</em>.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Pseudocode — Display a greeting</span></div>
@@ -669,7 +669,7 @@ greetStudent("Alice")
 greetStudent("Ben")</code></pre>
           </div>
 
-          <h3>Using a subroutine with multiple parameters</h3>
+          <h3>🔢 Using a subroutine with multiple parameters</h3>
           <p>Multiple parameters are separated by commas. Each argument passed must match the corresponding parameter in position and type.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Pseudocode — Print a student result</span></div>
@@ -687,7 +687,7 @@ displayResult("Alice", 87)
 displayResult("Ben", 43)</code></pre>
           </div>
 
-          <h3>Passing a value back from a function</h3>
+          <h3>↩️ Passing a value back from a function</h3>
           <p>A function uses <code>RETURN</code> to send a computed value back to the line that called it. The returned value can be stored in a variable or used directly in an expression.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Pseudocode — Calculate letter grade</span></div>
@@ -721,7 +721,7 @@ OUTPUT "Your grade is: ", grade    # Your grade is: B</code></pre>
         <section id="relational-databases">
           <h2 class="syllabus-phase">🗄️ Relational Databases</h2>
 
-          <h3>SQL</h3>
+          <h3>🗃️ SQL</h3>
           <p>Structured Query Language (SQL) is the standard language for interacting with relational databases. A relational database stores data in <strong>tables</strong> (relations), where each row is a record and each column is a field.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">SQL — Standard Syntax</span></div>
@@ -761,7 +761,7 @@ WHERE Enrolments.score >= 50;</code></pre>
             <div class="key-term-item"><strong>FOREIGN KEY</strong><span>A field in one table that references the primary key of another, creating a relationship.</span></div>
           </div>
 
-          <h3>Object-Relational Mapping (ORM)</h3>
+          <h3>🔗 Object-Relational Mapping (ORM)</h3>
           <p>ORM is a programming technique that allows a developer to interact with a relational database using <strong>objects</strong> rather than raw SQL. The ORM framework automatically generates the SQL behind the scenes.</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>Class → Table</strong><span>Each class in the object model corresponds to a database table.</span></div>
@@ -830,7 +830,7 @@ for s in passing:
         <section id="web-programming">
           <h2 class="syllabus-phase">🌐 Programming for the Web</h2>
 
-          <h3>Front-end web development frameworks</h3>
+          <h3>🖥️ Front-end web development frameworks</h3>
           <p>Front-end frameworks provide pre-built, reusable components and a structured approach to building user interfaces in the browser. Rather than writing all HTML/CSS/JS from scratch, developers compose interfaces from components.</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>React</strong><span>A JavaScript library by Meta for building component-based UIs. Uses a virtual DOM for efficient updates.</span></div>
@@ -841,7 +841,7 @@ for s in passing:
             <strong>Framework vs Library:</strong> A <em>library</em> (like React) is called by your code when you need it. A <em>framework</em> (like Angular) calls your code — it provides the overall structure and you fill in the details.
           </div>
 
-          <h3>Cross-site scripting (XSS)</h3>
+          <h3>⚠️ Cross-site scripting (XSS)</h3>
           <p>XSS is a web security vulnerability where an attacker injects malicious client-side scripts into web pages that other users then view. The injected script runs in the victim's browser with the same trust level as the legitimate site.</p>
           <div class="callout warning">
             <strong>Attack scenario:</strong> A forum site displays user comments without sanitising them. An attacker posts a comment containing a <code>&lt;script&gt;</code> tag. Every visitor who loads the page runs the script in their own browser — the attacker can steal session cookies, redirect users, or log keystrokes.
@@ -872,7 +872,7 @@ return f"&lt;p&gt;{safe_comment}&lt;/p&gt;"
             <div class="key-term-item"><strong>Content Security Policy</strong><span>An HTTP response header that tells the browser which sources of script are trusted — blocking injected inline scripts even if they reach the page.</span></div>
           </div>
 
-          <h3>Cascading Style Sheets (CSS)</h3>
+          <h3>🎨 Cascading Style Sheets (CSS)</h3>
           <p>CSS describes the visual presentation of HTML documents — colours, layout, fonts, and spacing. Styles <em>cascade</em>: more specific rules override more general ones.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">CSS — Syntax and Examples</span></div>
@@ -919,7 +919,7 @@ p {
           <h2 class="syllabus-phase">🤖 Machine Learning</h2>
           <p>Machine learning (ML) enables systems to learn patterns from data and make predictions or decisions without being explicitly programmed for each case.</p>
 
-          <h3>Machine learning automation through DevOps (MLOps)</h3>
+          <h3>🔄 Machine learning automation through DevOps (MLOps)</h3>
           <p>MLOps integrates ML workflows with software engineering and DevOps practices to make model development and deployment reliable and repeatable. Three stages:</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>1. Design</strong><span>Define the problem, choose success metrics, and research available data sources. Determine whether ML is the right solution.</span></div>
@@ -927,7 +927,7 @@ p {
             <div class="key-term-item"><strong>3. Operations</strong><span>Deploy the trained model to production, monitor its real-world performance, and retrain when the model degrades over time.</span></div>
           </div>
 
-          <h3>Regression algorithms</h3>
+          <h3>📉 Regression algorithms</h3>
           <p>Supervised learning algorithms that predict a <strong>continuous numerical output</strong> from input features. The algorithm learns the mapping between inputs and outputs from labelled training data.</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>Linear Regression</strong><span>Fits a straight line to the data: <code>y = mx + b</code>. Example: predicting a student's final exam score from hours studied.</span></div>
@@ -936,7 +936,7 @@ p {
             <div class="key-term-item"><strong>Polynomial Regression</strong><span>Fits a curved line by adding powers of features (x², x³, …). Used when data has a non-linear relationship.</span></div>
           </div>
 
-          <h3>Neural Networks</h3>
+          <h3>🧠 Neural Networks</h3>
           <p>Computational models loosely inspired by the brain, composed of <strong>layers of interconnected nodes (neurons)</strong>. Each connection has a weight that is adjusted during training.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Neural Network — Architecture</span></div>
@@ -960,7 +960,7 @@ p {
             <div class="key-term-item"><strong>Activation function</strong><span>Introduces non-linearity at each neuron (e.g. ReLU, Sigmoid) — without it, deep networks reduce to simple linear regression.</span></div>
           </div>
 
-          <h4>Training cycle</h4>
+          <h4>🏋️ Training cycle</h4>
           <p>Repeated many times (each complete pass through training data is called an <em>epoch</em>) until the model's error is minimised.</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>1. Forward pass</strong><span>Input data flows through the network layer by layer to produce a prediction.</span></div>
@@ -969,7 +969,7 @@ p {
             <div class="key-term-item"><strong>4. Weight update</strong><span>An optimiser (e.g. gradient descent) nudges weights in the direction that reduces the loss.</span></div>
           </div>
 
-          <h4>Execution cycle (Inference)</h4>
+          <h4>⚡ Execution cycle (Inference)</h4>
           <div class="key-terms">
             <div class="key-term-item"><strong>Inference</strong><span>The trained model receives new, unseen input and performs a forward pass to generate a prediction. No weight updates occur.</span></div>
             <div class="key-term-item"><strong>Deployment</strong><span>The model is packaged and integrated into an application or API so end users can benefit from its predictions in real time.</span></div>
@@ -991,7 +991,7 @@ p {
             <div class="key-term-item"><strong>📦 Volume testing</strong><span>Evaluates system performance under large quantities of data to identify scalability and performance bottlenecks.</span></div>
           </div>
 
-          <h3>Test Data Categories</h3>
+          <h3>📊 Test Data Categories</h3>
           <p>When designing test cases, you should always include data from three categories:</p>
           <div class="table-wrap">
             <table>
@@ -1027,7 +1027,7 @@ p {
             <div class="key-term-item"><strong>UTF-8</strong><span>The most common Unicode encoding on the web. Uses 1–4 bytes per character. Fully backwards-compatible with ASCII (characters 0–127 use the same byte values).</span></div>
           </div>
 
-          <h3>Character code examples</h3>
+          <h3>🔡 Character code examples</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1085,7 +1085,7 @@ elif 48 <= ord(ch) <= 57:
           <h2 class="syllabus-phase">🐍 Programming with Python</h2>
           <p>Python is the primary programming language for the HSC Software Engineering course. It uses indentation (not braces) to define code blocks, and reads like English.</p>
 
-          <h3>Variables, Input &amp; Output</h3>
+          <h3>📥 Variables, Input &amp; Output</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python</span></div>
             <pre><code># Variables are dynamically typed — no need to declare a type
@@ -1104,7 +1104,7 @@ print("Hello,", name)
 print(f"Score: {score:.1f}/100")        # f-string with 1 decimal place</code></pre>
           </div>
 
-          <h3>Selection</h3>
+          <h3>🔀 Selection</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python</span></div>
             <pre><code># Binary selection
@@ -1125,7 +1125,7 @@ else:
 print(f"Grade: {grade}")</code></pre>
           </div>
 
-          <h3>Repetition</h3>
+          <h3>🔁 Repetition</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python</span></div>
             <pre><code># for loop — counted repetition (range gives 1, 2, 3, 4, 5)
@@ -1144,7 +1144,7 @@ while password != "secret123":
 print("Access granted.")</code></pre>
           </div>
 
-          <h3>Functions</h3>
+          <h3>🔧 Functions</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python</span></div>
             <pre><code># Procedure — performs an action, no return value
@@ -1172,7 +1172,7 @@ grade = calculate_grade(87)
 print(f"Grade: {grade}")     # Grade: B</code></pre>
           </div>
 
-          <h3>Lists &amp; Iteration</h3>
+          <h3>📋 Lists &amp; Iteration</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python</span></div>
             <pre><code>scores = [85, 92, 78, 64, 90]
@@ -1197,7 +1197,7 @@ for s in scores:
 passing = [s for s in scores if s >= 50]</code></pre>
           </div>
 
-          <h3>File I/O</h3>
+          <h3>📂 File I/O</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python</span></div>
             <pre><code># Writing to a file
@@ -1216,7 +1216,7 @@ with open("scores.txt", "a") as f:
     f.write("99\n")</code></pre>
           </div>
 
-          <h3>Dictionaries</h3>
+          <h3>📖 Dictionaries</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python</span></div>
             <pre><code># Dictionary stores key-value pairs
@@ -1236,7 +1236,7 @@ for key, value in student.items():
     print(f"{key}: {value}")</code></pre>
           </div>
 
-          <h3>Exception Handling</h3>
+          <h3>⚠️ Exception Handling</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — try / except</span></div>
             <pre><code># Basic exception handling — prevent a crash on bad input
@@ -1280,7 +1280,7 @@ finally:
           <h2 class="syllabus-phase">🔀 Git &amp; Version Control Workflow</h2>
           <p>Git is a distributed version control system that tracks every change to your code. Every commit is a snapshot — you can revert to any previous state, compare versions, and collaborate without overwriting each other's work.</p>
 
-          <h3>Core Git Commands Reference</h3>
+          <h3>📟 Core Git Commands Reference</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1311,7 +1311,7 @@ finally:
             </table>
           </div>
 
-          <h3>Feature Branch Workflow</h3>
+          <h3>🌿 Feature Branch Workflow</h3>
           <pre class="text-diagram">Feature Branch Workflow
 ──────────────────────────────────────────────────────────────
 main ──●──────────────────────────────────●── stable/deployable
@@ -1357,7 +1357,7 @@ git push origin main
 git branch -d feature/student-search</code></pre>
           </div>
 
-          <h3>Example .gitignore for Python Projects</h3>
+          <h3>🚫 Example .gitignore for Python Projects</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">.gitignore — Python project</span></div>
             <pre><code># Virtual environments
@@ -1407,7 +1407,7 @@ build/
           <h2 class="syllabus-phase">🧪 Testing Frameworks</h2>
           <p>Python has two primary testing frameworks. Both allow you to write automated tests that verify your code behaves correctly — automatically, every time you make a change.</p>
 
-          <h3>unittest — Built-in Python Testing</h3>
+          <h3>🧪 unittest — Built-in Python Testing</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — unittest example with setUp</span></div>
             <pre><code>import unittest
@@ -1450,7 +1450,7 @@ if __name__ == '__main__':
     unittest.main(verbosity=2)</code></pre>
           </div>
 
-          <h3>pytest — Modern Python Testing</h3>
+          <h3>⚡ pytest — Modern Python Testing</h3>
           <p>pytest is simpler to write and provides more detailed failure output than unittest. Tests are just functions prefixed with <code>test_</code>.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — pytest with fixture and parametrize</span></div>
@@ -1481,7 +1481,7 @@ def test_deposit_parametrized(account, amount, expected):
     assert account.balance == pytest.approx(expected)</code></pre>
           </div>
 
-          <h3>unittest vs pytest Comparison</h3>
+          <h3>⚖️ unittest vs pytest Comparison</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1498,7 +1498,7 @@ def test_deposit_parametrized(account, amount, expected):
             </table>
           </div>
 
-          <h3>TDD — Test-Driven Development</h3>
+          <h3>🔄 TDD — Test-Driven Development</h3>
           <pre class="text-diagram">TDD Cycle: Red → Green → Refactor
 ──────────────────────────────────────────
 🔴 RED      Write a failing test FIRST
@@ -1530,7 +1530,7 @@ def test_deposit_parametrized(account, amount, expected):
             <div class="key-term-item"><strong>Continuous Deployment (CD)</strong><span>Automatically deploy code to production (or staging) when all tests pass. The pipeline handles build, test, and deploy without manual steps.</span></div>
           </div>
 
-          <h3>GitHub Actions — Automated Testing on Push</h3>
+          <h3>🚀 GitHub Actions — Automated Testing on Push</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">YAML — .github/workflows/tests.yml</span></div>
             <pre><code>name: Run Tests
