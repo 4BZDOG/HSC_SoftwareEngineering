@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Programming Fundamentals | HSC Software Engineering</title>
   <meta name="description" content="In-depth Year 11 HSC Software Engineering notes on Programming Fundamentals, following NESA command verbs, outcomes, and Australian English standards." />
+  <!-- Theme init: prevents flash of wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=3" />
 </head>
 <body>
@@ -84,7 +86,7 @@
         <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Part 1 — Software Development</li>
         <li><a href="#sdlc">🚀 1. Software Development Steps</a></li>
         <li><a href="#collaboration">🤝 2. Online Collaboration Tools</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 2 — Designing Algorithms</li>
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 2 — Designing <strong>Algorithms</strong></li>
         <li><a href="#algorithmic-design">🧠 3. Computational Thinking & Algorithm Features</a></li>
         <li><a href="#divide-conquer">📈 4. Divide & Conquer &amp; Backtracking</a></li>
         <li><a href="#pseudocode">📝 5. Pseudocode &amp; Flowcharts</a></li>
@@ -132,7 +134,7 @@
             </div>
             <div class="step">
               <div class="step-num">3</div>
-              <div class="step-content"><h4>🎨 Design</h4><p>Algorithms are planned using pseudocode or flowcharts.<br>🌏 <em>Example: Creating a structure chart to map out how the 'Calculate Tax' subroutine interacts with the main program.</em></p></div>
+              <div class="step-content"><h4>🎨 Design</h4><p><strong>Algorithms</strong> are planned using pseudocode or flowcharts.<br>🌏 <em>Example: Creating a structure chart to map out how the 'Calculate Tax' subroutine interacts with the main program.</em></p></div>
             </div>
             <div class="step">
               <div class="step-num">4</div>
@@ -242,7 +244,7 @@
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Syllabus Part 2</span>
-          <span class="part-name">🧠 Designing Algorithms</span>
+          <span class="part-name">🧠 Designing <strong>Algorithms</strong></span>
         </div>
 
         <!-- 3. Apply Algorithmic Design -->
@@ -252,7 +254,7 @@
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> computational thinking and algorithmic design by defining the key features of standard algorithms.</em></p>
 
           <h3>Key Features of Standard Algorithms</h3>
-          <p>Every algorithm uses fundamental building blocks to solve problems. Understanding these features allows programmers to design robust, efficient solutions:</p>
+          <p>Every <strong>algorithm</strong> uses fundamental building blocks to solve problems. Understanding these features allows programmers to design robust, efficient solutions:</p>
 
           <!-- ── 1. Sequence ── -->
           <h4>1. Sequence</h4>
@@ -394,14 +396,14 @@ END</code></pre>
 
           <!-- ── 4. Storing Data ── -->
           <h4>4. Storing Data</h4>
-          <p><strong>Storing Data</strong> means using variables and data structures to hold values needed across multiple steps of an algorithm. Without stored state, programs cannot track progress or accumulate results.<br>
+          <p><strong>Storing Data</strong> means using variables and <strong>data structures</strong> to hold values needed across multiple steps of an <strong>algorithm</strong>. Without stored state, programs cannot track progress or accumulate results.<br>
           🌏 <em>Example: Keeping track of a running total as you iterate through numbers.</em></p>
 
           <div class="diagram-block">
             <h4>📊 Flowchart — Storing Data (Running Total)</h4>
             <p class="diagram-subtitle">Variables persist values across loop iterations</p>
             <p class="diagram-description">
-              This flowchart highlights the role of stored data: the variable <code>runningTotal</code> persists across each loop iteration, accumulating partial results. The variable <code>count</code> tracks how many numbers have been processed. Both are essential for computing the final average.
+              This flowchart highlights the role of stored data: the variable <code>runningTotal</code> persists across each loop <strong>iteration</strong>, accumulating partial results. The variable <code>count</code> tracks how many numbers have been processed. Both are essential for computing the final average.
             </p>
             <div class="mermaid">
               flowchart TD
@@ -453,7 +455,7 @@ END</code></pre>
 END</code></pre>
           </div>
 
-          <p>Computational thinking is the systematic approach to problem-solving that breaks complex problems into manageable pieces and recognises patterns. By combining sequence, selection, iteration, and effective data storage, algorithms become clear, testable, and maintainable.</p>
+          <p>Computational thinking is the systematic approach to problem-solving that breaks complex problems into manageable pieces and recognises patterns. By combining sequence, selection, <strong>iteration</strong>, and effective data storage, <strong>algorithms</strong> become clear, testable, and maintainable.</p>
         </section>
 
         <hr class="divider" />
@@ -468,7 +470,7 @@ END</code></pre>
           <p>This strategy involves breaking a complex problem into smaller, identical sub-problems until they are simple enough to solve directly. The solutions to these sub-problems are then combined to form the final result.<br>🌏 <em>Example: In a <strong>Merge Sort</strong>, a large list is repeatedly split in half until single elements remain, which are then merged back together in the correct order.</em> This approach is highly efficient for sorting and searching large datasets.</p>
 
           <h3>Backtracking</h3>
-          <p>Backtracking is an incremental approach to problem-solving that builds a solution one step at a time. If the algorithm reaches a state where the current path cannot possibly lead to a valid solution (violating a constraint), it "backtracks" to the previous step and tries a different option.<br>🌏 <em>Example: A <strong>Sudoku Solver</strong> attempts a number in a cell; if it later finds a conflict, it returns to that cell and tries the next available number.</em> This strategy is essential for pathfinding and optimisation problems.</p>
+          <p>Backtracking is an incremental approach to problem-solving that builds a solution one step at a time. If the <strong>algorithm</strong> reaches a state where the current path cannot possibly lead to a valid solution (violating a constraint), it "backtracks" to the previous step and tries a different option.<br>🌏 <em>Example: A <strong>Sudoku Solver</strong> attempts a number in a cell; if it later finds a conflict, it returns to that cell and tries the next available number.</em> This strategy is essential for pathfinding and optimisation problems.</p>
 
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Algorithmic Strategies</span></div>
@@ -507,9 +509,9 @@ visited = set()
           <p class="syllabus-concept">📌 <em><strong>Develop</strong> structured algorithms using pseudocode and flowcharts, including the use of subprograms.</em></p>
 
           <h3>Pseudocode</h3>
-          <p>Pseudocode is an informal, human-readable notation for writing algorithms — a bridge between natural language and programming code. It uses common programming keywords (IF, WHILE, FOR) mixed with English-like descriptions, making logic crystal clear without being tied to a specific programming language's syntax. This allows designers and developers to communicate algorithm logic to non-programmers, and to verify correctness before investing time in actual coding.<br>🌏 <em>Example:</em></p>
+          <p>Pseudocode is an informal, human-readable notation for writing <strong>algorithms</strong> — a bridge between natural language and programming code. It uses common programming keywords (IF, WHILE, FOR) mixed with English-like descriptions, making logic crystal clear without being tied to a specific programming language's syntax. This allows designers and developers to communicate <strong>algorithm</strong> logic to non-programmers, and to verify correctness before investing time in actual coding.<br>🌏 <em>Example:</em></p>
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">Pseudocode — Linear Search Algorithm</span></div>
+            <div class="code-header"><span class="code-lang">Pseudocode — Linear Search <strong>Algorithm</strong></span></div>
             <pre><code>FUNCTION searchList(list, target)
     FOR index FROM 0 TO length(list) - 1
         IF list[index] EQUALS target THEN
@@ -521,14 +523,14 @@ END FUNCTION</code></pre>
           </div>
 
           <h3>Flowcharts</h3>
-          <p>Flowcharts use visual symbols to represent algorithm steps and decision points. Rectangles represent processes, diamonds represent decisions, and arrows show flow direction. This visual representation makes complex logic easy to follow, helps identify loops and branches, and allows stakeholders to validate correctness before implementation.<br>🌏 <em>Example:</em> A flowchart for validating user age would show a diamond (decision point) — "Is age ≥ 18?" — with two paths: YES leads to "Show full menu" and NO leads to "Show restricted menu."</p>
+          <p>Flowcharts use visual symbols to represent <strong>algorithm</strong> steps and decision points. Rectangles represent processes, diamonds represent decisions, and arrows show flow direction. This visual representation makes complex logic easy to follow, helps identify loops and branches, and allows stakeholders to validate correctness before implementation.<br>🌏 <em>Example:</em> A flowchart for validating user age would show a diamond (decision point) — "Is age ≥ 18?" — with two paths: YES leads to "Show full menu" and NO leads to "Show restricted menu."</p>
 
           <!-- Linear Search Algorithm Flowchart -->
           <div class="diagram-block">
             <h4>📈 Flowchart - Linear Search</h4>
             <p class="diagram-subtitle">Sequential search through array elements</p>
             <p class="diagram-description">
-              This flowchart shows how the linear search algorithm works: it starts at index 0 and checks each element against the target value. If a match is found, it returns the index. If the end of the list is reached without finding the target, it returns -1. The loop structure demonstrates the iterative nature of sequential searching.
+              This flowchart shows how the linear search <strong>algorithm</strong> works: it starts at index 0 and checks each element against the target value. If a match is found, it returns the index. If the end of the list is reached without finding the target, it returns -1. The loop structure demonstrates the iterative nature of sequential searching.
             </p>
             <div class="mermaid">
               flowchart TD
@@ -634,13 +636,13 @@ END FUNCTION</code></pre>
           <p class="syllabus-concept">📌 <em><strong>Analyse</strong> the logic and structure of written algorithms, including determining inputs and outputs, purpose, desk checking, peer checking, and identifying connections to subroutines or functions.</em></p>
 
           <h3>Determining Inputs, Outputs, and Purpose</h3>
-          <p>Before writing code, clearly identify what data the algorithm needs (inputs), what it produces (outputs), and why it exists (purpose). This clarity prevents bugs and ensures the solution addresses the right problem.<br>🌏 <em>Example: A sorting algorithm has INPUT: unsorted list; OUTPUT: sorted list; PURPOSE: arrange items in ascending order for efficient searching.</em></p>
+          <p>Before writing code, clearly identify what data the <strong>algorithm</strong> needs (inputs), what it produces (outputs), and why it exists (purpose). This clarity prevents bugs and ensures the solution addresses the right problem.<br>🌏 <em>Example: A sorting algorithm has INPUT: unsorted list; OUTPUT: sorted list; PURPOSE: arrange items in ascending order for efficient searching.</em></p>
 
           <h3>Desk Checking and Peer Checking</h3>
-          <p><strong>Desk checking</strong> (or "dry running") involves manually tracing through an algorithm step-by-step with sample data, recording the value of each variable at each step to verify correctness before implementation. <strong>Peer checking</strong> is having another person review the algorithm logic to catch errors or inefficiencies that the original author might miss.<br>🌏 <em>Example: Desk checking a loop from 1 to 10 — write down i=1, i=2, ... to verify the loop executes exactly 10 times, not 9 or 11.</em></p>
+          <p><strong>Desk checking</strong> (or "dry running") involves manually tracing through an <strong>algorithm</strong> step-by-step with sample data, recording the value of each variable at each step to verify correctness before implementation. <strong>Peer checking</strong> is having another person review the <strong>algorithm</strong> logic to catch errors or inefficiencies that the original author might miss.<br>🌏 <em>Example: Desk checking a loop from 1 to 10 — write down i=1, i=2, ... to verify the loop executes exactly 10 times, not 9 or 11.</em></p>
 
           <h3>Identifying Connections to Subroutines and Functions</h3>
-          <p>Analyse how an algorithm calls other functions and what data is passed between them. Document the purpose of each function call and the parameters it receives, ensuring data flows correctly through the program.<br>🌏 <em>Example: An algorithm that calculates employee pay might call FUNCTION calculateTax(salary) and FUNCTION applyBonus(basePay, bonusPercent), understanding what each returns and how it affects the final result.</em></p>
+          <p>Analyse how an <strong>algorithm</strong> calls other functions and what data is passed between them. Document the purpose of each function call and the parameters it receives, ensuring data flows correctly through the program.<br>🌏 <em>Example: An algorithm that calculates employee pay might call FUNCTION calculateTax(salary) and FUNCTION applyBonus(basePay, bonusPercent), understanding what each returns and how it affects the final result.</em></p>
         </section>
 
         <hr class="divider" />
@@ -661,7 +663,7 @@ END FUNCTION</code></pre>
           <p>Programs state facts and rules; the interpreter derives new facts through logical inference. Less common than imperative, but used in artificial intelligence and database queries. Focus on "what" is true, not "how" to compute it.<br>🌏 <em>Example (Prolog): "parent(john, mary). parent(mary, bob). grandparent(X, Z) :- parent(X, Y), parent(Y, Z)." The system infers grandparent relationships.</em></p>
 
           <h3>Functional Programming</h3>
-          <p>Programs are built from pure functions (same input always produces same output, no side effects) and immutable data. Emphasises recursion and function composition.<br>🌏 <em>Example (Lisp/Scheme): Computing factorial recursively as (factorial 5) = 5 × (factorial 4) × ... × 1, without modifying state.</em></p>
+          <p>Programs are built from pure functions (same input always produces same output, no side effects) and immutable data. Emphasises <strong>recursion</strong> and function composition.<br>🌏 <em>Example (Lisp/Scheme): Computing factorial recursively as (factorial 5) = 5 × (factorial 4) × ... × 1, without modifying state.</em></p>
 
           <!-- Programming Paradigms Comparison Diagram -->
           <div class="diagram-block">
@@ -677,7 +679,7 @@ END FUNCTION</code></pre>
                 LOG["<b>Logic</b><br/>━━━━━━━━<br/>• Facts & inference rules<br/>• Pattern matching<br/>• What is true (not how)<br/>• Prolog, Datalog"]
                 FUNC["<b>Functional</b><br/>━━━━━━━━<br/>• Pure functions & recursion<br/>• Immutable data<br/>• No side effects<br/>• Lisp, Haskell, Scheme"]
 
-                OOP --> USE["<strong>When to Use?</strong><br/>Complex systems with<br/>many interacting entities"]
+                OOP --> USE["When to Use?<br/>Complex systems with<br/>many interacting entities"]
                 IMP --> USE
                 LOG --> USE
                 FUNC --> USE
@@ -865,7 +867,7 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
 
           <div class="info-grid">
             <div class="info-card">
-              <h4>Arrays (Single and Multidimensional)</h4>
+              <h4>📦 Arrays (Single and Multidimensional)</h4>
               <p>Fixed-size collections of elements of the same type. Single-dimensional arrays store a list; multidimensional arrays form grids or tables.<br>🌏 <em>Example: scores = [45, 67, 89] (1D), or board = [[1,2,3],[4,5,6],[7,8,9]] (2D chessboard).</em></p>
               <div class="code-block">
                 <pre><code><span class="cm"># Single dimension</span>
@@ -875,7 +877,7 @@ board = [[0 <span class="kw">for</span> _ <span class="kw">in</span> range(8)] <
               </div>
             </div>
             <div class="info-card">
-              <h4>Records</h4>
+              <h4>📄 Records</h4>
               <p>Structured collections that group related data fields of different types under one name. A record is like a row in a database table or an object with named fields.<br>🌏 <em>Example: A Student record contains {Name (string), StudentID (integer), GPA (float), EnrolmentDate (date)}.</em></p>
               <div class="code-block">
                 <pre><code><span class="cm"># In Python, using a class or dictionary</span>
@@ -887,22 +889,22 @@ student = {
               </div>
             </div>
             <div class="info-card">
-              <h4>Trees</h4>
+              <h4>🌳 Trees</h4>
               <p>Hierarchical structures with a root node and parent-child relationships. Used for representing file systems, organizational charts, and search optimisation.<br>🌏 <em>Example: A file system tree where C:\ is root, containing Users, Program Files, etc.</em></p>
             </div>
             <div class="info-card">
-              <h4>Sequential Files</h4>
+              <h4>📂 Sequential Files</h4>
               <p>Data stored in order in a file, accessed sequentially from beginning to end. Unlike databases, sequential access is required (cannot jump directly to record 100).<br>🌏 <em>Example: A CSV file of sales records is read line-by-line in order; to find a specific customer, the entire file must be scanned.</em></p>
             </div>
             <div class="info-card">
-              <h4>Stacks (LIFO)</h4>
-              <p>Last-In-First-Out data structure. Last element added is the first removed. Used for function call stacks, undo features, expression evaluation.<br>🌏 <em>Example: The 'Undo' feature in Word — each action is pushed; undoing pops the most recent action.</em></p>
+              <h4>📚 Stacks (LIFO)</h4>
+              <p>Last-In-First-Out <strong>data structure</strong>. Last element added is the first removed. Used for function call stacks, undo features, expression evaluation.<br>🌏 <em>Example: The 'Undo' feature in Word — each action is pushed; undoing pops the most recent action.</em></p>
               <div class="code-block">
                 <pre><code>history = []; history.append(<span class="str">"Action"</span>); history.pop()</code></pre>
               </div>
             </div>
             <div class="info-card">
-              <h4>Hash Tables</h4>
+              <h4>🔗 Hash Tables</h4>
               <p>Key-value mappings for instant lookup. Hash functions convert keys to array indices, enabling O(1) average-case access time.<br>🌏 <em>Example: A username-to-profile dictionary where lookup("alice") instantly returns her profile without scanning.</em></p>
               <div class="code-block">
                 <pre><code>users = {<span class="str">"alice"</span>: {<span class="str">"age"</span>: 17, <span class="str">"year"</span>: 11}}</code></pre>
@@ -928,13 +930,13 @@ student = {
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> skills in computational thinking and programming to develop a software solution, including converting an algorithm into code, using control structures, using data structures, using standard modules, and creating relevant subprograms with parameter passing.</em></p>
 
           <h3>Converting Algorithm to Code</h3>
-          <p>Translating pseudocode or flowcharts into actual programming language syntax. Each algorithm step becomes a statement; pseudocode's IF becomes the language's if keyword; loops translate directly.</p>
+          <p>Translating pseudocode or flowcharts into actual programming language syntax. Each <strong>algorithm</strong> step becomes a statement; pseudocode's IF becomes the language's if keyword; loops translate directly.</p>
 
           <h3>Using Control Structures</h3>
-          <p>Implementing sequence (statements in order), selection (if/else, switch), and iteration (for, while loops) to direct program flow based on conditions and data.</p>
+          <p>Implementing sequence (statements in order), selection (if/else, switch), and <strong>iteration</strong> (for, while loops) to direct program flow based on conditions and data.</p>
 
           <h3>Using Data Structures</h3>
-          <p>Selecting and implementing appropriate data structures (arrays, records, trees, hash tables) to organise data so algorithms can access it efficiently.</p>
+          <p>Selecting and implementing appropriate <strong>data structures</strong> (arrays, records, trees, hash tables) to organise data so <strong>algorithms</strong> can access it efficiently.</p>
 
           <h3>Using Standard Modules</h3>
           <p>Leveraging built-in libraries and functions (e.g., Python's math module, datetime module, string methods) instead of reinventing functionality. Standard modules are tested, optimised, and consistent across projects.</p>
@@ -943,7 +945,7 @@ student = {
           <p>Writing functions and procedures that accept parameters (inputs), perform a specific task, and return results. Parameters can be passed by value (copy) or by reference (address), allowing functions to modify caller's data when needed.<br>🌏 <em>Example: FUNCTION calculateBonus(salary, percent) takes two parameters, calculates the bonus, and returns the result.</em></p>
 
           <h3>Implementing Data Structures for Storage</h3>
-          <p>Creating concrete implementations of abstract data structures in code. This includes single and multidimensional arrays, linked lists, trees with nodes, stacks using lists, and hash tables using dictionaries.</p>
+          <p>Creating concrete implementations of abstract <strong>data structures</strong> in code. This includes single and multidimensional arrays, linked lists, trees with nodes, stacks using lists, and hash tables using dictionaries.</p>
         </section>
 
         <hr class="divider" />
@@ -1058,7 +1060,7 @@ print(counter)   # 1</code></pre>
           <h3>Recursive Functions</h3>
           <p>A recursive function is one that calls itself. Every recursive function must have:</p>
           <ul>
-            <li><strong>Base case:</strong> The condition that stops the recursion (no more recursive calls).</li>
+            <li><strong>Base case:</strong> The condition that stops the <strong>recursion</strong> (no more recursive calls).</li>
             <li><strong>Recursive case:</strong> Where the function calls itself with a simpler input, moving toward the base case.</li>
           </ul>
 

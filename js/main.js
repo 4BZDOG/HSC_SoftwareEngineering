@@ -41,21 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Transform Outcome Subtitles to Badges ── */
   document.querySelectorAll('.outcome-subtitle').forEach(el => {
     const content = el.innerHTML.trim();
-    // Match pattern: 🎯 <em>(SE-##-##, SE-##-##)</em> or similar
     const outcomePattern = /\(([^)]+)\)/;
     const match = content.match(outcomePattern);
 
     if (match) {
       const codes = match[1].split(',').map(code => code.trim());
-      const prefix = content.substring(0, match.index).trim(); // Emoji part
-
-      // Build new HTML with badges (no emoji prefix inside header)
       let newHTML = '';
       codes.forEach((code, i) => {
         newHTML += `<span class="outcome-badge">${code}</span>`;
         if (i < codes.length - 1) newHTML += ' ';
       });
-
       el.innerHTML = newHTML;
     }
   });
@@ -67,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (hamburger && mobileMenu) {
     hamburger.addEventListener('click', () => {
       const open = mobileMenu.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', open);
+      hamburger.setAttribute('aria-expanded', String(open));
       hamburger.querySelectorAll('span')[0].style.transform = open ? 'rotate(45deg) translate(5px, 5px)' : '';
       hamburger.querySelectorAll('span')[1].style.opacity  = open ? '0' : '1';
       hamburger.querySelectorAll('span')[2].style.transform = open ? 'rotate(-45deg) translate(5px, -5px)' : '';
@@ -77,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileMenu.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         mobileMenu.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', false);
+        hamburger.setAttribute('aria-expanded', 'false');
         hamburger.querySelectorAll('span').forEach(s => {
           s.style.transform = ''; s.style.opacity = '';
         });
@@ -127,10 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Diagram Enhancements ── */
   document.querySelectorAll('.diagram-block').forEach((block, idx) => {
-    // Set CSS custom property for staggered animation timing
     block.style.setProperty('--diagram-index', idx);
 
-    // Auto-detect diagram type from mermaid content
     const mermaid = block.querySelector('.mermaid');
     if (mermaid) {
       const content = mermaid.textContent.toLowerCase();
@@ -148,17 +141,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Table of Contents — Active Highlight on Scroll ── */
   const tocLinks = document.querySelectorAll('.toc-list a');
-  console.log(`[TOC] Found ${tocLinks.length} TOC links`);
   if (tocLinks.length > 0) {
     // Tag part-label list items (those without an anchor child)
-    const partLabels = [];
     document.querySelectorAll('.toc-list > li').forEach(li => {
       if (!li.querySelector('a')) {
         li.classList.add('toc-part-label');
-        partLabels.push(li);
       }
     });
-    console.log(`[TOC] Found ${partLabels.length} part labels`);
 
     const allTocLis = Array.from(document.querySelectorAll('.toc-list > li'));
 
@@ -176,9 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Observe sections directly (they carry the IDs the TOC hrefs target)
     const sections = Array.from(document.querySelectorAll('.content-body section[id]'));
-    console.log(`[TOC] Found ${sections.length} sections to observe`);
     const observer = new IntersectionObserver(entries => {
-      console.log(`[TOC] IntersectionObserver triggered with ${entries.length} entries`);
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const id = entry.target.id;
@@ -200,15 +187,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInput = document.getElementById('topic-search');
   if (searchInput) {
     const cards = document.querySelectorAll('.topic-card');
+
+    // Aria-live region for screen-reader feedback
+    const liveRegion = document.createElement('div');
+    liveRegion.setAttribute('aria-live', 'polite');
+    liveRegion.setAttribute('aria-atomic', 'true');
+    liveRegion.className = 'sr-only';
+    searchInput.parentNode.insertBefore(liveRegion, searchInput.nextSibling);
+
+    // No-results message
+    const noResults = document.createElement('p');
+    noResults.className = 'search-no-results';
+    noResults.textContent = 'No topics match your search.';
+    noResults.hidden = true;
+    searchInput.closest('section, div')?.appendChild(noResults);
+
+    let searchTimer;
     searchInput.addEventListener('input', e => {
-      const q = e.target.value.toLowerCase().trim();
-      let any = false;
-      cards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        const show = !q || text.includes(q);
-        card.style.display = show ? '' : 'none';
-        if (show) any = true;
-      });
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => {
+        const q = e.target.value.toLowerCase().trim();
+        let visibleCount = 0;
+        cards.forEach(card => {
+          const show = !q || card.textContent.toLowerCase().includes(q);
+          card.style.display = show ? '' : 'none';
+          if (show) visibleCount++;
+        });
+        noResults.hidden = visibleCount > 0 || !q;
+        liveRegion.textContent = q
+          ? `${visibleCount} topic${visibleCount !== 1 ? 's' : ''} found`
+          : '';
+      }, 150);
     });
   }
 
@@ -253,12 +262,8 @@ document.addEventListener('DOMContentLoaded', () => {
       try { localStorage.setItem(PART_KEY, JSON.stringify(s)); } catch {}
     }
 
-    const blocks = document.querySelectorAll('.part-block');
-    console.log(`[Part-Blocks] Found ${blocks.length} part-block elements`);
-
-    blocks.forEach((block, idx) => {
+    document.querySelectorAll('.part-block').forEach((block, idx) => {
       const stateKey = `${pageKey}::part-${idx}`;
-      console.log(`[Part-Blocks] Processing block ${idx}: ${block.textContent.substring(0, 30)}`);
 
       // Inject chevron
       const chevron = document.createElement('span');
@@ -282,7 +287,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       block.insertAdjacentElement('afterend', group);
       siblings.forEach(s => inner.appendChild(s));
-      console.log(`[Part-Blocks] Moved ${siblings.length} siblings into part-group-inner`);
 
       // Restore saved collapse state
       const isCollapsed = getState()[stateKey] === 1;
@@ -300,7 +304,6 @@ document.addEventListener('DOMContentLoaded', () => {
         group.classList.toggle('part-collapsed', nowCollapsed);
         block.setAttribute('aria-expanded', String(!nowCollapsed));
         setState(stateKey, nowCollapsed);
-        console.log(`[Part-Blocks] Toggled block ${idx}: now collapsed = ${nowCollapsed}`);
       }
 
       block.addEventListener('click', toggle);
@@ -342,7 +345,6 @@ document.addEventListener('DOMContentLoaded', () => {
       /* ── Move syllabus concept into the header ── */
       const conceptEl = h2.nextElementSibling;
       if (conceptEl && conceptEl.classList.contains('syllabus-concept')) {
-        // Strip the 📌 emoji prefix
         conceptEl.innerHTML = conceptEl.innerHTML.replace(/📌\s*/, '');
         h2.appendChild(conceptEl);
       }
@@ -375,14 +377,22 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.add('section-collapsed');
       }
 
-      /* ── Toggle on heading click ── */
+      /* ── Accessibility ── */
       h2.setAttribute('role', 'button');
+      h2.setAttribute('tabindex', '0');
       h2.setAttribute('aria-expanded', String(!isCollapsed));
-      h2.addEventListener('click', () => {
+
+      /* ── Toggle on click or keyboard ── */
+      function toggle() {
         const nowCollapsed = h2.classList.toggle('section-collapsed');
         body.classList.toggle('section-collapsed', nowCollapsed);
         h2.setAttribute('aria-expanded', String(!nowCollapsed));
         setState(stateKey, nowCollapsed);
+      }
+
+      h2.addEventListener('click', toggle);
+      h2.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
       });
     });
 
@@ -410,7 +420,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const DIAGRAM_KEY = 'hsc-diagram-collapsed';
     const collapsed = JSON.parse(localStorage.getItem(DIAGRAM_KEY) || '{}');
 
-    // Initialize diagram blocks
+    // Debounced resize handler
+    let resizeTimer;
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        document.querySelectorAll('.diagram-block:not(.diagram-collapsed) .diagram-body').forEach(body => {
+          body.style.maxHeight = body.scrollHeight + 'px';
+        });
+      }, 100);
+    };
+    window.addEventListener('resize', onResize, { passive: true });
+
     document.querySelectorAll('.diagram-block').forEach((block, idx) => {
       const h4 = block.querySelector('h4');
       if (!h4) return;
@@ -420,8 +441,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!body) {
         body = document.createElement('div');
         body.className = 'diagram-body';
-
-        // Move all siblings of h4 into body
         const siblings = Array.from(block.children).filter(el => el !== h4);
         siblings.forEach(el => body.appendChild(el));
         block.appendChild(body);
@@ -437,11 +456,8 @@ document.addEventListener('DOMContentLoaded', () => {
         body.style.opacity = '1';
       }
 
-      // Add click handler for toggling
-      h4.addEventListener('click', (e) => {
-        e.preventDefault();
+      h4.addEventListener('click', () => {
         const isCollapsing = !block.classList.contains('diagram-collapsed');
-
         if (isCollapsing) {
           block.classList.add('diagram-collapsed');
           body.style.maxHeight = '0px';
@@ -453,15 +469,7 @@ document.addEventListener('DOMContentLoaded', () => {
           body.style.opacity = '1';
           collapsed[idx] = false;
         }
-
-        localStorage.setItem(DIAGRAM_KEY, JSON.stringify(collapsed));
-      });
-
-      // Adjust max-height when window resizes
-      window.addEventListener('resize', () => {
-        if (!block.classList.contains('diagram-collapsed')) {
-          body.style.maxHeight = body.scrollHeight + 'px';
-        }
+        try { localStorage.setItem(DIAGRAM_KEY, JSON.stringify(collapsed)); } catch {}
       });
     });
   })();
@@ -489,6 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
         this.isDragging = false;
         this.lastX = 0;
         this.lastY = 0;
+        this._triggerEl = null; // element that opened the lightbox
 
         if (this.modal) this.init();
       }
@@ -499,9 +508,9 @@ document.addEventListener('DOMContentLoaded', () => {
           const mermaid = block.querySelector('.mermaid');
           if (mermaid) {
             mermaid.style.cursor = 'pointer';
-            mermaid.addEventListener('click', (e) => {
+            mermaid.addEventListener('click', () => {
               const svg = mermaid.querySelector('svg');
-              if (svg) this.open(svg);
+              if (svg) this.open(svg, mermaid);
             });
           }
         });
@@ -509,16 +518,15 @@ document.addEventListener('DOMContentLoaded', () => {
         // Modal controls
         this.closeBtn.addEventListener('click', () => this.close());
         this.overlay.addEventListener('click', () => this.close());
-        this.container.addEventListener('click', (e) => e.stopPropagation());
+        this.container.addEventListener('click', e => e.stopPropagation());
 
         this.zoomInBtn.addEventListener('click', () => this.zoom_in());
         this.zoomOutBtn.addEventListener('click', () => this.zoom_out());
         this.resetBtn.addEventListener('click', () => this.reset());
 
         // Keyboard controls
-        document.addEventListener('keydown', (e) => {
+        document.addEventListener('keydown', e => {
           if (!this.isOpen()) return;
-
           if (e.key === 'Escape') this.close();
           if (e.key === '+' || e.key === '=') { e.preventDefault(); this.zoom_in(); }
           if (e.key === '-' || e.key === '_') { e.preventDefault(); this.zoom_out(); }
@@ -526,7 +534,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Mouse wheel zoom
-        this.content.addEventListener('wheel', (e) => {
+        this.content.addEventListener('wheel', e => {
           if (e.ctrlKey || e.metaKey) {
             e.preventDefault();
             if (e.deltaY < 0) this.zoom_in();
@@ -534,9 +542,9 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }, { passive: false });
 
-        // Pan functionality
-        this.content.addEventListener('mousedown', (e) => {
-          if (e.button !== 0) return; // Left mouse button only
+        // Pan — mouse
+        this.content.addEventListener('mousedown', e => {
+          if (e.button !== 0) return;
           this.isDragging = true;
           this.lastX = e.clientX;
           this.lastY = e.clientY;
@@ -544,17 +552,12 @@ document.addEventListener('DOMContentLoaded', () => {
           e.preventDefault();
         });
 
-        document.addEventListener('mousemove', (e) => {
+        document.addEventListener('mousemove', e => {
           if (!this.isDragging || !this.isOpen()) return;
-
-          const deltaX = e.clientX - this.lastX;
-          const deltaY = e.clientY - this.lastY;
-
-          this.panX += deltaX;
-          this.panY += deltaY;
+          this.panX += e.clientX - this.lastX;
+          this.panY += e.clientY - this.lastY;
           this.lastX = e.clientX;
           this.lastY = e.clientY;
-
           this.updateTransform();
         });
 
@@ -563,16 +566,14 @@ document.addEventListener('DOMContentLoaded', () => {
           this.content.classList.remove('panning');
         });
 
-        // Touch support for pan
-        let touchStartX = 0, touchStartY = 0, touchDistance = 0;
+        // Pan / pinch — touch
+        let touchDistance = 0;
 
-        this.content.addEventListener('touchstart', (e) => {
+        this.content.addEventListener('touchstart', e => {
           if (e.touches.length === 1) {
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
             this.isDragging = true;
-            this.lastX = touchStartX;
-            this.lastY = touchStartY;
+            this.lastX = e.touches[0].clientX;
+            this.lastY = e.touches[0].clientY;
           } else if (e.touches.length === 2) {
             this.isDragging = false;
             touchDistance = Math.hypot(
@@ -582,23 +583,18 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
 
-        this.content.addEventListener('touchmove', (e) => {
+        this.content.addEventListener('touchmove', e => {
           if (e.touches.length === 1 && this.isDragging) {
-            const deltaX = e.touches[0].clientX - this.lastX;
-            const deltaY = e.touches[0].clientY - this.lastY;
-
-            this.panX += deltaX;
-            this.panY += deltaY;
+            this.panX += e.touches[0].clientX - this.lastX;
+            this.panY += e.touches[0].clientY - this.lastY;
             this.lastX = e.touches[0].clientX;
             this.lastY = e.touches[0].clientY;
-
             this.updateTransform();
           } else if (e.touches.length === 2) {
             const current = Math.hypot(
               e.touches[0].clientX - e.touches[1].clientX,
               e.touches[0].clientY - e.touches[1].clientY
             );
-
             if (touchDistance > 0) {
               const ratio = current / touchDistance;
               if (ratio > 1.1) { this.zoom_in(); touchDistance = current; }
@@ -612,25 +608,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
-      open(element) {
-        // Clone the SVG for lightbox display
+      open(element, trigger = null) {
+        this._triggerEl = trigger;
         const clone = element.cloneNode(true);
+
+        // Mermaid renders SVGs with explicit px width/height attributes.
+        // Remove them so CSS max-width/max-height can scale the SVG to fit
+        // the canvas. Preserve (or synthesise) a viewBox for correct aspect ratio.
+        if (!clone.getAttribute('viewBox')) {
+          const w = parseFloat(clone.getAttribute('width'))  || 800;
+          const h = parseFloat(clone.getAttribute('height')) || 600;
+          clone.setAttribute('viewBox', `0 0 ${w} ${h}`);
+        }
+        clone.removeAttribute('width');
+        clone.removeAttribute('height');
+
         this.content.innerHTML = '';
         this.content.appendChild(clone);
 
-        // Reset zoom and pan
         this.zoom = 1;
         this.panX = 0;
         this.panY = 0;
         this.updateTransform();
         this.updateZoomLevel();
 
-        // Show modal
         this.modal.classList.add('active');
         this.modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
-
-        // Focus management
+        // Trigger reflow so the SVG renders at its new dimensions before focus
+        void this.content.offsetWidth;
         this.closeBtn.focus();
       }
 
@@ -639,11 +645,16 @@ document.addEventListener('DOMContentLoaded', () => {
         this.modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
         this.content.innerHTML = '';
+        // Return focus to the element that opened the lightbox
+        if (this._triggerEl) {
+          this._triggerEl.focus({ preventScroll: true });
+          this._triggerEl = null;
+        }
       }
 
       zoom_in() {
         if (this.zoom < this.maxZoom) {
-          this.zoom += this.zoomStep;
+          this.zoom = Math.min(this.maxZoom, this.zoom + this.zoomStep);
           this.updateTransform();
           this.updateZoomLevel();
         }
@@ -651,7 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       zoom_out() {
         if (this.zoom > this.minZoom) {
-          this.zoom -= this.zoomStep;
+          this.zoom = Math.max(this.minZoom, this.zoom - this.zoomStep);
           this.updateTransform();
           this.updateZoomLevel();
         }
@@ -671,15 +682,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       updateZoomLevel() {
-        this.zoomLevel.textContent = `${Math.round(this.zoom * 100)}%`;
+        if (this.zoomLevel) this.zoomLevel.textContent = `${Math.round(this.zoom * 100)}%`;
       }
 
       isOpen() {
-        return this.modal.classList.contains('active');
+        return this.modal?.classList.contains('active') ?? false;
       }
     }
 
-    // Initialize lightbox
     new DiagramLightbox();
   })();
 
@@ -688,41 +698,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const copyBtn = document.createElement('button');
     copyBtn.className = 'copy-btn';
     copyBtn.textContent = 'Copy';
-    copyBtn.style.cssText = `
-      position:absolute; top:8px; right:10px;
-      background:rgba(255,255,255,.1); color:#CBD5E1;
-      border:1px solid rgba(255,255,255,.15); border-radius:6px;
-      padding:3px 10px; font-size:.72rem; font-weight:600;
-      cursor:pointer; transition:all .2s; font-family:inherit;
-    `;
+    copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
     copyBtn.addEventListener('click', () => {
       const code = block.querySelector('code')?.textContent || '';
       navigator.clipboard.writeText(code).then(() => {
         copyBtn.textContent = 'Copied!';
-        copyBtn.style.background = 'rgba(16,185,129,.25)';
-        copyBtn.style.color = '#6EE7B7';
+        copyBtn.setAttribute('aria-label', 'Code copied to clipboard');
+        copyBtn.classList.add('copied');
         setTimeout(() => {
           copyBtn.textContent = 'Copy';
-          copyBtn.style.background = 'rgba(255,255,255,.1)';
-          copyBtn.style.color = '#CBD5E1';
+          copyBtn.setAttribute('aria-label', 'Copy code to clipboard');
+          copyBtn.classList.remove('copied');
         }, 2000);
+      }).catch(() => {
+        // Fallback for environments without clipboard API
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = code;
+          ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          copyBtn.textContent = 'Copied!';
+          copyBtn.classList.add('copied');
+          setTimeout(() => {
+            copyBtn.textContent = 'Copy';
+            copyBtn.classList.remove('copied');
+          }, 2000);
+        } catch {}
       });
     });
-    block.style.position = 'relative';
     block.appendChild(copyBtn);
   });
 
 });
 
-/* ── CSS for fade-in animation ── */
-const style = document.createElement('style');
-style.textContent = `
-  .fade-in {
-    animation: fadeInUp .4s ease forwards;
-  }
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-`;
-document.head.appendChild(style);
+/* ── CSS for fade-in animation (injected once) ── */
+/* NOTE: ideally move to styles.css — kept here as a single-file convenience */

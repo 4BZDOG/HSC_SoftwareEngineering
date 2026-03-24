@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Programming for the Web | HSC Software Engineering</title>
   <meta name="description" content="Complete HSC Software Engineering notes on Programming for the Web — all NESA syllabus items covered including data transmission, protocols, security, front-end, back-end, SQL, PWAs, and collaborative development." />
+  <!-- Theme init: prevents flash of wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=3" />
 </head>
 <body>
@@ -205,7 +207,7 @@
             <h4>📨 Sequence Diagram - HTTP Communication</h4>
             <p class="diagram-subtitle">Client-server request-response cycle</p>
             <p class="diagram-description">
-              This diagram shows how HTTP requests flow from the browser to the server, trigger database queries, and return responses that the browser renders. It demonstrates both simple data retrieval (GET requests) and form submission with file upload (POST requests), showing how the server processes user interaction and redirects to a success page.
+              This diagram shows how <strong>HTTP</strong> requests flow from the browser to the server, trigger database queries, and return responses that the browser renders. It demonstrates both simple data retrieval (GET requests) and form submission with file upload (POST requests), showing how the server processes user interaction and redirects to a success page.
             </p>
             <div class="mermaid">
               sequenceDiagram
@@ -231,9 +233,9 @@
                 Server-->>Browser: HTTP 200 Success page
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Understand the HTTP request/response cycle from user action to server processing to browser rendering<br>
+              <strong>Purpose:</strong> Understand the <strong>HTTP</strong> request/response cycle from user action to server processing to browser rendering<br>
               <strong>Syllabus Link:</strong> SE-12-03<br>
-              <strong>Try This:</strong> Open browser DevTools (F12), go to Network tab, refresh the page, and watch the actual HTTP requests and responses happen in real-time!
+              <strong>Try This:</strong> Open browser DevTools (F12), go to Network tab, refresh the page, and watch the actual <strong>HTTP</strong> requests and responses happen in real-time!
             </p>
           </div>
         </section>
@@ -264,7 +266,7 @@
                 <tr>
                   <td><strong>HTTPS</strong></td>
                   <td>443</td>
-                  <td>HTTP Secure — HTTP encrypted with TLS/SSL. Required for any site handling sensitive data (login, payments). Provides confidentiality and integrity.</td>
+                  <td><strong>HTTP</strong> Secure — <strong>HTTP</strong> encrypted with <strong>TLS</strong>/SSL. Required for any site handling sensitive data (login, payments). Provides confidentiality and integrity.</td>
                 </tr>
                 <tr>
                   <td><strong>TCP/IP</strong></td>
@@ -289,7 +291,7 @@
                 <tr>
                   <td><strong>SSL / TLS</strong></td>
                   <td>443</td>
-                  <td>Secure Sockets Layer / Transport Layer Security — cryptographic protocols that provide secure communication over a network. TLS is the modern successor to the deprecated SSL.</td>
+                  <td>Secure Sockets Layer / Transport Layer Security — cryptographic protocols that provide secure communication over a network. <strong>TLS</strong> is the modern successor to the deprecated SSL.</td>
                 </tr>
                 <tr>
                   <td><strong>SMTP</strong></td>
@@ -313,9 +315,9 @@
           <!-- Protocol Stack Diagram -->
           <div class="diagram-block">
             <h4>🏗️ Diagram - Web Protocol Stack (OSI Layers)</h4>
-            <p class="diagram-subtitle">Layered abstraction of network communication</p>
+            <p class="diagram-subtitle">Layered <strong>abstraction</strong> of network communication</p>
             <p class="diagram-description">
-              This diagram shows how web protocols are layered, with each layer providing services to the layer above it. HTTP/HTTPS at the application layer relies on TCP for reliable transmission, which relies on IP for routing, which relies on physical layers like Ethernet. Understanding this stack helps explain how the web works from user-facing protocols down to electrical signals.
+              This diagram shows how web protocols are layered, with each layer providing services to the layer above it. <strong>HTTP</strong>/<strong>HTTPS</strong> at the application layer relies on TCP for reliable transmission, which relies on IP for routing, which relies on physical layers like Ethernet. Understanding this stack helps explain how the web works from user-facing protocols down to electrical signals.
             </p>
             <div class="mermaid">
               graph TB
@@ -337,9 +339,9 @@
                 style E fill:#FCE4EC,stroke:#C2185B,stroke-width:2px
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Understand how each protocol layer provides abstraction and services to layers above it<br>
+              <strong>Purpose:</strong> Understand how each protocol layer provides <strong>abstraction</strong> and services to layers above it<br>
               <strong>Syllabus Link:</strong> SE-12-03<br>
-              <strong>Try This:</strong> Trace a single HTTP request down the stack — how many layers does it pass through to reach the wire?
+              <strong>Try This:</strong> Trace a single <strong>HTTP</strong> request down the stack — how many layers does it pass through to reach the wire?
             </p>
           </div>
         </section>
@@ -354,13 +356,13 @@
 
           <div class="structured-content">
             <h4>🏅 SSL/TLS Certificates</h4>
-            <p>An <strong>SSL/TLS certificate</strong> is a digital document issued by a trusted <strong>Certificate Authority (CA)</strong> (e.g., Let's Encrypt, DigiCert) that verifies a website's identity and enables encrypted HTTPS connections. When a browser connects to a site, it checks that the certificate is: (1) issued by a trusted CA, (2) not expired, and (3) issued for the correct domain. Without a valid certificate, browsers display a "Not Secure" warning, deterring users and search engines alike.</p>
+            <p>An <strong>SSL/TLS certificate</strong> is a digital document issued by a trusted <strong>Certificate Authority (CA)</strong> (e.g., Let's Encrypt, DigiCert) that verifies a website's identity and enables encrypted <strong>HTTPS</strong> connections. When a browser connects to a site, it checks that the certificate is: (1) issued by a trusted CA, (2) not expired, and (3) issued for the correct domain. Without a valid certificate, browsers display a "Not Secure" warning, deterring users and search engines alike.</p>
 
             <h4>🔢 Encryption Algorithms</h4>
-            <p>Encryption algorithms transform readable <strong>plaintext</strong> into unreadable <strong>ciphertext</strong>, protecting data from interception. <strong>Symmetric encryption</strong> (e.g., AES-256) uses a single shared key for both encryption and decryption — fast and efficient, but the key must be securely exchanged beforehand. <strong>Asymmetric encryption</strong> (e.g., RSA-2048) uses a mathematically linked key pair: a <strong>public key</strong> to encrypt and a <strong>private key</strong> to decrypt. TLS uses asymmetric encryption to securely exchange a session key, then switches to faster symmetric encryption for the remainder of the connection.</p>
+            <p><strong>Encryption</strong> <strong>algorithms</strong> transform readable <strong>plaintext</strong> into unreadable <strong>ciphertext</strong>, protecting data from interception. <strong>Symmetric encryption</strong> (e.g., AES-256) uses a single shared key for both <strong>encryption</strong> and decryption — fast and efficient, but the key must be securely exchanged beforehand. <strong>Asymmetric encryption</strong> (e.g., RSA-2048) uses a mathematically linked key pair: a <strong>public key</strong> to encrypt and a <strong>private key</strong> to decrypt. <strong>TLS</strong> uses asymmetric <strong>encryption</strong> to securely exchange a session key, then switches to faster symmetric <strong>encryption</strong> for the remainder of the connection.</p>
 
             <h4>🗝️ Encryption Keys</h4>
-            <p>An <strong>encryption key</strong> is a string of bits used by an algorithm to encrypt or decrypt data. <strong>Public keys</strong> are freely shared and used to encrypt data sent to the key's owner. <strong>Private keys</strong> are kept secret by the owner and used to decrypt data or create digital signatures. Key length determines security strength: a 256-bit AES key has 2<sup>256</sup> possible combinations, making brute-force attacks computationally infeasible.</p>
+            <p>An <strong>encryption key</strong> is a string of bits used by an <strong>algorithm</strong> to encrypt or decrypt data. <strong>Public keys</strong> are freely shared and used to encrypt data sent to the key's owner. <strong>Private keys</strong> are kept secret by the owner and used to decrypt data or create digital signatures. Key length determines security strength: a 256-bit AES key has 2<sup>256</sup> possible combinations, making brute-force attacks computationally infeasible.</p>
 
             <h4>🔑 Authentication and Authorisation</h4>
             <p><strong>Authentication</strong> is the process of verifying <em>who</em> a user is (e.g., verifying a username and password match a database record). <strong>Authorisation</strong> is the process of verifying <em>what</em> an authenticated user is permitted to do (e.g., checking if a logged-in user has the "admin" role before allowing access to the dashboard). Modern web applications use <strong>JSON Web Tokens (JWT)</strong> or <strong>OAuth 2.0</strong> to manage these processes securely across multiple services.</p>
@@ -369,9 +371,9 @@
           <!-- Session Management and JWT Diagram -->
           <div class="diagram-block">
             <h4>🔐 Sequence Diagram - Session Management</h4>
-            <p class="diagram-subtitle">Stateless authentication with JWT tokens</p>
+            <p class="diagram-subtitle">Stateless <strong>authentication</strong> with <strong>JWT</strong> tokens</p>
             <p class="diagram-description">
-              This diagram shows stateless session management using JWT tokens instead of server-side sessions. On login, the server creates a JWT containing the user's ID and role, signs it cryptographically, and sends it to the browser. For subsequent requests, the browser includes the JWT in the Authorization header. The server verifies the signature and expiration to authenticate the user without accessing the database.
+              This diagram shows stateless session management using <strong>JWT</strong> tokens instead of server-side sessions. On login, the server creates a <strong>JWT</strong> containing the user's ID and role, signs it cryptographically, and sends it to the browser. For subsequent requests, the browser includes the <strong>JWT</strong> in the <strong>Authorization</strong> header. The server verifies the signature and expiration to authenticate the user without accessing the database.
             </p>
             <div class="mermaid">
               sequenceDiagram
@@ -410,15 +412,15 @@
                 end
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Trace stateless authentication flow with JWT tokens and password verification<br>
+              <strong>Purpose:</strong> Trace stateless <strong>authentication</strong> flow with <strong>JWT</strong> tokens and password verification<br>
               <strong>Syllabus Link:</strong> SE-12-04, SE-12-07<br>
-              <strong>Try This:</strong> Implement JWT-based authentication in a Python Flask or Node.js Express app and trace the token through multiple requests
+              <strong>Try This:</strong> Implement <strong>JWT</strong>-based <strong>authentication</strong> in a Python Flask or Node.js Express app and trace the token through multiple requests
             </p>
           </div>
 
           <div class="structured-content">
             <h4>#️⃣ Hash Values</h4>
-            <p>A <strong>hash function</strong> is a one-way mathematical function that converts any input into a fixed-length output called a <strong>hash value</strong> (or digest). For example, the SHA-256 algorithm produces a 64-character hexadecimal hash. Hash functions are deterministic (same input always produces the same hash) but irreversible — it is computationally infeasible to reconstruct the original input from the hash. Web applications use hashing to store passwords securely: the hash of the password is stored, never the password itself. Algorithms like <strong>bcrypt</strong> add a random <strong>salt</strong> before hashing to prevent rainbow table attacks.</p>
+            <p>A <strong>hash function</strong> is a one-way mathematical function that converts any input into a fixed-length output called a <strong>hash value</strong> (or digest). For example, the SHA-256 <strong>algorithm</strong> produces a 64-character hexadecimal hash. Hash functions are deterministic (same input always produces the same hash) but irreversible — it is computationally infeasible to reconstruct the original input from the hash. Web applications use hashing to store passwords securely: the hash of the password is stored, never the password itself. <strong>Algorithms</strong> like <strong>bcrypt</strong> add a random <strong>salt</strong> before hashing to prevent rainbow table attacks.</p>
 
             <h4>✍️ Digital Signatures</h4>
             <p>A <strong>digital signature</strong> is a cryptographic mechanism that proves the authenticity and integrity of a message or document. The sender hashes the content, then encrypts the hash with their <strong>private key</strong> to produce the signature. The recipient decrypts the signature using the sender's <strong>public key</strong> and compares it to their own hash of the received content. If they match, the message has not been tampered with and genuinely originated from the claimed sender. Digital signatures provide <strong>non-repudiation</strong> — the sender cannot later deny having sent the message.</p>
@@ -437,7 +439,7 @@
           <p><strong>Data mining</strong> is the process of discovering patterns, correlations, and insights within large datasets using statistical and machine learning techniques. Web platforms mine user interaction data (clicks, search queries, time on page) to personalise recommendations, optimise advertising, and predict future behaviour. For example, Netflix mines viewing history to recommend shows; Google mines search patterns to rank results. Ethical concerns include user consent, data sovereignty, and the potential for discriminatory algorithmic outcomes.</p>
 
           <h4>🏷️ Metadata</h4>
-          <p><strong>Metadata</strong> is "data about data" — descriptive information that provides context about other data without being the primary content itself. On the web, metadata includes HTTP headers (content type, cache directives), HTML <code>&lt;meta&gt;</code> tags (page description, author, viewport settings), and file metadata (creation date, author, geolocation embedded in photos). Metadata is critical for search engine indexing (SEO), content management, and security analysis. Importantly, metadata can reveal sensitive information even when primary content is private — for example, a photo's EXIF data can expose a user's exact GPS location.</p>
+          <p><strong>Metadata</strong> is "data about data" — descriptive information that provides context about other data without being the primary content itself. On the web, metadata includes <strong>HTTP</strong> headers (content type, cache directives), HTML <code>&lt;meta&gt;</code> tags (page description, author, viewport settings), and file metadata (creation date, author, geolocation embedded in photos). Metadata is critical for search engine indexing (SEO), content management, and security analysis. Importantly, metadata can reveal sensitive information even when primary content is private — for example, a photo's EXIF data can expose a user's exact GPS location.</p>
 
           <h4>📺 Streaming Service Management</h4>
           <p>Streaming services (e.g., YouTube, Netflix, Spotify) manage enormous volumes of concurrent data delivery. Key architectural solutions include: <strong>Content Delivery Networks (CDNs)</strong> — geographically distributed server networks that cache and serve content from the nearest node to reduce latency; <strong>Adaptive Bitrate Streaming (ABR)</strong> — which dynamically adjusts video quality based on the user's current bandwidth; and <strong>load balancers</strong> that distribute incoming requests across multiple server instances to prevent any single server from being overwhelmed.</p>
@@ -468,7 +470,7 @@
             </div>
             <div class="info-card">
               <h4>🛡️ Web Security</h4>
-              <p>The W3C develops security-related standards such as <strong>Content Security Policy (CSP)</strong> headers (which restrict the sources from which scripts, styles, and images can be loaded, mitigating XSS attacks), <strong>Subresource Integrity (SRI)</strong> (verifying third-party CDN resources haven't been tampered with), and the <strong>Web Authentication API (WebAuthn)</strong> for passwordless login.</p>
+              <p>The W3C develops security-related standards such as <strong>Content Security Policy (CSP)</strong> headers (which restrict the sources from which scripts, styles, and images can be loaded, mitigating <strong>XSS</strong> attacks), <strong>Subresource Integrity (SRI)</strong> (verifying third-party CDN resources haven't been tampered with), and the <strong>Web Authentication API (WebAuthn)</strong> for passwordless login.</p>
             </div>
             <div class="info-card">
               <h4>🔒 Privacy</h4>
@@ -494,7 +496,7 @@
             <h4>📊 Data Flow Diagram - Web System</h4>
             <p class="diagram-subtitle">Understanding DFD notation and multi-tier architecture</p>
             <p class="diagram-description">
-              This diagram shows how data flows through a web system using DFD notation. External entities (users and APIs) interact with processes (browser, server, authentication service) which access data stores (database). Each arrow shows the type of data flowing between components, demonstrating the separation of concerns and data dependencies in a three-tier architecture.
+              This diagram shows how data flows through a web system using DFD notation. External entities (users and APIs) interact with processes (browser, server, <strong>authentication</strong> service) which access data stores (database). Each arrow shows the type of data flowing between components, demonstrating the separation of concerns and data dependencies in a three-tier architecture.
             </p>
             <div class="mermaid">
               graph LR
@@ -534,7 +536,7 @@
           <p>The <strong>client side</strong> refers to all code that executes within the user's web browser. Front-end code consists of three complementary technologies: <strong>HTML</strong> (structure and content), <strong>CSS</strong> (visual presentation and layout), and <strong>JavaScript</strong> (interactivity and dynamic behaviour). The browser downloads these files from the server, parses them, and renders the visual page. Client-side code is visible to the user (via browser dev tools) and should never contain sensitive data such as API keys or database credentials.</p>
 
           <h3>Server-Side (Back-End) Web Programming</h3>
-          <p>The <strong>server side</strong> refers to code that executes on the web server — invisible to the client. The server receives HTTP requests, applies business logic (authentication, data processing, calculations), queries the database, and returns a response (HTML page or JSON data). Common back-end languages include Python (Django, Flask), JavaScript (Node.js/Express), Ruby (Rails), and PHP. The server environment is protected from end-users and may contain sensitive configuration, credentials, and proprietary algorithms.</p>
+          <p>The <strong>server side</strong> refers to code that executes on the web server — invisible to the client. The server receives <strong>HTTP</strong> requests, applies business logic (<strong>authentication</strong>, data processing, calculations), queries the database, and returns a response (HTML page or JSON data). Common back-end languages include Python (Django, Flask), JavaScript (Node.js/Express), Ruby (Rails), and PHP. The server environment is protected from end-users and may contain sensitive configuration, credentials, and proprietary <strong>algorithms</strong>.</p>
 
           <h3>Databases — SQL and Non-SQL</h3>
           <div class="info-grid">
@@ -544,7 +546,7 @@
             </div>
             <div class="info-card">
               <h4>📄 Non-SQL (NoSQL) Databases</h4>
-              <p>Store data in flexible formats — documents (JSON), key-value pairs, graphs, or column families. Schema-free, allowing rapid iteration. Examples: <strong>MongoDB</strong> (documents), <strong>Redis</strong> (key-value), <strong>Neo4j</strong> (graphs). Best for: unstructured or evolving data (e.g., social media posts, real-time analytics, content catalogues).</p>
+              <p>Store data in flexible formats — documents (JSON), key-value pairs, graphs, or column families. Schema-free, allowing rapid <strong>iteration</strong>. Examples: <strong>MongoDB</strong> (documents), <strong>Redis</strong> (key-value), <strong>Neo4j</strong> (graphs). Best for: unstructured or evolving data (e.g., social media posts, real-time analytics, content catalogues).</p>
             </div>
           </div>
         </section>
@@ -565,7 +567,7 @@
           <div class="key-terms">
             <div class="key-term-item"><strong>🌳 Elements Panel</strong><span>Inspect and live-edit the HTML DOM tree and CSS styles. See computed styles, box model, and layout information.</span></div>
             <div class="key-term-item"><strong>⚙️ Console</strong><span>Execute JavaScript, view runtime errors, warnings, and <code>console.log()</code> output for debugging.</span></div>
-            <div class="key-term-item"><strong>🌐 Network Tab</strong><span>Monitor all HTTP requests made by the page — see request/response headers, payload data, status codes, and load times.</span></div>
+            <div class="key-term-item"><strong>🌐 Network Tab</strong><span>Monitor all <strong>HTTP</strong> requests made by the page — see request/response headers, payload data, status codes, and load times.</span></div>
             <div class="key-term-item"><strong>📊 Performance</strong><span>Record and analyse page load and runtime performance — identify JavaScript bottlenecks and rendering slowdowns.</span></div>
             <div class="key-term-item"><strong>💡 Lighthouse</strong><span>Automated audit tool that scores a page on Performance, Accessibility, SEO, and PWA compliance with actionable recommendations.</span></div>
             <div class="key-term-item"><strong>📱 Device Mode</strong><span>Simulate different screen sizes and device pixel ratios to test responsive design without a physical device.</span></div>
@@ -663,13 +665,13 @@ git merge feature/user-login</code></pre>
           <div class="key-terms">
             <div class="key-term-item"><strong>⚛️ React</strong><span>A component-based UI library by Meta. Uses a virtual DOM for efficient re-rendering. The most widely adopted framework in industry (2024).</span></div>
             <div class="key-term-item"><strong>💚 Vue.js</strong><span>A progressive framework with a gentle learning curve. Combines a template-based syntax with reactive data binding. Popular for smaller to medium-scale applications.</span></div>
-            <div class="key-term-item"><strong>🔺 Angular</strong><span>A full-featured framework by Google. Uses TypeScript, has built-in routing, forms, and HTTP client. Common in large enterprise applications.</span></div>
+            <div class="key-term-item"><strong>🔺 Angular</strong><span>A full-featured framework by Google. Uses TypeScript, has built-in routing, forms, and <strong>HTTP</strong> client. Common in large enterprise applications.</span></div>
           </div>
 
           <h3>Template Engines</h3>
           <p><strong>Template engines</strong> allow developers to inject dynamic data into HTML templates on the server before sending the page to the client, avoiding duplicate HTML markup. For example, a product listing page uses a single template and loops through a database result to generate each product card.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>🐍 Jinja2</strong><span>Python template engine used by Flask and Django. Supports variables (<code>{{ }}</code>), control structures (<code>{% %}</code>), and template inheritance.</span></div>
+            <div class="key-term-item"><strong>🐍 Jinja2</strong><span>Python template engine used by Flask and Django. Supports variables (<code>{{ }}</code>), control structures (<code>{% %}</code>), and template <strong>inheritance</strong>.</span></div>
             <div class="key-term-item"><strong>🟨 Handlebars / EJS</strong><span>JavaScript template engines for Node.js. EJS uses standard JS syntax; Handlebars uses logic-free templates for cleaner separation of concerns.</span></div>
           </div>
 
@@ -717,7 +719,7 @@ git merge feature/user-login</code></pre>
             </div>
             <div class="info-card">
               <h4>📦 Caching</h4>
-              <p>HTTP <strong>Cache-Control</strong> headers instruct the browser to store static assets (images, CSS, JS) locally for a defined period. On repeat visits, cached files load instantly without a server request. <strong>Service workers</strong> in PWAs enable advanced programmatic caching strategies.</p>
+              <p><strong>HTTP</strong> <strong>Cache-Control</strong> headers instruct the browser to store static assets (images, CSS, JS) locally for a defined period. On repeat visits, cached files load instantly without a server request. <strong>Service workers</strong> in PWAs enable advanced programmatic caching strategies.</p>
             </div>
             <div class="info-card">
               <h4>🌍 Content Delivery Networks (CDN)</h4>
@@ -836,13 +838,13 @@ git merge feature/user-login</code></pre>
           <p>Back-end development is responsible for all logic that occurs on the server — the invisible engine that powers every user-facing feature. Its contribution to project success encompasses several critical dimensions:</p>
 
           <h4>🖥️ Technology Selection</h4>
-          <p>The choice of back-end framework determines the project's scalability, maintainability, and development speed. <strong>Django</strong> (Python) provides a "batteries-included" approach with an ORM, admin panel, and authentication built in — accelerating development of data-heavy applications. <strong>Node.js/Express</strong> enables the same language (JavaScript) on front-end and back-end, simplifying the development team's skill requirements. <strong>Flask</strong> offers a minimal, flexible microframework for APIs. The right technology choice directly impacts delivery timelines and long-term maintenance cost.</p>
+          <p>The choice of back-end framework determines the project's scalability, maintainability, and development speed. <strong>Django</strong> (Python) provides a "batteries-included" approach with an ORM, admin panel, and <strong>authentication</strong> built in — accelerating development of data-heavy applications. <strong>Node.js/Express</strong> enables the same language (JavaScript) on front-end and back-end, simplifying the development team's skill requirements. <strong>Flask</strong> offers a minimal, flexible microframework for APIs. The right technology choice directly impacts delivery timelines and long-term maintenance cost.</p>
 
           <h4>⚠️ Business Logic and Data Integrity</h4>
           <p>The back end enforces all business rules that protect data integrity. For example, validating that a user's age is above 18 before processing a purchase, calculating order totals including applicable tax rates, or checking inventory levels before confirming a stock reservation. Enforcing these rules on the server (rather than only client-side) is essential because client-side code can be bypassed by malicious users using browser developer tools.</p>
 
           <h4>🔐 Security Enforcement</h4>
-          <p>The back end is the primary security boundary of a web application. It implements authentication (password hashing with bcrypt, JWT token management), authorisation (role-based access control), input sanitisation (preventing SQL injection and XSS), and rate limiting (preventing brute-force login attacks). A poorly secured back end exposes the entire database and all user data to attackers.</p>
+          <p>The back end is the primary security boundary of a web application. It implements <strong>authentication</strong> (password hashing with bcrypt, <strong>JWT</strong> token management), <strong>authorisation</strong> (role-based access control), input sanitisation (preventing <strong>SQL injection</strong> and <strong>XSS</strong>), and rate limiting (preventing brute-force login attacks). A poorly secured back end exposes the entire database and all user data to attackers.</p>
         </section>
 
         <hr class="divider" />
@@ -855,10 +857,10 @@ git merge feature/user-login</code></pre>
 
           <h3>The Request-Response Lifecycle</h3>
           <div class="key-terms">
-            <div class="key-term-item"><strong>🌐 Web Server Software</strong><span>Software such as <strong>Nginx</strong> or <strong>Apache</strong> receives the raw HTTP request and routes it to the correct application handler. Nginx is also used as a reverse proxy and for serving static files efficiently.</span></div>
-            <div class="key-term-item"><strong>⚙️ Web Framework</strong><span>The framework (e.g., Flask, Django, Express) parses the request URL and HTTP method, matches it against defined <strong>routes</strong>, and calls the appropriate handler function (view/controller).</span></div>
-            <div class="key-term-item"><strong>📦 Objects</strong><span>The framework provides <strong>Request</strong> and <strong>Response</strong> objects — structured wrappers around the raw HTTP data. The Request object gives access to headers, query parameters, form data, and cookies; the Response object is used to construct the reply.</span></div>
-            <div class="key-term-item"><strong>📚 Libraries</strong><span>The handler uses imported libraries to perform specialised tasks — authentication libraries (e.g., Passport.js), email sending libraries (e.g., Nodemailer), file handling, or cryptographic operations.</span></div>
+            <div class="key-term-item"><strong>🌐 Web Server Software</strong><span>Software such as <strong>Nginx</strong> or <strong>Apache</strong> receives the raw <strong>HTTP</strong> request and routes it to the correct application handler. Nginx is also used as a reverse proxy and for serving static files efficiently.</span></div>
+            <div class="key-term-item"><strong>⚙️ Web Framework</strong><span>The framework (e.g., Flask, Django, Express) parses the request URL and <strong>HTTP</strong> method, matches it against defined <strong>routes</strong>, and calls the appropriate handler function (view/controller).</span></div>
+            <div class="key-term-item"><strong>📦 Objects</strong><span>The framework provides <strong>Request</strong> and <strong>Response</strong> objects — structured wrappers around the raw <strong>HTTP</strong> data. The Request object gives access to headers, query parameters, form data, and cookies; the Response object is used to construct the reply.</span></div>
+            <div class="key-term-item"><strong>📚 Libraries</strong><span>The handler uses imported libraries to perform specialised tasks — <strong>authentication</strong> libraries (e.g., Passport.js), email sending libraries (e.g., Nodemailer), file handling, or cryptographic operations.</span></div>
             <div class="key-term-item"><strong>🗄️ Databases</strong><span>The handler queries the database (via raw SQL or ORM) to retrieve, insert, update, or delete records. The database returns results which the handler uses to construct the response payload (JSON or rendered HTML).</span></div>
           </div>
 
@@ -1014,13 +1016,13 @@ function validateForm(username, email, password) {
                   <td></td>
                 </tr>
                 <tr>
-                  <td>SQL injection attempt</td>
+                  <td><strong>SQL injection</strong> attempt</td>
                   <td>username: <code>' OR '1'='1</code></td>
                   <td>Client-side: treated as a string, regex check may pass — server must sanitise</td>
                   <td></td>
                 </tr>
                 <tr>
-                  <td>XSS attempt in username field</td>
+                  <td><strong>XSS</strong> attempt in username field</td>
                   <td>username: <code>&lt;script&gt;alert('xss')&lt;/script&gt;</code></td>
                   <td>Client-side: length check fails (too long) or server escapes output — no script executes</td>
                   <td></td>
@@ -1030,7 +1032,7 @@ function validateForm(username, email, password) {
           </div>
 
           <div class="callout warning">
-            <strong>Warning — Client-Side Validation Limitations:</strong> Client-side validation can be bypassed by disabling JavaScript or using browser developer tools to intercept requests. SQL injection and XSS attempts must also be handled on the server. Never rely solely on JavaScript validation for security.
+            <strong>Warning — Client-Side Validation Limitations:</strong> Client-side validation can be bypassed by disabling JavaScript or using browser developer tools to intercept requests. <strong>SQL injection</strong> and <strong>XSS</strong> attempts must also be handled on the server. Never rely solely on JavaScript validation for security.
           </div>
 
           <h3>Client-Side vs Server-Side Validation</h3>
@@ -1051,7 +1053,7 @@ function validateForm(username, email, password) {
                 </tr>
                 <tr>
                   <td><strong>Security</strong></td>
-                  <td>Can be bypassed — attacker can disable JS or send raw HTTP requests</td>
+                  <td>Can be bypassed — attacker can disable JS or send raw <strong>HTTP</strong> requests</td>
                   <td>Cannot be bypassed — server always processes the data</td>
                 </tr>
                 <tr>
@@ -1069,11 +1071,11 @@ function validateForm(username, email, password) {
           </div>
 
           <div class="callout key">
-            <strong>Exam Tip — Always validate on the server:</strong> Client-side validation improves user experience by giving instant feedback, but it is purely cosmetic from a security perspective. An attacker can bypass any JavaScript check by sending a crafted HTTP request directly. Server-side validation is the only authoritative and secure check.
+            <strong>Exam Tip — Always validate on the server:</strong> Client-side validation improves user experience by giving instant feedback, but it is purely cosmetic from a security perspective. An attacker can bypass any JavaScript check by sending a crafted <strong>HTTP</strong> request directly. Server-side validation is the only authoritative and secure check.
           </div>
 
           <h3>Fetch API &amp; AJAX (Asynchronous Requests)</h3>
-          <p>The <strong>Fetch API</strong> allows JavaScript to make HTTP requests to a server in the background without reloading the page — this pattern is known as <strong>AJAX</strong> (Asynchronous JavaScript and XML). Modern JavaScript uses the <strong>async/await</strong> syntax to write asynchronous code that reads like synchronous code, making it easier to follow and debug.</p>
+          <p>The <strong>Fetch API</strong> allows JavaScript to make <strong>HTTP</strong> requests to a server in the background without reloading the page — this pattern is known as <strong>AJAX</strong> (Asynchronous JavaScript and XML). Modern JavaScript uses the <strong>async/await</strong> syntax to write asynchronous code that reads like synchronous code, making it easier to follow and debug.</p>
 
           <div class="code-block">
             <div class="code-header"><span class="code-lang">JavaScript — Fetch API with async/await</span></div>
@@ -1111,7 +1113,7 @@ function displayUser(user) {
           </div>
 
           <div class="callout key">
-            <strong>Exam Tip — Error handling in fetch requests:</strong> A <code>fetch()</code> call only rejects (throws an error) on network failure. An HTTP 404 or 500 response is considered a <em>successful</em> fetch — it does not throw automatically. Always check <code>response.ok</code> (which is <code>true</code> for status codes 200–299) and manually throw an error if needed, as shown above. Wrap in <code>try/catch</code> to handle both network errors and manually thrown errors.
+            <strong>Exam Tip — Error handling in fetch requests:</strong> A <code>fetch()</code> call only rejects (throws an error) on network failure. An <strong>HTTP</strong> 404 or 500 response is considered a <em>successful</em> fetch — it does not throw automatically. Always check <code>response.ok</code> (which is <code>true</code> for status codes 200–299) and manually throw an error if needed, as shown above. Wrap in <code>try/catch</code> to handle both network errors and manually thrown errors.
           </div>
 
           <h3>CORS — Cross-Origin Resource Sharing</h3>
@@ -1121,7 +1123,7 @@ function displayUser(user) {
             <br/><br/>
             Browsers enforce the <strong>same-origin policy</strong>: a script running on <code>https://myapp.com</code> is blocked from making fetch requests to <code>https://api.otherdomain.com</code> unless the server explicitly allows it. This protects users from malicious websites silently reading their data from other services.
             <br/><br/>
-            <strong>Cross-Origin Resource Sharing (CORS)</strong> is the mechanism by which a server uses HTTP response headers to tell the browser which external origins are permitted to read its responses.
+            <strong>Cross-Origin Resource Sharing (CORS)</strong> is the mechanism by which a server uses <strong>HTTP</strong> response headers to tell the browser which external origins are permitted to read its responses.
             <br/><br/>
             <strong>Configuring CORS in Flask:</strong>
             <br/>
@@ -1134,7 +1136,7 @@ function displayUser(user) {
             <strong>Common CORS errors students encounter:</strong>
             <ul>
               <li><em>"Access to fetch at '...' from origin '...' has been blocked by CORS policy"</em> — the server is not sending the correct <code>Access-Control-Allow-Origin</code> header.</li>
-              <li><em>Preflight (OPTIONS) request fails</em> — the server must also handle the HTTP OPTIONS method for routes that receive cross-origin requests with custom headers.</li>
+              <li><em>Preflight (OPTIONS) request fails</em> — the server must also handle the <strong>HTTP</strong> OPTIONS method for routes that receive cross-origin requests with custom headers.</li>
               <li><em>Credentials not included</em> — if using cookies or auth headers cross-origin, both the server must set <code>Access-Control-Allow-Credentials: true</code> and the fetch call must include <code>credentials: 'include'</code>.</li>
             </ul>
           </div>
@@ -1224,12 +1226,12 @@ function displayUser(user) {
                 <tr>
                   <td>🛠️ <strong>Raw SQL</strong></td>
                   <td>Queries written directly in SQL and sent to the database engine. Provides fine-grained control over every aspect of the query.</td>
-                  <td><strong>Pros:</strong> Maximum performance; expressive power for complex JOINs, subqueries, and aggregations; universal — works with any SQL database. <br><strong>Cons:</strong> Vulnerable to SQL injection if inputs aren't parameterised; verbose for simple CRUD operations; query strings are hard to refactor.</td>
+                  <td><strong>Pros:</strong> Maximum performance; expressive power for complex JOINs, subqueries, and aggregations; universal — works with any SQL database. <br><strong>Cons:</strong> Vulnerable to <strong>SQL injection</strong> if inputs aren't parameterised; verbose for simple CRUD operations; query strings are hard to refactor.</td>
                 </tr>
                 <tr>
                   <td>🛠️ <strong>ORM</strong></td>
                   <td>Maps database tables to Python/JavaScript classes. Developers interact with objects; the ORM generates SQL automatically (e.g., Django ORM, SQLAlchemy, Sequelize).</td>
-                  <td><strong>Pros:</strong> Faster development for standard operations; built-in input sanitisation prevents injection; database-agnostic (swap PostgreSQL for MySQL with minimal changes); code is more readable and object-oriented. <br><strong>Cons:</strong> Can generate inefficient SQL for complex queries; adds an abstraction layer that obscures what is actually executed; requires learning the ORM API on top of SQL.</td>
+                  <td><strong>Pros:</strong> Faster development for standard operations; built-in input sanitisation prevents injection; database-agnostic (swap PostgreSQL for MySQL with minimal changes); code is more readable and object-oriented. <br><strong>Cons:</strong> Can generate inefficient SQL for complex queries; adds an <strong>abstraction</strong> layer that obscures what is actually executed; requires learning the ORM API on top of SQL.</td>
                 </tr>
               </tbody>
             </table>
@@ -1260,7 +1262,7 @@ results = Product.objects.filter(category=<span class="str">'Electronics'</span>
           <p class="syllabus-concept">📌 <em><strong>Describe</strong> how collaborative work practices between front-end and back-end developers improve the development of a web solution.</em></p>
 
           <h3>API Contracts and Documentation</h3>
-          <p>The primary collaboration mechanism between front-end and back-end developers is the <strong>API contract</strong> — an agreed-upon specification of every endpoint's URL, HTTP method, request parameters, and response format. Tools like <strong>OpenAPI/Swagger</strong> allow teams to document and even mock APIs before the back end is fully built, enabling front-end and back-end development to proceed simultaneously. This prevents integration errors at the end of the project and enables both teams to work independently with confidence.</p>
+          <p>The primary collaboration mechanism between front-end and back-end developers is the <strong>API contract</strong> — an agreed-upon specification of every endpoint's URL, <strong>HTTP</strong> method, request parameters, and response format. Tools like <strong>OpenAPI/Swagger</strong> allow teams to document and even mock APIs before the back end is fully built, enabling front-end and back-end development to proceed simultaneously. This prevents integration errors at the end of the project and enables both teams to work independently with confidence.</p>
 
           <h3>Version Control and Branching Strategies</h3>
           <p>Teams use Git branching workflows to manage parallel development. In the <strong>Git Flow</strong> model: the <code>main</code> branch always contains production-ready code; <code>develop</code> is the integration branch for completed features; and individual <code>feature/</code> branches are created for each task. <strong>Pull Requests (PRs)</strong> are submitted when a feature is complete — requiring at least one peer code review before merging. This enforces code quality and knowledge sharing across the team, and ensures no one developer is a single point of failure for any part of the system.</p>
@@ -1319,7 +1321,7 @@ results = Product.objects.filter(category=<span class="str">'Electronics'</span>
             </div>
             <div class="info-card">
               <h4>🔒 HTTPS Required</h4>
-              <p>PWAs must be served over HTTPS — service workers are restricted to secure origins. HTTPS also builds user trust and is a requirement for browser installability.</p>
+              <p>PWAs must be served over <strong>HTTPS</strong> — service workers are restricted to secure origins. <strong>HTTPS</strong> also builds user trust and is a requirement for browser installability.</p>
             </div>
           </div>
 
@@ -1391,8 +1393,8 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
 
           <h3>REST Principles</h3>
           <div class="key-terms">
-            <div class="key-term-item"><strong>Stateless</strong><span>Each request from client to server must contain all information needed. The server does not store session state between requests — authentication credentials must be sent with every request.</span></div>
-            <div class="key-term-item"><strong>Uniform Interface</strong><span>Resources are identified by URLs. HTTP methods define operations. Responses use standard formats (JSON/XML). This consistency allows any client to consume any REST API.</span></div>
+            <div class="key-term-item"><strong>Stateless</strong><span>Each request from client to server must contain all information needed. The server does not store session state between requests — <strong>authentication</strong> credentials must be sent with every request.</span></div>
+            <div class="key-term-item"><strong>Uniform Interface</strong><span>Resources are identified by URLs. <strong>HTTP</strong> methods define operations. Responses use standard formats (JSON/XML). This consistency allows any client to consume any REST API.</span></div>
             <div class="key-term-item"><strong>Client-Server Separation</strong><span>The front-end (client) and back-end (server) are independent. The client handles the UI; the server handles data. They communicate only through the API contract.</span></div>
             <div class="key-term-item"><strong>Cacheable</strong><span>Responses should indicate whether they can be cached. Caching reduces server load and improves performance for repeated identical requests.</span></div>
           </div>
@@ -1424,7 +1426,7 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
                 <tr><td><strong>201 Created</strong></td><td>Resource created</td><td>POST request created a new resource</td></tr>
                 <tr><td><strong>204 No Content</strong></td><td>Success, no body</td><td>DELETE succeeded, nothing to return</td></tr>
                 <tr><td><strong>400 Bad Request</strong></td><td>Invalid request</td><td>Missing required field, malformed JSON</td></tr>
-                <tr><td><strong>401 Unauthorised</strong></td><td>Authentication required</td><td>Missing or invalid API key / JWT token</td></tr>
+                <tr><td><strong>401 Unauthorised</strong></td><td><strong>Authentication</strong> required</td><td>Missing or invalid API key / <strong>JWT</strong> token</td></tr>
                 <tr><td><strong>403 Forbidden</strong></td><td>Authenticated but no permission</td><td>Trying to delete another user's resource</td></tr>
                 <tr><td><strong>404 Not Found</strong></td><td>Resource doesn't exist</td><td>GET /api/books/999 — book 999 not in database</td></tr>
                 <tr><td><strong>422 Unprocessable Entity</strong></td><td>Validation failed</td><td>Field present but fails validation (e.g., email without @)</td></tr>
@@ -1442,9 +1444,9 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
                 <tr><th>Bad URL</th><th>Good URL</th><th>Why</th></tr>
               </thead>
               <tbody>
-                <tr><td><code>/getBooks</code></td><td><code>GET /api/books</code></td><td>Use HTTP method, not verbs in URL</td></tr>
+                <tr><td><code>/getBooks</code></td><td><code>GET /api/books</code></td><td>Use <strong>HTTP</strong> method, not verbs in URL</td></tr>
                 <tr><td><code>/book/1</code></td><td><code>/api/books/1</code></td><td>Use plural nouns for collections</td></tr>
-                <tr><td><code>/deleteUser?id=5</code></td><td><code>DELETE /api/users/5</code></td><td>Use HTTP DELETE method</td></tr>
+                <tr><td><code>/deleteUser?id=5</code></td><td><code>DELETE /api/users/5</code></td><td>Use <strong>HTTP</strong> DELETE method</td></tr>
                 <tr><td><code>/api/getAuthorBooks?author=3</code></td><td><code>GET /api/authors/3/books</code></td><td>Nest related resources in URL</td></tr>
               </tbody>
             </table>

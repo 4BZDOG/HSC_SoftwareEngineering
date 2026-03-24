@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Course Tools & Specifications | HSC Software Engineering</title>
   <meta name="description" content="Detailed specifications for HSC Software Engineering tools and techniques, including DFDs, SQL, MLOps, and more." />
+  <!-- Theme init: prevents flash of wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=3" />
 </head>
 <body>
@@ -79,13 +81,17 @@
     <aside class="sidebar">
       <div class="toc-title">Specifications</div>
       <ul class="toc-list">
+        <li>Part 1 — Development Environment</li>
         <li><a href="#ide-tools">0. IDE &amp; Development Tools</a></li>
+        <li>Part 2 — Design &amp; Modelling</li>
         <li><a href="#modelling-tools">1. System &amp; Data Modelling Tools</a></li>
         <li><a href="#project-management">2. Project Management Tools</a></li>
+        <li>Part 3 — Core Programming</li>
         <li><a href="#programming-paradigms">3. Programming Paradigms</a></li>
         <li><a href="#algorithms">4. Algorithms</a></li>
         <li><a href="#control-structures">5. Control Structures</a></li>
         <li><a href="#subroutines">6. Subroutines</a></li>
+        <li>Part 4 — Data, Systems &amp; Specialist Topics</li>
         <li><a href="#relational-databases">7. Relational Databases</a></li>
         <li><a href="#mechatronics">8. Wiring Diagrams</a></li>
         <li><a href="#web-programming">9. Programming for the Web</a></li>
@@ -93,6 +99,7 @@
         <li><a href="#testing-methods">11. Methods for Testing</a></li>
         <li><a href="#character-representation">12. Character Representation</a></li>
         <li><a href="#python">13. Programming with Python</a></li>
+        <li>Part 5 — Quality &amp; Workflow</li>
         <li><a href="#git-workflow">14. Git &amp; Version Control</a></li>
         <li><a href="#testing-frameworks">15. Testing Frameworks</a></li>
         <li><a href="#cicd">16. CI/CD</a></li>
@@ -102,12 +109,20 @@
     <main class="page-content">
       <div class="content-body">
 
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 1: DEVELOPMENT ENVIRONMENT                        -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Part 1</span>
+          <span class="part-name">💻 Development Environment</span>
+        </div>
+
         <!-- 0. IDE & Development Tools -->
         <section id="ide-tools">
           <h2 class="syllabus-phase">💻 IDE &amp; Development Tools</h2>
           <p>An <strong>Integrated Development Environment (IDE)</strong> combines a code editor, build tools, debugger, and other features into a single application. A plain <strong>text editor</strong> (e.g. Notepad, nano) only edits text — you must run all other tools separately.</p>
 
-          <h3>IDE vs Text Editor — Feature Comparison</h3>
+          <h3>⚖️ IDE vs Text Editor — Feature Comparison</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -126,7 +141,7 @@
             </table>
           </div>
 
-          <h3>VS Code — Setup for Python</h3>
+          <h3>🟦 VS Code — Setup for Python</h3>
           <p>Visual Studio Code is a lightweight, free IDE by Microsoft with a vast extension library. Recommended extensions for Python HSC work:</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>Python (ms-python)</strong><span>Provides IntelliSense, linting, debugging, and environment selection for Python files.</span></div>
@@ -147,14 +162,14 @@
 }</code></pre>
           </div>
 
-          <h3>PyCharm — Setup for Python</h3>
+          <h3>🐉 PyCharm — Setup for Python</h3>
           <p>PyCharm (JetBrains) is a full Python IDE with deeper analysis than VS Code. Key setup steps:</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>Project Interpreter</strong><span>Set via <em>File → Settings → Project → Python Interpreter</em>. Create or select a virtual environment (venv) specific to your project so packages do not conflict.</span></div>
             <div class="key-term-item"><strong>Run Configurations</strong><span>Defined in <em>Run → Edit Configurations</em>. Set the script path, working directory, and any environment variables. Allows one-click running or debugging of any file.</span></div>
           </div>
 
-          <h3>Arduino IDE</h3>
+          <h3>🔌 Arduino IDE</h3>
           <p>Used for programming Arduino microcontrollers (C/C++ dialect). Key features for HSC Mechatronics:</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>Board Manager</strong><span>Install support packages for different boards — accessed via <em>Tools → Board → Board Manager</em>. Required when using non-standard boards (e.g. ESP32, Arduino Nano).</span></div>
@@ -162,14 +177,14 @@
             <div class="key-term-item"><strong>Serial Monitor</strong><span>Opens a terminal showing data sent over the USB serial port via <code>Serial.println()</code>. Essential for debugging sensor readings and program state at runtime.</span></div>
           </div>
 
-          <h3>Thonny — MicroPython on Microcontrollers</h3>
+          <h3>🐍 Thonny — MicroPython on Microcontrollers</h3>
           <p>Thonny is a beginner-friendly Python IDE designed for education and MicroPython development on boards like Raspberry Pi Pico and ESP32.</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>REPL (Read-Eval-Print Loop)</strong><span>An interactive shell at the bottom of Thonny. Type a Python expression and see the result instantly — useful for testing individual lines before adding them to a script.</span></div>
             <div class="key-term-item"><strong>File Transfer</strong><span>The <em>Files</em> panel shows both your computer's filesystem and the microcontroller's filesystem side by side. Right-click a file and choose <em>Upload to /</em> to copy it to the board, or <em>Download</em> to retrieve it.</span></div>
           </div>
 
-          <h3>IDE Features Summary Table</h3>
+          <h3>📋 IDE Features Summary Table</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -195,7 +210,13 @@
           </div>
         </section>
 
-        <hr class="divider" />
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 2: DESIGN & MODELLING                             -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Part 2</span>
+          <span class="part-name">🗺️ Design &amp; Modelling</span>
+        </div>
 
         <!-- 1. System and Data Modelling Tools -->
         <section id="modelling-tools">
@@ -382,7 +403,13 @@ Reflective comment:
           </div>
         </section>
 
-        <hr class="divider" />
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 3: CORE PROGRAMMING                               -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Part 3</span>
+          <span class="part-name">⌨️ Core Programming</span>
+        </div>
 
         <!-- 3. Programming Paradigms -->
         <section id="programming-paradigms">
@@ -519,7 +546,7 @@ END</code></pre>
           <h2 class="syllabus-phase">🕹️ Control Structures</h2>
           <p>Control structures determine the <em>order</em> in which instructions execute. Every algorithm is built from three fundamental building blocks: <strong>Sequence</strong>, <strong>Selection</strong>, and <strong>Repetition</strong>.</p>
 
-          <h3>Sequence</h3>
+          <h3>➡️ Sequence</h3>
           <p>The default mode — statements execute one after another, top to bottom, in the exact order they are written. No branching or repetition occurs.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Pseudocode — Calculate a student's average</span></div>
@@ -533,10 +560,10 @@ END</code></pre>
 END</code></pre>
           </div>
 
-          <h3>Selection</h3>
+          <h3>🔀 Selection</h3>
           <p>Allows the program to choose between different paths based on a condition.</p>
 
-          <h4>Binary Selection</h4>
+          <h4>2️⃣ Binary Selection</h4>
           <p>Chooses between exactly <strong>two</strong> outcomes: one path if the condition is true, another if it is false.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Pseudocode — Pass or fail</span></div>
@@ -547,7 +574,7 @@ ELSE
 ENDIF</code></pre>
           </div>
 
-          <h4>Multi-way Selection</h4>
+          <h4>🔢 Multi-way Selection</h4>
           <p>Selects from <strong>several</strong> possible outcomes based on a single expression's value. More readable than a chain of IF/ELSE IF.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Pseudocode — Menu selection</span></div>
@@ -559,7 +586,7 @@ ENDIF</code></pre>
 END CASE</code></pre>
           </div>
 
-          <h4>Nested IF</h4>
+          <h4>🪆 Nested IF</h4>
           <p>An IF structure placed inside another IF. Used when a decision depends on the result of a previous decision.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Pseudocode — Grade with age check</span></div>
@@ -574,10 +601,10 @@ ELSE
 ENDIF</code></pre>
           </div>
 
-          <h3>Repetition</h3>
+          <h3>🔁 Repetition</h3>
           <p>Allows a block of statements to execute multiple times. The choice of loop depends on whether the number of iterations is known in advance.</p>
 
-          <h4>Pre-test (WHILE)</h4>
+          <h4>⬆️ Pre-test (WHILE)</h4>
           <p>Checks the condition <strong>before</strong> each iteration. If the condition is false from the start, the body never executes.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Pseudocode — Validate user input</span></div>
@@ -589,7 +616,7 @@ ENDWHILE
 OUTPUT "Access granted."</code></pre>
           </div>
 
-          <h4>Post-test (REPEAT / UNTIL)</h4>
+          <h4>⬇️ Post-test (REPEAT / UNTIL)</h4>
           <p>Checks the condition <strong>after</strong> each iteration. The body always executes <strong>at least once</strong>.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Pseudocode — Keep asking until valid input</span></div>
@@ -600,7 +627,7 @@ UNTIL number >= 1 AND number <= 10
 OUTPUT "You entered: ", number</code></pre>
           </div>
 
-          <h4>FOR / NEXT (Counted Loop)</h4>
+          <h4>🔢 FOR / NEXT (Counted Loop)</h4>
           <p>Used when the number of iterations is known in advance. The loop variable is automatically incremented each cycle.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Pseudocode — Sum five scores</span></div>
@@ -681,7 +708,13 @@ OUTPUT "Your grade is: ", grade    # Your grade is: B</code></pre>
           </div>
         </section>
 
-        <hr class="divider" />
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 4: DATA, SYSTEMS & SPECIALIST TOPICS              -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Part 4</span>
+          <span class="part-name">🗄️ Data, Systems &amp; Specialist Topics</span>
+        </div>
 
         <!-- 7. Relational Databases -->
         <section id="relational-databases">
@@ -1233,7 +1266,13 @@ finally:
           </div>
         </section>
 
-        <hr class="divider" />
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 5: QUALITY & WORKFLOW                             -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Part 5</span>
+          <span class="part-name">⚙️ Quality &amp; Workflow</span>
+        </div>
 
         <!-- 14. Git & Version Control Workflow -->
         <section id="git-workflow">

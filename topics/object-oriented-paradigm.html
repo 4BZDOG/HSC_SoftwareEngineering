@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Object-Oriented Paradigm | HSC Software Engineering</title>
   <meta name="description" content="In-depth Year 11 HSC Software Engineering notes on OOP, following NESA command verbs, outcomes, and Australian English standards." />
+  <!-- Theme init: prevents flash of wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=3" />
 </head>
 <body>
@@ -67,7 +69,7 @@
       </nav>
       <h1>🧩 The Object-Oriented Paradigm</h1>
       <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
-        Mastering the design and implementation of software through interacting objects, modularity, and advanced abstraction techniques.
+        Mastering the design and implementation of software through interacting objects, modularity, and advanced <strong>abstraction</strong> techniques.
       </p>
       <div class="topic-header-meta">
         <span class="meta-pill year11">📗 Year 11 — Preliminary</span>
@@ -123,16 +125,16 @@
           <p><strong>Objects</strong> are individual instances of data and behaviour that exist within a running program. A <strong>class</strong> is a blueprint or template that defines the structure and behaviour of all objects created from it. Classes specify what attributes (data) and methods (behaviour) objects will have. For example, a <code>Car</code> class defines that all car objects will have attributes like colour and speed, and methods like accelerate() and brake().</p>
 
           <h3>Encapsulation</h3>
-          <p>Encapsulation is the process of bundling data (attributes) and the methods that operate on that data into a single unit (the class). It involves <strong>data hiding</strong> by using access modifiers (private, protected, public) to control which parts of the code can directly access an object's internal state. This ensures that data can only be changed through validated methods (setters), which maintains data integrity and security.</p>
+          <p><strong>Encapsulation</strong> is the process of bundling data (attributes) and the methods that operate on that data into a single unit (the class). It involves <strong>data hiding</strong> by using access modifiers (private, protected, public) to control which parts of the code can directly access an object's internal state. This ensures that data can only be changed through validated methods (setters), which maintains data integrity and security.</p>
 
           <h3>Abstraction</h3>
-          <p>Abstraction focuses on hiding complex implementation details and showing only the essential features of an object to the user. A programmer interacts with an object through a simplified interface without needing to understand the underlying code logic. This reduces system complexity and allows internal implementation to change without affecting code that uses the object.</p>
+          <p><strong>Abstraction</strong> focuses on hiding complex implementation details and showing only the essential features of an object to the user. A programmer interacts with an object through a simplified interface without needing to understand the underlying code logic. This reduces system complexity and allows internal implementation to change without affecting code that uses the object.</p>
 
           <h3>Inheritance and Generalisation</h3>
           <p><strong>Inheritance</strong> allows a new class (subclass or derived class) to adopt the attributes and methods of an existing class (superclass or base class). <strong>Generalisation</strong> is the process of identifying common traits among multiple classes and moving them into a shared parent class. This promotes massive code reuse and establishes a logical hierarchy within the software architecture.</p>
 
           <h3>Polymorphism</h3>
-          <p>Polymorphism, meaning "many forms", allows different classes to be treated as instances of the same superclass through a uniform interface. A programmer can call the same method name on different objects, and each object will respond in its own specific way. This makes code highly flexible and easier to extend with new object types without modifying existing code.</p>
+          <p><strong>Polymorphism</strong>, meaning "many forms", allows different classes to be treated as instances of the same superclass through a uniform interface. A programmer can call the same method name on different objects, and each object will respond in its own specific way. This makes code highly flexible and easier to extend with new object types without modifying existing code.</p>
 
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Applying OOP Key Features</span></div>
@@ -188,7 +190,7 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
                 <tr>
                   <td><strong>Reusability</strong></td>
                   <td>Limited; relies on copying functions.</td>
-                  <td>High; via inheritance and classes.</td>
+                  <td>High; via <strong>inheritance</strong> and classes.</td>
                 </tr>
                 <tr>
                   <td><strong>Maintenance</strong></td>
@@ -233,16 +235,16 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> the key features of an OOP language to engineer modular, secure, and maintainable software solutions.</em></p>
 
           <h3>Encapsulation</h3>
-          <p>Encapsulation is the process of bundling data and the methods that operate on that data into a single unit, known as a class. It involves "data hiding" by using access modifiers (like private attributes in Python) to prevent external code from directly modifying an object's internal state. This ensures that data can only be changed through validated methods (setters), which maintains the integrity and security of the system (Outcome SE-11-04).</p>
+          <p><strong>Encapsulation</strong> is the process of bundling data and the methods that operate on that data into a single unit, known as a class. It involves "data hiding" by using access modifiers (like private attributes in Python) to prevent external code from directly modifying an object's internal state. This ensures that data can only be changed through validated methods (setters), which maintains the integrity and security of the system (Outcome SE-11-04).</p>
 
           <h3>Abstraction</h3>
-          <p>Abstraction focuses on hiding complex implementation details and showing only the essential features of an object to the user. In software engineering, this allows developers to interact with a class through a simplified interface without needing to understand the underlying code logic. It reduces system complexity and allows the internal implementation to change without affecting the parts of the program that use it (Outcome SE-11-01).</p>
+          <p><strong>Abstraction</strong> focuses on hiding complex implementation details and showing only the essential features of an object to the user. In software engineering, this allows developers to interact with a class through a simplified interface without needing to understand the underlying code logic. It reduces system complexity and allows the internal implementation to change without affecting the parts of the program that use it (Outcome SE-11-01).</p>
 
           <h3>Inheritance & Generalisation</h3>
-          <p>Inheritance allows a new class (subclass) to adopt the attributes and methods of an existing class (superclass). <strong>Generalisation</strong> is the engineering process of identifying common traits among multiple classes and moving them into a shared parent class. This promotes massive code reuse and establishes a logical hierarchy within the software architecture (Outcome SE-11-02).</p>
+          <p><strong>Inheritance</strong> allows a new class (subclass) to adopt the attributes and methods of an existing class (superclass). <strong>Generalisation</strong> is the engineering process of identifying common traits among multiple classes and moving them into a shared parent class. This promotes massive code reuse and establishes a logical hierarchy within the software architecture (Outcome SE-11-02).</p>
 
           <h3>Polymorphism</h3>
-          <p>Polymorphism, meaning "many forms", allows different classes to be treated as instances of the same superclass through a uniform interface. A programmer can call the same method name on different objects, and each object will respond in its own specific way. This makes the code highly flexible and easier to extend with new object types (Outcome SE-11-08).</p>
+          <p><strong>Polymorphism</strong>, meaning "many forms", allows different classes to be treated as instances of the same superclass through a uniform interface. A programmer can call the same method name on different objects, and each object will respond in its own specific way. This makes the code highly flexible and easier to extend with new object types (Outcome SE-11-08).</p>
 
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Applying OOP Pillars</span></div>
@@ -267,7 +269,7 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
             <h4>🔐 Diagram - Encapsulation</h4>
             <p class="diagram-subtitle">Public, protected, and private access control</p>
             <p class="diagram-description">
-              This diagram shows how encapsulation uses access modifiers (public, protected, private) to control data visibility and prevent unauthorized modification. External code can access public interfaces but is protected from private implementation details. This separation allows internal implementation changes without breaking external code.
+              This diagram shows how <strong>encapsulation</strong> uses access modifiers (public, protected, private) to control data visibility and prevent unauthorized modification. External code can access public interfaces but is protected from private implementation details. This separation allows internal implementation changes without breaking external code.
             </p>
             <div class="mermaid">
               graph TB
@@ -295,7 +297,7 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
                   style EXTERNAL fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Demonstrate access modifiers (public, protected, private) and how encapsulation protects internal state by forcing external code to use validated setter methods<br>
+              <strong>Purpose:</strong> Demonstrate access modifiers (public, protected, private) and how <strong>encapsulation</strong> protects internal state by forcing external code to use validated setter methods<br>
               <strong>Syllabus Link:</strong> SE-11-02, SE-11-04<br>
               <strong>Try This:</strong> Design a Student class with private GPA, and implement a public method to safely update it (only if marks are within 0-100 range)
             </p>
@@ -304,9 +306,9 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
           <!-- OOP Class Diagram -->
           <div class="diagram-block">
             <h4>🧱 Class Diagram - Vehicle System Hierarchy</h4>
-            <p class="diagram-subtitle">Inheritance and polymorphism in action</p>
+            <p class="diagram-subtitle"><strong>Inheritance</strong> and <strong>polymorphism</strong> in action</p>
             <p class="diagram-description">
-              This class diagram shows a vehicle inheritance hierarchy where Vehicle is the parent class defining common properties (manufacturer, speed) and methods. Car and Truck inherit from Vehicle and add specialized attributes (numDoors, cargoCapacity). Both override the start() method differently, demonstrating polymorphism — same method name, different behavior depending on the subclass.
+              This class diagram shows a vehicle <strong>inheritance</strong> hierarchy where Vehicle is the parent class defining common properties (manufacturer, speed) and methods. Car and Truck inherit from Vehicle and add specialized attributes (numDoors, cargoCapacity). Both override the start() method differently, demonstrating <strong>polymorphism</strong> — same method name, different behavior depending on the subclass.
             </p>
             <div class="mermaid">
               classDiagram
@@ -351,7 +353,7 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
                 Vehicle *-- Engine
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Show class relationships using Unified Modelling Language (UML). Triangles (▲) represent inheritance (is-a), diamonds represent composition (has-a). Private attributes (-) and public methods (+) are documented.<br>
+              <strong>Purpose:</strong> Show class relationships using Unified Modelling Language (UML). Triangles (▲) represent <strong>inheritance</strong> (is-a), diamonds represent composition (has-a). Private attributes (-) and public methods (+) are documented.<br>
               <strong>Syllabus Link:</strong> SE-11-02, SE-11-08<br>
               <strong>Try This:</strong> Create a class diagram for an animal system (Animal → Dog, Cat, Bird) or a gaming system (Character → Warrior, Mage, Archer).
             </p>
@@ -367,7 +369,7 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
           <p class="syllabus-concept">📌 <em><strong>Use</strong> data flow diagrams, structure charts and class diagrams to represent a system. These modelling tools allow engineers to visualise system architecture before implementation.</em></p>
           
           <ul>
-            <li>🛠️ <strong>Class Diagrams (p. 9):</strong> The primary tool for OOP. It represents classes as three-part boxes (Name, Attributes, Methods) and uses solid lines with hollow arrows to show inheritance (Outcome SE-11-06).</li>
+            <li>🛠️ <strong>Class Diagrams (p. 9):</strong> The primary tool for OOP. It represents classes as three-part boxes (Name, Attributes, Methods) and uses solid lines with hollow arrows to show <strong>inheritance</strong> (Outcome SE-11-06).</li>
             <li>🛠️ <strong>Data Flow Diagrams (p. 5):</strong> Useful for showing how data moves between objects and external entities, focusing on the "transformation" of data (Outcome SE-11-06).</li>
             <li>🛠️ <strong>Structure Charts (p. 7):</strong> While often procedural, they are used in OOP to map out complex method calls and parameter passing between modules (Outcome SE-11-06).</li>
           </ul>
@@ -391,7 +393,7 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
               <p><strong>Structure Chart vs Class Diagram — What's the difference?</strong></p>
               <ul>
                 <li><strong>Structure Chart:</strong> Shows how a program is broken into <em>modules/functions</em> and the hierarchy of calls between them. It is procedural in nature — "what calls what".</li>
-                <li><strong>Class Diagram:</strong> Shows OOP <em>relationships</em> between classes — inheritance (IS-A), composition (HAS-A), and associations. It models objects and their data, not just call sequences.</li>
+                <li><strong>Class Diagram:</strong> Shows OOP <em>relationships</em> between classes — <strong>inheritance</strong> (IS-A), composition (HAS-A), and associations. It models objects and their data, not just call sequences.</li>
                 <li>In an OOP project, you may use a <strong>structure chart</strong> to plan the top-level flow (e.g., which module runs first) and a <strong>class diagram</strong> to design the objects within each module.</li>
               </ul>
             </div>
@@ -453,7 +455,7 @@ book = library.get_book_info(<span class="str">"john_doe"</span>, 42)</code></pr
           </div>
 
           <h3>Agility</h3>
-          <p>Agility in OOP design refers to implementing an iterative development cycle where code is regularly reviewed and updated based on testing, user feedback, and changing requirements. Agile approaches favour frequent refactoring, continuous improvement, and adaptive design rather than rigid upfront planning. This flexibility allows software to evolve as understanding of the problem deepens.</p>
+          <p>Agility in OOP design refers to implementing an iterative development cycle where code is regularly reviewed and updated based on testing, user feedback, and changing requirements. <strong>Agile</strong> approaches favour frequent refactoring, continuous improvement, and adaptive design rather than rigid upfront planning. This flexibility allows software to evolve as understanding of the problem deepens.</p>
         </section>
 
         <hr class="divider" />
@@ -466,14 +468,14 @@ book = library.get_book_info(<span class="str">"john_doe"</span>, 42)</code></pr
 
           <h3>Evaluation Criteria</h3>
           <ul>
-            <li><strong>Correctness:</strong> Does the code produce the expected output for all valid inputs? Does it correctly implement the algorithm's logic?</li>
+            <li><strong>Correctness:</strong> Does the code produce the expected output for all valid inputs? Does it correctly implement the <strong>algorithm</strong>'s logic?</li>
             <li><strong>Efficiency:</strong> Does the code run efficiently in terms of time complexity (execution speed) and space complexity (memory usage)? Can it handle large datasets?</li>
             <li><strong>Maintainability:</strong> Is the code well-structured, clearly commented, and easy for other developers to understand and modify? Does it follow OOP principles?</li>
             <li><strong>Robustness:</strong> Does the code handle edge cases and errors gracefully without crashing?</li>
             <li><strong>Scalability:</strong> Can the code be extended with new features or adapted to larger problems without major restructuring?</li>
           </ul>
 
-          <p>In OOP, effectiveness is enhanced through proper use of classes, inheritance, and encapsulation. A well-designed class hierarchy makes code more testable, reusable, and maintainable. Poor design—such as overly deep inheritance chains or god objects (classes that do too much)—reduces effectiveness.</p>
+          <p>In OOP, effectiveness is enhanced through proper use of classes, <strong>inheritance</strong>, and <strong>encapsulation</strong>. A well-designed class hierarchy makes code more testable, reusable, and maintainable. Poor design—such as overly deep <strong>inheritance</strong> chains or god objects (classes that do too much)—reduces effectiveness.</p>
         </section>
 
         <hr class="divider" />
@@ -490,7 +492,7 @@ book = library.get_book_info(<span class="str">"john_doe"</span>, 42)</code></pr
           <p>This investigated feature enables several OOP benefits:</p>
           <ul>
             <li><strong>Modularity:</strong> Each object is independent and can be tested, modified, or replaced without affecting other objects that use its interface.</li>
-            <li><strong>Flexibility:</strong> Polymorphism allows different objects to respond to the same message in different ways based on their class type.</li>
+            <li><strong>Flexibility:</strong> <strong>Polymorphism</strong> allows different objects to respond to the same message in different ways based on their class type.</li>
             <li><strong>Scalability:</strong> New classes can be added without modifying existing code that sends messages through a common interface.</li>
             <li><strong>Maintainability:</strong> Changes to an object's internal implementation don't affect other objects as long as the interface (method signatures) remains the same.</li>
           </ul>
@@ -515,7 +517,7 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
             <h4>📨 Sequence Diagram - Message-Passing</h4>
             <p class="diagram-subtitle">Objects communicating through method calls</p>
             <p class="diagram-description">
-              This sequence diagram shows how objects communicate by passing messages (method calls). The MainClass sends a "createAccount()" message to BankAccount, which initializes state. Then MainClass sends "withdraw(500)" and BankAccount responds with the result. The caller never needs to know how the bank account handles the withdrawal — encapsulation hides implementation details.
+              This sequence diagram shows how objects communicate by passing messages (method calls). The MainClass sends a "createAccount()" message to BankAccount, which initializes state. Then MainClass sends "withdraw(500)" and BankAccount responds with the result. The caller never needs to know how the bank account handles the withdrawal — <strong>encapsulation</strong> hides implementation details.
             </p>
             <div class="mermaid">
               sequenceDiagram
@@ -539,7 +541,7 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
                 Note over Client,Account: Client doesn't know HOW<br/>balance checking works<br/>Only WHAT the interface does
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Visualise how objects communicate through method calls (messages) while maintaining encapsulation and loose coupling<br>
+              <strong>Purpose:</strong> Visualise how objects communicate through method calls (messages) while maintaining <strong>encapsulation</strong> and loose coupling<br>
               <strong>Syllabus Link:</strong> SE-11-04, SE-11-08<br>
               <strong>Try This:</strong> Design a system where Student sends message to Enrollment to register for a Course, and trace all the internal validations without revealing implementation details
             </p>
@@ -556,9 +558,9 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
 
           <h3>Optimisation Techniques in OOP</h3>
           <ul>
-            <li><strong>Algorithm Refinement:</strong> Improving the efficiency of algorithms within methods by choosing faster data structures or reducing iterations.</li>
+            <li><strong>Algorithm Refinement:</strong> Improving the efficiency of <strong>algorithms</strong> within methods by choosing faster <strong>data structures</strong> or reducing iterations.</li>
             <li><strong>Lazy Instantiation:</strong> Creating objects only when needed, rather than upfront, to reduce memory overhead.</li>
-            <li><strong>Inheritance Hierarchy Optimisation:</strong> Ensuring inheritance chains are not unnecessarily deep, which can slow method lookups.</li>
+            <li><strong>Inheritance Hierarchy Optimisation:</strong> Ensuring <strong>inheritance</strong> chains are not unnecessarily deep, which can slow method lookups.</li>
             <li><strong>Caching:</strong> Storing results of expensive operations to avoid recalculating them.</li>
             <li><strong>Code Profiling:</strong> Identifying bottlenecks (slow parts) in code using profiling tools to target optimisation efforts where they matter most.</li>
           </ul>
@@ -625,8 +627,8 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <ul>
             <li>Identify the objects in the problem domain (e.g., Student, Course, Enrolment for a school system).</li>
             <li>Define classes with appropriate attributes and methods.</li>
-            <li>Design relationships between classes (inheritance, composition).</li>
-            <li>Implement logic using branching and iteration within methods.</li>
+            <li>Design relationships between classes (<strong>inheritance</strong>, composition).</li>
+            <li>Implement logic using branching and <strong>iteration</strong> within methods.</li>
             <li>Test each class independently before integration.</li>
           </ul>
         </section>
@@ -649,13 +651,13 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <p>A stub is a minimal implementation or placeholder for a subroutine, method, or class that will be fully developed later. Stubs allow high-level logic to be tested before all detailed methods are complete. For example, a <code>DatabaseConnection.save()</code> stub might just print "Saving..." while development of the actual database code continues elsewhere. This enables parallel development and testing.</p>
 
           <h3>Control Structures and Data Structures</h3>
-          <p>Implementation must effectively use both control structures (if/else, loops) to direct program flow and data structures (arrays, lists, trees) to organise data. Choosing the right combination improves both efficiency and code clarity.</p>
+          <p>Implementation must effectively use both control structures (if/else, loops) to direct program flow and <strong>data structures</strong> (arrays, lists, trees) to organise data. Choosing the right combination improves both efficiency and code clarity.</p>
 
           <h3>Ease of Maintenance</h3>
           <p>Code should be maintainable through:</p>
           <ul>
             <li>Clear naming conventions for classes, methods, and variables.</li>
-            <li>Proper encapsulation—hiding implementation details behind clear interfaces.</li>
+            <li>Proper <strong>encapsulation</strong>—hiding implementation details behind clear interfaces.</li>
             <li>Comprehensive comments explaining non-obvious logic.</li>
             <li>Avoiding deep nesting and overly complex methods.</li>
             <li>Following consistent formatting and style.</li>
@@ -680,26 +682,26 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <p>Testing occurs at multiple levels, building from smallest to largest components:</p>
 
           <div class="structured-content">
-            <h4>Unit Testing</h4>
+            <h4>🔬 Unit Testing</h4>
             <p>Testing individual classes or methods in isolation to ensure they perform their intended function correctly. For example, testing a <code>BankAccount.withdraw()</code> method with various inputs (sufficient balance, insufficient balance, negative amount, zero amount). Unit tests are the most granular and should be written by the developer who wrote the code.</p>
 
-            <h4>Subsystem Testing</h4>
+            <h4>🔗 Subsystem Testing</h4>
             <p>Testing groups of related classes that work together as a functional subsystem. For example, testing the interaction between <code>Customer</code>, <code>Order</code>, and <code>Payment</code> classes to ensure orders are created and payments are processed correctly. This level catches integration issues that unit tests might miss.</p>
 
-            <h4>System Testing</h4>
+            <h4>✅ System Testing</h4>
             <p>Testing the entire integrated application end-to-end to ensure all components work together and meet the overall requirements. System testing includes testing the application's interaction with external systems (databases, APIs, etc.) and verifying that the entire workflow functions as expected.</p>
           </div>
 
           <h3>Testing Approaches: Black, White, and Grey Box</h3>
 
           <div class="structured-content">
-            <h4>Black Box Testing</h4>
-            <p>Testing inputs and outputs without access to or knowledge of the internal code structure. The tester treats the software as a "black box" and tests it purely based on specifications. This approach ensures the software meets functional requirements from a user's perspective. For example, testing that a login system correctly accepts valid credentials and rejects invalid ones, without examining the authentication code.</p>
+            <h4>⬛ Black Box Testing</h4>
+            <p>Testing inputs and outputs without access to or knowledge of the internal code structure. The tester treats the software as a "black box" and tests it purely based on specifications. This approach ensures the software meets functional requirements from a user's perspective. For example, testing that a login system correctly accepts valid credentials and rejects invalid ones, without examining the <strong>authentication</strong> code.</p>
 
-            <h4>White Box Testing</h4>
+            <h4>⬜ White Box Testing</h4>
             <p>Testing with complete access to and understanding of the internal code structure. The tester examines the code logic, control flow, and data flow to ensure all paths and conditions are tested. This approach is critical for security, ensuring all potential vulnerabilities and logic errors are identified. For example, verifying that all conditional branches (IF/ELSE statements) in a method execute correctly under different conditions.</p>
 
-            <h4>Grey Box Testing</h4>
+            <h4>🔷 Grey Box Testing</h4>
             <p>A hybrid approach where the tester has partial knowledge of the internal structure (like knowing which classes exist and their general purpose) but not the implementation details. This allows more targeted testing than black box while being less resource-intensive than white box. For example, knowing the database schema but not the exact SQL queries used.</p>
           </div>
 
@@ -730,7 +732,7 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
             <h4>📖 Class Diagram — Library Management System</h4>
             <p class="diagram-subtitle">UML class diagram showing relationships between core entities</p>
             <p class="diagram-description">
-              This class diagram models a Library Management System with three core classes. Library acts as the central coordinator (facade), holding collections of Books and Members. Members can borrow multiple Books, creating a many-to-many relationship managed through the Library. Private attributes (prefixed with -) are accessed only via public methods (+), demonstrating encapsulation.
+              This class diagram models a Library Management System with three core classes. Library acts as the central coordinator (facade), holding collections of Books and Members. Members can borrow multiple Books, creating a many-to-many relationship managed through the Library. Private attributes (prefixed with -) are accessed only via public methods (+), demonstrating <strong>encapsulation</strong>.
             </p>
             <div class="mermaid">
               classDiagram
@@ -822,7 +824,7 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
             <ul>
               <li>Have you identified all objects/entities in your system?</li>
               <li>Are attributes private with getters/setters where needed?</li>
-              <li>Is there appropriate use of inheritance (IS-A relationship)?</li>
+              <li>Is there appropriate use of <strong>inheritance</strong> (IS-A relationship)?</li>
               <li>Is composition used for HAS-A relationships?</li>
               <li>Are method names clear and do they follow single responsibility?</li>
               <li>Have you drawn a UML class diagram in your documentation?</li>

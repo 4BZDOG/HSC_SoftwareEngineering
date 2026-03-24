@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Software Automation | HSC Software Engineering</title>
   <meta name="description" content="Complete HSC Software Engineering notes on Software Automation — all NESA syllabus items covered including ML algorithms, training models, regression, neural networks, DevOps/RPA/BPA, and ethical impact." />
+  <!-- Theme init: prevents flash of wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=3" />
 </head>
 <body>
@@ -68,7 +70,7 @@
       </nav>
       <h1>⚙️ Software Automation</h1>
       <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
-        Machine Learning algorithms, regression models, neural networks, DevOps automation, and the profound ethical and societal impacts of AI — complete NESA syllabus coverage.
+        Machine Learning <strong>algorithms</strong>, regression models, neural networks, <strong>DevOps</strong> automation, and the profound ethical and societal impacts of AI — complete NESA syllabus coverage.
       </p>
       <div class="topic-header-meta">
         <span class="meta-pill year12">📘 Year 12 — HSC</span>
@@ -82,7 +84,7 @@
     <aside class="sidebar">
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Part 1 — Algorithms in ML</li>
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Part 1 — <strong>Algorithms</strong> in ML</li>
         <li><a href="#ai-vs-ml">🤖 1. AI vs Machine Learning</a></li>
         <li><a href="#mlops">🔄 2. ML &amp; Automation</a></li>
         <li><a href="#training-models">🏋️ 3. Training Models</a></li>
@@ -110,7 +112,7 @@
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Syllabus Part 1</span>
-          <span class="part-name">🧠 Algorithms in Machine Learning</span>
+          <span class="part-name">🧠 <strong>Algorithms</strong> in Machine Learning</span>
         </div>
 
         <!-- 1. AI vs ML -->
@@ -122,7 +124,7 @@
           <div class="info-grid">
             <div class="info-card">
               <h4>🧩 Artificial Intelligence (AI)</h4>
-              <p>The <strong>broad concept</strong> of building machines that can perform tasks requiring human-like intelligence. AI encompasses any technique that allows computers to simulate cognitive functions — including expert systems, natural language processing, robotics, and machine learning. AI can use simple rule-based logic (e.g., an IF-THEN chess-playing algorithm) without any learning from data.</p>
+              <p>The <strong>broad concept</strong> of building machines that can perform tasks requiring human-like intelligence. AI encompasses any technique that allows computers to simulate cognitive functions — including expert systems, natural language processing, robotics, and machine learning. AI can use simple rule-based logic (e.g., an IF-THEN chess-playing <strong>algorithm</strong>) without any learning from data.</p>
             </div>
             <div class="info-card">
               <h4>📊 Machine Learning (ML)</h4>
@@ -158,7 +160,7 @@
               <div class="step-num">2</div>
               <div class="step-content">
                 <h4>📊 Model Development</h4>
-                <p>Data is cleaned (wrangling), relevant features are selected (feature engineering), and models are trained, evaluated, and validated. Multiple algorithm types may be tested to find the best performer.</p>
+                <p>Data is cleaned (wrangling), relevant features are selected (feature engineering), and models are trained, evaluated, and validated. Multiple <strong>algorithm</strong> types may be tested to find the best performer.</p>
               </div>
             </div>
             <div class="step">
@@ -244,7 +246,7 @@
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> data preprocessing techniques to prepare raw datasets for machine learning — cleaning, transforming, and splitting data to maximise model accuracy and reliability.</em></p>
 
           <div class="callout warning">
-            <strong>Garbage In, Garbage Out:</strong> No matter how sophisticated your ML algorithm, a model trained on dirty, inconsistent, or poorly prepared data will produce unreliable predictions. Data preprocessing is not optional — it is the foundation of every successful ML pipeline. Industry estimates suggest that data scientists spend 60–80% of their time on data preparation, not model training.
+            <strong>Garbage In, Garbage Out:</strong> No matter how sophisticated your ML <strong>algorithm</strong>, a model trained on dirty, inconsistent, or poorly prepared data will produce unreliable predictions. Data preprocessing is not optional — it is the foundation of every successful ML pipeline. Industry estimates suggest that data scientists spend 60–80% of their time on data preparation, not model training.
           </div>
 
           <h3>Handling Missing Data</h3>
@@ -289,7 +291,7 @@ print(df.isnull().sum())  # Should print 0 for all columns</code></pre>
           </div>
 
           <h3>Normalisation vs Standardisation</h3>
-          <p>Many ML algorithms (KNN, neural networks, SVMs) are sensitive to the <strong>scale of features</strong>. If one feature has values in the thousands (e.g., income) and another has values between 0 and 1 (e.g., a ratio), the large-scale feature will dominate distance calculations. Scaling ensures all features contribute equally to the model.</p>
+          <p>Many ML <strong>algorithms</strong> (KNN, neural networks, SVMs) are sensitive to the <strong>scale of features</strong>. If one feature has values in the thousands (e.g., income) and another has values between 0 and 1 (e.g., a ratio), the large-scale feature will dominate distance calculations. Scaling ensures all features contribute equally to the model.</p>
 
           <div class="table-wrap">
             <table>
@@ -733,7 +735,7 @@ print(f"Loan approved: {'Yes' if prediction[0] == 1 else 'No'}")</code></pre>
 
           <div class="info-grid">
             <div class="info-card">
-              <h4>How K-Means Works</h4>
+              <h4>⚙️ How K-Means Works</h4>
               <ol>
                 <li>Choose K (number of clusters) and randomly initialise K centroids.</li>
                 <li><strong>Assign:</strong> Each data point is assigned to the nearest centroid (using Euclidean distance).</li>
@@ -742,7 +744,7 @@ print(f"Loan approved: {'Yes' if prediction[0] == 1 else 'No'}")</code></pre>
               </ol>
             </div>
             <div class="info-card">
-              <h4>Choosing K: The Elbow Method</h4>
+              <h4>📈 Choosing K: The Elbow Method</h4>
               <p>Plot the within-cluster sum of squares (WCSS) against K. The "elbow" — where adding more clusters gives diminishing returns — is the optimal K. For example, if WCSS drops sharply from K=1 to K=3 then levels off, K=3 is likely the best choice.</p>
             </div>
           </div>
