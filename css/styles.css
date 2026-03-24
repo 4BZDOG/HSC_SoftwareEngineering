@@ -1014,6 +1014,7 @@ h2.syllabus-phase:hover .section-chevron {
   background: transparent;
   border-radius: 0;
   margin-top: 0;
+  max-height: 0;
 }
 
 /* Clear gap between sections (collapsed or expanded) */
@@ -1029,7 +1030,7 @@ section > h2.syllabus-phase:first-child {
 
 .section-body-inner {
   min-height: 0;                 /* allows grid row to compress to 0 */
-  overflow: clip;                /* clips child overflow but doesn't clip hover effects */
+  overflow: hidden;              /* establishes BFC, prevents content leaking when collapsed */
   padding: 1.75rem;
 }
 
