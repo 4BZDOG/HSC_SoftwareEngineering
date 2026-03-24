@@ -100,10 +100,13 @@
         <li><a href="#backend-contribution">⚙️ 15. Back-End Contribution</a></li>
         <li><a href="#backend-request">🔄 16. Web Request Process</a></li>
         <li><a href="#scripting">💻 17. Scripting &amp; Shell</a></li>
+        <li><a href="#dom-manipulation">🖱️ 17b. DOM &amp; Fetch API</a></li>
         <li><a href="#sql">🗄️ 18. SQL Queries</a></li>
         <li><a href="#orm">🔁 19. ORM vs SQL</a></li>
         <li><a href="#collaboration">🤝 20. Collaboration</a></li>
         <li><a href="#pwa">📱 21. PWA Design</a></li>
+        <li><a href="#rest-api-design">🔌 22. REST API Design</a></li>
+        <li><a href="#frameworks">⚛️ 23. JS Frameworks</a></li>
       </ul>
     </aside>
 
@@ -903,6 +906,243 @@ find templates/ -name "*.html" | xargs wc -l</code></pre>
 
         <hr class="divider" />
 
+        <!-- 17b. JavaScript DOM Manipulation -->
+        <section id="dom-manipulation">
+          <h2 class="syllabus-phase">🖱️ JavaScript DOM Manipulation</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Develop</strong> client-side scripts that dynamically update page content using the Document Object Model (DOM).</em></p>
+
+          <p>The <strong>Document Object Model (DOM)</strong> is a programming interface that represents an HTML page as a tree of objects. JavaScript can read and modify any part of this tree — changing text, styles, attributes, and structure in real time without a page reload. Events such as <code>click</code>, <code>submit</code>, and <code>DOMContentLoaded</code> allow scripts to respond to user actions.</p>
+
+          <h3>Form Validation with DOM Manipulation</h3>
+          <p>A common use case is validating a registration form on the client side before submitting data to the server. The script below listens for the form's <code>submit</code> event, prevents the default browser action, and runs custom validation logic.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">JavaScript — DOM Manipulation &amp; Form Validation</span></div>
+            <pre><code class="language-javascript">// DOM Manipulation - updating page content dynamically
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('registrationForm');
+    const messageDiv = document.getElementById('message');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        if (validateForm(username, email, password)) {
+            messageDiv.innerHTML = '&lt;p class="success"&gt;Registration successful!&lt;/p&gt;';
+            messageDiv.style.display = 'block';
+        }
+    });
+});
+
+function validateForm(username, email, password) {
+    const errors = [];
+
+    if (username.length &lt; 3 || username.length &gt; 20) {
+        errors.push('Username must be 3-20 characters');
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errors.push('Invalid email format');
+    }
+    if (password.length &lt; 8) {
+        errors.push('Password must be at least 8 characters');
+    }
+
+    if (errors.length &gt; 0) {
+        document.getElementById('errors').innerHTML = errors.map(e =&gt; `&lt;li&gt;${e}&lt;/li&gt;`).join('');
+        return false;
+    }
+    return true;
+}</code></pre>
+          </div>
+
+          <div class="callout info">
+            <strong>Key DOM Methods:</strong> <code>document.getElementById()</code> selects an element by its <code>id</code> attribute; <code>element.addEventListener()</code> attaches an event listener; <code>event.preventDefault()</code> stops the browser's default behaviour (e.g., form submission); <code>element.innerHTML</code> sets or gets HTML content inside an element.
+          </div>
+
+          <h3>Form Validation Test Data</h3>
+          <p>When testing form validation, boundary cases, invalid formats, and malicious inputs should all be included in the test plan.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Test Case</th>
+                  <th>Input</th>
+                  <th>Expected Result</th>
+                  <th>Pass/Fail</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Username too short (below minimum)</td>
+                  <td>username: <code>ab</code></td>
+                  <td>Error: "Username must be 3-20 characters"</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Username at minimum boundary</td>
+                  <td>username: <code>abc</code></td>
+                  <td>Validation passes for username field</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Username exceeds maximum boundary</td>
+                  <td>username: <code>averylongusernamethatiswaytoolong</code> (21+ chars)</td>
+                  <td>Error: "Username must be 3-20 characters"</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Invalid email format (missing @)</td>
+                  <td>email: <code>notanemail.com</code></td>
+                  <td>Error: "Invalid email format"</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Empty required field</td>
+                  <td>username: <code></code> (empty string)</td>
+                  <td>Error: "Username must be 3-20 characters"</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Password too short (below minimum)</td>
+                  <td>password: <code>pass</code> (4 chars)</td>
+                  <td>Error: "Password must be at least 8 characters"</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>SQL injection attempt</td>
+                  <td>username: <code>' OR '1'='1</code></td>
+                  <td>Client-side: treated as a string, regex check may pass — server must sanitise</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>XSS attempt in username field</td>
+                  <td>username: <code>&lt;script&gt;alert('xss')&lt;/script&gt;</code></td>
+                  <td>Client-side: length check fails (too long) or server escapes output — no script executes</td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout warning">
+            <strong>Warning — Client-Side Validation Limitations:</strong> Client-side validation can be bypassed by disabling JavaScript or using browser developer tools to intercept requests. SQL injection and XSS attempts must also be handled on the server. Never rely solely on JavaScript validation for security.
+          </div>
+
+          <h3>Client-Side vs Server-Side Validation</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Aspect</th>
+                  <th>Client-Side (JavaScript)</th>
+                  <th>Server-Side (Python / Flask / Django)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Speed</strong></td>
+                  <td>Instant feedback — no network request needed</td>
+                  <td>Requires a round-trip to the server (adds latency)</td>
+                </tr>
+                <tr>
+                  <td><strong>Security</strong></td>
+                  <td>Can be bypassed — attacker can disable JS or send raw HTTP requests</td>
+                  <td>Cannot be bypassed — server always processes the data</td>
+                </tr>
+                <tr>
+                  <td><strong>Use case</strong></td>
+                  <td>UX improvement — immediate error messages guide the user</td>
+                  <td>Security enforcement — the authoritative check before data is stored</td>
+                </tr>
+                <tr>
+                  <td><strong>Required?</strong></td>
+                  <td>Optional but recommended for usability</td>
+                  <td>Always required — never optional</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout key">
+            <strong>Exam Tip — Always validate on the server:</strong> Client-side validation improves user experience by giving instant feedback, but it is purely cosmetic from a security perspective. An attacker can bypass any JavaScript check by sending a crafted HTTP request directly. Server-side validation is the only authoritative and secure check.
+          </div>
+
+          <h3>Fetch API &amp; AJAX (Asynchronous Requests)</h3>
+          <p>The <strong>Fetch API</strong> allows JavaScript to make HTTP requests to a server in the background without reloading the page — this pattern is known as <strong>AJAX</strong> (Asynchronous JavaScript and XML). Modern JavaScript uses the <strong>async/await</strong> syntax to write asynchronous code that reads like synchronous code, making it easier to follow and debug.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">JavaScript — Fetch API with async/await</span></div>
+            <pre><code class="language-javascript">// Fetching data from an API (async/await pattern)
+async function loadUserData(userId) {
+    try {
+        const response = await fetch(`/api/users/${userId}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        displayUser(data);
+    } catch (error) {
+        console.error('Failed to load user:', error);
+        showErrorMessage('Could not load user data. Please try again.');
+    }
+}
+
+function displayUser(user) {
+    document.getElementById('userName').textContent = user.name;
+    document.getElementById('userEmail').textContent = user.email;
+}</code></pre>
+          </div>
+
+          <div class="callout info">
+            <strong>async/await vs Callbacks:</strong> Early JavaScript used <em>callbacks</em> (functions passed as arguments) to handle asynchronous results, which could lead to deeply nested "callback hell". <em>Promises</em> improved readability by chaining <code>.then()</code> handlers. <strong>async/await</strong> (introduced in ES2017) is syntactic sugar over Promises — the <code>await</code> keyword pauses execution inside an <code>async</code> function until the Promise resolves, making asynchronous code read top-to-bottom like synchronous code. All three patterns are functionally equivalent; async/await is the modern standard.
+          </div>
+
+          <div class="callout key">
+            <strong>Exam Tip — Error handling in fetch requests:</strong> A <code>fetch()</code> call only rejects (throws an error) on network failure. An HTTP 404 or 500 response is considered a <em>successful</em> fetch — it does not throw automatically. Always check <code>response.ok</code> (which is <code>true</code> for status codes 200–299) and manually throw an error if needed, as shown above. Wrap in <code>try/catch</code> to handle both network errors and manually thrown errors.
+          </div>
+
+          <h3>CORS — Cross-Origin Resource Sharing</h3>
+
+          <div class="callout warning">
+            <strong>What is CORS and why does it exist?</strong>
+            <br/><br/>
+            Browsers enforce the <strong>same-origin policy</strong>: a script running on <code>https://myapp.com</code> is blocked from making fetch requests to <code>https://api.otherdomain.com</code> unless the server explicitly allows it. This protects users from malicious websites silently reading their data from other services.
+            <br/><br/>
+            <strong>Cross-Origin Resource Sharing (CORS)</strong> is the mechanism by which a server uses HTTP response headers to tell the browser which external origins are permitted to read its responses.
+            <br/><br/>
+            <strong>Configuring CORS in Flask:</strong>
+            <br/>
+            Install the <code>flask-cors</code> package and add: <code>from flask_cors import CORS</code>, then <code>CORS(app, origins=["https://myapp.com"])</code>. For development you may use <code>origins="*"</code> (allow all), but never use this in production.
+            <br/><br/>
+            <strong>Configuring CORS in Django:</strong>
+            <br/>
+            Install <code>django-cors-headers</code>, add <code>'corsheaders'</code> to <code>INSTALLED_APPS</code>, add <code>CorsMiddleware</code> to <code>MIDDLEWARE</code>, and set <code>CORS_ALLOWED_ORIGINS = ["https://myapp.com"]</code> in <code>settings.py</code>.
+            <br/><br/>
+            <strong>Common CORS errors students encounter:</strong>
+            <ul>
+              <li><em>"Access to fetch at '...' from origin '...' has been blocked by CORS policy"</em> — the server is not sending the correct <code>Access-Control-Allow-Origin</code> header.</li>
+              <li><em>Preflight (OPTIONS) request fails</em> — the server must also handle the HTTP OPTIONS method for routes that receive cross-origin requests with custom headers.</li>
+              <li><em>Credentials not included</em> — if using cookies or auth headers cross-origin, both the server must set <code>Access-Control-Allow-Credentials: true</code> and the fetch call must include <code>credentials: 'include'</code>.</li>
+            </ul>
+          </div>
+
+        </section>
+
+        <hr class="divider" />
+
         <!-- 18. SQL -->
         <section id="sql">
           <h2 class="syllabus-phase">🗄️ Web-Based Databases &amp; SQL</h2>
@@ -1101,6 +1341,225 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
         caches.match(event.request).then(cached => cached || fetch(event.request))
     );
 });</code></pre>
+          </div>
+
+          <h3>Web App Manifest</h3>
+          <p>The <code>manifest.json</code> file tells the browser how to install and present the PWA. Link it in your HTML <code>&lt;head&gt;</code>: <code>&lt;link rel="manifest" href="/manifest.json"&gt;</code></p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">JSON — manifest.json (complete example)</span></div>
+            <pre><code>{
+  "name": "HSC Study Planner",
+  "short_name": "StudyApp",
+  "description": "A PWA for organising HSC study sessions",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f46e5",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}</code></pre>
+          </div>
+
+          <h3>PWA vs Native App</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Feature</th><th>PWA</th><th>Native App</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Installation</td><td>Add to home screen via browser</td><td>App Store / Play Store download</td></tr>
+                <tr><td>Offline capability</td><td>Yes — via service worker cache</td><td>Yes — full local storage</td></tr>
+                <tr><td>Performance</td><td>Good — limited by browser</td><td>Excellent — direct hardware access</td></tr>
+                <tr><td>Updates</td><td>Instant — update the web files</td><td>User must download update</td></tr>
+                <tr><td>Device features</td><td>Limited (camera, GPS, notifications)</td><td>Full access to all device APIs</td></tr>
+                <tr><td>Development cost</td><td>Low — one codebase for all platforms</td><td>High — separate iOS and Android teams</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 22. REST API Design -->
+        <section id="rest-api-design">
+          <h2 class="syllabus-phase">🔌 REST API Design</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-03, SE-12-06)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Design and implement</strong> RESTful APIs that follow standard conventions for URLs, HTTP methods, and status codes to enable reliable client-server communication.</em></p>
+
+          <h3>REST Principles</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Stateless</strong><span>Each request from client to server must contain all information needed. The server does not store session state between requests — authentication credentials must be sent with every request.</span></div>
+            <div class="key-term-item"><strong>Uniform Interface</strong><span>Resources are identified by URLs. HTTP methods define operations. Responses use standard formats (JSON/XML). This consistency allows any client to consume any REST API.</span></div>
+            <div class="key-term-item"><strong>Client-Server Separation</strong><span>The front-end (client) and back-end (server) are independent. The client handles the UI; the server handles data. They communicate only through the API contract.</span></div>
+            <div class="key-term-item"><strong>Cacheable</strong><span>Responses should indicate whether they can be cached. Caching reduces server load and improves performance for repeated identical requests.</span></div>
+          </div>
+
+          <h3>HTTP Methods</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Method</th><th>Purpose</th><th>Idempotent?</th><th>Has Body?</th><th>Example</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>GET</code></td><td>Retrieve a resource</td><td>Yes</td><td>No</td><td>GET /api/books</td></tr>
+                <tr><td><code>POST</code></td><td>Create a new resource</td><td>No</td><td>Yes</td><td>POST /api/books</td></tr>
+                <tr><td><code>PUT</code></td><td>Replace a resource entirely</td><td>Yes</td><td>Yes</td><td>PUT /api/books/1</td></tr>
+                <tr><td><code>PATCH</code></td><td>Partially update a resource</td><td>No</td><td>Yes</td><td>PATCH /api/books/1</td></tr>
+                <tr><td><code>DELETE</code></td><td>Remove a resource</td><td>Yes</td><td>No</td><td>DELETE /api/books/1</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>HTTP Status Codes</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Code</th><th>Meaning</th><th>When Used</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>200 OK</strong></td><td>Success</td><td>GET request returned data, PUT/PATCH succeeded</td></tr>
+                <tr><td><strong>201 Created</strong></td><td>Resource created</td><td>POST request created a new resource</td></tr>
+                <tr><td><strong>204 No Content</strong></td><td>Success, no body</td><td>DELETE succeeded, nothing to return</td></tr>
+                <tr><td><strong>400 Bad Request</strong></td><td>Invalid request</td><td>Missing required field, malformed JSON</td></tr>
+                <tr><td><strong>401 Unauthorised</strong></td><td>Authentication required</td><td>Missing or invalid API key / JWT token</td></tr>
+                <tr><td><strong>403 Forbidden</strong></td><td>Authenticated but no permission</td><td>Trying to delete another user's resource</td></tr>
+                <tr><td><strong>404 Not Found</strong></td><td>Resource doesn't exist</td><td>GET /api/books/999 — book 999 not in database</td></tr>
+                <tr><td><strong>422 Unprocessable Entity</strong></td><td>Validation failed</td><td>Field present but fails validation (e.g., email without @)</td></tr>
+                <tr><td><strong>429 Too Many Requests</strong></td><td>Rate limit exceeded</td><td>Client is sending too many requests per minute</td></tr>
+                <tr><td><strong>500 Internal Server Error</strong></td><td>Server bug</td><td>Unhandled exception in server code</td></tr>
+                <tr><td><strong>503 Service Unavailable</strong></td><td>Server down/overloaded</td><td>Database is down, server is restarting</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>RESTful URL Design</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Bad URL</th><th>Good URL</th><th>Why</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>/getBooks</code></td><td><code>GET /api/books</code></td><td>Use HTTP method, not verbs in URL</td></tr>
+                <tr><td><code>/book/1</code></td><td><code>/api/books/1</code></td><td>Use plural nouns for collections</td></tr>
+                <tr><td><code>/deleteUser?id=5</code></td><td><code>DELETE /api/users/5</code></td><td>Use HTTP DELETE method</td></tr>
+                <tr><td><code>/api/getAuthorBooks?author=3</code></td><td><code>GET /api/authors/3/books</code></td><td>Nest related resources in URL</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Flask REST API — Full CRUD Example</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Flask REST API for /api/books</span></div>
+            <pre><code>from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+# In-memory "database"
+books = [
+    {"id": 1, "title": "Clean Code", "author": "Robert Martin"},
+    {"id": 2, "title": "The Pragmatic Programmer", "author": "Hunt &amp; Thomas"}
+]
+next_id = 3
+
+# GET all books
+@app.route('/api/books', methods=['GET'])
+def get_books():
+    return jsonify(books), 200
+
+# GET single book
+@app.route('/api/books/&lt;int:book_id&gt;', methods=['GET'])
+def get_book(book_id):
+    book = next((b for b in books if b['id'] == book_id), None)
+    if book is None:
+        return jsonify({'error': 'Book not found'}), 404
+    return jsonify(book), 200
+
+# POST — create new book
+@app.route('/api/books', methods=['POST'])
+def create_book():
+    global next_id
+    data = request.get_json()
+    if not data or 'title' not in data or 'author' not in data:
+        return jsonify({'error': 'title and author required'}), 400
+    new_book = {'id': next_id, 'title': data['title'], 'author': data['author']}
+    books.append(new_book)
+    next_id += 1
+    return jsonify(new_book), 201
+
+# DELETE
+@app.route('/api/books/&lt;int:book_id&gt;', methods=['DELETE'])
+def delete_book(book_id):
+    global books
+    original_len = len(books)
+    books = [b for b in books if b['id'] != book_id]
+    if len(books) == original_len:
+        return jsonify({'error': 'Book not found'}), 404
+    return '', 204
+
+if __name__ == '__main__':
+    app.run(debug=True)</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 23. JavaScript Frameworks Overview -->
+        <section id="frameworks">
+          <h2 class="syllabus-phase">⚛️ Modern JavaScript Frameworks</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-03, SE-12-06)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Explore</strong> the purpose and structure of JavaScript frameworks and <strong>evaluate</strong> when a framework is appropriate versus vanilla JavaScript.</em></p>
+
+          <h3>Why Frameworks Exist</h3>
+          <p>As web applications grow, manually manipulating the DOM with vanilla JavaScript becomes complex and error-prone. Frameworks solve these problems:</p>
+          <ul>
+            <li><strong>State management:</strong> When data changes, which parts of the page should update? Frameworks handle this automatically.</li>
+            <li><strong>Component reuse:</strong> Build once, use anywhere — a navigation bar, card, or form component defined once can be used across all pages.</li>
+            <li><strong>Data binding:</strong> UI automatically reflects data changes without manual DOM manipulation.</li>
+          </ul>
+
+          <h3>React — Component-Based UI</h3>
+          <p>React (by Meta/Facebook) uses <strong>components</strong> — reusable UI building blocks — and a <strong>Virtual DOM</strong> to efficiently update only the parts of the page that changed.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">JavaScript — React Counter Component (functional)</span></div>
+            <pre><code>import { useState } from 'react';
+
+function Counter() {
+  // useState hook: declares 'count' state, initially 0
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Increment&lt;/button&gt;
+      &lt;button onClick={() =&gt; setCount(0)}&gt;Reset&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default Counter;</code></pre>
+          </div>
+
+          <h3>Framework Comparison</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Feature</th><th>Vanilla JS</th><th>React</th><th>Vue.js</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Learning curve</td><td>Low — just JavaScript</td><td>Medium — JSX, hooks</td><td>Low-Medium — simpler than React</td></tr>
+                <tr><td>Performance</td><td>Best (no overhead)</td><td>Very good (Virtual DOM)</td><td>Very good (Virtual DOM)</td></tr>
+                <tr><td>Ecosystem</td><td>Browser APIs only</td><td>Huge (npm, CRA, Next.js)</td><td>Large (Vite, Nuxt)</td></tr>
+                <tr><td>Job market</td><td>Foundation required</td><td>Most in-demand</td><td>Growing, popular in Asia</td></tr>
+                <tr><td>HSC projects</td><td>Perfectly acceptable</td><td>Adds complexity for small projects</td><td>Gentler learning curve than React</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout tip">
+            <strong>For HSC Projects:</strong> Vanilla JavaScript with HTML/CSS is perfectly acceptable and often preferable. Frameworks add build toolchains, npm dependencies, and conceptual overhead that can consume time better spent on core features. Only use a framework if you're already comfortable with it and your project genuinely benefits from component reuse.
           </div>
         </section>
 

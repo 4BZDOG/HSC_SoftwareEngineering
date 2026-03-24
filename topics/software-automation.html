@@ -86,12 +86,15 @@
         <li><a href="#ai-vs-ml">🤖 1. AI vs Machine Learning</a></li>
         <li><a href="#mlops">🔄 2. ML &amp; Automation</a></li>
         <li><a href="#training-models">🏋️ 3. Training Models</a></li>
-        <li><a href="#ml-applications">📲 4. ML Algorithm Applications</a></li>
-        <li><a href="#ml-design-models">🌳 5. Design Models (Trees &amp; Networks)</a></li>
-        <li><a href="#algorithm-types">📐 6. Types of ML Algorithms</a></li>
+        <li><a href="#data-preprocessing">🧹 4. Data Preprocessing</a></li>
+        <li><a href="#ml-applications">📲 5. ML Algorithm Applications</a></li>
+        <li><a href="#ml-design-models">🌳 6. Design Models (Trees &amp; Networks)</a></li>
+        <li><a href="#algorithm-types">📐 7. Types of ML Algorithms</a></li>
+        <li><a href="#additional-algorithms">🔬 8. K-Means, Random Forest, Naive Bayes</a></li>
+        <li><a href="#ml-tools">🛠️ 9. ML Tools &amp; Libraries</a></li>
         <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 2 — Programming for Automation</li>
-        <li><a href="#regression-oop">📈 7. Regression Models &amp; OOP</a></li>
-        <li><a href="#neural-networks-oop">🕸️ 8. Neural Networks &amp; OOP</a></li>
+        <li><a href="#regression-oop">📈 10. Regression Models &amp; OOP</a></li>
+        <li><a href="#neural-networks-oop">🕸️ 11. Neural Networks &amp; OOP</a></li>
         <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 3 — Significance &amp; Impact</li>
         <li><a href="#societal-impact">🌍 9. Impact on Society</a></li>
         <li><a href="#human-behaviour">🧠 10. Human Behaviour &amp; ML</a></li>
@@ -220,11 +223,235 @@
               </tbody>
             </table>
           </div>
+
+          <div class="callout tip">
+            <strong>Training / Validation / Test Split:</strong> When building a supervised ML model, the labelled dataset is divided into three parts:
+            <ul>
+              <li><strong>Training Set (70%):</strong> The model learns patterns from this data — weights and parameters are adjusted based on training examples.</li>
+              <li><strong>Validation Set (15%):</strong> Used to tune hyperparameters (e.g., choosing K in KNN, or the number of layers in a neural network) and compare different model configurations during development.</li>
+              <li><strong>Test Set (15%):</strong> Held back entirely until the final evaluation — provides an unbiased measure of how the model performs on completely unseen data.</li>
+            </ul>
+            <strong>Tip:</strong> Never use test data during training or hyperparameter tuning. If the test set influences any decisions, it is effectively "seen" by the model and the final accuracy metric is no longer a reliable estimate of real-world performance.
+          </div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 4. Common Applications of Key ML Algorithms -->
+        <!-- 4. Data Preprocessing -->
+        <section id="data-preprocessing">
+          <h2 class="syllabus-phase">🧹 Data Preprocessing</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-03, SE-12-08)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply</strong> data preprocessing techniques to prepare raw datasets for machine learning — cleaning, transforming, and splitting data to maximise model accuracy and reliability.</em></p>
+
+          <div class="callout warning">
+            <strong>Garbage In, Garbage Out:</strong> No matter how sophisticated your ML algorithm, a model trained on dirty, inconsistent, or poorly prepared data will produce unreliable predictions. Data preprocessing is not optional — it is the foundation of every successful ML pipeline. Industry estimates suggest that data scientists spend 60–80% of their time on data preparation, not model training.
+          </div>
+
+          <h3>Handling Missing Data</h3>
+          <p>Real-world datasets almost always contain missing values — sensors that failed, survey respondents who skipped questions, or records that were never collected. There are three main strategies for handling missing data, each with trade-offs:</p>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h4>❌ Drop Rows/Columns</h4>
+              <p>Remove any row (sample) or column (feature) that contains missing values. Simple but risky — if many rows are dropped, the model may be trained on an unrepresentative subset of the data, introducing sampling bias.</p>
+            </div>
+            <div class="info-card">
+              <h4>📊 Impute with Mean / Median / Mode</h4>
+              <p>Replace missing values with a summary statistic of the existing values. <strong>Mean</strong> works for normally distributed numerical features. <strong>Median</strong> is better for skewed distributions (outliers distort the mean). <strong>Mode</strong> (most frequent value) is used for categorical features.</p>
+            </div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Handling Missing Data with pandas</span></div>
+            <pre><code class="language-python">import pandas as pd
+import numpy as np
+
+# Sample dataset with missing values
+data = {
+    'age':    [25, np.nan, 35, 42, np.nan, 50],
+    'income': [40000, 55000, np.nan, 80000, 62000, np.nan],
+    'grade':  ['A', 'B', np.nan, 'A', 'C', 'B']
+}
+df = pd.DataFrame(data)
+
+# Strategy 1: Drop rows with any missing value
+df_dropped = df.dropna()
+
+# Strategy 2: Fill numerical columns with the median
+df['age'].fillna(df['age'].median(), inplace=True)
+df['income'].fillna(df['income'].mean(), inplace=True)
+
+# Strategy 3: Fill categorical column with the mode (most frequent value)
+df['grade'].fillna(df['grade'].mode()[0], inplace=True)
+
+print(df)          # All missing values are now filled
+print(df.isnull().sum())  # Should print 0 for all columns</code></pre>
+          </div>
+
+          <h3>Normalisation vs Standardisation</h3>
+          <p>Many ML algorithms (KNN, neural networks, SVMs) are sensitive to the <strong>scale of features</strong>. If one feature has values in the thousands (e.g., income) and another has values between 0 and 1 (e.g., a ratio), the large-scale feature will dominate distance calculations. Scaling ensures all features contribute equally to the model.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Technique</th>
+                  <th>Formula</th>
+                  <th>Output Range</th>
+                  <th>Best For</th>
+                  <th>Sensitive to Outliers?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Min-Max Normalisation</strong></td>
+                  <td>x' = (x − min) / (max − min)</td>
+                  <td>0 to 1</td>
+                  <td>Neural networks, image pixel values, when bounded range is needed</td>
+                  <td>Yes — outliers compress most values into a narrow range</td>
+                </tr>
+                <tr>
+                  <td><strong>Z-Score Standardisation</strong></td>
+                  <td>x' = (x − μ) / σ</td>
+                  <td>Typically −3 to +3 (unbounded)</td>
+                  <td>Linear/logistic regression, KNN, PCA — when distribution is approximately normal</td>
+                  <td>Less so — outliers become large z-scores but do not compress other values</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Min-Max Scaling with sklearn MinMaxScaler</span></div>
+            <pre><code class="language-python">from sklearn.preprocessing import MinMaxScaler
+import numpy as np
+
+# Raw features: [age, income]
+X = np.array([[25, 40000],
+              [35, 80000],
+              [45, 60000],
+              [22, 30000]])
+
+scaler = MinMaxScaler()           # Scales each feature to range [0, 1]
+X_scaled = scaler.fit_transform(X)
+
+print(X_scaled)
+# Output (approximate):
+# [[0.13  0.33]
+#  [0.59  1.00]
+#  [1.00  0.60]
+#  [0.00  0.00]]
+
+# To reverse the scaling (e.g., to interpret predictions):
+X_original = scaler.inverse_transform(X_scaled)</code></pre>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Z-Score Standardisation with sklearn StandardScaler</span></div>
+            <pre><code class="language-python">from sklearn.preprocessing import StandardScaler
+import numpy as np
+
+# Raw features: [age, income]
+X = np.array([[25, 40000],
+              [35, 80000],
+              [45, 60000],
+              [22, 30000]])
+
+scaler = StandardScaler()         # Transforms to mean=0, std=1
+X_scaled = scaler.fit_transform(X)
+
+print(X_scaled)
+# Output (approximate):
+# [[-0.81  -0.85]
+#  [ 0.27   1.27]
+#  [ 1.35   0.42]
+#  [-1.35  -0.85]]
+
+# Inspect what the scaler learned:
+print(f"Feature means:  {scaler.mean_}")
+print(f"Feature std devs: {scaler.scale_}")</code></pre>
+          </div>
+
+          <h3>Feature Selection</h3>
+          <p><strong>Feature selection</strong> is the process of identifying and retaining only the most informative input variables, and discarding irrelevant or redundant ones. Including too many features can lead to the <strong>curse of dimensionality</strong> — model performance degrades as irrelevant noise increases, and training becomes slower. Key techniques include:</p>
+
+          <div class="key-terms">
+            <div class="key-term-item"><strong>🗑️ Removing Irrelevant Columns</strong><span>Columns that contain unique identifiers (e.g., customer ID, timestamp) or that have no predictive relationship to the target variable should be dropped. For example, in a house price model, the database record ID has zero predictive value and should be excluded.</span></div>
+            <div class="key-term-item"><strong>📈 Correlation Analysis</strong><span>Calculate the Pearson correlation coefficient between each numerical feature and the target variable. Features with correlations close to 0 (no linear relationship) are candidates for removal. Also check for <strong>multicollinearity</strong> — two features that are highly correlated with each other provide duplicate information; one can be removed without loss of predictive power.</span></div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Correlation Analysis with pandas</span></div>
+            <pre><code class="language-python">import pandas as pd
+
+# Load dataset (e.g., house prices)
+df = pd.read_csv('houses.csv')
+
+# Show correlation of all features with the target variable (price)
+correlations = df.corr()['price'].sort_values(ascending=False)
+print(correlations)
+
+# Drop columns with very low correlation to target (threshold: |r| < 0.1)
+low_corr = correlations[abs(correlations) < 0.1].index.tolist()
+df = df.drop(columns=low_corr)
+
+# Also drop the ID column which is not a feature
+df = df.drop(columns=['id'], errors='ignore')</code></pre>
+          </div>
+
+          <h3>Train / Validation / Test Split</h3>
+          <p>Before training, the dataset is divided into three non-overlapping subsets. A common split is <strong>70 / 15 / 15</strong> or <strong>80 / 10 / 10</strong>.</p>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h4>📚 Training Set (~70–80%)</h4>
+              <p>The model learns from this data — weights, coefficients, and parameters are adjusted based on training examples. The model <em>sees</em> this data during the learning process.</p>
+            </div>
+            <div class="info-card">
+              <h4>🔧 Validation Set (~10–15%)</h4>
+              <p>Used during development to tune <strong>hyperparameters</strong> (e.g., choosing K in KNN, number of layers, regularisation strength) and to compare different model configurations. The model does not train on validation data, but decisions are made based on its validation performance — so it is "indirectly seen."</p>
+            </div>
+            <div class="info-card">
+              <h4>🔒 Test Set (~10–15%)</h4>
+              <p>Held back entirely until final evaluation. Provides an <em>unbiased</em> estimate of real-world performance. The test set must never influence any training or tuning decision — it simulates completely unseen data.</p>
+            </div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Train/Validation/Test Split with sklearn</span></div>
+            <pre><code class="language-python">from sklearn.model_selection import train_test_split
+import numpy as np
+
+X = np.random.rand(1000, 5)   # 1000 samples, 5 features
+y = np.random.randint(0, 2, 1000)  # binary labels
+
+# Step 1: Split off the test set (15%)
+X_temp, X_test, y_temp, y_test = train_test_split(
+    X, y, test_size=0.15, random_state=42
+)
+
+# Step 2: Split remaining data into train (70%) and validation (15%)
+# 15 / 85 ≈ 0.176 of the remaining data gives the correct 15% of total
+X_train, X_val, y_train, y_val = train_test_split(
+    X_temp, y_temp, test_size=0.176, random_state=42
+)
+
+print(f"Training:   {len(X_train)} samples")   # ~700
+print(f"Validation: {len(X_val)} samples")     # ~150
+print(f"Test:       {len(X_test)} samples")    # ~150</code></pre>
+          </div>
+
+          <div class="callout warning">
+            <strong>Data Leakage Warning:</strong> Always fit your scaler (and any other preprocessing step) <em>only</em> on the <strong>training set</strong>, then use <code>transform()</code> on the validation and test sets. Fitting on the full dataset (including validation and test data) before splitting is a common mistake known as <strong>data leakage</strong> — it allows information from the test set to influence training, making evaluation results unrealistically optimistic. In production, the model will perform worse than the inflated metric suggests.
+            <br><br>
+            <strong>Wrong:</strong> <code>scaler.fit_transform(X_all)</code> then split.<br>
+            <strong>Correct:</strong> Split first → <code>scaler.fit_transform(X_train)</code> → <code>scaler.transform(X_val)</code> → <code>scaler.transform(X_test)</code>.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 5. Common Applications of Key ML Algorithms -->
         <section id="ml-applications">
           <h2 class="syllabus-phase">📲 Common Applications of Key ML Algorithms</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-03, SE-12-05)</em></p>
@@ -390,6 +617,31 @@
           <h3>Linear Regression</h3>
           <p><strong>Linear regression</strong> is a supervised learning algorithm used to predict a <strong>continuous numerical value</strong> based on one or more input features. It fits a straight line (or hyperplane in multiple dimensions) through the training data that minimises the total squared distance between each data point and the line — known as the <strong>Ordinary Least Squares (OLS)</strong> method. The resulting equation takes the form: <code>y = mx + c</code>, where <em>m</em> is the slope (coefficient) and <em>c</em> is the y-intercept. For example, a linear regression model trained on study hours and exam scores would output a predicted score for any given number of study hours.</p>
 
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Linear Regression with Train/Test Split (scikit-learn)</span></div>
+            <pre><code class="language-python">from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score
+import numpy as np
+
+# Sample data: study hours vs exam scores
+X = np.array([[1], [2], [3], [4], [5], [6], [7], [8]])
+y = np.array([45, 55, 60, 65, 70, 75, 80, 88])
+
+# Split into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train the model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Evaluate
+y_pred = model.predict(X_test)
+print(f"R² Score: {r2_score(y_test, y_pred):.3f}")
+print(f"MSE: {mean_squared_error(y_test, y_pred):.2f}")
+print(f"Predicted score for 9 hours: {model.predict([[9]])[0]:.1f}")</code></pre>
+          </div>
+
           <h3>Logistic Regression</h3>
           <p>Despite its name, <strong>logistic regression</strong> is a <strong>classification algorithm</strong> — not used for predicting continuous values. It calculates the probability that an input belongs to a particular class (typically binary: 0 or 1, True or False). The <strong>sigmoid function</strong> squashes any input value into a probability between 0 and 1. A threshold (typically 0.5) converts this probability into a class prediction. For example, a logistic regression model assessing whether a bank transaction is fraudulent outputs a probability of fraud; if it exceeds 0.5 (or a risk-adjusted threshold), the transaction is flagged. Logistic regression is highly interpretable — each feature's coefficient indicates its influence on the predicted probability.</p>
 
@@ -409,6 +661,29 @@
 
           <div class="callout info">
             <strong>KNN Example:</strong> To classify whether a new plant is Species A or B based on petal length and width, KNN finds the 5 most similar plants in the training set (K=5). If 4 of those 5 are Species A, the new plant is classified as Species A with high confidence.
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — K-Nearest Neighbour Classification (scikit-learn)</span></div>
+            <pre><code class="language-python">from sklearn.neighbors import KNeighborsClassifier
+from sklearn.preprocessing import StandardScaler
+
+# Features: [age, income], Labels: [0=no loan, 1=loan approved]
+X_train = [[25, 30000], [35, 55000], [45, 80000], [22, 25000], [50, 90000]]
+y_train = [0, 1, 1, 0, 1]
+
+# Scale features (important for KNN!)
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X_train)
+
+# Train with k=3
+knn = KNeighborsClassifier(n_neighbors=3)
+knn.fit(X_scaled, y_train)
+
+# Predict for new customer
+new_customer = scaler.transform([[30, 45000]])
+prediction = knn.predict(new_customer)
+print(f"Loan approved: {'Yes' if prediction[0] == 1 else 'No'}")</code></pre>
           </div>
 
           <div class="table-wrap">
@@ -444,6 +719,378 @@
             </table>
           </div>
         </section>
+
+        <hr class="divider" />
+
+        <!-- 8. K-Means, Random Forest, Naive Bayes -->
+        <section id="additional-algorithms">
+          <h2 class="syllabus-phase">🔬 K-Means, Random Forest &amp; Naive Bayes</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-03)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply</strong> additional ML algorithms — K-Means clustering, Random Forest ensemble learning, and Naive Bayes classification — to solve a range of real-world problems.</em></p>
+
+          <h3>K-Means Clustering (Unsupervised)</h3>
+          <p><strong>K-Means</strong> is an unsupervised algorithm that groups unlabelled data into <em>K</em> clusters by iteratively assigning points to the nearest centroid and updating centroid positions. No labelled training data is required.</p>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h4>How K-Means Works</h4>
+              <ol>
+                <li>Choose K (number of clusters) and randomly initialise K centroids.</li>
+                <li><strong>Assign:</strong> Each data point is assigned to the nearest centroid (using Euclidean distance).</li>
+                <li><strong>Update:</strong> Move each centroid to the mean of all points assigned to it.</li>
+                <li>Repeat steps 2–3 until centroids stop moving (convergence).</li>
+              </ol>
+            </div>
+            <div class="info-card">
+              <h4>Choosing K: The Elbow Method</h4>
+              <p>Plot the within-cluster sum of squares (WCSS) against K. The "elbow" — where adding more clusters gives diminishing returns — is the optimal K. For example, if WCSS drops sharply from K=1 to K=3 then levels off, K=3 is likely the best choice.</p>
+            </div>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — K-Means with scikit-learn</span></div>
+            <pre><code class="language-python">from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+import numpy as np
+
+# Customer data: [age, annual_spend]
+X = np.array([[25, 2000], [30, 5000], [35, 4500], [22, 1800],
+              [45, 8000], [50, 9000], [55, 8500], [60, 7500]])
+
+# Scale features before clustering
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Fit K-Means with 2 clusters
+kmeans = KMeans(n_clusters=2, random_state=42, n_init=10)
+kmeans.fit(X_scaled)
+
+print("Cluster assignments:", kmeans.labels_)
+# e.g. [0 0 0 0 1 1 1 1]  — younger low-spend vs older high-spend</code></pre>
+          </div>
+          <p><strong>Use cases:</strong> Customer segmentation, image colour compression, anomaly detection, document topic grouping.</p>
+
+          <h3>Random Forest (Ensemble)</h3>
+          <p>A <strong>Random Forest</strong> is an ensemble of many decision trees, each trained on a random subset of the training data (a technique called <strong>bagging — Bootstrap Aggregating</strong>). The final prediction is the majority vote (classification) or average (regression) of all trees. Because each tree is trained on slightly different data and features, the ensemble is much more robust than any single tree.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Aspect</th><th>Decision Tree</th><th>Random Forest</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Overfitting</td><td>High — memorises training data</td><td>Low — averaging reduces overfitting</td></tr>
+                <tr><td>Interpretability</td><td>High — easy to visualise</td><td>Lower — hundreds of trees are hard to explain</td></tr>
+                <tr><td>Training speed</td><td>Fast</td><td>Slower (trains N trees)</td></tr>
+                <tr><td>Prediction accuracy</td><td>Lower on unseen data</td><td>Generally higher — industry standard</td></tr>
+                <tr><td>Feature importance</td><td>Available</td><td>Available and more reliable</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Random Forest Classifier</span></div>
+            <pre><code class="language-python">from sklearn.ensemble import RandomForestClassifier
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+# Load the classic Iris dataset (150 flowers, 3 species)
+iris = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(
+    iris.data, iris.target, test_size=0.2, random_state=42)
+
+# Train Random Forest with 100 trees
+rf = RandomForestClassifier(n_estimators=100, random_state=42)
+rf.fit(X_train, y_train)
+
+# Evaluate
+y_pred = rf.predict(X_test)
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.3f}")
+
+# Feature importance
+for name, importance in zip(iris.feature_names, rf.feature_importances_):
+    print(f"  {name}: {importance:.3f}")</code></pre>
+          </div>
+
+          <h3>Naive Bayes</h3>
+          <p><strong>Naive Bayes</strong> classifiers apply Bayes' theorem with the "naive" assumption that all features are statistically independent. Despite this unrealistic assumption, Naive Bayes performs surprisingly well — especially for text classification (spam detection, sentiment analysis).</p>
+
+          <div class="callout info">
+            <strong>Bayes Theorem:</strong> P(class | features) ∝ P(features | class) × P(class)<br>
+            In plain English: the probability of a class given the observed features is proportional to how likely those features are given that class, multiplied by how common the class is overall.
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Gaussian Naive Bayes</span></div>
+            <pre><code class="language-python">from sklearn.naive_bayes import GaussianNB
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+iris = load_iris()
+X_train, X_test, y_train, y_test = train_test_split(
+    iris.data, iris.target, test_size=0.3, random_state=0)
+
+gnb = GaussianNB()
+gnb.fit(X_train, y_train)
+y_pred = gnb.predict(X_test)
+print(f"Naive Bayes Accuracy: {accuracy_score(y_test, y_pred):.3f}")</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 9. ML Tools & Libraries -->
+        <section id="ml-tools">
+          <h2 class="syllabus-phase">🛠️ ML Tools &amp; Libraries</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-03)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Identify</strong> the primary Python libraries used in machine learning and <strong>apply</strong> a complete ML workflow using these tools.</em></p>
+
+          <h3>Core Python ML Libraries</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>scikit-learn</strong><span>The go-to Python ML library. Provides implementations of most ML algorithms (linear regression, decision trees, KNN, random forest, K-Means), as well as preprocessing tools (scalers, encoders), train/test splitting, and evaluation metrics. Consistent API: <code>fit()</code>, <code>predict()</code>, <code>score()</code>.</span></div>
+            <div class="key-term-item"><strong>pandas</strong><span>Data manipulation library. The <code>DataFrame</code> is the core structure — a labelled 2D table (like a spreadsheet in Python). Used to load CSV/Excel data, clean missing values, filter rows, and prepare data for ML algorithms.</span></div>
+            <div class="key-term-item"><strong>NumPy</strong><span>Numerical computing library providing fast array operations. Most ML algorithms work with NumPy arrays. Supports vectorised operations, matrix maths, and random number generation. scikit-learn expects NumPy arrays as input.</span></div>
+            <div class="key-term-item"><strong>Matplotlib / Seaborn</strong><span>Data visualisation libraries. Matplotlib provides fine-grained control over plots; Seaborn provides higher-level statistical charts (heatmaps, distribution plots, pairplots). Essential for EDA (Exploratory Data Analysis) before training.</span></div>
+            <div class="key-term-item"><strong>TensorFlow / Keras</strong><span>Deep learning frameworks for training neural networks with GPU acceleration. Keras provides a high-level API on top of TensorFlow. Used for image classification, NLP, and time-series forecasting. More complex than scikit-learn — appropriate for HSC extension content.</span></div>
+          </div>
+
+          <h3>Library Selection Guide</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Task</th><th>Best Library</th><th>Key Functions</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Load and clean data</td><td>pandas</td><td><code>read_csv()</code>, <code>fillna()</code>, <code>dropna()</code>, <code>groupby()</code></td></tr>
+                <tr><td>Numerical operations</td><td>NumPy</td><td><code>array()</code>, <code>mean()</code>, <code>std()</code>, <code>dot()</code></td></tr>
+                <tr><td>Classical ML algorithms</td><td>scikit-learn</td><td><code>fit()</code>, <code>predict()</code>, <code>train_test_split()</code></td></tr>
+                <tr><td>Visualise data / results</td><td>Matplotlib / Seaborn</td><td><code>plot()</code>, <code>scatter()</code>, <code>heatmap()</code></td></tr>
+                <tr><td>Neural networks</td><td>TensorFlow / Keras</td><td><code>Sequential()</code>, <code>Dense()</code>, <code>compile()</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>End-to-End ML Workflow Example</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Complete ML Pipeline (Iris Classification)</span></div>
+            <pre><code class="language-python">import pandas as pd
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+# ── 1. LOAD DATA ──────────────────────────────────
+iris = load_iris()
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+df['species'] = iris.target
+
+# ── 2. PREPROCESS ─────────────────────────────────
+X = df.drop('species', axis=1)
+y = df['species']
+
+# Check for missing values
+print("Missing values:", X.isnull().sum().sum())
+
+# ── 3. SPLIT ──────────────────────────────────────
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y)
+
+# ── 4. SCALE FEATURES ─────────────────────────────
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)  # fit on train only!
+X_test_scaled = scaler.transform(X_test)        # transform test
+
+# ── 5. TRAIN ──────────────────────────────────────
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train_scaled, y_train)
+
+# ── 6. EVALUATE ───────────────────────────────────
+y_pred = model.predict(X_test_scaled)
+print(f"Accuracy: {accuracy_score(y_test, y_pred):.3f}")
+print(classification_report(y_test, y_pred,
+                             target_names=iris.target_names))
+
+# ── 7. PREDICT ────────────────────────────────────
+new_flower = [[5.1, 3.5, 1.4, 0.2]]   # example measurements
+new_scaled = scaler.transform(new_flower)
+prediction = model.predict(new_scaled)
+print(f"Predicted species: {iris.target_names[prediction[0]]}")</code></pre>
+          </div>
+
+          <div class="callout warning">
+            <strong>Data Leakage:</strong> Always <code>fit_transform()</code> scalers on <em>training data only</em>, then <code>transform()</code> on test data. Fitting on the entire dataset "leaks" information about the test set into the model, giving artificially high accuracy scores that won't reflect real-world performance.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- Model Evaluation Metrics -->
+        <section id="model-evaluation">
+          <h2 class="syllabus-phase">📊 Model Evaluation Metrics</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-03)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Evaluate</strong> the performance of ML models using appropriate metrics — different problem types (classification vs regression) require different measures of accuracy.</em></p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Formula</th>
+                  <th>When to Use</th>
+                  <th>Example Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Accuracy</strong></td>
+                  <td>(TP + TN) / Total</td>
+                  <td>Balanced classification datasets</td>
+                  <td>0.92 = 92% correct</td>
+                </tr>
+                <tr>
+                  <td><strong>Precision</strong></td>
+                  <td>TP / (TP + FP)</td>
+                  <td>When false positives are costly (e.g. spam filter)</td>
+                  <td>0.88 = 88% of positives were real</td>
+                </tr>
+                <tr>
+                  <td><strong>Recall</strong></td>
+                  <td>TP / (TP + FN)</td>
+                  <td>When false negatives are costly (e.g. disease detection)</td>
+                  <td>0.95 = caught 95% of actual positives</td>
+                </tr>
+                <tr>
+                  <td><strong>F1-Score</strong></td>
+                  <td>2 × (Precision × Recall) / (Precision + Recall)</td>
+                  <td>Imbalanced datasets — balances precision and recall</td>
+                  <td>0.91 = harmonic mean of precision &amp; recall</td>
+                </tr>
+                <tr>
+                  <td><strong>MSE</strong></td>
+                  <td>Σ(y − ŷ)² / n</td>
+                  <td>Regression — penalises large errors heavily</td>
+                  <td>4.25 (lower is better)</td>
+                </tr>
+                <tr>
+                  <td><strong>R²</strong></td>
+                  <td>1 − (SS_res / SS_tot)</td>
+                  <td>Regression — proportion of variance explained</td>
+                  <td>0.94 = model explains 94% of variance</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Confusion Matrix</h3>
+          <p>A <strong>confusion matrix</strong> summarises the prediction results for a classification model, showing how many samples were correctly or incorrectly classified for each class.</p>
+
+          <pre class="text-diagram">
+                         PREDICTED
+                    |  Positive  |  Negative  |
+         ───────────┼────────────┼────────────┤
+ACTUAL   Positive   |  TP (hit)  |  FN (miss) |
+         Negative   |  FP (false |  TN (corr- |
+                    |   alarm)   |   ect rej) |
+          </pre>
+
+          <div class="callout tip">
+            <strong>True/False Positives and Negatives:</strong><br>
+            <strong>True Positive (TP):</strong> Model predicted positive — and it was correct (e.g. flagged spam that is actually spam).<br>
+            <strong>False Positive (FP):</strong> Model predicted positive — but it was wrong (e.g. flagged a legitimate email as spam — a "false alarm").<br>
+            <strong>True Negative (TN):</strong> Model predicted negative — and it was correct (e.g. correctly allowed a legitimate email through).<br>
+            <strong>False Negative (FN):</strong> Model predicted negative — but it was wrong (e.g. failed to catch a spam email — a "miss").<br><br>
+            In medical diagnosis, <strong>false negatives are dangerous</strong> (missing a disease), so recall is prioritised. In spam filtering, <strong>false positives are costly</strong> (blocking important emails), so precision is prioritised.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- Overfitting vs Underfitting -->
+        <section id="overfitting">
+          <h2 class="syllabus-phase">📉 Overfitting vs Underfitting</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-03)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Distinguish</strong> between underfitting and overfitting in ML models and explain strategies to achieve a well-generalising model.</em></p>
+
+          <pre class="text-diagram">
+UNDERFITTING             GOOD FIT               OVERFITTING
+(High Bias)              (Balanced)             (High Variance)
+
+  *   *                    *                     * * *
+    *   *      →        * * * *       ←       *       *
+  *   *                * * * * *             *  * * *  *
+Training err: HIGH     Training err: LOW     Training err: VERY LOW
+Test err:     HIGH     Test err:     LOW     Test err:     HIGH
+Model is too simple    Model generalises     Model memorised
+to learn patterns      well to new data      training noise
+          </pre>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Characteristic</th>
+                  <th>Underfitting</th>
+                  <th>Good Fit</th>
+                  <th>Overfitting</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Training Error</strong></td>
+                  <td>High</td>
+                  <td>Low</td>
+                  <td>Very Low</td>
+                </tr>
+                <tr>
+                  <td><strong>Test / Validation Error</strong></td>
+                  <td>High</td>
+                  <td>Low</td>
+                  <td>High</td>
+                </tr>
+                <tr>
+                  <td><strong>Bias</strong></td>
+                  <td>High</td>
+                  <td>Low</td>
+                  <td>Low</td>
+                </tr>
+                <tr>
+                  <td><strong>Variance</strong></td>
+                  <td>Low</td>
+                  <td>Low</td>
+                  <td>High</td>
+                </tr>
+                <tr>
+                  <td><strong>Cause</strong></td>
+                  <td>Model too simple; too few features</td>
+                  <td>Appropriate complexity</td>
+                  <td>Model too complex; too many parameters</td>
+                </tr>
+                <tr>
+                  <td><strong>Fix</strong></td>
+                  <td>More features, more complex model</td>
+                  <td>—</td>
+                  <td>Regularisation, more data, dropout</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout exam-tip">
+            <strong>Strategies to Prevent Overfitting:</strong>
+            <ul>
+              <li><strong>Regularisation (L1/L2):</strong> Adds a penalty to the loss function for large model weights, discouraging the model from fitting noise. L1 (Lasso) can reduce weights to zero (feature selection); L2 (Ridge) shrinks weights towards zero.</li>
+              <li><strong>Cross-Validation:</strong> Split data into multiple folds and train/validate across all combinations — ensures the model performs well on varied subsets of data, not just one split.</li>
+              <li><strong>More Training Data:</strong> A larger, more diverse dataset makes it harder for the model to memorise specific examples and forces it to learn genuine patterns.</li>
+              <li><strong>Dropout (Neural Networks):</strong> Randomly disables neurons during training, preventing co-adaptation and forcing the network to learn robust, distributed representations.</li>
+              <li><strong>Early Stopping:</strong> Monitor validation loss during training and stop training when it begins to increase — preventing the model from over-training on the training set.</li>
+            </ul>
+          </div>
+        </section>
+
+        <hr class="divider" />
 
         <!-- ═══════════════════════════════════════════════════════ -->
         <!--  PART 2: PROGRAMMING FOR AUTOMATION                     -->

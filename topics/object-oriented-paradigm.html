@@ -94,6 +94,11 @@
         <li><a href="#design-implement">💻 9. Design &amp; Implementation</a></li>
         <li><a href="#code-practices">🔧 10. Implementation Practices</a></li>
         <li><a href="#testing">🧪 11. Testing &amp; Quality Assurance</a></li>
+        <li><a href="#hsc-project-oop">📚 12. HSC Project OOP Design</a></li>
+        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 3 — Advanced OOP</li>
+        <li><a href="#design-patterns">🏗️ 13. Design Patterns</a></li>
+        <li><a href="#abstract-classes">🔷 14. Abstract Classes &amp; Interfaces</a></li>
+        <li><a href="#exception-handling">⚠️ 15. Exception Handling</a></li>
       </ul>
     </aside>
 
@@ -366,6 +371,31 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
             <li>🛠️ <strong>Data Flow Diagrams (p. 5):</strong> Useful for showing how data moves between objects and external entities, focusing on the "transformation" of data (Outcome SE-11-06).</li>
             <li>🛠️ <strong>Structure Charts (p. 7):</strong> While often procedural, they are used in OOP to map out complex method calls and parameter passing between modules (Outcome SE-11-06).</li>
           </ul>
+
+          <div class="diagram-block">
+            <h4>📐 Structure Chart — Student Management System</h4>
+            <p class="diagram-subtitle">Top-down decomposition of modules and function calls</p>
+            <p class="diagram-description">
+              A structure chart shows how a program is broken into modules (functions/methods) and how they call each other. Unlike a class diagram, it focuses on the hierarchy of calls, not on OOP relationships. Parameters passed between modules are shown on the connecting arrows.
+            </p>
+            <pre class="text-diagram">Structure Chart: Student Management System
+==========================================
+              [Main Program]
+              /            \
+   [Student Module]    [Report Module]
+    /     |     \           |      \
+[Add] [Update] [Delete]  [View]  [Export]
+  |       |
+[Validate] [Save to DB]</pre>
+            <div class="callout tip">
+              <p><strong>Structure Chart vs Class Diagram — What's the difference?</strong></p>
+              <ul>
+                <li><strong>Structure Chart:</strong> Shows how a program is broken into <em>modules/functions</em> and the hierarchy of calls between them. It is procedural in nature — "what calls what".</li>
+                <li><strong>Class Diagram:</strong> Shows OOP <em>relationships</em> between classes — inheritance (IS-A), composition (HAS-A), and associations. It models objects and their data, not just call sequences.</li>
+                <li>In an OOP project, you may use a <strong>structure chart</strong> to plan the top-level flow (e.g., which module runs first) and a <strong>class diagram</strong> to design the objects within each module.</li>
+              </ul>
+            </div>
+          </div>
 
           <div class="callout info">
             <p><strong>Online Tool Suggestion:</strong> Students should use <strong>Lucidchart</strong>, <strong>Draw.io</strong>, or <strong>Mermaid.js</strong> to create professional UML Class Diagrams and DFDs.</p>
@@ -683,6 +713,502 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
             <li><strong>Performance Testing:</strong> Verifying the code meets performance requirements under expected and peak loads.</li>
             <li><strong>Security Testing:</strong> Identifying and fixing security vulnerabilities (part of Secure Software Development as per SE-12-X topics).</li>
           </ul>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 12. Practical HSC Project OOP Design -->
+        <section id="hsc-project-oop">
+          <h2 class="syllabus-phase">📚 Practical HSC Project OOP Design</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-02, SE-11-05, SE-11-06)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply</strong> OOP design principles to a realistic HSC project scenario. The Library Management System is a classic example that demonstrates all four OOP pillars in a coherent, assessable design.</em></p>
+
+          <h3>Library Management System — Class Diagram</h3>
+          <p>A Library Management System is an ideal HSC project because it has multiple entity types with clear IS-A and HAS-A relationships. The diagram below shows how <code>Book</code>, <code>Member</code>, and <code>Library</code> interact:</p>
+
+          <div class="diagram-block">
+            <h4>📖 Class Diagram — Library Management System</h4>
+            <p class="diagram-subtitle">UML class diagram showing relationships between core entities</p>
+            <p class="diagram-description">
+              This class diagram models a Library Management System with three core classes. Library acts as the central coordinator (facade), holding collections of Books and Members. Members can borrow multiple Books, creating a many-to-many relationship managed through the Library. Private attributes (prefixed with -) are accessed only via public methods (+), demonstrating encapsulation.
+            </p>
+            <div class="mermaid">
+              classDiagram
+                class Book {
+                    -String isbn
+                    -String title
+                    -String author
+                    -bool available
+                    +checkout() bool
+                    +return_book() void
+                    +get_details() dict
+                }
+                class Member {
+                    -int member_id
+                    -String name
+                    -String email
+                    -list borrowed_books
+                    +borrow(book) bool
+                    +return_book(book) void
+                    +get_history() list
+                }
+                class Library {
+                    -list books
+                    -list members
+                    +add_book(book) void
+                    +register_member(member) void
+                    +search(query) list
+                }
+                Library "1" --> "many" Book
+                Library "1" --> "many" Member
+                Member "1" --> "many" Book : borrows
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Demonstrate a complete OOP design with composition (Library HAS-A Books/Members) and association (Member borrows Books)<br>
+              <strong>Syllabus Link:</strong> SE-11-02, SE-11-06<br>
+              <strong>Try This:</strong> Extend this diagram by adding an <code>EBook</code> class that inherits from <code>Book</code> and adds a <code>file_format</code> attribute.
+            </p>
+          </div>
+
+          <h3>Python Implementation — Book and EBook Classes</h3>
+          <p>The following implementation demonstrates all four OOP pillars. Note how <strong>encapsulation</strong> is achieved with private attributes (double underscore prefix), <strong>abstraction</strong> through the property decorator, <strong>inheritance</strong> via <code>EBook(Book)</code>, and <strong>polymorphism</strong> by overriding <code>checkout()</code>:</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Library System OOP Implementation</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Book</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, isbn: str, title: str, author: str):
+        self.__isbn = isbn          <span class="cm"># Private attribute</span>
+        self.__title = title
+        self.__author = author
+        self.__available = <span class="kw">True</span>
+
+    @property
+    <span class="kw">def</span> <span class="fn">title</span>(self):               <span class="cm"># Getter (encapsulation)</span>
+        <span class="kw">return</span> self.__title
+
+    @property
+    <span class="kw">def</span> <span class="fn">available</span>(self):
+        <span class="kw">return</span> self.__available
+
+    <span class="kw">def</span> <span class="fn">checkout</span>(self) -> bool:
+        <span class="kw">if</span> self.__available:
+            self.__available = <span class="kw">False</span>
+            <span class="kw">return</span> <span class="kw">True</span>
+        <span class="kw">return</span> <span class="kw">False</span>
+
+    <span class="kw">def</span> <span class="fn">return_book</span>(self) -> <span class="kw">None</span>:
+        self.__available = <span class="kw">True</span>
+
+    <span class="kw">def</span> <span class="fn">__str__</span>(self):             <span class="cm"># String representation</span>
+        status = <span class="str">"Available"</span> <span class="kw">if</span> self.__available <span class="kw">else</span> <span class="str">"Checked out"</span>
+        <span class="kw">return</span> f<span class="str">"{self.__title} by {self.__author} [{status}]"</span>
+
+
+<span class="kw">class</span> <span class="fn">EBook</span>(Book):                 <span class="cm"># Inheritance</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, isbn, title, author, file_format: str):
+        super().__init__(isbn, title, author)
+        self.__file_format = file_format
+
+    <span class="kw">def</span> <span class="fn">download</span>(self) -> str:     <span class="cm"># Polymorphism - new behaviour</span>
+        <span class="kw">return</span> f<span class="str">"Downloading {self.title} as {self.__file_format}..."</span>
+
+    <span class="kw">def</span> <span class="fn">checkout</span>(self) -> bool:    <span class="cm"># Polymorphism - override</span>
+        <span class="cm"># EBooks can always be checked out (no physical limit)</span>
+        <span class="kw">return</span> <span class="kw">True</span></code></pre>
+          </div>
+
+          <div class="callout exam-tip">
+            <p><strong>OOP Design Checklist — Use This for Your HSC Project</strong></p>
+            <ul>
+              <li>Have you identified all objects/entities in your system?</li>
+              <li>Are attributes private with getters/setters where needed?</li>
+              <li>Is there appropriate use of inheritance (IS-A relationship)?</li>
+              <li>Is composition used for HAS-A relationships?</li>
+              <li>Are method names clear and do they follow single responsibility?</li>
+              <li>Have you drawn a UML class diagram in your documentation?</li>
+            </ul>
+          </div>
+
+          <div class="callout tip">
+            <p><strong>When NOT to Use OOP</strong></p>
+            <ul>
+              <li><strong>Simple scripts</strong> (e.g., a one-off data conversion) don't need classes — plain functions are simpler and faster to write.</li>
+              <li><strong>OOP shines</strong> when you have multiple similar objects that share structure but differ in state or behaviour (e.g., many <code>Book</code> objects in a library).</li>
+              <li><strong>Data-heavy transformations</strong> (e.g., mathematical pipelines, batch processing) may suit a functional or procedural style more naturally.</li>
+              <li><strong>For your HSC project:</strong> if your system involves 3 or more entity types that each have their own data <em>and</em> behaviour, OOP is the right choice and will earn better marks for design quality.</li>
+            </ul>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 3: ADVANCED OOP                                   -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Part 3</span>
+          <span class="part-name">🏗️ Advanced OOP</span>
+        </div>
+
+        <!-- 13. Design Patterns -->
+        <section id="design-patterns">
+          <h2 class="syllabus-phase">🏗️ Design Patterns</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02, SE-11-06, SE-11-07)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply</strong> established design patterns to solve recurring software design problems, producing more maintainable, flexible, and scalable solutions.</em></p>
+
+          <p>Design patterns are reusable solutions to commonly occurring problems in software design. They are not code you copy — they are templates or blueprints for how to structure your code.</p>
+
+          <h3>Singleton Pattern</h3>
+          <p><strong>Intent:</strong> Ensure that a class has only one instance and provide a global access point to it.</p>
+          <p><strong>Use cases:</strong> Database connections (one shared pool), configuration managers (one settings object), logging systems (one log file handler).</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Singleton using __new__</span></div>
+            <pre><code class="language-python">class DatabaseConnection:
+    _instance = None   # Class-level variable holds the single instance
+
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            cls._instance.connected = False
+        return cls._instance
+
+    def connect(self, host):
+        self.connected = True
+        self.host = host
+        print(f"Connected to {host}")
+
+# Usage — both variables point to the SAME object
+db1 = DatabaseConnection()
+db2 = DatabaseConnection()
+db1.connect("localhost")
+print(db1 is db2)          # True — same instance
+print(db2.host)            # "localhost" — shared state</code></pre>
+          </div>
+          <div class="callout warning">
+            <strong>Use Singleton sparingly.</strong> It introduces global state, which makes unit testing harder (tests affect each other through the shared instance). Prefer dependency injection when possible.
+          </div>
+
+          <h3>Observer Pattern</h3>
+          <p><strong>Intent:</strong> Define a one-to-many dependency so that when one object changes state, all its dependents are notified automatically.</p>
+          <p><strong>Real-world analogy:</strong> A newsletter — subscribers (observers) register to receive updates from a publisher (subject). When the publisher posts a new article, all subscribers are notified.</p>
+          <pre class="text-diagram">Observer Pattern Structure
+──────────────────────────────────────────────
+Subject (Publisher)
+  ├── attach(observer)    ← add a subscriber
+  ├── detach(observer)    ← remove a subscriber
+  └── notify()           ← calls update() on all observers
+
+ConcreteObserver
+  └── update(data)       ← receives the notification
+──────────────────────────────────────────────</pre>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Observer Pattern</span></div>
+            <pre><code class="language-python">class Subject:
+    def __init__(self):
+        self._observers = []
+
+    def attach(self, observer):
+        self._observers.append(observer)
+
+    def detach(self, observer):
+        self._observers.remove(observer)
+
+    def notify(self, data):
+        for observer in self._observers:
+            observer.update(data)
+
+class EmailAlert:
+    def update(self, data):
+        print(f"EMAIL: {data}")
+
+class SMSAlert:
+    def update(self, data):
+        print(f"SMS: {data}")
+
+# Usage
+stock = Subject()
+stock.attach(EmailAlert())
+stock.attach(SMSAlert())
+stock.notify("Price dropped below $50!")
+# EMAIL: Price dropped below $50!
+# SMS: Price dropped below $50!</code></pre>
+          </div>
+
+          <h3>MVC Pattern (Model-View-Controller)</h3>
+          <p><strong>Intent:</strong> Separate an application into three interconnected layers to organise code and enable independent development/testing of each layer.</p>
+          <pre class="text-diagram">MVC Data Flow
+─────────────────────────────────────────────────────
+User Action
+    │
+    ▼
+  View  ──────(user input)──────►  Controller
+                                       │
+                              (updates/queries)
+                                       │
+                                       ▼
+                                    Model  (data + business logic)
+                                       │
+                              (returns data)
+                                       │
+                                       ▼
+  View  ◄────(updates display)──── Controller
+─────────────────────────────────────────────────────</pre>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — MVC for Student Grades</span></div>
+            <pre><code class="language-python"># MODEL — data and business logic
+class GradeModel:
+    def __init__(self):
+        self._grades = {}
+
+    def add_grade(self, student, score):
+        self._grades[student] = score
+
+    def get_average(self):
+        if not self._grades:
+            return 0
+        return sum(self._grades.values()) / len(self._grades)
+
+    def get_grades(self):
+        return dict(self._grades)
+
+# VIEW — display only, no logic
+class GradeView:
+    def show_grades(self, grades):
+        print("\n--- Grade Report ---")
+        for student, score in grades.items():
+            print(f"  {student}: {score}")
+
+    def show_average(self, avg):
+        print(f"  Class Average: {avg:.1f}")
+
+# CONTROLLER — coordinates model and view
+class GradeController:
+    def __init__(self):
+        self._model = GradeModel()
+        self._view = GradeView()
+
+    def add_result(self, student, score):
+        self._model.add_grade(student, score)
+
+    def show_report(self):
+        self._view.show_grades(self._model.get_grades())
+        self._view.show_average(self._model.get_average())
+
+# Usage
+app = GradeController()
+app.add_result("Alice", 88)
+app.add_result("Bob", 75)
+app.add_result("Carol", 92)
+app.show_report()</code></pre>
+          </div>
+
+          <h3>Design Pattern Comparison</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Pattern</th><th>Intent</th><th>Key Benefit</th><th>HSC Use Case</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Facade</strong></td><td>Simplify a complex subsystem</td><td>Easier API for complex code</td><td>Wrapping database or file operations</td></tr>
+                <tr><td><strong>Singleton</strong></td><td>One instance only</td><td>Shared global resource</td><td>Config manager, DB connection</td></tr>
+                <tr><td><strong>Observer</strong></td><td>Notify many from one</td><td>Decoupled event system</td><td>GUI events, notifications</td></tr>
+                <tr><td><strong>MVC</strong></td><td>Separate data/UI/logic</td><td>Independent testing of each layer</td><td>Web apps, GUI applications</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 14. Abstract Classes & Interfaces -->
+        <section id="abstract-classes">
+          <h2 class="syllabus-phase">🔷 Abstract Classes &amp; Interfaces</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02, SE-11-06)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply</strong> abstract classes to define common interfaces for a group of related classes, enforcing consistent method signatures across subclasses.</em></p>
+
+          <h3>What is an Abstract Class?</h3>
+          <p>An <strong>abstract class</strong> is a class that cannot be instantiated directly — it exists purely to be subclassed. It may define <strong>abstract methods</strong> (declared but not implemented) that every subclass <em>must</em> override. This enforces a consistent interface across all subclasses.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Abstract Class using abc module</span></div>
+            <pre><code class="language-python">from abc import ABC, abstractmethod
+import math
+
+# Abstract base class — cannot be instantiated directly
+class Shape(ABC):
+
+    @abstractmethod
+    def area(self) -> float:
+        """Every subclass MUST implement this method."""
+        pass
+
+    @abstractmethod
+    def perimeter(self) -> float:
+        """Every subclass MUST implement this method."""
+        pass
+
+    def describe(self):   # Concrete method — shared by all subclasses
+        print(f"Area: {self.area():.2f}, Perimeter: {self.perimeter():.2f}")
+
+# Concrete subclass — must implement area() and perimeter()
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return math.pi * self.radius ** 2
+
+    def perimeter(self):
+        return 2 * math.pi * self.radius
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+
+# Usage
+shapes = [Circle(5), Rectangle(4, 6)]
+for shape in shapes:
+    shape.describe()
+
+# shape = Shape()   # ← TypeError! Cannot instantiate abstract class</code></pre>
+          </div>
+
+          <h3>Abstract Class vs Concrete Class</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Feature</th><th>Abstract Class</th><th>Concrete Class</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Can be instantiated?</td><td>No</td><td>Yes</td></tr>
+                <tr><td>Can have abstract methods?</td><td>Yes</td><td>No</td></tr>
+                <tr><td>Can have concrete methods?</td><td>Yes</td><td>Yes</td></tr>
+                <tr><td>Purpose</td><td>Define a common interface/template</td><td>Provide a full implementation</td></tr>
+                <tr><td>Python syntax</td><td><code>class X(ABC):</code> with <code>@abstractmethod</code></td><td><code>class X:</code> or <code>class X(Parent):</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Duck Typing in Python</h3>
+          <p>"If it walks like a duck and quacks like a duck, it's a duck." Python does not enforce strict type hierarchies — any object with the right methods will work, regardless of its class.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Duck Typing</span></div>
+            <pre><code class="language-python">class Dog:
+    def speak(self):
+        return "Woof!"
+
+class Cat:
+    def speak(self):
+        return "Meow!"
+
+class Robot:
+    def speak(self):
+        return "Beep boop."
+
+def make_noise(animal):
+    print(animal.speak())   # Works for ANY object with a speak() method
+
+for creature in [Dog(), Cat(), Robot()]:
+    make_noise(creature)</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 15. Exception Handling -->
+        <section id="exception-handling">
+          <h2 class="syllabus-phase">⚠️ Exception Handling &amp; Custom Exceptions</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply</strong> exception handling to build robust programs that gracefully manage unexpected conditions without crashing.</em></p>
+
+          <h3>try / except / else / finally</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Full exception handling structure</span></div>
+            <pre><code class="language-python">try:
+    age = int(input("Enter age: "))   # might raise ValueError
+    result = 100 / age                # might raise ZeroDivisionError
+except ValueError:
+    print("Error: please enter a whole number.")
+except ZeroDivisionError:
+    print("Error: age cannot be zero.")
+except Exception as e:
+    print(f"Unexpected error: {e}")   # catch-all for anything else
+else:
+    print(f"Result: {result:.2f}")    # runs ONLY if no exception occurred
+finally:
+    print("Done.")                    # ALWAYS runs, exception or not</code></pre>
+          </div>
+
+          <h3>Custom Exception Classes</h3>
+          <p>You can define your own exception classes by inheriting from <code>Exception</code>. This lets you raise domain-specific errors with meaningful names.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Custom exceptions in a BankAccount class</span></div>
+            <pre><code class="language-python">class InsufficientFundsError(Exception):
+    def __init__(self, amount, balance):
+        super().__init__(f"Cannot withdraw ${amount:.2f}: only ${balance:.2f} available.")
+        self.amount = amount
+        self.balance = balance
+
+class InvalidAmountError(Exception):
+    pass
+
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self._balance = balance
+
+    def deposit(self, amount):
+        if amount <= 0:
+            raise InvalidAmountError("Deposit amount must be positive.")
+        self._balance += amount
+
+    def withdraw(self, amount):
+        if amount <= 0:
+            raise InvalidAmountError("Withdrawal amount must be positive.")
+        if amount > self._balance:
+            raise InsufficientFundsError(amount, self._balance)
+        self._balance -= amount
+
+    @property
+    def balance(self):
+        return self._balance
+
+# Usage
+account = BankAccount("Alice", 100)
+try:
+    account.withdraw(150)
+except InsufficientFundsError as e:
+    print(e)   # Cannot withdraw $150.00: only $100.00 available.</code></pre>
+          </div>
+
+          <h3>Exception Hierarchy (text diagram)</h3>
+          <pre class="text-diagram">BaseException
+  ├── SystemExit            ← raised by sys.exit()
+  ├── KeyboardInterrupt     ← Ctrl+C
+  └── Exception             ← base for all "normal" exceptions
+        ├── ValueError      ← wrong type/value (int("abc"))
+        ├── TypeError       ← wrong type operation (1 + "a")
+        ├── IndexError      ← list index out of range
+        ├── KeyError        ← dict key not found
+        ├── FileNotFoundError
+        ├── ZeroDivisionError
+        ├── AttributeError  ← object has no such attribute
+        └── (your custom exceptions inherit from Exception)</pre>
+
+          <div class="callout info">
+            <strong>Best Practices:</strong><br>
+            ✓ Catch specific exceptions, not bare <code>except:</code> — bare except hides bugs.<br>
+            ✓ Use <code>finally</code> for cleanup code (closing files, releasing locks).<br>
+            ✓ Raise exceptions with helpful messages explaining the problem.<br>
+            ✓ Don't use exceptions for normal flow control — use <code>if/else</code> for expected conditions.
+          </div>
         </section>
 
       </div>

