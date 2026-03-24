@@ -225,115 +225,461 @@
 
           <h3>📊 Data Flow Diagrams (DFD)</h3>
           <p>Used to represent the flow of data through an information system. DFDs show <em>what</em> data moves through a system and <em>where</em> it goes — not how or when.</p>
-          <div class="key-terms">
-            <div class="key-term-item"><strong>⭕ Circle</strong><span>Process — transforms input data into output (e.g. "Validate Login").</span></div>
-            <div class="key-term-item"><strong>🗃️ Open Rectangle</strong><span>Data Store — persistent storage such as a file or database table (e.g. "D1 Users").</span></div>
-            <div class="key-term-item"><strong>🏢 Rectangle</strong><span>External Entity — a person or system outside the boundary that sends or receives data (e.g. "Customer").</span></div>
-            <div class="key-term-item"><strong>↩️ Arrow</strong><span>Data Flow — named arrow showing data moving between elements (e.g. "username + password").</span></div>
+
+          <h4>Symbols</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Symbol</th><th>Name</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td style="text-align:center;padding:1rem">
+                    <svg width="80" height="70" viewBox="0 0 80 70" xmlns="http://www.w3.org/2000/svg" aria-label="Circle representing a process">
+                      <circle cx="40" cy="35" r="28" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                      <text x="40" y="32" text-anchor="middle" font-size="11" fill="currentColor" font-family="Inter,sans-serif">Process</text>
+                      <text x="40" y="46" text-anchor="middle" font-size="10" fill="currentColor" font-family="Inter,sans-serif">(name)</text>
+                    </svg>
+                  </td>
+                  <td><strong>Process</strong></td>
+                  <td>A circle represents a process. A process uses input(s) to generate output(s).</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;padding:1rem">
+                    <svg width="110" height="50" viewBox="0 0 110 50" xmlns="http://www.w3.org/2000/svg" aria-label="Open rectangle representing a data store">
+                      <line x1="5" y1="8" x2="105" y2="8" stroke="currentColor" stroke-width="1.5"/>
+                      <line x1="5" y1="8" x2="5" y2="42" stroke="currentColor" stroke-width="1.5"/>
+                      <line x1="5" y1="42" x2="105" y2="42" stroke="currentColor" stroke-width="1.5"/>
+                      <text x="58" y="28" text-anchor="middle" font-size="11" fill="currentColor" font-family="Inter,sans-serif">D1 Data Store</text>
+                    </svg>
+                  </td>
+                  <td><strong>Data Store</strong></td>
+                  <td>A data store can be an electronic file or non-computer storage (open-sided rectangle).</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;padding:1rem">
+                    <svg width="100" height="60" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-label="Rectangle representing an external entity">
+                      <rect x="5" y="5" width="90" height="50" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                      <text x="50" y="27" text-anchor="middle" font-size="11" fill="currentColor" font-family="Inter,sans-serif">External</text>
+                      <text x="50" y="42" text-anchor="middle" font-size="11" fill="currentColor" font-family="Inter,sans-serif">Entity</text>
+                    </svg>
+                  </td>
+                  <td><strong>External Entity</strong></td>
+                  <td>An external entity can be any person, organisation or element that provides data to the system or receives data from the system.</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;padding:1rem">
+                    <svg width="100" height="60" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg" aria-label="Curved arrow representing data flow">
+                      <path d="M 8 38 Q 50 5 92 38" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                      <polygon points="92,38 78,28 83,40" fill="currentColor"/>
+                      <text x="50" y="52" text-anchor="middle" font-size="10" fill="currentColor" font-family="Inter,sans-serif">data name</text>
+                    </svg>
+                  </td>
+                  <td><strong>Data Flow</strong></td>
+                  <td>A labelled, curved arrow represents the flow of data between processes, data stores and external entities.</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+
           <div class="callout info">
-            <strong>Level 0 (Context Diagram)</strong>: Shows the entire system as a single process bubble with all external entities. No data stores or sub-processes are shown.<br><br>
-            <strong>Level 1 DFD</strong>: Expands the single bubble into its major processes. Data stores appear at this level. Each process can be further expanded into a Level 2 DFD if needed.
+            <strong>Level 0 (Context Diagram)</strong>: Shows the entire system as a single process bubble with all external entities. No data stores or internal processes are shown.<br><br>
+            <strong>Level 1 DFD</strong>: Expands the single bubble into its major processes. Data stores appear at this level. Each process can be further expanded into a Level 2 DFD.
           </div>
-          <p><strong>Example scenario — Online Bookshop:</strong> A <em>Customer</em> (external entity) sends an <em>order request</em> (data flow) to the <em>Process Order</em> (process), which reads from the <em>D1 Book Catalogue</em> (data store) and sends a <em>confirmation</em> back to the customer.</p>
+
+          <div class="diagram-block">
+            <h4>📊 Level 0 DFD — Voting System (Context Diagram)</h4>
+            <p class="diagram-subtitle">The entire system shown as one process bubble — no internal detail</p>
+            <div class="mermaid">
+              flowchart LR
+                Voter["Voter"] -->|"Vote details"| VS(("Voting\nSystem"))
+                VS -->|"Voting confirmation"| Voter
+                EC["Electoral\nCommission"] -->|"Voter roll"| VS
+                VS -->|"Voting results"| EC
+                style Voter fill:#e1f5ff,stroke:#0284c7,color:#0f172a
+                style EC fill:#f3e5f5,stroke:#7e22ce,color:#0f172a
+                style VS fill:#e8f5e9,stroke:#15803d,color:#0f172a
+            </div>
+            <p class="diagram-caption"><strong>Key:</strong> Rectangles = External Entities · Circle = System process · Arrows = Data flows</p>
+          </div>
+
+          <div class="diagram-block">
+            <h4>📊 Level 1 DFD — Voting System</h4>
+            <p class="diagram-subtitle">System broken into major processes — data stores now appear</p>
+            <div class="mermaid">
+              flowchart TD
+                Voter["Voter"] -->|"Voter details"| P1(("1\nRegister\nVoter"))
+                P1 <-->|"Voter record"| D1[/"D1 Voter Register"/]
+                D1 -->|"Voter info"| P2(("2\nValidate\nVoter"))
+                Voter -->|"Vote"| P2
+                P2 -->|"Validated vote"| P3(("3\nRecord\nVote"))
+                P3 -->|"Vote data"| D2[/"D2 Votes"/]
+                D2 -->|"All votes"| P4(("4\nCount\nVotes"))
+                P4 -->|"Results"| P5(("5\nGenerate\nReport"))
+                P5 -->|"Voting results"| EC["Electoral\nCommission"]
+                style Voter fill:#e1f5ff,stroke:#0284c7,color:#0f172a
+                style EC fill:#f3e5f5,stroke:#7e22ce,color:#0f172a
+                style D1 fill:#fff9c4,stroke:#ca8a04,color:#0f172a
+                style D2 fill:#fff9c4,stroke:#ca8a04,color:#0f172a
+                style P1 fill:#e8f5e9,stroke:#15803d,color:#0f172a
+                style P2 fill:#e8f5e9,stroke:#15803d,color:#0f172a
+                style P3 fill:#e8f5e9,stroke:#15803d,color:#0f172a
+                style P4 fill:#e8f5e9,stroke:#15803d,color:#0f172a
+                style P5 fill:#e8f5e9,stroke:#15803d,color:#0f172a
+            </div>
+            <p class="diagram-caption"><strong>Key:</strong> Rectangles = External Entities · Circles = Processes · Parallelograms = Data Stores · Arrows = Named data flows</p>
+          </div>
 
           <h3>🏗️ Structure Charts</h3>
           <p>Represent a system's modular design — showing how subroutines are called from one another in a hierarchy. Modules at the top control modules below them.</p>
-          <div class="key-terms">
-            <div class="key-term-item"><strong>▭ Rectangle</strong><span>Module — a named subroutine or function (e.g. "Calculate Total").</span></div>
-            <div class="key-term-item"><strong>🔘 Empty Circle Arrow</strong><span>Data parameter — a data value passed between modules (e.g. passing a score).</span></div>
-            <div class="key-term-item"><strong>⚫ Filled Circle Arrow</strong><span>Control flag — a status variable passed between modules (e.g. a Boolean "isValid").</span></div>
-            <div class="key-term-item"><strong>🔷 Diamond</strong><span>Selection — indicates a module is called conditionally.</span></div>
-            <div class="key-term-item"><strong>🔁 Curved Arrow</strong><span>Repetition — indicates a module is called inside a loop.</span></div>
-          </div>
-          <div class="callout info">
-            <strong>Example:</strong> A top-level <em>Main</em> module calls <em>GetInput</em>, <em>ProcessData</em>, and <em>DisplayResult</em>. An arrow from <em>GetInput</em> back to <em>Main</em> carries the data parameter <em>userScore</em>.
+
+          <h4>Symbols</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Symbol</th><th>Name</th><th>Description</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td style="text-align:center;padding:.75rem">
+                    <svg width="60" height="36" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="2" y="2" width="56" height="32" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                      <text x="30" y="22" text-anchor="middle" font-size="11" fill="currentColor" font-family="Inter,sans-serif">Module</text>
+                    </svg>
+                  </td>
+                  <td><strong>Rectangle</strong></td>
+                  <td>A named module (subroutine or function).</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;padding:.75rem">
+                    <svg width="60" height="36" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg">
+                      <line x1="30" y1="2" x2="30" y2="34" stroke="currentColor" stroke-width="1.5"/>
+                      <circle cx="30" cy="18" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                      <text x="30" y="22" text-anchor="middle" font-size="10" fill="none">○</text>
+                    </svg>
+                  </td>
+                  <td><strong>Empty circle on arrow</strong></td>
+                  <td>Data movement — a data value (parameter) passed between modules.</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;padding:.75rem">
+                    <svg width="60" height="36" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg">
+                      <line x1="30" y1="2" x2="30" y2="34" stroke="currentColor" stroke-width="1.5"/>
+                      <circle cx="30" cy="18" r="7" fill="currentColor" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                  </td>
+                  <td><strong>Filled circle on arrow</strong></td>
+                  <td>Control flag — a status/Boolean variable passed between modules.</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;padding:.75rem">
+                    <svg width="60" height="36" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg">
+                      <polygon points="30,2 50,18 30,34 10,18" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                  </td>
+                  <td><strong>Diamond</strong></td>
+                  <td>Selection — the module below is called conditionally (optional execution).</td>
+                </tr>
+                <tr>
+                  <td style="text-align:center;padding:.75rem">
+                    <svg width="60" height="36" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M 15 18 Q 10 5 30 5 Q 50 5 45 18" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                      <polygon points="45,18 38,10 52,12" fill="currentColor"/>
+                    </svg>
+                  </td>
+                  <td><strong>Curved arrow</strong></td>
+                  <td>Repetition — the module is called multiple times (inside a loop).</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Structure Chart — Online Bookshop (text notation)</span></div>
-            <pre><code>MainModule
-├── GetOrder          [🔘 orderDetails passed UP to MainModule]
-│     ├── ValidateISBN      [⚫ isValid flag returned]
-│     └── CheckStock        [⚫ stockAvailable flag returned]
-├── ProcessPayment    [🔘 amount, 🔁 retry loop if payment fails]
-│     ├── ChargeCard        [⚫ paymentSuccess flag returned]
-│     └── SendReceipt       [🔘 email, orderID]
-└── UpdateInventory   [🔘 ISBN, quantitySold]
+          <div class="diagram-block">
+            <h4>🏗️ Structure Chart — Library System</h4>
+            <p class="diagram-subtitle">Hierarchy showing modules, data parameters, control flags, selection and repetition</p>
+            <svg viewBox="0 0 740 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:740px;display:block;margin:0 auto" aria-label="Structure chart for a library book return system">
+              <style>
+                .sc-box { fill: var(--bg-secondary, #f8fafc); stroke: currentColor; stroke-width: 1.5; rx: 4; }
+                .sc-text { font-family: Inter,sans-serif; font-size: 12px; fill: currentColor; }
+                .sc-text-sm { font-family: Inter,sans-serif; font-size: 10px; fill: currentColor; }
+                .sc-line { stroke: currentColor; stroke-width: 1.5; fill: none; }
+              </style>
 
-Legend: 🔘 data parameter  ⚫ control flag  🔁 loop  ◇ conditional call</code></pre>
+              <!-- Root: Return Book -->
+              <rect x="270" y="10" width="200" height="44" rx="4" class="sc-box"/>
+              <text x="370" y="36" text-anchor="middle" class="sc-text" font-weight="600">Return Book</text>
+
+              <!-- Trunk line down -->
+              <line x1="370" y1="54" x2="370" y2="90" class="sc-line"/>
+              <!-- Horizontal bus -->
+              <line x1="80" y1="90" x2="660" y2="90" class="sc-line"/>
+
+              <!-- === Identify Book === -->
+              <line x1="80" y1="90" x2="80" y2="130" class="sc-line"/>
+              <!-- empty circle: bookID -->
+              <circle cx="80" cy="115" r="6" fill="var(--bg, white)" stroke="currentColor" stroke-width="1.5"/>
+              <text x="90" y="112" class="sc-text-sm">bookID</text>
+              <rect x="22" y="130" width="116" height="44" rx="4" class="sc-box"/>
+              <text x="80" y="156" text-anchor="middle" class="sc-text">Identify Book</text>
+
+              <!-- === Identify Borrower === -->
+              <line x1="240" y1="90" x2="240" y2="130" class="sc-line"/>
+              <!-- empty circle: borrowerID -->
+              <circle cx="240" cy="115" r="6" fill="var(--bg, white)" stroke="currentColor" stroke-width="1.5"/>
+              <text x="250" y="112" class="sc-text-sm">borrowerID</text>
+              <rect x="168" y="130" width="144" height="44" rx="4" class="sc-box"/>
+              <text x="240" y="156" text-anchor="middle" class="sc-text">Identify Borrower</text>
+
+              <!-- === Update Records === -->
+              <line x1="450" y1="90" x2="450" y2="130" class="sc-line"/>
+              <!-- filled circle: lateFlag -->
+              <circle cx="450" cy="115" r="6" fill="currentColor" stroke="currentColor" stroke-width="1.5"/>
+              <text x="460" y="112" class="sc-text-sm">lateFlag</text>
+              <rect x="386" y="130" width="128" height="44" rx="4" class="sc-box"/>
+              <text x="450" y="156" text-anchor="middle" class="sc-text">Update Records</text>
+
+              <!-- === Print Report (optional — diamond) === -->
+              <line x1="620" y1="90" x2="620" y2="108" class="sc-line"/>
+              <!-- Diamond for optional -->
+              <polygon points="620,108 632,120 620,132 608,120" fill="var(--bg, white)" stroke="currentColor" stroke-width="1.5"/>
+              <line x1="620" y1="132" x2="620" y2="148" class="sc-line"/>
+              <!-- Repetition curved arrow on Print Report box -->
+              <rect x="554" y="148" width="132" height="44" rx="4" class="sc-box"/>
+              <text x="620" y="174" text-anchor="middle" class="sc-text">Print Report</text>
+              <!-- Loop arrow above Print Report -->
+              <path d="M 575 148 Q 560 125 590 125 Q 640 125 660 148" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <polygon points="660,148 652,135 664,137" fill="currentColor"/>
+
+              <!-- Legend -->
+              <rect x="10" y="250" width="720" height="80" rx="6" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+              <text x="370" y="268" text-anchor="middle" class="sc-text" font-weight="600">Legend</text>
+              <!-- empty circle -->
+              <circle cx="50" cy="290" r="7" fill="var(--bg,white)" stroke="currentColor" stroke-width="1.5"/>
+              <text x="65" y="294" class="sc-text-sm">Data parameter</text>
+              <!-- filled circle -->
+              <circle cx="200" cy="290" r="7" fill="currentColor" stroke="currentColor" stroke-width="1.5"/>
+              <text x="215" y="294" class="sc-text-sm">Control flag</text>
+              <!-- diamond -->
+              <polygon points="350,290 360,298 350,306 340,298" fill="var(--bg,white)" stroke="currentColor" stroke-width="1.5"/>
+              <text x="368" y="302" class="sc-text-sm">Optional (selection)</text>
+              <!-- loop arrow -->
+              <path d="M 510 285 Q 505 275 518 275 Q 535 275 530 285" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <polygon points="530,285 524,276 534,277" fill="currentColor"/>
+              <text x="538" y="292" class="sc-text-sm">Repetition (loop)</text>
+            </svg>
+            <p class="diagram-caption">A report may not necessarily be produced each time a book is returned (shown by the diamond). Repetition (loop arrow) shows a module called multiple times.</p>
           </div>
 
           <h3>📋 Data Dictionary</h3>
-          <p>A structured reference that documents every variable and data element in a system. Each entry includes: <strong>Name, Data Type, Format, Size, Description, Example value, and Validation rules</strong>.</p>
+          <p>A data dictionary provides a comprehensive description of each variable stored or referred to in a system. This commonly includes variable name, data type, format, size in bytes, number of characters to display, the purpose of each variable, a relevant example, and any validation rules.</p>
+          <div class="callout info">
+            <strong>Note:</strong> A Date/Time data type is always stored as <strong>32 bits (4 bytes)</strong> and can be displayed using different formats such as <code>DD/MM/YYYY hh:mm:ss</code> or <code>YYYY/MM/DD</code>. Details of records or arrays of records can also be included.
+          </div>
           <div class="table-wrap">
             <table>
               <thead>
-                <tr><th>Name</th><th>Data Type</th><th>Format</th><th>Size</th><th>Description</th><th>Example</th><th>Validation</th></tr>
+                <tr><th>Variable</th><th>Data Type</th><th>Format for display</th><th>Size in bytes</th><th>Size for display</th><th>Description</th><th>Example</th><th>Validation</th></tr>
               </thead>
               <tbody>
-                <tr><td><code>studentID</code></td><td>Integer</td><td>XXXXXX</td><td>6 digits</td><td>Unique student identifier</td><td>482019</td><td>Must be 6 digits, not null</td></tr>
-                <tr><td><code>surname</code></td><td>String</td><td>Text</td><td>50 chars</td><td>Student's family name</td><td>Smith</td><td>Letters only, not empty</td></tr>
-                <tr><td><code>score</code></td><td>Real</td><td>##.#</td><td>4 bytes</td><td>Exam score out of 100</td><td>87.5</td><td>0.0 ≤ score ≤ 100.0</td></tr>
-                <tr><td><code>dateOfBirth</code></td><td>Date</td><td>DD/MM/YYYY</td><td>10 chars</td><td>Student's date of birth</td><td>14/03/2007</td><td>Valid calendar date</td></tr>
+                <tr><td><code>UserId</code></td><td>String</td><td>XXNNN</td><td>5</td><td>5</td><td>Primary key; first 2 letters of surname followed by unique 3-digit identifier</td><td>PT173</td><td>First 2 chars letters; last 3 chars digits</td></tr>
+                <tr><td><code>UserName</code></td><td>String</td><td>XX..XX</td><td>15</td><td>15</td><td>Username of employee</td><td>Kim</td><td>First letter is a capital letter</td></tr>
+                <tr><td><code>DOB</code></td><td>Date and Time</td><td>YYYY/MM/DD</td><td>4</td><td>10</td><td>Birth date of employee</td><td>1953/10/05</td><td>Valid date less than today</td></tr>
+                <tr><td><code>Times_Late</code></td><td>Integer</td><td>NNN</td><td>2</td><td>3</td><td>Number of times late to work this year</td><td>147</td><td>Integer between 0 and 999</td></tr>
+                <tr><td><code>PayRate</code></td><td>Floating Point</td><td>$NNN.NN</td><td>4</td><td>7</td><td>Hourly rate of pay</td><td>$124.37</td><td>Decimal greater than 20, less than 400</td></tr>
+                <tr><td><code>SocialClub</code></td><td>Boolean</td><td>X</td><td>1 bit</td><td>1</td><td>Member of social club</td><td>N</td><td>Y or N</td></tr>
+                <tr><td><code>Departments</code></td><td>Array (string)</td><td>—</td><td>20 × num depts</td><td>N/A</td><td>Names of departments in organisation</td><td>Administration, Finance, Marketing</td><td>From a drop-down list</td></tr>
               </tbody>
             </table>
           </div>
 
           <h3>🧩 Class Diagrams</h3>
-          <p>Used in object-oriented design to show classes, their attributes, methods, and the relationships between them. Each class is drawn as a box divided into three compartments.</p>
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Class Diagram — Example</span></div>
-            <pre><code>┌─────────────────────┐
-│       Student       │  ← Class name
-├─────────────────────┤
-│ - studentID: int    │  ← Attributes (- private, + public)
-│ - name: String      │
-│ - score: float      │
-├─────────────────────┤
-│ + getScore(): float │  ← Methods
-│ + setScore(s: float)│
-│ + isPassing(): bool │
-└─────────────────────┘
-
-     Student ──────▷ Person      (Inheritance: Student extends Person)
-     Course  ◆───── Lesson       (Composition: Course owns its Lessons)
-     Student ──────  Course      (Association: Student enrols in Course)</code></pre>
-          </div>
+          <p>Class diagrams provide a visual representation of systems that use the object-oriented paradigm. They model classes, their attributes and methods, and the relationships between classes. Each class is drawn as a box divided into three compartments: class name, attributes, and methods.</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>— (solid line)</strong><span>Association — a general relationship between two classes.</span></div>
-            <div class="key-term-item"><strong>▷ (open arrow)</strong><span>Inheritance — a subclass extends a superclass (is-a relationship).</span></div>
-            <div class="key-term-item"><strong>◇ (open diamond)</strong><span>Aggregation — a "has-a" relationship; parts can exist independently.</span></div>
-            <div class="key-term-item"><strong>◆ (filled diamond)</strong><span>Composition — parts cannot exist without the whole (strong ownership).</span></div>
+            <div class="key-term-item"><strong>◁|— (open arrow)</strong><span>Inheritance — a subclass extends a superclass (is-a relationship).</span></div>
+            <div class="key-term-item"><strong>◇— (open diamond)</strong><span>Aggregation — a "has-a" relationship; parts can exist independently.</span></div>
+            <div class="key-term-item"><strong>◆— (filled diamond)</strong><span>Composition — parts cannot exist without the whole (strong ownership).</span></div>
+          </div>
+          <div class="diagram-block">
+            <h4>🧩 Class Diagram — School System</h4>
+            <p class="diagram-subtitle">Both Student and Parent inherit from Person. A student must study 1 or more subjects; a subject can have 0 or more students enrolled.</p>
+            <div class="mermaid">
+              classDiagram
+                class Person {
+                  -name : String
+                  -address : String
+                  +getName() String
+                  +getAddress() String
+                }
+                class Student {
+                  -studentID : String
+                  -yearGroup : int
+                  +getResults() List
+                  +enrol(subject) void
+                }
+                class Parent {
+                  -contactPhone : String
+                  +getContact() String
+                }
+                class Subject {
+                  -subjectCode : String
+                  -subjectName : String
+                  +getCode() String
+                  +getName() String
+                }
+                Person <|-- Student : inherits
+                Person <|-- Parent : inherits
+                Student "1..*" -- "0..*" Subject : studies
+            </div>
+            <p class="diagram-caption"><strong>Note:</strong> <code>-</code> = private attribute/method &nbsp;·&nbsp; <code>+</code> = public &nbsp;·&nbsp; Multiplicity shown on association lines (e.g. <code>1..*</code> = one or more)</p>
           </div>
 
           <h3>🖼️ Storyboard</h3>
-          <p>A visual sequence of annotated screen layouts showing the user's journey through a system. Created in the design phase before any code is written, storyboards allow stakeholders to review and approve the interface before development begins.</p>
+          <p>A storyboard shows the various interfaces (screens) as well as the links between them. Storyboards are created in the <strong>Design phase</strong> before any code is written, allowing clients to approve the interface and user flow early — avoiding costly rework.</p>
           <p>Each frame in a storyboard typically includes:</p>
           <ul>
             <li>A <strong>sketch or wireframe</strong> of the screen layout</li>
             <li>The <strong>screen name or state</strong> (e.g. "Login Screen", "Results Page")</li>
-            <li><strong>Navigation arrows</strong> showing what triggers the transition to the next screen (e.g. "Click Submit")</li>
+            <li><strong>Navigation arrows</strong> showing what triggers the transition to the next screen</li>
             <li>Notes on <strong>input fields, buttons, and displayed data</strong></li>
           </ul>
 
-          <div class="callout info">
-            <strong>Design phase:</strong> Storyboards are created <em>before any code is written</em> — during the Design phase of the SDLC. They allow clients to approve the interface and user flow before development begins, which avoids costly rework. For the HSC project, a storyboard typically shows 4–8 frames: a home/login screen, a main feature screen, an input form, and a results/output screen.
+          <div class="diagram-block">
+            <h4>🖼️ Storyboard — School Canteen Website</h4>
+            <p class="diagram-subtitle">Three-page website showing navigation between screens</p>
+            <svg viewBox="0 0 760 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:760px;display:block;margin:0 auto" aria-label="Storyboard for a school canteen website with three pages">
+              <style>
+                .sb-frame { fill: var(--bg-secondary,#f8fafc); stroke: currentColor; stroke-width:1.5; }
+                .sb-title-bar { fill: currentColor; opacity:0.12; }
+                .sb-label { font-family:Inter,sans-serif; font-size:11px; fill:currentColor; }
+                .sb-heading { font-family:Inter,sans-serif; font-size:13px; font-weight:600; fill:currentColor; }
+                .sb-btn { fill:none; stroke:currentColor; stroke-width:1; rx:3; }
+                .sb-line { fill:none; stroke:currentColor; stroke-width:1; opacity:0.4; }
+                .sb-nav-arrow { fill:none; stroke:currentColor; stroke-width:2; }
+              </style>
+
+              <!-- Frame 1: Home -->
+              <rect x="10" y="30" width="190" height="200" rx="5" class="sb-frame"/>
+              <rect x="10" y="30" width="190" height="28" rx="5" class="sb-title-bar"/>
+              <text x="105" y="49" text-anchor="middle" class="sb-heading">🏠 Home</text>
+              <text x="105" y="80" text-anchor="middle" class="sb-label">School Canteen</text>
+              <line x1="30" y1="88" x2="180" y2="88" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+              <text x="105" y="105" text-anchor="middle" class="sb-label">Welcome! Order healthy</text>
+              <text x="105" y="118" text-anchor="middle" class="sb-label">food online.</text>
+              <rect x="40" y="130" width="120" height="22" rx="3" class="sb-btn"/>
+              <text x="100" y="145" text-anchor="middle" class="sb-label">View Menu →</text>
+              <rect x="40" y="162" width="120" height="22" rx="3" class="sb-btn"/>
+              <text x="100" y="177" text-anchor="middle" class="sb-label">About Us →</text>
+              <text x="105" y="220" text-anchor="middle" class="sb-label" font-style="italic">Screen 1: Home</text>
+
+              <!-- Arrow 1→2 -->
+              <path d="M 205 140 L 250 140" class="sb-nav-arrow" marker-end="url(#arr)"/>
+              <text x="227" y="132" text-anchor="middle" class="sb-label" font-style="italic">Click</text>
+              <text x="227" y="144" text-anchor="middle" class="sb-label" font-style="italic">"View Menu"</text>
+
+              <!-- Frame 2: Menu -->
+              <rect x="255" y="30" width="190" height="200" rx="5" class="sb-frame"/>
+              <rect x="255" y="30" width="190" height="28" rx="5" class="sb-title-bar"/>
+              <text x="350" y="49" text-anchor="middle" class="sb-heading">🍽️ Menu</text>
+              <text x="275" y="80" class="sb-label">• Sandwich    $4.50</text>
+              <text x="275" y="97" class="sb-label">• Fruit Cup   $2.00</text>
+              <text x="275" y="114" class="sb-label">• Wrap        $5.50</text>
+              <text x="275" y="131" class="sb-label">• Juice       $3.00</text>
+              <rect x="285" y="148" width="130" height="22" rx="3" class="sb-btn"/>
+              <text x="350" y="163" text-anchor="middle" class="sb-label">Place Order →</text>
+              <rect x="285" y="178" width="130" height="22" rx="3" class="sb-btn"/>
+              <text x="350" y="193" text-anchor="middle" class="sb-label">← Back to Home</text>
+              <text x="350" y="220" text-anchor="middle" class="sb-label" font-style="italic">Screen 2: Menu</text>
+
+              <!-- Arrow 2→3 -->
+              <path d="M 450 148 L 498 148" class="sb-nav-arrow" marker-end="url(#arr)"/>
+              <text x="474" y="140" text-anchor="middle" class="sb-label" font-style="italic">Click</text>
+              <text x="474" y="152" text-anchor="middle" class="sb-label" font-style="italic">"Place Order"</text>
+
+              <!-- Frame 3: Order -->
+              <rect x="503" y="30" width="240" height="200" rx="5" class="sb-frame"/>
+              <rect x="503" y="30" width="240" height="28" rx="5" class="sb-title-bar"/>
+              <text x="623" y="49" text-anchor="middle" class="sb-heading">📋 Place Order</text>
+              <text x="523" y="76" class="sb-label">Name: [____________]</text>
+              <text x="523" y="96" class="sb-label">Class: [____________]</text>
+              <text x="523" y="116" class="sb-label">Item:  [▼ Select item ]</text>
+              <text x="523" y="136" class="sb-label">Qty:   [____________]</text>
+              <rect x="533" y="148" width="160" height="24" rx="3" class="sb-btn"/>
+              <text x="613" y="164" text-anchor="middle" class="sb-label">✓ Submit Order</text>
+              <rect x="533" y="180" width="160" height="22" rx="3" class="sb-btn"/>
+              <text x="613" y="195" text-anchor="middle" class="sb-label">← Back to Menu</text>
+              <text x="623" y="220" text-anchor="middle" class="sb-label" font-style="italic">Screen 3: Order Form</text>
+
+              <!-- Arrow marker definition -->
+              <defs>
+                <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L0,6 L8,3 z" fill="currentColor"/>
+                </marker>
+              </defs>
+            </svg>
+            <p class="diagram-caption">Navigation arrows show what action triggers each screen transition. Back-links allow users to return to previous screens.</p>
           </div>
 
           <h3>🌳 Decision Trees</h3>
-          <p>A tree-based diagram that models decision logic. Starting from a root condition, each branch represents a possible outcome of a test. Decision trees are useful for representing complex nested logic clearly.</p>
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Decision Tree — Exam Grade Example</span></div>
-            <pre><code>Is score ≥ 90?
-├── YES → Grade: A
-└── NO
-    Is score ≥ 75?
-    ├── YES → Grade: B
-    └── NO
-        Is score ≥ 50?
-        ├── YES → Grade: C
-        └── NO → Grade: Fail</code></pre>
+          <p>A decision tree is a diagram that represents all possible combinations of decisions and their resulting actions. Branches describe the eventual action depending on the condition at the time. Each decision path leads to either another decision or a final action.</p>
+
+          <div class="diagram-block">
+            <h4>🌳 Decision Tree — Smart House Temperature Control</h4>
+            <p class="diagram-subtitle">Controls heating and cooling based on measured temperature</p>
+            <div class="mermaid">
+              flowchart TD
+                S(["Read temperature sensor"]) --> A{"Temperature\n&lt; 18°C?"}
+                A -->|"Yes"| B{"Heater\nalready ON?"}
+                A -->|"No"| C{"Temperature\n&gt; 25°C?"}
+                C -->|"No — 18–25°C"| D["Maintain current\nstate — no action"]
+                C -->|"Yes"| E{"Cooler\nalready ON?"}
+                B -->|"No"| F["Turn Heater ON\nLog event"]
+                B -->|"Yes"| G["Keep Heater ON\nLog event"]
+                E -->|"No"| H["Turn Cooler ON\nLog event"]
+                E -->|"Yes"| I["Keep Cooler ON\nLog event"]
+                F --> W["Wait 5 minutes"]
+                G --> W
+                D --> W
+                H --> W
+                I --> W
+                W --> S
+                style S fill:#e8f5e9,stroke:#15803d,color:#0f172a
+                style A fill:#fff9c4,stroke:#ca8a04,color:#0f172a
+                style C fill:#fff9c4,stroke:#ca8a04,color:#0f172a
+                style B fill:#fff9c4,stroke:#ca8a04,color:#0f172a
+                style E fill:#fff9c4,stroke:#ca8a04,color:#0f172a
+                style F fill:#fce4ec,stroke:#be185d,color:#0f172a
+                style G fill:#fce4ec,stroke:#be185d,color:#0f172a
+                style H fill:#e1f5ff,stroke:#0284c7,color:#0f172a
+                style I fill:#e1f5ff,stroke:#0284c7,color:#0f172a
+                style D fill:#e8f5e9,stroke:#15803d,color:#0f172a
+                style W fill:#f3e5f5,stroke:#7e22ce,color:#0f172a
+            </div>
+            <p class="diagram-caption">Each diamond is a decision point. Each rectangle is a final action. The loop back to "Read temperature sensor" shows the system runs continuously.</p>
+          </div>
+
+          <div class="diagram-block">
+            <h4>🌳 Decision Tree — Exam Grade Classification</h4>
+            <p class="diagram-subtitle">Alternative representation — sequential decision branches</p>
+            <div class="mermaid">
+              flowchart TD
+                R(["Student score received"]) --> A{"score ≥ 90?"}
+                A -->|"Yes"| GA["Grade: A\n(High Distinction)"]
+                A -->|"No"| B{"score ≥ 75?"}
+                B -->|"Yes"| GB["Grade: B\n(Distinction)"]
+                B -->|"No"| C{"score ≥ 60?"}
+                C -->|"Yes"| GC["Grade: C\n(Credit)"]
+                C -->|"No"| D{"score ≥ 50?"}
+                D -->|"Yes"| GD["Grade: D\n(Pass)"]
+                D -->|"No"| GF["Grade: F\n(Fail)"]
+                style R fill:#e8f5e9,stroke:#15803d,color:#0f172a
+                style A fill:#fff9c4,stroke:#ca8a04,color:#0f172a
+                style B fill:#fff9c4,stroke:#ca8a04,color:#0f172a
+                style C fill:#fff9c4,stroke:#ca8a04,color:#0f172a
+                style D fill:#fff9c4,stroke:#ca8a04,color:#0f172a
+                style GA fill:#e8f5e9,stroke:#15803d,color:#0f172a
+                style GB fill:#e8f5e9,stroke:#15803d,color:#0f172a
+                style GC fill:#e1f5ff,stroke:#0284c7,color:#0f172a
+                style GD fill:#fff3e0,stroke:#c2410c,color:#0f172a
+                style GF fill:#fce4ec,stroke:#be185d,color:#0f172a
+            </div>
+            <p class="diagram-caption">This representation shows how each path through the tree leads to exactly one outcome.</p>
           </div>
         </section>
 
@@ -344,25 +690,42 @@ Legend: 🔘 data parameter  ⚫ control flag  🔁 loop  ◇ conditional call</
           <h2 class="syllabus-phase">📋 Project Management Tools</h2>
 
           <h3>📈 Gantt Charts</h3>
-          <p>A horizontal bar chart that displays all project tasks against a timeline, making it easy to see what needs to happen, in what order, and how long each task should take.</p>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr><th>Task</th><th>Week 1</th><th>Week 2</th><th>Week 3</th><th>Week 4</th><th>Depends on</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Requirements analysis</td><td>████</td><td></td><td></td><td></td><td>—</td></tr>
-                <tr><td>Design (DFD, structure chart)</td><td>░░</td><td>████</td><td></td><td></td><td>Requirements</td></tr>
-                <tr><td>Coding</td><td></td><td>░░</td><td>████</td><td>░░</td><td>Design</td></tr>
-                <tr><td>Testing</td><td></td><td></td><td>░░</td><td>████</td><td>Coding</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <p>A Gantt chart displays each component task of a proposed system development on an estimated timeline. Tasks should be named with self-explanatory titles. The estimated time and dependent tasks should be clearly shown, along with important milestones.</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>Task bars</strong><span>Horizontal bars showing the planned start, duration, and end of each task.</span></div>
-            <div class="key-term-item"><strong>Dependencies</strong><span>Arrows or indentation indicating which tasks must finish before another can begin.</span></div>
+            <div class="key-term-item"><strong>Dependencies</strong><span>Arrows or ordering indicating which tasks must finish before another can begin.</span></div>
             <div class="key-term-item"><strong>Milestones</strong><span>Key checkpoints (often shown as a diamond ◆) marking a significant completion point.</span></div>
-            <div class="key-term-item"><strong>Critical path</strong><span>The sequence of dependent tasks that determines the minimum project duration.</span></div>
+            <div class="key-term-item"><strong>Critical path</strong><span>The longest chain of dependent tasks — determines the minimum total project duration.</span></div>
+          </div>
+
+          <div class="diagram-block">
+            <h4>📈 Gantt Chart — HSC Software Engineering Project</h4>
+            <p class="diagram-subtitle">Estimated timeline showing tasks, dependencies and milestones</p>
+            <div class="mermaid">
+              gantt
+                title HSC Software Engineering Project Plan
+                dateFormat  YYYY-MM-DD
+                axisFormat  %d %b
+                section Defining
+                  Identify problem and stakeholders   :done,    def1, 2025-02-01, 7d
+                  Define requirements and constraints :done,    def2, after def1, 7d
+                section Designing
+                  Design DFDs and structure charts    :done,    des1, after def2, 7d
+                  Design UI storyboards               :done,    des2, after def2, 7d
+                  Design data dictionary              :done,    des3, after des1, 5d
+                  Design milestone ◆                  :milestone, m1, after des3, 0d
+                section Development
+                  Implement core modules              :active,  dev1, after des3, 14d
+                  Implement UI and database           :         dev2, after dev1, 7d
+                section Testing
+                  Unit and integration testing        :         tst1, after dev1, 10d
+                  User acceptance testing             :         tst2, after dev2, 7d
+                  Testing milestone ◆                 :milestone, m2, after tst2, 0d
+                section Documentation
+                  Finalise project report             :         doc1, after tst1, 7d
+                  Prepare log book entries            :         doc2, 2025-02-01, 70d
+            </div>
+            <p class="diagram-caption">Gantt charts can also allocate resources and team members to tasks. Charts should be <strong>regularly updated</strong> to reflect actual versus estimated times.</p>
           </div>
 
           <h3>📝 Process Diaries / Log Books</h3>
@@ -1617,6 +1980,42 @@ jobs:
   </footer>
 
   <script src="../js/main.js?v=3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    const initMermaid = () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: isDark ? 'dark' : 'default',
+        securityLevel: 'loose',
+        flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'linear', diagramMarginX: 20, diagramMarginY: 20 },
+        class: { useMaxWidth: true, htmlLabels: true },
+        gantt: { useMaxWidth: true },
+        themeVariables: {
+          fontSize: '14px',
+          fontFamily: 'Inter, system-ui, sans-serif',
+          primaryColor: isDark ? '#1e293b' : '#e0e7ff',
+          primaryBorderColor: isDark ? '#475569' : '#c7d2fe',
+          primaryTextColor: isDark ? '#f1f5f9' : '#0f172a',
+          secondBkgColor: isDark ? '#334155' : '#f0f4ff',
+          tertiaryColor: isDark ? '#475569' : '#ddd6fe',
+          textColor: isDark ? '#f1f5f9' : '#0f172a',
+          lineColor: isDark ? '#475569' : '#555'
+        }
+      });
+      mermaid.contentLoaded();
+      setTimeout(() => {
+        if (isDark) {
+          const darkFillMap = { '#e0e7ff': '#1e2a4a', '#ddd6fe': '#231740', '#f0f4ff': '#1a2340', '#e8f5e9': '#17291c', '#fff9c4': '#2a2617', '#fce4ec': '#2e1a1f', '#e3f2fd': '#172340', '#f3e5f5': '#231730', '#fff3e0': '#2e2217' };
+          document.querySelectorAll('.mermaid svg [fill]').forEach(el => { const f = el.getAttribute('fill'); if (f) { const m = darkFillMap[f.toLowerCase()]; if (m) el.setAttribute('fill', m); } });
+          document.querySelectorAll('.mermaid svg text, .mermaid svg tspan').forEach(t => { t.setAttribute('fill', '#e2e8f0'); t.style.fill = '#e2e8f0'; });
+          document.querySelectorAll('.mermaid svg [stroke]').forEach(el => { const s = el.getAttribute('stroke'); if (s && (s === '#333' || s === '#333333')) el.setAttribute('stroke', '#64748b'); });
+        }
+      }, 150);
+    };
+    initMermaid();
+    new MutationObserver(initMermaid).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  </script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->
