@@ -611,6 +611,18 @@ document.addEventListener('DOMContentLoaded', () => {
       open(element, trigger = null) {
         this._triggerEl = trigger;
         const clone = element.cloneNode(true);
+
+        // Mermaid renders SVGs with explicit px width/height attributes.
+        // Remove them so CSS max-width/max-height can scale the SVG to fit
+        // the canvas. Preserve (or synthesise) a viewBox for correct aspect ratio.
+        if (!clone.getAttribute('viewBox')) {
+          const w = parseFloat(clone.getAttribute('width'))  || 800;
+          const h = parseFloat(clone.getAttribute('height')) || 600;
+          clone.setAttribute('viewBox', `0 0 ${w} ${h}`);
+        }
+        clone.removeAttribute('width');
+        clone.removeAttribute('height');
+
         this.content.innerHTML = '';
         this.content.appendChild(clone);
 
@@ -623,6 +635,8 @@ document.addEventListener('DOMContentLoaded', () => {
         this.modal.classList.add('active');
         this.modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        // Trigger reflow so the SVG renders at its new dimensions before focus
+        void this.content.offsetWidth;
         this.closeBtn.focus();
       }
 

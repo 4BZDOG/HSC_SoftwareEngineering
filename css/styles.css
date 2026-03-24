@@ -157,6 +157,7 @@ body {
   background: var(--nav-bg);
   border-bottom: 1px solid rgba(255,255,255,.08);
   backdrop-filter: blur(12px);
+  overflow: clip; /* contain the reading-progress bar; clip doesn't break sticky */
 }
 
 /* ── Reading Progress Bar ── */
@@ -2543,11 +2544,12 @@ section:has(> h2.section-collapsed) + .divider {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: auto;
+  overflow: visible; /* canvas handles clipping; visible avoids unwanted scrollbars */
   transform-origin: center center;
   cursor: grab;
-  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* No transition on transform — causes laggy pan; controlled per-action instead */
   padding: 2rem;
+  will-change: transform;
 }
 
 .lightbox-content.panning {
@@ -2556,8 +2558,12 @@ section:has(> h2.section-collapsed) + .divider {
 
 .lightbox-content > svg,
 .lightbox-content > img {
-  max-width: none;
-  max-height: none;
+  /* Fit the diagram to the canvas at zoom-level 1, preserving aspect ratio.
+     Zoom / pan enlarges via transform on the parent .lightbox-content. */
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   display: block;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
 }

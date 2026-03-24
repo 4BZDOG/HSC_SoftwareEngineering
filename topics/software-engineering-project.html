@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Software Engineering Project | HSC Software Engineering</title>
   <meta name="description" content="In-depth HSC Software Engineering notes on the Major Project, aligned with NESA command verbs, HSC outcomes, and Australian English standards." />
+  <!-- Theme init: prevents flash of wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=3" />
 </head>
 <body>
@@ -136,7 +138,7 @@
           <div class="key-terms">
             <div class="key-term-item"><strong>💡 Idea Generation</strong><span>Brainstorming, mind-mapping, and Storyboards (Course Spec p. 9) to visualise user interfaces.</span></div>
             <div class="key-term-item"><strong>📋 Data Definition</strong><span>Utilising Data dictionaries (Course Spec p. 8) to select appropriate data types and formats.</span></div>
-            <div class="key-term-item"><strong>💻 Development</strong><span>Algorithm design (flowcharts/pseudocode), code generation, and rigorous testing and debugging.</span></div>
+            <div class="key-term-item"><strong>💻 Development</strong><span><strong>Algorithm</strong> design (flowcharts/pseudocode), code generation, and rigorous testing and debugging.</span></div>
             <div class="key-term-item"><strong>🚀 Post-Development</strong><span>Installation and ongoing maintenance procedures.</span></div>
           </div>
 
@@ -356,7 +358,7 @@
             </div>
             <div class="info-card">
               <h4>🧬 WAgile Approach</h4>
-              <p><strong>Research</strong> WAgile, understanding it is a <strong>hybrid model</strong>. It combines Waterfall's rigorous upfront planning with Agile's iterative coding. <br><br><strong>Intervention:</strong> Applied 'when' regulatory compliance requires strict documentation, but 'how' the code is written remains agile. <br><strong>Scale:</strong> Complex enterprise developments.</p>
+              <p><strong>Research</strong> WAgile, understanding it is a <strong>hybrid model</strong>. It combines Waterfall's rigorous upfront planning with <strong>Agile</strong>'s iterative coding. <br><br><strong>Intervention:</strong> Applied 'when' regulatory compliance requires strict documentation, but 'how' the code is written remains <strong>agile</strong>. <br><strong>Scale:</strong> Complex enterprise developments.</p>
             </div>
           </div>
         </section>
@@ -372,7 +374,7 @@
           <p><strong>Apply</strong> project management to plan and conduct the development of a software solution. This involves scheduling and tracking using software tools, notably 🛠️ <strong>Gantt charts</strong> (Course Spec p. 11), to allocate time to tasks, and using collaborative tools (e.g., GitHub, Jira) to track team progress (Outcome SE-12-09).</p>
 
           <h3>Communication &amp; Social Issues</h3>
-          <p><strong>Explore</strong> communication issues associated with project work. Engineers must prioritise <strong>involving and empowering the client</strong> through constant dialogue, <strong>enabling feedback</strong> during Agile iterations, and <strong>negotiating</strong> realistic deadlines and features (Outcome SE-12-09). <br><br>Furthermore, engineers must <strong>explore social and ethical issues</strong>, such as equitably dividing work when collaborating, acting professionally when working individually, and transparently responding to stakeholder concerns regarding data security (Outcome SE-12-05).</p>
+          <p><strong>Explore</strong> communication issues associated with project work. Engineers must prioritise <strong>involving and empowering the client</strong> through constant dialogue, <strong>enabling feedback</strong> during <strong>Agile</strong> iterations, and <strong>negotiating</strong> realistic deadlines and features (Outcome SE-12-09). <br><br>Furthermore, engineers must <strong>explore social and ethical issues</strong>, such as equitably dividing work when collaborating, acting professionally when working individually, and transparently responding to stakeholder concerns regarding data security (Outcome SE-12-05).</p>
 
           <h3>Gantt Chart — Project Schedule</h3>
           <p>A <strong>Gantt chart</strong> is a horizontal bar chart that maps project tasks against a timeline. It visually shows the start date, duration, and end date of each task, and can indicate task dependencies (where one task must complete before another begins). In the SEP, your Gantt chart must cover all four project phases.</p>
@@ -456,7 +458,7 @@ Key: ███ = Task active during this week</pre>
                   <td>Build a 1-week buffer into the schedule; prioritise core features using MoSCoW (Must, Should, Could, Won't) method.</td>
                 </tr>
                 <tr>
-                  <td>Security vulnerability — SQL injection or authentication bypass</td>
+                  <td>Security vulnerability — <strong>SQL injection</strong> or <strong>authentication</strong> bypass</td>
                   <td>Low</td>
                   <td>High</td>
                   <td><strong style="color:#e67e22">Medium</strong></td>
@@ -551,16 +553,16 @@ Key:
           <p><strong>Explain</strong> the contribution of back-end engineering to the success and ease of software development (Outcome SE-12-07):</p>
 
           <h4>🖥️ Technology Used</h4>
-          <p>The selection of server-side frameworks and database technologies fundamentally determines a project's performance, scalability, and long-term maintainability. For example, a <strong>Django</strong> (Python) framework provides a built-in ORM, authentication system, and admin panel — dramatically reducing development time for data-driven applications. Alternatively, <strong>Node.js</strong> enables non-blocking I/O suited to high-concurrency environments, such as real-time chat applications. Database choice is equally critical: a relational database such as <strong>PostgreSQL</strong> enforces data integrity through foreign keys and ACID transactions, whereas a NoSQL database such as <strong>MongoDB</strong> offers flexible document schemas suited to rapidly evolving data models.</p>
+          <p>The selection of server-side frameworks and database technologies fundamentally determines a project's performance, scalability, and long-term maintainability. For example, a <strong>Django</strong> (Python) framework provides a built-in ORM, <strong>authentication</strong> system, and admin panel — dramatically reducing development time for data-driven applications. Alternatively, <strong>Node.js</strong> enables non-blocking I/O suited to high-concurrency environments, such as real-time chat applications. Database choice is equally critical: a relational database such as <strong>PostgreSQL</strong> enforces data integrity through foreign keys and ACID transactions, whereas a NoSQL database such as <strong>MongoDB</strong> offers flexible document schemas suited to rapidly evolving data models.</p>
 
           <h4>⚠️ Error Handling</h4>
-          <p>Robust error handling ensures the server remains stable and informative when unexpected inputs or system failures occur. Without it, an unhandled exception could crash the entire server process — making the application unavailable to all users simultaneously. For example, a <code>try/except</code> block in Python can catch a database connection timeout and return a user-friendly <strong>503 Service Unavailable</strong> HTTP response, rather than exposing a raw stack trace to the client. Additionally, structured logging (e.g., Python's <code>logging</code> module) records error details for post-mortem debugging, without leaking sensitive system information to end-users.</p>
+          <p>Robust error handling ensures the server remains stable and informative when unexpected inputs or system failures occur. Without it, an unhandled exception could crash the entire server process — making the application unavailable to all users simultaneously. For example, a <code>try/except</code> block in Python can catch a database connection timeout and return a user-friendly <strong>503 Service Unavailable</strong> <strong>HTTP</strong> response, rather than exposing a raw stack trace to the client. Additionally, structured logging (e.g., Python's <code>logging</code> module) records error details for post-mortem debugging, without leaking sensitive system information to end-users.</p>
 
           <h4>🔗 Interfacing with Front End</h4>
-          <p>Back-end engineers design <strong>Application Programming Interfaces (APIs)</strong> that define precisely how the front-end client requests and receives data. A <strong>RESTful API</strong> uses standard HTTP methods (GET, POST, PUT, DELETE) with JSON payloads, allowing any front-end technology — React, Angular, or a mobile app — to consume the same endpoints without modification. For example, a GET request to <code>/api/students/42</code> would return a JSON object containing that student's profile. Efficient API design minimises data transfer by returning only required fields, and uses HTTP status codes correctly (200 OK, 404 Not Found, 401 Unauthorised) so the front end can respond appropriately to every outcome.</p>
+          <p>Back-end engineers design <strong>Application Programming Interfaces (APIs)</strong> that define precisely how the front-end client requests and receives data. A <strong>RESTful API</strong> uses standard <strong>HTTP</strong> methods (GET, POST, PUT, DELETE) with JSON payloads, allowing any front-end technology — React, Angular, or a mobile app — to consume the same endpoints without modification. For example, a GET request to <code>/api/students/42</code> would return a JSON object containing that student's profile. Efficient API design minimises data transfer by returning only required fields, and uses <strong>HTTP</strong> status codes correctly (200 OK, 404 Not Found, 401 Unauthorised) so the front end can respond appropriately to every outcome.</p>
 
           <h4>🔐 Security Engineering</h4>
-          <p>The back end is the primary line of defence against malicious attacks. <strong>Password security</strong> is implemented through cryptographic hashing algorithms such as <strong>bcrypt</strong>, which store a one-way hash rather than plaintext — meaning a complete database breach still cannot reveal user credentials. <strong>Input sanitisation</strong> and parameterised SQL queries prevent SQL injection attacks, where an attacker might otherwise embed SQL commands in a form field to manipulate or delete database records. Additionally, implementing <strong>HTTPS with TLS certificates</strong> encrypts all data in transit, protecting against man-in-the-middle attacks on public networks.</p>
+          <p>The back end is the primary line of defence against malicious attacks. <strong>Password security</strong> is implemented through cryptographic hashing <strong>algorithms</strong> such as <strong>bcrypt</strong>, which store a one-way hash rather than plaintext — meaning a complete database breach still cannot reveal user credentials. <strong>Input sanitisation</strong> and parameterised SQL queries prevent <strong>SQL injection</strong> attacks, where an attacker might otherwise embed SQL commands in a form field to manipulate or delete database records. Additionally, implementing <strong>HTTPS with TLS certificates</strong> encrypts all data in transit, protecting against man-in-the-middle attacks on public networks.</p>
         </section>
 
         <hr class="divider" />
@@ -809,7 +811,7 @@ if __name__ == "__main__":
                 </tr>
                 <tr>
                   <td><strong>Performance</strong></td>
-                  <td>Are there any obviously inefficient algorithms (e.g., nested loops on large datasets) that should be refactored?</td>
+                  <td>Are there any obviously inefficient <strong>algorithms</strong> (e.g., nested loops on large datasets) that should be refactored?</td>
                   <td>☐ Pass / ☐ Fail</td>
                 </tr>
                 <tr>
@@ -1214,7 +1216,7 @@ flowchart TD
             <div class="info-card">
               <h4>🔬 Phase 2 — Research &amp; Planning</h4>
               <ul>
-                <li>Justified choice of development approach (Agile/Waterfall)</li>
+                <li>Justified choice of development approach (<strong>Agile</strong>/Waterfall)</li>
                 <li>Complete Gantt chart covering all phases</li>
                 <li>Risk register with mitigation strategies</li>
                 <li>Structure charts and/or DFDs</li>
@@ -1270,8 +1272,8 @@ flowchart TD
                 </tr>
                 <tr>
                   <td>Week 3<br>Wed 12 Feb</td>
-                  <td>Completed structure chart and Level 0 DFD. Began algorithm design for the book search module using pseudocode.</td>
-                  <td>Chose Agile approach over Waterfall because requirements may evolve as the client sees prototypes. This will allow me to adapt designs based on feedback each iteration.</td>
+                  <td>Completed structure chart and Level 0 DFD. Began <strong>algorithm</strong> design for the book search module using pseudocode.</td>
+                  <td>Chose <strong>Agile</strong> approach over Waterfall because requirements may evolve as the client sees prototypes. This will allow me to adapt designs based on feedback each <strong>iteration</strong>.</td>
                   <td>Initially designed the search as a sequential scan — after research, switched to a dictionary-based lookup for O(1) ISBN lookups, significantly improving efficiency on large catalogues.</td>
                   <td>Build the search and loan modules in Phase 3 Week 5–6.</td>
                 </tr>
@@ -1390,7 +1392,7 @@ flowchart TD
                 </tr>
                 <tr>
                   <td><strong>Action Items</strong></td>
-                  <td>Developer: Draft functional requirements by Week 2 for client review. Client: Provide a sample of current loan records to inform data structure design.</td>
+                  <td>Developer: Draft functional requirements by Week 2 for client review. Client: Provide a sample of current loan records to inform <strong>data structure</strong> design.</td>
                 </tr>
                 <tr>
                   <td><strong>Next Meeting</strong></td>
@@ -1498,7 +1500,7 @@ flowchart TD
                   <td>String (VARCHAR)</td>
                   <td>13 characters</td>
                   <td>Yes</td>
-                  <td>International Standard Book Number (ISBN-13). Must be exactly 13 digits. Unique in the Books table. Validated using ISBN-13 checksum algorithm.</td>
+                  <td>International Standard Book Number (ISBN-13). Must be exactly 13 digits. Unique in the Books table. Validated using ISBN-13 checksum <strong>algorithm</strong>.</td>
                 </tr>
                 <tr>
                   <td><code>title</code></td>
@@ -1572,10 +1574,10 @@ flowchart TD
               <tbody>
                 <tr><td><strong>Project Manager</strong></td><td>Plan timeline, manage risks, coordinate stakeholders, track progress against scope</td><td>Leadership, communication, risk management</td></tr>
                 <tr><td><strong>Business Analyst</strong></td><td>Gather and document requirements, bridge between client and technical team, validate deliverables</td><td>Requirements elicitation, documentation, domain knowledge</td></tr>
-                <tr><td><strong>Software Developer</strong></td><td>Design, code, debug, and unit-test features according to specifications</td><td>Programming, algorithms, debugging, version control</td></tr>
+                <tr><td><strong>Software Developer</strong></td><td>Design, code, debug, and unit-test features according to specifications</td><td>Programming, <strong>algorithms</strong>, debugging, version control</td></tr>
                 <tr><td><strong>UI/UX Designer</strong></td><td>Design wireframes, prototypes, and visual assets; conduct usability testing</td><td>Figma/Sketch, user research, accessibility</td></tr>
                 <tr><td><strong>QA Tester</strong></td><td>Write test plans, execute manual and automated tests, report bugs with reproduction steps</td><td>Test design, attention to detail, tool automation</td></tr>
-                <tr><td><strong>DevOps Engineer</strong></td><td>Manage CI/CD pipelines, deployment infrastructure, monitoring, and incident response</td><td>Linux, Docker, cloud platforms, scripting</td></tr>
+                <tr><td><strong>DevOps Engineer</strong></td><td>Manage <strong>CI/CD</strong> pipelines, deployment infrastructure, monitoring, and incident response</td><td>Linux, Docker, cloud platforms, scripting</td></tr>
                 <tr><td><strong>Database Administrator</strong></td><td>Design schemas, optimise queries, manage backups, enforce data integrity</td><td>SQL, indexing, normalisation, backup strategies</td></tr>
                 <tr><td><strong>Technical Lead</strong></td><td>Make architecture decisions, conduct code reviews, mentor junior developers, set coding standards</td><td>System design, broad technical knowledge, communication</td></tr>
               </tbody>
