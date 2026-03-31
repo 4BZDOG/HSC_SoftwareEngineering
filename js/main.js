@@ -238,13 +238,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const anim = new IntersectionObserver(entries => {
       entries.forEach((e, i) => {
         if (e.isIntersecting) {
-          e.target.style.animationDelay = `${i * 40}ms`;
-          e.target.classList.add('fade-in');
+          e.target.style.animationDelay = `${i * 60}ms`;
+          e.target.classList.add('fade-in', 'card-visible');
           anim.unobserve(e.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
     animItems.forEach(el => anim.observe(el));
+  }
+
+  /* ── Hero Stat Counter Animation ── */
+  const statEls = document.querySelectorAll('.hero-stat-num[data-count]');
+  if (statEls.length && 'IntersectionObserver' in window) {
+    const counterObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const end = parseInt(el.dataset.count, 10);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1400;
+        const startTime = performance.now();
+        el.classList.add('stat-animated');
+        function tick(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * end) + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        counterObs.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    statEls.forEach(el => counterObs.observe(el));
   }
 
   /* ── Collapsible Major Part Blocks ── */

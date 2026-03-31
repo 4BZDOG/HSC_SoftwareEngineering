@@ -7,7 +7,7 @@
   <meta name="description" content="Comprehensive, premium HSC Software Engineering notes covering the full NESA NSW syllabus for Year 11 and Year 12." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="css/styles.css?v=3" />
+  <link rel="stylesheet" href="css/styles.css?v=4" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 </head>
@@ -99,10 +99,13 @@
 
   <!-- ── Hero ── -->
   <section class="hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
     <div class="hero-grid"></div>
     <div class="hero-inner">
       <div class="hero-pill">
-        <span>✦</span>
+        <span class="hero-pill-dot"></span>
         NESA NSW Syllabus Aligned
       </div>
       <h1>Master <span>HSC Software<br>Engineering</span> with Confidence</h1>
@@ -110,11 +113,11 @@
 
       <div class="hero-stats">
         <div class="hero-stat">
-          <div class="hero-stat-num">7</div>
+          <div class="hero-stat-num" data-count="7">7</div>
           <div class="hero-stat-label">Topics Covered</div>
         </div>
         <div class="hero-stat">
-          <div class="hero-stat-num">100%</div>
+          <div class="hero-stat-num" data-count="100" data-suffix="%">100%</div>
           <div class="hero-stat-label">Syllabus Aligned</div>
         </div>
         <div class="hero-stat">
@@ -133,28 +136,28 @@
   <!-- ── Features Bar ── -->
   <div class="features-bar">
     <div class="feature-item">
-      <div class="feature-icon">📑</div>
+      <div class="feature-icon feature-indigo">📑</div>
       <div class="feature-text">
         <strong>Full Syllabus Coverage</strong>
         <span>Every dot point addressed</span>
       </div>
     </div>
     <div class="feature-item">
-      <div class="feature-icon">💡</div>
+      <div class="feature-icon feature-amber">💡</div>
       <div class="feature-text">
         <strong>Worked Examples</strong>
         <span>Code samples &amp; diagrams</span>
       </div>
     </div>
     <div class="feature-item">
-      <div class="feature-icon">🔍</div>
+      <div class="feature-icon feature-cyan">🔍</div>
       <div class="feature-text">
         <strong>Key Terms Defined</strong>
         <span>Clear, precise definitions</span>
       </div>
     </div>
     <div class="feature-item">
-      <div class="feature-icon">🌙</div>
+      <div class="feature-icon feature-violet">🌙</div>
       <div class="feature-text">
         <strong>Dark Mode</strong>
         <span>Easy on the eyes</span>
@@ -303,12 +306,32 @@
       </div>
     </div>
 
-    <!-- Quick Tips Banner -->
-    <div class="highlight-box" style="margin-top: 3rem; text-align:center;">
-      <p style="font-size:1rem; font-weight:600; color:var(--text-primary); margin-bottom:.5rem;">📌 How to Use These Notes</p>
-      <p style="font-size:.88rem; color:var(--text-secondary); max-width:600px; margin:0 auto;">
-        Each topic page follows the NESA syllabus dot points exactly. Use the <strong>sidebar table of contents</strong> to jump to specific sections. Key terms, code examples, and summary tables are highlighted throughout.
-      </p>
+    <!-- Study Guide Section -->
+    <div class="study-guide-section">
+      <div class="study-guide-header">
+        <h2 class="study-guide-title">How to Use These Notes</h2>
+        <p class="study-guide-subtitle">Three steps to get the most out of every topic</p>
+      </div>
+      <div class="study-guide-grid">
+        <div class="study-guide-card">
+          <div class="study-guide-step">01</div>
+          <div class="study-guide-icon-wrap sg-indigo">📍</div>
+          <h3>Follow the Syllabus</h3>
+          <p>Each topic follows NESA dot points exactly. Use the sidebar table of contents to jump to any section in seconds.</p>
+        </div>
+        <div class="study-guide-card">
+          <div class="study-guide-step">02</div>
+          <div class="study-guide-icon-wrap sg-amber">💡</div>
+          <h3>Study the Examples</h3>
+          <p>Code samples, Mermaid diagrams, and summary tables are embedded throughout to illustrate every concept.</p>
+        </div>
+        <div class="study-guide-card">
+          <div class="study-guide-step">03</div>
+          <div class="study-guide-icon-wrap sg-cyan">🔑</div>
+          <h3>Revise Key Terms</h3>
+          <p>Definitions are highlighted in call-out boxes. Scan them quickly before exams or deep-dive for full understanding.</p>
+        </div>
+      </div>
     </div>
 
   </main>
@@ -376,6 +399,6 @@
     </div>
   </div>
 
-  <script src="js/main.js?v=3"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 </html>
