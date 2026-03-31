@@ -2883,6 +2883,267 @@ section:has(> h2.section-collapsed) + .divider {
   padding: 2rem 0;
 }
 
+/* ============================================================
+   HOME PAGE VIBRANT ENHANCEMENTS
+   ============================================================ */
+
+/* ── Hero Animated Orbs ── */
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(40px, -60px) scale(1.08); }
+  66%       { transform: translate(-25px, 30px) scale(0.94); }
+}
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(-50px, 40px) scale(1.1); }
+  75%       { transform: translate(30px, -40px) scale(0.9); }
+}
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(25px, -50px) scale(1.06); }
+}
+
+.hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-orb-1 {
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, rgba(99,102,241,.38), transparent 65%);
+  top: -160px; left: -80px;
+  animation: orb-drift-1 14s ease-in-out infinite;
+}
+.hero-orb-2 {
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(139,92,246,.32), transparent 65%);
+  top: -60px; right: -100px;
+  animation: orb-drift-2 18s ease-in-out infinite;
+}
+.hero-orb-3 {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(6,182,212,.28), transparent 65%);
+  bottom: -60px; left: 42%;
+  animation: orb-drift-3 11s ease-in-out infinite;
+}
+
+/* ── Hero Gradient Animation ── */
+@keyframes hero-bg-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+.hero {
+  background: linear-gradient(135deg, #0A0F1E 0%, #1E1B4B 35%, #0F1629 65%, #0F172A 100%);
+  background-size: 250% 250%;
+  animation: hero-bg-shift 18s ease infinite;
+}
+
+/* ── Hero Pill — pulsing dot ── */
+.hero-pill-dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #818CF8;
+  box-shadow: 0 0 0 0 rgba(129,140,248,.6);
+  animation: dot-pulse 2.4s ease-in-out infinite;
+}
+@keyframes dot-pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(129,140,248,.6); }
+  60%  { box-shadow: 0 0 0 7px rgba(129,140,248,0); }
+  100% { box-shadow: 0 0 0 0 rgba(129,140,248,0); }
+}
+
+/* ── Hero Stat Nums — gradient text ── */
+.hero-stat-num {
+  background: linear-gradient(135deg, #FFFFFF 30%, #A5B4FC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Hero Stat — count-up animation ── */
+@keyframes stat-pop {
+  0%   { opacity: 0; transform: scale(.6) translateY(10px); }
+  70%  { transform: scale(1.1) translateY(-2px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.hero-stat-num.stat-animated {
+  animation: stat-pop .6s cubic-bezier(.34,1.56,.64,1) both;
+}
+
+/* ── Feature Bar Enhancements ── */
+.feature-item {
+  padding: .75rem 1rem;
+  border-radius: var(--radius-lg);
+  transition: background var(--transition), transform var(--transition);
+  cursor: default;
+}
+.feature-item:hover {
+  background: var(--surface);
+  transform: translateY(-3px);
+}
+.feature-item:hover .feature-icon {
+  transform: scale(1.15) rotate(-8deg);
+}
+.feature-icon {
+  transition: transform 260ms cubic-bezier(.34,1.56,.64,1);
+}
+.feature-icon.feature-indigo {
+  background: linear-gradient(135deg, #6366F1, #4338CA);
+}
+.feature-icon.feature-amber {
+  background: linear-gradient(135deg, #F59E0B, #EF4444);
+}
+.feature-icon.feature-cyan {
+  background: linear-gradient(135deg, #06B6D4, #3B82F6);
+}
+.feature-icon.feature-violet {
+  background: linear-gradient(135deg, #8B5CF6, #EC4899);
+}
+/* keep emoji visible over dark gradient bg */
+.feature-icon.feature-indigo,
+.feature-icon.feature-amber,
+.feature-icon.feature-cyan,
+.feature-icon.feature-violet {
+  font-size: 1.35rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,.18);
+}
+
+/* ── Topic Card — shimmer sweep on hover ── */
+@keyframes card-shimmer {
+  0%   { transform: translateX(-120%) skewX(-18deg); }
+  100% { transform: translateX(220%)  skewX(-18deg); }
+}
+.topic-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 25%,
+    rgba(255,255,255,.12) 50%,
+    transparent 75%
+  );
+  transform: translateX(-120%) skewX(-18deg);
+  pointer-events: none;
+  z-index: 1;
+}
+.topic-card:hover::after {
+  animation: card-shimmer .65s ease;
+}
+
+/* ── Topic Card — scroll entrance ── */
+@keyframes card-enter {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.topic-card.card-visible {
+  animation: card-enter .5s cubic-bezier(.4,0,.2,1) both;
+}
+
+/* ── Section Header — gradient accent line ── */
+.section-header {
+  position: relative;
+}
+.section-header::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 64px; height: 3px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+}
+
+/* ── Study Guide Section ── */
+.study-guide-section {
+  margin-top: 3.5rem;
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--border);
+}
+.study-guide-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.study-guide-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: .4rem;
+}
+.study-guide-subtitle {
+  font-size: .88rem;
+  color: var(--text-muted);
+}
+.study-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+.study-guide-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem 1.5rem 1.5rem;
+  overflow: hidden;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.study-guide-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+.study-guide-step {
+  position: absolute;
+  top: 1.25rem; right: 1.25rem;
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--border);
+  letter-spacing: -.04em;
+  pointer-events: none;
+  transition: color var(--transition);
+}
+.study-guide-card:hover .study-guide-step {
+  color: var(--border-strong);
+}
+.study-guide-icon-wrap {
+  width: 48px; height: 48px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  transition: transform 260ms cubic-bezier(.34,1.56,.64,1);
+}
+.study-guide-card:hover .study-guide-icon-wrap {
+  transform: scale(1.15) rotate(-6deg);
+}
+.sg-indigo { background: linear-gradient(135deg, #6366F1, #4338CA); box-shadow: 0 4px 12px rgba(99,102,241,.3); }
+.sg-amber  { background: linear-gradient(135deg, #F59E0B, #EF4444); box-shadow: 0 4px 12px rgba(245,158,11,.3); }
+.sg-cyan   { background: linear-gradient(135deg, #06B6D4, #3B82F6); box-shadow: 0 4px 12px rgba(6,182,212,.3); }
+
+.study-guide-card h3 {
+  font-size: .98rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: .5rem;
+}
+.study-guide-card p {
+  font-size: .85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Print: hide decorative new elements ── */
+@media print {
+  .hero-orb, .hero-pill-dot, .study-guide-section { display: none !important; }
+}
+
 /* ── Print Styles ── */
 @media print {
   /* Hide non-content UI */
