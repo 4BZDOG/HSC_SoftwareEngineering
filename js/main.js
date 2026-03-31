@@ -250,15 +250,23 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Hero Stat Counter Animation ── */
   const statEls = document.querySelectorAll('.hero-stat-num[data-count]');
   if (statEls.length && 'IntersectionObserver' in window) {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Suppress per-tick SR announcements; final value is already in the DOM
+    statEls.forEach(el => el.setAttribute('aria-live', 'off'));
     const counterObs = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
         const end = parseInt(el.dataset.count, 10);
         const suffix = el.dataset.suffix || '';
+        el.classList.add('stat-animated');
+        if (reducedMotion) {
+          el.textContent = end + suffix;
+          counterObs.unobserve(el);
+          return;
+        }
         const duration = 1400;
         const startTime = performance.now();
-        el.classList.add('stat-animated');
         function tick(now) {
           const elapsed = now - startTime;
           const progress = Math.min(elapsed / duration, 1);
