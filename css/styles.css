@@ -579,7 +579,8 @@ body {
   0%, 100% { box-shadow: 0 4px 14px rgba(99,102,241,.4); }
   50%       { box-shadow: 0 4px 24px rgba(99,102,241,.6), 0 0 20px rgba(99,102,241,.3); }
 }
-.hero-cta .btn-primary {
+/* Stop pulsing while hovered so the hover box-shadow is never overridden by animation */
+.hero-cta .btn-primary:not(:hover) {
   animation: button-glow-pulse 2.5s ease-in-out 2s infinite;
 }
 
@@ -3037,9 +3038,12 @@ section:has(> h2.section-collapsed) + .divider {
 }
 
 /* ── Feature Bar Enhancements ── */
+/* Use individual transform properties so float animation and hover don't conflict.
+   `translate` is animated by the keyframe; `scale` + `rotate` are only set by hover,
+   so they are entirely separate properties with no cascade fight. */
 @keyframes icon-float {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50%       { transform: translateY(-6px) scale(1.05); }
+  0%, 100% { translate: 0 0; }
+  50%       { translate: 0 -6px; }
 }
 
 .feature-item {
@@ -3055,10 +3059,12 @@ section:has(> h2.section-collapsed) + .divider {
   box-shadow: var(--shadow-md);
 }
 .feature-item:hover .feature-icon {
-  transform: scale(1.15) rotate(-8deg);
+  scale: 1.15;
+  rotate: -8deg;
 }
 .feature-icon {
-  transition: transform 260ms cubic-bezier(.34,1.56,.64,1);
+  transition: scale 260ms cubic-bezier(.34,1.56,.64,1),
+              rotate 260ms cubic-bezier(.34,1.56,.64,1);
   animation: icon-float 3s ease-in-out infinite;
 }
 /* Stagger the animation for each feature */
@@ -3110,14 +3116,15 @@ section:has(> h2.section-collapsed) + .divider {
   animation: card-shimmer .65s ease;
 }
 
-/* ── Topic Card — scroll entrance (transition-based to avoid animation conflicts) ── */
-/* JS sets opacity/translateY via inline style before observing, then adds card-visible */
+/* ── Topic Card — scroll entrance ── */
+/* JS sets hidden state via inline style, adds .card-visible to enable the slow entrance
+   transition, then removes .card-visible on transitionend — restoring the fast hover
+   transition (transition:all var(--transition)) from the base .topic-card rule. */
 .topic-card {
-  will-change: transform, opacity;
+  will-change: transform, opacity, box-shadow;
 }
 .topic-card.card-visible {
-  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(.4,0,.2,1),
-              box-shadow var(--transition), border-color var(--transition);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(.4,0,.2,1);
 }
 
 /* ── Topic Card — improved hover glow ── */
@@ -3217,7 +3224,8 @@ section:has(> h2.section-collapsed) + .divider {
 @media (max-width: 640px) {
   .learning-path { padding: 2rem 1rem; }
   .learning-path-inner { gap: 1rem; flex-direction: column; }
-  .path-connector { min-height: 40px; font-size: 1.5rem; transform: rotate(90deg); }
+  /* Use individual `rotate` property — doesn't conflict with the translateX in arrow-pulse */
+  .path-connector { min-height: 40px; font-size: 1.5rem; rotate: 90deg; animation: none; }
 }
 
 /* ── Section Header — gradient accent line ── */
@@ -3315,13 +3323,6 @@ section:has(> h2.section-collapsed) + .divider {
   line-height: 1.6;
   margin: 0;
 }
-
-/* ── Smooth Section Transitions ── */
-@keyframes section-fade-in {
-  from { opacity: 0.8; }
-  to   { opacity: 1; }
-}
-main { animation: section-fade-in 0.8s ease-out; }
 
 /* ── Reduced Motion: disable animations ── */
 @media (prefers-reduced-motion: reduce) {

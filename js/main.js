@@ -249,17 +249,20 @@ document.addEventListener('DOMContentLoaded', () => {
           const card = entry.target;
           const delay = cards.indexOf(card) * 70;
           card.classList.add('card-visible');
-          // Use a tiny rAF to ensure transition fires after initial hidden state paints
-          requestAnimationFrame(() => {
+          // Double-rAF: first frame commits the hidden inline styles to the renderer,
+          // second frame applies the visible state so the transition actually fires.
+          requestAnimationFrame(() => requestAnimationFrame(() => {
             card.style.transitionDelay = `${delay}ms`;
             card.style.opacity = '1';
             card.style.transform = '';
-          });
-          // Clean up inline styles after entrance so hover transforms work freely
+          }));
+          // After entrance completes: clear inline styles AND remove card-visible so the
+          // card falls back to `transition: all 200ms` — making hover snappy again.
           card.addEventListener('transitionend', () => {
             card.style.transitionDelay = '';
             card.style.opacity = '';
             card.style.transform = '';
+            card.classList.remove('card-visible');
           }, { once: true });
           obs.unobserve(card);
         });
