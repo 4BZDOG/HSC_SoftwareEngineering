@@ -15,29 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.insertBefore(skipLink, document.body.firstChild);
   }
 
-  /* ── Parallax Scroll on Hero ── */
-  const heroSection = document.getElementById('hero');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (heroSection && !prefersReducedMotion) {
-    let ticking = false;
-    const updateParallax = () => {
-      const scrollY = window.scrollY;
-      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-      if (scrollY < heroBottom * 1.2) {
-        const offset = scrollY * 0.48;
-        heroSection.style.setProperty('--parallax-offset', `${offset}px`);
-        heroSection.style.transform = `translateY(var(--parallax-offset))`;
-      }
-      ticking = false;
-    };
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(updateParallax);
-        ticking = true;
-      }
-    }, { passive: true });
-  }
-
   /* ── Theme Toggle ── */
   const THEME_KEY = 'hsc-theme';
   const saved = localStorage.getItem(THEME_KEY) ||
@@ -255,19 +232,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Animate elements into view ── */
-  const animItems = document.querySelectorAll('.topic-card, .info-card, .def-card');
-  if ('IntersectionObserver' in window) {
+  /* ── Staggered Card Entrance (transition-based, no animation conflicts) ── */
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cardGrids = document.querySelectorAll('.topics-grid');
+  if (cardGrids.length && 'IntersectionObserver' in window && !prefersReducedMotion) {
+    cardGrids.forEach(grid => {
+      const cards = Array.from(grid.querySelectorAll('.topic-card'));
+      // Set hidden state via JS only — cards remain visible if JS is absent
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(22px)';
+      });
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const card = entry.target;
+          const delay = cards.indexOf(card) * 70;
+          card.classList.add('card-visible');
+          // Use a tiny rAF to ensure transition fires after initial hidden state paints
+          requestAnimationFrame(() => {
+            card.style.transitionDelay = `${delay}ms`;
+            card.style.opacity = '1';
+            card.style.transform = '';
+          });
+          // Clean up inline styles after entrance so hover transforms work freely
+          card.addEventListener('transitionend', () => {
+            card.style.transitionDelay = '';
+            card.style.opacity = '';
+            card.style.transform = '';
+          }, { once: true });
+          obs.unobserve(card);
+        });
+      }, { threshold: 0.08 });
+      cards.forEach(card => obs.observe(card));
+    });
+  }
+
+  /* ── Fallback: show all cards on non-home topic pages ── */
+  const nonGridCards = document.querySelectorAll('.info-card, .def-card');
+  if (nonGridCards.length && 'IntersectionObserver' in window) {
     const anim = new IntersectionObserver(entries => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          e.target.style.animationDelay = `${i * 60}ms`;
-          e.target.classList.add('fade-in', 'card-visible');
-          anim.unobserve(e.target);
-        }
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('fade-in'); anim.unobserve(e.target); }
       });
     }, { threshold: 0.08 });
-    animItems.forEach(el => anim.observe(el));
+    nonGridCards.forEach(el => anim.observe(el));
   }
 
   /* ── Hero Stat Counter Animation ── */

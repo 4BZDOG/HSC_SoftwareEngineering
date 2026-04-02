@@ -3105,42 +3105,27 @@ section:has(> h2.section-collapsed) + .divider {
   );
   transform: translateX(-120%) skewX(-18deg);
   pointer-events: none;
-  z-index: 1;
 }
 .topic-card:hover::after {
   animation: card-shimmer .65s ease;
 }
 
-/* ── Topic Card — scroll entrance ── */
-@keyframes card-enter {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* ── Topic Card — scroll entrance (transition-based to avoid animation conflicts) ── */
+/* JS sets opacity/translateY via inline style before observing, then adds card-visible */
+.topic-card {
+  will-change: transform, opacity;
 }
 .topic-card.card-visible {
-  animation: card-enter .5s cubic-bezier(.4,0,.2,1) both;
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(.4,0,.2,1),
+              box-shadow var(--transition), border-color var(--transition);
 }
 
-/* ── Topic Card — glow pulse ── */
-@keyframes card-glow-pulse {
-  0%, 100% { box-shadow: 0 12px 30px rgba(59,130,246,.15); }
-  50%       { box-shadow: 0 12px 40px rgba(59,130,246,.35); }
-}
-.topic-card.year12:not(:hover) {
-  animation: card-glow-pulse 4s ease-in-out infinite;
-}
-.topic-card.year11:not(:hover) {
-  animation: card-glow-pulse 4s ease-in-out infinite;
-  --pulse-color: rgba(16,185,129,.15);
-}
-
-/* Better hover glow with border glow */
+/* ── Topic Card — improved hover glow ── */
 .topic-card.year12:hover {
-  box-shadow: 0 16px 40px rgba(59,130,246,.32),
-              inset 0 0 20px rgba(59,130,246,.1);
+  box-shadow: 0 16px 40px rgba(59,130,246,.28), 0 0 0 1px rgba(59,130,246,.2);
 }
 .topic-card.year11:hover {
-  box-shadow: 0 16px 40px rgba(16,185,129,.32),
-              inset 0 0 20px rgba(16,185,129,.1);
+  box-shadow: 0 16px 40px rgba(16,185,129,.28), 0 0 0 1px rgba(16,185,129,.2);
 }
 
 /* ── Learning Path Section ── */
