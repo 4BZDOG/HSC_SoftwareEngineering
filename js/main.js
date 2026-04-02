@@ -90,10 +90,18 @@ document.addEventListener('DOMContentLoaded', () => {
     dropdowns.forEach(dd => {
       const btn  = dd.querySelector('.nav-dropdown-btn');
       const menu = dd.querySelector('.nav-dropdown-menu');
+      let closeTimer;
 
       // ── Hover (desktop) ──────────────────────────────────────
-      dd.addEventListener('mouseenter', () => { closeAll(dd); openDd(dd); });
-      dd.addEventListener('mouseleave', () => closeDd(dd));
+      // Small close-delay so fast mouse movement between items doesn't flash closed.
+      dd.addEventListener('mouseenter', () => {
+        clearTimeout(closeTimer);
+        closeAll(dd);
+        openDd(dd);
+      });
+      dd.addEventListener('mouseleave', () => {
+        closeTimer = setTimeout(() => closeDd(dd), 80);
+      });
 
       // ── Click / touch toggle ──────────────────────────────────
       btn.addEventListener('click', () => {

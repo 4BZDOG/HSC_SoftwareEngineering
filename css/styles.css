@@ -157,7 +157,9 @@ body {
   background: var(--nav-bg);
   border-bottom: 1px solid rgba(255,255,255,.08);
   backdrop-filter: blur(12px);
-  overflow: clip; /* contain the reading-progress bar; clip doesn't break sticky */
+  /* overflow: visible so dropdown menus can extend below the bar.
+     Do NOT use overflow:hidden/auto/scroll — those break position:sticky. */
+  overflow: visible;
 }
 
 /* ── Reading Progress Bar ── */
@@ -310,21 +312,33 @@ body {
 }
 
 .nav-dropdown-btn:hover,
-.nav-dropdown.open .nav-dropdown-btn,
-.nav-dropdown.nav-dropdown--has-active .nav-dropdown-btn {
+.nav-dropdown.open .nav-dropdown-btn {
   background: rgba(255,255,255,.1);
   color: #F8FAFC;
 }
 
-/* Active dropdown trigger — subtle accent underline */
+/* Active year group — tinted trigger so it's clear where you are */
 .nav-dropdown.nav-dropdown--has-active.nav-dropdown-y12 .nav-dropdown-btn {
-  background: rgba(59,130,246,.15);
+  background: rgba(59,130,246,.18);
   color: #93C5FD;
+  font-weight: 600;
 }
 .nav-dropdown.nav-dropdown--has-active.nav-dropdown-y11 .nav-dropdown-btn {
-  background: rgba(16,185,129,.15);
+  background: rgba(16,185,129,.18);
   color: #6EE7B7;
+  font-weight: 600;
 }
+
+/* Active item in menu — small coloured dot + bold text */
+.nav-dropdown-menu a.active::before {
+  content: '';
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-right: -.125rem; /* optical balance */
+}
+.nav-dropdown-y12 .nav-dropdown-menu a.active::before { background: var(--year12); }
+.nav-dropdown-y11 .nav-dropdown-menu a.active::before { background: var(--year11); }
 
 .nav-chevron {
   flex-shrink: 0;
@@ -339,16 +353,15 @@ body {
 }
 
 /* ── Dropdown menu panel ── */
-@keyframes dropdown-appear {
-  from { opacity: 0; transform: translateX(-50%) translateY(-6px) scale(.97); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0)   scale(1); }
-}
-
+/* Pure-transition approach: no keyframe/transition property conflict.
+   The visibility delay trick: `0s 180ms` on hide keeps the element
+   screen-reader-invisible only after the fade is done; `0s 0s` on show
+   makes it visible immediately so the fade is visible. */
 .nav-dropdown-menu {
   position: absolute;
   top: calc(100% + 6px);
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-8px);
   min-width: 230px;
   background: #1E293B;
   border: 1px solid rgba(255,255,255,.1);
@@ -356,11 +369,12 @@ body {
   padding: .375rem;
   opacity: 0;
   pointer-events: none;
+  visibility: hidden;
   box-shadow: 0 16px 40px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.04);
   z-index: var(--z-dropdown);
-  /* use visibility so it's tab-focusable only when visible */
-  visibility: hidden;
-  transition: opacity 160ms ease, visibility 160ms;
+  transition: opacity 180ms ease,
+              transform 180ms cubic-bezier(.4,0,.2,1),
+              visibility 0s linear 180ms;
 }
 
 .nav-dropdown-menu::before {
@@ -377,7 +391,10 @@ body {
   opacity: 1;
   pointer-events: auto;
   visibility: visible;
-  animation: dropdown-appear 180ms cubic-bezier(.4,0,.2,1) both;
+  transform: translateX(-50%) translateY(0);
+  transition: opacity 180ms ease,
+              transform 180ms cubic-bezier(.4,0,.2,1),
+              visibility 0s linear 0s;
 }
 
 .nav-dropdown-menu a {
