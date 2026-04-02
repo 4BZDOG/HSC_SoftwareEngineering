@@ -574,6 +574,15 @@ body {
   transform: translateX(100%);
 }
 
+/* ── Button glow pulse on page load ── */
+@keyframes button-glow-pulse {
+  0%, 100% { box-shadow: 0 4px 14px rgba(99,102,241,.4); }
+  50%       { box-shadow: 0 4px 24px rgba(99,102,241,.6), 0 0 20px rgba(99,102,241,.3); }
+}
+.hero-cta .btn-primary {
+  animation: button-glow-pulse 2.5s ease-in-out 2s infinite;
+}
+
 .btn-outline {
   background: transparent;
   color: #CBD5E1;
@@ -2884,8 +2893,61 @@ section:has(> h2.section-collapsed) + .divider {
 }
 
 /* ============================================================
-   HOME PAGE VIBRANT ENHANCEMENTS
+   HOME PAGE VIBRANT ENHANCEMENTS — EXTENDED
    ============================================================ */
+
+/* ── Hero Floating Particles ── */
+@keyframes particle-float-1 {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  5%   { opacity: 0.4; }
+  95%  { opacity: 0.1; }
+  100% { transform: translateY(-800px) translateX(120px) rotate(720deg); opacity: 0; }
+}
+@keyframes particle-float-2 {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  5%   { opacity: 0.5; }
+  95%  { opacity: 0.1; }
+  100% { transform: translateY(-900px) translateX(-100px) rotate(-720deg); opacity: 0; }
+}
+@keyframes particle-float-3 {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  5%   { opacity: 0.35; }
+  95%  { opacity: 0.1; }
+  100% { transform: translateY(-750px) translateX(80px) rotate(540deg); opacity: 0; }
+}
+@keyframes particle-float-4 {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  5%   { opacity: 0.45; }
+  95%  { opacity: 0.1; }
+  100% { transform: translateY(-850px) translateX(-140px) rotate(-540deg); opacity: 0; }
+}
+@keyframes particle-float-5 {
+  0%   { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  5%   { opacity: 0.3; }
+  95%  { opacity: 0.1; }
+  100% { transform: translateY(-820px) translateX(110px) rotate(600deg); opacity: 0; }
+}
+
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+.hero-particle {
+  position: absolute;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.6);
+  box-shadow: 0 0 6px rgba(99,102,241,.4);
+  will-change: transform;
+}
+.particle-1 { left: 20%; bottom: 0; animation: particle-float-1 6s ease-out infinite 0.2s; }
+.particle-2 { left: 50%; bottom: 0; animation: particle-float-2 7s ease-out infinite 0.4s; }
+.particle-3 { left: 75%; bottom: 0; animation: particle-float-3 6.5s ease-out infinite 0.1s; }
+.particle-4 { left: 35%; bottom: 0; animation: particle-float-4 7.5s ease-out infinite 0.3s; }
+.particle-5 { left: 65%; bottom: 0; animation: particle-float-5 6s ease-out infinite 0.5s; }
 
 /* ── Hero Animated Orbs ── */
 @keyframes orb-drift-1 {
@@ -2938,6 +3000,7 @@ section:has(> h2.section-collapsed) + .divider {
   background: linear-gradient(135deg, #0A0F1E 0%, #1E1B4B 35%, #0F1629 65%, #0F172A 100%);
   background-size: 250% 250%;
   animation: hero-bg-shift 18s ease infinite;
+  overflow: hidden;
 }
 
 /* ── Hero Pill — pulsing dot ── */
@@ -2974,22 +3037,36 @@ section:has(> h2.section-collapsed) + .divider {
 }
 
 /* ── Feature Bar Enhancements ── */
+@keyframes icon-float {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50%       { transform: translateY(-6px) scale(1.05); }
+}
+
 .feature-item {
   padding: .75rem 1rem;
   border-radius: var(--radius-lg);
-  transition: background var(--transition), transform var(--transition);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
   cursor: default;
+  position: relative;
 }
 .feature-item:hover {
   background: var(--surface);
   transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
 }
 .feature-item:hover .feature-icon {
   transform: scale(1.15) rotate(-8deg);
 }
 .feature-icon {
   transition: transform 260ms cubic-bezier(.34,1.56,.64,1);
+  animation: icon-float 3s ease-in-out infinite;
 }
+/* Stagger the animation for each feature */
+.feature-item:nth-child(1) .feature-icon { animation-delay: 0s; }
+.feature-item:nth-child(2) .feature-icon { animation-delay: 0.4s; }
+.feature-item:nth-child(3) .feature-icon { animation-delay: 0.8s; }
+.feature-item:nth-child(4) .feature-icon { animation-delay: 1.2s; }
+
 .feature-icon.feature-indigo {
   background: linear-gradient(135deg, #6366F1, #4338CA);
 }
@@ -3041,6 +3118,121 @@ section:has(> h2.section-collapsed) + .divider {
 }
 .topic-card.card-visible {
   animation: card-enter .5s cubic-bezier(.4,0,.2,1) both;
+}
+
+/* ── Topic Card — glow pulse ── */
+@keyframes card-glow-pulse {
+  0%, 100% { box-shadow: 0 12px 30px rgba(59,130,246,.15); }
+  50%       { box-shadow: 0 12px 40px rgba(59,130,246,.35); }
+}
+.topic-card.year12:not(:hover) {
+  animation: card-glow-pulse 4s ease-in-out infinite;
+}
+.topic-card.year11:not(:hover) {
+  animation: card-glow-pulse 4s ease-in-out infinite;
+  --pulse-color: rgba(16,185,129,.15);
+}
+
+/* Better hover glow with border glow */
+.topic-card.year12:hover {
+  box-shadow: 0 16px 40px rgba(59,130,246,.32),
+              inset 0 0 20px rgba(59,130,246,.1);
+}
+.topic-card.year11:hover {
+  box-shadow: 0 16px 40px rgba(16,185,129,.32),
+              inset 0 0 20px rgba(16,185,129,.1);
+}
+
+/* ── Learning Path Section ── */
+.learning-path {
+  background: var(--bg-secondary);
+  padding: 2.5rem 1.5rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.learning-path-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.path-stage {
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-xl);
+  position: relative;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.path-stage:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+.path-stage-y11 { border-top: 4px solid var(--year11); }
+.path-stage-y12 { border-top: 4px solid var(--year12); }
+
+.path-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  display: inline-block;
+  transition: transform 300ms cubic-bezier(.34,1.56,.64,1);
+}
+.path-stage:hover .path-icon {
+  transform: scale(1.2) rotate(10deg);
+}
+.path-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+.path-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+.path-count {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+[data-theme="dark"] .path-count {
+  background: rgba(99,102,241,.2);
+  color: #93C5FD;
+}
+
+.path-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+  font-size: 2rem;
+  color: var(--primary);
+  font-weight: 700;
+  animation: arrow-pulse 1.5s ease-in-out infinite;
+}
+@keyframes arrow-pulse {
+  0%, 100% { opacity: 0.5; transform: translateX(0); }
+  50%       { opacity: 1; transform: translateX(4px); }
+}
+
+@media (max-width: 640px) {
+  .learning-path { padding: 2rem 1rem; }
+  .learning-path-inner { gap: 1rem; flex-direction: column; }
+  .path-connector { min-height: 40px; font-size: 1.5rem; transform: rotate(90deg); }
 }
 
 /* ── Section Header — gradient accent line ── */
@@ -3139,9 +3331,37 @@ section:has(> h2.section-collapsed) + .divider {
   margin: 0;
 }
 
+/* ── Smooth Section Transitions ── */
+@keyframes section-fade-in {
+  from { opacity: 0.8; }
+  to   { opacity: 1; }
+}
+main { animation: section-fade-in 0.8s ease-out; }
+
+/* ── Reduced Motion: disable animations ── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-orb,
+  .hero-particle,
+  .hero-pill-dot,
+  .feature-icon,
+  .path-connector,
+  .path-icon,
+  .topic-card,
+  .btn-primary,
+  main {
+    animation: none !important;
+  }
+  .path-stage:hover,
+  .feature-item:hover,
+  .topic-card:hover,
+  .study-guide-card:hover {
+    transform: none !important;
+  }
+}
+
 /* ── Print: hide decorative new elements ── */
 @media print {
-  .hero-orb, .hero-pill-dot, .study-guide-section { display: none !important; }
+  .hero-orb, .hero-particle, .hero-pill-dot, .study-guide-section, .learning-path { display: none !important; }
 }
 
 /* ── Print Styles ── */

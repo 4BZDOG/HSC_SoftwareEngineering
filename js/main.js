@@ -15,6 +15,29 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.insertBefore(skipLink, document.body.firstChild);
   }
 
+  /* ── Parallax Scroll on Hero ── */
+  const heroSection = document.getElementById('hero');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (heroSection && !prefersReducedMotion) {
+    let ticking = false;
+    const updateParallax = () => {
+      const scrollY = window.scrollY;
+      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+      if (scrollY < heroBottom * 1.2) {
+        const offset = scrollY * 0.48;
+        heroSection.style.setProperty('--parallax-offset', `${offset}px`);
+        heroSection.style.transform = `translateY(var(--parallax-offset))`;
+      }
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
   /* ── Theme Toggle ── */
   const THEME_KEY = 'hsc-theme';
   const saved = localStorage.getItem(THEME_KEY) ||
