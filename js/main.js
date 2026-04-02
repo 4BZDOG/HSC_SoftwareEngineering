@@ -55,6 +55,88 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* ── Nav Active State (URL-based, works across all pages) ── */
+  (function () {
+    const filename = window.location.pathname.split('/').pop() || 'index.html';
+
+    // Mark matching links active and flag parent dropdown
+    document.querySelectorAll('.nav-links > li > a, .nav-dropdown-menu a').forEach(link => {
+      const href = link.getAttribute('href') || '';
+      if (href.split('/').pop() === filename) {
+        link.classList.add('active');
+        const dropdown = link.closest('.nav-dropdown');
+        if (dropdown) dropdown.classList.add('nav-dropdown--has-active');
+      }
+    });
+  })();
+
+  /* ── Nav Dropdowns ── */
+  (function () {
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    if (!dropdowns.length) return;
+
+    function openDd(dd) {
+      dd.classList.add('open');
+      dd.querySelector('.nav-dropdown-btn').setAttribute('aria-expanded', 'true');
+    }
+    function closeDd(dd) {
+      dd.classList.remove('open');
+      dd.querySelector('.nav-dropdown-btn').setAttribute('aria-expanded', 'false');
+    }
+    function closeAll(except) {
+      dropdowns.forEach(d => { if (d !== except) closeDd(d); });
+    }
+
+    dropdowns.forEach(dd => {
+      const btn  = dd.querySelector('.nav-dropdown-btn');
+      const menu = dd.querySelector('.nav-dropdown-menu');
+
+      // ── Hover (desktop) ──────────────────────────────────────
+      dd.addEventListener('mouseenter', () => { closeAll(dd); openDd(dd); });
+      dd.addEventListener('mouseleave', () => closeDd(dd));
+
+      // ── Click / touch toggle ──────────────────────────────────
+      btn.addEventListener('click', () => {
+        const wasOpen = dd.classList.contains('open');
+        closeAll();
+        if (!wasOpen) openDd(dd);
+      });
+
+      // ── Keyboard: trigger button ──────────────────────────────
+      btn.addEventListener('keydown', e => {
+        if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openDd(dd);
+          menu.querySelector('a')?.focus();
+        }
+        if (e.key === 'Escape') closeDd(dd);
+      });
+
+      // ── Keyboard: inside menu ─────────────────────────────────
+      menu.addEventListener('keydown', e => {
+        const items = [...menu.querySelectorAll('a')];
+        const idx   = items.indexOf(document.activeElement);
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          items[Math.min(idx + 1, items.length - 1)]?.focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (idx === 0) { btn.focus(); closeDd(dd); }
+          else items[Math.max(idx - 1, 0)]?.focus();
+        } else if (e.key === 'Escape') {
+          btn.focus(); closeDd(dd);
+        } else if (e.key === 'Tab') {
+          closeDd(dd);
+        }
+      });
+    });
+
+    // ── Click outside ─────────────────────────────────────────
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.nav-dropdown')) closeAll();
+    });
+  })();
+
   /* ── Mobile Menu ── */
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');

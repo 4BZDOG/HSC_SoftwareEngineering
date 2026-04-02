@@ -256,8 +256,166 @@ body {
   letter-spacing: .03em;
 }
 
-.badge-12 { background: rgba(59,130,246,.35); color: #1D4ED8; border: 1px solid rgba(59,130,246,.4); }
-.badge-11 { background: rgba(16,185,129,.35); color: #065F46; border: 1px solid rgba(16,185,129,.4); }
+/* ── Badge base colours (light-bg contexts: topic pages, main content) ── */
+.badge-12 { background: rgba(59,130,246,.15); color: var(--year12-dark); border: 1px solid rgba(59,130,246,.3); }
+.badge-11 { background: rgba(16,185,129,.15); color: var(--year11-dark); border: 1px solid rgba(16,185,129,.3); }
+[data-theme="dark"] .badge-12 { background: rgba(59,130,246,.2); color: #93C5FD; border-color: rgba(59,130,246,.35); }
+[data-theme="dark"] .badge-11 { background: rgba(16,185,129,.2); color: #6EE7B7; border-color: rgba(16,185,129,.35); }
+
+/* ── Badge colours — nav context (always dark bg, needs light text) ── */
+.nav-links .badge-12,
+.nav-dropdown-btn .badge-12 {
+  color: #93C5FD;
+  background: rgba(59,130,246,.25);
+  border-color: rgba(59,130,246,.4);
+}
+.nav-links .badge-11,
+.nav-dropdown-btn .badge-11 {
+  color: #6EE7B7;
+  background: rgba(16,185,129,.25);
+  border-color: rgba(16,185,129,.4);
+}
+
+/* ── Nav brand hover ── */
+.nav-logo {
+  transition: transform 280ms cubic-bezier(.34,1.56,.64,1),
+              box-shadow var(--transition);
+}
+.nav-brand:hover .nav-logo {
+  transform: scale(1.1) rotate(-6deg);
+  box-shadow: 0 0 0 6px rgba(99,102,241,.28);
+}
+
+/* ── Nav Dropdown ── */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .375rem;
+  padding: .4rem .75rem;
+  border-radius: var(--radius-md);
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--nav-text);
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.nav-dropdown-btn:hover,
+.nav-dropdown.open .nav-dropdown-btn,
+.nav-dropdown.nav-dropdown--has-active .nav-dropdown-btn {
+  background: rgba(255,255,255,.1);
+  color: #F8FAFC;
+}
+
+/* Active dropdown trigger — subtle accent underline */
+.nav-dropdown.nav-dropdown--has-active.nav-dropdown-y12 .nav-dropdown-btn {
+  background: rgba(59,130,246,.15);
+  color: #93C5FD;
+}
+.nav-dropdown.nav-dropdown--has-active.nav-dropdown-y11 .nav-dropdown-btn {
+  background: rgba(16,185,129,.15);
+  color: #6EE7B7;
+}
+
+.nav-chevron {
+  flex-shrink: 0;
+  width: 11px;
+  height: 11px;
+  transition: transform 220ms cubic-bezier(.4,0,.2,1);
+  opacity: .7;
+}
+.nav-dropdown.open .nav-chevron {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* ── Dropdown menu panel ── */
+@keyframes dropdown-appear {
+  from { opacity: 0; transform: translateX(-50%) translateY(-6px) scale(.97); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0)   scale(1); }
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 230px;
+  background: #1E293B;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--radius-xl);
+  padding: .375rem;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 16px 40px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.04);
+  z-index: var(--z-dropdown);
+  /* use visibility so it's tab-focusable only when visible */
+  visibility: hidden;
+  transition: opacity 160ms ease, visibility 160ms;
+}
+
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 0; right: 0;
+  height: 2px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+.nav-dropdown-y12 .nav-dropdown-menu::before { background: linear-gradient(90deg, var(--year12), #6366F1); }
+.nav-dropdown-y11 .nav-dropdown-menu::before { background: linear-gradient(90deg, var(--year11), #06B6D4); }
+
+.nav-dropdown.open .nav-dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  animation: dropdown-appear 180ms cubic-bezier(.4,0,.2,1) both;
+}
+
+.nav-dropdown-menu a {
+  display: flex;
+  align-items: center;
+  gap: .625rem;
+  padding: .6rem .875rem;
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  font-size: .85rem;
+  font-weight: 500;
+  color: #94A3B8;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+  white-space: nowrap;
+}
+
+.nav-dropdown-menu a:hover {
+  color: #F8FAFC;
+  transform: translateX(3px);
+}
+.nav-dropdown-y12 .nav-dropdown-menu a:hover { background: rgba(59,130,246,.15); }
+.nav-dropdown-y11 .nav-dropdown-menu a:hover { background: rgba(16,185,129,.15); }
+
+.nav-dropdown-menu a.active {
+  color: #F8FAFC;
+  font-weight: 600;
+}
+.nav-dropdown-y12 .nav-dropdown-menu a.active { background: rgba(59,130,246,.2); }
+.nav-dropdown-y11 .nav-dropdown-menu a.active { background: rgba(16,185,129,.2); }
+
+/* ── Focus ring on dropdown button ── */
+.nav-dropdown-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-md);
+}
+
+
 
 .nav-actions {
   display: flex;
@@ -3334,13 +3492,15 @@ section:has(> h2.section-collapsed) + .divider {
   .path-icon,
   .topic-card,
   .btn-primary,
-  main {
+  .nav-dropdown-menu {
     animation: none !important;
   }
   .path-stage:hover,
   .feature-item:hover,
   .topic-card:hover,
-  .study-guide-card:hover {
+  .study-guide-card:hover,
+  .nav-brand:hover .nav-logo,
+  .nav-dropdown-menu a:hover {
     transform: none !important;
   }
 }
