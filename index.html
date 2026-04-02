@@ -7,7 +7,7 @@
   <meta name="description" content="Comprehensive, premium HSC Software Engineering notes covering the full NESA NSW syllabus for Year 11 and Year 12." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="css/styles.css?v=4" />
+  <link rel="stylesheet" href="css/styles.css?v=5" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 </head>
@@ -25,44 +25,34 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="index.html" class="active" title="Go to Home">Home</a></li>
-        <li>
-          <a href="topics/course-tools.html" title="View Course Specifications and Tools">
-            Course Tools <span class="badge badge-all">Specs</span>
-          </a>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="topics/course-tools.html">Course Tools <span class="badge badge-all">Specs</span></a></li>
+        <li class="nav-dropdown nav-dropdown-y12">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            Year 12
+            <span class="badge badge-12">HSC</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="topics/secure-software-architecture.html" role="menuitem">🔒 Secure Software Architecture</a>
+            <a href="topics/programming-for-the-web.html" role="menuitem">🌐 Programming for the Web</a>
+            <a href="topics/software-automation.html" role="menuitem">⚙️ Software Automation</a>
+            <a href="topics/software-engineering-project.html" role="menuitem">📋 Software Engineering Project</a>
+          </div>
         </li>
-        <li>
-          <a href="topics/secure-software-architecture.html" title="HSC Year 12 Topic: Secure Software Architecture">
-            🔒 Secure Architecture <span class="badge badge-12">Y12</span>
-          </a>
-        </li>
-        <li>
-          <a href="topics/programming-for-the-web.html" title="HSC Year 12 Topic: Programming for the Web">
-            🌐 Web Programming <span class="badge badge-12">Y12</span>
-          </a>
-        </li>
-        <li>
-          <a href="topics/software-automation.html" title="HSC Year 12 Topic: Software Automation">
-            ⚙️ Automation <span class="badge badge-12">Y12</span>
-          </a>
-        </li>
-        <li>
-          <a href="topics/programming-fundamentals.html" title="Year 11 Topic: Programming Fundamentals">
-            📐 Fundamentals <span class="badge badge-11">Y11</span>
-          </a>
-        </li>
-        <li>
-          <a href="topics/object-oriented-paradigm.html" title="Year 11 Topic: The Object-Oriented Paradigm">
-            🧩 OOP <span class="badge badge-11">Y11</span>
-          </a>
-        </li>
-        <li>
-          <a href="topics/programming-mechatronics.html" title="Year 11 Topic: Programming Mechatronics">
-            🤖 Mechatronics <span class="badge badge-11">Y11</span>
-          </a>
+        <li class="nav-dropdown nav-dropdown-y11">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            Year 11
+            <span class="badge badge-11">Prelim</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="topics/programming-fundamentals.html" role="menuitem">📐 Programming Fundamentals</a>
+            <a href="topics/object-oriented-paradigm.html" role="menuitem">🧩 Object-Oriented Paradigm</a>
+            <a href="topics/programming-mechatronics.html" role="menuitem">🤖 Programming Mechatronics</a>
+          </div>
         </li>
       </ul>
-
 
       <div class="nav-actions">
         <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
@@ -427,6 +417,6 @@
     </div>
   </div>
 
-  <script src="js/main.js?v=4"></script>
+  <script src="js/main.js?v=5"></script>
 </body>
 </html>

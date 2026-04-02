@@ -15,29 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.insertBefore(skipLink, document.body.firstChild);
   }
 
-  /* ── Parallax Scroll on Hero ── */
-  const heroSection = document.getElementById('hero');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (heroSection && !prefersReducedMotion) {
-    let ticking = false;
-    const updateParallax = () => {
-      const scrollY = window.scrollY;
-      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-      if (scrollY < heroBottom * 1.2) {
-        const offset = scrollY * 0.48;
-        heroSection.style.setProperty('--parallax-offset', `${offset}px`);
-        heroSection.style.transform = `translateY(var(--parallax-offset))`;
-      }
-      ticking = false;
-    };
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(updateParallax);
-        ticking = true;
-      }
-    }, { passive: true });
-  }
-
   /* ── Theme Toggle ── */
   const THEME_KEY = 'hsc-theme';
   const saved = localStorage.getItem(THEME_KEY) ||
@@ -77,6 +54,88 @@ document.addEventListener('DOMContentLoaded', () => {
       el.innerHTML = newHTML;
     }
   });
+
+  /* ── Nav Active State (URL-based, works across all pages) ── */
+  (function () {
+    const filename = window.location.pathname.split('/').pop() || 'index.html';
+
+    // Mark matching links active and flag parent dropdown
+    document.querySelectorAll('.nav-links > li > a, .nav-dropdown-menu a').forEach(link => {
+      const href = link.getAttribute('href') || '';
+      if (href.split('/').pop() === filename) {
+        link.classList.add('active');
+        const dropdown = link.closest('.nav-dropdown');
+        if (dropdown) dropdown.classList.add('nav-dropdown--has-active');
+      }
+    });
+  })();
+
+  /* ── Nav Dropdowns ── */
+  (function () {
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    if (!dropdowns.length) return;
+
+    function openDd(dd) {
+      dd.classList.add('open');
+      dd.querySelector('.nav-dropdown-btn').setAttribute('aria-expanded', 'true');
+    }
+    function closeDd(dd) {
+      dd.classList.remove('open');
+      dd.querySelector('.nav-dropdown-btn').setAttribute('aria-expanded', 'false');
+    }
+    function closeAll(except) {
+      dropdowns.forEach(d => { if (d !== except) closeDd(d); });
+    }
+
+    dropdowns.forEach(dd => {
+      const btn  = dd.querySelector('.nav-dropdown-btn');
+      const menu = dd.querySelector('.nav-dropdown-menu');
+
+      // ── Hover (desktop) ──────────────────────────────────────
+      dd.addEventListener('mouseenter', () => { closeAll(dd); openDd(dd); });
+      dd.addEventListener('mouseleave', () => closeDd(dd));
+
+      // ── Click / touch toggle ──────────────────────────────────
+      btn.addEventListener('click', () => {
+        const wasOpen = dd.classList.contains('open');
+        closeAll();
+        if (!wasOpen) openDd(dd);
+      });
+
+      // ── Keyboard: trigger button ──────────────────────────────
+      btn.addEventListener('keydown', e => {
+        if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openDd(dd);
+          menu.querySelector('a')?.focus();
+        }
+        if (e.key === 'Escape') closeDd(dd);
+      });
+
+      // ── Keyboard: inside menu ─────────────────────────────────
+      menu.addEventListener('keydown', e => {
+        const items = [...menu.querySelectorAll('a')];
+        const idx   = items.indexOf(document.activeElement);
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          items[Math.min(idx + 1, items.length - 1)]?.focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          if (idx === 0) { btn.focus(); closeDd(dd); }
+          else items[Math.max(idx - 1, 0)]?.focus();
+        } else if (e.key === 'Escape') {
+          btn.focus(); closeDd(dd);
+        } else if (e.key === 'Tab') {
+          closeDd(dd);
+        }
+      });
+    });
+
+    // ── Click outside ─────────────────────────────────────────
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.nav-dropdown')) closeAll();
+    });
+  })();
 
   /* ── Mobile Menu ── */
   const hamburger = document.getElementById('hamburger');
@@ -255,19 +314,54 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ── Animate elements into view ── */
-  const animItems = document.querySelectorAll('.topic-card, .info-card, .def-card');
-  if ('IntersectionObserver' in window) {
+  /* ── Staggered Card Entrance (transition-based, no animation conflicts) ── */
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const cardGrids = document.querySelectorAll('.topics-grid');
+  if (cardGrids.length && 'IntersectionObserver' in window && !prefersReducedMotion) {
+    cardGrids.forEach(grid => {
+      const cards = Array.from(grid.querySelectorAll('.topic-card'));
+      // Set hidden state via JS only — cards remain visible if JS is absent
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(22px)';
+      });
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const card = entry.target;
+          const delay = cards.indexOf(card) * 70;
+          card.classList.add('card-visible');
+          // Double-rAF: first frame commits the hidden inline styles to the renderer,
+          // second frame applies the visible state so the transition actually fires.
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            card.style.transitionDelay = `${delay}ms`;
+            card.style.opacity = '1';
+            card.style.transform = '';
+          }));
+          // After entrance completes: clear inline styles AND remove card-visible so the
+          // card falls back to `transition: all 200ms` — making hover snappy again.
+          card.addEventListener('transitionend', () => {
+            card.style.transitionDelay = '';
+            card.style.opacity = '';
+            card.style.transform = '';
+            card.classList.remove('card-visible');
+          }, { once: true });
+          obs.unobserve(card);
+        });
+      }, { threshold: 0.08 });
+      cards.forEach(card => obs.observe(card));
+    });
+  }
+
+  /* ── Fallback: show all cards on non-home topic pages ── */
+  const nonGridCards = document.querySelectorAll('.info-card, .def-card');
+  if (nonGridCards.length && 'IntersectionObserver' in window) {
     const anim = new IntersectionObserver(entries => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          e.target.style.animationDelay = `${i * 60}ms`;
-          e.target.classList.add('fade-in', 'card-visible');
-          anim.unobserve(e.target);
-        }
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('fade-in'); anim.unobserve(e.target); }
       });
     }, { threshold: 0.08 });
-    animItems.forEach(el => anim.observe(el));
+    nonGridCards.forEach(el => anim.observe(el));
   }
 
   /* ── Hero Stat Counter Animation ── */
