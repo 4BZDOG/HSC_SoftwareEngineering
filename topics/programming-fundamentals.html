@@ -639,6 +639,50 @@ END FUNCTION</code></pre>
 
           <h3>🧩 Subprograms</h3>
           <p>A subprogram (function or procedure) is a reusable block of code that performs a specific task. Pseudocode and flowcharts must clearly show how subprograms are called, what parameters they accept, and what they return. This modular approach reduces code duplication, improves readability, and makes testing easier.<br>🌏 <em>Example: A main program calls FUNCTION validatePassword(pwd) which returns TRUE or FALSE, allowing the validation logic to be reused across multiple entry points.</em></p>
+
+          <div class="callout tip">
+            <strong>NESA Standard: Uncluttered Mainline Algorithms</strong>
+            <p>NESA highly emphasizes that complex algorithms must start with an <strong>uncluttered mainline</strong>. This means the main function should read like a table of contents, delegating specific processing logic to clearly named subroutines.</p>
+          </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Refactoring Workshop — Creating an Uncluttered Mainline</span></div>
+            <pre><code><span class="cm">// ❌ Cluttered (Poor Practice)</span>
+BEGIN
+    // Gathering input
+    OUTPUT "Enter your score out of 100"
+    INPUT score
+    WHILE score &lt; 0 OR score &gt; 100
+        OUTPUT "Invalid. Please enter a valid score: "
+        INPUT score
+    END WHILE
+
+    // Processing logic
+    IF score &gt;= 85 THEN
+        grade = "High Distinction"
+    ELSE IF score &gt;= 75 THEN
+        grade = "Distinction"
+    ... (and so on) ...
+    END IF
+    
+    // Output
+    OUTPUT "Your grade is ", grade
+END</code></pre>
+          </div>
+          <p>In contrast, an uncluttered mainline is completely modularized, significantly reducing complexity:</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">pseudocode</span></div>
+            <pre><code><span class="cm">// ✅ NESA-Standard Uncluttered Mainline</span>
+BEGIN Mainline
+    score ← CALL GetValidScore()
+    grade ← CALL CalculateGrade(score)
+    CALL DisplayResult(grade)
+END Mainline
+
+// Subroutines are defined separately below:
+FUNCTION GetValidScore()
+...</code></pre>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -657,27 +701,27 @@ END FUNCTION</code></pre>
             <h4>🏦 Structure Chart - ATM System</h4>
             <p class="diagram-subtitle">Top-down module decomposition</p>
             <p class="diagram-description">
-              This structure chart shows hierarchical decomposition of an ATM system. The main module delegates specialized tasks to child modules. Each arrow shows how data (🔘), control flags (⚫), decisions (🔷), or repetition (🔁) flow between modules according to course specifications. This organization reveals dependencies and communication patterns.
+              This structure chart shows hierarchical decomposition of an ATM system. The main module delegates specialized tasks to child modules. Each arrow shows how data (○), control flags (●), decisions (🔷), or repetition (🔁) flow between modules, conforming exactly to NESA syllabus visual symbol standards. This organization reveals dependencies and communication patterns.
             </p>
             <div class="mermaid">
               graph TD
                 Main["🏦 ATM System<br/>Main Module<br/>─────────────<br/>Start/Shutdown"]
 
-                Main -->|🔘 user_id| Auth["🔐 Authenticate User<br/>━━━━━━━━━━━<br/>Verify credentials"]
-                Main -->|⚫ valid| Menu["📋 Display Menu<br/>━━━━━━━━━━━<br/>Show options"]
-                Main -->|🔘 choice| Trans["💳 Process Transaction<br/>━━━━━━━━━━━<br/>Handle request"]
-                Main -->|⚫ approved| Disp["💵 Dispense Cash<br/>━━━━━━━━━━━<br/>Deliver money"]
+                Main -->|○ user_id| Auth["🔐 Authenticate User<br/>━━━━━━━━━━━<br/>Verify credentials"]
+                Main -->|● valid| Menu["📋 Display Menu<br/>━━━━━━━━━━━<br/>Show options"]
+                Main -->|○ choice| Trans["💳 Process Transaction<br/>━━━━━━━━━━━<br/>Handle request"]
+                Main -->|● approved| Disp["💵 Dispense Cash<br/>━━━━━━━━━━━<br/>Deliver money"]
 
-                Auth -->|🔘 pin| VerifyPIN["🔑 Verify PIN<br/>Check database"]
-                Auth -->|🔘 card_num| CheckCard["💳 Check Card<br/>Validity check"]
+                Auth -->|○ pin| VerifyPIN["🔑 Verify PIN<br/>Check database"]
+                Auth -->|○ card_num| CheckCard["💳 Check Card<br/>Validity check"]
 
                 Trans -->|🔷 choice=1| Withdraw["💸 Withdraw<br/>Debit account"]
                 Trans -->|🔷 choice=2| Deposit["📥 Deposit<br/>Credit account"]
                 Trans -->|🔷 choice=3| Balance["📊 Check Balance<br/>Query account"]
 
-                Withdraw -->|🔘 amount| Update1["🔄 Update Account<br/>Apply transaction"]
-                Deposit -->|🔘 amount| Update2["🔄 Update Account<br/>Apply transaction"]
-                Balance -->|🔘 acct_id| Query["📖 Query Database<br/>Fetch balance"]
+                Withdraw -->|○ amount| Update1["🔄 Update Account<br/>Apply transaction"]
+                Deposit -->|○ amount| Update2["🔄 Update Account<br/>Apply transaction"]
+                Balance -->|○ acct_id| Query["📖 Query Database<br/>Fetch balance"]
 
                 Update1 -->|🔁 repeat| Record["📝 Record Transaction<br/>Audit log"]
                 Update2 -->|🔁 repeat| Record["📝 Record Transaction<br/>Audit log"]

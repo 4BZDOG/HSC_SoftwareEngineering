@@ -1346,6 +1346,31 @@ safety check
           <div class="callout info">
             <strong>Australian Notifiable Data Breaches (NDB) Scheme:</strong> Under the Privacy Act 1988, organisations covered by the Act must notify the OAIC (Office of the Australian Information Commissioner) and affected individuals within 30 days of becoming aware of an eligible data breach — one likely to result in serious harm. Failure to notify carries civil penalties.
           </div>
+
+          <div class="mock-form-container" style="margin-top: 2rem; border: 2px solid var(--noteBorderColor); padding: 20px; border-radius: 8px; background: var(--bgLayer)">
+            <h3>📄 NDB Mock Breach Notification Form</h3>
+            <p>Practice fulfilling your legal accountability by filling out a mock OAIC notification summary.</p>
+            <form id="ndbMockForm" style="display: flex; flex-direction: column; gap: 15px;">
+              <div>
+                <label style="font-weight: bold; display: block; margin-bottom: 5px;">Description of the Eligible Data Breach</label>
+                <textarea rows="3" style="width: 100%; border-radius: 4px; border: 1px solid var(--noteBorderColor); padding: 8px;" placeholder="E.g., Hackers accessed an S3 bucket containing plaintext JSON files..."></textarea>
+              </div>
+              <div>
+                <label style="font-weight: bold; display: block; margin-bottom: 5px;">Kinds of Information Involved</label>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                  <label><input type="checkbox"> Financial details</label>
+                  <label><input type="checkbox"> Health information</label>
+                  <label><input type="checkbox"> TFN / Identity documents</label>
+                  <label><input type="checkbox"> Contact details</label>
+                </div>
+              </div>
+              <div>
+                <label style="font-weight: bold; display: block; margin-bottom: 5px;">Recommended Steps for Individuals</label>
+                <textarea rows="2" style="width: 100%; border-radius: 4px; border: 1px solid var(--noteBorderColor); padding: 8px;" placeholder="E.g., Change passwords, enable 2FA, contact bank..."></textarea>
+              </div>
+              <button type="button" class="action-btn" style="align-self: flex-start; margin-top: 10px;" onclick="alert('Submission simulated. In a real scenario, this reaches the OAIC.')">Submit to OAIC (Simulated)</button>
+            </form>
+          </div>
         </section>
 
       </div>
