@@ -780,8 +780,46 @@ FUNCTION GetValidScore()
           <p>Programs are sequences of explicit commands (statements) that change program state step-by-step. Python, Java, and C are imperative languages. Focus on "how" to solve the problem (procedures and control flow).<br>🌏 <em>Example: "Set count to 0; LOOP: add next number to count; increment loop counter; IF loop counter &lt; 10, GO TO LOOP."</em></p>
 
           <h3>🧠 Logic Programming</h3>
-          <p>Programs state facts and rules; the interpreter derives new facts through logical inference. Less common than imperative, but used in artificial intelligence and database queries. Focus on "what" is true, not "how" to compute it.<br>🌏 <em>Example (Prolog): "parent(john, mary). parent(mary, bob). grandparent(X, Z) :- parent(X, Y), parent(Y, Z)." The system infers grandparent relationships.</em></p>
+          <p>Programs state facts and rules; the interpreter derives new facts through logical inference. Less common than imperative, but heavily used in artificial intelligence, constraint logic, and database query planning (Outcome SE-11-02). Focus on "what" is true, not "how" to compute it.</p>
+          
+          <div class="code-block my-large">
+            <div class="code-header"><span class="code-lang">Prolog — Logic Paradigm Lab</span></div>
+            <pre><code>% NESA requires students to "define and edit facts" and "create, edit and remove rules"
 
+% 1. DEFINE FACTS (The fundamental truths of the knowledge base)
+parent(john, mary).
+parent(john, peter).
+parent(mary, bob).
+parent(peter, sarah).
+
+% 2. CREATE RULES (Logic derived from facts using variables)
+% "X is a grandparent of Z IF X is a parent of Y AND Y is a parent of Z"
+grandparent(X, Z) :- 
+    parent(X, Y), 
+    parent(Y, Z).
+
+% "A and B are siblings IF they share a parent P AND are not the same person"
+sibling(A, B) :- 
+    parent(P, A), 
+    parent(P, B),
+    A \= B. 
+
+% 3. LOGIC ENGINE INFERENCE (Querying the system)
+% This is how a logic paradigm dynamically solves problems without imperative loops:
+
+% Query: grandparent(john, bob).
+% Engine derivation steps:
+% - Search: parent(john, Y) -> Matches Y = mary
+% - Search: parent(mary, bob) -> Fact exists!
+% Output: TRUE
+
+% Query: sibling(mary, peter).
+% Engine derivation steps:
+% - Search: parent(P, mary) -> Matches P = john
+% - Search: parent(john, peter) -> Fact exists!
+% - Search: mary \= peter -> TRUE
+% Output: TRUE</code></pre>
+          </div>
           <h3>λ Functional Programming</h3>
           <p>Programs are built from pure functions (same input always produces same output, no side effects) and immutable data. Emphasises <strong>recursion</strong> and function composition.<br>🌏 <em>Example (Lisp/Scheme): Computing factorial recursively as (factorial 5) = 5 × (factorial 4) × ... × 1, without modifying state.</em></p>
 
@@ -924,48 +962,48 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
               This data dictionary documents every field in a student management system: its name, data type, size, purpose, and validation rules. For example, Student_ID must be a 5-digit integer between 10000-99999 with no duplicates. Data dictionaries are essential documentation that ensures consistency across development teams and helps identify data requirements early in the SDLC.
             </p>
             <div class="code-block">
-              <table style="width:100%; border-collapse: collapse; margin: 0;">
-                <tr style="background: #f0f0f0;">
-                  <th style="border: 1px solid #ccc; padding: 0.75rem;">Field Name</th>
-                  <th style="border: 1px solid #ccc; padding: 0.75rem;">Data Type</th>
-                  <th style="border: 1px solid #ccc; padding: 0.75rem;">Size</th>
-                  <th style="border: 1px solid #ccc; padding: 0.75rem;">Description</th>
-                  <th style="border: 1px solid #ccc; padding: 0.75rem;">Validation Rules</th>
+              <table class="decision-table">
+                <tr>
+                  <th>Field Name</th>
+                  <th>Data Type</th>
+                  <th>Size</th>
+                  <th>Description</th>
+                  <th>Validation Rules</th>
                 </tr>
                 <tr>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;"><strong>Student_ID</strong></td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Integer</td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">5 digits</td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Unique identifier for each student</td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">1000-99999, Cannot be NULL</td>
+                  <td><strong>Student_ID</strong></td>
+                  <td>Integer</td>
+                  <td>5 digits</td>
+                  <td>Unique identifier for each student</td>
+                  <td>1000-99999, Cannot be NULL</td>
                 </tr>
                 <tr>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;"><strong>First_Name</strong></td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">String</td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Max 50 chars</td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Student's first name</td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Letters only, Cannot be NULL</td>
+                  <td><strong>First_Name</strong></td>
+                  <td>String</td>
+                  <td>Max 50 chars</td>
+                  <td>Student's first name</td>
+                  <td>Letters only, Cannot be NULL</td>
                 </tr>
                 <tr>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;"><strong>Email</strong></td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">String</td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Max 100 chars</td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Student email address</td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Must match email format (xxx@xxx.com)</td>
+                  <td><strong>Email</strong></td>
+                  <td>String</td>
+                  <td>Max 100 chars</td>
+                  <td>Student email address</td>
+                  <td>Must match email format (xxx@xxx.com)</td>
                 </tr>
                 <tr>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;"><strong>Grade_Level</strong></td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Integer</td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">2 digits</td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Current year level (11 or 12)</td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Must be 11 or 12</td>
+                  <td><strong>Grade_Level</strong></td>
+                  <td>Integer</td>
+                  <td>2 digits</td>
+                  <td>Current year level (11 or 12)</td>
+                  <td>Must be 11 or 12</td>
                 </tr>
                 <tr>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;"><strong>Enrollment_Date</strong></td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Date</td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">YYYY-MM-DD</td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">When student enrolled</td>
-                  <td style="border: 1px solid #ccc; padding: 0.75rem;">Cannot be in future, after 2008</td>
+                  <td><strong>Enrollment_Date</strong></td>
+                  <td>Date</td>
+                  <td>YYYY-MM-DD</td>
+                  <td>When student enrolled</td>
+                  <td>Cannot be in future, after 2008</td>
                 </tr>
               </table>
             </div>

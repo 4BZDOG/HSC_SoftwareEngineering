@@ -3711,3 +3711,48 @@ section:has(> h2.section-collapsed) + .divider {
     content: none;
   }
 }
+
+.pl-list {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+/* ── NDB Mock Form ── */
+.mock-form-container {
+  margin-top: 2rem;
+  border: 2px solid var(--noteBorderColor);
+  padding: 20px;
+  border-radius: 8px;
+  background: var(--bgLayer);
+}
+.ndb-mock-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.ndb-mock-form label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+.ndb-mock-form textarea {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid var(--noteBorderColor);
+  padding: 8px;
+}
+.ndb-mock-form .checkbox-group {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.ndb-mock-form .submit-btn {
+  align-self: flex-start;
+  margin-top: 10px;
+}
+
+/* ── SDLC Badges ── */
+.badge-phase1 { background: #6366F1; }
+.badge-phase2 { background: #3B82F6; }
+.badge-phase3 { background: #10B981; }
+.badge-phase4 { background: #F59E0B; }
