@@ -2,7 +2,18 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+    paths:
+      - 'index.html'
+      - 'topics/**/*.html'
+      - 'css/**'
+      - 'js/**'
+      - 'diagrams/**'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - 'og-image.png'
+      - '.github/workflows/deploy.yml'
   workflow_dispatch:
 
 permissions:
@@ -14,23 +25,42 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+env:
+  SITE_URL: https://4bzdog.github.io/HSC_SoftwareEngineering/
+
 jobs:
   deploy:
+    name: Deploy to GitHub Pages
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload site
+      - name: Validate HTML structure
+        run: |
+          echo "✓ Validating HTML files..."
+          for file in index.html topics/*.html; do
+            if grep -q "<!DOCTYPE html>" "$file"; then
+              echo "  ✓ $file"
+            else
+              echo "  ✗ $file missing DOCTYPE"
+              exit 1
+            fi
+          done
+
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
+          retention-days: 5
 
       - name: Deploy to GitHub Pages
         id: deployment

@@ -1,17 +1,87 @@
+# ── OS Files ──
 # macOS
 .DS_Store
 .DS_Store?
 ._*
+.AppleDouble
+.LSOverride
+*.swp
+*.swo
 
-# Claude session files
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
+
+# ── Editor & IDE ──
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
+.eclipse
+*.iml
+
+# ── Dev Tools ──
+# Claude Code sessions
 .claude/
 
-# Python cache
+# Python
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Dev scripts (optional — remove lines below to include them)
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+.npm
+
+# ── Environment ──
+.env
+.env.local
+.env.*.local
+.env.production.local
+
+# ── Backup Files ──
+*.backup
+*.bak
+*.tmp
+*.log
+.~*
+
+# ── Build Artifacts ──
+dist/
+build/
+*.tar.gz
+
+# ── Developer Notes ──
+# Keep commented to selectively ignore:
 # add_emojis.py
 # replace_software_automation.py
 # update_styling.py
