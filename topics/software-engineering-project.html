@@ -413,29 +413,29 @@
             </table>
           </div>
 
-          <div class="callout feature" style="margin-top: 2rem;">
+          <div class="callout feature my-large">
             <h3>🧩 Case Study Matcher: Justifying Your Method</h3>
             <p>NESA highly values your ability to <strong>justify</strong> the method chosen for a specific scenario. Use the interactive examples below to match the scenario to the best implementation method.</p>
 
-            <details class="interactive-case" style="margin-bottom: 10px; border: 1px solid var(--noteBorderColor); padding: 10px; border-radius: 6px;">
-              <summary style="cursor: pointer; font-weight: bold;">Scenario 1: A hospital is upgrading its critical patient records database. The system cannot afford any downtime or lost data. <em>Click to reveal method &amp; justification</em></summary>
-              <div style="margin-top: 10px; padding-left: 15px; border-left: 3px solid var(--primaryColor);">
+            <details class="interactive-case">
+              <summary>Scenario 1: A hospital is upgrading its critical patient records database. The system cannot afford any downtime or lost data. <em>Click to reveal method &amp; justification</em></summary>
+              <div class="interactive-case-content">
                 <strong>Method:</strong> Parallel<br>
                 <strong>Justification:</strong> Parallel runs both systems simultaneously. This is the only acceptable method for critical life-safety systems, as it provides a fully operational fallback if the new system fails.
               </div>
             </details>
 
-            <details class="interactive-case" style="margin-bottom: 10px; border: 1px solid var(--noteBorderColor); padding: 10px; border-radius: 6px;">
-              <summary style="cursor: pointer; font-weight: bold;">Scenario 2: A fast-food chain is rolling out new digital touchscreen ordering kiosks across 500 stores nationwide. <em>Click to reveal method &amp; justification</em></summary>
-              <div style="margin-top: 10px; padding-left: 15px; border-left: 3px solid var(--primaryColor);">
+            <details class="interactive-case">
+              <summary>Scenario 2: A fast-food chain is rolling out new digital touchscreen ordering kiosks across 500 stores nationwide. <em>Click to reveal method &amp; justification</em></summary>
+              <div class="interactive-case-content">
                 <strong>Method:</strong> Phased or Pilot<br>
                 <strong>Justification:</strong> Pilot would involve testing in one store to catch bugs before a nationwide rollout. Phased would roll it out region by region to manage training and installation resources safely.
               </div>
             </details>
 
-            <details class="interactive-case" style="border: 1px solid var(--noteBorderColor); padding: 10px; border-radius: 6px;">
-              <summary style="cursor: pointer; font-weight: bold;">Scenario 3: A small local bakery is moving from a paper-based ledger to a simple iPad point-of-sale system on Monday morning. <em>Click to reveal method &amp; justification</em></summary>
-              <div style="margin-top: 10px; padding-left: 15px; border-left: 3px solid var(--primaryColor);">
+            <details class="interactive-case">
+              <summary>Scenario 3: A small local bakery is moving from a paper-based ledger to a simple iPad point-of-sale system on Monday morning. <em>Click to reveal method &amp; justification</em></summary>
+              <div class="interactive-case-content">
                 <strong>Method:</strong> Direct<br>
                 <strong>Justification:</strong> The size and complexity of the business are low. Direct implementation avoids the confusion of running two separate systems, and is the most cost-effective.
               </div>
@@ -460,11 +460,11 @@
               <h4>🏃 Agile Approach</h4>
               <p>An iterative <strong>workflow</strong> focusing on the rapid <strong>rate of developing a final solution</strong>. Allows for <strong>method tailoring</strong> to adapt to evolving client needs. <br><br><strong>Scale:</strong> Ideal for dynamic, medium-scale developments (e.g., commercial web apps) where requirements frequently shift.</p>
             </div>
-            <div class="info-card" style="grid-column: 1 / -1;">
+            <div class="info-card col-full">
               <h4>🧬 WAgile Approach &amp; Intervention</h4>
               <p><strong>Research</strong> WAgile, understanding it is a <strong>hybrid model</strong>. It combines Waterfall's rigorous upfront planning with <strong>Agile</strong>'s iterative coding. <br><br><strong>Intervention:</strong> NESA requires you to analyze when and how <strong>intervention</strong> is applied. In WAgile, intervention is applied 'when' regulatory compliance requires strict phase-gate reviews (Waterfall style), but 'how' the code is written between these gates remains <strong>agile</strong>. <br><strong>Scale:</strong> Complex enterprise developments.</p>
               
-              <div class="diagram-block" style="margin-top: 15px;">
+              <div class="diagram-block mt-15px">
                 <p class="diagram-subtitle">WAgile Timeline: Agile sprints with Waterfall interventions</p>
                 <div class="mermaid">
                   gantt
@@ -562,42 +562,42 @@ Key: ███ = Task active during this week</pre>
                   <td>Data loss due to hardware failure or accidental deletion</td>
                   <td>Medium</td>
                   <td>High</td>
-                  <td><strong style="color:#c0392b">High</strong></td>
+                  <td class="text-high-risk">High</td>
                   <td>Use Git version control with daily commits; maintain an automated backup script to a secondary drive.</td>
                 </tr>
                 <tr>
                   <td>Scope creep — client requests additional features mid-project</td>
                   <td>High</td>
                   <td>Medium</td>
-                  <td><strong style="color:#c0392b">High</strong></td>
+                  <td class="text-high-risk">High</td>
                   <td>Formalise requirements in a signed document at Phase 1; use a change request log to evaluate new features.</td>
                 </tr>
                 <tr>
                   <td>Technical skill gap — unfamiliarity with a required library</td>
                   <td>Medium</td>
                   <td>Medium</td>
-                  <td><strong style="color:#e67e22">Medium</strong></td>
+                  <td class="text-medium-risk">Medium</td>
                   <td>Allocate one week for research and prototyping; consult official documentation and tutorial resources early.</td>
                 </tr>
                 <tr>
                   <td>Time underestimation — tasks take longer than planned</td>
                   <td>High</td>
                   <td>Medium</td>
-                  <td><strong style="color:#c0392b">High</strong></td>
+                  <td class="text-high-risk">High</td>
                   <td>Build a 1-week buffer into the schedule; prioritise core features using MoSCoW (Must, Should, Could, Won't) method.</td>
                 </tr>
                 <tr>
                   <td>Security vulnerability — <strong>SQL injection</strong> or <strong>authentication</strong> bypass</td>
                   <td>Low</td>
                   <td>High</td>
-                  <td><strong style="color:#e67e22">Medium</strong></td>
+                  <td class="text-medium-risk">Medium</td>
                   <td>Use parameterised queries for all database operations; implement input validation on all user-facing forms.</td>
                 </tr>
                 <tr>
                   <td>Client unavailability for feedback sessions</td>
                   <td>Medium</td>
                   <td>Low</td>
-                  <td><strong style="color:#27ae60">Low</strong></td>
+                  <td class="text-low-risk">Low</td>
                   <td>Schedule client meetings at least one week in advance; use asynchronous feedback methods (e.g., email surveys) as a fallback.</td>
                 </tr>
               </tbody>
@@ -734,8 +734,20 @@ Key:
 programmed_backup(<span class="str">'app_data.sqlite3'</span>, <span class="str">'./backups'</span>)</code></pre>
           </div>
 
-          <h3>💡 Strategies for Difficulties</h3>
+          <h3>💡 Strategies for Difficulties & Outsourcing</h3>
           <p><strong>Explore</strong> strategies to respond to difficulties when developing. This includes searching for solutions online (e.g., official documentation, StackOverflow), seeking <strong>collaboration with peers</strong> for code reviews, or <strong>outsourcing</strong> specific technical components (e.g., paying for an external API service rather than building it from scratch) (Outcome SE-12-09).</p>
+
+          <div class="callout feature my-large">
+            <h4>⚖️ "Buy vs. Build" Decision Guide</h4>
+            <p>NESA highly regards students who can justify their development strategies. If you face a complex difficulty (e.g., implementing secure logins), use this logic to justify <strong>outsourcing</strong>:</p>
+            <table class="decision-table">
+              <tr><th>Factor</th><th>Build (In-House)</th><th>Buy / Outsource (Third-Party)</th></tr>
+              <tr><td><strong>Time</strong></td><td>Takes weeks to code and test.</td><td>Instant integration via API.</td></tr>
+              <tr><td><strong>Cost</strong></td><td>High developer salary cost.</td><td>Ongoing subscription / per-use cost.</td></tr>
+              <tr><td><strong>Risk</strong></td><td>High risk of bugs / security flaws.</td><td>Low risk (tested by provider).</td></tr>
+              <tr><td><strong>Justification</strong></td><td><em>"I built the search algorithm because it's my core intellectual property."</em></td><td><em>"I outsourced authentication to Auth0 because rolling my own crypto was an unacceptable security risk."</em></td></tr>
+            </table>
+          </div>
 
           <h3>✨ Innovative UI Solutions</h3>
           <p><strong>Propose</strong> an additional innovative solution using a <strong>prototype</strong> and a <strong>user interface (UI)</strong> design. Prototyping allows clients to interact with a mock-up of the system, providing early validation of the UI layout before heavy backend coding commences (Outcome SE-12-06).</p>
@@ -1375,6 +1387,36 @@ flowchart TD
                 <li>Evaluation against every Phase 1 requirement &amp; documented client feedback.</li>
               </ul>
             </div>
+            </div>
+          </div>
+
+          <div class="code-block my-large">
+            <div class="code-header"><span class="code-lang">Python — Volume / Stress Test Script</span></div>
+            <pre><code># NESA testing methods require proof of Volume Testing.
+# Use scripts like this in your project to flood your system with simulated data
+# and produce a performance graph for your marking portfolio.
+
+import time
+import random
+
+# E.g., simulate a library database with 10,000 dummy records
+print("Generating 10,000 dummy library records for Volume Testing...")
+library_db = {f"ISBN-{i}": f"Book Title {i}" for i in range(10000)}
+
+def search_book(isbn):
+    return library_db.get(isbn, "Not Found")
+
+# Stress Test
+start_time = time.time()
+print("\nExecuting stress test: 50,000 simultaneous searches...")
+
+for _ in range(50000):
+    random_isbn = f"ISBN-{random.randint(0, 15000)}"
+    search_book(random_isbn)
+
+end_time = time.time()
+print(f"✅ Volume Testing Complete.")
+print(f"Time taken to process 50,000 queries over 10K records: {end_time - start_time:.4f} seconds")</code></pre>
           </div>
 
           <h3>Process Diary Example Excerpt</h3>
@@ -1477,7 +1519,7 @@ flowchart TD
             <table>
               <thead>
                 <tr>
-                  <th colspan="2" style="background-color:var(--accent);color:white;text-align:center">CLIENT MEETING MINUTES</th>
+                  <th colspan="2" class="th-accent">CLIENT MEETING MINUTES</th>
                 </tr>
               </thead>
               <tbody>

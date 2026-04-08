@@ -300,6 +300,10 @@
             <div class="key-term-item"><strong>🏢 Rectangle</strong><span>External Entity — a person or system outside the boundary that sends or receives data (e.g. "Customer").</span></div>
             <div class="key-term-item"><strong>↩️ Arrow</strong><span>Data Flow — named arrow showing data moving between elements (e.g. "username + password").</span></div>
           </div>
+          <div class="callout warning">
+            <strong>NESA Specification: Data Stores</strong><br>
+            While industry diagrams often use a cylinder for databases, NESA strictly requires Data Stores to be drawn as an <strong>open rectangle (two parallel horizontal lines)</strong> in HSC exams. Ensure you use this specific notation when drawing DFDs.
+          </div>
           <div class="callout info">
             <strong>Level 0 (Context Diagram)</strong>: Shows the entire system as a single process bubble with all external entities. No data stores or sub-processes are shown.<br><br>
             <strong>Level 1 DFD</strong>: Expands the single bubble into its major processes. Data stores appear at this level. Each process can be further expanded into a Level 2 DFD if needed.
@@ -489,7 +493,7 @@ Reflective comment:
             <div class="info-card">
               <h4>🧩 Object-Oriented</h4>
               <p>Organises code into <strong>classes</strong> and <strong>objects</strong>. Key concepts: attributes, methods, inheritance, polymorphism, and encapsulation. Used in Python, Java, C#.</p>
-              <pre style="font-size:.78rem;margin-top:.5rem"><code>class Dog:
+              <pre class="pre-sm"><code>class Dog:
     def __init__(self, name):
         self.name = name
     def bark(self):
@@ -498,7 +502,7 @@ Reflective comment:
             <div class="info-card">
               <h4>📝 Logic</h4>
               <p>Programs are expressed as <strong>facts</strong> and <strong>rules</strong>; the engine finds solutions automatically. Used in Prolog for AI and expert systems.</p>
-              <pre style="font-size:.78rem;margin-top:.5rem"><code>% Prolog-style logic
+              <pre class="pre-sm"><code>% Prolog-style logic
 parent(tom, bob).
 parent(bob, ann).
 grandparent(X, Z) :-
@@ -507,7 +511,7 @@ grandparent(X, Z) :-
             <div class="info-card">
               <h4>🖥️ Imperative</h4>
               <p>Programs describe <strong>how</strong> to do something as a sequence of commands — control structures, assignment, expressions, and subroutines. Most common paradigm; used in Python, C, Pascal.</p>
-              <pre style="font-size:.78rem;margin-top:.5rem"><code>total = 0
+              <pre class="pre-sm"><code>total = 0
 for i in range(1, 6):
     total = total + i
 print(total)  # 15</code></pre>
@@ -515,7 +519,7 @@ print(total)  # 15</code></pre>
             <div class="info-card">
               <h4>⚙️ Functional</h4>
               <p>Treats computation as evaluating <strong>functions</strong>. Avoids changing state; uses recursion and first-class functions. Used in Haskell, Erlang; supported in Python.</p>
-              <pre style="font-size:.78rem;margin-top:.5rem"><code># Python functional style
+              <pre class="pre-sm"><code># Python functional style
 nums = [1, 2, 3, 4, 5]
 total = sum(map(lambda x: x*2, nums))
 print(total)  # 30</code></pre>
@@ -1007,19 +1011,60 @@ p {
 
           <h3>🕸️ Neural Networks</h3>
           <p>Computational models loosely inspired by the brain, composed of <strong>layers of interconnected nodes (neurons)</strong>. Each connection has a weight that is adjusted during training.</p>
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Neural Network — Architecture</span></div>
-            <pre><code>Input Layer          Hidden Layer 1       Hidden Layer 2       Output Layer
-(4 features)         (5 neurons)          (3 neurons)          (2 classes)
-
-  x₁ ──────────────→ ◉ ──────────────→  ◉ ──────────────→  ◉ → P(Spam)
-  x₂ ─────────╮   ╭→ ◉ ──────────╮  ╭→ ◉ ──────────╮       ◉ → P(Not Spam)
-  x₃ ────╮    ╰───╯  ◉            ╰──╯  ◉            ╰──────╯
-  x₄ ────╰─────────→ ◉ ──────────────→  ◉
-                      ◉
-
-  Each → represents a weighted connection.
-  The output layer uses softmax — probabilities sum to 1.0.</code></pre>
+          <div class="diagram-block">
+            <p class="diagram-subtitle">Neural Network Architecture showing hidden layers and weights</p>
+            <div class="mermaid">
+              graph LR
+                %% Input Layer
+                I1((x₁)):::inputLayer
+                I2((x₂)):::inputLayer
+                I3((x₃)):::inputLayer
+                
+                %% Hidden Layer 1
+                H1_1((h₁)):::hiddenLayer
+                H1_2((h₂)):::hiddenLayer
+                H1_3((h₃)):::hiddenLayer
+                
+                %% Output Layer
+                O1((Spam)):::outputLayer
+                O2((Not Spam)):::outputLayer
+                
+                %% Connections with varying weights
+                I1 --> H1_1
+                I1 --> H1_2
+                I1 --> H1_3
+                
+                I2 --> H1_1
+                I2 --> H1_2
+                I2 --> H1_3
+                
+                I3 --> H1_1
+                I3 --> H1_2
+                I3 --> H1_3
+                
+                H1_1 --> O1
+                H1_1 --> O2
+                H1_2 --> O1
+                H1_2 --> O2
+                H1_3 --> O1
+                H1_3 --> O2
+                
+                %% Styling to simulate varying signal strength (weights)
+                linkStyle 0 stroke-width:4px,stroke:#6366f1;
+                linkStyle 1 stroke-width:1px,stroke:#94a3b8;
+                linkStyle 2 stroke-width:2px,stroke:#94a3b8;
+                linkStyle 3 stroke-width:1px,stroke:#94a3b8;
+                linkStyle 4 stroke-width:5px,stroke:#6366f1;
+                linkStyle 5 stroke-width:2px,stroke:#94a3b8;
+                linkStyle 6 stroke-width:2px,stroke:#94a3b8;
+                linkStyle 7 stroke-width:1px,stroke:#94a3b8;
+                linkStyle 8 stroke-width:3px,stroke:#6366f1;
+                
+                classDef inputLayer fill:#dbeafe,stroke:#3b82f6,color:#000;
+                classDef hiddenLayer fill:#f3e8ff,stroke:#a855f7,color:#000;
+                classDef outputLayer fill:#dcfce7,stroke:#22c55e,color:#000;
+            </div>
+            <p class="diagram-description">Notice the variable line thicknesses connecting the nodes — these represent <strong>internal weightings</strong>, a core NESA requirement to visually demonstrate signal priority in neural architectures.</p>
           </div>
           <div class="key-terms">
             <div class="key-term-item"><strong>📥 Input layer</strong><span>Receives the raw input features (e.g. pixel values of an image, or sensor readings). One node per feature.</span></div>
@@ -1144,6 +1189,34 @@ elif 97 <= ord(ch) <= 122:
     print(f"{ch} is lowercase")
 elif 48 <= ord(ch) <= 57:
     print(f"{ch} is a digit")</code></pre>
+          </div>
+          
+          <div class="code-block my-large">
+            <div class="code-header"><span class="code-lang">Python — Bitwise Operations Workshop (XOR Encryption)</span></div>
+            <pre><code># NESA requires understanding 'simple encryption' via binary format.
+# XOR (^) is a perfect demonstration: encrypting twice with the same key restores the data.
+
+def simple_xor_encrypt(text, key):
+    result = ""
+    for char in text:
+        # 1. Get binary/decimal format of character
+        char_val = ord(char)
+        # 2. XOR with the key
+        cipher_val = char_val ^ key
+        # 3. Convert back to character format
+        result += chr(cipher_val)
+    return result
+
+plaintext = "HSC"
+key = 42 # Arbitrary secret key for XOR
+
+# Encrypt
+cipher = simple_xor_encrypt(plaintext, key)
+print(f"Encrypted string: {repr(cipher)}")
+
+# Decrypt (same operation reverses the flip!)
+decrypted = simple_xor_encrypt(cipher, key)
+print(f"Decrypted string: {decrypted}") # -> 'HSC'</code></pre>
           </div>
         </section>
 
