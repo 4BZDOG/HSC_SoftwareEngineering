@@ -412,6 +412,35 @@
               </tbody>
             </table>
           </div>
+
+          <div class="callout feature" style="margin-top: 2rem;">
+            <h3>🧩 Case Study Matcher: Justifying Your Method</h3>
+            <p>NESA highly values your ability to <strong>justify</strong> the method chosen for a specific scenario. Use the interactive examples below to match the scenario to the best implementation method.</p>
+
+            <details class="interactive-case" style="margin-bottom: 10px; border: 1px solid var(--noteBorderColor); padding: 10px; border-radius: 6px;">
+              <summary style="cursor: pointer; font-weight: bold;">Scenario 1: A hospital is upgrading its critical patient records database. The system cannot afford any downtime or lost data. <em>Click to reveal method &amp; justification</em></summary>
+              <div style="margin-top: 10px; padding-left: 15px; border-left: 3px solid var(--primaryColor);">
+                <strong>Method:</strong> Parallel<br>
+                <strong>Justification:</strong> Parallel runs both systems simultaneously. This is the only acceptable method for critical life-safety systems, as it provides a fully operational fallback if the new system fails.
+              </div>
+            </details>
+
+            <details class="interactive-case" style="margin-bottom: 10px; border: 1px solid var(--noteBorderColor); padding: 10px; border-radius: 6px;">
+              <summary style="cursor: pointer; font-weight: bold;">Scenario 2: A fast-food chain is rolling out new digital touchscreen ordering kiosks across 500 stores nationwide. <em>Click to reveal method &amp; justification</em></summary>
+              <div style="margin-top: 10px; padding-left: 15px; border-left: 3px solid var(--primaryColor);">
+                <strong>Method:</strong> Phased or Pilot<br>
+                <strong>Justification:</strong> Pilot would involve testing in one store to catch bugs before a nationwide rollout. Phased would roll it out region by region to manage training and installation resources safely.
+              </div>
+            </details>
+
+            <details class="interactive-case" style="border: 1px solid var(--noteBorderColor); padding: 10px; border-radius: 6px;">
+              <summary style="cursor: pointer; font-weight: bold;">Scenario 3: A small local bakery is moving from a paper-based ledger to a simple iPad point-of-sale system on Monday morning. <em>Click to reveal method &amp; justification</em></summary>
+              <div style="margin-top: 10px; padding-left: 15px; border-left: 3px solid var(--primaryColor);">
+                <strong>Method:</strong> Direct<br>
+                <strong>Justification:</strong> The size and complexity of the business are low. Direct implementation avoids the confusion of running two separate systems, and is the most cost-effective.
+              </div>
+            </details>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -431,9 +460,34 @@
               <h4>🏃 Agile Approach</h4>
               <p>An iterative <strong>workflow</strong> focusing on the rapid <strong>rate of developing a final solution</strong>. Allows for <strong>method tailoring</strong> to adapt to evolving client needs. <br><br><strong>Scale:</strong> Ideal for dynamic, medium-scale developments (e.g., commercial web apps) where requirements frequently shift.</p>
             </div>
-            <div class="info-card">
-              <h4>🧬 WAgile Approach</h4>
-              <p><strong>Research</strong> WAgile, understanding it is a <strong>hybrid model</strong>. It combines Waterfall's rigorous upfront planning with <strong>Agile</strong>'s iterative coding. <br><br><strong>Intervention:</strong> Applied 'when' regulatory compliance requires strict documentation, but 'how' the code is written remains <strong>agile</strong>. <br><strong>Scale:</strong> Complex enterprise developments.</p>
+            <div class="info-card" style="grid-column: 1 / -1;">
+              <h4>🧬 WAgile Approach &amp; Intervention</h4>
+              <p><strong>Research</strong> WAgile, understanding it is a <strong>hybrid model</strong>. It combines Waterfall's rigorous upfront planning with <strong>Agile</strong>'s iterative coding. <br><br><strong>Intervention:</strong> NESA requires you to analyze when and how <strong>intervention</strong> is applied. In WAgile, intervention is applied 'when' regulatory compliance requires strict phase-gate reviews (Waterfall style), but 'how' the code is written between these gates remains <strong>agile</strong>. <br><strong>Scale:</strong> Complex enterprise developments.</p>
+              
+              <div class="diagram-block" style="margin-top: 15px;">
+                <p class="diagram-subtitle">WAgile Timeline: Agile sprints with Waterfall interventions</p>
+                <div class="mermaid">
+                  gantt
+                    title WAgile Development Timeline
+                    dateFormat  YYYY-MM-DD
+                    axisFormat  %m-%d
+                    
+                    section Waterfall Planning
+                    Requirements Doc (Intervention) :crit, req1, 2026-05-01, 7d
+                    Design Sign-off (Intervention)  :crit, des1, after req1, 5d
+                    
+                    section Agile Sprints
+                    Sprint 1 (Frontend UI)          :active, sp1, after des1, 10d
+                    Sprint 1 Review                 :milestone, m1, after sp1, 0d
+                    Sprint 2 (Backend API)          :active, sp2, after sp1, 10d
+                    Sprint 2 Review                 :milestone, m2, after sp2, 0d
+                    Sprint 3 (Integration)          :active, sp3, after sp2, 10d
+                    
+                    section Waterfall Deploy
+                    Final Security Audit (Intervention) :crit, aud1, after sp3, 5d
+                    Live Deployment                 :milestone, live, after aud1, 0d
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -1313,12 +1367,12 @@ flowchart TD
             <div class="info-card">
               <h4>🧪 Phase 4 — Testing &amp; Evaluating</h4>
               <ul>
-                <li>Test data table with normal, boundary, and invalid cases</li>
-                <li>Defect log showing bugs found and fixed</li>
-                <li>Evaluation against every Phase 1 requirement</li>
-                <li>Client feedback documented and responded to</li>
-                <li>Reflection on limitations and future improvements</li>
-                <li>Final solution matches or exceeds requirements</li>
+                <li><strong>Functional Testing:</strong> Checking workflows against the functional requirements.</li>
+                <li><strong>Acceptance Testing:</strong> Client confirms the software solves their original problem (UAT).</li>
+                <li><strong>Live Data / Simulated Data Testing:</strong> Using real-world scale data OR generated datasets to trigger edge cases.</li>
+                <li><strong>Beta / Volume Testing:</strong> User trials before public release, and testing system limits under mass concurrent usage.</li>
+                <li>Test data table (normal, boundary, invalid) &amp; Defect log.</li>
+                <li>Evaluation against every Phase 1 requirement &amp; documented client feedback.</li>
               </ul>
             </div>
           </div>
