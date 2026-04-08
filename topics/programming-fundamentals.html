@@ -4,10 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Programming Fundamentals | HSC Software Engineering</title>
-  <meta name="description" content="In-depth Year 11 HSC Software Engineering notes on Programming Fundamentals, following NESA command verbs, outcomes, and Australian English standards." />
+  <!-- ── SEO ── -->
+  <link rel="canonical" href="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/programming-fundamentals.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Programming Fundamentals | HSC Software Engineering" />
+  <meta property="og:description" content="Year 11 HSC Programming Fundamentals notes — algorithms, data types, control structures, functions, debugging, and NESA command verbs for Preliminary exams." />
+  <meta property="og:url" content="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/programming-fundamentals.html" />
+  <meta property="og:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <meta property="og:image:alt" content="HSC Software Engineering Notes — NESA NSW" />
+  <meta property="og:site_name" content="HSC Software Engineering Notes" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Programming Fundamentals | HSC Software Engineering" />
+  <meta name="twitter:description" content="Year 11 HSC Programming Fundamentals notes — algorithms, data types, control structures, functions, debugging, and NESA command verbs for Preliminary exams." />
+  <meta name="twitter:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Year 11",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Programming Fundamentals",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/topics/programming-fundamentals.html"
+    }
+    ]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+  <meta name="theme-color" content="#6366F1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta name="description" content="Year 11 HSC Programming Fundamentals notes — algorithms, data types, control structures, functions, debugging, and NESA command verbs for Preliminary exams." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=6" />
+  <link rel="stylesheet" href="../css/styles.css?v=7" />
 </head>
 <body>
 
@@ -23,7 +67,17 @@
 
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="course-tools.html">🛠️ Course Tools <span class="badge badge-all">Specs</span></a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            🗂️ Resources
+            <span class="badge badge-all">Guides</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
+            <a href="sdlc.html" role="menuitem">🔄 SDLC Guide</a>
+          </div>
+        </li>
         <li class="nav-dropdown nav-dropdown-y12">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
             Year 12
@@ -63,7 +117,8 @@
   <div class="mobile-menu" id="mobile-menu">
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Resources</div>
-      <a href="course-tools.html">🛠️ Course Tools & Specifications</a>
+      <a href="course-tools.html">🛠️ Course Tools &amp; Specifications</a>
+      <a href="sdlc.html">🔄 SDLC Guide</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 12</div>
@@ -104,21 +159,21 @@
     <aside class="sidebar">
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Part 1 — Software Development</li>
+        <li class="sidebar-label">Part 1 — Software Development</li>
         <li><a href="#sdlc">🚀 1. Software Development Steps</a></li>
         <li><a href="#collaboration">🤝 2. Online Collaboration Tools</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 2 — Designing <strong>Algorithms</strong></li>
+        <li class="sidebar-label">Part 2 — Designing <strong>Algorithms</strong></li>
         <li><a href="#algorithmic-design">🧠 3. Computational Thinking & Algorithm Features</a></li>
         <li><a href="#divide-conquer">📈 4. Divide & Conquer &amp; Backtracking</a></li>
         <li><a href="#pseudocode">📝 5. Pseudocode &amp; Flowcharts</a></li>
         <li><a href="#modelling">📊 6. Modelling Tools</a></li>
         <li><a href="#analysis">🔍 7. Algorithm Analysis</a></li>
         <li><a href="#paradigms">🎯 8. Programming Paradigms</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 3 — Data for Software Engineering</li>
+        <li class="sidebar-label">Part 3 — Data for Software Engineering</li>
         <li><a href="#number-systems">🔢 9. Number Systems &amp; Two's Complement</a></li>
         <li><a href="#data-types">📋 10. Data Types &amp; Dictionaries</a></li>
         <li><a href="#data-structures">📚 11. Data Structures</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 4 — Developing Solutions</li>
+        <li class="sidebar-label">Part 4 — Developing Solutions</li>
         <li><a href="#applying-skills">💻 12. Applying Computational Thinking</a></li>
         <li><a href="#functions-procedures">🔧 12a. Functions &amp; Procedures — Deep Dive</a></li>
         <li><a href="#variable-naming">🏷️ 12b. Variable Declaration &amp; Naming</a></li>
@@ -274,11 +329,11 @@
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> computational thinking and algorithmic design by defining the key features of standard algorithms.</em></p>
 
-          <h3>Key Features of Standard Algorithms</h3>
+          <h3>🔑 Key Features of Standard Algorithms</h3>
           <p>Every <strong>algorithm</strong> uses fundamental building blocks to solve problems. Understanding these features allows programmers to design robust, efficient solutions:</p>
 
           <!-- ── 1. Sequence ── -->
-          <h4>1. Sequence</h4>
+          <h4>🔢 1. Sequence</h4>
           <p><strong>Sequence</strong> means instructions are executed in order, one after another. Each step completes before the next begins — there is no branching or repetition.<br>
           🌏 <em>Example: Reading a file, processing each line, then saving results.</em></p>
 
@@ -319,7 +374,7 @@ END</code></pre>
           </div>
 
           <!-- ── 2. Selection ── -->
-          <h4>2. Selection</h4>
+          <h4>🔀 2. Selection</h4>
           <p><strong>Selection</strong> means choosing different execution paths based on conditions using IF/ELSE or SWITCH statements. The program evaluates a condition and branches accordingly.<br>
           🌏 <em>Example: Validating user input — if age &lt; 18, display "Too young"; otherwise, proceed.</em></p>
 
@@ -369,7 +424,7 @@ END</code></pre>
           </div>
 
           <!-- ── 3. Iteration ── -->
-          <h4>3. Iteration</h4>
+          <h4>🔁 3. Iteration</h4>
           <p><strong>Iteration</strong> means repeating a set of instructions while a condition is true, using FOR or WHILE loops. The loop body executes multiple times until the exit condition is met.<br>
           🌏 <em>Example: Summing all numbers in a list by looping through each element.</em></p>
 
@@ -416,7 +471,7 @@ END</code></pre>
           </div>
 
           <!-- ── 4. Storing Data ── -->
-          <h4>4. Storing Data</h4>
+          <h4>💾 4. Storing Data</h4>
           <p><strong>Storing Data</strong> means using variables and <strong>data structures</strong> to hold values needed across multiple steps of an <strong>algorithm</strong>. Without stored state, programs cannot track progress or accumulate results.<br>
           🌏 <em>Example: Keeping track of a running total as you iterate through numbers.</em></p>
 
@@ -487,10 +542,10 @@ END</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> divide and conquer and backtracking as algorithmic design strategies.</em></p>
 
-          <h3>Divide and Conquer</h3>
+          <h3>📈 Divide and Conquer</h3>
           <p>This strategy involves breaking a complex problem into smaller, identical sub-problems until they are simple enough to solve directly. The solutions to these sub-problems are then combined to form the final result.<br>🌏 <em>Example: In a <strong>Merge Sort</strong>, a large list is repeatedly split in half until single elements remain, which are then merged back together in the correct order.</em> This approach is highly efficient for sorting and searching large datasets.</p>
 
-          <h3>Backtracking</h3>
+          <h3>↩️ Backtracking</h3>
           <p>Backtracking is an incremental approach to problem-solving that builds a solution one step at a time. If the <strong>algorithm</strong> reaches a state where the current path cannot possibly lead to a valid solution (violating a constraint), it "backtracks" to the previous step and tries a different option.<br>🌏 <em>Example: A <strong>Sudoku Solver</strong> attempts a number in a cell; if it later finds a conflict, it returns to that cell and tries the next available number.</em> This strategy is essential for pathfinding and optimisation problems.</p>
 
           <div class="code-block">
@@ -529,7 +584,7 @@ visited = set()
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Develop</strong> structured algorithms using pseudocode and flowcharts, including the use of subprograms.</em></p>
 
-          <h3>Pseudocode</h3>
+          <h3>📝 Pseudocode</h3>
           <p>Pseudocode is an informal, human-readable notation for writing <strong>algorithms</strong> — a bridge between natural language and programming code. It uses common programming keywords (IF, WHILE, FOR) mixed with English-like descriptions, making logic crystal clear without being tied to a specific programming language's syntax. This allows designers and developers to communicate <strong>algorithm</strong> logic to non-programmers, and to verify correctness before investing time in actual coding.<br>🌏 <em>Example:</em></p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Pseudocode — Linear Search <strong>Algorithm</strong></span></div>
@@ -543,7 +598,7 @@ visited = set()
 END FUNCTION</code></pre>
           </div>
 
-          <h3>Flowcharts</h3>
+          <h3>📊 Flowcharts</h3>
           <p>Flowcharts use visual symbols to represent <strong>algorithm</strong> steps and decision points. Rectangles represent processes, diamonds represent decisions, and arrows show flow direction. This visual representation makes complex logic easy to follow, helps identify loops and branches, and allows stakeholders to validate correctness before implementation.<br>🌏 <em>Example:</em> A flowchart for validating user age would show a diamond (decision point) — "Is age ≥ 18?" — with two paths: YES leads to "Show full menu" and NO leads to "Show restricted menu."</p>
 
           <!-- Linear Search Algorithm Flowchart -->
@@ -582,7 +637,7 @@ END FUNCTION</code></pre>
             </p>
           </div>
 
-          <h3>Subprograms</h3>
+          <h3>🧩 Subprograms</h3>
           <p>A subprogram (function or procedure) is a reusable block of code that performs a specific task. Pseudocode and flowcharts must clearly show how subprograms are called, what parameters they accept, and what they return. This modular approach reduces code duplication, improves readability, and makes testing easier.<br>🌏 <em>Example: A main program calls FUNCTION validatePassword(pwd) which returns TRUE or FALSE, allowing the validation logic to be reused across multiple entry points.</em></p>
         </section>
 
@@ -594,7 +649,7 @@ END FUNCTION</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Use</strong> modelling tools including structure charts, abstraction and refinement diagrams to support top-down and bottom-up design.</em></p>
           
-          <h3>Structure Charts</h3>
+          <h3>🏗️ Structure Charts</h3>
           <p>Structure charts are a top-down tool used to show the hierarchy of subroutines in a system. They focus on modularity, showing which module calls another and what data (parameters) or control signals (flags) are passed between them.<br>🌏 <em>Example: A structure chart for an ATM would show the 'Main' module calling 'Verify PIN' and passing back a 'Valid/Invalid' flag.</em> This allows engineers to see high-level dependencies without getting bogged down in code logic.</p>
 
           <!-- ATM Structure Chart Diagram -->
@@ -644,7 +699,7 @@ END FUNCTION</code></pre>
             </p>
           </div>
 
-          <h3>Abstraction and Refinement</h3>
+          <h3>🔍 Abstraction and Refinement</h3>
           <p><strong>Abstraction</strong> involves hiding implementation details to focus on high-level goals (the 'What'). <strong>Stepwise Refinement</strong> is the process of breaking those high-level goals into smaller, more specific details (the 'How').<br>🌏 <em>Example: An abstract instruction like 'Initialise System' is refined into 'Set counter to 0', 'Clear display', and 'Open file stream'.</em> Together, they allow for manageable development of complex systems.</p>
         </section>
 
@@ -656,13 +711,13 @@ END FUNCTION</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Analyse</strong> the logic and structure of written algorithms, including determining inputs and outputs, purpose, desk checking, peer checking, and identifying connections to subroutines or functions.</em></p>
 
-          <h3>Determining Inputs, Outputs, and Purpose</h3>
+          <h3>📥 Determining Inputs, Outputs, and Purpose</h3>
           <p>Before writing code, clearly identify what data the <strong>algorithm</strong> needs (inputs), what it produces (outputs), and why it exists (purpose). This clarity prevents bugs and ensures the solution addresses the right problem.<br>🌏 <em>Example: A sorting algorithm has INPUT: unsorted list; OUTPUT: sorted list; PURPOSE: arrange items in ascending order for efficient searching.</em></p>
 
-          <h3>Desk Checking and Peer Checking</h3>
+          <h3>📋 Desk Checking and Peer Checking</h3>
           <p><strong>Desk checking</strong> (or "dry running") involves manually tracing through an <strong>algorithm</strong> step-by-step with sample data, recording the value of each variable at each step to verify correctness before implementation. <strong>Peer checking</strong> is having another person review the <strong>algorithm</strong> logic to catch errors or inefficiencies that the original author might miss.<br>🌏 <em>Example: Desk checking a loop from 1 to 10 — write down i=1, i=2, ... to verify the loop executes exactly 10 times, not 9 or 11.</em></p>
 
-          <h3>Identifying Connections to Subroutines and Functions</h3>
+          <h3>🔗 Identifying Connections to Subroutines and Functions</h3>
           <p>Analyse how an <strong>algorithm</strong> calls other functions and what data is passed between them. Document the purpose of each function call and the parameters it receives, ensuring data flows correctly through the program.<br>🌏 <em>Example: An algorithm that calculates employee pay might call FUNCTION calculateTax(salary) and FUNCTION applyBonus(basePay, bonusPercent), understanding what each returns and how it affects the final result.</em></p>
         </section>
 
@@ -674,16 +729,16 @@ END FUNCTION</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Experiment</strong> with object-oriented programming, imperative, logic and functional programming paradigms.</em></p>
 
-          <h3>Object-Oriented Programming (OOP)</h3>
+          <h3>📦 Object-Oriented Programming (OOP)</h3>
           <p>Data and functions are bundled together in "objects" that model real-world entities. Emphasises reusability, modularity, and maintainability. Classes define blueprints; instances are created from them.<br>🌏 <em>Example: A Car class has properties (colour, speed) and methods (accelerate(), brake()); multiple car objects can be created from this template.</em></p>
 
-          <h3>Imperative Programming</h3>
+          <h3>💻 Imperative Programming</h3>
           <p>Programs are sequences of explicit commands (statements) that change program state step-by-step. Python, Java, and C are imperative languages. Focus on "how" to solve the problem (procedures and control flow).<br>🌏 <em>Example: "Set count to 0; LOOP: add next number to count; increment loop counter; IF loop counter &lt; 10, GO TO LOOP."</em></p>
 
-          <h3>Logic Programming</h3>
+          <h3>🧠 Logic Programming</h3>
           <p>Programs state facts and rules; the interpreter derives new facts through logical inference. Less common than imperative, but used in artificial intelligence and database queries. Focus on "what" is true, not "how" to compute it.<br>🌏 <em>Example (Prolog): "parent(john, mary). parent(mary, bob). grandparent(X, Z) :- parent(X, Y), parent(Y, Z)." The system infers grandparent relationships.</em></p>
 
-          <h3>Functional Programming</h3>
+          <h3>λ Functional Programming</h3>
           <p>Programs are built from pure functions (same input always produces same output, no side effects) and immutable data. Emphasises <strong>recursion</strong> and function composition.<br>🌏 <em>Example (Lisp/Scheme): Computing factorial recursively as (factorial 5) = 5 × (factorial 4) × ... × 1, without modifying state.</em></p>
 
           <!-- Programming Paradigms Comparison Diagram -->
@@ -743,7 +798,7 @@ END FUNCTION</code></pre>
             <li><strong>Hexadecimal (Base 16):</strong> Efficiently represents bytes (e.g., <code>#FFFFFF</code> for white in CSS).</li>
           </ul>
 
-          <h3>Two's Complement</h3>
+          <h3>➕ Two's Complement</h3>
           <p>Two's Complement is the standard method for representing signed (negative) integers in binary. To represent a negative number, the bits of the positive equivalent are inverted (0 to 1 and vice-versa) and 1 is added to the result. This system is preferred as it allows for simple addition/subtraction circuits and eliminates the 'double zero' (+0 and -0) problem used in older systems.</p>
 
           <strong>Worked Example — Representing -5 in 8-bit Two's Complement:</strong>
@@ -950,22 +1005,22 @@ student = {
           <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> skills in computational thinking and programming to develop a software solution, including converting an algorithm into code, using control structures, using data structures, using standard modules, and creating relevant subprograms with parameter passing.</em></p>
 
-          <h3>Converting Algorithm to Code</h3>
+          <h3>💻 Converting Algorithm to Code</h3>
           <p>Translating pseudocode or flowcharts into actual programming language syntax. Each <strong>algorithm</strong> step becomes a statement; pseudocode's IF becomes the language's if keyword; loops translate directly.</p>
 
-          <h3>Using Control Structures</h3>
+          <h3>🔀 Using Control Structures</h3>
           <p>Implementing sequence (statements in order), selection (if/else, switch), and <strong>iteration</strong> (for, while loops) to direct program flow based on conditions and data.</p>
 
-          <h3>Using Data Structures</h3>
+          <h3>📚 Using Data Structures</h3>
           <p>Selecting and implementing appropriate <strong>data structures</strong> (arrays, records, trees, hash tables) to organise data so <strong>algorithms</strong> can access it efficiently.</p>
 
-          <h3>Using Standard Modules</h3>
+          <h3>📦 Using Standard Modules</h3>
           <p>Leveraging built-in libraries and functions (e.g., Python's math module, datetime module, string methods) instead of reinventing functionality. Standard modules are tested, optimised, and consistent across projects.</p>
 
-          <h3>Creating Subprograms with Parameter Passing</h3>
+          <h3>🔧 Creating Subprograms with Parameter Passing</h3>
           <p>Writing functions and procedures that accept parameters (inputs), perform a specific task, and return results. Parameters can be passed by value (copy) or by reference (address), allowing functions to modify caller's data when needed.<br>🌏 <em>Example: FUNCTION calculateBonus(salary, percent) takes two parameters, calculates the bonus, and returns the result.</em></p>
 
-          <h3>Implementing Data Structures for Storage</h3>
+          <h3>💾 Implementing Data Structures for Storage</h3>
           <p>Creating concrete implementations of abstract <strong>data structures</strong> in code. This includes single and multidimensional arrays, linked lists, trees with nodes, stacks using lists, and hash tables using dictionaries.</p>
         </section>
 
@@ -977,7 +1032,7 @@ student = {
           <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> parameter passing, scope rules, and recursion to design modular, reusable subprograms. Understand the distinction between functions (return values) and procedures (perform actions).</em></p>
 
-          <h3>Functions vs Procedures</h3>
+          <h3>⚖️ Functions vs Procedures</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -992,7 +1047,7 @@ student = {
             </table>
           </div>
 
-          <h3>Parameter Passing</h3>
+          <h3>📥 Parameter Passing</h3>
           <p><strong>Pass by value:</strong> A copy of the variable is sent. The original variable in the caller is unchanged, even if the function modifies the parameter.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Pass by value (immutable)</span></div>
@@ -1021,7 +1076,7 @@ print(results)   # [80, 75, 90, 95] — list WAS modified</code></pre>
             <strong>Python Mutability Rule:</strong> Immutable types (int, float, str, tuple) always behave like pass-by-value — a function cannot change the caller's variable. Mutable types (list, dict, set) behave like pass-by-reference — modifications inside a function affect the original object.
           </div>
 
-          <h3>Return Values</h3>
+          <h3>↩️ Return Values</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Single and multiple return values</span></div>
             <pre><code># Single return value
@@ -1042,7 +1097,7 @@ def greet(name):
     # no return statement → returns None implicitly</code></pre>
           </div>
 
-          <h3>Variable Scope</h3>
+          <h3>🌐 Variable Scope</h3>
           <p>Scope determines which parts of your program can access a variable. Python uses the <strong>LEGB rule</strong> to look up names:</p>
           <pre class="text-diagram">LEGB Lookup Order
 ─────────────────────────────────────────────
@@ -1078,7 +1133,7 @@ print(counter)   # 1</code></pre>
             <strong>Best Practice:</strong> Prefer returning values over using <code>global</code> variables. Global state makes programs harder to debug and test. If multiple functions need the same data, pass it as a parameter.
           </div>
 
-          <h3>Recursive Functions</h3>
+          <h3>🔄 Recursive Functions</h3>
           <p>A recursive function is one that calls itself. Every recursive function must have:</p>
           <ul>
             <li><strong>Base case:</strong> The condition that stops the <strong>recursion</strong> (no more recursive calls).</li>
@@ -1142,7 +1197,7 @@ for i in range(8):
           <p class="outcome-subtitle">🎯 <em>(SE-11-05)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> naming conventions and best practices for variable declaration to produce readable, maintainable code.</em></p>
 
-          <h3>Python Naming Conventions</h3>
+          <h3>🏷️ Python Naming Conventions</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>snake_case</strong><span>Variables and function names use all lowercase with underscores: <code>student_name</code>, <code>calculate_average()</code>, <code>max_score</code>.</span></div>
             <div class="key-term-item"><strong>UPPER_CASE</strong><span>Constants (values that never change) use all caps: <code>MAX_SCORE = 100</code>, <code>PI = 3.14159</code>, <code>DATABASE_URL</code>.</span></div>
@@ -1150,7 +1205,7 @@ for i in range(8):
             <div class="key-term-item"><strong>_private</strong><span>A single leading underscore is a convention (not enforced) indicating the variable/method is intended for internal use: <code>_validate()</code>.</span></div>
           </div>
 
-          <h3>Descriptive Naming — Good vs Bad</h3>
+          <h3>📝 Descriptive Naming — Good vs Bad</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1217,7 +1272,7 @@ for i in range(8):
           <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Test and Evaluate</strong> solutions, considering functionality, performance, readability, and documentation quality. <strong>Use</strong> debugging tools. <strong>Determine</strong> suitable test data sets and identify typical coding errors.</em></p>
 
-          <h3>Evaluation Criteria</h3>
+          <h3>📋 Evaluation Criteria</h3>
           <p>Software solutions are evaluated on multiple dimensions:</p>
           <ul>
             <li><strong>Functionality:</strong> Does the program produce correct outputs for all inputs?</li>
@@ -1226,7 +1281,7 @@ for i in range(8):
             <li><strong>Documentation Quality:</strong> Are functions documented? Are complex sections explained?</li>
           </ul>
 
-          <h3>Test Data Selection</h3>
+          <h3>🎯 Test Data Selection</h3>
           <p>Selecting the right data is critical for ensuring secure and robust code execution (SE-11-07).</p>
           <div class="table-wrap">
             <table>
@@ -1257,7 +1312,7 @@ for i in range(8):
             </table>
           </div>
 
-          <h3>Debugging Tools</h3>
+          <h3>🛠️ Debugging Tools</h3>
 
           <h4>🔴 Breakpoints</h4>
           <p>A breakpoint is an instruction set within an IDE (such as Visual Studio Code or PyCharm) that <strong>pauses program execution at a specific line</strong>, allowing the engineer to inspect the current state of all variables and memory at that exact moment. For example, when debugging a loop that is supposed to accumulate a total but is producing an incorrect result, placing a breakpoint at the beginning of each iteration allows the engineer to examine the running total before and after each calculation — pinpointing precisely where the logic diverges from the expected behaviour without having to add print statements throughout the code.</p>
@@ -1283,17 +1338,17 @@ print(process_input(100))   <span class="cm"># Boundary: Valid</span>
 print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal: Handled</span></code></pre>
           </div>
 
-          <h3>Typical Errors in Code Development</h3>
+          <h3>⚠️ Typical Errors in Code Development</h3>
           <p>Understanding common error types helps programmers identify and fix problems systematically:</p>
 
           <div class="structured-content">
-            <h4>Syntax Errors</h4>
+            <h4>❌ Syntax Errors</h4>
             <p><strong>Definition:</strong> Violations of the programming language's grammar rules. The interpreter/compiler cannot parse the code and refuses to run it.<br><strong>Likely Causes:</strong> Missing colons, mismatched brackets, incorrect indentation (Python), typos in keywords.<br>🌏 <em>Example: <code>if x > 5</code> (missing colon at the end) or <code>for i in range(10]</code> (mismatched bracket types).</em></p>
 
-            <h4>Logic Errors</h4>
+            <h4>🧠 Logic Errors</h4>
             <p><strong>Definition:</strong> The program runs without crashing, but produces wrong results because the algorithm is flawed.<br><strong>Likely Causes:</strong> Wrong operator (using + instead of ×), off-by-one loop errors, incorrect conditional logic, unreachable code.<br>🌏 <em>Example: A loop from 0 to 9 when you intended 1 to 10 (off-by-one error), or calculating tax as salary × 0.01 instead of salary × 0.10 (operator error).</em></p>
 
-            <h4>Runtime Errors</h4>
+            <h4>💥 Runtime Errors</h4>
             <p><strong>Definition:</strong> The program starts running but crashes during execution due to impossible operations or resource exhaustion.<br><strong>Likely Causes:</strong> Division by zero, accessing an array index that doesn't exist, null pointer dereference, stack overflow from infinite recursion, out of memory.<br>🌏 <em>Example: <code>score[index]</code> where index is 10 but the array only has 5 elements, or <code>result = 100 / denominator</code> when denominator is 0.</em></p>
           </div>
         </section>
@@ -1303,12 +1358,40 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
   </div>
 
   <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo">💻</div>
+          <span class="footer-name">SoftEng Notes</span>
+        </div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
+      </div>
+      <div class="footer-col">
+        <h4>🔐 Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">Engineering Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>📈 Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>🛡️ Navigate</h4>
+        <a href="../index.html">← Back to Home</a>
+        <a href="sdlc.html">🔄 SDLC Guide</a>
+        <a href="object-oriented-paradigm.html">🧩 OOP →</a>
+      </div>
+    </div>
     <div class="footer-bottom">
-      <span>© 2025 HSC SoftEng Notes · NESA NSW Preliminary Aligned · Australian English Standards</span>
+      <span>© 2026 HSC SoftEng Notes · Programming Fundamentals · Australian English Standards</span>
     </div>
   </footer>
 
-  <script src="../js/main.js?v=6"></script>
+  <script src="../js/main.js?v=7"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>
     const initMermaid = () => {

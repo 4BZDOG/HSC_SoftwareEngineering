@@ -4,10 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Secure Software Architecture | HSC Software Engineering</title>
-  <meta name="description" content="Complete HSC Software Engineering notes on Secure Software Architecture — all NESA syllabus items covered including security by design, privacy by design, defensive coding, vulnerabilities, and ethical impacts." />
+  <!-- ── SEO ── -->
+  <link rel="canonical" href="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/secure-software-architecture.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Secure Software Architecture | HSC Software Engineering" />
+  <meta property="og:description" content="HSC Secure Software Architecture notes — CIA triad, STRIDE, authentication, encryption, defensive coding, and privacy by design. Year 12 NESA NSW." />
+  <meta property="og:url" content="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/secure-software-architecture.html" />
+  <meta property="og:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <meta property="og:image:alt" content="HSC Software Engineering Notes — NESA NSW" />
+  <meta property="og:site_name" content="HSC Software Engineering Notes" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Secure Software Architecture | HSC Software Engineering" />
+  <meta name="twitter:description" content="HSC Secure Software Architecture notes — CIA triad, STRIDE, authentication, encryption, defensive coding, and privacy by design. Year 12 NESA NSW." />
+  <meta name="twitter:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Year 12",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Secure Software Architecture",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/topics/secure-software-architecture.html"
+    }
+    ]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+  <meta name="theme-color" content="#6366F1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta name="description" content="HSC Secure Software Architecture notes — CIA triad, STRIDE, authentication, encryption, defensive coding, and privacy by design. Year 12 NESA NSW." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=6" />
+  <link rel="stylesheet" href="../css/styles.css?v=7" />
 </head>
 <body>
 
@@ -23,7 +67,17 @@
 
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="course-tools.html">🛠️ Course Tools <span class="badge badge-all">Specs</span></a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            🗂️ Resources
+            <span class="badge badge-all">Guides</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
+            <a href="sdlc.html" role="menuitem">🔄 SDLC Guide</a>
+          </div>
+        </li>
         <li class="nav-dropdown nav-dropdown-y12">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
             Year 12
@@ -64,6 +118,7 @@
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Resources</div>
       <a href="course-tools.html">🛠️ Course Tools &amp; Specifications</a>
+      <a href="sdlc.html">🔄 SDLC Guide</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 12</div>
@@ -104,11 +159,11 @@
     <aside class="sidebar">
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Part 1 — Designing Software</li>
+        <li class="sidebar-label">Part 1 — Designing Software</li>
         <li><a href="#benefits">🛡️ 1. Benefits of Secure Software</a></li>
         <li><a href="#sdlc">🔄 2. SDLC for Secure Code</a></li>
         <li><a href="#end-users">👤 3. End-User Capabilities</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 2 — Developing Secure Code</li>
+        <li class="sidebar-label">Part 2 — Developing Secure Code</li>
         <li><a href="#security-concepts">🔐 4. Core Security Concepts</a></li>
         <li><a href="#by-design">🏗️ 5. Security by Design</a></li>
         <li><a href="#privacy-design">🔏 6. Privacy by Design</a></li>
@@ -118,11 +173,11 @@
         <li><a href="#efficient-execution">⚡ 10. Efficient Execution</a></li>
         <li><a href="#user-controls">⚠️ 11. User Action Vulnerabilities</a></li>
         <li><a href="#file-hardware">📁 12. File &amp; Hardware Attacks</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 3 — Impact</li>
+        <li class="sidebar-label">Part 3 — Impact</li>
         <li><a href="#collaboration">🤝 13. Collaboration Benefits</a></li>
         <li><a href="#enterprise">🏢 14. Enterprise Benefits</a></li>
         <li><a href="#ramifications">⚖️ 15. Social, Ethical &amp; Legal</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 4 — Deep Dive</li>
+        <li class="sidebar-label">Part 4 — Deep Dive</li>
         <li><a href="#cryptography">🔑 16. Cryptography</a></li>
         <li><a href="#api-security">🔐 17. API Security &amp; JWT</a></li>
         <li><a href="#security-tools">🔍 18. Security Testing Tools</a></li>
@@ -146,10 +201,10 @@
           <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-05)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Describe</strong> the benefits of developing secure software, including data protection and minimising cyber attacks and vulnerabilities.</em></p>
 
-          <h3>Data Protection</h3>
+          <h3>🔒 Data Protection</h3>
           <p>Secure software design ensures that personal, financial, and proprietary data is protected from unauthorised access, modification, or destruction throughout its entire lifecycle — whether at rest in a database, in transit across a network, or in active use. <strong>Data encryption</strong> (e.g., AES-256 for stored data, <strong>TLS</strong> 1.3 for data in transit) makes intercepted data unreadable to attackers. <strong>Access controls</strong> ensure only authorised users can retrieve sensitive records. In Australia, the <strong>Privacy Act 1988</strong> and its Australian Privacy Principles (APPs) impose legal obligations on organisations to protect personal information — failure results in significant financial penalties and mandatory breach notifications under the Notifiable Data Breaches (NDB) scheme. Beyond legal compliance, effective data protection builds user trust, which is increasingly a critical competitive advantage. A single publicised data breach can permanently destroy a brand's reputation and cause lasting customer attrition.</p>
 
-          <h3>Minimising Cyber Attacks and Vulnerabilities</h3>
+          <h3>🛡️ Minimising Cyber Attacks and Vulnerabilities</h3>
           <p>Every software vulnerability — an unintended weakness in code — represents a potential entry point for a cyber attacker. Proactively designing software to minimise vulnerabilities dramatically reduces the <strong>attack surface</strong>: the total number of possible ways an attacker could interact with or compromise a system. This is achieved through secure coding practices (input validation, parameterised queries, output encoding), regular security testing (SAST, DAST, penetration testing), and timely patching of dependencies. The economic impact of cyber attacks is severe: IBM's 2023 Cost of a Data Breach Report found the average breach cost AU$6.5 million — including incident response, legal fees, regulatory fines, and lost business. Secure software development converts this reactive, crisis-driven cost into a predictable, manageable investment in engineering quality. Additionally, minimising vulnerabilities reduces an organisation's exposure to reputational damage, intellectual property theft, and the operational disruption of ransomware attacks that can halt business operations entirely.</p>
         </section>
 
@@ -416,7 +471,7 @@
           <p class="outcome-subtitle">🎯 <em>(SE-12-03, SE-12-04)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Use and explain</strong> the contribution of cryptography and sandboxing to the "security by design" approach, and <strong>apply</strong> security features including data protection, security, privacy, and regulatory compliance.</em></p>
 
-          <h3>Cryptography in Security by Design</h3>
+          <h3>🔐 Cryptography in Security by Design</h3>
           <p><strong>Cryptography</strong> is the practice of securing information by transforming it into an unreadable form for anyone who does not hold the decryption key. In security-by-design, cryptography is not an optional add-on — it is specified in the requirements phase and embedded in the architecture from the first line of code.</p>
 
           <div class="key-terms">
@@ -426,7 +481,7 @@
             <div class="key-term-item"><strong>✍️ Digital Signatures</strong><span>The sender hashes their message, then encrypts the hash with their private key — the result is the signature. The recipient decrypts it with the sender's public key and compares it to their own hash of the message. A match proves authenticity and integrity, providing non-repudiation.</span></div>
           </div>
 
-          <h3>Sandboxing in Security by Design</h3>
+          <h3>🧪 Sandboxing in Security by Design</h3>
           <p><strong>Sandboxing</strong> executes potentially untrusted code in a strictly isolated, restricted environment that has no access to the host operating system, filesystem, network, or other running processes unless explicitly permitted. If the sandboxed code is malicious or compromised, it cannot escape the sandbox to cause broader harm. Security-by-design embeds sandboxing as an architectural decision for any component that handles untrusted external input.</p>
 
           <div class="info-grid">
@@ -574,13 +629,13 @@ STRIDE Threat Modelling Process
 
           <p>Privacy by Design (PbD), developed by Dr Ann Cavoukian, is a framework that treats privacy not as a legal compliance afterthought, but as a fundamental design requirement embedded into the architecture of software systems from the outset. It is now codified in major privacy legislation including the GDPR (Article 25) and increasingly referenced in Australian Privacy Act reforms.</p>
 
-          <h3>Proactive Not Reactive Approach</h3>
+          <h3>🎯 Proactive Not Reactive Approach</h3>
           <p>A proactive approach means anticipating and preventing privacy violations before they occur, rather than detecting and remedying them after the fact. In practice, this means conducting a <strong>Privacy Impact Assessment (PIA)</strong> during the requirements phase — before architecture is finalised — to identify every point at which personal data enters, is processed, stored, or exits the system. Each data flow is scrutinised: Is this data actually necessary? Could we achieve the same outcome with anonymised or aggregated data? Could we collect less? By identifying and eliminating unnecessary data collection before code is written, engineers prevent entire categories of privacy risk from ever materialising. For example, a fitness app that collects precise GPS location for route tracking should ask: can we achieve the feature with neighbourhood-level precision rather than exact coordinates? Reducing data granularity proactively reduces the consequences of any future breach.</p>
 
-          <h3>Embedding Privacy into Design</h3>
+          <h3>🏗️ Embedding Privacy into Design</h3>
           <p>Privacy must be the <strong>default setting</strong> of the system — requiring no action from the user to be protected. The most privacy-respecting option must be the path of least resistance. This principle directly counters the industry-wide practice of defaulting to maximum data collection and sharing, requiring users to navigate complex settings menus to opt out. Specific design implementations include: new social media profiles default to private; marketing email preferences default to unsubscribed; location sharing defaults to off; analytics tracking requires explicit opt-in consent, not pre-ticked boxes. Privacy-preserving defaults are required by the GDPR and are becoming standard under the Australian Privacy Act. Architecturally, data minimisation (collecting only what is genuinely necessary) and purpose limitation (using data only for the stated collection purpose, not secondary commercial uses) must be enforced at the database schema level — if a field does not exist, it cannot be misused or breached.</p>
 
-          <h3>Respect for User Privacy</h3>
+          <h3>👤 Respect for User Privacy</h3>
           <p>Systems must offer users meaningful, granular, and genuinely exercisable control over their personal data. This is distinguished from performative compliance (lengthy privacy policies that nobody reads) by providing real mechanisms for data agency:</p>
 
           <div class="key-terms">
@@ -599,16 +654,16 @@ STRIDE Threat Modelling Process
           <p class="outcome-subtitle">🎯 <em>(SE-12-06, SE-12-08)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Test and evaluate</strong> the security and resilience of software by determining vulnerabilities, hardening systems, handling breaches, maintaining business continuity, and conducting disaster recovery.</em></p>
 
-          <h3>Determining Vulnerabilities</h3>
+          <h3>🔍 Determining Vulnerabilities</h3>
           <p>Vulnerabilities must be identified before attackers find them. Engineers conduct <strong>vulnerability assessments</strong> — systematic scans of the application and its infrastructure to catalogue all known weaknesses (unpatched software, misconfigured services, exposed admin interfaces, default credentials). Vulnerability scanners (e.g., Nessus, OpenVAS) produce prioritised lists of findings rated by CVSS (Common Vulnerability Scoring System) severity. These findings are then remediated in priority order — critical vulnerabilities (CVSS 9.0–10.0) within 24 hours; high (7.0–8.9) within 7 days; medium within 30 days.</p>
 
-          <h3>Hardening Systems</h3>
+          <h3>🛡️ Hardening Systems</h3>
           <p>System hardening reduces the attack surface by eliminating everything that is not strictly necessary for the system's function. A hardened production server has: all unnecessary network ports closed by firewall rules; all unused software packages, services, and user accounts removed; default passwords and credentials changed; logging enabled for all administrative actions; and automatic security updates configured. A hardened web application has: Content Security Policy (CSP) headers preventing unauthorised script execution; <strong>HTTP</strong> Strict Transport Security (HSTS) preventing protocol downgrade attacks; security headers (X-Frame-Options, X-Content-Type-Options) blocking clickjacking and MIME sniffing attacks.</p>
 
-          <h3>Handling Breaches</h3>
+          <h3>🩹 Handling Breaches</h3>
           <p>An <strong>Incident Response Plan (IRP)</strong> defines the pre-agreed, structured process for managing a detected security breach: (1) <strong>Containment</strong> — immediately isolate affected systems to prevent lateral movement (e.g., take the compromised server offline, revoke compromised credentials). (2) <strong>Eradication</strong> — identify and remove the root cause (malware, backdoor, compromised account). (3) <strong>Recovery</strong> — restore systems from known-good backups and verify integrity before bringing them back online. (4) <strong>Post-Incident Review</strong> — document what happened, how it was detected, how long it took to contain, and what changes will prevent recurrence. Under Australia's NDB scheme, organisations must notify affected individuals and the Office of the Australian Information Commissioner (OAIC) within 30 days of becoming aware of an eligible breach.</p>
 
-          <h3>Business Continuity and Disaster Recovery</h3>
+          <h3>🏢 Business Continuity and Disaster Recovery</h3>
           <p><strong>Business Continuity Planning (BCP)</strong> ensures that critical business functions can continue during and after a major incident — whether a cyber attack, natural disaster, or infrastructure failure. Key metrics: <strong>RTO (Recovery Time Objective)</strong> — the maximum acceptable downtime (e.g., 4 hours); <strong>RPO (Recovery Point Objective)</strong> — the maximum acceptable data loss (e.g., 1 hour of transactions). Achieving these targets requires: geographically redundant server infrastructure; automated failover to standby systems; regular off-site encrypted backups with verified restoration procedures; and documented, regularly practised disaster recovery drills so that the response under pressure is familiar, not improvised.</p>
         </section>
 
@@ -778,10 +833,10 @@ STRIDE Threat Modelling Process
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> code using defensive data input handling practices, including input validation, sanitisation, and error handling; and <strong>design, develop and implement</strong> a safe API to minimise software vulnerabilities.</em></p>
 
-          <h3>Input Validation</h3>
+          <h3>✅ Input Validation</h3>
           <p>Input validation checks that all data received from external sources conforms to the expected format, type, length, and range before it is processed or stored. Validation must happen <strong>server-side</strong> — client-side validation is a UX convenience only; it can be bypassed by an attacker sending direct <strong>HTTP</strong> requests. Validation rules should be strict: if a field expects a 4-digit integer, reject anything that is not a 4-digit integer — including any string longer than 4 characters, any non-numeric character, and any value outside the permitted range.</p>
 
-          <h3>Sanitisation and Error Handling</h3>
+          <h3>🧹 Sanitisation and Error Handling</h3>
           <p>Sanitisation transforms potentially malicious input into a safe form for use in the specific context where it will appear — HTML encoding for output in web pages, parameterised queries for database operations, path normalisation for file system operations. Error handling must never expose internal system details to the user — stack traces, database connection strings, server paths, or version information all provide attackers with a map of the system architecture.</p>
 
           <div class="callout exam-tip">
@@ -860,7 +915,7 @@ logging.basicConfig(filename=<span class="str">'app.log'</span>, level=logging.E
         <span class="kw">return</span> <span class="str">"An unexpected error occurred. Please try again later."</span></code></pre>
           </div>
 
-          <h3>Input Validation and Output Encoding</h3>
+          <h3>🔒 Input Validation and Output Encoding</h3>
           <p>Input validation rejects data that does not conform to a strict specification before it enters the system. Output encoding transforms data before it is rendered in a context (HTML, SQL, shell) so that special characters cannot be interpreted as instructions. Together they are the two-layer defence against injection and <strong>XSS</strong> attacks.</p>
 
           <div class="code-block">
@@ -896,7 +951,7 @@ print(encode_output(<span class="str">"&lt;script&gt;alert('xss')&lt;/script&gt;
             <strong>The Three Rules of Input Handling:</strong> Never Trust, Always Validate, Always Encode — never trust data from any external source (users, APIs, files); always validate that it matches the expected format before processing; always encode it for the output context (HTML, SQL, shell) before rendering or storing.
           </div>
 
-          <h3>Safe API Design</h3>
+          <h3>🛡️ Safe API Design</h3>
           <p>An API (Application Programming Interface) that is insecurely designed is one of the most common and dangerous attack surfaces in modern software. A safe API enforces multiple protective layers:</p>
 
           <div class="key-terms">
@@ -916,7 +971,7 @@ print(encode_output(<span class="str">"&lt;script&gt;alert('xss')&lt;/script&gt;
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> code considering efficient execution for the user, including memory management, session management, and exception management.</em></p>
 
-          <h3>Memory Management</h3>
+          <h3>💾 Memory Management</h3>
           <p><strong>Memory management</strong> ensures that the application allocates, uses, and releases memory resources efficiently — preventing memory leaks that degrade performance over time, and preventing memory-based vulnerabilities such as buffer overflows. A <strong>memory leak</strong> occurs when allocated memory is never released after use, gradually consuming all available RAM until the application crashes or the server grinds to a halt. In Python, the garbage collector handles most memory management automatically, but engineers must still explicitly close file handles, database connections, and network sockets after use. The <code>with</code> statement (context manager) ensures resources are released even if an exception occurs mid-block:</p>
 
           <div class="code-block">
@@ -1115,7 +1170,7 @@ recovered = aesgcm.decrypt(nonce, ciphertext, None)
 print(f"Decrypted: {recovered.decode()}")</code></pre>
           </div>
 
-          <h3>Asymmetric Encryption</h3>
+          <h3>🔐 Asymmetric Encryption</h3>
           <p>Uses a mathematically linked <strong>key pair</strong>: a public key (shared openly) and a private key (kept secret). Data encrypted with the public key can only be decrypted with the private key.</p>
           <div class="table-wrap">
             <table>
@@ -1131,7 +1186,7 @@ print(f"Decrypted: {recovered.decode()}")</code></pre>
             </table>
           </div>
 
-          <h3>Password Hashing</h3>
+          <h3>🔑 Password Hashing</h3>
           <p><strong>Hashing</strong> is a one-way transformation — you cannot reverse a hash to get the original data. Never store passwords in plaintext or with simple hashing (MD5/SHA-1 are broken for passwords). Always use a purpose-built password hashing <strong>algorithm</strong> that includes salting and is deliberately slow.</p>
 
           <div class="callout danger">
@@ -1160,11 +1215,11 @@ print(check_login("WrongPassword", hashed))  # False</code></pre>
 
         <!-- API Security -->
         <section id="api-security">
-          <h2 class="syllabus-phase">🔐 API Security &amp; Authentication</h2>
+          <h2 class="syllabus-phase">🔐 API Security &amp; JWT</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-04, SE-12-05)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> authentication and authorisation mechanisms to secure web APIs — distinguishing between verifying identity and controlling access.</em></p>
 
-          <h3>Authentication vs Authorisation</h3>
+          <h3>🛂 Authentication vs Authorisation</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1177,7 +1232,7 @@ print(check_login("WrongPassword", hashed))  # False</code></pre>
             </table>
           </div>
 
-          <h3>JWT (JSON Web Tokens)</h3>
+          <h3>🎟️ JWT (JSON Web Tokens)</h3>
           <p>A <strong>JWT</strong> is a compact, URL-safe token consisting of three Base64-encoded parts separated by dots: <code>Header.Payload.Signature</code>. The server signs the token with a secret key — any tampering with the payload invalidates the signature.</p>
           <pre class="text-diagram">JWT Authentication Flow
 ────────────────────────────────────────────────────
@@ -1268,7 +1323,17 @@ safety check
             <strong>Responsible Disclosure:</strong> Only perform security testing on systems you own or have explicit written permission to test. Unauthorised security testing is illegal under the Australian Criminal Code (Computer Offences, Div. 477-478). Always get a signed scope-of-engagement document before any penetration testing.
           </div>
 
-          <h3>Incident Response — What To Do When Breached</h3>
+          <h3>🛡️ Systematic Debugging Process</h3>
+          <p>When a security vulnerability is identified, engineers use a systematic process to resolve it:</p>
+          <ol>
+            <li><strong>🔍 Observe:</strong> Identify the unintended behaviour (e.g., "The application allows login without a password if a specific header is sent").</li>
+            <li><strong>🧪 Isolate:</strong> Create a minimal, reproducible test case that triggers the vulnerability.</li>
+            <li><strong>🧠 Hypothesise:</strong> Determine the root cause (e.g., "The authentication middleware is skipped for certain header combinations").</li>
+            <li><strong>🛠️ Test:</strong> Apply a fix and verify it closed the vulnerability without breaking other features.</li>
+            <li><strong>✅ Verify:</strong> Run the complete regression test suite and security scans.</li>
+          </ol>
+          
+          <h3>🚨 Incident Response — What To Do When Breached</h3>
           <ol>
             <li><strong>Detect &amp; Contain:</strong> Isolate affected systems. Revoke compromised credentials. Stop the breach from spreading.</li>
             <li><strong>Assess Impact:</strong> What data was accessed? How many users affected? What systems were compromised?</li>
@@ -1289,13 +1354,39 @@ safety check
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-bottom">
-        <span>© 2026 HSC SoftEng Notes · HSC Secure Software Architecture · Australian English Standards</span>
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo">💻</div>
+          <span class="footer-name">SoftEng Notes</span>
+        </div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
       </div>
+      <div class="footer-col">
+        <h4>🔐 Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">Engineering Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>📈 Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>🛡️ Navigate</h4>
+        <a href="../index.html">← Back to Home</a>
+        <a href="sdlc.html">🔄 SDLC Guide</a>
+        <a href="programming-for-the-web.html">🌐 Web Programming →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 HSC SoftEng Notes · Secure Software Architecture · Australian English Standards</span>
     </div>
   </footer>
 
-  <script src="../js/main.js?v=6"></script>
+  <script src="../js/main.js?v=7"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>
     const initMermaid = () => {

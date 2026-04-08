@@ -4,10 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Software Automation | HSC Software Engineering</title>
-  <meta name="description" content="Complete HSC Software Engineering notes on Software Automation — all NESA syllabus items covered including ML algorithms, training models, regression, neural networks, DevOps/RPA/BPA, and ethical impact." />
+  <!-- ── SEO ── -->
+  <link rel="canonical" href="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/software-automation.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Software Automation | HSC Software Engineering" />
+  <meta property="og:description" content="HSC Software Automation notes — machine learning, neural networks, DevOps, RPA, BPA, MLOps pipelines, and ethical impacts. Year 12 NESA NSW syllabus." />
+  <meta property="og:url" content="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/software-automation.html" />
+  <meta property="og:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <meta property="og:image:alt" content="HSC Software Engineering Notes — NESA NSW" />
+  <meta property="og:site_name" content="HSC Software Engineering Notes" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Software Automation | HSC Software Engineering" />
+  <meta name="twitter:description" content="HSC Software Automation notes — machine learning, neural networks, DevOps, RPA, BPA, MLOps pipelines, and ethical impacts. Year 12 NESA NSW syllabus." />
+  <meta name="twitter:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Year 12",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Software Automation",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/topics/software-automation.html"
+    }
+    ]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+  <meta name="theme-color" content="#6366F1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta name="description" content="HSC Software Automation notes — machine learning, neural networks, DevOps, RPA, BPA, MLOps pipelines, and ethical impacts. Year 12 NESA NSW syllabus." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=6" />
+  <link rel="stylesheet" href="../css/styles.css?v=7" />
 </head>
 <body>
 
@@ -23,7 +67,17 @@
 
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="course-tools.html">🛠️ Course Tools <span class="badge badge-all">Specs</span></a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            🗂️ Resources
+            <span class="badge badge-all">Guides</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
+            <a href="sdlc.html" role="menuitem">🔄 SDLC Guide</a>
+          </div>
+        </li>
         <li class="nav-dropdown nav-dropdown-y12">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
             Year 12
@@ -64,6 +118,7 @@
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Resources</div>
       <a href="course-tools.html">🛠️ Course Tools &amp; Specifications</a>
+      <a href="sdlc.html">🔄 SDLC Guide</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 12</div>
@@ -104,7 +159,7 @@
     <aside class="sidebar">
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Part 1 — <strong>Algorithms</strong> in ML</li>
+        <li class="sidebar-label">Part 1 — <strong>Algorithms</strong> in ML</li>
         <li><a href="#ai-vs-ml">🤖 1. AI vs Machine Learning</a></li>
         <li><a href="#mlops">🔄 2. ML &amp; Automation</a></li>
         <li><a href="#training-models">🏋️ 3. Training Models</a></li>
@@ -114,13 +169,15 @@
         <li><a href="#algorithm-types">📐 7. Types of ML Algorithms</a></li>
         <li><a href="#additional-algorithms">🔬 8. K-Means, Random Forest, Naive Bayes</a></li>
         <li><a href="#ml-tools">🛠️ 9. ML Tools &amp; Libraries</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 2 — Programming for Automation</li>
-        <li><a href="#regression-oop">📈 10. Regression Models &amp; OOP</a></li>
-        <li><a href="#neural-networks-oop">🕸️ 11. Neural Networks &amp; OOP</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 3 — Significance &amp; Impact</li>
-        <li><a href="#societal-impact">🌍 9. Impact on Society</a></li>
-        <li><a href="#human-behaviour">🧠 10. Human Behaviour &amp; ML</a></li>
-        <li><a href="#bias">⚖️ 11. Bias in ML &amp; AI</a></li>
+        <li><a href="#evaluation">📊 10. Model Evaluation Metrics</a></li>
+        <li><a href="#overfitting">📉 11. Overfitting vs Underfitting</a></li>
+        <li class="sidebar-label">Part 2 — Programming for Automation</li>
+        <li><a href="#regression-oop">📈 12. Regression Models &amp; OOP</a></li>
+        <li><a href="#neural-networks-oop">🕸️ 13. Neural Networks &amp; OOP</a></li>
+        <li class="sidebar-label">Part 3 — Significance &amp; Impact</li>
+        <li><a href="#societal-impact">🌍 14. Impact on Society</a></li>
+        <li><a href="#human-behaviour">🧠 15. Human Behaviour &amp; ML</a></li>
+        <li><a href="#bias">⚖️ 16. Bias in ML &amp; AI</a></li>
       </ul>
     </aside>
 
@@ -143,7 +200,7 @@
 
           <div class="info-grid">
             <div class="info-card">
-              <h4>🧩 Artificial Intelligence (AI)</h4>
+              <h4>🤖 Artificial Intelligence (AI)</h4>
               <p>The <strong>broad concept</strong> of building machines that can perform tasks requiring human-like intelligence. AI encompasses any technique that allows computers to simulate cognitive functions — including expert systems, natural language processing, robotics, and machine learning. AI can use simple rule-based logic (e.g., an IF-THEN chess-playing <strong>algorithm</strong>) without any learning from data.</p>
             </div>
             <div class="info-card">
@@ -165,7 +222,7 @@
           <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-03, SE-12-09)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> how machine learning supports automation through the use of DevOps, Robotic Process Automation (RPA), and Business Process Automation (BPA).</em></p>
 
-          <h3>DevOps and MLOps</h3>
+          <h3>♾️ DevOps and MLOps</h3>
           <p><strong>DevOps</strong> is a software development practice that unifies development and operations teams to deliver software continuously and reliably. <strong>MLOps</strong> (Machine Learning Operations) extends these principles to the machine learning lifecycle — automating the processes of training, validating, deploying, and monitoring ML models in production. Without MLOps, retraining and redeploying an ML model is a slow, manual, error-prone process. With MLOps pipelines (e.g., using tools like Kubeflow or AWS SageMaker), models are automatically retrained when performance degrades and redeployed with zero downtime. For example, a recommendation engine at a streaming service is automatically retrained weekly on new viewing data, ensuring its suggestions remain relevant.</p>
 
           <div class="steps">
@@ -192,10 +249,10 @@
             </div>
           </div>
 
-          <h3>Robotic Process Automation (RPA)</h3>
+          <h3>🤖 Robotic Process Automation (RPA)</h3>
           <p><strong>RPA</strong> uses software "bots" to automate repetitive, rule-based digital tasks that humans would otherwise perform manually — such as copying data between systems, filling online forms, or processing invoices. Traditional RPA bots follow rigid scripts. When ML is integrated, the result is <strong>Intelligent Automation</strong>: bots that can read unstructured data (such as handwritten invoice fields or natural language emails), extract meaning from it, and make autonomous routing decisions. For example, an intelligent RPA bot in a hospital can read an unstructured doctor's referral email, extract the patient's details and condition, check availability, and automatically book the appropriate specialist appointment — a task that previously required a receptionist.</p>
 
-          <h3>Business Process Automation (BPA)</h3>
+          <h3>🏢 Business Process Automation (BPA)</h3>
           <p><strong>BPA</strong> involves using technology to automate entire end-to-end business workflows — not just individual repetitive tasks, but complete multi-step processes involving multiple systems and decision points. ML-driven BPA integrates predictive intelligence into workflows. For example, an insurance claims BPA system uses ML to automatically assess a submitted photo of car damage, classify the severity, cross-reference the policy, calculate the repair estimate, and either auto-approve small claims or route complex cases to a human adjudicator — compressing a multi-day process into minutes. The key difference from RPA: BPA automates the <em>whole process</em>; RPA automates individual <em>steps within</em> a process.</p>
         </section>
 
@@ -269,7 +326,7 @@
             <strong>Garbage In, Garbage Out:</strong> No matter how sophisticated your ML <strong>algorithm</strong>, a model trained on dirty, inconsistent, or poorly prepared data will produce unreliable predictions. Data preprocessing is not optional — it is the foundation of every successful ML pipeline. Industry estimates suggest that data scientists spend 60–80% of their time on data preparation, not model training.
           </div>
 
-          <h3>Handling Missing Data</h3>
+          <h3>🧼 Handling Missing Data</h3>
           <p>Real-world datasets almost always contain missing values — sensors that failed, survey respondents who skipped questions, or records that were never collected. There are three main strategies for handling missing data, each with trade-offs:</p>
 
           <div class="info-grid">
@@ -310,7 +367,7 @@ print(df)          # All missing values are now filled
 print(df.isnull().sum())  # Should print 0 for all columns</code></pre>
           </div>
 
-          <h3>Normalisation vs Standardisation</h3>
+          <h3>📏 Normalisation vs Standardisation</h3>
           <p>Many ML <strong>algorithms</strong> (KNN, neural networks, SVMs) are sensitive to the <strong>scale of features</strong>. If one feature has values in the thousands (e.g., income) and another has values between 0 and 1 (e.g., a ratio), the large-scale feature will dominate distance calculations. Scaling ensures all features contribute equally to the model.</p>
 
           <div class="table-wrap">
@@ -394,7 +451,7 @@ print(f"Feature means:  {scaler.mean_}")
 print(f"Feature std devs: {scaler.scale_}")</code></pre>
           </div>
 
-          <h3>Feature Selection</h3>
+          <h3>🎯 Feature Selection</h3>
           <p><strong>Feature selection</strong> is the process of identifying and retaining only the most informative input variables, and discarding irrelevant or redundant ones. Including too many features can lead to the <strong>curse of dimensionality</strong> — model performance degrades as irrelevant noise increases, and training becomes slower. Key techniques include:</p>
 
           <div class="key-terms">
@@ -421,7 +478,7 @@ df = df.drop(columns=low_corr)
 df = df.drop(columns=['id'], errors='ignore')</code></pre>
           </div>
 
-          <h3>Train / Validation / Test Split</h3>
+          <h3>🧪 Train / Validation / Test Split</h3>
           <p>Before training, the dataset is divided into three non-overlapping subsets. A common split is <strong>70 / 15 / 15</strong> or <strong>80 / 10 / 10</strong>.</p>
 
           <div class="info-grid">
@@ -431,7 +488,7 @@ df = df.drop(columns=['id'], errors='ignore')</code></pre>
             </div>
             <div class="info-card">
               <h4>🔧 Validation Set (~10–15%)</h4>
-              <p>Used during development to tune <strong>hyperparameters</strong> (e.g., choosing K in KNN, number of layers, regularisation strength) and to compare different model configurations. The model does not train on validation data, but decisions are made based on its validation performance — so it is "indirectly seen."</p>
+              <p>Used during development to tune <strong>hyperparameters</strong> (e.g., choosing K in KNN, regularisation strength) and to compare different model configurations. The model does not train on validation data, but decisions are made based on its validation performance — so it is "indirectly seen."</p>
             </div>
             <div class="info-card">
               <h4>🔒 Test Set (~10–15%)</h4>
@@ -479,7 +536,7 @@ print(f"Test:       {len(X_test)} samples")    # ~150</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-12-03, SE-12-05)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> common real-world applications of key machine learning algorithms, including data analysis and forecasting, virtual personal assistants, and image recognition.</em></p>
 
-          <h3>Data Analysis and Forecasting</h3>
+          <h3>📈 Data Analysis and Forecasting</h3>
           <p>ML algorithms applied to data analysis and forecasting use patterns in historical data to predict future outcomes. <strong>Regression algorithms</strong> (linear, polynomial) identify trends and project them forward. <strong>Time-series models</strong> (e.g., ARIMA, LSTM neural networks) specifically handle data ordered over time — such as stock prices, weather measurements, or website traffic. Key applications include:</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>📈 Financial Forecasting</strong><span>Banks and investment firms use ML regression models to predict asset prices, credit default risk, and portfolio performance. For example, a logistic regression model assesses a loan applicant's risk of default based on income, employment history, and existing debts.</span></div>
@@ -487,7 +544,7 @@ print(f"Test:       {len(X_test)} samples")    # ~150</code></pre>
             <div class="key-term-item"><strong>⚡ Energy Grid Management</strong><span>Electricity providers use ML to forecast power demand hour-by-hour, optimising when to draw from renewable versus fossil fuel sources and preventing costly over- or under-generation.</span></div>
           </div>
 
-          <h3>Virtual Personal Assistants</h3>
+          <h3>🗣️ Virtual Personal Assistants</h3>
           <p>Virtual personal assistants (VPAs) such as Apple's Siri, Amazon's Alexa, and Google Assistant combine multiple ML domains into a seamless conversational interface:</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>🎤 Speech Recognition (ASR)</strong><span>Deep learning models convert spoken audio waveforms into text. Neural networks trained on thousands of hours of human speech learn to recognise phonemes and words — even across different accents, background noise levels, and speaking speeds.</span></div>
@@ -496,7 +553,7 @@ print(f"Test:       {len(X_test)} samples")    # ~150</code></pre>
             <div class="key-term-item"><strong>🔄 Personalisation</strong><span>VPAs learn from individual user behaviour over time — remembering preferences, adapting to vocabulary, and improving accuracy for that specific user's voice and speech patterns through continuous learning.</span></div>
           </div>
 
-          <h3>Image Recognition</h3>
+          <h3>👁️ Image Recognition</h3>
           <p><strong>Image recognition</strong> uses <strong>Convolutional Neural Networks (CNNs)</strong> — a specialised deep learning architecture designed to process grid-structured data (pixels). CNNs learn hierarchical visual features: early layers detect edges and colours; deeper layers recognise shapes and textures; the final layers identify objects. Key applications include:</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>🏥 Medical Diagnostics</strong><span>CNNs trained on tens of thousands of labelled medical scans can detect cancerous tumours, diabetic retinopathy in eye scans, and COVID-19 in chest X-rays — often matching or exceeding specialist radiologist accuracy.</span></div>
@@ -514,7 +571,7 @@ print(f"Test:       {len(X_test)} samples")    # ~150</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-12-03, SE-12-08)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Research</strong> the models used by software engineers to design and analyse machine learning systems, including decision trees and neural networks.</em></p>
 
-          <h3>Decision Trees</h3>
+          <h3>🌳 Decision Trees</h3>
           <p>A <strong>decision tree</strong> is a supervised learning model that represents a series of binary questions (decisions) as a tree structure, branching at each internal node based on a feature value, and arriving at a prediction at each leaf node. Decision trees are highly interpretable — engineers and non-technical stakeholders can read the tree logic directly. They are also the foundation for more powerful <strong>ensemble methods</strong> such as Random Forests (many decision trees voting together) and Gradient Boosted Trees (iteratively correcting prediction errors).</p>
 
           <div class="info-grid">
@@ -572,7 +629,7 @@ print(f"Test:       {len(X_test)} samples")    # ~150</code></pre>
             </p>
           </div>
 
-          <h3>Neural Networks</h3>
+          <h3>🕸️ Neural Networks</h3>
           <p><strong>Artificial Neural Networks (ANNs)</strong> are designed to loosely mimic the biological structure of the human brain. They consist of layers of interconnected artificial <strong>neurones</strong> (nodes), each receiving weighted input signals, applying an <strong>activation function</strong>, and passing an output signal to the next layer.</p>
 
           <div class="info-grid">
@@ -636,7 +693,7 @@ print(f"Test:       {len(X_test)} samples")    # ~150</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-03)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Describe</strong> the types of algorithms associated with machine learning, including linear regression, logistic regression, and K-nearest neighbour.</em></p>
 
-          <h3>Linear Regression</h3>
+          <h3>📉 Linear Regression</h3>
           <p><strong>Linear regression</strong> is a supervised learning algorithm used to predict a <strong>continuous numerical value</strong> based on one or more input features. It fits a straight line (or hyperplane in multiple dimensions) through the training data that minimises the total squared distance between each data point and the line — known as the <strong>Ordinary Least Squares (OLS)</strong> method. The resulting equation takes the form: <code>y = mx + c</code>, where <em>m</em> is the slope (coefficient) and <em>c</em> is the y-intercept. For example, a linear regression model trained on study hours and exam scores would output a predicted score for any given number of study hours.</p>
 
           <div class="code-block">
@@ -664,10 +721,10 @@ print(f"MSE: {mean_squared_error(y_test, y_pred):.2f}")
 print(f"Predicted score for 9 hours: {model.predict([[9]])[0]:.1f}")</code></pre>
           </div>
 
-          <h3>Logistic Regression</h3>
+          <h3>⚖️ Logistic Regression</h3>
           <p>Despite its name, <strong>logistic regression</strong> is a <strong>classification algorithm</strong> — not used for predicting continuous values. It calculates the probability that an input belongs to a particular class (typically binary: 0 or 1, True or False). The <strong>sigmoid function</strong> squashes any input value into a probability between 0 and 1. A threshold (typically 0.5) converts this probability into a class prediction. For example, a logistic regression model assessing whether a bank transaction is fraudulent outputs a probability of fraud; if it exceeds 0.5 (or a risk-adjusted threshold), the transaction is flagged. Logistic regression is highly interpretable — each feature's coefficient indicates its influence on the predicted probability.</p>
 
-          <h3>K-Nearest Neighbour (KNN)</h3>
+          <h3>👥 K-Nearest Neighbour (KNN)</h3>
           <p><strong>K-Nearest Neighbour (KNN)</strong> is a simple, instance-based supervised learning algorithm used for both classification and regression. Rather than learning a model during training, KNN stores the entire training dataset. At prediction time, it finds the <em>K</em> training examples closest to the new input (using a distance metric such as Euclidean distance), and assigns the majority class (classification) or average value (regression) of those K neighbours as the prediction. KNN requires no explicit training phase, but is computationally expensive at prediction time on large datasets.</p>
 
           <div class="info-grid">
@@ -750,7 +807,7 @@ print(f"Loan approved: {'Yes' if prediction[0] == 1 else 'No'}")</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-03)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> additional ML algorithms — K-Means clustering, Random Forest ensemble learning, and Naive Bayes classification — to solve a range of real-world problems.</em></p>
 
-          <h3>K-Means Clustering (Unsupervised)</h3>
+          <h3>📍 K-Means Clustering (Unsupervised)</h3>
           <p><strong>K-Means</strong> is an unsupervised algorithm that groups unlabelled data into <em>K</em> clusters by iteratively assigning points to the nearest centroid and updating centroid positions. No labelled training data is required.</p>
 
           <div class="info-grid">
@@ -792,7 +849,7 @@ print("Cluster assignments:", kmeans.labels_)
           </div>
           <p><strong>Use cases:</strong> Customer segmentation, image colour compression, anomaly detection, document topic grouping.</p>
 
-          <h3>Random Forest (Ensemble)</h3>
+          <h3>🌲 Random Forest (Ensemble)</h3>
           <p>A <strong>Random Forest</strong> is an ensemble of many decision trees, each trained on a random subset of the training data (a technique called <strong>bagging — Bootstrap Aggregating</strong>). The final prediction is the majority vote (classification) or average (regression) of all trees. Because each tree is trained on slightly different data and features, the ensemble is much more robust than any single tree.</p>
 
           <div class="table-wrap">
@@ -835,7 +892,7 @@ for name, importance in zip(iris.feature_names, rf.feature_importances_):
     print(f"  {name}: {importance:.3f}")</code></pre>
           </div>
 
-          <h3>Naive Bayes</h3>
+          <h3>📊 Naive Bayes</h3>
           <p><strong>Naive Bayes</strong> classifiers apply Bayes' theorem with the "naive" assumption that all features are statistically independent. Despite this unrealistic assumption, Naive Bayes performs surprisingly well — especially for text classification (spam detection, sentiment analysis).</p>
 
           <div class="callout info">
@@ -869,7 +926,7 @@ print(f"Naive Bayes Accuracy: {accuracy_score(y_test, y_pred):.3f}")</code></pre
           <p class="outcome-subtitle">🎯 <em>(SE-12-03)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Identify</strong> the primary Python libraries used in machine learning and <strong>apply</strong> a complete ML workflow using these tools.</em></p>
 
-          <h3>Core Python ML Libraries</h3>
+          <h3>📚 Core Python ML Libraries</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>scikit-learn</strong><span>The go-to Python ML library. Provides implementations of most ML algorithms (linear regression, decision trees, KNN, random forest, K-Means), as well as preprocessing tools (scalers, encoders), train/test splitting, and evaluation metrics. Consistent API: <code>fit()</code>, <code>predict()</code>, <code>score()</code>.</span></div>
             <div class="key-term-item"><strong>pandas</strong><span>Data manipulation library. The <code>DataFrame</code> is the core structure — a labelled 2D table (like a spreadsheet in Python). Used to load CSV/Excel data, clean missing values, filter rows, and prepare data for ML algorithms.</span></div>
@@ -878,7 +935,7 @@ print(f"Naive Bayes Accuracy: {accuracy_score(y_test, y_pred):.3f}")</code></pre
             <div class="key-term-item"><strong>TensorFlow / Keras</strong><span>Deep learning frameworks for training neural networks with GPU acceleration. Keras provides a high-level API on top of TensorFlow. Used for image classification, NLP, and time-series forecasting. More complex than scikit-learn — appropriate for HSC extension content.</span></div>
           </div>
 
-          <h3>Library Selection Guide</h3>
+          <h3>📋 Library Selection Guide</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -894,7 +951,7 @@ print(f"Naive Bayes Accuracy: {accuracy_score(y_test, y_pred):.3f}")</code></pre
             </table>
           </div>
 
-          <h3>End-to-End ML Workflow Example</h3>
+          <h3>🔄 End-to-End ML Workflow Example</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Complete ML Pipeline (Iris Classification)</span></div>
             <pre><code class="language-python">import pandas as pd
@@ -1006,7 +1063,7 @@ print(f"Predicted species: {iris.target_names[prediction[0]]}")</code></pre>
             </table>
           </div>
 
-          <h3>Confusion Matrix</h3>
+          <h3>📋 Confusion Matrix</h3>
           <p>A <strong>confusion matrix</strong> summarises the prediction results for a classification model, showing how many samples were correctly or incorrectly classified for each class.</p>
 
           <pre class="text-diagram">
@@ -1101,13 +1158,13 @@ to learn patterns      well to new data      training noise
           </div>
 
           <div class="callout exam-tip">
-            <strong>Strategies to Prevent Overfitting:</strong>
+            <strong>🛡️ Strategies to Prevent Overfitting:</strong>
             <ul>
-              <li><strong>Regularisation (L1/L2):</strong> Adds a penalty to the loss function for large model weights, discouraging the model from fitting noise. L1 (Lasso) can reduce weights to zero (feature selection); L2 (Ridge) shrinks weights towards zero.</li>
-              <li><strong>Cross-Validation:</strong> Split data into multiple folds and train/validate across all combinations — ensures the model performs well on varied subsets of data, not just one split.</li>
-              <li><strong>More Training Data:</strong> A larger, more diverse dataset makes it harder for the model to memorise specific examples and forces it to learn genuine patterns.</li>
-              <li><strong>Dropout (Neural Networks):</strong> Randomly disables neurons during training, preventing co-adaptation and forcing the network to learn robust, distributed representations.</li>
-              <li><strong>Early Stopping:</strong> Monitor validation loss during training and stop training when it begins to increase — preventing the model from over-training on the training set.</li>
+              <li><strong>⚖️ Regularisation (L1/L2):</strong> Adds a penalty to the loss function for large model weights, discouraging the model from fitting noise. L1 (Lasso) can reduce weights to zero (feature selection); L2 (Ridge) shrinks weights towards zero.</li>
+              <li><strong>🔄 Cross-Validation:</strong> Split data into multiple folds and train/validate across all combinations — ensures the model performs well on varied subsets of data, not just one split.</li>
+              <li><strong>📚 More Training Data:</strong> A larger, more diverse dataset makes it harder for the model to memorise specific examples and forces it to learn genuine patterns.</li>
+              <li><strong>✂️ Dropout (Neural Networks):</strong> Randomly disables neurons during training, preventing co-adaptation and forcing the network to learn robust, distributed representations.</li>
+              <li><strong>🛑 Early Stopping:</strong> Monitor validation loss during training and stop training when it begins to increase — preventing the model from over-training on the training set.</li>
             </ul>
           </div>
         </section>
@@ -1128,7 +1185,7 @@ to learn patterns      well to new data      training noise
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-08)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Design, develop and apply</strong> ML regression models using an Object-Oriented Programming (OOP) approach to predict numeric values, including linear regression, polynomial regression, and logistic regression.</em></p>
 
-          <h3>Linear Regression in Python (OOP via scikit-learn)</h3>
+          <h3>📉 Linear Regression in Python (OOP via scikit-learn)</h3>
           <p>The <code>scikit-learn</code> library implements regression models as Python <strong>classes</strong> — each model is an <strong>object</strong> with <code>fit()</code> and <code>predict()</code> methods. This is a direct application of OOP: instantiating a model object, calling methods to train it, and calling methods to use it.</p>
 
           <div class="code-block">
@@ -1155,7 +1212,7 @@ print(f"Slope (coefficient): {model.coef_[0]:.2f}")       <span class="cm"># ~5.
 print(f"Intercept: {model.intercept_:.2f}")                <span class="cm"># ~40.0</span></code></pre>
           </div>
 
-          <h3>Polynomial Regression (Non-Linear Relationships)</h3>
+          <h3>📈 Polynomial Regression (Non-Linear Relationships)</h3>
           <p><strong>Polynomial regression</strong> extends linear regression to model <strong>curved (non-linear) relationships</strong> between variables. When plotting a scatter graph reveals a curve rather than a straight line, a polynomial fit is more appropriate. The input features are transformed to include powers (x², x³, etc.) using <code>PolynomialFeatures</code>, then passed into a standard <code>LinearRegression</code> model. For example, modelling how fuel efficiency decreases with speed follows a curved relationship — polynomial regression captures this more accurately than a straight line.</p>
 
           <div class="code-block">
@@ -1181,7 +1238,7 @@ X_test = poly.transform([[110]])
 print(f"Predicted efficiency at 110 km/h: {model.predict(X_test)[0]:.1f} L/100km")</code></pre>
           </div>
 
-          <h3>Logistic Regression — Binary Classification</h3>
+          <h3>⚖️ Logistic Regression — Binary Classification</h3>
           <p>Logistic regression classifies inputs into one of two categories by predicting a probability using the sigmoid function. The OOP interface is identical to linear regression — instantiate, fit, predict.</p>
 
           <div class="code-block">
@@ -1213,7 +1270,7 @@ print(f"Pass probability: {probability[0][1]:.2%}")</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-08)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> neural network models using an Object-Oriented Programming approach to make predictions. Neural networks are implemented as layered objects using frameworks such as <code>scikit-learn</code> (for simpler networks) or <code>TensorFlow/Keras</code> (for deep learning).</em></p>
 
-          <h3>Multi-Layer Perceptron (MLP) with scikit-learn</h3>
+          <h3>🕸️ Multi-Layer Perceptron (MLP) with scikit-learn</h3>
           <p>The <code>MLPClassifier</code> (Multi-Layer Perceptron) is a neural network class available in scikit-learn. It uses the same OOP interface as other models — instantiate with architecture parameters, call <code>fit()</code> to train, call <code>predict()</code> to classify. The <code>hidden_layer_sizes</code> parameter defines the number of hidden layers and neurons per layer.</p>
 
           <div class="code-block">
@@ -1257,7 +1314,7 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
             <strong>OOP in ML Models:</strong> Every scikit-learn model is a Python class. When you write <code>model = MLPClassifier(...)</code> you are <strong>instantiating an object</strong>. When you call <code>model.fit(X, y)</code> you are invoking a <strong>method</strong> that sets the object's internal weights (attributes). When you call <code>model.predict(X_new)</code> you are invoking another method that uses those stored weights to generate output. This is OOP in direct practice.
           </div>
 
-          <h3>Neural Network Training and Execution Cycles</h3>
+          <h3>🔄 Neural Network Training and Execution Cycles</h3>
           <div class="info-grid">
             <div class="info-card">
               <h4>🏋️ Training Cycle</h4>
@@ -1284,19 +1341,19 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-12-05)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Assess</strong> the impact of automation on individuals, society, and the environment across five key dimensions.</em></p>
 
-          <h3>Safety of Workers</h3>
+          <h3>⛑️ Safety of Workers</h3>
           <p>Automation and robotics are progressively replacing human workers in physically dangerous environments, with significant positive safety outcomes. <strong>Automated drones</strong> now perform inspection of high-voltage power lines and offshore oil rigs, eliminating worker exposure to electrocution, heights, and toxic atmospheres. <strong>Robotic welding and material handling</strong> systems in manufacturing have dramatically reduced repetitive strain injuries and burn risks. In mining, <strong>autonomous haul trucks</strong> (e.g., Rio Tinto's AutoHaul system) operate in remote and hazardous pit environments without human operators. The net effect is a measurable reduction in workplace injury rates and fatalities. However, the displacement of human workers from these roles creates economic vulnerability for the affected communities.</p>
 
-          <h3>People with Disability</h3>
+          <h3>♿ People with Disability</h3>
           <p>AI-powered automation is providing unprecedented levels of independence and accessibility for people with disability. <strong>Computer vision systems</strong> enable real-time audio descriptions of the surrounding environment for visually impaired users (e.g., Microsoft's Seeing AI app describes people, currency, and written text through a smartphone camera). <strong>Speech-to-text and natural language interfaces</strong> allow people with motor disabilities to control computers and dictate documents without physical input. <strong>Autonomous vehicles</strong> could fundamentally transform mobility for people who cannot drive due to physical or visual impairment. <strong>AI captioning</strong> provides real-time speech-to-text conversion for deaf individuals during live conversations, video calls, and broadcasts. These advances promote social inclusion and reduce dependence on others, improving quality of life. The risk is that if these systems are not designed with universal design principles, the digital divide — where those without access to technology are further marginalised — may widen.</p>
 
-          <h3>Nature and Skills Required for Employment</h3>
+          <h3>👔 Nature and Skills Required for Employment</h3>
           <p>The adoption of automation is causing a significant structural shift in labour markets. <strong>Routine cognitive tasks</strong> (data entry, basic reporting, invoice processing) and <strong>routine physical tasks</strong> (assembly line work, packaging, basic quality inspection) are being automated at scale, displacing workers in these roles. Simultaneously, demand is growing rapidly for workers with skills in <strong>MLOps, data science, AI ethics, robotic maintenance, and human-AI collaboration</strong> — roles that require understanding of automation systems rather than performing the automated tasks themselves. Workers must engage in continuous reskilling and upskilling throughout their careers. Governments and educational institutions face the challenge of retraining displaced workers for emerging roles. The transition may exacerbate inequality if the benefits of automation accrue primarily to capital owners rather than being distributed across the workforce.</p>
 
-          <h3>Production Efficiency, Waste, and the Environment</h3>
+          <h3>🌱 Production Efficiency, Waste, and the Environment</h3>
           <p>Automation offers significant environmental benefits through efficiency gains but also introduces new environmental costs. <strong>Optimised logistics and supply chains</strong> powered by ML reduce unnecessary transport and warehousing, cutting fuel consumption and emissions. <strong>Predictive maintenance</strong> extends the lifespan of industrial equipment, reducing material waste from premature replacements. <strong>Smart energy management systems</strong> use ML to optimise building heating, cooling, and lighting, reducing energy waste. Conversely, <strong>training large deep learning models</strong> (e.g., GPT-4) consumes enormous quantities of electricity — some estimates suggest training a single large language model produces CO₂ emissions equivalent to five car lifetimes. <strong>Data centres</strong> required to run AI services consume vast amounts of water for cooling. Engineers must evaluate the full lifecycle environmental cost of AI systems alongside their operational benefits.</p>
 
-          <h3>The Economy and Distribution of Wealth</h3>
+          <h3>💰 The Economy and Distribution of Wealth</h3>
           <p>Automation increases productivity and creates new industries and wealth. However, the distribution of that wealth is a critical societal concern. Historically, automation has created new types of employment alongside the jobs it displaces — but the transition period creates significant hardship for displaced workers. The current wave of AI-driven automation is occurring much faster than previous industrial revolutions, leaving less time for natural retraining. There is a risk of increasing economic polarisation: high-skill workers who can work alongside AI systems see wages rise, while low-skill workers face wage stagnation or displacement. Policy responses under discussion include universal basic income (UBI), robot taxes, and mandatory corporate investment in worker retraining programs.</p>
         </section>
 
@@ -1308,16 +1365,16 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-12-04, SE-12-05)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Explore by implementation</strong> how patterns in human behaviour influence ML and AI software development, including psychological responses, patterns related to acute stress response, cultural protocols, and belief systems.</em></p>
 
-          <h3>Psychological Responses</h3>
+          <h3>🧠 Psychological Responses</h3>
           <p>Human psychology profoundly shapes how AI systems must be designed to be effective. The <strong>"uncanny valley" effect</strong> describes user discomfort and distrust when an AI interface appears almost — but not quite — human. Engineers must therefore design interfaces that are either clearly and comfortably human-like, or clearly and transparently machine-like. Customer service chatbots must disclose that they are AI systems; this transparency actually builds more trust than attempting to impersonate a human. <strong>Automation bias</strong> — the tendency to over-rely on automated systems — is a critical safety concern: when users trust an AI too completely, they stop critically evaluating its outputs. Aviation autopilot systems, medical diagnostic AI, and autonomous vehicles must be designed with explicit mechanisms to keep human operators actively engaged and vigilant rather than passively monitoring.</p>
 
-          <h3>Patterns Related to Acute Stress Response</h3>
+          <h3>⚡ Patterns Related to Acute Stress Response</h3>
           <p>When individuals are operating under acute psychological stress (e.g., medical emergencies, financial crises, natural disasters), their cognitive performance changes significantly. Under stress, humans experience <strong>tunnel vision</strong> (narrowed attention to the most salient stimuli), <strong>reduced working memory capacity</strong>, and <strong>impaired complex decision-making</strong>. AI interfaces designed for critical environments — such as intensive care unit monitoring systems, emergency dispatch platforms, or incident management dashboards — must account for these changes. Rather than displaying all available data simultaneously, they must prioritise and surface the <strong>single most critical alert</strong>, minimise cognitive load through clear visual hierarchy, and use pre-attentive visual attributes (colour, size, motion) to draw attention appropriately. Overloading an operator in a high-stress scenario with fifteen simultaneous alerts significantly increases the risk of catastrophic error. Engineers developing AI for high-stakes environments must conduct human factors testing under simulated stress conditions.</p>
 
-          <h3>Cultural Protocols</h3>
+          <h3>🌐 Cultural Protocols</h3>
           <p>ML and AI systems deployed globally must be engineered to respect diverse regional cultural norms, communication expectations, and social protocols. A conversational AI that is appropriate in one cultural context may be offensive or ineffective in another. Engineers must consider: <strong>formality levels</strong> — many cultures expect formal, respectful address from professional systems (using titles and surnames), whereas others prefer casual familiarity; <strong>taboo topics</strong> — subjects considered inappropriate in specific cultural contexts must be excluded from AI responses for those regional deployments; <strong>linguistic nuance</strong> — direct translation of idioms and culturally specific references often fails or offends; and <strong>local legal frameworks</strong> — AI systems processing personal data must comply with jurisdiction-specific privacy legislation (e.g., the EU's GDPR, Australia's Privacy Act 1988, China's PIPL). Failure to embed cultural protocols into AI systems results in reputational damage, legal liability, and loss of user trust in international markets.</p>
 
-          <h3>Belief Systems</h3>
+          <h3>🛐 Belief Systems</h3>
           <p>Human belief systems — including religious beliefs, moral frameworks, and ethical worldviews — significantly influence both how AI is perceived and how it must be designed. In some religious and cultural traditions, there are deep concerns about AI making life-or-death decisions (e.g., autonomous weapons, medical triage AI) without human moral accountability. Engineers must engage with these perspectives during the design process rather than treating them as obstacles. AI systems for healthcare, justice, and education must be designed with <strong>explainability</strong> — the ability to provide human-understandable reasons for decisions — to allow individuals to challenge outcomes that conflict with their values or beliefs. Additionally, training data drawn from populations with specific belief systems will encode those beliefs into model outputs; engineers must actively test whether models produce fair and respectful outputs across diverse belief communities.</p>
         </section>
 
@@ -1329,7 +1386,7 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-12-04, SE-12-05)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> the effect of human and dataset source bias in the development of ML and AI solutions. Bias in training data is one of the most significant ethical risks in machine learning, as it causes AI systems to systematically produce unfair or discriminatory outcomes at scale.</em></p>
 
-          <h3>Types of Bias</h3>
+          <h3>⚖️ Types of Bias</h3>
 
           <div class="key-terms">
             <div class="key-term-item"><strong>📜 Historical Bias</strong><span>Occurs when training data reflects historical human prejudices and discriminatory practices. Because the historical record contains these injustices, an AI trained on it will learn and automate that discrimination. Example: A hiring AI trained on decades of tech industry hiring data — which historically favoured men — will learn to downgrade female applicants' CVs, perpetuating the historical gender imbalance it was trained on. Amazon famously scrapped such a system in 2018 after discovering it was penalising CVs containing the word "women's".</span></div>
@@ -1339,7 +1396,7 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
             <div class="key-term-item"><strong>🔁 Feedback Loop Bias</strong><span>Occurs when a biased model's outputs influence future data collection, reinforcing the original bias. Example: A predictive policing algorithm that directs more police to certain areas generates more arrests in those areas, which are then used to retrain the model — confirming the original bias and creating a self-reinforcing cycle of over-policing in those communities.</span></div>
           </div>
 
-          <h3>Engineering Practices to Mitigate Bias</h3>
+          <h3>🛠️ Engineering Practices to Mitigate Bias</h3>
           <div class="info-grid">
             <div class="info-card">
               <h4>📋 Diverse and Representative Data</h4>
@@ -1366,13 +1423,39 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-bottom">
-        <span>© 2026 HSC SoftEng Notes · HSC Software Automation · Australian English Standards</span>
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo">💻</div>
+          <span class="footer-name">SoftEng Notes</span>
+        </div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
       </div>
+      <div class="footer-col">
+        <h4>🔐 Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">Engineering Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>📈 Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>🛡️ Navigate</h4>
+        <a href="../index.html">← Back to Home</a>
+        <a href="programming-for-the-web.html">🌐 Web Programming</a>
+        <a href="software-engineering-project.html">📋 Major Project →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 HSC SoftEng Notes · Software Automation · Australian English Standards</span>
     </div>
   </footer>
 
-  <script src="../js/main.js?v=6"></script>
+  <script src="../js/main.js?v=7"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>
     const initMermaid = () => {

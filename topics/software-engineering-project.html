@@ -4,10 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Software Engineering Project | HSC Software Engineering</title>
-  <meta name="description" content="In-depth HSC Software Engineering notes on the Major Project, aligned with NESA command verbs, HSC outcomes, and Australian English standards." />
+  <!-- ── SEO ── -->
+  <link rel="canonical" href="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/software-engineering-project.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Software Engineering Project | HSC Software Engineering" />
+  <meta property="og:description" content="In-depth notes on the HSC Software Engineering major project — all SDLC phases, documentation requirements, testing, and assessment guidance." />
+  <meta property="og:url" content="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/software-engineering-project.html" />
+  <meta property="og:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <meta property="og:image:alt" content="HSC Software Engineering Notes — NESA NSW" />
+  <meta property="og:site_name" content="HSC Software Engineering Notes" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Software Engineering Project | HSC Software Engineering" />
+  <meta name="twitter:description" content="In-depth notes on the HSC Software Engineering major project — all SDLC phases, documentation requirements, testing, and assessment guidance." />
+  <meta name="twitter:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Year 12",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Software Engineering Project",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/topics/software-engineering-project.html"
+    }
+    ]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+  <meta name="theme-color" content="#6366F1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta name="description" content="In-depth notes on the HSC Software Engineering major project — all SDLC phases, documentation requirements, testing, and assessment guidance." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=6" />
+  <link rel="stylesheet" href="../css/styles.css?v=7" />
 </head>
 <body>
 
@@ -23,7 +67,17 @@
 
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="course-tools.html">🛠️ Course Tools <span class="badge badge-all">Specs</span></a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            🗂️ Resources
+            <span class="badge badge-all">Guides</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
+            <a href="sdlc.html" role="menuitem">🔄 SDLC Guide</a>
+          </div>
+        </li>
         <li class="nav-dropdown nav-dropdown-y12">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
             Year 12
@@ -63,7 +117,8 @@
   <div class="mobile-menu" id="mobile-menu">
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Resources</div>
-      <a href="course-tools.html">🛠️ Course Tools & Specifications</a>
+      <a href="course-tools.html">🛠️ Course Tools &amp; Specifications</a>
+      <a href="sdlc.html">🔄 SDLC Guide</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 12</div>
@@ -104,21 +159,21 @@
     <aside class="sidebar">
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Phase 1 — Identifying &amp; Defining</li>
+        <li class="sidebar-label">Phase 1 — Identifying &amp; Defining</li>
         <li><a href="#identifying-defining">🎯 1. Identifying &amp; Defining</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Phase 2 — Research &amp; Planning</li>
+        <li class="sidebar-label">Phase 2 — Research &amp; Planning</li>
         <li><a href="#implementation-methods">🚀 2. Implementation Methods</a></li>
         <li><a href="#development-approaches">🏗️ 3. Development Approaches</a></li>
         <li><a href="#project-management">📅 4. Project Management &amp; Comms</a></li>
         <li><a href="#quality-backend">🛡️ 5. QA &amp; Back-End Engineering</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Phase 3 — Producing &amp; Implementing</li>
+        <li class="sidebar-label">Phase 3 — Producing &amp; Implementing</li>
         <li><a href="#producing">💻 6. Producing &amp; Implementing</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Phase 4 — Testing &amp; Evaluating</li>
+        <li class="sidebar-label">Phase 4 — Testing &amp; Evaluating</li>
         <li><a href="#testing-evaluating">🧪 7. Testing &amp; Evaluating</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">HSC Guidance</li>
+        <li class="sidebar-label">HSC Guidance</li>
         <li><a href="#hsc-assessment-guidance">📝 8. HSC Assessment Guidance</a></li>
         <li><a href="#project-documentation">📁 9. Project Documentation</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Additional Topics</li>
+        <li class="sidebar-label">Additional Topics</li>
         <li><a href="#team-roles">👥 10. Team Roles &amp; Dynamics</a></li>
         <li><a href="#deployment">🚀 11. Deployment &amp; DevOps</a></li>
         <li><a href="#post-project">📊 12. Post-Project Evaluation</a></li>
@@ -143,17 +198,17 @@
           <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Define and analyse</strong> the requirements of a problem to ensure the software engineering solution is viable and purposeful.</em></p>
 
-          <h3>Problem Requirements</h3>
+          <h3>📋 Problem Requirements</h3>
           <p>Before coding begins, a software engineer must define the core requirements (Outcome SE-12-01):</p>
           <ul>
-            <li><strong>Demonstrating needs or opportunities:</strong> Clearly identifying the real-world problem the software solves for the client.</li>
-            <li><strong>Assessing scheduling and financial feasibility:</strong> Determining if the project can be completed within the allocated timeframe and budget.</li>
-            <li><strong>Generating requirements:</strong> Defining <em>functionality</em> (what the system must do) and <em>performance</em> (how well/fast it must do it).</li>
-            <li><strong>Defining data structures and types:</strong> Specifying how information will be securely collected and stored.</li>
-            <li><strong>Defining boundaries:</strong> Establishing the scope to prevent "scope creep" during development.</li>
+            <li><strong>🎯 Demonstrating needs or opportunities:</strong> Clearly identifying the real-world problem the software solves for the client.</li>
+            <li><strong>💰 Assessing scheduling and financial feasibility:</strong> Determining if the project can be completed within the allocated timeframe and budget.</li>
+            <li><strong>📝 Generating requirements:</strong> Defining <em>functionality</em> (what the system must do) and <em>performance</em> (how well/fast it must do it).</li>
+            <li><strong>🗄️ Defining data structures and types:</strong> Specifying how information will be securely collected and stored.</li>
+            <li><strong>🚧 Defining boundaries:</strong> Establishing the scope to prevent "scope creep" during development.</li>
           </ul>
 
-          <h3>Tools for Idea Generation &amp; Solution Development</h3>
+          <h3>🛠️ Tools for Idea Generation &amp; Solution Development</h3>
           <p><strong>Explore</strong> the tools used to develop ideas and guide the project lifecycle (Outcome SE-12-06):</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>💡 Idea Generation</strong><span>Brainstorming, mind-mapping, and Storyboards (Course Spec p. 9) to visualise user interfaces.</span></div>
@@ -162,7 +217,7 @@
             <div class="key-term-item"><strong>🚀 Post-Development</strong><span>Installation and ongoing maintenance procedures.</span></div>
           </div>
 
-          <h3>Project Structure Chart</h3>
+          <h3>📐 Project Structure Chart</h3>
           <p>A <strong>structure chart</strong> breaks the software solution into its major components before coding begins. It shows how the top-level system is decomposed into modules, and how those modules relate to each other. The chart below illustrates a typical school library management system.</p>
 
           <div class="diagram-block">
@@ -187,8 +242,8 @@
             </p>
           </div>
 
-          <h3>Requirements Analysis</h3>
-          <p>Requirements must be clearly categorised before development starts. <strong>Functional requirements</strong> describe <em>what</em> the system must do; <strong>non-functional requirements</strong> describe <em>how well</em> it must do it (quality attributes). Documenting both types ensures the solution is both complete and fit for purpose.</p>
+          <h3>🔍 Requirements Analysis</h3>
+          <p>Requirements must be clearly categorised before development starts. <strong>⚙️ Functional requirements</strong> describe <em>what</em> the system must do; <strong>⚡ Non-functional requirements</strong> describe <em>how well</em> it must do it (quality attributes). Documenting both types ensures the solution is both complete and fit for purpose.</p>
 
           <div class="table-wrap">
             <table>
@@ -253,7 +308,7 @@
             </table>
           </div>
 
-          <h3>User Stories and Acceptance Criteria</h3>
+          <h3>📝 User Stories and Acceptance Criteria</h3>
           <p><strong>User stories</strong> capture requirements from the end-user's perspective in plain language. They follow the format: <em>"As a [role], I want [feature], so that [benefit]."</em> Each user story is accompanied by <strong>acceptance criteria</strong> — specific, testable conditions that confirm the story has been implemented correctly.</p>
 
           <div class="table-wrap">
@@ -390,13 +445,13 @@
           <h2 class="syllabus-phase">📅 Project Management &amp; Communication</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-05, SE-12-09)</em></p>
           
-          <h3>Project Management</h3>
+          <h3>📅 Project Management</h3>
           <p><strong>Apply</strong> project management to plan and conduct the development of a software solution. This involves scheduling and tracking using software tools, notably 🛠️ <strong>Gantt charts</strong> (Course Spec p. 11), to allocate time to tasks, and using collaborative tools (e.g., GitHub, Jira) to track team progress (Outcome SE-12-09).</p>
 
-          <h3>Communication &amp; Social Issues</h3>
+          <h3>💬 Communication &amp; Social Issues</h3>
           <p><strong>Explore</strong> communication issues associated with project work. Engineers must prioritise <strong>involving and empowering the client</strong> through constant dialogue, <strong>enabling feedback</strong> during <strong>Agile</strong> iterations, and <strong>negotiating</strong> realistic deadlines and features (Outcome SE-12-09). <br><br>Furthermore, engineers must <strong>explore social and ethical issues</strong>, such as equitably dividing work when collaborating, acting professionally when working individually, and transparently responding to stakeholder concerns regarding data security (Outcome SE-12-05).</p>
 
-          <h3>Gantt Chart — Project Schedule</h3>
+          <h3>📊 Gantt Chart — Project Schedule</h3>
           <p>A <strong>Gantt chart</strong> is a horizontal bar chart that maps project tasks against a timeline. It visually shows the start date, duration, and end date of each task, and can indicate task dependencies (where one task must complete before another begins). In the SEP, your Gantt chart must cover all four project phases.</p>
 
           <div class="diagram-block">
@@ -434,7 +489,7 @@ Key: ███ = Task active during this week</pre>
             </p>
           </div>
 
-          <h3>Risk Management</h3>
+          <h3>⚠️ Risk Management</h3>
           <p>Risk management involves identifying potential threats to project success, assessing their likelihood and impact, and planning mitigation strategies in advance. A risk register is maintained throughout the project and updated as new risks emerge or existing risks are resolved.</p>
 
           <div class="table-wrap">
@@ -495,7 +550,7 @@ Key: ███ = Task active during this week</pre>
             </table>
           </div>
 
-          <h3>Storyboards and Wireframes</h3>
+          <h3>🎨 Storyboards and Wireframes</h3>
           <p>A <strong>storyboard</strong> visually maps the sequence of screens a user encounters when completing a task. A <strong>wireframe</strong> is a low-fidelity layout sketch of a single screen, showing the placement of UI elements without colour or detailed styling. Together, they allow client feedback on the interface before any front-end code is written.</p>
 
           <div class="callout tip">
@@ -508,7 +563,7 @@ Key: ███ = Task active during this week</pre>
             </ul>
           </div>
 
-          <h3>Data Flow Diagram (DFD)</h3>
+          <h3>📈 Data Flow Diagram (DFD)</h3>
           <p>A <strong>Data Flow Diagram (DFD)</strong> models how data moves through a system. It shows external entities (users or other systems), processes that transform data, data stores (databases or files), and the data flows connecting them. A <strong>Level 0 DFD</strong> (Context Diagram) shows the entire system as a single process with all external entities. A <strong>Level 1 DFD</strong> expands the main process into its sub-processes.</p>
 
           <div class="diagram-block">
@@ -563,13 +618,13 @@ Key:
           <h2 class="syllabus-phase">🛡️ Quality Assurance &amp; Back-End Engineering</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-06, SE-12-07)</em></p>
 
-          <h3>Quality Assurance (QA)</h3>
+          <h3>🛡️ Quality Assurance (QA)</h3>
           <p><strong>Investigate</strong> how software engineering solutions are quality assured. QA involves defining clear criteria on which quality will be judged (e.g., load times, error rates). It requires a <strong>continual checking process</strong> to ensure requirements are met, whilst strictly addressing compliance and legislative requirements (e.g., Australian Privacy Principles) (Outcome SE-12-01).</p>
 
-          <h3>Modelling Tools</h3>
+          <h3>📐 Modelling Tools</h3>
           <p><strong>Demonstrate</strong> the use of 🛠️ <strong>modelling tools</strong> to map out software logic. This includes Data Flow Diagrams (DFDs), Structure Charts, and Decision Trees (Course Spec p. 5-10) (Outcome SE-12-06).</p>
 
-          <h3>Back-End Engineering Contribution</h3>
+          <h3>⚙️ Back-End Engineering Contribution</h3>
           <p><strong>Explain</strong> the contribution of back-end engineering to the success and ease of software development (Outcome SE-12-07):</p>
 
           <h4>🖥️ Technology Used</h4>
@@ -602,7 +657,7 @@ Key:
 
           <p class="syllabus-concept">📌 <em><strong>Design, construct and implement</strong> a solution to a software problem using appropriate development approaches. Engineers must <strong>develop, construct and document algorithms</strong> and allocate appropriate resources to support development (Outcome SE-12-02).</em></p>
 
-          <h3>Programmed Data Backup &amp; Version Control</h3>
+          <h3>💾 Programmed Data Backup &amp; Version Control</h3>
           <p><strong>Demonstrate</strong> the use of programmed data backup to ensure data integrity during development. Additionally, <strong>implement version control</strong> (e.g., Git) to safely track code changes, manage collaborative merges, and document the project's evolution (Outcome SE-12-04, SE-12-09).</p>
 
           <div class="code-block">
@@ -625,13 +680,13 @@ Key:
 programmed_backup(<span class="str">'app_data.sqlite3'</span>, <span class="str">'./backups'</span>)</code></pre>
           </div>
 
-          <h3>Strategies for Difficulties</h3>
+          <h3>💡 Strategies for Difficulties</h3>
           <p><strong>Explore</strong> strategies to respond to difficulties when developing. This includes searching for solutions online (e.g., official documentation, StackOverflow), seeking <strong>collaboration with peers</strong> for code reviews, or <strong>outsourcing</strong> specific technical components (e.g., paying for an external API service rather than building it from scratch) (Outcome SE-12-09).</p>
 
-          <h3>Innovative UI Solutions</h3>
+          <h3>✨ Innovative UI Solutions</h3>
           <p><strong>Propose</strong> an additional innovative solution using a <strong>prototype</strong> and a <strong>user interface (UI)</strong> design. Prototyping allows clients to interact with a mock-up of the system, providing early validation of the UI layout before heavy backend coding commences (Outcome SE-12-06).</p>
 
-          <h3>Version Control Workflow</h3>
+          <h3>🌿 Version Control Workflow</h3>
           <p><strong>Version control</strong> is a fundamental professional practice. Git allows engineers to track every change made to the codebase, revert to earlier versions if bugs are introduced, and collaborate without overwriting each other's work. The workflow below demonstrates the standard Git feature-branch workflow used in professional software engineering.</p>
 
           <div class="code-block">
@@ -677,7 +732,7 @@ git push origin main --tags</code></pre>
             </ul>
           </div>
 
-          <h3>Modular Design — Python Example</h3>
+          <h3>🧩 Modular Design — Python Example</h3>
           <p>A well-engineered solution separates concerns into distinct modules and classes. The example below shows how the Library Management System is implemented using modular Python, with each class responsible for a single aspect of the system.</p>
 
           <div class="code-block">
@@ -776,7 +831,7 @@ if __name__ == "__main__":
     print(loan_service.issue_loan(book1, member1))</code></pre>
           </div>
 
-          <h3>Code Review Checklist</h3>
+          <h3>✅ Code Review Checklist</h3>
           <p>A <strong>code review</strong> is the systematic examination of code by a peer before it is merged into the main branch. It catches bugs, ensures style consistency, and improves overall code quality. The checklist below should be applied during every code review in a collaborative project.</p>
 
           <div class="table-wrap">
@@ -843,7 +898,7 @@ if __name__ == "__main__":
             </table>
           </div>
 
-          <h3>Debugging Process</h3>
+          <h3>🐛 Debugging Process</h3>
           <p><strong>Debugging</strong> is the systematic process of identifying, isolating, and fixing defects in code. A structured debugging process is faster and more reliable than randomly changing code and hoping for improvement.</p>
 
           <div class="diagram-block">
@@ -898,10 +953,10 @@ flowchart TD
 
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> methodologies to test and evaluate code, and <strong>Analyse and respond</strong> to client feedback. Evaluating the effectiveness of a solution ensures it meets the initial problem requirements.</em></p>
 
-          <h3>Effectiveness &amp; Testing Data</h3>
+          <h3>🎯 Effectiveness &amp; Testing Data</h3>
           <p>Evaluation involves generating a <strong>test plan</strong> and executing it using rigorous testing data based on <strong>path testing</strong> (ensuring every line of code executes) and <strong>boundary testing</strong> (testing the extreme limits of input constraints). Engineers evaluate success by <strong>comparing actual output with expected output</strong>, and develop a final report to synthesise client feedback (Outcome SE-12-08, SE-12-09).</p>
 
-          <h3>Language-Dependent Code Optimisation</h3>
+          <h3>⚡ Language-Dependent Code Optimisation</h3>
           <p><strong>Use</strong> language-dependent code optimisation techniques to refine execution speed and readability. In Python, this often involves using list comprehensions instead of standard loops, or utilising built-in C-optimised functions (Outcome SE-12-08).</p>
 
           <div class="code-block">
@@ -1426,7 +1481,7 @@ flowchart TD
             </table>
           </div>
 
-          <h3>Change Request Log</h3>
+          <h3>📝 Change Request Log</h3>
           <p>A <strong>change request log</strong> records any modifications to the original requirements after the requirements document has been signed. It prevents scope creep by requiring formal approval for each change, and ensures all parties agree on the updated scope.</p>
 
           <div class="table-wrap">
@@ -1474,7 +1529,7 @@ flowchart TD
             </table>
           </div>
 
-          <h3>Data Dictionary</h3>
+          <h3>📖 Data Dictionary</h3>
           <p>A <strong>data dictionary</strong> formally defines every data item used in the system — its name, data type, size, valid range, and description. It ensures consistency between the design documents, database schema, and code. In Python, field sizes and types translate directly to database column definitions and validation logic.</p>
 
           <div class="table-wrap">
@@ -1585,7 +1640,7 @@ flowchart TD
           <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Describe</strong> team roles in a software project and <strong>apply</strong> Agile ceremonies to manage communication and progress effectively.</em></p>
 
-          <h3>Common Software Project Roles</h3>
+          <h3>👥 Common Software Project Roles</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1604,7 +1659,7 @@ flowchart TD
             </table>
           </div>
 
-          <h3>Agile Ceremonies</h3>
+          <h3>📅 Agile Ceremonies</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>Sprint Planning</strong><span>At the start of each sprint (1–4 weeks): the team selects user stories from the backlog to complete in this sprint. Output: a sprint backlog with estimated tasks. Duration: typically 2–4 hours for a 2-week sprint.</span></div>
             <div class="key-term-item"><strong>Daily Stand-up</strong><span>15-minute daily meeting. Each team member answers: (1) What did I do yesterday? (2) What will I do today? (3) Do I have any blockers? Duration: maximum 15 minutes — stand up to keep it short.</span></div>
@@ -1628,7 +1683,7 @@ flowchart TD
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Describe</strong> the deployment pipeline and <strong>apply</strong> deployment concepts to ensure software is reliably released to users.</em></p>
 
-          <h3>Deployment Environments</h3>
+          <h3>🚀 Deployment Environments</h3>
           <pre class="text-diagram">Deployment Pipeline
 ──────────────────────────────────────────────────────────────
 Development   →   Staging         →   UAT          →   Production
@@ -1641,7 +1696,7 @@ Each environment serves a purpose:
 • Production  : live system — must be stable, monitored, backed up
 ──────────────────────────────────────────────────────────────</pre>
 
-          <h3>Hosting Options</h3>
+          <h3>🌐 Hosting Options</h3>=</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1657,7 +1712,7 @@ Each environment serves a purpose:
             </table>
           </div>
 
-          <h3>Pre-Deployment Checklist</h3>
+          <h3>✅ Pre-Deployment Checklist</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1685,7 +1740,7 @@ Each environment serves a purpose:
           <p class="outcome-subtitle">🎯 <em>(SE-12-07, SE-12-08, SE-12-09)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Evaluate</strong> the completed software project against original requirements and <strong>reflect</strong> on lessons learned to improve future practice.</em></p>
 
-          <h3>Evaluation Framework</h3>
+          <h3>📊 Evaluation Framework</h3>
           <p>A thorough evaluation compares <strong>what you built</strong> against <strong>what you planned</strong> from Phase 1. For each functional and non-functional requirement, ask:</p>
           <ul>
             <li>Was this requirement fully met? Partially? Not met?</li>
@@ -1693,7 +1748,7 @@ Each environment serves a purpose:
             <li>If not fully met, what limited the implementation?</li>
           </ul>
 
-          <h3>Post-Mortem Report Structure</h3>
+          <h3>📝 Post-Mortem Report Structure</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1726,7 +1781,7 @@ Each environment serves a purpose:
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Evaluate</strong> and select appropriate technologies for different HSC project types based on requirements, constraints, and team capability.</em></p>
 
-          <h3>Recommended Stacks for Common HSC Project Types</h3>
+          <h3>📊 Recommended Stacks for Common HSC Project Types</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1742,7 +1797,7 @@ Each environment serves a purpose:
             </table>
           </div>
 
-          <h3>Technology Selection Criteria</h3>
+          <h3>⚖️ Technology Selection Criteria</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>Requirements fit</strong><span>Does the technology support the features you need? (e.g., a web framework needs routing; a game needs a render loop).</span></div>
             <div class="key-term-item"><strong>Team skill level</strong><span>Can you learn this in time? A familiar technology done well beats an unfamiliar one done poorly.</span></div>
@@ -1761,13 +1816,39 @@ Each environment serves a purpose:
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-bottom">
-        <span>© 2026 HSC SoftEng Notes · HSC Software Engineering Project · Australian English Standards</span>
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo">💻</div>
+          <span class="footer-name">SoftEng Notes</span>
+        </div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
       </div>
+      <div class="footer-col">
+        <h4>🔐 Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">Engineering Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>📈 Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>🛡️ Navigate</h4>
+        <a href="../index.html">← Back to Home</a>
+        <a href="sdlc.html">🔄 SDLC Guide</a>
+        <a href="secure-software-architecture.html">🔒 Secure Architecture →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 HSC SoftEng Notes · Software Engineering Project · Australian English Standards</span>
     </div>
   </footer>
 
-  <script src="../js/main.js?v=6"></script>
+  <script src="../js/main.js?v=7"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->
