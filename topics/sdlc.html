@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SDLC — Software Development Life Cycle | HSC Software Engineering</title>
+  <!-- ── SEO ── -->
+  <link rel="canonical" href="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/sdlc.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="SDLC Guide | HSC Software Engineering" />
+  <meta property="og:description" content="Master the Software Development Life Cycle for HSC Software Engineering — Agile vs WAGILE, tool mapping for every phase, and real-world case studies." />
+  <meta property="og:url" content="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/sdlc.html" />
+  <meta property="og:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <meta property="og:image:alt" content="HSC Software Engineering Notes — NESA NSW" />
+  <meta property="og:site_name" content="HSC Software Engineering Notes" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="SDLC Guide | HSC Software Engineering" />
+  <meta name="twitter:description" content="Master the Software Development Life Cycle for HSC Software Engineering — Agile vs WAGILE, tool mapping for every phase, and real-world case studies." />
+  <meta name="twitter:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "SDLC Guide",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/topics/sdlc.html"
+    }
+    ]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+  <meta name="theme-color" content="#6366F1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta name="description" content="Master the Software Development Life Cycle for HSC Software Engineering — Agile vs WAGILE, tool mapping for every phase, and real-world case studies." />
+  <!-- Theme init: prevents flash of wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
+  <link rel="stylesheet" href="../css/styles.css?v=7" />
+  <style>
+    /* ── SDLC-specific styles ── */
+    .sdlc-cycle-visual {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      justify-content: center;
+      align-items: stretch;
+      margin: 2rem 0;
+      position: relative;
+    }
+    .sdlc-cycle-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(99,102,241,.06) 0%, transparent 70%);
+      pointer-events: none;
+      border-radius: var(--radius-2xl);
+    }
+    .sdlc-phase-card {
+      flex: 1 1 160px;
+      max-width: 200px;
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      position: relative;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      cursor: default;
+    }
+    .sdlc-phase-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary);
+      z-index: 2;
+    }
+    .sdlc-phase-card .phase-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      font-size: .875rem;
+      margin-bottom: .75rem;
+    }
+    .sdlc-phase-card.phase-1 .phase-num { background: #6366F1; }
+    .sdlc-phase-card.phase-2 .phase-num { background: #3B82F6; }
+    .sdlc-phase-card.phase-3 .phase-num { background: #10B981; }
+    .sdlc-phase-card.phase-4 .phase-num { background: #F59E0B; }
+    .sdlc-phase-card .phase-icon { font-size: 1.75rem; display: block; margin-bottom: .5rem; }
+    .sdlc-phase-card .phase-title { font-weight: 700; font-size: .9rem; color: var(--text-primary); line-height: 1.3; }
+    .sdlc-phase-card .phase-subtitle { font-size: .75rem; color: var(--text-muted); margin-top: .35rem; line-height: 1.4; }
+    .sdlc-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-size: 1.5rem;
+      padding: 0 .25rem;
+      align-self: center;
+    }
+
+    /* Methodology comparison */
+    .methodology-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+    @media (max-width: 640px) { .methodology-grid { grid-template-columns: 1fr; } }
+    .method-card {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem;
+      transition: box-shadow var(--transition);
+    }
+    .method-card:hover { box-shadow: var(--shadow-lg); }
+    .method-card.agile { border-top: 4px solid #10B981; }
+    .method-card.wagile { border-top: 4px solid #6366F1; }
+    .method-card h4 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-bottom: .75rem; }
+    .method-card .method-badge {
+      display: inline-block;
+      padding: .2rem .6rem;
+      border-radius: var(--radius-full);
+      font-size: .7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .75rem;
+    }
+    .method-card.agile .method-badge { background: #DCFCE7; color: #166534; }
+    .method-card.wagile .method-badge { background: #EEF2FF; color: #4338CA; }
+    [data-theme="dark"] .method-card.agile .method-badge { background: #14532D; color: #86EFAC; }
+    [data-theme="dark"] .method-card.wagile .method-badge { background: #1E1B4B; color: #A5B4FC; }
+    .method-card ul { padding-left: 1.25rem; }
+    .method-card li { font-size: .875rem; color: var(--text-secondary); margin-bottom: .4rem; line-height: 1.5; }
+
+    /* When-to-use decision card */
+    .decision-card {
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg-secondary) 100%);
+      border: 1.5px solid var(--border);
+      border-left: 5px solid var(--primary);
+      border-radius: var(--radius-xl);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .decision-card h4 { color: var(--primary); font-weight: 700; margin-bottom: .75rem; font-size: 1rem; }
+    .decision-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: .75rem; }
+    .decision-col { flex: 1 1 200px; }
+    .decision-col strong { font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); display: block; margin-bottom: .4rem; }
+    .decision-col p { font-size: .875rem; color: var(--text-secondary); line-height: 1.5; }
+
+    /* Tool mapping cards */
+    .tool-stage {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .tool-stage-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+    .tool-stage-header .stage-badge {
+      padding: .3rem .85rem;
+      border-radius: var(--radius-full);
+      font-size: .75rem;
+      font-weight: 700;
+      background: var(--primary);
+      color: #fff;
+      white-space: nowrap;
+    }
+    .tool-stage-header h4 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+    .tool-stage-body { padding: 1.25rem 1.5rem; }
+    .tool-row {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: .75rem 0;
+      border-bottom: 1px dashed var(--border);
+    }
+    .tool-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .tool-name {
+      flex: 0 0 160px;
+      font-weight: 600;
+      font-size: .875rem;
+      color: var(--text-primary);
+    }
+    .tool-detail { flex: 1; font-size: .875rem; color: var(--text-secondary); line-height: 1.6; }
+    .tool-detail code { font-size: .8rem; }
+    @media (max-width: 580px) { .tool-row { flex-direction: column; gap: .35rem; } .tool-name { flex: none; } }
+
+    /* Case study cards */
+    .case-study {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .case-study-header {
+      padding: 1.1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .case-study.success .case-study-header { background: linear-gradient(90deg, #DCFCE7, var(--bg-secondary)); border-bottom: 3px solid #22C55E; }
+    .case-study.failure .case-study-header { background: linear-gradient(90deg, #FEF2F2, var(--bg-secondary)); border-bottom: 3px solid #EF4444; }
+    [data-theme="dark"] .case-study.success .case-study-header { background: linear-gradient(90deg, #14532D30, var(--bg-secondary)); }
+    [data-theme="dark"] .case-study.failure .case-study-header { background: linear-gradient(90deg, #7F1D1D30, var(--bg-secondary)); }
+    .case-verdict {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      padding: .25rem .75rem;
+      border-radius: var(--radius-full);
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      flex-shrink: 0;
+    }
+    .case-study.success .case-verdict { background: #22C55E; color: #fff; }
+    .case-study.failure .case-verdict { background: #EF4444; color: #fff; }
+    .case-study-header h4 { font-size: 1rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+    .case-study-header .case-company { font-size: .8rem; color: var(--text-muted); }
+    .case-study-body { padding: 1.25rem 1.5rem; }
+    .case-phase-row {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: .6rem 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: .875rem;
+    }
+    .case-phase-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .case-phase-label {
+      flex: 0 0 140px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .case-phase-detail { flex: 1; color: var(--text-secondary); line-height: 1.6; }
+    @media (max-width: 580px) { .case-phase-row { flex-direction: column; gap: .25rem; } .case-phase-label { flex: none; } }
+
+    /* Method card body text */
+    .method-card-desc { font-size: .875rem; color: var(--text-secondary); margin-bottom: .75rem; line-height: 1.6; }
+
+    /* Stage overview timeline */
+    .stage-timeline {
+      position: relative;
+      padding-left: 2.5rem;
+      margin: 1.5rem 0;
+    }
+    .stage-timeline::before {
+      content: '';
+      position: absolute;
+      left: .9rem;
+      top: .5rem;
+      bottom: .5rem;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary) 0%, var(--accent) 100%);
+      border-radius: var(--radius-full);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.75rem;
+      top: .3rem;
+      width: .75rem;
+      height: .75rem;
+      border-radius: 50%;
+      background: var(--primary);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+    .timeline-item h5 { font-size: .9rem; font-weight: 700; color: var(--text-primary); margin-bottom: .25rem; }
+    .timeline-item p { font-size: .85rem; color: var(--text-secondary); line-height: 1.5; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">💻</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            🗂️ Resources
+            <span class="badge badge-all">Guides</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
+            <a href="sdlc.html" role="menuitem" aria-current="page">🔄 SDLC Guide</a>
+          </div>
+        </li>
+        <li class="nav-dropdown nav-dropdown-y12">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            Year 12
+            <span class="badge badge-12">HSC</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="secure-software-architecture.html" role="menuitem">🔒 Secure Software Architecture</a>
+            <a href="programming-for-the-web.html" role="menuitem">🌐 Programming for the Web</a>
+            <a href="software-automation.html" role="menuitem">⚙️ Software Automation</a>
+            <a href="software-engineering-project.html" role="menuitem">📋 Software Engineering Project</a>
+          </div>
+        </li>
+        <li class="nav-dropdown nav-dropdown-y11">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            Year 11
+            <span class="badge badge-11">Prelim</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="programming-fundamentals.html" role="menuitem">📐 Programming Fundamentals</a>
+            <a href="object-oriented-paradigm.html" role="menuitem">🧩 Object-Oriented Paradigm</a>
+            <a href="programming-mechatronics.html" role="menuitem">🤖 Programming Mechatronics</a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Mobile Menu ── -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Resources</div>
+      <a href="course-tools.html">🛠️ Course Tools &amp; Specifications</a>
+      <a href="sdlc.html">🔄 SDLC Guide</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 12 — HSC</div>
+      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
+      <a href="software-automation.html">⚙️ Software Automation</a>
+      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 11 — Preliminary</div>
+      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">🧩 The Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+    </div>
+    <div class="mobile-menu-section">
+      <button id="theme-toggle-mobile" class="btn btn-mobile-theme">🌙 Toggle Theme</button>
+    </div>
+  </div>
+
+  <!-- ── Page Header ── -->
+  <header class="topic-header">
+    <div class="topic-header-inner">
+      <nav class="topic-breadcrumb">
+        <a href="../index.html">Home</a> <span>›</span>
+        <span>SDLC Guide</span>
+      </nav>
+      <h1>🔄 Software Development Life Cycle</h1>
+      <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
+        A cross-curriculum guide to mastering the SDLC across the full HSC Software Engineering course — with Agile vs WAGILE guidance, tool mapping for every stage, and real-world case studies showing the cycle done right and wrong.
+      </p>
+      <div class="topic-header-meta">
+        <span class="meta-pill year12">📘 Year 11 &amp; 12</span>
+        <span class="meta-pill">🔄 Cross-Curriculum</span>
+        <span class="meta-pill">Outcomes: SE-11-01 · SE-12-01 · SE-12-06</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Page Layout ── -->
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="toc-title">Contents</div>
+      <ul class="toc-list">
+        <li class="sidebar-label">Overview</li>
+        <li><a href="#what-is-sdlc">🔄 What is the SDLC?</a></li>
+        <li><a href="#methodology">⚖️ Agile vs WAGILE</a></li>
+        <li class="sidebar-label">The Four Phases</li>
+        <li><a href="#phase1">🎯 Phase 1 — Identifying &amp; Defining</a></li>
+        <li><a href="#phase2">🔬 Phase 2 — Research &amp; Planning</a></li>
+        <li><a href="#phase3">💻 Phase 3 — Producing &amp; Implementing</a></li>
+        <li><a href="#phase4">🧪 Phase 4 — Testing &amp; Evaluating</a></li>
+        <li class="sidebar-label">Tools at Each Stage</li>
+        <li><a href="#tools-map">🛠️ Tool Mapping Reference</a></li>
+        <li class="sidebar-label">Real-World Case Studies</li>
+        <li><a href="#case-success">✅ Effective SDLC Examples</a></li>
+        <li><a href="#case-failure">❌ Ineffective SDLC Examples</a></li>
+        <li class="sidebar-label">Assessment Guidance</li>
+        <li><a href="#hsc-guidance">📝 HSC Assessment Tips</a></li>
+        <li><a href="#curriculum-links">📚 Curriculum Links</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-content">
+      <div class="content-body">
+
+        <!-- ════════════════════════════════════════════════════ -->
+        <!--  WHAT IS THE SDLC                                    -->
+        <!-- ════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Overview</span>
+          <span class="part-name">🔄 The Software Development Life Cycle</span>
+        </div>
+
+        <section id="what-is-sdlc">
+          <h2 class="syllabus-phase">🔄 What is the SDLC?</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-12-01, SE-12-06 — applies across the entire course)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>The SDLC is the structured process</strong> software engineers follow to plan, create, test, and deliver software. Every topic in the HSC Software Engineering course is anchored to at least one phase of this cycle.</em></p>
+
+          <p>The NESA NSW HSC Software Engineering syllabus explicitly structures the Software Engineering Project (Year 12) around four cyclical phases. However, the same cycle underpins all other topics — from Programming Fundamentals in Year 11 to Secure Software Architecture and Software Automation in Year 12. Understanding <em>where</em> you are in the cycle at any moment is key to demonstrating depth in both exams and the major project.</p>
+
+          <!-- Visual cycle -->
+          <div class="sdlc-cycle-visual">
+            <div class="sdlc-phase-card phase-1">
+              <span class="phase-icon">🎯</span>
+              <div class="phase-num">1</div>
+              <div class="phase-title">Identifying &amp; Defining</div>
+              <div class="phase-subtitle">Problem analysis, requirements, feasibility</div>
+            </div>
+            <div class="sdlc-arrow">→</div>
+            <div class="sdlc-phase-card phase-2">
+              <span class="phase-icon">🔬</span>
+              <div class="phase-num">2</div>
+              <div class="phase-title">Research &amp; Planning</div>
+              <div class="phase-subtitle">Design, architecture, project scheduling</div>
+            </div>
+            <div class="sdlc-arrow">→</div>
+            <div class="sdlc-phase-card phase-3">
+              <span class="phase-icon">💻</span>
+              <div class="phase-num">3</div>
+              <div class="phase-title">Producing &amp; Implementing</div>
+              <div class="phase-subtitle">Coding, integration, documentation</div>
+            </div>
+            <div class="sdlc-arrow">→</div>
+            <div class="sdlc-phase-card phase-4">
+              <span class="phase-icon">🧪</span>
+              <div class="phase-num">4</div>
+              <div class="phase-title">Testing &amp; Evaluating</div>
+              <div class="phase-subtitle">Validation, evaluation, maintenance</div>
+            </div>
+          </div>
+
+          <div class="callout tip">
+            <strong>Cycle, Not Waterfall:</strong> The phases are a <em>cycle</em> — after evaluating, you loop back to identifying new requirements or improvements. In Agile approaches this loop happens every sprint (2–4 weeks). In WAGILE approaches you may complete a full pass through all four phases before cycling back. Assessors reward students who articulate this iterative nature.
+          </div>
+
+          <h3>📌 Where the SDLC Appears Across the Course</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Topic</th><th>Year</th><th>Primary SDLC Phase(s)</th><th>Key Syllabus Concepts</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Programming Fundamentals</strong></td>
+                  <td>11</td>
+                  <td>Phase 1 (defining the problem), Phase 3 (coding)</td>
+                  <td>Problem definition, algorithm design, data types, testing</td>
+                </tr>
+                <tr>
+                  <td><strong>Object-Oriented Paradigm</strong></td>
+                  <td>11</td>
+                  <td>Phase 2 (design), Phase 3 (implementation)</td>
+                  <td>Class design, UML, encapsulation, inheritance, polymorphism</td>
+                </tr>
+                <tr>
+                  <td><strong>Programming Mechatronics</strong></td>
+                  <td>11</td>
+                  <td>All phases — applied to hardware/software integration</td>
+                  <td>Sensor input, actuator output, control logic, testing with real devices</td>
+                </tr>
+                <tr>
+                  <td><strong>Secure Software Architecture</strong></td>
+                  <td>12</td>
+                  <td>Phase 2 (security design), Phase 4 (security testing)</td>
+                  <td>Threat modelling, CIA triad, authentication, encryption, penetration testing</td>
+                </tr>
+                <tr>
+                  <td><strong>Programming for the Web</strong></td>
+                  <td>12</td>
+                  <td>Phase 2 (UI/UX design), Phase 3 (front/back-end coding)</td>
+                  <td>HTML/CSS/JS, HTTP, REST APIs, databases, accessibility</td>
+                </tr>
+                <tr>
+                  <td><strong>Software Automation</strong></td>
+                  <td>12</td>
+                  <td>Phase 2 (automation design), Phase 3 &amp; 4 (implementation and testing)</td>
+                  <td>Scripting, batch processing, scheduling, MLOps pipelines</td>
+                </tr>
+                <tr>
+                  <td><strong>Software Engineering Project</strong></td>
+                  <td>12</td>
+                  <td><em>All four phases — explicitly structured around the cycle</em></td>
+                  <td>Full SDLC applied to an original major project with documentation</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ════════════════════════════════════════════════════ -->
+        <!--  METHODOLOGY                                         -->
+        <!-- ════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Methodology</span>
+          <span class="part-name">⚖️ Agile vs WAGILE</span>
+        </div>
+
+        <section id="methodology">
+          <h2 class="syllabus-phase">⚖️ Agile vs WAGILE — Choosing Your Methodology</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02 — evaluate and justify development approaches)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>A methodology</strong> determines <em>how</em> you move through the SDLC phases. Selecting the right one — and being able to justify your selection to assessors — is a key syllabus requirement.</em></p>
+
+          <div class="methodology-grid">
+            <div class="method-card agile">
+              <span class="method-badge">Agile</span>
+              <h4>🏃 Agile (Iterative/Incremental)</h4>
+              <p class="method-card-desc">Work is divided into short <strong>sprints</strong> (2–4 weeks). Each sprint produces a working, shippable increment. Requirements are expected to evolve — change is welcomed, not resisted.</p>
+              <ul>
+                <li>Frequent client feedback after each sprint</li>
+                <li>Backlog of user stories prioritised each sprint</li>
+                <li>Daily stand-ups for team coordination</li>
+                <li>Working software over comprehensive documentation</li>
+                <li>Cross-functional, self-organising teams</li>
+                <li>Retrospectives after each sprint to improve the process</li>
+              </ul>
+            </div>
+            <div class="method-card wagile">
+              <span class="method-badge">WAGILE (Waterfall-Agile Hybrid)</span>
+              <h4>🌊 WAGILE (Structured Iterations)</h4>
+              <p class="method-card-desc">A pragmatic hybrid used widely in the HSC project context. Phases are planned in advance (Waterfall-style) but internal to each phase, short Agile iterations are used to build and refine features.</p>
+              <ul>
+                <li>Upfront planning document (Gantt chart, project scope)</li>
+                <li>Each SDLC phase has defined deliverables and deadlines</li>
+                <li>Within each phase: short iterative development cycles</li>
+                <li>Client check-ins at phase boundaries, not every sprint</li>
+                <li>Suits HSC assessment because deliverables align with marking criteria</li>
+                <li>Change requests are controlled via a formal change-request log</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>🤔 When to Use Each Methodology</h3>
+
+          <div class="decision-card">
+            <h4>Decision Guide — Agile vs WAGILE</h4>
+            <div class="decision-row">
+              <div class="decision-col">
+                <strong>Use Agile when...</strong>
+                <p>Requirements are unclear or likely to change significantly. The client is highly available for regular feedback. The team is experienced and self-managing. The product is new with high uncertainty (startups, R&amp;D projects). There is no fixed scope deadline.</p>
+              </div>
+              <div class="decision-col">
+                <strong>Use WAGILE when...</strong>
+                <p>There is a fixed deadline with defined deliverables (like the HSC major project). The client is not available every week. You need a clear paper trail of design decisions for assessors. Requirements are reasonably stable but refinement is needed during implementation.</p>
+              </div>
+            </div>
+            <div class="decision-row">
+              <div class="decision-col">
+                <strong>Real-world examples</strong>
+                <p>Spotify (music streaming), Atlassian Jira, Facebook feature rollouts, Google Chrome release cadence.</p>
+              </div>
+              <div class="decision-col">
+                <strong>Real-world examples</strong>
+                <p>NASA's Orion spacecraft software, enterprise banking systems, Australian government digital services, hospital management platforms.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout assessor">
+            <strong>📝 Assessor Tip — Justify Your Choice:</strong> Do not just state <em>"I used Agile."</em> Assessors expect you to <strong>justify</strong> your methodology choice with reference to project characteristics — scope certainty, client availability, team size, and timeline constraints. A student who correctly identifies that their HSC project is best served by WAGILE and explains <em>why</em> will always outperform one who copies the word "Agile" without explanation.
+          </div>
+
+          <h3>🔁 Scrum Framework (Agile in Practice)</h3>
+          <p>Most HSC students and industry teams implement Agile via the <strong>Scrum framework</strong>. Understanding Scrum's mechanics is essential for both exam responses and project documentation.</p>
+
+          <div class="key-terms">
+            <div class="key-term-item"><strong>📋 Product Backlog</strong><span>A prioritised list of all features, user stories, and bug fixes the product needs. Maintained by the Product Owner. Items at the top are most refined and ready to work on.</span></div>
+            <div class="key-term-item"><strong>🏃 Sprint</strong><span>A fixed time-box (2–4 weeks) during which a "Done" increment of the product is created. The sprint goal is agreed before it begins and does not change mid-sprint.</span></div>
+            <div class="key-term-item"><strong>📌 Sprint Backlog</strong><span>The subset of Product Backlog items selected for the current sprint, plus the plan for how to deliver them.</span></div>
+            <div class="key-term-item"><strong>☀️ Daily Stand-up</strong><span>A 15-minute synchronisation event. Each team member answers: (1) What did I do yesterday? (2) What will I do today? (3) Are there any impediments?</span></div>
+            <div class="key-term-item"><strong>🔍 Sprint Review</strong><span>At the end of each sprint, the team demonstrates the working increment to stakeholders and collects feedback to refine the backlog.</span></div>
+            <div class="key-term-item"><strong>🪞 Sprint Retrospective</strong><span>The team inspects its own process and identifies improvements for the next sprint. Focuses on people, relationships, process, and tools.</span></div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ════════════════════════════════════════════════════ -->
+        <!--  PHASE 1                                             -->
+        <!-- ════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Phase 1</span>
+          <span class="part-name">🎯 Identifying and Defining</span>
+        </div>
+
+        <section id="phase1">
+          <h2 class="syllabus-phase">🎯 Phase 1 — Identifying and Defining</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-06 — defining the problem space and requirements)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>The purpose of Phase 1</strong> is to establish a clear, bounded understanding of the problem before any design or code begins. Software built without a well-defined problem statement routinely fails.</em></p>
+
+          <h3>🔍 What You Must Demonstrate in This Phase</h3>
+          <div class="stage-timeline">
+            <div class="timeline-item">
+              <h5>Problem Identification</h5>
+              <p>Clearly describe the real-world need or opportunity the software addresses. Use evidence (surveys, observations, interviews with a client/stakeholder). Avoid vague statements like "people need an app."</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Feasibility Analysis</h5>
+              <p>Assess whether the project is viable across three dimensions: <strong>scheduling feasibility</strong> (can it be built in the available time?), <strong>financial feasibility</strong> (are required tools/resources available?), and <strong>technical feasibility</strong> (does the team have the skills?).</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Requirements Elicitation</h5>
+              <p>Document both <strong>functional requirements</strong> (what the system must <em>do</em>) and <strong>non-functional requirements</strong> (performance, security, usability, maintainability). Use user stories in the format: <em>"As a [role], I want [feature] so that [benefit]."</em></p>
+            </div>
+            <div class="timeline-item">
+              <h5>Scope Definition</h5>
+              <p>Explicitly state what is <em>in scope</em> and what is <em>out of scope</em>. This prevents scope creep during development. Record scope decisions in a project scope statement.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Data Requirements</h5>
+              <p>Identify the types of data the system will use, store, and process. Begin drafting a data dictionary with field names, data types, sizes, and validation rules.</p>
+            </div>
+          </div>
+
+          <h3>🛠️ Course Tools Used in Phase 1</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>📝 Storyboards</strong><span>Sketch the user interface flow and screen transitions before writing any code. Assessors expect to see storyboards for every major screen/view.</span></div>
+            <div class="key-term-item"><strong>🗄️ Data Dictionaries</strong><span>Formally define every data field — name, type, size, range, required/optional, and description. This ensures design consistency and is a mandatory deliverable for the major project.</span></div>
+            <div class="key-term-item"><strong>📊 Use Case Diagrams</strong><span>Show all actors (users, external systems) and the functions they interact with. Particularly important for identifying which stakeholders drive which requirements.</span></div>
+            <div class="key-term-item"><strong>🧠 Mind Maps</strong><span>Brainstorm and organise initial ideas, feature clusters, and stakeholder categories before writing formal requirements.</span></div>
+            <div class="key-term-item"><strong>📋 User Stories / Acceptance Criteria</strong><span>User stories anchor requirements to real user needs. Each story must be accompanied by measurable acceptance criteria for assessors to evaluate completeness.</span></div>
+          </div>
+
+          <div class="callout assessor">
+            <strong>📝 How to Demonstrate Phase 1 Knowledge in an Exam:</strong>
+            When given a scenario, apply the structure: (1) <strong>identify</strong> the problem clearly, (2) <strong>assess</strong> feasibility, (3) list both <em>functional</em> AND <em>non-functional</em> requirements, and (4) define scope. Use SMART criteria — requirements must be Specific, Measurable, Achievable, Realistic, and Time-bound. Award yourself marks for each distinct concept named and applied, not just listed.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ════════════════════════════════════════════════════ -->
+        <!--  PHASE 2                                             -->
+        <!-- ════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Phase 2</span>
+          <span class="part-name">🔬 Research and Planning</span>
+        </div>
+
+        <section id="phase2">
+          <h2 class="syllabus-phase">🔬 Phase 2 — Research and Planning</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-03, SE-12-04 — design, architecture, and project management)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Phase 2 transforms requirements into a blueprint.</strong> This is the design phase — you decide <em>how</em> the system will be built before writing a single line of production code. Time invested here is always recovered in Phase 3.</em></p>
+
+          <h3>🏗️ What You Must Demonstrate in This Phase</h3>
+          <div class="stage-timeline">
+            <div class="timeline-item">
+              <h5>Software Architecture and Design</h5>
+              <p>Choose an appropriate architecture pattern (e.g., layered, client-server, MVC). Decompose the system into modules using a <strong>structure chart</strong>. Define how modules interact (interfaces, data flow).</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Algorithm Design</h5>
+              <p>Design the logic of key algorithms using <strong>pseudocode</strong> or <strong>flowcharts</strong> before coding begins. Pseudocode is preferred for written exam responses; flowcharts are valuable for visual documentation in the major project.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Object-Oriented Design</h5>
+              <p>Produce <strong>class diagrams</strong> showing attributes, methods, and relationships (inheritance, association, composition). Identify encapsulation boundaries and access modifiers.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Data Design</h5>
+              <p>Design the database schema (entity-relationship diagram), normalise tables to at least 3NF, and finalise the data dictionary from Phase 1. Define SQL statements for core operations (CREATE, INSERT, SELECT, UPDATE, DELETE).</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Project Management Plan</h5>
+              <p>Create a <strong>Gantt chart</strong> showing tasks, durations, dependencies, and milestones. Assign responsibilities if working in a team. Define <strong>communication channels</strong> (e.g., GitHub Issues, Slack, meeting minutes).</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Security Architecture</h5>
+              <p>Identify threats using a model such as STRIDE. Define security controls for authentication, authorisation, input validation, and data encryption. This is particularly important for Year 12 Secure Software Architecture outcomes.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Test Plan</h5>
+              <p>Draft a test plan before coding so you know what "done" looks like. Define test cases for functional requirements, specifying test data (normal, boundary, erroneous) and expected results.</p>
+            </div>
+          </div>
+
+          <h3>🛠️ Course Tools Used in Phase 2</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>📐 Structure Charts</strong><span>Decompose the system into modules and show their hierarchical relationships and data passing. Required for the major project and assessed in exams.</span></div>
+            <div class="key-term-item"><strong>💬 Pseudocode</strong><span>Language-independent algorithm description. Write pseudocode for all major algorithms before coding them. Examiners strongly prefer pseudocode to actual code in written responses.</span></div>
+            <div class="key-term-item"><strong>🔀 Flowcharts</strong><span>Visualise the control flow of an algorithm — decisions, loops, and processes. Use standard ANSI/ISO flowchart symbols.</span></div>
+            <div class="key-term-item"><strong>🧩 Class Diagrams (UML)</strong><span>Show classes, attributes, methods, and relationships (inheritance, association). Essential for documenting OO designs in both Year 11 OOP and Year 12 major project.</span></div>
+            <div class="key-term-item"><strong>🗃️ Entity Relationship Diagrams (ERDs)</strong><span>Show tables, fields, primary/foreign keys, and relationships (one-to-one, one-to-many, many-to-many). Required wherever a relational database is used.</span></div>
+            <div class="key-term-item"><strong>📅 Gantt Charts</strong><span>Visualise project schedule with tasks, durations, dependencies, and milestones. Tools: MS Project, Trello, Excel, Canva. A completed vs planned Gantt comparison is excellent evidence for evaluation.</span></div>
+            <div class="key-term-item"><strong>🔄 Data Flow Diagrams (DFDs)</strong><span>Show how data moves through the system — external entities, processes, data stores, and data flows. DFDs are a NESA-specified tool (Course Spec p. 8). Level 0 (context diagram) and Level 1 DFDs are required.</span></div>
+            <div class="key-term-item"><strong>🛡️ Threat Modelling (STRIDE)</strong><span>Identify and categorise security threats: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege. Used in Secure Software Architecture.</span></div>
+          </div>
+
+          <div class="callout assessor">
+            <strong>📝 How to Demonstrate Phase 2 Knowledge in an Exam:</strong>
+            For design questions, always show your thinking at two levels: (1) the <em>high-level architectural decision</em> (which pattern, why), and (2) the <em>detailed design artifact</em> (draw a structure chart, write pseudocode, sketch a class diagram). Exam responses that jump straight to code without a design step miss the syllabus intent entirely.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ════════════════════════════════════════════════════ -->
+        <!--  PHASE 3                                             -->
+        <!-- ════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Phase 3</span>
+          <span class="part-name">💻 Producing and Implementing</span>
+        </div>
+
+        <section id="phase3">
+          <h2 class="syllabus-phase">💻 Phase 3 — Producing and Implementing</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-05, SE-12-07 — software construction, coding standards, version control)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Phase 3 is construction.</strong> Requirements and design are translated into working software. Quality is built in — not tested in later. Following coding standards, using version control, and writing maintainable code are non-negotiable syllabus requirements.</em></p>
+
+          <h3>💡 What You Must Demonstrate in This Phase</h3>
+          <div class="stage-timeline">
+            <div class="timeline-item">
+              <h5>Coding Standards and Style</h5>
+              <p>Follow a recognised style guide consistently (PEP 8 for Python). Use meaningful variable/function names, consistent indentation, and appropriate comments. Assessors look for evidence of professional coding practice, not just working code.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Modular Implementation</h5>
+              <p>Implement the structure chart from Phase 2 as actual modules, classes, or functions. Each module should have a single responsibility (SRP). Show the mapping between your design and your code in documentation.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Version Control</h5>
+              <p>Use <strong>Git</strong> with meaningful, atomic commit messages throughout development. A well-maintained commit history demonstrates professional process. Branching for features and merging via pull requests is considered best practice.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Input Validation and Error Handling</h5>
+              <p>Validate all user inputs against defined rules (data type, range, format). Implement appropriate error handling to prevent crashes and provide meaningful feedback. Never trust user input.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Security Implementation</h5>
+              <p>Implement the security controls designed in Phase 2: password hashing (bcrypt, not MD5/SHA-1), parameterised SQL queries (prevent SQL injection), HTTPS, session management. For Year 12 Secure Software Architecture, this phase is the core deliverable.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>User Interface Implementation</h5>
+              <p>Build the UI following the storyboards from Phase 1. Apply usability principles: consistency, feedback, error prevention, recognition over recall (Nielsen's heuristics). Accessibility (WCAG 2.1 AA) is required for web-based projects.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Documentation</h5>
+              <p>Write docstrings for all functions/classes. Maintain an inline comment strategy for non-obvious logic. Update the data dictionary if the schema evolves. Produce an installation/deployment guide.</p>
+            </div>
+          </div>
+
+          <h3>🛠️ Course Tools Used in Phase 3</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>🐍 Python (or chosen language)</strong><span>The primary implementation language for HSC projects. Must be used with PEP 8 style, docstrings, and modular design. OOP features (classes, inheritance) are expected in Year 12 submissions.</span></div>
+            <div class="key-term-item"><strong>🔀 Git / Version Control</strong><span>All code must be tracked with Git. Commit messages should be descriptive and atomic. Provide the repository URL or a commit log extract as project evidence.</span></div>
+            <div class="key-term-item"><strong>🗄️ SQL (SQLite / PostgreSQL)</strong><span>Use parameterised queries to prevent SQL injection. Implement the schema from the ERD designed in Phase 2. Include CREATE TABLE, INSERT, SELECT (with JOINs), UPDATE, DELETE statements with explanations.</span></div>
+            <div class="key-term-item"><strong>🌐 HTML / CSS / JavaScript</strong><span>For web-based projects. HTML for structure (semantic elements), CSS for presentation (responsive design), JavaScript for client-side behaviour. Must follow web standards and accessibility guidelines.</span></div>
+            <div class="key-term-item"><strong>🧪 Unit Test Stubs</strong><span>Write test stubs alongside your code (test-driven development approach). Importing Python's <code>unittest</code> module and writing test cases alongside implementation is highly regarded by assessors.</span></div>
+            <div class="key-term-item"><strong>🛠️ IDE Tools</strong><span>Use VS Code or PyCharm with linting, debugging, and version control integration. Demonstrate awareness of how the IDE supports professional development practice.</span></div>
+          </div>
+
+          <div class="callout assessor">
+            <strong>📝 How to Demonstrate Phase 3 Knowledge in an Exam:</strong>
+            When writing or reading code in exam contexts, always annotate your reasoning: name the programming construct used (loop, selection, function, class), explain its purpose, and connect it to the requirement it satisfies. A line of code without context earns fewer marks than explained code. Show understanding of <em>why</em> a construct was chosen, not just what it does.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ════════════════════════════════════════════════════ -->
+        <!--  PHASE 4                                             -->
+        <!-- ════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Phase 4</span>
+          <span class="part-name">🧪 Testing and Evaluating</span>
+        </div>
+
+        <section id="phase4">
+          <h2 class="syllabus-phase">🧪 Phase 4 — Testing and Evaluating</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-08, SE-12-09 — testing, evaluation, and reflection)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Phase 4 validates the software against requirements and evaluates the entire development process.</strong> It is not a formality — assessors expect systematic, evidence-based testing and a critical, honest evaluation that identifies both strengths and limitations.</em></p>
+
+          <h3>🧩 Testing Types — Know All Four</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Testing Type</th><th>What is Tested</th><th>Who Runs It</th><th>SDLC Connection</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Unit Testing</strong></td>
+                  <td>Individual functions or methods in isolation</td>
+                  <td>Developer</td>
+                  <td>Happens during Phase 3, alongside coding</td>
+                </tr>
+                <tr>
+                  <td><strong>Integration Testing</strong></td>
+                  <td>How modules interact when combined</td>
+                  <td>Developer / QA</td>
+                  <td>After multiple units are complete (late Phase 3)</td>
+                </tr>
+                <tr>
+                  <td><strong>System Testing</strong></td>
+                  <td>End-to-end functionality against requirements</td>
+                  <td>QA team</td>
+                  <td>When the complete system is assembled (Phase 4)</td>
+                </tr>
+                <tr>
+                  <td><strong>User Acceptance Testing (UAT)</strong></td>
+                  <td>Whether the system meets client expectations</td>
+                  <td>Client / end users</td>
+                  <td>Final stage of Phase 4, before deployment</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>📊 Test Data Categories</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>✅ Normal Data</strong><span>Valid inputs within the expected range. The system should process these correctly and produce the expected output. E.g., age = 25 for a system that accepts ages 18–65.</span></div>
+            <div class="key-term-item"><strong>🔲 Boundary Data</strong><span>Values at the exact edge of valid ranges (minimum, maximum, and just outside). E.g., age = 18, age = 65, age = 17, age = 66. Boundary cases reveal off-by-one errors.</span></div>
+            <div class="key-term-item"><strong>❌ Erroneous / Invalid Data</strong><span>Data that should be rejected by the system. E.g., age = "hello", age = -5, an empty string for a required field. Tests that validation logic works correctly.</span></div>
+          </div>
+
+          <h3>📝 What You Must Demonstrate in This Phase</h3>
+          <div class="stage-timeline">
+            <div class="timeline-item">
+              <h5>Systematic Testing with a Test Table</h5>
+              <p>Document every test case with: Test ID, description, input data, expected result, actual result, and pass/fail status. Use the three data categories above for every input. Assessors expect at least 15–20 test cases for a major project.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Defect Log</h5>
+              <p>Record every defect found during testing: defect ID, description, severity (critical/high/medium/low), steps to reproduce, expected vs actual result, fix applied, and resolution status.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Evaluation Against Requirements</h5>
+              <p>Return to the requirements documented in Phase 1. For each requirement, state whether it was <em>fully met</em>, <em>partially met</em>, or <em>not met</em> — and explain why. This cross-referencing is essential for high-level responses.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Process Evaluation</h5>
+              <p>Evaluate how well the development process worked — did the Gantt chart reflect reality? Were sprint goals met? What would you change in a future project? Demonstrate honest, critical reflection.</p>
+            </div>
+            <div class="timeline-item">
+              <h5>Future Improvements</h5>
+              <p>Identify genuine, technically specific improvements for a future version (v2.0). Vague answers like "I would add more features" are not rewarded. Be specific: "Implement OAuth 2.0 for authentication to replace the current custom session token system."</p>
+            </div>
+          </div>
+
+          <h3>🛠️ Course Tools Used in Phase 4</h3>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>🧪 Python unittest</strong><span>Write automated unit tests using Python's built-in <code>unittest</code> module. Demonstrate that tests run and pass with screenshot evidence. Automated tests are more credible than manual testing alone.</span></div>
+            <div class="key-term-item"><strong>📊 Test Tables</strong><span>A structured table documenting every test case. A NESA-specified tool (Course Spec p. 9). Every major feature must have test cases using normal, boundary, and erroneous data.</span></div>
+            <div class="key-term-item"><strong>🐛 Defect / Bug Logs</strong><span>Track every discovered defect with severity, reproduction steps, and resolution. GitHub Issues, Jira, or a spreadsheet are all acceptable formats. The log demonstrates genuine testing activity.</span></div>
+            <div class="key-term-item"><strong>📋 UAT Feedback Forms</strong><span>Document client/user feedback from acceptance testing sessions. Include the date, tester name, findings, and how feedback was incorporated. Written evidence of UAT is mandatory for the major project.</span></div>
+            <div class="key-term-item"><strong>📈 Gantt Chart (Planned vs Actual)</strong><span>Compare your original schedule against what actually happened. Identify where tasks ran over/under, and explain variance. This comparison is a rich source of process evaluation content.</span></div>
+          </div>
+
+          <div class="callout assessor">
+            <strong>📝 How to Demonstrate Phase 4 Knowledge in an Exam:</strong>
+            When asked to "evaluate" software, go beyond describing what was done. Use a structure: (1) State the criterion (e.g., the requirement), (2) Provide evidence (test results, user feedback), (3) Make a <em>judgement</em> (was it successful?), and (4) Recommend improvements. Evaluation without evidence is description; evaluation with evidence is analysis; evaluation with justified judgements is the standard that earns top marks.
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ════════════════════════════════════════════════════ -->
+        <!--  TOOL MAPPING REFERENCE                             -->
+        <!-- ════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Tools Reference</span>
+          <span class="part-name">🛠️ Tool Mapping by SDLC Phase</span>
+        </div>
+
+        <section id="tools-map">
+          <h2 class="syllabus-phase">🛠️ Course Tools — Mapped to SDLC Phases</h2>
+          <p class="outcome-subtitle">🎯 <em>(Course Spec pp. 8–9 — tools and techniques across the development lifecycle)</em></p>
+          <p class="syllabus-concept">📌 <em>The NESA syllabus specifies a set of tools that students must know how to apply. This section maps each tool to the SDLC phase(s) where it is primarily used, with an example artefact for each.</em></p>
+
+          <div class="tool-stage">
+            <div class="tool-stage-header">
+              <span class="stage-badge" style="background:#6366F1;">Phase 1</span>
+              <h4>🎯 Identifying and Defining</h4>
+            </div>
+            <div class="tool-stage-body">
+              <div class="tool-row">
+                <div class="tool-name">📋 Data Dictionary</div>
+                <div class="tool-detail">Define data fields with name, type, size, range, and validation rules. <em>Example artefact:</em> A table showing field <code>member_id</code> as VARCHAR(8), required, format "S" + 7 digits, auto-generated.</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">🖼️ Storyboards</div>
+                <div class="tool-detail">Hand-drawn or digital sketches of each screen/view in the application. <em>Example artefact:</em> Wireframe of the login screen showing input fields, submit button, and error message location.</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">👥 Use Case Diagrams</div>
+                <div class="tool-detail">UML diagram showing system actors and their interactions with system functions. <em>Example artefact:</em> Use case diagram showing Member, Staff, and Admin actors with their respective use cases (Search Books, Issue Loan, Generate Report).</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">📝 User Stories</div>
+                <div class="tool-detail">Requirement statements in "As a [role], I want [feature] so that [benefit]" format with acceptance criteria. <em>Example artefact:</em> "As a member, I want to search books by title so I can find available items quickly." With 4 measurable acceptance criteria.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-stage">
+            <div class="tool-stage-header">
+              <span class="stage-badge" style="background:#3B82F6;">Phase 2</span>
+              <h4>🔬 Research and Planning</h4>
+            </div>
+            <div class="tool-stage-body">
+              <div class="tool-row">
+                <div class="tool-name">📐 Structure Charts</div>
+                <div class="tool-detail">Hierarchical decomposition of the system into modules showing data passing between levels. <em>Example artefact:</em> Top-level [Main] decomposed into [Authentication], [Catalogue], [Loans], [Reports] with sub-modules under each.</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">💬 Pseudocode</div>
+                <div class="tool-detail">Language-independent algorithm description using keywords BEGIN/END, IF/THEN/ELSE, FOR/WHILE, INPUT/OUTPUT. <em>Example artefact:</em> Pseudocode for a binary search algorithm across the book catalogue, 10–15 lines.</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">🔀 Flowcharts</div>
+                <div class="tool-detail">Visual algorithm using standard symbols: oval (start/end), rectangle (process), diamond (decision), parallelogram (I/O). <em>Example artefact:</em> Flowchart of the login validation process including the two-factor auth branch.</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">🧩 Class Diagrams (UML)</div>
+                <div class="tool-detail">Show classes with attributes (+/-/#), methods, and relationships (inheritance ▷, association ─, composition ◆). <em>Example artefact:</em> Class diagram showing <code>User ◁ Member</code> and <code>User ◁ Staff</code> inheritance with shared and unique attributes.</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">🗃️ ERD (Entity Relationship Diagram)</div>
+                <div class="tool-detail">Database schema showing tables, primary keys (PK), foreign keys (FK), and cardinality. <em>Example artefact:</em> ERD showing Member (PK: member_id) one-to-many Loans (FK: member_id) many-to-one Book (PK: book_id).</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">🔄 Data Flow Diagrams</div>
+                <div class="tool-detail">Show how data flows between external entities, processes, and data stores using Gane-Sarson or Yourdon notation. Level 0 (context) and Level 1 DFDs required. <em>Example artefact:</em> Level 1 DFD showing the Loan Management process decomposed into sub-processes.</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">📅 Gantt Chart</div>
+                <div class="tool-detail">Project schedule showing tasks, durations, dependencies, and milestones on a timeline. <em>Example artefact:</em> 10-week chart with tasks grouped by SDLC phase, including milestones for design review, code freeze, and UAT.</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">📋 Test Plan</div>
+                <div class="tool-detail">Document defining the testing scope, types, test cases (before coding), schedule, and entry/exit criteria. <em>Example artefact:</em> Test plan with 20 test cases derived from user stories, categorised by type (unit/integration/UAT).</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-stage">
+            <div class="tool-stage-header">
+              <span class="stage-badge" style="background:#10B981;">Phase 3</span>
+              <h4>💻 Producing and Implementing</h4>
+            </div>
+            <div class="tool-stage-body">
+              <div class="tool-row">
+                <div class="tool-name">🐍 Source Code</div>
+                <div class="tool-detail">Implementation in Python (or web stack) following PEP 8, with docstrings, modular structure, and input validation. <em>Example artefact:</em> <code>book_service.py</code> with class <code>BookService</code>, docstrings, and parameterised SQL queries.</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">🔀 Git Version Control</div>
+                <div class="tool-detail">Atomic commits with descriptive messages, feature branches, and a main branch protected by pull requests. <em>Example artefact:</em> Git log showing 40+ commits across development with messages like "feat: add book search by ISBN" and "fix: resolve off-by-one in loan due date".</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">🗄️ SQL Implementation</div>
+                <div class="tool-detail">Parameterised queries to prevent SQL injection, transactions for data integrity, and views for complex reporting queries. <em>Example artefact:</em> <code>CREATE TABLE members</code> with constraints, and a parameterised <code>SELECT</code> with JOIN for the loan report.</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">📝 Inline Documentation</div>
+                <div class="tool-detail">Docstrings for all public functions/classes, inline comments for complex logic, and a README with setup instructions. <em>Example artefact:</em> Google-style docstrings on every function with Args, Returns, and Raises documented.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tool-stage">
+            <div class="tool-stage-header">
+              <span class="stage-badge" style="background:#F59E0B;">Phase 4</span>
+              <h4>🧪 Testing and Evaluating</h4>
+            </div>
+            <div class="tool-stage-body">
+              <div class="tool-row">
+                <div class="tool-name">📊 Test Tables</div>
+                <div class="tool-detail">Document every test with ID, description, type (unit/integration/system/UAT), data category, input, expected, actual, and pass/fail. <em>Example artefact:</em> 20-row table covering all 8 user stories with 3 data categories each.</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">🧪 Python unittest</div>
+                <div class="tool-detail">Automated test cases using <code>unittest.TestCase</code> subclasses. <em>Example artefact:</em> <code>test_book_service.py</code> with 10 test methods covering add, search, delete, and edge cases, run with <code>python -m unittest discover</code>.</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">🐛 Defect Log</div>
+                <div class="tool-detail">Track bugs with ID, description, severity, steps to reproduce, fix, and status. <em>Example artefact:</em> 8-row log showing defects discovered during UAT, their severities (1 critical, 3 high, 4 medium), and all resolved before submission.</div>
+              </div>
+              <div class="tool-row">
+                <div class="tool-name">📋 UAT Feedback Forms</div>
+                <div class="tool-detail">Structured feedback collected from real or simulated clients during acceptance testing. <em>Example artefact:</em> Signed form from the teacher-acting-as-client noting 3 change requests, with change request log showing how each was addressed.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ════════════════════════════════════════════════════ -->
+        <!--  CASE STUDIES — SUCCESS                              -->
+        <!-- ════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Real-World Examples</span>
+          <span class="part-name">✅ Effective SDLC in Famous Software</span>
+        </div>
+
+        <section id="case-success">
+          <h2 class="syllabus-phase">✅ Where the SDLC Was Done Well</h2>
+          <p class="syllabus-concept">📌 <em>These real-world examples show the SDLC applied effectively. For each case, identify which phase made the difference and what lesson applies to the HSC course.</em></p>
+
+          <!-- Spotify -->
+          <div class="case-study success">
+            <div class="case-study-header">
+              <span class="case-verdict">✅ Effective</span>
+              <div>
+                <h4>Spotify — Continuous Agile Delivery</h4>
+                <div class="case-company">Streaming Platform · Founded 2006 · 600M+ users</div>
+              </div>
+            </div>
+            <div class="case-study-body">
+              <div class="case-phase-row">
+                <div class="case-phase-label">🎯 Phase 1</div>
+                <div class="case-phase-detail">Spotify identified a clear, bounded problem: illegal music piracy was rampant because legal alternatives were too expensive and inconvenient. Their requirements were built around eliminating friction for users, not replicating iTunes. The problem statement was sharp.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">🔬 Phase 2</div>
+                <div class="case-phase-detail">Spotify developed the "Squad Model" — an architectural plan for how independent squads (8–12 people) would own distinct product areas. This design decision allowed each squad to move independently through the SDLC simultaneously. Architecture was explicitly designed for parallelism.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">💻 Phase 3</div>
+                <div class="case-phase-detail">Squads used two-week sprints with continuous integration (CI). Every commit to main triggered automated tests and a build. Feature flags allowed incomplete features to be deployed to production but hidden from users — enabling real testing in production conditions.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">🧪 Phase 4</div>
+                <div class="case-phase-detail">Spotify used A/B testing to evaluate features with real users before full rollout. Data-driven evaluation replaced subjective opinion. The Discover Weekly feature (2015) was only rolled out globally after A/B tests showed a 25% increase in listening time.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">📚 HSC Lesson</div>
+                <div class="case-phase-detail"><strong>Methodology justification matters.</strong> Spotify chose full Agile because requirements evolved rapidly (new streaming rights, new device types), client feedback was immediate (user data), and the team was large and self-managing. Apply this reasoning to justify your own methodology choice in the project.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- NASA Mars Rover -->
+          <div class="case-study success">
+            <div class="case-study-header">
+              <span class="case-verdict">✅ Effective</span>
+              <div>
+                <h4>NASA Mars Rover (Perseverance) — WAGILE for Safety-Critical Systems</h4>
+                <div class="case-company">NASA JPL · Launched 2020 · $2.7B USD</div>
+              </div>
+            </div>
+            <div class="case-study-body">
+              <div class="case-phase-row">
+                <div class="case-phase-label">🎯 Phase 1</div>
+                <div class="case-phase-detail">Requirements were exhaustively defined before any design began. Every requirement had a priority level, rationale, source, and verification method. Non-functional requirements (reliability: must operate autonomously for 1 Martian year; safety: must not damage sample collection equipment) were documented as rigorously as functional requirements.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">🔬 Phase 2</div>
+                <div class="case-phase-detail">JPL used formal design reviews (PDR — Preliminary Design Review, CDR — Critical Design Review) with independent review boards before proceeding to implementation. Structure charts and formal specifications were produced for every subsystem. Security architecture was a first-class concern in the design phase.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">💻 Phase 3</div>
+                <div class="case-phase-detail">Code was written in C and C++ with strict adherence to NASA's coding standard (NPR 7150.2). Every function had a maximum of 60 lines. No dynamic memory allocation after initialisation. These constraints were enforced by automated tools. Modular design allowed each subsystem team to work independently.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">🧪 Phase 4</div>
+                <div class="case-phase-detail">JPL conducted over 10,000 unit tests with 100% code coverage on safety-critical paths. They ran the full mission simulation in a dedicated "testbed" rover on Earth before launch. Every defect was logged, root-caused, and fixed before certification. UAT was simulated with mission operators in a Mars-environment test lab.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">📚 HSC Lesson</div>
+                <div class="case-phase-detail"><strong>Non-functional requirements deserve equal weight.</strong> Reliability, safety, and performance were treated with the same rigour as functional features. In HSC projects, many students only test <em>what</em> the software does, not <em>how well</em> it does it. Test non-functional requirements explicitly.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- GitHub Copilot -->
+          <div class="case-study success">
+            <div class="case-study-header">
+              <span class="case-verdict">✅ Effective</span>
+              <div>
+                <h4>GitHub Copilot — Iterative Research-Driven Development</h4>
+                <div class="case-company">GitHub / Microsoft · Launched 2021</div>
+              </div>
+            </div>
+            <div class="case-study-body">
+              <div class="case-phase-row">
+                <div class="case-phase-label">🎯 Phase 1</div>
+                <div class="case-phase-detail">The identified problem was developer productivity: developers spent significant time writing boilerplate code. The team validated this with developer surveys and analysis of code search patterns on GitHub's existing platform.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">🔬 Phase 2</div>
+                <div class="case-phase-detail">The team spent significant time in the research phase exploring model architectures (Codex, a variant of GPT-3) before committing to an implementation. Technical feasibility was assessed via prototype. Security architecture had to address the risk of the model reproducing copyrighted code — a non-functional security requirement addressed in the design phase.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">🧪 Phase 4</div>
+                <div class="case-phase-detail">Copilot was released as a technical preview with a limited user base (Phase 4 as UAT at scale). Evaluation was data-driven: GitHub measured task completion time, suggestion acceptance rates, and code quality metrics. The iteration loop from evaluation back to Phase 3 (model fine-tuning) happened continuously.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">📚 HSC Lesson</div>
+                <div class="case-phase-detail"><strong>Research is a genuine phase, not a checkbox.</strong> The Copilot team's willingness to invest in research before committing to an implementation direction prevented expensive wrong-turns. In HSC terms: don't jump from a vague problem statement straight to coding. Research existing solutions, evaluate alternatives, and justify your design decisions.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ════════════════════════════════════════════════════ -->
+        <!--  CASE STUDIES — FAILURE                              -->
+        <!-- ════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Real-World Examples</span>
+          <span class="part-name">❌ Ineffective SDLC in Famous Software</span>
+        </div>
+
+        <section id="case-failure">
+          <h2 class="syllabus-phase">❌ Where the SDLC Went Wrong</h2>
+          <p class="syllabus-concept">📌 <em>These cautionary cases show what happens when phases of the SDLC are skipped, rushed, or ignored. Each example maps to specific syllabus concepts and offers a direct lesson for HSC students.</em></p>
+
+          <!-- Healthcare.gov -->
+          <div class="case-study failure">
+            <div class="case-study-header">
+              <span class="case-verdict">❌ Ineffective</span>
+              <div>
+                <h4>Healthcare.gov — Phase 1 &amp; 4 Failures</h4>
+                <div class="case-company">US Government · Launched October 2013 · $600M+ USD</div>
+              </div>
+            </div>
+            <div class="case-study-body">
+              <div class="case-phase-row">
+                <div class="case-phase-label">What went wrong</div>
+                <div class="case-phase-detail">The US Affordable Care Act website launched nationally on October 1, 2013 and immediately crashed. Within the first day, only 6 people out of 4.7 million visitors successfully enrolled. The site was offline or severely degraded for over two months.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">🎯 Phase 1 Failure</div>
+                <div class="case-phase-detail">Requirements were poorly defined and changed repeatedly as legislation was still being drafted. Non-functional requirements for load capacity were not specified — the system was never designed to handle millions of simultaneous users. The scope was never frozen.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">🧪 Phase 4 Failure</div>
+                <div class="case-phase-detail">End-to-end system testing was only conducted in the final two weeks before launch. Load testing was inadequate — the system was tested with hundreds of simulated users when it needed to handle millions. UAT was effectively skipped. Senior officials were told the system was ready based on unit tests that passed, without integration or system testing.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">📚 HSC Lesson</div>
+                <div class="case-phase-detail"><strong>Testing types are not interchangeable.</strong> Unit tests passing does not mean the system works. You must test integration and system behaviour explicitly. In your major project, document <em>all four</em> testing types — assessors know the difference and will check whether you demonstrated each one.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Boeing 737 MAX -->
+          <div class="case-study failure">
+            <div class="case-study-header">
+              <span class="case-verdict">❌ Ineffective</span>
+              <div>
+                <h4>Boeing 737 MAX MCAS — Design and Testing Phase Catastrophe</h4>
+                <div class="case-company">Boeing · 346 fatalities in two crashes · 2018–2019</div>
+              </div>
+            </div>
+            <div class="case-study-body">
+              <div class="case-phase-row">
+                <div class="case-phase-label">What went wrong</div>
+                <div class="case-phase-detail">The Maneuvering Characteristics Augmentation System (MCAS) — software that automatically pushed the nose of the aircraft down — was implicated in two fatal crashes (Lion Air 610 and Ethiopian Airlines 302). 346 people died. The entire 737 MAX fleet was grounded for 20 months.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">🔬 Phase 2 Failure</div>
+                <div class="case-phase-detail">The MCAS system was expanded in capability late in the design process without a corresponding review of safety requirements. Engineers relied on a single angle-of-attack sensor (a single point of failure) without a design review that would have caught this architectural flaw. The security/safety architecture was not revisited when the scope of MCAS changed.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">🧪 Phase 4 Failure</div>
+                <div class="case-phase-detail">Testing did not simulate the failure mode where the single sensor sent erroneous data. The FAA's own certification process accepted Boeing's safety analysis without independently verifying it. There was no test case for "what if the only angle-of-attack sensor fails?" — a boundary/erroneous data case that was never tested.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">📚 HSC Lesson</div>
+                <div class="case-phase-detail"><strong>Erroneous data testing is not optional.</strong> Your test plan must include cases where inputs are wrong, missing, or malformed. Single points of failure must be identified in the design phase (Phase 2) and tested explicitly in Phase 4. When you change the scope of a feature mid-development, go back to Phase 2 and review the design impact before continuing to Phase 3.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Therac-25 -->
+          <div class="case-study failure">
+            <div class="case-study-header">
+              <span class="case-verdict">❌ Ineffective</span>
+              <div>
+                <h4>Therac-25 — Software Defects with Fatal Consequences</h4>
+                <div class="case-company">Atomic Energy of Canada Limited · 6 radiation overdose incidents · 1985–1987</div>
+              </div>
+            </div>
+            <div class="case-study-body">
+              <div class="case-phase-row">
+                <div class="case-phase-label">What went wrong</div>
+                <div class="case-phase-detail">The Therac-25 was a computer-controlled radiation therapy machine. A race condition in its software could cause the machine to deliver radiation doses up to 100 times the intended amount, resulting in radiation burns, paralysis, and death for at least six patients.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">💻 Phase 3 Failure</div>
+                <div class="case-phase-detail">Earlier hardware safety interlocks had been removed and replaced with software-only controls when the new software version was written. A race condition — where operator inputs and machine state collided in a specific timing window — was never detected because the defect only occurred when an operator typed quickly at a specific speed. The defect was in the code but also in the assumptions about operator behaviour (requirements).</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">🧪 Phase 4 Failure</div>
+                <div class="case-phase-detail">Testing was insufficient and relied on the same operator behaviour patterns as normal use. The specific sequence of rapid keystrokes that triggered the race condition was never included in the test plan. Patient reports of overdoses were dismissed as machine errors for over a year before the software root cause was identified.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">📚 HSC Lesson</div>
+                <div class="case-phase-detail"><strong>Software in safety-critical contexts requires defence in depth.</strong> Never rely on software as the <em>only</em> safeguard. This maps to the concept of redundancy in security architecture. In software terms: implement multiple layers of validation (client-side AND server-side). Always test edge cases systematically, not just the "happy path" — the defect that kills is always in the untested edge case.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Twitter/X rewrite -->
+          <div class="case-study failure">
+            <div class="case-study-header">
+              <span class="case-verdict">❌ Ineffective</span>
+              <div>
+                <h4>Twitter/X — Rushed Production Releases Without Testing</h4>
+                <div class="case-company">Twitter/X · 2022–2023 · Post-acquisition period</div>
+              </div>
+            </div>
+            <div class="case-study-body">
+              <div class="case-phase-row">
+                <div class="case-phase-label">What went wrong</div>
+                <div class="case-phase-detail">Following the 2022 acquisition, Twitter's new management rapidly pushed features into production (Twitter Blue verification, API changes, UI modifications) without adequate testing cycles. Several features were rolled back within hours of launch due to widespread bugs. The platform experienced multiple outages that would not have occurred with proper Phase 4 validation.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">🔬 Phase 2 Failure</div>
+                <div class="case-phase-detail">New feature designs were not reviewed against existing system architecture. Twitter Blue verification (the blue tick) was released without designing for abuse prevention — within hours, impersonators had purchased verification for brands including major companies and politicians, causing significant reputational and financial damage (Eli Lilly's insulin pricing tweet caused a $15B stock drop).</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">🧪 Phase 4 Failure</div>
+                <div class="case-phase-detail">Features were pushed to all users simultaneously without incremental rollout (A/B testing or staged deployment). There was no UAT phase with representative user groups before full launch. Feedback from engineers warning about testing gaps was reportedly dismissed.</div>
+              </div>
+              <div class="case-phase-row">
+                <div class="case-phase-label">📚 HSC Lesson</div>
+                <div class="case-phase-detail"><strong>Speed and quality are a trade-off that must be managed, not ignored.</strong> Skipping Phase 4 to ship faster creates technical debt and real-world harm. In HSC terms: rushing your testing to finish the project is the most common student mistake. A well-tested project with fewer features is always preferable to an untested project with many features.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ════════════════════════════════════════════════════ -->
+        <!--  HSC ASSESSMENT GUIDANCE                             -->
+        <!-- ════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Assessment Guidance</span>
+          <span class="part-name">📝 HSC Exam and Project Tips</span>
+        </div>
+
+        <section id="hsc-guidance">
+          <h2 class="syllabus-phase">📝 HSC Assessment Guidance for the SDLC</h2>
+          <p class="outcome-subtitle">🎯 <em>(All outcomes — knowing what assessors look for in each phase)</em></p>
+
+          <h3>🎯 Responding to SDLC Questions in the Written Exam</h3>
+          <p>NESA uses specific command verbs that indicate the depth of response required. Understanding these in the context of the SDLC is essential:</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Command Verb</th><th>What It Means for SDLC Questions</th><th>Example Question</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Identify</strong></td>
+                  <td>Name a phase, tool, or concept. One word or short phrase. No explanation required.</td>
+                  <td>"Identify <strong>one</strong> tool used in the Research and Planning phase."</td>
+                </tr>
+                <tr>
+                  <td><strong>Describe</strong></td>
+                  <td>Name and explain the characteristics of something. 2–4 sentences.</td>
+                  <td>"Describe the purpose of a Data Flow Diagram in the SDLC."</td>
+                </tr>
+                <tr>
+                  <td><strong>Explain</strong></td>
+                  <td>Give reasons for why something is done. Show cause-effect relationships.</td>
+                  <td>"Explain why requirements are gathered before design begins."</td>
+                </tr>
+                <tr>
+                  <td><strong>Justify</strong></td>
+                  <td>Give reasons <em>and</em> evidence for a choice. Connect to the specific scenario.</td>
+                  <td>"Justify the use of WAGILE methodology for the scenario described."</td>
+                </tr>
+                <tr>
+                  <td><strong>Evaluate</strong></td>
+                  <td>Assess against criteria, weigh strengths and limitations, and reach a reasoned judgement.</td>
+                  <td>"Evaluate the effectiveness of the testing strategy used in the case study."</td>
+                </tr>
+                <tr>
+                  <td><strong>Propose / Design</strong></td>
+                  <td>Create a solution — draw a diagram, write pseudocode, or outline a plan for the given scenario.</td>
+                  <td>"Design a test plan for the system described, including three test cases."</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>📋 The Major Project — SDLC Documentation Checklist</h3>
+          <p>For the Software Engineering Project, assessors mark your project portfolio against the SDLC. Use this checklist to ensure every phase is evidenced:</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Phase</th><th>Required Evidence</th><th>Common Mistake</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Phase 1</strong></td>
+                  <td>Problem statement, feasibility analysis, requirements table (functional + non-functional), user stories with acceptance criteria, data dictionary draft, scope statement</td>
+                  <td>Listing only functional requirements; skipping non-functional requirements entirely</td>
+                </tr>
+                <tr>
+                  <td><strong>Phase 2</strong></td>
+                  <td>Structure chart, pseudocode for key algorithms, class diagram (UML), ERD, DFDs (Level 0 and Level 1), Gantt chart, test plan, security threat model</td>
+                  <td>Going straight from requirements to coding; producing design documents <em>after</em> coding ("reverse engineering" the docs)</td>
+                </tr>
+                <tr>
+                  <td><strong>Phase 3</strong></td>
+                  <td>Source code (modular, PEP 8), Git commit history, annotated code excerpts, inline documentation, implementation mapping to structure chart</td>
+                  <td>Submitting monolithic code without demonstrating modular design; no version control history</td>
+                </tr>
+                <tr>
+                  <td><strong>Phase 4</strong></td>
+                  <td>Test table (20+ cases, all three data categories), automated unit test output, defect log, UAT feedback form, requirements evaluation table, process evaluation, future improvements</td>
+                  <td>Testing only happy-path (normal data); no boundary or erroneous test cases; evaluation that only lists what was done rather than judging how well it was done</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout warning">
+            <strong>⚠️ The Biggest Mistake in SDLC Responses:</strong> Treating the SDLC as a list of phases to tick off rather than as a <em>system of thinking</em>. Assessors are looking for evidence that you understand <em>why</em> each phase exists, how phases depend on each other, and how your decisions in one phase affected the next. Connect your phases explicitly: "The non-functional requirement for sub-2-second search response (Phase 1) informed the indexed database design (Phase 2) and was verified by boundary test case TC-14 (Phase 4)."
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <!-- ════════════════════════════════════════════════════ -->
+        <!--  CURRICULUM LINKS                                    -->
+        <!-- ════════════════════════════════════════════════════ -->
+        <section id="curriculum-links">
+          <h2 class="syllabus-phase">📚 Syllabus Outcome Cross-Reference</h2>
+          <p class="syllabus-concept">📌 <em>Every SDLC concept on this page is explicitly required by the NESA NSW HSC Software Engineering syllabus. This table maps each outcome to the phases and topics covered above.</em></p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Outcome</th><th>Description</th><th>SDLC Phase(s)</th><th>Where Covered on This Page</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>SE-11-01</strong></td>
+                  <td>Applies the software development cycle to the development of software solutions</td>
+                  <td>All phases</td>
+                  <td>What is the SDLC? · Entire page</td>
+                </tr>
+                <tr>
+                  <td><strong>SE-12-01</strong></td>
+                  <td>Identifies, defines, and analyses the requirements and constraints of a software engineering problem</td>
+                  <td>Phase 1</td>
+                  <td>Phase 1 — Identifying and Defining · Tool Mapping Phase 1</td>
+                </tr>
+                <tr>
+                  <td><strong>SE-12-02</strong></td>
+                  <td>Research, plan, design, and evaluate approaches to programming and project management</td>
+                  <td>Phase 2</td>
+                  <td>Phase 2 — Research and Planning · Agile vs WAGILE · Tool Mapping Phase 2</td>
+                </tr>
+                <tr>
+                  <td><strong>SE-12-03</strong></td>
+                  <td>Uses appropriate tools, techniques, and strategies to manage complexity</td>
+                  <td>Phase 2 &amp; 3</td>
+                  <td>Phase 2 (structure charts, DFDs) · Phase 3 (modular coding, version control)</td>
+                </tr>
+                <tr>
+                  <td><strong>SE-12-04</strong></td>
+                  <td>Uses and applies secure software development practices</td>
+                  <td>Phase 2 &amp; 3</td>
+                  <td>Phase 2 (threat modelling, security architecture) · Phase 3 (input validation, SQL parameterisation)</td>
+                </tr>
+                <tr>
+                  <td><strong>SE-12-05</strong></td>
+                  <td>Implements software solutions using object-oriented, event-driven, and structured programming paradigms</td>
+                  <td>Phase 3</td>
+                  <td>Phase 3 — Producing and Implementing · Tool Mapping Phase 3</td>
+                </tr>
+                <tr>
+                  <td><strong>SE-12-06</strong></td>
+                  <td>Selects and uses appropriate tools and techniques to develop, document, and implement software solutions</td>
+                  <td>All phases</td>
+                  <td>Tool Mapping Reference (all four phase sections)</td>
+                </tr>
+                <tr>
+                  <td><strong>SE-12-07</strong></td>
+                  <td>Communicates and collaborates using appropriate conventions, tools, and strategies</td>
+                  <td>Phase 2 &amp; 3</td>
+                  <td>Phase 2 (Gantt charts, communication planning) · Phase 3 (version control, documentation)</td>
+                </tr>
+                <tr>
+                  <td><strong>SE-12-08</strong></td>
+                  <td>Applies systematic testing and debugging practices</td>
+                  <td>Phase 4</td>
+                  <td>Phase 4 — Testing and Evaluating · Tool Mapping Phase 4 · Case Studies</td>
+                </tr>
+                <tr>
+                  <td><strong>SE-12-09</strong></td>
+                  <td>Evaluates the effectiveness of software solutions and development strategies</td>
+                  <td>Phase 4</td>
+                  <td>Phase 4 (requirements evaluation) · Case Studies (effective and ineffective SDLC) · HSC Assessment Guidance</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout tip">
+            <strong>Using This Page in Your Study:</strong>
+            <ul>
+              <li><strong>For the Written Exam:</strong> Use the command verb table to match your response depth to the question. Use the case studies as evidence when asked to "evaluate" or "justify."</li>
+              <li><strong>For the Major Project:</strong> Use the documentation checklist in the HSC Assessment Guidance section to verify you have produced the required artefacts for every phase.</li>
+              <li><strong>For Cross-Topic Study:</strong> Return to the course topic table (What is the SDLC? section) to identify which SDLC phase is central to the topic you are currently studying.</li>
+            </ul>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo">💻</div>
+          <span class="footer-name">SoftEng Notes</span>
+        </div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
+      </div>
+      <div class="footer-col">
+        <h4>🔐 Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">Engineering Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>📈 Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>🛡️ Navigate</h4>
+        <a href="../index.html">← Back to Home</a>
+        <a href="course-tools.html">🛠️ Course Tools</a>
+        <a href="software-engineering-project.html">📋 Major Project →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 HSC SoftEng Notes · SDLC Guide · Australian English Standards</span>
+    </div>
+  </footer>
+
+  <script src="../js/main.js?v=7"></script>
+
+  <div class="lightbox-modal" id="diagram-lightbox" role="dialog" aria-labelledby="lightbox-title" aria-hidden="true">
+    <div class="lightbox-overlay"></div>
+    <div class="lightbox-container">
+      <div class="lightbox-header">
+        <h2 id="lightbox-title" class="lightbox-title">Diagram View</h2>
+        <button class="lightbox-close" aria-label="Close diagram view">✕</button>
+      </div>
+      <div class="lightbox-canvas">
+        <div class="lightbox-content" id="lightbox-content"></div>
+      </div>
+      <div class="lightbox-controls">
+        <button class="lightbox-btn" id="zoom-out" aria-label="Zoom out">−</button>
+        <span class="lightbox-zoom-level" id="zoom-level">100%</span>
+        <button class="lightbox-btn" id="zoom-in" aria-label="Zoom in">+</button>
+        <button class="lightbox-btn" id="reset-view" aria-label="Reset view">⟲</button>
+      </div>
+      <div class="lightbox-info">
+        <p>Scroll to zoom · Drag to pan · <kbd>Esc</kbd> to close</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

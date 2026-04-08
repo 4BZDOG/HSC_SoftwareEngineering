@@ -4,10 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Programming for the Web | HSC Software Engineering</title>
-  <meta name="description" content="Complete HSC Software Engineering notes on Programming for the Web — all NESA syllabus items covered including data transmission, protocols, security, front-end, back-end, SQL, PWAs, and collaborative development." />
+  <!-- ── SEO ── -->
+  <link rel="canonical" href="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/programming-for-the-web.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Programming for the Web | HSC Software Engineering" />
+  <meta property="og:description" content="HSC Programming for the Web notes — HTML, CSS, JavaScript, REST APIs, SQL, HTTP protocols, security, PWAs, and collaborative development. Year 12 NESA NSW." />
+  <meta property="og:url" content="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/programming-for-the-web.html" />
+  <meta property="og:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <meta property="og:image:alt" content="HSC Software Engineering Notes — NESA NSW" />
+  <meta property="og:site_name" content="HSC Software Engineering Notes" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Programming for the Web | HSC Software Engineering" />
+  <meta name="twitter:description" content="HSC Programming for the Web notes — HTML, CSS, JavaScript, REST APIs, SQL, HTTP protocols, security, PWAs, and collaborative development. Year 12 NESA NSW." />
+  <meta name="twitter:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Year 12",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Programming for the Web",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/topics/programming-for-the-web.html"
+    }
+    ]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+  <meta name="theme-color" content="#6366F1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta name="description" content="HSC Programming for the Web notes — HTML, CSS, JavaScript, REST APIs, SQL, HTTP protocols, security, PWAs, and collaborative development. Year 12 NESA NSW." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=6" />
+  <link rel="stylesheet" href="../css/styles.css?v=7" />
 </head>
 <body>
 
@@ -23,7 +67,17 @@
 
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="course-tools.html">🛠️ Course Tools <span class="badge badge-all">Specs</span></a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            🗂️ Resources
+            <span class="badge badge-all">Guides</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
+            <a href="sdlc.html" role="menuitem">🔄 SDLC Guide</a>
+          </div>
+        </li>
         <li class="nav-dropdown nav-dropdown-y12">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
             Year 12
@@ -63,7 +117,8 @@
   <div class="mobile-menu" id="mobile-menu">
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Resources</div>
-      <a href="course-tools.html">🛠️ Course Tools & Specifications</a>
+      <a href="course-tools.html">🛠️ Course Tools &amp; Specifications</a>
+      <a href="sdlc.html">🔄 SDLC Guide</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 12</div>
@@ -104,13 +159,13 @@
     <aside class="sidebar">
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Part 1 — Data Transmission</li>
+        <li class="sidebar-label">Part 1 — Data Transmission</li>
         <li><a href="#web-apps">📱 1. Web App Applications</a></li>
         <li><a href="#data-transfer">📦 2. Data Transfer</a></li>
         <li><a href="#protocols">🔌 3. Protocols &amp; Ports</a></li>
         <li><a href="#securing-web">🔐 4. Securing the Web</a></li>
         <li><a href="#big-data">📊 5. Big Data</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 2 — Designing Web Apps</li>
+        <li class="sidebar-label">Part 2 — Designing Web Apps</li>
         <li><a href="#w3c">🌍 6. W3C Standards</a></li>
         <li><a href="#system-model">🏗️ 7. Web Dev System</a></li>
         <li><a href="#browser-devtools">🖥️ 8. Browser &amp; Dev Tools</a></li>
@@ -150,13 +205,13 @@
           <p class="outcome-subtitle">🎯 <em>(SE-12-03)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Explore</strong> the applications of web programming across a variety of modern contexts.</em></p>
 
-          <h3>Interactive Websites and Webpages</h3>
+          <h3>🖱️ Interactive Websites and Webpages</h3>
           <p>Interactive websites use client-side JavaScript to respond to user actions in real time — without requiring a full page reload. The <strong>Document Object Model (DOM)</strong> is the programming interface that allows JavaScript to read and manipulate the structure, style, and content of a live HTML page. Examples include form validation, dropdown navigation, image carousels, and live search filtering. Modern Single Page Applications (SPAs) such as those built with React or Vue extend this further, dynamically rendering entire pages client-side.</p>
 
-          <h3>E-Commerce</h3>
+          <h3>🛒 E-Commerce</h3>
           <p>E-commerce platforms use web programming to support the entire buying lifecycle: product browsing, shopping cart management, payment processing, and order tracking. Key technical requirements include <strong>secure HTTPS connections</strong> (to protect payment data), <strong>session management</strong> (to maintain cart state across pages), <strong>database integration</strong> (to query product catalogues and stock levels), and integration with <strong>payment gateway APIs</strong> (such as Stripe or PayPal). Examples include Amazon, eBay, and Shopify-powered stores.</p>
 
-          <h3>Progressive Web Apps (PWAs)</h3>
+          <h3>📱 Progressive Web Apps (PWAs)</h3>
           <p>PWAs are web applications built with standard web technologies (HTML, CSS, JavaScript) that offer a native-app-like experience. They are installable on the user's home screen, can work <strong>offline</strong> via service workers, and receive push notifications. Examples include Twitter Lite, Google Maps, and Starbucks. PWAs are significant because they eliminate the need for a separate iOS/Android codebase while still appearing as a native application to the end-user.</p>
         </section>
 
@@ -168,13 +223,13 @@
           <p class="outcome-subtitle">🎯 <em>(SE-12-03)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate and practise</strong> how data is transferred across the internet.</em></p>
 
-          <h3>Data Packets</h3>
+          <h3>📦 Data Packets</h3>
           <p>When data is sent over the internet, it is broken into small, manageable units called <strong>data packets</strong>. Each packet contains a <strong>header</strong> (source IP, destination IP, sequence number, protocol type) and a <strong>payload</strong> (the actual data fragment). Packets from the same transmission may take different routes through the network and are reassembled in the correct order at the destination. This packet-switching model means the failure of one route does not disrupt the overall transmission — other paths are used instead.</p>
 
-          <h3>IP Addresses and IPv4</h3>
+          <h3>🌐 IP Addresses and IPv4</h3>
           <p>Every device on a network is assigned an <strong>Internet Protocol (IP) address</strong> — a unique numerical label used to identify it for communication purposes. <strong>IPv4</strong> (Internet Protocol version 4) addresses are 32-bit numbers expressed in dotted-decimal notation, divided into four octets (e.g., <code>192.168.1.1</code>). IPv4 supports approximately 4.3 billion unique addresses. Due to address exhaustion, <strong>Network Address Translation (NAT)</strong> is used so that multiple devices on a private network can share a single public IP address. <strong>IPv6</strong> was introduced to address this limitation using 128-bit addresses.</p>
 
-          <h3>Domain Name System (DNS)</h3>
+          <h3>🔍 Domain Name System (DNS)</h3>
           <p>The <strong>Domain Name System (DNS)</strong> translates human-readable domain names (e.g., <code>www.google.com</code>) into machine-readable IP addresses (e.g., <code>142.250.70.142</code>). When a user types a URL, the browser queries a <strong>DNS resolver</strong> (usually provided by their ISP), which traverses a hierarchy of DNS servers (Root → TLD → Authoritative) to resolve the domain. The resolved IP address is then cached locally (for a duration defined by TTL — Time To Live) to speed up future requests.</p>
 
           <div class="callout info">
@@ -553,13 +608,13 @@
             </p>
           </div>
 
-          <h3>Client-Side (Front-End) Web Programming</h3>
+          <h3>🎨 Client-Side (Front-End) Web Programming</h3>
           <p>The <strong>client side</strong> refers to all code that executes within the user's web browser. Front-end code consists of three complementary technologies: <strong>HTML</strong> (structure and content), <strong>CSS</strong> (visual presentation and layout), and <strong>JavaScript</strong> (interactivity and dynamic behaviour). The browser downloads these files from the server, parses them, and renders the visual page. Client-side code is visible to the user (via browser dev tools) and should never contain sensitive data such as API keys or database credentials.</p>
 
-          <h3>Server-Side (Back-End) Web Programming</h3>
+          <h3>🖥️ Server-Side (Back-End) Web Programming</h3>
           <p>The <strong>server side</strong> refers to code that executes on the web server — invisible to the client. The server receives <strong>HTTP</strong> requests, applies business logic (<strong>authentication</strong>, data processing, calculations), queries the database, and returns a response (HTML page or JSON data). Common back-end languages include Python (Django, Flask), JavaScript (Node.js/Express), Ruby (Rails), and PHP. The server environment is protected from end-users and may contain sensitive configuration, credentials, and proprietary <strong>algorithms</strong>.</p>
 
-          <h3>Databases — SQL and Non-SQL</h3>
+          <h3>💾 Databases — SQL and Non-SQL</h3>
           <div class="info-grid">
             <div class="info-card">
               <h4>🗄️ SQL (Relational) Databases</h4>
@@ -580,10 +635,10 @@
           <p class="outcome-subtitle">🎯 <em>(SE-12-03, SE-12-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Explore and explain</strong> how the web browser influences web development decisions, and how developer tools support the build and debug process.</em></p>
 
-          <h3>Browser Rendering Engines</h3>
+          <h3>⚙️ Browser Rendering Engines</h3>
           <p>Different browsers use different <strong>rendering engines</strong> to parse HTML/CSS and render the visual page: <strong>Blink</strong> (Chrome, Edge, Opera), <strong>WebKit</strong> (Safari), and <strong>Gecko</strong> (Firefox). Differences in engine implementations can cause the same CSS to render slightly differently across browsers — a core challenge of front-end development known as <strong>cross-browser compatibility</strong>. Developers use tools like <strong>Can I Use</strong> (caniuse.com) to check which CSS/JavaScript features are supported across browser versions before using them in production.</p>
 
-          <h3>Developer (Dev) Tools</h3>
+          <h3>🛠️ Developer (Dev) Tools</h3>
           <p>All modern browsers include built-in <strong>developer tools</strong> (opened with F12 or right-click → Inspect) that allow engineers to inspect, debug, and optimise web applications in real time:</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>🌳 Elements Panel</strong><span>Inspect and live-edit the HTML DOM tree and CSS styles. See computed styles, box model, and layout information.</span></div>
@@ -603,7 +658,7 @@
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> CSS and its impact on the design and maintainability of web applications.</em></p>
 
-          <h3>Consistency of Appearance</h3>
+          <h3>💅 Consistency of Appearance</h3>
           <p>CSS enables a single stylesheet to control the visual appearance of every page across an entire website. <strong>CSS Custom Properties (variables)</strong> allow designers to define a value once (e.g., <code>--brand-colour: #6366F1</code>) and reuse it throughout, ensuring colour, typography, and spacing remain consistent. Changing a single variable instantly updates every element that references it. Design systems (such as Google's Material Design or Apple's Human Interface Guidelines) are implemented through CSS to enforce consistent visual language across large products.</p>
 
           <div class="code-block">
@@ -628,10 +683,10 @@
 }</code></pre>
           </div>
 
-          <h3>Flexibility with Browsers and Display Devices</h3>
+          <h3>📱 Flexibility with Browsers and Display Devices</h3>
           <p><strong>Responsive web design</strong> ensures a single codebase adapts to any screen size — from a 27-inch desktop monitor to a 375px mobile screen. CSS <strong>media queries</strong> apply different styles at defined breakpoints. <strong>Flexbox</strong> and <strong>CSS Grid</strong> provide flexible layout systems that redistribute space and reflow content automatically. The <code>viewport</code> meta tag instructs the browser to scale the page to the device's width, preventing the "zoomed-out desktop site" appearance on mobile.</p>
 
-          <h3>CSS Maintenance Tools</h3>
+          <h3>🛠️ CSS Maintenance Tools</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>🔷 Sass / SCSS</strong><span>A CSS preprocessor that adds variables, nesting, mixins, and functions to CSS, then compiles to standard CSS. Greatly improves maintainability of large stylesheets.</span></div>
             <div class="key-term-item"><strong>⚙️ PostCSS</strong><span>A tool that transforms CSS via JavaScript plugins — can auto-prefix vendor prefixes (autoprefixer), lint CSS, and minify output for production.</span></div>
@@ -647,7 +702,7 @@
           <p class="outcome-subtitle">🎯 <em>(SE-12-09)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> the reasons for version control and <strong>apply</strong> it when developing a web application.</em></p>
 
-          <h3>Why Version Control is Essential</h3>
+          <h3>🛡️ Why Version Control is Essential</h3>
           <p><strong>Version control systems (VCS)</strong> track every change made to a codebase over time, enabling developers to: <strong>roll back</strong> to any previous working state if a new change breaks functionality; <strong>branch</strong> the codebase to develop features or fix bugs in isolation without affecting the main production code; <strong>merge</strong> contributions from multiple developers working simultaneously; and maintain a complete <strong>audit trail</strong> of who changed what and why. <strong>Git</strong> is the dominant distributed VCS; <strong>GitHub</strong>, <strong>GitLab</strong>, and <strong>Bitbucket</strong> are the popular remote hosting platforms.</p>
 
           <div class="code-block">
@@ -681,7 +736,7 @@ git merge feature/user-login</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-12-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Explore</strong> the types and significance of code libraries available for front-end web development.</em></p>
 
-          <h3>Frameworks for Complex Web Applications</h3>
+          <h3>⚛️ Frameworks for Complex Web Applications</h3>
           <p><strong>Front-end frameworks</strong> provide a structured architecture for building large, complex web applications. They enforce separation of concerns (UI components, state management, routing) and provide build tools that optimise code for production.</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>⚛️ React</strong><span>A component-based UI library by Meta. Uses a virtual DOM for efficient re-rendering. The most widely adopted framework in industry (2024).</span></div>
@@ -689,14 +744,14 @@ git merge feature/user-login</code></pre>
             <div class="key-term-item"><strong>🔺 Angular</strong><span>A full-featured framework by Google. Uses TypeScript, has built-in routing, forms, and <strong>HTTP</strong> client. Common in large enterprise applications.</span></div>
           </div>
 
-          <h3>Template Engines</h3>
+          <h3>🟨 Template Engines</h3>
           <p><strong>Template engines</strong> allow developers to inject dynamic data into HTML templates on the server before sending the page to the client, avoiding duplicate HTML markup. For example, a product listing page uses a single template and loops through a database result to generate each product card.</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>🐍 Jinja2</strong><span>Python template engine used by Flask and Django. Supports variables (<code>{{ }}</code>), control structures (<code>{% %}</code>), and template <strong>inheritance</strong>.</span></div>
             <div class="key-term-item"><strong>🟨 Handlebars / EJS</strong><span>JavaScript template engines for Node.js. EJS uses standard JS syntax; Handlebars uses logic-free templates for cleaner separation of concerns.</span></div>
           </div>
 
-          <h3>Pre-designed CSS Classes</h3>
+          <h3>🅱️ Pre-designed CSS Classes</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>🅱️ Bootstrap</strong><span>A comprehensive CSS framework with a 12-column grid system, pre-styled components (buttons, modals, navbars), and responsive utilities. Rapid prototyping standard.</span></div>
             <div class="key-term-item"><strong>🌬️ Tailwind CSS</strong><span>A utility-first CSS framework. Instead of pre-built components, provides low-level utility classes (e.g., <code>text-lg font-bold text-indigo-600</code>) applied directly in HTML.</span></div>
@@ -876,7 +931,7 @@ git merge feature/user-login</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-12-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Observe and describe</strong> the back-end process used to manage a web request from receipt to response.</em></p>
 
-          <h3>The Request-Response Lifecycle</h3>
+          <h3>🔄 The Request-Response Lifecycle</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>🌐 Web Server Software</strong><span>Software such as <strong>Nginx</strong> or <strong>Apache</strong> receives the raw <strong>HTTP</strong> request and routes it to the correct application handler. Nginx is also used as a reverse proxy and for serving static files efficiently.</span></div>
             <div class="key-term-item"><strong>⚙️ Web Framework</strong><span>The framework (e.g., Flask, Django, Express) parses the request URL and <strong>HTTP</strong> method, matches it against defined <strong>routes</strong>, and calls the appropriate handler function (view/controller).</span></div>
@@ -937,7 +992,7 @@ find templates/ -name "*.html" | xargs wc -l</code></pre>
 
           <p>The <strong>Document Object Model (DOM)</strong> is a programming interface that represents an HTML page as a tree of objects. JavaScript can read and modify any part of this tree — changing text, styles, attributes, and structure in real time without a page reload. Events such as <code>click</code>, <code>submit</code>, and <code>DOMContentLoaded</code> allow scripts to respond to user actions.</p>
 
-          <h3>Form Validation with DOM Manipulation</h3>
+          <h3>✅ Form Validation with DOM Manipulation</h3>
           <p>A common use case is validating a registration form on the client side before submitting data to the server. The script below listens for the form's <code>submit</code> event, prevents the default browser action, and runs custom validation logic.</p>
 
           <div class="code-block">
@@ -986,7 +1041,7 @@ function validateForm(username, email, password) {
             <strong>Key DOM Methods:</strong> <code>document.getElementById()</code> selects an element by its <code>id</code> attribute; <code>element.addEventListener()</code> attaches an event listener; <code>event.preventDefault()</code> stops the browser's default behaviour (e.g., form submission); <code>element.innerHTML</code> sets or gets HTML content inside an element.
           </div>
 
-          <h3>Form Validation Test Data</h3>
+          <h3>🧪 Form Validation Test Data</h3>
           <p>When testing form validation, boundary cases, invalid formats, and malicious inputs should all be included in the test plan.</p>
 
           <div class="table-wrap">
@@ -1056,7 +1111,7 @@ function validateForm(username, email, password) {
             <strong>Warning — Client-Side Validation Limitations:</strong> Client-side validation can be bypassed by disabling JavaScript or using browser developer tools to intercept requests. <strong>SQL injection</strong> and <strong>XSS</strong> attempts must also be handled on the server. Never rely solely on JavaScript validation for security.
           </div>
 
-          <h3>Client-Side vs Server-Side Validation</h3>
+          <h3>⚖️ Client-Side vs Server-Side Validation</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1095,7 +1150,7 @@ function validateForm(username, email, password) {
             <strong>Exam Tip — Always validate on the server:</strong> Client-side validation improves user experience by giving instant feedback, but it is purely cosmetic from a security perspective. An attacker can bypass any JavaScript check by sending a crafted <strong>HTTP</strong> request directly. Server-side validation is the only authoritative and secure check.
           </div>
 
-          <h3>Fetch API &amp; AJAX (Asynchronous Requests)</h3>
+          <h3>📡 Fetch API &amp; AJAX (Asynchronous Requests)</h3>
           <p>The <strong>Fetch API</strong> allows JavaScript to make <strong>HTTP</strong> requests to a server in the background without reloading the page — this pattern is known as <strong>AJAX</strong> (Asynchronous JavaScript and XML). Modern JavaScript uses the <strong>async/await</strong> syntax to write asynchronous code that reads like synchronous code, making it easier to follow and debug.</p>
 
           <div class="code-block">
@@ -1137,7 +1192,7 @@ function displayUser(user) {
             <strong>Exam Tip — Error handling in fetch requests:</strong> A <code>fetch()</code> call only rejects (throws an error) on network failure. An <strong>HTTP</strong> 404 or 500 response is considered a <em>successful</em> fetch — it does not throw automatically. Always check <code>response.ok</code> (which is <code>true</code> for status codes 200–299) and manually throw an error if needed, as shown above. Wrap in <code>try/catch</code> to handle both network errors and manually thrown errors.
           </div>
 
-          <h3>CORS — Cross-Origin Resource Sharing</h3>
+          <h3>🌐 CORS — Cross-Origin Resource Sharing</h3>
 
           <div class="callout warning">
             <strong>What is CORS and why does it exist?</strong>
@@ -1208,7 +1263,7 @@ function displayUser(user) {
 <span class="kw">ORDER BY</span> Developers.Last_name <span class="kw">DESC</span>;</code></pre>
           </div>
 
-          <h3>Common SQL Statement Reference</h3>
+          <h3>📜 Common SQL Statement Reference</h3>
           <div class="table-wrap">
             <table>
               <thead><tr><th>Statement</th><th>Purpose</th><th>Example</th></tr></thead>
@@ -1282,13 +1337,13 @@ results = Product.objects.filter(category=<span class="str">'Electronics'</span>
           <p class="outcome-subtitle">🎯 <em>(SE-12-05, SE-12-09)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Describe</strong> how collaborative work practices between front-end and back-end developers improve the development of a web solution.</em></p>
 
-          <h3>API Contracts and Documentation</h3>
+          <h3>📜 API Contracts and Documentation</h3>
           <p>The primary collaboration mechanism between front-end and back-end developers is the <strong>API contract</strong> — an agreed-upon specification of every endpoint's URL, <strong>HTTP</strong> method, request parameters, and response format. Tools like <strong>OpenAPI/Swagger</strong> allow teams to document and even mock APIs before the back end is fully built, enabling front-end and back-end development to proceed simultaneously. This prevents integration errors at the end of the project and enables both teams to work independently with confidence.</p>
 
-          <h3>Version Control and Branching Strategies</h3>
+          <h3>🔀 Version Control and Branching Strategies</h3>
           <p>Teams use Git branching workflows to manage parallel development. In the <strong>Git Flow</strong> model: the <code>main</code> branch always contains production-ready code; <code>develop</code> is the integration branch for completed features; and individual <code>feature/</code> branches are created for each task. <strong>Pull Requests (PRs)</strong> are submitted when a feature is complete — requiring at least one peer code review before merging. This enforces code quality and knowledge sharing across the team, and ensures no one developer is a single point of failure for any part of the system.</p>
 
-          <h3>Open-Source and Ethical Collaboration</h3>
+          <h3>⚖️ Open-Source and Ethical Collaboration</h3>
           <p>Collaborative web development carries ethical responsibilities. Teams must fairly attribute contributions, respect the licences of all third-party code used, ensure equitable division of workload, and maintain transparent communication with stakeholders about progress and setbacks. When using open-source code libraries, teams must monitor for security vulnerabilities and update dependencies promptly to protect users (Outcome SE-12-05).</p>
         </section>
 
@@ -1300,7 +1355,7 @@ results = Product.objects.filter(category=<span class="str">'Electronics'</span>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-03, SE-12-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> a Progressive Web App applying UI/UX design principles and accessibility standards.</em></p>
 
-          <h3>UI and UX Principles</h3>
+          <h3>🎨 UI and UX Principles</h3>
           <div class="info-grid">
             <div class="info-card">
               <h4>🖋️ Typography</h4>
@@ -1320,7 +1375,7 @@ results = Product.objects.filter(category=<span class="str">'Electronics'</span>
             </div>
           </div>
 
-          <h3>Accessibility and Inclusivity</h3>
+          <h3>♿ Accessibility and Inclusivity</h3>
           <p>PWA interfaces must be designed to be usable by everyone, including people with visual, auditory, cognitive, or motor disabilities:</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>🏷️ Semantic HTML</strong><span>Use correct elements for their purpose (<code>&lt;button&gt;</code> for buttons, <code>&lt;nav&gt;</code> for navigation, <code>&lt;main&gt;</code> for content). Screen readers rely on semantic structure to describe pages to blind users.</span></div>
@@ -1330,7 +1385,7 @@ results = Product.objects.filter(category=<span class="str">'Electronics'</span>
             <div class="key-term-item"><strong>🎯 Focus Management</strong><span>When a modal or dialog opens, keyboard focus must move into it. When it closes, focus returns to the triggering element. This ensures keyboard users don't lose their place in the interface.</span></div>
           </div>
 
-          <h3>Core PWA Technical Requirements</h3>
+          <h3>⚙️ Core PWA Technical Requirements</h3>
           <div class="info-grid">
             <div class="info-card">
               <h4>📄 Web App Manifest</h4>
@@ -1366,7 +1421,7 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
 });</code></pre>
           </div>
 
-          <h3>Web App Manifest</h3>
+          <h3>📄 Web App Manifest</h3>
           <p>The <code>manifest.json</code> file tells the browser how to install and present the PWA. Link it in your HTML <code>&lt;head&gt;</code>: <code>&lt;link rel="manifest" href="/manifest.json"&gt;</code></p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">JSON — manifest.json (complete example)</span></div>
@@ -1386,7 +1441,7 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
 }</code></pre>
           </div>
 
-          <h3>PWA vs Native App</h3>
+          <h3>⚖️ PWA vs Native App</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1412,7 +1467,7 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-03, SE-12-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Design and implement</strong> RESTful APIs that follow standard conventions for URLs, HTTP methods, and status codes to enable reliable client-server communication.</em></p>
 
-          <h3>REST Principles</h3>
+          <h3>📏 REST Principles</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>Stateless</strong><span>Each request from client to server must contain all information needed. The server does not store session state between requests — <strong>authentication</strong> credentials must be sent with every request.</span></div>
             <div class="key-term-item"><strong>Uniform Interface</strong><span>Resources are identified by URLs. <strong>HTTP</strong> methods define operations. Responses use standard formats (JSON/XML). This consistency allows any client to consume any REST API.</span></div>
@@ -1420,7 +1475,7 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
             <div class="key-term-item"><strong>Cacheable</strong><span>Responses should indicate whether they can be cached. Caching reduces server load and improves performance for repeated identical requests.</span></div>
           </div>
 
-          <h3>HTTP Methods</h3>
+          <h3>📡 HTTP Methods</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1436,7 +1491,7 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
             </table>
           </div>
 
-          <h3>HTTP Status Codes</h3>
+          <h3>🔢 HTTP Status Codes</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1458,7 +1513,7 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
             </table>
           </div>
 
-          <h3>RESTful URL Design</h3>
+          <h3>🔗 RESTful URL Design</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1473,7 +1528,7 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
             </table>
           </div>
 
-          <h3>Flask REST API — Full CRUD Example</h3>
+          <h3>🧪 Flask REST API — Full CRUD Example</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Flask REST API for /api/books</span></div>
             <pre><code>from flask import Flask, request, jsonify
@@ -1535,7 +1590,7 @@ if __name__ == '__main__':
           <p class="outcome-subtitle">🎯 <em>(SE-12-03, SE-12-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Explore</strong> the purpose and structure of JavaScript frameworks and <strong>evaluate</strong> when a framework is appropriate versus vanilla JavaScript.</em></p>
 
-          <h3>Why Frameworks Exist</h3>
+          <h3>❓ Why Frameworks Exist</h3>
           <p>As web applications grow, manually manipulating the DOM with vanilla JavaScript becomes complex and error-prone. Frameworks solve these problems:</p>
           <ul>
             <li><strong>State management:</strong> When data changes, which parts of the page should update? Frameworks handle this automatically.</li>
@@ -1543,7 +1598,7 @@ if __name__ == '__main__':
             <li><strong>Data binding:</strong> UI automatically reflects data changes without manual DOM manipulation.</li>
           </ul>
 
-          <h3>React — Component-Based UI</h3>
+          <h3>⚛️ React — Component-Based UI</h3>
           <p>React (by Meta/Facebook) uses <strong>components</strong> — reusable UI building blocks — and a <strong>Virtual DOM</strong> to efficiently update only the parts of the page that changed.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">JavaScript — React Counter Component (functional)</span></div>
@@ -1565,7 +1620,7 @@ function Counter() {
 export default Counter;</code></pre>
           </div>
 
-          <h3>Framework Comparison</h3>
+          <h3>⚖️ Framework Comparison</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1592,13 +1647,39 @@ export default Counter;</code></pre>
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-bottom">
-        <span>© 2026 HSC SoftEng Notes · HSC Programming for the Web · Australian English Standards</span>
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo">💻</div>
+          <span class="footer-name">SoftEng Notes</span>
+        </div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
       </div>
+      <div class="footer-col">
+        <h4>🔐 Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">Engineering Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>📈 Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>🛡️ Navigate</h4>
+        <a href="../index.html">← Back to Home</a>
+        <a href="secure-software-architecture.html">🔒 Secure Architecture</a>
+        <a href="software-automation.html">⚙️ Software Automation →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 HSC SoftEng Notes · Programming for the Web · Australian English Standards</span>
     </div>
   </footer>
 
-  <script src="../js/main.js?v=6"></script>
+  <script src="../js/main.js?v=7"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>
     const initMermaid = () => {

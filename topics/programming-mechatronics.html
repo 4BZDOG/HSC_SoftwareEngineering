@@ -4,10 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Programming Mechatronics | HSC Software Engineering</title>
-  <meta name="description" content="Detailed Year 11 HSC Software Engineering notes on Programming Mechatronics, following NESA command verbs, outcomes, and Australian English standards." />
+  <!-- ── SEO ── -->
+  <link rel="canonical" href="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/programming-mechatronics.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Programming Mechatronics | HSC Software Engineering" />
+  <meta property="og:description" content="Year 11 HSC Programming Mechatronics notes — sensors, actuators, control logic, hardware-software integration, and real-world robotics programming. NESA NSW." />
+  <meta property="og:url" content="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/programming-mechatronics.html" />
+  <meta property="og:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <meta property="og:image:alt" content="HSC Software Engineering Notes — NESA NSW" />
+  <meta property="og:site_name" content="HSC Software Engineering Notes" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Programming Mechatronics | HSC Software Engineering" />
+  <meta name="twitter:description" content="Year 11 HSC Programming Mechatronics notes — sensors, actuators, control logic, hardware-software integration, and real-world robotics programming. NESA NSW." />
+  <meta name="twitter:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Year 11",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Programming Mechatronics",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/topics/programming-mechatronics.html"
+    }
+    ]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+  <meta name="theme-color" content="#6366F1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta name="description" content="Year 11 HSC Programming Mechatronics notes — sensors, actuators, control logic, hardware-software integration, and real-world robotics programming. NESA NSW." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=6" />
+  <link rel="stylesheet" href="../css/styles.css?v=7" />
 </head>
 <body>
 
@@ -23,7 +67,17 @@
 
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="course-tools.html">🛠️ Course Tools <span class="badge badge-all">Specs</span></a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            🗂️ Resources
+            <span class="badge badge-all">Guides</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
+            <a href="sdlc.html" role="menuitem">🔄 SDLC Guide</a>
+          </div>
+        </li>
         <li class="nav-dropdown nav-dropdown-y12">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
             Year 12
@@ -63,7 +117,8 @@
   <div class="mobile-menu" id="mobile-menu">
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Resources</div>
-      <a href="course-tools.html">🛠️ Course Tools & Specifications</a>
+      <a href="course-tools.html">🛠️ Course Tools &amp; Specifications</a>
+      <a href="sdlc.html">🔄 SDLC Guide</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 12</div>
@@ -104,7 +159,7 @@
     <aside class="sidebar">
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Part 1 — Understanding Hardware &amp; Software</li>
+        <li class="sidebar-label">Part 1 — Understanding Hardware &amp; Software</li>
         <li><a href="#applications">🦾 1. Mechatronic Applications</a></li>
         <li><a href="#hardware">🕹️ 2. Microcontrollers &amp; Hardware Requirements</a></li>
         <li><a href="#sensors-actuators">🌡️ 3. Sensors, Actuators &amp; Manipulators</a></li>
@@ -112,14 +167,14 @@
         <li><a href="#software-control">⚙️ 5. Software Control &amp; Dependencies</a></li>
         <li><a href="#engineering">🔌 6. Power, Materials &amp; Wiring</a></li>
         <li><a href="#accessibility">♿ 7. Specialist Requirements &amp; Accessibility</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 2 — Designing Control Algorithms</li>
+        <li class="sidebar-label">Part 2 — Designing Control Algorithms</li>
         <li><a href="#control-design">🧠 8. Algorithm Development &amp; Control Systems</a></li>
         <li><a href="#autonomous-features">🤖 9. Autonomous Control Features</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 3 — Programming &amp; Building</li>
+        <li class="sidebar-label">Part 3 — Programming &amp; Building</li>
         <li><a href="#design-develop">💻 10. Design, Develop &amp; Produce Systems</a></li>
         <li><a href="#implementation">🔧 11. Implementation &amp; Integration</a></li>
         <li><a href="#prototyping">🧪 12. Prototyping, Simulation &amp; Testing</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 4 — Deep Dive Topics</li>
+        <li class="sidebar-label">Part 4 — Deep Dive Topics</li>
         <li><a href="#interrupts">⚡ 13. Interrupts &amp; ISRs</a></li>
         <li><a href="#arduino-vs-micropython">🆚 14. Arduino C vs MicroPython</a></li>
         <li><a href="#comm-protocols">📡 15. Communication Protocols</a></li>
@@ -160,7 +215,7 @@
           <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-03)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Identify</strong> hardware requirements and <strong>Assess</strong> the relationship between microcontrollers and traditional CPUs.</em></p>
 
-          <h3>Microcontrollers vs CPUs</h3>
+          <h3>⚙️ Microcontrollers vs CPUs</h3>
           <p>A <strong>Microcontroller</strong> (e.g., ATmega328P on an Arduino) is an integrated circuit containing a processor, memory (RAM/Flash), and I/O peripherals on a single chip. In contrast, a traditional <strong>CPU</strong> requires external components (RAM, Storage, Northbridge) to function. Microcontrollers are preferred for mechatronics because they allow direct, real-time control of hardware pins, are cost-effective, and have significantly lower power requirements than general-purpose CPUs.</p>
 
           <div class="table-wrap">
@@ -173,7 +228,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><strong>Instruction Set</strong></td>
+                  <td>📜 <strong>Instruction Set</strong></td>
                   <td>The predefined set of basic commands (Opcodes) that a processor understands. Mechatronic code must be compiled for a specific instruction set (e.g., ARM or AVR).</td>
                 </tr>
                 <tr>
@@ -198,24 +253,24 @@
               <h4>🌡️ Sensors (Inputs)</h4>
               <p>Devices that convert physical properties into electrical signals.</p>
               <ul>
-                <li><strong>Motion:</strong> PIR (Passive Infrared) sensors detect heat radiation moving across a background.</li>
-                <li><strong>Light:</strong> LDRs (Light Dependent Resistors) change resistance based on ambient light levels.</li>
+                <li><strong>🔘 Motion:</strong> PIR (Passive Infrared) sensors detect heat radiation moving across a background.</li>
+                <li><strong>💡 Light:</strong> LDRs (Light Dependent Resistors) change resistance based on ambient light levels.</li>
               </ul>
             </div>
             <div class="info-card">
               <h4>🎯 Actuators (Outputs)</h4>
               <p>Components that convert electrical energy into physical motion.</p>
               <ul>
-                <li><strong>Hydraulic:</strong> Utilise pressurised fluid to generate high force (e.g., in excavators).</li>
-                <li><strong>Electric:</strong> DC motors or Servos that provide rotational movement.</li>
+                <li><strong>💧 Hydraulic:</strong> Utilise pressurised fluid to generate high force (e.g., in excavators).</li>
+                <li><strong>⚡ Electric:</strong> DC motors or Servos that provide rotational movement.</li>
               </ul>
             </div>
             <div class="info-card">
               <h4>🦾 Manipulators</h4>
               <p>The parts of the system that physically interact with objects.</p>
               <ul>
-                <li><strong>Robotic Gripper:</strong> An end effector designed to grasp and release objects.</li>
-                <li><strong>Degrees of Freedom:</strong> The number of independent directions in which a robot can move.</li>
+                <li><strong>🗜️ Robotic Gripper:</strong> An end effector designed to grasp and release objects.</li>
+                <li><strong>🔄 Degrees of Freedom:</strong> The number of independent directions in which a robot can move.</li>
               </ul>
             </div>
           </div>
@@ -245,10 +300,10 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <p class="outcome-subtitle">🎯 <em>(SE-11-04)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Use</strong> and <strong>Understand</strong> how data is obtained and processed, including diagnostic data for system optimisation.</em></p>
           
-          <h3>Processing and Diagnostic Data</h3>
+          <h3>📊 Processing and Diagnostic Data</h3>
           <p>Mechatronic systems process raw analog signals (via ADCs) into digital data for decision-making. <strong>Diagnostic Data</strong> involves monitoring internal states—such as motor temperature, battery voltage, or current draw—to identify potential hardware failures before they occur. <strong>Optimisation Data</strong> is used to refine control algorithms, such as adjusting the duty cycle of a PWM signal to achieve maximum motor efficiency with minimal heat generation. Engineers use this data to perform "Predictive Maintenance", replacing components before a system-critical failure happens.</p>
 
-          <h3>Analog-to-Digital Conversion (ADC)</h3>
+          <h3>🔢 Analog-to-Digital Conversion (ADC)</h3>
           <p>Sensors output continuous analog voltages. Microcontrollers use <strong>Analog-to-Digital Converters</strong> to sample these voltages and convert them to digital numbers for processing. An ADC typically has a resolution (e.g., 8-bit, 10-bit, 12-bit), determining how many discrete voltage levels it can represent.</p>
           <p><strong>ADC Formula:</strong> <code><strong>Digital Value = (Measured Voltage / Reference Voltage) × (2^Resolution - 1)</strong></code></p>
           <p>🌏 <em><strong>Example:</strong> A 10-bit ADC (1024 levels, 0-1023) with 5V reference, measuring 2.5V:</em></p>
@@ -266,13 +321,13 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Experiment</strong> with software to control interactions and dependencies within mechatronic systems, understanding motion constraints, degrees of freedom, and how subsystems combine.</em></p>
 
-          <h3>Motion Constraints and Degrees of Freedom</h3>
+          <h3>📐 Motion Constraints and Degrees of Freedom</h3>
           <p><strong>Motion Constraints</strong> are limitations on how a mechanical system can move, imposed by its physical design (e.g., a robotic arm pivot can only rotate within a specific range; a gripper can only open/close). <strong>Degrees of Freedom (DOF)</strong> refers to the number of independent directions in which a system can move. A gripper has 1 DOF (open/close); a planar robotic arm has 2 DOF (up/down, left/right); a full 3D robot arm has 6 DOF or more. Software must account for these constraints when generating movement commands—exceeding constraints can cause mechanical damage.</p>
 
-          <h3>Combination of Subsystems</h3>
+          <h3>🧩 Combination of Subsystems</h3>
           <p>Complex mechatronic systems are built by combining simpler subsystems. For example, an automated warehouse robot combines: (1) a vision subsystem to identify items, (2) a navigation subsystem to move through the warehouse, (3) a gripper subsystem to pick items, and (4) a communication subsystem to report status. Software must coordinate these subsystems safely—ensuring the gripper only activates when the robot is stationary, and navigation only occurs when the gripper is closed.</p>
 
-          <h3>Combination of Sensors, Actuators, and End Effectors</h3>
+          <h3>🔌 Combination of Sensors, Actuators, and End Effectors</h3>
           <p>Viable subsystems require careful integration of sensors (inputs), actuators (outputs), and end effectors (the working tool). For example, a 3D printer subsystem combines:</p>
           <ul>
             <li>Sensors: position encoders, temperature sensors, filament detection</li>
@@ -366,7 +421,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <p class="outcome-subtitle">🎯 <em>(SE-11-05)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Determine</strong> specialist requirements that influence the design and functions of mechatronic systems designed for people with disability. Inclusive design ensures that technology enhances autonomy and quality of life.</em></p>
 
-          <h3>Accessibility Considerations</h3>
+          <h3>♿ Accessibility Considerations</h3>
           <p>When designing mechatronic systems for users with disabilities, engineers must consider:</p>
 
           <div class="structured-content">
@@ -417,7 +472,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Develop, modify and apply</strong> algorithms to control a mechatronic system. <strong>Explore</strong> the algorithmic patterns, code and applications for open and closed control systems.</em></p>
           
-          <h3>Open vs Closed Loop Systems</h3>
+          <h3>🔄 Open vs Closed Loop Systems</h3>
           <p>The choice of control system depends on the task requirements for accuracy and self-correction. Engineers often use 🛠️ <strong>Decision Trees</strong> (Course Spec p.10) to map out these control paths.</p>
 
           <div class="table-wrap">
@@ -483,14 +538,14 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Outline</strong> the features of an algorithm and program code used for autonomous control. Autonomous systems must make decisions independently, handle sensor data, and adapt to environmental changes.</em></p>
 
-          <h3>Key Features of Autonomous Algorithms</h3>
+          <h3>🤖 Key Features of Autonomous Algorithms</h3>
           <ul>
-            <li><strong>Sensor Fusion:</strong> Combining data from multiple sensors (e.g., distance sensors, IMU accelerometers, temperature sensors) to build a comprehensive understanding of the environment. Simple algorithms average sensor readings; advanced algorithms use Kalman filters for optimal estimation.</li>
-            <li><strong>Decision Logic:</strong> Complex conditionals and state machines that determine what action to take based on current sensor readings and system state. Example: "IF obstacle detected within 20cm AND left sensor clear, TURN LEFT; ELSE IF right sensor clear, TURN RIGHT."</li>
-            <li><strong>PID Control Loop:</strong> Proportional-Integral-Derivative control adjusts actuator output based on error (difference between desired and actual state). Common in maintaining speed, temperature, or position.</li>
-            <li><strong>State Management:</strong> Tracking the current state of the system (idle, moving, gripper_open, gripper_closed) and transitioning between states safely based on sensor feedback and logic.</li>
-            <li><strong>Real-Time Response:</strong> Meeting strict timing requirements—responding to sensors and issuing commands within specified time windows. Delays in real-time systems can cause crashes or safety failures.</li>
-            <li><strong>Fallback Safety Logic:</strong> Default safe states (e.g., "all motors stop" if communication is lost) to prevent uncontrolled operation.</li>
+            <li><strong>🔗 Sensor Fusion:</strong> Combining data from multiple sensors (e.g., distance sensors, IMU accelerometers, temperature sensors) to build a comprehensive understanding of the environment. Simple algorithms average sensor readings; advanced algorithms use Kalman filters for optimal estimation.</li>
+            <li><strong>🧠 Decision Logic:</strong> Complex conditionals and state machines that determine what action to take based on current sensor readings and system state. Example: "IF obstacle detected within 20cm AND left sensor clear, TURN LEFT; ELSE IF right sensor clear, TURN RIGHT."</li>
+            <li><strong>🔄 PID Control Loop:</strong> Proportional-Integral-Derivative control adjusts actuator output based on error (difference between desired and actual state). Common in maintaining speed, temperature, or position.</li>
+            <li><strong>📊 State Management:</strong> Tracking the current state of the system (idle, moving, gripper_open, gripper_closed) and transitioning between states safely based on sensor feedback and logic.</li>
+            <li><strong>⚡ Real-Time Response:</strong> Meeting strict timing requirements—responding to sensors and issuing commands within specified time windows. Delays in real-time systems can cause crashes or safety failures.</li>
+            <li><strong>🛡️ Fallback Safety Logic:</strong> Default safe states (e.g., "all motors stop" if communication is lost) to prevent uncontrolled operation.</li>
           </ul>
 
           <p>Autonomous algorithms typically use flowcharts, state diagrams, and pseudocode to be designed clearly before implementation. Testing autonomous systems requires extensive simulation and careful incremental real-world validation.</p>
@@ -567,16 +622,16 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-02, SE-11-05, SE-11-06, SE-11-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Design, develop and produce</strong> a mechatronic system for a real-world problem, integrating software control, mechanical engineering, electronics and mathematics.</em></p>
 
-          <h3>Integrated System Design</h3>
+          <h3>🧩 Integrated System Design</h3>
           <p>Creating a complete mechatronic system requires simultaneous consideration of three domains:</p>
 
-          <h4>Software Control</h4>
+          <h4>⚙️ Software Control</h4>
           <p>Algorithms and code that orchestrate sensor input, decision logic, and actuator output. Must be reliable, efficient, and responsive.</p>
 
-          <h4>Mechanical Engineering</h4>
+          <h4>🦾 Mechanical Engineering</h4>
           <p>The physical structure, joints, materials, and mechanisms. Must support the required range of motion, handle the forces generated, and integrate smoothly with electronics.</p>
 
-          <h4>Electronics and Mathematics</h4>
+          <h4>🔌 Electronics and Mathematics</h4>
           <p>Power circuits, signal conditioning, control mathematics (PID tuning), and sensor calibration. Requires understanding electrical properties of components and mathematical models of system behaviour.</p>
 
           <p>Success requires communication and iteration between all three disciplines. For example, software delays might come from inadequate motor response, which is a mechanical/control issue; noise in sensor readings might require better filtering (electrical) or algorithm adjustments (software).</p>
@@ -590,7 +645,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Implement</strong> algorithms and design programming code to drive mechatronic devices. <strong>Apply</strong> programming to integrate sensors, actuators and end effectors. <strong>Implement</strong> specific control algorithms for performance enhancement.</em></p>
 
-          <h3>Driving Mechatronic Devices</h3>
+          <h3>🏎️ Driving Mechatronic Devices</h3>
           <p>Code must correctly interface with hardware:</p>
           <ul>
             <li><strong>PWM (Pulse Width Modulation):</strong> Varying the duty cycle (on-time vs off-time) of a square wave to control motor speed or LED brightness.</li>
@@ -599,10 +654,10 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
             <li><strong>Interrupt Handling:</strong> Responding immediately to urgent events (e.g., collision detection) without waiting for the main program loop.</li>
           </ul>
 
-          <h3>Integrating Components into Viable Subsystems</h3>
+          <h3>🔌 Integrating Components into Viable Subsystems</h3>
           <p>Each subsystem (gripper, movement, vision) must be coded, tested, and debugged in isolation before integration. Components share power supplies, communication buses, and may have timing dependencies—careful integration prevents conflicts.</p>
 
-          <h3>Control Algorithm Optimisation</h3>
+          <h3>⚡ Control Algorithm Optimisation</h3>
           <p>Specific algorithms enhance performance:</p>
           <ul>
             <li><strong>PID Tuning:</strong> Adjusting proportional, integral, and derivative gains to achieve fast, stable response without overshoot.</li>
@@ -619,11 +674,11 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Develop</strong> simulations and prototypes to test programming code. <strong>Design and implement</strong> closed loop control systems. <strong>Design and develop</strong> a user interface. <strong>Create and use</strong> unit tests for effectiveness and repeatability.</em></p>
 
-          <h3>Simulation vs Prototyping</h3>
+          <h3>🧪 Simulation vs Prototyping</h3>
           <p><strong>Simulations</strong> (Wokwi, TinkerCAD, Gazebo) allow testing code in a risk-free virtual environment. Useful for debugging algorithms, testing edge cases, and exploring design variations before building hardware. However, simulations don't capture real-world issues like friction, vibration, electromagnetic interference, or component tolerances.</p>
           <p><strong>Physical prototypes</strong> identify these real-world factors. Starting with a minimal viable prototype (MVP) and iteratively improving it is more cost-effective than building a perfect system immediately. Prototyping also allows testing with actual users and refining the design based on their feedback.</p>
 
-          <h3>Closed Loop Control System Design and Implementation</h3>
+          <h3>🔄 Closed Loop Control System Design and Implementation</h3>
           <p>Closed loop systems use sensor feedback to adjust actuator output continuously. Implementation requires:</p>
           <ul>
             <li>Clearly defining the <strong>setpoint</strong> (desired state) and <strong>feedback</strong> (actual state).</li>
@@ -632,7 +687,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
             <li>Iterating: reading sensors, calculating, and updating actuators in a tight loop (typically 10-1000 Hz).</li>
           </ul>
 
-          <h3>User Interface (UI) Design and Implementation</h3>
+          <h3>🖥️ User Interface (UI) Design and Implementation</h3>
           <p>Even autonomous systems often need interfaces for:</p>
           <ul>
             <li><strong>Manual Override:</strong> Emergency stop buttons, mode selection switches.</li>
@@ -642,7 +697,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           </ul>
           <p>UI code must be responsive and not interfere with real-time control loops. Separating UI from control logic (Model-View-Controller pattern) improves maintainability.</p>
 
-          <h3>Unit Testing for Effectiveness and Repeatability</h3>
+          <h3>🧪 Unit Testing for Effectiveness and Repeatability</h3>
           <p>Mechatronic systems require rigorous testing of each component:</p>
           <ul>
             <li><strong>Sensor Tests:</strong> Verify sensors return expected values for known inputs (temperature sensor in ice vs boiling water).</li>
@@ -670,7 +725,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Describe</strong> hardware and software interrupts and <strong>apply</strong> ISRs to build responsive mechatronic systems that react instantly to events.</em></p>
 
-          <h3>What is an Interrupt?</h3>
+          <h3>⚡ What is an Interrupt?</h3>
           <p>An <strong>interrupt</strong> is a signal that causes the CPU to pause its current task, execute a special handler routine (the ISR), and then resume where it left off. Without interrupts, the CPU must constantly check (poll) whether an event has occurred — wasting cycles and potentially missing fast events.</p>
 
           <div class="info-grid">
@@ -684,7 +739,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
             </div>
           </div>
 
-          <h3>Polling vs Interrupts</h3>
+          <h3>⚖️ Polling vs Interrupts</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -699,7 +754,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
             </table>
           </div>
 
-          <h3>ISR Rules — Keep Them Short!</h3>
+          <h3>📜 ISR Rules — Keep Them Short!</h3>
           <div class="callout warning">
             <strong>ISR Best Practices:</strong><br>
             ✓ Keep ISRs as short as possible — set a flag and return; do the heavy work in the main loop.<br>
@@ -762,7 +817,7 @@ void loop() {
           <p class="outcome-subtitle">🎯 <em>(SE-11-05)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Compare</strong> Arduino C and MicroPython for mechatronic programming — understanding the trade-offs helps you select the right language for each task.</em></p>
 
-          <h3>Side-by-Side Comparison</h3>
+          <h3>⚖️ Side-by-Side Comparison</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -822,7 +877,7 @@ while True:
           <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Describe</strong> I2C, SPI, and UART communication protocols and <strong>apply</strong> them to connect sensors and peripherals to microcontrollers.</em></p>
 
-          <h3>I2C (Inter-Integrated Circuit)</h3>
+          <h3>🔗 I2C (Inter-Integrated Circuit)</h3>
           <p>I2C uses <strong>two wires</strong> (SDA — data, SCL — clock) and supports multiple devices on the same bus using unique 7-bit addresses. A single master controller communicates with one or more slaves.</p>
           <div class="info-grid">
             <div class="info-card">
@@ -845,7 +900,7 @@ print("I2C devices found:", [hex(d) for d in devices])
 # e.g. I2C devices found: ['0x76', '0x3c']</code></pre>
           </div>
 
-          <h3>SPI (Serial Peripheral Interface)</h3>
+          <h3>🔗 SPI (Serial Peripheral Interface)</h3>
           <p>SPI uses <strong>four wires</strong> (MOSI, MISO, SCK, CS) and is faster than I2C. Each device needs its own CS (Chip Select) wire.</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>MOSI</strong><span>Master Out Slave In — data from controller to peripheral.</span></div>
@@ -854,7 +909,7 @@ print("I2C devices found:", [hex(d) for d in devices])
             <div class="key-term-item"><strong>CS</strong><span>Chip Select — pulled low to activate a specific device.</span></div>
           </div>
 
-          <h3>UART (Universal Asynchronous Receiver-Transmitter)</h3>
+          <h3>📡 UART (Universal Asynchronous Receiver-Transmitter)</h3>
           <p>UART uses <strong>two wires</strong> (TX, RX) and needs no clock signal — both devices must agree on the same <strong>baud rate</strong> (bits per second). Common for GPS modules, Bluetooth HC-05, and USB-serial bridges.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">MicroPython — UART Read (GPS module)</span></div>
@@ -870,7 +925,7 @@ while True:
             print(data.decode('utf-8', 'ignore').strip())</code></pre>
           </div>
 
-          <h3>Protocol Comparison</h3>
+          <h3>⚖️ Protocol Comparison</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -893,7 +948,7 @@ while True:
           <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> programming techniques to control DC motors, servo motors, and stepper motors in mechatronic systems.</em></p>
 
-          <h3>DC Motors</h3>
+          <h3>🏎️ DC Motors</h3>
           <p>DC motors spin continuously. Speed is controlled by <strong>PWM duty cycle</strong> and direction by reversing current flow through an <strong>H-bridge</strong> circuit.</p>
           <pre class="text-diagram">H-Bridge (L298N) — 4 switches control direction
 ───────────────────────────────────────────────
@@ -948,7 +1003,7 @@ time.sleep(2)
 motor_stop()</code></pre>
           </div>
 
-          <h3>Servo Motors</h3>
+          <h3>🦾 Servo Motors</h3>
           <p>Servo motors rotate to a specific <strong>angle</strong> (0–180°). They are controlled by a PWM signal where pulse width determines position: ~1 ms = 0°, ~1.5 ms = 90°, ~2 ms = 180°.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">MicroPython — Servo Motor Control</span></div>
@@ -975,10 +1030,10 @@ set_angle(180)</code></pre>
           </div>
 
           <div class="callout info">
-            <strong>Motor Selection Guide:</strong><br>
-            <strong>DC Motor:</strong> Variable speed, continuous rotation — robots, fans, conveyor belts.<br>
-            <strong>Servo Motor:</strong> Precise angle control, self-holding — robotic arms, steering, camera gimbals.<br>
-            <strong>Stepper Motor:</strong> Discrete steps, no feedback needed — 3D printers, CNC machines, precision positioning.
+            <strong>⚙️ Motor Selection Guide:</strong><br>
+            <strong>🏎️ DC Motor:</strong> Variable speed, continuous rotation — robots, fans, conveyor belts.<br>
+            <strong>🦾 Servo Motor:</strong> Precise angle control, self-holding — robotic arms, steering, camera gimbals.<br>
+            <strong>🔩 Stepper Motor:</strong> Discrete steps, no feedback needed — 3D printers, CNC machines, precision positioning.
           </div>
         </section>
 
@@ -990,12 +1045,12 @@ set_angle(180)</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> systematic debugging techniques to identify and resolve faults in mechatronic hardware and software.</em></p>
 
-          <h3>Debugging Tools</h3>
+          <h3>🐛 Debugging Tools</h3>
           <div class="key-terms">
-            <div class="key-term-item"><strong>Serial Monitor / REPL</strong><span>Print sensor values, variable states, and execution flow to USB serial. The simplest and most powerful debugging tool — use <code>print()</code> liberally during development.</span></div>
-            <div class="key-term-item"><strong>Multimeter</strong><span>Measure voltage between pins (check power is correct), test continuity (confirm wires connect), and measure resistance (identify burnt components). Essential for hardware faults.</span></div>
-            <div class="key-term-item"><strong>Logic Analyser</strong><span>Captures and displays digital signals over time. Invaluable for debugging I2C/SPI/UART communication — shows actual bit patterns to verify protocol compliance.</span></div>
-            <div class="key-term-item"><strong>LED Indicators</strong><span>Toggle an LED in key locations to confirm code execution paths — fast, no serial port needed. One LED = code reached this point.</span></div>
+            <div class="key-term-item"><strong>🖥️ Serial Monitor / REPL</strong><span>Print sensor values, variable states, and execution flow to USB serial. The simplest and most powerful debugging tool — use <code>print()</code> liberally during development.</span></div>
+            <div class="key-term-item"><strong>📟 Multimeter</strong><span>Measure voltage between pins (check power is correct), test continuity (confirm wires connect), and measure resistance (identify burnt components). Essential for hardware faults.</span></div>
+            <div class="key-term-item"><strong>📡 Logic Analyser</strong><span>Captures and displays digital signals over time. Invaluable for debugging I2C/SPI/UART communication — shows actual bit patterns to verify protocol compliance.</span></div>
+            <div class="key-term-item"><strong>💡 LED Indicators</strong><span>Toggle an LED in key locations to confirm code execution paths — fast, no serial port needed. One LED = code reached this point.</span></div>
           </div>
 
           <h3>Common Hardware Faults</h3>
@@ -1044,13 +1099,39 @@ set_angle(180)</code></pre>
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-bottom">
-        <span>© 2025 HSC SoftEng Notes · Preliminary Mechatronics · NESA Syllabus Aligned</span>
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo">💻</div>
+          <span class="footer-name">SoftEng Notes</span>
+        </div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
       </div>
+      <div class="footer-col">
+        <h4>🔐 Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">Engineering Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>📈 Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>🛡️ Navigate</h4>
+        <a href="../index.html">← Back to Home</a>
+        <a href="object-oriented-paradigm.html">🧩 OOP</a>
+        <a href="secure-software-architecture.html">🔒 Year 12 →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 HSC SoftEng Notes · Programming Mechatronics · Australian English Standards</span>
     </div>
   </footer>
 
-  <script src="../js/main.js?v=6"></script>
+  <script src="../js/main.js?v=7"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>
     const initMermaid = () => {

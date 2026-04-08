@@ -4,10 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Object-Oriented Paradigm | HSC Software Engineering</title>
-  <meta name="description" content="In-depth Year 11 HSC Software Engineering notes on OOP, following NESA command verbs, outcomes, and Australian English standards." />
+  <!-- ── SEO ── -->
+  <link rel="canonical" href="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/object-oriented-paradigm.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="The Object-Oriented Paradigm | HSC Software Engineering" />
+  <meta property="og:description" content="Year 11 HSC Object-Oriented Paradigm notes — classes, inheritance, polymorphism, encapsulation, UML, and OOP design patterns. NESA NSW Preliminary." />
+  <meta property="og:url" content="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/object-oriented-paradigm.html" />
+  <meta property="og:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <meta property="og:image:alt" content="HSC Software Engineering Notes — NESA NSW" />
+  <meta property="og:site_name" content="HSC Software Engineering Notes" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="The Object-Oriented Paradigm | HSC Software Engineering" />
+  <meta name="twitter:description" content="Year 11 HSC Object-Oriented Paradigm notes — classes, inheritance, polymorphism, encapsulation, UML, and OOP design patterns. NESA NSW Preliminary." />
+  <meta name="twitter:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Year 11",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "The Object-Oriented Paradigm",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/topics/object-oriented-paradigm.html"
+    }
+    ]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+  <meta name="theme-color" content="#6366F1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta name="description" content="Year 11 HSC Object-Oriented Paradigm notes — classes, inheritance, polymorphism, encapsulation, UML, and OOP design patterns. NESA NSW Preliminary." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=6" />
+  <link rel="stylesheet" href="../css/styles.css?v=7" />
 </head>
 <body>
 
@@ -23,7 +67,17 @@
 
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li><a href="course-tools.html">🛠️ Course Tools <span class="badge badge-all">Specs</span></a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            🗂️ Resources
+            <span class="badge badge-all">Guides</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
+            <a href="sdlc.html" role="menuitem">🔄 SDLC Guide</a>
+          </div>
+        </li>
         <li class="nav-dropdown nav-dropdown-y12">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
             Year 12
@@ -63,7 +117,8 @@
   <div class="mobile-menu" id="mobile-menu">
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Resources</div>
-      <a href="course-tools.html">🛠️ Course Tools & Specifications</a>
+      <a href="course-tools.html">🛠️ Course Tools &amp; Specifications</a>
+      <a href="sdlc.html">🔄 SDLC Guide</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 12</div>
@@ -104,21 +159,21 @@
     <aside class="sidebar">
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.25rem 0 .1rem;">Part 1 — Understanding OOP</li>
+        <li class="sidebar-label">Part 1 — Understanding OOP</li>
         <li><a href="#key-features">🧩 1. Key Features of OOP</a></li>
-        <li><a href="#intro">⚡ 2. OOP vs Procedural</a></li>
+        <li><a href="#intro">⚖️ 2. OOP vs Procedural</a></li>
         <li><a href="#modelling">📦 3. System Modelling Tools</a></li>
         <li><a href="#design-process">🎨 4. Design Process</a></li>
         <li><a href="#effectiveness">📊 5. Assessing Code Effectiveness</a></li>
         <li><a href="#message-passing">📨 6. Message-Passing Between Objects</a></li>
         <li><a href="#optimisation">⚡ 7. Code Optimisation</a></li>
         <li><a href="#collaboration">🤝 8. Collaborative Development Features</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 2 — Programming in OOP</li>
+        <li class="sidebar-label">Part 2 — Programming in OOP</li>
         <li><a href="#design-implement">💻 9. Design &amp; Implementation</a></li>
         <li><a href="#code-practices">🔧 10. Implementation Practices</a></li>
         <li><a href="#testing">🧪 11. Testing &amp; Quality Assurance</a></li>
         <li><a href="#hsc-project-oop">📚 12. HSC Project OOP Design</a></li>
-        <li style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);padding:.75rem 0 .1rem;">Part 3 — Advanced OOP</li>
+        <li class="sidebar-label">Part 3 — Advanced OOP</li>
         <li><a href="#design-patterns">🏗️ 13. Design Patterns</a></li>
         <li><a href="#abstract-classes">🔷 14. Abstract Classes &amp; Interfaces</a></li>
         <li><a href="#exception-handling">⚠️ 15. Exception Handling</a></li>
@@ -142,19 +197,19 @@
           <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-02, SE-11-08)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> the key features of an object-oriented programming language to design and implement software solutions.</em></p>
 
-          <h3>Objects and Classes</h3>
+          <h3>🏗️ Objects and Classes</h3>
           <p><strong>Objects</strong> are individual instances of data and behaviour that exist within a running program. A <strong>class</strong> is a blueprint or template that defines the structure and behaviour of all objects created from it. Classes specify what attributes (data) and methods (behaviour) objects will have. For example, a <code>Car</code> class defines that all car objects will have attributes like colour and speed, and methods like accelerate() and brake().</p>
 
-          <h3>Encapsulation</h3>
+          <h3>🔐 Encapsulation</h3>
           <p><strong>Encapsulation</strong> is the process of bundling data (attributes) and the methods that operate on that data into a single unit (the class). It involves <strong>data hiding</strong> by using access modifiers (private, protected, public) to control which parts of the code can directly access an object's internal state. This ensures that data can only be changed through validated methods (setters), which maintains data integrity and security.</p>
 
-          <h3>Abstraction</h3>
+          <h3>🔍 Abstraction</h3>
           <p><strong>Abstraction</strong> focuses on hiding complex implementation details and showing only the essential features of an object to the user. A programmer interacts with an object through a simplified interface without needing to understand the underlying code logic. This reduces system complexity and allows internal implementation to change without affecting code that uses the object.</p>
 
-          <h3>Inheritance and Generalisation</h3>
+          <h3>🧬 Inheritance and Generalisation</h3>
           <p><strong>Inheritance</strong> allows a new class (subclass or derived class) to adopt the attributes and methods of an existing class (superclass or base class). <strong>Generalisation</strong> is the process of identifying common traits among multiple classes and moving them into a shared parent class. This promotes massive code reuse and establishes a logical hierarchy within the software architecture.</p>
 
-          <h3>Polymorphism</h3>
+          <h3>🎭 Polymorphism</h3>
           <p><strong>Polymorphism</strong>, meaning "many forms", allows different classes to be treated as instances of the same superclass through a uniform interface. A programmer can call the same method name on different objects, and each object will respond in its own specific way. This makes code highly flexible and easier to extend with new object types without modifying existing code.</p>
 
           <div class="code-block">
@@ -184,7 +239,7 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
 
         <!-- 2. Compare Procedural vs OOP -->
         <section id="intro">
-          <h2 class="syllabus-phase">⚡ Comparing Procedural and Object-Oriented Programming</h2>
+          <h2 class="syllabus-phase">⚖️ Comparing Procedural and Object-Oriented Programming</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Compare</strong> procedural programming with the Object-Oriented Paradigm (OOP). While procedural programming focuses on a top-down sequence of actions (functions) acting upon data, OOP organises code into objects that combine data (attributes) and behaviour (methods). Understanding these differences helps engineers choose the right paradigm for each project.</em></p>
 
@@ -255,16 +310,16 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
           <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> the key features of an OOP language to engineer modular, secure, and maintainable software solutions.</em></p>
 
-          <h3>Encapsulation</h3>
+          <h3>🔐 Encapsulation</h3>
           <p><strong>Encapsulation</strong> is the process of bundling data and the methods that operate on that data into a single unit, known as a class. It involves "data hiding" by using access modifiers (like private attributes in Python) to prevent external code from directly modifying an object's internal state. This ensures that data can only be changed through validated methods (setters), which maintains the integrity and security of the system (Outcome SE-11-04).</p>
 
-          <h3>Abstraction</h3>
+          <h3>🔍 Abstraction</h3>
           <p><strong>Abstraction</strong> focuses on hiding complex implementation details and showing only the essential features of an object to the user. In software engineering, this allows developers to interact with a class through a simplified interface without needing to understand the underlying code logic. It reduces system complexity and allows the internal implementation to change without affecting the parts of the program that use it (Outcome SE-11-01).</p>
 
-          <h3>Inheritance & Generalisation</h3>
+          <h3>🧬 Inheritance &amp; Generalisation</h3>
           <p><strong>Inheritance</strong> allows a new class (subclass) to adopt the attributes and methods of an existing class (superclass). <strong>Generalisation</strong> is the engineering process of identifying common traits among multiple classes and moving them into a shared parent class. This promotes massive code reuse and establishes a logical hierarchy within the software architecture (Outcome SE-11-02).</p>
 
-          <h3>Polymorphism</h3>
+          <h3>🎭 Polymorphism</h3>
           <p><strong>Polymorphism</strong>, meaning "many forms", allows different classes to be treated as instances of the same superclass through a uniform interface. A programmer can call the same method name on different objects, and each object will respond in its own specific way. This makes the code highly flexible and easier to extend with new object types (Outcome SE-11-08).</p>
 
           <div class="code-block">
@@ -433,13 +488,13 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
           <p class="outcome-subtitle">🎯 <em>(SE-11-01)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Describe</strong> the process of design used to develop code in an OOP language, including task definition, top-down and bottom-up approaches, facade pattern, and agility.</em></p>
 
-          <h3>Task Definition</h3>
+          <h3>📝 Task Definition</h3>
           <p>The initial phase where engineers formally outline the problem scope and define the specific objects and classes required to solve it. This involves understanding the requirements, identifying the key entities (objects) in the problem domain, and determining their relationships and responsibilities.</p>
           
-          <h3>Top-down and Bottom-up Design</h3>
+          <h3>↕️ Top-down and Bottom-up Design</h3>
           <p><strong>Top-down design</strong> starts with high-level system requirements and breaks them down into smaller sub-systems or classes. This approach defines the overall structure first, then fills in details for each class. <strong>Bottom-up design</strong> involves building and testing robust base classes first, then combining them to create the final application. Effective OOP engineering often uses a hybrid approach, ensuring individual objects are functional (bottom-up) while meeting the overall system architecture (top-down).</p>
 
-          <h3>Facade Pattern</h3>
+          <h3>🖼️ Facade Pattern</h3>
           <p>The facade pattern is a design technique that provides a simplified "front-end" interface to a complex set of classes, hiding the internal complexity from the user. By creating a single facade class that coordinates multiple internal classes, developers make the system easier to use, understand, and maintain. The user interacts only with the facade, not the complex subsystems behind it.</p>
 
           <p>🌏 <em><strong>Example:</strong> A <strong>WebServerFacade</strong> that simplifies accessing a complex library system. Instead of manually handling authentication, database queries, caching, and logging:</em></p>
@@ -475,7 +530,7 @@ library = LibraryFacade()
 book = library.get_book_info(<span class="str">"john_doe"</span>, 42)</code></pre>
           </div>
 
-          <h3>Agility</h3>
+          <h3>🏃 Agility</h3>
           <p>Agility in OOP design refers to implementing an iterative development cycle where code is regularly reviewed and updated based on testing, user feedback, and changing requirements. <strong>Agile</strong> approaches favour frequent refactoring, continuous improvement, and adaptive design rather than rigid upfront planning. This flexibility allows software to evolve as understanding of the problem deepens.</p>
         </section>
 
@@ -487,7 +542,7 @@ book = library.get_book_info(<span class="str">"john_doe"</span>, 42)</code></pr
           <p class="outcome-subtitle">🎯 <em>(SE-11-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Assess</strong> the effectiveness of programming code developed to implement an algorithm. This involves evaluating whether the code correctly implements the algorithm, runs efficiently, and is maintainable.</em></p>
 
-          <h3>Evaluation Criteria</h3>
+          <h3>📋 Evaluation Criteria</h3>
           <ul>
             <li><strong>Correctness:</strong> Does the code produce the expected output for all valid inputs? Does it correctly implement the <strong>algorithm</strong>'s logic?</li>
             <li><strong>Efficiency:</strong> Does the code run efficiently in terms of time complexity (execution speed) and space complexity (memory usage)? Can it handle large datasets?</li>
@@ -507,7 +562,7 @@ book = library.get_book_info(<span class="str">"john_doe"</span>, 42)</code></pr
           <p class="outcome-subtitle">🎯 <em>(SE-11-08)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> how OOP languages handle message-passing between objects. In OOP, objects communicate by "passing messages"—which is essentially one object calling a method of another object.</em></p>
 
-          <h3>How Message-Passing Works</h3>
+          <h3>📨 How Message-Passing Works</h3>
           <p>When Object A calls a method on Object B, Object A is sending a "message" to Object B requesting it to perform a specific action. The syntax looks like <code>objectB.methodName(parameters)</code>. This allows for decoupling: Object A needs to know <em>what</em> Object B can do (its interface), but not <em>how</em> it does it (its implementation).</p>
 
           <p>This investigated feature enables several OOP benefits:</p>
@@ -577,7 +632,7 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <p class="outcome-subtitle">🎯 <em>(SE-11-08)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Explain</strong> code optimisation in software engineering. Code optimisation is the engineering practice of modifying software to make it more efficient, typically by reducing memory usage (RAM) or increasing execution speed (CPU).</em></p>
 
-          <h3>Optimisation Techniques in OOP</h3>
+          <h3>⚡ Optimisation Techniques in OOP</h3>
           <ul>
             <li><strong>Algorithm Refinement:</strong> Improving the efficiency of <strong>algorithms</strong> within methods by choosing faster <strong>data structures</strong> or reducing iterations.</li>
             <li><strong>Lazy Instantiation:</strong> Creating objects only when needed, rather than upfront, to reduce memory overhead.</li>
@@ -635,7 +690,7 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <p class="outcome-subtitle">🎯 <em>(SE-11-05)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Design and Implement</strong> computer programs involving branching, iteration and functions in an OOP language for an identified need or opportunity.</em></p>
 
-          <h3>Program Structure with Control Flow</h3>
+          <h3>🏗️ Program Structure with Control Flow</h3>
           <p>Effective OOP programs combine three fundamental control structures:</p>
           <ul>
             <li><strong>Branching:</strong> Using if/else and switch statements to make decisions based on object state or input. For example, a <code>BankAccount.withdraw()</code> method checks if sufficient balance exists.</li>
@@ -643,7 +698,7 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
             <li><strong>Functions (Methods):</strong> Encapsulating logic in methods that accept parameters and return results. Each method should perform one logical task.</li>
           </ul>
 
-          <h3>Real-World Application</h3>
+          <h3>🌍 Real-World Application</h3>
           <p>When designing OOP programs for actual needs, engineers must:</p>
           <ul>
             <li>Identify the objects in the problem domain (e.g., Student, Course, Enrolment for a school system).</li>
@@ -662,19 +717,19 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Implement and Modify</strong> OOP programming code following best practices for maintainability, testability, and collaboration.</em></p>
 
-          <h3>Clear and Uncluttered Mainline</h3>
+          <h3>✨ Clear and Uncluttered Mainline</h3>
           <p>The main program should be clean and easy to read, delegating complex logic to helper methods. Avoid embedding business logic directly in the main method. Instead, create objects and call their methods. This separation of concerns makes the flow of the program obvious and maintainable.</p>
 
-          <h3>One Logical Task Per Subroutine</h3>
+          <h3>🎯 One Logical Task Per Subroutine</h3>
           <p>Each method should do one thing and do it well (the Single Responsibility Principle). A method named <code>processPayment()</code> should handle payment logic only, not also send emails and update inventory. This principle makes code easier to understand, test, and reuse.</p>
 
-          <h3>Use of Stubs</h3>
+          <h3>🧱 Use of Stubs</h3>
           <p>A stub is a minimal implementation or placeholder for a subroutine, method, or class that will be fully developed later. Stubs allow high-level logic to be tested before all detailed methods are complete. For example, a <code>DatabaseConnection.save()</code> stub might just print "Saving..." while development of the actual database code continues elsewhere. This enables parallel development and testing.</p>
 
-          <h3>Control Structures and Data Structures</h3>
+          <h3>🔀 Control Structures and Data Structures</h3>
           <p>Implementation must effectively use both control structures (if/else, loops) to direct program flow and <strong>data structures</strong> (arrays, lists, trees) to organise data. Choosing the right combination improves both efficiency and code clarity.</p>
 
-          <h3>Ease of Maintenance</h3>
+          <h3>🛠️ Ease of Maintenance</h3>
           <p>Code should be maintainable through:</p>
           <ul>
             <li>Clear naming conventions for classes, methods, and variables.</li>
@@ -684,10 +739,10 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
             <li>Following consistent formatting and style.</li>
           </ul>
 
-          <h3>Version Control</h3>
+          <h3>📜 Version Control</h3>
           <p>Using version control systems (Git, GitLab, Bitbucket) is essential for OOP development. Version control allows multiple developers to work on different classes simultaneously, track changes, revert to previous versions if needed, and maintain an audit trail of who changed what and why. Commits should be frequent and have clear messages describing the changes made.</p>
 
-          <h3>Regular Backup</h3>
+          <h3>💾 Regular Backup</h3>
           <p>Beyond version control, regular backups of the entire codebase ensure protection against data loss from hardware failures. Backups should be stored off-site or in the cloud to protect against local disasters. Automated backup systems are preferred to ensure consistency and reliability.</p>
         </section>
 
@@ -699,7 +754,7 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> methodologies to test and evaluate code. Quality assurance ensures software meets specified engineering standards and works correctly.</em></p>
 
-          <h3>Testing Hierarchy: Unit, Subsystem, and System</h3>
+          <h3>🪜 Testing Hierarchy: Unit, Subsystem, and System</h3>
           <p>Testing occurs at multiple levels, building from smallest to largest components:</p>
 
           <div class="structured-content">
@@ -713,7 +768,7 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
             <p>Testing the entire integrated application end-to-end to ensure all components work together and meet the overall requirements. System testing includes testing the application's interaction with external systems (databases, APIs, etc.) and verifying that the entire workflow functions as expected.</p>
           </div>
 
-          <h3>Testing Approaches: Black, White, and Grey Box</h3>
+          <h3>📦 Testing Approaches: Black, White, and Grey Box</h3>
 
           <div class="structured-content">
             <h4>⬛ Black Box Testing</h4>
@@ -726,7 +781,7 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
             <p>A hybrid approach where the tester has partial knowledge of the internal structure (like knowing which classes exist and their general purpose) but not the implementation details. This allows more targeted testing than black box while being less resource-intensive than white box. For example, knowing the database schema but not the exact SQL queries used.</p>
           </div>
 
-          <h3>Quality Assurance Process</h3>
+          <h3>✅ Quality Assurance Process</h3>
           <p>Quality Assurance (QA) is the systematic process of ensuring software meets specified engineering standards and quality criteria. QA includes:</p>
           <ul>
             <li><strong>Requirements Verification:</strong> Ensuring the code implements all specified requirements.</li>
@@ -746,7 +801,7 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-02, SE-11-05, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> OOP design principles to a realistic HSC project scenario. The Library Management System is a classic example that demonstrates all four OOP pillars in a coherent, assessable design.</em></p>
 
-          <h3>Library Management System — Class Diagram</h3>
+          <h3>📖 Library Management System — Class Diagram</h3>
           <p>A Library Management System is an ideal HSC project because it has multiple entity types with clear IS-A and HAS-A relationships. The diagram below shows how <code>Book</code>, <code>Member</code>, and <code>Library</code> interact:</p>
 
           <div class="diagram-block">
@@ -793,7 +848,7 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
             </p>
           </div>
 
-          <h3>Python Implementation — Book and EBook Classes</h3>
+          <h3>🐍 Python Implementation — Book and EBook Classes</h3>
           <p>The following implementation demonstrates all four OOP pillars. Note how <strong>encapsulation</strong> is achieved with private attributes (double underscore prefix), <strong>abstraction</strong> through the property decorator, <strong>inheritance</strong> via <code>EBook(Book)</code>, and <strong>polymorphism</strong> by overriding <code>checkout()</code>:</p>
 
           <div class="code-block">
@@ -881,7 +936,7 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
 
           <p>Design patterns are reusable solutions to commonly occurring problems in software design. They are not code you copy — they are templates or blueprints for how to structure your code.</p>
 
-          <h3>Singleton Pattern</h3>
+          <h3>👤 Singleton Pattern</h3>
           <p><strong>Intent:</strong> Ensure that a class has only one instance and provide a global access point to it.</p>
           <p><strong>Use cases:</strong> Database connections (one shared pool), configuration managers (one settings object), logging systems (one log file handler).</p>
           <div class="code-block">
@@ -911,7 +966,7 @@ print(db2.host)            # "localhost" — shared state</code></pre>
             <strong>Use Singleton sparingly.</strong> It introduces global state, which makes unit testing harder (tests affect each other through the shared instance). Prefer dependency injection when possible.
           </div>
 
-          <h3>Observer Pattern</h3>
+          <h3>🔔 Observer Pattern</h3>
           <p><strong>Intent:</strong> Define a one-to-many dependency so that when one object changes state, all its dependents are notified automatically.</p>
           <p><strong>Real-world analogy:</strong> A newsletter — subscribers (observers) register to receive updates from a publisher (subject). When the publisher posts a new article, all subscribers are notified.</p>
           <pre class="text-diagram">Observer Pattern Structure
@@ -957,7 +1012,7 @@ stock.notify("Price dropped below $50!")
 # SMS: Price dropped below $50!</code></pre>
           </div>
 
-          <h3>MVC Pattern (Model-View-Controller)</h3>
+          <h3>🖼️ MVC Pattern (Model-View-Controller)</h3>
           <p><strong>Intent:</strong> Separate an application into three interconnected layers to organise code and enable independent development/testing of each layer.</p>
           <pre class="text-diagram">MVC Data Flow
 ─────────────────────────────────────────────────────
@@ -1025,7 +1080,7 @@ app.add_result("Carol", 92)
 app.show_report()</code></pre>
           </div>
 
-          <h3>Design Pattern Comparison</h3>
+          <h3>📊 Design Pattern Comparison</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1049,7 +1104,7 @@ app.show_report()</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> abstract classes to define common interfaces for a group of related classes, enforcing consistent method signatures across subclasses.</em></p>
 
-          <h3>What is an Abstract Class?</h3>
+          <h3>🔷 What is an Abstract Class?</h3>
           <p>An <strong>abstract class</strong> is a class that cannot be instantiated directly — it exists purely to be subclassed. It may define <strong>abstract methods</strong> (declared but not implemented) that every subclass <em>must</em> override. This enforces a consistent interface across all subclasses.</p>
 
           <div class="code-block">
@@ -1103,7 +1158,7 @@ for shape in shapes:
 # shape = Shape()   # ← TypeError! Cannot instantiate abstract class</code></pre>
           </div>
 
-          <h3>Abstract Class vs Concrete Class</h3>
+          <h3>⚖️ Abstract Class vs Concrete Class</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1119,7 +1174,7 @@ for shape in shapes:
             </table>
           </div>
 
-          <h3>Duck Typing in Python</h3>
+          <h3>🦆 Duck Typing in Python</h3>
           <p>"If it walks like a duck and quacks like a duck, it's a duck." Python does not enforce strict type hierarchies — any object with the right methods will work, regardless of its class.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Duck Typing</span></div>
@@ -1151,7 +1206,7 @@ for creature in [Dog(), Cat(), Robot()]:
           <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> exception handling to build robust programs that gracefully manage unexpected conditions without crashing.</em></p>
 
-          <h3>try / except / else / finally</h3>
+          <h3>⚠️ try / except / else / finally</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Full exception handling structure</span></div>
             <pre><code class="language-python">try:
@@ -1169,7 +1224,7 @@ finally:
     print("Done.")                    # ALWAYS runs, exception or not</code></pre>
           </div>
 
-          <h3>Custom Exception Classes</h3>
+          <h3>🛠️ Custom Exception Classes</h3>
           <p>You can define your own exception classes by inheriting from <code>Exception</code>. This lets you raise domain-specific errors with meaningful names.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Custom exceptions in a BankAccount class</span></div>
@@ -1211,7 +1266,7 @@ except InsufficientFundsError as e:
     print(e)   # Cannot withdraw $150.00: only $100.00 available.</code></pre>
           </div>
 
-          <h3>Exception Hierarchy (text diagram)</h3>
+          <h3>🪜 Exception Hierarchy (text diagram)</h3>
           <pre class="text-diagram">BaseException
   ├── SystemExit            ← raised by sys.exit()
   ├── KeyboardInterrupt     ← Ctrl+C
@@ -1240,13 +1295,39 @@ except InsufficientFundsError as e:
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-bottom">
-        <span>© 2025 HSC SoftEng Notes · Preliminary OOP · Australian English Standards</span>
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo">💻</div>
+          <span class="footer-name">SoftEng Notes</span>
+        </div>
+        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
       </div>
+      <div class="footer-col">
+        <h4>🔐 Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">Engineering Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>📈 Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>🛡️ Navigate</h4>
+        <a href="../index.html">← Back to Home</a>
+        <a href="programming-fundamentals.html">📐 Fundamentals</a>
+        <a href="programming-mechatronics.html">🤖 Mechatronics →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 HSC SoftEng Notes · The Object-Oriented Paradigm · Australian English Standards</span>
     </div>
   </footer>
 
-  <script src="../js/main.js?v=6"></script>
+  <script src="../js/main.js?v=7"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>
     const initMermaid = () => {
