@@ -1546,13 +1546,19 @@ section > h2.syllabus-phase:first-child {
 /* ── Callout Boxes ── */
 .callout {
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
   padding: 1.125rem 1.5rem;
   border-radius: var(--radius-lg);
   margin: 1.5rem 0;
   border: 2px solid;
   border-left-width: 6px;
   transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.callout:has(.callout-icon) {
+  flex-direction: row;
+  gap: 1rem;
 }
 
 .callout:hover {
@@ -3720,10 +3726,11 @@ section:has(> h2.section-collapsed) + .divider {
 /* ── NDB Mock Form ── */
 .mock-form-container {
   margin-top: 2rem;
-  border: 2px solid var(--noteBorderColor);
-  padding: 20px;
-  border-radius: 8px;
-  background: var(--bgLayer);
+  border: 1px solid var(--border);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  background: var(--bg-secondary);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 .ndb-mock-form {
   display: flex;
