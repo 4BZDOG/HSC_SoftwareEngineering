@@ -577,10 +577,10 @@
             <div class="mermaid">
               graph LR
                 User["👤 USER<br/>─────────<br/>External Entity"]
-                Browser["🌐 Web Browser<br/>─────────<br/>Process"]
-                Server["🖥️ Web Server<br/>─────────<br/>Process"]
-                Auth["🔐 Auth Service<br/>─────────<br/>Process"]
-                DB["💾 Database<br/>─────────<br/>Data Store"]
+                Browser(("🌐 Web Browser<br/>─────────<br/>Process"))
+                Server(("🖥️ Web Server<br/>─────────<br/>Process"))
+                Auth(("🔐 Auth Service<br/>─────────<br/>Process"))
+                DB[("💾 Database<br/>─────────<br/>Data Store")]
                 API["📡 External API<br/>─────────<br/>External Entity"]
 
                 User -->|HTTP Request<br/>User Input| Browser

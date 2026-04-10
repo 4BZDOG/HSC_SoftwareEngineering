@@ -1402,7 +1402,7 @@ except ValueError:
 except ZeroDivisionError:
     print("Error: cannot divide by zero.")
 finally:
-    print("Processing complete.")   # Runs whether exception occurred or not</code></pre>
+    print(("Processing complete."))   # Runs whether exception occurred or not</code></pre>
           </div>
           <div class="callout info">
             <strong>When to use try/except:</strong> Wrap code that interacts with the outside world — user input, file I/O, network calls, and type conversions — since these can fail for reasons beyond your control. Do <em>not</em> use exceptions to control normal program flow; use IF/ELSE for expected conditions.

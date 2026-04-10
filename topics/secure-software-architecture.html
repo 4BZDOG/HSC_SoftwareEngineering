@@ -581,12 +581,12 @@ STRIDE Threat Modelling Process
             <div class="mermaid">
               graph LR
                 Customer["👤 CUSTOMER<br/>─────────<br/>External Entity"]
-                Browser["🌐 Web App<br/>─────────<br/>Process"]
-                APIGw["🛡️ API Gateway<br/>SSL/TLS<br/>─────────<br/>Process"]
-                AuthSvc["🔐 Auth Service<br/>Verify Token<br/>─────────<br/>Process"]
-                AppServer["🖥️ App Server<br/>Business Logic<br/>─────────<br/>Process"]
-                DataStore["💾 Encrypted DB<br/>AES-256<br/>─────────<br/>Data Store"]
-                LogStore["📝 Audit Logs<br/>Immutable<br/>─────────<br/>Data Store"]
+                Browser(("🌐 Web App<br/>─────────<br/>Process"))
+                APIGw(("🛡️ API Gateway<br/>SSL/TLS<br/>─────────<br/>Process"))
+                AuthSvc(("🔐 Auth Service<br/>Verify Token<br/>─────────<br/>Process"))
+                AppServer(("🖥️ App Server<br/>Business Logic<br/>─────────<br/>Process"))
+                DataStore[("💾 Encrypted DB<br/>AES-256<br/>─────────<br/>Data Store")]
+                LogStore[("📝 Audit Logs<br/>Immutable<br/>─────────<br/>Data Store")]
                 ExtAPI["📡 Payment API<br/>OAuth 2.0<br/>─────────<br/>External Entity"]
 
                 Customer -->|HTTPS Request| Browser
