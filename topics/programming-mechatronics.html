@@ -347,7 +347,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
               graph LR
                   A["SENSORS<br/>━━━━━━━━<br/>• Motion (PIR)<br/>• Distance<br/>• Temperature<br/>• Position<br/>• Encoders"]
 
-                  B["MICROCONTROLLER<br/>━━━━━━━━<br/>Arduino/ESP32<br/>• Read inputs<br/>• Process logic<br/>• Output commands<br/>• Real-time control"]
+                  B[/"MICROCONTROLLER<br/>━━━━━━━━<br/>Arduino/ESP32<br/>• Read inputs<br/>• Process logic<br/>• Output commands<br/>• Real-time control"/]
 
                   C["ACTUATORS<br/>━━━━━━━━<br/>• DC Motors<br/>• Servos<br/>• Solenoids<br/>• Heaters"]
 
@@ -508,7 +508,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
             </p>
             <div class="mermaid">
               graph TD
-                OL["<b>Open Loop System</b><br/>━━━━━━<br/>COMMAND → ACTUATOR → OUTPUT<br/>(No Feedback)<br/><br/>✓ Simple, fast<br/>✗ No self-correction"]
+                OL[/"<b>Open Loop System</b><br/>━━━━━━<br/>COMMAND → ACTUATOR → OUTPUT<br/>(No Feedback)<br/><br/>✓ Simple, fast<br/>✗ No self-correction"/]
 
                 CL["<b>Closed Loop System</b><br/>━━━━━━<br/>SETPOINT → COMPARE → ADJUST<br/>↓<br/>SENSOR → FEEDBACK<br/><br/>✓ Accurate, adaptive<br/>✗ Complex, slower"]
 

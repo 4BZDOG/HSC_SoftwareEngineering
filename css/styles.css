@@ -3763,3 +3763,15 @@ section:has(> h2.section-collapsed) + .divider {
 .badge-phase2 { background: #3B82F6; }
 .badge-phase3 { background: #10B981; }
 .badge-phase4 { background: #F59E0B; }
+
+/* ── Mermaid HTML Label Fix ── */
+[data-theme="dark"] .mermaid .nodeLabel,
+[data-theme="dark"] .mermaid span.nodeLabel {
+  background-color: transparent !important;
+  color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .mermaid .edgeLabel {
+  background-color: var(--bgLayer) !important;
+  color: #f1f5f9 !important;
+}

@@ -251,7 +251,7 @@
                 E --> F["🧪 Testing<br/>Find errors"]
                 F --> G["📦 Installation<br/>Deploy to users"]
                 G --> H["🛠️ Maintenance<br/>Support & patches"]
-                H --> DECISION{{"Feedback<br/>Loop<br/>Needed?"}}
+                H --> DECISION{"Feedback<br/>Loop<br/>Needed?"}
                 DECISION -->|Yes| A
                 DECISION -->|No| END(["✅ END<br/>Project Complete"])
 
@@ -386,11 +386,11 @@ END</code></pre>
             </p>
             <div class="mermaid">
               flowchart TD
-                START(["▶ START"]) --> A["⌨️ INPUT age from user"]
-                A --> B{{"🔀 Is age ≥ 18?"}}
-                B -->|YES| C["✅ Display 'Welcome!'"]
+                START(["▶ START"]) --> A[/"⌨️ INPUT age from user"/]
+                A --> B{"🔀 Is age ≥ 18?"}
+                B -->|YES| C[/"✅ Display 'Welcome!'"/]
                 C --> D["📋 Show full menu"]
-                B -->|NO| E["❌ Display 'Too young'"]
+                B -->|NO| E[/"❌ Display 'Too young'"/]
                 E --> F["🚪 Exit program"]
                 D --> STOP(["⏹ END"])
                 F --> STOP
@@ -438,11 +438,11 @@ END</code></pre>
               flowchart TD
                 START(["▶ START"]) --> A["📝 SET total ← 0"]
                 A --> B["📝 SET i ← 0"]
-                B --> C{{"🔀 i &lt; length<br/>of list?"}}
+                B --> C{"🔀 i &lt; length<br/>of list?"}
                 C -->|YES| D["➕ total ← total + list[i]"]
                 D --> E["📝 i ← i + 1"]
                 E --> C
-                C -->|NO| F["📤 OUTPUT total"]
+                C -->|NO| F[/"📤 OUTPUT total"/]
                 F --> STOP(["⏹ END"])
 
                 style START fill:#90EE90,color:#000,stroke:#2E7D32,stroke-width:2px
@@ -484,14 +484,14 @@ END</code></pre>
             <div class="mermaid">
               flowchart TD
                 START(["▶ START"]) --> A["📝 SET runningTotal ← 0<br/>SET count ← 0"]
-                A --> B["⌨️ INPUT number"]
-                B --> C{{"🔀 number ≠ -1?"}}
+                A --> B[/"⌨️ INPUT number"/]
+                B --> C{"🔀 number ≠ -1?"}
                 C -->|YES| D["➕ runningTotal ← runningTotal + number"]
                 D --> E["📝 count ← count + 1"]
                 E --> B
-                C -->|NO| F{{"🔀 count &gt; 0?"}}
-                F -->|YES| G["📊 average ← runningTotal / count<br/>OUTPUT average"]
-                F -->|NO| H["⚠️ OUTPUT 'No data entered'"]
+                C -->|NO| F{"🔀 count &gt; 0?"}
+                F -->|YES| G[/"📊 average ← runningTotal / count<br/>OUTPUT average"/]
+                F -->|NO| H[/"⚠️ OUTPUT 'No data entered'"/]
                 G --> STOP(["⏹ END"])
                 H --> STOP
 
@@ -611,10 +611,10 @@ END FUNCTION</code></pre>
             <div class="mermaid">
               flowchart TD
                 A(["🔍 START<br/>Analyze target"]) --> B["🔄 Loop Start<br/>Initialize index=0"]
-                B --> C{{"index <br/>length(list)?"}}
-                C -->|No| D["❌ Not Found<br/>Return -1"]
-                C -->|Yes| E{{"list[index] ==<br/>target?"}}
-                E -->|Yes| F["✅ Found<br/>Return index"]
+                B --> C{"index <br/>length(list)?"}
+                C -->|No| D[/"❌ Not Found<br/>Return -1"/]
+                C -->|Yes| E{"list[index] ==<br/>target?"}
+                E -->|Yes| F[/"✅ Found<br/>Return index"/]
                 E -->|No| G["➡️ Increment<br/>index++"]
                 G --> C
 
@@ -708,7 +708,7 @@ FUNCTION GetValidScore()
                 Main["🏦 ATM System<br/>Main Module<br/>─────────────<br/>Start/Shutdown"]
 
                 Main -->|○ user_id| Auth["🔐 Authenticate User<br/>━━━━━━━━━━━<br/>Verify credentials"]
-                Main -->|● valid| Menu["📋 Display Menu<br/>━━━━━━━━━━━<br/>Show options"]
+                Main -->|● valid| Menu[/"📋 Display Menu<br/>━━━━━━━━━━━<br/>Show options"/]
                 Main -->|○ choice| Trans["💳 Process Transaction<br/>━━━━━━━━━━━<br/>Handle request"]
                 Main -->|● approved| Disp["💵 Dispense Cash<br/>━━━━━━━━━━━<br/>Deliver money"]
 

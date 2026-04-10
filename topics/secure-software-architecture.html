@@ -285,19 +285,19 @@
             <div class="mermaid">
               flowchart TD
                 START(["🚀 START<br/>Begin SDLC"]) --> A["📋 Requirements"]
-                A --> B{{"🔐 Security<br/>Review?"}}
+                A --> B{"🔐 Security<br/>Review?"}
                 B -->|Issues| B1["🔧 Resolve"]
                 B1 --> B
                 B -->|Approved| C["🎨 Design"]
-                C --> D{{"⚠️ Threat<br/>Model?"}}
+                C --> D{"⚠️ Threat<br/>Model?"}
                 D -->|Vulnerabilities| D1["🛡️ Harden"]
                 D1 --> D
                 D -->|Secure| E["💻 Development"]
-                E --> F{{"👀 Code<br/>Review?"}}
+                E --> F{"👀 Code<br/>Review?"}
                 F -->|Issues| F1["🐛 Fix"]
                 F1 --> E
                 F -->|Passed| G["🧪 Security Testing"]
-                G --> H{{"🎯 Pen Test<br/>Passed?"}}
+                G --> H{"🎯 Pen Test<br/>Passed?"}
                 H -->|Vulnerabilities| H1["🔧 Patch"]
                 H1 --> G
                 H -->|Secure| I["🚀 Deployment"]
@@ -555,7 +555,7 @@ STRIDE Threat Modelling Process
                   Server -->|4. Auth Bypass<br/>Token Forgery| Auth
                   DB -.->|Data Breach<br/>Exposed Records| Network
 
-                  MITIGATIONS["🛡️ MITIGATIONS<br/>• HTTPS/TLS Encryption<br/>• Input Validation &amp; Sanitisation<br/>• Parameterised Queries<br/>• JWT Token Validation<br/>• Rate Limiting &amp; WAF<br/>• Database Encryption"]
+                  MITIGATIONS[/"🛡️ MITIGATIONS<br/>• HTTPS/TLS Encryption<br/>• Input Validation &amp; Sanitisation<br/>• Parameterised Queries<br/>• JWT Token Validation<br/>• Rate Limiting &amp; WAF<br/>• Database Encryption"/]
 
                   style User fill:#E3F2FD,stroke:#1976D2
                   style Network fill:#FFF9C4,stroke:#F57F17

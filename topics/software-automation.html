@@ -660,13 +660,13 @@ print(f"Test:       {len(X_test)} samples")    # ~150</code></pre>
             </p>
             <div class="mermaid">
               graph LR
-                  I["INPUT LAYER<br/>━━━━━━━━<br/>Age<br/>Income<br/>Credit Score<br/>Debt Ratio"]
+                  I[/"INPUT LAYER<br/>━━━━━━━━<br/>Age<br/>Income<br/>Credit Score<br/>Debt Ratio"/]
 
                   H1["HIDDEN LAYER 1<br/>━━━━━━━━<br/>8 Neurons<br/>ReLU<br/>Activation"]
 
                   H2["HIDDEN LAYER 2<br/>━━━━━━━━<br/>4 Neurons<br/>ReLU<br/>Activation"]
 
-                  O["OUTPUT LAYER<br/>━━━━━━━━<br/>1 Neuron<br/>Sigmoid<br/>P(Approve)"]
+                  O[/"OUTPUT LAYER<br/>━━━━━━━━<br/>1 Neuron<br/>Sigmoid<br/>P(Approve)"/]
 
                   I -->|weights| H1
                   H1 -->|weights| H2
