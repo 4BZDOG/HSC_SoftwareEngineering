@@ -3764,14 +3764,33 @@ section:has(> h2.section-collapsed) + .divider {
 .badge-phase3 { background: #10B981; }
 .badge-phase4 { background: #F59E0B; }
 
-/* ── Mermaid HTML Label Fix ── */
+/* ── Mermaid Universal Dark Mode Fix ── */
+[data-theme="dark"] .mermaid text,
+[data-theme="dark"] .mermaid tspan,
+[data-theme="dark"] .mermaid .nodeLabel,
+[data-theme="dark"] .mermaid span.nodeLabel,
+[data-theme="dark"] .mermaid .classLabel,
+[data-theme="dark"] .mermaid .classText,
+[data-theme="dark"] .mermaid .messageText,
+[data-theme="dark"] .mermaid .noteText,
+[data-theme="dark"] .mermaid .actor,
+[data-theme="dark"] .mermaid .taskText,
+[data-theme="dark"] .mermaid .taskTextOutsideRight,
+[data-theme="dark"] .mermaid .taskTextOutsideLeft,
+[data-theme="dark"] .mermaid .tick text,
+[data-theme="dark"] .mermaid p,
+[data-theme="dark"] .mermaid span {
+  color: #f1f5f9 !important;
+  fill: #f1f5f9 !important;
+}
+
 [data-theme="dark"] .mermaid .nodeLabel,
 [data-theme="dark"] .mermaid span.nodeLabel {
   background-color: transparent !important;
-  color: #f1f5f9 !important;
 }
 
-[data-theme="dark"] .mermaid .edgeLabel {
+[data-theme="dark"] .mermaid .edgeLabel,
+[data-theme="dark"] .mermaid .labelBkg {
   background-color: var(--bgLayer) !important;
   color: #f1f5f9 !important;
 }

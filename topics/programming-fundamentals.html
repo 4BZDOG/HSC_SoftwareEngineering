@@ -708,8 +708,8 @@ FUNCTION GetValidScore()
                 Main["🏦 ATM System<br/>Main Module<br/>─────────────<br/>Start/Shutdown"]
 
                 Main -->|○ user_id| Auth["🔐 Authenticate User<br/>━━━━━━━━━━━<br/>Verify credentials"]
-                Main -->|● valid| Menu[/"📋 Display Menu<br/>━━━━━━━━━━━<br/>Show options"/]
-                Main -->|○ choice| Trans(("💳 Process Transaction<br/>━━━━━━━━━━━<br/>Handle request"))
+                Main -->|● valid| Menu["📋 Display Menu<br/>━━━━━━━━━━━<br/>Show options"]
+                Main -->|○ choice| Trans["💳 Process Transaction<br/>━━━━━━━━━━━<br/>Handle request"]
                 Main -->|● approved| Disp["💵 Dispense Cash<br/>━━━━━━━━━━━<br/>Deliver money"]
 
                 Auth -->|○ pin| VerifyPIN["🔑 Verify PIN<br/>Check database"]
