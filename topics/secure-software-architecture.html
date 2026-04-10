@@ -76,6 +76,7 @@
           <div class="nav-dropdown-menu" role="menu">
             <a href="course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
             <a href="sdlc.html" role="menuitem">🔄 SDLC Guide</a>
+            <a href="glossary.html" role="menuitem">📖 Glossary</a>
           </div>
         </li>
         <li class="nav-dropdown nav-dropdown-y12">
@@ -119,7 +120,8 @@
       <div class="mobile-menu-label">Resources</div>
       <a href="course-tools.html">🛠️ Course Tools &amp; Specifications</a>
       <a href="sdlc.html">🔄 SDLC Guide</a>
-    </div>
+            <a href="glossary.html" role="menuitem">📖 Glossary</a>
+          </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 12</div>
       <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
@@ -285,19 +287,19 @@
             <div class="mermaid">
               flowchart TD
                 START(["🚀 START<br/>Begin SDLC"]) --> A["📋 Requirements"]
-                A --> B{{"🔐 Security<br/>Review?"}}
+                A --> B{"🔐 Security<br/>Review?"}
                 B -->|Issues| B1["🔧 Resolve"]
                 B1 --> B
                 B -->|Approved| C["🎨 Design"]
-                C --> D{{"⚠️ Threat<br/>Model?"}}
+                C --> D{"⚠️ Threat<br/>Model?"}
                 D -->|Vulnerabilities| D1["🛡️ Harden"]
                 D1 --> D
                 D -->|Secure| E["💻 Development"]
-                E --> F{{"👀 Code<br/>Review?"}}
+                E --> F{"👀 Code<br/>Review?"}
                 F -->|Issues| F1["🐛 Fix"]
                 F1 --> E
                 F -->|Passed| G["🧪 Security Testing"]
-                G --> H{{"🎯 Pen Test<br/>Passed?"}}
+                G --> H{"🎯 Pen Test<br/>Passed?"}
                 H -->|Vulnerabilities| H1["🔧 Patch"]
                 H1 --> G
                 H -->|Secure| I["🚀 Deployment"]
@@ -555,7 +557,7 @@ STRIDE Threat Modelling Process
                   Server -->|4. Auth Bypass<br/>Token Forgery| Auth
                   DB -.->|Data Breach<br/>Exposed Records| Network
 
-                  MITIGATIONS["🛡️ MITIGATIONS<br/>• HTTPS/TLS Encryption<br/>• Input Validation &amp; Sanitisation<br/>• Parameterised Queries<br/>• JWT Token Validation<br/>• Rate Limiting &amp; WAF<br/>• Database Encryption"]
+                  MITIGATIONS[/"🛡️ MITIGATIONS<br/>• HTTPS/TLS Encryption<br/>• Input Validation &amp; Sanitisation<br/>• Parameterised Queries<br/>• JWT Token Validation<br/>• Rate Limiting &amp; WAF<br/>• Database Encryption"/]
 
                   style User fill:#E3F2FD,stroke:#1976D2
                   style Network fill:#FFF9C4,stroke:#F57F17
@@ -581,12 +583,12 @@ STRIDE Threat Modelling Process
             <div class="mermaid">
               graph LR
                 Customer["👤 CUSTOMER<br/>─────────<br/>External Entity"]
-                Browser["🌐 Web App<br/>─────────<br/>Process"]
-                APIGw["🛡️ API Gateway<br/>SSL/TLS<br/>─────────<br/>Process"]
-                AuthSvc["🔐 Auth Service<br/>Verify Token<br/>─────────<br/>Process"]
-                AppServer["🖥️ App Server<br/>Business Logic<br/>─────────<br/>Process"]
-                DataStore["💾 Encrypted DB<br/>AES-256<br/>─────────<br/>Data Store"]
-                LogStore["📝 Audit Logs<br/>Immutable<br/>─────────<br/>Data Store"]
+                Browser(("🌐 Web App<br/>─────────<br/>Process"))
+                APIGw(("🛡️ API Gateway<br/>SSL/TLS<br/>─────────<br/>Process"))
+                AuthSvc(("🔐 Auth Service<br/>Verify Token<br/>─────────<br/>Process"))
+                AppServer(("🖥️ App Server<br/>Business Logic<br/>─────────<br/>Process"))
+                DataStore[("💾 Encrypted DB<br/>AES-256<br/>─────────<br/>Data Store")]
+                LogStore[("📝 Audit Logs<br/>Immutable<br/>─────────<br/>Data Store")]
                 ExtAPI["📡 Payment API<br/>OAuth 2.0<br/>─────────<br/>External Entity"]
 
                 Customer -->|HTTPS Request| Browser

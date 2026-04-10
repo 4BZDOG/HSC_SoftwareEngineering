@@ -3763,3 +3763,64 @@ section:has(> h2.section-collapsed) + .divider {
 .badge-phase2 { background: #3B82F6; }
 .badge-phase3 { background: #10B981; }
 .badge-phase4 { background: #F59E0B; }
+
+/* ── Mermaid Universal Dark Mode Fix ── */
+[data-theme="dark"] .mermaid text,
+[data-theme="dark"] .mermaid tspan,
+[data-theme="dark"] .mermaid .nodeLabel,
+[data-theme="dark"] .mermaid span.nodeLabel,
+[data-theme="dark"] .mermaid .classLabel,
+[data-theme="dark"] .mermaid .classText,
+[data-theme="dark"] .mermaid .messageText,
+[data-theme="dark"] .mermaid .noteText,
+[data-theme="dark"] .mermaid .actor,
+[data-theme="dark"] .mermaid .taskText,
+[data-theme="dark"] .mermaid .taskTextOutsideRight,
+[data-theme="dark"] .mermaid .taskTextOutsideLeft,
+[data-theme="dark"] .mermaid .tick text,
+[data-theme="dark"] .mermaid p,
+[data-theme="dark"] .mermaid span {
+  color: #f1f5f9 !important;
+  fill: #f1f5f9 !important;
+}
+
+[data-theme="dark"] .mermaid .nodeLabel,
+[data-theme="dark"] .mermaid span.nodeLabel {
+  background-color: transparent !important;
+}
+
+[data-theme="dark"] .mermaid .edgeLabel,
+[data-theme="dark"] .mermaid .labelBkg {
+  background-color: var(--bgLayer) !important;
+  color: #f1f5f9 !important;
+}
+
+/* ── Automated Glossary Auto-Links ── */
+.glossary-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--primary);
+  border-bottom: 1.5px dashed var(--primary);
+  padding-bottom: 0.1em;
+  transition: all var(--transition);
+  position: relative;
+  cursor: help;
+}
+.glossary-link::after {
+  content: "📖";
+  font-size: 0.75em;
+  margin-left: 0.25em;
+  vertical-align: super;
+  opacity: 0.5;
+  transition: opacity var(--transition);
+}
+.glossary-link:hover {
+  background-color: var(--primary-light);
+  border-bottom-style: solid;
+}
+.glossary-link:hover::after {
+  opacity: 1;
+}
+[data-theme="dark"] .glossary-link:hover {
+  background-color: rgba(99, 102, 241, 0.15);
+}

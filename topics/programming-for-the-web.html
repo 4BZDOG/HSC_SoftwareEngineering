@@ -76,6 +76,7 @@
           <div class="nav-dropdown-menu" role="menu">
             <a href="course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
             <a href="sdlc.html" role="menuitem">🔄 SDLC Guide</a>
+            <a href="glossary.html" role="menuitem">📖 Glossary</a>
           </div>
         </li>
         <li class="nav-dropdown nav-dropdown-y12">
@@ -119,7 +120,8 @@
       <div class="mobile-menu-label">Resources</div>
       <a href="course-tools.html">🛠️ Course Tools &amp; Specifications</a>
       <a href="sdlc.html">🔄 SDLC Guide</a>
-    </div>
+            <a href="glossary.html" role="menuitem">📖 Glossary</a>
+          </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 12</div>
       <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
@@ -577,10 +579,10 @@
             <div class="mermaid">
               graph LR
                 User["👤 USER<br/>─────────<br/>External Entity"]
-                Browser["🌐 Web Browser<br/>─────────<br/>Process"]
-                Server["🖥️ Web Server<br/>─────────<br/>Process"]
-                Auth["🔐 Auth Service<br/>─────────<br/>Process"]
-                DB["💾 Database<br/>─────────<br/>Data Store"]
+                Browser(("🌐 Web Browser<br/>─────────<br/>Process"))
+                Server(("🖥️ Web Server<br/>─────────<br/>Process"))
+                Auth(("🔐 Auth Service<br/>─────────<br/>Process"))
+                DB[("💾 Database<br/>─────────<br/>Data Store")]
                 API["📡 External API<br/>─────────<br/>External Entity"]
 
                 User -->|HTTP Request<br/>User Input| Browser
