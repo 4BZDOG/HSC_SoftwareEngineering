@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glossary — Key Terminology | HSC Software Engineering</title>
+  <!-- ── SEO ── -->
+  <link rel="canonical" href="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/glossary.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Software Engineering Glossary | HSC Software Engineering" />
+  <meta property="og:description" content="A comprehensive A-Z glossary covering all critical NESA NSW HSC Software Engineering terminology." />
+  <meta property="og:url" content="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/glossary.html" />
+  <meta property="og:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <meta property="og:image:alt" content="HSC Software Engineering Notes — NESA NSW" />
+  <meta property="og:site_name" content="HSC Software Engineering Notes" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Software Engineering Glossary | HSC Software Engineering" />
+  <meta name="twitter:description" content="A comprehensive A-Z glossary covering all critical NESA NSW HSC Software Engineering terminology." />
+  <meta name="twitter:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Glossary",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/topics/glossary.html"
+    }
+    ]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+  <meta name="theme-color" content="#6366F1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta name="description" content="A comprehensive A-Z glossary covering all critical NESA NSW HSC Software Engineering terminology." />
+  <!-- Theme init: prevents flash of wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
+  <link rel="stylesheet" href="../css/styles.css?v=8" />
+  <style>
+    /* ── Glossary Specific Styles ── */
+    .glossary-group {
+      margin-bottom: 3rem;
+    }
+    .glossary-letter-header {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      border-bottom: 4px solid var(--primary-light);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      min-width: 40px;
+    }
+    .glossary-term {
+      background: var(--surface);
+      border-left: 5px solid var(--primary);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--transition), transform var(--transition);
+      position: relative;
+    }
+    .glossary-term:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateX(4px);
+    }
+    .glossary-term h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .glossary-term-meta {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+    .glossary-term p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    .glossary-related {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+    .glossary-related a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .glossary-related a:hover {
+      text-decoration: underline;
+    }
+
+    /* Alphabet Jump Menu */
+    .alpha-jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem;
+      justify-content: center;
+      background: var(--surface);
+      padding: 1rem;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      margin-bottom: 3rem;
+      position: sticky;
+      top: 5rem;
+      z-index: 10;
+      box-shadow: var(--shadow-sm);
+    }
+    .alpha-btn {
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: background var(--transition), color var(--transition);
+    }
+    .alpha-btn:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+    .alpha-btn.disabled {
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    [data-theme="dark"] .alpha-jump {
+      background: rgba(30, 41, 59, 0.85);
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo">💻</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li class="nav-dropdown">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            🗂️ Resources
+            <span class="badge badge-all">Guides</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
+            <a href="sdlc.html" role="menuitem">🔄 SDLC Guide</a>
+            <a href="glossary.html" role="menuitem" aria-current="page">📖 Glossary</a>
+          </div>
+        </li>
+        <li class="nav-dropdown nav-dropdown-y12">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            Year 12
+            <span class="badge badge-12">HSC</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="secure-software-architecture.html" role="menuitem">🔒 Secure Software Architecture</a>
+            <a href="programming-for-the-web.html" role="menuitem">🌐 Programming for the Web</a>
+            <a href="software-automation.html" role="menuitem">⚙️ Software Automation</a>
+            <a href="software-engineering-project.html" role="menuitem">📋 Software Engineering Project</a>
+          </div>
+        </li>
+        <li class="nav-dropdown nav-dropdown-y11">
+          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            Year 11
+            <span class="badge badge-11">Prelim</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="programming-fundamentals.html" role="menuitem">📐 Programming Fundamentals</a>
+            <a href="object-oriented-paradigm.html" role="menuitem">🧩 Object-Oriented Paradigm</a>
+            <a href="programming-mechatronics.html" role="menuitem">🤖 Programming Mechatronics</a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Mobile Menu ── -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Resources</div>
+      <a href="course-tools.html">🛠️ Course Tools &amp; Specifications</a>
+      <a href="sdlc.html">🔄 SDLC Guide</a>
+      <a href="glossary.html">📖 Glossary</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 12 — HSC</div>
+      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
+      <a href="software-automation.html">⚙️ Software Automation</a>
+      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+    </div>
+    <div class="mobile-menu-section">
+      <div class="mobile-menu-label">Year 11 — Preliminary</div>
+      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">🧩 The Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+    </div>
+    <div class="mobile-menu-section">
+      <button id="theme-toggle-mobile" class="btn btn-mobile-theme">🌙 Toggle Theme</button>
+    </div>
+  </div>
+
+  <!-- ── Page Header ── -->
+  <header class="topic-header">
+    <div class="topic-header-inner">
+      <nav class="topic-breadcrumb">
+        <a href="../index.html">Home</a> <span>›</span>
+        <span>Glossary</span>
+      </nav>
+      <h1>📖 Software Engineering Glossary</h1>
+      <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
+        A comprehensive A–Z terminology reference for mastering NESA NSW HSC Software Engineering. Use this guide to ensure precise vocabulary in your HSC responses.
+      </p>
+      <div class="topic-header-meta">
+        <span class="meta-pill year12">📘 Year 11 &amp; 12</span>
+        <span class="meta-pill">🗂️ Reference</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Page Layout ── -->
+  <div class="page-layout full-width">
+    <!-- Centered Content -->
+    <main class="page-content" style="max-width: 1000px; margin: 0 auto;">
+      <div class="content-body" style="padding: 2rem;">
+
+        <!-- ── Alphabet Jump Menu ── -->
+        <div class="alpha-jump">
+          <a href="#alpha-A" class="alpha-btn">A</a>
+          <a href="#alpha-B" class="alpha-btn">B</a>
+          <a href="#alpha-C" class="alpha-btn">C</a>
+          <a href="#alpha-D" class="alpha-btn">D</a>
+          <a href="#alpha-E" class="alpha-btn">E</a>
+          <a href="#alpha-F" class="alpha-btn">F</a>
+          <a href="#alpha-G" class="alpha-btn">G</a>
+          <a href="#alpha-H" class="alpha-btn">H</a>
+          <a href="#alpha-I" class="alpha-btn">I</a>
+          <a href="#alpha-J" class="alpha-btn">J</a>
+          <a href="#alpha-K" class="alpha-btn disabled">K</a>
+          <a href="#alpha-L" class="alpha-btn disabled">L</a>
+          <a href="#alpha-M" class="alpha-btn">M</a>
+          <a href="#alpha-N" class="alpha-btn disabled">N</a>
+          <a href="#alpha-O" class="alpha-btn">O</a>
+          <a href="#alpha-P" class="alpha-btn">P</a>
+          <a href="#alpha-Q" class="alpha-btn disabled">Q</a>
+          <a href="#alpha-R" class="alpha-btn">R</a>
+          <a href="#alpha-S" class="alpha-btn">S</a>
+          <a href="#alpha-T" class="alpha-btn disabled">T</a>
+          <a href="#alpha-U" class="alpha-btn">U</a>
+          <a href="#alpha-V" class="alpha-btn disabled">V</a>
+          <a href="#alpha-W" class="alpha-btn">W</a>
+          <a href="#alpha-X" class="alpha-btn disabled">X</a>
+          <a href="#alpha-Y" class="alpha-btn disabled">Y</a>
+          <a href="#alpha-Z" class="alpha-btn disabled">Z</a>
+        </div>
+
+        <!-- ── GLOSSARY ITEMS ── -->
+
+        <!-- A -->
+        <div class="glossary-group" id="alpha-A">
+          <div class="glossary-letter-header">A</div>
+          
+          <div class="glossary-term" id="term-abstraction">
+            <h3>Abstraction</h3>
+            <span class="glossary-term-meta">Programming Fundamentals | OOP</span>
+            <p>The concept of hiding the complex internal details of a system while exposing only the necessary functionalities to the user or other systems. This reduces complexity and increases efficiency.</p>
+            <div class="glossary-related">See also: <a href="#term-encapsulation">Encapsulation</a></div>
+          </div>
+
+          <div class="glossary-term" id="term-agile">
+            <h3>Agile Methodology</h3>
+            <span class="glossary-term-meta">Software Engineering Project</span>
+            <p>An iterative approach to software development emphasizing continuous delivery, team collaboration, and constant feedback over rigid, linear planning.</p>
+            <div class="glossary-related">See also: <a href="#term-wagile">WAGILE</a>, <a href="#term-scrum">Scrum</a></div>
+          </div>
+
+          <div class="glossary-term" id="term-api">
+            <h3>API (Application Programming Interface)</h3>
+            <span class="glossary-term-meta">Programming For The Web</span>
+            <p>A set of rules and protocols letting different software applications communicate with each other. Often built on REST or GraphQL in modern web applications.</p>
+            <div class="glossary-related">See also: <a href="#term-rest">REST</a></div>
+          </div>
+        </div>
+
+        <!-- B -->
+        <div class="glossary-group" id="alpha-B">
+          <div class="glossary-letter-header">B</div>
+          
+          <div class="glossary-term" id="term-backlog">
+            <h3>Backlog</h3>
+            <span class="glossary-term-meta">SDLC | Software Engineering Project</span>
+            <p>A prioritized list of tasks, features, and bug fixes that need to be addressed during the development life cycle.</p>
+          </div>
+        </div>
+
+        <!-- C -->
+        <div class="glossary-group" id="alpha-C">
+          <div class="glossary-letter-header">C</div>
+          
+          <div class="glossary-term" id="term-cicd">
+            <h3>CI/CD (Continuous Integration / Continuous Deployment)</h3>
+            <span class="glossary-term-meta">Software Automation</span>
+            <p>Automation practices involving the constant merging of code updates (CI) and automated delivery/deployment to staging or production environments (CD).</p>
+          </div>
+
+          <div class="glossary-term" id="term-class">
+            <h3>Class</h3>
+            <span class="glossary-term-meta">Object-Oriented Paradigm</span>
+            <p>A blueprint or template for creating objects, defining initial state values (attributes) and implementations of behavior (methods or functions).</p>
+            <div class="glossary-related">See also: <a href="#term-object">Object</a></div>
+          </div>
+        </div>
+
+        <!-- D -->
+        <div class="glossary-group" id="alpha-D">
+          <div class="glossary-letter-header">D</div>
+          
+          <div class="glossary-term" id="term-dast">
+            <h3>DAST (Dynamic Application Security Testing)</h3>
+            <span class="glossary-term-meta">Secure Software Architecture | Automation</span>
+            <p>A security testing method where an application is tested from the outside in while it is running, specifically searching for vulnerabilities like SQL injection or cross-site scripting.</p>
+            <div class="glossary-related">See also: <a href="#term-sast">SAST</a></div>
+          </div>
+
+          <div class="glossary-term" id="term-dom">
+            <h3>DOM (Document Object Model)</h3>
+            <span class="glossary-term-meta">Programming For The Web</span>
+            <p>A programming interface for web documents. It represents the page so that programs (like JavaScript) can change the document structure, style, and content dynamically.</p>
+          </div>
+        </div>
+
+        <!-- E -->
+        <div class="glossary-group" id="alpha-E">
+          <div class="glossary-letter-header">E</div>
+          
+          <div class="glossary-term" id="term-encapsulation">
+            <h3>Encapsulation</h3>
+            <span class="glossary-term-meta">Object-Oriented Paradigm</span>
+            <p>The bundling of data (attributes) and the methods that operate on that data into a single unit or class. It often relies on access modifiers (public, private, protected) to prevent unwanted external interference.</p>
+            <div class="glossary-related">See also: <a href="#term-abstraction">Abstraction</a></div>
+          </div>
+        </div>
+
+        <!-- F -->
+        <div class="glossary-group" id="alpha-F">
+          <div class="glossary-letter-header">F</div>
+          
+          <div class="glossary-term" id="term-fsm">
+            <h3>Finite State Machine (FSM)</h3>
+            <span class="glossary-term-meta">Programming Fundamentals | Automation</span>
+            <p>A computational model consisting of a finite number of states, transitions between those states, and actions. Crucial for modelling reactive software and embedded systems.</p>
+          </div>
+        </div>
+
+        <!-- G -->
+        <div class="glossary-group" id="alpha-G">
+          <div class="glossary-letter-header">G</div>
+          
+          <div class="glossary-term" id="term-gantt">
+            <h3>Gantt Chart</h3>
+            <span class="glossary-term-meta">SDLC | Software Engineering Project</span>
+            <p>A type of bar chart that illustrates a project schedule, displaying tasks sequentially alongside their start/end dates and dependencies.</p>
+          </div>
+
+          <div class="glossary-term" id="term-gui">
+            <h3>GUI (Graphical User Interface)</h3>
+            <span class="glossary-term-meta">Programming For The Web | SDLC</span>
+            <p>An interface allowing users to interact with electronic devices through graphical icons and visual indicators, rather than text-based interfaces or typed command labels.</p>
+          </div>
+        </div>
+
+        <!-- H -->
+        <div class="glossary-group" id="alpha-H">
+          <div class="glossary-letter-header">H</div>
+          
+          <div class="glossary-term" id="term-headless-cms">
+            <h3>Headless CMS</h3>
+            <span class="glossary-term-meta">Programming For The Web</span>
+            <p>A back-end only content management system (CMS) that acts exclusively as a content repository, pushing data out via an API for display on any custom front-end framework or device.</p>
+          </div>
+        </div>
+
+        <!-- I -->
+        <div class="glossary-group" id="alpha-I">
+          <div class="glossary-letter-header">I</div>
+          
+          <div class="glossary-term" id="term-inheritance">
+            <h3>Inheritance</h3>
+            <span class="glossary-term-meta">Object-Oriented Paradigm</span>
+            <p>An OOP mechanism where one class (child) derives the properties and methods of another (parent), promoting code reusability and hierarchical relationships.</p>
+          </div>
+        </div>
+
+        <!-- J -->
+        <div class="glossary-group" id="alpha-J">
+          <div class="glossary-letter-header">J</div>
+          
+          <div class="glossary-term" id="term-jwt">
+            <h3>JWT (JSON Web Token)</h3>
+            <span class="glossary-term-meta">Secure Software Architecture | Web</span>
+            <p>An open standard determining a compact and self-contained way for securely transmitting information exactly between parties as a JSON object; heavily utilized in modern authentication systems.</p>
+          </div>
+        </div>
+
+        <!-- M -->
+        <div class="glossary-group" id="alpha-M">
+          <div class="glossary-letter-header">M</div>
+          
+          <div class="glossary-term" id="term-mechatronics">
+            <h3>Mechatronics</h3>
+            <span class="glossary-term-meta">Programming Mechatronics</span>
+            <p>A multidisciplinary field blending software, electrical, and mechanical engineering to create smart systems and robotics.</p>
+          </div>
+
+          <div class="glossary-term" id="term-mvc">
+            <h3>MVC (Model-View-Controller)</h3>
+            <span class="glossary-term-meta">Programming For The Web</span>
+            <p>A software design pattern dividing an application into three interconnected parts: Model (data), View (user interface), and Controller (logic handling input).</p>
+          </div>
+        </div>
+
+        <!-- O -->
+        <div class="glossary-group" id="alpha-O">
+          <div class="glossary-letter-header">O</div>
+          
+          <div class="glossary-term" id="term-object">
+            <h3>Object</h3>
+            <span class="glossary-term-meta">Object-Oriented Paradigm</span>
+            <p>In OOP, a specific instance of a class containing concrete state (attributes) and behavior (methods) allocated in memory.</p>
+            <div class="glossary-related">See also: <a href="#term-class">Class</a></div>
+          </div>
+        </div>
+
+        <!-- P -->
+        <div class="glossary-group" id="alpha-P">
+          <div class="glossary-letter-header">P</div>
+          
+          <div class="glossary-term" id="term-polymorphism">
+            <h3>Polymorphism</h3>
+            <span class="glossary-term-meta">Object-Oriented Paradigm</span>
+            <p>The ability of different objects to respond to the same method call in their own specific way. This is primarily achieved through method overriding and interfaces.</p>
+          </div>
+        </div>
+
+        <!-- R -->
+        <div class="glossary-group" id="alpha-R">
+          <div class="glossary-letter-header">R</div>
+          
+          <div class="glossary-term" id="term-rest">
+            <h3>REST (Representational State Transfer)</h3>
+            <span class="glossary-term-meta">Programming For The Web</span>
+            <p>An architectural style for designing networked applications employing HTTP requests to GET, POST, PUT, and DELETE data.</p>
+            <div class="glossary-related">See also: <a href="#term-api">API</a></div>
+          </div>
+        </div>
+
+        <!-- S -->
+        <div class="glossary-group" id="alpha-S">
+          <div class="glossary-letter-header">S</div>
+          
+          <div class="glossary-term" id="term-sast">
+            <h3>SAST (Static Application Security Testing)</h3>
+            <span class="glossary-term-meta">Software Automation | Architecture</span>
+            <p>A methodology for evaluating software code for security issues entirely without running the program (white-box testing).</p>
+            <div class="glossary-related">See also: <a href="#term-dast">DAST</a></div>
+          </div>
+          
+          <div class="glossary-term" id="term-scrum">
+            <h3>Scrum</h3>
+            <span class="glossary-term-meta">SDLC | Software Engineering Project</span>
+            <p>A specialized sub-framework of Agile utilized to organize team communication, iterations (sprints), and product backlogs.</p>
+          </div>
+
+          <div class="glossary-term" id="term-sdlc">
+            <h3>SDLC (Software Development Life Cycle)</h3>
+            <span class="glossary-term-meta">Cross-Curriculum</span>
+            <p>A systematic process outlining the structured phases required to plan, design, develop, test, and deploy high-quality software (Identifying/Defining, Research/Planning, Producing/Implementing, Testing/Evaluating).</p>
+          </div>
+        </div>
+
+        <!-- U -->
+        <div class="glossary-group" id="alpha-U">
+          <div class="glossary-letter-header">U</div>
+          
+          <div class="glossary-term" id="term-uml">
+            <h3>UML (Unified Modeling Language)</h3>
+            <span class="glossary-term-meta">SDLC | Object-Oriented Paradigm</span>
+            <p>A standardized visual modeling language employed to conceptually diagram and document the architecture and design of a software system (e.g., Class Diagrams, Use Case Diagrams).</p>
+          </div>
+        </div>
+
+        <!-- W -->
+        <div class="glossary-group" id="alpha-W">
+          <div class="glossary-letter-header">W</div>
+          
+          <div class="glossary-term" id="term-wagile">
+            <h3>WAGILE</h3>
+            <span class="glossary-term-meta">SDLC</span>
+            <p>A hybrid or dysfunctional methodology resulting from an attempt to merge Waterfall and Agile models—often referring to a scenario where heavy upfront planning mimics "Waterfall", but rapid iteration and stand-ups mimic "Agile".</p>
+          </div>
+        </div>
+        
+      </div>
+    </main>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4><div class="nav-logo" style="display:inline-block; margin-right:5px; font-size:1.2rem;">💻</div> SoftEng Notes</h4>
+        <p class="text-muted-dark fs-sm mt-2">
+          Open-source, comprehensive study material tailored specifically for the NESA NSW HSC Software Engineering curriculum.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>🚀 Year 12</h4>
+        <a href="secure-software-architecture.html">Secure Architecture</a>
+        <a href="programming-for-the-web.html">Web Programming</a>
+        <a href="software-automation.html">Software Automation</a>
+        <a href="software-engineering-project.html">Engineering Project</a>
+      </div>
+      <div class="footer-col">
+        <h4>📈 Year 11</h4>
+        <a href="programming-fundamentals.html">Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html">OOP</a>
+        <a href="programming-mechatronics.html">Mechatronics</a>
+      </div>
+      <div class="footer-col">
+        <h4>🛡️ Navigate</h4>
+        <a href="../index.html">← Back to Home</a>
+        <a href="course-tools.html">🛠️ Course Tools</a>
+        <a href="software-engineering-project.html">📋 Major Project →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 HSC SoftEng Notes · Glossary · Australian English Standards</span>
+    </div>
+  </footer>
+
+  <script src="../js/main.js?v=8"></script>
+</body>
+</html>
