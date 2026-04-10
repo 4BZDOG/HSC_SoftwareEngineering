@@ -890,6 +890,130 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     block.appendChild(copyBtn);
   });
+  /* ── Automated Glossary Linker ── */
+  (() => {
+    // Prevent it running on the glossary page itself to avoid infinite recursive loops
+    if (window.location.pathname.includes('glossary.html')) return;
+
+    const contentBody = document.querySelector('.content-body');
+    if (!contentBody) return;
+
+    // Determine correct path relative to current URL
+    const isRoot = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('HSC_SoftwareEngineering/');
+    const basePath = isRoot ? 'topics/glossary.html' : 'glossary.html';
+
+    const DICTIONARY = {
+      'Abstraction': 'term-abstraction',
+      'Agile': 'term-agile',
+      'API': 'term-api',
+      'Backlog': 'term-backlog',
+      'CI/CD': 'term-cicd',
+      'Continuous Integration / Continuous Deployment': 'term-cicd',
+      'Continuous Integration': 'term-cicd',
+      'Continuous Deployment': 'term-cicd',
+      'Class': 'term-class',
+      'DAST': 'term-dast',
+      'DOM': 'term-dom',
+      'Encapsulation': 'term-encapsulation',
+      'Finite State Machine': 'term-fsm',
+      'FSM': 'term-fsm',
+      'Gantt Chart': 'term-gantt',
+      'Gantt': 'term-gantt',
+      'GUI': 'term-gui',
+      'Headless CMS': 'term-headless-cms',
+      'Inheritance': 'term-inheritance',
+      'JWT': 'term-jwt',
+      'JSON Web Token': 'term-jwt',
+      'Mechatronics': 'term-mechatronics',
+      'MVC': 'term-mvc',
+      'Object': 'term-object',
+      'Polymorphism': 'term-polymorphism',
+      'REST': 'term-rest',
+      'SAST': 'term-sast',
+      'Scrum': 'term-scrum',
+      'SDLC': 'term-sdlc',
+      'Software Development Life Cycle': 'term-sdlc',
+      'UML': 'term-uml',
+      'Unified Modeling Language': 'term-uml',
+      'WAGILE': 'term-wagile'
+    };
+
+    // Output terms ordered by length so "Continuous Integration" matches before "Integration"
+    const terms = Object.keys(DICTIONARY).sort((a,b) => b.length - a.length);
+    // Build optimized case-insensitive regex escaping special chars (except /)
+    const patternStr = terms.map(t => t.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')).join('|');
+    const pattern = new RegExp(`\\b(${patternStr})\\b`, 'gi');
+
+    const seenTerms = new Set();
+    const excludeTags = new Set(['A', 'PRE', 'CODE', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'TH']);
+
+    // Recursively walk text nodes
+    const walk = document.createTreeWalker(contentBody, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        let parent = node.parentNode;
+        while (parent && parent !== contentBody) {
+          if (excludeTags.has(parent.tagName) || parent.classList.contains('mermaid') || parent.classList.contains('code-block') || parent.classList.contains('nav-dropdown')) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          parent = parent.parentNode;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+
+    const nodesToReplace = [];
+    let currentNode;
+    while ((currentNode = walk.nextNode())) {
+      if (currentNode.nodeValue.trim().length > 0) {
+        nodesToReplace.push(currentNode);
+      }
+    }
+
+    nodesToReplace.forEach(node => {
+      let text = node.nodeValue;
+      let match;
+      let lastIndex = 0;
+      let fragment = null;
+
+      // Reset regex index
+      pattern.lastIndex = 0;
+
+      while ((match = pattern.exec(text)) !== null) {
+        const termRaw = match[0];
+        const termKey = terms.find(t => t.toLowerCase() === termRaw.toLowerCase());
+        
+        if (!termKey) continue; 
+        if (seenTerms.has(termKey)) continue; // Only autolink the very FIRST appearance natively on this page
+        
+        seenTerms.add(termKey);
+
+        if (!fragment) fragment = document.createDocumentFragment();
+
+        // Push text preceding the match
+        if (match.index > lastIndex) {
+          fragment.appendChild(document.createTextNode(text.substring(lastIndex, match.index)));
+        }
+
+        // Create the anchor replacement
+        const anchor = document.createElement('a');
+        anchor.href = `${basePath}#${DICTIONARY[termKey]}`;
+        anchor.className = 'glossary-link';
+        anchor.title = `View glossary definition for ${termRaw}`;
+        anchor.textContent = termRaw;
+
+        fragment.appendChild(anchor);
+        lastIndex = pattern.lastIndex;
+      }
+
+      if (fragment) {
+        // Push remaining text after the last match
+        if (lastIndex < text.length) {
+          fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
+        }
+        node.parentNode.replaceChild(fragment, node);
+      }
+    });
+  })();
 
 });
 

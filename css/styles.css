@@ -3794,3 +3794,33 @@ section:has(> h2.section-collapsed) + .divider {
   background-color: var(--bgLayer) !important;
   color: #f1f5f9 !important;
 }
+
+/* ── Automated Glossary Auto-Links ── */
+.glossary-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--primary);
+  border-bottom: 1.5px dashed var(--primary);
+  padding-bottom: 0.1em;
+  transition: all var(--transition);
+  position: relative;
+  cursor: help;
+}
+.glossary-link::after {
+  content: "📖";
+  font-size: 0.75em;
+  margin-left: 0.25em;
+  vertical-align: super;
+  opacity: 0.5;
+  transition: opacity var(--transition);
+}
+.glossary-link:hover {
+  background-color: var(--primary-light);
+  border-bottom-style: solid;
+}
+.glossary-link:hover::after {
+  opacity: 1;
+}
+[data-theme="dark"] .glossary-link:hover {
+  background-color: rgba(99, 102, 241, 0.15);
+}
