@@ -4,48 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Glossary — Key Terminology | HSC Software Engineering</title>
-  <!-- ── SEO ── -->
   <link rel="canonical" href="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/glossary.html" />
   <meta name="robots" content="index, follow" />
+  <meta name="description" content="A comprehensive A-Z glossary covering all critical NESA NSW HSC Software Engineering terminology — perfect exam vocabulary reference." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Software Engineering Glossary | HSC Software Engineering" />
   <meta property="og:description" content="A comprehensive A-Z glossary covering all critical NESA NSW HSC Software Engineering terminology." />
   <meta property="og:url" content="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/glossary.html" />
   <meta property="og:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
-  <meta property="og:image:alt" content="HSC Software Engineering Notes — NESA NSW" />
   <meta property="og:site_name" content="HSC Software Engineering Notes" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Software Engineering Glossary | HSC Software Engineering" />
-  <meta name="twitter:description" content="A comprehensive A-Z glossary covering all critical NESA NSW HSC Software Engineering terminology." />
-  <meta name="twitter:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Glossary",
-      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/topics/glossary.html"
-    }
-    ]
+    "@type": "DefinedTermSet",
+    "name": "HSC Software Engineering Glossary",
+    "description": "Comprehensive A-Z terminology for NESA NSW HSC Software Engineering",
+    "url": "https://4bzdog.github.io/HSC_SoftwareEngineering/topics/glossary.html"
   }
   </script>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
   <meta name="theme-color" content="#6366F1" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <meta name="description" content="A comprehensive A-Z glossary covering all critical NESA NSW HSC Software Engineering terminology." />
-  <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=8" />
+  <link rel="stylesheet" href="../css/styles.css?v=9" />
   <style>
     /* ── Glossary Page Layout ── */
     .glossary-wrapper {
@@ -64,7 +47,7 @@
       z-index: 20;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.2rem;
+      gap: 0.15rem;
       justify-content: center;
       background: var(--surface);
       padding: 0.6rem 1rem;
@@ -74,7 +57,7 @@
       box-shadow: var(--shadow-md);
     }
     [data-theme="dark"] .alpha-jump {
-      background: rgba(15, 23, 42, 0.92);
+      background: rgba(15, 23, 42, 0.94);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
     }
@@ -127,7 +110,7 @@
       border-radius: 2px;
     }
 
-    /* ── Two-column term grid on wide screens ── */
+    /* ── Two-column term grid ── */
     .glossary-terms-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -142,65 +125,149 @@
     .glossary-term {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-left: 4px solid var(--primary);
+      border-top: 3px solid var(--primary);
       border-radius: var(--radius-lg);
       padding: 1.4rem 1.5rem;
       box-shadow: var(--shadow-sm);
-      transition: box-shadow var(--transition), transform var(--transition), border-left-color var(--transition);
+      transition: box-shadow var(--transition), transform var(--transition), border-top-color var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
     }
     .glossary-term:hover {
       box-shadow: var(--shadow-md);
-      transform: translateX(3px);
-      border-left-color: var(--accent, #8B5CF6);
+      transform: translateY(-2px);
+      border-top-color: #8B5CF6;
     }
     .glossary-term h3 {
       font-size: 1.05rem;
       font-weight: 700;
       color: var(--text-primary);
-      margin: 0 0 0.5rem 0;
+      margin: 0;
       line-height: 1.3;
     }
-    .glossary-term-meta {
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      font-weight: 700;
+
+    /* ── Topic Chip Row ── */
+    .term-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .chip {
       display: inline-flex;
       align-items: center;
-      color: var(--primary);
-      background: var(--primary-light);
-      padding: 0.2rem 0.6rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.55rem;
       border-radius: var(--radius-full);
-      margin-bottom: 0.85rem;
+      white-space: nowrap;
     }
-    [data-theme="dark"] .glossary-term-meta {
-      background: rgba(99,102,241,0.15);
+    /* Year 11 topics — green */
+    .chip-y11 {
+      background: rgba(16, 185, 129, 0.12);
+      color: #059669;
+      border: 1px solid rgba(16, 185, 129, 0.25);
     }
+    [data-theme="dark"] .chip-y11 {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+    }
+    /* Year 12 topics — indigo/primary */
+    .chip-y12 {
+      background: rgba(99, 102, 241, 0.12);
+      color: #4F46E5;
+      border: 1px solid rgba(99, 102, 241, 0.25);
+    }
+    [data-theme="dark"] .chip-y12 {
+      background: rgba(99, 102, 241, 0.18);
+      color: #818CF8;
+    }
+    /* Cross-syllabus / resource topics — amber */
+    .chip-core {
+      background: rgba(245, 158, 11, 0.1);
+      color: #B45309;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+    }
+    [data-theme="dark"] .chip-core {
+      background: rgba(245, 158, 11, 0.15);
+      color: #FBB F24;
+    }
+    [data-theme="dark"] .chip-core {
+      color: #fcd34d;
+    }
+
+    /* ── Term body ── */
     .glossary-term p {
       font-size: 0.9rem;
       line-height: 1.65;
       color: var(--text-secondary);
       margin: 0;
     }
+
+    /* ── Related links ── */
     .glossary-related {
-      margin-top: 0.9rem;
+      margin-top: auto;
       font-size: 0.82rem;
       color: var(--text-muted);
       border-top: 1px solid var(--border);
       padding-top: 0.65rem;
       display: flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.4rem;
       flex-wrap: wrap;
+    }
+    .glossary-related strong {
+      font-weight: 600;
+      color: var(--text-muted);
     }
     .glossary-related a {
       color: var(--primary);
       font-weight: 600;
       text-decoration: none;
       border-bottom: 1px dashed var(--primary);
+      transition: border-bottom-style var(--transition);
     }
     .glossary-related a:hover {
       border-bottom-style: solid;
+    }
+
+    /* ── Stats bar ── */
+    .glossary-stats {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .glossary-stat {
+      text-align: center;
+    }
+    .glossary-stat-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: block;
+    }
+    .glossary-stat-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+    .glossary-stats-divider {
+      width: 1px;
+      height: 2rem;
+      background: var(--border);
+    }
+    @media (max-width: 500px) {
+      .glossary-stats { gap: 1rem; flex-wrap: wrap; }
+      .glossary-stats-divider { display: none; }
     }
   </style>
 </head>
@@ -302,22 +369,47 @@
       </nav>
       <h1>📖 Software Engineering Glossary</h1>
       <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
-        A comprehensive A–Z terminology reference for mastering NESA NSW HSC Software Engineering. Use this guide to ensure precise vocabulary in your HSC responses.
+        A comprehensive A–Z terminology reference for mastering NESA NSW HSC Software Engineering. Colour-coded chips identify which course topic each term belongs to.
       </p>
       <div class="topic-header-meta">
         <span class="meta-pill year12">📘 Year 11 &amp; 12</span>
         <span class="meta-pill">🗂️ Reference</span>
+        <span class="meta-pill">🏫 NESA Aligned</span>
       </div>
     </div>
   </header>
 
-  <!-- ── Page Layout ── -->
+  <!-- ── Page Content ── -->
   <main>
     <div class="glossary-wrapper">
       <div class="content-body">
 
-        <!-- ── Alphabet Jump Menu ── -->
-        <div class="alpha-jump">
+        <!-- ── Stats Bar ── -->
+        <div class="glossary-stats">
+          <div class="glossary-stat">
+            <span class="glossary-stat-num">26</span>
+            <span class="glossary-stat-label">Terms</span>
+          </div>
+          <div class="glossary-stats-divider"></div>
+          <div class="glossary-stat">
+            <span class="glossary-stat-num">7</span>
+            <span class="glossary-stat-label">Topics</span>
+          </div>
+          <div class="glossary-stats-divider"></div>
+          <div class="glossary-stat">
+            <span class="glossary-stat-num">A–W</span>
+            <span class="glossary-stat-label">Coverage</span>
+          </div>
+          <div class="glossary-stats-divider"></div>
+          <div style="display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
+            <span class="chip chip-y11">Yr 11 Topics</span>
+            <span class="chip chip-y12">Yr 12 Topics</span>
+            <span class="chip chip-core">Core / Cross-Course</span>
+          </div>
+        </div>
+
+        <!-- ── Alphabet Jump Bar ── -->
+        <div class="alpha-jump" role="navigation" aria-label="Alphabet index">
           <a href="#alpha-A" class="alpha-btn">A</a>
           <a href="#alpha-B" class="alpha-btn">B</a>
           <a href="#alpha-C" class="alpha-btn">C</a>
@@ -328,355 +420,519 @@
           <a href="#alpha-H" class="alpha-btn">H</a>
           <a href="#alpha-I" class="alpha-btn">I</a>
           <a href="#alpha-J" class="alpha-btn">J</a>
-          <a href="#alpha-K" class="alpha-btn disabled">K</a>
-          <a href="#alpha-L" class="alpha-btn disabled">L</a>
+          <span class="alpha-btn disabled">K</span>
+          <span class="alpha-btn disabled">L</span>
           <a href="#alpha-M" class="alpha-btn">M</a>
-          <a href="#alpha-N" class="alpha-btn disabled">N</a>
+          <span class="alpha-btn disabled">N</span>
           <a href="#alpha-O" class="alpha-btn">O</a>
           <a href="#alpha-P" class="alpha-btn">P</a>
-          <a href="#alpha-Q" class="alpha-btn disabled">Q</a>
+          <span class="alpha-btn disabled">Q</span>
           <a href="#alpha-R" class="alpha-btn">R</a>
           <a href="#alpha-S" class="alpha-btn">S</a>
-          <a href="#alpha-T" class="alpha-btn disabled">T</a>
+          <span class="alpha-btn disabled">T</span>
           <a href="#alpha-U" class="alpha-btn">U</a>
-          <a href="#alpha-V" class="alpha-btn disabled">V</a>
+          <span class="alpha-btn disabled">V</span>
           <a href="#alpha-W" class="alpha-btn">W</a>
-          <a href="#alpha-X" class="alpha-btn disabled">X</a>
-          <a href="#alpha-Y" class="alpha-btn disabled">Y</a>
-          <a href="#alpha-Z" class="alpha-btn disabled">Z</a>
+          <span class="alpha-btn disabled">X</span>
+          <span class="alpha-btn disabled">Y</span>
+          <span class="alpha-btn disabled">Z</span>
         </div>
 
-        <!-- ── GLOSSARY ITEMS ── -->
-
-        <!-- A -->
+        <!-- ════════════ A ════════════ -->
         <div class="glossary-group" id="alpha-A">
           <div class="glossary-divider">
             <div class="glossary-letter-header">A</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+
             <div class="glossary-term" id="term-abstraction">
-            <h3>Abstraction</h3>
-            <span class="glossary-term-meta">Programming Fundamentals | OOP</span>
-            <p>The concept of hiding the complex internal details of a system while exposing only the necessary functionalities to the user or other systems. This reduces complexity and increases efficiency.</p>
-            <div class="glossary-related">See also: <a href="#term-encapsulation">Encapsulation</a></div>
-          </div>
+              <h3>Abstraction</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">🧩 OOP</span>
+              </div>
+              <p>The concept of hiding complex internal implementation details while exposing only the necessary interface to the user or calling code. Reduces cognitive complexity and increases maintainability.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-encapsulation">Encapsulation</a></div>
+            </div>
 
-          <div class="glossary-term" id="term-agile">
-            <h3>Agile Methodology</h3>
-            <span class="glossary-term-meta">Software Engineering Project</span>
-            <p>An iterative approach to software development emphasizing continuous delivery, team collaboration, and constant feedback over rigid, linear planning.</p>
-            <div class="glossary-related">See also: <a href="#term-wagile">WAGILE</a>, <a href="#term-scrum">Scrum</a></div>
-          </div>
+            <div class="glossary-term" id="term-agile">
+              <h3>Agile Methodology</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">📋 SE Project</span>
+              </div>
+              <p>An iterative, incremental approach to software development. Agile prioritises working software, customer collaboration, and responsiveness to change over rigid, upfront specification.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-scrum">Scrum</a>, <a href="#term-wagile">WAGILE</a></div>
+            </div>
 
-          <div class="glossary-term" id="term-api">
-            <h3>API (Application Programming Interface)</h3>
-            <span class="glossary-term-meta">Programming For The Web</span>
-            <p>A set of rules and protocols letting different software applications communicate with each other. Often built on REST or GraphQL in modern web applications.</p>
-            <div class="glossary-related">See also: <a href="#term-rest">REST</a>
+            <div class="glossary-term" id="term-api">
+              <h3>API (Application Programming Interface)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">⚙️ Software Automation</span>
+              </div>
+              <p>A contract defining how software components communicate. An API specifies what requests can be made, what data formats to use, and what responses to expect — without exposing implementation details.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-rest">REST</a></div>
+            </div>
+
           </div>
         </div>
-          </div>
-        </div>
 
-        <!-- B -->
+        <!-- ════════════ B ════════════ -->
         <div class="glossary-group" id="alpha-B">
           <div class="glossary-divider">
             <div class="glossary-letter-header">B</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+
             <div class="glossary-term" id="term-backlog">
-            <h3>Backlog</h3>
-            <span class="glossary-term-meta">SDLC | Software Engineering Project</span>
-            <p>A prioritized list of tasks, features, and bug fixes that need to be addressed during the development life cycle.</p>
-          </div>
+              <h3>Backlog (Product Backlog)</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">📋 SE Project</span>
+              </div>
+              <p>A prioritised list of features, user stories, bug fixes, and technical tasks yet to be completed. In Scrum, the Product Backlog is the single source of work for the development team.</p>
+            </div>
+
+            <div class="glossary-term" id="term-black-box">
+              <h3>Black-Box Testing</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">⚙️ Software Automation</span>
+              </div>
+              <p>A testing technique that validates software behaviour from an external perspective, without knowledge of internal code. Testers supply inputs and verify outputs against expected results.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-white-box">White-Box Testing</a></div>
+            </div>
+
           </div>
         </div>
 
-        <!-- C -->
+        <!-- ════════════ C ════════════ -->
         <div class="glossary-group" id="alpha-C">
           <div class="glossary-divider">
             <div class="glossary-letter-header">C</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+
             <div class="glossary-term" id="term-cicd">
-            <h3>CI/CD (Continuous Integration / Continuous Deployment)</h3>
-            <span class="glossary-term-meta">Software Automation</span>
-            <p>Automation practices involving the constant merging of code updates (CI) and automated delivery/deployment to staging or production environments (CD).</p>
-          </div>
+              <h3>CI/CD (Continuous Integration / Continuous Deployment)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">⚙️ Software Automation</span>
+              </div>
+              <p>A DevOps practice where code changes are automatically built, tested (CI) and deployed to staging or production environments (CD). Enables rapid, reliable delivery cycles with minimal manual intervention.</p>
+            </div>
 
-          <div class="glossary-term" id="term-class">
-            <h3>Class</h3>
-            <span class="glossary-term-meta">Object-Oriented Paradigm</span>
-            <p>A blueprint or template for creating objects, defining initial state values (attributes) and implementations of behavior (methods or functions).</p>
-            <div class="glossary-related">See also: <a href="#term-object">Object</a>
+            <div class="glossary-term" id="term-class">
+              <h3>Class</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">🧩 OOP</span>
+              </div>
+              <p>A blueprint or template defining the structure (attributes) and behaviour (methods) for a family of objects. Instantiation creates an individual Object from the class definition in memory.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-object">Object</a>, <a href="#term-inheritance">Inheritance</a></div>
+            </div>
+
+            <div class="glossary-term" id="term-cohesion">
+              <h3>Cohesion</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">🧩 OOP</span>
+              </div>
+              <p>A measure of how closely related the responsibilities of a single module or class are. High cohesion (single-responsibility) is a hallmark of good design — each unit does one thing well.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-coupling">Coupling</a></div>
+            </div>
+
+            <div class="glossary-term" id="term-coupling">
+              <h3>Coupling</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">🧩 OOP</span>
+                <span class="chip chip-y12">🔒 Secure Architecture</span>
+              </div>
+              <p>The degree of interdependence between software modules. Loose coupling — minimising direct knowledge between modules — improves maintainability, testability, and security isolation.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-cohesion">Cohesion</a></div>
+            </div>
+
           </div>
         </div>
-          </div>
-        </div>
 
-        <!-- D -->
+        <!-- ════════════ D ════════════ -->
         <div class="glossary-group" id="alpha-D">
           <div class="glossary-divider">
             <div class="glossary-letter-header">D</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
-            <div class="glossary-term" id="term-dast">
-            <h3>DAST (Dynamic Application Security Testing)</h3>
-            <span class="glossary-term-meta">Secure Software Architecture | Automation</span>
-            <p>A security testing method where an application is tested from the outside in while it is running, specifically searching for vulnerabilities like SQL injection or cross-site scripting.</p>
-            <div class="glossary-related">See also: <a href="#term-sast">SAST</a></div>
-          </div>
 
-          <div class="glossary-term" id="term-dom">
-            <h3>DOM (Document Object Model)</h3>
-            <span class="glossary-term-meta">Programming For The Web</span>
-            <p>A programming interface for web documents. It represents the page so that programs (like JavaScript) can change the document structure, style, and content dynamically.</p>
-          </div>
+            <div class="glossary-term" id="term-dast">
+              <h3>DAST (Dynamic Application Security Testing)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">🔒 Secure Architecture</span>
+                <span class="chip chip-y12">⚙️ Software Automation</span>
+              </div>
+              <p>Security testing performed against a <em>running</em> application from the outside — simulating the perspective of an attacker. Identifies vulnerabilities such as SQL injection and XSS at runtime.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-sast">SAST</a></div>
+            </div>
+
+            <div class="glossary-term" id="term-dom">
+              <h3>DOM (Document Object Model)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">🌐 Programming for the Web</span>
+              </div>
+              <p>A tree-structured programming interface representing an HTML or XML document. JavaScript can traverse and manipulate the DOM to dynamically update page content, structure, and style without a full page reload.</p>
+            </div>
+
           </div>
         </div>
 
-        <!-- E -->
+        <!-- ════════════ E ════════════ -->
         <div class="glossary-group" id="alpha-E">
           <div class="glossary-divider">
             <div class="glossary-letter-header">E</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+
             <div class="glossary-term" id="term-encapsulation">
-            <h3>Encapsulation</h3>
-            <span class="glossary-term-meta">Object-Oriented Paradigm</span>
-            <p>The bundling of data (attributes) and the methods that operate on that data into a single unit or class. It often relies on access modifiers (public, private, protected) to prevent unwanted external interference.</p>
-            <div class="glossary-related">See also: <a href="#term-abstraction">Abstraction</a>
-          </div>
-        </div>
+              <h3>Encapsulation</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">🧩 OOP</span>
+              </div>
+              <p>The bundling of data (attributes) and the methods operating on that data within a single unit (class). Access modifiers (<code>public</code>, <code>private</code>, <code>protected</code>) control visibility, preventing unintended external interference.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-abstraction">Abstraction</a></div>
+            </div>
+
           </div>
         </div>
 
-        <!-- F -->
+        <!-- ════════════ F ════════════ -->
         <div class="glossary-group" id="alpha-F">
           <div class="glossary-divider">
             <div class="glossary-letter-header">F</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+
             <div class="glossary-term" id="term-fsm">
-            <h3>Finite State Machine (FSM)</h3>
-            <span class="glossary-term-meta">Programming Fundamentals | Automation</span>
-            <p>A computational model consisting of a finite number of states, transitions between those states, and actions. Crucial for modelling reactive software and embedded systems.</p>
-          </div>
+              <h3>Finite State Machine (FSM)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">🤖 Mechatronics</span>
+              </div>
+              <p>A computational model with a finite set of states, defined transitions triggered by inputs or events, and associated actions. FSMs are fundamental to modelling embedded systems, protocols, and UI logic.</p>
+            </div>
+
           </div>
         </div>
 
-        <!-- G -->
+        <!-- ════════════ G ════════════ -->
         <div class="glossary-group" id="alpha-G">
           <div class="glossary-divider">
             <div class="glossary-letter-header">G</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
-            <div class="glossary-term" id="term-gantt">
-            <h3>Gantt Chart</h3>
-            <span class="glossary-term-meta">SDLC | Software Engineering Project</span>
-            <p>A type of bar chart that illustrates a project schedule, displaying tasks sequentially alongside their start/end dates and dependencies.</p>
-          </div>
 
-          <div class="glossary-term" id="term-gui">
-            <h3>GUI (Graphical User Interface)</h3>
-            <span class="glossary-term-meta">Programming For The Web | SDLC</span>
-            <p>An interface allowing users to interact with electronic devices through graphical icons and visual indicators, rather than text-based interfaces or typed command labels.</p>
-          </div>
+            <div class="glossary-term" id="term-gantt">
+              <h3>Gantt Chart</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">📋 SE Project</span>
+              </div>
+              <p>A horizontal bar chart used in project planning to visualise task schedules, durations, and dependencies over time. A key tool during the Planning phase of the SDLC.</p>
+            </div>
+
+            <div class="glossary-term" id="term-gui">
+              <h3>GUI (Graphical User Interface)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-core">🔄 SDLC</span>
+              </div>
+              <p>An interface allowing users to interact with software through visual elements (buttons, menus, icons) rather than text commands. GUI design is evaluated against usability heuristics during testing.</p>
+            </div>
+
           </div>
         </div>
 
-        <!-- H -->
+        <!-- ════════════ H ════════════ -->
         <div class="glossary-group" id="alpha-H">
           <div class="glossary-divider">
             <div class="glossary-letter-header">H</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+
             <div class="glossary-term" id="term-headless-cms">
-            <h3>Headless CMS</h3>
-            <span class="glossary-term-meta">Programming For The Web</span>
-            <p>A back-end only content management system (CMS) that acts exclusively as a content repository, pushing data out via an API for display on any custom front-end framework or device.</p>
-          </div>
+              <h3>Headless CMS</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">🌐 Programming for the Web</span>
+              </div>
+              <p>A back-end-only content management system that stores and delivers content via API, decoupled from any specific front-end presentation layer. Allows content to be rendered on any platform or framework.</p>
+            </div>
+
           </div>
         </div>
 
-        <!-- I -->
+        <!-- ════════════ I ════════════ -->
         <div class="glossary-group" id="alpha-I">
           <div class="glossary-divider">
             <div class="glossary-letter-header">I</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+
             <div class="glossary-term" id="term-inheritance">
-            <h3>Inheritance</h3>
-            <span class="glossary-term-meta">Object-Oriented Paradigm</span>
-            <p>An OOP mechanism where one class (child) derives the properties and methods of another (parent), promoting code reusability and hierarchical relationships.</p>
-          </div>
+              <h3>Inheritance</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">🧩 OOP</span>
+              </div>
+              <p>A mechanism where a subclass (child) automatically acquires the attributes and methods of a superclass (parent). Enables code reuse and establishes hierarchical "is-a" relationships between types.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-polymorphism">Polymorphism</a>, <a href="#term-class">Class</a></div>
+            </div>
+
           </div>
         </div>
 
-        <!-- J -->
+        <!-- ════════════ J ════════════ -->
         <div class="glossary-group" id="alpha-J">
           <div class="glossary-divider">
             <div class="glossary-letter-header">J</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+
             <div class="glossary-term" id="term-jwt">
-            <h3>JWT (JSON Web Token)</h3>
-            <span class="glossary-term-meta">Secure Software Architecture | Web</span>
-            <p>An open standard determining a compact and self-contained way for securely transmitting information exactly between parties as a JSON object; heavily utilized in modern authentication systems.</p>
-          </div>
+              <h3>JWT (JSON Web Token)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">🔒 Secure Architecture</span>
+                <span class="chip chip-y12">🌐 Programming for the Web</span>
+              </div>
+              <p>An open standard (RFC 7519) for securely transmitting claims between parties as a compact, URL-safe JSON object. Widely used in stateless authentication flows — the server issues a signed token the client presents on each request.</p>
+            </div>
+
           </div>
         </div>
 
-        <!-- M -->
+        <!-- ════════════ M ════════════ -->
         <div class="glossary-group" id="alpha-M">
           <div class="glossary-divider">
             <div class="glossary-letter-header">M</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
-            <div class="glossary-term" id="term-mechatronics">
-            <h3>Mechatronics</h3>
-            <span class="glossary-term-meta">Programming Mechatronics</span>
-            <p>A multidisciplinary field blending software, electrical, and mechanical engineering to create smart systems and robotics.</p>
-          </div>
 
-          <div class="glossary-term" id="term-mvc">
-            <h3>MVC (Model-View-Controller)</h3>
-            <span class="glossary-term-meta">Programming For The Web</span>
-            <p>A software design pattern dividing an application into three interconnected parts: Model (data), View (user interface), and Controller (logic handling input).</p>
-          </div>
+            <div class="glossary-term" id="term-mechatronics">
+              <h3>Mechatronics</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">🤖 Mechatronics</span>
+              </div>
+              <p>An interdisciplinary field integrating mechanical engineering, electrical engineering, and software to design and operate intelligent systems, robotics, and embedded devices.</p>
+            </div>
+
+            <div class="glossary-term" id="term-mvc">
+              <h3>MVC (Model-View-Controller)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">🌐 Programming for the Web</span>
+              </div>
+              <p>An architectural design pattern separating an application into three layers: <strong>Model</strong> (data &amp; business logic), <strong>View</strong> (UI presentation), and <strong>Controller</strong> (handles user input). Improves maintainability and separation of concerns.</p>
+            </div>
+
           </div>
         </div>
 
-        <!-- O -->
+        <!-- ════════════ O ════════════ -->
         <div class="glossary-group" id="alpha-O">
           <div class="glossary-divider">
             <div class="glossary-letter-header">O</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+
             <div class="glossary-term" id="term-object">
-            <h3>Object</h3>
-            <span class="glossary-term-meta">Object-Oriented Paradigm</span>
-            <p>In OOP, a specific instance of a class containing concrete state (attributes) and behavior (methods) allocated in memory.</p>
-            <div class="glossary-related">See also: <a href="#term-class">Class</a>
-          </div>
-        </div>
+              <h3>Object</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">🧩 OOP</span>
+              </div>
+              <p>A specific runtime instance of a class, allocated in memory with its own state (attribute values). Multiple objects can exist from the same class blueprint simultaneously, each maintaining independent state.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-class">Class</a></div>
+            </div>
+
           </div>
         </div>
 
-        <!-- P -->
+        <!-- ════════════ P ════════════ -->
         <div class="glossary-group" id="alpha-P">
           <div class="glossary-divider">
             <div class="glossary-letter-header">P</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+
             <div class="glossary-term" id="term-polymorphism">
-            <h3>Polymorphism</h3>
-            <span class="glossary-term-meta">Object-Oriented Paradigm</span>
-            <p>The ability of different objects to respond to the same method call in their own specific way. This is primarily achieved through method overriding and interfaces.</p>
-          </div>
+              <h3>Polymorphism</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">🧩 OOP</span>
+              </div>
+              <p>The ability for objects of different types to respond to the same method call — each in their own type-specific way. Achieved through method overriding (runtime polymorphism) or method overloading (compile-time).</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-inheritance">Inheritance</a></div>
+            </div>
+
+            <div class="glossary-term" id="term-pseudocode">
+              <h3>Pseudocode</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-core">🔄 SDLC</span>
+              </div>
+              <p>An informal, high-level description of an algorithm using structured plain English. Used in the Design phase of the SDLC to communicate logic without language-specific syntax. NESA specifies a standard pseudocode format for HSC examinations.</p>
+            </div>
+
           </div>
         </div>
 
-        <!-- R -->
+        <!-- ════════════ R ════════════ -->
         <div class="glossary-group" id="alpha-R">
           <div class="glossary-divider">
             <div class="glossary-letter-header">R</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+
             <div class="glossary-term" id="term-rest">
-            <h3>REST (Representational State Transfer)</h3>
-            <span class="glossary-term-meta">Programming For The Web</span>
-            <p>An architectural style for designing networked applications employing HTTP requests to GET, POST, PUT, and DELETE data.</p>
-            <div class="glossary-related">See also: <a href="#term-api">API</a>
-          </div>
-        </div>
+              <h3>REST (Representational State Transfer)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">🌐 Programming for the Web</span>
+              </div>
+              <p>An architectural style for designing networked APIs that use standard HTTP methods (GET, POST, PUT, DELETE) and stateless communication. RESTful APIs are the dominant approach for modern web services.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-api">API</a></div>
+            </div>
+
           </div>
         </div>
 
-        <!-- S -->
+        <!-- ════════════ S ════════════ -->
         <div class="glossary-group" id="alpha-S">
           <div class="glossary-divider">
             <div class="glossary-letter-header">S</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
-            <div class="glossary-term" id="term-sast">
-            <h3>SAST (Static Application Security Testing)</h3>
-            <span class="glossary-term-meta">Software Automation | Architecture</span>
-            <p>A methodology for evaluating software code for security issues entirely without running the program (white-box testing).</p>
-            <div class="glossary-related">See also: <a href="#term-dast">DAST</a></div>
-          </div>
-          
-          <div class="glossary-term" id="term-scrum">
-            <h3>Scrum</h3>
-            <span class="glossary-term-meta">SDLC | Software Engineering Project</span>
-            <p>A specialized sub-framework of Agile utilized to organize team communication, iterations (sprints), and product backlogs.</p>
-          </div>
 
-          <div class="glossary-term" id="term-sdlc">
-            <h3>SDLC (Software Development Life Cycle)</h3>
-            <span class="glossary-term-meta">Cross-Curriculum</span>
-            <p>A systematic process outlining the structured phases required to plan, design, develop, test, and deploy high-quality software (Identifying/Defining, Research/Planning, Producing/Implementing, Testing/Evaluating).</p>
-          </div>
+            <div class="glossary-term" id="term-sast">
+              <h3>SAST (Static Application Security Testing)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">🔒 Secure Architecture</span>
+                <span class="chip chip-y12">⚙️ Software Automation</span>
+              </div>
+              <p>Security testing conducted on source code, bytecode, or binaries without executing the application (white-box testing). Identifies vulnerabilities such as insecure functions, hardcoded credentials, and injection flaws early in the SDLC.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-dast">DAST</a></div>
+            </div>
+
+            <div class="glossary-term" id="term-scrum">
+              <h3>Scrum</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">📋 SE Project</span>
+              </div>
+              <p>A lightweight Agile framework organising development into fixed-length iterations called <em>Sprints</em> (typically 1–4 weeks). Scrum defines roles (Product Owner, Scrum Master, Developers) and ceremonies (Daily Stand-up, Sprint Review, Retrospective).</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-agile">Agile</a>, <a href="#term-backlog">Backlog</a></div>
+            </div>
+
+            <div class="glossary-term" id="term-sdlc">
+              <h3>SDLC (Software Development Life Cycle)</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">📋 SE Project</span>
+              </div>
+              <p>The structured set of phases used to plan, design, develop, test, and deliver software. NESA defines four key phases: <strong>Defining &amp; Understanding</strong> → <strong>Planning &amp; Designing</strong> → <strong>Producing &amp; Implementing</strong> → <strong>Testing &amp; Evaluating</strong>.</p>
+            </div>
+
+            <div class="glossary-term" id="term-sql-injection">
+              <h3>SQL Injection</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">🔒 Secure Architecture</span>
+              </div>
+              <p>A code injection attack where malicious SQL statements are inserted into an input field and executed by the database. One of the most prevalent web vulnerabilities — prevented via parameterised queries and input validation.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-dast">DAST</a>, <a href="#term-sast">SAST</a></div>
+            </div>
+
           </div>
         </div>
 
-        <!-- U -->
+        <!-- ════════════ U ════════════ -->
         <div class="glossary-group" id="alpha-U">
           <div class="glossary-divider">
             <div class="glossary-letter-header">U</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+
             <div class="glossary-term" id="term-uml">
-            <h3>UML (Unified Modeling Language)</h3>
-            <span class="glossary-term-meta">SDLC | Object-Oriented Paradigm</span>
-            <p>A standardized visual modeling language employed to conceptually diagram and document the architecture and design of a software system (e.g., Class Diagrams, Use Case Diagrams).</p>
-          </div>
+              <h3>UML (Unified Modeling Language)</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y11">🧩 OOP</span>
+                <span class="chip chip-y12">📋 SE Project</span>
+              </div>
+              <p>A standardised visual language for specifying, visualising, constructing, and documenting software systems. HSC-relevant diagrams include Class Diagrams, Use Case Diagrams, Sequence Diagrams, and Activity Diagrams.</p>
+            </div>
+
+            <div class="glossary-term" id="term-unit-testing">
+              <h3>Unit Testing</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">⚙️ Software Automation</span>
+              </div>
+              <p>The practice of testing individual units (functions, methods, classes) in isolation to verify they behave correctly. Unit tests are the foundation of automated test suites and CI/CD pipelines.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-cicd">CI/CD</a></div>
+            </div>
+
           </div>
         </div>
 
-        <!-- W -->
+        <!-- ════════════ W ════════════ -->
         <div class="glossary-group" id="alpha-W">
           <div class="glossary-divider">
             <div class="glossary-letter-header">W</div>
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+
             <div class="glossary-term" id="term-wagile">
-            <h3>WAGILE</h3>
-            <span class="glossary-term-meta">SDLC</span>
-            <p>A hybrid or dysfunctional methodology resulting from an attempt to merge Waterfall and Agile models—often referring to a scenario where heavy upfront planning mimics "Waterfall", but rapid iteration and stand-ups mimic "Agile".</p>
+              <h3>WAGILE</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+              </div>
+              <p>A portmanteau of Waterfall and Agile, describing a dysfunctional hybrid where teams adopt Agile ceremonies (stand-ups, sprints) without abandoning heavyweight upfront documentation and rigid change-control from Waterfall. Results in the drawbacks of both models.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-agile">Agile</a>, <a href="#term-sdlc">SDLC</a></div>
+            </div>
+
+            <div class="glossary-term" id="term-white-box">
+              <h3>White-Box Testing</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">⚙️ Software Automation</span>
+              </div>
+              <p>A testing technique in which the tester has full knowledge of internal code structure, logic, and data flows. Used to design tests covering all branches, paths, and conditions — maximising code-coverage metrics.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-black-box">Black-Box Testing</a>, <a href="#term-sast">SAST</a></div>
+            </div>
+
           </div>
         </div>
-        </div>
-        
-      </div>
-    </div>
+
+      </div><!-- /.content-body -->
+    </div><!-- /.glossary-wrapper -->
   </main>
 
   <!-- ── Footer ── -->
-  <footer class="site-footer">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4><div class="nav-logo" style="display:inline-block; margin-right:5px; font-size:1.2rem;">💻</div> SoftEng Notes</h4>
-        <p class="text-muted-dark fs-sm mt-2">
-          Open-source, comprehensive study material tailored specifically for the NESA NSW HSC Software Engineering curriculum.
-        </p>
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-logo">💻</div>
+          <span class="footer-name">SoftEng Notes</span>
+        </div>
+        <p class="footer-desc">Open-source, comprehensive study material for the NESA NSW HSC Software Engineering curriculum.</p>
       </div>
       <div class="footer-col">
         <h4>🚀 Year 12</h4>
@@ -695,6 +951,7 @@
         <h4>🛡️ Navigate</h4>
         <a href="../index.html">← Back to Home</a>
         <a href="course-tools.html">🛠️ Course Tools</a>
+        <a href="sdlc.html">🔄 SDLC Guide</a>
         <a href="software-engineering-project.html">📋 Major Project →</a>
       </div>
     </div>
@@ -703,6 +960,6 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=8"></script>
+  <script src="../js/main.js?v=9"></script>
 </body>
 </html>

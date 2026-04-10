@@ -907,11 +907,15 @@ document.addEventListener('DOMContentLoaded', () => {
       'Agile': 'term-agile',
       'API': 'term-api',
       'Backlog': 'term-backlog',
+      'Product Backlog': 'term-backlog',
+      'Black-Box Testing': 'term-black-box',
       'CI/CD': 'term-cicd',
       'Continuous Integration / Continuous Deployment': 'term-cicd',
       'Continuous Integration': 'term-cicd',
       'Continuous Deployment': 'term-cicd',
       'Class': 'term-class',
+      'Cohesion': 'term-cohesion',
+      'Coupling': 'term-coupling',
       'DAST': 'term-dast',
       'DOM': 'term-dom',
       'Encapsulation': 'term-encapsulation',
@@ -928,14 +932,18 @@ document.addEventListener('DOMContentLoaded', () => {
       'MVC': 'term-mvc',
       'Object': 'term-object',
       'Polymorphism': 'term-polymorphism',
+      'Pseudocode': 'term-pseudocode',
       'REST': 'term-rest',
       'SAST': 'term-sast',
       'Scrum': 'term-scrum',
       'SDLC': 'term-sdlc',
       'Software Development Life Cycle': 'term-sdlc',
+      'SQL Injection': 'term-sql-injection',
       'UML': 'term-uml',
       'Unified Modeling Language': 'term-uml',
-      'WAGILE': 'term-wagile'
+      'Unit Testing': 'term-unit-testing',
+      'WAGILE': 'term-wagile',
+      'White-Box Testing': 'term-white-box'
     };
 
     // Output terms ordered by length so "Continuous Integration" matches before "Integration"
