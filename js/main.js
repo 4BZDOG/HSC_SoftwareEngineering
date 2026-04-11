@@ -220,9 +220,9 @@ document.addEventListener('DOMContentLoaded', () => {
       let type = 'diagram';
       if (content.includes('flowchart') || content.includes('graph td') || content.includes('graph lr')) {
         type = 'flowchart';
-      } else if (content.includes('classDiagram') || content.includes('class ')) {
+      } else if (content.includes('classdiagram') || content.includes('class ')) {
         type = 'class';
-      } else if (content.includes('sequenceDiagram') || content.includes('participant')) {
+      } else if (content.includes('sequencediagram') || content.includes('participant')) {
         type = 'sequence';
       }
       block.setAttribute('data-type', type);
@@ -905,37 +905,70 @@ document.addEventListener('DOMContentLoaded', () => {
     const DICTIONARY = {
       'Abstraction': 'term-abstraction',
       'Agile': 'term-agile',
+      'Algorithm': 'term-algorithm',
       'API': 'term-api',
+      'Array': 'term-array',
       'Backlog': 'term-backlog',
+      'Product Backlog': 'term-backlog',
+      'Beta Testing': 'term-beta-testing',
+      'Binary Search': 'term-binary-search',
+      'Black-Box Testing': 'term-black-box',
       'CI/CD': 'term-cicd',
       'Continuous Integration / Continuous Deployment': 'term-cicd',
       'Continuous Integration': 'term-cicd',
       'Continuous Deployment': 'term-cicd',
       'Class': 'term-class',
+      'Cohesion': 'term-cohesion',
+      'Coupling': 'term-coupling',
+      'Data Dictionary': 'term-data-dictionary',
       'DAST': 'term-dast',
+      'Debugging': 'term-debugging',
       'DOM': 'term-dom',
+      'Document Object Model': 'term-dom',
       'Encapsulation': 'term-encapsulation',
       'Finite State Machine': 'term-fsm',
       'FSM': 'term-fsm',
+      'Flowchart': 'term-flowchart',
+      'Functional Requirements': 'term-functional-requirements',
       'Gantt Chart': 'term-gantt',
       'Gantt': 'term-gantt',
       'GUI': 'term-gui',
+      'Graphical User Interface': 'term-gui',
       'Headless CMS': 'term-headless-cms',
+      'IDE': 'term-ide',
       'Inheritance': 'term-inheritance',
+      'Iteration': 'term-iteration',
       'JWT': 'term-jwt',
       'JSON Web Token': 'term-jwt',
+      'Linear Search': 'term-linear-search',
+      'Logic Error': 'term-logic-error',
       'Mechatronics': 'term-mechatronics',
       'MVC': 'term-mvc',
+      'Model-View-Controller': 'term-mvc',
       'Object': 'term-object',
+      'Peer Review': 'term-peer-review',
       'Polymorphism': 'term-polymorphism',
+      'Prototype': 'term-prototype',
+      'Pseudocode': 'term-pseudocode',
+      'Recursion': 'term-recursion',
+      'Requirements Elicitation': 'term-requirements-elicitation',
       'REST': 'term-rest',
       'SAST': 'term-sast',
       'Scrum': 'term-scrum',
       'SDLC': 'term-sdlc',
       'Software Development Life Cycle': 'term-sdlc',
+      'SQL Injection': 'term-sql-injection',
+      'Stakeholder': 'term-stakeholder',
+      'Structure Chart': 'term-structure-chart',
+      'Syntax Error': 'term-syntax-error',
+      'UAT': 'term-uat',
+      'User Acceptance Testing': 'term-uat',
       'UML': 'term-uml',
       'Unified Modeling Language': 'term-uml',
-      'WAGILE': 'term-wagile'
+      'Unit Testing': 'term-unit-testing',
+      'Use Case Diagram': 'term-use-case-diagram',
+      'WAGILE': 'term-wagile',
+      'White-Box Testing': 'term-white-box'
     };
 
     // Output terms ordered by length so "Continuous Integration" matches before "Integration"
