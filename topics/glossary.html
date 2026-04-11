@@ -192,9 +192,6 @@
     }
     [data-theme="dark"] .chip-core {
       background: rgba(245, 158, 11, 0.15);
-      color: #FBB F24;
-    }
-    [data-theme="dark"] .chip-core {
       color: #fcd34d;
     }
 
@@ -269,6 +266,119 @@
       .glossary-stats { gap: 1rem; flex-wrap: wrap; }
       .glossary-stats-divider { display: none; }
     }
+
+    /* ── Search Input ── */
+    .glossary-search-container {
+      flex: 1;
+      position: relative;
+      min-width: 280px;
+    }
+    .glossary-search-input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.8rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      transition: all var(--transition);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+    }
+    .glossary-search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-light);
+    }
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+      font-size: 1.1rem;
+    }
+    .search-k-hint {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0.2rem 0.4rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    /* ── Active Letter Highlighting ── */
+    .alpha-btn.active {
+      background: var(--primary);
+      color: white;
+      transform: scale(1.1);
+      box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.4);
+    }
+
+    /* ── Back to Top ── */
+    .back-to-top-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-top: 1rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-md);
+      transition: all var(--transition);
+    }
+    .back-to-top-link:hover {
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    /* ── Hidden / No Results ── */
+    .hidden {
+      display: none !important;
+    }
+    .glossary-term.hidden, .glossary-group.hidden {
+      display: none !important;
+    }
+    #no-results-msg {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--surface);
+      border: 2px dashed var(--border);
+      border-radius: var(--radius-xl);
+      margin: 2rem 0;
+    }
+    #no-results-msg h3 {
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    #no-results-msg p {
+      color: var(--text-secondary);
+    }
+    .search-clear-btn {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 4px;
+      display: none;
+    }
+    .search-clear-btn:hover { color: var(--text-primary); }
+    .glossary-search-container:focus-within .search-k-hint { display: none; }
+    .glossary-search-container.has-val .search-clear-btn { display: block; }
+    .glossary-search-container.has-val .search-k-hint { display: none; }
   </style>
 </head>
 <body>
@@ -387,12 +497,12 @@
         <!-- ── Stats Bar ── -->
         <div class="glossary-stats">
           <div class="glossary-stat">
-            <span class="glossary-stat-num">26</span>
+            <span class="glossary-stat-num" id="total-terms-count">53</span>
             <span class="glossary-stat-label">Terms</span>
           </div>
           <div class="glossary-stats-divider"></div>
           <div class="glossary-stat">
-            <span class="glossary-stat-num">7</span>
+            <span class="glossary-stat-num">8</span>
             <span class="glossary-stat-label">Topics</span>
           </div>
           <div class="glossary-stats-divider"></div>
@@ -406,10 +516,23 @@
             <span class="chip chip-y12">Yr 12 Topics</span>
             <span class="chip chip-core">Core / Cross-Course</span>
           </div>
+          <div class="glossary-stats-divider"></div>
+          <div class="glossary-search-container" id="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="glossary-search" class="glossary-search-input" placeholder="Search terminology..." aria-label="Search terminology">
+            <span class="search-k-hint">Ctrl+K</span>
+            <button class="search-clear-btn" id="search-clear" title="Clear search">✕</button>
+          </div>
+        </div>
+
+        <div id="no-results-msg" class="hidden">
+          <h3>No terms found</h3>
+          <p>We couldn't find any results matching your search. Try a different keyword or browse the categories.</p>
+          <button class="btn btn-secondary mt-3" onclick="document.getElementById('search-clear').click()">Clear Search</button>
         </div>
 
         <!-- ── Alphabet Jump Bar ── -->
-        <div class="alpha-jump" role="navigation" aria-label="Alphabet index">
+        <div class="alpha-jump" id="alpha-jump" role="navigation" aria-label="Alphabet index">
           <a href="#alpha-A" class="alpha-btn">A</a>
           <a href="#alpha-B" class="alpha-btn">B</a>
           <a href="#alpha-C" class="alpha-btn">C</a>
@@ -421,7 +544,7 @@
           <a href="#alpha-I" class="alpha-btn">I</a>
           <a href="#alpha-J" class="alpha-btn">J</a>
           <span class="alpha-btn disabled">K</span>
-          <span class="alpha-btn disabled">L</span>
+          <a href="#alpha-L" class="alpha-btn">L</a>
           <a href="#alpha-M" class="alpha-btn">M</a>
           <span class="alpha-btn disabled">N</span>
           <a href="#alpha-O" class="alpha-btn">O</a>
@@ -476,7 +599,26 @@
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-rest">REST</a></div>
             </div>
 
+            <div class="glossary-term" id="term-algorithm">
+              <h3>Algorithm</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-core">🔄 SDLC</span>
+              </div>
+              <p>A step-by-step procedure required to solve a problem or accomplish a task. Algorithms are defined by their efficiency, clarity, and finiteness.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-pseudocode">Pseudocode</a>, <a href="#term-flowchart">Flowchart</a></div>
+            </div>
+
+            <div class="glossary-term" id="term-array">
+              <h3>Array</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+              </div>
+              <p>A data structure consisting of a collection of elements, each identified by at least one index or key. Elements are usually stored in contiguous memory locations.</p>
+            </div>
+
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ B ════════════ -->
@@ -506,7 +648,25 @@
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-white-box">White-Box Testing</a></div>
             </div>
 
+            <div class="glossary-term" id="term-binary-search">
+              <h3>Binary Search</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+              </div>
+              <p>An efficient search algorithm that finds an item from a sorted list by repeatedly dividing the search interval in half. It has a time complexity of O(log n).</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-linear-search">Linear Search</a></div>
+            </div>
+
+            <div class="glossary-term" id="term-beta-testing">
+              <h3>Beta Testing</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+              </div>
+              <p>The second phase of software testing in which a sampling of the intended audience tries the product out. It follows alpha testing and focuses on real-world usage and edge cases.</p>
+            </div>
+
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ C ════════════ -->
@@ -555,6 +715,7 @@
             </div>
 
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ D ════════════ -->
@@ -583,7 +744,27 @@
               <p>A tree-structured programming interface representing an HTML or XML document. JavaScript can traverse and manipulate the DOM to dynamically update page content, structure, and style without a full page reload.</p>
             </div>
 
+            <div class="glossary-term" id="term-data-dictionary">
+              <h3>Data Dictionary</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">📋 SE Project</span>
+              </div>
+              <p>A centralized repository of information about data, defining its properties, relationships, origin, usage, and format. Essential for the Design and Implementation phases of the SDLC.</p>
+            </div>
+
+            <div class="glossary-term" id="term-debugging">
+              <h3>Debugging</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y12">⚙️ Software Automation</span>
+              </div>
+              <p>The systematic process of finding and resolving bugs or defects within software. Involves isolating the cause, developing a fix, and verifying the resolution.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-unit-testing">Unit Testing</a></div>
+            </div>
+
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ E ════════════ -->
@@ -604,6 +785,7 @@
             </div>
 
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ F ════════════ -->
@@ -623,7 +805,27 @@
               <p>A computational model with a finite set of states, defined transitions triggered by inputs or events, and associated actions. FSMs are fundamental to modelling embedded systems, protocols, and UI logic.</p>
             </div>
 
+            <div class="glossary-term" id="term-flowchart">
+              <h3>Flowchart</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-core">🔄 SDLC</span>
+              </div>
+              <p>A diagrammatic representation of an algorithm, showing the steps as boxes of various kinds, and their order by connecting them with arrows. NESA requires standard symbols for Begin/End, Decision, and Input/Output.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-algorithm">Algorithm</a>, <a href="#term-pseudocode">Pseudocode</a></div>
+            </div>
+
+            <div class="glossary-term" id="term-functional-requirements">
+              <h3>Functional Requirements</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">📋 SE Project</span>
+              </div>
+              <p>The specific behaviors, features, and functions that a system must provide. They describe *what* the system should do, as opposed to non-functional requirements which describe *how* it should perform.</p>
+            </div>
+
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ G ════════════ -->
@@ -653,6 +855,7 @@
             </div>
 
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ H ════════════ -->
@@ -672,6 +875,7 @@
             </div>
 
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ I ════════════ -->
@@ -691,7 +895,27 @@
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-polymorphism">Polymorphism</a>, <a href="#term-class">Class</a></div>
             </div>
 
+            <div class="glossary-term" id="term-iteration">
+              <h3>Iteration</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-core">🔄 SDLC</span>
+              </div>
+              <p>The repetition of a process in order to generate a sequence of outcomes. In programming, this refers to loops (for, while); in management, it refers to repeated development cycles in Agile/Scrum.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-recursion">Recursion</a>, <a href="#term-agile">Agile</a></div>
+            </div>
+
+            <div class="glossary-term" id="term-ide">
+              <h3>IDE (Integrated Development Environment)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y12">⚙️ Software Automation</span>
+              </div>
+              <p>A software application that provides comprehensive facilities to computer programmers for development, typically including a source code editor, build automation tools, and a debugger.</p>
+            </div>
+
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ J ════════════ -->
@@ -712,6 +936,38 @@
             </div>
 
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
+        </div>
+
+        <!-- ════════════ L ════════════ -->
+        <div class="glossary-group" id="alpha-L">
+          <div class="glossary-divider">
+            <div class="glossary-letter-header">L</div>
+            <div class="glossary-divider-line"></div>
+          </div>
+          <div class="glossary-terms-grid">
+
+            <div class="glossary-term" id="term-linear-search">
+              <h3>Linear Search</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+              </div>
+              <p>A simple search algorithm that checks every element in a list sequentially until a match is found or the end of the list is reached. Time complexity is O(n).</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-binary-search">Binary Search</a></div>
+            </div>
+
+            <div class="glossary-term" id="term-logic-error">
+              <h3>Logic Error</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-core">🔄 SDLC</span>
+              </div>
+              <p>An error in a program that causes it to operate incorrectly but not to crash. The code is syntactically correct, but the output is not what the programmer intended.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-syntax-error">Syntax Error</a>, <a href="#term-debugging">Debugging</a></div>
+            </div>
+
+          </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ M ════════════ -->
@@ -739,6 +995,7 @@
             </div>
 
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ O ════════════ -->
@@ -759,6 +1016,7 @@
             </div>
 
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ P ════════════ -->
@@ -787,7 +1045,26 @@
               <p>An informal, high-level description of an algorithm using structured plain English. Used in the Design phase of the SDLC to communicate logic without language-specific syntax. NESA specifies a standard pseudocode format for HSC examinations.</p>
             </div>
 
+            <div class="glossary-term" id="term-prototype">
+              <h3>Prototype</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">📋 SE Project</span>
+              </div>
+              <p>An early sample or model built to test a concept or process. Prototypes help stakeholders visualize the final system and elicit more accurate requirements early on.</p>
+            </div>
+
+            <div class="glossary-term" id="term-peer-review">
+              <h3>Peer Review</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">📋 SE Project</span>
+              </div>
+              <p>A process where colleagues examine a software product (code, documentation) to find and fix defects before it moves to the next stage. Improves quality and knowledge sharing.</p>
+            </div>
+
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ R ════════════ -->
@@ -807,7 +1084,26 @@
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-api">API</a></div>
             </div>
 
+            <div class="glossary-term" id="term-recursion">
+              <h3>Recursion</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+              </div>
+              <p>A programming technique where a function calls itself to solve a problem. Each call reduces the problem to a smaller sub-problem until a base case is reached.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-iteration">Iteration</a></div>
+            </div>
+
+            <div class="glossary-term" id="term-requirements-elicitation">
+              <h3>Requirements Elicitation</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">📋 SE Project</span>
+              </div>
+              <p>The process of seeking and capturing the requirements of a system from users and stakeholders through interviews, surveys, and observation.</p>
+            </div>
+
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ S ════════════ -->
@@ -856,7 +1152,35 @@
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-dast">DAST</a>, <a href="#term-sast">SAST</a></div>
             </div>
 
+            <div class="glossary-term" id="term-structure-chart">
+              <h3>Structure Chart</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y11">🧩 OOP</span>
+              </div>
+              <p>A hierarchical tool that shows how a system is divided into modules, the functions within those modules, and how they relate. Used extensively in the Design phase.</p>
+            </div>
+
+            <div class="glossary-term" id="term-stakeholder">
+              <h3>Stakeholder</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">📋 SE Project</span>
+              </div>
+              <p>Any individual or organization with an interest in a project. In software, this includes users, clients, developers, and project managers.</p>
+            </div>
+
+            <div class="glossary-term" id="term-syntax-error">
+              <h3>Syntax Error</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+              </div>
+              <p>An error in the syntax of a coding or programming language. These errors prevent the code from compiling or running and are usually flagged by the IDE.</p>
+              <div class="glossary-related"><strong>See also:</strong> <a href="#term-logic-error">Logic Error</a></div>
+            </div>
+
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ U ════════════ -->
@@ -887,7 +1211,26 @@
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-cicd">CI/CD</a></div>
             </div>
 
+            <div class="glossary-term" id="term-uat">
+              <h3>User Acceptance Testing (UAT)</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">📋 SE Project</span>
+              </div>
+              <p>The final phase of testing where actual users test the software in real-world scenarios to ensure it meets the requirements and is ready for production.</p>
+            </div>
+
+            <div class="glossary-term" id="term-use-case-diagram">
+              <h3>Use Case Diagram</h3>
+              <div class="term-chips">
+                <span class="chip chip-core">🔄 SDLC</span>
+                <span class="chip chip-y12">📋 SE Project</span>
+              </div>
+              <p>A UML diagram representing the interactions between users (actors) and the system to achieve specific goals (use cases). Helps in defining the system's scope and requirements.</p>
+            </div>
+
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
         <!-- ════════════ W ════════════ -->
@@ -918,6 +1261,7 @@
             </div>
 
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
       </div><!-- /.content-body -->
@@ -960,6 +1304,148 @@
     </div>
   </footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('glossary-search');
+      const searchWrapper = document.getElementById('search-wrapper');
+      const searchClear = document.getElementById('search-clear');
+      const termCards = document.querySelectorAll('.glossary-term');
+      const letterGroups = document.querySelectorAll('.glossary-group');
+      const noResults = document.getElementById('no-results-msg');
+      const totalCountEl = document.getElementById('total-terms-count');
+      const alphaButtons = document.querySelectorAll('.alpha-btn:not(.disabled)');
+      const headerOffset = 180; // Buffer for sticky header
+
+      // Set initial count
+      totalCountEl.textContent = termCards.length;
+
+      /* ── 🔍 Search Logic ── */
+      function performSearch() {
+        const query = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        if (query === "") {
+          searchWrapper.classList.remove('has-val');
+          termCards.forEach(card => card.classList.remove('hidden'));
+          letterGroups.forEach(group => group.classList.remove('hidden'));
+          noResults.classList.add('hidden');
+          totalCountEl.textContent = termCards.length;
+          return;
+        }
+
+        searchWrapper.classList.add('has-val');
+        
+        letterGroups.forEach(group => {
+          let hasVisibleInGroup = false;
+          const cardsInGroup = group.querySelectorAll('.glossary-term');
+          
+          cardsInGroup.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const text = card.querySelector('p').textContent.toLowerCase();
+            const chips = Array.from(card.querySelectorAll('.chip')).map(c => c.textContent.toLowerCase()).join(' ');
+            
+            if (title.includes(query) || text.includes(query) || chips.includes(query)) {
+              card.classList.remove('hidden');
+              hasVisibleInGroup = true;
+              visibleCount++;
+            } else {
+              card.classList.add('hidden');
+            }
+          });
+
+          if (hasVisibleInGroup) {
+            group.classList.remove('hidden');
+          } else {
+            group.classList.add('hidden');
+          }
+        });
+
+        totalCountEl.textContent = visibleCount;
+        if (visibleCount === 0) {
+          noResults.classList.remove('hidden');
+        } else {
+          noResults.classList.add('hidden');
+        }
+      }
+
+      searchInput.addEventListener('input', performSearch);
+      searchClear.addEventListener('click', () => {
+        searchInput.value = '';
+        performSearch();
+        searchInput.focus();
+      });
+
+      /* ── ⌨️ Shortcuts ── */
+      document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+          e.preventDefault();
+          searchInput.focus();
+        }
+        if (e.key === 'Escape' && document.activeElement === searchInput) {
+          searchInput.value = '';
+          performSearch();
+          searchInput.blur();
+        }
+      });
+
+      /* ── 📍 Scroll-spy (Alpha Highlighting) ── */
+      const observerOptions = {
+        root: null,
+        rootMargin: '-10% 0px -80% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            const letter = id.replace('alpha-', '');
+            
+            alphaButtons.forEach(btn => {
+              if (btn.getAttribute('href') === `#${id}`) {
+                btn.classList.add('active');
+              } else {
+                btn.classList.remove('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      letterGroups.forEach(group => observer.observe(group));
+
+      /* ── Smooth Scroll Adjust ── */
+      function smoothScrollTo(targetId) {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - 120;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+
+          // Update URL without jump
+          history.pushState(null, null, targetId);
+        }
+      }
+
+      alphaButtons.forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          smoothScrollTo(this.getAttribute('href'));
+        });
+      });
+
+      document.querySelectorAll('.back-to-top-link').forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          smoothScrollTo(this.getAttribute('href'));
+        });
+      });
+    });
+  </script>
   <script src="../js/main.js?v=9"></script>
 </body>
 </html>

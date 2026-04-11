@@ -2343,6 +2343,7 @@ section:has(> h2.section-collapsed) + .divider {
 .text-muted-dark { color: #94A3B8; }
 .max-w-600 { max-width: 600px; }
 .mt-2 { margin-top: .5rem; }
+.mt-3 { margin-top: 1rem; }
 .fs-sm { font-size: .95rem; }
 .lh-base { line-height: 1.6; }
 
