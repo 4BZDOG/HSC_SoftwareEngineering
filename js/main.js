@@ -1114,7 +1114,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const pattern = new RegExp(`\\b(${patternStr})\\b`, 'gi');
 
     const seenTerms = new Set();
-    const excludeTags = new Set(['A', 'PRE', 'CODE', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'TH']);
+    // Exclude tags where linking would break structure or is inappropriate
+    // Note: H1-H6 (headings) are now included to allow glossary term linking in heading text
+    const excludeTags = new Set(['A', 'PRE', 'CODE', 'TH', 'SCRIPT', 'STYLE']);
 
     // Recursively walk text nodes
     const walk = document.createTreeWalker(contentBody, NodeFilter.SHOW_TEXT, {
