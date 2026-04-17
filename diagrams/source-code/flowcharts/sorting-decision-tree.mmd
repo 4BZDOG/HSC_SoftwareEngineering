@@ -1,21 +1,20 @@
+%% Choosing a sort algorithm by input size — O(n²) vs O(n log n) trade-off
+%% Syllabus: SE-11-02
 flowchart TD
-    A["📊 Sort Required"] --> B{{"Array size<br/>1000+ items?"}}
+    A(["📊 Sort Required"]) --> B{"Array size<br/>≥ 1000 items?"}
 
-    B -->|Yes| C["⚡ Merge Sort<br/>O(n log n)<br/>Better performance"]
-    B -->|No| D["📦 Bubble Sort<br/>O(n²)<br/>Simpler code"]
+    B -- Yes --> C["⚡ Merge Sort<br/>O(n log n) time<br/>divide &amp; conquer"]
+    B -- No  --> D["📦 Bubble Sort<br/>O(n²) time<br/>nested loops"]
 
-    C --> E["🔄 Divide & Conquer"]
-    D --> F["🔁 Nested Loops"]
+    C --> G(["✅ Sorted Array"])
+    D --> G
 
-    E --> G["✅ Sort Complete<br/>Efficient"]
-    F --> G
+    classDef start    fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+    classDef decision fill:#fff9c4,stroke:#F57F17,stroke-width:2px
+    classDef process  fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+    classDef good     fill:#c8e6c9,stroke:#2E7D32,stroke-width:2px
 
-    G --> H["📤 Output<br/>Sorted Array"]
-
-    style A fill:#E3F2FD
-    style C fill:#87CEEB
-    style D fill:#87CEEB
-    style E fill:#fff3e0
-    style F fill:#fff3e0
-    style G fill:#E8F5E9
-    style H fill:#90EE90
+    class A start
+    class B decision
+    class C,D process
+    class G good

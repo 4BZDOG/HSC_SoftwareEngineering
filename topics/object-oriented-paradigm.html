@@ -287,14 +287,40 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
               This diagram compares two major programming paradigms. Procedural programming focuses on "how" — breaking problems into functions and procedures with separate data and logic. Object-Oriented programming focuses on "what" — modeling problems as objects that encapsulate both data and behavior. Both approaches share benefits like modularity, reusability, and maintainability.
             </p>
             <div class="mermaid">
-              graph LR
-                A["Procedural<br/>━━━━━━<br/>• Functions<br/>• Global data<br/>• Top-down design<br/>• Focus: How<br/>• Data separate<br/>  from logic"] --> B["Shared<br/>━━━━━━<br/>• Modular code<br/>• Reusability<br/>• Structured<br/>• Maintainability"]
+              flowchart LR
+                subgraph PROC["🔧 Procedural"]
+                  direction TB
+                  P1["Functions operate on<br/>separate global data"]
+                  P2["Top-down design<br/>focus: <i>how</i>"]
+                  P3["Examples<br/>C · Pascal · procedural Python"]
+                  P1 --- P2 --- P3
+                end
 
-                B --> C["Object-Oriented<br/>━━━━━━<br/>• Classes/Objects<br/>• Encapsulation<br/>• Inheritance<br/>• Focus: What<br/>• Data + Methods<br/>  together"]
+                subgraph SHARED["🎯 Shared Goals"]
+                  direction TB
+                  S1["Modularity &amp; reuse"]
+                  S2["Maintainability"]
+                  S3["Testability &amp; debugging"]
+                  S1 --- S2 --- S3
+                end
 
-                style A fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
-                style B fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px
-                style C fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
+                subgraph OOP["🧩 Object-Oriented"]
+                  direction TB
+                  O1["Classes bundle<br/>data + methods"]
+                  O2["Four pillars<br/>encapsulation · inheritance<br/>polymorphism · abstraction"]
+                  O3["Examples<br/>Java · Python · C++ · C#"]
+                  O1 --- O2 --- O3
+                end
+
+                PROC --> SHARED --> OOP
+
+                classDef proc   fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+                classDef shared fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
+                classDef oop    fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+
+                class P1,P2,P3 proc
+                class S1,S2,S3 shared
+                class O1,O2,O3 oop
             </div>
             <p class="diagram-caption">
               <strong>Purpose:</strong> Compare the fundamental differences between procedural and OOP paradigms<br>
@@ -390,45 +416,47 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
             </p>
             <div class="mermaid">
               classDiagram
+                direction TB
+
                 class Vehicle {
+                    <<abstract>>
                     -String manufacturer
                     -float speed
-                    -float fuel_level
-                    +start()
-                    +stop()
-                    +accelerate()
+                    -float fuelLevel
+                    +start() void
+                    +stop() void
+                    +accelerate(double delta) void
                 }
 
                 class Car {
-                    -int num_doors
-                    -String trunk_size
-                    +open_trunk()
-                    +close_trunk()
+                    -int numDoors
+                    -String trunkSize
+                    +openTrunk() void
+                    +closeTrunk() void
                 }
 
                 class Motorcycle {
-                    -bool has_sidecar
-                    +wheelie()
+                    -boolean hasSidecar
+                    +wheelie() void
                 }
 
                 class Truck {
-                    -float cargo_capacity
-                    -float current_load
-                    +load_cargo()
-                    +unload_cargo()
+                    -float cargoCapacity
+                    -float currentLoad
+                    +loadCargo(float amount) void
+                    +unloadCargo(float amount) void
                 }
-
-                Vehicle <|-- Car
-                Vehicle <|-- Motorcycle
-                Vehicle <|-- Truck
 
                 class Engine {
-                    -String engine_type
+                    -String engineType
                     -float displacement
-                    +calculate_power()
+                    +calculatePower() float
                 }
 
-                Vehicle *-- Engine
+                Vehicle <|-- Car        : inherits
+                Vehicle <|-- Motorcycle : inherits
+                Vehicle <|-- Truck      : inherits
+                Vehicle *-- Engine      : has-a
             </div>
             <p class="diagram-caption">
               <strong>Purpose:</strong> Show class relationships using Unified Modelling Language (UML). Triangles (▲) represent <strong>inheritance</strong> (is-a), diamonds represent composition (has-a). Private attributes (-) and public methods (+) are documented.<br>

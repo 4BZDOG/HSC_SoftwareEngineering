@@ -245,29 +245,29 @@
             </p>
             <div class="mermaid">
               flowchart TD
-                START(["🚀 START<br/>Begin Project"]) --> A["📋 Requirements<br/>Identify needs"]
-                A --> B["⚙️ Specifications<br/>Technical constraints"]
-                B --> C["🎨 Design<br/>Plan structure"]
-                C --> D["💻 Development<br/>Write code"]
-                D --> E["🧩 Integration<br/>Combine modules"]
-                E --> F["🧪 Testing<br/>Find errors"]
-                F --> G["📦 Installation<br/>Deploy to users"]
-                G --> H["🛠️ Maintenance<br/>Support & patches"]
-                H --> DECISION{"Feedback<br/>Loop<br/>Needed?"}
-                DECISION -->|Yes| A
-                DECISION -->|No| END(["✅ END<br/>Project Complete"])
+                A["📋 Requirements Definition<br/>Identify stakeholder needs"]
+                B["📐 Specifications<br/>Define technical constraints"]
+                C["🎨 Design<br/>Plan algorithms & structure"]
+                D["💻 Development<br/>Write code"]
+                E["🧩 Integration<br/>Combine modules"]
+                F["🧪 Testing & Debugging<br/>Identify & fix errors"]
+                G["📦 Installation<br/>Deploy to users"]
+                H["🛠️ Maintenance<br/>Patches & updates"]
 
-                style START fill:#90EE90,color:#000,stroke:#2E7D32,stroke-width:2px
-                style A fill:#e1f5ff,color:#01579b,stroke:#01579b
-                style B fill:#e1f5ff,color:#01579b,stroke:#01579b
-                style C fill:#fff3e0,color:#e65100,stroke:#e65100
-                style D fill:#f3e5f5,color:#4a148c,stroke:#4a148c
-                style E fill:#e8f5e9,color:#1b5e20,stroke:#1b5e20
-                style F fill:#fce4ec,color:#880e4f,stroke:#880e4f
-                style G fill:#f1f8e9,color:#33691e,stroke:#33691e
-                style H fill:#ede7f6,color:#311b92,stroke:#311b92
-                style DECISION fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
-                style END fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
+                A --> B --> C --> D --> E --> F --> G --> H
+                H -. Feedback Loop .-> A
+
+                classDef plan    fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+                classDef build   fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
+                classDef verify  fill:#fff9c4,stroke:#F57F17,stroke-width:2px
+                classDef release fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+                classDef support fill:#fff3e0,stroke:#E65100,stroke-width:2px
+
+                class A,B plan
+                class C,D,E build
+                class F verify
+                class G release
+                class H support
             </div>
             <p class="diagram-caption">
               <strong>Purpose:</strong> Understand the iterative SDLC phases and feedback loops that drive continuous improvement<br>
@@ -612,25 +612,25 @@ END FUNCTION</code></pre>
             </p>
             <div class="mermaid">
               flowchart TD
-                A(["🔍 START<br/>Analyze target"]) --> B["🔄 Loop Start<br/>Initialize index=0"]
-                B --> C{"index <br/>length(list)?"}
-                C -->|No| D[/"❌ Not Found<br/>Return -1"/]
-                C -->|Yes| E{"list[index] ==<br/>target?"}
-                E -->|Yes| F[/"✅ Found<br/>Return index"/]
-                E -->|No| G["➡️ Increment<br/>index++"]
+                A(["🚀 Start<br/>Input: list, target"]) --> B["Initialise<br/>index = 0"]
+                B --> C{"index &lt; length(list)?"}
+                C -- No --> D(["❌ Not Found<br/>Return −1"])
+                C -- Yes --> E{"list[index] == target?"}
+                E -- Yes --> F(["✅ Found<br/>Return index"])
+                E -- No  --> G["Increment<br/>index = index + 1"]
                 G --> C
 
-                D --> H(["🏁 END<br/>Algorithm Complete"])
-                F --> H
+                classDef start    fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+                classDef process  fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+                classDef decision fill:#fff9c4,stroke:#F57F17,stroke-width:2px
+                classDef good     fill:#c8e6c9,stroke:#2E7D32,stroke-width:2px
+                classDef bad      fill:#ffcdd2,stroke:#C62828,stroke-width:2px
 
-                style A fill:#90EE90,color:#000,stroke:#2E7D32,stroke-width:2px
-                style H fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
-                style F fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
-                style D fill:#fff3e0,color:#e65100,stroke:#e65100,stroke-width:1px
-                style B fill:#fff3e0,color:#e65100,stroke:#e65100,stroke-width:1px
-                style C fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
-                style E fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
-                style G fill:#e0f0ff,color:#0277bd,stroke:#0277bd,stroke-width:1px
+                class A start
+                class B,G process
+                class C,E decision
+                class F good
+                class D bad
             </div>
             <p class="diagram-caption">
               <strong>Purpose:</strong> Understand the loop structure and decision points that enable sequential searching<br>
@@ -707,36 +707,36 @@ FUNCTION GetValidScore()
             </p>
             <div class="mermaid">
               graph TD
-                Main["🏦 ATM System<br/>Main Module<br/>─────────────<br/>Start/Shutdown"]
+                Main[["🏦 ATM System<br/>Main module"]]
 
-                Main -->|○ user_id| Auth["🔐 Authenticate User<br/>━━━━━━━━━━━<br/>Verify credentials"]
-                Main -->|● valid| Menu["📋 Display Menu<br/>━━━━━━━━━━━<br/>Show options"]
-                Main -->|○ choice| Trans["💳 Process Transaction<br/>━━━━━━━━━━━<br/>Handle request"]
-                Main -->|● approved| Disp["💵 Dispense Cash<br/>━━━━━━━━━━━<br/>Deliver money"]
+                Main --> Auth["🔐 Authenticate User<br/>Verify credentials"]
+                Main --> Menu["📋 Display Menu<br/>Show options"]
+                Main --> Trans["💳 Process Transaction<br/>Handle request"]
+                Main --> Disp["💵 Dispense Cash<br/>Deliver money"]
 
-                Auth -->|○ pin| VerifyPIN["🔑 Verify PIN<br/>Check database"]
-                Auth -->|○ card_num| CheckCard["💳 Check Card<br/>Validity check"]
+                Auth --> VerifyPIN["🔑 Verify PIN"]
+                Auth --> CheckCard["💳 Validate Card"]
 
-                Trans -->|🔷 choice=1| Withdraw["💸 Withdraw<br/>Debit account"]
-                Trans -->|🔷 choice=2| Deposit["📥 Deposit<br/>Credit account"]
-                Trans -->|🔷 choice=3| Balance["📊 Check Balance<br/>Query account"]
+                Trans --> Withdraw["💸 Withdraw"]
+                Trans --> Deposit["📥 Deposit"]
+                Trans --> Balance["📊 Check Balance"]
 
-                Withdraw -->|○ amount| Update1["🔄 Update Account<br/>Apply transaction"]
-                Deposit -->|○ amount| Update2["🔄 Update Account<br/>Apply transaction"]
-                Balance -->|○ acct_id| Query["📖 Query Database<br/>Fetch balance"]
+                Withdraw --> UpdateW[("🔄 Update Account")]
+                Deposit  --> UpdateD[("🔄 Update Account")]
+                Balance  --> Query[("📖 Query Database")]
 
-                Update1 -->|🔁 repeat| Record["📝 Record Transaction<br/>Audit log"]
-                Update2 -->|🔁 repeat| Record["📝 Record Transaction<br/>Audit log"]
+                UpdateW --> Record[("📝 Audit Log")]
+                UpdateD --> Record
 
-                style Main fill:#4CAF50,color:#fff,stroke:#2E7D32,stroke-width:3px
-                style Auth fill:#2196F3,color:#fff
-                style Menu fill:#2196F3,color:#fff
-                style Trans fill:#2196F3,color:#fff
-                style Disp fill:#2196F3,color:#fff
-                style Record fill:#FF9800,color:#fff
-                style Update1 fill:#FF9800,color:#fff
-                style Update2 fill:#FF9800,color:#fff
-                style Query fill:#FF9800,color:#fff
+                classDef root    fill:#e0e7ff,stroke:#6366F1,stroke-width:3px
+                classDef level2  fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+                classDef level3  fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
+                classDef data    fill:#fff3e0,stroke:#E65100,stroke-width:2px
+
+                class Main root
+                class Auth,Menu,Trans,Disp level2
+                class VerifyPIN,CheckCard,Withdraw,Deposit,Balance level3
+                class UpdateW,UpdateD,Query,Record data
             </div>
             <p class="diagram-caption">
               <strong>Purpose:</strong> Understand modular decomposition and how modules communicate through parameters and control signals<br>

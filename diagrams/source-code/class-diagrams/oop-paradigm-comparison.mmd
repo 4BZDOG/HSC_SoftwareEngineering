@@ -1,8 +1,36 @@
-graph LR
-    A["Procedural<br/>━━━━━━<br/>• Functions<br/>• Global data<br/>• Top-down design<br/>• Focus: How<br/>• Data separate<br/>  from logic<br/>• Examples:<br/>  C, Pascal,<br/>  Structured<br/>  Python"] --> B["Shared<br/>━━━━━━<br/>• Modular code<br/>• Reusability<br/>• Structured<br/>• Maintainability<br/>• Testing support<br/>• Debugging help<br/>• Code organization"]
+%% Procedural vs Object-Oriented — side-by-side comparison with shared principles
+%% Syllabus: SE-11-07
+flowchart LR
+    subgraph PROC["🔧 Procedural"]
+        direction TB
+        P1["Functions operate on<br/>separate global data"]
+        P2["Top-down design<br/>focus: <i>how</i>"]
+        P3["Examples<br/>C · Pascal · procedural Python"]
+        P1 --- P2 --- P3
+    end
 
-    B --> C["Object-Oriented<br/>━━━━━━<br/>• Classes/Objects<br/>• Encapsulation<br/>• Inheritance<br/>• Polymorphism<br/>• Focus: What<br/>• Data + Methods<br/>  together<br/>• Examples:<br/>  Java, Python,<br/>  C++, C#"]
+    subgraph SHARED["🎯 Shared Goals"]
+        direction TB
+        S1["Modularity &amp; reuse"]
+        S2["Maintainability"]
+        S3["Testability &amp; debugging"]
+        S1 --- S2 --- S3
+    end
 
-    style A fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
-    style B fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px
-    style C fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
+    subgraph OOP["🧩 Object-Oriented"]
+        direction TB
+        O1["Classes bundle<br/>data + methods"]
+        O2["Four pillars<br/>encapsulation · inheritance<br/>polymorphism · abstraction"]
+        O3["Examples<br/>Java · Python · C++ · C#"]
+        O1 --- O2 --- O3
+    end
+
+    PROC --> SHARED --> OOP
+
+    classDef proc   fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+    classDef shared fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
+    classDef oop    fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+
+    class P1,P2,P3 proc
+    class S1,S2,S3 shared
+    class O1,O2,O3 oop

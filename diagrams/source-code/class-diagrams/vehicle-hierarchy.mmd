@@ -1,40 +1,45 @@
+%% Vehicle class hierarchy — inheritance (Car/Motorcycle/Truck) + composition (Engine)
+%% Syllabus: SE-11-09
+%% Notation: `<|--` is generalisation (is-a), `*--` is composition (has-a, owned)
 classDiagram
+    direction TB
+
     class Vehicle {
+        <<abstract>>
         -String manufacturer
         -float speed
-        -float fuel_level
-        +start()
-        +stop()
-        +accelerate()
+        -float fuelLevel
+        +start() void
+        +stop() void
+        +accelerate(double delta) void
     }
 
     class Car {
-        -int num_doors
-        -String trunk_size
-        +open_trunk()
-        +close_trunk()
+        -int numDoors
+        -String trunkSize
+        +openTrunk() void
+        +closeTrunk() void
     }
 
     class Motorcycle {
-        -bool has_sidecar
-        +wheelie()
+        -boolean hasSidecar
+        +wheelie() void
     }
 
     class Truck {
-        -float cargo_capacity
-        -float current_load
-        +load_cargo()
-        +unload_cargo()
+        -float cargoCapacity
+        -float currentLoad
+        +loadCargo(float amount) void
+        +unloadCargo(float amount) void
     }
-
-    Vehicle <|-- Car
-    Vehicle <|-- Motorcycle
-    Vehicle <|-- Truck
 
     class Engine {
-        -String engine_type
+        -String engineType
         -float displacement
-        +calculate_power()
+        +calculatePower() float
     }
 
-    Vehicle *-- Engine
+    Vehicle <|-- Car        : inherits
+    Vehicle <|-- Motorcycle : inherits
+    Vehicle <|-- Truck      : inherits
+    Vehicle *-- Engine      : has-a

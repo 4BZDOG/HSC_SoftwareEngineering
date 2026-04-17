@@ -1,25 +1,38 @@
-graph TB
-    Sensors["📡 SENSOR INPUTS<br/>━━━━━━━━━━━━<br/>📷 Camera<br/>🔊 Ultrasonic<br/>🧭 IMU Gyro<br/>🔄 Motor Encoder"]
+%% Mechatronic System Block Diagram — sense → process → decide → act
+%% Syllabus: SE-11-12
+graph LR
+    subgraph INPUT[" "]
+        Sensors["📡 Sensors<br/>• Camera<br/>• Ultrasonic<br/>• IMU gyro<br/>• Motor encoder"]
+    end
 
-    MCU["🎮 MICROCONTROLLER<br/>━━━━━━━━━━━━<br/>Arduino/Pi<br/>Data processing<br/>Signal conversion<br/>Algorithm execution"]
+    subgraph BRAIN[" "]
+        MCU["🎮 Microcontroller<br/>Arduino / Raspberry Pi"]
+        Logic["🧠 Control Algorithm<br/>• Path planning<br/>• Obstacle detection<br/>• PID control"]
+    end
 
-    Logic["🧠 CONTROL ALGORITHM<br/>━━━━━━━━━━━━<br/>Path planning<br/>Obstacle detection<br/>Decision making<br/>PID control"]
+    subgraph OUTPUT[" "]
+        Actuators["⚙️ Actuators<br/>• DC motors<br/>• Servos<br/>• LEDs<br/>• Buzzer"]
+    end
 
-    Actuators["⚙️ ACTUATOR OUTPUTS<br/>━━━━━━━━━━━━<br/>🔌 DC Motors<br/>📦 Servos<br/>💡 LEDs<br/>🔊 Buzzer"]
+    Power[("🔋 Power System<br/>Battery &amp; regulators")]
 
-    Power["🔋 POWER SYSTEM<br/>━━━━━━━━━━━━<br/>Battery pack<br/>Voltage regulator<br/>Power distribution<br/>Charging circuit"]
+    Sensors -- "analog / digital signals" --> MCU
+    MCU -- "sensor data" --> Logic
+    Logic -- "control decisions" --> MCU
+    MCU -- "PWM / GPIO commands" --> Actuators
 
-    Sensors -->|"Analog/Digital<br/>Signals"| MCU
-    MCU -->|"Data<br/>Interpretation"| Logic
-    Logic -->|"Control<br/>Decisions"| MCU
-    MCU -->|"PWM/GPIO<br/>Commands"| Actuators
+    Power -. "3.3 V" .-> Sensors
+    Power -. "5 V / 12 V" .-> MCU
+    Power -. "12 V" .-> Actuators
 
-    Power -->|"5V/12V<br/>Supply"| MCU
-    Power -->|"3.3V<br/>Supply"| Sensors
-    Power -->|"12V<br/>Supply"| Actuators
+    classDef input   fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+    classDef control fill:#fff3e0,stroke:#E65100,stroke-width:2px
+    classDef logic   fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
+    classDef output  fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+    classDef power   fill:#ffcdd2,stroke:#C62828,stroke-width:2px
 
-    style Sensors fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
-    style MCU fill:#FFF3E0,stroke:#E65100,stroke-width:2px
-    style Logic fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px
-    style Actuators fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
-    style Power fill:#FCE4EC,stroke:#C2185B,stroke-width:2px
+    class Sensors input
+    class MCU control
+    class Logic logic
+    class Actuators output
+    class Power power

@@ -347,27 +347,41 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
             </p>
             <div class="mermaid">
               graph LR
-                  A["SENSORS<br/>━━━━━━━━<br/>• Motion (PIR)<br/>• Distance<br/>• Temperature<br/>• Position<br/>• Encoders"]
+                subgraph INPUT[" "]
+                  Sensors["📡 Sensors<br/>• Camera<br/>• Ultrasonic<br/>• IMU gyro<br/>• Motor encoder"]
+                end
 
-                  B[/"MICROCONTROLLER<br/>━━━━━━━━<br/>Arduino/ESP32<br/>• Read inputs<br/>• Process logic<br/>• Output commands<br/>• Real-time control"/]
+                subgraph BRAIN[" "]
+                  MCU["🎮 Microcontroller<br/>Arduino / Raspberry Pi"]
+                  Logic["🧠 Control Algorithm<br/>• Path planning<br/>• Obstacle detection<br/>• PID control"]
+                end
 
-                  C["ACTUATORS<br/>━━━━━━━━<br/>• DC Motors<br/>• Servos<br/>• Solenoids<br/>• Heaters"]
+                subgraph OUTPUT[" "]
+                  Actuators["⚙️ Actuators<br/>• DC motors<br/>• Servos<br/>• LEDs<br/>• Buzzer"]
+                end
 
-                  D["END EFFECTORS<br/>━━━━━━━━<br/>• Gripper<br/>• Wheels<br/>• Nozzle<br/>• Manipulator"]
+                Power[("🔋 Power System<br/>Battery &amp; regulators")]
 
-                  E["POWER<br/>SUPPLY<br/>━━━━━━━━<br/>Battery"]
+                Sensors -- "analog / digital signals" --> MCU
+                MCU -- "sensor data" --> Logic
+                Logic -- "control decisions" --> MCU
+                MCU -- "PWM / GPIO commands" --> Actuators
 
-                  A -->|Analog/Digital<br/>signals| B
-                  B -->|PWM/<br/>Commands| C
-                  C -->|Motion| D
-                  E -->|Power| B
-                  E -->|Power| C
+                Power -. "3.3 V" .-> Sensors
+                Power -. "5 V / 12 V" .-> MCU
+                Power -. "12 V" .-> Actuators
 
-                  style A fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
-                  style B fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
-                  style C fill:#FFCCBC,stroke:#E64A19,stroke-width:2px
-                  style D fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
-                  style E fill:#F8BBD0,stroke:#C2185B,stroke-width:2px
+                classDef input   fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+                classDef control fill:#fff3e0,stroke:#E65100,stroke-width:2px
+                classDef logic   fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
+                classDef output  fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+                classDef power   fill:#ffcdd2,stroke:#C62828,stroke-width:2px
+
+                class Sensors input
+                class MCU control
+                class Logic logic
+                class Actuators output
+                class Power power
             </div>
             <p class="diagram-caption">
               <strong>Purpose:</strong> Understand the complete data and power flow in a mechatronic system from sensing to actuation<br>
@@ -561,44 +575,41 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
             </p>
             <div class="mermaid">
               stateDiagram-v2
-                  [*] --> RED
+                direction LR
+                [*] --> RED
 
-                  RED --> GREEN: Timer 30s
-                  RED --> RED: Emergency active
+                RED    --> GREEN  : timer 30s
+                GREEN  --> YELLOW : timer 25s
+                YELLOW --> RED    : timer 5s
 
-                  GREEN --> YELLOW: Timer 25s
-                  GREEN --> RED: Emergency active
+                RED    --> EMERGENCY : 🚨 emergency signal
+                GREEN  --> EMERGENCY : 🚨 emergency signal
+                YELLOW --> EMERGENCY : 🚨 emergency signal
+                EMERGENCY --> RED    : emergency cleared
 
-                  YELLOW --> RED: Timer 5s
-                  YELLOW --> RED: Emergency active
+                note right of RED
+                  🔴 Stop — 30 s
+                end note
+                note right of GREEN
+                  🟢 Go — 25 s
+                end note
+                note right of YELLOW
+                  🟡 Caution — 5 s
+                end note
+                note right of EMERGENCY
+                  ⚠️ Flashing red
+                  all traffic stops
+                end note
 
-                  EMERGENCY_OVERRIDE: RED<br/>flashing
+                classDef stop    fill:#ffcdd2,stroke:#C62828,stroke-width:2px
+                classDef go      fill:#c8e6c9,stroke:#2E7D32,stroke-width:2px
+                classDef caution fill:#fff9c4,stroke:#F57F17,stroke-width:2px
+                classDef alarm   fill:#fff3e0,stroke:#E65100,stroke-width:2px
 
-                  RED --> EMERGENCY_OVERRIDE: Emergency detected
-                  GREEN --> EMERGENCY_OVERRIDE: Emergency detected
-                  YELLOW --> EMERGENCY_OVERRIDE: Emergency detected
-
-                  EMERGENCY_OVERRIDE --> RED: Timer > 60s
-
-                  note right of RED
-                    Stop all traffic
-                    Duration: 30 seconds
-                  end note
-
-                  note right of GREEN
-                    Allow traffic through
-                    Duration: 25 seconds
-                  end note
-
-                  note right of YELLOW
-                    Caution - prepare to stop
-                    Duration: 5 seconds
-                  end note
-
-                  note right of EMERGENCY_OVERRIDE
-                    All-way flashing red
-                    Triggered by emergency
-                  end note
+                class RED stop
+                class GREEN go
+                class YELLOW caution
+                class EMERGENCY alarm
             </div>
             <p class="diagram-caption">
               <strong>Purpose:</strong> Model a traffic light control system as a state machine showing state transitions, timers, and emergency override capability<br>

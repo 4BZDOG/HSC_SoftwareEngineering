@@ -1,17 +1,22 @@
+%% Linear Search — iterate through each element until the target is found
+%% Syllabus: SE-11-02
 flowchart TD
-    A["🔍 Start<br/>Analyze target"] --> B["🔄 Loop Start"]
-    B --> C{{"index < length(list)?"}}
-    C -->|No| D["❌ Not Found<br/>Return -1"]
-    C -->|Yes| E{{"list[index] ==<br/>target?"}}
-    E -->|Yes| F["✅ Found<br/>Return index"]
-    E -->|No| G["➡️ Increment<br/>index++"]
+    A(["🚀 Start<br/>Input: list, target"]) --> B["Initialise<br/>index = 0"]
+    B --> C{"index &lt; length(list)?"}
+    C -- No --> D(["❌ Not Found<br/>Return −1"])
+    C -- Yes --> E{"list[index] == target?"}
+    E -- Yes --> F(["✅ Found<br/>Return index"])
+    E -- No  --> G["Increment<br/>index = index + 1"]
     G --> C
 
-    D --> H["🏁 End"]
-    F --> H
+    classDef start    fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+    classDef process  fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+    classDef decision fill:#fff9c4,stroke:#F57F17,stroke-width:2px
+    classDef good     fill:#c8e6c9,stroke:#2E7D32,stroke-width:2px
+    classDef bad      fill:#ffcdd2,stroke:#C62828,stroke-width:2px
 
-    style A fill:#90EE90
-    style H fill:#FFB6C6
-    style F fill:#87CEEB
-    style D fill:#FFB347
-    style B fill:#FFE4B5
+    class A start
+    class B,G process
+    class C,E decision
+    class F good
+    class D bad
