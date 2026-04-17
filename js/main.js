@@ -21,22 +21,23 @@ document.addEventListener('DOMContentLoaded', () => {
     (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   document.documentElement.setAttribute('data-theme', saved);
 
-  document.querySelectorAll('#theme-toggle, #theme-toggle-mobile').forEach(btn => {
-    updateThemeIcon(btn, saved);
-    btn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem(THEME_KEY, next);
-      document.querySelectorAll('#theme-toggle, #theme-toggle-mobile').forEach(b => updateThemeIcon(b, next));
-    });
-  });
+  const themeButtons = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
 
   function updateThemeIcon(btn, theme) {
     if (!btn) return;
     btn.textContent = theme === 'dark' ? '☀️' : '🌙';
     btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
   }
+
+  themeButtons.forEach(btn => {
+    updateThemeIcon(btn, saved);
+    btn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem(THEME_KEY, next); } catch {}
+      themeButtons.forEach(b => updateThemeIcon(b, next));
+    });
+  });
 
   /* ── Transform Outcome Subtitles to Badges ── */
   document.querySelectorAll('.outcome-subtitle').forEach(el => {
@@ -150,12 +151,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileMenu = document.getElementById('mobile-menu');
 
   if (hamburger && mobileMenu) {
+    const bars = hamburger.querySelectorAll('span');
+    const setBars = open => {
+      if (bars[0]) bars[0].style.transform = open ? 'rotate(45deg) translate(5px, 5px)' : '';
+      if (bars[1]) bars[1].style.opacity   = open ? '0' : '1';
+      if (bars[2]) bars[2].style.transform = open ? 'rotate(-45deg) translate(5px, -5px)' : '';
+    };
+
     hamburger.addEventListener('click', () => {
       const open = mobileMenu.classList.toggle('open');
       hamburger.setAttribute('aria-expanded', String(open));
-      hamburger.querySelectorAll('span')[0].style.transform = open ? 'rotate(45deg) translate(5px, 5px)' : '';
-      hamburger.querySelectorAll('span')[1].style.opacity  = open ? '0' : '1';
-      hamburger.querySelectorAll('span')[2].style.transform = open ? 'rotate(-45deg) translate(5px, -5px)' : '';
+      setBars(open);
     });
 
     // Close on link click
@@ -163,9 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
       a.addEventListener('click', () => {
         mobileMenu.classList.remove('open');
         hamburger.setAttribute('aria-expanded', 'false');
-        hamburger.querySelectorAll('span').forEach(s => {
-          s.style.transform = ''; s.style.opacity = '';
-        });
+        bars.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
       });
     });
   }
@@ -181,11 +185,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hasToc) {
       document.documentElement.classList.add('has-toc');
       const updateProgress = () => {
-        const scrollTop = window.scrollY;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+        const pct = docHeight > 0 ? Math.min(100, (window.scrollY / docHeight) * 100) : 0;
+        // CSS uses `calc(var(--scroll-pct, 0) * 1%)` to size the bar.
         progressBar.style.setProperty('--scroll-pct', pct);
-        progressBar.style.width = pct + '%';
       };
       window.addEventListener('scroll', updateProgress, { passive: true });
       updateProgress();
@@ -375,32 +378,30 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Hero Stat Counter Animation ── */
   const statEls = document.querySelectorAll('.hero-stat-num[data-count]');
   if (statEls.length && 'IntersectionObserver' in window) {
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     // Suppress per-tick SR announcements; final value is already in the DOM
     statEls.forEach(el => el.setAttribute('aria-live', 'off'));
     const counterObs = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
-        const end = parseInt(el.dataset.count, 10);
+        const end = Number.parseInt(el.dataset.count, 10);
         const suffix = el.dataset.suffix || '';
+        counterObs.unobserve(el);
+        if (!Number.isFinite(end)) return;
         el.classList.add('stat-animated');
-        if (reducedMotion) {
+        if (prefersReducedMotion) {
           el.textContent = end + suffix;
-          counterObs.unobserve(el);
           return;
         }
         const duration = 1400;
         const startTime = performance.now();
-        function tick(now) {
-          const elapsed = now - startTime;
-          const progress = Math.min(elapsed / duration, 1);
+        const tick = now => {
+          const progress = Math.min((now - startTime) / duration, 1);
           const eased = 1 - Math.pow(1 - progress, 3);
           el.textContent = Math.round(eased * end) + suffix;
           if (progress < 1) requestAnimationFrame(tick);
-        }
+        };
         requestAnimationFrame(tick);
-        counterObs.unobserve(el);
       });
     }, { threshold: 0.6 });
     statEls.forEach(el => counterObs.observe(el));
@@ -577,7 +578,9 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Diagram Block Collapsibility ── */
   (() => {
     const DIAGRAM_KEY = 'hsc-diagram-collapsed';
-    const collapsed = JSON.parse(localStorage.getItem(DIAGRAM_KEY) || '{}');
+    let collapsed;
+    try { collapsed = JSON.parse(localStorage.getItem(DIAGRAM_KEY) || '{}'); }
+    catch { collapsed = {}; }
 
     // Debounced resize handler
     let resizeTimer;
@@ -679,16 +682,16 @@ document.addEventListener('DOMContentLoaded', () => {
         this.overlay.addEventListener('click', () => this.close());
         this.container.addEventListener('click', e => e.stopPropagation());
 
-        this.zoomInBtn.addEventListener('click', () => this.zoom_in());
-        this.zoomOutBtn.addEventListener('click', () => this.zoom_out());
+        this.zoomInBtn.addEventListener('click', () => this.zoomIn());
+        this.zoomOutBtn.addEventListener('click', () => this.zoomOut());
         this.resetBtn.addEventListener('click', () => this.reset());
 
         // Keyboard controls
         document.addEventListener('keydown', e => {
           if (!this.isOpen()) return;
           if (e.key === 'Escape') this.close();
-          if (e.key === '+' || e.key === '=') { e.preventDefault(); this.zoom_in(); }
-          if (e.key === '-' || e.key === '_') { e.preventDefault(); this.zoom_out(); }
+          if (e.key === '+' || e.key === '=') { e.preventDefault(); this.zoomIn(); }
+          if (e.key === '-' || e.key === '_') { e.preventDefault(); this.zoomOut(); }
           if (e.key === '0') { e.preventDefault(); this.reset(); }
         });
 
@@ -696,8 +699,8 @@ document.addEventListener('DOMContentLoaded', () => {
         this.content.addEventListener('wheel', e => {
           if (e.ctrlKey || e.metaKey) {
             e.preventDefault();
-            if (e.deltaY < 0) this.zoom_in();
-            else this.zoom_out();
+            if (e.deltaY < 0) this.zoomIn();
+            else this.zoomOut();
           }
         }, { passive: false });
 
@@ -756,8 +759,8 @@ document.addEventListener('DOMContentLoaded', () => {
             );
             if (touchDistance > 0) {
               const ratio = current / touchDistance;
-              if (ratio > 1.1) { this.zoom_in(); touchDistance = current; }
-              else if (ratio < 0.9) { this.zoom_out(); touchDistance = current; }
+              if (ratio > 1.1) { this.zoomIn(); touchDistance = current; }
+              else if (ratio < 0.9) { this.zoomOut(); touchDistance = current; }
             }
           }
         }, { passive: true });
@@ -811,7 +814,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      zoom_in() {
+      zoomIn() {
         if (this.zoom < this.maxZoom) {
           this.zoom = Math.min(this.maxZoom, this.zoom + this.zoomStep);
           this.updateTransform();
@@ -819,7 +822,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
-      zoom_out() {
+      zoomOut() {
         if (this.zoom > this.minZoom) {
           this.zoom = Math.max(this.minZoom, this.zoom - this.zoomStep);
           this.updateTransform();
@@ -1107,15 +1110,16 @@ document.addEventListener('DOMContentLoaded', () => {
       'Test Set': 'term-test-set'
     };
 
-    // Output terms ordered by length so "Continuous Integration" matches before "Integration"
-    const terms = Object.keys(DICTIONARY).sort((a,b) => b.length - a.length);
-    // Build optimized case-insensitive regex escaping special chars (except /)
+    // Order terms by length so "Continuous Integration" matches before "Integration"
+    const terms = Object.keys(DICTIONARY).sort((a, b) => b.length - a.length);
+    // Case-insensitive lookup from user-typed term → canonical dictionary key
+    const termLookup = new Map(terms.map(t => [t.toLowerCase(), t]));
+    // Build case-insensitive regex escaping regex-special chars
     const patternStr = terms.map(t => t.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')).join('|');
     const pattern = new RegExp(`\\b(${patternStr})\\b`, 'gi');
 
     const seenTerms = new Set();
-    // Exclude tags where linking would break structure or is inappropriate
-    // Note: H1-H6 (headings) are now included to allow glossary term linking in heading text
+    // Skip tags where linking would break structure or is inappropriate.
     const excludeTags = new Set(['A', 'PRE', 'CODE', 'TH', 'SCRIPT', 'STYLE']);
 
     // Recursively walk text nodes
@@ -1151,11 +1155,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       while ((match = pattern.exec(text)) !== null) {
         const termRaw = match[0];
-        const termKey = terms.find(t => t.toLowerCase() === termRaw.toLowerCase());
-        
-        if (!termKey) continue; 
-        if (seenTerms.has(termKey)) continue; // Only autolink the very FIRST appearance natively on this page
-        
+        const termKey = termLookup.get(termRaw.toLowerCase());
+
+        if (!termKey) continue;
+        // Only autolink the first appearance of each term per page.
+        if (seenTerms.has(termKey)) continue;
+
         seenTerms.add(termKey);
 
         if (!fragment) fragment = document.createDocumentFragment();
@@ -1187,6 +1192,3 @@ document.addEventListener('DOMContentLoaded', () => {
   })();
 
 });
-
-/* ── CSS for fade-in animation (injected once) ── */
-/* NOTE: ideally move to styles.css — kept here as a single-file convenience */
