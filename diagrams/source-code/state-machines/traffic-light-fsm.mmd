@@ -1,38 +1,38 @@
+%% Traffic Light FSM — three normal states plus emergency override
+%% Syllabus: SE-11-14
 stateDiagram-v2
+    direction LR
     [*] --> RED
 
-    RED --> GREEN: Timer expires (30s)
-    RED --> RED: Timer counting
+    RED    --> GREEN  : timer 30s
+    GREEN  --> YELLOW : timer 25s
+    YELLOW --> RED    : timer 5s
 
-    GREEN --> YELLOW: Timer expires (25s)
-    GREEN --> GREEN: Timer counting
-
-    YELLOW --> RED: Timer expires (5s)
-    YELLOW --> YELLOW: Timer counting
-
-    RED --> EMERGENCY: Emergency signal
-    GREEN --> EMERGENCY: Emergency signal
-    YELLOW --> EMERGENCY: Emergency signal
-
-    EMERGENCY --> EMERGENCY: Flash red
-    EMERGENCY --> RED: Emergency cleared
+    RED    --> EMERGENCY : 🚨 emergency signal
+    GREEN  --> EMERGENCY : 🚨 emergency signal
+    YELLOW --> EMERGENCY : 🚨 emergency signal
+    EMERGENCY --> RED    : emergency cleared
 
     note right of RED
-        ⚫ Stop
-        Duration: 30s
+        🔴 Stop — 30 s
     end note
-
     note right of GREEN
-        🟢 Go
-        Duration: 25s
+        🟢 Go — 25 s
     end note
-
     note right of YELLOW
-        🟡 Caution
-        Duration: 5s
+        🟡 Caution — 5 s
+    end note
+    note right of EMERGENCY
+        ⚠️ Flashing red
+        all traffic stops
     end note
 
-    note right of EMERGENCY
-        🚨 Flashing Red
-        All traffic stops
-    end note
+    classDef stop    fill:#ffcdd2,stroke:#C62828,stroke-width:2px
+    classDef go      fill:#c8e6c9,stroke:#2E7D32,stroke-width:2px
+    classDef caution fill:#fff9c4,stroke:#F57F17,stroke-width:2px
+    classDef alarm   fill:#fff3e0,stroke:#E65100,stroke-width:2px
+
+    class RED stop
+    class GREEN go
+    class YELLOW caution
+    class EMERGENCY alarm

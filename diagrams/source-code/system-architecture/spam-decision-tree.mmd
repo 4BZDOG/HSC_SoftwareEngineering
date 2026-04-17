@@ -1,19 +1,23 @@
-graph TD
-    Root{{"📧 Email Analysis<br/>Start classification"}}
+%% Spam Classifier — simple decision tree with two features
+%% Syllabus: SE-12-14
+flowchart TD
+    Root(["📧 Email received<br/>classify as spam / not spam"]) --> Q1
 
-    Root -->|"'Click here'<br/>detected?"| Node1{{"💰 'Free money'<br/>in email?"}}
-    Root -->|"No clicks"| Node2{{"👤 Unknown<br/>sender?"}}
+    Q1{"Contains<br/>'click here'?"}
+    Q1 -- Yes --> Q2{"Contains<br/>'free money'?"}
+    Q1 -- No  --> Q3{"Unknown<br/>sender?"}
 
-    Node1 -->|"Yes"| Leaf1["🚫 SPAM<br/>Confidence: 95%<br/>Action: Quarantine"]
-    Node1 -->|"No"| Leaf2["✅ NOT SPAM<br/>Confidence: 78%<br/>Action: Inbox"]
+    Q2 -- Yes --> L1["🚫 SPAM<br/>confidence 95%<br/>→ quarantine"]
+    Q2 -- No  --> L2["✅ Not spam<br/>confidence 78%<br/>→ inbox"]
+    Q3 -- Yes --> L3["🚫 SPAM<br/>confidence 85%<br/>→ quarantine"]
+    Q3 -- No  --> L4["✅ Not spam<br/>confidence 92%<br/>→ inbox"]
 
-    Node2 -->|"Yes"| Leaf3["🚫 SPAM<br/>Confidence: 85%<br/>Action: Quarantine"]
-    Node2 -->|"No"| Leaf4["✅ NOT SPAM<br/>Confidence: 92%<br/>Action: Inbox"]
+    classDef start    fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+    classDef decision fill:#fff9c4,stroke:#F57F17,stroke-width:2px
+    classDef spam     fill:#ffcdd2,stroke:#C62828,stroke-width:2px
+    classDef ham      fill:#c8e6c9,stroke:#2E7D32,stroke-width:2px
 
-    style Root fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
-    style Node1 fill:#FFF3E0,stroke:#E65100,stroke-width:2px
-    style Node2 fill:#FFF3E0,stroke:#E65100,stroke-width:2px
-    style Leaf1 fill:#FF6B6B,color:#fff,stroke:#C62828
-    style Leaf3 fill:#FF6B6B,color:#fff,stroke:#C62828
-    style Leaf2 fill:#51CF66,color:#fff,stroke:#2E7D32
-    style Leaf4 fill:#51CF66,color:#fff,stroke:#2E7D32
+    class Root start
+    class Q1,Q2,Q3 decision
+    class L1,L3 spam
+    class L2,L4 ham

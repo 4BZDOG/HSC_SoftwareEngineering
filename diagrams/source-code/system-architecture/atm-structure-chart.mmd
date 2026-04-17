@@ -1,31 +1,33 @@
+%% ATM Structure Chart — functional decomposition of an ATM control program
+%% Syllabus: SE-11-02
 graph TD
-    Main["🏦 ATM System<br/>Main Module<br/>─────────────<br/>Start/Shutdown"]
+    Main[["🏦 ATM System<br/>Main module"]]
 
-    Main --> Auth["🔐 Authenticate User<br/>━━━━━━━━━━━<br/>Verify credentials"]
-    Main --> Menu["📋 Display Menu<br/>━━━━━━━━━━━<br/>Show options"]
-    Main --> Trans["💳 Process Transaction<br/>━━━━━━━━━━━<br/>Handle request"]
-    Main --> Disp["💵 Dispense Cash<br/>━━━━━━━━━━━<br/>Deliver money"]
+    Main --> Auth["🔐 Authenticate User<br/>Verify credentials"]
+    Main --> Menu["📋 Display Menu<br/>Show options"]
+    Main --> Trans["💳 Process Transaction<br/>Handle request"]
+    Main --> Disp["💵 Dispense Cash<br/>Deliver money"]
 
-    Auth --> VerifyPIN["🔑 Verify PIN<br/>Check database"]
-    Auth --> CheckCard["💳 Check Card<br/>Validity check"]
+    Auth --> VerifyPIN["🔑 Verify PIN"]
+    Auth --> CheckCard["💳 Validate Card"]
 
-    Trans --> Withdraw["💸 Withdraw<br/>Debit account"]
-    Trans --> Deposit["📥 Deposit<br/>Credit account"]
-    Trans --> Balance["📊 Check Balance<br/>Query account"]
+    Trans --> Withdraw["💸 Withdraw"]
+    Trans --> Deposit["📥 Deposit"]
+    Trans --> Balance["📊 Check Balance"]
 
-    Withdraw --> Update1["🔄 Update Account<br/>Apply transaction"]
-    Deposit --> Update2["🔄 Update Account<br/>Apply transaction"]
-    Balance --> Query["📖 Query Database<br/>Fetch balance"]
+    Withdraw --> UpdateW[("🔄 Update Account")]
+    Deposit  --> UpdateD[("🔄 Update Account")]
+    Balance  --> Query[("📖 Query Database")]
 
-    Update1 --> Record["📝 Record Transaction<br/>Audit log"]
-    Update2 --> Record["📝 Record Transaction<br/>Audit log"]
+    UpdateW --> Record[("📝 Audit Log")]
+    UpdateD --> Record
 
-    style Main fill:#4CAF50,color:#fff,stroke:#2E7D32,stroke-width:3px
-    style Auth fill:#2196F3,color:#fff
-    style Menu fill:#2196F3,color:#fff
-    style Trans fill:#2196F3,color:#fff
-    style Disp fill:#2196F3,color:#fff
-    style Record fill:#FF9800,color:#fff
-    style Update1 fill:#FF9800,color:#fff
-    style Update2 fill:#FF9800,color:#fff
-    style Query fill:#FF9800,color:#fff
+    classDef root    fill:#e0e7ff,stroke:#6366F1,stroke-width:3px
+    classDef level2  fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+    classDef level3  fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
+    classDef data    fill:#fff3e0,stroke:#E65100,stroke-width:2px
+
+    class Main root
+    class Auth,Menu,Trans,Disp level2
+    class VerifyPIN,CheckCard,Withdraw,Deposit,Balance level3
+    class UpdateW,UpdateD,Query,Record data
