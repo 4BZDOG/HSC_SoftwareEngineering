@@ -28,8 +28,11 @@ Desktop.ini
 *.iml
 
 # ── Dev Tools ──
-# Claude Code sessions
+# Claude Code sessions (exclude runtime files, but track shared skills)
 .claude/
+!.claude/
+!.claude/skills/
+!.claude/skills/**
 
 # Python
 __pycache__/
