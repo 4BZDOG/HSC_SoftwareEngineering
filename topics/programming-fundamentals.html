@@ -44,21 +44,21 @@
     ]
   }
   </script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
-  <meta name="theme-color" content="#6366F1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232D46B9'/><text x='50' y='71' font-size='58' fill='%23F4F3EE' text-anchor='middle' font-family='Georgia,serif'>{}</text></svg>" />
+  <meta name="theme-color" content="#2D46B9" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <meta name="description" content="Year 11 HSC Programming Fundamentals notes — algorithms, data types, control structures, functions, debugging, and NESA command verbs for Preliminary exams." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=9" />
+  <link rel="stylesheet" href="../css/styles.css?v=10" />
 </head>
 <body>
 
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="../index.html" class="nav-brand">
-        <div class="nav-logo">💻</div>
+        <div class="nav-logo" aria-hidden="true">{&hairsp;}</div>
         <div>
           <div class="nav-title">SoftEng Notes</div>
           <div class="nav-subtitle">NESA NSW HSC</div>
@@ -66,17 +66,17 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="../index.html">🏠 Home</a></li>
+        <li><a href="../index.html">Home</a></li>
         <li class="nav-dropdown">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
-            🗂️ Resources
+            Resources
             <span class="badge badge-all">Guides</span>
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
-            <a href="sdlc.html" role="menuitem">🔄 SDLC Guide</a>
-            <a href="glossary.html" role="menuitem">📖 Glossary</a>
+            <a href="course-tools.html" role="menuitem">Course Tools &amp; Specs</a>
+            <a href="sdlc.html" role="menuitem">SDLC Guide</a>
+            <a href="glossary.html" role="menuitem">Glossary</a>
           </div>
         </li>
         <li class="nav-dropdown nav-dropdown-y12">
@@ -86,10 +86,10 @@
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="secure-software-architecture.html" role="menuitem">🔒 Secure Software Architecture</a>
-            <a href="programming-for-the-web.html" role="menuitem">🌐 Programming for the Web</a>
-            <a href="software-automation.html" role="menuitem">⚙️ Software Automation</a>
-            <a href="software-engineering-project.html" role="menuitem">📋 Software Engineering Project</a>
+            <a href="secure-software-architecture.html" role="menuitem">Secure Software Architecture</a>
+            <a href="programming-for-the-web.html" role="menuitem">Programming for the Web</a>
+            <a href="software-automation.html" role="menuitem">Software Automation</a>
+            <a href="software-engineering-project.html" role="menuitem">Software Engineering Project</a>
           </div>
         </li>
         <li class="nav-dropdown nav-dropdown-y11">
@@ -99,15 +99,15 @@
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="programming-fundamentals.html" role="menuitem">📐 Programming Fundamentals</a>
-            <a href="object-oriented-paradigm.html" role="menuitem">🧩 Object-Oriented Paradigm</a>
-            <a href="programming-mechatronics.html" role="menuitem">🤖 Programming Mechatronics</a>
+            <a href="programming-fundamentals.html" role="menuitem">Programming Fundamentals</a>
+            <a href="object-oriented-paradigm.html" role="menuitem">Object-Oriented Paradigm</a>
+            <a href="programming-mechatronics.html" role="menuitem">Programming Mechatronics</a>
           </div>
         </li>
       </ul>
 
       <div class="nav-actions">
-        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -118,24 +118,24 @@
   <div class="mobile-menu" id="mobile-menu">
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Resources</div>
-      <a href="course-tools.html">🛠️ Course Tools &amp; Specifications</a>
-      <a href="sdlc.html">🔄 SDLC Guide</a>
-      <a href="glossary.html">📖 Glossary</a>
+      <a href="course-tools.html">Course Tools &amp; Specifications</a>
+      <a href="sdlc.html">SDLC Guide</a>
+      <a href="glossary.html">Glossary</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 12</div>
-      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
-      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
-      <a href="software-automation.html">⚙️ Software Automation</a>
-      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+      <a href="secure-software-architecture.html">Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">Programming for the Web</a>
+      <a href="software-automation.html">Software Automation</a>
+      <a href="software-engineering-project.html">Software Engineering Project</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 11</div>
-      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
-      <a href="object-oriented-paradigm.html">🧩 Object-Oriented Paradigm</a>
-      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+      <a href="programming-fundamentals.html">Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">Programming Mechatronics</a>
     </div>
-    <button id="theme-toggle-mobile" class="btn btn-mobile-theme">🌙 Toggle Theme</button>
+    <button id="theme-toggle-mobile" class="btn btn-mobile-theme">Toggle theme</button>
   </div>
 
   <header class="topic-header">
@@ -145,13 +145,13 @@
         <a href="../index.html#year11">Year 11</a> <span>›</span>
         <span>Programming Fundamentals</span>
       </nav>
-      <h1>📐 Programming Fundamentals</h1>
+      <h1>Programming Fundamentals</h1>
       <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
         Mastering the methodologies of planning, designing, and engineering software solutions through computational thinking and structured data representation.
       </p>
       <div class="topic-header-meta">
-        <span class="meta-pill year11">📗 Year 11 — Preliminary</span>
-        <span class="meta-pill">🕐 ~10 weeks</span>
+        <span class="meta-pill year11">Year 11 — Preliminary</span>
+        <span class="meta-pill">~10 weeks</span>
         <span class="meta-pill">Outcomes: SE-11-01 to 07</span>
       </div>
     </div>
@@ -162,25 +162,25 @@
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
         <li class="sidebar-label">Part 1 — Software Development</li>
-        <li><a href="#sdlc">🚀 1. Software Development Steps</a></li>
-        <li><a href="#collaboration">🤝 2. Online Collaboration Tools</a></li>
+        <li><a href="#sdlc">1. Software Development Steps</a></li>
+        <li><a href="#collaboration">2. Online Collaboration Tools</a></li>
         <li class="sidebar-label">Part 2 — Designing <strong>Algorithms</strong></li>
-        <li><a href="#algorithmic-design">🧠 3. Computational Thinking & Algorithm Features</a></li>
-        <li><a href="#divide-conquer">📈 4. Divide & Conquer &amp; Backtracking</a></li>
-        <li><a href="#pseudocode">📝 5. Pseudocode &amp; Flowcharts</a></li>
-        <li><a href="#modelling">📊 6. Modelling Tools</a></li>
-        <li><a href="#analysis">🔍 7. Algorithm Analysis</a></li>
-        <li><a href="#paradigms">🎯 8. Programming Paradigms</a></li>
+        <li><a href="#algorithmic-design">3. Computational Thinking & Algorithm Features</a></li>
+        <li><a href="#divide-conquer">4. Divide & Conquer &amp; Backtracking</a></li>
+        <li><a href="#pseudocode">5. Pseudocode &amp; Flowcharts</a></li>
+        <li><a href="#modelling">6. Modelling Tools</a></li>
+        <li><a href="#analysis">7. Algorithm Analysis</a></li>
+        <li><a href="#paradigms">8. Programming Paradigms</a></li>
         <li class="sidebar-label">Part 3 — Data for Software Engineering</li>
-        <li><a href="#number-systems">🔢 9. Number Systems &amp; Two's Complement</a></li>
-        <li><a href="#data-types">📋 10. Data Types &amp; Dictionaries</a></li>
-        <li><a href="#data-structures">📚 11. Data Structures</a></li>
+        <li><a href="#number-systems">9. Number Systems &amp; Two's Complement</a></li>
+        <li><a href="#data-types">10. Data Types &amp; Dictionaries</a></li>
+        <li><a href="#data-structures">11. Data Structures</a></li>
         <li class="sidebar-label">Part 4 — Developing Solutions</li>
-        <li><a href="#applying-skills">💻 12. Applying Computational Thinking</a></li>
-        <li><a href="#functions-procedures">🔧 12a. Functions &amp; Procedures — Deep Dive</a></li>
-        <li><a href="#variable-naming">🏷️ 12b. Variable Declaration &amp; Naming</a></li>
-        <li><a href="#management">⚙️ 13. Project Management Models</a></li>
-        <li><a href="#testing">🧪 14. Testing, Debugging &amp; Errors</a></li>
+        <li><a href="#applying-skills">12. Applying Computational Thinking</a></li>
+        <li><a href="#functions-procedures">12a. Functions &amp; Procedures — Deep Dive</a></li>
+        <li><a href="#variable-naming">12b. Variable Declaration &amp; Naming</a></li>
+        <li><a href="#management">13. Project Management Models</a></li>
+        <li><a href="#testing">14. Testing, Debugging &amp; Errors</a></li>
       </ul>
     </aside>
 
@@ -192,53 +192,53 @@
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Syllabus Part 1</span>
-          <span class="part-name">🚀 Software Development</span>
+          <span class="part-name">Software Development</span>
         </div>
 
         <!-- 1. Explore SDLC -->
         <section id="sdlc">
-          <h2 class="syllabus-phase">🚀 Software Development Steps</h2>
+          <h2 class="syllabus-phase">Software Development Steps</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-01)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Explore</strong> the fundamental software development steps used by programmers to systematically engineer solutions. Each stage ensures a logical progression from problem identification to a finalised product.</em></p>
           
           <div class="steps">
             <div class="step">
               <div class="step-num">1</div>
-              <div class="step-content"><h4>📝 Requirements Definition</h4><p>The programmer identifies what the software must achieve by consulting stakeholders.<br>🌏 <em>Example: Conducting interviews with school staff to determine features for a new attendance portal.</em></p></div>
+              <div class="step-content"><h4>Requirements Definition</h4><p>The programmer identifies what the software must achieve by consulting stakeholders.<br>🌏 <em>Example: Conducting interviews with school staff to determine features for a new attendance portal.</em></p></div>
             </div>
             <div class="step">
               <div class="step-num">2</div>
-              <div class="step-content"><h4>📋 Determining Specifications</h4><p>Defining technical constraints such as hardware requirements, RAM limits, and supported operating systems.<br>🌏 <em>Example: Specifying that a game must run at 60fps on a Raspberry Pi 4.</em></p></div>
+              <div class="step-content"><h4>Determining Specifications</h4><p>Defining technical constraints such as hardware requirements, RAM limits, and supported operating systems.<br>🌏 <em>Example: Specifying that a game must run at 60fps on a Raspberry Pi 4.</em></p></div>
             </div>
             <div class="step">
               <div class="step-num">3</div>
-              <div class="step-content"><h4>🎨 Design</h4><p><strong>Algorithms</strong> are planned using pseudocode or flowcharts.<br>🌏 <em>Example: Creating a structure chart to map out how the 'Calculate Tax' subroutine interacts with the main program.</em></p></div>
+              <div class="step-content"><h4>Design</h4><p><strong>Algorithms</strong> are planned using pseudocode or flowcharts.<br>🌏 <em>Example: Creating a structure chart to map out how the 'Calculate Tax' subroutine interacts with the main program.</em></p></div>
             </div>
             <div class="step">
               <div class="step-num">4</div>
-              <div class="step-content"><h4>💻 Development</h4><p>The design is translated into a programming language like Python.<br>🌏 <em>Example: Writing the 'if-else' logic to handle user login authentication.</em></p></div>
+              <div class="step-content"><h4>Development</h4><p>The design is translated into a programming language like Python.<br>🌏 <em>Example: Writing the 'if-else' logic to handle user login authentication.</em></p></div>
             </div>
             <div class="step">
               <div class="step-num">5</div>
-              <div class="step-content"><h4>🧩 Integration</h4><p>Combining individual modules into a cohesive system.<br>🌏 <em>Example: Connecting the 'User Interface' module to the 'Database Management' module.</em></p></div>
+              <div class="step-content"><h4>Integration</h4><p>Combining individual modules into a cohesive system.<br>🌏 <em>Example: Connecting the 'User Interface' module to the 'Database Management' module.</em></p></div>
             </div>
             <div class="step">
               <div class="step-num">6</div>
-              <div class="step-content"><h4>🐛 Testing and Debugging</h4><p>Identifying and rectifying errors using test data.<br>🌏 <em>Example: Running a 'Dry Run' to find out why a loop runs one too many times (an off-by-one error).</em></p></div>
+              <div class="step-content"><h4>Testing and Debugging</h4><p>Identifying and rectifying errors using test data.<br>🌏 <em>Example: Running a 'Dry Run' to find out why a loop runs one too many times (an off-by-one error).</em></p></div>
             </div>
             <div class="step">
               <div class="step-num">7</div>
-              <div class="step-content"><h4>📦 Installation</h4><p>Deploying the software to the user.<br>🌏 <em>Example: Providing a .dmg or .exe installer and a user manual to the client.</em></p></div>
+              <div class="step-content"><h4>Installation</h4><p>Deploying the software to the user.<br>🌏 <em>Example: Providing a .dmg or .exe installer and a user manual to the client.</em></p></div>
             </div>
             <div class="step">
               <div class="step-num">8</div>
-              <div class="step-content"><h4>🛠️ Maintenance</h4><p>The ongoing process of patching bugs and adding features.<br>🌏 <em>Example: Releasing a security patch to protect user data from a newly discovered vulnerability.</em></p></div>
+              <div class="step-content"><h4>Maintenance</h4><p>The ongoing process of patching bugs and adding features.<br>🌏 <em>Example: Releasing a security patch to protect user data from a newly discovered vulnerability.</em></p></div>
             </div>
           </div>
 
           <!-- SDLC Flowchart Diagram -->
           <div class="diagram-block">
-            <h4>📊 Flowchart - SDLC Process</h4>
+            <h4>Flowchart - SDLC Process</h4>
             <p class="diagram-subtitle">Seven phases of software development lifecycle</p>
             <p class="diagram-description">
               This flowchart shows the complete Software Development Lifecycle (SDLC) from Requirements through Maintenance. Each phase builds on the previous one, and the feedback loop from Maintenance back to Requirements demonstrates that software development is iterative — improvements and bug fixes cycle through the process continuously.
@@ -281,7 +281,7 @@
 
         <!-- 2. Research and Evaluate Collaboration Tools -->
         <section id="collaboration">
-          <h2 class="syllabus-phase">🤝 Online Collaboration Tools</h2>
+          <h2 class="syllabus-phase">Online Collaboration Tools</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-03, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Research and Evaluate</strong> the prevalence and use of online code collaboration tools like GitHub, GitLab, and Bitbucket in modern engineering environments.</em></p>
 
@@ -322,25 +322,25 @@
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Syllabus Part 2</span>
-          <span class="part-name">🧠 Designing <strong>Algorithms</strong></span>
+          <span class="part-name">Designing <strong>Algorithms</strong></span>
         </div>
 
         <!-- 3. Apply Algorithmic Design -->
         <section id="algorithmic-design">
-          <h2 class="syllabus-phase">🧠 Computational Thinking and Algorithm Features</h2>
+          <h2 class="syllabus-phase">Computational Thinking and Algorithm Features</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> computational thinking and algorithmic design by defining the key features of standard algorithms.</em></p>
 
-          <h3>🔑 Key Features of Standard Algorithms</h3>
+          <h3>Key Features of Standard Algorithms</h3>
           <p>Every <strong>algorithm</strong> uses fundamental building blocks to solve problems. Understanding these features allows programmers to design robust, efficient solutions:</p>
 
           <!-- ── 1. Sequence ── -->
-          <h4>🔢 1. Sequence</h4>
+          <h4>1. Sequence</h4>
           <p><strong>Sequence</strong> means instructions are executed in order, one after another. Each step completes before the next begins — there is no branching or repetition.<br>
           🌏 <em>Example: Reading a file, processing each line, then saving results.</em></p>
 
           <div class="diagram-block">
-            <h4>📊 Flowchart — Sequence (File Processing)</h4>
+            <h4>Flowchart — Sequence (File Processing)</h4>
             <p class="diagram-subtitle">Three sequential steps executed in order</p>
             <p class="diagram-description">
               This flowchart illustrates pure sequential execution: the program opens a file, processes every line in order, then saves the results. No decisions or loops — each step follows the previous one directly.
@@ -376,12 +376,12 @@ END</code></pre>
           </div>
 
           <!-- ── 2. Selection ── -->
-          <h4>🔀 2. Selection</h4>
+          <h4>2. Selection</h4>
           <p><strong>Selection</strong> means choosing different execution paths based on conditions using IF/ELSE or SWITCH statements. The program evaluates a condition and branches accordingly.<br>
           🌏 <em>Example: Validating user input — if age &lt; 18, display "Too young"; otherwise, proceed.</em></p>
 
           <div class="diagram-block">
-            <h4>📊 Flowchart — Selection (Age Validation)</h4>
+            <h4>Flowchart — Selection (Age Validation)</h4>
             <p class="diagram-subtitle">Branching logic based on a condition</p>
             <p class="diagram-description">
               This flowchart shows a decision diamond that checks whether the user's age meets the minimum requirement. The YES branch proceeds to the main menu, while the NO branch displays a rejection message. This is the fundamental IF/ELSE pattern.
@@ -426,12 +426,12 @@ END</code></pre>
           </div>
 
           <!-- ── 3. Iteration ── -->
-          <h4>🔁 3. Iteration</h4>
+          <h4>3. Iteration</h4>
           <p><strong>Iteration</strong> means repeating a set of instructions while a condition is true, using FOR or WHILE loops. The loop body executes multiple times until the exit condition is met.<br>
           🌏 <em>Example: Summing all numbers in a list by looping through each element.</em></p>
 
           <div class="diagram-block">
-            <h4>📊 Flowchart — Iteration (Sum a List)</h4>
+            <h4>Flowchart — Iteration (Sum a List)</h4>
             <p class="diagram-subtitle">Loop through each element and accumulate a total</p>
             <p class="diagram-description">
               This flowchart demonstrates a counting loop: the program initialises a total to zero, then iterates through each number in the list, adding it to the running total. The decision diamond checks whether more elements remain. When all elements are processed, the final sum is displayed.
@@ -473,12 +473,12 @@ END</code></pre>
           </div>
 
           <!-- ── 4. Storing Data ── -->
-          <h4>💾 4. Storing Data</h4>
+          <h4>4. Storing Data</h4>
           <p><strong>Storing Data</strong> means using variables and <strong>data structures</strong> to hold values needed across multiple steps of an <strong>algorithm</strong>. Without stored state, programs cannot track progress or accumulate results.<br>
           🌏 <em>Example: Keeping track of a running total as you iterate through numbers.</em></p>
 
           <div class="diagram-block">
-            <h4>📊 Flowchart — Storing Data (Running Total)</h4>
+            <h4>Flowchart — Storing Data (Running Total)</h4>
             <p class="diagram-subtitle">Variables persist values across loop iterations</p>
             <p class="diagram-description">
               This flowchart highlights the role of stored data: the variable <code>runningTotal</code> persists across each loop <strong>iteration</strong>, accumulating partial results. The variable <code>count</code> tracks how many numbers have been processed. Both are essential for computing the final average.
@@ -540,14 +540,14 @@ END</code></pre>
 
         <!-- 4. Divide and Conquer & Backtracking -->
         <section id="divide-conquer">
-          <h2 class="syllabus-phase">📈 Divide and Conquer and Backtracking Strategies</h2>
+          <h2 class="syllabus-phase">Divide and Conquer and Backtracking Strategies</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> divide and conquer and backtracking as algorithmic design strategies.</em></p>
 
-          <h3>📈 Divide and Conquer</h3>
+          <h3>Divide and Conquer</h3>
           <p>This strategy involves breaking a complex problem into smaller, identical sub-problems until they are simple enough to solve directly. The solutions to these sub-problems are then combined to form the final result.<br>🌏 <em>Example: In a <strong>Merge Sort</strong>, a large list is repeatedly split in half until single elements remain, which are then merged back together in the correct order.</em> This approach is highly efficient for sorting and searching large datasets.</p>
 
-          <h3>↩️ Backtracking</h3>
+          <h3>Backtracking</h3>
           <p>Backtracking is an incremental approach to problem-solving that builds a solution one step at a time. If the <strong>algorithm</strong> reaches a state where the current path cannot possibly lead to a valid solution (violating a constraint), it "backtracks" to the previous step and tries a different option.<br>🌏 <em>Example: A <strong>Sudoku Solver</strong> attempts a number in a cell; if it later finds a conflict, it returns to that cell and tries the next available number.</em> This strategy is essential for pathfinding and optimisation problems.</p>
 
           <div class="code-block">
@@ -582,11 +582,11 @@ visited = set()
 
         <!-- 5. Pseudocode and Flowcharts -->
         <section id="pseudocode">
-          <h2 class="syllabus-phase">📝 Developing Algorithms Using Pseudocode and Flowcharts</h2>
+          <h2 class="syllabus-phase">Developing Algorithms Using Pseudocode and Flowcharts</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Develop</strong> structured algorithms using pseudocode and flowcharts, including the use of subprograms.</em></p>
 
-          <h3>📝 Pseudocode</h3>
+          <h3>Pseudocode</h3>
           <p>Pseudocode is an informal, human-readable notation for writing <strong>algorithms</strong> — a bridge between natural language and programming code. It uses common programming keywords (IF, WHILE, FOR) mixed with English-like descriptions, making logic crystal clear without being tied to a specific programming language's syntax. This allows designers and developers to communicate <strong>algorithm</strong> logic to non-programmers, and to verify correctness before investing time in actual coding.<br>🌏 <em>Example:</em></p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Pseudocode — Linear Search <strong>Algorithm</strong></span></div>
@@ -600,12 +600,12 @@ visited = set()
 END FUNCTION</code></pre>
           </div>
 
-          <h3>📊 Flowcharts</h3>
+          <h3>Flowcharts</h3>
           <p>Flowcharts use visual symbols to represent <strong>algorithm</strong> steps and decision points. Rectangles represent processes, diamonds represent decisions, and arrows show flow direction. This visual representation makes complex logic easy to follow, helps identify loops and branches, and allows stakeholders to validate correctness before implementation.<br>🌏 <em>Example:</em> A flowchart for validating user age would show a diamond (decision point) — "Is age ≥ 18?" — with two paths: YES leads to "Show full menu" and NO leads to "Show restricted menu."</p>
 
           <!-- Linear Search Algorithm Flowchart -->
           <div class="diagram-block">
-            <h4>📈 Flowchart - Linear Search</h4>
+            <h4>Flowchart - Linear Search</h4>
             <p class="diagram-subtitle">Sequential search through array elements</p>
             <p class="diagram-description">
               This flowchart shows how the linear search <strong>algorithm</strong> works: it starts at index 0 and checks each element against the target value. If a match is found, it returns the index. If the end of the list is reached without finding the target, it returns -1. The loop structure demonstrates the iterative nature of sequential searching.
@@ -639,7 +639,7 @@ END FUNCTION</code></pre>
             </p>
           </div>
 
-          <h3>🧩 Subprograms</h3>
+          <h3>Subprograms</h3>
           <p>A subprogram (function or procedure) is a reusable block of code that performs a specific task. Pseudocode and flowcharts must clearly show how subprograms are called, what parameters they accept, and what they return. This modular approach reduces code duplication, improves readability, and makes testing easier.<br>🌏 <em>Example: A main program calls FUNCTION validatePassword(pwd) which returns TRUE or FALSE, allowing the validation logic to be reused across multiple entry points.</em></p>
 
           <div class="callout tip">
@@ -691,16 +691,16 @@ FUNCTION GetValidScore()
 
         <!-- 6. Use Modelling Tools -->
         <section id="modelling">
-          <h2 class="syllabus-phase">📊 Modelling Tools for Design</h2>
+          <h2 class="syllabus-phase">Modelling Tools for Design</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Use</strong> modelling tools including structure charts, abstraction and refinement diagrams to support top-down and bottom-up design.</em></p>
           
-          <h3>🏗️ Structure Charts</h3>
+          <h3>Structure Charts</h3>
           <p>Structure charts are a top-down tool used to show the hierarchy of subroutines in a system. They focus on modularity, showing which module calls another and what data (parameters) or control signals (flags) are passed between them.<br>🌏 <em>Example: A structure chart for an ATM would show the 'Main' module calling 'Verify PIN' and passing back a 'Valid/Invalid' flag.</em> This allows engineers to see high-level dependencies without getting bogged down in code logic.</p>
 
           <!-- ATM Structure Chart Diagram -->
           <div class="diagram-block">
-            <h4>🏦 Structure Chart - ATM System</h4>
+            <h4>Structure Chart - ATM System</h4>
             <p class="diagram-subtitle">Top-down module decomposition</p>
             <p class="diagram-description">
               This structure chart shows hierarchical decomposition of an ATM system. The main module delegates specialized tasks to child modules. Each arrow shows how data (○), control flags (●), decisions (🔷), or repetition (🔁) flow between modules, conforming exactly to NESA syllabus visual symbol standards. This organization reveals dependencies and communication patterns.
@@ -745,7 +745,7 @@ FUNCTION GetValidScore()
             </p>
           </div>
 
-          <h3>🔍 Abstraction and Refinement</h3>
+          <h3>Abstraction and Refinement</h3>
           <p><strong>Abstraction</strong> involves hiding implementation details to focus on high-level goals (the 'What'). <strong>Stepwise Refinement</strong> is the process of breaking those high-level goals into smaller, more specific details (the 'How').<br>🌏 <em>Example: An abstract instruction like 'Initialise System' is refined into 'Set counter to 0', 'Clear display', and 'Open file stream'.</em> Together, they allow for manageable development of complex systems.</p>
         </section>
 
@@ -753,17 +753,17 @@ FUNCTION GetValidScore()
 
         <!-- 7. Analyse Algorithm Logic and Structure -->
         <section id="analysis">
-          <h2 class="syllabus-phase">🔍 Analysing Algorithm Logic and Structure</h2>
+          <h2 class="syllabus-phase">Analysing Algorithm Logic and Structure</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Analyse</strong> the logic and structure of written algorithms, including determining inputs and outputs, purpose, desk checking, peer checking, and identifying connections to subroutines or functions.</em></p>
 
-          <h3>📥 Determining Inputs, Outputs, and Purpose</h3>
+          <h3>Determining Inputs, Outputs, and Purpose</h3>
           <p>Before writing code, clearly identify what data the <strong>algorithm</strong> needs (inputs), what it produces (outputs), and why it exists (purpose). This clarity prevents bugs and ensures the solution addresses the right problem.<br>🌏 <em>Example: A sorting algorithm has INPUT: unsorted list; OUTPUT: sorted list; PURPOSE: arrange items in ascending order for efficient searching.</em></p>
 
-          <h3>📋 Desk Checking and Peer Checking</h3>
+          <h3>Desk Checking and Peer Checking</h3>
           <p><strong>Desk checking</strong> (or "dry running") involves manually tracing through an <strong>algorithm</strong> step-by-step with sample data, recording the value of each variable at each step to verify correctness before implementation. <strong>Peer checking</strong> is having another person review the <strong>algorithm</strong> logic to catch errors or inefficiencies that the original author might miss.<br>🌏 <em>Example: Desk checking a loop from 1 to 10 — write down i=1, i=2, ... to verify the loop executes exactly 10 times, not 9 or 11.</em></p>
 
-          <h3>🔗 Identifying Connections to Subroutines and Functions</h3>
+          <h3>Identifying Connections to Subroutines and Functions</h3>
           <p>Analyse how an <strong>algorithm</strong> calls other functions and what data is passed between them. Document the purpose of each function call and the parameters it receives, ensuring data flows correctly through the program.<br>🌏 <em>Example: An algorithm that calculates employee pay might call FUNCTION calculateTax(salary) and FUNCTION applyBonus(basePay, bonusPercent), understanding what each returns and how it affects the final result.</em></p>
         </section>
 
@@ -771,17 +771,17 @@ FUNCTION GetValidScore()
 
         <!-- 8. Programming Paradigms -->
         <section id="paradigms">
-          <h2 class="syllabus-phase">🎯 Programming Paradigms</h2>
+          <h2 class="syllabus-phase">Programming Paradigms</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Experiment</strong> with object-oriented programming, imperative, logic and functional programming paradigms.</em></p>
 
-          <h3>📦 Object-Oriented Programming (OOP)</h3>
+          <h3>Object-Oriented Programming (OOP)</h3>
           <p>Data and functions are bundled together in "objects" that model real-world entities. Emphasises reusability, modularity, and maintainability. Classes define blueprints; instances are created from them.<br>🌏 <em>Example: A Car class has properties (colour, speed) and methods (accelerate(), brake()); multiple car objects can be created from this template.</em></p>
 
-          <h3>💻 Imperative Programming</h3>
+          <h3>Imperative Programming</h3>
           <p>Programs are sequences of explicit commands (statements) that change program state step-by-step. Python, Java, and C are imperative languages. Focus on "how" to solve the problem (procedures and control flow).<br>🌏 <em>Example: "Set count to 0; LOOP: add next number to count; increment loop counter; IF loop counter &lt; 10, GO TO LOOP."</em></p>
 
-          <h3>🧠 Logic Programming</h3>
+          <h3>Logic Programming</h3>
           <p>Programs state facts and rules; the interpreter derives new facts through logical inference. Less common than imperative, but heavily used in artificial intelligence, constraint logic, and database query planning (Outcome SE-11-02). Focus on "what" is true, not "how" to compute it.</p>
           
           <div class="code-block my-large">
@@ -827,7 +827,7 @@ sibling(A, B) :-
 
           <!-- Programming Paradigms Comparison Diagram -->
           <div class="diagram-block">
-            <h4>🎯 Diagram - Programming Paradigms Comparison</h4>
+            <h4>Diagram - Programming Paradigms Comparison</h4>
             <p class="diagram-subtitle">Object-oriented, imperative, logic, and functional approaches</p>
             <p class="diagram-description">
               This diagram compares four major programming paradigms. Object-oriented focuses on modeling real-world entities as objects. Imperative gives explicit step-by-step commands. Logic uses facts and inference rules to answer queries. Functional emphasizes pure functions and immutable data. Each paradigm suits different problem domains and design philosophies.
@@ -867,12 +867,12 @@ sibling(A, B) :-
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Syllabus Part 3</span>
-          <span class="part-name">📊 Data for Software Engineering</span>
+          <span class="part-name">Data for Software Engineering</span>
         </div>
 
         <!-- 9. Investigate Number Systems -->
         <section id="number-systems">
-          <h2 class="syllabus-phase">🔢 Number Systems and Two's Complement</h2>
+          <h2 class="syllabus-phase">Number Systems and Two's Complement</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-03)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> the use of number systems for computing purposes, including binary, decimal and hexadecimal. <strong>Represent</strong> integers using two's complement.</em></p>
           
@@ -882,7 +882,7 @@ sibling(A, B) :-
             <li><strong>Hexadecimal (Base 16):</strong> Efficiently represents bytes (e.g., <code>#FFFFFF</code> for white in CSS).</li>
           </ul>
 
-          <h3>➕ Two's Complement</h3>
+          <h3>Two's Complement</h3>
           <p>Two's Complement is the standard method for representing signed (negative) integers in binary. To represent a negative number, the bits of the positive equivalent are inverted (0 to 1 and vice-versa) and 1 is added to the result. This system is preferred as it allows for simple addition/subtraction circuits and eliminates the 'double zero' (+0 and -0) problem used in older systems.</p>
 
           <strong>Worked Example — Representing -5 in 8-bit Two's Complement:</strong>
@@ -911,7 +911,7 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
 
         <!-- 10. Investigate Data Types & Create Dictionaries -->
         <section id="data-types">
-          <h2 class="syllabus-phase">📋 Data Types and Data Dictionaries</h2>
+          <h2 class="syllabus-phase">Data Types and Data Dictionaries</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-03, SE-11-04)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> standard data types including char/string, Boolean, real, single precision floating point, integer, and date/time. <strong>Create</strong> data dictionaries as a tool to describe data and data types, structure data, and record relationships.</em></p>
 
@@ -958,7 +958,7 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
 
           <!-- Data Dictionary Example -->
           <div class="diagram-block">
-            <h4>📋 Table - Data Dictionary Example</h4>
+            <h4>Table - Data Dictionary Example</h4>
             <p class="diagram-subtitle">Student management system data specification</p>
             <p class="diagram-description">
               This data dictionary documents every field in a student management system: its name, data type, size, purpose, and validation rules. For example, Student_ID must be a 5-digit integer between 10000-99999 with no duplicates. Data dictionaries are essential documentation that ensures consistency across development teams and helps identify data requirements early in the SDLC.
@@ -1021,13 +1021,13 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
 
         <!-- 11. Use Data Structures -->
         <section id="data-structures">
-          <h2 class="syllabus-phase">📚 Data Structures</h2>
+          <h2 class="syllabus-phase">Data Structures</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-03, SE-11-04)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Use</strong> data structures of arrays, records, trees and sequential files to organize and store data efficiently.</em></p>
 
           <div class="info-grid">
             <div class="info-card">
-              <h4>📦 Arrays (Single and Multidimensional)</h4>
+              <h4>Arrays (Single and Multidimensional)</h4>
               <p>Fixed-size collections of elements of the same type. Single-dimensional arrays store a list; multidimensional arrays form grids or tables.<br>🌏 <em>Example: scores = [45, 67, 89] (1D), or board = [[1,2,3],[4,5,6],[7,8,9]] (2D chessboard).</em></p>
               <div class="code-block">
                 <pre><code><span class="cm"># Single dimension</span>
@@ -1037,7 +1037,7 @@ board = [[0 <span class="kw">for</span> _ <span class="kw">in</span> range(8)] <
               </div>
             </div>
             <div class="info-card">
-              <h4>📄 Records</h4>
+              <h4>Records</h4>
               <p>Structured collections that group related data fields of different types under one name. A record is like a row in a database table or an object with named fields.<br>🌏 <em>Example: A Student record contains {Name (string), StudentID (integer), GPA (float), EnrolmentDate (date)}.</em></p>
               <div class="code-block">
                 <pre><code><span class="cm"># In Python, using a class or dictionary</span>
@@ -1049,22 +1049,22 @@ student = {
               </div>
             </div>
             <div class="info-card">
-              <h4>🌳 Trees</h4>
+              <h4>Trees</h4>
               <p>Hierarchical structures with a root node and parent-child relationships. Used for representing file systems, organizational charts, and search optimisation.<br>🌏 <em>Example: A file system tree where C:\ is root, containing Users, Program Files, etc.</em></p>
             </div>
             <div class="info-card">
-              <h4>📂 Sequential Files</h4>
+              <h4>Sequential Files</h4>
               <p>Data stored in order in a file, accessed sequentially from beginning to end. Unlike databases, sequential access is required (cannot jump directly to record 100).<br>🌏 <em>Example: A CSV file of sales records is read line-by-line in order; to find a specific customer, the entire file must be scanned.</em></p>
             </div>
             <div class="info-card">
-              <h4>📚 Stacks (LIFO)</h4>
+              <h4>Stacks (LIFO)</h4>
               <p>Last-In-First-Out <strong>data structure</strong>. Last element added is the first removed. Used for function call stacks, undo features, expression evaluation.<br>🌏 <em>Example: The 'Undo' feature in Word — each action is pushed; undoing pops the most recent action.</em></p>
               <div class="code-block">
                 <pre><code>history = []; history.append(<span class="str">"Action"</span>); history.pop()</code></pre>
               </div>
             </div>
             <div class="info-card">
-              <h4>🔗 Hash Tables</h4>
+              <h4>Hash Tables</h4>
               <p>Key-value mappings for instant lookup. Hash functions convert keys to array indices, enabling O(1) average-case access time.<br>🌏 <em>Example: A username-to-profile dictionary where lookup("alice") instantly returns her profile without scanning.</em></p>
               <div class="code-block">
                 <pre><code>users = {<span class="str">"alice"</span>: {<span class="str">"age"</span>: 17, <span class="str">"year"</span>: 11}}</code></pre>
@@ -1080,31 +1080,31 @@ student = {
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Syllabus Part 4</span>
-          <span class="part-name">💻 Developing Solutions with Code</span>
+          <span class="part-name">Developing Solutions with Code</span>
         </div>
 
         <!-- 12. Applying Computational Thinking & Skills -->
         <section id="applying-skills">
-          <h2 class="syllabus-phase">💻 Applying Computational Thinking and Programming Skills</h2>
+          <h2 class="syllabus-phase">Applying Computational Thinking and Programming Skills</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> skills in computational thinking and programming to develop a software solution, including converting an algorithm into code, using control structures, using data structures, using standard modules, and creating relevant subprograms with parameter passing.</em></p>
 
-          <h3>💻 Converting Algorithm to Code</h3>
+          <h3>Converting Algorithm to Code</h3>
           <p>Translating pseudocode or flowcharts into actual programming language syntax. Each <strong>algorithm</strong> step becomes a statement; pseudocode's IF becomes the language's if keyword; loops translate directly.</p>
 
-          <h3>🔀 Using Control Structures</h3>
+          <h3>Using Control Structures</h3>
           <p>Implementing sequence (statements in order), selection (if/else, switch), and <strong>iteration</strong> (for, while loops) to direct program flow based on conditions and data.</p>
 
-          <h3>📚 Using Data Structures</h3>
+          <h3>Using Data Structures</h3>
           <p>Selecting and implementing appropriate <strong>data structures</strong> (arrays, records, trees, hash tables) to organise data so <strong>algorithms</strong> can access it efficiently.</p>
 
-          <h3>📦 Using Standard Modules</h3>
+          <h3>Using Standard Modules</h3>
           <p>Leveraging built-in libraries and functions (e.g., Python's math module, datetime module, string methods) instead of reinventing functionality. Standard modules are tested, optimised, and consistent across projects.</p>
 
-          <h3>🔧 Creating Subprograms with Parameter Passing</h3>
+          <h3>Creating Subprograms with Parameter Passing</h3>
           <p>Writing functions and procedures that accept parameters (inputs), perform a specific task, and return results. Parameters can be passed by value (copy) or by reference (address), allowing functions to modify caller's data when needed.<br>🌏 <em>Example: FUNCTION calculateBonus(salary, percent) takes two parameters, calculates the bonus, and returns the result.</em></p>
 
-          <h3>💾 Implementing Data Structures for Storage</h3>
+          <h3>Implementing Data Structures for Storage</h3>
           <p>Creating concrete implementations of abstract <strong>data structures</strong> in code. This includes single and multidimensional arrays, linked lists, trees with nodes, stacks using lists, and hash tables using dictionaries.</p>
         </section>
 
@@ -1112,11 +1112,11 @@ student = {
 
         <!-- 12a. Functions & Procedures — Deep Dive -->
         <section id="functions-procedures">
-          <h2 class="syllabus-phase">🔧 Functions &amp; Procedures — Deep Dive</h2>
+          <h2 class="syllabus-phase">Functions &amp; Procedures — Deep Dive</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> parameter passing, scope rules, and recursion to design modular, reusable subprograms. Understand the distinction between functions (return values) and procedures (perform actions).</em></p>
 
-          <h3>⚖️ Functions vs Procedures</h3>
+          <h3>Functions vs Procedures</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1131,7 +1131,7 @@ student = {
             </table>
           </div>
 
-          <h3>📥 Parameter Passing</h3>
+          <h3>Parameter Passing</h3>
           <p><strong>Pass by value:</strong> A copy of the variable is sent. The original variable in the caller is unchanged, even if the function modifies the parameter.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Pass by value (immutable)</span></div>
@@ -1160,7 +1160,7 @@ print(results)   # [80, 75, 90, 95] — list WAS modified</code></pre>
             <strong>Python Mutability Rule:</strong> Immutable types (int, float, str, tuple) always behave like pass-by-value — a function cannot change the caller's variable. Mutable types (list, dict, set) behave like pass-by-reference — modifications inside a function affect the original object.
           </div>
 
-          <h3>↩️ Return Values</h3>
+          <h3>Return Values</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Single and multiple return values</span></div>
             <pre><code># Single return value
@@ -1181,7 +1181,7 @@ def greet(name):
     # no return statement → returns None implicitly</code></pre>
           </div>
 
-          <h3>🌐 Variable Scope</h3>
+          <h3>Variable Scope</h3>
           <p>Scope determines which parts of your program can access a variable. Python uses the <strong>LEGB rule</strong> to look up names:</p>
           <pre class="text-diagram">LEGB Lookup Order
 ─────────────────────────────────────────────
@@ -1217,7 +1217,7 @@ print(counter)   # 1</code></pre>
             <strong>Best Practice:</strong> Prefer returning values over using <code>global</code> variables. Global state makes programs harder to debug and test. If multiple functions need the same data, pass it as a parameter.
           </div>
 
-          <h3>🔄 Recursive Functions</h3>
+          <h3>Recursive Functions</h3>
           <p>A recursive function is one that calls itself. Every recursive function must have:</p>
           <ul>
             <li><strong>Base case:</strong> The condition that stops the <strong>recursion</strong> (no more recursive calls).</li>
@@ -1277,11 +1277,11 @@ for i in range(8):
 
         <!-- 12b. Variable Declaration & Naming -->
         <section id="variable-naming">
-          <h2 class="syllabus-phase">🏷️ Variable Declaration &amp; Naming Conventions</h2>
+          <h2 class="syllabus-phase">Variable Declaration &amp; Naming Conventions</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-05)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> naming conventions and best practices for variable declaration to produce readable, maintainable code.</em></p>
 
-          <h3>🏷️ Python Naming Conventions</h3>
+          <h3>Python Naming Conventions</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>snake_case</strong><span>Variables and function names use all lowercase with underscores: <code>student_name</code>, <code>calculate_average()</code>, <code>max_score</code>.</span></div>
             <div class="key-term-item"><strong>UPPER_CASE</strong><span>Constants (values that never change) use all caps: <code>MAX_SCORE = 100</code>, <code>PI = 3.14159</code>, <code>DATABASE_URL</code>.</span></div>
@@ -1289,7 +1289,7 @@ for i in range(8):
             <div class="key-term-item"><strong>_private</strong><span>A single leading underscore is a convention (not enforced) indicating the variable/method is intended for internal use: <code>_validate()</code>.</span></div>
           </div>
 
-          <h3>📝 Descriptive Naming — Good vs Bad</h3>
+          <h3>Descriptive Naming — Good vs Bad</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1319,7 +1319,7 @@ for i in range(8):
 
         <!-- 13. Compare Project Management -->
         <section id="management">
-          <h2 class="syllabus-phase">⚙️ Project Management Models</h2>
+          <h2 class="syllabus-phase">Project Management Models</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-05)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Compare</strong> the execution of the Waterfall and Agile project management models as applied to software development.</em></p>
 
@@ -1352,11 +1352,11 @@ for i in range(8):
 
         <!-- 14. Test, Evaluate and Debug -->
         <section id="testing">
-          <h2 class="syllabus-phase">🧪 Testing, Debugging and Error Handling</h2>
+          <h2 class="syllabus-phase">Testing, Debugging and Error Handling</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Test and Evaluate</strong> solutions, considering functionality, performance, readability, and documentation quality. <strong>Use</strong> debugging tools. <strong>Determine</strong> suitable test data sets and identify typical coding errors.</em></p>
 
-          <h3>📋 Evaluation Criteria</h3>
+          <h3>Evaluation Criteria</h3>
           <p>Software solutions are evaluated on multiple dimensions:</p>
           <ul>
             <li><strong>Functionality:</strong> Does the program produce correct outputs for all inputs?</li>
@@ -1365,7 +1365,7 @@ for i in range(8):
             <li><strong>Documentation Quality:</strong> Are functions documented? Are complex sections explained?</li>
           </ul>
 
-          <h3>🎯 Test Data Selection</h3>
+          <h3>Test Data Selection</h3>
           <p>Selecting the right data is critical for ensuring secure and robust code execution (SE-11-07).</p>
           <div class="table-wrap">
             <table>
@@ -1396,15 +1396,15 @@ for i in range(8):
             </table>
           </div>
 
-          <h3>🛠️ Debugging Tools</h3>
+          <h3>Debugging Tools</h3>
 
-          <h4>🔴 Breakpoints</h4>
+          <h4>Breakpoints</h4>
           <p>A breakpoint is an instruction set within an IDE (such as Visual Studio Code or PyCharm) that <strong>pauses program execution at a specific line</strong>, allowing the engineer to inspect the current state of all variables and memory at that exact moment. For example, when debugging a loop that is supposed to accumulate a total but is producing an incorrect result, placing a breakpoint at the beginning of each iteration allows the engineer to examine the running total before and after each calculation — pinpointing precisely where the logic diverges from the expected behaviour without having to add print statements throughout the code.</p>
 
-          <h4>👁️ Watches</h4>
+          <h4>Watches</h4>
           <p>A watch is a debugging feature that <strong>continuously monitors the value of a specific variable</strong> as the program executes, updating in real time with each statement. This is particularly useful when a variable is modified across multiple functions or modules. For example, setting a watch on a <code>total_price</code> variable allows an engineer to observe exactly at which line — and within which function — an incorrect GST calculation is being applied, rather than manually tracing through the entire codebase to find the source of the discrepancy.</p>
 
-          <h4>⏭️ Single Line Stepping</h4>
+          <h4>Single Line Stepping</h4>
           <p>Single line stepping (also known as "step-through" debugging) <strong>executes the program one statement at a time</strong>, pausing after each line. This allows engineers to trace the exact path of execution through complex control structures — such as nested conditionals or recursive functions — verifying that each branch evaluates as intended. For example, stepping through an <code>IF/ELIF/ELSE</code> chain confirms which condition is evaluating to True for a particular input, revealing logical errors in the control flow that would be completely invisible during normal, uninterrupted execution.</p>
 
           <div class="code-block">
@@ -1422,17 +1422,17 @@ print(process_input(100))   <span class="cm"># Boundary: Valid</span>
 print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal: Handled</span></code></pre>
           </div>
 
-          <h3>⚠️ Typical Errors in Code Development</h3>
+          <h3>Typical Errors in Code Development</h3>
           <p>Understanding common error types helps programmers identify and fix problems systematically:</p>
 
           <div class="structured-content">
-            <h4>❌ Syntax Errors</h4>
+            <h4>Syntax Errors</h4>
             <p><strong>Definition:</strong> Violations of the programming language's grammar rules. The interpreter/compiler cannot parse the code and refuses to run it.<br><strong>Likely Causes:</strong> Missing colons, mismatched brackets, incorrect indentation (Python), typos in keywords.<br>🌏 <em>Example: <code>if x > 5</code> (missing colon at the end) or <code>for i in range(10]</code> (mismatched bracket types).</em></p>
 
-            <h4>🧠 Logic Errors</h4>
+            <h4>Logic Errors</h4>
             <p><strong>Definition:</strong> The program runs without crashing, but produces wrong results because the algorithm is flawed.<br><strong>Likely Causes:</strong> Wrong operator (using + instead of ×), off-by-one loop errors, incorrect conditional logic, unreachable code.<br>🌏 <em>Example: A loop from 0 to 9 when you intended 1 to 10 (off-by-one error), or calculating tax as salary × 0.01 instead of salary × 0.10 (operator error).</em></p>
 
-            <h4>💥 Runtime Errors</h4>
+            <h4>Runtime Errors</h4>
             <p><strong>Definition:</strong> The program starts running but crashes during execution due to impossible operations or resource exhaustion.<br><strong>Likely Causes:</strong> Division by zero, accessing an array index that doesn't exist, null pointer dereference, stack overflow from infinite recursion, out of memory.<br>🌏 <em>Example: <code>score[index]</code> where index is 10 but the array only has 5 elements, or <code>result = 100 / denominator</code> when denominator is 0.</em></p>
           </div>
         </section>
@@ -1445,29 +1445,29 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
     <div class="footer-inner">
       <div>
         <div class="footer-brand">
-          <div class="footer-logo">💻</div>
+          <div class="footer-logo" aria-hidden="true">{&hairsp;}</div>
           <span class="footer-name">SoftEng Notes</span>
         </div>
         <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
       </div>
       <div class="footer-col">
-        <h4>🔐 Year 12</h4>
+        <h4>Year 12</h4>
         <a href="secure-software-architecture.html">Secure Architecture</a>
         <a href="programming-for-the-web.html">Web Programming</a>
         <a href="software-automation.html">Software Automation</a>
         <a href="software-engineering-project.html">Engineering Project</a>
       </div>
       <div class="footer-col">
-        <h4>📈 Year 11</h4>
+        <h4>Year 11</h4>
         <a href="programming-fundamentals.html">Programming Fundamentals</a>
         <a href="object-oriented-paradigm.html">OOP</a>
         <a href="programming-mechatronics.html">Mechatronics</a>
       </div>
       <div class="footer-col">
-        <h4>🛡️ Navigate</h4>
+        <h4>Navigate</h4>
         <a href="../index.html">← Back to Home</a>
-        <a href="glossary.html">📖 Glossary</a>
-        <a href="sdlc.html">🔄 SDLC Guide</a>
+        <a href="glossary.html">Glossary</a>
+        <a href="sdlc.html">SDLC Guide</a>
         <a href="object-oriented-paradigm.html">🧩 OOP →</a>
       </div>
     </div>
@@ -1476,7 +1476,7 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
     </div>
   </footer>
 
-  <script src="../js/main.js?v=9"></script>
+  <script src="../js/main.js?v=10"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script src="../js/mermaid-init.js?v=1"></script>
   <!-- ═══════════════════════════════════════════════════════ -->

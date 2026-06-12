@@ -32,14 +32,14 @@
     }
   }
   </script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
-  <meta name="theme-color" content="#6366F1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232D46B9'/><text x='50' y='71' font-size='58' fill='%23F4F3EE' text-anchor='middle' font-family='Georgia,serif'>{}</text></svg>" />
+  <meta name="theme-color" content="#2D46B9" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <meta name="description" content="Comprehensive HSC Software Engineering notes for Year 11 and 12 — NESA NSW syllabus, exam tips, algorithms, OOP, security, and the major project." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="css/styles.css?v=9" />
+  <link rel="stylesheet" href="css/styles.css?v=10" />
 </head>
 <body>
 
@@ -47,7 +47,7 @@
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="index.html" class="nav-brand">
-        <div class="nav-logo">💻</div>
+        <div class="nav-logo" aria-hidden="true">{&hairsp;}</div>
         <div>
           <div class="nav-title">SoftEng Notes</div>
           <div class="nav-subtitle">NESA NSW HSC</div>
@@ -58,14 +58,14 @@
         <li><a href="index.html">Home</a></li>
         <li class="nav-dropdown">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
-            🗂️ Resources
+            Resources
             <span class="badge badge-all">Guides</span>
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="topics/course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
-            <a href="topics/sdlc.html" role="menuitem">🔄 SDLC Guide</a>
-            <a href="topics/glossary.html" role="menuitem">📖 Glossary</a>
+            <a href="topics/course-tools.html" role="menuitem">Course Tools &amp; Specs</a>
+            <a href="topics/sdlc.html" role="menuitem">SDLC Guide</a>
+            <a href="topics/glossary.html" role="menuitem">Glossary</a>
           </div>
         </li>
         <li class="nav-dropdown nav-dropdown-y12">
@@ -75,10 +75,10 @@
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="topics/secure-software-architecture.html" role="menuitem">🔒 Secure Software Architecture</a>
-            <a href="topics/programming-for-the-web.html" role="menuitem">🌐 Programming for the Web</a>
-            <a href="topics/software-automation.html" role="menuitem">⚙️ Software Automation</a>
-            <a href="topics/software-engineering-project.html" role="menuitem">📋 Software Engineering Project</a>
+            <a href="topics/secure-software-architecture.html" role="menuitem">Secure Software Architecture</a>
+            <a href="topics/programming-for-the-web.html" role="menuitem">Programming for the Web</a>
+            <a href="topics/software-automation.html" role="menuitem">Software Automation</a>
+            <a href="topics/software-engineering-project.html" role="menuitem">Software Engineering Project</a>
           </div>
         </li>
         <li class="nav-dropdown nav-dropdown-y11">
@@ -88,15 +88,15 @@
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="topics/programming-fundamentals.html" role="menuitem">📐 Programming Fundamentals</a>
-            <a href="topics/object-oriented-paradigm.html" role="menuitem">🧩 Object-Oriented Paradigm</a>
-            <a href="topics/programming-mechatronics.html" role="menuitem">🤖 Programming Mechatronics</a>
+            <a href="topics/programming-fundamentals.html" role="menuitem">Programming Fundamentals</a>
+            <a href="topics/object-oriented-paradigm.html" role="menuitem">Object-Oriented Paradigm</a>
+            <a href="topics/programming-mechatronics.html" role="menuitem">Programming Mechatronics</a>
           </div>
         </li>
       </ul>
 
       <div class="nav-actions">
-        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -108,67 +108,54 @@
   <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Resources</div>
-      <a href="topics/course-tools.html">🛠️ Course Tools &amp; Specifications</a>
-      <a href="topics/sdlc.html">🔄 SDLC Guide</a>
-      <a href="topics/glossary.html">📖 Glossary</a>
+      <a href="topics/course-tools.html">Course Tools &amp; Specifications</a>
+      <a href="topics/sdlc.html">SDLC Guide</a>
+      <a href="topics/glossary.html">Glossary</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 12 — HSC</div>
-      <a href="topics/secure-software-architecture.html">🔒 Secure Software Architecture</a>
-      <a href="topics/programming-for-the-web.html">🌐 Programming for the Web</a>
-      <a href="topics/software-automation.html">⚙️ Software Automation</a>
-      <a href="topics/software-engineering-project.html">📋 Software Engineering Project</a>
+      <a href="topics/secure-software-architecture.html">Secure Software Architecture</a>
+      <a href="topics/programming-for-the-web.html">Programming for the Web</a>
+      <a href="topics/software-automation.html">Software Automation</a>
+      <a href="topics/software-engineering-project.html">Software Engineering Project</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 11 — Preliminary</div>
-      <a href="topics/programming-fundamentals.html">📐 Programming Fundamentals</a>
-      <a href="topics/object-oriented-paradigm.html">🧩 The Object-Oriented Paradigm</a>
-      <a href="topics/programming-mechatronics.html">🤖 Programming Mechatronics</a>
+      <a href="topics/programming-fundamentals.html">Programming Fundamentals</a>
+      <a href="topics/object-oriented-paradigm.html">The Object-Oriented Paradigm</a>
+      <a href="topics/programming-mechatronics.html">Programming Mechatronics</a>
     </div>
     <div class="mobile-menu-section">
-    <button id="theme-toggle-mobile" class="btn btn-mobile-theme">🌙 Toggle Theme</button>
+    <button id="theme-toggle-mobile" class="btn btn-mobile-theme">Toggle theme</button>
     </div>
   </div>
 
   <!-- ── Hero ── -->
   <section class="hero" id="hero">
-    <div class="hero-orb hero-orb-1"></div>
-    <div class="hero-orb hero-orb-2"></div>
-    <div class="hero-orb hero-orb-3"></div>
-    <div class="hero-particles">
-      <div class="hero-particle particle-1"></div>
-      <div class="hero-particle particle-2"></div>
-      <div class="hero-particle particle-3"></div>
-      <div class="hero-particle particle-4"></div>
-      <div class="hero-particle particle-5"></div>
-    </div>
     <div class="hero-grid"></div>
     <div class="hero-inner">
-      <div class="hero-pill">
-        <span class="hero-pill-dot"></span>
-        NESA NSW Syllabus Aligned
-      </div>
-      <h1>Master <span>HSC Software<br>Engineering</span> with Confidence</h1>
-      <p>Comprehensive notes covering every syllabus dot point for the NSW HSC Software Engineering course — written clearly, structured logically, and designed to help you excel.</p>
+      <div class="hero-pill">NESA NSW · Stage 6 Syllabus</div>
+      <h1>Software Engineering notes,<br><span>written to be read.</span></h1>
+      <p>Every dot point of the NSW HSC Software Engineering course, explained properly — from Year 11 foundations through to the Year 12 exam. No filler, no fluff.</p>
 
       <div class="hero-stats">
         <div class="hero-stat">
           <div class="hero-stat-num" data-count="7">7</div>
-          <div class="hero-stat-label">Topics Covered</div>
+          <div class="hero-stat-label">Topics covered</div>
         </div>
         <div class="hero-stat">
           <div class="hero-stat-num" data-count="100" data-suffix="%">100%</div>
-          <div class="hero-stat-label">Syllabus Aligned</div>
+          <div class="hero-stat-label">Syllabus aligned</div>
         </div>
         <div class="hero-stat">
           <div class="hero-stat-num">Y11–12</div>
-          <div class="hero-stat-label">Full Course</div>
+          <div class="hero-stat-label">Full course</div>
         </div>
       </div>
 
       <div class="hero-cta">
-        <a href="#year12" class="btn btn-primary">📘 Start Year 12</a>
-        <a href="#year11" class="btn btn-outline">📗 Start Year 11</a>
+        <a href="#year12" class="btn btn-primary">Start Year 12 <span class="btn-arrow">→</span></a>
+        <a href="#year11" class="btn btn-outline">Browse Year 11 <span class="btn-arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -176,30 +163,38 @@
   <!-- ── Features Bar ── -->
   <div class="features-bar">
     <div class="feature-item">
-      <div class="feature-icon feature-indigo">📑</div>
+      <div class="feature-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M12 5.5C10.5 4 8.5 3.5 6 3.5c-1 0-2 .15-3 .5v15c1-.35 2-.5 3-.5 2.5 0 4.5.5 6 2 1.5-1.5 3.5-2 6-2 1 0 2 .15 3 .5v-15c-1-.35-2-.5-3-.5-2.5 0-4.5.5-6 2zm0 0v15"/></svg>
+      </div>
       <div class="feature-text">
-        <strong>Full Syllabus Coverage</strong>
+        <strong>Full syllabus coverage</strong>
         <span>Every dot point addressed</span>
       </div>
     </div>
     <div class="feature-item">
-      <div class="feature-icon feature-amber">💡</div>
+      <div class="feature-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/></svg>
+      </div>
       <div class="feature-text">
-        <strong>Worked Examples</strong>
+        <strong>Worked examples</strong>
         <span>Code samples &amp; diagrams</span>
       </div>
     </div>
     <div class="feature-item">
-      <div class="feature-icon feature-cyan">🔍</div>
+      <div class="feature-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M9.5 14.5L21 3M15 3h6v6M10 4a7 7 0 1 0 7 7c0-.7-.1-1.4-.3-2"/></svg>
+      </div>
       <div class="feature-text">
-        <strong>Key Terms Defined</strong>
+        <strong>Key terms defined</strong>
         <span>Clear, precise definitions</span>
       </div>
     </div>
     <div class="feature-item">
-      <div class="feature-icon feature-violet">🌙</div>
+      <div class="feature-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+      </div>
       <div class="feature-text">
-        <strong>Dark Mode</strong>
+        <strong>Dark mode</strong>
         <span>Easy on the eyes</span>
       </div>
     </div>
@@ -209,7 +204,7 @@
   <div class="learning-path">
     <div class="learning-path-inner">
       <div class="path-stage path-stage-y11">
-        <div class="path-icon">📗</div>
+        <div class="path-icon">11</div>
         <div class="path-title">Year 11 — Foundations</div>
         <div class="path-desc">Build your programming fundamentals, OOP, and mechatronics skills</div>
         <div class="path-count">3 Topics</div>
@@ -218,7 +213,7 @@
         <div class="path-arrow">→</div>
       </div>
       <div class="path-stage path-stage-y12">
-        <div class="path-icon">📘</div>
+        <div class="path-icon">12</div>
         <div class="path-title">Year 12 — Mastery</div>
         <div class="path-desc">Apply advanced concepts: security, web, automation, and projects</div>
         <div class="path-count">4 Topics</div>
@@ -231,7 +226,9 @@
 
     <!-- Search -->
     <div class="search-bar">
-      <span class="search-icon">🔍</span>
+      <span class="search-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+      </span>
       <input
         type="search"
         id="topic-search"
@@ -239,13 +236,13 @@
         placeholder="Search topics…"
         aria-label="Search topics"
       />
+      <span class="search-kbd" aria-hidden="true">/</span>
     </div>
 
     <!-- Year 12 -->
     <div id="year12">
       <div class="section-header">
         <h2 class="section-title">
-          <span>📘</span>
           Year 12 — HSC Course
           <span class="year-badge year-badge-12">HSC</span>
         </h2>
@@ -254,7 +251,7 @@
 
       <div class="topics-grid">
         <a href="topics/secure-software-architecture.html" class="topic-card year12">
-          <div class="card-icon">🔒</div>
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></div>
           <div class="card-title">Secure Software Architecture</div>
           <p class="card-desc">Understand cyber threats, the CIA triad, encryption, authentication, secure coding practices, network security, and privacy legislation.</p>
           <div class="card-meta">
@@ -268,7 +265,7 @@
         </a>
 
         <a href="topics/programming-for-the-web.html" class="topic-card year12">
-          <div class="card-icon">🌐</div>
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.4 3.8 5.6 3.8 9s-1.3 6.6-3.8 9c-2.5-2.4-3.8-5.6-3.8-9s1.3-6.6 3.8-9z"/></svg></div>
           <div class="card-title">Programming for the Web</div>
           <p class="card-desc">Master web architecture, HTTP/HTTPS, HTML/CSS/JavaScript, APIs, database integration, client-server models, and web security vulnerabilities.</p>
           <div class="card-meta">
@@ -282,7 +279,7 @@
         </a>
 
         <a href="topics/software-automation.html" class="topic-card year12">
-          <div class="card-icon">⚙️</div>
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 8a8.1 8.1 0 0 0-14.9 1M4 16a8.1 8.1 0 0 0 14.9-1"/><path d="M4 4v5h5M20 20v-5h-5"/></svg></div>
           <div class="card-title">Software Automation</div>
           <p class="card-desc">Explore automated testing, CI/CD pipelines, DevOps principles, build tools, scripting for automation, and deployment strategies.</p>
           <div class="card-meta">
@@ -296,7 +293,7 @@
         </a>
 
         <a href="topics/software-engineering-project.html" class="topic-card year12">
-          <div class="card-icon">📋</div>
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M9 10h6M9 14h6M9 18h3.5"/></svg></div>
           <div class="card-title">Software Engineering Project</div>
           <p class="card-desc">Apply project management methodologies, requirements engineering, Agile/Scrum, version control, documentation, testing, and evaluation.</p>
           <div class="card-meta">
@@ -315,7 +312,6 @@
     <div id="year11" class="section-spacer">
       <div class="section-header">
         <h2 class="section-title">
-          <span>📗</span>
           Year 11 — Preliminary Course
           <span class="year-badge year-badge-11">Preliminary</span>
         </h2>
@@ -324,7 +320,7 @@
 
       <div class="topics-grid">
         <a href="topics/programming-fundamentals.html" class="topic-card year11">
-          <div class="card-icon">📐</div>
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 8l-4.5 4L8 16M16 8l4.5 4L16 16M13 5l-2 14"/></svg></div>
           <div class="card-title">Programming Fundamentals</div>
           <p class="card-desc">Build your foundation with variables, data types, control structures, functions, arrays, sorting &amp; searching algorithms, recursion, and file I/O.</p>
           <div class="card-meta">
@@ -338,7 +334,7 @@
         </a>
 
         <a href="topics/object-oriented-paradigm.html" class="topic-card year11">
-          <div class="card-icon">🧩</div>
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div>
           <div class="card-title">The Object-Oriented Paradigm</div>
           <p class="card-desc">Learn classes, objects, the four pillars of OOP (encapsulation, inheritance, polymorphism, abstraction), UML diagrams, and design patterns.</p>
           <div class="card-meta">
@@ -352,7 +348,7 @@
         </a>
 
         <a href="topics/programming-mechatronics.html" class="topic-card year11">
-          <div class="card-icon">🤖</div>
+          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="3" height="3"/><path d="M9.5 7V4M14.5 7V4M9.5 20v-3M14.5 20v-3M7 9.5H4M7 14.5H4M20 9.5h-3M20 14.5h-3"/></svg></div>
           <div class="card-title">Programming Mechatronics</div>
           <p class="card-desc">Explore microcontrollers, sensors, actuators, digital/analog signals, embedded systems programming, real-time systems, and IoT communication protocols.</p>
           <div class="card-meta">
@@ -376,19 +372,19 @@
       <div class="study-guide-grid">
         <div class="study-guide-card">
           <div class="study-guide-step">01</div>
-          <div class="study-guide-icon-wrap sg-indigo">📍</div>
+          <div class="study-guide-icon-wrap" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
           <h3>Follow the Syllabus</h3>
           <p>Each topic follows NESA dot points exactly. Use the sidebar table of contents to jump to any section in seconds.</p>
         </div>
         <div class="study-guide-card">
           <div class="study-guide-step">02</div>
-          <div class="study-guide-icon-wrap sg-amber">💡</div>
+          <div class="study-guide-icon-wrap" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></div>
           <h3>Study the Examples</h3>
           <p>Code samples, Mermaid diagrams, and summary tables are embedded throughout to illustrate every concept.</p>
         </div>
         <div class="study-guide-card">
           <div class="study-guide-step">03</div>
-          <div class="study-guide-icon-wrap sg-cyan">🔑</div>
+          <div class="study-guide-icon-wrap" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4.5"/><path d="M11.2 11.8L20 3M16 7l3 3M13.5 9.5l2 2"/></svg></div>
           <h3>Revise Key Terms</h3>
           <p>Definitions are highlighted in call-out boxes. Scan them quickly before exams or deep-dive for full understanding.</p>
         </div>
@@ -402,14 +398,14 @@
     <div class="footer-inner">
       <div>
         <div class="footer-brand">
-          <div class="footer-logo">💻</div>
+          <div class="footer-logo" aria-hidden="true">{&hairsp;}</div>
           <span class="footer-name">SoftEng Notes</span>
         </div>
         <p class="footer-desc">Comprehensive HSC Software Engineering notes aligned to the NESA NSW syllabus. Designed to help Year 11 and Year 12 students succeed.</p>
       </div>
 
       <div class="footer-col">
-        <h4>🔐 Year 12</h4>
+        <h4>Year 12</h4>
         <a href="topics/secure-software-architecture.html">Secure Architecture</a>
         <a href="topics/programming-for-the-web.html">Web Programming</a>
         <a href="topics/software-automation.html">Software Automation</a>
@@ -417,17 +413,17 @@
       </div>
 
       <div class="footer-col">
-        <h4>📈 Year 11</h4>
+        <h4>Year 11</h4>
         <a href="topics/programming-fundamentals.html">Programming Fundamentals</a>
         <a href="topics/object-oriented-paradigm.html">OOP</a>
         <a href="topics/programming-mechatronics.html">Mechatronics</a>
       </div>
 
       <div class="footer-col">
-        <h4>📝 Resources</h4>
-        <a href="topics/course-tools.html">🛠️ Course Tools</a>
-        <a href="topics/sdlc.html">🔄 SDLC Guide</a>
-        <a href="topics/glossary.html">📖 Glossary</a>
+        <h4>Resources</h4>
+        <a href="topics/course-tools.html">Course Tools</a>
+        <a href="topics/sdlc.html">SDLC Guide</a>
+        <a href="topics/glossary.html">Glossary</a>
         <a href="https://curriculum.nsw.edu.au/learning-areas/tas/software-engineering-11-12-2022" target="_blank" rel="noopener">NESA Syllabus ↗</a>
       </div>
     </div>
@@ -463,6 +459,6 @@
     </div>
   </div>
 
-  <script src="js/main.js?v=9"></script>
+  <script src="js/main.js?v=10"></script>
 </body>
 </html>
