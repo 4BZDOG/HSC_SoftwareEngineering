@@ -647,60 +647,6 @@
             </p>
           </div>
 
-          <!-- Security Testing Checklist -->
-          <h3>Practical Security Testing Checklist</h3>
-          <p>The following table provides a practical checklist of security tests that developers should run at each stage of development. Many can be automated and integrated into <strong>CI/CD</strong> pipelines.</p>
-
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Test Type</th>
-                  <th>Tool / Method</th>
-                  <th>What It Checks</th>
-                  <th>When to Run</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Static Analysis</strong></td>
-                  <td><code>bandit</code> (Python)</td>
-                  <td>Scans source code for common security issues: hardcoded passwords, use of weak cryptography, <strong>SQL injection</strong> patterns, insecure use of <code>eval()</code>, and subprocess injection.</td>
-                  <td>On every commit via <strong>CI/CD</strong> pipeline; before every pull request merge.</td>
-                </tr>
-                <tr>
-                  <td><strong>Dependency Scanning</strong></td>
-                  <td><code>safety</code> (Python)</td>
-                  <td>Checks all installed packages against a database of known vulnerabilities (CVEs). Flags libraries with unpatched security issues so they can be updated before deployment.</td>
-                  <td>On every commit; also run weekly to catch newly disclosed CVEs in existing dependencies.</td>
-                </tr>
-                <tr>
-                  <td><strong>Input Fuzzing</strong></td>
-                  <td>Manual / <code>hypothesis</code> library</td>
-                  <td>Sends unexpected, malformed, boundary-exceeding, and randomised inputs to functions and API endpoints to expose crashes, unhandled exceptions, and input validation gaps.</td>
-                  <td>During development of any function that processes external input; before major releases.</td>
-                </tr>
-                <tr>
-                  <td><strong>Authentication Testing</strong></td>
-                  <td>Manual / Burp Suite</td>
-                  <td>Verifies that <strong>authentication</strong> controls enforce lockout after failed attempts, reject weak passwords, invalidate sessions on logout, and resist brute-force and credential-stuffing attacks.</td>
-                  <td>When <strong>authentication</strong> logic is modified; as part of pre-release security review.</td>
-                </tr>
-                <tr>
-                  <td><strong>Session Management Testing</strong></td>
-                  <td>Manual / browser dev tools</td>
-                  <td>Checks that session tokens are sufficiently random, transmitted only over <strong>HTTPS</strong>, expire after inactivity, are invalidated on logout, and are not exposed in URLs or logs.</td>
-                  <td>When session handling code changes; before every production deployment.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Bash — Install and Run Static Analysis + Dependency Scanning</span></div>
-            <pre><code>pip install bandit safety &amp;&amp; bandit -r . &amp;&amp; safety check</code></pre>
-          </div>
-
         </section>
 
         <hr class="divider" />
