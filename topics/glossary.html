@@ -23,12 +23,12 @@
     "url": "https://4bzdog.github.io/HSC_SoftwareEngineering/topics/glossary.html"
   }
   </script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
-  <meta name="theme-color" content="#6366F1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232D46B9'/><text x='50' y='71' font-size='58' fill='%23F4F3EE' text-anchor='middle' font-family='Georgia,serif'>{}</text></svg>" />
+  <meta name="theme-color" content="#2D46B9" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=9" />
+  <link rel="stylesheet" href="../css/styles.css?v=10" />
   <style>
     /* ── Glossary Page Layout ── */
     .glossary-wrapper {
@@ -387,7 +387,7 @@
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="../index.html" class="nav-brand">
-        <div class="nav-logo">💻</div>
+        <div class="nav-logo" aria-hidden="true">{&hairsp;}</div>
         <div>
           <div class="nav-title">SoftEng Notes</div>
           <div class="nav-subtitle">NESA NSW HSC</div>
@@ -395,17 +395,17 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="../index.html">🏠 Home</a></li>
+        <li><a href="../index.html">Home</a></li>
         <li class="nav-dropdown">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
-            🗂️ Resources
+            Resources
             <span class="badge badge-all">Guides</span>
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
-            <a href="sdlc.html" role="menuitem">🔄 SDLC Guide</a>
-            <a href="glossary.html" role="menuitem" aria-current="page">📖 Glossary</a>
+            <a href="course-tools.html" role="menuitem">Course Tools &amp; Specs</a>
+            <a href="sdlc.html" role="menuitem">SDLC Guide</a>
+            <a href="glossary.html" role="menuitem" aria-current="page">Glossary</a>
           </div>
         </li>
         <li class="nav-dropdown nav-dropdown-y12">
@@ -415,10 +415,10 @@
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="secure-software-architecture.html" role="menuitem">🔒 Secure Software Architecture</a>
-            <a href="programming-for-the-web.html" role="menuitem">🌐 Programming for the Web</a>
-            <a href="software-automation.html" role="menuitem">⚙️ Software Automation</a>
-            <a href="software-engineering-project.html" role="menuitem">📋 Software Engineering Project</a>
+            <a href="secure-software-architecture.html" role="menuitem">Secure Software Architecture</a>
+            <a href="programming-for-the-web.html" role="menuitem">Programming for the Web</a>
+            <a href="software-automation.html" role="menuitem">Software Automation</a>
+            <a href="software-engineering-project.html" role="menuitem">Software Engineering Project</a>
           </div>
         </li>
         <li class="nav-dropdown nav-dropdown-y11">
@@ -428,15 +428,15 @@
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="programming-fundamentals.html" role="menuitem">📐 Programming Fundamentals</a>
-            <a href="object-oriented-paradigm.html" role="menuitem">🧩 Object-Oriented Paradigm</a>
-            <a href="programming-mechatronics.html" role="menuitem">🤖 Programming Mechatronics</a>
+            <a href="programming-fundamentals.html" role="menuitem">Programming Fundamentals</a>
+            <a href="object-oriented-paradigm.html" role="menuitem">Object-Oriented Paradigm</a>
+            <a href="programming-mechatronics.html" role="menuitem">Programming Mechatronics</a>
           </div>
         </li>
       </ul>
 
       <div class="nav-actions">
-        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -448,25 +448,25 @@
   <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Resources</div>
-      <a href="course-tools.html">🛠️ Course Tools &amp; Specifications</a>
-      <a href="sdlc.html">🔄 SDLC Guide</a>
-      <a href="glossary.html">📖 Glossary</a>
+      <a href="course-tools.html">Course Tools &amp; Specifications</a>
+      <a href="sdlc.html">SDLC Guide</a>
+      <a href="glossary.html">Glossary</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 12 — HSC</div>
-      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
-      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
-      <a href="software-automation.html">⚙️ Software Automation</a>
-      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+      <a href="secure-software-architecture.html">Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">Programming for the Web</a>
+      <a href="software-automation.html">Software Automation</a>
+      <a href="software-engineering-project.html">Software Engineering Project</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 11 — Preliminary</div>
-      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
-      <a href="object-oriented-paradigm.html">🧩 The Object-Oriented Paradigm</a>
-      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+      <a href="programming-fundamentals.html">Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">The Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">Programming Mechatronics</a>
     </div>
     <div class="mobile-menu-section">
-      <button id="theme-toggle-mobile" class="btn btn-mobile-theme">🌙 Toggle Theme</button>
+      <button id="theme-toggle-mobile" class="btn btn-mobile-theme">Toggle theme</button>
     </div>
   </div>
 
@@ -477,14 +477,14 @@
         <a href="../index.html">Home</a> <span>›</span>
         <span>Glossary</span>
       </nav>
-      <h1>📖 Software Engineering Glossary</h1>
+      <h1>Software Engineering Glossary</h1>
       <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
         A comprehensive A–Z terminology reference for mastering NESA NSW HSC Software Engineering. Colour-coded chips identify which course topic each term belongs to.
       </p>
       <div class="topic-header-meta">
-        <span class="meta-pill year12">📘 Year 11 &amp; 12</span>
-        <span class="meta-pill">🗂️ Reference</span>
-        <span class="meta-pill">🏫 NESA Aligned</span>
+        <span class="meta-pill year12">Year 11 &amp; 12</span>
+        <span class="meta-pill">Reference</span>
+        <span class="meta-pill">NESA Aligned</span>
       </div>
     </div>
   </header>
@@ -581,7 +581,7 @@
             <div class="glossary-term" id="term-abstraction">
               <h3>Abstraction</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
                 <span class="chip chip-y11">🧩 OOP</span>
               </div>
               <p>The concept of hiding complex internal implementation details while exposing only the necessary interface to the user or calling code. Reduces cognitive complexity and increases maintainability.</p>
@@ -646,7 +646,7 @@
             <div class="glossary-term" id="term-ai">
               <h3>Artificial Intelligence (AI)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>The broad field of building machines that can simulate human cognitive functions such as learning, reasoning, and problem-solving. AI encompasses many sub-fields including machine learning, natural language processing, and computer vision.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-ml">Machine Learning</a>, <a href="#term-neural-network">Neural Network</a></div>
@@ -655,7 +655,7 @@
             <div class="glossary-term" id="term-algorithm">
               <h3>Algorithm</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
                 <span class="chip chip-core">🔄 SDLC</span>
               </div>
               <p>A step-by-step procedure required to solve a problem or accomplish a task, defined by its efficiency, clarity, and finiteness. Every algorithm must eventually terminate with a definite result.</p>
@@ -665,8 +665,8 @@
             <div class="glossary-term" id="term-api">
               <h3>API (Application Programming Interface)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A contract defining how different software components communicate, specifying request formats and expected responses — without exposing implementation details.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-rest">REST</a></div>
@@ -675,7 +675,7 @@
             <div class="glossary-term" id="term-array">
               <h3>Array</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
               </div>
               <p>A data structure consisting of a collection of elements identified by at least one index or key, stored in contiguous memory locations. Arrays provide O(1) access by index.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-variable">Variable</a></div>
@@ -759,7 +759,7 @@
             <div class="glossary-term" id="term-backpropagation">
               <h3>Backpropagation</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>The training process where prediction error is propagated backwards through a neural network to adjust connection weights using gradient descent. This iterative process minimises the loss function over many epochs.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-neural-network">Neural Network</a>, <a href="#term-overfitting">Overfitting</a></div>
@@ -768,7 +768,7 @@
             <div class="glossary-term" id="term-backend">
               <h3>Back-end</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>The server-side portion of a web application responsible for business logic, database queries, authentication, and security enforcement. Users never interact with back-end code directly.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-frontend-framework">Front-end Framework</a>, <a href="#term-rest">REST</a></div>
@@ -777,7 +777,7 @@
             <div class="glossary-term" id="term-binary-search">
               <h3>Binary Search</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
               </div>
               <p>An efficient algorithm that finds an item in a sorted list by repeatedly dividing the search interval in half. It has a time complexity of O(log n), making it far faster than linear search for large datasets.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-linear-search">Linear Search</a></div>
@@ -786,7 +786,7 @@
             <div class="glossary-term" id="term-boolean">
               <h3>Boolean</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
               </div>
               <p>A logical data type that represents one of two values: <code>True</code> or <code>False</code>. Booleans are fundamental to control flow, conditions, and logical expressions in every programming language.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-selection">Selection</a></div>
@@ -807,7 +807,7 @@
             <div class="glossary-term" id="term-cdn">
               <h3>CDN (Content Delivery Network)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>A geographically distributed network of servers that caches and serves static assets (images, CSS, JS) from locations close to the user, reducing latency and improving load times.</p>
             </div>
@@ -815,7 +815,7 @@
             <div class="glossary-term" id="term-cicd">
               <h3>CI/CD (Continuous Integration / Continuous Deployment)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A DevOps practice where code changes are automatically built, tested (CI) and deployed to staging or production environments (CD). Enables rapid, reliable delivery cycles with minimal manual intervention.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-devops">DevOps</a></div>
@@ -862,7 +862,7 @@
             <div class="glossary-term" id="term-cohesion">
               <h3>Cohesion</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
                 <span class="chip chip-y11">🧩 OOP</span>
               </div>
               <p>A measure of how closely related the responsibilities of a single module or class are. High cohesion (single-responsibility) is a hallmark of good design — each unit does one thing well.</p>
@@ -890,7 +890,7 @@
             <div class="glossary-term" id="term-confusion-matrix">
               <h3>Confusion Matrix</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A table summarising prediction results for a classification model, showing counts of True Positives, True Negatives, False Positives, and False Negatives. Used to calculate metrics like accuracy, precision, and recall.</p>
             </div>
@@ -907,7 +907,7 @@
             <div class="glossary-term" id="term-cors">
               <h3>CORS (Cross-Origin Resource Sharing)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
                 <span class="chip chip-y12">🔒 Secure Architecture</span>
               </div>
               <p>A browser security mechanism that uses HTTP headers to permit or restrict resource requests from different origins. Prevents malicious websites from making unauthorised API calls on behalf of users.</p>
@@ -936,7 +936,7 @@
             <div class="glossary-term" id="term-css">
               <h3>CSS (Cascading Style Sheets)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>A stylesheet language used to describe the visual presentation and layout of HTML documents. CSS controls colours, fonts, spacing, responsive breakpoints, and animations.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-html">HTML</a>, <a href="#term-javascript">JavaScript</a></div>
@@ -958,7 +958,7 @@
               <h3>DAST (Dynamic Application Security Testing)</h3>
               <div class="term-chips">
                 <span class="chip chip-y12">🔒 Secure Architecture</span>
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>Security testing performed against a <em>running</em> application from the outside — simulating the perspective of an attacker. Identifies vulnerabilities such as SQL injection and XSS at runtime.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-sast">SAST</a>, <a href="#term-penetration-testing">Penetration Testing</a></div>
@@ -967,7 +967,7 @@
             <div class="glossary-term" id="term-data-dictionary">
               <h3>Data Dictionary</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
                 <span class="chip chip-y12">📋 SE Project</span>
               </div>
               <p>A metadata tool that documents every variable's name, data type, size, description, and validation rules. Essential for the Design and Implementation phases of the SDLC.</p>
@@ -976,7 +976,7 @@
             <div class="glossary-term" id="term-decision-tree">
               <h3>Decision Tree</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A visual machine learning model representing a series of binary questions (decisions) that branch toward a final prediction or classification. Easy to interpret but prone to overfitting on complex data.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-overfitting">Overfitting</a>, <a href="#term-supervised-learning">Supervised Learning</a></div>
@@ -994,7 +994,7 @@
             <div class="glossary-term" id="term-desk-checking">
               <h3>Desk Checking</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
               </div>
               <p>The process of manually tracing through an algorithm step-by-step with sample data using a trace table to verify correctness before coding. A key NESA examination skill.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-algorithm">Algorithm</a>, <a href="#term-debugging">Debugging</a></div>
@@ -1003,7 +1003,7 @@
             <div class="glossary-term" id="term-devops">
               <h3>DevOps</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A software development practice that unifies development and operations teams for continuous, reliable delivery. DevOps emphasises automation, monitoring, and collaboration to shorten the development lifecycle.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-cicd">CI/CD</a>, <a href="#term-mlops">MLOps</a></div>
@@ -1021,7 +1021,7 @@
             <div class="glossary-term" id="term-dns">
               <h3>DNS (Domain Name System)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>The system that translates human-readable domain names (e.g., <code>example.com</code>) into machine-readable IP addresses. Often called the "phone book of the internet."</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-ip-address">IP Address</a>, <a href="#term-http">HTTP</a></div>
@@ -1030,7 +1030,7 @@
             <div class="glossary-term" id="term-dom">
               <h3>DOM (Document Object Model)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>A tree-structured programming interface representing an HTML document. JavaScript can traverse and manipulate the DOM to dynamically update page content, structure, and style without a full page reload.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-javascript">JavaScript</a>, <a href="#term-html">HTML</a></div>
@@ -1090,7 +1090,7 @@
             <div class="glossary-term" id="term-flowchart">
               <h3>Flowchart</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
                 <span class="chip chip-core">🔄 SDLC</span>
               </div>
               <p>A visual diagram using standardised symbols (oval for start/end, rectangle for process, diamond for decision) connected by arrows to represent the flow of logic through an algorithm.</p>
@@ -1100,7 +1100,7 @@
             <div class="glossary-term" id="term-frontend-framework">
               <h3>Front-end Framework</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>Pre-built software environments (like React, Vue, or Angular) providing a structured approach to building browser user interfaces with reusable components, state management, and routing.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-javascript">JavaScript</a>, <a href="#term-backend">Back-end</a></div>
@@ -1109,7 +1109,7 @@
             <div class="glossary-term" id="term-fsm">
               <h3>Finite State Machine (FSM)</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
                 <span class="chip chip-y11">🤖 Mechatronics</span>
               </div>
               <p>A computational model with a finite set of states, defined transitions triggered by inputs or events, and associated actions. FSMs are fundamental to modelling embedded systems, protocols, and UI logic.</p>
@@ -1158,7 +1158,7 @@
             <div class="glossary-term" id="term-gui">
               <h3>GUI (Graphical User Interface)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
                 <span class="chip chip-core">🔄 SDLC</span>
               </div>
               <p>An interface allowing users to interact with software through visual elements (buttons, menus, icons) rather than text commands. GUI design is evaluated against usability heuristics.</p>
@@ -1188,7 +1188,7 @@
             <div class="glossary-term" id="term-headless-cms">
               <h3>Headless CMS</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>A back-end-only content management system that stores and delivers content via API, decoupled from any front-end presentation layer. Allows content to be rendered on any platform or framework.</p>
             </div>
@@ -1205,7 +1205,7 @@
             <div class="glossary-term" id="term-html">
               <h3>HTML (HyperText Markup Language)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>The standard markup language used to define the structure and content of web pages using semantic elements like headings, paragraphs, lists, and links.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-css">CSS</a>, <a href="#term-javascript">JavaScript</a>, <a href="#term-dom">DOM</a></div>
@@ -1214,7 +1214,7 @@
             <div class="glossary-term" id="term-http">
               <h3>HTTP (HyperText Transfer Protocol)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>The application-layer protocol used for transferring plain-text content between clients and servers. HTTP is stateless — each request is independent.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-https">HTTPS</a>, <a href="#term-rest">REST</a></div>
@@ -1223,7 +1223,7 @@
             <div class="glossary-term" id="term-https">
               <h3>HTTPS (HTTP Secure)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
                 <span class="chip chip-y12">🔒 Secure Architecture</span>
               </div>
               <p>A secure version of HTTP encrypted with TLS/SSL to provide confidentiality and integrity of data in transit. Required for any website handling sensitive user data.</p>
@@ -1254,8 +1254,8 @@
             <div class="glossary-term" id="term-ide">
               <h3>IDE (Integrated Development Environment)</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A software application providing comprehensive facilities for development, typically including a code editor, build tools, debugger, and integrated version control.</p>
             </div>
@@ -1299,7 +1299,7 @@
             <div class="glossary-term" id="term-iteration">
               <h3>Iteration</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
                 <span class="chip chip-core">🔄 SDLC</span>
               </div>
               <p>The repetition of a process or set of instructions. In programming, refers to loops (FOR, WHILE, REPEAT/UNTIL); in management, refers to repeated development cycles in Agile.</p>
@@ -1321,7 +1321,7 @@
             <div class="glossary-term" id="term-javascript">
               <h3>JavaScript</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>A client-side scripting language used to create interactivity and dynamic behaviour on web pages. Enables DOM manipulation, form validation, and asynchronous requests.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-dom">DOM</a>, <a href="#term-html">HTML</a>, <a href="#term-css">CSS</a></div>
@@ -1331,7 +1331,7 @@
               <h3>JWT (JSON Web Token)</h3>
               <div class="term-chips">
                 <span class="chip chip-y12">🔒 Secure Architecture</span>
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>An open standard for securely transmitting claims between parties as a compact, URL-safe JSON object. Widely used in stateless authentication flows.</p>
             </div>
@@ -1351,7 +1351,7 @@
             <div class="glossary-term" id="term-knn">
               <h3>K-Nearest Neighbour (KNN)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>An instance-based algorithm that makes predictions based on the labels of the K most similar training examples in feature space. Simple to implement but computationally expensive for large datasets.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-supervised-learning">Supervised Learning</a></div>
@@ -1372,7 +1372,7 @@
             <div class="glossary-term" id="term-linear-regression">
               <h3>Linear Regression</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A supervised algorithm used to predict a continuous numerical value by fitting a straight line (or hyperplane) to the data. Outputs values on a continuous scale rather than discrete classes.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-logistic-regression">Logistic Regression</a>, <a href="#term-supervised-learning">Supervised Learning</a></div>
@@ -1381,7 +1381,7 @@
             <div class="glossary-term" id="term-linear-search">
               <h3>Linear Search</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
               </div>
               <p>A search algorithm that checks every element in a list sequentially until a match is found or the list ends. Time complexity is O(n), making it slow for large datasets.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-binary-search">Binary Search</a></div>
@@ -1390,7 +1390,7 @@
             <div class="glossary-term" id="term-logic-error">
               <h3>Logic Error</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
                 <span class="chip chip-core">🔄 SDLC</span>
               </div>
               <p>An error that causes a program to operate incorrectly or produce wrong output without crashing. The code is syntactically correct, but the algorithm or logic is flawed.</p>
@@ -1400,7 +1400,7 @@
             <div class="glossary-term" id="term-logistic-regression">
               <h3>Logistic Regression</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A classification algorithm that outputs the probability (between 0 and 1) of an input belonging to a specific class. Outputs are squashed to a range via the sigmoid function.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-linear-regression">Linear Regression</a>, <a href="#term-supervised-learning">Supervised Learning</a></div>
@@ -1439,7 +1439,7 @@
             <div class="glossary-term" id="term-manifest">
               <h3>Manifest</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>A JSON file (manifest.json) that defines a PWA's name, icons, theme colours, and installation settings for adding to a user's home screen.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-pwa">Progressive Web App</a></div>
@@ -1483,7 +1483,7 @@
             <div class="glossary-term" id="term-ml">
               <h3>Machine Learning (ML)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A specific subset of AI where systems automatically learn patterns from data and improve performance over time without being explicitly programmed for every scenario.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-ai">Artificial Intelligence</a>, <a href="#term-mlops">MLOps</a></div>
@@ -1492,7 +1492,7 @@
             <div class="glossary-term" id="term-mlops">
               <h3>MLOps</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>The automated process of designing, training, validating, deploying, and monitoring machine learning models, integrating DevOps principles into the ML lifecycle.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-devops">DevOps</a>, <a href="#term-ml">Machine Learning</a></div>
@@ -1501,7 +1501,7 @@
             <div class="glossary-term" id="term-mvc">
               <h3>MVC (Model-View-Controller)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>An architectural design pattern separating an application into three independent layers: Model (data &amp; logic), View (UI), and Controller (input handling).</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-design-pattern">Design Pattern</a></div>
@@ -1522,7 +1522,7 @@
             <div class="glossary-term" id="term-neural-network">
               <h3>Neural Network</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A computational model inspired by the brain, composed of layers of interconnected artificial neurons that learn to recognise patterns in data through training.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-backpropagation">Backpropagation</a>, <a href="#term-ml">Machine Learning</a></div>
@@ -1541,7 +1541,7 @@
             <div class="glossary-term" id="term-nosql-database">
               <h3>NoSQL Database</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>A schema-free database that stores data in flexible formats like JSON documents, key-value pairs, or wide columns, offering scalability and flexibility over strict consistency.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-sql-database">SQL Database</a></div>
@@ -1589,7 +1589,7 @@
             <div class="glossary-term" id="term-overfitting">
               <h3>Overfitting</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A model error where an algorithm memorises training noise instead of generalising, leading to high accuracy on training data but poor performance on unseen test data.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-underfitting">Underfitting</a>, <a href="#term-training-set">Training Set</a></div>
@@ -1665,7 +1665,7 @@
             <div class="glossary-term" id="term-pseudocode">
               <h3>Pseudocode</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
                 <span class="chip chip-core">🔄 SDLC</span>
               </div>
               <p>A method of describing algorithm logic using capitalised keywords and indentation to show control structures, without language-specific syntax. NESA specifies a standard format for HSC examinations.</p>
@@ -1675,7 +1675,7 @@
             <div class="glossary-term" id="term-pwa">
               <h3>Progressive Web App (PWA)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>A web application built with standard technologies (HTML, CSS, JS) that offers a native-app-like experience, including offline functionality, push notifications, and installability.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-service-worker">Service Worker</a>, <a href="#term-manifest">Manifest</a></div>
@@ -1705,7 +1705,7 @@
             <div class="glossary-term" id="term-recursion">
               <h3>Recursion</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
               </div>
               <p>A programming technique where a function calls itself to solve a problem. Each call reduces the problem to a smaller subproblem until a base case is reached.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-iteration">Iteration</a></div>
@@ -1714,7 +1714,7 @@
             <div class="glossary-term" id="term-reinforcement-learning">
               <h3>Reinforcement Learning</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A machine learning model where an agent learns through trial and error by receiving rewards or penalties from an environment, improving policy over time.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-ml">Machine Learning</a></div>
@@ -1732,7 +1732,7 @@
             <div class="glossary-term" id="term-rest">
               <h3>REST (Representational State Transfer)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>An architectural style for designing networked APIs using standard HTTP methods (GET, POST, PUT, DELETE) and stateless communication. The dominant approach for modern web services.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-api">API</a>, <a href="#term-http">HTTP</a></div>
@@ -1741,7 +1741,7 @@
             <div class="glossary-term" id="term-runtime-error">
               <h3>Runtime Error</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
               </div>
               <p>An error that occurs while a program is running, often causing it to crash due to impossible operations like division by zero or accessing an out-of-bounds array index.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-syntax-error">Syntax Error</a>, <a href="#term-logic-error">Logic Error</a></div>
@@ -1763,7 +1763,7 @@
               <h3>SAST (Static Application Security Testing)</h3>
               <div class="term-chips">
                 <span class="chip chip-y12">🔒 Secure Architecture</span>
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>Security testing conducted on source code, bytecode, or binaries without executing the application (white-box testing). Identifies vulnerabilities early in the SDLC.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-dast">DAST</a>, <a href="#term-penetration-testing">Penetration Testing</a></div>
@@ -1791,7 +1791,7 @@
             <div class="glossary-term" id="term-selection">
               <h3>Selection</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
               </div>
               <p>A control structure that evaluates a condition to choose between different execution paths using IF/ELSE or CASE statements.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-sequence">Sequence</a>, <a href="#term-iteration">Iteration</a></div>
@@ -1800,7 +1800,7 @@
             <div class="glossary-term" id="term-semi-supervised-learning">
               <h3>Semi-Supervised Learning</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A machine learning model that uses a small amount of labelled data combined with a large pool of unlabelled data to improve learning efficiency.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-supervised-learning">Supervised Learning</a>, <a href="#term-unsupervised-learning">Unsupervised Learning</a></div>
@@ -1818,7 +1818,7 @@
             <div class="glossary-term" id="term-sequence">
               <h3>Sequence</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
               </div>
               <p>A control structure where instructions are executed in order, one after another, as they are written.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-selection">Selection</a>, <a href="#term-iteration">Iteration</a></div>
@@ -1827,7 +1827,7 @@
             <div class="glossary-term" id="term-service-worker">
               <h3>Service Worker</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>A JavaScript file that runs in the background to handle caching, push notifications, and offline functionality in Progressive Web Apps.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-pwa">Progressive Web App</a></div>
@@ -1863,7 +1863,7 @@
             <div class="glossary-term" id="term-sql-database">
               <h3>SQL (Relational) Database</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>A database that stores data in structured tables with rows and columns, enforcing relationships between tables using primary and foreign keys.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-nosql-database">NoSQL Database</a></div>
@@ -1917,7 +1917,7 @@
             <div class="glossary-term" id="term-supervised-learning">
               <h3>Supervised Learning</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A machine learning model trained on a labelled dataset where both inputs and correct outputs are provided, enabling the model to learn the mapping between them.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-unsupervised-learning">Unsupervised Learning</a>, <a href="#term-ml">Machine Learning</a></div>
@@ -1935,7 +1935,7 @@
             <div class="glossary-term" id="term-syntax-error">
               <h3>Syntax Error</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
               </div>
               <p>A violation of a programming language's grammar rules that prevents the code from running. Usually flagged by the IDE during compilation.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-logic-error">Logic Error</a>, <a href="#term-runtime-error">Runtime Error</a></div>
@@ -1956,7 +1956,7 @@
             <div class="glossary-term" id="term-test-set">
               <h3>Test Set</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>Data held back entirely until final evaluation to provide an unbiased estimate of real-world model performance. Should never be used during development or hyperparameter tuning.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-training-set">Training Set</a>, <a href="#term-validation-set">Validation Set</a></div>
@@ -1966,7 +1966,7 @@
               <h3>TLS (Transport Layer Security)</h3>
               <div class="term-chips">
                 <span class="chip chip-y12">🔒 Secure Architecture</span>
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>A modern cryptographic protocol that provides secure, encrypted communication over a network. The successor to SSL, used by HTTPS to secure web traffic.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-https">HTTPS</a>, <a href="#term-symmetric-encryption">Symmetric Encryption</a></div>
@@ -1975,7 +1975,7 @@
             <div class="glossary-term" id="term-training-set">
               <h3>Training Set</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>The portion of a dataset (typically 70–80%) used by an algorithm to learn patterns and adjust weights. The model sees these examples repeatedly during training.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-validation-set">Validation Set</a>, <a href="#term-test-set">Test Set</a></div>
@@ -1984,7 +1984,7 @@
             <div class="glossary-term" id="term-twos-complement">
               <h3>Two's Complement</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
               </div>
               <p>The standard method for representing negative integers in binary by inverting the bits of the positive equivalent and adding one. Enables efficient arithmetic on signed numbers.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-integer">Integer</a></div>
@@ -2025,7 +2025,7 @@
             <div class="glossary-term" id="term-underfitting">
               <h3>Underfitting</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A model error where the algorithm is too simple to learn the underlying patterns in training data, resulting in poor performance on both training and test sets.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-overfitting">Overfitting</a></div>
@@ -2035,7 +2035,7 @@
               <h3>Unit Testing</h3>
               <div class="term-chips">
                 <span class="chip chip-core">🔄 SDLC</span>
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>The practice of testing individual units (functions, methods, classes) in isolation to verify correct behaviour. Foundation of automated test suites and CI/CD.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-cicd">CI/CD</a>, <a href="#term-uat">UAT</a></div>
@@ -2044,7 +2044,7 @@
             <div class="glossary-term" id="term-unsupervised-learning">
               <h3>Unsupervised Learning</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A machine learning model that analyses unlabelled data to find hidden patterns or groupings autonomously, without being told what the correct output should be.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-supervised-learning">Supervised Learning</a>, <a href="#term-ml">Machine Learning</a></div>
@@ -2094,7 +2094,7 @@
             <div class="glossary-term" id="term-validation-set">
               <h3>Validation Set</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>Data used during development to tune hyperparameters and compare different model configurations. Separate from training data but evaluated during development, unlike the test set.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-training-set">Training Set</a>, <a href="#term-test-set">Test Set</a></div>
@@ -2103,7 +2103,7 @@
             <div class="glossary-term" id="term-variable">
               <h3>Variable</h3>
               <div class="term-chips">
-                <span class="chip chip-y11">📐 Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
               </div>
               <p>A named location in memory used to store data that can change during program execution. Variables have names, types, and scope.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-array">Array</a>, <a href="#term-data-dictionary">Data Dictionary</a></div>
@@ -2144,7 +2144,7 @@
             <div class="glossary-term" id="term-wcag">
               <h3>Web Accessibility (WCAG)</h3>
               <div class="term-chips">
-                <span class="chip chip-y12">🌐 Programming for the Web</span>
+                <span class="chip chip-y12">Programming for the Web</span>
               </div>
               <p>International guidelines developed by the W3C to make web content usable for people with various disabilities. Covers visual, hearing, motor, and cognitive disabilities.</p>
             </div>
@@ -2163,7 +2163,7 @@
               <h3>White-Box Testing</h3>
               <div class="term-chips">
                 <span class="chip chip-core">🔄 SDLC</span>
-                <span class="chip chip-y12">⚙️ Software Automation</span>
+                <span class="chip chip-y12">Software Automation</span>
               </div>
               <p>A testing technique where the tester has full knowledge of internal code structure and logic. Designs tests to cover all branches, paths, and conditions — maximising code coverage.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-black-box">Black-Box Testing</a>, <a href="#term-sast">SAST</a></div>
@@ -2212,29 +2212,29 @@
     <div class="footer-inner">
       <div>
         <div class="footer-brand">
-          <div class="footer-logo">💻</div>
+          <div class="footer-logo" aria-hidden="true">{&hairsp;}</div>
           <span class="footer-name">SoftEng Notes</span>
         </div>
         <p class="footer-desc">Open-source, comprehensive study material for the NESA NSW HSC Software Engineering curriculum.</p>
       </div>
       <div class="footer-col">
-        <h4>🚀 Year 12</h4>
+        <h4>Year 12</h4>
         <a href="secure-software-architecture.html">Secure Architecture</a>
         <a href="programming-for-the-web.html">Web Programming</a>
         <a href="software-automation.html">Software Automation</a>
         <a href="software-engineering-project.html">Engineering Project</a>
       </div>
       <div class="footer-col">
-        <h4>📈 Year 11</h4>
+        <h4>Year 11</h4>
         <a href="programming-fundamentals.html">Programming Fundamentals</a>
         <a href="object-oriented-paradigm.html">OOP</a>
         <a href="programming-mechatronics.html">Mechatronics</a>
       </div>
       <div class="footer-col">
-        <h4>🛡️ Navigate</h4>
+        <h4>Navigate</h4>
         <a href="../index.html">← Back to Home</a>
-        <a href="course-tools.html">🛠️ Course Tools</a>
-        <a href="sdlc.html">🔄 SDLC Guide</a>
+        <a href="course-tools.html">Course Tools</a>
+        <a href="sdlc.html">SDLC Guide</a>
         <a href="software-engineering-project.html">📋 Major Project →</a>
       </div>
     </div>
@@ -2385,6 +2385,6 @@
       });
     });
   </script>
-  <script src="../js/main.js?v=9"></script>
+  <script src="../js/main.js?v=10"></script>
 </body>
 </html>

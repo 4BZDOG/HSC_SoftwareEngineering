@@ -38,14 +38,14 @@
     ]
   }
   </script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
-  <meta name="theme-color" content="#6366F1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232D46B9'/><text x='50' y='71' font-size='58' fill='%23F4F3EE' text-anchor='middle' font-family='Georgia,serif'>{}</text></svg>" />
+  <meta name="theme-color" content="#2D46B9" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <meta name="description" content="Master the Software Development Life Cycle for HSC Software Engineering — Agile vs WAGILE, tool mapping for every phase, and real-world case studies." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=9" />
+  <link rel="stylesheet" href="../css/styles.css?v=10" />
   <style>
     /* ── SDLC-specific styles ── */
     .sdlc-cycle-visual {
@@ -306,7 +306,7 @@
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="../index.html" class="nav-brand">
-        <div class="nav-logo">💻</div>
+        <div class="nav-logo" aria-hidden="true">{&hairsp;}</div>
         <div>
           <div class="nav-title">SoftEng Notes</div>
           <div class="nav-subtitle">NESA NSW HSC</div>
@@ -314,17 +314,17 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="../index.html">🏠 Home</a></li>
+        <li><a href="../index.html">Home</a></li>
         <li class="nav-dropdown">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
-            🗂️ Resources
+            Resources
             <span class="badge badge-all">Guides</span>
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
-            <a href="sdlc.html" role="menuitem" aria-current="page">🔄 SDLC Guide</a>
-            <a href="glossary.html" role="menuitem">📖 Glossary</a>
+            <a href="course-tools.html" role="menuitem">Course Tools &amp; Specs</a>
+            <a href="sdlc.html" role="menuitem" aria-current="page">SDLC Guide</a>
+            <a href="glossary.html" role="menuitem">Glossary</a>
           </div>
         </li>
         <li class="nav-dropdown nav-dropdown-y12">
@@ -334,10 +334,10 @@
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="secure-software-architecture.html" role="menuitem">🔒 Secure Software Architecture</a>
-            <a href="programming-for-the-web.html" role="menuitem">🌐 Programming for the Web</a>
-            <a href="software-automation.html" role="menuitem">⚙️ Software Automation</a>
-            <a href="software-engineering-project.html" role="menuitem">📋 Software Engineering Project</a>
+            <a href="secure-software-architecture.html" role="menuitem">Secure Software Architecture</a>
+            <a href="programming-for-the-web.html" role="menuitem">Programming for the Web</a>
+            <a href="software-automation.html" role="menuitem">Software Automation</a>
+            <a href="software-engineering-project.html" role="menuitem">Software Engineering Project</a>
           </div>
         </li>
         <li class="nav-dropdown nav-dropdown-y11">
@@ -347,15 +347,15 @@
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="programming-fundamentals.html" role="menuitem">📐 Programming Fundamentals</a>
-            <a href="object-oriented-paradigm.html" role="menuitem">🧩 Object-Oriented Paradigm</a>
-            <a href="programming-mechatronics.html" role="menuitem">🤖 Programming Mechatronics</a>
+            <a href="programming-fundamentals.html" role="menuitem">Programming Fundamentals</a>
+            <a href="object-oriented-paradigm.html" role="menuitem">Object-Oriented Paradigm</a>
+            <a href="programming-mechatronics.html" role="menuitem">Programming Mechatronics</a>
           </div>
         </li>
       </ul>
 
       <div class="nav-actions">
-        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -367,25 +367,25 @@
   <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Resources</div>
-      <a href="course-tools.html">🛠️ Course Tools &amp; Specifications</a>
-      <a href="sdlc.html">🔄 SDLC Guide</a>
-      <a href="glossary.html">📖 Glossary</a>
+      <a href="course-tools.html">Course Tools &amp; Specifications</a>
+      <a href="sdlc.html">SDLC Guide</a>
+      <a href="glossary.html">Glossary</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 12 — HSC</div>
-      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
-      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
-      <a href="software-automation.html">⚙️ Software Automation</a>
-      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+      <a href="secure-software-architecture.html">Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">Programming for the Web</a>
+      <a href="software-automation.html">Software Automation</a>
+      <a href="software-engineering-project.html">Software Engineering Project</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 11 — Preliminary</div>
-      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
-      <a href="object-oriented-paradigm.html">🧩 The Object-Oriented Paradigm</a>
-      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+      <a href="programming-fundamentals.html">Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">The Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">Programming Mechatronics</a>
     </div>
     <div class="mobile-menu-section">
-      <button id="theme-toggle-mobile" class="btn btn-mobile-theme">🌙 Toggle Theme</button>
+      <button id="theme-toggle-mobile" class="btn btn-mobile-theme">Toggle theme</button>
     </div>
   </div>
 
@@ -396,13 +396,13 @@
         <a href="../index.html">Home</a> <span>›</span>
         <span>SDLC Guide</span>
       </nav>
-      <h1>🔄 Software Development Life Cycle</h1>
+      <h1>Software Development Life Cycle</h1>
       <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
         A cross-curriculum guide to mastering the SDLC across the full HSC Software Engineering course — with Agile vs WAGILE guidance, tool mapping for every stage, and real-world case studies showing the cycle done right and wrong.
       </p>
       <div class="topic-header-meta">
-        <span class="meta-pill year12">📘 Year 11 &amp; 12</span>
-        <span class="meta-pill">🔄 Cross-Curriculum</span>
+        <span class="meta-pill year12">Year 11 &amp; 12</span>
+        <span class="meta-pill">Cross-Curriculum</span>
         <span class="meta-pill">Outcomes: SE-11-01 · SE-12-01 · SE-12-06</span>
       </div>
     </div>
@@ -414,21 +414,21 @@
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
         <li class="sidebar-label">Overview</li>
-        <li><a href="#what-is-sdlc">🔄 What is the SDLC?</a></li>
-        <li><a href="#methodology">⚖️ Agile vs WAGILE</a></li>
+        <li><a href="#what-is-sdlc">What is the SDLC?</a></li>
+        <li><a href="#methodology">Agile vs WAGILE</a></li>
         <li class="sidebar-label">The Four Phases</li>
-        <li><a href="#phase1">🎯 Phase 1 — Identifying &amp; Defining</a></li>
-        <li><a href="#phase2">🔬 Phase 2 — Research &amp; Planning</a></li>
-        <li><a href="#phase3">💻 Phase 3 — Producing &amp; Implementing</a></li>
-        <li><a href="#phase4">🧪 Phase 4 — Testing &amp; Evaluating</a></li>
+        <li><a href="#phase1">Phase 1 — Identifying &amp; Defining</a></li>
+        <li><a href="#phase2">Phase 2 — Research &amp; Planning</a></li>
+        <li><a href="#phase3">Phase 3 — Producing &amp; Implementing</a></li>
+        <li><a href="#phase4">Phase 4 — Testing &amp; Evaluating</a></li>
         <li class="sidebar-label">Tools at Each Stage</li>
-        <li><a href="#tools-map">🛠️ Tool Mapping Reference</a></li>
+        <li><a href="#tools-map">Tool Mapping Reference</a></li>
         <li class="sidebar-label">Real-World Case Studies</li>
-        <li><a href="#case-success">✅ Effective SDLC Examples</a></li>
-        <li><a href="#case-failure">❌ Ineffective SDLC Examples</a></li>
+        <li><a href="#case-success">Effective SDLC Examples</a></li>
+        <li><a href="#case-failure">Ineffective SDLC Examples</a></li>
         <li class="sidebar-label">Assessment Guidance</li>
-        <li><a href="#hsc-guidance">📝 HSC Assessment Tips</a></li>
-        <li><a href="#curriculum-links">📚 Curriculum Links</a></li>
+        <li><a href="#hsc-guidance">HSC Assessment Tips</a></li>
+        <li><a href="#curriculum-links">Curriculum Links</a></li>
       </ul>
     </aside>
 
@@ -440,11 +440,11 @@
         <!-- ════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Overview</span>
-          <span class="part-name">🔄 The Software Development Life Cycle</span>
+          <span class="part-name">The Software Development Life Cycle</span>
         </div>
 
         <section id="what-is-sdlc">
-          <h2 class="syllabus-phase">🔄 What is the SDLC?</h2>
+          <h2 class="syllabus-phase">What is the SDLC?</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-12-01, SE-12-06 — applies across the entire course)</em></p>
           <p class="syllabus-concept">📌 <em><strong>The SDLC is the structured process</strong> software engineers follow to plan, create, test, and deliver software. Every topic in the HSC Software Engineering course is anchored to at least one phase of this cycle.</em></p>
 
@@ -485,7 +485,7 @@
             <strong>Cycle, Not Waterfall:</strong> The phases are a <em>cycle</em> — after evaluating, you loop back to identifying new requirements or improvements. In Agile approaches this loop happens every sprint (2–4 weeks). In WAGILE approaches you may complete a full pass through all four phases before cycling back. Assessors reward students who articulate this iterative nature.
           </div>
 
-          <h3>📌 Where the SDLC Appears Across the Course</h3>
+          <h3>Where the SDLC Appears Across the Course</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -546,18 +546,18 @@
         <!-- ════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Methodology</span>
-          <span class="part-name">⚖️ Agile vs WAGILE</span>
+          <span class="part-name">Agile vs WAGILE</span>
         </div>
 
         <section id="methodology">
-          <h2 class="syllabus-phase">⚖️ Agile vs WAGILE — Choosing Your Methodology</h2>
+          <h2 class="syllabus-phase">Agile vs WAGILE — Choosing Your Methodology</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02 — evaluate and justify development approaches)</em></p>
           <p class="syllabus-concept">📌 <em><strong>A methodology</strong> determines <em>how</em> you move through the SDLC phases. Selecting the right one — and being able to justify your selection to assessors — is a key syllabus requirement.</em></p>
 
           <div class="methodology-grid">
             <div class="method-card agile">
               <span class="method-badge">Agile</span>
-              <h4>🏃 Agile (Iterative/Incremental)</h4>
+              <h4>Agile (Iterative/Incremental)</h4>
               <p class="method-card-desc">Work is divided into short <strong>sprints</strong> (2–4 weeks). Each sprint produces a working, shippable increment. Requirements are expected to evolve — change is welcomed, not resisted.</p>
               <ul>
                 <li>Frequent client feedback after each sprint</li>
@@ -570,7 +570,7 @@
             </div>
             <div class="method-card wagile">
               <span class="method-badge">WAGILE (Waterfall-Agile Hybrid)</span>
-              <h4>🌊 WAGILE (Structured Iterations)</h4>
+              <h4>WAGILE (Structured Iterations)</h4>
               <p class="method-card-desc">A pragmatic hybrid used widely in the HSC project context. Phases are planned in advance (Waterfall-style) but internal to each phase, short Agile iterations are used to build and refine features.</p>
               <ul>
                 <li>Upfront planning document (Gantt chart, project scope)</li>
@@ -583,7 +583,7 @@
             </div>
           </div>
 
-          <h3>🤔 When to Use Each Methodology</h3>
+          <h3>When to Use Each Methodology</h3>
 
           <div class="decision-card">
             <h4>Decision Guide — Agile vs WAGILE</h4>
@@ -613,7 +613,7 @@
             <strong>📝 Assessor Tip — Justify Your Choice:</strong> Do not just state <em>"I used Agile."</em> Assessors expect you to <strong>justify</strong> your methodology choice with reference to project characteristics — scope certainty, client availability, team size, and timeline constraints. A student who correctly identifies that their HSC project is best served by WAGILE and explains <em>why</em> will always outperform one who copies the word "Agile" without explanation.
           </div>
 
-          <h3>🔁 Scrum Framework (Agile in Practice)</h3>
+          <h3>Scrum Framework (Agile in Practice)</h3>
           <p>Most HSC students and industry teams implement Agile via the <strong>Scrum framework</strong>. Understanding Scrum's mechanics is essential for both exam responses and project documentation.</p>
 
           <div class="key-terms">
@@ -633,15 +633,15 @@
         <!-- ════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Phase 1</span>
-          <span class="part-name">🎯 Identifying and Defining</span>
+          <span class="part-name">Identifying and Defining</span>
         </div>
 
         <section id="phase1">
-          <h2 class="syllabus-phase">🎯 Phase 1 — Identifying and Defining</h2>
+          <h2 class="syllabus-phase">Phase 1 — Identifying and Defining</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-06 — defining the problem space and requirements)</em></p>
           <p class="syllabus-concept">📌 <em><strong>The purpose of Phase 1</strong> is to establish a clear, bounded understanding of the problem before any design or code begins. Software built without a well-defined problem statement routinely fails.</em></p>
 
-          <h3>🔍 What You Must Demonstrate in This Phase</h3>
+          <h3>What You Must Demonstrate in This Phase</h3>
           <div class="stage-timeline">
             <div class="timeline-item">
               <h5>Problem Identification</h5>
@@ -665,7 +665,7 @@
             </div>
           </div>
 
-          <h3>🛠️ Course Tools Used in Phase 1</h3>
+          <h3>Course Tools Used in Phase 1</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>📝 Storyboards</strong><span>Sketch the user interface flow and screen transitions before writing any code. Assessors expect to see storyboards for every major screen/view.</span></div>
             <div class="key-term-item"><strong>🗄️ Data Dictionaries</strong><span>Formally define every data field — name, type, size, range, required/optional, and description. This ensures design consistency and is a mandatory deliverable for the major project.</span></div>
@@ -687,15 +687,15 @@
         <!-- ════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Phase 2</span>
-          <span class="part-name">🔬 Research and Planning</span>
+          <span class="part-name">Research and Planning</span>
         </div>
 
         <section id="phase2">
-          <h2 class="syllabus-phase">🔬 Phase 2 — Research and Planning</h2>
+          <h2 class="syllabus-phase">Phase 2 — Research and Planning</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-03, SE-12-04 — design, architecture, and project management)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Phase 2 transforms requirements into a blueprint.</strong> This is the design phase — you decide <em>how</em> the system will be built before writing a single line of production code. Time invested here is always recovered in Phase 3.</em></p>
 
-          <h3>🏗️ What You Must Demonstrate in This Phase</h3>
+          <h3>What You Must Demonstrate in This Phase</h3>
           <div class="stage-timeline">
             <div class="timeline-item">
               <h5>Software Architecture and Design</h5>
@@ -727,7 +727,7 @@
             </div>
           </div>
 
-          <h3>🛠️ Course Tools Used in Phase 2</h3>
+          <h3>Course Tools Used in Phase 2</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>📐 Structure Charts</strong><span>Decompose the system into modules and show their hierarchical relationships and data passing. Required for the major project and assessed in exams.</span></div>
             <div class="key-term-item"><strong>💬 Pseudocode</strong><span>Language-independent algorithm description. Write pseudocode for all major algorithms before coding them. Examiners strongly prefer pseudocode to actual code in written responses.</span></div>
@@ -752,15 +752,15 @@
         <!-- ════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Phase 3</span>
-          <span class="part-name">💻 Producing and Implementing</span>
+          <span class="part-name">Producing and Implementing</span>
         </div>
 
         <section id="phase3">
-          <h2 class="syllabus-phase">💻 Phase 3 — Producing and Implementing</h2>
+          <h2 class="syllabus-phase">Phase 3 — Producing and Implementing</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-05, SE-12-07 — software construction, coding standards, version control)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Phase 3 is construction.</strong> Requirements and design are translated into working software. Quality is built in — not tested in later. Following coding standards, using version control, and writing maintainable code are non-negotiable syllabus requirements.</em></p>
 
-          <h3>💡 What You Must Demonstrate in This Phase</h3>
+          <h3>What You Must Demonstrate in This Phase</h3>
           <div class="stage-timeline">
             <div class="timeline-item">
               <h5>Coding Standards and Style</h5>
@@ -792,7 +792,7 @@
             </div>
           </div>
 
-          <h3>🛠️ Course Tools Used in Phase 3</h3>
+          <h3>Course Tools Used in Phase 3</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>🐍 Python (or chosen language)</strong><span>The primary implementation language for HSC projects. Must be used with PEP 8 style, docstrings, and modular design. OOP features (classes, inheritance) are expected in Year 12 submissions.</span></div>
             <div class="key-term-item"><strong>🔀 Git / Version Control</strong><span>All code must be tracked with Git. Commit messages should be descriptive and atomic. Provide the repository URL or a commit log extract as project evidence.</span></div>
@@ -815,15 +815,15 @@
         <!-- ════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Phase 4</span>
-          <span class="part-name">🧪 Testing and Evaluating</span>
+          <span class="part-name">Testing and Evaluating</span>
         </div>
 
         <section id="phase4">
-          <h2 class="syllabus-phase">🧪 Phase 4 — Testing and Evaluating</h2>
+          <h2 class="syllabus-phase">Phase 4 — Testing and Evaluating</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-08, SE-12-09 — testing, evaluation, and reflection)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Phase 4 validates the software against requirements and evaluates the entire development process.</strong> It is not a formality — assessors expect systematic, evidence-based testing and a critical, honest evaluation that identifies both strengths and limitations.</em></p>
 
-          <h3>🧩 Testing Types — Know All Four</h3>
+          <h3>Testing Types — Know All Four</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -858,14 +858,14 @@
             </table>
           </div>
 
-          <h3>📊 Test Data Categories</h3>
+          <h3>Test Data Categories</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>✅ Normal Data</strong><span>Valid inputs within the expected range. The system should process these correctly and produce the expected output. E.g., age = 25 for a system that accepts ages 18–65.</span></div>
             <div class="key-term-item"><strong>🔲 Boundary Data</strong><span>Values at the exact edge of valid ranges (minimum, maximum, and just outside). E.g., age = 18, age = 65, age = 17, age = 66. Boundary cases reveal off-by-one errors.</span></div>
             <div class="key-term-item"><strong>❌ Erroneous / Invalid Data</strong><span>Data that should be rejected by the system. E.g., age = "hello", age = -5, an empty string for a required field. Tests that validation logic works correctly.</span></div>
           </div>
 
-          <h3>📝 What You Must Demonstrate in This Phase</h3>
+          <h3>What You Must Demonstrate in This Phase</h3>
           <div class="stage-timeline">
             <div class="timeline-item">
               <h5>Systematic Testing with a Test Table</h5>
@@ -889,7 +889,7 @@
             </div>
           </div>
 
-          <h3>🛠️ Course Tools Used in Phase 4</h3>
+          <h3>Course Tools Used in Phase 4</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>🧪 Python unittest</strong><span>Write automated unit tests using Python's built-in <code>unittest</code> module. Demonstrate that tests run and pass with screenshot evidence. Automated tests are more credible than manual testing alone.</span></div>
             <div class="key-term-item"><strong>📊 Test Tables</strong><span>A structured table documenting every test case. A NESA-specified tool (Course Spec p. 9). Every major feature must have test cases using normal, boundary, and erroneous data.</span></div>
@@ -911,18 +911,18 @@
         <!-- ════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Tools Reference</span>
-          <span class="part-name">🛠️ Tool Mapping by SDLC Phase</span>
+          <span class="part-name">Tool Mapping by SDLC Phase</span>
         </div>
 
         <section id="tools-map">
-          <h2 class="syllabus-phase">🛠️ Course Tools — Mapped to SDLC Phases</h2>
+          <h2 class="syllabus-phase">Course Tools — Mapped to SDLC Phases</h2>
           <p class="outcome-subtitle">🎯 <em>(Course Spec pp. 8–9 — tools and techniques across the development lifecycle)</em></p>
           <p class="syllabus-concept">📌 <em>The NESA syllabus specifies a set of tools that students must know how to apply. This section maps each tool to the SDLC phase(s) where it is primarily used, with an example artefact for each.</em></p>
 
           <div class="tool-stage">
             <div class="tool-stage-header">
               <span class="stage-badge badge-phase1">Phase 1</span>
-              <h4>🎯 Identifying and Defining</h4>
+              <h4>Identifying and Defining</h4>
             </div>
             <div class="tool-stage-body">
               <div class="tool-row">
@@ -947,7 +947,7 @@
           <div class="tool-stage">
             <div class="tool-stage-header">
               <span class="stage-badge badge-phase2">Phase 2</span>
-              <h4>🔬 Research and Planning</h4>
+              <h4>Research and Planning</h4>
             </div>
             <div class="tool-stage-body">
               <div class="tool-row">
@@ -988,7 +988,7 @@
           <div class="tool-stage">
             <div class="tool-stage-header">
               <span class="stage-badge badge-phase3">Phase 3</span>
-              <h4>💻 Producing and Implementing</h4>
+              <h4>Producing and Implementing</h4>
             </div>
             <div class="tool-stage-body">
               <div class="tool-row">
@@ -1013,7 +1013,7 @@
           <div class="tool-stage">
             <div class="tool-stage-header">
               <span class="stage-badge badge-phase4">Phase 4</span>
-              <h4>🧪 Testing and Evaluating</h4>
+              <h4>Testing and Evaluating</h4>
             </div>
             <div class="tool-stage-body">
               <div class="tool-row">
@@ -1043,11 +1043,11 @@
         <!-- ════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Real-World Examples</span>
-          <span class="part-name">✅ Effective SDLC in Famous Software</span>
+          <span class="part-name">Effective SDLC in Famous Software</span>
         </div>
 
         <section id="case-success">
-          <h2 class="syllabus-phase">✅ Where the SDLC Was Done Well</h2>
+          <h2 class="syllabus-phase">Where the SDLC Was Done Well</h2>
           <p class="syllabus-concept">📌 <em>These real-world examples show the SDLC applied effectively. For each case, identify which phase made the difference and what lesson applies to the HSC course.</em></p>
 
           <!-- Spotify -->
@@ -1153,11 +1153,11 @@
         <!-- ════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Real-World Examples</span>
-          <span class="part-name">❌ Ineffective SDLC in Famous Software</span>
+          <span class="part-name">Ineffective SDLC in Famous Software</span>
         </div>
 
         <section id="case-failure">
-          <h2 class="syllabus-phase">❌ Where the SDLC Went Wrong</h2>
+          <h2 class="syllabus-phase">Where the SDLC Went Wrong</h2>
           <p class="syllabus-concept">📌 <em>These cautionary cases show what happens when phases of the SDLC are skipped, rushed, or ignored. Each example maps to specific syllabus concepts and offers a direct lesson for HSC students.</em></p>
 
           <!-- Healthcare.gov -->
@@ -1284,14 +1284,14 @@
         <!-- ════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Assessment Guidance</span>
-          <span class="part-name">📝 HSC Exam and Project Tips</span>
+          <span class="part-name">HSC Exam and Project Tips</span>
         </div>
 
         <section id="hsc-guidance">
-          <h2 class="syllabus-phase">📝 HSC Assessment Guidance for the SDLC</h2>
+          <h2 class="syllabus-phase">HSC Assessment Guidance for the SDLC</h2>
           <p class="outcome-subtitle">🎯 <em>(All outcomes — knowing what assessors look for in each phase)</em></p>
 
-          <h3>🎯 Responding to SDLC Questions in the Written Exam</h3>
+          <h3>Responding to SDLC Questions in the Written Exam</h3>
           <p>NESA uses specific command verbs that indicate the depth of response required. Understanding these in the context of the SDLC is essential:</p>
 
           <div class="table-wrap">
@@ -1334,7 +1334,7 @@
             </table>
           </div>
 
-          <h3>📋 The Major Project — SDLC Documentation Checklist</h3>
+          <h3>The Major Project — SDLC Documentation Checklist</h3>
           <p>For the Software Engineering Project, assessors mark your project portfolio against the SDLC. Use this checklist to ensure every phase is evidenced:</p>
 
           <div class="table-wrap">
@@ -1378,7 +1378,7 @@
         <!--  CURRICULUM LINKS                                    -->
         <!-- ════════════════════════════════════════════════════ -->
         <section id="curriculum-links">
-          <h2 class="syllabus-phase">📚 Syllabus Outcome Cross-Reference</h2>
+          <h2 class="syllabus-phase">Syllabus Outcome Cross-Reference</h2>
           <p class="syllabus-concept">📌 <em>Every SDLC concept on this page is explicitly required by the NESA NSW HSC Software Engineering syllabus. This table maps each outcome to the phases and topics covered above.</em></p>
 
           <div class="table-wrap">
@@ -1469,29 +1469,29 @@
     <div class="footer-inner">
       <div>
         <div class="footer-brand">
-          <div class="footer-logo">💻</div>
+          <div class="footer-logo" aria-hidden="true">{&hairsp;}</div>
           <span class="footer-name">SoftEng Notes</span>
         </div>
         <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
       </div>
       <div class="footer-col">
-        <h4>🔐 Year 12</h4>
+        <h4>Year 12</h4>
         <a href="secure-software-architecture.html">Secure Architecture</a>
         <a href="programming-for-the-web.html">Web Programming</a>
         <a href="software-automation.html">Software Automation</a>
         <a href="software-engineering-project.html">Engineering Project</a>
       </div>
       <div class="footer-col">
-        <h4>📈 Year 11</h4>
+        <h4>Year 11</h4>
         <a href="programming-fundamentals.html">Programming Fundamentals</a>
         <a href="object-oriented-paradigm.html">OOP</a>
         <a href="programming-mechatronics.html">Mechatronics</a>
       </div>
       <div class="footer-col">
-        <h4>🛡️ Navigate</h4>
+        <h4>Navigate</h4>
         <a href="../index.html">← Back to Home</a>
-        <a href="glossary.html">📖 Glossary</a>
-        <a href="course-tools.html">🛠️ Course Tools</a>
+        <a href="glossary.html">Glossary</a>
+        <a href="course-tools.html">Course Tools</a>
         <a href="software-engineering-project.html">📋 Major Project →</a>
       </div>
     </div>
@@ -1500,7 +1500,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=9"></script>
+  <script src="../js/main.js?v=10"></script>
 
   <div class="lightbox-modal" id="diagram-lightbox" role="dialog" aria-labelledby="lightbox-title" aria-hidden="true">
     <div class="lightbox-overlay"></div>

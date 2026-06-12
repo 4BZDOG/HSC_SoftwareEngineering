@@ -23,9 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const themeButtons = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
 
+  const SUN_ICON =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/>' +
+    '<path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>';
+  const MOON_ICON =
+    '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>';
+
   function updateThemeIcon(btn, theme) {
     if (!btn) return;
-    btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    const icon = theme === 'dark' ? SUN_ICON : MOON_ICON;
+    const label = btn.id === 'theme-toggle-mobile' ? ' Toggle theme' : '';
+    btn.innerHTML = icon + label;
     btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
   }
 
@@ -174,6 +182,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ── Navbar scrolled state ── */
+  const navEl = document.querySelector('.navbar');
+  if (navEl) {
+    const updateNavState = () => navEl.classList.toggle('scrolled', window.scrollY > 8);
+    window.addEventListener('scroll', updateNavState, { passive: true });
+    updateNavState();
+  }
+
   /* ── Reading Progress Bar ── */
   const navbar = document.querySelector('.navbar');
   if (navbar) {
@@ -312,6 +328,55 @@ document.addEventListener('DOMContentLoaded', () => {
           : '';
       }, 150);
     });
+  }
+
+  /* ── "/" focuses the topic search ── */
+  if (searchInput) {
+    document.addEventListener('keydown', e => {
+      if (e.key !== '/' || e.ctrlKey || e.metaKey || e.altKey) return;
+      const tag = document.activeElement?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || document.activeElement?.isContentEditable) return;
+      e.preventDefault();
+      searchInput.focus();
+    });
+  }
+
+  /* ── Cursor spotlight on cards ── */
+  if (window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.topic-card').forEach(card => {
+      card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--sx', `${((e.clientX - r.left) / r.width) * 100}%`);
+        card.style.setProperty('--sy', `${((e.clientY - r.top) / r.height) * 100}%`);
+      });
+    });
+
+    /* ── Hero cursor light ── */
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      hero.addEventListener('pointermove', e => {
+        const r = hero.getBoundingClientRect();
+        hero.style.setProperty('--hx', `${((e.clientX - r.left) / r.width) * 100}%`);
+        hero.style.setProperty('--hy', `${((e.clientY - r.top) / r.height) * 100}%`);
+      });
+    }
+  }
+
+  /* ── Reveal-on-scroll for home page sections ── */
+  const revealEls = document.querySelectorAll('.feature-item, .path-stage, .study-guide-card');
+  if (revealEls.length && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    revealEls.forEach((el, i) => {
+      el.classList.add('reveal-item');
+      el.style.transitionDelay = `${(i % 4) * 70}ms`;
+    });
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('revealed');
+        revealObs.unobserve(entry.target);
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => revealObs.observe(el));
   }
 
   /* ── Smooth Scroll for anchor links ── */

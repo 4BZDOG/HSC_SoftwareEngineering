@@ -44,21 +44,21 @@
     ]
   }
   </script>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
-  <meta name="theme-color" content="#6366F1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232D46B9'/><text x='50' y='71' font-size='58' fill='%23F4F3EE' text-anchor='middle' font-family='Georgia,serif'>{}</text></svg>" />
+  <meta name="theme-color" content="#2D46B9" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <meta name="description" content="In-depth notes on the HSC Software Engineering major project — all SDLC phases, documentation requirements, testing, and assessment guidance." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=9" />
+  <link rel="stylesheet" href="../css/styles.css?v=10" />
 </head>
 <body>
 
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="../index.html" class="nav-brand">
-        <div class="nav-logo">💻</div>
+        <div class="nav-logo" aria-hidden="true">{&hairsp;}</div>
         <div>
           <div class="nav-title">SoftEng Notes</div>
           <div class="nav-subtitle">NESA NSW HSC</div>
@@ -66,17 +66,17 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="../index.html">🏠 Home</a></li>
+        <li><a href="../index.html">Home</a></li>
         <li class="nav-dropdown">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
-            🗂️ Resources
+            Resources
             <span class="badge badge-all">Guides</span>
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="course-tools.html" role="menuitem">🛠️ Course Tools &amp; Specs</a>
-            <a href="sdlc.html" role="menuitem">🔄 SDLC Guide</a>
-            <a href="glossary.html" role="menuitem">📖 Glossary</a>
+            <a href="course-tools.html" role="menuitem">Course Tools &amp; Specs</a>
+            <a href="sdlc.html" role="menuitem">SDLC Guide</a>
+            <a href="glossary.html" role="menuitem">Glossary</a>
           </div>
         </li>
         <li class="nav-dropdown nav-dropdown-y12">
@@ -86,10 +86,10 @@
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="secure-software-architecture.html" role="menuitem">🔒 Secure Software Architecture</a>
-            <a href="programming-for-the-web.html" role="menuitem">🌐 Programming for the Web</a>
-            <a href="software-automation.html" role="menuitem">⚙️ Software Automation</a>
-            <a href="software-engineering-project.html" role="menuitem">📋 Software Engineering Project</a>
+            <a href="secure-software-architecture.html" role="menuitem">Secure Software Architecture</a>
+            <a href="programming-for-the-web.html" role="menuitem">Programming for the Web</a>
+            <a href="software-automation.html" role="menuitem">Software Automation</a>
+            <a href="software-engineering-project.html" role="menuitem">Software Engineering Project</a>
           </div>
         </li>
         <li class="nav-dropdown nav-dropdown-y11">
@@ -99,15 +99,15 @@
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="programming-fundamentals.html" role="menuitem">📐 Programming Fundamentals</a>
-            <a href="object-oriented-paradigm.html" role="menuitem">🧩 Object-Oriented Paradigm</a>
-            <a href="programming-mechatronics.html" role="menuitem">🤖 Programming Mechatronics</a>
+            <a href="programming-fundamentals.html" role="menuitem">Programming Fundamentals</a>
+            <a href="object-oriented-paradigm.html" role="menuitem">Object-Oriented Paradigm</a>
+            <a href="programming-mechatronics.html" role="menuitem">Programming Mechatronics</a>
           </div>
         </li>
       </ul>
 
       <div class="nav-actions">
-        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
@@ -118,24 +118,24 @@
   <div class="mobile-menu" id="mobile-menu">
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Resources</div>
-      <a href="course-tools.html">🛠️ Course Tools &amp; Specifications</a>
-      <a href="sdlc.html">🔄 SDLC Guide</a>
-      <a href="glossary.html">📖 Glossary</a>
+      <a href="course-tools.html">Course Tools &amp; Specifications</a>
+      <a href="sdlc.html">SDLC Guide</a>
+      <a href="glossary.html">Glossary</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 12</div>
-      <a href="secure-software-architecture.html">🔒 Secure Software Architecture</a>
-      <a href="programming-for-the-web.html">🌐 Programming for the Web</a>
-      <a href="software-automation.html">⚙️ Software Automation</a>
-      <a href="software-engineering-project.html">📋 Software Engineering Project</a>
+      <a href="secure-software-architecture.html">Secure Software Architecture</a>
+      <a href="programming-for-the-web.html">Programming for the Web</a>
+      <a href="software-automation.html">Software Automation</a>
+      <a href="software-engineering-project.html">Software Engineering Project</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 11</div>
-      <a href="programming-fundamentals.html">📐 Programming Fundamentals</a>
-      <a href="object-oriented-paradigm.html">🧩 Object-Oriented Paradigm</a>
-      <a href="programming-mechatronics.html">🤖 Programming Mechatronics</a>
+      <a href="programming-fundamentals.html">Programming Fundamentals</a>
+      <a href="object-oriented-paradigm.html">Object-Oriented Paradigm</a>
+      <a href="programming-mechatronics.html">Programming Mechatronics</a>
     </div>
-    <button id="theme-toggle-mobile" class="btn btn-mobile-theme">🌙 Toggle Theme</button>
+    <button id="theme-toggle-mobile" class="btn btn-mobile-theme">Toggle theme</button>
   </div>
 
   <header class="topic-header">
@@ -145,13 +145,13 @@
         <a href="../index.html#year12">Year 12</a> <span>›</span>
         <span>Software Engineering Project</span>
       </nav>
-      <h1>📋 Software Engineering Project</h1>
+      <h1>Software Engineering Project</h1>
       <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
         Applying the software development lifecycle to address an identified real-world problem. Emphasising project-management, software design, and client collaboration.
       </p>
       <div class="topic-header-meta">
-        <span class="meta-pill year12">📘 Year 12 — HSC</span>
-        <span class="meta-pill">🕐 Major Project</span>
+        <span class="meta-pill year12">Year 12 — HSC</span>
+        <span class="meta-pill">Major Project</span>
         <span class="meta-pill">Outcomes: SE-12-01 to 09</span>
       </div>
     </div>
@@ -162,24 +162,24 @@
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
         <li class="sidebar-label">Phase 1 — Identifying &amp; Defining</li>
-        <li><a href="#identifying-defining">🎯 1. Identifying &amp; Defining</a></li>
+        <li><a href="#identifying-defining">1. Identifying &amp; Defining</a></li>
         <li class="sidebar-label">Phase 2 — Research &amp; Planning</li>
-        <li><a href="#implementation-methods">🚀 2. Implementation Methods</a></li>
-        <li><a href="#development-approaches">🏗️ 3. Development Approaches</a></li>
-        <li><a href="#project-management">📅 4. Project Management &amp; Comms</a></li>
-        <li><a href="#quality-backend">🛡️ 5. QA &amp; Back-End Engineering</a></li>
+        <li><a href="#implementation-methods">2. Implementation Methods</a></li>
+        <li><a href="#development-approaches">3. Development Approaches</a></li>
+        <li><a href="#project-management">4. Project Management &amp; Comms</a></li>
+        <li><a href="#quality-backend">5. QA &amp; Back-End Engineering</a></li>
         <li class="sidebar-label">Phase 3 — Producing &amp; Implementing</li>
-        <li><a href="#producing">💻 6. Producing &amp; Implementing</a></li>
+        <li><a href="#producing">6. Producing &amp; Implementing</a></li>
         <li class="sidebar-label">Phase 4 — Testing &amp; Evaluating</li>
-        <li><a href="#testing-evaluating">🧪 7. Testing &amp; Evaluating</a></li>
+        <li><a href="#testing-evaluating">7. Testing &amp; Evaluating</a></li>
         <li class="sidebar-label">HSC Guidance</li>
-        <li><a href="#hsc-assessment-guidance">📝 8. HSC Assessment Guidance</a></li>
-        <li><a href="#project-documentation">📁 9. Project Documentation</a></li>
+        <li><a href="#hsc-assessment-guidance">8. HSC Assessment Guidance</a></li>
+        <li><a href="#project-documentation">9. Project Documentation</a></li>
         <li class="sidebar-label">Additional Topics</li>
-        <li><a href="#team-roles">👥 10. Team Roles &amp; Dynamics</a></li>
-        <li><a href="#deployment">🚀 11. Deployment &amp; DevOps</a></li>
-        <li><a href="#post-project">📊 12. Post-Project Evaluation</a></li>
-        <li><a href="#tech-stack">🛠️ 13. Tech Stack Guide</a></li>
+        <li><a href="#team-roles">10. Team Roles &amp; Dynamics</a></li>
+        <li><a href="#deployment">11. Deployment &amp; DevOps</a></li>
+        <li><a href="#post-project">12. Post-Project Evaluation</a></li>
+        <li><a href="#tech-stack">13. Tech Stack Guide</a></li>
       </ul>
     </aside>
 
@@ -191,16 +191,16 @@
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Phase 1</span>
-          <span class="part-name">🎯 Identifying and Defining</span>
+          <span class="part-name">Identifying and Defining</span>
         </div>
 
         <!-- 1. Identifying & Defining -->
         <section id="identifying-defining">
-          <h2 class="syllabus-phase">🎯 Identifying and Defining</h2>
+          <h2 class="syllabus-phase">Identifying and Defining</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Define and analyse</strong> the requirements of a problem to ensure the software engineering solution is viable and purposeful.</em></p>
 
-          <h3>📋 Problem Requirements</h3>
+          <h3>Problem Requirements</h3>
           <p>Before coding begins, a software engineer must define the core requirements (Outcome SE-12-01):</p>
           <ul>
             <li><strong>🎯 Demonstrating needs or opportunities:</strong> Clearly identifying the real-world problem the software solves for the client.</li>
@@ -210,7 +210,7 @@
             <li><strong>🚧 Defining boundaries:</strong> Establishing the scope to prevent "scope creep" during development.</li>
           </ul>
 
-          <h3>🛠️ Tools for Idea Generation &amp; Solution Development</h3>
+          <h3>Tools for Idea Generation &amp; Solution Development</h3>
           <p><strong>Explore</strong> the tools used to develop ideas and guide the project lifecycle (Outcome SE-12-06):</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>💡 Idea Generation</strong><span>Brainstorming, mind-mapping, and Storyboards (Course Spec p. 9) to visualise user interfaces.</span></div>
@@ -219,11 +219,11 @@
             <div class="key-term-item"><strong>🚀 Post-Development</strong><span>Installation and ongoing maintenance procedures.</span></div>
           </div>
 
-          <h3>📐 Project Structure Chart</h3>
+          <h3>Project Structure Chart</h3>
           <p>A <strong>structure chart</strong> breaks the software solution into its major components before coding begins. It shows how the top-level system is decomposed into modules, and how those modules relate to each other. The chart below illustrates a typical school library management system.</p>
 
           <div class="diagram-block">
-            <h4>📐 Structure Chart — Library Management System</h4>
+            <h4>Structure Chart — Library Management System</h4>
             <p class="diagram-subtitle">Top-down decomposition of the student project</p>
             <p class="diagram-description">
               The structure chart below shows how the Library Management System is decomposed into functional modules. Each module represents a separate responsibility, allowing the engineer to plan which functions to build first and how they interact.
@@ -244,7 +244,7 @@
             </p>
           </div>
 
-          <h3>🔍 Requirements Analysis</h3>
+          <h3>Requirements Analysis</h3>
           <p>Requirements must be clearly categorised before development starts. <strong>⚙️ Functional requirements</strong> describe <em>what</em> the system must do; <strong>⚡ Non-functional requirements</strong> describe <em>how well</em> it must do it (quality attributes). Documenting both types ensures the solution is both complete and fit for purpose.</p>
 
           <div class="table-wrap">
@@ -310,7 +310,7 @@
             </table>
           </div>
 
-          <h3>📝 User Stories and Acceptance Criteria</h3>
+          <h3>User Stories and Acceptance Criteria</h3>
           <p><strong>User stories</strong> capture requirements from the end-user's perspective in plain language. They follow the format: <em>"As a [role], I want [feature], so that [benefit]."</em> Each user story is accompanied by <strong>acceptance criteria</strong> — specific, testable conditions that confirm the story has been implemented correctly.</p>
 
           <div class="table-wrap">
@@ -377,12 +377,12 @@
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Phase 2</span>
-          <span class="part-name">🔬 Research and Planning</span>
+          <span class="part-name">Research and Planning</span>
         </div>
 
         <!-- 2. Implementation Methods -->
         <section id="implementation-methods">
-          <h2 class="syllabus-phase">🚀 Software Implementation Methods</h2>
+          <h2 class="syllabus-phase">Software Implementation Methods</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-01)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> types of software implementation methods used when transitioning a client from an old system to a new solution (Outcome SE-12-01).</em></p>
 
@@ -416,7 +416,7 @@
           </div>
 
           <div class="callout feature my-large">
-            <h3>🧩 Case Study Matcher: Justifying Your Method</h3>
+            <h3>Case Study Matcher: Justifying Your Method</h3>
             <p>NESA highly values your ability to <strong>justify</strong> the method chosen for a specific scenario. Use the interactive examples below to match the scenario to the best implementation method.</p>
 
             <details class="interactive-case">
@@ -449,21 +449,21 @@
 
         <!-- 3. Development Approaches -->
         <section id="development-approaches">
-          <h2 class="syllabus-phase">🏗️ Research and Planning: Development Approaches</h2>
+          <h2 class="syllabus-phase">Research and Planning: Development Approaches</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-01)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Research and use</strong> standard software development approaches to structure the engineering lifecycle.</em></p>
 
           <div class="info-grid">
             <div class="info-card">
-              <h4>🌊 Waterfall Approach</h4>
+              <h4>Waterfall Approach</h4>
               <p>A sequential model with a <strong>logical progression of steps</strong>. Stages flow downwards like 'falling water' (Requirements → Design → Implementation → Testing → Maintenance). <br><br><strong>Pros:</strong> Highly documented, clear milestones. <br><strong>Cons:</strong> Inflexible to changing requirements. <br><strong>Scale:</strong> Best for massive, stable developments (e.g., government infrastructure).</p>
             </div>
             <div class="info-card">
-              <h4>🏃 Agile Approach</h4>
+              <h4>Agile Approach</h4>
               <p>An iterative <strong>workflow</strong> focusing on the rapid <strong>rate of developing a final solution</strong>. Allows for <strong>method tailoring</strong> to adapt to evolving client needs. <br><br><strong>Scale:</strong> Ideal for dynamic, medium-scale developments (e.g., commercial web apps) where requirements frequently shift.</p>
             </div>
             <div class="info-card col-full">
-              <h4>🧬 WAgile Approach &amp; Intervention</h4>
+              <h4>WAgile Approach &amp; Intervention</h4>
               <p><strong>Research</strong> WAgile, understanding it is a <strong>hybrid model</strong>. It combines Waterfall's rigorous upfront planning with <strong>Agile</strong>'s iterative coding. <br><br><strong>Intervention:</strong> NESA requires you to analyze when and how <strong>intervention</strong> is applied. In WAgile, intervention is applied 'when' regulatory compliance requires strict phase-gate reviews (Waterfall style), but 'how' the code is written between these gates remains <strong>agile</strong>. <br><strong>Scale:</strong> Complex enterprise developments.</p>
               
               <div class="diagram-block mt-15px">
@@ -498,20 +498,20 @@
 
         <!-- 4. Project Management & Communication -->
         <section id="project-management">
-          <h2 class="syllabus-phase">📅 Project Management &amp; Communication</h2>
+          <h2 class="syllabus-phase">Project Management &amp; Communication</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-05, SE-12-09)</em></p>
           
-          <h3>📅 Project Management</h3>
+          <h3>Project Management</h3>
           <p><strong>Apply</strong> project management to plan and conduct the development of a software solution. This involves scheduling and tracking using software tools, notably 🛠️ <strong>Gantt charts</strong> (Course Spec p. 11), to allocate time to tasks, and using collaborative tools (e.g., GitHub, Jira) to track team progress (Outcome SE-12-09).</p>
 
-          <h3>💬 Communication &amp; Social Issues</h3>
+          <h3>Communication &amp; Social Issues</h3>
           <p><strong>Explore</strong> communication issues associated with project work. Engineers must prioritise <strong>involving and empowering the client</strong> through constant dialogue, <strong>enabling feedback</strong> during <strong>Agile</strong> iterations, and <strong>negotiating</strong> realistic deadlines and features (Outcome SE-12-09). <br><br>Furthermore, engineers must <strong>explore social and ethical issues</strong>, such as equitably dividing work when collaborating, acting professionally when working individually, and transparently responding to stakeholder concerns regarding data security (Outcome SE-12-05).</p>
 
-          <h3>📊 Gantt Chart — Project Schedule</h3>
+          <h3>Gantt Chart — Project Schedule</h3>
           <p>A <strong>Gantt chart</strong> is a horizontal bar chart that maps project tasks against a timeline. It visually shows the start date, duration, and end date of each task, and can indicate task dependencies (where one task must complete before another begins). In the SEP, your Gantt chart must cover all four project phases.</p>
 
           <div class="diagram-block">
-            <h4>📅 Gantt Chart — Library Management System (10-Week Schedule)</h4>
+            <h4>Gantt Chart — Library Management System (10-Week Schedule)</h4>
             <p class="diagram-subtitle">Task scheduling across the four project phases</p>
             <p class="diagram-description">
               The Gantt chart below maps each project phase to a weekly timeline. Tasks are shown with their allocated week ranges. Critical dependencies (such as requirements being completed before design can begin) are reflected in the sequencing.
@@ -545,7 +545,7 @@ Key: ███ = Task active during this week</pre>
             </p>
           </div>
 
-          <h3>⚠️ Risk Management</h3>
+          <h3>Risk Management</h3>
           <p>Risk management involves identifying potential threats to project success, assessing their likelihood and impact, and planning mitigation strategies in advance. A risk register is maintained throughout the project and updated as new risks emerge or existing risks are resolved.</p>
 
           <div class="table-wrap">
@@ -606,7 +606,7 @@ Key: ███ = Task active during this week</pre>
             </table>
           </div>
 
-          <h3>🎨 Storyboards and Wireframes</h3>
+          <h3>Storyboards and Wireframes</h3>
           <p>A <strong>storyboard</strong> visually maps the sequence of screens a user encounters when completing a task. A <strong>wireframe</strong> is a low-fidelity layout sketch of a single screen, showing the placement of UI elements without colour or detailed styling. Together, they allow client feedback on the interface before any front-end code is written.</p>
 
           <div class="callout tip">
@@ -619,11 +619,11 @@ Key: ███ = Task active during this week</pre>
             </ul>
           </div>
 
-          <h3>📈 Data Flow Diagram (DFD)</h3>
+          <h3>Data Flow Diagram (DFD)</h3>
           <p>A <strong>Data Flow Diagram (DFD)</strong> models how data moves through a system. It shows external entities (users or other systems), processes that transform data, data stores (databases or files), and the data flows connecting them. A <strong>Level 0 DFD</strong> (Context Diagram) shows the entire system as a single process with all external entities. A <strong>Level 1 DFD</strong> expands the main process into its sub-processes.</p>
 
           <div class="diagram-block">
-            <h4>📊 DFD Notation — Level 0 Context Diagram (Library System)</h4>
+            <h4>DFD Notation — Level 0 Context Diagram (Library System)</h4>
             <p class="diagram-subtitle">External entities and the core system boundary</p>
             <p class="diagram-description">
               A Level 0 DFD (Context Diagram) shows the entire system as a single circle (process), with all external entities and the data flows between them and the system. It defines the system boundary — what is inside and outside the scope of the software.
@@ -671,28 +671,28 @@ Key:
 
         <!-- 5. Quality Assurance & Back-End -->
         <section id="quality-backend">
-          <h2 class="syllabus-phase">🛡️ Quality Assurance &amp; Back-End Engineering</h2>
+          <h2 class="syllabus-phase">Quality Assurance &amp; Back-End Engineering</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-06, SE-12-07)</em></p>
 
-          <h3>🛡️ Quality Assurance (QA)</h3>
+          <h3>Quality Assurance (QA)</h3>
           <p><strong>Investigate</strong> how software engineering solutions are quality assured. QA involves defining clear criteria on which quality will be judged (e.g., load times, error rates). It requires a <strong>continual checking process</strong> to ensure requirements are met, whilst strictly addressing compliance and legislative requirements (e.g., Australian Privacy Principles) (Outcome SE-12-01).</p>
 
-          <h3>📐 Modelling Tools</h3>
+          <h3>Modelling Tools</h3>
           <p><strong>Demonstrate</strong> the use of 🛠️ <strong>modelling tools</strong> to map out software logic. This includes Data Flow Diagrams (DFDs), Structure Charts, and Decision Trees (Course Spec p. 5-10) (Outcome SE-12-06).</p>
 
-          <h3>⚙️ Back-End Engineering Contribution</h3>
+          <h3>Back-End Engineering Contribution</h3>
           <p><strong>Explain</strong> the contribution of back-end engineering to the success and ease of software development (Outcome SE-12-07):</p>
 
-          <h4>🖥️ Technology Used</h4>
+          <h4>Technology Used</h4>
           <p>The selection of server-side frameworks and database technologies fundamentally determines a project's performance, scalability, and long-term maintainability. For example, a <strong>Django</strong> (Python) framework provides a built-in ORM, <strong>authentication</strong> system, and admin panel — dramatically reducing development time for data-driven applications. Alternatively, <strong>Node.js</strong> enables non-blocking I/O suited to high-concurrency environments, such as real-time chat applications. Database choice is equally critical: a relational database such as <strong>PostgreSQL</strong> enforces data integrity through foreign keys and ACID transactions, whereas a NoSQL database such as <strong>MongoDB</strong> offers flexible document schemas suited to rapidly evolving data models.</p>
 
-          <h4>⚠️ Error Handling</h4>
+          <h4>Error Handling</h4>
           <p>Robust error handling ensures the server remains stable and informative when unexpected inputs or system failures occur. Without it, an unhandled exception could crash the entire server process — making the application unavailable to all users simultaneously. For example, a <code>try/except</code> block in Python can catch a database connection timeout and return a user-friendly <strong>503 Service Unavailable</strong> <strong>HTTP</strong> response, rather than exposing a raw stack trace to the client. Additionally, structured logging (e.g., Python's <code>logging</code> module) records error details for post-mortem debugging, without leaking sensitive system information to end-users.</p>
 
-          <h4>🔗 Interfacing with Front End</h4>
+          <h4>Interfacing with Front End</h4>
           <p>Back-end engineers design <strong>Application Programming Interfaces (APIs)</strong> that define precisely how the front-end client requests and receives data. A <strong>RESTful API</strong> uses standard <strong>HTTP</strong> methods (GET, POST, PUT, DELETE) with JSON payloads, allowing any front-end technology — React, Angular, or a mobile app — to consume the same endpoints without modification. For example, a GET request to <code>/api/students/42</code> would return a JSON object containing that student's profile. Efficient API design minimises data transfer by returning only required fields, and uses <strong>HTTP</strong> status codes correctly (200 OK, 404 Not Found, 401 Unauthorised) so the front end can respond appropriately to every outcome.</p>
 
-          <h4>🔐 Security Engineering</h4>
+          <h4>Security Engineering</h4>
           <p>The back end is the primary line of defence against malicious attacks. <strong>Password security</strong> is implemented through cryptographic hashing <strong>algorithms</strong> such as <strong>bcrypt</strong>, which store a one-way hash rather than plaintext — meaning a complete database breach still cannot reveal user credentials. <strong>Input sanitisation</strong> and parameterised SQL queries prevent <strong>SQL injection</strong> attacks, where an attacker might otherwise embed SQL commands in a form field to manipulate or delete database records. Additionally, implementing <strong>HTTPS with TLS certificates</strong> encrypts all data in transit, protecting against man-in-the-middle attacks on public networks.</p>
         </section>
 
@@ -703,17 +703,17 @@ Key:
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Phase 3</span>
-          <span class="part-name">💻 Producing and Implementing</span>
+          <span class="part-name">Producing and Implementing</span>
         </div>
 
         <!-- 6. Producing & Implementing -->
         <section id="producing">
-          <h2 class="syllabus-phase">💻 Producing and Implementing</h2>
+          <h2 class="syllabus-phase">Producing and Implementing</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-04, SE-12-06, SE-12-09)</em></p>
 
           <p class="syllabus-concept">📌 <em><strong>Design, construct and implement</strong> a solution to a software problem using appropriate development approaches. Engineers must <strong>develop, construct and document algorithms</strong> and allocate appropriate resources to support development (Outcome SE-12-02).</em></p>
 
-          <h3>💾 Programmed Data Backup &amp; Version Control</h3>
+          <h3>Programmed Data Backup &amp; Version Control</h3>
           <p><strong>Demonstrate</strong> the use of programmed data backup to ensure data integrity during development. Additionally, <strong>implement version control</strong> (e.g., Git) to safely track code changes, manage collaborative merges, and document the project's evolution (Outcome SE-12-04, SE-12-09).</p>
 
           <div class="code-block">
@@ -736,11 +736,11 @@ Key:
 programmed_backup(<span class="str">'app_data.sqlite3'</span>, <span class="str">'./backups'</span>)</code></pre>
           </div>
 
-          <h3>💡 Strategies for Difficulties & Outsourcing</h3>
+          <h3>Strategies for Difficulties & Outsourcing</h3>
           <p><strong>Explore</strong> strategies to respond to difficulties when developing. This includes searching for solutions online (e.g., official documentation, StackOverflow), seeking <strong>collaboration with peers</strong> for code reviews, or <strong>outsourcing</strong> specific technical components (e.g., paying for an external API service rather than building it from scratch) (Outcome SE-12-09).</p>
 
           <div class="callout feature my-large">
-            <h4>⚖️ "Buy vs. Build" Decision Guide</h4>
+            <h4>"Buy vs. Build" Decision Guide</h4>
             <p>NESA highly regards students who can justify their development strategies. If you face a complex difficulty (e.g., implementing secure logins), use this logic to justify <strong>outsourcing</strong>:</p>
             <table class="decision-table">
               <tr><th>Factor</th><th>Build (In-House)</th><th>Buy / Outsource (Third-Party)</th></tr>
@@ -751,10 +751,10 @@ programmed_backup(<span class="str">'app_data.sqlite3'</span>, <span class="str"
             </table>
           </div>
 
-          <h3>✨ Innovative UI Solutions</h3>
+          <h3>Innovative UI Solutions</h3>
           <p><strong>Propose</strong> an additional innovative solution using a <strong>prototype</strong> and a <strong>user interface (UI)</strong> design. Prototyping allows clients to interact with a mock-up of the system, providing early validation of the UI layout before heavy backend coding commences (Outcome SE-12-06).</p>
 
-          <h3>🌿 Version Control Workflow</h3>
+          <h3>Version Control Workflow</h3>
           <p><strong>Version control</strong> is a fundamental professional practice. Git allows engineers to track every change made to the codebase, revert to earlier versions if bugs are introduced, and collaborate without overwriting each other's work. The workflow below demonstrates the standard Git feature-branch workflow used in professional software engineering.</p>
 
           <div class="code-block">
@@ -800,7 +800,7 @@ git push origin main --tags</code></pre>
             </ul>
           </div>
 
-          <h3>🧩 Modular Design — Python Example</h3>
+          <h3>Modular Design — Python Example</h3>
           <p>A well-engineered solution separates concerns into distinct modules and classes. The example below shows how the Library Management System is implemented using modular Python, with each class responsible for a single aspect of the system.</p>
 
           <div class="code-block">
@@ -899,7 +899,7 @@ if __name__ == "__main__":
     print(loan_service.issue_loan(book1, member1))</code></pre>
           </div>
 
-          <h3>✅ Code Review Checklist</h3>
+          <h3>Code Review Checklist</h3>
           <p>A <strong>code review</strong> is the systematic examination of code by a peer before it is merged into the main branch. It catches bugs, ensures style consistency, and improves overall code quality. The checklist below should be applied during every code review in a collaborative project.</p>
 
           <div class="table-wrap">
@@ -966,11 +966,11 @@ if __name__ == "__main__":
             </table>
           </div>
 
-          <h3>🐛 Debugging Process</h3>
+          <h3>Debugging Process</h3>
           <p><strong>Debugging</strong> is the systematic process of identifying, isolating, and fixing defects in code. A structured debugging process is faster and more reliable than randomly changing code and hoping for improvement.</p>
 
           <div class="diagram-block">
-            <h4>🐛 Debugging Process Flowchart</h4>
+            <h4>Debugging Process Flowchart</h4>
             <p class="diagram-subtitle">Systematic approach to identifying and resolving defects</p>
             <p class="diagram-description">
               The flowchart below shows the structured debugging process. It begins with observing the bug and ends with verifying the fix has not introduced any new defects (regression testing).
@@ -1011,20 +1011,20 @@ flowchart TD
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Phase 4</span>
-          <span class="part-name">🧪 Testing and Evaluating</span>
+          <span class="part-name">Testing and Evaluating</span>
         </div>
 
         <!-- 7. Testing & Evaluating -->
         <section id="testing-evaluating">
-          <h2 class="syllabus-phase">🧪 Testing and Evaluating</h2>
+          <h2 class="syllabus-phase">Testing and Evaluating</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-08, SE-12-09)</em></p>
 
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> methodologies to test and evaluate code, and <strong>Analyse and respond</strong> to client feedback. Evaluating the effectiveness of a solution ensures it meets the initial problem requirements.</em></p>
 
-          <h3>🎯 Effectiveness &amp; Testing Data</h3>
+          <h3>Effectiveness &amp; Testing Data</h3>
           <p>Evaluation involves generating a <strong>test plan</strong> and executing it using rigorous testing data based on <strong>path testing</strong> (ensuring every line of code executes) and <strong>boundary testing</strong> (testing the extreme limits of input constraints). Engineers evaluate success by <strong>comparing actual output with expected output</strong>, and develop a final report to synthesise client feedback (Outcome SE-12-08, SE-12-09).</p>
 
-          <h3>⚡ Language-Dependent Code Optimisation</h3>
+          <h3>Language-Dependent Code Optimisation</h3>
           <p><strong>Use</strong> language-dependent code optimisation techniques to refine execution speed and readability. In Python, this often involves using list comprehensions instead of standard loops, or utilising built-in C-optimised functions (Outcome SE-12-08).</p>
 
           <div class="code-block">
@@ -1321,11 +1321,11 @@ flowchart TD
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">HSC Guidance</span>
-          <span class="part-name">📝 HSC Assessment Guidance</span>
+          <span class="part-name">HSC Assessment Guidance</span>
         </div>
 
         <section id="hsc-assessment-guidance">
-          <h2 class="syllabus-phase">📝 HSC Assessment Guidance</h2>
+          <h2 class="syllabus-phase">HSC Assessment Guidance</h2>
           <p class="outcome-subtitle">🎯 <em>(All Outcomes: SE-12-01 to SE-12-09)</em></p>
           <p class="syllabus-concept">📌 <em>Understanding what assessors are looking for in each phase will help you maximise marks and avoid common pitfalls.</em></p>
 
@@ -1346,7 +1346,7 @@ flowchart TD
 
           <div class="info-grid">
             <div class="info-card">
-              <h4>🎯 Phase 1 — Identifying &amp; Defining</h4>
+              <h4>Phase 1 — Identifying &amp; Defining</h4>
               <ul>
                 <li>Clear, genuine real-world problem statement</li>
                 <li>Evidence of client consultation (meeting minutes, survey)</li>
@@ -1357,7 +1357,7 @@ flowchart TD
               </ul>
             </div>
             <div class="info-card">
-              <h4>🔬 Phase 2 — Research &amp; Planning</h4>
+              <h4>Phase 2 — Research &amp; Planning</h4>
               <ul>
                 <li>Justified choice of development approach (<strong>Agile</strong>/Waterfall)</li>
                 <li>Complete Gantt chart covering all phases</li>
@@ -1368,7 +1368,7 @@ flowchart TD
               </ul>
             </div>
             <div class="info-card">
-              <h4>💻 Phase 3 — Producing &amp; Implementing</h4>
+              <h4>Phase 3 — Producing &amp; Implementing</h4>
               <ul>
                 <li>Code that matches the planned design</li>
                 <li>Regular Git commits with meaningful messages</li>
@@ -1379,7 +1379,7 @@ flowchart TD
               </ul>
             </div>
             <div class="info-card">
-              <h4>🧪 Phase 4 — Testing &amp; Evaluating</h4>
+              <h4>Phase 4 — Testing &amp; Evaluating</h4>
               <ul>
                 <li><strong>Functional Testing:</strong> Checking workflows against the functional requirements.</li>
                 <li><strong>Acceptance Testing:</strong> Client confirms the software solves their original problem (UAT).</li>
@@ -1506,11 +1506,11 @@ print(f"Time taken to process 50,000 queries over 10K records: {end_time - start
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Documentation</span>
-          <span class="part-name">📁 Project Documentation Examples</span>
+          <span class="part-name">Project Documentation Examples</span>
         </div>
 
         <section id="project-documentation">
-          <h2 class="syllabus-phase">📁 Project Documentation Examples</h2>
+          <h2 class="syllabus-phase">Project Documentation Examples</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-05, SE-12-09)</em></p>
           <p class="syllabus-concept">📌 <em>Professional software engineering projects maintain comprehensive documentation throughout the development lifecycle. The examples below illustrate the standard and format expected in HSC submissions.</em></p>
 
@@ -1579,7 +1579,7 @@ print(f"Time taken to process 50,000 queries over 10K records: {end_time - start
             </table>
           </div>
 
-          <h3>📝 Change Request Log</h3>
+          <h3>Change Request Log</h3>
           <p>A <strong>change request log</strong> records any modifications to the original requirements after the requirements document has been signed. It prevents scope creep by requiring formal approval for each change, and ensures all parties agree on the updated scope.</p>
 
           <div class="table-wrap">
@@ -1627,7 +1627,7 @@ print(f"Time taken to process 50,000 queries over 10K records: {end_time - start
             </table>
           </div>
 
-          <h3>📖 Data Dictionary</h3>
+          <h3>Data Dictionary</h3>
           <p>A <strong>data dictionary</strong> formally defines every data item used in the system — its name, data type, size, valid range, and description. It ensures consistency between the design documents, database schema, and code. In Python, field sizes and types translate directly to database column definitions and validation logic.</p>
 
           <div class="table-wrap">
@@ -1734,11 +1734,11 @@ print(f"Time taken to process 50,000 queries over 10K records: {end_time - start
 
         <!-- Team Roles & Dynamics -->
         <section id="team-roles">
-          <h2 class="syllabus-phase">👥 Team Roles &amp; Dynamics</h2>
+          <h2 class="syllabus-phase">Team Roles &amp; Dynamics</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Describe</strong> team roles in a software project and <strong>apply</strong> Agile ceremonies to manage communication and progress effectively.</em></p>
 
-          <h3>👥 Common Software Project Roles</h3>
+          <h3>Common Software Project Roles</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1757,7 +1757,7 @@ print(f"Time taken to process 50,000 queries over 10K records: {end_time - start
             </table>
           </div>
 
-          <h3>📅 Agile Ceremonies</h3>
+          <h3>Agile Ceremonies</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>Sprint Planning</strong><span>At the start of each sprint (1–4 weeks): the team selects user stories from the backlog to complete in this sprint. Output: a sprint backlog with estimated tasks. Duration: typically 2–4 hours for a 2-week sprint.</span></div>
             <div class="key-term-item"><strong>Daily Stand-up</strong><span>15-minute daily meeting. Each team member answers: (1) What did I do yesterday? (2) What will I do today? (3) Do I have any blockers? Duration: maximum 15 minutes — stand up to keep it short.</span></div>
@@ -1777,11 +1777,11 @@ print(f"Time taken to process 50,000 queries over 10K records: {end_time - start
 
         <!-- Deployment & DevOps -->
         <section id="deployment">
-          <h2 class="syllabus-phase">🚀 Deployment &amp; DevOps</h2>
+          <h2 class="syllabus-phase">Deployment &amp; DevOps</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Describe</strong> the deployment pipeline and <strong>apply</strong> deployment concepts to ensure software is reliably released to users.</em></p>
 
-          <h3>🚀 Deployment Environments</h3>
+          <h3>Deployment Environments</h3>
           <pre class="text-diagram">Deployment Pipeline
 ──────────────────────────────────────────────────────────────
 Development   →   Staging         →   UAT          →   Production
@@ -1794,7 +1794,7 @@ Each environment serves a purpose:
 • Production  : live system — must be stable, monitored, backed up
 ──────────────────────────────────────────────────────────────</pre>
 
-          <h3>🌐 Hosting Options</h3>=</h3>
+          <h3>Hosting Options</h3>=</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1810,7 +1810,7 @@ Each environment serves a purpose:
             </table>
           </div>
 
-          <h3>✅ Pre-Deployment Checklist</h3>
+          <h3>Pre-Deployment Checklist</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1834,11 +1834,11 @@ Each environment serves a purpose:
 
         <!-- Post-Project Evaluation -->
         <section id="post-project">
-          <h2 class="syllabus-phase">📊 Post-Project Evaluation</h2>
+          <h2 class="syllabus-phase">Post-Project Evaluation</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-07, SE-12-08, SE-12-09)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Evaluate</strong> the completed software project against original requirements and <strong>reflect</strong> on lessons learned to improve future practice.</em></p>
 
-          <h3>📊 Evaluation Framework</h3>
+          <h3>Evaluation Framework</h3>
           <p>A thorough evaluation compares <strong>what you built</strong> against <strong>what you planned</strong> from Phase 1. For each functional and non-functional requirement, ask:</p>
           <ul>
             <li>Was this requirement fully met? Partially? Not met?</li>
@@ -1846,7 +1846,7 @@ Each environment serves a purpose:
             <li>If not fully met, what limited the implementation?</li>
           </ul>
 
-          <h3>📝 Post-Mortem Report Structure</h3>
+          <h3>Post-Mortem Report Structure</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1875,11 +1875,11 @@ Each environment serves a purpose:
 
         <!-- Tech Stack Guidance -->
         <section id="tech-stack">
-          <h2 class="syllabus-phase">🛠️ Tech Stack Selection Guide</h2>
+          <h2 class="syllabus-phase">Tech Stack Selection Guide</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Evaluate</strong> and select appropriate technologies for different HSC project types based on requirements, constraints, and team capability.</em></p>
 
-          <h3>📊 Recommended Stacks for Common HSC Project Types</h3>
+          <h3>Recommended Stacks for Common HSC Project Types</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1895,7 +1895,7 @@ Each environment serves a purpose:
             </table>
           </div>
 
-          <h3>⚖️ Technology Selection Criteria</h3>
+          <h3>Technology Selection Criteria</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>Requirements fit</strong><span>Does the technology support the features you need? (e.g., a web framework needs routing; a game needs a render loop).</span></div>
             <div class="key-term-item"><strong>Team skill level</strong><span>Can you learn this in time? A familiar technology done well beats an unfamiliar one done poorly.</span></div>
@@ -1916,29 +1916,29 @@ Each environment serves a purpose:
     <div class="footer-inner">
       <div>
         <div class="footer-brand">
-          <div class="footer-logo">💻</div>
+          <div class="footer-logo" aria-hidden="true">{&hairsp;}</div>
           <span class="footer-name">SoftEng Notes</span>
         </div>
         <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
       </div>
       <div class="footer-col">
-        <h4>🔐 Year 12</h4>
+        <h4>Year 12</h4>
         <a href="secure-software-architecture.html">Secure Architecture</a>
         <a href="programming-for-the-web.html">Web Programming</a>
         <a href="software-automation.html">Software Automation</a>
         <a href="software-engineering-project.html">Engineering Project</a>
       </div>
       <div class="footer-col">
-        <h4>📈 Year 11</h4>
+        <h4>Year 11</h4>
         <a href="programming-fundamentals.html">Programming Fundamentals</a>
         <a href="object-oriented-paradigm.html">OOP</a>
         <a href="programming-mechatronics.html">Mechatronics</a>
       </div>
       <div class="footer-col">
-        <h4>🛡️ Navigate</h4>
+        <h4>Navigate</h4>
         <a href="../index.html">← Back to Home</a>
-        <a href="glossary.html">📖 Glossary</a>
-        <a href="sdlc.html">🔄 SDLC Guide</a>
+        <a href="glossary.html">Glossary</a>
+        <a href="sdlc.html">SDLC Guide</a>
         <a href="secure-software-architecture.html">🔒 Secure Architecture →</a>
       </div>
     </div>
@@ -1947,7 +1947,7 @@ Each environment serves a purpose:
     </div>
   </footer>
 
-  <script src="../js/main.js?v=9"></script>
+  <script src="../js/main.js?v=10"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script src="../js/mermaid-init.js?v=1"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
