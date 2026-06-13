@@ -1856,6 +1856,95 @@ section > h2.syllabus-phase:first-child {
   color: #6EE7B7;
 }
 
+/* ── Video Resource Boxes ── */
+.video-box {
+  margin: 1.75rem 0;
+  padding: 1.15rem 1.4rem 1.25rem;
+  border: 1px solid rgba(220,38,38,.28);
+  border-left: 5px solid #DC2626;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(220,38,38,.06) 0%, rgba(220,38,38,.02) 100%);
+  transition: all 220ms cubic-bezier(.4,0,.2,1);
+}
+.video-box:hover {
+  box-shadow: 0 6px 18px rgba(220,38,38,.12);
+  transform: translateX(2px);
+}
+.video-box-label {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #B91C1C;
+  margin-bottom: .85rem;
+}
+.video-box-label .video-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 6px;
+  background: #DC2626;
+  color: #fff;
+  font-size: .7rem;
+  padding-left: 2px;
+}
+.video-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+}
+.video-list li {
+  margin: 0;
+  padding: 0;
+}
+.video-list a {
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  line-height: 1.4;
+}
+.video-list a::before {
+  content: "▶";
+  color: #DC2626;
+  font-size: .7rem;
+  flex-shrink: 0;
+  transform: translateY(-1px);
+}
+.video-list a:hover { color: #B91C1C; }
+.video-list a:hover .video-meta { color: #B91C1C; }
+.video-meta {
+  font-weight: 500;
+  font-size: .82rem;
+  color: var(--text-muted);
+}
+.video-box-note {
+  font-size: .82rem;
+  color: var(--text-muted);
+  margin: .85rem 0 0;
+  font-style: italic;
+}
+[data-theme="dark"] .video-box {
+  border-color: rgba(248,113,113,.28);
+  border-left-color: #F87171;
+  background: linear-gradient(135deg, rgba(248,113,113,.10) 0%, rgba(248,113,113,.03) 100%);
+}
+[data-theme="dark"] .video-box-label { color: #FCA5A5; }
+[data-theme="dark"] .video-box-label .video-icon { background: #EF4444; }
+[data-theme="dark"] .video-list a:hover,
+[data-theme="dark"] .video-list a:hover .video-meta { color: #FCA5A5; }
+[data-theme="dark"] .video-list a::before { color: #F87171; }
+
 /* ── Code Blocks ── */
 .code-block {
   position: relative;

@@ -51,7 +51,7 @@
   <meta name="description" content="HSC Secure Software Architecture notes — CIA triad, STRIDE, authentication, encryption, defensive coding, and privacy by design. Year 12 NESA NSW." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=10" />
+  <link rel="stylesheet" href="../css/styles.css?v=11" />
 </head>
 <body>
 
@@ -147,7 +147,7 @@
       </nav>
       <h1>Secure Software Architecture</h1>
       <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
-        Industry-recognised techniques for designing and developing secure software — from security-by-design principles and defensive coding to vulnerability management and the ethical ramifications of secure systems.
+        Industry-recognised techniques for designing and developing secure software — from <strong>security-by-design</strong> principles and <strong>defensive coding</strong> to <strong>vulnerability management</strong> and the social, ethical and legal ramifications of secure systems.
       </p>
       <div class="topic-header-meta">
         <span class="meta-pill year12">Year 12 — HSC</span>
@@ -457,6 +457,15 @@
               <strong>Try This:</strong> Identify which security concept (CIA+AAA) would be violated by a replay attack, and propose a technical control to prevent it
             </p>
           </div>
+
+          <div class="video-box">
+            <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
+            <ul class="video-list">
+              <li><a href="https://www.youtube.com/watch?v=ZghMPWGXexs" target="_blank" rel="noopener">The Internet: Encryption &amp; Public Keys <span class="video-meta">— Code.org · 7 min</span></a></li>
+              <li><a href="https://www.youtube.com/watch?v=8ZtInClXe1Q" target="_blank" rel="noopener">How NOT to Store Passwords! <span class="video-meta">— Computerphile · 9 min</span></a></li>
+            </ul>
+            <p class="video-box-note">Short, beginner-friendly explainers on how <strong>encryption</strong> protects <strong>confidentiality</strong> and why passwords must be <strong>hashed and salted</strong> — not stored as plain text.</p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -475,6 +484,14 @@
             <div class="key-term-item"><strong>🔑 Asymmetric Encryption</strong><span>Uses a mathematically linked key pair — a <strong>public key</strong> (freely shared, used to encrypt) and a <strong>private key</strong> (secret, used to decrypt). RSA-2048 and ECC are common <strong>algorithms</strong>. Used in <strong>TLS</strong> handshakes to securely exchange a symmetric session key at the start of every <strong>HTTPS</strong> connection, and in digital signatures to verify identity.</span></div>
             <div class="key-term-item"><strong>#️⃣ Hashing</strong><span>A one-way mathematical function producing a fixed-length fingerprint (hash) of any input — impossible to reverse. SHA-256 produces a 64-character hex string. Used for password storage (bcrypt adds a random salt before hashing to prevent rainbow table attacks), verifying file integrity, and digital signatures.</span></div>
             <div class="key-term-item"><strong>✍️ Digital Signatures</strong><span>The sender hashes their message, then encrypts the hash with their private key — the result is the signature. The recipient decrypts it with the sender's public key and compares it to their own hash of the message. A match proves authenticity and integrity, providing non-repudiation.</span></div>
+          </div>
+
+          <div class="video-box">
+            <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
+            <ul class="video-list">
+              <li><a href="https://www.youtube.com/watch?v=GSIDS_lvRv4" target="_blank" rel="noopener">Public Key Cryptography <span class="video-meta">— Computerphile · 4 min</span></a></li>
+            </ul>
+            <p class="video-box-note">A clear, plain-English analogy for how <strong>public</strong> and <strong>private keys</strong> work together — the foundation of <strong>asymmetric encryption</strong> and <strong>TLS/HTTPS</strong>.</p>
           </div>
 
           <h3>Sandboxing in Security by Design</h3>
@@ -680,6 +697,15 @@
             <div class="key-term-item"><strong>📋 Input Validation on Every Endpoint</strong><span>Every API endpoint must independently validate and sanitise all inputs — it cannot trust that a calling service has already validated the data. APIs are often called directly by attackers bypassing any client-side validation entirely.</span></div>
             <div class="key-term-item"><strong>🔒 Least Privilege Scopes</strong><span>OAuth 2.0 scopes restrict what each token is authorised to do. A token issued for reading user profile data should not permit writing or deleting data. Separate tokens with minimal scopes for each integration reduce the blast radius of any compromised token.</span></div>
           </div>
+
+          <div class="video-box">
+            <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
+            <ul class="video-list">
+              <li><a href="https://www.youtube.com/watch?v=ciNHn38EyRc" target="_blank" rel="noopener">Running an SQL Injection Attack <span class="video-meta">— Computerphile · 17 min</span></a></li>
+              <li><a href="https://www.youtube.com/watch?v=L5l9lSnNMxg" target="_blank" rel="noopener">Cross Site Scripting (XSS) <span class="video-meta">— Computerphile · 11 min</span></a></li>
+            </ul>
+            <p class="video-box-note">See exactly how attackers exploit unvalidated input — and why <strong>input validation</strong>, <strong>sanitisation</strong>, and <strong>parameterised queries</strong> stop them.</p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -691,7 +717,7 @@
           <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> code considering efficient execution for the user, including memory management, session management, and exception management.</em></p>
 
           <h3>Memory Management</h3>
-          <p><strong>Memory management</strong> ensures that the application allocates, uses, and releases memory resources efficiently — preventing memory leaks that degrade performance over time, and preventing memory-based vulnerabilities such as buffer overflows. A <strong>memory leak</strong> occurs when allocated memory is never released after use, gradually consuming all available RAM until the application crashes or the server grinds to a halt. Proper resource management — explicitly closing file handles, database connections, and network sockets after use — is critical to security and performance.</p>
+          <p><strong>Memory management</strong> ensures that the application allocates, uses, and releases memory resources efficiently — preventing memory leaks that degrade performance over time, and preventing memory-based vulnerabilities such as buffer overflows. A <strong>memory leak</strong> happens when memory the program reserved is never given back after it is finished with, slowly using up all available RAM until the application crashes or the server grinds to a halt. Good <strong>resource management</strong> means the program always closes what it opens — files, database connections, and network connections — as soon as they are no longer needed. This is critical for both security and performance.</p>
 
           <h3>Session Management</h3>
           <p><strong>Session management</strong> controls how the server tracks authenticated users across multiple <strong>HTTP</strong> requests — since <strong>HTTP</strong> is stateless, each request must carry proof of identity. Insecure session management is consistently listed in the OWASP Top 10 most critical web vulnerabilities. Secure session management practices:</p>

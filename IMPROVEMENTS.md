@@ -4,6 +4,25 @@ This document tracks the actionable improvements and design enhancements impleme
 
 ---
 
+## ✅ Phase 3: Year 12 Clarity & Video Resources
+
+### Language Clarity & Keyword Emphasis
+- ✅ Reworded dense passages for average students (e.g., Memory Management on Secure Software Architecture now explains memory leaks and resource release in plain English)
+- ✅ Bolded key **syllabus terms** in every Year 12 topic introduction (security-by-design, defensive coding, data transmission, machine learning, neural networks, project management, etc.)
+- Files: all 4 Year 12 topic pages
+
+### Curated YouTube Video Resources
+- ✅ Added a new reusable **video resource** component (`.video-box`) to `css/styles.css` with light/dark theming and a YouTube-red accent
+- ✅ Embedded **13 hand-picked, beginner-friendly videos** across 10 placement points, each next to the relevant section:
+  - **Secure Software Architecture:** Encryption & Public Keys (Code.org), How NOT to Store Passwords & Public Key Cryptography (Computerphile), SQL Injection & XSS (Computerphile)
+  - **Programming for the Web:** Wires/Cables/Wifi & HTTP/HTML (Code.org), REST API Concepts (WebConcepts)
+  - **Software Automation:** Machine Learning & AI (Crash Course CS), Neural Networks (3Blue1Brown), Humans Need Not Apply (CGP Grey)
+  - **Software Engineering Project:** Intro to Scrum (Uzility), Scrum Roles Explained (Atlassian)
+- ✅ Bumped CSS cache version to `?v=11` on all 4 Year 12 pages
+- **Impact:** Students get short, high-quality visual explanations from trusted educational channels, mapped directly to syllabus content
+
+---
+
 ## ✅ Phase 1: Completed Improvements
 
 ### Design System Enhancements
