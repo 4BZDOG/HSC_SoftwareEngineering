@@ -1141,6 +1141,11 @@ body {
   gap: .75rem;
 }
 
+/* Light mode: refined ink-on-paper heading feel */
+[data-theme="light"] .content-body h2 {
+  color: #1a1a2e;
+}
+
 /* ── Syllabus Phase Heading (minor — individual syllabus items) ── */
 .content-body h2.syllabus-phase {
   background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--secondary) 100%);
@@ -1223,6 +1228,17 @@ h2.syllabus-phase .outcome-badge:hover {
   background: rgba(255,255,255,.35);
   transform: none;
   box-shadow: none;
+}
+
+/* Light mode syllabus-phase: lighter, less saturated feel */
+[data-theme="light"] .content-body h2.syllabus-phase {
+  background: linear-gradient(135deg, #2D46B9 0%, #3B50C4 55%, #4F63D0 100%);
+  box-shadow: 0 3px 12px rgba(45, 70, 185, 0.18);
+  border: 1px solid rgba(45,70,185,0.25);
+}
+
+[data-theme="light"] .content-body h2.syllabus-phase:hover {
+  box-shadow: 0 5px 20px rgba(45, 70, 185, 0.28);
 }
 
 [data-theme="dark"] .content-body h2.syllabus-phase {
@@ -1346,12 +1362,10 @@ section > h2.syllabus-phase:first-child {
 
 /* ── Major Syllabus Part Heading (top-level syllabus divisions) ── */
 .part-block {
-  background: linear-gradient(135deg, #141419 0%, #191E33 50%, var(--primary-dark) 100%);
   color: #fff;
-  padding: 1.6rem 3.5rem 1.2rem 2rem; /* Adjusted for perceptual vertical centering */
+  padding: 1.6rem 3.5rem 1.2rem 2rem;
   border-radius: var(--radius-md);
   margin: 2.5rem 0 1.75rem;
-  box-shadow: 0 8px 28px rgba(45, 70, 185, 0.4);
   border-left: 6px solid var(--accent);
   display: flex;
   flex-direction: column;
@@ -1362,12 +1376,30 @@ section > h2.syllabus-phase:first-child {
   transition: box-shadow 240ms ease, transform 200ms ease;
 }
 
+/* Light mode: refined, less heavy */
+[data-theme="light"] .part-block {
+  background: linear-gradient(135deg, #1a1a2e 0%, #2D46B9 100%);
+  box-shadow: 0 4px 16px rgba(45, 70, 185, 0.2);
+}
+
+[data-theme="light"] .part-block:hover {
+  box-shadow: 0 8px 28px rgba(45, 70, 185, 0.32);
+  transform: translateY(-1px);
+}
+
+/* Dark mode: original rich gradient */
+[data-theme="dark"] .part-block,
+.part-block {
+  background: linear-gradient(135deg, #141419 0%, #191E33 50%, var(--primary-dark) 100%);
+  box-shadow: 0 8px 28px rgba(45, 70, 185, 0.4);
+}
+
 .content-body > .part-block:first-child {
   margin-top: 0;
   margin-bottom: 1.75rem;
 }
 
-.part-block:hover {
+[data-theme="dark"] .part-block:hover {
   box-shadow: 0 10px 36px rgba(45, 70, 185, 0.55);
   transform: translateY(-1px);
 }
@@ -1477,16 +1509,18 @@ section > h2.syllabus-phase:first-child {
   opacity: 1;
 }
 
+/* Light mode h2 accent bar — visible, refined */
 .content-body h2::before {
   content: '';
   display: block;
   width: 4px;
   height: 1.5rem;
-  background: var(--primary);
+  background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
   border-radius: var(--radius-full);
   flex-shrink: 0;
 }
 
+/* ── h3 — Section sub-headings ── */
 .content-body h3 {
   font-family: var(--font-display);
   font-size: clamp(1.05rem, 1.4vw, 1.2rem);
@@ -1494,27 +1528,88 @@ section > h2.syllabus-phase:first-child {
   color: var(--text-primary);
   margin: 1.75rem 0 .75rem;
   position: relative;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.6rem;
+  padding-left: 0.85rem;
+  border-left: 3px solid var(--primary);
 }
 
-/* Elegant light mode heading underline */
+/* Light mode h3 — warm ink accent line beneath */
+[data-theme="light"] .content-body h3 {
+  color: #1a1a2e;
+  border-left-color: var(--primary);
+}
+
 [data-theme="light"] .content-body h3::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, var(--primary) 0%, var(--primary) 40%, transparent 100%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
   border-radius: var(--radius-full);
-  opacity: 0.3;
+  opacity: 0.25;
 }
 
+/* Dark mode h3 — subtle glow accent */
+[data-theme="dark"] .content-body h3 {
+  border-left-color: var(--primary);
+}
+
+[data-theme="dark"] .content-body h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
+  border-radius: var(--radius-full);
+  opacity: 0.35;
+}
+
+/* ── h4 — Tertiary headings ── */
 .content-body h4 {
-  font-size: clamp(0.95rem, 1.1vw, 1rem);
-  font-weight: 600;
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  font-weight: 700;
   color: var(--text-primary);
   margin: 1.25rem 0 .5rem;
+  letter-spacing: -0.005em;
+  position: relative;
+  padding-left: 0.75rem;
+}
+
+/* Light mode h4 — small accent dot */
+[data-theme="light"] .content-body h4 {
+  color: var(--primary-dark);
+}
+
+[data-theme="light"] .content-body h4::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 5px;
+  height: 5px;
+  background: var(--primary);
+  border-radius: var(--radius-full);
+}
+
+/* Dark mode h4 */
+[data-theme="dark"] .content-body h4 {
+  color: var(--primary);
+}
+
+[data-theme="dark"] .content-body h4::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 5px;
+  height: 5px;
+  background: var(--primary);
+  border-radius: var(--radius-full);
+  opacity: 0.7;
 }
 
 /* Outcome codes subtitle (moved below headings) */
@@ -1598,7 +1693,10 @@ section > h2.syllabus-phase:first-child {
   border-bottom-color: var(--primary);
 }
 
-/* ── Callout Boxes with Enhanced Design ── */
+/* ═══════════════════════════════════════════════════════════════
+   Callout Boxes — refined card design
+   ═══════════════════════════════════════════════════════════════ */
+
 .callout {
   display: flex;
   flex-direction: column;
@@ -1606,32 +1704,39 @@ section > h2.syllabus-phase:first-child {
   padding: 1.25rem 1.5rem;
   border-radius: var(--radius-lg);
   margin: 1.75rem 0;
-  border: 2px solid;
-  border-left-width: 6px;
-  transition: all var(--transition);
-  backdrop-filter: blur(8px);
+  border: 1px solid;
+  border-left-width: 5px;
+  transition: all 220ms cubic-bezier(.4,0,.2,1);
+  position: relative;
 }
 
 .callout:has(.callout-icon) {
   flex-direction: row;
   gap: 1rem;
-  padding: 1.25rem 1.5rem;
 }
 
 .callout:hover {
-  transform: translateX(3px);
-  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  transform: translateX(2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,.06);
 }
 
-/* Enhanced light mode callouts */
+/* ── Light mode callout base ── */
 [data-theme="light"] .callout {
-  background: linear-gradient(135deg, var(--surface) 0%, rgba(255,255,255,0.5) 100%);
-  border-color: currentColor;
-  border-left-color: currentColor;
+  box-shadow: 0 1px 3px rgba(0,0,0,.04);
 }
 
 [data-theme="light"] .callout:hover {
-  box-shadow: 0 6px 20px rgba(45, 70, 185, 0.12);
+  box-shadow: 0 6px 18px rgba(0,0,0,.07);
+}
+
+/* ── Callout > first strong = label line ── */
+.callout > strong:first-child {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .callout-icon {
@@ -1867,6 +1972,19 @@ pre.text-diagram {
 .info-card-icon {
   font-size: 1.5rem;
   margin-bottom: .75rem;
+}
+
+/* Reset h4 dot-accent inside cards, diagram-blocks, steps */
+.info-card h4,
+.diagram-block h4,
+.step-content h4 {
+  padding-left: 0;
+}
+
+.info-card h4::before,
+.diagram-block h4::before,
+.step-content h4::before {
+  display: none;
 }
 
 .info-card h4 {
@@ -2494,52 +2612,80 @@ section:has(> h2.section-collapsed) + .divider {
   border-color: rgba(45,70,185,0.35);
 }
 
-/* ── Diagram Block Header ── */
+/* ── Diagram Block Header (collapsible) ── */
 .diagram-block h4 {
   margin: 0;
-  padding: 1.1rem 1.5rem 0.85rem;
-  color: #ffffff;
-  font-size: 1rem;
+  padding: 1rem 1.5rem 0.85rem;
+  font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.45;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.005em;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: .75rem;
   user-select: none;
-  transition: filter var(--transition), box-shadow var(--transition);
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--secondary) 100%);
-  border-radius: 0;  /* parent overflow:hidden clips to outer radius */
-  box-shadow: 0 3px 10px rgba(45, 70, 185, 0.2);
+  transition: all 220ms cubic-bezier(.4,0,.2,1);
+  border-radius: 0;
   position: relative;
   overflow: hidden;
+  /* Reset h4 content-body styles inside diagram-block */
+  padding-left: 1.5rem;
 }
 
-/* Subtle top-left shine */
+/* Override content-body h4 ::before dot inside diagram blocks */
 .diagram-block h4::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.14) 0%, transparent 55%);
-  pointer-events: none;
+  display: none;
 }
 
 .diagram-block h4 > span:first-child {
   flex: 1;
-  position: relative;  /* above ::before shine layer */
+  position: relative;
   z-index: 1;
 }
 
-.diagram-block h4:hover {
-  filter: brightness(1.07);
-  box-shadow: 0 4px 16px rgba(45, 70, 185, 0.35);
+/* ── Light mode: clean, refined diagram header ── */
+[data-theme="light"] .diagram-block h4 {
+  background: linear-gradient(135deg, #f0efe8 0%, var(--bg-secondary) 100%);
+  color: var(--primary-dark);
+  border-bottom: 2px solid var(--border);
+  box-shadow: none;
 }
 
+[data-theme="light"] .diagram-block h4::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 80px;
+  height: 2px;
+  background: var(--primary);
+}
+
+[data-theme="light"] .diagram-block h4:hover {
+  background: linear-gradient(135deg, #e8e7df 0%, #e0dfda 100%);
+  color: var(--primary);
+}
+
+/* ── Light mode: diagram chevron ── */
+[data-theme="light"] .diagram-block .diagram-chevron {
+  background: rgba(45, 70, 185, 0.1);
+}
+
+[data-theme="light"] .diagram-block .diagram-chevron svg {
+  stroke: var(--primary);
+}
+
+/* ── Dark mode: rich gradient diagram header ── */
 [data-theme="dark"] .diagram-block h4 {
   background: linear-gradient(135deg, #1F2A66 0%, #2D46B9 55%, #4458C8 100%);
+  color: #ffffff;
   box-shadow: 0 3px 14px rgba(45, 70, 185, 0.3);
+  border-bottom: none;
+}
+
+[data-theme="dark"] .diagram-block h4::after {
+  display: none;
 }
 
 [data-theme="dark"] .diagram-block h4:hover {
@@ -2657,112 +2803,101 @@ section:has(> h2.section-collapsed) + .divider {
   font-style: italic;
 }
 
-/* ── Diagram Caption with Card-Based Design ── */
+/* ═══════════════════════════════════════════════════════════════
+   Diagram Caption — compact inline-label design
+   HTML: <p class="diagram-caption"><strong>Label:</strong> text<br>…</p>
+   ═══════════════════════════════════════════════════════════════ */
+
 .diagram-caption {
-  font-size: 0.875rem;
+  font-size: 0.84rem;
   color: var(--text-secondary);
-  margin-top: 2rem;
-  padding: 0;
-  line-height: 1.8;
-  letter-spacing: 0.3px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  line-height: 1.7;
+  letter-spacing: 0.15px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  position: relative;
 }
 
-/* Individual caption card item */
-.diagram-caption > * {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+/* Accent top-edge stripe */
+.diagram-caption::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 50%, var(--secondary) 100%);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
-/* Purpose, Syllabus Link, Try This cards */
+/* Line breaks between items act as visual spacers */
+.diagram-caption br {
+  display: block;
+  content: '';
+  margin-top: 0.65rem;
+}
+
+/* Inline label pills for Purpose / Syllabus Link / Try This */
 .diagram-caption strong {
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  display: inline-block;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
-  font-size: 0.75rem;
-  padding: 0.75rem 1rem;
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  border-radius: var(--radius-md);
-  width: 100%;
-  border-left: 4px solid var(--accent);
-  box-shadow: 0 2px 6px rgba(45, 70, 185, 0.15);
-  transition: all var(--transition);
-}
-
-.diagram-caption strong:hover {
-  transform: translateX(2px);
-  box-shadow: 0 4px 12px rgba(45, 70, 185, 0.25);
-}
-
-.diagram-caption strong::before {
-  content: '';
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  background: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.6rem;
   border-radius: var(--radius-sm);
-  flex-shrink: 0;
+  margin-right: 0.4rem;
+  vertical-align: baseline;
+  line-height: 1.5;
+  white-space: nowrap;
 }
 
-/* Icon content for different card types */
-.diagram-caption strong:nth-of-type(1)::before { content: '📌'; background: none; }
-.diagram-caption strong:nth-of-type(2)::before { content: '🎯'; background: none; }
-.diagram-caption strong:nth-of-type(3)::before { content: '💡'; background: none; }
+/* Purpose — primary colour */
+.diagram-caption strong:nth-of-type(1) {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+/* Syllabus Link — accent gold */
+.diagram-caption strong:nth-of-type(2) {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* Try This — success green */
+.diagram-caption strong:nth-of-type(3) {
+  background: #22C55E;
+  color: #ffffff;
+}
 
 .diagram-caption strong::after {
   content: '';
 }
 
-.diagram-caption br {
-  display: none;
+/* ── Light mode caption refinements ── */
+[data-theme="light"] .diagram-caption {
+  background: linear-gradient(135deg, #f8f7f4 0%, #f0efe8 100%);
+  border-color: var(--border);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.03);
 }
 
-/* Content following the label */
-.diagram-caption > *:not(strong) {
-  padding: 0 1rem 1rem;
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  line-height: 1.6;
-}
-
-/* Light mode specific */
-[data-theme="light"] .diagram-caption strong {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-  color: #ffffff;
-  box-shadow: 0 2px 6px rgba(45, 70, 185, 0.12);
-}
-
-[data-theme="light"] .diagram-caption strong:hover {
-  box-shadow: 0 4px 12px rgba(45, 70, 185, 0.2);
-}
-
-/* Dark mode specific */
+/* ── Dark mode caption refinements ── */
 [data-theme="dark"] .diagram-caption {
-  gap: 0.75rem;
+  background: rgba(45, 70, 185, 0.06);
+  border-color: var(--border-strong);
 }
 
-[data-theme="dark"] .diagram-caption strong {
-  background: linear-gradient(135deg, #4458C8 0%, #3B4FBF 100%);
-  color: #E9EDFA;
-  box-shadow: 0 3px 12px rgba(45, 70, 185, 0.3);
+[data-theme="dark"] .diagram-caption strong:nth-of-type(1) {
+  background: #3B50C4;
 }
 
-[data-theme="dark"] .diagram-caption strong:hover {
-  box-shadow: 0 6px 16px rgba(45, 70, 185, 0.4);
+[data-theme="dark"] .diagram-caption strong:nth-of-type(2) {
+  background: #B08C3D;
 }
 
-[data-theme="dark"] .diagram-caption > *:not(strong) {
-  padding: 0 1rem 1rem;
-  color: #C9C9D3;
+[data-theme="dark"] .diagram-caption strong:nth-of-type(3) {
+  background: #16A34A;
 }
 
 /* ── Mermaid Diagrams ── */
