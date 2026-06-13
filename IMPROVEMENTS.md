@@ -123,12 +123,13 @@ This document tracks the actionable improvements and design enhancements impleme
 - Integrate into project documentation
 - Estimated effort: 30 minutes
 
-**3. Audit Year 11 Topics**
-- Apply same alignment principles to:
-  - Programming Fundamentals
-  - Object-Oriented Paradigm
-  - Programming Mechatronics
-- Estimated effort: 4-6 hours per topic
+**3. Audit Year 11 Topics** ✅ COMPLETE
+- Applied same alignment principles to all 3 Year 11 topics:
+  - Programming Fundamentals — relabeled "Deep Dive" section (content is syllabus-aligned)
+  - Object-Oriented Paradigm — removed Part 3 "Advanced OOP" (Design Patterns, Abstract Classes, Exception Handling)
+  - Programming Mechatronics — removed Part 4 "Deep Dive Topics" (Interrupts/ISRs, Arduino C vs MicroPython, Communication Protocols, Motor Control, Hardware Debugging)
+- Removed content documented in Extended-Learning.md for students who want to go deeper
+- Updated Syllabus-Mapping.md with Year 11 outcome definitions and topic mappings
 
 ### Medium-term (3-4 weeks)
 

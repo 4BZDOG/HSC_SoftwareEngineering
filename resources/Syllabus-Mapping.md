@@ -173,5 +173,90 @@ Students synthesise findings and develop recommendations for secure software sol
 
 ---
 
+## Year 11 (Preliminary) Syllabus Outcomes
+
+### SE-11-01
+Students describe the functions of hardware and software.
+
+### SE-11-02
+Students describe the interactions between the elements of a computer system.
+
+### SE-11-03
+Students identify and describe ethical, social, and environmental impacts of software engineering.
+
+### SE-11-04
+Students apply safe, secure, and responsible practices in software engineering.
+
+### SE-11-05
+Students apply computational thinking and programming concepts to develop software solutions.
+
+### SE-11-06
+Students apply programming skills to create software solutions.
+
+### SE-11-07
+Students apply knowledge of software engineering to develop quality software solutions.
+
+### SE-11-08
+Students effectively communicate and use appropriate documentation.
+
+---
+
+## Year 11 Topic Mapping
+
+### Programming Fundamentals
+| Section | Outcome(s) | Assessable Focus |
+|---------|-----------|-----------------|
+| Software Development Steps | SE-11-05, SE-11-08 | SDLC phases, documentation |
+| Online Collaboration Tools | SE-11-04, SE-11-08 | Version control, team tools |
+| Computational Thinking & Algorithms | SE-11-05, SE-11-06 | Standard algorithms, search/sort |
+| Divide & Conquer, Backtracking | SE-11-05 | Algorithm strategies |
+| Pseudocode & Flowcharts | SE-11-05, SE-11-08 | Algorithm representation |
+| Modelling Tools | SE-11-05, SE-11-08 | Structure charts, abstraction |
+| Algorithm Analysis | SE-11-05, SE-11-06 | Desk checking, peer review |
+| Programming Paradigms | SE-11-05 | OOP, imperative, logic, functional |
+| Number Systems | SE-11-05 | Binary, hex, two's complement |
+| Data Types & Dictionaries | SE-11-05, SE-11-06 | Primitive/composite types |
+| Data Structures | SE-11-05, SE-11-06 | Arrays, lists, stacks, queues |
+| Applying Computational Thinking | SE-11-05, SE-11-06 | Code implementation |
+| Functions & Procedures | SE-11-05, SE-11-06 | Parameter passing, scope, recursion |
+| Variable Declaration & Naming | SE-11-05 | Naming conventions |
+| Project Management Models | SE-11-05 | Waterfall vs Agile |
+| Testing, Debugging & Errors | SE-11-06, SE-11-07 | Test data, breakpoints, error types |
+
+### The Object-Oriented Paradigm
+| Section | Outcome(s) | Assessable Focus |
+|---------|-----------|-----------------|
+| Key Features of OOP | SE-11-02, SE-11-05 | Classes, objects, four pillars |
+| OOP vs Procedural | SE-11-05 | Paradigm comparison |
+| Four Pillars Applied | SE-11-05, SE-11-06 | Encapsulation, abstraction, inheritance, polymorphism |
+| System Modelling Tools | SE-11-05, SE-11-08 | UML class diagrams, use case |
+| Design Process for OOP | SE-11-05 | Top-down, bottom-up, Facade |
+| Assessing Code Effectiveness | SE-11-07 | Evaluation criteria |
+| Message-Passing Between Objects | SE-11-05, SE-11-06 | Method calls, object interaction |
+| Code Optimisation | SE-11-06, SE-11-07 | Efficiency techniques |
+| Collaborative Development | SE-11-04, SE-11-08 | Version control, code review |
+| Design & Implementation | SE-11-05, SE-11-06 | Control flow, real-world application |
+| Implementation Practices | SE-11-06, SE-11-07 | Clean mainline, stubs, maintenance |
+| Testing & Quality Assurance | SE-11-06, SE-11-07 | Unit/system testing, black/white box |
+| HSC Project OOP Design | SE-11-05, SE-11-06 | Practical class design |
+
+### Programming Mechatronics
+| Section | Outcome(s) | Assessable Focus |
+|---------|-----------|-----------------|
+| Mechatronic Applications | SE-11-01, SE-11-02 | Real-world applications |
+| Microcontrollers & Hardware | SE-11-01, SE-11-02 | MCU vs CPU, specifications |
+| Sensors, Actuators & Manipulators | SE-11-01, SE-11-05 | Input/output devices, types |
+| Data Types & Processing | SE-11-05, SE-11-06 | ADC, diagnostic data |
+| Software Control & Dependencies | SE-11-05, SE-11-06 | Constraints, subsystems |
+| Power, Materials & Wiring | SE-11-01, SE-11-02 | Wiring diagrams, power supply |
+| Specialist Requirements | SE-11-03 | Accessibility considerations |
+| Algorithm Development & Control | SE-11-05, SE-11-06 | Open/closed loop systems |
+| Autonomous Control Features | SE-11-05, SE-11-06 | PID, event-driven, fault tolerance |
+| Design, Develop & Produce | SE-11-05, SE-11-06 | Integrated system design |
+| Implementation & Integration | SE-11-05, SE-11-06 | Driving devices, subsystem integration |
+| Prototyping, Simulation & Testing | SE-11-06, SE-11-07 | Simulation, testing, UI design |
+
+---
+
 **Last Updated:** June 2026
-**Note:** This mapping ensures 100% alignment with NESA NSW HSC Software Engineering assessment and exam scope. Study only content listed here for maximum exam efficiency.
+**Note:** This mapping ensures 100% alignment with NESA NSW Software Engineering assessment and exam scope for both Year 11 (Preliminary) and Year 12 (HSC). Study only content listed here for maximum exam efficiency.

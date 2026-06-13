@@ -299,6 +299,58 @@ If you use GPL-licensed code:
 
 ---
 
+## Year 11 — Advanced Mechatronics Topics (Beyond Syllabus)
+
+These topics extend the Year 11 Programming Mechatronics module but are **not explicitly assessable** in the Preliminary course:
+
+### Interrupts & Interrupt Service Routines (ISRs)
+- Hardware and software interrupts, polling vs interrupt-driven design
+- ISR best practices (keep short, use flags, volatile variables)
+- Resource: Arduino Interrupt Reference, MicroPython IRQ documentation
+
+### Arduino C vs MicroPython Comparison
+- Compiled vs interpreted, memory trade-offs, real-time capability
+- IDE choices: Arduino IDE, PlatformIO, Thonny, VS Code + Pymakr
+- Resource: Arduino Reference (arduino.cc), MicroPython docs (micropython.org)
+
+### Communication Protocols (I2C, SPI, UART)
+- Multi-device bus communication, protocol wire counts, speed trade-offs
+- Practical: connecting sensors, displays, GPS modules
+- Resource: SparkFun Communication Protocols tutorials
+
+### Motor Control (DC, Servo, Stepper)
+- PWM duty cycle for speed control, H-bridge circuits (L298N)
+- Servo angle control via pulse width, stepper motor stepping
+- Resource: Adafruit Motor Shield tutorials
+
+### Hardware Debugging
+- Multimeters, logic analysers, serial monitor/REPL debugging
+- Systematic fault isolation process
+- Resource: SparkFun Troubleshooting Guide
+
+---
+
+## Year 11 — Advanced OOP Topics (Beyond Syllabus)
+
+These topics extend the Year 11 Object-Oriented Paradigm module but are **not explicitly assessable** in the Preliminary course:
+
+### Design Patterns (Singleton, Observer, MVC)
+- Reusable solutions to recurring design problems
+- Singleton for shared resources, Observer for event systems, MVC for separation of concerns
+- Resource: Refactoring Guru (refactoring.guru/design-patterns)
+
+### Abstract Classes & Interfaces
+- Python `abc` module, `@abstractmethod` decorator, enforcing method contracts
+- Duck typing as an alternative to strict type hierarchies
+- Resource: Python ABC documentation (docs.python.org)
+
+### Exception Handling & Custom Exceptions
+- `try/except/else/finally` structure, custom exception class hierarchies
+- Domain-specific error classes for meaningful error reporting
+- Resource: Python Errors and Exceptions documentation
+
+---
+
 ## Career Pathways
 
 ### If You're Interested in Security
@@ -364,4 +416,4 @@ Start with the syllabus content to ace your exams, then explore these tools to:
 ---
 
 **Last Updated:** June 2026
-**Curated for:** NESA NSW Year 12 Software Engineering students
+**Curated for:** NESA NSW Year 11 and Year 12 Software Engineering students
