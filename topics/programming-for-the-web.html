@@ -51,7 +51,7 @@
   <meta name="description" content="HSC Programming for the Web notes — HTML, CSS, JavaScript, REST APIs, SQL, HTTP protocols, security, PWAs, and collaborative development. Year 12 NESA NSW." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=10" />
+  <link rel="stylesheet" href="../css/styles.css?v=11" />
 </head>
 <body>
 
@@ -147,7 +147,7 @@
       </nav>
       <h1>Programming for the Web</h1>
       <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
-        Full-stack web development across the NESA syllabus — data transmission, protocols, security, front-end, back-end, SQL, open source, and Progressive Web Apps.
+        Full-stack web development across the NESA syllabus — <strong>data transmission</strong>, <strong>web protocols</strong>, security, <strong>front-end</strong> and <strong>back-end</strong> development, <strong>SQL</strong>, open source, and <strong>Progressive Web Apps</strong>.
       </p>
       <div class="topic-header-meta">
         <span class="meta-pill year12">Year 12 — HSC</span>
@@ -315,6 +315,15 @@
               <strong>Syllabus Link:</strong> SE-12-03<br>
               <strong>Try This:</strong> Open browser DevTools (F12), go to Network tab, refresh the page, and watch the actual <strong>HTTP</strong> requests and responses happen in real-time!
             </p>
+          </div>
+
+          <div class="video-box">
+            <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
+            <ul class="video-list">
+              <li><a href="https://www.youtube.com/watch?v=ZhEf7e4kopM" target="_blank" rel="noopener">The Internet: Wires, Cables &amp; Wifi <span class="video-meta">— Code.org · 7 min</span></a></li>
+              <li><a href="https://www.youtube.com/watch?v=kBXQZMmiA4s" target="_blank" rel="noopener">The Internet: HTTP &amp; HTML <span class="video-meta">— Code.org · 6 min</span></a></li>
+            </ul>
+            <p class="video-box-note">Two short videos that show how data physically travels as <strong>packets</strong> and how the browser and server talk using <strong>HTTP</strong> — ideal background before the protocols section.</p>
           </div>
         </section>
 
@@ -861,6 +870,14 @@ git merge feature/user-login</code></pre>
 
           <div class="callout info">
             <strong>Full Request Lifecycle:</strong> Browser → DNS → Web Server (Nginx) → Framework Router → Handler Function → Library Calls → Database Query → Data returned → Handler builds Response → JSON/HTML sent back → Browser renders result.
+          </div>
+
+          <div class="video-box">
+            <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
+            <ul class="video-list">
+              <li><a href="https://www.youtube.com/watch?v=7YcW25PHnAA" target="_blank" rel="noopener">REST API Concepts and Examples <span class="video-meta">— WebConcepts · 8 min</span></a></li>
+            </ul>
+            <p class="video-box-note">A clear walkthrough of how a <strong>client</strong> sends a request and a <strong>server</strong> sends back data — exactly the back-end <strong>request/response</strong> process described above.</p>
           </div>
         </section>
 
