@@ -1798,6 +1798,59 @@ section > h2.syllabus-phase:first-child {
 [data-theme="dark"] .callout.assessor { color: #ADBCF2; }
 [data-theme="dark"] .callout.assessor > strong:first-child { background: rgba(45,70,185,.3); color: #ADBCF2; }
 
+/* ── Curriculum Alignment Banners ── */
+.curriculum-banner {
+  margin-top: 1.5rem;
+}
+.curriculum-banner.yr12 {
+  background: linear-gradient(135deg, rgba(59,130,246,.12) 0%, rgba(59,130,246,.06) 100%);
+  border-left-color: #3B82F6;
+}
+.curriculum-banner.yr12 > strong:first-child {
+  background: #3B82F6;
+  color: #fff;
+}
+.curriculum-banner.yr12 a {
+  color: #2563EB;
+  font-weight: 600;
+}
+.curriculum-banner.yr11 {
+  background: linear-gradient(135deg, rgba(16,185,129,.12) 0%, rgba(16,185,129,.06) 100%);
+  border-left-color: #10B981;
+}
+.curriculum-banner.yr11 > strong:first-child {
+  background: #10B981;
+  color: #fff;
+}
+.curriculum-banner.yr11 a {
+  color: #059669;
+  font-weight: 600;
+}
+[data-theme="dark"] .curriculum-banner.yr12 {
+  background: linear-gradient(135deg, rgba(59,130,246,.15) 0%, rgba(59,130,246,.06) 100%);
+  border-left-color: #60A5FA;
+  color: #BFDBFE;
+}
+[data-theme="dark"] .curriculum-banner.yr12 > strong:first-child {
+  background: #3B82F6;
+  color: #fff;
+}
+[data-theme="dark"] .curriculum-banner.yr12 a {
+  color: #93C5FD;
+}
+[data-theme="dark"] .curriculum-banner.yr11 {
+  background: linear-gradient(135deg, rgba(16,185,129,.15) 0%, rgba(16,185,129,.06) 100%);
+  border-left-color: #34D399;
+  color: #A7F3D0;
+}
+[data-theme="dark"] .curriculum-banner.yr11 > strong:first-child {
+  background: #10B981;
+  color: #fff;
+}
+[data-theme="dark"] .curriculum-banner.yr11 a {
+  color: #6EE7B7;
+}
+
 /* ── Code Blocks ── */
 .code-block {
   position: relative;
@@ -1916,6 +1969,11 @@ pre.text-diagram {
 [data-theme="dark"] pre.text-diagram {
   background: #0D1117;
   border-color: rgba(255,255,255,.08);
+  color: #e2e8f0;
+}
+
+[data-theme="light"] pre.text-diagram {
+  color: #1e293b;
 }
 
 /* Syntax colours — Light mode */
@@ -2673,27 +2731,15 @@ section:has(> h2.section-collapsed) + .divider {
   box-shadow: none;
 }
 
-[data-theme="light"] .diagram-block h4::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 80px;
-  height: 2px;
-  background: var(--primary);
-}
 
 [data-theme="light"] .diagram-block h4:hover {
   background: linear-gradient(135deg, #e8e7df 0%, #e0dfda 100%);
   color: var(--primary);
 }
 
-/* ── Light mode: diagram chevron ── */
-[data-theme="light"] .diagram-block .diagram-chevron {
+[data-theme="light"] .diagram-block h4::after {
   background: rgba(45, 70, 185, 0.1);
-}
-
-[data-theme="light"] .diagram-block .diagram-chevron svg {
-  stroke: var(--primary);
+  color: var(--primary);
 }
 
 /* ── Dark mode: rich gradient diagram header ── */
@@ -2705,7 +2751,8 @@ section:has(> h2.section-collapsed) + .divider {
 }
 
 [data-theme="dark"] .diagram-block h4::after {
-  display: none;
+  background: rgba(255,255,255,0.12);
+  color: #e2e8f0;
 }
 
 [data-theme="dark"] .diagram-block h4:hover {
@@ -3008,6 +3055,18 @@ section:has(> h2.section-collapsed) + .divider {
 [data-theme="dark"] .mermaid svg [stroke="#6A1B9A"] { stroke: #d084fc !important; }
 [data-theme="dark"] .mermaid svg [stroke="#C62828"] { stroke: #f87171 !important; }
 [data-theme="dark"] .mermaid svg [stroke="#C2185B"] { stroke: #fb7185 !important; }
+[data-theme="dark"] .mermaid svg [stroke="#01579b"] { stroke: #60a5fa !important; }
+[data-theme="dark"] .mermaid svg [stroke="#e65100"] { stroke: #fb923c !important; }
+[data-theme="dark"] .mermaid svg [stroke="#0277bd"] { stroke: #38bdf8 !important; }
+[data-theme="dark"] .mermaid svg [stroke="#3b82f6"] { stroke: #60a5fa !important; }
+[data-theme="dark"] .mermaid svg [stroke="#a855f7"] { stroke: #d084fc !important; }
+[data-theme="dark"] .mermaid svg [stroke="#22c55e"] { stroke: #4ade80 !important; }
+
+/* Tailwind-style classDef fills for dark mode */
+[data-theme="dark"] .mermaid svg [fill="#dbeafe"] { fill: #172340 !important; }
+[data-theme="dark"] .mermaid svg [fill="#f3e8ff"] { fill: #231730 !important; }
+[data-theme="dark"] .mermaid svg [fill="#dcfce7"] { fill: #17291c !important; }
+[data-theme="dark"] .mermaid svg [fill="#e0f0ff"] { fill: #172a3a !important; }
 
 /* Sequence diagram elements */
 [data-theme="dark"] .mermaid svg .actor {
@@ -3032,8 +3091,18 @@ section:has(> h2.section-collapsed) + .divider {
   background: #1d1d25;
 }
 
+[data-theme="dark"] .mermaid svg foreignObject span,
+[data-theme="dark"] .mermaid svg foreignObject div,
+[data-theme="dark"] .mermaid svg foreignObject p {
+  color: #e2e8f0 !important;
+}
+
 [data-theme="dark"] .mermaid svg .label {
   background: transparent;
+}
+
+[data-theme="dark"] .mermaid svg .label foreignObject div {
+  background: transparent !important;
 }
 
 .btn-mobile-theme {
