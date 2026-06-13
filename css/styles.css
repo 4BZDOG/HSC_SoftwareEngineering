@@ -1146,6 +1146,10 @@ body {
   color: #1a1a2e;
 }
 
+[data-theme="dark"] .content-body h2 {
+  color: #e2e8f0;
+}
+
 /* ── Syllabus Phase Heading (minor — individual syllabus items) ── */
 .content-body h2.syllabus-phase {
   background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--secondary) 100%);
@@ -1553,6 +1557,7 @@ section > h2.syllabus-phase:first-child {
 
 /* Dark mode h3 — subtle glow accent */
 [data-theme="dark"] .content-body h3 {
+  color: #e2e8f0;
   border-left-color: var(--primary);
 }
 
@@ -1597,7 +1602,7 @@ section > h2.syllabus-phase:first-child {
 
 /* Dark mode h4 */
 [data-theme="dark"] .content-body h4 {
-  color: var(--primary);
+  color: #e0e7ff;
 }
 
 [data-theme="dark"] .content-body h4::before {
