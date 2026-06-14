@@ -104,6 +104,44 @@ html {
   /* Keep anchor / TOC jump targets clear of the 65px sticky navbar */
   scroll-padding-top: 5rem;
   font-size: 16px;
+  /* Firefox branded scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(45,70,185,.35) transparent;
+}
+[data-theme="dark"] html {
+  scrollbar-color: rgba(140,157,234,.40) transparent;
+}
+
+/* ── Brand text selection ── */
+::selection {
+  background: rgba(45, 70, 185, .18);
+  color: var(--text-primary);
+}
+[data-theme="dark"] ::selection {
+  background: rgba(140, 157, 234, .32);
+  color: #fff;
+}
+
+/* ── Branded WebKit scrollbar (sidebar keeps its own thinner rule) ── */
+::-webkit-scrollbar { width: 12px; height: 12px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(45,70,185,.30);
+  border-radius: 8px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(45,70,185,.5);
+  background-clip: content-box;
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: rgba(140,157,234,.30);
+  background-clip: content-box;
+}
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(140,157,234,.5);
+  background-clip: content-box;
 }
 
 /* ── Skip Link (Accessibility) ── */
