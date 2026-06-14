@@ -31,12 +31,29 @@
 
   const DIM_STROKES = new Set(['#333', '#333333', '#999', '#999999']);
 
+  // Mermaid v11 applies node colours via an inline `style="fill:#xxx !important"`
+  // attribute rather than the SVG `fill` attribute, so remap hex colours inside
+  // a style string while preserving the rest of the declaration (incl. !important).
+  function remapStyleColor(styleStr, prop, map) {
+    return styleStr.replace(
+      new RegExp('(' + prop + '\\s*:\\s*)(#[0-9a-fA-F]{3,6})', 'g'),
+      (m, pre, hex) => {
+        const dark = map[hex.toLowerCase()];
+        return dark ? pre + dark : m;
+      }
+    );
+  }
+
   function applyDarkTint() {
-    document.querySelectorAll('.mermaid svg [fill]').forEach(el => {
-      const fill = el.getAttribute('fill');
-      if (!fill) return;
-      const key = fill.toLowerCase();
-      if (DARK_FILL_MAP[key]) el.setAttribute('fill', DARK_FILL_MAP[key]);
+    // Fills: handle both the legacy `fill` attribute and inline `style` fills (v11).
+    document.querySelectorAll('.mermaid svg [fill], .mermaid svg [style*="fill"]').forEach(el => {
+      const fill = (el.getAttribute('fill') || '').toLowerCase();
+      if (DARK_FILL_MAP[fill]) el.setAttribute('fill', DARK_FILL_MAP[fill]);
+      const style = el.getAttribute('style');
+      if (style && style.indexOf('fill') !== -1) {
+        const next = remapStyleColor(style, 'fill', DARK_FILL_MAP);
+        if (next !== style) el.setAttribute('style', next);
+      }
     });
 
     document.querySelectorAll('.mermaid svg text, .mermaid svg tspan').forEach(node => {
@@ -115,10 +132,22 @@
     };
   }
 
+  // The diagram source is authored with literal <br/> tags for multi-line node
+  // labels. The browser parses those into real <br> elements, and textContent
+  // would silently drop them (merging the lines). Convert each <br> back into the
+  // literal "<br/>" text Mermaid expects before reading the source.
+  function extractSource(el) {
+    const clone = el.cloneNode(true);
+    clone.querySelectorAll('br').forEach(br => {
+      br.replaceWith(document.createTextNode('<br/>'));
+    });
+    return clone.textContent.trim();
+  }
+
   function storeOriginalSources() {
     document.querySelectorAll('.mermaid').forEach(el => {
       if (!el.dataset.source) {
-        el.dataset.source = el.textContent.trim();
+        el.dataset.source = extractSource(el);
       }
     });
   }
@@ -147,7 +176,15 @@
   }
 
   storeOriginalSources();
-  renderAll();
+
+  // Mermaid measures HTML labels to size nodes. If it runs before the web fonts
+  // have loaded, those measurements can be wildly off and the diagram renders
+  // with a huge viewBox (microscopic, illegible). Wait for fonts to settle first.
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(renderAll, renderAll);
+  } else {
+    renderAll();
+  }
 
   let themeChangeQueued = false;
   new MutationObserver(() => {
