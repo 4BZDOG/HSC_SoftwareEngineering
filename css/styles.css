@@ -101,6 +101,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keep anchor / TOC jump targets clear of the 65px sticky navbar */
+  scroll-padding-top: 5rem;
   font-size: 16px;
 }
 
@@ -1161,7 +1163,7 @@ body {
 .content-body h2.syllabus-phase {
   background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--secondary) 100%);
   color: #fff;
-  padding: 1.2rem 1.125rem 0.65rem 1.25rem;
+  padding: 1.2rem 1.25rem 0.65rem 1.25rem;
   border-radius: var(--radius-lg);
   margin: 1.5rem 0 0;
   font-size: clamp(1rem, 1.5vw, 1.15rem);
@@ -1353,6 +1355,7 @@ section > h2.syllabus-phase:first-child {
 
 .section-body-inner {
   min-height: 0;                 /* allows grid row to compress to 0 */
+  min-width: 0;                  /* allows grid item to shrink so wide tables scroll instead of widening the page */
   overflow: hidden;              /* establishes BFC, prevents content leaking when collapsed */
   padding: 1.75rem;
 }
@@ -1491,6 +1494,7 @@ section > h2.syllabus-phase:first-child {
 
 .part-group-inner {
   min-height: 0;
+  min-width: 0;
   overflow: clip;
   padding: 0 0 1.5rem 0;
   background: transparent;
