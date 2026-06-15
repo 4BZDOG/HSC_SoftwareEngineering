@@ -1181,9 +1181,9 @@ body {
   gap: .75rem;
 }
 
-/* Light mode h2 — refined deep indigo (softer than near-black), hairline gradient underline */
+/* Light mode h2 — deep brand-ink blue on warm paper (tied to --primary, not cold grey) */
 [data-theme="light"] .content-body h2:not(.syllabus-phase) {
-  color: #2a3357;
+  color: #1e2b66;
   padding-bottom: .55rem;
   border-bottom: 1px solid;
   border-image: linear-gradient(90deg, rgba(45,70,185,.4) 0%, rgba(176,140,61,.22) 42%, transparent 82%) 1;
@@ -1591,9 +1591,9 @@ section > h2.syllabus-phase:first-child {
   border-left: 3px solid var(--primary);
 }
 
-/* Light mode h3 — refined indigo ink (softer than near-black) + warm underline */
+/* Light mode h3 — rich brand blue, one step lighter than h2 (clear tonal ladder) */
 [data-theme="light"] .content-body h3 {
-  color: #323b60;
+  color: #2c3d8a;
   border-left-color: transparent;
   border-image: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%) 1;
 }
@@ -1653,13 +1653,14 @@ section > h2.syllabus-phase:first-child {
   background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
 }
 
-/* Light mode h4 — refined indigo-blue gradient ink (softer, still high contrast) */
+/* Light mode h4 — deep gold accent ink, distinguishing the tertiary tier and
+   tying it to the brand's blue→gold pairing (matches the gold accent bar). */
 [data-theme="light"] .content-body h4 {
-  background: linear-gradient(90deg, #354395 0%, #4458c4 100%);
+  background: linear-gradient(90deg, #6f5519 0%, #8c6d28 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #354395;
+  color: #6f5519;
 }
 
 /* Dark mode h4 — subtle light-blue gradient ink (high contrast) */
