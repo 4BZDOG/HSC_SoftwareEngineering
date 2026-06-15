@@ -51,7 +51,7 @@
   <meta name="description" content="In-depth notes on the HSC Software Engineering major project — all SDLC phases, documentation requirements, testing, and assessment guidance." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=14" />
+  <link rel="stylesheet" href="../css/styles.css?v=15" />
 </head>
 <body>
 
@@ -494,6 +494,41 @@
             </div>
           </div>
 
+          <!-- Scrum / Agile Sprint Cycle Diagram -->
+          <div class="diagram-block">
+            <h4>Diagram - The Agile / Scrum Sprint Cycle</h4>
+            <p class="diagram-subtitle">How an Agile team turns a backlog into working software, sprint by sprint</p>
+            <p class="diagram-description">
+              Agile delivers software in short, repeating iterations called <strong>sprints</strong> (typically 1–4 weeks). The Product Owner prioritises the <strong>product backlog</strong>; the team selects items into a <strong>sprint backlog</strong> during planning. Inside the sprint, work proceeds with daily stand-ups (the <strong>Daily Scrum</strong>) until a potentially shippable <strong>increment</strong> is ready. The sprint ends with a <strong>review</strong> (demo to the client) and a <strong>retrospective</strong> (improve the process) — then the cycle repeats. This iterative loop is what lets Agile adapt to changing client needs.
+            </p>
+            <div class="mermaid">
+              flowchart LR
+                PB["📋 Product Backlog<br/>prioritised by Product Owner"] --> SP["🗓️ Sprint Planning"]
+                SP --> SB["📝 Sprint Backlog"]
+                SB --> SPRINT
+                subgraph SPRINT["🔁 Sprint (1–4 weeks)"]
+                  direction TB
+                  DS["☀️ Daily Scrum (stand-up)"] --> DEV["💻 Develop &amp; test increment"]
+                  DEV --> DS
+                end
+                SPRINT --> INC["📦 Potentially shippable increment"]
+                INC --> REV["👥 Sprint Review (demo to client)"]
+                REV --> RETRO["🔎 Retrospective (improve process)"]
+                RETRO -->|"next sprint"| PB
+                classDef plan fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+                classDef work fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+                classDef review fill:#fff3e0,stroke:#E65100,stroke-width:2px
+                class PB,SP,SB plan
+                class DS,DEV,INC work
+                class REV,RETRO review
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Show the repeating Agile/Scrum workflow and the artefacts and events at each stage<br>
+              <strong>Syllabus Link:</strong> SE-12-01, SE-12-09<br>
+              <strong>Try This:</strong> Compare this cycle to the Waterfall model above — at which point does Agile let the client change requirements?
+            </p>
+          </div>
+
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
             <ul class="video-list">
@@ -621,6 +656,36 @@ Key: ███ = Task active during this week</pre>
                 </tr>
               </tbody>
             </table>
+          </div>
+
+          <!-- Risk Assessment Matrix Diagram -->
+          <div class="diagram-block">
+            <h4>Diagram - Risk Assessment Matrix</h4>
+            <p class="diagram-subtitle">Plotting the risk register by likelihood and impact</p>
+            <p class="diagram-description">
+              A risk matrix turns the register above into a visual priority map. Each risk is plotted by its <strong>likelihood</strong> (horizontal) and <strong>impact</strong> (vertical). Risks landing in the top-right are the most urgent — high likelihood <em>and</em> high impact — and must be mitigated first. The other quadrants guide whether to plan a contingency, monitor actively, or simply accept the risk.
+            </p>
+            <div class="mermaid">
+              quadrantChart
+                title Project Risk Matrix — Likelihood vs Impact
+                x-axis "Low Likelihood" --> "High Likelihood"
+                y-axis "Low Impact" --> "High Impact"
+                quadrant-1 "Critical — mitigate now"
+                quadrant-2 "Plan contingency"
+                quadrant-3 "Accept / monitor"
+                quadrant-4 "Monitor actively"
+                "Data loss": [0.5, 0.8]
+                "Scope creep": [0.82, 0.58]
+                "Time underestimation": [0.78, 0.5]
+                "Skill gap": [0.5, 0.5]
+                "Security vuln": [0.25, 0.82]
+                "Client unavailable": [0.5, 0.25]
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Prioritise risks visually so mitigation effort targets the highest likelihood × impact threats first<br>
+              <strong>Syllabus Link:</strong> SE-12-05, SE-12-09<br>
+              <strong>Try This:</strong> Add a new risk to your own project and decide which quadrant it belongs in — then justify its mitigation priority
+            </p>
           </div>
 
           <h3>Storyboards and Wireframes</h3>
@@ -1684,7 +1749,7 @@ print(f"Time taken to process 50,000 queries over 10K records: {end_time - start
     </div>
   </footer>
 
-  <script src="../js/main.js?v=10"></script>
+  <script src="../js/main.js?v=11"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script src="../js/mermaid-init.js?v=2"></script>
   <!-- ═══════════════════════════════════════════════════════ -->

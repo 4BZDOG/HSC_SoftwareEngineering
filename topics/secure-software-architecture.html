@@ -51,7 +51,7 @@
   <meta name="description" content="HSC Secure Software Architecture notes — CIA triad, STRIDE, authentication, encryption, defensive coding, and privacy by design. Year 12 NESA NSW." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=14" />
+  <link rel="stylesheet" href="../css/styles.css?v=15" />
 </head>
 <body>
 
@@ -486,6 +486,42 @@
             <div class="key-term-item"><strong>✍️ Digital Signatures</strong><span>The sender hashes their message, then encrypts the hash with their private key — the result is the signature. The recipient decrypts it with the sender's public key and compares it to their own hash of the message. A match proves authenticity and integrity, providing non-repudiation.</span></div>
           </div>
 
+          <!-- Symmetric vs Asymmetric Encryption Diagram -->
+          <div class="diagram-block">
+            <h4>Diagram - Symmetric vs Asymmetric Encryption</h4>
+            <p class="diagram-subtitle">How the two encryption families work — and why HTTPS uses both</p>
+            <p class="diagram-description">
+              <strong>Symmetric</strong> encryption uses a single shared secret key for both encryption and decryption — it is very fast, making it ideal for bulk data at rest. <strong>Asymmetric</strong> encryption uses a linked public/private key pair, solving the problem of how to share a key safely. In practice, <strong>HTTPS/TLS</strong> is hybrid: it uses a slow asymmetric handshake to safely exchange a one-time symmetric session key, then switches to fast symmetric encryption for the actual data transfer.
+            </p>
+            <div class="mermaid">
+              flowchart TB
+                subgraph SYM["🔒 Symmetric — one shared secret key"]
+                  direction LR
+                  P1["📄 Plaintext"] -->|"AES-256 · 🔑 shared key"| C1["🔐 Ciphertext"]
+                  C1 -->|"AES-256 · 🔑 same key"| D1["📄 Plaintext"]
+                end
+                subgraph ASYM["🔑 Asymmetric — public / private key pair"]
+                  direction LR
+                  P2["📄 Plaintext"] -->|"encrypt · 🟢 public key"| C2["🔐 Ciphertext"]
+                  C2 -->|"decrypt · 🔴 private key"| D2["📄 Plaintext"]
+                end
+                HYB["🌐 HTTPS / TLS is hybrid — asymmetric handshake safely shares a<br/>one-time session key, then fast symmetric encryption protects the data"]
+                SYM --> HYB
+                ASYM --> HYB
+                classDef sym fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+                classDef asym fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+                classDef hyb fill:#fff3e0,stroke:#E65100,stroke-width:2px
+                class P1,C1,D1 sym
+                class P2,C2,D2 asym
+                class HYB hyb
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Contrast symmetric and asymmetric encryption and explain why secure connections combine both<br>
+              <strong>Syllabus Link:</strong> SE-12-03, SE-12-04<br>
+              <strong>Try This:</strong> Explain why asymmetric encryption is used only for the TLS handshake and not for encrypting the whole conversation
+            </p>
+          </div>
+
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
             <ul class="video-list">
@@ -698,6 +734,43 @@
             <div class="key-term-item"><strong>🔒 Least Privilege Scopes</strong><span>OAuth 2.0 scopes restrict what each token is authorised to do. A token issued for reading user profile data should not permit writing or deleting data. Separate tokens with minimal scopes for each integration reduce the blast radius of any compromised token.</span></div>
           </div>
 
+          <!-- Defensive Request Pipeline Diagram -->
+          <div class="diagram-block">
+            <h4>Flowchart - Defensive Request Handling Pipeline</h4>
+            <p class="diagram-subtitle">The layered checks every untrusted request must survive</p>
+            <p class="diagram-description">
+              Defensive coding treats <strong>every</strong> incoming request as hostile until proven safe. Each request passes through a series of gates — transport security, authentication, rate limiting, input validation, and sanitisation — before it is ever allowed to touch the database via a parameterised query. A request that fails any gate is rejected with an appropriate status code, and any error returns a generic message to the user while the technical detail is logged internally.
+            </p>
+            <div class="mermaid">
+              flowchart TB
+                A["🌐 Untrusted request<br/>browser · API client · attacker"] --> B{"🔐 HTTPS only?"}
+                B -- "No / HTTP" --> R1["❌ Reject · force TLS"]
+                B -- "Yes" --> C{"🪙 Valid auth token?"}
+                C -- "No" --> R2["❌ 401 Unauthorized"]
+                C -- "Yes" --> D{"🚦 Within rate limit?"}
+                D -- "No" --> R3["❌ 429 Too Many Requests"]
+                D -- "Yes" --> E{"📋 Input valid?<br/>type · length · range"}
+                E -- "No" --> R4["❌ 400 Bad Request"]
+                E -- "Yes" --> F["🧼 Sanitise input<br/>encode output · normalise paths"]
+                F --> G["🗄️ Parameterised query<br/>no SQL injection"]
+                G --> H["✅ Trusted processing<br/>&amp; safe response"]
+                G -. "on error" .-> X["⚠️ Generic error message<br/>log detail internally"]
+                classDef gate fill:#fff3e0,stroke:#E65100,stroke-width:2px
+                classDef bad fill:#ffcdd2,stroke:#c62828,stroke-width:2px
+                classDef good fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+                classDef step fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+                class B,C,D,E gate
+                class R1,R2,R3,R4,X bad
+                class F,G,A step
+                class H good
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Show how input validation, sanitisation and safe API controls combine into a single defensive pipeline<br>
+              <strong>Syllabus Link:</strong> SE-12-02, SE-12-07<br>
+              <strong>Try This:</strong> For each gate, name the specific attack it defends against (e.g. rate limiting → brute-force / DoS)
+            </p>
+          </div>
+
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
             <ul class="video-list">
@@ -900,7 +973,7 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=10"></script>
+  <script src="../js/main.js?v=11"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script src="../js/mermaid-init.js?v=2"></script>
   <!-- ═══════════════════════════════════════════════════════ -->

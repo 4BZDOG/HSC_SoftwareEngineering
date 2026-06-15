@@ -1185,14 +1185,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const seenTerms = new Set();
     // Skip tags where linking would break structure or is inappropriate.
-    const excludeTags = new Set(['A', 'PRE', 'CODE', 'TH', 'SCRIPT', 'STYLE']);
+    // Headings (H1–H6) are excluded so glossary links never tint heading text
+    // (e.g. blue-on-blue inside the coloured syllabus-phase / part headings).
+    const excludeTags = new Set(['A', 'PRE', 'CODE', 'TH', 'SCRIPT', 'STYLE',
+      'H1', 'H2', 'H3', 'H4', 'H5', 'H6']);
+    // Coloured containers where a blue glossary link would be unreadable.
+    const excludeClasses = ['mermaid', 'code-block', 'nav-dropdown',
+      'part-block', 'curriculum-banner', 'syllabus-phase', 'outcome-subtitle',
+      'syllabus-concept'];
 
     // Recursively walk text nodes
     const walk = document.createTreeWalker(contentBody, NodeFilter.SHOW_TEXT, {
       acceptNode(node) {
         let parent = node.parentNode;
         while (parent && parent !== contentBody) {
-          if (excludeTags.has(parent.tagName) || parent.classList.contains('mermaid') || parent.classList.contains('code-block') || parent.classList.contains('nav-dropdown')) {
+          if (excludeTags.has(parent.tagName) ||
+              (parent.classList && excludeClasses.some(c => parent.classList.contains(c)))) {
             return NodeFilter.FILTER_REJECT;
           }
           parent = parent.parentNode;

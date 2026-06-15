@@ -1181,9 +1181,9 @@ body {
   gap: .75rem;
 }
 
-/* Light mode h2 — deep ink, high contrast, hairline gradient underline */
+/* Light mode h2 — refined deep indigo (softer than near-black), hairline gradient underline */
 [data-theme="light"] .content-body h2:not(.syllabus-phase) {
-  color: #14182e;
+  color: #2a3357;
   padding-bottom: .55rem;
   border-bottom: 1px solid;
   border-image: linear-gradient(90deg, rgba(45,70,185,.4) 0%, rgba(176,140,61,.22) 42%, transparent 82%) 1;
@@ -1591,9 +1591,9 @@ section > h2.syllabus-phase:first-child {
   border-left: 3px solid var(--primary);
 }
 
-/* Light mode h3 — gradient ink bar + warm underline */
+/* Light mode h3 — refined indigo ink (softer than near-black) + warm underline */
 [data-theme="light"] .content-body h3 {
-  color: #16192c;
+  color: #323b60;
   border-left-color: transparent;
   border-image: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%) 1;
 }
@@ -1653,13 +1653,13 @@ section > h2.syllabus-phase:first-child {
   background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
 }
 
-/* Light mode h4 — subtle deep-blue gradient ink (high contrast) */
+/* Light mode h4 — refined indigo-blue gradient ink (softer, still high contrast) */
 [data-theme="light"] .content-body h4 {
-  background: linear-gradient(90deg, #1b2a78 0%, #2D46B9 100%);
+  background: linear-gradient(90deg, #354395 0%, #4458c4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #1b2a78;
+  color: #354395;
 }
 
 /* Dark mode h4 — subtle light-blue gradient ink (high contrast) */
@@ -1886,34 +1886,52 @@ section > h2.syllabus-phase:first-child {
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+/* NOTE: .curriculum-banner lives inside .topic-header, which has a dark
+   background in BOTH light and dark themes — so the banner always uses
+   light text to stay readable (fixes the previous blue-on-dark issue). */
 .curriculum-banner.yr12 {
-  background: linear-gradient(135deg, rgba(59,130,246,.12) 0%, rgba(59,130,246,.06) 100%);
-  border-left-color: #3B82F6;
+  background: linear-gradient(135deg, rgba(59,130,246,.18) 0%, rgba(59,130,246,.08) 100%);
+  border-left-color: #60A5FA;
+  color: #d6e4fb;                 /* light body text — readable on the dark header */
+}
+.curriculum-banner.yr12 strong {
+  color: #eef4ff;                 /* near-white for emphasised terms */
 }
 .curriculum-banner.yr12 > strong:first-child {
   background: #3B82F6;
-  color: #fff;
+  color: #fff;                    /* badge label stays white-on-blue */
 }
 .curriculum-banner.yr12 a {
-  color: #2563EB;
+  color: #aecbfb;
   font-weight: 600;
+  border-bottom: 1px solid rgba(174,203,251,.45);
 }
+.curriculum-banner.yr12 a:hover { border-bottom-color: #aecbfb; }
 .curriculum-banner.yr11 {
-  background: linear-gradient(135deg, rgba(16,185,129,.12) 0%, rgba(16,185,129,.06) 100%);
-  border-left-color: #10B981;
+  background: linear-gradient(135deg, rgba(16,185,129,.18) 0%, rgba(16,185,129,.08) 100%);
+  border-left-color: #34D399;
+  color: #c8f3e1;                 /* light body text — readable on the dark header */
+}
+.curriculum-banner.yr11 strong {
+  color: #e7fcf3;                 /* near-white for emphasised terms */
 }
 .curriculum-banner.yr11 > strong:first-child {
   background: #10B981;
   color: #fff;
 }
 .curriculum-banner.yr11 a {
-  color: #059669;
+  color: #8ff0c8;
   font-weight: 600;
+  border-bottom: 1px solid rgba(143,240,200,.45);
 }
+.curriculum-banner.yr11 a:hover { border-bottom-color: #8ff0c8; }
 [data-theme="dark"] .curriculum-banner.yr12 {
   background: linear-gradient(135deg, rgba(59,130,246,.15) 0%, rgba(59,130,246,.06) 100%);
   border-left-color: #60A5FA;
   color: #BFDBFE;
+}
+[data-theme="dark"] .curriculum-banner.yr12 strong {
+  color: #dbeafe;
 }
 [data-theme="dark"] .curriculum-banner.yr12 > strong:first-child {
   background: #3B82F6;
@@ -1921,11 +1939,15 @@ section > h2.syllabus-phase:first-child {
 }
 [data-theme="dark"] .curriculum-banner.yr12 a {
   color: #93C5FD;
+  border-bottom-color: rgba(147,197,253,.4);
 }
 [data-theme="dark"] .curriculum-banner.yr11 {
   background: linear-gradient(135deg, rgba(16,185,129,.15) 0%, rgba(16,185,129,.06) 100%);
   border-left-color: #34D399;
   color: #A7F3D0;
+}
+[data-theme="dark"] .curriculum-banner.yr11 strong {
+  color: #d1fae5;
 }
 [data-theme="dark"] .curriculum-banner.yr11 > strong:first-child {
   background: #10B981;
@@ -1933,6 +1955,7 @@ section > h2.syllabus-phase:first-child {
 }
 [data-theme="dark"] .curriculum-banner.yr11 a {
   color: #6EE7B7;
+  border-bottom-color: rgba(110,231,183,.4);
 }
 
 /* ── Video Resource Boxes ── */
@@ -4217,6 +4240,24 @@ section:has(> h2.section-collapsed) + .divider {
 }
 [data-theme="dark"] .glossary-link:hover {
   background-color: rgba(45, 70, 185, 0.15);
+}
+
+/* Safety net: never let an auto-injected glossary link tint heading text or
+   text inside coloured banners (prevents blue-on-blue / unreadable links). */
+.content-body h1 .glossary-link,
+.content-body h2 .glossary-link,
+.content-body h3 .glossary-link,
+.content-body h4 .glossary-link,
+.content-body h5 .glossary-link,
+.content-body h6 .glossary-link,
+.part-block .glossary-link,
+.curriculum-banner .glossary-link,
+.syllabus-phase .glossary-link,
+.outcome-subtitle .glossary-link,
+.syllabus-concept .glossary-link {
+  color: inherit;
+  border-bottom-color: currentColor;
+  opacity: 0.95;
 }
 
 /* ============================================================

@@ -51,7 +51,7 @@
   <meta name="description" content="HSC Software Automation notes aligned with NESA NSW syllabus. Machine learning algorithms, OOP regression models, neural networks, DevOps and RPA automation, and ethical impacts of AI. Year 12 Software Engineering." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=14" />
+  <link rel="stylesheet" href="../css/styles.css?v=15" />
 </head>
 <body>
 
@@ -213,6 +213,40 @@
             <strong>🔄 Key Distinction:</strong> All machine learning is AI, but not all AI is machine learning. A traditional chess program following programmed rules is AI but not ML. A system that learns chess by playing millions of games is both AI and ML. ML cannot function without data — it learns from examples rather than explicit instructions.
           </div>
 
+          <!-- AI vs ML vs Deep Learning Diagram -->
+          <div class="diagram-block">
+            <h4>Diagram - AI ⊃ Machine Learning ⊃ Deep Learning</h4>
+            <p class="diagram-subtitle">How the three fields nest inside one another</p>
+            <p class="diagram-description">
+              These terms are often used interchangeably, but they describe nested sets. <strong>Artificial Intelligence</strong> is the broadest field — any technique that makes a machine appear intelligent, including fixed rule-based logic. <strong>Machine Learning</strong> is a subset of AI in which systems learn patterns from data rather than being explicitly programmed. <strong>Deep Learning</strong> is a further subset of ML that uses multi-layer neural networks to learn features automatically from very large datasets.
+            </p>
+            <div class="mermaid">
+              flowchart TB
+                subgraph AI["🤖 Artificial Intelligence — machines simulating human-like intelligence"]
+                  direction TB
+                  AIex["Rule-based expert systems · search · robotics<br/>can use fixed IF–THEN logic, no learning"]
+                  subgraph ML["📊 Machine Learning — systems that learn patterns from data"]
+                    direction TB
+                    MLex["Spam filters · regression · clustering<br/>improves with data, not hard-coded"]
+                    subgraph DL["🧠 Deep Learning — multi-layer neural networks"]
+                      direction TB
+                      DLex["Image recognition · speech · large language models<br/>learns features automatically from huge datasets"]
+                    end
+                  end
+                end
+                classDef neutral fill:#eceff1,stroke:#90a4ae,stroke-width:1px
+                class AIex,MLex,DLex neutral
+                style AI fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+                style ML fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+                style DL fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Clarify the containment relationship between AI, ML and Deep Learning<br>
+              <strong>Syllabus Link:</strong> SE-12-03<br>
+              <strong>Try This:</strong> Classify each of these as AI-only, ML, or Deep Learning: a thermostat schedule, a movie recommender, a face-unlock system
+            </p>
+          </div>
+
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
             <ul class="video-list">
@@ -285,6 +319,39 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+
+          <!-- ML Training Models Decision Diagram -->
+          <div class="diagram-block">
+            <h4>Diagram - Choosing a Machine Learning Training Model</h4>
+            <p class="diagram-subtitle">The four training models, decided by your data</p>
+            <p class="diagram-description">
+              The training model you choose depends largely on the data you have. If every example carries a correct answer (a label), <strong>supervised learning</strong> applies. With no labels at all, <strong>unsupervised learning</strong> discovers structure on its own. A mix of a few labels and lots of unlabelled data suits <strong>semi-supervised learning</strong>. <strong>Reinforcement learning</strong> is different again — there is no dataset; an agent learns through reward and penalty by interacting with an environment.
+            </p>
+            <div class="mermaid">
+              flowchart TB
+                ROOT["🎯 How is the model trained?"]
+                ROOT --> L{"Is the data labelled?"}
+                L -- "Fully labelled" --> SUP["✅ Supervised Learning<br/>learns input→output mapping<br/>e.g. spam classification, regression"]
+                L -- "Not labelled" --> UNSUP["🔍 Unsupervised Learning<br/>finds hidden patterns / clusters<br/>e.g. customer segmentation"]
+                L -- "Partly labelled" --> SEMI["🟡 Semi-Supervised Learning<br/>few labels + many unlabelled<br/>e.g. medical image analysis"]
+                ROOT --> R["🕹️ Reinforcement Learning<br/>agent learns by reward &amp; penalty<br/>e.g. AlphaGo, robotics"]
+                classDef q fill:#fff3e0,stroke:#E65100,stroke-width:2px
+                classDef sup fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+                classDef un fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+                classDef semi fill:#fff9c4,stroke:#F57F17,stroke-width:2px
+                classDef rl fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
+                class ROOT,L q
+                class SUP sup
+                class UNSUP un
+                class SEMI semi
+                class R rl
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Map each training model to the kind of data and problem it suits<br>
+              <strong>Syllabus Link:</strong> SE-12-03<br>
+              <strong>Try This:</strong> A self-driving car learning to park has no labelled dataset — which training model fits, and why?
+            </p>
           </div>
 
         </section>
@@ -796,6 +863,33 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           <h3>Sources of Bias</h3>
           <p>Bias in ML systems can arise from multiple sources. Training data that reflects historical prejudices will cause AI systems to perpetuate those discriminatory patterns. When training datasets do not accurately represent the real-world population where the system will be used, the model produces systematically unfair outcomes for underrepresented groups. Developers may unconsciously select or weight data in ways that confirm their pre-existing assumptions. Additionally, when a biased model's predictions influence the collection of future data, it creates self-reinforcing cycles that entrench the original bias even further.</p>
 
+          <!-- Bias Feedback Loop Diagram -->
+          <div class="diagram-block">
+            <h4>Diagram - The Self-Reinforcing Bias Loop</h4>
+            <p class="diagram-subtitle">How bias enters, amplifies, and how engineers break the cycle</p>
+            <p class="diagram-description">
+              Bias is dangerous in ML precisely because it compounds. Unrepresentative training data teaches the model a skewed view of the world; the model then makes unfair predictions at scale; those predictions influence what data is collected next — feeding the bias back in and entrenching it further. The loop is only broken by deliberate engineering interventions: diverse and representative data, fairness audits, diverse teams, and explainable, accountable decision-making.
+            </p>
+            <div class="mermaid">
+              flowchart LR
+                A["📥 Biased / unrepresentative<br/>training data"] --> B["🧠 Model learns the bias"]
+                B --> C["⚖️ Unfair or discriminatory<br/>predictions at scale"]
+                C --> D["🔄 Outputs shape future<br/>data collection"]
+                D -->|"self-reinforcing loop"| A
+                C -. "break the loop" .-> M["🛠️ Mitigations:<br/>diverse data · fairness audits<br/>diverse teams · explainability"]
+                M -.-> B
+                classDef bad fill:#ffcdd2,stroke:#c62828,stroke-width:2px
+                classDef good fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+                class A,B,C,D bad
+                class M good
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Show why bias self-reinforces and where engineering practices interrupt the cycle<br>
+              <strong>Syllabus Link:</strong> SE-12-04, SE-12-05<br>
+              <strong>Try This:</strong> Pick a real system (e.g. hiring or loan approval) and describe one concrete mitigation for each stage of the loop
+            </p>
+          </div>
+
           <h3>Engineering Practices to Mitigate Bias</h3>
           <div class="info-grid">
             <div class="info-card">
@@ -856,7 +950,7 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
     </div>
   </footer>
 
-  <script src="../js/main.js?v=10"></script>
+  <script src="../js/main.js?v=11"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script src="../js/mermaid-init.js?v=2"></script>
   <!-- ═══════════════════════════════════════════════════════ -->

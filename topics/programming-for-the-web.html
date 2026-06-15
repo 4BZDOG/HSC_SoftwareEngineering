@@ -51,7 +51,7 @@
   <meta name="description" content="HSC Programming for the Web notes — HTML, CSS, JavaScript, REST APIs, SQL, HTTP protocols, security, PWAs, and collaborative development. Year 12 NESA NSW." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=14" />
+  <link rel="stylesheet" href="../css/styles.css?v=15" />
 </head>
 <body>
 
@@ -872,6 +872,41 @@ git merge feature/user-login</code></pre>
             <strong>Full Request Lifecycle:</strong> Browser → DNS → Web Server (Nginx) → Framework Router → Handler Function → Library Calls → Database Query → Data returned → Handler builds Response → JSON/HTML sent back → Browser renders result.
           </div>
 
+          <!-- Request-Response Lifecycle Sequence Diagram -->
+          <div class="diagram-block">
+            <h4>Sequence Diagram - HTTP Request-Response Lifecycle</h4>
+            <p class="diagram-subtitle">Following a single request from the browser to the database and back</p>
+            <p class="diagram-description">
+              This sequence diagram traces one web request through every layer of the back end. The browser first resolves the domain via <strong>DNS</strong>, then sends an <strong>HTTPS</strong> request to the web server (Nginx), which forwards it to the framework's router. The router calls the matching handler, which queries the database using a parameterised statement, builds a response (JSON or rendered HTML), and returns it back up the chain for the browser to render.
+            </p>
+            <div class="mermaid">
+              sequenceDiagram
+                autonumber
+                participant U as 🧑 Browser (Client)
+                participant D as 🌐 DNS
+                participant S as 🖥️ Web Server (Nginx)
+                participant F as ⚙️ Framework / Router
+                participant H as 📦 Handler (Controller)
+                participant DB as 🗄️ Database
+                U->>D: Resolve domain name
+                D-->>U: IP address
+                U->>S: HTTPS request (GET /books)
+                S->>F: Forward request
+                F->>H: Match route, call handler
+                H->>DB: Query records (parameterised)
+                DB-->>H: Result set
+                H-->>F: Build Response (JSON / HTML)
+                F-->>S: Response object
+                S-->>U: HTTP 200 + body
+                Note over U: Browser renders the result
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Visualise the end-to-end back-end process that handles a single web request<br>
+              <strong>Syllabus Link:</strong> SE-12-07<br>
+              <strong>Try This:</strong> Identify where caching could be added to reduce the number of database queries on repeated requests
+            </p>
+          </div>
+
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
             <ul class="video-list">
@@ -1135,6 +1170,39 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
 });</code></pre>
           </div>
 
+          <!-- Service Worker Cache Strategy Diagram -->
+          <div class="diagram-block">
+            <h4>Flowchart - Service Worker Cache-First Strategy</h4>
+            <p class="diagram-subtitle">How a PWA serves content instantly and works offline</p>
+            <p class="diagram-description">
+              A <strong>service worker</strong> sits between the page and the network as a programmable proxy. When the page requests an asset, the service worker intercepts the <code>fetch</code> event and checks its cache first. A cache hit is served instantly — even with no connection. On a cache miss it falls back to the network, stores the fresh copy for next time, and if the network is also unavailable it serves a graceful offline fallback. This is exactly the strategy implemented in the code above.
+            </p>
+            <div class="mermaid">
+              flowchart TB
+                A["📱 Page requests an asset<br/>(fetch event)"] --> SW{"⚙️ Service Worker<br/>intercepts request"}
+                SW --> C{"📦 In cache?"}
+                C -- "Yes" --> H1["⚡ Serve from cache<br/>instant · works offline"]
+                C -- "No" --> N{"🌐 Network available?"}
+                N -- "Yes" --> F["⬇️ Fetch from server"]
+                F --> U["🗃️ Update cache"]
+                U --> H2["📄 Serve fresh response"]
+                N -- "No" --> O["📴 Serve offline fallback page"]
+                classDef start fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+                classDef gate fill:#fff3e0,stroke:#E65100,stroke-width:2px
+                classDef good fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+                classDef off fill:#ffcdd2,stroke:#c62828,stroke-width:2px
+                class A start
+                class SW,C,N gate
+                class H1,H2,F,U good
+                class O off
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Explain the cache-first request flow that makes PWAs fast and offline-capable<br>
+              <strong>Syllabus Link:</strong> SE-12-06, SE-12-07<br>
+              <strong>Try This:</strong> Describe how a "network-first" strategy would differ, and when you would prefer it (e.g. live data)
+            </p>
+          </div>
+
           <h3>Web App Manifest</h3>
           <p>The <code>manifest.json</code> file tells the browser how to install and present the PWA. Link it in your HTML <code>&lt;head&gt;</code>: <code>&lt;link rel="manifest" href="/manifest.json"&gt;</code></p>
           <div class="code-block">
@@ -1213,7 +1281,7 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
     </div>
   </footer>
 
-  <script src="../js/main.js?v=10"></script>
+  <script src="../js/main.js?v=11"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script src="../js/mermaid-init.js?v=2"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
