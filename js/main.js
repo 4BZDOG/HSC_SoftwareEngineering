@@ -248,6 +248,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* ── Scroll-triggered diagram reveal ── */
+  (() => {
+    const blocks = document.querySelectorAll('.diagram-block');
+    if (!blocks.length) return;
+    if (!('IntersectionObserver' in window) ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return; // leave diagrams in their natural (visible) state
+    }
+    blocks.forEach(b => b.classList.add('diagram-reveal'));
+    const obs = new IntersectionObserver((entries, o) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('diagram-revealed');
+        o.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    blocks.forEach(b => obs.observe(b));
+  })();
+
   /* ── Table of Contents — Active Highlight on Scroll ── */
   const tocLinks = document.querySelectorAll('.toc-list a');
   if (tocLinks.length > 0) {
@@ -390,6 +409,32 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+
+  /* ── Hero parallax on scroll ── */
+  (() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    const grid = hero.querySelector('.hero-grid');
+    const inner = hero.querySelector('.hero-inner');
+    if (!grid && !inner) return;
+    if (grid) grid.style.willChange = 'transform';
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const y = window.scrollY;
+      if (y > window.innerHeight) return; // hero no longer in view
+      if (grid) grid.style.transform = `translate3d(0, ${(y * 0.28).toFixed(1)}px, 0)`;
+      if (inner) {
+        inner.style.transform = `translate3d(0, ${(y * 0.12).toFixed(1)}px, 0)`;
+        inner.style.opacity = String(Math.max(0, 1 - y / (window.innerHeight * 0.9)));
+      }
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
+  })();
 
   /* ── Reveal-on-scroll for home page sections ── */
   const revealEls = document.querySelectorAll('.feature-item, .path-stage, .study-guide-card');

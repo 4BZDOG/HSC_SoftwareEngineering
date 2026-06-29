@@ -2850,7 +2850,22 @@ section:has(> h2.section-collapsed) + .divider {
   padding: 0;           /* padding lives inside h4 and diagram-body */
   transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
   box-shadow: 0 2px 8px rgba(45,70,185,0.08), 0 1px 3px rgba(0,0,0,0.05);
-  animation: diagramSlideInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scroll-triggered reveal (JS adds .diagram-reveal; .diagram-revealed on enter).
+   No-JS users never get the hidden state, so diagrams stay visible. */
+.diagram-block.diagram-reveal {
+  opacity: 0;
+  transform: translateY(26px) scale(0.985);
+}
+.diagram-block.diagram-revealed {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.55s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .diagram-block.diagram-reveal { opacity: 1; transform: none; }
 }
 
 .diagram-block:hover {
