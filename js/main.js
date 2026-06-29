@@ -766,6 +766,61 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('hashchange', revealHashTarget);
   })();
 
+  /* ── Copy-link anchors on sub-headings ── */
+  (() => {
+    const headings = document.querySelectorAll('.content-body h3');
+    if (!headings.length || !document.querySelector('.content-body')) return;
+
+    const slugify = s => s.toLowerCase().trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-+|-+$/g, '');
+
+    const used = new Set(Array.from(document.querySelectorAll('[id]')).map(e => e.id));
+    const LINK_SVG =
+      '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" ' +
+      'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.5 1.5"/>' +
+      '<path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.5-1.5"/></svg>';
+
+    headings.forEach(h => {
+      let id = h.id;
+      if (!id) {
+        const base = slugify(h.textContent) || 'section';
+        id = base;
+        let n = 2;
+        while (used.has(id)) id = base + '-' + (n++);
+        h.id = id;
+      }
+      used.add(id);
+
+      const a = document.createElement('a');
+      a.className = 'heading-anchor';
+      a.href = '#' + id;
+      a.setAttribute('aria-label', 'Copy link to section: ' + h.textContent.trim());
+      a.innerHTML = LINK_SVG;
+
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const url = location.origin + location.pathname + '#' + id;
+        const flash = () => {
+          a.classList.add('copied');
+          setTimeout(() => a.classList.remove('copied'), 1600);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(flash, flash);
+        } else {
+          flash();
+        }
+        // Reflect the section in the address bar without a jarring jump
+        try { history.replaceState(null, '', '#' + id); } catch (err) {}
+      });
+
+      h.appendChild(a);
+    });
+  })();
+
   /* ── Diagram Block Collapsibility ── */
   (() => {
     const DIAGRAM_KEY = 'hsc-diagram-collapsed';

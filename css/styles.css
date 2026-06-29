@@ -4484,3 +4484,66 @@ section:has(> h2.section-collapsed) + .divider {
   .mobile-toc-backdrop,
   .mobile-toc-panel { display: none !important; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   Copy-link anchors on sub-headings — hover-reveal "share" affordance
+   ══════════════════════════════════════════════════════════════ */
+.heading-anchor {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15em;
+  height: 1.15em;
+  margin-left: 0.45rem;
+  vertical-align: -0.18em;
+  color: var(--primary);
+  border: none;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  opacity: 0;
+  position: relative;
+  cursor: pointer;
+  transition: opacity 160ms ease, background 160ms ease, color 160ms ease;
+  -webkit-text-fill-color: currentColor;   /* override h-heading gradient clip */
+}
+.heading-anchor svg { width: 0.85em; height: 0.85em; display: block; }
+
+/* Reveal on heading hover, or when the anchor itself is focused */
+.content-body h3:hover .heading-anchor { opacity: 0.55; }
+.heading-anchor:hover { opacity: 1; background: var(--primary-light); }
+.heading-anchor:focus-visible {
+  opacity: 1;
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+[data-theme="dark"] .heading-anchor:hover { background: rgba(140, 157, 234, 0.16); }
+
+/* Touch devices can't hover — keep it gently visible */
+@media (pointer: coarse) {
+  .heading-anchor { opacity: 0.4; }
+}
+
+/* "Copied!" confirmation tooltip */
+.heading-anchor.copied { opacity: 1; color: var(--success); }
+.heading-anchor.copied::after {
+  content: 'Link copied';
+  position: absolute;
+  left: 50%;
+  bottom: 150%;
+  transform: translateX(-50%);
+  background: var(--text-primary);
+  color: var(--bg);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  padding: 0.22rem 0.5rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: var(--shadow-md);
+}
+
+@media print {
+  .heading-anchor { display: none !important; }
+}
