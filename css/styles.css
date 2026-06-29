@@ -4335,3 +4335,143 @@ section:has(> h2.section-collapsed) + .divider {
 @media (prefers-reduced-motion: reduce) {
   .reveal-item { opacity: 1; transform: none; transition: none; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   Mobile Table of Contents — floating button + bottom sheet.
+   Phones/tablets only; the left sidebar handles this on desktop.
+   ══════════════════════════════════════════════════════════════ */
+.mobile-toc-fab { display: none; }
+
+@media (max-width: 768px) {
+  .mobile-toc-fab {
+    position: fixed;
+    bottom: 2rem;
+    left: 1.25rem;
+    z-index: var(--z-sticky);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.6rem 0.95rem 0.6rem 0.8rem;
+    border: none;
+    border-radius: var(--radius-full);
+    background: var(--primary);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(45,70,185,.35);
+    transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+  }
+  .mobile-toc-fab svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .mobile-toc-fab:active { transform: scale(0.96); }
+}
+
+[data-theme="dark"] .mobile-toc-fab {
+  background: linear-gradient(135deg, #2D46B9, #4458C8);
+}
+
+.mobile-toc-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 16, 0.5);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 240ms ease, visibility 240ms ease;
+  z-index: var(--z-modal);
+}
+.mobile-toc-backdrop.open { opacity: 1; visibility: visible; }
+
+.mobile-toc-panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 72vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border-top-left-radius: var(--radius-2xl);
+  border-top-right-radius: var(--radius-2xl);
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25);
+  transform: translateY(100%);
+  transition: transform 320ms cubic-bezier(.4, 0, .2, 1);
+  z-index: var(--z-modal);
+}
+.mobile-toc-panel.open { transform: translateY(0); }
+
+.mobile-toc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem 0.8rem;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+.mobile-toc-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.7rem;
+  line-height: 1;
+  color: var(--text-muted);
+  padding: 0 0.25rem;
+}
+.mobile-toc-close:active { color: var(--text-primary); }
+
+.mobile-toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0.75rem calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.mobile-toc-list li { margin: 0; }
+.mobile-toc-list .sidebar-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--primary);
+  padding: 0.9rem 0.75rem 0.35rem;
+}
+[data-theme="dark"] .mobile-toc-list .sidebar-label { color: var(--accent); }
+.mobile-toc-list a {
+  display: block;
+  padding: 0.62rem 0.75rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  line-height: 1.35;
+  transition: background 160ms ease, color 160ms ease;
+}
+.mobile-toc-list a:active,
+.mobile-toc-list a:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+}
+
+/* Desktop never shows the sheet — the sidebar covers it */
+@media (min-width: 769px) {
+  .mobile-toc-backdrop,
+  .mobile-toc-panel { display: none !important; }
+}
+
+/* Respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .mobile-toc-panel { transition: none; }
+}
+
+/* Keep the floating Contents button clear of the scroll-top button row */
+@media print {
+  .mobile-toc-fab,
+  .mobile-toc-backdrop,
+  .mobile-toc-panel { display: none !important; }
+}

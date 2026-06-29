@@ -640,6 +640,98 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
+  /* ── Mobile Table of Contents (bottom sheet) ── */
+  (() => {
+    const sidebarToc = document.querySelector('.sidebar .toc-list');
+    if (!sidebarToc) return;
+
+    const fab = document.createElement('button');
+    fab.className = 'mobile-toc-fab';
+    fab.type = 'button';
+    fab.setAttribute('aria-label', 'Open table of contents');
+    fab.setAttribute('aria-expanded', 'false');
+    fab.innerHTML =
+      '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" ' +
+      'stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+      '<line x1="8" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/>' +
+      '<line x1="8" y1="18" x2="20" y2="18"/><line x1="3.5" y1="6" x2="3.51" y2="6"/>' +
+      '<line x1="3.5" y1="12" x2="3.51" y2="12"/><line x1="3.5" y1="18" x2="3.51" y2="18"/></svg>' +
+      '<span>Contents</span>';
+
+    const backdrop = document.createElement('div');
+    backdrop.className = 'mobile-toc-backdrop';
+
+    const panel = document.createElement('nav');
+    panel.className = 'mobile-toc-panel';
+    panel.setAttribute('aria-label', 'Table of contents');
+    panel.setAttribute('aria-hidden', 'true');
+
+    const header = document.createElement('div');
+    header.className = 'mobile-toc-header';
+    header.innerHTML = '<span>On this page</span>' +
+      '<button class="mobile-toc-close" type="button" aria-label="Close table of contents">&times;</button>';
+
+    const list = sidebarToc.cloneNode(true);
+    list.classList.remove('toc-list');
+    list.classList.add('mobile-toc-list');
+    // Clones don't inherit the sidebar links' event listeners; strip ids just in case
+    list.removeAttribute('id');
+
+    panel.appendChild(header);
+    panel.appendChild(list);
+    document.body.appendChild(fab);
+    document.body.appendChild(backdrop);
+    document.body.appendChild(panel);
+
+    let lastFocus = null;
+    const open = () => {
+      lastFocus = document.activeElement;
+      backdrop.classList.add('open');
+      panel.classList.add('open');
+      fab.setAttribute('aria-expanded', 'true');
+      panel.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      const first = panel.querySelector('.mobile-toc-close');
+      if (first) first.focus();
+    };
+    const close = () => {
+      backdrop.classList.remove('open');
+      panel.classList.remove('open');
+      fab.setAttribute('aria-expanded', 'false');
+      panel.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    };
+
+    fab.addEventListener('click', () => {
+      panel.classList.contains('open') ? close() : open();
+    });
+    backdrop.addEventListener('click', close);
+    header.querySelector('.mobile-toc-close').addEventListener('click', close);
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && panel.classList.contains('open')) close();
+    });
+
+    // Delegate link clicks to the real sidebar link so the existing
+    // expand-collapsed-section + smooth-scroll handlers fire.
+    list.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        close();
+        const real = document.querySelector('.sidebar .toc-list a[href="' + href + '"]');
+        setTimeout(() => {
+          if (real) {
+            real.click();
+          } else {
+            const target = document.querySelector(href);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 140);
+      });
+    });
+  })();
+
   /* ── Diagram Block Collapsibility ── */
   (() => {
     const DIAGRAM_KEY = 'hsc-diagram-collapsed';
