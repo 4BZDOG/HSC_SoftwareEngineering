@@ -686,11 +686,20 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastFocus = null;
     const open = () => {
       lastFocus = document.activeElement;
+      // Mirror the sidebar's current active-section highlight into the sheet
+      const activeHref = document.querySelector('.sidebar .toc-list a.active')?.getAttribute('href');
+      let activeMobile = null;
+      list.querySelectorAll('a').forEach(a => {
+        const on = a.getAttribute('href') === activeHref;
+        a.classList.toggle('active', on);
+        if (on) activeMobile = a;
+      });
       backdrop.classList.add('open');
       panel.classList.add('open');
       fab.setAttribute('aria-expanded', 'true');
       panel.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      if (activeMobile) activeMobile.scrollIntoView({ block: 'center' });
       const first = panel.querySelector('.mobile-toc-close');
       if (first) first.focus();
     };
@@ -730,6 +739,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 140);
       });
     });
+  })();
+
+  /* ── Deep-link handling: expand collapsed part/section for #hash targets ── */
+  (() => {
+    const revealHashTarget = () => {
+      const hash = location.hash;
+      if (!hash || hash.length < 2) return;
+      let target;
+      try { target = document.querySelector(hash); } catch { return; }
+      if (!target) return;
+      // Expand a collapsed part-group (click its part-block header)
+      const partGroup = target.closest('.part-group');
+      if (partGroup && partGroup.classList.contains('part-collapsed')) {
+        partGroup.previousElementSibling?.click();
+      }
+      // Expand a collapsed section
+      const section = target.tagName === 'SECTION' ? target : target.closest('section');
+      const h2 = section?.querySelector('h2.syllabus-phase');
+      if (h2 && h2.classList.contains('section-collapsed')) h2.click();
+      // Scroll once the expand transition has started
+      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+    };
+    // Defer so the part/section collapse initialisers have finished wrapping.
+    setTimeout(revealHashTarget, 0);
+    window.addEventListener('hashchange', revealHashTarget);
   })();
 
   /* ── Diagram Block Collapsibility ── */

@@ -4457,6 +4457,15 @@ section:has(> h2.section-collapsed) + .divider {
   background: var(--surface-hover);
   color: var(--text-primary);
 }
+.mobile-toc-list a.active {
+  background: var(--primary-light);
+  color: var(--primary);
+  font-weight: 600;
+}
+[data-theme="dark"] .mobile-toc-list a.active {
+  background: rgba(140, 157, 234, 0.15);
+  color: var(--primary);
+}
 
 /* Desktop never shows the sheet — the sidebar covers it */
 @media (min-width: 769px) {
