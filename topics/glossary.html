@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=17" />
+  <link rel="stylesheet" href="../css/styles.css?v=18" />
   <style>
     /* ── Glossary Page Layout ── */
     .glossary-wrapper {
@@ -384,6 +384,10 @@
     .glossary-search-container:focus-within .search-k-hint { display: none; }
     .glossary-search-container.has-val .search-clear-btn { display: block; }
     .glossary-search-container.has-val .search-k-hint { display: none; }
+    /* The Ctrl+K shortcut is keyboard-only — hide the hint on touch devices */
+    @media (pointer: coarse) {
+      .search-k-hint { display: none; }
+    }
   </style>
 </head>
 <body>
