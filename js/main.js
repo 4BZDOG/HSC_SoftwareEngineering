@@ -863,8 +863,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ── Copy-link anchors on sub-headings ── */
   (() => {
-    const headings = document.querySelectorAll('.content-body h3');
-    if (!headings.length || !document.querySelector('.content-body')) return;
+    // Section sub-headings only — exclude glossary term cards, which have their
+    // own #term-* ids and :target highlight (don't clutter them with anchors).
+    const headings = Array.from(document.querySelectorAll('.content-body h3'))
+      .filter(h => !h.closest('.glossary-term'));
+    if (!headings.length) return;
 
     const slugify = s => s.toLowerCase().trim()
       .replace(/[^\w\s-]/g, '')
