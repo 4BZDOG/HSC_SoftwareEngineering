@@ -341,14 +341,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ── Cursor spotlight on cards ── */
+  /* ── Cursor spotlight + subtle 3D tilt on cards ── */
   if (window.matchMedia('(hover: hover)').matches) {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const MAX_TILT = 5; // degrees
+
     document.querySelectorAll('.topic-card').forEach(card => {
       card.addEventListener('pointermove', e => {
         const r = card.getBoundingClientRect();
-        card.style.setProperty('--sx', `${((e.clientX - r.left) / r.width) * 100}%`);
-        card.style.setProperty('--sy', `${((e.clientY - r.top) / r.height) * 100}%`);
+        const px = (e.clientX - r.left) / r.width;
+        const py = (e.clientY - r.top) / r.height;
+        // Spotlight follows the cursor
+        card.style.setProperty('--sx', `${px * 100}%`);
+        card.style.setProperty('--sy', `${py * 100}%`);
+        // Tilt the card toward the cursor (skip if reduced-motion)
+        if (!reduceMotion) {
+          const rx = (0.5 - py) * MAX_TILT;
+          const ry = (px - 0.5) * MAX_TILT;
+          card.style.transform =
+            `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-4px)`;
+        }
       });
+      if (!reduceMotion) {
+        card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+      }
     });
 
     /* ── Hero cursor light ── */
@@ -358,6 +374,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const r = hero.getBoundingClientRect();
         hero.style.setProperty('--hx', `${((e.clientX - r.left) / r.width) * 100}%`);
         hero.style.setProperty('--hy', `${((e.clientY - r.top) / r.height) * 100}%`);
+      });
+    }
+
+    /* ── Magnetic hero buttons ── */
+    if (!reduceMotion) {
+      document.querySelectorAll('.hero-cta .btn').forEach(btn => {
+        btn.addEventListener('pointermove', e => {
+          const r = btn.getBoundingClientRect();
+          const mx = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+          const my = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+          btn.style.transform = `translate(${(mx * 5).toFixed(1)}px, ${(my * 4).toFixed(1)}px)`;
+        });
+        btn.addEventListener('pointerleave', () => { btn.style.transform = ''; });
       });
     }
   }
