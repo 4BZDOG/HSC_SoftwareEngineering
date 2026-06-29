@@ -37,13 +37,34 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
   }
 
+  const applyTheme = next => {
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem(THEME_KEY, next); } catch {}
+    themeButtons.forEach(b => updateThemeIcon(b, next));
+  };
+
   themeButtons.forEach(btn => {
     updateThemeIcon(btn, saved);
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', e => {
       const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      try { localStorage.setItem(THEME_KEY, next); } catch {}
-      themeButtons.forEach(b => updateThemeIcon(b, next));
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Premium: animate the swap as a circular reveal from the toggle button.
+      if (!document.startViewTransition || reduce) {
+        applyTheme(next);
+        return;
+      }
+      const r = btn.getBoundingClientRect();
+      const x = r.left + r.width / 2;
+      const y = r.top + r.height / 2;
+      const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+      const root = document.documentElement;
+      root.style.setProperty('--theme-x', x + 'px');
+      root.style.setProperty('--theme-y', y + 'px');
+      root.style.setProperty('--theme-r', radius + 'px');
+      root.classList.add('theme-transition');
+      const vt = document.startViewTransition(() => applyTheme(next));
+      vt.finished.finally(() => root.classList.remove('theme-transition'));
     });
   });
 

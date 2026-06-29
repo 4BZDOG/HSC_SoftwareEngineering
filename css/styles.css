@@ -4562,3 +4562,36 @@ section:has(> h2.section-collapsed) + .divider {
 @media print {
   .heading-anchor { display: none !important; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   View Transitions (progressive enhancement — ignored where unsupported)
+   ══════════════════════════════════════════════════════════════ */
+
+/* Smooth cross-fade between same-origin pages */
+@view-transition { navigation: auto; }
+
+/* Theme switch: circular reveal of the new theme from the toggle button.
+   Scoped to .theme-transition so page-navigation transitions stay a clean fade. */
+html.theme-transition::view-transition-old(root),
+html.theme-transition::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+html.theme-transition::view-transition-old(root) { z-index: 0; }
+html.theme-transition::view-transition-new(root) {
+  z-index: 1;
+  animation: theme-reveal 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes theme-reveal {
+  from { clip-path: circle(0 at var(--theme-x, 50%) var(--theme-y, 50%)); }
+  to   { clip-path: circle(var(--theme-r, 150%) at var(--theme-x, 50%) var(--theme-y, 50%)); }
+}
+
+/* Never animate transitions for reduced-motion users */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
