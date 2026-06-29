@@ -51,7 +51,7 @@
   <meta name="description" content="HSC Programming for the Web notes — HTML, CSS, JavaScript, REST APIs, SQL, HTTP protocols, security, PWAs, and collaborative development. Year 12 NESA NSW." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=16" />
+  <link rel="stylesheet" href="../css/styles.css?v=17" />
 </head>
 <body>
 
@@ -155,7 +155,7 @@
         <span class="meta-pill">Outcomes: SE-12-01 to 09</span>
       </div>
       <div class="callout exam-tip curriculum-banner yr12">
-        <strong>📚 Curriculum Aligned:</strong> This page covers NESA NSW HSC outcomes <strong>SE-12-01 to SE-12-09</strong> comprehensively. All content is aligned to official syllabus specifications — study with confidence. <a href="../resources/Syllabus-Mapping.md">View full mapping →</a>
+        <strong>📚 Curriculum Aligned:</strong> This page covers NESA NSW HSC outcomes <strong>SE-12-01 to SE-12-09</strong> comprehensively. All content is aligned to official syllabus specifications — study with confidence. <a href="https://github.com/4BZDOG/HSC_SoftwareEngineering/blob/main/resources/Syllabus-Mapping.md" target="_blank" rel="noopener">View full mapping →</a>
       </div>
     </div>
   </header>
@@ -423,7 +423,35 @@
             <p><strong>Authentication</strong> is the process of verifying <em>who</em> a user is (e.g., verifying a username and password match a database record). <strong>Authorisation</strong> is the process of verifying <em>what</em> an authenticated user is permitted to do (e.g., checking if a logged-in user has the "admin" role before allowing access to the dashboard). Modern web applications use <strong>JSON Web Tokens (JWT)</strong> or <strong>OAuth 2.0</strong> to manage these processes securely across multiple services.</p>
           </div>
 
-          <p class="diagram-caption">
+          <!-- JWT Authentication Flow Diagram -->
+          <div class="diagram-block">
+            <h4>Sequence Diagram - Stateless JWT Authentication</h4>
+            <p class="diagram-subtitle">Password verification, token issue, and stateless re-authentication</p>
+            <p class="diagram-description">
+              This diagram traces a stateless <strong>authentication</strong> flow. On login, the server verifies the submitted password against the stored <strong>bcrypt</strong> hash, then issues a signed <strong>JWT</strong>. On every later request the client presents that token in the <code>Authorization</code> header, and the server validates the signature <em>without</em> a database lookup — that statelessness is what lets the system scale horizontally.
+            </p>
+            <div class="mermaid">
+              sequenceDiagram
+                autonumber
+                participant U as 🧑 User (Browser)
+                participant S as 🖥️ Web Server
+                participant DB as 🗄️ User Database
+                U->>S: POST /login (username + password)
+                S->>DB: Look up user by username
+                DB-->>S: Stored bcrypt password hash
+                S->>S: Verify password against hash
+                alt Credentials valid
+                  S->>S: Sign JWT (header.payload.signature)
+                  S-->>U: 200 OK + JWT
+                  Note over U: Store token<br/>(HttpOnly cookie)
+                  U->>S: GET /dashboard<br/>Authorization: Bearer JWT
+                  S->>S: Verify JWT signature<br/>(stateless — no DB lookup)
+                  S-->>U: 200 OK + protected data
+                else Credentials invalid
+                  S-->>U: 401 Unauthorized
+                end
+            </div>
+            <p class="diagram-caption">
               <strong>Purpose:</strong> Trace stateless <strong>authentication</strong> flow with <strong>JWT</strong> tokens and password verification<br>
               <strong>Syllabus Link:</strong> SE-12-04, SE-12-07<br>
               <strong>Try This:</strong> Implement <strong>JWT</strong>-based <strong>authentication</strong> in a Python Flask or Node.js Express app and trace the token through multiple requests

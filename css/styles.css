@@ -4112,13 +4112,16 @@ section:has(> h2.section-collapsed) + .divider {
     overflow: visible !important;
   }
 
-  /* Avoid page breaks inside cards and code blocks */
+  /* Avoid page breaks inside cards, code blocks and diagrams */
   .topic-card,
   .info-card,
   .def-card,
   .callout,
   .code-block,
-  .table-wrap {
+  .table-wrap,
+  .diagram-block,
+  .mermaid,
+  .video-box {
     break-inside: avoid;
     page-break-inside: avoid;
   }
