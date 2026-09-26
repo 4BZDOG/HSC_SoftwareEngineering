@@ -58,6 +58,18 @@
   function init() {
     document.querySelectorAll('.hero').forEach(h => mount(h, false));
     document.querySelectorAll('.topic-header').forEach(h => mount(h, true));
+    // Split "4. Title" in the contents lists so the number can be styled on its own.
+    document.querySelectorAll('.toc-list a').forEach(a => {
+      const m = /^(\d+[a-z]?)\.\s+(.*)$/.exec(a.textContent.trim());
+      if (!m || a.querySelector('.toc-num')) return;
+      a.textContent = '';
+      const num = document.createElement('span');
+      num.className = 'toc-num';
+      num.textContent = m[1];
+      const label = document.createElement('span');
+      label.textContent = m[2];
+      a.append(num, label);
+    });
     const crumb = document.querySelector('.topic-breadcrumb');
     if (crumb && /Year 11/.test(crumb.textContent)) document.documentElement.classList.add('pc-y11');
   }

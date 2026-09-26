@@ -833,3 +833,60 @@
   background-image: var(--pc-grain);
   color: var(--pc-ink);
 }
+
+/* ── Sidebar contents: a compact index card ──────────────── */
+:root[data-theme] .sidebar .toc-title {
+  font: italic 600 .95rem var(--font-display);
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--pc-ink);
+  margin: 0 0 .5rem;
+  padding: 0 .9rem;
+}
+:root[data-theme] .sidebar .toc-list {
+  padding: .5rem .45rem .65rem;
+  border-radius: 6px;
+  box-shadow: var(--pc-shadow-1);
+}
+:root[data-theme] .sidebar .sidebar-label {
+  display: block;
+  margin: .7rem .45rem .2rem;
+  padding: .55rem 0 0;
+  border-top: 1px dashed var(--pc-rule-strong);
+  font: 600 .66rem/1.35 var(--font-body);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+}
+:root[data-theme] .sidebar .sidebar-label:first-child { margin-top: .1rem; padding-top: 0; border-top: 0; }
+:root[data-theme] .sidebar .sidebar-label.toc-part-active { color: var(--pc-terracotta); }
+:root.pc-y11[data-theme] .sidebar .sidebar-label.toc-part-active { color: var(--pc-sage); }
+:root[data-theme] .sidebar .toc-list a {
+  display: flex;
+  gap: .45rem;
+  padding: .3rem .5rem;
+  margin: 1px 0;
+  font-size: .8rem;
+  line-height: 1.35;
+  color: var(--pc-ink-soft);
+  border-left: 0;
+  border-radius: 4px;
+}
+:root[data-theme] .sidebar .toc-num {
+  flex: none;
+  min-width: 1.35rem;
+  font: 500 .72rem/1.6 var(--font-mono);
+  color: var(--pc-muted);
+}
+:root[data-theme] .sidebar .toc-list a:hover { background: var(--pc-sheet); color: var(--pc-ink); }
+:root[data-theme] .sidebar .toc-list a.active {
+  background: var(--pc-sheet);
+  color: var(--pc-ink);
+  font-weight: 600;
+  padding-left: .5rem;
+  border-left: 0;
+  box-shadow: inset 3px 0 0 var(--pc-terracotta);
+}
+:root.pc-y11[data-theme] .sidebar .toc-list a.active { box-shadow: inset 3px 0 0 var(--pc-sage); }
+:root[data-theme] .sidebar .toc-list a.active .toc-num { color: var(--pc-terracotta); }
+:root.pc-y11[data-theme] .sidebar .toc-list a.active .toc-num { color: var(--pc-sage); }
