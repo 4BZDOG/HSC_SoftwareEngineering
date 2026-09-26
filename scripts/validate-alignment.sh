@@ -57,12 +57,15 @@ print_header "NESA NSW Syllabus Alignment Validation"
 print_header "Check 1: Blacklisted Tool References"
 
 BLACKLIST_TOOLS=("bandit" "safety" "OWASP ZAP" "Burp Suite" "nessus" "openvas" "metasploit" "aircrack")
-BLACKLIST_PATTERNS=("bandit" "safety" "OWASP.ZAP" "Burp.Suite")
+# "safety" is also an everyday word, so match the tool only as invoked or linked.
+BLACKLIST_PATTERNS=("bandit" "safety check" "safety.readthedocs" "OWASP.ZAP" "Burp.Suite")
 
 found_blacklist=0
 for pattern in "${BLACKLIST_PATTERNS[@]}"; do
-  # Search in resources/*.md and topics/**/*.html
-  matches=$(grep -r "$pattern" "$PROJECT_ROOT/resources/" "$PROJECT_ROOT/topics/" 2>/dev/null || true)
+  # Search in resources/*.md and topics/**/*.html. Extended-Learning.md exists to point
+  # beyond the syllabus, and nesa-syllabus-content.md is NESA's verbatim text, so both are exempt.
+  matches=$(grep -rw "$pattern" "$PROJECT_ROOT/resources/" "$PROJECT_ROOT/topics/" \
+    --exclude=Extended-Learning.md --exclude=nesa-syllabus-content.md 2>/dev/null || true)
 
   if [ -n "$matches" ]; then
     error "Found blacklisted tool reference: $pattern"
@@ -78,14 +81,15 @@ fi
 # 2. Check for syllabus outcome metadata in HTML comments
 print_header "Check 2: Syllabus Outcome Metadata"
 
-echo "Checking for outcome annotations (<!-- SE-12-XX -->)..."
+echo "Checking every syllabus section carries outcome badges..."
 
-topic_files=$(find "$PROJECT_ROOT/topics" -name "*.html" -type f)
-outcome_pattern="<!-- SE-12-[0-9]{2}"
+# Resource pages (glossary, course tools, SDLC guide) are not syllabus focus areas.
+topic_files=$(find "$PROJECT_ROOT/topics" -name "*.html" -type f ! -name glossary.html ! -name course-tools.html ! -name sdlc.html)
+outcome_pattern='class="outcome-subtitle">🎯 <em>\(SE-1[12]-0[0-9]'
 missing_annotations=0
 
 for file in $topic_files; do
-  if grep -q "$outcome_pattern" "$file"; then
+  if grep -qE "$outcome_pattern" "$file"; then
     success "Found outcome annotations in $(basename "$file")"
   else
     warning "Missing outcome annotations in $(basename "$file")"

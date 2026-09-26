@@ -253,3 +253,5 @@ Thank you for contributing! Your help makes this resource better for students. ð
 - `python3 scripts/copy_audit.py` lists each section's length against the scope its NESA verb implies (brief for *describe*/*outline*, broader for *investigate*/*evaluate*).
 - Glossary terms live in `topics/glossary.html`. After editing it, run `python3 scripts/build-glossary.py` to regenerate `js/glossary-data.js`, which powers the inline definition popovers.
 - `python3 scripts/build-mapping.py` regenerates `resources/Syllabus-Mapping.md`.
+- To add glossary terms, append them to `scripts/glossary_new_terms.py`, then run `python3 scripts/add-glossary-terms.py && python3 scripts/build-glossary.py`.
+- Before opening a pull request, run `python3 scripts/check-site.py` and `bash scripts/validate-alignment.sh`. Both run automatically on every pull request (`.github/workflows/checks.yml`).

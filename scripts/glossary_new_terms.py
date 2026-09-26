@@ -1,6 +1,10 @@
 # Syllabus keywords added to the glossary: (id, name, topics, definition, example)
 # Topic keys: pf, oop, mech, ssa, web, auto, sep, sdlc
 TERMS = [
+ ('term-sprint', 'Sprint', ['sep', 'sdlc'], 'A short, fixed period, usually one to four weeks, in which an Agile team builds and reviews a working piece of software.', 'A two-week sprint that delivers the login page, followed by a review with the client.'),
+ ('term-debugging', 'Debugging', ['pf', 'sdlc'], 'Finding, understanding and fixing errors in a program.', 'Using breakpoints and a watch to discover a loop runs one time too many.'),
+ ('term-design-pattern', 'Design Pattern', ['oop'], 'A proven, reusable way to structure code that solves a common design problem.', 'The facade pattern gives a complex payment system one simple <code>pay()</code> method.'),
+ ('term-integer', 'Integer', ['pf'], 'A data type for whole numbers, positive or negative, with no decimal part.', '<code>students = 28</code>'),
  ('term-address-register', 'Address Register', ['mech'], 'A small, fast storage location inside a processor that holds the memory address of data or of the next instruction to fetch.', 'While running a loop, the program counter (an address register) points to the next instruction in flash memory.'),
  ('term-backtracking', 'Backtracking', ['pf'], 'An algorithm design strategy that builds a solution step by step and, when a step leads to a dead end, undoes it and tries a different choice.', 'Solving a maze by following a path until it is blocked, then stepping back to the last junction and trying another way.'),
  ('term-big-data', 'Big Data', ['web', 'auto'], 'Data sets so large, fast-changing or varied that ordinary tools cannot store or process them, so distributed systems are needed.', 'Every song played by every Spotify user each day.'),

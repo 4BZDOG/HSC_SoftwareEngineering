@@ -1,0 +1,28 @@
+name: Site checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syllabus structure, links, ids, markup and glossary data
+        run: python3 scripts/check-site.py
+
+      - name: Syllabus alignment
+        run: bash scripts/validate-alignment.sh
