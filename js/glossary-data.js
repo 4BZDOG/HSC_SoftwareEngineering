@@ -539,7 +539,7 @@ window.HSC_GLOSSARY = [
 "Dynamic Application Security Testing"
 ],
 "def": "Security testing performed against a running application from the outside — simulating the perspective of an attacker. Identifies vulnerabilities such as SQL injection and XSS at runtime.",
-"example": "Running OWASP ZAP against a live test site to find XSS vulnerabilities.",
+"example": "Running an automated scanner against a live test site to find XSS vulnerabilities.",
 "link": true
 },
 {
@@ -1651,7 +1651,7 @@ window.HSC_GLOSSARY = [
 "Static Application Security Testing"
 ],
 "def": "Security testing conducted on source code, bytecode, or binaries without executing the application (white-box testing). Identifies vulnerabilities early in the SDLC.",
-"example": "A tool such as Bandit scans Python source code for insecure functions.",
+"example": "A static analysis tool scans Python source code and flags insecure functions such as eval().",
 "link": true
 },
 {

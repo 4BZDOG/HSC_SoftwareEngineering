@@ -41,7 +41,10 @@ def add_example(m):
     return re.sub(r'(</p>)', r'\1\n              <p class="term-example"><strong>Example:</strong> ' +
                   EXAMPLES[tid].replace('\\', '\\\\') + '</p>', block, count=1)
 
-src = re.sub(r'<div class="glossary-term" id="(term-[^"]+)">.*?</p>', add_example, src, flags=re.S)
+# Only terms whose card has no example yet (keeps the script idempotent).
+has_example = set(re.findall(r'<div class="glossary-term" id="(term-[^"]+)">(?:(?!<div class="glossary-term").)*?class="term-example"', src, re.S))
+src = re.sub(r'<div class="glossary-term" id="(term-[^"]+)">.*?</p>',
+             lambda m: m.group(0) if m.group(1) in has_example else add_example(m), src, flags=re.S)
 open(GLOSSARY, 'w', encoding='utf-8').write(src)
 
 # 2. Emit the data file used by the inline popover.
