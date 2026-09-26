@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=8" />
+  <link rel="stylesheet" href="../css/paper.css?v=12" />
 </head>
 <body>
 
@@ -233,38 +233,40 @@
           </div>
 
           <!-- AI vs ML vs Deep Learning Diagram -->
-          <div class="diagram-block">
-            <h4>Diagram - AI ⊃ Machine Learning ⊃ Deep Learning</h4>
-            <p class="diagram-subtitle">How the three fields nest inside one another</p>
-            <p class="diagram-description">
-              These terms are often used interchangeably, but they describe nested sets. <strong>Artificial Intelligence</strong> is the broadest field — any technique that makes a machine appear intelligent, including fixed rule-based logic. <strong>Machine Learning</strong> is a subset of AI in which systems learn patterns from data rather than being explicitly programmed. <strong>Deep Learning</strong> is a further subset of ML that uses multi-layer neural networks to learn features automatically from very large datasets.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Concept diagram</span></p>
+            <h4 class="figure-title">AI, machine learning and deep learning</h4>
+            <p class="figure-lead">Each field sits inside the one before it.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              flowchart TB
-                subgraph AI["🤖 Artificial Intelligence — machines simulating human-like intelligence"]
-                  direction TB
-                  AIex["Rule-based expert systems · search · robotics<br/>can use fixed IF–THEN logic, no learning"]
-                  subgraph ML["📊 Machine Learning — systems that learn patterns from data"]
-                    direction TB
-                    MLex["Spam filters · regression · clustering<br/>improves with data, not hard-coded"]
-                    subgraph DL["🧠 Deep Learning — multi-layer neural networks"]
-                      direction TB
-                      DLex["Image recognition · speech · large language models<br/>learns features automatically from huge datasets"]
-                    end
-                  end
-                end
-                classDef neutral fill:#eceff1,stroke:#90a4ae,stroke-width:1px
-                class AIex,MLex,DLex neutral
-                style AI fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
-                style ML fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
-                style DL fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
+flowchart TB
+  subgraph AI["Artificial Intelligence — machines simulating human-like intelligence"]
+    direction TB
+    AIex["Rule-based expert systems · search · robotics<br/>can use fixed IF–THEN logic, no learning"]
+    subgraph ML["Machine Learning — systems that learn patterns from data"]
+      direction TB
+      MLex["Spam filters · regression · clustering<br/>improves with data, not hard-coded"]
+      subgraph DL["Deep Learning — multi-layer neural networks"]
+        direction TB
+        DLex["Image recognition · speech · large language models<br/>learns features automatically from huge datasets"]
+      end
+    end
+  end
+  classDef neutral fill:#eceff1,stroke:#90a4ae,stroke-width:1px
+  class AIex,MLex,DLex neutral
+  style AI fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+  style ML fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+  style DL fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
+
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Clarify the containment relationship between AI, ML and Deep Learning<br>
-              <strong>Syllabus Link:</strong> SE-12-03<br>
-              <strong>Try This:</strong> Classify each of these as AI-only, ML, or Deep Learning: a thermostat schedule, a movie recommender, a face-unlock system
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>All ML is AI, but not all AI learns from data.</li><li>Deep learning is ML that uses neural networks with many layers.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Is a chess program that follows fixed rules AI, ML or both?</p>
+          </div>
+        </figure>
 
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
@@ -323,37 +325,27 @@
           </div>
 
           <!-- ML Training Models Decision Diagram -->
-          <div class="diagram-block">
-            <h4>Diagram - Choosing a Machine Learning Training Model</h4>
-            <p class="diagram-subtitle">The four training models, decided by your data</p>
-            <p class="diagram-description">
-              The training model you choose depends largely on the data you have. If every example carries a correct answer (a label), <strong>supervised learning</strong> applies. With no labels at all, <strong>unsupervised learning</strong> discovers structure on its own. A mix of a few labels and lots of unlabelled data suits <strong>semi-supervised learning</strong>. <strong>Reinforcement learning</strong> is different again — there is no dataset; an agent learns through reward and penalty by interacting with an environment.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Decision tree</span></p>
+            <h4 class="figure-title">Choosing a training model</h4>
+            <p class="figure-lead">The data you have decides the model.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              flowchart TB
-                ROOT["🎯 How is the model trained?"]
-                ROOT --> L{"Is the data labelled?"}
-                L -- "Fully labelled" --> SUP["✅ Supervised Learning<br/>learns input→output mapping<br/>e.g. spam classification, regression"]
-                L -- "Not labelled" --> UNSUP["🔍 Unsupervised Learning<br/>finds hidden patterns / clusters<br/>e.g. customer segmentation"]
-                L -- "Partly labelled" --> SEMI["🟡 Semi-Supervised Learning<br/>few labels + many unlabelled<br/>e.g. medical image analysis"]
-                ROOT --> R["🕹️ Reinforcement Learning<br/>agent learns by reward &amp; penalty<br/>e.g. AlphaGo, robotics"]
-                classDef q fill:#fff3e0,stroke:#E65100,stroke-width:2px
-                classDef sup fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
-                classDef un fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
-                classDef semi fill:#fff9c4,stroke:#F57F17,stroke-width:2px
-                classDef rl fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
-                class ROOT,L q
-                class SUP sup
-                class UNSUP un
-                class SEMI semi
-                class R rl
+flowchart TD
+  A["Learning from rewards<br/>and penalties?"] -- "Yes" --&gt; R["Reinforcement learning"]
+  A -- "No" --&gt; B["Is the data labelled?"]
+  B -- "All" --&gt; S["Supervised learning"]
+  B -- "Some" --&gt; M["Semi-supervised learning"]
+  B -- "None" --&gt; U["Unsupervised learning"]
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Map each training model to the kind of data and problem it suits<br>
-              <strong>Syllabus Link:</strong> SE-12-03<br>
-              <strong>Try This:</strong> A self-driving car learning to park has no labelled dataset — which training model fits, and why?
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Each branch is labelled with the answer that leads to it.</li><li>Every path ends in an action, here a training model.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>A robot learns to walk by trying moves and being scored. Follow the tree.</p>
+          </div>
+        </figure>
 
           <div class="callout success"><strong>HSC writing sample:</strong> <em>"Supervised learning suits spam filtering because thousands of emails have already been labelled as spam or not spam, so the model can learn from correct answers. Unsupervised learning suits grouping customers by shopping habits, where no labels exist and the aim is to discover patterns."</em></div>
         </section>
@@ -422,44 +414,28 @@
           </div>
 
           <!-- Decision Tree Diagram -->
-          <div class="diagram-block">
-            <h4>Decision Tree - Email Spam Detection</h4>
-            <p class="diagram-subtitle">Multi-level heuristic classification logic</p>
-            <p class="diagram-description">
-              This decision tree shows how email filtering systems classify messages as spam or legitimate using sequential heuristic checks: Does it contain urgency keywords? Are suspicious links present? Is the sender authenticated? Each path follows decision points, accumulating confidence levels. This demonstrates how automated systems make complex decisions through multiple rule-based checks.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Decision tree</span></p>
+            <h4 class="figure-title">Decision tree: is this email spam?</h4>
+            <p class="figure-lead">Each question splits the emails until every path reaches a decision.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              graph TD
-                  A["Contains 'FREE'<br/>or 'URGENT'?"] -->|Yes| B["All CAPS<br/>words > 50%?"]
-                  A -->|No| C["Has suspicious<br/>links?"]
-                  B -->|Yes| D["🚨 SPAM<br/>Confidence: 95%"]
-                  B -->|No| E["Sender domain<br/>authenticated?"]
-                  C -->|Yes| F["Link domain<br/>known safe?"]
-                  C -->|No| G["Recipient in<br/>To: field?"]
-                  E -->|Yes| H["✅ LEGITIMATE<br/>Confidence: 92%"]
-                  E -->|No| I["User marked<br/>similar before?"]
-                  F -->|Yes| G
-                  F -->|No| D
-                  G -->|Yes| J["Email length<br/>&gt; 2000 chars?"]
-                  G -->|No| D
-                  I -->|Yes| D
-                  I -->|No| H
-                  J -->|Yes| D
-                  J -->|No| H
-
-                  style D fill:#FFCDD2,stroke:#C62828,stroke-width:2px
-                  style H fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
-                  style E fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
-                  style F fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
-                  style I fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
-                  style J fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+flowchart TD
+  A["Sender known?"] -- "Yes" --&gt; B["Inbox"]
+  A -- "No" --&gt; C["Contains a link?"]
+  C -- "No" --&gt; D["Inbox"]
+  C -- "Yes" --&gt; E["Link domain trusted?"]
+  E -- "Yes" --&gt; F["Inbox"]
+  E -- "No" --&gt; G["Spam"]
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Understand how decision tree classification works in practice by tracing email classification paths<br>
-              <strong>Syllabus Link:</strong> SE-12-03, SE-12-08<br>
-              <strong>Try This:</strong> Modify the tree by adding new decision nodes (e.g., "Recipient has account?") or reordering the nodes to see how tree structure affects decision paths
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>A trained decision tree learns which questions split the data best.</li><li>Following one path explains exactly why an email was classified.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Add a question about ALL-CAPS subject lines. Where would it go?</p>
+          </div>
+        </figure>
 
 <h3>Neural Networks</h3>
           <p><strong>Artificial Neural Networks (ANNs)</strong> are designed to loosely mimic the biological structure of the human brain. They consist of layers of interconnected artificial <strong>neurones</strong> (nodes), each receiving weighted input signals, applying an <strong>activation function</strong>, and passing an output signal to the next layer.</p>
@@ -484,37 +460,39 @@
           </div>
 
           <!-- Neural Network Topology Diagram -->
-          <div class="diagram-block">
-            <h4>System Diagram - Neural Network Architecture</h4>
-            <p class="diagram-subtitle">Deep learning model for loan approval prediction</p>
-            <p class="diagram-description">
-              This diagram shows a neural network's structure: input features (age, income, credit score, debt ratio) flow through hidden layers where neurons learn patterns using ReLU activation functions. The output layer uses sigmoid activation to produce a probability between 0 and 1, representing the predicted likelihood of loan approval. This demonstrates how machine learning automates decision-making.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">System diagram</span></p>
+            <h4 class="figure-title">A neural network's layers</h4>
+            <p class="figure-lead">Inputs pass through weighted connections in hidden layers to produce an output.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              graph LR
-                  I[/"INPUT LAYER<br/>━━━━━━━━<br/>Age<br/>Income<br/>Credit Score<br/>Debt Ratio"/]
+graph LR
+    I["Input layer<br/>age, income,<br/>credit score, debt ratio"]
 
-                  H1["HIDDEN LAYER 1<br/>━━━━━━━━<br/>8 Neurons<br/>ReLU<br/>Activation"]
+    H1["Hidden layer 1<br/>8 neurons"]
 
-                  H2["HIDDEN LAYER 2<br/>━━━━━━━━<br/>4 Neurons<br/>ReLU<br/>Activation"]
+    H2["Hidden layer 2<br/>4 neurons"]
 
-                  O[/"OUTPUT LAYER<br/>━━━━━━━━<br/>1 Neuron<br/>Sigmoid<br/>P(Approve)"/]
+    O["Output layer<br/>1 neuron:<br/>probability of approval"]
 
-                  I -->|weights| H1
-                  H1 -->|weights| H2
-                  H2 -->|weights| O
+    I -->|weights| H1
+    H1 -->|weights| H2
+    H2 -->|weights| O
 
-                  style I fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
-                  style H1 fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
-                  style H2 fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
-                  style O fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
+    style I fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
+    style H1 fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+    style H2 fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
+    style O fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
+
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Visualise the layered structure of a neural network from input features through hidden layers to final binary classification output<br>
-              <strong>Syllabus Link:</strong> SE-12-03, SE-12-08<br>
-              <strong>Try This:</strong> Design a network for a multi-class problem (e.g., predicting sentiment: positive/negative/neutral) and modify the output layer to use 3 neurons with softmax activation
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Every connection has a weight that training adjusts.</li><li>More hidden layers let the network learn more complex patterns.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>A network predicts house prices from 4 features. How many input and output nodes does it need?</p>
+          </div>
+        </figure>
 
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
@@ -563,18 +541,20 @@ print(f"Predicted score for 9 hours: {model.predict([[9]])[0]:.1f}")</code></pre
 
           <p>Behind <code>mean_squared_error</code> is one of the simplest standard algorithms: a counting loop with an <strong>accumulator</strong>. It adds up each squared error, then divides by the number of items. The trace below shows the summing loop on its own. Enter some squared errors to see how the total builds.</p>
 
-          <figure class="trace-block">
-            <figcaption>
-              <h4>Trace — Accumulator Loop (Summing Errors)</h4>
-              <p class="diagram-subtitle">The same loop that totals the squared errors before MSE divides by n</p>
-            </figcaption>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Interactive trace</span></p>
+            <h4 class="figure-title">Accumulator Loop (Summing Errors)</h4>
+            <p class="figure-lead">The same loop that totals the squared errors before MSE divides by n.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--trace">
             <div class="algo-trace" data-trace="sumList"></div>
-            <p class="diagram-caption">
-              Every loss function in machine learning, and every average, starts with a loop like this one. Training a model runs it millions of times.<br>
-              <strong>Controls:</strong> ◀ Step and Step ▶ (or the arrow keys), Space to play or pause, R to reset.<br>
-              <strong>Try this:</strong> Enter the squared errors <code>4, 1, 9, 0, 16</code>. The total is 30, so MSE = 30 ÷ 5 = 6.
-            </p>
-          </figure>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><p>Every loss function in machine learning, and every average, starts with a loop like this one. Training a model runs it millions of times.</p><p class="figure-controls">Step with ◀ and ▶ (or the arrow keys), play or pause with Space, reset with R.</p></div>
+            <p class="figure-try"><strong>Try this</strong>Enter the squared errors <code>4, 1, 9, 0, 16</code>. The total is 30, so MSE = 30 ÷ 5 = 6.</p>
+          </div>
+        </figure>
 
 <h3>Logistic Regression</h3>
           <p>Despite its name, <strong>logistic regression</strong> is a <strong>classification algorithm</strong> — not used for predicting continuous values. It calculates the probability that an input belongs to a particular class (typically binary: 0 or 1, True or False). The <strong>sigmoid function</strong> squashes any input value into a probability between 0 and 1. A threshold (typically 0.5) converts this probability into a class prediction. For example, a logistic regression model assessing whether a bank transaction is fraudulent outputs a probability of fraud; if it exceeds 0.5 (or a risk-adjusted threshold), the transaction is flagged. Logistic regression is highly interpretable — each feature's coefficient indicates its influence on the predicted probability.</p>
@@ -889,31 +869,33 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           <p>Bias in ML systems can arise from multiple sources. Training data that reflects historical prejudices will cause AI systems to perpetuate those discriminatory patterns. When training datasets do not accurately represent the real-world population where the system will be used, the model produces systematically unfair outcomes for underrepresented groups. Developers may unconsciously select or weight data in ways that confirm their pre-existing assumptions. Also, when a biased model's predictions influence the collection of future data, it creates self-reinforcing cycles that entrench the original bias even further.</p>
 
           <!-- Bias Feedback Loop Diagram -->
-          <div class="diagram-block">
-            <h4>Diagram - The Self-Reinforcing Bias Loop</h4>
-            <p class="diagram-subtitle">How bias enters, amplifies, and how engineers break the cycle</p>
-            <p class="diagram-description">
-              Bias is dangerous in ML precisely because it compounds. Unrepresentative training data teaches the model a skewed view of the world; the model then makes unfair predictions at scale; those predictions influence what data is collected next — feeding the bias back in and entrenching it further. The loop is only broken by deliberate engineering interventions: diverse and representative data, fairness audits, diverse teams, and explainable, accountable decision-making.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Cycle diagram</span></p>
+            <h4 class="figure-title">How bias reinforces itself</h4>
+            <p class="figure-lead">Biased decisions create biased data, which trains an even more biased model.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              flowchart LR
-                A["📥 Biased / unrepresentative<br/>training data"] --> B["🧠 Model learns the bias"]
-                B --> C["⚖️ Unfair or discriminatory<br/>predictions at scale"]
-                C --> D["🔄 Outputs shape future<br/>data collection"]
-                D -->|"self-reinforcing loop"| A
-                C -. "break the loop" .-> M["🛠️ Mitigations:<br/>diverse data · fairness audits<br/>diverse teams · explainability"]
-                M -.-> B
-                classDef bad fill:#ffcdd2,stroke:#c62828,stroke-width:2px
-                classDef good fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
-                class A,B,C,D bad
-                class M good
+flowchart LR
+  A["Biased / unrepresentative<br/>training data"] --> B["Model learns the bias"]
+  B --> C["Unfair or discriminatory<br/>predictions at scale"]
+  C --> D["Outputs shape future<br/>data collection"]
+  D -->|"self-reinforcing loop"| A
+  C -. "break the loop" .-> M["Mitigations:<br/>diverse data · fairness audits<br/>diverse teams · explainability"]
+  M -.-> B
+  classDef bad fill:#ffcdd2,stroke:#c62828,stroke-width:2px
+  classDef good fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+  class A,B,C,D bad
+  class M good
+
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Show why bias self-reinforces and where engineering practices interrupt the cycle<br>
-              <strong>Syllabus Link:</strong> SE-12-04, SE-12-05<br>
-              <strong>Try This:</strong> Pick a real system (e.g. hiring or loan approval) and describe one concrete mitigation for each stage of the loop
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The loop continues until people audit the data and the results.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Where in the loop could an engineer break it?</p>
+          </div>
+        </figure>
 
 <h3>Engineering Practices to Mitigate Bias</h3>
           <div class="info-grid">
@@ -983,9 +965,11 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
   <script src="../js/glossary-data.js?v=4"></script>
   <script src="../js/quizzes.js?v=1"></script>
   <script src="../js/quiz.js?v=2" defer></script>
-  <script src="../js/main.js?v=21"></script>
+  <script src="../js/nesa-diagram-data.js?v=3"></script>
+  <script src="../js/nesa-diagrams.js?v=2" defer></script>
+  <script src="../js/main.js?v=24"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="../js/mermaid-init.js?v=4"></script>
+  <script src="../js/mermaid-init.js?v=6"></script>
   <script src="../js/algo-trace.js?v=1"></script>
   <script src="../js/algo-traces.js?v=1"></script>
   <!-- ═══════════════════════════════════════════════════════ -->

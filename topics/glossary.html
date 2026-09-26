@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=8" />
+  <link rel="stylesheet" href="../css/paper.css?v=12" />
   <style>
     /* ── Glossary Page Layout ── */
     .glossary-wrapper {
@@ -1421,7 +1421,7 @@
                 <span class="chip chip-y11">Programming Fundamentals</span>
                 <span class="chip chip-core">SDLC</span>
               </div>
-              <p>A visual diagram using standardised symbols (oval for start/end, rectangle for process, diamond for decision) connected by arrows to represent the flow of logic through an algorithm.</p>
+              <p>A visual diagram using the NESA symbols (terminator for BEGIN and END, rectangle for a process, diamond for a decision, parallelogram for input or output, and a double-sided rectangle for a subprogram) connected by arrows to represent the flow of logic through an algorithm.</p>
               <p class="term-example"><strong>Example:</strong> A diamond asks "age ≥ 18?" with yes and no arrows to different processes.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-algorithm">Algorithm</a>, <a href="#term-pseudocode">Pseudocode</a></div>
             </div>
@@ -3235,7 +3235,9 @@
     });
   </script>
   <script src="../js/glossary-data.js?v=4"></script>
-  <script src="../js/main.js?v=21"></script>
+  <script src="../js/nesa-diagram-data.js?v=3"></script>
+  <script src="../js/nesa-diagrams.js?v=2" defer></script>
+  <script src="../js/main.js?v=24"></script>
   <script src="../js/paper.js?v=3" defer></script>
 </body>
 </html>

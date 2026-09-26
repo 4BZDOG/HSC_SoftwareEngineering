@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=8" />
+  <link rel="stylesheet" href="../css/paper.css?v=12" />
 </head>
 <body>
 
@@ -370,56 +370,58 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <p>Software must synchronise these components—heating the nozzle only when filament is loaded, coordinating multiple motors to move the print head smoothly, and monitoring temperature feedback.</p>
 
           <!-- Robot Block Diagram -->
-          <div class="diagram-block">
-            <h4>System Diagram - Mechatronic System</h4>
-            <p class="diagram-subtitle">Integration of sensors, control, and actuators</p>
-            <p class="diagram-description">
-              This diagram shows the complete flow of a mechatronic system: sensors collect data from the environment, the microcontroller processes that data and makes decisions, actuators execute commands based on the microcontroller's output, and end effectors perform the desired physical action. Power supply feeds all components to enable the entire integrated system.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">System diagram</span></p>
+            <h4 class="figure-title">Inside a mechatronic system</h4>
+            <p class="figure-lead">Sensors feed the microcontroller, the control algorithm decides, and actuators act. Power reaches every part.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              graph LR
-                subgraph INPUT[" "]
-                  Sensors["📡 Sensors<br/>• Camera<br/>• Ultrasonic<br/>• IMU gyro<br/>• Motor encoder"]
-                end
+graph LR
+  subgraph INPUT[" "]
+    Sensors["Sensors<br/>• Camera<br/>• Ultrasonic<br/>• IMU gyro<br/>• Motor encoder"]
+  end
 
-                subgraph BRAIN[" "]
-                  MCU["🎮 Microcontroller<br/>Arduino / Raspberry Pi"]
-                  Logic["🧠 Control Algorithm<br/>• Path planning<br/>• Obstacle detection<br/>• PID control"]
-                end
+  subgraph BRAIN[" "]
+    MCU["Microcontroller<br/>Arduino / Raspberry Pi"]
+    Logic["Control Algorithm<br/>• Path planning<br/>• Obstacle detection<br/>• PID control"]
+  end
 
-                subgraph OUTPUT[" "]
-                  Actuators["⚙️ Actuators<br/>• DC motors<br/>• Servos<br/>• LEDs<br/>• Buzzer"]
-                end
+  subgraph OUTPUT[" "]
+    Actuators["Actuators<br/>• DC motors<br/>• Servos<br/>• LEDs<br/>• Buzzer"]
+  end
 
-                Power[("🔋 Power System<br/>Battery &amp; regulators")]
+  Power[("Power System<br/>Battery &amp; regulators")]
 
-                Sensors -- "analog / digital signals" --> MCU
-                MCU -- "sensor data" --> Logic
-                Logic -- "control decisions" --> MCU
-                MCU -- "PWM / GPIO commands" --> Actuators
+  Sensors -- "analog / digital signals" --> MCU
+  MCU -- "sensor data" --> Logic
+  Logic -- "control decisions" --> MCU
+  MCU -- "PWM / GPIO commands" --> Actuators
 
-                Power -. "3.3 V" .-> Sensors
-                Power -. "5 V / 12 V" .-> MCU
-                Power -. "12 V" .-> Actuators
+  Power -. "3.3 V" .-> Sensors
+  Power -. "5 V / 12 V" .-> MCU
+  Power -. "12 V" .-> Actuators
 
-                classDef input   fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
-                classDef control fill:#fff3e0,stroke:#E65100,stroke-width:2px
-                classDef logic   fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
-                classDef output  fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
-                classDef power   fill:#ffcdd2,stroke:#C62828,stroke-width:2px
+  classDef input   fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+  classDef control fill:#fff3e0,stroke:#E65100,stroke-width:2px
+  classDef logic   fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
+  classDef output  fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+  classDef power   fill:#ffcdd2,stroke:#C62828,stroke-width:2px
 
-                class Sensors input
-                class MCU control
-                class Logic logic
-                class Actuators output
-                class Power power
+  class Sensors input
+  class MCU control
+  class Logic logic
+  class Actuators output
+  class Power power
+
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Understand the complete data and power flow in a mechatronic system from sensing to actuation<br>
-              <strong>Syllabus Link:</strong> SE-11-03, SE-11-06<br>
-              <strong>Try This:</strong> Design a 3D printer system showing how sensors (temperature, position), the MCU, motors (actuators), and the nozzle (end effector) are integrated
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Data flows in one direction: sense, decide, act.</li><li>Different parts need different voltages, so the power system matters as much as the code.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Redraw this for a 3D printer. Which sensors and actuators does it need?</p>
+          </div>
+        </figure>
         </section>
 
         <hr class="divider" />
@@ -605,33 +607,31 @@ END followLine</code></pre>
           </div>
 
           <!-- Open vs Closed Loop Comparison Diagram -->
-          <div class="diagram-block">
-            <h4>Diagram - Control Systems Comparison</h4>
-            <p class="diagram-subtitle">Open-loop vs closed-loop feedback control</p>
-            <p class="diagram-description">
-              This diagram contrasts two control strategies. Open-loop systems execute commands without feedback (like a timed sprinkler), making them simple but unable to adapt. Closed-loop systems continuously sense the current state, compare it to the desired state, and adjust the output (like a thermostat), enabling accurate self-correction but requiring more complexity.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Block diagram</span></p>
+            <h4 class="figure-title">Open loop and closed loop control</h4>
+            <p class="figure-lead">A closed loop adds a sensor so the controller can compare what is happening with what it wants.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              graph TD
-                OL[/"<b>Open Loop System</b><br/>━━━━━━<br/>COMMAND → ACTUATOR → OUTPUT<br/>(No Feedback)<br/><br/>✓ Simple, fast<br/>✗ No self-correction"/]
-
-                CL["<b>Closed Loop System</b><br/>━━━━━━<br/>SETPOINT → COMPARE → ADJUST<br/>↓<br/>SENSOR → FEEDBACK<br/><br/>✓ Accurate, adaptive<br/>✗ Complex, slower"]
-
-                OL -.->|Example| EX1["Sprinkler Timer<br/>On at 6am, Off at 6:30am<br/>(Ignores rain)"]
-
-                CL -.->|Example| EX2["Thermostat<br/>Maintains 22°C<br/>Adjusts heater based on<br/>temperature feedback"]
-
-                style OL fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
-                style CL fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
-                style EX1 fill:#FFF9C4,stroke:#F57F17,stroke-width:1px
-                style EX2 fill:#FFF9C4,stroke:#F57F17,stroke-width:1px
+flowchart LR
+  subgraph Open["Open loop"]
+    direction LR
+    O1["Setpoint"] --&gt; O2["Controller"] --&gt; O3["Actuator"] --&gt; O4["Output"]
+  end
+  subgraph Closed["Closed loop"]
+    direction LR
+    C1["Setpoint"] --&gt; C2["Compare"] --&gt; C3["Controller"] --&gt; C4["Actuator"] --&gt; C5["Output"]
+    C5 --&gt; C6["Sensor"] -- "feedback" --&gt; C2
+  end
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Visually compare open and closed loop control systems. Open loop executes a fixed sequence; closed loop continuously adjusts based on feedback. The choice depends on accuracy requirements and environmental variability.<br>
-              <strong>Syllabus Link:</strong> SE-11-02<br>
-              <strong>Try This:</strong> Design a closed loop temperature control system for a greenhouse. What sensor would you use? What setpoint? How would the system respond if external temperature drops?
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Only the closed loop measures its output.</li><li>Compare works out the error: setpoint minus the measured value.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>A greenhouse vent opens at 26 °C. Label each block of the closed loop for it.</p>
+          </div>
+        </figure>
 
           <div class="callout success"><strong>HSC writing sample:</strong> <em>"An open loop algorithm suits the greenhouse misting system, which runs for 30 seconds every hour, because exact humidity is not critical and it needs no sensor. The roof vent needs closed loop control: the algorithm reads the temperature, compares it with the 26 °C setpoint and adjusts the vent, so it corrects itself when the weather changes."</em></div>
         </section>
@@ -655,56 +655,58 @@ END followLine</code></pre>
           <p>Autonomous algorithms typically use flowcharts, state diagrams, and pseudocode to be designed clearly before implementation. Testing autonomous systems requires extensive simulation and careful incremental real-world validation.</p>
 
           <!-- Traffic Light FSM Diagram -->
-          <div class="diagram-block">
-            <h4>State Diagram - Traffic Light FSM</h4>
-            <p class="diagram-subtitle">State transitions with emergency override logic</p>
-            <p class="diagram-description">
-              This state diagram shows how a traffic light operates as a finite state machine with three states (RED, YELLOW, GREEN). Transitions occur based on timer conditions (30 seconds per state). The emergency override demonstrates responsive systems: when an emergency vehicle is detected, all lights transition to RED immediately, overriding normal timing.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">State diagram</span></p>
+            <h4 class="figure-title">A traffic light as a finite state machine</h4>
+            <p class="figure-lead">The system is always in exactly one state, and events move it to the next.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              stateDiagram-v2
-                direction LR
-                [*] --> RED
+stateDiagram-v2
+  direction LR
+  [*] --> RED
 
-                RED    --> GREEN  : timer 30s
-                GREEN  --> YELLOW : timer 25s
-                YELLOW --> RED    : timer 5s
+  RED    --> GREEN  : timer 30s
+  GREEN  --> YELLOW : timer 25s
+  YELLOW --> RED    : timer 5s
 
-                RED    --> EMERGENCY : 🚨 emergency signal
-                GREEN  --> EMERGENCY : 🚨 emergency signal
-                YELLOW --> EMERGENCY : 🚨 emergency signal
-                EMERGENCY --> RED    : emergency cleared
+  RED    --> EMERGENCY : emergency signal
+  GREEN  --> EMERGENCY : emergency signal
+  YELLOW --> EMERGENCY : emergency signal
+  EMERGENCY --> RED    : emergency cleared
 
-                note right of RED
-                  🔴 Stop — 30 s
-                end note
-                note right of GREEN
-                  🟢 Go — 25 s
-                end note
-                note right of YELLOW
-                  🟡 Caution — 5 s
-                end note
-                note right of EMERGENCY
-                  ⚠️ Flashing red
-                  all traffic stops
-                end note
+  note right of RED
+    Stop — 30 s
+  end note
+  note right of GREEN
+    Go — 25 s
+  end note
+  note right of YELLOW
+    Caution — 5 s
+  end note
+  note right of EMERGENCY
+    Flashing red
+    all traffic stops
+  end note
 
-                classDef stop    fill:#ffcdd2,stroke:#C62828,stroke-width:2px
-                classDef go      fill:#c8e6c9,stroke:#2E7D32,stroke-width:2px
-                classDef caution fill:#fff9c4,stroke:#F57F17,stroke-width:2px
-                classDef alarm   fill:#fff3e0,stroke:#E65100,stroke-width:2px
+  classDef stop    fill:#ffcdd2,stroke:#C62828,stroke-width:2px
+  classDef go      fill:#c8e6c9,stroke:#2E7D32,stroke-width:2px
+  classDef caution fill:#fff9c4,stroke:#F57F17,stroke-width:2px
+  classDef alarm   fill:#fff3e0,stroke:#E65100,stroke-width:2px
 
-                class RED stop
-                class GREEN go
-                class YELLOW caution
-                class EMERGENCY alarm
+  class RED stop
+  class GREEN go
+  class YELLOW caution
+  class EMERGENCY alarm
+
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Model a traffic light control system as a state machine showing state transitions, timers, and emergency override capability<br>
-              <strong>Syllabus Link:</strong> SE-11-02<br>
-              <strong>Try This:</strong> Add a fourth state "PEDESTRIAN_CROSSING" that transitions from YELLOW and extends the RED duration, then code this logic in Arduino
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Timers trigger the normal cycle; an emergency signal can interrupt any state.</li><li>Autonomous control code often follows a state machine like this.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Add a Pedestrian crossing state. Which state should it follow, and what ends it?</p>
+          </div>
+        </figure>
         </section>
 
         <div class="quiz" data-quiz="mech-2"></div>
@@ -999,9 +1001,11 @@ stop_button.irq(trigger=Pin.IRQ_FALLING, handler=emergency_stop)</code></pre>
   <script src="../js/glossary-data.js?v=4"></script>
   <script src="../js/quizzes.js?v=1"></script>
   <script src="../js/quiz.js?v=2" defer></script>
-  <script src="../js/main.js?v=21"></script>
+  <script src="../js/nesa-diagram-data.js?v=3"></script>
+  <script src="../js/nesa-diagrams.js?v=2" defer></script>
+  <script src="../js/main.js?v=24"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="../js/mermaid-init.js?v=4"></script>
+  <script src="../js/mermaid-init.js?v=6"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->

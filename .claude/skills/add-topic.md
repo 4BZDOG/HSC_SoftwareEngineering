@@ -403,18 +403,38 @@ Choose `<priority>` based on year (0.9 for both Y11 and Y12 topics).
 </div>
 ```
 
-### Mermaid diagram block (with lightbox support)
+### Figure (every diagram, table figure or trace)
+
+Every diagram sits in one `.figure` container. Figures are numbered automatically and get an **Enlarge** button.
 
 ```html
-<div class="diagram-block">
-  <h4>Diagram Title</h4>
-  <div class="mermaid">
+<figure class="figure">
+  <figcaption class="figure-head">
+    <p class="figure-kicker"><span class="figure-kind">Flowchart</span></p>
+    <h4 class="figure-title">Binary selection: check a user's age</h4>
+    <p class="figure-lead">One sentence saying what the diagram shows.</p>
+  </figcaption>
+  <div class="figure-canvas">
+    <div class="mermaid">
 flowchart TD
-  A[Start] --> B[Step]
+  S(["BEGIN"]) --&gt; I[/"INPUT age"/] --&gt; D{"age ≥ 18?"}
+  D -- "Yes" --&gt; Y[/"OUTPUT 'Welcome'"/] --&gt; E(["END"])
+  D -- "No" --&gt; N[/"OUTPUT 'Too young'"/] --&gt; E
+    </div>
   </div>
-  <p class="diagram-caption">Caption text.</p>
-</div>
+  <div class="figure-notes">
+    <div><h5>What to notice</h5><ul><li>The learning point this diagram makes.</li></ul></div>
+    <p class="figure-try"><strong>Try this</strong>A short task using the diagram.</p>
+  </div>
+</figure>
 ```
+
+**NESA conventions** (Course Specifications pp. 5–19; `scripts/check-site.py` enforces the flowchart rules):
+
+- **Flowcharts** use only: terminator `(["BEGIN"])`/`(["END"])`, process `["…"]`, decision `{"…"}`, input/output `[/"…"/]`, subprogram `[["…"]]`. Label every arrow leaving a decision (Yes/No or True/False). Write `#lt;` and `#gt;` for < and > inside labels. No emoji.
+- **Decision trees** use rectangles with Yes/No-labelled branches, not diamonds.
+- **Structure charts and DFDs** are drawn by `js/nesa-diagrams.js` from `js/nesa-diagram-data.js` (data/flag couples, decision diamond, repetition arc; circle processes, open-ended data stores). Use `<div class="nesa-diagram" data-diagram="key"></div>` as the canvas.
+- **Class diagrams** use inheritance, labelled relationships and multiplicities (1..1, 0..*, 1..*, 0..1) only.
 
 ### Code block (with copy button)
 

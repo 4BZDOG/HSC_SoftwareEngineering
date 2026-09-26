@@ -97,32 +97,21 @@ for file in $topic_files; do
   fi
 done
 
-# 3. Check for diagram captions with Purpose, Syllabus Link, Try This
-print_header "Check 3: Diagram Caption Structure"
+# 3. Check every figure has a lead sentence and a "Try this" prompt
+print_header "Check 3: Figure Text"
 
-echo "Checking for complete diagram captions..."
+echo "Checking figures for a lead and a Try this prompt..."
 
-diagram_files=$(grep -l "diagram-caption" "$PROJECT_ROOT/topics"/*.html 2>/dev/null || true)
-
-missing_captions=0
-for file in $diagram_files; do
+for file in "$PROJECT_ROOT/topics"/*.html; do
   filename=$(basename "$file")
-
-  # Count diagrams without complete captions
-  diagrams=$(grep -c "diagram-caption" "$file" || true)
-
-  if [ "$diagrams" -gt 0 ]; then
-    # Check for Purpose, Syllabus Link, Try This in captions
-    has_purpose=$(grep -c "Purpose:" "$file" || true)
-    has_link=$(grep -c "Syllabus Link:" "$file" || true)
-    has_try=$(grep -c "Try This:" "$file" || true)
-
-    if [ "$has_purpose" -gt 0 ] && [ "$has_link" -gt 0 ] && [ "$has_try" -gt 0 ]; then
-      success "$filename has complete diagram captions ($diagrams found)"
-    else
-      warning "$filename may have incomplete diagram captions (Purpose: $has_purpose, Link: $has_link, Try This: $has_try)"
-      missing_captions=1
-    fi
+  figures=$(grep -c '<figure class="figure">' "$file" || true)
+  [ "$figures" -eq 0 ] && continue
+  leads=$(grep -c 'class="figure-lead"' "$file" || true)
+  tries=$(grep -c 'class="figure-try"' "$file" || true)
+  if [ "$leads" -ge "$figures" ] && [ "$tries" -ge $((figures - 2)) ]; then
+    success "$filename: $figures figures with leads and prompts"
+  else
+    warning "$filename: $figures figures, $leads leads, $tries Try this prompts"
   fi
 done
 

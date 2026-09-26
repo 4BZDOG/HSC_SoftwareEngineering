@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=8" />
+  <link rel="stylesheet" href="../css/paper.css?v=12" />
 </head>
 <body>
 
@@ -232,101 +232,69 @@
           </div>
 
           <!-- Encapsulation Access Control Diagram -->
-          <div class="diagram-block">
-            <h4>Diagram - Encapsulation</h4>
-            <p class="diagram-subtitle">Public, protected, and private access control</p>
-            <p class="diagram-description">
-              This diagram shows how <strong>encapsulation</strong> uses access modifiers (public, protected, private) to control data visibility and prevent unauthorized modification. External code can access public interfaces but is protected from private implementation details. This separation allows internal implementation changes without breaking external code.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Concept diagram</span></p>
+            <h4 class="figure-title">Encapsulation: what outside code can reach</h4>
+            <p class="figure-lead">Outside code uses the public methods; the private data can only change through them.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              graph TB
-                  subgraph BankAccount["BankAccount Class<br/>━━━━━━━━━━━"]
-                    direction LR
-                    PUB["🟢 PUBLIC<br/>• owner: String<br/>• get_balance()"]
-                    PROT["🟡 PROTECTED<br/>• _account_type"]
-                    PRIV["🔴 PRIVATE<br/>• __balance<br/>• __pin"]
-                    METHODS["📋 Setter Methods<br/>• __validate()<br/>• __update_log()"]
-                  end
-
-                  EXTERNAL["External Code<br/>user_account"]
-
-                  EXTERNAL -->|Can access| PUB
-                  EXTERNAL -->|Cannot access| PROT
-                  EXTERNAL -->|Cannot access| PRIV
-                  EXTERNAL -->|Calls| METHODS
-                  METHODS -->|Validates &lt;<br/>Updates| PRIV
-
-                  style BankAccount fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
-                  style PUB fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
-                  style PROT fill:#FFE082,stroke:#F57F17,stroke-width:2px
-                  style PRIV fill:#FFCCBC,stroke:#E64A19,stroke-width:2px
-                  style METHODS fill:#BBDEFB,stroke:#1976D2,stroke-width:2px
-                  style EXTERNAL fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px
+flowchart LR
+  X["Outside code"] -- "calls" --&gt; M["Public methods<br/>deposit()  withdraw()  get_balance()"]
+  X -. "cannot access" .-&gt; P["Private data<br/>__balance  __pin"]
+  M -- "validates, then updates" --&gt; P
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Demonstrate access modifiers (public, protected, private) and how <strong>encapsulation</strong> protects internal state by forcing external code to use validated setter methods<br>
-              <strong>Syllabus Link:</strong> SE-11-02, SE-11-04<br>
-              <strong>Try This:</strong> Design a Student class with private GPA, and implement a public method to safely update it (only if marks are within 0-100 range)
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The only route to the private data is through methods that can check the request.</li><li>This is why a bank account can never be given a negative balance by mistake.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>What would go wrong if __balance were public?</p>
+          </div>
+        </figure>
 
           <!-- OOP Class Diagram -->
-          <div class="diagram-block">
-            <h4>Class Diagram - Vehicle System Hierarchy</h4>
-            <p class="diagram-subtitle"><strong>Inheritance</strong> and <strong>polymorphism</strong> in action</p>
-            <p class="diagram-description">
-              This class diagram shows a vehicle <strong>inheritance</strong> hierarchy where Vehicle is the parent class defining common properties (manufacturer, speed) and methods. Car and Truck inherit from Vehicle and add specialized attributes (numDoors, cargoCapacity). Both override the start() method differently, demonstrating <strong>polymorphism</strong> — same method name, different behavior depending on the subclass.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Class diagram</span></p>
+            <h4 class="figure-title">Class diagram: a vehicle hierarchy</h4>
+            <p class="figure-lead">Car, Motorcycle and Truck inherit from Vehicle and add their own attributes and methods.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              classDiagram
-                direction TB
-
-                class Vehicle {
-                    &lt;&lt;abstract&gt;&gt;
-                    -String manufacturer
-                    -float speed
-                    -float fuelLevel
-                    +start() void
-                    +stop() void
-                    +accelerate(double delta) void
-                }
-
-                class Car {
-                    -int numDoors
-                    -String trunkSize
-                    +openTrunk() void
-                    +closeTrunk() void
-                }
-
-                class Motorcycle {
-                    -boolean hasSidecar
-                    +wheelie() void
-                }
-
-                class Truck {
-                    -float cargoCapacity
-                    -float currentLoad
-                    +loadCargo(float amount) void
-                    +unloadCargo(float amount) void
-                }
-
-                class Engine {
-                    -String engineType
-                    -float displacement
-                    +calculatePower() float
-                }
-
-                Vehicle <|-- Car        : inherits
-                Vehicle <|-- Motorcycle : inherits
-                Vehicle <|-- Truck      : inherits
-                Vehicle *-- Engine      : has-a
+classDiagram
+  direction TB
+  class Vehicle {
+    manufacturer: string
+    speed: float
+    start()
+    stop()
+  }
+  class Car {
+    numDoors: int
+    openBoot()
+  }
+  class Motorcycle {
+    hasSidecar: boolean
+  }
+  class Truck {
+    cargoCapacity: float
+    loadCargo(amount)
+  }
+  class Engine {
+    engineType: string
+    calculatePower()
+  }
+  Vehicle &lt;|-- Car
+  Vehicle &lt;|-- Motorcycle
+  Vehicle &lt;|-- Truck
+  Vehicle "1" --&gt; "1" Engine : has
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Show class relationships using Unified Modelling Language (UML). Triangles (▲) represent <strong>inheritance</strong> (is-a), diamonds represent composition (has-a). Private attributes (-) and public methods (+) are documented.<br>
-              <strong>Syllabus Link:</strong> SE-11-02, SE-11-08<br>
-              <strong>Try This:</strong> Create a class diagram for an animal system (Animal → Dog, Cat, Bird) or a gaming system (Character → Warrior, Mage, Archer).
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Each class box has three parts: name, attributes, methods.</li><li>The hollow triangle points to the parent class (inheritance).</li><li>The plain arrow with 1 and 1 is a relationship: each vehicle has exactly one engine.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Add an ElectricCar class. Which class should it inherit from, and what attribute would it add?</p>
+          </div>
+        </figure>
 
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
@@ -411,54 +379,56 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
           </div>
 
           <!-- OOP vs Procedural Comparison Diagram -->
-          <div class="diagram-block">
-            <h4>Diagram - Programming Paradigm Comparison</h4>
-            <p class="diagram-subtitle">Contrasting procedural and object-oriented approaches</p>
-            <p class="diagram-description">
-              This diagram compares two major programming paradigms. Procedural programming focuses on "how" — breaking problems into functions and procedures with separate data and logic. Object-Oriented programming focuses on "what" — modeling problems as objects that encapsulate both data and behavior. Both approaches share benefits like modularity, reusability, and maintainability.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Concept diagram</span></p>
+            <h4 class="figure-title">Procedural and object-oriented code</h4>
+            <p class="figure-lead">The same goals, organised differently.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              flowchart LR
-                subgraph PROC["🔧 Procedural"]
-                  direction TB
-                  P1["Functions operate on<br/>separate global data"]
-                  P2["Top-down design<br/>focus: <i>how</i>"]
-                  P3["Examples<br/>C · Pascal · procedural Python"]
-                  P1 --- P2 --- P3
-                end
+flowchart LR
+  subgraph PROC["Procedural"]
+    direction TB
+    P1["Functions operate on<br/>separate global data"]
+    P2["Top-down design<br/>focus: how"]
+    P3["Examples<br/>C · Pascal · procedural Python"]
+    P1 --- P2 --- P3
+  end
 
-                subgraph SHARED["🎯 Shared Goals"]
-                  direction TB
-                  S1["Modularity &amp; reuse"]
-                  S2["Maintainability"]
-                  S3["Testability &amp; debugging"]
-                  S1 --- S2 --- S3
-                end
+  subgraph SHARED["Shared Goals"]
+    direction TB
+    S1["Modularity &amp; reuse"]
+    S2["Maintainability"]
+    S3["Testability &amp; debugging"]
+    S1 --- S2 --- S3
+  end
 
-                subgraph OOP["🧩 Object-Oriented"]
-                  direction TB
-                  O1["Classes bundle<br/>data + methods"]
-                  O2["Four pillars<br/>encapsulation · inheritance<br/>polymorphism · abstraction"]
-                  O3["Examples<br/>Java · Python · C++ · C#"]
-                  O1 --- O2 --- O3
-                end
+  subgraph OOP["Object-Oriented"]
+    direction TB
+    O1["Classes bundle<br/>data + methods"]
+    O2["Four pillars<br/>encapsulation · inheritance<br/>polymorphism · abstraction"]
+    O3["Examples<br/>Java · Python · C++ · C#"]
+    O1 --- O2 --- O3
+  end
 
-                PROC --> SHARED --> OOP
+  PROC --> SHARED --> OOP
 
-                classDef proc   fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
-                classDef shared fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
-                classDef oop    fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+  classDef proc   fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+  classDef shared fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
+  classDef oop    fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
 
-                class P1,P2,P3 proc
-                class S1,S2,S3 shared
-                class O1,O2,O3 oop
+  class P1,P2,P3 proc
+  class S1,S2,S3 shared
+  class O1,O2,O3 oop
+
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Compare the fundamental differences between procedural and OOP paradigms<br>
-              <strong>Syllabus Link:</strong> SE-11-02<br>
-              <strong>Try This:</strong> Think of a project you know. Would procedural or OOP be better? Why? List the advantages that matter most for your use case.
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Procedural code keeps data separate from the functions that change it.</li><li>OOP keeps each object's data with its own methods.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Would you use procedural or OOP for a one-off script that renames files? Why?</p>
+          </div>
+        </figure>
 
           <h3>The same task, two ways</h3>
           <div class="code-block">
@@ -500,35 +470,35 @@ acc.withdraw(<span class="str">30</span>)</code></pre>
             <li>🛠️ <strong>Structure Charts (p. 7):</strong> While often procedural, they are used in OOP to map out complex method calls and parameter passing between modules.</li>
           </ul>
 
-          <div class="diagram-block">
-            <h4>Structure Chart — Student Management System</h4>
-            <p class="diagram-subtitle">Top-down decomposition of modules and function calls</p>
-            <p class="diagram-description">
-              A structure chart shows how a program is broken into modules (functions/methods) and how they call each other. Unlike a class diagram, it focuses on the hierarchy of calls, not on OOP relationships. Parameters passed between modules are shown on the connecting arrows.
-            </p>
-            <pre class="text-diagram">Structure Chart: Student Management System
-==========================================
-              [Main Program]
-              /            \
-   [Student Module]    [Report Module]
-    /     |     \           |      \
-[Add] [Update] [Delete]  [View]  [Export]
-  |       |
-[Validate] [Save to DB]</pre>
-            <div class="callout tip">
-              <p><strong>Structure Chart vs Class Diagram — What's the difference?</strong></p>
-              <ul>
-                <li><strong>Structure Chart:</strong> Shows how a program is broken into <em>modules/functions</em> and the hierarchy of calls between them. It is procedural in nature — "what calls what".</li>
-                <li><strong>Class Diagram:</strong> Shows OOP <em>relationships</em> between classes — <strong>inheritance</strong> (IS-A), composition (HAS-A), and associations. It models objects and their data, not just call sequences.</li>
-                <li>In an OOP project, you may use a <strong>structure chart</strong> to plan the top-level flow (e.g., which module runs first) and a <strong>class diagram</strong> to design the objects within each module.</li>
-              </ul>
-            </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Visualise top-down decomposition of a system into modules and their call relationships<br>
-              <strong>Syllabus Link:</strong> SE-11-05 — System modelling tools for OOP design<br>
-              <strong>Try This:</strong> Draw a structure chart for a Library Management System with Add, Search, and Loan modules
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Structure chart</span></p>
+            <h4 class="figure-title">Structure chart: student management</h4>
+            <p class="figure-lead">The modules of the system and what they pass to each other.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <div class="nesa-diagram" data-diagram="student-structure"></div>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The diamond means only one of the three main tasks runs each time.</li><li>Enrol student sends Details down and gets a Valid flag back.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Draw the structure chart for Produce report, refining it into smaller modules.</p>
+          </div>
+        </figure>
+
+        <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Data flow diagram</span></p>
+            <h4 class="figure-title">Data flow diagram: canteen ordering (Level 1)</h4>
+            <p class="figure-lead">How data moves between people, processes and stored data.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <div class="nesa-diagram" data-diagram="canteen-dfd"></div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Processes are circles, data stores are open-ended rectangles, and external entities are rectangles.</li><li>Every arrow is labelled with the data it carries.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Add a process 3 Take payment. Which entity and data store would it connect to?</p>
+          </div>
+        </figure>
 
           <div class="callout info">
             <p><strong>Online Tool Suggestion:</strong> Try <strong>Lucidchart</strong>, <strong>Draw.io</strong>, or <strong>Mermaid.js</strong> to create professional UML Class Diagrams and DFDs.</p>
@@ -647,39 +617,41 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           </div>
 
           <!-- Message Passing Sequence Diagram -->
-          <div class="diagram-block">
-            <h4>Sequence Diagram - Message-Passing</h4>
-            <p class="diagram-subtitle">Objects communicating through method calls</p>
-            <p class="diagram-description">
-              This sequence diagram shows how objects communicate by passing messages (method calls). The MainClass sends a "createAccount()" message to BankAccount, which initializes state. Then MainClass sends "withdraw(500)" and BankAccount responds with the result. The caller never needs to know how the bank account handles the withdrawal — <strong>encapsulation</strong> hides implementation details.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Sequence diagram</span></p>
+            <h4 class="figure-title">Objects passing messages</h4>
+            <p class="figure-lead">The client asks the account to withdraw; the account checks with a validator and replies.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              sequenceDiagram
-                participant Client as 👤 Client Code
-                participant Account as 🏦 BankAccount<br/>Object
-                participant Validator as ✓ Balance<br/>Validator
+sequenceDiagram
+  participant Client as Client Code
+  participant Account as BankAccount<br/>Object
+  participant Validator as Balance<br/>Validator
 
-                Client->>Account: withdraw(500)<br/>[Message]
-                Note over Account: receive message<br/>process internally
+  Client->>Account: withdraw(500)<br/>[Message]
+  Note over Account: receive message<br/>process internally
 
-                Account->>Validator: check balance &gt;= 500?
-                Validator-->>Account: True/False
+  Account->>Validator: check balance &gt;= 500?
+  Validator-->>Account: True/False
 
-                alt Balance Sufficient
-                  Account->>Account: self.balance -= 500
-                  Account-->>Client: return True
-                else Insufficient Balance
-                  Account-->>Client: return False
-                end
+  alt Balance Sufficient
+    Account->>Account: self.balance -= 500
+    Account-->>Client: return True
+  else Insufficient Balance
+    Account-->>Client: return False
+  end
 
-                Note over Client,Account: Client doesn't know HOW<br/>balance checking works<br/>Only WHAT the interface does
+  Note over Client,Account: Client doesn't know HOW<br/>balance checking works<br/>Only WHAT the interface does
+
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Visualise how objects communicate through method calls (messages) while maintaining <strong>encapsulation</strong> and loose coupling<br>
-              <strong>Syllabus Link:</strong> SE-11-04, SE-11-08<br>
-              <strong>Try This:</strong> Design a system where Student sends message to Enrollment to register for a Course, and trace all the internal validations without revealing implementation details
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Each arrow is a message: one object calling another object's method.</li><li>The client never sees how the balance is checked, only the result.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Add a message that records the withdrawal in a TransactionLog object.</p>
+          </div>
+        </figure>
         </section>
 
         <hr class="divider" />
@@ -796,49 +768,51 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
 <h3>Library Management System — Class Diagram</h3>
           <p>A Library Management System is an ideal HSC project because it has multiple entity types with clear IS-A and HAS-A relationships. The diagram below shows how <code>Book</code>, <code>Member</code>, and <code>Library</code> interact:</p>
 
-          <div class="diagram-block">
-            <h4>Class Diagram — Library Management System</h4>
-            <p class="diagram-subtitle">UML class diagram showing relationships between core entities</p>
-            <p class="diagram-description">
-              This class diagram models a Library Management System with three core classes. Library acts as the central coordinator (facade), holding collections of Books and Members. Members can borrow multiple Books, creating a many-to-many relationship managed through the Library. Private attributes (prefixed with -) are accessed only via public methods (+), demonstrating <strong>encapsulation</strong>.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Class diagram</span></p>
+            <h4 class="figure-title">Class diagram: a library system</h4>
+            <p class="figure-lead">The classes of a library system and how they relate.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              classDiagram
-                class Book {
-                    -String isbn
-                    -String title
-                    -String author
-                    -bool available
-                    +checkout() bool
-                    +return_book() void
-                    +get_details() dict
-                }
-                class Member {
-                    -int member_id
-                    -String name
-                    -String email
-                    -list borrowed_books
-                    +borrow(book) bool
-                    +return_book(book) void
-                    +get_history() list
-                }
-                class Library {
-                    -list books
-                    -list members
-                    +add_book(book) void
-                    +register_member(member) void
-                    +search(query) list
-                }
-                Library "1" --> "many" Book
-                Library "1" --> "many" Member
-                Member "1" --> "many" Book : borrows
+classDiagram
+  class Book {
+      -String isbn
+      -String title
+      -String author
+      -bool available
+      +checkout() bool
+      +return_book() void
+      +get_details() dict
+  }
+  class Member {
+      -int member_id
+      -String name
+      -String email
+      -list borrowed_books
+      +borrow(book) bool
+      +return_book(book) void
+      +get_history() list
+  }
+  class Library {
+      -list books
+      -list members
+      +add_book(book) void
+      +register_member(member) void
+      +search(query) list
+  }
+  Library "1" --> "many" Book
+  Library "1" --> "many" Member
+  Member "1" --> "many" Book : borrows
+
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Demonstrate a complete OOP design with composition (Library HAS-A Books/Members) and association (Member borrows Books)<br>
-              <strong>Syllabus Link:</strong> SE-11-02, SE-11-06<br>
-              <strong>Try This:</strong> Extend this diagram by adding an <code>EBook</code> class that inherits from <code>Book</code> and adds a <code>file_format</code> attribute.
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Multiplicities such as 1 and 0..* show how many objects take part in a relationship.</li><li>Inheritance arrows point from the child class to the parent class.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Add a Loan class between Member and Book. What multiplicities would it have?</p>
+          </div>
+        </figure>
 
 <h3>Python Implementation — Book and EBook Classes</h3>
           <p>The following implementation demonstrates all four OOP pillars. Note how <strong>encapsulation</strong> is achieved with private attributes (double underscore prefix), <strong>abstraction</strong> through the property decorator, <strong>inheritance</strong> via <code>EBook(Book)</code>, and <strong>polymorphism</strong> by overriding <code>checkout()</code>:</p>
@@ -1039,9 +1013,11 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
   <script src="../js/glossary-data.js?v=4"></script>
   <script src="../js/quizzes.js?v=1"></script>
   <script src="../js/quiz.js?v=2" defer></script>
-  <script src="../js/main.js?v=21"></script>
+  <script src="../js/nesa-diagram-data.js?v=3"></script>
+  <script src="../js/nesa-diagrams.js?v=2" defer></script>
+  <script src="../js/main.js?v=24"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="../js/mermaid-init.js?v=4"></script>
+  <script src="../js/mermaid-init.js?v=6"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->

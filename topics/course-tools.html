@@ -46,7 +46,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=8" />
+  <link rel="stylesheet" href="../css/paper.css?v=12" />
 </head>
 <body>
 
@@ -300,47 +300,63 @@
           <h3>Data Flow Diagrams (DFD)</h3>
           <p>Used to represent the flow of data through an information system. DFDs show <em>what</em> data moves through a system and <em>where</em> it goes — not how or when.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>⭕ Circle</strong><span>Process — transforms input data into output (e.g. "Validate Login").</span></div>
-            <div class="key-term-item"><strong>🗃️ Open Rectangle</strong><span>Data Store — persistent storage such as a file or database table (e.g. "D1 Users").</span></div>
-            <div class="key-term-item"><strong>🏢 Rectangle</strong><span>External Entity — a person or system outside the boundary that sends or receives data (e.g. "Customer").</span></div>
-            <div class="key-term-item"><strong>↩️ Arrow</strong><span>Data Flow — named arrow showing data moving between elements (e.g. "username + password").</span></div>
+            <div class="key-term-item"><strong>Process (circle)</strong><span>Uses input data to generate output data, e.g. Validate login.</span></div>
+            <div class="key-term-item"><strong>Data store (rectangle open on the right)</strong><span>An electronic file or non-computer storage, e.g. D1 Students.</span></div>
+            <div class="key-term-item"><strong>External entity (rectangle)</strong><span>A person, organisation or system outside the system that sends or receives data.</span></div>
+            <div class="key-term-item"><strong>Data flow (labelled, curved arrow)</strong><span>Data moving between processes, data stores and external entities.</span></div>
           </div>
           <div class="callout warning">
             <strong>NESA Specification: Data Stores</strong><br>
-            While industry diagrams often use a cylinder for databases, NESA strictly requires Data Stores to be drawn as an <strong>open rectangle (two parallel horizontal lines)</strong> in HSC exams. Ensure you use this specific notation when drawing DFDs.
+            While industry diagrams often use a cylinder for databases, NESA strictly requires Data Stores to be drawn as an <strong>open-ended rectangle (closed on the left, open on the right)</strong> in HSC exams. Ensure you use this specific notation when drawing DFDs.
           </div>
           <div class="callout info">
             <strong>Level 0 (Context Diagram)</strong>: Shows the entire system as a single process bubble with all external entities. No data stores or sub-processes are shown.<br><br>
             <strong>Level 1 DFD</strong>: Expands the single bubble into its major processes. Data stores appear at this level. Each process can be further expanded into a Level 2 DFD if needed.
           </div>
+
+        <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Data flow diagram</span></p>
+            <h4 class="figure-title">Level 0 data flow diagram: a library system</h4>
+            <p class="figure-lead">The whole system as one process, surrounded by the external entities it exchanges data with.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <div class="nesa-diagram" data-diagram="library-dfd-level0"></div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>A Level 0 DFD shows no data stores or internal processes.</li><li>Each data flow is a labelled, curved arrow.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Refine this into a Level 1 DFD with processes for loans, returns and reports, and a Loans data store.</p>
+          </div>
+        </figure>
           <p><strong>Example scenario — Online Bookshop:</strong> A <em>Customer</em> (external entity) sends an <em>order request</em> (data flow) to the <em>Process Order</em> (process), which reads from the <em>D1 Book Catalogue</em> (data store) and sends a <em>confirmation</em> back to the customer.</p>
 
           <h3>Structure Charts</h3>
           <p>Represent a system's modular design — showing how subroutines are called from one another in a hierarchy. Modules at the top control modules below them.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>▭ Rectangle</strong><span>Module — a named subroutine or function (e.g. "Calculate Total").</span></div>
-            <div class="key-term-item"><strong>🔘 Empty Circle Arrow</strong><span>Data parameter — a data value passed between modules (e.g. passing a score).</span></div>
-            <div class="key-term-item"><strong>⚫ Filled Circle Arrow</strong><span>Control flag — a status variable passed between modules (e.g. a Boolean "isValid").</span></div>
-            <div class="key-term-item"><strong>🔷 Diamond</strong><span>Selection — indicates a module is called conditionally.</span></div>
-            <div class="key-term-item"><strong>🔁 Curved Arrow</strong><span>Repetition — indicates a module is called inside a loop.</span></div>
+            <div class="key-term-item"><strong>Module (rectangle)</strong><span>A named subroutine, e.g. Calculate total.</span></div>
+            <div class="key-term-item"><strong>Data (arrow with an open circle)</strong><span>A value passed between modules, usually as a parameter.</span></div>
+            <div class="key-term-item"><strong>Flag (arrow with a filled circle)</strong><span>A control variable passed between modules, e.g. Valid.</span></div>
+            <div class="key-term-item"><strong>Decision (small diamond)</strong><span>Only one of the connected modules is called, or a module is called only sometimes.</span></div>
+            <div class="key-term-item"><strong>Repetition (curved arrow)</strong><span>The connected modules are called repeatedly, e.g. until no more books.</span></div>
           </div>
           <div class="callout info">
             <strong>Example:</strong> A top-level <em>Main</em> module calls <em>GetInput</em>, <em>ProcessData</em>, and <em>DisplayResult</em>. An arrow from <em>GetInput</em> back to <em>Main</em> carries the data parameter <em>userScore</em>.
           </div>
 
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Structure Chart — Online Bookshop (text notation)</span></div>
-            <pre><code>MainModule
-├── GetOrder          [🔘 orderDetails passed UP to MainModule]
-│     ├── ValidateISBN      [⚫ isValid flag returned]
-│     └── CheckStock        [⚫ stockAvailable flag returned]
-├── ProcessPayment    [🔘 amount, 🔁 retry loop if payment fails]
-│     ├── ChargeCard        [⚫ paymentSuccess flag returned]
-│     └── SendReceipt       [🔘 email, orderID]
-└── UpdateInventory   [🔘 ISBN, quantitySold]
-
-Legend: 🔘 data parameter  ⚫ control flag  🔁 loop  ◇ conditional call</code></pre>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Structure chart</span></p>
+            <h4 class="figure-title">Structure chart: a school library system</h4>
+            <p class="figure-lead">The example from the NESA course specifications: modules, data and flag couples, a decision and repetition.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <div class="nesa-diagram" data-diagram="library-structure"></div>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Open circle: data passed as a parameter. Filled circle: a flag.</li><li>Curved arrow: repetition. Small diamond: a decision about which module to call.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Refine Returning into its own structure chart.</p>
+          </div>
+        </figure>
 
           <h3>Data Dictionary</h3>
           <p>A structured reference that documents every variable and data element in a system. Each entry includes: <strong>Name, Data Type, Format, Size, Description, Example value, and Validation rules</strong>.</p>
@@ -360,29 +376,50 @@ Legend: 🔘 data parameter  ⚫ control flag  🔁 loop  ◇ conditional call</
 
           <h3>Class Diagrams</h3>
           <p>Used in object-oriented design to show classes, their attributes, methods, and the relationships between them. Each class is drawn as a box divided into three compartments.</p>
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Class Diagram — Example</span></div>
-            <pre><code>┌─────────────────────┐
-│       Student       │  ← Class name
-├─────────────────────┤
-│ - studentID: int    │  ← Attributes (- private, + public)
-│ - name: String      │
-│ - score: float      │
-├─────────────────────┤
-│ + getScore(): float │  ← Methods
-│ + setScore(s: float)│
-│ + isPassing(): bool │
-└─────────────────────┘
-
-     Student ──────▷ Person      (Inheritance: Student extends Person)
-     Course  ◆───── Lesson       (Composition: Course owns its Lessons)
-     Student ──────  Course      (Association: Student enrols in Course)</code></pre>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Class diagram</span></p>
+            <h4 class="figure-title">Class diagram: students, parents and subjects</h4>
+            <p class="figure-lead">Based on the NESA course specifications example: Student and Parent inherit from Person, and students study subjects.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <div class="mermaid">
+classDiagram
+  direction TB
+  class Person {
+    firstName: string
+    lastName: string
+    printFullName()
+  }
+  class Student {
+    studentID: int
+    homeroom: string
+    enrolClass()
+  }
+  class Parent {
+    occupation: string
+    alumni: boolean
+  }
+  class Subject {
+    studentID: int
+    subjectName: string
+    printStudentList()
+  }
+  Person &lt;|-- Student
+  Person &lt;|-- Parent
+  Student "0..*" --&gt; "1..*" Subject : studies
+            </div>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Each box has three parts: class name, attributes, methods.</li><li>1..* means one or more; 0..* means zero or more.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Add a Teacher class that inherits from Person and teaches subjects. What multiplicities fit?</p>
+          </div>
+        </figure>
           <div class="key-terms">
-            <div class="key-term-item"><strong>— (solid line)</strong><span>Association — a general relationship between two classes.</span></div>
-            <div class="key-term-item"><strong>▷ (open arrow)</strong><span>Inheritance — a subclass extends a superclass (is-a relationship).</span></div>
-            <div class="key-term-item"><strong>◇ (open diamond)</strong><span>Aggregation — a "has-a" relationship; parts can exist independently.</span></div>
-            <div class="key-term-item"><strong>◆ (filled diamond)</strong><span>Composition — parts cannot exist without the whole (strong ownership).</span></div>
+            <div class="key-term-item"><strong>Class box</strong><span>Three parts: class name, attributes, methods.</span></div>
+            <div class="key-term-item"><strong>Inheritance (arrow to the parent)</strong><span>The child class is a kind of the parent class, e.g. Student → Person.</span></div>
+            <div class="key-term-item"><strong>Relationship (labelled arrow)</strong><span>Two classes are related, e.g. Student studies Subject.</span></div>
+            <div class="key-term-item"><strong>Multiplicity</strong><span>1..1 only one · 0..* zero or more · 1..* one or more · 0..1 zero or one · m..n at least m, at most n.</span></div>
           </div>
 
           <h3>Storyboard</h3>
@@ -401,18 +438,28 @@ Legend: 🔘 data parameter  ⚫ control flag  🔁 loop  ◇ conditional call</
 
           <h3>Decision Trees</h3>
           <p>A tree-based diagram that models decision logic. Starting from a root condition, each branch represents a possible outcome of a test. Decision trees are useful for representing complex nested logic clearly.</p>
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Decision Tree — Exam Grade Example</span></div>
-            <pre><code>Is score ≥ 90?
-├── YES → Grade: A
-└── NO
-    Is score ≥ 75?
-    ├── YES → Grade: B
-    └── NO
-        Is score ≥ 50?
-        ├── YES → Grade: C
-        └── NO → Grade: Fail</code></pre>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Decision tree</span></p>
+            <h4 class="figure-title">Decision tree: exam grades</h4>
+            <p class="figure-lead">Each condition leads to another decision or to a final action.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <div class="mermaid">
+flowchart TD
+  A["Score ≥ 90?"] -- "Yes" --&gt; GA["Grade A"]
+  A -- "No" --&gt; B["Score ≥ 75?"]
+  B -- "Yes" --&gt; GB["Grade B"]
+  B -- "No" --&gt; C["Score ≥ 50?"]
+  C -- "Yes" --&gt; GC["Grade C"]
+  C -- "No" --&gt; GF["Not yet passed"]
+            </div>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Every branch is labelled Yes or No.</li><li>Each path ends in exactly one grade.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Add a grade for scores of 40–49. Where does the new branch go?</p>
+          </div>
+        </figure>
         </section>
 
         <hr class="divider" />
@@ -564,55 +611,51 @@ END</code></pre>
           <h3>Flowcharts</h3>
           <p>A visual diagram using standardised shapes connected by arrows to show the flow of logic through an algorithm.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>🔵 Oval</strong><span>Terminator — marks the <em>Start</em> or <em>End</em> of the algorithm.</span></div>
-            <div class="key-term-item"><strong>📐 Parallelogram</strong><span>Input/Output — data entering (INPUT) or leaving (OUTPUT/DISPLAY) the system.</span></div>
-            <div class="key-term-item"><strong>▭ Rectangle</strong><span>Process — a computation, assignment, or action (e.g. <code>total ← total + score</code>).</span></div>
-            <div class="key-term-item"><strong>🔶 Diamond</strong><span>Decision — a yes/no or true/false branch (e.g. <code>score ≥ 50?</code>).</span></div>
-            <div class="key-term-item"><strong>🗂️ Double-sided Rectangle</strong><span>Subprogram — a call to a named subroutine or function.</span></div>
+            <div class="key-term-item"><strong>Terminator (rounded rectangle)</strong><span>Marks BEGIN and END. A subroutine's terminators use its name, e.g. BEGIN read(arrayname).</span></div>
+            <div class="key-term-item"><strong>Input or output (parallelogram)</strong><span>Data entering or leaving the algorithm, e.g. INPUT age.</span></div>
+            <div class="key-term-item"><strong>Process (rectangle)</strong><span>A calculation or assignment, e.g. total = total + score.</span></div>
+            <div class="key-term-item"><strong>Decision (diamond)</strong><span>A condition with two labelled exits, such as Yes/No or True/False.</span></div>
+            <div class="key-term-item"><strong>Subprogram (rectangle with double sides)</strong><span>A call to a subroutine that has its own flowchart.</span></div>
           </div>
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Flowchart — Find the largest number in a list (text diagram)</span></div>
-            <pre><code>        ╔══════════╗
-        ║  START   ║   ← Oval terminator
-        ╚════╤═════╝
-             │
-     ╔═══════╧════════╗
-     ║  largest ← 0   ║   ← Process rectangle
-     ║  i ← 1         ║
-     ╚═══════╤════════╝
-             │
-     ╔═══════╧════════╗
-     ║  INPUT number  ║   ← Parallelogram (input)
-     ╚═══════╤════════╝
-             │
-        ╔════╧═════╗
-        ║ number > ║   ← Diamond (decision)
-        ║ largest? ║
-        ╚═╤══════╤═╝
-       YES│      │NO
-          ▼      │
-  ╔═══════════╗  │
-  ║ largest ← ║  │   ← Process
-  ║  number   ║  │
-  ╚═════╤═════╝  │
-        └────────┘
-             │
-        ╔════╧═════╗
-        ║  i < n?  ║   ← Loop back if more numbers remain
-        ╚═╤══════╤═╝
-       YES│      │NO
-          │      ▼
-          │  ╔══════════════╗
-          │  ║ OUTPUT       ║   ← Parallelogram (output)
-          │  ║ largest      ║
-          │  ╚══════╤═══════╝
-          │         │
-          │    ╔════╧═════╗
-          │    ║   END    ║   ← Oval terminator
-          │    ╚══════════╝
-          │
-     (loop back to INPUT)</code></pre>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Reference</span></p>
+            <h4 class="figure-title">Flowchart symbols</h4>
+            <p class="figure-lead">The five symbols in the NESA course specifications. Use only these, joined by arrows.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <ul class="nesa-key" aria-label="NESA flowchart symbols">
+            <li><svg viewBox="0 0 110 52" aria-hidden="true"><rect x="6" y="10" width="98" height="32" rx="16" class="nd-box"/></svg>Terminator</li>
+            <li><svg viewBox="0 0 110 52" aria-hidden="true"><rect x="6" y="10" width="98" height="32" class="nd-box"/></svg>Process</li>
+            <li><svg viewBox="0 0 110 52" aria-hidden="true"><polygon points="55,4 104,26 55,48 6,26" class="nd-box"/></svg>Decision</li>
+            <li><svg viewBox="0 0 110 52" aria-hidden="true"><polygon points="18,10 104,10 92,42 6,42" class="nd-box"/></svg>Input or output</li>
+            <li><svg viewBox="0 0 110 52" aria-hidden="true"><rect x="6" y="10" width="98" height="32" class="nd-box"/><line x1="16" y1="10" x2="16" y2="42" class="nd-line"/><line x1="94" y1="10" x2="94" y2="42" class="nd-line"/></svg>Subprogram</li>
+          </ul>
           </div>
+        </figure>
+
+        <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Flowchart</span></p>
+            <h4 class="figure-title">Find the largest number in a list</h4>
+            <p class="figure-lead">A pre-test loop compares each item with the largest value found so far.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <div class="mermaid">
+flowchart TD
+  S(["BEGIN"]) --&gt; I[/"INPUT list"/] --&gt; A["largest = list[0]<br/>i = 1"] --&gt; D{"i #lt; LEN(list)?"}
+  D -- "True" --&gt; C{"list[i] #gt; largest?"}
+  C -- "Yes" --&gt; U["largest = list[i]"] --&gt; N["i = i + 1"]
+  C -- "No" --&gt; N
+  N --&gt; D
+  D -- "False" --&gt; O[/"OUTPUT largest"/] --&gt; E(["END"])
+            </div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The loop body returns to the decision.</li><li>largest starts at the first item, so the loop begins at the second.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Change the flowchart to find the smallest number instead.</p>
+          </div>
+        </figure>
           <div class="callout info">
             <strong>Pseudocode vs Flowcharts:</strong> Both express the same algorithm. Pseudocode is preferred for complex logic and is easier to convert to code. Flowcharts are better for visualising branching and communicating with non-programmers.
           </div>
@@ -1016,66 +1059,71 @@ p {
 
           <h3>Neural Networks</h3>
           <p>Computational models loosely inspired by the brain, composed of <strong>layers of interconnected nodes (neurons)</strong>. Each connection has a weight that is adjusted during training.</p>
-          <div class="diagram-block">
-            <p class="diagram-subtitle">Neural Network Architecture showing hidden layers and weights</p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">System diagram</span></p>
+            <h4 class="figure-title">A neural network</h4>
+            <p class="figure-lead">Inputs, hidden layers and an output, joined by weighted connections.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              graph LR
-                %% Input Layer
-                I1((x₁)):::inputLayer
-                I2((x₂)):::inputLayer
-                I3((x₃)):::inputLayer
-                
-                %% Hidden Layer 1
-                H1_1((h₁)):::hiddenLayer
-                H1_2((h₂)):::hiddenLayer
-                H1_3((h₃)):::hiddenLayer
-                
-                %% Output Layer
-                O1((Spam)):::outputLayer
-                O2((Not Spam)):::outputLayer
-                
-                %% Connections with varying weights
-                I1 --> H1_1
-                I1 --> H1_2
-                I1 --> H1_3
-                
-                I2 --> H1_1
-                I2 --> H1_2
-                I2 --> H1_3
-                
-                I3 --> H1_1
-                I3 --> H1_2
-                I3 --> H1_3
-                
-                H1_1 --> O1
-                H1_1 --> O2
-                H1_2 --> O1
-                H1_2 --> O2
-                H1_3 --> O1
-                H1_3 --> O2
-                
-                %% Styling to simulate varying signal strength (weights)
-                linkStyle 0 stroke:#6366f1,stroke-width:4px;
-                linkStyle 1 stroke:#94a3b8,stroke-width:1px;
-                linkStyle 2 stroke:#94a3b8,stroke-width:2px;
-                linkStyle 3 stroke:#94a3b8,stroke-width:1px;
-                linkStyle 4 stroke:#6366f1,stroke-width:5px;
-                linkStyle 5 stroke:#94a3b8,stroke-width:2px;
-                linkStyle 6 stroke:#94a3b8,stroke-width:2px;
-                linkStyle 7 stroke:#94a3b8,stroke-width:1px;
-                linkStyle 8 stroke:#6366f1,stroke-width:3px;
-                
-                classDef inputLayer fill:#dbeafe,stroke:#3b82f6,color:#000;
-                classDef hiddenLayer fill:#f3e8ff,stroke:#a855f7,color:#000;
-                classDef outputLayer fill:#dcfce7,stroke:#22c55e,color:#000;
+graph LR
+  %% Input Layer
+  I1((x₁)):::inputLayer
+  I2((x₂)):::inputLayer
+  I3((x₃)):::inputLayer
+
+  %% Hidden Layer 1
+  H1_1((h₁)):::hiddenLayer
+  H1_2((h₂)):::hiddenLayer
+  H1_3((h₃)):::hiddenLayer
+
+  %% Output Layer
+  O1((Spam)):::outputLayer
+  O2((Not Spam)):::outputLayer
+
+  %% Connections with varying weights
+  I1 --> H1_1
+  I1 --> H1_2
+  I1 --> H1_3
+
+  I2 --> H1_1
+  I2 --> H1_2
+  I2 --> H1_3
+
+  I3 --> H1_1
+  I3 --> H1_2
+  I3 --> H1_3
+
+  H1_1 --> O1
+  H1_1 --> O2
+  H1_2 --> O1
+  H1_2 --> O2
+  H1_3 --> O1
+  H1_3 --> O2
+
+  %% Styling to simulate varying signal strength (weights)
+  linkStyle 0 stroke:#6366f1,stroke-width:4px;
+  linkStyle 1 stroke:#94a3b8,stroke-width:1px;
+  linkStyle 2 stroke:#94a3b8,stroke-width:2px;
+  linkStyle 3 stroke:#94a3b8,stroke-width:1px;
+  linkStyle 4 stroke:#6366f1,stroke-width:5px;
+  linkStyle 5 stroke:#94a3b8,stroke-width:2px;
+  linkStyle 6 stroke:#94a3b8,stroke-width:2px;
+  linkStyle 7 stroke:#94a3b8,stroke-width:1px;
+  linkStyle 8 stroke:#6366f1,stroke-width:3px;
+
+  classDef inputLayer fill:#dbeafe,stroke:#3b82f6,color:#000;
+  classDef hiddenLayer fill:#f3e8ff,stroke:#a855f7,color:#000;
+  classDef outputLayer fill:#dcfce7,stroke:#22c55e,color:#000;
+
             </div>
-            <p class="diagram-description">Notice the variable line thicknesses connecting the nodes — these represent <strong>internal weightings</strong>, a core NESA requirement to visually demonstrate signal priority in neural architectures.</p>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Visualise the layered architecture of a neural network with weighted connections between nodes<br>
-              <strong>Syllabus Link:</strong> SE-12-03 — Machine learning concepts and neural network structures<br>
-              <strong>Try This:</strong> Identify which connections have the strongest weights (thickest lines) and explain what that means for the classification output
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Training adjusts the weight on every connection.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Count the connections between the first two layers.</p>
+          </div>
+        </figure>
           <div class="key-terms">
             <div class="key-term-item"><strong>📥 Input layer</strong><span>Receives the raw input features (e.g. pixel values of an image, or sensor readings). One node per feature.</span></div>
             <div class="key-term-item"><strong>🧠 Hidden layer(s)</strong><span>One or more intermediate layers that learn to detect patterns automatically. "Deep learning" refers to networks with many hidden layers.</span></div>
@@ -1937,9 +1985,11 @@ print(f"Time taken to process 50,000 queries over 10K records: {end_time - start
   </footer>
 
   <script src="../js/glossary-data.js?v=4"></script>
-  <script src="../js/main.js?v=21"></script>
+  <script src="../js/nesa-diagram-data.js?v=3"></script>
+  <script src="../js/nesa-diagrams.js?v=2" defer></script>
+  <script src="../js/main.js?v=24"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="../js/mermaid-init.js?v=4"></script>
+  <script src="../js/mermaid-init.js?v=6"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->

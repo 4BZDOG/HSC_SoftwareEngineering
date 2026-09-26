@@ -474,27 +474,20 @@
 <h3>Project Structure Chart</h3>
           <p>A <strong>structure chart</strong> breaks the software solution into its major components before coding begins. It shows how the top-level system is decomposed into modules, and how those modules relate to each other. The chart below illustrates a typical school library management system.</p>
 
-          <div class="diagram-block">
-            <h4>Structure Chart — Library Management System</h4>
-            <p class="diagram-subtitle">Top-down decomposition of the student project</p>
-            <p class="diagram-description">
-              The structure chart below shows how the Library Management System is decomposed into functional modules. Each module represents a separate responsibility, allowing the engineer to plan which functions to build first and how they interact.
-            </p>
-            <pre class="text-diagram">Structure Chart: Library Management System
-==========================================
-                [Main Program]
-               /        |       \
-    [Book Module]  [Member Module]  [Report Module]
-      /    |   \       /    \          |       \
-[Add] [Search] [Return] [Register] [Update] [Loans] [Overdue]
-  |       |        |
-[Validate] [DB Lookup] [Fine Calc]</pre>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Plan the modular breakdown of the project before writing any code.<br>
-              <strong>Syllabus Link:</strong> SE-12-02, SE-12-06<br>
-              <strong>Tip:</strong> Each box in the structure chart typically becomes a Python function or class method in your implementation.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Structure chart</span></p>
+            <h4 class="figure-title">Structure chart: a school library system</h4>
+            <p class="figure-lead">The library system refined into modules, based on the example in the NESA course specifications.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <div class="nesa-diagram" data-diagram="library-structure"></div>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Two curved arrows: the system repeats until the library closes, and Process books repeats for each book.</li><li>Filled circles are flags, such as Overdue; open circles are data, such as Student ID.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Refine Check book into its own structure chart, using the same module name at the top.</p>
+          </div>
+        </figure>
         </section>
 
         <hr class="divider" />
@@ -626,39 +619,41 @@
           </ul>
 
           <!-- Scrum / Agile Sprint Cycle Diagram -->
-          <div class="diagram-block">
-            <h4>Diagram - The Agile / Scrum Sprint Cycle</h4>
-            <p class="diagram-subtitle">How an Agile team turns a backlog into working software, sprint by sprint</p>
-            <p class="diagram-description">
-              Agile delivers software in short, repeating iterations called <strong>sprints</strong> (typically 1–4 weeks). The Product Owner prioritises the <strong>product backlog</strong>; the team selects items into a <strong>sprint backlog</strong> during planning. Inside the sprint, work proceeds with daily stand-ups (the <strong>Daily Scrum</strong>) until a potentially shippable <strong>increment</strong> is ready. The sprint ends with a <strong>review</strong> (demo to the client) and a <strong>retrospective</strong> (improve the process) — then the cycle repeats. This iterative loop is what lets Agile adapt to changing client needs.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Process diagram</span></p>
+            <h4 class="figure-title">An Agile sprint cycle</h4>
+            <p class="figure-lead">How a team turns a backlog into working software, one sprint at a time.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              flowchart LR
-                PB["📋 Product Backlog<br/>prioritised by Product Owner"] --> SP["🗓️ Sprint Planning"]
-                SP --> SB["📝 Sprint Backlog"]
-                SB --> SPRINT
-                subgraph SPRINT["🔁 Sprint (1–4 weeks)"]
-                  direction TB
-                  DS["☀️ Daily Scrum (stand-up)"] --> DEV["💻 Develop &amp; test increment"]
-                  DEV --> DS
-                end
-                SPRINT --> INC["📦 Potentially shippable increment"]
-                INC --> REV["👥 Sprint Review (demo to client)"]
-                REV --> RETRO["🔎 Retrospective (improve process)"]
-                RETRO -->|"next sprint"| PB
-                classDef plan fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
-                classDef work fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
-                classDef review fill:#fff3e0,stroke:#E65100,stroke-width:2px
-                class PB,SP,SB plan
-                class DS,DEV,INC work
-                class REV,RETRO review
+flowchart LR
+  PB["Product Backlog<br/>prioritised by Product Owner"] --> SP["Sprint Planning"]
+  SP --> SB["Sprint Backlog"]
+  SB --> SPRINT
+  subgraph SPRINT["Sprint (1–4 weeks)"]
+    direction TB
+    DS["Daily Scrum (stand-up)"] --> DEV["Develop &amp; test increment"]
+    DEV --> DS
+  end
+  SPRINT --> INC["Potentially shippable increment"]
+  INC --> REV["Sprint Review (demo to client)"]
+  REV --> RETRO["Retrospective (improve process)"]
+  RETRO -->|"next sprint"| PB
+  classDef plan fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
+  classDef work fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
+  classDef review fill:#fff3e0,stroke:#E65100,stroke-width:2px
+  class PB,SP,SB plan
+  class DS,DEV,INC work
+  class REV,RETRO review
+
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Show the repeating Agile/Scrum workflow and the artefacts and events at each stage<br>
-              <strong>Syllabus Link:</strong> SE-12-01, SE-12-09<br>
-              <strong>Try This:</strong> Compare this cycle to the Waterfall model above — at which point does Agile let the client change requirements?
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The client sees working software at every review.</li><li>The retrospective improves the process for the next sprint.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>At which point in the cycle can the client change priorities?</p>
+          </div>
+        </figure>
 
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
@@ -685,35 +680,41 @@
             <li><strong>Scale and types of developments:</strong> medium to large projects that need both flexibility and firm control, such as a bank adding a new feature to an existing regulated system.</li>
           </ul>
 
-          <div class="diagram-block mt-15px">
-                <p class="diagram-subtitle">WAgile Timeline: Agile sprints with Waterfall interventions</p>
-                <div class="mermaid">
-                  gantt
-                    title WAgile Development Timeline
-                    dateFormat  YYYY-MM-DD
-                    axisFormat  %m-%d
-                    
-                    section Waterfall Planning
-                    Requirements Doc (Intervention) :crit, req1, 2026-05-01, 7d
-                    Design Sign-off (Intervention)  :crit, des1, after req1, 5d
-                    
-                    section Agile Sprints
-                    Sprint 1 (Frontend UI)          :active, sp1, after des1, 10d
-                    Sprint 1 Review                 :milestone, m1, after sp1, 0d
-                    Sprint 2 (Backend API)          :active, sp2, after sp1, 10d
-                    Sprint 2 Review                 :milestone, m2, after sp2, 0d
-                    Sprint 3 (Integration)          :active, sp3, after sp2, 10d
-                    
-                    section Waterfall Deploy
-                    Final Security Audit (Intervention) :crit, aud1, after sp3, 5d
-                    Live Deployment                 :milestone, live, after aud1, 0d
-                </div>
-                <p class="diagram-caption">
-                  <strong>Purpose:</strong> Visualise how WAgile combines Waterfall phase-gate interventions with Agile sprint iterations<br>
-                  <strong>Syllabus Link:</strong> SE-12-02 — Compare project management models and intervention points<br>
-                  <strong>Try This:</strong> Identify which tasks are Waterfall "interventions" (critical path) and which are Agile sprints
-                </p>
-              </div>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Timeline</span></p>
+            <h4 class="figure-title">WAgile: planned gates around Agile sprints</h4>
+            <p class="figure-lead">Waterfall-style gates at the start and end, with iterative sprints between them.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <div class="mermaid">
+gantt
+  title WAgile Development Timeline
+  dateFormat  YYYY-MM-DD
+  axisFormat  %m-%d
+
+  section Waterfall Planning
+  Requirements Doc (Intervention) :crit, req1, 2026-05-01, 7d
+  Design Sign-off (Intervention)  :crit, des1, after req1, 5d
+
+  section Agile Sprints
+  Sprint 1 (Frontend UI)          :active, sp1, after des1, 10d
+  Sprint 1 Review                 :milestone, m1, after sp1, 0d
+  Sprint 2 (Backend API)          :active, sp2, after sp1, 10d
+  Sprint 2 Review                 :milestone, m2, after sp2, 0d
+  Sprint 3 (Integration)          :active, sp3, after sp2, 10d
+
+  section Waterfall Deploy
+  Final Security Audit (Intervention) :crit, aud1, after sp3, 5d
+  Live Deployment                 :milestone, live, after aud1, 0d
+
+            </div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The gates are the planned interventions; the sprints are where the software is built.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Which gate would a government client insist on, and why?</p>
+          </div>
+        </figure>
 
           <div class="table-wrap">
             <table>
@@ -751,40 +752,37 @@
 <h3>Gantt Chart — Project Schedule</h3>
           <p>A <strong>Gantt chart</strong> is a horizontal bar chart that maps project tasks against a timeline. It visually shows the start date, duration, and end date of each task, and can indicate task dependencies (where one task must complete before another begins). In the SEP, your Gantt chart must cover all four project phases.</p>
 
-          <div class="diagram-block">
-            <h4>Gantt Chart — Library Management System (10-Week Schedule)</h4>
-            <p class="diagram-subtitle">Task scheduling across the four project phases</p>
-            <p class="diagram-description">
-              The Gantt chart below maps each project phase to a weekly timeline. Tasks are shown with their allocated week ranges. Critical dependencies (such as requirements being completed before design can begin) are reflected in the sequencing.
-            </p>
-            <pre class="text-diagram">Gantt Chart: Library Management System — 10-Week Schedule
-=============================================================
-Task                          | Wk1 | Wk2 | Wk3 | Wk4 | Wk5 | Wk6 | Wk7 | Wk8 | Wk9 | Wk10
-------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----
-PHASE 1 — Identifying &amp; Defining
-  Requirements gathering       | ███ | ███ |     |     |     |     |     |     |     |
-  Problem definition           | ███ | ███ |     |     |     |     |     |     |     |
-  Client consultation          |     | ███ | ███ |     |     |     |     |     |     |
-PHASE 2 — Research &amp; Planning
-  System design (structure)    |     |     | ███ | ███ |     |     |     |     |     |
-  Algorithm design (pseudocode)|     |     |     | ███ | ███ |     |     |     |     |
-  Gantt &amp; risk planning        |     |     | ███ | ███ |     |     |     |     |     |
-PHASE 3 — Producing &amp; Implementing
-  Core module development      |     |     |     |     | ███ | ███ | ███ |     |     |
-  UI/front-end implementation  |     |     |     |     |     | ███ | ███ |     |     |
-  Integration &amp; version control|     |     |     |     |     |     | ███ | ███ |     |
-PHASE 4 — Testing &amp; Evaluating
-  Testing &amp; bug fixing         |     |     |     |     |     |     |     | ███ | ███ |
-  Client review &amp; feedback     |     |     |     |     |     |     |     |     | ███ |
-  Final report &amp; submission    |     |     |     |     |     |     |     |     | ███ | ███
-=============================================================
-Key: ███ = Task active during this week</pre>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Demonstrate realistic time allocation across all four project phases.<br>
-              <strong>Syllabus Link:</strong> SE-12-05, SE-12-09<br>
-              <strong>Tip:</strong> Tools like <strong>GanttProject</strong> (free) or the Table feature in Microsoft Word can be used to produce a professional Gantt chart for your project documentation.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Gantt chart</span></p>
+            <h4 class="figure-title">Gantt chart: a ten-week project</h4>
+            <p class="figure-lead">Tasks on a timeline, with dependencies and milestones.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <div class="mermaid">
+gantt
+  title Library booking app
+  dateFormat YYYY-MM-DD
+  axisFormat %d %b
+  section Identify and define
+  Requirements          :req, 2026-02-02, 7d
+  Feasibility           :fea, after req, 4d
+  Specifications signed off :milestone, m1, after fea, 0d
+  section Research and plan
+  Design and modelling  :des, after fea, 10d
+  section Produce
+  Sprint 1 bookings     :s1, after des, 10d
+  Sprint 2 accounts     :s2, after s1, 10d
+  section Test and evaluate
+  Testing               :tst, after s2, 7d
+  Client evaluation     :milestone, m2, after tst, 0d
+            </div>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Each task starts after the task it depends on.</li><li>Diamonds mark milestones, such as specifications being signed off.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Sprint 1 runs three days late. Which later tasks move?</p>
+          </div>
+        </figure>
 
 <h3>Process Diary Example Excerpt</h3>
           <p>The process diary is a chronological record of your development journey. It should demonstrate ongoing reflection, problem-solving, and client engagement throughout the project — not just a summary of what was done.</p>
@@ -922,38 +920,20 @@ Key: ███ = Task active during this week</pre>
 <h3>Data Flow Diagram (DFD)</h3>
           <p>A <strong>Data Flow Diagram (DFD)</strong> models how data moves through a system. It shows external entities (users or other systems), processes that transform data, data stores (databases or files), and the data flows connecting them. A <strong>Level 0 DFD</strong> (Context Diagram) shows the entire system as a single process with all external entities. A <strong>Level 1 DFD</strong> expands the main process into its sub-processes.</p>
 
-          <div class="diagram-block">
-            <h4>DFD Notation — Level 0 Context Diagram (Library System)</h4>
-            <p class="diagram-subtitle">External entities and the core system boundary</p>
-            <p class="diagram-description">
-              A Level 0 DFD (Context Diagram) shows the entire system as a single circle (process), with all external entities and the data flows between them and the system. It defines the system boundary — what is inside and outside the scope of the software.
-            </p>
-            <pre class="text-diagram">Level 0 DFD — Library Management System (Context Diagram)
-===========================================================
-
-  [Library Member] ----search request---→ (Library Management System)
-  [Library Member] ←---search results---- (Library Management System)
-  [Library Member] ----loan request------→ (Library Management System)
-  [Library Member] ←---loan confirmation- (Library Management System)
-
-  [Staff Member]   ----return record----→ (Library Management System)
-  [Staff Member]   ←---fine calculation-- (Library Management System)
-  [Staff Member]   ----report request---→ (Library Management System)
-  [Staff Member]   ←---overdue report---- (Library Management System)
-
-  [Admin]          ----manage books-----→ (Library Management System)
-  [Admin]          ←---system reports---- (Library Management System)
-
-Key:
-  [ ] = External Entity (outside the system boundary)
-  ( ) = Process (the system itself)
-  ----→ = Data Flow (direction of data movement)</pre>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Define the system boundary and identify all external entities and data flows at the highest level.<br>
-              <strong>Syllabus Link:</strong> SE-12-06<br>
-              <strong>Next Step:</strong> A Level 1 DFD would expand the central process into sub-processes (e.g., Search Books, Issue Loan, Generate Report) with data stores (e.g., Books DB, Members DB).
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Data flow diagram</span></p>
+            <h4 class="figure-title">Data flow diagram: a library system (Level 0)</h4>
+            <p class="figure-lead">The whole system as one process, with the external entities that send and receive data.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <div class="nesa-diagram" data-diagram="library-dfd-level0"></div>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>A Level 0 diagram shows no data stores and no internal processes.</li><li>Every arrow is labelled with the data it carries.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Refine the Library system process into a Level 1 DFD with three processes and a Loans data store.</p>
+          </div>
+        </figure>
         </section>
 
         <hr class="divider" />
@@ -1538,39 +1518,29 @@ git push origin main --tags</code></pre>
 <h3>Debugging Process</h3>
           <p><strong>Debugging</strong> is the systematic process of identifying, isolating, and fixing defects in code. A structured debugging process is faster and more reliable than randomly changing code and hoping for improvement.</p>
 
-          <div class="diagram-block">
-            <h4>Debugging Process Flowchart</h4>
-            <p class="diagram-subtitle">Systematic approach to identifying and resolving defects</p>
-            <p class="diagram-description">
-              The flowchart below shows the structured debugging process. It begins with observing the bug and ends with verifying the fix has not introduced any new defects (regression testing).
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Flowchart</span></p>
+            <h4 class="figure-title">A systematic debugging process</h4>
+            <p class="figure-lead">Reproduce, isolate, test a hypothesis, fix, then retest everything.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
 flowchart TD
-    A([🔴 Bug Observed]) --> B[Reproduce the bug reliably\nwith a minimal test case]
-    B --> C{Can you reproduce\nconsistently?}
-    C -- No --> D[Add logging/print statements\nto narrow down occurrence]
-    D --> C
-    C -- Yes --> E[Isolate the affected\nmodule or function]
-    E --> F[Form a hypothesis\nabout the root cause]
-    F --> G[Test the hypothesis\nusing a debugger or print statements]
-    G --> H{Hypothesis\ncorrect?}
-    H -- No --> F
-    H -- Yes --> I[Implement the fix]
-    I --> J[Run the original\nfailing test case]
-    J --> K{Test passes?}
-    K -- No --> F
-    K -- Yes --> L[Run the full test suite\nto check for regressions]
-    L --> M{All tests\npass?}
-    M -- No --> N[Address new regressions\nintroduced by the fix]
-    N --> F
-    M -- Yes --> O([✅ Bug Fixed &amp; Verified])
+  S(["BEGIN debug"]) --&gt; R["Reproduce the bug with a small test case"] --&gt; A{"Reproduces every time?"}
+  A -- "No" --&gt; L["Add debugging output statements"] --&gt; R
+  A -- "Yes" --&gt; I["Isolate the module that fails"] --&gt; H["Form a hypothesis about the cause"] --&gt; T["Test it with breakpoints and watches"] --&gt; B{"Hypothesis correct?"}
+  B -- "No" --&gt; H
+  B -- "Yes" --&gt; F["Fix the code"] --&gt; C{"All tests pass?"}
+  C -- "No" --&gt; H
+  C -- "Yes" --&gt; E(["END debug"])
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Apply a methodical, evidence-based approach to debugging rather than making random code changes.<br>
-              <strong>Syllabus Link:</strong> SE-12-02, SE-12-08<br>
-              <strong>Python Tools:</strong> Use the built-in <code>pdb</code> debugger (<code>python -m pdb script.py</code>), VS Code's integrated debugger, or add <code>print()</code> statements to trace variable values at key points.
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Every loop returns to a step that gathers more evidence, not to a random change.</li><li>Rerunning all tests checks the fix didn't break something else.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Which debugging tools from Year 11 fit the Test it step?</p>
+          </div>
+        </figure>
         </section>
 
         <hr class="divider" />
@@ -1833,9 +1803,11 @@ flowchart TD
   <script src="../js/glossary-data.js?v=4"></script>
   <script src="../js/quizzes.js?v=1"></script>
   <script src="../js/quiz.js?v=2" defer></script>
-  <script src="../js/main.js?v=21"></script>
+  <script src="../js/nesa-diagram-data.js?v=3"></script>
+  <script src="../js/nesa-diagrams.js?v=2" defer></script>
+  <script src="../js/main.js?v=24"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="../js/mermaid-init.js?v=4"></script>
+  <script src="../js/mermaid-init.js?v=6"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->
