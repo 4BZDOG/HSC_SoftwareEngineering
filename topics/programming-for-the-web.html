@@ -526,6 +526,8 @@
               <p>The W3C develops standards for structured, semantic data that machines (search engines, AI systems) can interpret. This includes <strong>Schema.org</strong> vocabulary embedded as <strong>JSON-LD</strong> or microdata in HTML (enabling rich search results), the <strong>Resource Description Framework (RDF)</strong>, and <strong>Semantic HTML5</strong> elements (<code>&lt;article&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;section&gt;</code>) that provide meaning beyond visual presentation.</p>
             </div>
           </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"The W3C shapes web applications by publishing open standards that every browser follows. Its Web Accessibility Initiative produces WCAG, which is why developers add alt text and keyboard navigation so people using screen readers can use a site. Standards for internationalisation, such as UTF-8, let one application display English, Arabic and Chinese correctly."</em></div>
         </section>
 
         <hr class="divider" />
@@ -603,6 +605,8 @@
           <p class="outcome-subtitle">🎯 <em>(SE-12-03, SE-12-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Explore and explain</strong> the influence of a web browser on web development, including the use of developer (dev) tools</em></p>
 
+          <p>Your code only works if the browser runs it the way you expect. Browsers use different engines, support features at different times and handle errors differently, so developers test in more than one and use the browser's built-in developer tools to find out what is really happening.</p>
+
           <h3>Browser Rendering Engines</h3>
           <p>Different browsers use different <strong>rendering engines</strong> to parse HTML/CSS and render the visual page: <strong>Blink</strong> (Chrome, Edge, Opera), <strong>WebKit</strong> (Safari), and <strong>Gecko</strong> (Firefox). Differences in engine implementations can cause the same CSS to render slightly differently across browsers — a core challenge of front-end development known as <strong>cross-browser compatibility</strong>. Developers use tools like <strong>Can I Use</strong> (caniuse.com) to check which CSS/JavaScript features are supported across browser versions before using them in production.</p>
 
@@ -616,6 +620,8 @@
             <div class="key-term-item"><strong>💡 Lighthouse</strong><span>Automated audit tool that scores a page on Performance, Accessibility, SEO, and PWA compliance with actionable recommendations.</span></div>
             <div class="key-term-item"><strong>📱 Device Mode</strong><span>Simulate different screen sizes and device pixel ratios to test responsive design without a physical device.</span></div>
           </div>
+
+          <div class="callout info"><strong>Scenario:</strong> A form's "Submit" button does nothing on a phone. In dev tools, the <strong>Console</strong> shows a JavaScript error, the <strong>Network</strong> tab shows no request was sent, and <strong>Device Mode</strong> reproduces the bug on a narrow screen. The cause: a hidden element covers the button at small widths, and one CSS change fixes it.</div>
         </section>
 
         <hr class="divider" />
@@ -669,6 +675,20 @@
           <p class="outcome-subtitle">🎯 <em>(SE-12-09)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> the reasons for version control and apply it when developing web application</em></p>
 
+          <p>Web projects change constantly, often with several people editing the same files. Version control records every change so you can see what changed, undo mistakes and work on new features without breaking the live site.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Reason</th><th>What goes wrong without it</th></tr></thead>
+              <tbody>
+                <tr><td>History and rollback</td><td>A bad change reaches the live site and nobody can tell what the working version was.</td></tr>
+                <tr><td>Branching</td><td>Half-finished features are mixed into the code everyone relies on.</td></tr>
+                <tr><td>Collaboration</td><td>Two developers overwrite each other's edits to the same stylesheet.</td></tr>
+                <tr><td>Accountability</td><td>No record of who changed the login code, or why.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
                     <p><strong>Version control systems (VCS)</strong> track every change made to a codebase over time, enabling developers to: <strong>roll back</strong> to any previous working state if a new change breaks functionality; <strong>branch</strong> the codebase to develop features or fix bugs in isolation without affecting the main production code; <strong>merge</strong> contributions from multiple developers working simultaneously; and maintain a complete <strong>audit trail</strong> of who changed what and why. <strong>Git</strong> is the dominant distributed VCS; <strong>GitHub</strong>, <strong>GitLab</strong>, and <strong>Bitbucket</strong> are the popular remote hosting platforms.</p>
 
           <div class="code-block">
@@ -702,6 +722,8 @@ git merge feature/user-login</code></pre>
           <p class="syllabus-concept">📌 <em><strong>Explore</strong> the types and significance of code libraries for front-end web development</em></p>
           <ul class="syllabus-including" aria-label="Including"><li>frameworks that control complex web applications</li><li>template engines</li><li>predesigned CSS classes</li></ul>
 
+          <p>A <strong>code library</strong> is pre-written code you can reuse instead of writing everything yourself. Front-end developers rely on three main kinds, which save time and make large applications more consistent.</p>
+
           <h3>Frameworks for Complex Web Applications</h3>
           <p><strong>Front-end frameworks</strong> provide a structured architecture for building large, complex web applications. They enforce separation of concerns (UI components, state management, routing) and provide build tools that optimise code for production.</p>
           <div class="key-terms">
@@ -714,6 +736,19 @@ git merge feature/user-login</code></pre>
           <p><strong>Template engines</strong> allow developers to inject dynamic data into HTML templates on the server before sending the page to the client, avoiding duplicate HTML markup. Template engines support variables, control structures (loops, conditionals), and template inheritance.</p>
 
           <p><strong>CSS frameworks</strong> provide pre-built components and responsive utility classes to accelerate styling and ensure consistent design across pages. They typically include grid systems, responsive breakpoints, and pre-styled UI components.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Type</th><th>Examples</th><th>Why it matters</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Frameworks</strong></td><td>React, Vue, Angular</td><td>Organise complex interfaces into reusable components that update automatically when data changes</td></tr>
+                <tr><td><strong>Template engines</strong></td><td>Jinja2, Handlebars, EJS</td><td>Fill one HTML layout with different data, so pages share a structure without copy-and-paste</td></tr>
+                <tr><td><strong>Predesigned CSS classes</strong></td><td>Bootstrap, Tailwind CSS</td><td>Give consistent, responsive styling by adding class names such as <code>btn btn-primary</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Code libraries are significant because they let a small team build a professional interface quickly. Bootstrap's predesigned classes made the booking site responsive without custom CSS, and Jinja2 templates meant the header and navigation were written once. The trade-off is dependence on third-party code, which must be kept up to date for security."</em></div>
         </section>
 
         <hr class="divider" />
