@@ -51,7 +51,7 @@
   <meta name="description" content="HSC Software Automation notes aligned with NESA NSW syllabus. Machine learning algorithms, OOP regression models, neural networks, DevOps and RPA automation, and ethical impacts of AI. Year 12 Software Engineering." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=23" />
+  <link rel="stylesheet" href="../css/styles.css?v=24" />
 </head>
 <body>
 
@@ -557,6 +557,21 @@ print(f"MSE: {mean_squared_error(y_test, y_pred):.2f}")
 print(f"Predicted score for 9 hours: {model.predict([[9]])[0]:.1f}")</code></pre>
           </div>
 
+          <p>Behind <code>mean_squared_error</code> is one of the simplest standard algorithms: a counting loop with an <strong>accumulator</strong>. It adds up each squared error, then divides by the number of items. The trace below shows the summing loop on its own. Enter some squared errors to see how the total builds.</p>
+
+          <figure class="trace-block">
+            <figcaption>
+              <h4>Trace — Accumulator Loop (Summing Errors)</h4>
+              <p class="diagram-subtitle">The same loop that totals the squared errors before MSE divides by n</p>
+            </figcaption>
+            <div class="algo-trace" data-trace="sumList"></div>
+            <p class="diagram-caption">
+              Every loss function in machine learning, and every average, starts with a loop like this one. Training a model runs it millions of times.<br>
+              <strong>Controls:</strong> ◀ Step and Step ▶ (or the arrow keys), Space to play or pause, R to reset.<br>
+              <strong>Try this:</strong> Enter the squared errors <code>4, 1, 9, 0, 16</code>. The total is 30, so MSE = 30 ÷ 5 = 6.
+            </p>
+          </figure>
+
           <h3>Logistic Regression</h3>
           <p>Despite its name, <strong>logistic regression</strong> is a <strong>classification algorithm</strong> — not used for predicting continuous values. It calculates the probability that an input belongs to a particular class (typically binary: 0 or 1, True or False). The <strong>sigmoid function</strong> squashes any input value into a probability between 0 and 1. A threshold (typically 0.5) converts this probability into a class prediction. For example, a logistic regression model assessing whether a bank transaction is fraudulent outputs a probability of fraud; if it exceeds 0.5 (or a risk-adjusted threshold), the transaction is flagged. Logistic regression is highly interpretable — each feature's coefficient indicates its influence on the predicted probability.</p>
 
@@ -952,7 +967,9 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
 
   <script src="../js/main.js?v=18"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="../js/mermaid-init.js?v=2"></script>
+  <script src="../js/mermaid-init.js?v=3"></script>
+  <script src="../js/algo-trace.js?v=1"></script>
+  <script src="../js/algo-traces.js?v=1"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->

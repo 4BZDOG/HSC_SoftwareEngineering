@@ -51,7 +51,7 @@
   <meta name="description" content="Year 11 HSC Programming Fundamentals notes — algorithms, data types, control structures, functions, debugging, and NESA command verbs for Preliminary exams." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=23" />
+  <link rel="stylesheet" href="../css/styles.css?v=24" />
 </head>
 <body>
 
@@ -490,6 +490,19 @@ END</code></pre>
 END</code></pre>
           </div>
 
+          <figure class="trace-block">
+            <figcaption>
+              <h4>Trace — Accumulator Loop (Sum a List)</h4>
+              <p class="diagram-subtitle">Watch the flowchart, the pseudocode and the variables change together</p>
+            </figcaption>
+            <div class="algo-trace" data-trace="sumList"></div>
+            <p class="diagram-caption">
+              The running <strong>total</strong> is an <em>accumulator</em>: it starts at 0 and grows by one item each time round the loop. The <strong>i</strong> variable is the loop counter.<br>
+              <strong>Controls:</strong> ◀ Step and Step ▶ (or the arrow keys), Space to play or pause, R to reset.<br>
+              <strong>Try this:</strong> Enter your own list and predict the final total before pressing Play. How many loop tests does a list of <em>n</em> items need? (Answer: <em>n</em> + 1 — the last test is the one that fails.)
+            </p>
+          </figure>
+
           <!-- ── 4. Storing Data ── -->
           <h4>4. Storing Data</h4>
           <p><strong>Storing Data</strong> means using variables and <strong>data structures</strong> to hold values needed across multiple steps of an <strong>algorithm</strong>. Without stored state, programs cannot track progress or accumulate results.<br>
@@ -669,6 +682,48 @@ END FUNCTION</code></pre>
               <strong>Try This:</strong> Trace through this flowchart manually with a sample list like [5, 2, 8, 1, 9] searching for target=8. Count how many steps it takes.
             </p>
           </div>
+
+          <h3>Tracing Searching and Sorting Algorithms</h3>
+          <p>A <strong>desk check</strong> follows an algorithm one step at a time, recording each variable as it changes. The traces below do the same thing: the flowchart node, the pseudocode line and the data move together. Step backwards whenever you want to ask "why did it go <em>no</em> there?", and watch the <strong>Comparisons</strong> counter — it is how we measure an algorithm's efficiency (Big-O).</p>
+
+          <figure class="trace-block">
+            <figcaption>
+              <h4>Trace — Linear Search</h4>
+              <p class="diagram-subtitle">Check each item in order until the target is found or the list runs out</p>
+            </figcaption>
+            <div class="algo-trace" data-trace="linearSearch"></div>
+            <p class="diagram-caption">
+              Linear search works on any list, sorted or not. In the worst case (the target is last, or absent) it makes one comparison per item: <strong>O(n)</strong>.<br>
+              <strong>Controls:</strong> ◀ Step and Step ▶ (or the arrow keys), Space to play or pause, R to reset.<br>
+              <strong>Try this:</strong> Search for 8, which is not in the list, so you can see the <code>RETURN −1</code> path. Then compare the number of comparisons for 7 (first) and 5 (last).
+            </p>
+          </figure>
+
+          <figure class="trace-block">
+            <figcaption>
+              <h4>Trace — Binary Search</h4>
+              <p class="diagram-subtitle">Halve the search range each time — the list must already be sorted</p>
+            </figcaption>
+            <div class="algo-trace" data-trace="binarySearch"></div>
+            <p class="diagram-caption">
+              Greyed cells have been ruled out. Each comparison discards half of the remaining range, so a list of <em>n</em> items needs at most about log₂(<em>n</em>) + 1 comparisons: <strong>O(log n)</strong>.<br>
+              <strong>Controls:</strong> ◀ Step and Step ▶ (or the arrow keys), Space to play or pause, R to reset.<br>
+              <strong>Try this:</strong> Search for 10 (absent) and count the comparisons. Then trace linear search for the same value in the same eight items and compare the counts.
+            </p>
+          </figure>
+
+          <figure class="trace-block">
+            <figcaption>
+              <h4>Trace — Bubble Sort</h4>
+              <p class="diagram-subtitle">Swap neighbouring pairs until a whole pass makes no swaps</p>
+            </figcaption>
+            <div class="algo-trace" data-trace="bubbleSort"></div>
+            <p class="diagram-caption">
+              After each pass the largest remaining value has "bubbled" to the end (shown in green), so <strong>n</strong> shrinks by one. The <strong>swapped</strong> flag stops the sort early once the list is in order.<br>
+              <strong>Controls:</strong> ◀ Step and Step ▶ (or the arrow keys), Space to play or pause, R to reset.<br>
+              <strong>Try this:</strong> Try the sorted list: one pass with no swaps and the sort finishes (best case, <strong>O(n)</strong>). Then try the reversed list for the worst case, <strong>O(n²)</strong>.
+            </p>
+          </figure>
 
           <h3>Subprograms</h3>
           <p>A subprogram (function or procedure) is a reusable block of code that performs a specific task. Pseudocode and flowcharts must clearly show how subprograms are called, what parameters they accept, and what they return. This modular approach reduces code duplication, improves readability, and makes testing easier.<br>🌏 <em>Example: A main program calls FUNCTION validatePassword(pwd) which returns TRUE or FALSE, allowing the validation logic to be reused across multiple entry points.</em></p>
@@ -1533,7 +1588,9 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
 
   <script src="../js/main.js?v=18"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="../js/mermaid-init.js?v=2"></script>
+  <script src="../js/mermaid-init.js?v=3"></script>
+  <script src="../js/algo-trace.js?v=1"></script>
+  <script src="../js/algo-traces.js?v=1"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->
