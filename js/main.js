@@ -1268,7 +1268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const excludeTags = new Set(['A', 'BUTTON', 'PRE', 'CODE', 'TH', 'SCRIPT', 'STYLE',
       'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'SUMMARY', 'LABEL']);
     const excludeClasses = ['mermaid', 'code-block', 'algo-trace', 'part-block',
-      'curriculum-banner', 'syllabus-phase', 'outcome-subtitle', 'syllabus-concept', 'gloss'];
+      'curriculum-banner', 'syllabus-phase', 'outcome-subtitle', 'syllabus-concept', 'gloss', 'quiz'];
 
     const walker = document.createTreeWalker(contentBody, NodeFilter.SHOW_TEXT, {
       acceptNode(node) {

@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=5" />
+  <link rel="stylesheet" href="../css/paper.css?v=7" />
 </head>
 <body>
 
@@ -488,6 +488,9 @@
 
           <div class="callout success"><strong>HSC writing sample:</strong> <em>"Big data has changed web architecture from single servers to distributed systems. Streaming services such as Netflix store copies of popular shows on CDN servers close to viewers, so one data centre is not overloaded and playback starts quickly. However, mining viewing data to personalise recommendations raises privacy concerns, because users may not know how much of their behaviour is recorded."</em></div>
         </section>
+
+        <div class="quiz" data-quiz="web-1"></div>
+
 
 
         <!-- ═══════════════════════════════════════════════════════ -->
@@ -1320,7 +1323,10 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
           </div>
         </section>
 
-      </div>
+      
+
+        <div class="quiz" data-quiz="web-2"></div>
+</div>
     </main>
   </div>
 
@@ -1360,7 +1366,9 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
   </footer>
 
   <script src="../js/glossary-data.js?v=4"></script>
-  <script src="../js/main.js?v=20"></script>
+  <script src="../js/quizzes.js?v=1"></script>
+  <script src="../js/quiz.js?v=2" defer></script>
+  <script src="../js/main.js?v=21"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script src="../js/mermaid-init.js?v=4"></script>
   <!-- ═══════════════════════════════════════════════════════ -->

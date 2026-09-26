@@ -103,6 +103,7 @@ SPECS = {
 
 SPECS['automation'] = {
     'file': 'software-automation.html',
+    'quiz': 'auto',
     'focus_area': 'Software automation',
     'outcomes': 'SE-12-01, SE-12-03',
     'parts': [

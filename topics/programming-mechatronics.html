@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=5" />
+  <link rel="stylesheet" href="../css/paper.css?v=7" />
 </head>
 <body>
 
@@ -532,6 +532,9 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <p>Specialist requirements often add complexity and cost, but they fundamentally expand accessibility and enable people with disabilities to perform tasks they could not otherwise accomplish independently.</p>
         </section>
 
+        <div class="quiz" data-quiz="mech-1"></div>
+
+
 
         <!-- ═══════════════════════════════════════════════════════ -->
         <!--  DESIGNING CONTROL ALGORITHMS                          -->
@@ -703,6 +706,9 @@ END followLine</code></pre>
             </p>
           </div>
         </section>
+
+        <div class="quiz" data-quiz="mech-2"></div>
+
 
 
         <!-- ═══════════════════════════════════════════════════════ -->
@@ -948,7 +954,10 @@ stop_button.irq(trigger=Pin.IRQ_FALLING, handler=emergency_stop)</code></pre>
           <p>Because the algorithm is a separate function, it can be tested on a laptop without any hardware. <strong>Repeatability</strong> is then checked on the real system by running the same test several times, for example heating the sensor to 29 °C five times and confirming the vent reaches about 30° each time.</p>
         </section>
 
-      </div>
+      
+
+        <div class="quiz" data-quiz="mech-3"></div>
+</div>
     </main>
   </div>
 
@@ -988,7 +997,9 @@ stop_button.irq(trigger=Pin.IRQ_FALLING, handler=emergency_stop)</code></pre>
   </footer>
 
   <script src="../js/glossary-data.js?v=4"></script>
-  <script src="../js/main.js?v=20"></script>
+  <script src="../js/quizzes.js?v=1"></script>
+  <script src="../js/quiz.js?v=2" defer></script>
+  <script src="../js/main.js?v=21"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script src="../js/mermaid-init.js?v=4"></script>
   <!-- ═══════════════════════════════════════════════════════ -->

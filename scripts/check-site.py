@@ -62,6 +62,15 @@ for page, area in FOCUS_AREAS.items():
     if parts != [s for s, _ in syllabus[area]]:
         fail(f'{page}: parts {parts} do not match NESA subheadings')
 
+# 1b. Every quiz placeholder has questions
+bank = open(os.path.join(ROOT, 'js', 'quizzes.js'), encoding='utf-8').read()
+quiz_keys = set(re.findall(r"^\s*'([a-z]+-\d+)':\s*\[", bank, re.M))
+for page in FOCUS_AREAS:
+    src = open(os.path.join(ROOT, 'topics', page), encoding='utf-8').read()
+    for key in re.findall(r'<div class="quiz" data-quiz="([^"]+)">', src):
+        if key not in quiz_keys:
+            fail(f'{page}: quiz "{key}" has no questions in js/quizzes.js')
+
 # 2–4. Links, ids, balance
 ids = {}
 for path in PAGES:

@@ -146,6 +146,7 @@ def build(key, write=False):
     if len(spec['parts']) != len(syllabus):
         raise SystemExit(f'{key}: spec has {len(spec["parts"])} parts, syllabus has {len(syllabus)}')
     num = 0
+    quiz_key = spec.get('quiz', key)   # key into js/quizzes.js
     for p_i, ((sub_name, points), part) in enumerate(zip(syllabus, spec['parts']), 1):
         if len(part) != len(points):
             raise SystemExit(f'{key} / {sub_name}: spec has {len(part)} entries, syllabus has {len(points)} dot points')
@@ -158,6 +159,8 @@ def build(key, write=False):
           <span class="part-name">{html.escape(sub_name)}</span>
         </div>
 ''')
+        if p_i > 1:
+            out.append(f'        <div class="quiz" data-quiz="{quiz_key}-{p_i - 1}"></div>\n')
         toc.append(f'        <li class="sidebar-label">Part {p_i} — {html.escape(sub_name)}</li>')
         first = True
         for point, entry in zip(points, part):
@@ -182,6 +185,8 @@ def build(key, write=False):
         </section>
 ''')
             toc.append(f'        <li><a href="#{entry["id"]}">{num}. {html.escape(entry.get("toc", entry["title"]))}</a></li>')
+
+    out.append(f'        <div class="quiz" data-quiz="{quiz_key}-{len(syllabus)}"></div>\n')
 
     unused = []
     for sid, (chunks, order) in sections.items():
