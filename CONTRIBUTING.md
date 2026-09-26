@@ -245,3 +245,11 @@ A: Run `python3 -m http.server 8000` and open `http://localhost:8000`. Changes a
 ---
 
 Thank you for contributing! Your help makes this resource better for students. 🙌
+
+## Syllabus structure and glossary tooling
+
+- `resources/nesa-syllabus-content.md` is the source of truth: NESA's focus areas, subheadings and dot points, verbatim and in order.
+- Each topic page has one part per NESA subheading and one `<section>` per dot point. `scripts/page_specs.py` maps dot points to sections; `python3 scripts/restructure.py <page-key>` reports any content that isn't mapped (add `--write` to rebuild the page).
+- `python3 scripts/copy_audit.py` lists each section's length against the scope its NESA verb implies (brief for *describe*/*outline*, broader for *investigate*/*evaluate*).
+- Glossary terms live in `topics/glossary.html`. After editing it, run `python3 scripts/build-glossary.py` to regenerate `js/glossary-data.js`, which powers the inline definition popovers.
+- `python3 scripts/build-mapping.py` regenerates `resources/Syllabus-Mapping.md`.
