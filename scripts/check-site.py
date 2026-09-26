@@ -71,6 +71,38 @@ for page in FOCUS_AREAS:
         if key not in quiz_keys:
             fail(f'{page}: quiz "{key}" has no questions in js/quizzes.js')
 
+# 1c. Figures follow the NESA conventions
+EMOJI = re.compile('[\U0001F000-\U0001FAFF\u2600-\u27BF\u2B00-\u2BFF]')
+for path in sorted(glob.glob(os.path.join(ROOT, 'topics', '*.html'))):
+    rel = os.path.relpath(path, ROOT)
+    src = open(path, encoding='utf-8').read()
+    if 'diagram-block' in src:
+        fail(f'{rel}: old .diagram-block container; use a .figure')
+    for fig in re.findall(r'<figure class="figure">.*?</figure>', src, re.S):
+        title = re.search(r'<h4 class="figure-title">(.*?)</h4>', fig)
+        name = text(title.group(1)) if title else '(untitled figure)'
+        if not title or '<p class="figure-lead">' not in fig:
+            fail(f'{rel}: figure "{name}" needs a title and a lead sentence')
+        code = re.search(r'<div class="mermaid">(.*?)</div>', fig, re.S)
+        if not code:
+            continue
+        code = html.unescape(code.group(1))
+        if EMOJI.search(code):
+            fail(f'{rel}: figure "{name}" has emoji inside the diagram')
+        kind = re.search(r'<span class="figure-kind">(.*?)</span>', fig)
+        if kind and kind.group(1) == 'Flowchart':
+            # NESA flowchart symbols only: terminator ([ ]), process [ ], decision { }, I/O [/ /], subprogram [[ ]]
+            for bad, label in (('((', 'circle'), ('[(', 'cylinder'), ('{{', 'hexagon'), ('>"', 'flag shape')):
+                if bad in code:
+                    fail(f'{rel}: flowchart "{name}" uses a {label}, which is not a NESA flowchart symbol')
+            if not re.search(r'\(\["BEGIN', code) or not re.search(r'\(\["END', code):
+                fail(f'{rel}: flowchart "{name}" must start with a BEGIN terminator and finish with END')
+            decisions = re.findall(r'(\w+)\{"', code)
+            for d in decisions:
+                exits = re.findall(rf'^\s*{d}\s*(--[^>]*?-->|-->)', code, re.M)
+                if any(e == '-->' for e in exits):
+                    fail(f'{rel}: flowchart "{name}" has an unlabelled arrow leaving decision {d}')
+
 # 2–4. Links, ids, balance
 ids = {}
 for path in PAGES:

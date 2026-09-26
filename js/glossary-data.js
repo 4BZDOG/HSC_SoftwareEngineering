@@ -803,7 +803,7 @@ window.HSC_GLOSSARY = [
 "aliases": [
 "Flowchart"
 ],
-"def": "A visual diagram using standardised symbols (oval for start/end, rectangle for process, diamond for decision) connected by arrows to represent the flow of logic through an algorithm.",
+"def": "A visual diagram using the NESA symbols (terminator for BEGIN and END, rectangle for a process, diamond for a decision, parallelogram for input or output, and a double-sided rectangle for a subprogram) connected by arrows to represent the flow of logic through an algorithm.",
 "example": "A diamond asks \"age ≥ 18?\" with yes and no arrows to different processes.",
 "link": true
 },

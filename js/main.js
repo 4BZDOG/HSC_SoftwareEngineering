@@ -250,28 +250,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  /* ── Diagram Enhancements ── */
-  document.querySelectorAll('.diagram-block').forEach((block, idx) => {
-    block.style.setProperty('--diagram-index', idx);
-
-    const mermaid = block.querySelector('.mermaid');
-    if (mermaid) {
-      const content = mermaid.textContent.toLowerCase();
-      let type = 'diagram';
-      if (content.includes('flowchart') || content.includes('graph td') || content.includes('graph lr')) {
-        type = 'flowchart';
-      } else if (content.includes('classdiagram') || content.includes('class ')) {
-        type = 'class';
-      } else if (content.includes('sequencediagram') || content.includes('participant')) {
-        type = 'sequence';
-      }
-      block.setAttribute('data-type', type);
-    }
-  });
-
   /* ── Scroll-triggered diagram reveal ── */
   (() => {
-    const blocks = document.querySelectorAll('.diagram-block');
+    const blocks = document.querySelectorAll('.figure');
     if (!blocks.length) return;
     if (!('IntersectionObserver' in window) ||
         window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -919,67 +900,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
-  /* ── Diagram Block Collapsibility ── */
-  (() => {
-    const DIAGRAM_KEY = 'hsc-diagram-collapsed';
-    let collapsed;
-    try { collapsed = JSON.parse(localStorage.getItem(DIAGRAM_KEY) || '{}'); }
-    catch { collapsed = {}; }
-
-    // Debounced resize handler
-    let resizeTimer;
-    const onResize = () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        document.querySelectorAll('.diagram-block:not(.diagram-collapsed) .diagram-body').forEach(body => {
-          body.style.maxHeight = body.scrollHeight + 'px';
-        });
-      }, 100);
-    };
-    window.addEventListener('resize', onResize, { passive: true });
-
-    document.querySelectorAll('.diagram-block').forEach((block, idx) => {
-      const h4 = block.querySelector('h4');
-      if (!h4) return;
-
-      // Create wrapper for diagram content if not already wrapped
-      let body = block.querySelector('.diagram-body');
-      if (!body) {
-        body = document.createElement('div');
-        body.className = 'diagram-body';
-        const siblings = Array.from(block.children).filter(el => el !== h4);
-        siblings.forEach(el => body.appendChild(el));
-        block.appendChild(body);
-      }
-
-      // Restore saved collapse state
-      if (collapsed[idx]) {
-        block.classList.add('diagram-collapsed');
-        body.style.maxHeight = '0px';
-        body.style.opacity = '0';
-      } else {
-        body.style.maxHeight = body.scrollHeight + 'px';
-        body.style.opacity = '1';
-      }
-
-      h4.addEventListener('click', () => {
-        const isCollapsing = !block.classList.contains('diagram-collapsed');
-        if (isCollapsing) {
-          block.classList.add('diagram-collapsed');
-          body.style.maxHeight = '0px';
-          body.style.opacity = '0';
-          collapsed[idx] = true;
-        } else {
-          block.classList.remove('diagram-collapsed');
-          body.style.maxHeight = body.scrollHeight + 'px';
-          body.style.opacity = '1';
-          collapsed[idx] = false;
-        }
-        try { localStorage.setItem(DIAGRAM_KEY, JSON.stringify(collapsed)); } catch {}
-      });
-    });
-  })();
-
   /* ── Diagram Lightbox Feature ── */
   (() => {
     class DiagramLightbox {
@@ -1009,16 +929,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       init() {
-        // Attach click handlers to all diagram blocks
-        document.querySelectorAll('.diagram-block').forEach(block => {
-          const mermaid = block.querySelector('.mermaid');
-          if (mermaid) {
-            mermaid.style.cursor = 'pointer';
-            mermaid.addEventListener('click', () => {
-              const svg = mermaid.querySelector('svg');
-              if (svg) this.open(svg, mermaid);
-            });
-          }
+        // Every figure with a drawn diagram gets a real "Enlarge" button.
+        document.querySelectorAll('.figure-canvas:not(.figure-canvas--trace)').forEach(canvas => {
+          if (!canvas.querySelector('.mermaid, .nesa-diagram')) return;
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'figure-zoom';
+          btn.textContent = 'Enlarge';
+          const title = canvas.closest('.figure')?.querySelector('.figure-title')?.textContent || 'diagram';
+          btn.setAttribute('aria-label', `Enlarge: ${title}`);
+          btn.addEventListener('click', () => {
+            const svg = canvas.querySelector('svg');
+            if (svg) this.open(svg, btn);
+          });
+          const head = canvas.closest('.figure')?.querySelector('.figure-kicker');
+          (head || canvas).appendChild(btn);
         });
 
         // Modal controls
@@ -1268,7 +1193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const excludeTags = new Set(['A', 'BUTTON', 'PRE', 'CODE', 'TH', 'SCRIPT', 'STYLE',
       'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'SUMMARY', 'LABEL']);
     const excludeClasses = ['mermaid', 'code-block', 'algo-trace', 'part-block',
-      'curriculum-banner', 'syllabus-phase', 'outcome-subtitle', 'syllabus-concept', 'gloss', 'quiz'];
+      'curriculum-banner', 'syllabus-phase', 'outcome-subtitle', 'syllabus-concept', 'gloss', 'quiz', 'figure-head'];
 
     const walker = document.createTreeWalker(contentBody, NodeFilter.SHOW_TEXT, {
       acceptNode(node) {

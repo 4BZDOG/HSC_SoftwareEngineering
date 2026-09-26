@@ -82,7 +82,7 @@
       flowchart: {
         useMaxWidth: true,
         htmlLabels: false,
-        curve: 'basis',
+        curve: 'linear',
         padding: 14,
         nodeSpacing: 42,
         rankSpacing: 48,

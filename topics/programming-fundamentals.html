@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=8" />
+  <link rel="stylesheet" href="../css/paper.css?v=12" />
 </head>
 <body>
 
@@ -246,44 +246,25 @@
           </div>
 
           <!-- SDLC Flowchart Diagram -->
-          <div class="diagram-block">
-            <h4>Flowchart - SDLC Process</h4>
-            <p class="diagram-subtitle">Seven phases of software development lifecycle</p>
-            <p class="diagram-description">
-              This flowchart shows the complete Software Development Lifecycle (SDLC) from Requirements through Maintenance. Each phase builds on the previous one, and the feedback loop from Maintenance back to Requirements demonstrates that software development is iterative — improvements and bug fixes cycle through the process continuously.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Process diagram</span></p>
+            <h4 class="figure-title">The software development steps</h4>
+            <p class="figure-lead">The eight steps NESA lists, in order, with maintenance feeding back into new requirements.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              flowchart TD
-                A["📋 Requirements Definition<br/>Identify stakeholder needs"]
-                B["📐 Specifications<br/>Define technical constraints"]
-                C["🎨 Design<br/>Plan algorithms & structure"]
-                D["💻 Development<br/>Write code"]
-                E["🧩 Integration<br/>Combine modules"]
-                F["🧪 Testing & Debugging<br/>Identify & fix errors"]
-                G["📦 Installation<br/>Deploy to users"]
-                H["🛠️ Maintenance<br/>Patches & updates"]
-
-                A --> B --> C --> D --> E --> F --> G --> H
-                H -. Feedback Loop .-> A
-
-                classDef plan    fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
-                classDef build   fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
-                classDef verify  fill:#fff9c4,stroke:#F57F17,stroke-width:2px
-                classDef release fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
-                classDef support fill:#fff3e0,stroke:#E65100,stroke-width:2px
-
-                class A,B plan
-                class C,D,E build
-                class F verify
-                class G release
-                class H support
+flowchart LR
+  A["Requirements<br/>definition"] --&gt; B["Determining<br/>specifications"] --&gt; C["Design"] --&gt; D["Development"]
+  D --&gt; E["Integration"] --&gt; F["Testing and<br/>debugging"] --&gt; G["Installation"] --&gt; H["Maintenance"]
+  H -. "new needs" .-&gt; A
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Understand the iterative SDLC phases and feedback loops that drive continuous improvement<br>
-              <strong>Syllabus Link:</strong> SE-11-01<br>
-              <strong>Try This:</strong> Identify which SDLC phases would apply to a project you're working on. Mark which phase your project is currently in.
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Each step produces something the next step needs, such as specifications before design.</li><li>The dashed arrow shows that maintenance often uncovers new requirements, so development is a cycle.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Pick an app you use. Which step would a bug fix after launch belong to?</p>
+          </div>
+        </figure>
         </section>
 
         <hr class="divider" />
@@ -363,31 +344,23 @@
           <p><strong>Sequence</strong> means instructions are executed in order, one after another. Each step completes before the next begins — there is no branching or repetition.<br>
           🌏 <em>Example: Reading a file, processing each line, then saving results.</em></p>
 
-          <div class="diagram-block">
-            <h4>Flowchart — Sequence (File Processing)</h4>
-            <p class="diagram-subtitle">Three sequential steps executed in order</p>
-            <p class="diagram-description">
-              This flowchart illustrates pure sequential execution: the program opens a file, processes every line in order, then saves the results. No decisions or loops — each step follows the previous one directly.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Flowchart</span></p>
+            <h4 class="figure-title">Sequence: calculate the area of a rectangle</h4>
+            <p class="figure-lead">Steps run one after another, in the order they are written. There are no decisions and no loops.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              flowchart TD
-                START(["▶ START"]) --> A["📂 Open file for reading"]
-                A --> B(("🔄 Process each line"))
-                B --> C["💾 Save processed results"]
-                C --> STOP(["⏹ END"])
-
-                style START fill:#90EE90,color:#000,stroke:#2E7D32,stroke-width:2px
-                style STOP fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
-                style A fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
-                style B fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
-                style C fill:#fff3e0,color:#e65100,stroke:#e65100,stroke-width:1px
+flowchart TD
+  S(["BEGIN"]) --&gt; I[/"INPUT length, width"/] --&gt; P["area = length × width"] --&gt; O[/"OUTPUT area"/] --&gt; E(["END"])
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Illustrate pure sequential execution where each step completes before the next begins<br>
-              <strong>Syllabus Link:</strong> SE-11-05 — Sequence as a fundamental algorithmic feature<br>
-              <strong>Try This:</strong> Add a fourth step (e.g., "Display success message") to extend the sequence
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Every flowchart starts and ends with a terminator.</li><li>Input and output use the parallelogram; calculations use the process rectangle.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Add steps to also calculate and output the perimeter. Where do they go?</p>
+          </div>
+        </figure>
 
           <div class="code-block">
             <div class="code-header">
@@ -409,38 +382,27 @@ END</code></pre>
           <p><strong>Selection</strong> means choosing different execution paths based on conditions using IF/ELSE or SWITCH statements. The program evaluates a condition and branches accordingly.<br>
           🌏 <em>Example: Validating user input — if age &lt; 18, display "Too young"; otherwise, proceed.</em></p>
 
-          <div class="diagram-block">
-            <h4>Flowchart — Selection (Age Validation)</h4>
-            <p class="diagram-subtitle">Branching logic based on a condition</p>
-            <p class="diagram-description">
-              This flowchart shows a decision diamond that checks whether the user's age meets the minimum requirement. The YES branch proceeds to the main menu, while the NO branch displays a rejection message. This is the fundamental IF/ELSE pattern.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Flowchart</span></p>
+            <h4 class="figure-title">Binary selection: check a user's age</h4>
+            <p class="figure-lead">A decision chooses one of two paths. This is IF … THEN … ELSE … ENDIF.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              flowchart TD
-                START(["▶ START"]) --> A[/"⌨️ INPUT age from user"/]
-                A --> B{"🔀 Is age ≥ 18?"}
-                B -->|YES| C[/"✅ Display 'Welcome!'"/]
-                C --> D["📋 Show full menu"]
-                B -->|NO| E[/"❌ Display 'Too young'"/]
-                E --> F["🚪 Exit program"]
-                D --> STOP(["⏹ END"])
-                F --> STOP
-
-                style START fill:#90EE90,color:#000,stroke:#2E7D32,stroke-width:2px
-                style STOP fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
-                style B fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
-                style C fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:1px
-                style E fill:#fff3e0,color:#e65100,stroke:#e65100,stroke-width:1px
-                style A fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
-                style D fill:#fff3e0,color:#e65100,stroke:#e65100,stroke-width:1px
-                style F fill:#e0f0ff,color:#0277bd,stroke:#0277bd,stroke-width:1px
+flowchart TD
+  S(["BEGIN"]) --&gt; I[/"INPUT age"/] --&gt; D{"age ≥ 18?"}
+  D -- "Yes" --&gt; Y[/"OUTPUT 'Welcome'"/]
+  D -- "No" --&gt; N[/"OUTPUT 'Too young'"/]
+  Y --&gt; E(["END"])
+  N --&gt; E
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Show how selection (IF/ELSE) creates branching paths based on a condition<br>
-              <strong>Syllabus Link:</strong> SE-11-05 — Selection as a fundamental algorithmic feature<br>
-              <strong>Try This:</strong> Add a third branch for ages 13-17 that shows a "Parental consent required" path
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Both arrows leaving the decision are labelled, as NESA requires.</li><li>The two paths join again before END, so exactly one output happens.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Write the matching pseudocode using IF … THEN … ELSE … ENDIF.</p>
+          </div>
+        </figure>
 
           <div class="code-block">
             <div class="code-header">
@@ -464,38 +426,25 @@ END</code></pre>
           <p><strong>Iteration</strong> means repeating a set of instructions while a condition is true, using FOR or WHILE loops. The loop body executes multiple times until the exit condition is met.<br>
           🌏 <em>Example: Summing all numbers in a list by looping through each element.</em></p>
 
-          <div class="diagram-block">
-            <h4>Flowchart — Iteration (Sum a List)</h4>
-            <p class="diagram-subtitle">Loop through each element and accumulate a total</p>
-            <p class="diagram-description">
-              This flowchart demonstrates a counting loop: the program initialises a total to zero, then iterates through each number in the list, adding it to the running total. The decision diamond checks whether more elements remain. When all elements are processed, the final sum is displayed.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Flowchart</span></p>
+            <h4 class="figure-title">Pre-test repetition: sum a list</h4>
+            <p class="figure-lead">A WHILE loop tests its condition before each pass, so the body may run zero times.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              flowchart TD
-                START(["▶ START"]) --> A["📝 SET total ← 0"]
-                A --> B["📝 SET i ← 0"]
-                B --> C{"🔀 i &lt; length<br/>of list?"}
-                C -->|YES| D["➕ total ← total + list[i]"]
-                D --> E["📝 i ← i + 1"]
-                E --> C
-                C -->|NO| F[/"📤 OUTPUT total"/]
-                F --> STOP(["⏹ END"])
-
-                style START fill:#90EE90,color:#000,stroke:#2E7D32,stroke-width:2px
-                style STOP fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
-                style C fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
-                style A fill:#fff3e0,color:#e65100,stroke:#e65100,stroke-width:1px
-                style B fill:#fff3e0,color:#e65100,stroke:#e65100,stroke-width:1px
-                style D fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
-                style E fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
-                style F fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:1px
+flowchart TD
+  S(["BEGIN"]) --&gt; A["total = 0<br/>i = 0"] --&gt; D{"i #lt; LEN(list)?"}
+  D -- "True" --&gt; B["total = total + list[i]<br/>i = i + 1"] --&gt; D
+  D -- "False" --&gt; O[/"OUTPUT total"/] --&gt; E(["END"])
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Demonstrate iteration (looping) through a collection, accumulating a result<br>
-              <strong>Syllabus Link:</strong> SE-11-05 — Iteration as a fundamental algorithmic feature<br>
-              <strong>Try This:</strong> Modify the flowchart to find the maximum value instead of the sum
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The arrow from the loop body returns to the decision, not to the start.</li><li>total is an accumulator: it keeps its value between passes.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Change the flowchart to find the largest value instead of the total.</p>
+          </div>
+        </figure>
 
           <div class="code-block">
             <div class="code-header">
@@ -511,61 +460,47 @@ END</code></pre>
 END</code></pre>
           </div>
 
-          <figure class="trace-block">
-            <figcaption>
-              <h4>Trace — Accumulator Loop (Sum a List)</h4>
-              <p class="diagram-subtitle">Watch the flowchart, the pseudocode and the variables change together</p>
-            </figcaption>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Interactive trace</span></p>
+            <h4 class="figure-title">Accumulator Loop (Sum a List)</h4>
+            <p class="figure-lead">Watch the flowchart, the pseudocode and the variables change together.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--trace">
             <div class="algo-trace" data-trace="sumList"></div>
-            <p class="diagram-caption">
-              The running <strong>total</strong> is an <em>accumulator</em>: it starts at 0 and grows by one item each time round the loop. The <strong>i</strong> variable is the loop counter.<br>
-              <strong>Controls:</strong> ◀ Step and Step ▶ (or the arrow keys), Space to play or pause, R to reset.<br>
-              <strong>Try this:</strong> Enter your own list and predict the final total before pressing Play. How many loop tests does a list of <em>n</em> items need? (Answer: <em>n</em> + 1 — the last test is the one that fails.)
-            </p>
-          </figure>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><p>The running <strong>total</strong> is an <em>accumulator</em>: it starts at 0 and grows by one item each time round the loop. The <strong>i</strong> variable is the loop counter.</p><p class="figure-controls">Step with ◀ and ▶ (or the arrow keys), play or pause with Space, reset with R.</p></div>
+            <p class="figure-try"><strong>Try this</strong>Enter your own list and predict the final total before pressing Play. How many loop tests does a list of <em>n</em> items need? (Answer: <em>n</em> + 1 — the last test is the one that fails.)</p>
+          </div>
+        </figure>
 
           <!-- ── 4. Storing Data ── -->
           <h4>4. Storing Data</h4>
           <p><strong>Storing Data</strong> means using variables and <strong>data structures</strong> to hold values needed across multiple steps of an <strong>algorithm</strong>. Without stored state, programs cannot track progress or accumulate results.<br>
           🌏 <em>Example: Keeping track of a running total as you iterate through numbers.</em></p>
 
-          <div class="diagram-block">
-            <h4>Flowchart — Storing Data (Running Total)</h4>
-            <p class="diagram-subtitle">Variables persist values across loop iterations</p>
-            <p class="diagram-description">
-              This flowchart highlights the role of stored data: the variable <code>runningTotal</code> persists across each loop <strong>iteration</strong>, accumulating partial results. The variable <code>count</code> tracks how many numbers have been processed. Both are essential for computing the final average.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Flowchart</span></p>
+            <h4 class="figure-title">Storing data: average of numbers until −1</h4>
+            <p class="figure-lead">Variables remember values across the loop, so the program can calculate an average at the end.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              flowchart TD
-                START(["▶ START"]) --> A["📝 SET runningTotal ← 0<br/>SET count ← 0"]
-                A --> B[/"⌨️ INPUT number"/]
-                B --> C{"🔀 number ≠ -1?"}
-                C -->|YES| D["➕ runningTotal ← runningTotal + number"]
-                D --> E["📝 count ← count + 1"]
-                E --> B
-                C -->|NO| F{"🔀 count &gt; 0?"}
-                F -->|YES| G[/"📊 average ← runningTotal / count<br/>OUTPUT average"/]
-                F -->|NO| H[/"⚠️ OUTPUT 'No data entered'"/]
-                G --> STOP(["⏹ END"])
-                H --> STOP
-
-                style START fill:#90EE90,color:#000,stroke:#2E7D32,stroke-width:2px
-                style STOP fill:#c8e6c9,color:#000,stroke:#2e7d32,stroke-width:2px
-                style C fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
-                style F fill:#fff9c4,color:#000,stroke:#f57f17,stroke-width:2px
-                style A fill:#e0f0ff,color:#0277bd,stroke:#0277bd,stroke-width:1px
-                style B fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
-                style D fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
-                style E fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
-                style G fill:#e1f5ff,color:#01579b,stroke:#01579b,stroke-width:1px
-                style H fill:#fff3e0,color:#e65100,stroke:#e65100,stroke-width:1px
+flowchart TD
+  S(["BEGIN"]) --&gt; A["total = 0<br/>count = 0"] --&gt; I[/"INPUT number"/] --&gt; D{"number ≠ −1?"}
+  D -- "True" --&gt; B["total = total + number<br/>count = count + 1"] --&gt; I2[/"INPUT number"/] --&gt; D
+  D -- "False" --&gt; C{"count #gt; 0?"}
+  C -- "Yes" --&gt; O[/"OUTPUT total ÷ count"/] --&gt; E(["END"])
+  C -- "No" --&gt; O2[/"OUTPUT 'No data'"/] --&gt; E
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Show how variables persist across iterations, enabling running totals and averages<br>
-              <strong>Syllabus Link:</strong> SE-11-05 — Storing data as a fundamental algorithmic feature<br>
-              <strong>Try This:</strong> Trace through the flowchart with inputs 10, 20, 30, -1 and verify the average equals 20
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>−1 is a sentinel value: it ends input but is never added to the total.</li><li>Checking count &gt; 0 prevents a division-by-zero runtime error.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Desk check it with the inputs 10, 20, 30, −1. Record total and count after each pass.</p>
+          </div>
+        </figure>
 
           <div class="code-block">
             <div class="code-header">
@@ -730,82 +665,96 @@ END FUNCTION</code></pre>
           <p>Flowcharts use visual symbols to represent <strong>algorithm</strong> steps and decision points. Rectangles represent processes, diamonds represent decisions, and arrows show flow direction. This visual representation makes complex logic easy to follow, helps identify loops and branches, and allows stakeholders to validate correctness before implementation.<br>🌏 <em>Example:</em> A flowchart for validating user age would show a diamond (decision point) — "Is age ≥ 18?" — with two paths: YES leads to "Show full menu" and NO leads to "Show restricted menu."</p>
 
           <!-- Linear Search Algorithm Flowchart -->
-          <div class="diagram-block">
-            <h4>Flowchart - Linear Search</h4>
-            <p class="diagram-subtitle">Sequential search through array elements</p>
-            <p class="diagram-description">
-              This flowchart shows how the linear search <strong>algorithm</strong> works: it starts at index 0 and checks each element against the target value. If a match is found, it returns the index. If the end of the list is reached without finding the target, it returns -1. The loop structure demonstrates the iterative nature of sequential searching.
-            </p>
-            <div class="mermaid">
-              flowchart TD
-                A(["🚀 Start<br/>Input: list, target"]) --> B["Initialise<br/>index = 0"]
-                B --> C{"index &lt; length(list)?"}
-                C -- No --> D(["❌ Not Found<br/>Return −1"])
-                C -- Yes --> E{"list[index] == target?"}
-                E -- Yes --> F(["✅ Found<br/>Return index"])
-                E -- No  --> G["Increment<br/>index = index + 1"]
-                G --> C
-
-                classDef start    fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
-                classDef process  fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
-                classDef decision fill:#fff9c4,stroke:#F57F17,stroke-width:2px
-                classDef good     fill:#c8e6c9,stroke:#2E7D32,stroke-width:2px
-                classDef bad      fill:#ffcdd2,stroke:#C62828,stroke-width:2px
-
-                class A start
-                class B,G process
-                class C,E decision
-                class F good
-                class D bad
-            </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Understand the loop structure and decision points that enable sequential searching<br>
-              <strong>Syllabus Link:</strong> SE-11-02<br>
-              <strong>Try This:</strong> Trace through this flowchart manually with a sample list like [5, 2, 8, 1, 9] searching for target=8. Count how many steps it takes.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Reference</span></p>
+            <h4 class="figure-title">Flowchart symbols</h4>
+            <p class="figure-lead">The five symbols in the NESA course specifications. Use only these, joined by arrows.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <ul class="nesa-key" aria-label="NESA flowchart symbols">
+            <li><svg viewBox="0 0 110 52" aria-hidden="true"><rect x="6" y="10" width="98" height="32" rx="16" class="nd-box"/></svg>Terminator</li>
+            <li><svg viewBox="0 0 110 52" aria-hidden="true"><rect x="6" y="10" width="98" height="32" class="nd-box"/></svg>Process</li>
+            <li><svg viewBox="0 0 110 52" aria-hidden="true"><polygon points="55,4 104,26 55,48 6,26" class="nd-box"/></svg>Decision</li>
+            <li><svg viewBox="0 0 110 52" aria-hidden="true"><polygon points="18,10 104,10 92,42 6,42" class="nd-box"/></svg>Input or output</li>
+            <li><svg viewBox="0 0 110 52" aria-hidden="true"><rect x="6" y="10" width="98" height="32" class="nd-box"/><line x1="16" y1="10" x2="16" y2="42" class="nd-line"/><line x1="94" y1="10" x2="94" y2="42" class="nd-line"/></svg>Subprogram</li>
+          </ul>
           </div>
+        </figure>
+
+        <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Flowchart</span></p>
+            <h4 class="figure-title">A mainline that calls a subprogram</h4>
+            <p class="figure-lead">A clear mainline refers to a subroutine by name; the subroutine's own flowchart shows the detail.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <div class="figure-pair">
+              <div><p class="figure-pair-label">Mainline</p><div class="mermaid">
+flowchart TD
+  S(["BEGIN"]) --&gt; R1[["read(name)"]] --&gt; R2[["read(address)"]] --&gt; E(["END"])
+              </div></div>
+              <div><p class="figure-pair-label">Subroutine</p><div class="mermaid">
+flowchart TD
+  B(["BEGIN read(arrayname)"]) --&gt; P["Set pointer to first position"] --&gt; G[/"Get a character"/] --&gt; D{"More data AND<br/>space in array?"}
+  D -- "True" --&gt; St["Store character in arrayname<br/>Increment pointer"] --&gt; G2[/"Get next character"/] --&gt; D
+  D -- "False" --&gt; X(["END read(arrayname)"])
+              </div></div>
+            </div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The subprogram symbol has double lines at each side.</li><li>The same subroutine is called twice with different parameters.</li><li>The subroutine's terminators use its name, so it is easy to match to the call.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Add a third call that reads a phone number. Does the subroutine need to change?</p>
+          </div>
+        </figure>
 
 <h3>Tracing Searching and Sorting Algorithms</h3>
           <p>A <strong>desk check</strong> follows an algorithm one step at a time, recording each variable as it changes. The traces below do the same thing: the flowchart node, the pseudocode line and the data move together. Step backwards whenever you want to ask "why did it go <em>no</em> there?", and watch the <strong>Comparisons</strong> counter — it is how we measure an algorithm's efficiency (Big-O).</p>
 
-          <figure class="trace-block">
-            <figcaption>
-              <h4>Trace — Linear Search</h4>
-              <p class="diagram-subtitle">Check each item in order until the target is found or the list runs out</p>
-            </figcaption>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Interactive trace</span></p>
+            <h4 class="figure-title">Linear Search</h4>
+            <p class="figure-lead">Check each item in order until the target is found or the list runs out.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--trace">
             <div class="algo-trace" data-trace="linearSearch"></div>
-            <p class="diagram-caption">
-              Linear search works on any list, sorted or not. In the worst case (the target is last, or absent) it makes one comparison per item: <strong>O(n)</strong>.<br>
-              <strong>Controls:</strong> ◀ Step and Step ▶ (or the arrow keys), Space to play or pause, R to reset.<br>
-              <strong>Try this:</strong> Search for 8, which is not in the list, so you can see the <code>RETURN −1</code> path. Then compare the number of comparisons for 7 (first) and 5 (last).
-            </p>
-          </figure>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><p>Linear search works on any list, sorted or not. In the worst case (the target is last, or absent) it makes one comparison per item: <strong>O(n)</strong>.</p><p class="figure-controls">Step with ◀ and ▶ (or the arrow keys), play or pause with Space, reset with R.</p></div>
+            <p class="figure-try"><strong>Try this</strong>Search for 8, which is not in the list, so you can see the <code>RETURN −1</code> path. Then compare the number of comparisons for 7 (first) and 5 (last).</p>
+          </div>
+        </figure>
 
-          <figure class="trace-block">
-            <figcaption>
-              <h4>Trace — Binary Search</h4>
-              <p class="diagram-subtitle">Halve the search range each time — the list must already be sorted</p>
-            </figcaption>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Interactive trace</span></p>
+            <h4 class="figure-title">Binary Search</h4>
+            <p class="figure-lead">Halve the search range each time — the list must already be sorted.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--trace">
             <div class="algo-trace" data-trace="binarySearch"></div>
-            <p class="diagram-caption">
-              Greyed cells have been ruled out. Each comparison discards half of the remaining range, so a list of <em>n</em> items needs at most about log₂(<em>n</em>) + 1 comparisons: <strong>O(log n)</strong>.<br>
-              <strong>Controls:</strong> ◀ Step and Step ▶ (or the arrow keys), Space to play or pause, R to reset.<br>
-              <strong>Try this:</strong> Search for 10 (absent) and count the comparisons. Then trace linear search for the same value in the same eight items and compare the counts.
-            </p>
-          </figure>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><p>Greyed cells have been ruled out. Each comparison discards half of the remaining range, so a list of <em>n</em> items needs at most about log₂(<em>n</em>) + 1 comparisons: <strong>O(log n)</strong>.</p><p class="figure-controls">Step with ◀ and ▶ (or the arrow keys), play or pause with Space, reset with R.</p></div>
+            <p class="figure-try"><strong>Try this</strong>Search for 10 (absent) and count the comparisons. Then trace linear search for the same value in the same eight items and compare the counts.</p>
+          </div>
+        </figure>
 
-          <figure class="trace-block">
-            <figcaption>
-              <h4>Trace — Bubble Sort</h4>
-              <p class="diagram-subtitle">Swap neighbouring pairs until a whole pass makes no swaps</p>
-            </figcaption>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Interactive trace</span></p>
+            <h4 class="figure-title">Bubble Sort</h4>
+            <p class="figure-lead">Swap neighbouring pairs until a whole pass makes no swaps.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--trace">
             <div class="algo-trace" data-trace="bubbleSort"></div>
-            <p class="diagram-caption">
-              After each pass the largest remaining value has "bubbled" to the end (shown in green), so <strong>n</strong> shrinks by one. The <strong>swapped</strong> flag stops the sort early once the list is in order.<br>
-              <strong>Controls:</strong> ◀ Step and Step ▶ (or the arrow keys), Space to play or pause, R to reset.<br>
-              <strong>Try this:</strong> Try the sorted list: one pass with no swaps and the sort finishes (best case, <strong>O(n)</strong>). Then try the reversed list for the worst case, <strong>O(n²)</strong>.
-            </p>
-          </figure>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><p>After each pass the largest remaining value has "bubbled" to the end (shown in green), so <strong>n</strong> shrinks by one. The <strong>swapped</strong> flag stops the sort early once the list is in order.</p><p class="figure-controls">Step with ◀ and ▶ (or the arrow keys), play or pause with Space, reset with R.</p></div>
+            <p class="figure-try"><strong>Try this</strong>Try the sorted list: one pass with no swaps and the sort finishes (best case, <strong>O(n)</strong>). Then try the reversed list for the worst case, <strong>O(n²)</strong>.</p>
+          </div>
+        </figure>
 
 <h3>Subprograms</h3>
           <p>A subprogram (function or procedure) is a reusable block of code that performs a specific task. Pseudocode and flowcharts must clearly show how subprograms are called, what parameters they accept, and what they return. This modular approach reduces code duplication, improves readability, and makes testing easier.<br>🌏 <em>Example: A main program calls FUNCTION validatePassword(pwd) which returns TRUE or FALSE, allowing the validation logic to be reused across multiple entry points.</em></p>
@@ -866,51 +815,20 @@ FUNCTION GetValidScore()
           <p>Structure charts are a top-down tool used to show the hierarchy of subroutines in a system. They focus on modularity, showing which module calls another and what data (parameters) or control signals (flags) are passed between them.<br>🌏 <em>Example: A structure chart for an ATM would show the 'Main' module calling 'Verify PIN' and passing back a 'Valid/Invalid' flag.</em> This allows engineers to see high-level dependencies without getting bogged down in code logic.</p>
 
           <!-- ATM Structure Chart Diagram -->
-          <div class="diagram-block">
-            <h4>Structure Chart - ATM System</h4>
-            <p class="diagram-subtitle">Top-down module decomposition</p>
-            <p class="diagram-description">
-              This structure chart shows hierarchical decomposition of an ATM system. The main module delegates specialized tasks to child modules. Each arrow shows how data (○), control flags (●), decisions (🔷), or repetition (🔁) flow between modules, conforming exactly to NESA syllabus visual symbol standards. This organization reveals dependencies and communication patterns.
-            </p>
-            <div class="mermaid">
-              graph TD
-                Main[["🏦 ATM System<br/>Main module"]]
-
-                Main --> Auth["🔐 Authenticate User<br/>Verify credentials"]
-                Main --> Menu["📋 Display Menu<br/>Show options"]
-                Main --> Trans["💳 Process Transaction<br/>Handle request"]
-                Main --> Disp["💵 Dispense Cash<br/>Deliver money"]
-
-                Auth --> VerifyPIN["🔑 Verify PIN"]
-                Auth --> CheckCard["💳 Validate Card"]
-
-                Trans --> Withdraw["💸 Withdraw"]
-                Trans --> Deposit["📥 Deposit"]
-                Trans --> Balance["📊 Check Balance"]
-
-                Withdraw --> UpdateW[("🔄 Update Account")]
-                Deposit  --> UpdateD[("🔄 Update Account")]
-                Balance  --> Query[("📖 Query Database")]
-
-                UpdateW --> Record[("📝 Audit Log")]
-                UpdateD --> Record
-
-                classDef root    fill:#e0e7ff,stroke:#6366F1,stroke-width:3px
-                classDef level2  fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
-                classDef level3  fill:#f3e5f5,stroke:#6A1B9A,stroke-width:2px
-                classDef data    fill:#fff3e0,stroke:#E65100,stroke-width:2px
-
-                class Main root
-                class Auth,Menu,Trans,Disp level2
-                class VerifyPIN,CheckCard,Withdraw,Deposit,Balance level3
-                class UpdateW,UpdateD,Query,Record data
-            </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Understand modular decomposition and how modules communicate through parameters and control signals<br>
-              <strong>Syllabus Link:</strong> SE-11-02<br>
-              <strong>Try This:</strong> Create a similar structure chart for a school enrollment system with modules like StudentRegistration, EnrollmentProcessing, and FeeManagement.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Structure chart</span></p>
+            <h4 class="figure-title">Structure chart: an ATM system</h4>
+            <p class="figure-lead">The system broken into modules, with the data and flags passed between them.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <div class="nesa-diagram" data-diagram="atm-structure"></div>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>An open circle on an arrow is data (a parameter); a filled circle is a flag.</li><li>The curved arrow shows the main module repeats until the card is removed.</li><li>The diamond shows only one of Withdraw, Deposit or Check balance runs each time.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Add a Print receipt module that runs only if the customer asks. Which symbol shows that?</p>
+          </div>
+        </figure>
 
 <h3>Abstraction and Refinement</h3>
           <p><strong>Abstraction</strong> involves hiding implementation details to focus on high-level goals (the 'What'). <strong>Stepwise Refinement</strong> is the process of breaking those high-level goals into smaller, more specific details (the 'How').<br>🌏 <em>Example: An abstract instruction like 'Initialise System' is refined into 'Set counter to 0', 'Clear display', and 'Open file stream'.</em> Together, they allow for manageable development of complex systems.</p>
@@ -1060,36 +978,7 @@ sibling(A, B) :-
           <p>Programs are built from pure functions (same input always produces same output, no side effects) and immutable data. Emphasises <strong>recursion</strong> and function composition.<br>🌏 <em>Example (Lisp/Scheme): Computing factorial recursively as (factorial 5) = 5 × (factorial 4) × ... × 1, without modifying state.</em></p>
 
           <!-- Programming Paradigms Comparison Diagram -->
-          <div class="diagram-block">
-            <h4>Diagram - Programming Paradigms Comparison</h4>
-            <p class="diagram-subtitle">Object-oriented, imperative, logic, and functional approaches</p>
-            <p class="diagram-description">
-              This diagram compares four major programming paradigms. Object-oriented focuses on modeling real-world entities as objects. Imperative gives explicit step-by-step commands. Logic uses facts and inference rules to answer queries. Functional emphasizes pure functions and immutable data. Each paradigm suits different problem domains and design philosophies.
-            </p>
-            <div class="mermaid">
-              graph TB
-                OOP["<b>Object-Oriented</b><br/>━━━━━━━━<br/>• Objects with data + methods<br/>• Classes & inheritance<br/>• Real-world modelling<br/>• Java, Python, C++"]
-                IMP["<b>Imperative</b><br/>━━━━━━━━<br/>• Step-by-step commands<br/>• Explicit control flow<br/>• Procedures & loops<br/>• Python, C, JavaScript"]
-                LOG["<b>Logic</b><br/>━━━━━━━━<br/>• Facts & inference rules<br/>• Pattern matching<br/>• What is true (not how)<br/>• Prolog, Datalog"]
-                FUNC["<b>Functional</b><br/>━━━━━━━━<br/>• Pure functions & recursion<br/>• Immutable data<br/>• No side effects<br/>• Lisp, Haskell, Scheme"]
-
-                OOP --> USE["When to Use?<br/>Complex systems with<br/>many interacting entities"]
-                IMP --> USE
-                LOG --> USE
-                FUNC --> USE
-
-                style OOP fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
-                style IMP fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
-                style LOG fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
-                style FUNC fill:#F3E5F5,stroke:#6A1B9A,stroke-width:2px
-                style USE fill:#FFEBEE,stroke:#C62828,stroke-width:2px
-            </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Compare the four major programming paradigms, each with distinct philosophies for solving problems. Modern languages often support multiple paradigms (hybrid approaches).<br>
-              <strong>Syllabus Link:</strong> SE-11-02<br>
-              <strong>Try This:</strong> Classify a project you know (a calculator app, an AI chatbot, a game) into one or more paradigms. Which paradigm(s) does it use best?
-            </p>
-          </div>
+          
 
           <p>Modern development often uses <strong>hybrid approaches</strong> — Python supports both OOP and functional styles; JavaScript supports imperative and functional paradigms. Experimenting with different paradigms strengthens problem-solving skills and helps you choose the best tool for each context.</p>
         </section>
@@ -1250,12 +1139,13 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
 
           <p>A <strong>data dictionary</strong> is a table that describes every piece of data in a system before you write any code. It records each field's name, data type, size, description and validation rules, and how fields relate to each other. Everyone on the team then works from the same definitions.</p>
 
-          <div class="diagram-block">
-            <h4>Table - Data Dictionary Example</h4>
-            <p class="diagram-subtitle">Student management system data specification</p>
-            <p class="diagram-description">
-              This data dictionary documents every field in a student management system: its name, data type, size, purpose, and validation rules. For example, Student_ID must be a 5-digit integer between 10000-99999 with no duplicates. Data dictionaries are essential documentation that ensures consistency across development teams and helps identify data requirements early in the SDLC.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Table</span></p>
+            <h4 class="figure-title">Data dictionary: a student management system</h4>
+            <p class="figure-lead">Every field is described before any code is written.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="code-block">
               <table class="decision-table">
                 <tr>
@@ -1302,12 +1192,12 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
                 </tr>
               </table>
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Document all variables used in a system before coding. Specifies type, size, acceptable values, and constraints. This prevents confusion and ensures consistent data handling.<br>
-              <strong>Syllabus Link:</strong> SE-11-04<br>
-              <strong>Try This:</strong> Create a data dictionary for a library book system. Include fields like ISBN, Title, Author, CopiesAvailable, and LastCheckedDate.
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Each row gives the field's name, data type, size, purpose and validation rules.</li><li>Validation rules become the checks your code performs on input.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Write a data dictionary for a library book: ISBN, title, author, copies available and last borrowed date.</p>
+          </div>
+        </figure>
 
           <h3>Recording relationships</h3>
           <p>When data is split across tables, the dictionary also records how they link. For example, <code>Enrolment.Student_ID</code> must match an existing <code>Student.Student_ID</code>, so every enrolment belongs to a real student.</p>
@@ -1762,9 +1652,11 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
   <script src="../js/glossary-data.js?v=4"></script>
   <script src="../js/quizzes.js?v=1"></script>
   <script src="../js/quiz.js?v=2" defer></script>
-  <script src="../js/main.js?v=21"></script>
+  <script src="../js/nesa-diagram-data.js?v=3"></script>
+  <script src="../js/nesa-diagrams.js?v=2" defer></script>
+  <script src="../js/main.js?v=24"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="../js/mermaid-init.js?v=4"></script>
+  <script src="../js/mermaid-init.js?v=6"></script>
   <script src="../js/algo-trace.js?v=1"></script>
   <script src="../js/algo-traces.js?v=1"></script>
   <!-- ═══════════════════════════════════════════════════════ -->

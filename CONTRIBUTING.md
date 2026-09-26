@@ -255,3 +255,7 @@ Thank you for contributing! Your help makes this resource better for students. ð
 - `python3 scripts/build-mapping.py` regenerates `resources/Syllabus-Mapping.md`.
 - To add glossary terms, append them to `scripts/glossary_new_terms.py`, then run `python3 scripts/add-glossary-terms.py && python3 scripts/build-glossary.py`.
 - Before opening a pull request, run `python3 scripts/check-site.py` and `bash scripts/validate-alignment.sh`. Both run automatically on every pull request (`.github/workflows/checks.yml`).
+
+## Diagrams
+
+Every diagram is a numbered `.figure` with a title, a one-sentence lead, "What to notice" points and a "Try this" prompt (see `.claude/skills/add-topic.md`). Flowcharts, structure charts, DFDs, decision trees and class diagrams must follow the symbols in the NESA Software Engineering Course Specifications; `scripts/check-site.py` rejects flowcharts that use other symbols, miss BEGIN/END terminators, leave decision arrows unlabelled or contain emoji. Structure charts and DFDs are drawn by `js/nesa-diagrams.js` from data in `js/nesa-diagram-data.js`.

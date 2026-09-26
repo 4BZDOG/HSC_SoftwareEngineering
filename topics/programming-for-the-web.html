@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=8" />
+  <link rel="stylesheet" href="../css/paper.css?v=12" />
 </head>
 <body>
 
@@ -242,83 +242,87 @@
           </div>
 
           <!-- DNS Resolution Diagram -->
-          <div class="diagram-block">
-            <h4>Sequence Diagram - DNS Resolution</h4>
-            <p class="diagram-subtitle">Understanding hierarchical DNS resolver network</p>
-            <p class="diagram-description">
-              This diagram shows how domain names are translated to IP addresses through a hierarchical DNS resolver network. The user's browser first checks its local cache. If the domain isn't cached, it queries the ISP resolver, which recursively queries the Root Name Server, TLD server, and finally the Authoritative Name Server to obtain the IP address.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Sequence diagram</span></p>
+            <h4 class="figure-title">How DNS finds an IP address</h4>
+            <p class="figure-lead">The browser asks a resolver, which asks the root, TLD and authoritative servers in turn.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              sequenceDiagram
-                participant User as 👤 User<br/>Browser
-                participant BC as 🗂️ Browser<br/>Cache
-                participant ISP as 🔍 ISP<br/>Resolver
-                participant Root as 🌍 Root<br/>Name Server
-                participant TLD as 📝 TLD<br/>Server
-                participant Auth as 🔐 Authoritative<br/>NS
+sequenceDiagram
+  participant User as User<br/>Browser
+  participant BC as Browser<br/>Cache
+  participant ISP as ISP<br/>Resolver
+  participant Root as Root<br/>Name Server
+  participant TLD as TLD<br/>Server
+  participant Auth as Authoritative<br/>NS
 
-                User->>BC: Type: www.google.com
-                BC-->>BC: Check cache<br/>(TTL valid?)
-                alt Cache Hit
-                  BC-->>User: Return IP<br/>(FAST)
-                else Cache Miss
-                  BC->>ISP: Query: www.google.com
-                  ISP->>Root: Where is .com?
-                  Root-->>ISP: Ask TLD server
-                  ISP->>TLD: Where is google.com?
-                  TLD-->>ISP: Ask Authoritative NS
-                  ISP->>Auth: Where is www.google.com?
-                  Auth-->>ISP: 142.250.70.142
-                  ISP-->>BC: 142.250.70.142
-                  BC-->>BC: Cache result<br/>(TTL=3600s)
-                  BC-->>User: IP Address
-                end
+  User->>BC: Type: www.google.com
+  BC-->>BC: Check cache<br/>(TTL valid?)
+  alt Cache Hit
+    BC-->>User: Return IP<br/>(FAST)
+  else Cache Miss
+    BC->>ISP: Query: www.google.com
+    ISP->>Root: Where is .com?
+    Root-->>ISP: Ask TLD server
+    ISP->>TLD: Where is google.com?
+    TLD-->>ISP: Ask Authoritative NS
+    ISP->>Auth: Where is www.google.com?
+    Auth-->>ISP: 142.250.70.142
+    ISP-->>BC: 142.250.70.142
+    BC-->>BC: Cache result<br/>(TTL=3600s)
+    BC-->>User: IP Address
+  end
 
-                User->>User: Browser connects<br/>to 142.250.70.142
+  User->>User: Browser connects<br/>to 142.250.70.142
+
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Trace the DNS resolution process from browser cache check through recursive queries to the authoritative name server<br>
-              <strong>Syllabus Link:</strong> SE-12-05<br>
-              <strong>Try This:</strong> Use `nslookup` or `dig` command to query DNS servers and observe the resolution path for different domains
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>A cached answer skips every step after the first.</li><li>Each server only knows where to ask next, until the authoritative server gives the address.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Why does a changed website address sometimes take hours to work everywhere?</p>
+          </div>
+        </figure>
 
           <!-- HTTP Request/Response Diagram -->
-          <div class="diagram-block">
-            <h4>Sequence Diagram - HTTP Communication</h4>
-            <p class="diagram-subtitle">Client-server request-response cycle</p>
-            <p class="diagram-description">
-              This diagram shows how <strong>HTTP</strong> requests flow from the browser to the server, trigger database queries, and return responses that the browser renders. It demonstrates both simple data retrieval (GET requests) and form submission with file upload (POST requests), showing how the server processes user interaction and redirects to a success page.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Sequence diagram</span></p>
+            <h4 class="figure-title">An HTTP request and response</h4>
+            <p class="figure-lead">A GET request fetches a page; a POST request sends form data and is redirected.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              sequenceDiagram
-                participant Browser as 🌐 Browser
-                participant Server as 🖥️ Web Server
-                participant DB as 💾 Database
+sequenceDiagram
+  participant Browser as Browser
+  participant Server as Web Server
+  participant DB as Database
 
-                Browser->>Server: HTTP GET /student/profile?id=42
-                Server->>DB: SELECT * FROM students WHERE id=42
-                DB-->>Server: Student record
-                Server-->>Browser: HTTP 200 OK<br/>HTML + CSS + JS
+  Browser->>Server: HTTP GET /student/profile?id=42
+  Server->>DB: SELECT * FROM students WHERE id=42
+  DB-->>Server: Student record
+  Server-->>Browser: HTTP 200 OK<br/>HTML + CSS + JS
 
-                rect rgb(200, 150, 255)
-                Browser->>Browser: Render HTML<br/>Execute CSS<br/>Load Images
-                end
+  rect rgb(200, 150, 255)
+  Browser->>Browser: Render HTML<br/>Execute CSS<br/>Load Images
+  end
 
-                Note over Browser,Server: User Interaction
-                Browser->>Server: POST /submit/assignment<br/>(multipart form data)
-                Server->>Server: Validate input<br/>Process file
-                Server->>DB: INSERT assignment_submission
-                Server-->>Browser: HTTP 302 Redirect<br/>Location: /success
-                Browser->>Server: HTTP GET /success
-                Server-->>Browser: HTTP 200 Success page
+  Note over Browser,Server: User Interaction
+  Browser->>Server: POST /submit/assignment<br/>(multipart form data)
+  Server->>Server: Validate input<br/>Process file
+  Server->>DB: INSERT assignment_submission
+  Server-->>Browser: HTTP 302 Redirect<br/>Location: /success
+  Browser->>Server: HTTP GET /success
+  Server-->>Browser: HTTP 200 Success page
+
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Understand the <strong>HTTP</strong> request/response cycle from user action to server processing to browser rendering<br>
-              <strong>Syllabus Link:</strong> SE-12-03<br>
-              <strong>Try This:</strong> Open browser DevTools (F12), go to Network tab, refresh the page, and watch the actual <strong>HTTP</strong> requests and responses happen in real-time!
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The server talks to the database; the browser never does.</li><li>After a POST, a redirect stops the form being resubmitted on refresh.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Open your browser's Network tab and find a GET and a POST request on a real site.</p>
+          </div>
+        </figure>
 
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
@@ -426,39 +430,41 @@
           </div>
 
           <!-- JWT Authentication Flow Diagram -->
-          <div class="diagram-block">
-            <h4>Sequence Diagram - Stateless JWT Authentication</h4>
-            <p class="diagram-subtitle">Password verification, token issue, and stateless re-authentication</p>
-            <p class="diagram-description">
-              This diagram traces a stateless <strong>authentication</strong> flow. On login, the server verifies the submitted password against the stored <strong>bcrypt</strong> hash, then issues a signed <strong>JWT</strong>. On every later request the client presents that token in the <code>Authorization</code> header, and the server validates the signature <em>without</em> a database lookup — that statelessness is what lets the system scale horizontally.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Sequence diagram</span></p>
+            <h4 class="figure-title">Logging in with a JSON Web Token</h4>
+            <p class="figure-lead">The server checks the password once, then trusts the signed token on later requests.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              sequenceDiagram
-                autonumber
-                participant U as 🧑 User (Browser)
-                participant S as 🖥️ Web Server
-                participant DB as 🗄️ User Database
-                U->>S: POST /login (username + password)
-                S->>DB: Look up user by username
-                DB-->>S: Stored bcrypt password hash
-                S->>S: Verify password against hash
-                alt Credentials valid
-                  S->>S: Sign JWT (header.payload.signature)
-                  S-->>U: 200 OK + JWT
-                  Note over U: Store token<br/>(HttpOnly cookie)
-                  U->>S: GET /dashboard<br/>Authorization: Bearer JWT
-                  S->>S: Verify JWT signature<br/>(stateless — no DB lookup)
-                  S-->>U: 200 OK + protected data
-                else Credentials invalid
-                  S-->>U: 401 Unauthorized
-                end
+sequenceDiagram
+  autonumber
+  participant U as User (Browser)
+  participant S as Web Server
+  participant DB as User Database
+  U->>S: POST /login (username + password)
+  S->>DB: Look up user by username
+  DB-->>S: Stored bcrypt password hash
+  S->>S: Verify password against hash
+  alt Credentials valid
+    S->>S: Sign JWT (header.payload.signature)
+    S-->>U: 200 OK + JWT
+    Note over U: Store token<br/>(HttpOnly cookie)
+    U->>S: GET /dashboard<br/>Authorization: Bearer JWT
+    S->>S: Verify JWT signature<br/>(stateless — no DB lookup)
+    S-->>U: 200 OK + protected data
+  else Credentials invalid
+    S-->>U: 401 Unauthorized
+  end
+
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Trace stateless <strong>authentication</strong> flow with <strong>JWT</strong> tokens and password verification<br>
-              <strong>Syllabus Link:</strong> SE-12-04, SE-12-07<br>
-              <strong>Try This:</strong> Implement <strong>JWT</strong>-based <strong>authentication</strong> in a Python Flask or Node.js Express app and trace the token through multiple requests
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The password is compared with a stored hash, never stored as plain text.</li><li>Later requests are verified by the token's signature without a database lookup.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>What should happen when the token expires?</p>
+          </div>
+        </figure>
 
           <div class="structured-content">
             <h4>#️⃣ Hash Values</h4>
@@ -542,45 +548,20 @@
           <ul class="syllabus-including" aria-label="Including"><li>client-side (front-end) web programming</li><li>server-side (back-end) web programming</li><li>interfacing with databases that are based on Structured Query Language (SQL) or non-SQL</li></ul>
 
           <!-- Data Flow Diagram for Web System -->
-          <div class="diagram-block">
-            <h4>Data Flow Diagram - Web System</h4>
-            <p class="diagram-subtitle">Understanding DFD notation and multi-tier architecture</p>
-            <p class="diagram-description">
-              This diagram shows how data flows through a web system using DFD notation. External entities (users and APIs) interact with processes (browser, server, <strong>authentication</strong> service) which access data stores (database). Each arrow shows the type of data flowing between components, demonstrating the separation of concerns and data dependencies in a three-tier architecture.
-            </p>
-            <div class="mermaid">
-              graph LR
-                User["👤 USER<br/>─────────<br/>External Entity"]
-                Browser(("🌐 Web Browser<br/>─────────<br/>Process"))
-                Server(("🖥️ Web Server<br/>─────────<br/>Process"))
-                Auth(("🔐 Auth Service<br/>─────────<br/>Process"))
-                DB[("💾 Database<br/>─────────<br/>Data Store")]
-                API["📡 External API<br/>─────────<br/>External Entity"]
-
-                User -->|HTTP Request<br/>User Input| Browser
-                Browser -->|HTTP GET/POST<br/>Form Data| Server
-                Server -->|Verify Credentials| Auth
-                Auth -->|Session Valid| Server
-                Server -->|SQL Query<br/>SELECT/INSERT| DB
-                DB -->|Records<br/>User Data| Server
-                Server -->|API Call<br/>REST Request| API
-                API -->|JSON Response<br/>Data| Server
-                Server -->|HTTP 200<br/>HTML/JSON| Browser
-                Browser -->|Render Page<br/>Display Results| User
-
-                style User fill:#E3F2FD,stroke:#1976D2,stroke-width:2px
-                style Browser fill:#FFF9C4,stroke:#F57F17,stroke-width:2px
-                style Server fill:#FFE082,stroke:#F57F17,stroke-width:2px
-                style Auth fill:#F8BBD0,stroke:#C2185B,stroke-width:2px
-                style DB fill:#C8E6C9,stroke:#2E7D32,stroke-width:3px
-                style API fill:#FFCCBC,stroke:#E64A19,stroke-width:2px
-            </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Model data flow through a complete web system with external entities, processes, and data stores<br>
-              <strong>Syllabus Link:</strong> SE-12-02<br>
-              <strong>Try This:</strong> Create a DFD for an e-commerce system showing order flow from customer → shopping cart → payment processor → inventory database → shipping notification
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Data flow diagram</span></p>
+            <h4 class="figure-title">Data flow diagram: a web application</h4>
+            <p class="figure-lead">How data moves between the user, the server-side processes and the database.</p>
+          </figcaption>
+          <div class="figure-canvas">
+            <div class="nesa-diagram" data-diagram="web-dfd"></div>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The user is an external entity; the database is a data store.</li><li>Processes are numbered so they can be refined into lower-level DFDs.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Add a process for logging in. Which data store would it read?</p>
+          </div>
+        </figure>
 
 <h3>Client-Side (Front-End) Web Programming</h3>
           <p>The <strong>client side</strong> refers to all code that executes within the user's web browser. Front-end code consists of three complementary technologies: <strong>HTML</strong> (structure and content), <strong>CSS</strong> (visual presentation and layout), and <strong>JavaScript</strong> (interactivity and dynamic behaviour). The browser downloads these files from the server, parses them, and renders the visual page. Client-side code is visible to the user (via browser dev tools) and should never contain sensitive data such as API keys or database credentials.</p>
@@ -851,51 +832,53 @@ git merge feature/user-login</code></pre>
           </div>
 
           <!-- CMS Architecture Comparison Diagram -->
-          <div class="diagram-block">
-            <h4>Data Flow Diagram - CMS Architecture</h4>
-            <p class="diagram-subtitle">Comparing coupled vs headless approaches</p>
-            <p class="diagram-description">
-              This diagram contrasts traditional monolithic CMS with headless CMS architecture. Traditional systems tightly couple the back-end database and logic to a single front-end presentation layer. Headless CMS decouples the back-end API from the presentation layer, allowing the same content API to serve multiple front-ends (web, mobile, IoT, etc.) independently.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Architecture diagram</span></p>
+            <h4 class="figure-title">Traditional and headless CMS</h4>
+            <p class="figure-lead">A traditional CMS joins content and presentation; a headless CMS serves content to any front end through an API.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              graph TB
-                  subgraph Traditional["Traditional CMS<br/>━━━━━━━━━━━━━━━"]
-                    TUI["Admin UI<br/>Build, edit, publish"]
-                    TBE["Back-End<br/>Database + Logic"]
-                    TFE["Front-End<br/>Theme/Template<br/>HTML + CSS"]
-                    TUI -->|Tightly Coupled| TBE
-                    TBE -->|Tightly Coupled| TFE
-                  end
+graph TB
+    subgraph Traditional["Traditional CMS<br/>"]
+      TUI["Admin UI<br/>Build, edit, publish"]
+      TBE["Back-End<br/>Database + Logic"]
+      TFE["Front-End<br/>Theme/Template<br/>HTML + CSS"]
+      TUI -->|Tightly Coupled| TBE
+      TBE -->|Tightly Coupled| TFE
+    end
 
-                  subgraph Headless["Headless CMS<br/>━━━━━━━━━━━━━━━"]
-                    HUI["Admin UI<br/>Build, edit, publish"]
-                    HBE["Back-End API<br/>Database + Logic"]
-                    HFE1["Web Front-End<br/>React/Vue/etc"]
-                    HFE2["Mobile App<br/>iOS/Android"]
-                    HFE3["IoT Dashboard<br/>Device UI"]
-                    HUI -->|Decoupled| HBE
-                    HBE -->|JSON API| HFE1
-                    HBE -->|JSON API| HFE2
-                    HBE -->|JSON API| HFE3
-                  end
+    subgraph Headless["Headless CMS<br/>"]
+      HUI["Admin UI<br/>Build, edit, publish"]
+      HBE["Back-End API<br/>Database + Logic"]
+      HFE1["Web Front-End<br/>React/Vue/etc"]
+      HFE2["Mobile App<br/>iOS/Android"]
+      HFE3["IoT Dashboard<br/>Device UI"]
+      HUI -->|Decoupled| HBE
+      HBE -->|JSON API| HFE1
+      HBE -->|JSON API| HFE2
+      HBE -->|JSON API| HFE3
+    end
 
-                  style Traditional fill:#FFCCBC,stroke:#E64A19,stroke-width:2px
-                  style Headless fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
-                  style TUI fill:#FFF9C4,stroke:#F57F17
-                  style TBE fill:#E3F2FD,stroke:#1976D2
-                  style TFE fill:#F8BBD0,stroke:#C2185B
-                  style HUI fill:#FFF9C4,stroke:#F57F17
-                  style HBE fill:#E3F2FD,stroke:#1976D2
-                  style HFE1 fill:#F8BBD0,stroke:#C2185B
-                  style HFE2 fill:#F8BBD0,stroke:#C2185B
-                  style HFE3 fill:#F8BBD0,stroke:#C2185B
+    style Traditional fill:#FFCCBC,stroke:#E64A19,stroke-width:2px
+    style Headless fill:#C8E6C9,stroke:#2E7D32,stroke-width:2px
+    style TUI fill:#FFF9C4,stroke:#F57F17
+    style TBE fill:#E3F2FD,stroke:#1976D2
+    style TFE fill:#F8BBD0,stroke:#C2185B
+    style HUI fill:#FFF9C4,stroke:#F57F17
+    style HBE fill:#E3F2FD,stroke:#1976D2
+    style HFE1 fill:#F8BBD0,stroke:#C2185B
+    style HFE2 fill:#F8BBD0,stroke:#C2185B
+    style HFE3 fill:#F8BBD0,stroke:#C2185B
+
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Understand architectural differences and why headless CMS provides flexibility for multiple platforms<br>
-              <strong>Syllabus Link:</strong> SE-12-06<br>
-              <strong>Try This:</strong> Deploy a headless CMS (e.g., Strapi) and consume its API from both a web front-end and a mobile app to experience the flexibility
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Headless separates where content is stored from where it is shown.</li><li>One headless back end can serve a website, an app and other devices.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>A school wants its news on the website and in an app. Which CMS type suits it?</p>
+          </div>
+        </figure>
 
           <div class="callout success"><strong>HSC writing sample:</strong> <em>"A traditional CMS such as WordPress suits the school's newsletter because staff can publish articles without coding and plugins add features quickly. Its popularity makes it a common attack target, so plugins must be kept updated. A headless CMS would suit a school that wants the same content in a website and a mobile app, but it needs developers to build the front end."</em></div>
         </section>
@@ -943,39 +926,41 @@ git merge feature/user-login</code></pre>
           </div>
 
           <!-- Request-Response Lifecycle Sequence Diagram -->
-          <div class="diagram-block">
-            <h4>Sequence Diagram - HTTP Request-Response Lifecycle</h4>
-            <p class="diagram-subtitle">Following a single request from the browser to the database and back</p>
-            <p class="diagram-description">
-              This sequence diagram traces one web request through every layer of the back end. The browser first resolves the domain via <strong>DNS</strong>, then sends an <strong>HTTPS</strong> request to the web server (Nginx), which forwards it to the framework's router. The router calls the matching handler, which queries the database using a parameterised statement, builds a response (JSON or rendered HTML), and returns it back up the chain for the browser to render.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Sequence diagram</span></p>
+            <h4 class="figure-title">The back-end process for one web request</h4>
+            <p class="figure-lead">One request passes through DNS, the web server, the framework, a handler and the database.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              sequenceDiagram
-                autonumber
-                participant U as 🧑 Browser (Client)
-                participant D as 🌐 DNS
-                participant S as 🖥️ Web Server (Nginx)
-                participant F as ⚙️ Framework / Router
-                participant H as 📦 Handler (Controller)
-                participant DB as 🗄️ Database
-                U->>D: Resolve domain name
-                D-->>U: IP address
-                U->>S: HTTPS request (GET /books)
-                S->>F: Forward request
-                F->>H: Match route, call handler
-                H->>DB: Query records (parameterised)
-                DB-->>H: Result set
-                H-->>F: Build Response (JSON / HTML)
-                F-->>S: Response object
-                S-->>U: HTTP 200 + body
-                Note over U: Browser renders the result
+sequenceDiagram
+  autonumber
+  participant U as Browser (Client)
+  participant D as DNS
+  participant S as Web Server (Nginx)
+  participant F as Framework / Router
+  participant H as Handler (Controller)
+  participant DB as Database
+  U->>D: Resolve domain name
+  D-->>U: IP address
+  U->>S: HTTPS request (GET /books)
+  S->>F: Forward request
+  F->>H: Match route, call handler
+  H->>DB: Query records (parameterised)
+  DB-->>H: Result set
+  H-->>F: Build Response (JSON / HTML)
+  F-->>S: Response object
+  S-->>U: HTTP 200 + body
+  Note over U: Browser renders the result
+
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Visualise the end-to-end back-end process that handles a single web request<br>
-              <strong>Syllabus Link:</strong> SE-12-07<br>
-              <strong>Try This:</strong> Identify where caching could be added to reduce the number of database queries on repeated requests
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The framework's router decides which handler runs.</li><li>Queries are parameterised before they reach the database.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Where could caching skip the database for popular pages?</p>
+          </div>
+        </figure>
 
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
@@ -1253,37 +1238,27 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
           </div>
 
           <!-- Service Worker Cache Strategy Diagram -->
-          <div class="diagram-block">
-            <h4>Flowchart - Service Worker Cache-First Strategy</h4>
-            <p class="diagram-subtitle">How a PWA serves content instantly and works offline</p>
-            <p class="diagram-description">
-              A <strong>service worker</strong> sits between the page and the network as a programmable proxy. When the page requests an asset, the service worker intercepts the <code>fetch</code> event and checks its cache first. A cache hit is served instantly — even with no connection. On a cache miss it falls back to the network, stores the fresh copy for next time, and if the network is also unavailable it serves a graceful offline fallback. This is exactly the strategy implemented in the code above.
-            </p>
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Flowchart</span></p>
+            <h4 class="figure-title">A service worker serving cached files</h4>
+            <p class="figure-lead">A cache-first strategy answers from the cache and only uses the network when it must.</p>
+          </figcaption>
+          <div class="figure-canvas">
             <div class="mermaid">
-              flowchart TB
-                A["📱 Page requests an asset<br/>(fetch event)"] --> SW{"⚙️ Service Worker<br/>intercepts request"}
-                SW --> C{"📦 In cache?"}
-                C -- "Yes" --> H1["⚡ Serve from cache<br/>instant · works offline"]
-                C -- "No" --> N{"🌐 Network available?"}
-                N -- "Yes" --> F["⬇️ Fetch from server"]
-                F --> U["🗃️ Update cache"]
-                U --> H2["📄 Serve fresh response"]
-                N -- "No" --> O["📴 Serve offline fallback page"]
-                classDef start fill:#e3f2fd,stroke:#1976D2,stroke-width:2px
-                classDef gate fill:#fff3e0,stroke:#E65100,stroke-width:2px
-                classDef good fill:#e8f5e9,stroke:#2E7D32,stroke-width:2px
-                classDef off fill:#ffcdd2,stroke:#c62828,stroke-width:2px
-                class A start
-                class SW,C,N gate
-                class H1,H2,F,U good
-                class O off
+flowchart TD
+  S(["BEGIN handleFetch"]) --&gt; I[/"INPUT request"/] --&gt; A{"In cache?"}
+  A -- "Yes" --&gt; C[/"OUTPUT cached response"/] --&gt; E(["END handleFetch"])
+  A -- "No" --&gt; B{"Online?"}
+  B -- "Yes" --&gt; N["Fetch from network<br/>Save a copy in the cache"] --&gt; O[/"OUTPUT network response"/] --&gt; E
+  B -- "No" --&gt; F[/"OUTPUT offline page"/] --&gt; E
             </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Explain the cache-first request flow that makes PWAs fast and offline-capable<br>
-              <strong>Syllabus Link:</strong> SE-12-06, SE-12-07<br>
-              <strong>Try This:</strong> Describe how a "network-first" strategy would differ, and when you would prefer it (e.g. live data)
-            </p>
           </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Cached files load instantly and work offline.</li><li>The offline page means the app never shows a blank error.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>News headlines change often. Would cache-first suit them? What would you change?</p>
+          </div>
+        </figure>
 
 <h3>Web App Manifest</h3>
           <p>The <code>manifest.json</code> file tells the browser how to install and present the PWA. Link it in your HTML <code>&lt;head&gt;</code>: <code>&lt;link rel="manifest" href="/manifest.json"&gt;</code></p>
@@ -1368,9 +1343,11 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
   <script src="../js/glossary-data.js?v=4"></script>
   <script src="../js/quizzes.js?v=1"></script>
   <script src="../js/quiz.js?v=2" defer></script>
-  <script src="../js/main.js?v=21"></script>
+  <script src="../js/nesa-diagram-data.js?v=3"></script>
+  <script src="../js/nesa-diagrams.js?v=2" defer></script>
+  <script src="../js/main.js?v=24"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="../js/mermaid-init.js?v=4"></script>
+  <script src="../js/mermaid-init.js?v=6"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->
