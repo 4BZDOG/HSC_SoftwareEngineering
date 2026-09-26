@@ -46,7 +46,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=5" />
+  <link rel="stylesheet" href="../css/paper.css?v=8" />
   <style>
     /* ── SDLC-specific styles ── */
     .sdlc-cycle-visual {
@@ -752,7 +752,7 @@
             <div class="key-term-item"><strong>🧩 Class Diagrams (UML)</strong><span>Show classes, attributes, methods, and relationships (inheritance, association). Essential for documenting OO designs in both Year 11 OOP and Year 12 major project.</span></div>
             <div class="key-term-item"><strong>🗃️ Entity Relationship Diagrams (ERDs)</strong><span>Show tables, fields, primary/foreign keys, and relationships (one-to-one, one-to-many, many-to-many). Required wherever a relational database is used.</span></div>
             <div class="key-term-item"><strong>📅 Gantt Charts</strong><span>Visualise project schedule with tasks, durations, dependencies, and milestones. Tools: MS Project, Trello, Excel, Canva. A completed vs planned Gantt comparison is excellent evidence for evaluation.</span></div>
-            <div class="key-term-item"><strong>🔄 Data Flow Diagrams (DFDs)</strong><span>Show how data moves through the system — external entities, processes, data stores, and data flows. DFDs are a NESA-specified tool (Course Spec p. 8). Level 0 (context diagram) and Level 1 DFDs are required.</span></div>
+            <div class="key-term-item"><strong>🔄 Data Flow Diagrams (DFDs)</strong><span>Show how data moves through the system — external entities, processes, data stores, and data flows. DFDs are listed in the NESA course specifications. Level 0 (context diagram) and Level 1 DFDs are required.</span></div>
             <div class="key-term-item"><strong>🛡️ Threat Modelling (STRIDE)</strong><span>Identify and categorise security threats: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege. Used in Secure Software Architecture.</span></div>
           </div>
 
@@ -909,7 +909,7 @@
           <h3>Course Tools Used in Phase 4</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>🧪 Python unittest</strong><span>Write automated unit tests using Python's built-in <code>unittest</code> module. Demonstrate that tests run and pass with screenshot evidence. Automated tests are more credible than manual testing alone.</span></div>
-            <div class="key-term-item"><strong>📊 Test Tables</strong><span>A structured table documenting every test case. A NESA-specified tool (Course Spec p. 9). Every major feature must have test cases using normal, boundary, and erroneous data.</span></div>
+            <div class="key-term-item"><strong>📊 Test Tables</strong><span>A structured table documenting every test case. Listed in the NESA course specifications. Every major feature must have test cases using normal, boundary, and erroneous data.</span></div>
             <div class="key-term-item"><strong>🐛 Defect / Bug Logs</strong><span>Track every discovered defect with severity, reproduction steps, and resolution. GitHub Issues, Jira, or a spreadsheet are all acceptable formats. The log demonstrates genuine testing activity.</span></div>
             <div class="key-term-item"><strong>📋 UAT Feedback Forms</strong><span>Document client/user feedback from acceptance testing sessions. Include the date, tester name, findings, and how feedback was incorporated. Written evidence of UAT is mandatory for the major project.</span></div>
             <div class="key-term-item"><strong>📈 Gantt Chart (Planned vs Actual)</strong><span>Compare your original schedule against what actually happened. Identify where tasks ran over/under, and explain variance. This comparison is a rich source of process evaluation content.</span></div>
@@ -933,8 +933,8 @@
 
         <section id="tools-map">
           <h2 class="syllabus-phase">Course Tools — Mapped to SDLC Phases</h2>
-          <p class="outcome-subtitle">🎯 <em>(Course Spec pp. 8–9 — tools and techniques across the development lifecycle)</em></p>
-          <p class="syllabus-concept">📌 <em>The NESA syllabus specifies a set of tools that students must know how to apply. This section maps each tool to the SDLC phase(s) where it is primarily used, with an example artefact for each.</em></p>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-12-06)</em></p>
+          <p class="syllabus-concept">📌 <em>The NESA course specifications (pp. 8–9) list the tools students should know how to apply. This section maps each tool to the SDLC phase(s) where it is primarily used, with an example artefact for each.</em></p>
 
           <div class="tool-stage">
             <div class="tool-stage-header">
@@ -1517,8 +1517,8 @@
     </div>
   </footer>
 
-  <script src="../js/glossary-data.js?v=3"></script>
-  <script src="../js/main.js?v=20"></script>
+  <script src="../js/glossary-data.js?v=4"></script>
+  <script src="../js/main.js?v=21"></script>
 
   <div class="lightbox-modal" id="diagram-lightbox" role="dialog" aria-labelledby="lightbox-title" aria-hidden="true">
     <div class="lightbox-overlay"></div>
@@ -1542,6 +1542,6 @@
     </div>
   </div>
 
-  <script src="../js/paper.js?v=2" defer></script>
+  <script src="../js/paper.js?v=3" defer></script>
 </body>
 </html>

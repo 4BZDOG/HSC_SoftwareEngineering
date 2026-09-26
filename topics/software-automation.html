@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=5" />
+  <link rel="stylesheet" href="../css/paper.css?v=8" />
 </head>
 <body>
 
@@ -654,6 +654,9 @@ print(f"Loan approved: {'Yes' if prediction[0] == 1 else 'No'}")</code></pre>
           </div>
         </section>
 
+        <div class="quiz" data-quiz="auto-1"></div>
+
+
 
         <!-- ═══════════════════════════════════════════════════════ -->
         <!--  PROGRAMMING FOR AUTOMATION                            -->
@@ -810,6 +813,9 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           </div>
         </section>
 
+        <div class="quiz" data-quiz="auto-2"></div>
+
+
 
         <!-- ═══════════════════════════════════════════════════════ -->
         <!--  SIGNIFICANCE AND IMPACT OF ML AND AI                  -->
@@ -932,7 +938,10 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           <div class="callout success"><strong>HSC writing sample:</strong> <em>"Dataset source bias occurs when training data does not represent everyone the model will serve. A facial recognition system trained mostly on lighter-skinned faces misidentified darker-skinned people far more often. Human bias adds to this when developers label data using their own assumptions. Engineers can reduce these effects by auditing datasets for balance and testing accuracy separately for each group before release."</em></div>
         </section>
 
-      </div>
+      
+
+        <div class="quiz" data-quiz="auto-3"></div>
+</div>
     </main>
   </div>
 
@@ -971,8 +980,10 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
     </div>
   </footer>
 
-  <script src="../js/glossary-data.js?v=3"></script>
-  <script src="../js/main.js?v=20"></script>
+  <script src="../js/glossary-data.js?v=4"></script>
+  <script src="../js/quizzes.js?v=1"></script>
+  <script src="../js/quiz.js?v=2" defer></script>
+  <script src="../js/main.js?v=21"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script src="../js/mermaid-init.js?v=4"></script>
   <script src="../js/algo-trace.js?v=1"></script>
@@ -1001,6 +1012,6 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
       </div>
     </div>
   </div>
-  <script src="../js/paper.js?v=2" defer></script>
+  <script src="../js/paper.js?v=3" defer></script>
 </body>
 </html>

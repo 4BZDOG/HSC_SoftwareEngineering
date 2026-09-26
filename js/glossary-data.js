@@ -594,6 +594,16 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-debugging",
+"name": "Debugging",
+"aliases": [
+"Debugging"
+],
+"def": "Finding, understanding and fixing errors in a program.",
+"example": "Using breakpoints and a watch to discover a loop runs one time too many.",
+"link": true
+},
+{
 "id": "term-debugging-output",
 "name": "Debugging Output Statement",
 "aliases": [
@@ -633,6 +643,16 @@ window.HSC_GLOSSARY = [
 ],
 "def": "The number of independent directions in which a robotic or mechanical system can move. A typical industrial robot arm has 6 DOF — three for position and three for orientation.",
 "example": "A robot arm with a rotating base, shoulder and elbow has 3 DOF.",
+"link": true
+},
+{
+"id": "term-design-pattern",
+"name": "Design Pattern",
+"aliases": [
+"Design Pattern"
+],
+"def": "A proven, reusable way to structure code that solves a common design problem.",
+"example": "The facade pattern gives a complex payment system one simple pay() method.",
 "link": true
 },
 {
@@ -1003,6 +1023,16 @@ window.HSC_GLOSSARY = [
 ],
 "def": "The complete set of basic commands (opcodes) that a particular processor can execute.",
 "example": "Arduino Uno code is compiled for the AVR instruction set; a Raspberry Pi uses ARM.",
+"link": true
+},
+{
+"id": "term-integer",
+"name": "Integer",
+"aliases": [
+"Integer"
+],
+"def": "A data type for whole numbers, positive or negative, with no decimal part.",
+"example": "students = 28",
 "link": true
 },
 {
@@ -1804,6 +1834,16 @@ window.HSC_GLOSSARY = [
 ],
 "def": "A high-speed, four-wire communication protocol (MOSI, MISO, CLK, CS) used for devices like SD cards and ADCs. Faster than I2C but requires more wires.",
 "example": "Reading data from an SD card module on an Arduino.",
+"link": true
+},
+{
+"id": "term-sprint",
+"name": "Sprint",
+"aliases": [
+"Sprint"
+],
+"def": "A short, fixed period, usually one to four weeks, in which an Agile team builds and reviews a working piece of software.",
+"example": "A two-week sprint that delivers the login page, followed by a review with the client.",
 "link": true
 },
 {

@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=5" />
+  <link rel="stylesheet" href="../css/paper.css?v=8" />
 </head>
 <body>
 
@@ -360,6 +360,9 @@
             <strong>Key Principle:</strong> Security features that users consistently bypass or disable provide zero actual protection. The most secure solution is the one users will actually engage with correctly — design must account for real human behaviour, not idealised behaviour.
           </div>
         </section>
+
+        <div class="quiz" data-quiz="ssa-1"></div>
+
 
 
         <!-- ═══════════════════════════════════════════════════════ -->
@@ -900,6 +903,9 @@
           </div>
         </section>
 
+        <div class="quiz" data-quiz="ssa-2"></div>
+
+
 
         <!-- ═══════════════════════════════════════════════════════ -->
         <!--  IMPACT OF SAFE AND SECURE SOFTWARE DEVELOPMENT        -->
@@ -980,7 +986,10 @@
           <div class="callout success"><strong>HSC writing sample:</strong> <em>"Secure development has mostly positive effects on people and enterprises, but it is not without cost. Protecting data security and privacy maintains customer trust and avoids penalties under the Privacy Act, as the Medibank breach showed when millions of records were exposed. However, security requirements slow development and demand specialist skills, which can disadvantage small businesses. On balance, the cost of prevention is far lower than the financial and reputational damage of a breach."</em></div>
         </section>
 
-      </div>
+      
+
+        <div class="quiz" data-quiz="ssa-3"></div>
+</div>
     </main>
   </div>
 
@@ -1019,8 +1028,10 @@
     </div>
   </footer>
 
-  <script src="../js/glossary-data.js?v=3"></script>
-  <script src="../js/main.js?v=20"></script>
+  <script src="../js/glossary-data.js?v=4"></script>
+  <script src="../js/quizzes.js?v=1"></script>
+  <script src="../js/quiz.js?v=2" defer></script>
+  <script src="../js/main.js?v=21"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script src="../js/mermaid-init.js?v=4"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
@@ -1047,6 +1058,6 @@
       </div>
     </div>
   </div>
-  <script src="../js/paper.js?v=2" defer></script>
+  <script src="../js/paper.js?v=3" defer></script>
 </body>
 </html>

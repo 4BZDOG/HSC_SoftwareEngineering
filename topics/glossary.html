@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=5" />
+  <link rel="stylesheet" href="../css/paper.css?v=8" />
   <style>
     /* ── Glossary Page Layout ── */
     .glossary-wrapper {
@@ -1196,6 +1196,16 @@
               <p>A register inside a processor that holds a value currently being worked on.</p>
               <p class="term-example"><strong>Example:</strong> Holding a sensor reading while the processor compares it with a threshold.</p>
             </div>
+            <div class="glossary-term" id="term-debugging">
+              <h3>Debugging</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+                <span class="chip chip-core">SDLC</span>
+              </div>
+              <p>Finding, understanding and fixing errors in a program.</p>
+              <p class="term-example"><strong>Example:</strong> Using breakpoints and a watch to discover a loop runs one time too many.</p>
+            </div>
+
             <div class="glossary-term" id="term-debugging-output">
               <h3>Debugging Output Statement</h3>
               <div class="term-chips">
@@ -1238,6 +1248,15 @@
               <p class="term-example"><strong>Example:</strong> A robot arm with a rotating base, shoulder and elbow has 3 DOF.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-manipulator">Manipulator</a></div>
             </div>
+            <div class="glossary-term" id="term-design-pattern">
+              <h3>Design Pattern</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Object-Oriented Paradigm</span>
+              </div>
+              <p>A proven, reusable way to structure code that solves a common design problem.</p>
+              <p class="term-example"><strong>Example:</strong> The facade pattern gives a complex payment system one simple <code>pay()</code> method.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-desk-checking">
               <h3>Desk Checking</h3>
@@ -1646,6 +1665,15 @@
               <p>The complete set of basic commands (opcodes) that a particular processor can execute.</p>
               <p class="term-example"><strong>Example:</strong> Arduino Uno code is compiled for the AVR instruction set; a Raspberry Pi uses ARM.</p>
             </div>
+            <div class="glossary-term" id="term-integer">
+              <h3>Integer</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+              </div>
+              <p>A data type for whole numbers, positive or negative, with no decimal part.</p>
+              <p class="term-example"><strong>Example:</strong> <code>students = 28</code></p>
+            </div>
+
 
 
             <div class="glossary-term" id="term-integrity">
@@ -2530,6 +2558,16 @@
               <p class="term-example"><strong>Example:</strong> Reading data from an SD card module on an Arduino.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-i2c">I2C</a>, <a href="#term-uart">UART</a></div>
             </div>
+            <div class="glossary-term" id="term-sprint">
+              <h3>Sprint</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Engineering Project</span>
+                <span class="chip chip-core">SDLC</span>
+              </div>
+              <p>A short, fixed period, usually one to four weeks, in which an Agile team builds and reviews a working piece of software.</p>
+              <p class="term-example"><strong>Example:</strong> A two-week sprint that delivers the login page, followed by a review with the client.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-sql-database">
               <h3>SQL (Relational) Database</h3>
@@ -3196,8 +3234,8 @@
       });
     });
   </script>
-  <script src="../js/glossary-data.js?v=3"></script>
-  <script src="../js/main.js?v=20"></script>
-  <script src="../js/paper.js?v=2" defer></script>
+  <script src="../js/glossary-data.js?v=4"></script>
+  <script src="../js/main.js?v=21"></script>
+  <script src="../js/paper.js?v=3" defer></script>
 </body>
 </html>
