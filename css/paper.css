@@ -721,3 +721,28 @@
   color: var(--pc-ink, #1c1a17);
   cursor: pointer;
 }
+
+/* NESA "Including" list under a dot point */
+.syllabus-including {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem .4rem;
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  font-size: .8rem;
+}
+.syllabus-including::before {
+  content: 'Including';
+  font: italic 600 .85rem var(--font-display);
+  color: var(--pc-muted, #6c6558);
+  margin-right: .25rem;
+  align-self: center;
+}
+.syllabus-including li {
+  background: var(--pc-cream, #fbf7ee);
+  border: 1px dashed var(--pc-rule-strong, #b9ab8f);
+  border-radius: 999px;
+  padding: .15rem .65rem;
+  color: var(--pc-ink-soft, #4a443b);
+}
