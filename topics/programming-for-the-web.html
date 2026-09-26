@@ -216,6 +216,8 @@
 
 <h3>Progressive Web Apps (PWAs)</h3>
           <p>PWAs are web applications built with standard web technologies (HTML, CSS, JavaScript) that offer a native-app-like experience. They are installable on the user's home screen, can work <strong>offline</strong> via service workers, and receive push notifications. Examples include Twitter Lite, Google Maps, and Starbucks. PWAs are significant because they eliminate the need for a separate iOS/Android codebase while still appearing as a native application to the end-user.</p>
+
+          <div class="callout info"><strong>Scenario:</strong> A local bakery wants to take pre-orders. An <strong>interactive page</strong> shows today's stock and updates the total as customers choose items; <strong>e-commerce</strong> features take a secure card payment; and making it a <strong>PWA</strong> lets regulars add it to their home screen and reorder with one tap, without the cost of building separate iOS and Android apps.</div>
         </section>
 
         <hr class="divider" />
@@ -483,6 +485,8 @@
 
           <h4>Streaming Service Management</h4>
           <p>Streaming services (e.g., YouTube, Netflix, Spotify) manage enormous volumes of concurrent data delivery. Key architectural solutions include: <strong>Content Delivery Networks (CDNs)</strong> — geographically distributed server networks that cache and serve content from the nearest node to reduce latency; <strong>Adaptive Bitrate Streaming (ABR)</strong> — which dynamically adjusts video quality based on the user's current bandwidth; and <strong>load balancers</strong> that distribute incoming requests across multiple server instances to prevent any single server from being overwhelmed.</p>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Big data has changed web architecture from single servers to distributed systems. Streaming services such as Netflix store copies of popular shows on CDN servers close to viewers, so one data centre is not overloaded and playback starts quickly. However, mining viewing data to personalise recommendations raises privacy concerns, because users may not know how much of their behaviour is recorded."</em></div>
         </section>
 
 
@@ -665,8 +669,7 @@
           <p class="outcome-subtitle">🎯 <em>(SE-12-09)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> the reasons for version control and apply it when developing web application</em></p>
 
-          <h3>Why Version Control is Essential</h3>
-          <p><strong>Version control systems (VCS)</strong> track every change made to a codebase over time, enabling developers to: <strong>roll back</strong> to any previous working state if a new change breaks functionality; <strong>branch</strong> the codebase to develop features or fix bugs in isolation without affecting the main production code; <strong>merge</strong> contributions from multiple developers working simultaneously; and maintain a complete <strong>audit trail</strong> of who changed what and why. <strong>Git</strong> is the dominant distributed VCS; <strong>GitHub</strong>, <strong>GitLab</strong>, and <strong>Bitbucket</strong> are the popular remote hosting platforms.</p>
+                    <p><strong>Version control systems (VCS)</strong> track every change made to a codebase over time, enabling developers to: <strong>roll back</strong> to any previous working state if a new change breaks functionality; <strong>branch</strong> the codebase to develop features or fix bugs in isolation without affecting the main production code; <strong>merge</strong> contributions from multiple developers working simultaneously; and maintain a complete <strong>audit trail</strong> of who changed what and why. <strong>Git</strong> is the dominant distributed VCS; <strong>GitHub</strong>, <strong>GitLab</strong>, and <strong>Bitbucket</strong> are the popular remote hosting platforms.</p>
 
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Shell — Core Git Workflow for Web Development</span></div>
@@ -752,7 +755,7 @@ git merge feature/user-login</code></pre>
             </div>
             <div class="info-card">
               <h4>Content Delivery Networks (CDN)</h4>
-              <p>A CDN distributes static assets across servers in multiple geographic locations. Users receive files from the nearest server, dramatically reducing latency. Popular CDNs include Cloudflare, AWS CloudFront, and Fastly.</p>
+              <p>A CDN distributes static assets across servers in multiple geographic locations. Users receive files from the nearest server, reducing latency. Popular CDNs include Cloudflare, AWS CloudFront, and Fastly.</p>
             </div>
             <div class="info-card">
               <h4>Lazy Loading</h4>
@@ -767,6 +770,8 @@ git merge feature/user-login</code></pre>
               <p>Google's set of real-world performance metrics: <strong>LCP</strong> (Largest Contentful Paint — how fast main content loads), <strong>INP</strong> (Interaction to Next Paint — responsiveness), and <strong>CLS</strong> (Cumulative Layout Shift — visual stability). These directly influence Google search ranking.</p>
             </div>
           </div>
+
+          <div class="callout info"><strong>Scenario:</strong> A school news site takes 6 seconds to load on a phone. Lighthouse shows three 4 MB photos. Resizing and compressing them to WebP (300 KB each), adding <code>loading="lazy"</code> to images below the fold and turning on caching brings the first load to 1.8 seconds and repeat visits to under a second.</div>
         </section>
 
         <hr class="divider" />
@@ -853,6 +858,8 @@ git merge feature/user-login</code></pre>
               <strong>Try This:</strong> Deploy a headless CMS (e.g., Strapi) and consume its API from both a web front-end and a mobile app to experience the flexibility
             </p>
           </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"A traditional CMS such as WordPress suits the school's newsletter because staff can publish articles without coding and plugins add features quickly. Its popularity makes it a common attack target, so plugins must be kept updated. A headless CMS would suit a school that wants the same content in a website and a mobile app, but it needs developers to build the front end."</em></div>
         </section>
 
         <hr class="divider" />
@@ -872,6 +879,8 @@ git merge feature/user-login</code></pre>
 
           <h4>Security Enforcement</h4>
           <p>The back end is the primary security boundary of a web application. It implements <strong>authentication</strong> (password hashing with bcrypt, <strong>JWT</strong> token management), <strong>authorisation</strong> (role-based access control), input sanitisation (preventing <strong>SQL injection</strong> and <strong>XSS</strong>), and rate limiting (preventing brute-force login attacks). A poorly secured back end exposes the entire database and all user data to attackers.</p>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"The back end contributes most to the application's success through security and data integrity. Because prices and stock levels are checked on the server rather than in the browser, a user cannot change a price with developer tools. Choosing Django also sped up development, since its built-in authentication and admin panel did not have to be written from scratch."</em></div>
         </section>
 
         <hr class="divider" />
@@ -946,6 +955,8 @@ git merge feature/user-login</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Develop</strong> a web application using an appropriate scripting language with shell scripts to make files and directories, and searching for text in a text file</em></p>
 
+          <p>A <strong>scripting language</strong> such as Python runs the web application, while <strong>shell scripts</strong> automate jobs around it: setting up folders, creating files and searching logs. Together they save time and make set-up repeatable on any computer.</p>
+
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Shell (Bash) — Project Setup &amp; File Operations</span></div>
             <pre><code><span class="cm"># Create project directory structure</span>
@@ -973,6 +984,20 @@ find templates/ -name "*.html" | xargs wc -l</code></pre>
           <div class="callout info">
             <strong>Key Shell Commands:</strong> <code>mkdir -p</code> creates nested directories recursively; <code>touch</code> creates empty files; <code>grep -rn</code> searches recursively with line numbers; <code>find</code> locates files by name, type, or modification time.
           </div>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — the same jobs from inside a web app</span></div>
+            <pre><code><span class="kw">from</span> pathlib <span class="kw">import</span> Path
+
+uploads = Path(<span class="str">"static/uploads"</span>)
+uploads.mkdir(parents=True, exist_ok=True)       <span class="cm"># make directories</span>
+(uploads / <span class="str">"README.txt"</span>).write_text(<span class="str">"User uploads"</span>)  <span class="cm"># make a file</span>
+
+<span class="kw">def</span> <span class="fn">find_errors</span>(log=<span class="str">"app.log"</span>):
+    <span class="kw">return</span> [line <span class="kw">for</span> line <span class="kw">in</span> open(log) <span class="kw">if</span> <span class="str">"ERROR"</span> <span class="kw">in</span> line]  <span class="cm"># search text</span></code></pre>
+          </div>
+
+          <div class="callout info"><strong>Tip:</strong> keep a <code>setup.sh</code> script in your project. Anyone who clones the repository can run one command to create the folders, install packages and start the server.</div>
         </section>
 
         <hr class="divider" />
@@ -1009,7 +1034,7 @@ find templates/ -name "*.html" | xargs wc -l</code></pre>
 <span class="kw">INNER JOIN</span> orders <span class="kw">ON</span> users.user_id = orders.user_id
 <span class="kw">WHERE</span> users.country = 'Australia';
 
-<span class="cm">-- Complex example: developers and their total game costs (Course Spec p. 23)</span>
+<span class="cm">-- Complex example: developers and their total game costs</span>
 <span class="kw">SELECT</span> Developers.First_name, Developers.Last_name, SUM(Games.cost) <span class="kw">AS</span> Totalcost
 <span class="kw">FROM</span> Games, Publishers, Developers
 <span class="kw">WHERE</span> Publishers.Name = <span class="str">'Games Inc'</span>
@@ -1082,6 +1107,8 @@ results = cursor.fetchall()
 results = Product.objects.filter(category=<span class="str">'Electronics'</span>).values(<span class="str">'name'</span>, <span class="str">'price'</span>)
 <span class="cm"># Django automatically generates: SELECT name, price FROM products WHERE category = 'Electronics'</span></code></pre>
           </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"An ORM such as SQLAlchemy speeds up development because tables are used as Python classes, and it parameterises queries automatically, which reduces the risk of SQL injection. Raw SQL gives more control and can be faster for complex reports that join several tables, so many applications use an ORM for everyday queries and raw SQL for a few performance-critical ones."</em></div>
         </section>
 
         <hr class="divider" />
@@ -1098,7 +1125,7 @@ results = Product.objects.filter(category=<span class="str">'Electronics'</span>
           <p>Teams use Git branching workflows to manage parallel development. In the <strong>Git Flow</strong> model: the <code>main</code> branch always contains production-ready code; <code>develop</code> is the integration branch for completed features; and individual <code>feature/</code> branches are created for each task. <strong>Pull Requests (PRs)</strong> are submitted when a feature is complete — requiring at least one peer code review before merging. This enforces code quality and knowledge sharing across the team, and ensures no one developer is a single point of failure for any part of the system.</p>
 
 <h3>Open-Source and Ethical Collaboration</h3>
-          <p>Collaborative web development carries ethical responsibilities. Teams must fairly attribute contributions, respect the licences of all third-party code used, ensure equitable division of workload, and maintain transparent communication with stakeholders about progress and setbacks. When using open-source code libraries, teams must monitor for security vulnerabilities and update dependencies promptly to protect users (Outcome SE-12-05).</p>
+          <p>Collaborative web development carries ethical responsibilities. Teams must fairly attribute contributions, respect the licences of all third-party code used, ensure equitable division of workload, and maintain transparent communication with stakeholders about progress and setbacks. When using open-source code libraries, teams must monitor for security vulnerabilities and update dependencies promptly to protect users.</p>
         </section>
 
         <hr class="divider" />
@@ -1297,8 +1324,8 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
     </div>
   </footer>
 
-  <script src="../js/glossary-data.js?v=1"></script>
-  <script src="../js/main.js?v=19"></script>
+  <script src="../js/glossary-data.js?v=2"></script>
+  <script src="../js/main.js?v=20"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script src="../js/mermaid-init.js?v=4"></script>
   <!-- ═══════════════════════════════════════════════════════ -->

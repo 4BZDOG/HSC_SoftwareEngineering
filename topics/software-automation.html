@@ -206,6 +206,8 @@
 
 <h3>Business Process Automation (BPA)</h3>
           <p><strong>BPA</strong> involves using technology to automate entire end-to-end business workflows — not just individual repetitive tasks, but complete multi-step processes involving multiple systems and decision points. ML-driven BPA integrates predictive intelligence into workflows. For example, an insurance claims BPA system uses ML to automatically assess a submitted photo of car damage, classify the severity, cross-reference the policy, calculate the repair estimate, and either auto-approve small claims or route complex cases to a human adjudicator — compressing a multi-day process into minutes. The key difference from RPA: BPA automates the <em>whole process</em>; RPA automates individual <em>steps within</em> a process.</p>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Machine learning supports business process automation by handling tasks that need judgement rather than fixed rules. An insurance company uses an ML model to read claim forms and flag likely fraud, while RPA bots copy the approved claims into the payment system. Together they reduce processing time, although staff must still review the claims the model flags."</em></div>
         </section>
 
         <hr class="divider" />
@@ -308,7 +310,7 @@
                   <td><strong>Semi-Supervised Learning</strong></td>
                   <td>Uses a <strong>small amount of labelled data</strong> combined with a <strong>large pool of unlabelled data</strong>. The model learns from the labelled examples and uses the unlabelled data to refine its understanding of the broader data distribution. This approach is cost-effective as labelling data is expensive and time-consuming.</td>
                   <td>Web content classification, medical image analysis.</td>
-                  <td>A medical AI trained to detect cancer on X-rays using a few hundred labelled scans and tens of thousands of unlabelled scans, dramatically reducing the costly expert-labelling burden.</td>
+                  <td>A medical AI trained to detect cancer on X-rays using a few hundred labelled scans and tens of thousands of unlabelled scans, reducing the costly expert-labelling burden.</td>
                 </tr>
                 <tr>
                   <td><strong>Reinforcement Learning</strong></td>
@@ -352,6 +354,8 @@
               <strong>Try This:</strong> A self-driving car learning to park has no labelled dataset — which training model fits, and why?
             </p>
           </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Supervised learning suits spam filtering because thousands of emails have already been labelled as spam or not spam, so the model can learn from correct answers. Unsupervised learning suits grouping customers by shopping habits, where no labels exist and the aim is to discover patterns."</em></div>
         </section>
 
         <hr class="divider" />
@@ -387,6 +391,8 @@
             <div class="key-term-item"><strong>🚗 Autonomous Vehicles</strong><span>Self-driving cars use CNNs to identify pedestrians, other vehicles, traffic signs, and lane markings in real time from camera feeds. The recognition system processes multiple camera angles simultaneously at high speed to make safe driving decisions.</span></div>
             <div class="key-term-item"><strong>🏭 Manufacturing Quality Control</strong><span>Automated visual inspection systems on production lines use image recognition to detect product defects (e.g., cracks, misalignments, surface blemishes) at speeds and consistency impossible for human inspectors.</span></div>
           </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Image recognition is a key application of ML in agriculture. A convolutional neural network trained on thousands of labelled leaf photos can identify crop diseases from a farmer's phone camera, allowing early treatment. Its accuracy depends on training images that match real field conditions, such as poor lighting and partly hidden leaves."</em></div>
         </section>
 
         <hr class="divider" />
@@ -820,7 +826,7 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           <ul class="syllabus-including" aria-label="Including"><li>safety of workers</li><li>people with disability</li><li>the nature and skills required for employment</li><li>production efficiency, waste and the environment</li><li>the economy and distribution of wealth</li></ul>
 
           <h3>Safety of Workers</h3>
-          <p>Automation and robotics are progressively replacing human workers in physically dangerous environments, with significant positive safety outcomes. <strong>Automated drones</strong> now perform inspection of high-voltage power lines and offshore oil rigs, eliminating worker exposure to electrocution, heights, and toxic atmospheres. <strong>Robotic welding and material handling</strong> systems in manufacturing have dramatically reduced repetitive strain injuries and burn risks. In mining, <strong>autonomous haul trucks</strong> (e.g., Rio Tinto's AutoHaul system) operate in remote and hazardous pit environments without human operators. The net effect is a measurable reduction in workplace injury rates and fatalities. However, the displacement of human workers from these roles creates economic vulnerability for the affected communities.</p>
+          <p>Automation and robotics are progressively replacing human workers in physically dangerous environments, with significant positive safety outcomes. <strong>Automated drones</strong> now perform inspection of high-voltage power lines and offshore oil rigs, eliminating worker exposure to electrocution, heights, and toxic atmospheres. <strong>Robotic welding and material handling</strong> systems in manufacturing have reduced repetitive strain injuries and burn risks. In mining, <strong>autonomous haul trucks</strong> (e.g., Rio Tinto's AutoHaul system) operate in remote and hazardous pit environments without human operators. The net effect is a measurable reduction in workplace injury rates and fatalities. However, the displacement of human workers from these roles creates economic vulnerability for the affected communities.</p>
 
 <h3>People with Disability</h3>
           <p>AI-powered automation is providing unprecedented levels of independence and accessibility for people with disability. <strong>Computer vision systems</strong> enable real-time audio descriptions of the surrounding environment for visually impaired users (e.g., Microsoft's Seeing AI app describes people, currency, and written text through a smartphone camera). <strong>Speech-to-text and natural language interfaces</strong> allow people with motor disabilities to control computers and dictate documents without physical input. <strong>Autonomous vehicles</strong> could fundamentally transform mobility for people who cannot drive due to physical or visual impairment. <strong>AI captioning</strong> provides real-time speech-to-text conversion for deaf individuals during live conversations, video calls, and broadcasts. These advances promote social inclusion and reduce dependence on others, improving quality of life. The risk is that if these systems are not designed with universal design principles, the digital divide — where those without access to technology are further marginalised — may widen.</p>
@@ -841,6 +847,8 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
             </ul>
             <p class="video-box-note">A thought-provoking look at how <strong>automation</strong> may reshape <strong>employment</strong> across many industries — excellent stimulus for discussing the social and economic impact of AI.</p>
           </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Automation has improved the safety of workers by moving dangerous jobs, such as handling chemicals, to robots. However, it has also changed the skills required for employment: routine roles are declining, while demand grows for people who can maintain and program automated systems. The overall impact depends on whether retraining is available, so the benefits of efficiency are shared rather than concentrated among business owners."</em></div>
         </section>
 
         <hr class="divider" />
@@ -858,10 +866,10 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           <p>When individuals are operating under acute psychological stress (e.g., medical emergencies, financial crises, natural disasters), their cognitive performance changes significantly — attention narrows, working memory capacity decreases, and decision-making becomes impaired. AI interfaces designed for critical environments — such as intensive care unit monitoring systems, emergency dispatch platforms, or incident management dashboards — must account for these changes. Systems should prioritise the most critical information, minimise cognitive load, and use clear visual communication to guide operators appropriately during stressful situations.</p>
 
 <h3>Cultural Protocols</h3>
-          <p>ML and AI systems deployed globally must be engineered to respect diverse regional cultural norms, communication expectations, and social protocols. A conversational AI that is appropriate in one cultural context may be offensive or ineffective in another. Engineers must consider varying expectations around formality, linguistic nuance, and culturally sensitive topics. Additionally, AI systems must comply with local legal frameworks governing privacy and data protection across different jurisdictions. Failure to embed cultural protocols into AI systems results in reputational damage, legal liability, and loss of user trust in international markets.</p>
+          <p>ML and AI systems deployed globally must be engineered to respect diverse regional cultural norms, communication expectations, and social protocols. A conversational AI that is appropriate in one cultural context may be offensive or ineffective in another. Engineers must consider varying expectations around formality, linguistic nuance, and culturally sensitive topics. Also, AI systems must comply with local legal frameworks governing privacy and data protection across different jurisdictions. Failure to embed cultural protocols into AI systems results in reputational damage, legal liability, and loss of user trust in international markets.</p>
 
 <h3>Belief Systems</h3>
-          <p>Human belief systems — including religious beliefs, moral frameworks, and ethical worldviews — significantly influence both how AI is perceived and how it must be designed. In some religious and cultural traditions, there are deep concerns about AI making life-or-death decisions (e.g., autonomous weapons, medical triage AI) without human moral accountability. Engineers must engage with these perspectives during the design process rather than treating them as obstacles. AI systems for healthcare, justice, and education must be designed with <strong>explainability</strong> — the ability to provide human-understandable reasons for decisions — to allow individuals to challenge outcomes that conflict with their values or beliefs. Additionally, training data drawn from populations with specific belief systems will encode those beliefs into model outputs; engineers must actively test whether models produce fair and respectful outputs across diverse belief communities.</p>
+          <p>Human belief systems — including religious beliefs, moral frameworks, and ethical worldviews — significantly influence both how AI is perceived and how it must be designed. In some religious and cultural traditions, there are deep concerns about AI making life-or-death decisions (e.g., autonomous weapons, medical triage AI) without human moral accountability. Engineers must engage with these perspectives during the design process rather than treating them as obstacles. AI systems for healthcare, justice, and education must be designed with <strong>explainability</strong> — the ability to provide human-understandable reasons for decisions — to allow individuals to challenge outcomes that conflict with their values or beliefs. Also, training data drawn from populations with specific belief systems will encode those beliefs into model outputs; engineers must actively test whether models produce fair and respectful outputs across diverse belief communities.</p>
         </section>
 
         <hr class="divider" />
@@ -872,7 +880,7 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> the effect of human and dataset source bias in the development of ML and AI solutions</em></p>
 
           <h3>Sources of Bias</h3>
-          <p>Bias in ML systems can arise from multiple sources. Training data that reflects historical prejudices will cause AI systems to perpetuate those discriminatory patterns. When training datasets do not accurately represent the real-world population where the system will be used, the model produces systematically unfair outcomes for underrepresented groups. Developers may unconsciously select or weight data in ways that confirm their pre-existing assumptions. Additionally, when a biased model's predictions influence the collection of future data, it creates self-reinforcing cycles that entrench the original bias even further.</p>
+          <p>Bias in ML systems can arise from multiple sources. Training data that reflects historical prejudices will cause AI systems to perpetuate those discriminatory patterns. When training datasets do not accurately represent the real-world population where the system will be used, the model produces systematically unfair outcomes for underrepresented groups. Developers may unconsciously select or weight data in ways that confirm their pre-existing assumptions. Also, when a biased model's predictions influence the collection of future data, it creates self-reinforcing cycles that entrench the original bias even further.</p>
 
           <!-- Bias Feedback Loop Diagram -->
           <div class="diagram-block">
@@ -920,6 +928,8 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
               <p>AI systems making consequential decisions (credit, employment, healthcare, justice) must be able to provide human-understandable explanations for their outputs. This enables affected individuals to challenge decisions and allows engineers to trace and correct the source of discriminatory outcomes.</p>
             </div>
           </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Dataset source bias occurs when training data does not represent everyone the model will serve. A facial recognition system trained mostly on lighter-skinned faces misidentified darker-skinned people far more often. Human bias adds to this when developers label data using their own assumptions. Engineers can reduce these effects by auditing datasets for balance and testing accuracy separately for each group before release."</em></div>
         </section>
 
       </div>
@@ -961,8 +971,8 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
     </div>
   </footer>
 
-  <script src="../js/glossary-data.js?v=1"></script>
-  <script src="../js/main.js?v=19"></script>
+  <script src="../js/glossary-data.js?v=2"></script>
+  <script src="../js/main.js?v=20"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script src="../js/mermaid-init.js?v=4"></script>
   <script src="../js/algo-trace.js?v=1"></script>

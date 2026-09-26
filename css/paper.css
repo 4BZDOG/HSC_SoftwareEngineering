@@ -746,3 +746,12 @@
   padding: .15rem .65rem;
   color: var(--pc-ink-soft, #4a443b);
 }
+.callout pre.inline-pseudo {
+  margin: .6rem 0;
+  padding: .6rem .8rem;
+  background: #1c1a17;
+  color: #efe7d6;
+  border-radius: 4px;
+  font: .8rem/1.55 var(--font-mono);
+  overflow-x: auto;
+}

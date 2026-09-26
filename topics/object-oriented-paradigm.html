@@ -202,16 +202,16 @@
           <p><strong>Objects</strong> are individual instances of data and behaviour that exist within a running program. A <strong>class</strong> is a blueprint or template that defines the structure and behaviour of all objects created from it. Classes specify what attributes (data) and methods (behaviour) objects will have. For example, a <code>Car</code> class defines that all car objects will have attributes like colour and speed, and methods like accelerate() and brake().</p>
 
 <h3>Encapsulation</h3>
-          <p><strong>Encapsulation</strong> is the process of bundling data and the methods that operate on that data into a single unit, known as a class. It involves "data hiding" by using access modifiers (like private attributes in Python) to prevent external code from directly modifying an object's internal state. This ensures that data can only be changed through validated methods (setters), which maintains the integrity and security of the system (Outcome SE-11-04).</p>
+          <p><strong>Encapsulation</strong> is the process of bundling data and the methods that operate on that data into a single unit, known as a class. It involves "data hiding" by using access modifiers (like private attributes in Python) to prevent external code from directly modifying an object's internal state. This ensures that data can only be changed through validated methods (setters), which maintains the integrity and security of the system.</p>
 
 <h3>Abstraction</h3>
-          <p><strong>Abstraction</strong> focuses on hiding complex implementation details and showing only the essential features of an object to the user. In software engineering, this allows developers to interact with a class through a simplified interface without needing to understand the underlying code logic. It reduces system complexity and allows the internal implementation to change without affecting the parts of the program that use it (Outcome SE-11-01).</p>
+          <p><strong>Abstraction</strong> focuses on hiding complex implementation details and showing only the essential features of an object to the user. In software engineering, this allows developers to interact with a class through a simplified interface without needing to understand the underlying code logic. It reduces system complexity and allows the internal implementation to change without affecting the parts of the program that use it.</p>
 
 <h3>Inheritance &amp; Generalisation</h3>
-          <p><strong>Inheritance</strong> allows a new class (subclass) to adopt the attributes and methods of an existing class (superclass). <strong>Generalisation</strong> is the engineering process of identifying common traits among multiple classes and moving them into a shared parent class. This promotes massive code reuse and establishes a logical hierarchy within the software architecture (Outcome SE-11-02).</p>
+          <p><strong>Inheritance</strong> allows a new class (subclass) to adopt the attributes and methods of an existing class (superclass). <strong>Generalisation</strong> is the engineering process of identifying common traits among multiple classes and moving them into a shared parent class. This promotes massive code reuse and establishes a logical hierarchy within the software architecture.</p>
 
 <h3>Polymorphism</h3>
-          <p><strong>Polymorphism</strong>, meaning "many forms", allows different classes to be treated as instances of the same superclass through a uniform interface. A programmer can call the same method name on different objects, and each object will respond in its own specific way. This makes the code highly flexible and easier to extend with new object types (Outcome SE-11-08).</p>
+          <p><strong>Polymorphism</strong>, meaning "many forms", allows different classes to be treated as instances of the same superclass through a uniform interface. A programmer can call the same method name on different objects, and each object will respond in its own specific way. This makes the code highly flexible and easier to extend with new object types.</p>
 
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Applying OOP Pillars</span></div>
@@ -374,6 +374,8 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Compare</strong> procedural programming with OOP</em></p>
 
+          <p>Both paradigms can solve the same problem. The difference is how the code is organised: <strong>procedural</strong> programs are a sequence of functions that act on data passed around between them, while <strong>OOP</strong> programs are made of objects that keep their data and the methods that use it together.</p>
+
           <div class="table-wrap">
             <table>
               <thead>
@@ -457,6 +459,32 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
               <strong>Try This:</strong> Think of a project you know. Would procedural or OOP be better? Why? List the advantages that matter most for your use case.
             </p>
           </div>
+
+          <h3>The same task, two ways</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — procedural</span></div>
+            <pre><code>balance = <span class="str">100</span>
+
+<span class="kw">def</span> <span class="fn">withdraw</span>(balance, amount):
+    <span class="kw">return</span> balance - amount
+
+balance = withdraw(balance, <span class="str">30</span>)   <span class="cm"># any code can change balance directly</span></code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — object-oriented</span></div>
+            <pre><code><span class="kw">class</span> <span class="fn">Account</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, balance):
+        self.__balance = balance       <span class="cm"># hidden inside the object</span>
+
+    <span class="kw">def</span> <span class="fn">withdraw</span>(self, amount):
+        <span class="kw">if</span> amount &lt;= self.__balance:     <span class="cm"># the object protects its own data</span>
+            self.__balance -= amount
+
+acc = Account(<span class="str">100</span>)
+acc.withdraw(<span class="str">30</span>)</code></pre>
+          </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Procedural programming suits a short script that converts a file once, because a few functions are quicker to write than classes. OOP suits a school management system, because classes such as Student and Teacher keep each type of data with the methods that change it, making the system easier to extend and maintain as it grows."</em></div>
         </section>
 
         <hr class="divider" />
@@ -467,9 +495,9 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
           <p class="syllabus-concept">📌 <em><strong>Use</strong> data flow diagrams, structure charts and class diagrams to represent a system</em></p>
 
           <ul>
-            <li>🛠️ <strong>Class Diagrams (p. 9):</strong> The primary tool for OOP. It represents classes as three-part boxes (Name, Attributes, Methods) and uses solid lines with hollow arrows to show <strong>inheritance</strong> (Outcome SE-11-06).</li>
-            <li>🛠️ <strong>Data Flow Diagrams (p. 5):</strong> Useful for showing how data moves between objects and external entities, focusing on the "transformation" of data (Outcome SE-11-06).</li>
-            <li>🛠️ <strong>Structure Charts (p. 7):</strong> While often procedural, they are used in OOP to map out complex method calls and parameter passing between modules (Outcome SE-11-06).</li>
+            <li>🛠️ <strong>Class Diagrams (p. 9):</strong> The primary tool for OOP. It represents classes as three-part boxes (Name, Attributes, Methods) and uses solid lines with hollow arrows to show <strong>inheritance</strong>.</li>
+            <li>🛠️ <strong>Data Flow Diagrams (p. 5):</strong> Useful for showing how data moves between objects and external entities, focusing on the "transformation" of data.</li>
+            <li>🛠️ <strong>Structure Charts (p. 7):</strong> While often procedural, they are used in OOP to map out complex method calls and parameter passing between modules.</li>
           </ul>
 
           <div class="diagram-block">
@@ -503,7 +531,7 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
           </div>
 
           <div class="callout info">
-            <p><strong>Online Tool Suggestion:</strong> Students should use <strong>Lucidchart</strong>, <strong>Draw.io</strong>, or <strong>Mermaid.js</strong> to create professional UML Class Diagrams and DFDs.</p>
+            <p><strong>Online Tool Suggestion:</strong> Try <strong>Lucidchart</strong>, <strong>Draw.io</strong>, or <strong>Mermaid.js</strong> to create professional UML Class Diagrams and DFDs.</p>
           </div>
         </section>
 
@@ -568,6 +596,8 @@ book = library.get_book_info(<span class="str">"john_doe"</span>, 42)</code></pr
           <p class="outcome-subtitle">🎯 <em>(SE-11-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Assess</strong> the effectiveness of programming code developed to implement an algorithm</em></p>
 
+          <p>To <strong>assess</strong> code, you make a judgement about how well it implements the algorithm, backed by evidence from testing and reading the code. Use the criteria below, and say which ones matter most for the task.</p>
+
           <h3>Evaluation Criteria</h3>
           <ul>
             <li><strong>Correctness:</strong> Does the code produce the expected output for all valid inputs? Does it correctly implement the <strong>algorithm</strong>'s logic?</li>
@@ -578,6 +608,10 @@ book = library.get_book_info(<span class="str">"john_doe"</span>, 42)</code></pr
           </ul>
 
           <p>In OOP, effectiveness is enhanced through proper use of classes, <strong>inheritance</strong>, and <strong>encapsulation</strong>. A well-designed class hierarchy makes code more testable, reusable, and maintainable. Poor design—such as overly deep <strong>inheritance</strong> chains or god objects (classes that do too much)—reduces effectiveness.</p>
+
+          <div class="callout info"><strong>Scenario:</strong> Two students implement "find a student by ID". Version A loops through a list of 2,000 students every time. Version B stores students in a dictionary keyed by ID. Both are <em>correct</em>, but B is far more <em>efficient</em> (one lookup instead of up to 2,000 comparisons) and just as readable. B is the more effective implementation.</div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"The code is effective because it produced the expected output for all 12 test cases, including boundary values. However, its efficiency is limited: the search method is O(n), and replacing the list with a dictionary would make lookups constant-time for large class sizes."</em></div>
         </section>
 
         <hr class="divider" />
@@ -587,8 +621,7 @@ book = library.get_book_info(<span class="str">"john_doe"</span>, 42)</code></pr
           <p class="outcome-subtitle">🎯 <em>(SE-11-08)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> how OOP languages handle message-passing between objects</em></p>
 
-          <h3>How Message-Passing Works</h3>
-          <p>When Object A calls a method on Object B, Object A is sending a "message" to Object B requesting it to perform a specific action. The syntax looks like <code>objectB.methodName(parameters)</code>. This allows for decoupling: Object A needs to know <em>what</em> Object B can do (its interface), but not <em>how</em> it does it (its implementation).</p>
+                    <p>When Object A calls a method on Object B, Object A is sending a "message" to Object B requesting it to perform a specific action. The syntax looks like <code>objectB.methodName(parameters)</code>. This allows for decoupling: Object A needs to know <em>what</em> Object B can do (its interface), but not <em>how</em> it does it (its implementation).</p>
 
           <p>This investigated feature enables several OOP benefits:</p>
           <ul>
@@ -680,6 +713,22 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
     <span class="kw">def</span> <span class="fn">__log_event</span>(self): <span class="cm"># Private helper</span>
         <span class="kw">pass</span> <span class="cm"># Ease of maintenance</span></code></pre>
           </div>
+
+          <h3>Before and after</h3>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — caching an expensive result</span></div>
+            <pre><code><span class="kw">class</span> <span class="fn">Report</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, marks):
+        self.marks = marks
+        self._average = None                 <span class="cm"># not calculated yet</span>
+
+    <span class="kw">def</span> <span class="fn">average</span>(self):
+        <span class="kw">if</span> self._average <span class="kw">is</span> None:           <span class="cm"># calculate once…</span>
+            self._average = sum(self.marks) / len(self.marks)
+        <span class="kw">return</span> self._average                 <span class="cm"># …then reuse it</span></code></pre>
+          </div>
+
+          <p>If a web page calls <code>average()</code> 50 times, the original version adds up every mark 50 times; the optimised version does it once. The output is the same, but the program does less work.</p>
         </section>
 
         <hr class="divider" />
@@ -691,11 +740,22 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <ul class="syllabus-including" aria-label="Including"><li>consistency</li><li>code commenting</li><li>version control</li><li>feedback</li></ul>
 
           <ul>
-            <li><strong>Consistency:</strong> Using classes and standard naming conventions (e.g., CamelCase for classes) ensures the codebase is predictable for all team members.</li>
+            <li><strong>Consistency:</strong> Using classes and standard naming conventions (e.g., PascalCase for classes) ensures the codebase is predictable for all team members.</li>
             <li><strong>Code Commenting:</strong> Professional documentation within classes (Docstrings) explains the purpose of methods to other developers.</li>
-            <li><strong>Version Control:</strong> Tools like Git allow multiple engineers to work on different classes simultaneously and merge their work into a single repository (Outcome SE-11-06).</li>
+            <li><strong>Version Control:</strong> Tools like Git allow multiple engineers to work on different classes simultaneously and merge their work into a single repository.</li>
             <li><strong>Feedback:</strong> Peer reviews of class structures and logic ensure that code is modular, reusable, and free of logic errors.</li>
           </ul>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — a docstring that helps teammates</span></div>
+            <pre><code><span class="kw">class</span> <span class="fn">Booking</span>:
+    <span class="str">"""A single room booking.
+
+    Attributes:
+        room (str): room code, e.g. "L204"
+        start (datetime): when the booking begins
+    """</span></code></pre>
+          </div>
         </section>
 
 
@@ -970,8 +1030,8 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
     </div>
   </footer>
 
-  <script src="../js/glossary-data.js?v=1"></script>
-  <script src="../js/main.js?v=19"></script>
+  <script src="../js/glossary-data.js?v=2"></script>
+  <script src="../js/main.js?v=20"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script src="../js/mermaid-init.js?v=4"></script>
   <!-- ═══════════════════════════════════════════════════════ -->

@@ -208,7 +208,7 @@
 
           <div class="key-terms">
             <div class="key-term-item"><strong>✈️ Aerospace</strong><span>Unmanned Aerial Vehicles (UAVs) use mechatronics for flight stabilisation, GPS navigation, and autonomous landing routines.</span></div>
-            <div class="key-term-item"><strong>🦾 Healthcare</strong><span>Advanced prosthetics utilise electromyography (EMG) sensors to detect muscle signals, allowing users to control bionic limbs with high precision.</span></div>
+            <div class="key-term-item"><strong>🦾 Healthcare</strong><span>Advanced prosthetics use electromyography (EMG) sensors to detect muscle signals, allowing users to control bionic limbs with high precision.</span></div>
             <div class="key-term-item"><strong>🚗 Automotive</strong><span>Modern vehicles incorporate mechatronic subsystems such as Anti-lock Braking Systems (ABS) and Electronic Stability Control (ESC) to enhance driver safety.</span></div>
           </div>
 
@@ -218,6 +218,18 @@
               <li><a href="https://www.youtube.com/watch?v=Ro_tFv1iH6g" target="_blank" rel="noopener">What is Mechatronics? The Very Basics <span class="video-meta">— 7 min</span></a></li>
             </ul>
             <p class="video-box-note">A short overview of how <strong>mechanical</strong>, <strong>electrical</strong>, and <strong>software</strong> engineering combine to create intelligent <strong>mechatronic</strong> systems.</p>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Field</th><th>Mechatronic system</th><th>What it senses → what it does</th></tr></thead>
+              <tbody>
+                <tr><td>Agriculture</td><td>Automated irrigation</td><td>Soil moisture → switches a pump on and off</td></tr>
+                <tr><td>Manufacturing</td><td>Pick-and-place robot arm</td><td>Camera finds a part → gripper picks it up and places it</td></tr>
+                <tr><td>Home</td><td>Robot vacuum</td><td>Bump and distance sensors → steers around furniture</td></tr>
+                <tr><td>Transport</td><td>Automatic train doors</td><td>Platform position and obstruction sensors → opens or holds the doors</td></tr>
+              </tbody>
+            </table>
           </div>
         </section>
 
@@ -417,6 +429,8 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <p class="outcome-subtitle">🎯 <em>(SE-11-03, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Determine</strong> power, battery and material requirements for components of a mechatronic system</em></p>
 
+          <p>Before you build, work out how much power the system needs, how long a battery will last, and what the parts should be made of. Getting this wrong leads to flat batteries, resets when motors start, or a frame that bends.</p>
+
           <div class="table-wrap">
             <table>
               <thead>
@@ -438,6 +452,11 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
               </tbody>
             </table>
           </div>
+
+          <h3>Estimating battery life</h3>
+          <p><strong>Battery life (hours) ≈ battery capacity (mAh) ÷ average current (mA)</strong>. A 2000 mAh battery powering the 670 mA system above lasts about 2000 ÷ 670 ≈ 3 hours. In practice, allow 20–30% less, because batteries lose capacity as they age and as they get cold.</p>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"The greenhouse controller draws about 60 mA, but the pump draws 400 mA when it runs. The pump was therefore given its own 12 V supply through a relay, so its start-up current cannot cause the microcontroller to reset."</em></div>
         </section>
 
         <hr class="divider" />
@@ -467,7 +486,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           </div>
 
           <div class="callout info">
-            <p><strong>Online Tool Suggestion:</strong> Students should use <strong>Tinkercad Circuits</strong> or <strong>Wokwi</strong> to develop wiring diagrams and simulate Arduino/ESP32 hardware connections virtually before building.</p>
+            <p><strong>Online Tool Suggestion:</strong> Try <strong>Tinkercad Circuits</strong> or <strong>Wokwi</strong> to develop wiring diagrams and simulate Arduino/ESP32 hardware connections virtually before building.</p>
           </div>
         </section>
 
@@ -556,8 +575,7 @@ END followLine</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Explore</strong> the algorithmic patterns, code and applications for open and closed control systems</em></p>
 
-          <h3>Open vs Closed Loop Systems</h3>
-          <p>The choice of control system depends on the task requirements for accuracy and self-correction. Engineers often use 🛠️ <strong>Decision Trees</strong> (Course Spec p.10) to map out these control paths.</p>
+                    <p>The choice of control system depends on the task requirements for accuracy and self-correction. Engineers often use 🛠️ <strong>Decision Trees</strong> to map out these control paths.</p>
 
           <div class="table-wrap">
             <table>
@@ -620,8 +638,7 @@ END followLine</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Outline</strong> the features of an algorithm and program code used for autonomous control</em></p>
 
-          <h3>Key Features of Autonomous Algorithms</h3>
-          <ul>
+                    <ul>
             <li><strong>🔗 Sensor Fusion:</strong> Combining data from multiple sensors (e.g., distance sensors, IMU accelerometers, temperature sensors) to build a comprehensive understanding of the environment. Simple algorithms average sensor readings; advanced algorithms use Kalman filters for optimal estimation.</li>
             <li><strong>🧠 Decision Logic:</strong> Complex conditionals and state machines that determine what action to take based on current sensor readings and system state. Example: "IF obstacle detected within 20cm AND left sensor clear, TURN LEFT; ELSE IF right sensor clear, TURN RIGHT."</li>
             <li><strong>🔄 PID Control Loop:</strong> Proportional-Integral-Derivative control adjusts actuator output based on error (difference between desired and actual state). Common in maintaining speed, temperature, or position.</li>
@@ -700,6 +717,8 @@ END followLine</code></pre>
           <p class="syllabus-concept">📌 <em><strong>Design, develop and produce</strong> a mechatronic system for a real-world problem</em></p>
           <ul class="syllabus-including" aria-label="Including"><li>software control</li><li>mechanical engineering</li><li>electronics and mathematics</li></ul>
 
+          <div class="callout info"><strong>Running example — the smart greenhouse:</strong> a microcontroller reads a temperature sensor and a soil-moisture sensor, opens a roof vent with a servo when it gets too hot, and runs a pump when the soil is dry. The examples in this part build it one piece at a time.</div>
+
           <h3>Integrated System Design</h3>
           <p>Creating a complete mechatronic system requires simultaneous consideration of three domains:</p>
 
@@ -722,14 +741,27 @@ END followLine</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Implement</strong> algorithms and design programming code to drive mechatronic devices</em></p>
 
-          <h3>Driving Mechatronic Devices</h3>
-          <p>Code must correctly interface with hardware:</p>
+                    <p>Code must correctly interface with hardware:</p>
           <ul>
             <li><strong>PWM (Pulse Width Modulation):</strong> Varying the duty cycle (on-time vs off-time) of a square wave to control motor speed or LED brightness.</li>
             <li><strong>Analog-to-Digital Conversion:</strong> Reading analog sensor values (e.g., 0-5V) as digital numbers (0-1023) for processing.</li>
             <li><strong>Serial Communication:</strong> Sending commands to and receiving data from sensors, actuators, and other microcontrollers.</li>
             <li><strong>Interrupt Handling:</strong> Responding immediately to urgent events (e.g., collision detection) without waiting for the main program loop.</li>
           </ul>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">MicroPython — driving a servo with PWM</span></div>
+            <pre><code><span class="kw">from</span> machine <span class="kw">import</span> Pin, PWM
+
+vent = PWM(Pin(<span class="str">15</span>), freq=<span class="str">50</span>)      <span class="cm"># servos expect a 50 Hz signal</span>
+
+<span class="kw">def</span> <span class="fn">set_angle</span>(degrees):
+    <span class="cm"># 0.5 ms pulse = 0°, 2.5 ms pulse = 180°</span>
+    pulse_us = <span class="str">500</span> + degrees * <span class="str">2000</span> // <span class="str">180</span>
+    vent.duty_ns(pulse_us * <span class="str">1000</span>)
+
+set_angle(<span class="str">90</span>)   <span class="cm"># open the vent halfway</span></code></pre>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -742,6 +774,20 @@ END followLine</code></pre>
           <h3>Simulation vs Prototyping</h3>
           <p><strong>Simulations</strong> (Wokwi, TinkerCAD, Gazebo) allow testing code in a risk-free virtual environment. Useful for debugging algorithms, testing edge cases, and exploring design variations before building hardware. However, simulations don't capture real-world issues like friction, vibration, electromagnetic interference, or component tolerances.</p>
           <p><strong>Physical prototypes</strong> identify these real-world factors. Starting with a minimal viable prototype (MVP) and iteratively improving it is more cost-effective than building a perfect system immediately. Prototyping also allows testing with actual users and refining the design based on their feedback.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th></th><th>Simulation</th><th>Physical prototype</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Cost and risk</strong></td><td>Free; nothing can break</td><td>Costs parts; mistakes can damage them</td></tr>
+                <tr><td><strong>Speed of change</strong></td><td>Edit and rerun in seconds</td><td>Rewiring and rebuilding take time</td></tr>
+                <tr><td><strong>Realism</strong></td><td>Ideal sensors, no friction or noise</td><td>Shows real noise, friction and power problems</td></tr>
+                <tr><td><strong>Best for</strong></td><td>Checking logic and wiring early</td><td>Tuning and final testing</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout info"><strong>Tip:</strong> build the greenhouse circuit in Wokwi first. When the vent opens at the right temperature in the simulation, move the same code onto the real board.</div>
         </section>
 
         <hr class="divider" />
@@ -751,14 +797,28 @@ END followLine</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02, SE-11-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> programming code for a closed loop control system</em></p>
 
-          <h3>Closed Loop Control System Design and Implementation</h3>
-          <p>Closed loop systems use sensor feedback to adjust actuator output continuously. Implementation requires:</p>
+                    <p>Closed loop systems use sensor feedback to adjust actuator output continuously. Implementation requires:</p>
           <ul>
             <li>Clearly defining the <strong>setpoint</strong> (desired state) and <strong>feedback</strong> (actual state).</li>
             <li>Calculating the <strong>error</strong> (setpoint - feedback).</li>
             <li>Applying a control algorithm (PID, fuzzy logic, state machine) to generate corrective output.</li>
             <li>Iterating: reading sensors, calculating, and updating actuators in a tight loop (typically 10-1000 Hz).</li>
           </ul>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">MicroPython — closed loop vent control</span></div>
+            <pre><code>SETPOINT = <span class="str">26</span>          <span class="cm"># °C we want to hold</span>
+KP = <span class="str">10</span>                <span class="cm"># degrees of vent per °C of error</span>
+
+<span class="kw">while</span> True:
+    temp = read_temperature()          <span class="cm"># feedback: the actual state</span>
+    error = temp - SETPOINT            <span class="cm"># how far from the target?</span>
+    angle = max(<span class="str">0</span>, min(<span class="str">180</span>, error * KP))  <span class="cm"># bigger error → wider vent</span>
+    set_angle(angle)                   <span class="cm"># act on the error</span>
+    sleep(<span class="str">1</span>)                           <span class="cm"># repeat once a second</span></code></pre>
+          </div>
+
+          <p>This is <strong>proportional control</strong>: the correction grows with the error. Unlike an open loop timer, it keeps adjusting when a cloud passes or the door is left open.</p>
         </section>
 
         <hr class="divider" />
@@ -768,8 +828,28 @@ END followLine</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> programming code to integrate sensors, actuators and end effectors/manipulators</em></p>
 
+          <p>Each part may work on its own, but the system only works when sensors, actuators and end effectors run together under one program. Integrate in small steps: add one component, test it, then add the next.</p>
+
           <h3>Integrating Components into Viable Subsystems</h3>
           <p>Each subsystem (gripper, movement, vision) must be coded, tested, and debugged in isolation before integration. Components share power supplies, communication buses, and may have timing dependencies—careful integration prevents conflicts.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">MicroPython — sensor, pump and vent working together</span></div>
+            <pre><code><span class="kw">while</span> True:
+    temp = read_temperature()
+    moisture = read_moisture()           <span class="cm"># 0 = dry, 100 = soaked</span>
+
+    set_angle(vent_angle_for(temp))      <span class="cm"># vent subsystem</span>
+
+    <span class="kw">if</span> moisture &lt; <span class="str">30</span> <span class="kw">and</span> <span class="kw">not</span> pump.value():
+        pump.on()                        <span class="cm"># watering subsystem</span>
+    <span class="kw">elif</span> moisture &gt; <span class="str">45</span>:
+        pump.off()                       <span class="cm"># gap between 30 and 45 stops rapid on/off</span>
+
+    sleep(<span class="str">1</span>)</code></pre>
+          </div>
+
+          <div class="callout info"><strong>Watch for conflicts:</strong> the pump and servo both draw current at the same moment, and a long <code>sleep()</code> in one subsystem delays every other one. Keep each step short and share one main loop.</div>
         </section>
 
         <hr class="divider" />
@@ -786,6 +866,19 @@ END followLine</code></pre>
             <li><strong>Acceleration Ramping:</strong> Gradually increasing motor speed to reduce jerky movements and mechanical stress.</li>
             <li><strong>Sensor Filtering:</strong> Averaging or smoothing noisy sensor readings to improve decision quality.</li>
           </ul>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">MicroPython — smoothing a noisy sensor</span></div>
+            <pre><code>readings = []
+
+<span class="kw">def</span> <span class="fn">smoothed_temperature</span>():
+    readings.append(read_temperature())
+    <span class="kw">if</span> len(readings) &gt; <span class="str">5</span>:
+        readings.pop(<span class="str">0</span>)                 <span class="cm"># keep the last 5 readings</span>
+    <span class="kw">return</span> sum(readings) / len(readings)  <span class="cm"># moving average</span></code></pre>
+          </div>
+
+          <p>Without smoothing, a single noisy reading can make the vent twitch open and shut. Averaging the last five readings makes the system calmer, and the servo lasts longer.</p>
         </section>
 
         <hr class="divider" />
@@ -795,8 +888,7 @@ END followLine</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> a user interface (UI) to control a mechatronic system</em></p>
 
-          <h3>User Interface (UI) Design and Implementation</h3>
-          <p>Even autonomous systems often need interfaces for:</p>
+                    <p>Even autonomous systems often need interfaces for:</p>
           <ul>
             <li><strong>Manual Override:</strong> Emergency stop buttons, mode selection switches.</li>
             <li><strong>Status Display:</strong> LED indicators, LCD screens showing system state, error codes, sensor readings.</li>
@@ -804,6 +896,19 @@ END followLine</code></pre>
             <li><strong>Accessibility:</strong> Voice control, touchless interfaces for users with disabilities.</li>
           </ul>
           <p>UI code must be responsive and not interfere with real-time control loops. Separating UI from control logic (Model-View-Controller pattern) improves maintainability.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">MicroPython — an emergency stop button</span></div>
+            <pre><code>stop_button = Pin(<span class="str">14</span>, Pin.IN, Pin.PULL_UP)
+
+<span class="kw">def</span> <span class="fn">emergency_stop</span>(pin):
+    pump.off()
+    set_angle(<span class="str">0</span>)
+    display.show(<span class="str">"STOPPED"</span>)
+
+<span class="cm"># an interrupt reacts at once, even in the middle of the main loop</span>
+stop_button.irq(trigger=Pin.IRQ_FALLING, handler=emergency_stop)</code></pre>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -813,8 +918,7 @@ END followLine</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Create and use</strong> unit tests to determine the effectiveness and repeatability of each component’s control algorithm</em></p>
 
-          <h3>Unit Testing for Effectiveness and Repeatability</h3>
-          <p>Mechatronic systems require rigorous testing of each component:</p>
+                    <p>Mechatronic systems require rigorous testing of each component:</p>
           <ul>
             <li><strong>Sensor Tests:</strong> Verify sensors return expected values for known inputs (temperature sensor in ice vs boiling water).</li>
             <li><strong>Actuator Tests:</strong> Confirm motors respond correctly to commands (PWM 50% = half speed).</li>
@@ -823,6 +927,23 @@ END followLine</code></pre>
             <li><strong>Stress Tests:</strong> Run systems continuously for extended periods to identify degradation or reliability issues.</li>
           </ul>
           <p><strong>Repeatability testing</strong> ensures the system behaves consistently across multiple trials—critical for autonomous systems where unpredictable behaviour is unacceptable. Logging sensor data and actuator commands during tests helps engineers debug failures and improve reliability.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — unit testing the vent algorithm</span></div>
+            <pre><code><span class="kw">def</span> <span class="fn">vent_angle_for</span>(temp, setpoint=<span class="str">26</span>, kp=<span class="str">10</span>):
+    <span class="kw">return</span> max(<span class="str">0</span>, min(<span class="str">180</span>, (temp - setpoint) * kp))
+
+<span class="kw">def</span> <span class="fn">test_closed_when_cool</span>():
+    <span class="kw">assert</span> vent_angle_for(<span class="str">20</span>) == <span class="str">0</span>
+
+<span class="kw">def</span> <span class="fn">test_opens_in_proportion</span>():
+    <span class="kw">assert</span> vent_angle_for(<span class="str">29</span>) == <span class="str">30</span>
+
+<span class="kw">def</span> <span class="fn">test_never_exceeds_servo_range</span>():
+    <span class="kw">assert</span> vent_angle_for(<span class="str">60</span>) == <span class="str">180</span></code></pre>
+          </div>
+
+          <p>Because the algorithm is a separate function, it can be tested on a laptop without any hardware. <strong>Repeatability</strong> is then checked on the real system by running the same test several times, for example heating the sensor to 29 °C five times and confirming the vent reaches about 30° each time.</p>
         </section>
 
       </div>
@@ -864,8 +985,8 @@ END followLine</code></pre>
     </div>
   </footer>
 
-  <script src="../js/glossary-data.js?v=1"></script>
-  <script src="../js/main.js?v=19"></script>
+  <script src="../js/glossary-data.js?v=2"></script>
+  <script src="../js/main.js?v=20"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script src="../js/mermaid-init.js?v=4"></script>
   <!-- ═══════════════════════════════════════════════════════ -->

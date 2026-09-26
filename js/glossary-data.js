@@ -7,7 +7,8 @@ window.HSC_GLOSSARY = [
 "Abstract Class"
 ],
 "def": "A class that cannot be instantiated directly and exists purely to be subclassed. Abstract classes often define method signatures that subclasses must implement, enforcing a consistent interface across a family of types.",
-"example": "A Shape class declares area() but only Circle and Square subclasses can be created."
+"example": "A Shape class declares area() but only Circle and Square subclasses can be created.",
+"link": true
 },
 {
 "id": "term-abstraction",
@@ -16,7 +17,8 @@ window.HSC_GLOSSARY = [
 "Abstraction"
 ],
 "def": "The concept of hiding complex internal implementation details while exposing only the necessary interface to the user or calling code. Reduces cognitive complexity and increases maintainability.",
-"example": "Calling send_email(to, body) without knowing how the mail server connection works."
+"example": "Calling send_email(to, body) without knowing how the mail server connection works.",
+"link": true
 },
 {
 "id": "term-acceptance-criteria",
@@ -25,7 +27,8 @@ window.HSC_GLOSSARY = [
 "Acceptance Criteria"
 ],
 "def": "Specific, measurable conditions that must be met to confirm a user story has been implemented correctly. They provide a clear definition of \"done\" for each requirement.",
-"example": "\"Given a wrong password three times, the account locks for 15 minutes.\""
+"example": "\"Given a wrong password three times, the account locks for 15 minutes.\"",
+"link": true
 },
 {
 "id": "term-access-modifier",
@@ -34,7 +37,8 @@ window.HSC_GLOSSARY = [
 "Access Modifier"
 ],
 "def": "Keywords (such as public, private, and protected) that control the visibility and accessibility of class members. They enforce encapsulation by restricting which parts of a program can access specific attributes or methods.",
-"example": "Marking balance as private so only deposit() and withdraw() can change it."
+"example": "Marking balance as private so only deposit() and withdraw() can change it.",
+"link": true
 },
 {
 "id": "term-accountability",
@@ -43,7 +47,8 @@ window.HSC_GLOSSARY = [
 "Accountability"
 ],
 "def": "The principle of tracing every action back to a specific authenticated user through immutable audit logs. Ensures that no action can be performed anonymously within a secure system.",
-"example": "An audit log records that user jchen deleted invoice #204 at 10:14 am."
+"example": "An audit log records that user jchen deleted invoice #204 at 10:14 am.",
+"link": true
 },
 {
 "id": "term-actuator",
@@ -52,7 +57,8 @@ window.HSC_GLOSSARY = [
 "Actuator"
 ],
 "def": "An output component that converts electrical energy into physical motion, such as a motor, solenoid, or pneumatic piston. Actuators enable a mechatronic system to interact with the physical world.",
-"example": "A servo motor that opens a greenhouse vent when the temperature rises."
+"example": "A servo motor that opens a greenhouse vent when the temperature rises.",
+"link": true
 },
 {
 "id": "term-adc",
@@ -62,7 +68,18 @@ window.HSC_GLOSSARY = [
 "Analog-to-Digital Converter"
 ],
 "def": "A component that samples continuous analog voltages and converts them into discrete digital numbers for processing by a microcontroller. Resolution is measured in bits (e.g., a 10-bit ADC yields 1024 distinct values).",
-"example": "An Arduino reading a light sensor as a number from 0 to 1023."
+"example": "An Arduino reading a light sensor as a number from 0 to 1023.",
+"link": true
+},
+{
+"id": "term-address-register",
+"name": "Address Register",
+"aliases": [
+"Address Register"
+],
+"def": "A small, fast storage location inside a processor that holds the memory address of data or of the next instruction to fetch.",
+"example": "While running a loop, the program counter (an address register) points to the next instruction in flash memory.",
+"link": true
 },
 {
 "id": "term-agile",
@@ -72,7 +89,8 @@ window.HSC_GLOSSARY = [
 "Agile Methodology"
 ],
 "def": "An iterative and incremental approach to software development focusing on flexibility, responsiveness to change, and frequent client feedback. Agile prioritises working software and customer collaboration over rigid upfront specification.",
-"example": "A team releases a school canteen app in two-week sprints, changing features after student feedback."
+"example": "A team releases a school canteen app in two-week sprints, changing features after student feedback.",
+"link": true
 },
 {
 "id": "term-ai",
@@ -82,7 +100,8 @@ window.HSC_GLOSSARY = [
 "Artificial Intelligence"
 ],
 "def": "The broad field of building machines that can simulate human cognitive functions such as learning, reasoning, and problem-solving. AI encompasses many sub-fields including machine learning, natural language processing, and computer vision.",
-"example": "A chatbot that answers enrolment questions on a school website."
+"example": "A chatbot that answers enrolment questions on a school website.",
+"link": true
 },
 {
 "id": "term-algorithm",
@@ -91,7 +110,8 @@ window.HSC_GLOSSARY = [
 "Algorithm"
 ],
 "def": "A step-by-step procedure required to solve a problem or accomplish a task, defined by its efficiency, clarity, and finiteness. Every algorithm must eventually terminate with a definite result.",
-"example": "The steps to find the largest mark in a class list."
+"example": "The steps to find the largest mark in a class list.",
+"link": true
 },
 {
 "id": "term-api",
@@ -101,7 +121,8 @@ window.HSC_GLOSSARY = [
 "Application Programming Interface"
 ],
 "def": "A contract defining how different software components communicate, specifying request formats and expected responses — without exposing implementation details.",
-"example": "A weather app requests GET /forecast?city=Sydney from the Bureau of Meteorology's servers."
+"example": "A weather app requests GET /forecast?city=Sydney from the Bureau of Meteorology's servers.",
+"link": true
 },
 {
 "id": "term-array",
@@ -110,7 +131,8 @@ window.HSC_GLOSSARY = [
 "Array"
 ],
 "def": "A data structure consisting of a collection of elements identified by at least one index or key, stored in contiguous memory locations. Arrays provide O(1) access by index.",
-"example": "marks = [72, 85, 64], where marks[1] is 85."
+"example": "marks = [72, 85, 64], where marks[1] is 85.",
+"link": true
 },
 {
 "id": "term-asymmetric-encryption",
@@ -119,7 +141,8 @@ window.HSC_GLOSSARY = [
 "Asymmetric Encryption"
 ],
 "def": "An encryption method using a mathematically linked public and private key pair. The public key encrypts data (or verifies signatures), while only the corresponding private key can decrypt (or sign). Used for secure key exchange and digital signatures.",
-"example": "A browser encrypts a session key with a bank's public key; only the bank's private key can read it."
+"example": "A browser encrypts a session key with a bank's public key; only the bank's private key can read it.",
+"link": true
 },
 {
 "id": "term-attack-surface",
@@ -128,7 +151,8 @@ window.HSC_GLOSSARY = [
 "Attack Surface"
 ],
 "def": "The total number of possible ways an attacker can interact with or compromise a software system. Minimising the attack surface — by reducing exposed endpoints, disabling unused features, and enforcing least privilege — is a core security principle.",
-"example": "Closing an unused admin login page removes one way in for attackers."
+"example": "Closing an unused admin login page removes one way in for attackers.",
+"link": true
 },
 {
 "id": "term-attribute",
@@ -137,7 +161,8 @@ window.HSC_GLOSSARY = [
 "Attribute"
 ],
 "def": "A data element or property defined within a class that stores the state of an object. For example, a Car class might have attributes like colour, speed, and fuel_level.",
-"example": ""
+"example": "",
+"link": true
 },
 {
 "id": "term-authentication",
@@ -146,7 +171,8 @@ window.HSC_GLOSSARY = [
 "Authentication"
 ],
 "def": "The process of verifying the identity of a user or system, often using passwords, biometrics, or multi-factor authentication (MFA). Answers the question: \"Who are you?\"",
-"example": "Logging in with a password plus a code from an authenticator app."
+"example": "Logging in with a password plus a code from an authenticator app.",
+"link": true
 },
 {
 "id": "term-authorisation",
@@ -155,7 +181,8 @@ window.HSC_GLOSSARY = [
 "Authorisation"
 ],
 "def": "The process of determining what an authenticated user is permitted to do, based on the principle of least privilege. Answers the question: \"What are you allowed to do?\"",
-"example": "A student can view their own results but only a teacher can edit them."
+"example": "A student can view their own results but only a teacher can edit them.",
+"link": true
 },
 {
 "id": "term-availability",
@@ -164,7 +191,8 @@ window.HSC_GLOSSARY = [
 "Availability"
 ],
 "def": "Ensuring that systems and data remain operational and accessible to authorised users when needed. One of the three pillars of the CIA triad alongside Confidentiality and Integrity.",
-"example": "A school portal stays online during exam results release despite heavy traffic."
+"example": "A school portal stays online during exam results release despite heavy traffic.",
+"link": true
 },
 {
 "id": "term-backlog",
@@ -174,7 +202,8 @@ window.HSC_GLOSSARY = [
 "Product Backlog"
 ],
 "def": "A prioritised list of all features, user stories, and bug fixes yet to be completed for a product. In Scrum, the Product Backlog is the single source of work for the development team.",
-"example": "\"Add dark mode\" sits in the backlog below the higher-priority \"Fix login bug\"."
+"example": "\"Add dark mode\" sits in the backlog below the higher-priority \"Fix login bug\".",
+"link": true
 },
 {
 "id": "term-backpropagation",
@@ -183,7 +212,8 @@ window.HSC_GLOSSARY = [
 "Backpropagation"
 ],
 "def": "The training process where prediction error is propagated backwards through a neural network to adjust connection weights using gradient descent. This iterative process minimises the loss function over many epochs.",
-"example": "After predicting \"cat\" for a dog photo, the network nudges its weights to reduce that error."
+"example": "After predicting \"cat\" for a dog photo, the network nudges its weights to reduce that error.",
+"link": true
 },
 {
 "id": "term-backend",
@@ -194,7 +224,28 @@ window.HSC_GLOSSARY = [
 "Backend"
 ],
 "def": "The server-side portion of a web application responsible for business logic, database queries, authentication, and security enforcement. Users never interact with back-end code directly.",
-"example": "The Flask server code that checks a login and queries the database."
+"example": "The Flask server code that checks a login and queries the database.",
+"link": true
+},
+{
+"id": "term-backtracking",
+"name": "Backtracking",
+"aliases": [
+"Backtracking"
+],
+"def": "An algorithm design strategy that builds a solution step by step and, when a step leads to a dead end, undoes it and tries a different choice.",
+"example": "Solving a maze by following a path until it is blocked, then stepping back to the last junction and trying another way.",
+"link": true
+},
+{
+"id": "term-big-data",
+"name": "Big Data",
+"aliases": [
+"Big Data"
+],
+"def": "Data sets so large, fast-changing or varied that ordinary tools cannot store or process them, so distributed systems are needed.",
+"example": "Every song played by every Spotify user each day.",
+"link": true
 },
 {
 "id": "term-binary-search",
@@ -203,7 +254,20 @@ window.HSC_GLOSSARY = [
 "Binary Search"
 ],
 "def": "An efficient algorithm that finds an item in a sorted list by repeatedly dividing the search interval in half. It has a time complexity of O(log n), making it far faster than linear search for large datasets.",
-"example": "Finding 21 in [3, 5, 8, 12, 17, 21, 26, 30] in two comparisons by halving the list."
+"example": "Finding 21 in [3, 5, 8, 12, 17, 21, 26, 30] in two comparisons by halving the list.",
+"link": true
+},
+{
+"id": "term-black-box",
+"name": "Black-Box Testing",
+"aliases": [
+"Black box testing",
+"Black-Box Testing",
+"Black-box testing"
+],
+"def": "Testing software by checking outputs against expected results for given inputs, without looking at the code inside.",
+"example": "Entering valid, boundary and invalid marks into a grading program and checking the grades it returns.",
+"link": true
 },
 {
 "id": "term-boolean",
@@ -212,7 +276,49 @@ window.HSC_GLOSSARY = [
 "Boolean"
 ],
 "def": "A logical data type that represents one of two values: True or False. Booleans are fundamental to control flow, conditions, and logical expressions in every programming language.",
-"example": "is_logged_in = True"
+"example": "is_logged_in = True",
+"link": true
+},
+{
+"id": "term-bottom-up-design",
+"name": "Bottom-Up Design",
+"aliases": [
+"Bottom-Up Design"
+],
+"def": "Designing a system by first building and testing small, reusable components, then combining them into larger parts.",
+"example": "Writing and testing validate_email() and hash_password() before building the registration page that uses them.",
+"link": true
+},
+{
+"id": "term-boundary-value",
+"name": "Boundary Value",
+"aliases": [
+"Boundary Value"
+],
+"def": "Test data at, just inside and just outside the limits of a valid range, where off-by-one errors are most likely.",
+"example": "For marks from 0 to 100: −1, 0, 1, 99, 100 and 101.",
+"link": true
+},
+{
+"id": "term-breakpoint",
+"name": "Breakpoint",
+"aliases": [
+"Breakpoint"
+],
+"def": "A marker set in an IDE that pauses a program at a chosen line so the programmer can inspect variables.",
+"example": "Pausing at the line total += price to check the value of price on each loop.",
+"link": true
+},
+{
+"id": "term-bpa",
+"name": "Business Process Automation (BPA)",
+"aliases": [
+"BPA",
+"Business Process Automation"
+],
+"def": "Using software to automate a complete business workflow across people and systems, not just single tasks.",
+"example": "A leave request that is submitted online, approved by a manager and updated in payroll without any paperwork.",
+"link": true
 },
 {
 "id": "term-cdn",
@@ -222,7 +328,8 @@ window.HSC_GLOSSARY = [
 "Content Delivery Network"
 ],
 "def": "A geographically distributed network of servers that caches and serves static assets (images, CSS, JS) from locations close to the user, reducing latency and improving load times.",
-"example": "A video site serves Sydney users from a Sydney server instead of one in the USA."
+"example": "A video site serves Sydney users from a Sydney server instead of one in the USA.",
+"link": true
 },
 {
 "id": "term-cicd",
@@ -234,7 +341,18 @@ window.HSC_GLOSSARY = [
 "Continuous Integration / Continuous Deployment"
 ],
 "def": "A DevOps practice where code changes are automatically built, tested (CI) and deployed to staging or production environments (CD). Enables rapid, reliable delivery cycles with minimal manual intervention.",
-"example": "Every push to GitHub runs the tests automatically and deploys if they pass."
+"example": "Every push to GitHub runs the tests automatically and deploys if they pass.",
+"link": true
+},
+{
+"id": "term-cipher-text",
+"name": "Cipher Text",
+"aliases": [
+"Cipher Text"
+],
+"def": "Data after encryption, which is unreadable without the correct key.",
+"example": "\"Hello\" encrypted with AES might become 9f2c4e….",
+"link": true
 },
 {
 "id": "term-class",
@@ -243,7 +361,8 @@ window.HSC_GLOSSARY = [
 "Class"
 ],
 "def": "A blueprint or template defining the structure (attributes) and behaviour (methods) for a family of objects. Instantiation creates an individual Object from the class definition in memory.",
-"example": "A Student class defines a name, ID and enrol() method."
+"example": "A Student class defines a name, ID and enrol() method.",
+"link": true
 },
 {
 "id": "term-class-diagram",
@@ -252,7 +371,8 @@ window.HSC_GLOSSARY = [
 "Class Diagram"
 ],
 "def": "A UML diagram that represents classes, their attributes, methods, and the relationships (inheritance, composition, association) between them. A key deliverable in the Design phase of OOP projects.",
-"example": "A box for Book listing title, isbn and borrow(), linked to Library."
+"example": "A box for Book listing title, isbn and borrow(), linked to Library.",
+"link": true
 },
 {
 "id": "term-closed-loop",
@@ -264,7 +384,8 @@ window.HSC_GLOSSARY = [
 "Closed-loop control"
 ],
 "def": "A control system that uses sensor feedback to continuously adjust its output in real-time. The feedback loop allows the system to self-correct and maintain a desired state despite disturbances.",
-"example": "A robot vacuum uses a bump sensor to change direction when it hits a wall."
+"example": "A robot vacuum uses a bump sensor to change direction when it hits a wall.",
+"link": true
 },
 {
 "id": "term-code-review",
@@ -273,7 +394,8 @@ window.HSC_GLOSSARY = [
 "Code Review"
 ],
 "def": "A systematic peer examination of source code to find defects, ensure adherence to coding standards, and share knowledge before merging changes into the main codebase.",
-"example": "A teammate spots a missing input check before a pull request is merged."
+"example": "A teammate spots a missing input check before a pull request is merged.",
+"link": true
 },
 {
 "id": "term-cohesion",
@@ -282,7 +404,8 @@ window.HSC_GLOSSARY = [
 "Cohesion"
 ],
 "def": "A measure of how closely related the responsibilities of a single module or class are. High cohesion (single-responsibility) is a hallmark of good design — each unit does one thing well.",
-"example": "A ReportPrinter class that only formats and prints reports (high cohesion)."
+"example": "A ReportPrinter class that only formats and prints reports (high cohesion).",
+"link": true
 },
 {
 "id": "term-composition",
@@ -291,7 +414,18 @@ window.HSC_GLOSSARY = [
 "Composition"
 ],
 "def": "A strong \"has-a\" relationship where parts cannot exist independently of the whole. For example, a Room cannot exist without a Building. Contrasts with aggregation, where parts can exist independently.",
-"example": ""
+"example": "",
+"link": true
+},
+{
+"id": "term-computational-thinking",
+"name": "Computational Thinking",
+"aliases": [
+"Computational Thinking"
+],
+"def": "A way of solving problems using decomposition, pattern recognition, abstraction and algorithm design.",
+"example": "Breaking \"run the school canteen online\" into ordering, paying and preparing, each solved separately.",
+"link": true
 },
 {
 "id": "term-confidentiality",
@@ -300,7 +434,8 @@ window.HSC_GLOSSARY = [
 "Confidentiality"
 ],
 "def": "Ensuring that sensitive data is accessible only to authorised entities through encryption and access controls. One of the three pillars of the CIA triad.",
-"example": "Encrypting medical records so only the patient's doctor can read them."
+"example": "Encrypting medical records so only the patient's doctor can read them.",
+"link": true
 },
 {
 "id": "term-confusion-matrix",
@@ -309,7 +444,8 @@ window.HSC_GLOSSARY = [
 "Confusion Matrix"
 ],
 "def": "A table summarising prediction results for a classification model, showing counts of True Positives, True Negatives, False Positives, and False Negatives. Used to calculate metrics like accuracy, precision, and recall.",
-"example": "A spam filter with 90 true positives, 5 false positives, 8 false negatives and 97 true negatives."
+"example": "A spam filter with 90 true positives, 5 false positives, 8 false negatives and 97 true negatives.",
+"link": true
 },
 {
 "id": "term-constructor",
@@ -318,7 +454,29 @@ window.HSC_GLOSSARY = [
 "Constructor"
 ],
 "def": "A special method (such as __init__ in Python or the class-named method in Java) that initialises an object's state when it is first created. Constructors set default attribute values and perform setup logic.",
-"example": "def __init__(self, name): self.name = name"
+"example": "def __init__(self, name): self.name = name",
+"link": true
+},
+{
+"id": "term-cms",
+"name": "Content Management System (CMS)",
+"aliases": [
+"CMS",
+"Content Management System"
+],
+"def": "Software that lets people create, edit and publish web content through an interface rather than by writing code.",
+"example": "Teachers posting school news in WordPress.",
+"link": true
+},
+{
+"id": "term-copyright",
+"name": "Copyright",
+"aliases": [
+"Copyright"
+],
+"def": "The legal right of creators to control how their original work, including source code, is copied and used.",
+"example": "Reusing code from a tutorial only as its licence allows, and crediting the author.",
+"link": true
 },
 {
 "id": "term-cors",
@@ -328,7 +486,8 @@ window.HSC_GLOSSARY = [
 "Cross-Origin Resource Sharing"
 ],
 "def": "A browser security mechanism that uses HTTP headers to permit or restrict resource requests from different origins. Prevents malicious websites from making unauthorised API calls on behalf of users.",
-"example": "A server allows requests from myschool.edu.au but blocks scripts from other sites."
+"example": "A server allows requests from myschool.edu.au but blocks scripts from other sites.",
+"link": true
 },
 {
 "id": "term-coupling",
@@ -337,7 +496,18 @@ window.HSC_GLOSSARY = [
 "Coupling"
 ],
 "def": "The degree of interdependence between software modules. Loose coupling — minimising direct knowledge between modules — improves maintainability, testability, and security isolation.",
-"example": "A login module that calls a shared UserService rather than reading the database directly (loose coupling)."
+"example": "A login module that calls a shared UserService rather than reading the database directly (loose coupling).",
+"link": true
+},
+{
+"id": "term-cryptography",
+"name": "Cryptography",
+"aliases": [
+"Cryptography"
+],
+"def": "The use of mathematical techniques such as encryption, hashing and digital signatures to protect data and verify identity.",
+"example": "Encrypting stored credit card numbers and hashing passwords.",
+"link": true
 },
 {
 "id": "term-csrf",
@@ -347,7 +517,8 @@ window.HSC_GLOSSARY = [
 "Cross-Site Request Forgery"
 ],
 "def": "An attack that tricks an authenticated user's browser into submitting unwanted requests to another website. Mitigated by anti-CSRF tokens, SameSite cookies, and validating the request origin.",
-"example": "A hidden form on a malicious page makes a logged-in user's browser transfer money."
+"example": "A hidden form on a malicious page makes a logged-in user's browser transfer money.",
+"link": true
 },
 {
 "id": "term-css",
@@ -357,7 +528,8 @@ window.HSC_GLOSSARY = [
 "Cascading Style Sheets"
 ],
 "def": "A stylesheet language used to describe the visual presentation and layout of HTML documents. CSS controls colours, fonts, spacing, responsive breakpoints, and animations.",
-"example": "h1 { color: navy; } makes every main heading navy."
+"example": "h1 { color: navy; } makes every main heading navy.",
+"link": true
 },
 {
 "id": "term-dast",
@@ -367,7 +539,8 @@ window.HSC_GLOSSARY = [
 "Dynamic Application Security Testing"
 ],
 "def": "Security testing performed against a running application from the outside — simulating the perspective of an attacker. Identifies vulnerabilities such as SQL injection and XSS at runtime.",
-"example": "Running OWASP ZAP against a live test site to find XSS vulnerabilities."
+"example": "Running OWASP ZAP against a live test site to find XSS vulnerabilities.",
+"link": true
 },
 {
 "id": "term-data-dictionary",
@@ -376,7 +549,69 @@ window.HSC_GLOSSARY = [
 "Data Dictionary"
 ],
 "def": "A metadata tool that documents every variable's name, data type, size, description, and validation rules. Essential for the Design and Implementation phases of the SDLC.",
-"example": "student_id | integer | 8 digits | unique ID for each student."
+"example": "student_id | integer | 8 digits | unique ID for each student.",
+"link": true
+},
+{
+"id": "term-data-flow-diagram",
+"name": "Data Flow Diagram (DFD)",
+"aliases": [
+"DFD",
+"Data Flow Diagram"
+],
+"def": "A diagram showing how data moves between external entities, processes and data stores in a system.",
+"example": "A student enters login details → \"Verify login\" process → reads the Users data store.",
+"link": true
+},
+{
+"id": "term-data-mining",
+"name": "Data Mining",
+"aliases": [
+"Data Mining"
+],
+"def": "Searching large data sets for patterns and relationships that can be used to make predictions or decisions.",
+"example": "A supermarket finding that customers who buy nappies often buy coffee.",
+"link": true
+},
+{
+"id": "term-data-packet",
+"name": "Data Packet",
+"aliases": [
+"Data Packet"
+],
+"def": "A small unit of data sent across a network, containing a header (addresses and order) and a payload (part of the message).",
+"example": "A web page split into many packets that travel separately and are reassembled by the browser.",
+"link": true
+},
+{
+"id": "term-data-register",
+"name": "Data Register",
+"aliases": [
+"Data Register"
+],
+"def": "A register inside a processor that holds a value currently being worked on.",
+"example": "Holding a sensor reading while the processor compares it with a threshold.",
+"link": true
+},
+{
+"id": "term-debugging-output",
+"name": "Debugging Output Statement",
+"aliases": [
+"Debugging Output Statement"
+],
+"def": "A temporary print or log statement added to code to show the value of variables while it runs.",
+"example": "print(f\"i={i}, total={total}\") inside a loop.",
+"link": true
+},
+{
+"id": "term-decimal",
+"name": "Decimal",
+"aliases": [
+"Decimal"
+],
+"def": "The base-10 number system, using the digits 0 to 9, that people use every day.",
+"example": "254 in decimal is 11111110 in binary.",
+"link": false
 },
 {
 "id": "term-decision-tree",
@@ -385,7 +620,8 @@ window.HSC_GLOSSARY = [
 "Decision Tree"
 ],
 "def": "A visual machine learning model representing a series of binary questions (decisions) that branch toward a final prediction or classification. Easy to interpret but prone to overfitting on complex data.",
-"example": "\"Is it raining?\" → yes: take the bus; no: \"Is it far?\" → …"
+"example": "\"Is it raining?\" → yes: take the bus; no: \"Is it far?\" → …",
+"link": true
 },
 {
 "id": "term-degrees-of-freedom",
@@ -396,7 +632,8 @@ window.HSC_GLOSSARY = [
 "Degrees of freedom"
 ],
 "def": "The number of independent directions in which a robotic or mechanical system can move. A typical industrial robot arm has 6 DOF — three for position and three for orientation.",
-"example": "A robot arm with a rotating base, shoulder and elbow has 3 DOF."
+"example": "A robot arm with a rotating base, shoulder and elbow has 3 DOF.",
+"link": true
 },
 {
 "id": "term-desk-checking",
@@ -405,7 +642,8 @@ window.HSC_GLOSSARY = [
 "Desk Checking"
 ],
 "def": "The process of manually tracing through an algorithm step-by-step with sample data using a trace table to verify correctness before coding. A key NESA examination skill.",
-"example": "Using a trace table to follow i and total through a loop by hand."
+"example": "Using a trace table to follow i and total through a loop by hand.",
+"link": true
 },
 {
 "id": "term-devops",
@@ -414,7 +652,18 @@ window.HSC_GLOSSARY = [
 "DevOps"
 ],
 "def": "A software development practice that unifies development and operations teams for continuous, reliable delivery. DevOps emphasises automation, monitoring, and collaboration to shorten the development lifecycle.",
-"example": "Developers and operations staff share one pipeline that builds, tests and monitors an app."
+"example": "Developers and operations staff share one pipeline that builds, tests and monitors an app.",
+"link": true
+},
+{
+"id": "term-digital-disruption",
+"name": "Digital Disruption",
+"aliases": [
+"Digital Disruption"
+],
+"def": "The change that happens when new digital technologies transform how an industry works.",
+"example": "Streaming services replacing video rental shops.",
+"link": true
 },
 {
 "id": "term-digital-signature",
@@ -423,7 +672,18 @@ window.HSC_GLOSSARY = [
 "Digital Signature"
 ],
 "def": "A cryptographic mechanism that proves the authenticity and integrity of a message using a sender's private key. Recipients verify the signature using the sender's public key.",
-"example": "A software update is signed so users can confirm it came from the real developer."
+"example": "A software update is signed so users can confirm it came from the real developer.",
+"link": true
+},
+{
+"id": "term-divide-and-conquer",
+"name": "Divide and Conquer",
+"aliases": [
+"Divide and Conquer"
+],
+"def": "An algorithm design strategy that splits a problem into smaller sub-problems of the same kind, solves them, and combines the results.",
+"example": "Binary search repeatedly halves the list it is searching.",
+"link": true
 },
 {
 "id": "term-dns",
@@ -433,7 +693,8 @@ window.HSC_GLOSSARY = [
 "Domain Name System"
 ],
 "def": "The system that translates human-readable domain names (e.g., example.com) into machine-readable IP addresses. Often called the \"phone book of the internet.\"",
-"example": ""
+"example": "",
+"link": true
 },
 {
 "id": "term-dom",
@@ -443,7 +704,18 @@ window.HSC_GLOSSARY = [
 "Document Object Model"
 ],
 "def": "A tree-structured programming interface representing an HTML document. JavaScript can traverse and manipulate the DOM to dynamically update page content, structure, and style without a full page reload.",
-"example": "document.getElementById(\"score\").textContent = 10;"
+"example": "document.getElementById(\"score\").textContent = 10;",
+"link": true
+},
+{
+"id": "term-e-commerce",
+"name": "E-Commerce",
+"aliases": [
+"E-Commerce"
+],
+"def": "Buying and selling goods or services online.",
+"example": "An online store with a shopping cart and card payments.",
+"link": true
 },
 {
 "id": "term-encapsulation",
@@ -452,7 +724,28 @@ window.HSC_GLOSSARY = [
 "Encapsulation"
 ],
 "def": "The bundling of data (attributes) and the methods operating on that data within a single unit (class). Access modifiers (public, private, protected) control visibility, preventing unintended external interference.",
-"example": "A BankAccount hides balance and exposes deposit()."
+"example": "A BankAccount hides balance and exposes deposit().",
+"link": true
+},
+{
+"id": "term-end-effector",
+"name": "End Effector",
+"aliases": [
+"End Effector"
+],
+"def": "The device at the end of a robotic arm that interacts with the environment.",
+"example": "A gripper, suction cup or welding torch.",
+"link": true
+},
+{
+"id": "term-exception-management",
+"name": "Exception Management",
+"aliases": [
+"Exception Management"
+],
+"def": "Handling runtime errors so a program responds safely instead of crashing or revealing sensitive details.",
+"example": "Catching a database error and showing \"Something went wrong\" while logging the details privately.",
+"link": true
 },
 {
 "id": "term-facade-pattern",
@@ -461,7 +754,18 @@ window.HSC_GLOSSARY = [
 "Facade Pattern"
 ],
 "def": "A design pattern providing a simplified interface to a complex set of classes, hiding underlying complexity. Example: a payment gateway's facade hides the details of multiple payment processors.",
-"example": ""
+"example": "",
+"link": true
+},
+{
+"id": "term-faulty-data",
+"name": "Faulty and Abnormal Data",
+"aliases": [
+"Faulty and Abnormal Data"
+],
+"def": "Test data that is invalid or unexpected, used to check that a program rejects it safely.",
+"example": "Entering \"abc\", −5 or an empty field into an age box.",
+"link": true
 },
 {
 "id": "term-feasibility-analysis",
@@ -470,7 +774,8 @@ window.HSC_GLOSSARY = [
 "Feasibility Analysis"
 ],
 "def": "An assessment of whether a project is viable across scheduling, financial, technical, and operational dimensions. Conducted during the Planning phase to determine project go/no-go decisions.",
-"example": "Checking whether a booking app can be built in 10 weeks with the school's budget."
+"example": "Checking whether a booking app can be built in 10 weeks with the school's budget.",
+"link": true
 },
 {
 "id": "term-flowchart",
@@ -479,7 +784,8 @@ window.HSC_GLOSSARY = [
 "Flowchart"
 ],
 "def": "A visual diagram using standardised symbols (oval for start/end, rectangle for process, diamond for decision) connected by arrows to represent the flow of logic through an algorithm.",
-"example": "A diamond asks \"age ≥ 18?\" with yes and no arrows to different processes."
+"example": "A diamond asks \"age ≥ 18?\" with yes and no arrows to different processes.",
+"link": true
 },
 {
 "id": "term-frontend-framework",
@@ -488,7 +794,8 @@ window.HSC_GLOSSARY = [
 "Front-end Framework"
 ],
 "def": "Pre-built software environments (like React, Vue, or Angular) providing a structured approach to building browser user interfaces with reusable components, state management, and routing.",
-"example": "Building a quiz interface with React components."
+"example": "Building a quiz interface with React components.",
+"link": true
 },
 {
 "id": "term-fsm",
@@ -498,7 +805,8 @@ window.HSC_GLOSSARY = [
 "Finite State Machine"
 ],
 "def": "A computational model with a finite set of states, defined transitions triggered by inputs or events, and associated actions. FSMs are fundamental to modelling embedded systems, protocols, and UI logic.",
-"example": "A traffic light cycling red → green → amber → red."
+"example": "A traffic light cycling red → green → amber → red.",
+"link": true
 },
 {
 "id": "term-functional-requirements",
@@ -507,7 +815,8 @@ window.HSC_GLOSSARY = [
 "Functional Requirements"
 ],
 "def": "Descriptions of the specific behaviors, features, and functions that a software system must provide. They define *what* the system should do.",
-"example": "\"The system must let students book a library room.\""
+"example": "\"The system must let students book a library room.\"",
+"link": true
 },
 {
 "id": "term-gantt",
@@ -516,7 +825,8 @@ window.HSC_GLOSSARY = [
 "Gantt Chart"
 ],
 "def": "A horizontal bar chart used to visualise project schedules, task durations, and dependencies over time. A key tool during the Planning phase of the SDLC.",
-"example": "A bar for \"Design\" in weeks 1–2 and \"Development\" in weeks 3–6."
+"example": "A bar for \"Design\" in weeks 1–2 and \"Development\" in weeks 3–6.",
+"link": true
 },
 {
 "id": "term-generalisation",
@@ -525,7 +835,18 @@ window.HSC_GLOSSARY = [
 "Generalisation"
 ],
 "def": "The engineering process of identifying common traits among multiple classes and moving them into a shared parent class. Improves code reuse and design clarity.",
-"example": "Moving name and email from Student and Teacher into a Person class."
+"example": "Moving name and email from Student and Teacher into a Person class.",
+"link": true
+},
+{
+"id": "term-grey-box",
+"name": "Grey-Box Testing",
+"aliases": [
+"Grey-Box Testing"
+],
+"def": "Testing with partial knowledge of the internal code, combining black-box and white-box approaches.",
+"example": "Knowing a login uses a database, then testing inputs designed to probe for SQL injection.",
+"link": true
 },
 {
 "id": "term-gui",
@@ -535,7 +856,18 @@ window.HSC_GLOSSARY = [
 "Graphical User Interface"
 ],
 "def": "An interface allowing users to interact with software through visual elements (buttons, menus, icons) rather than text commands. GUI design is evaluated against usability heuristics.",
-"example": "A form with text boxes and a \"Submit\" button."
+"example": "A form with text boxes and a \"Submit\" button.",
+"link": true
+},
+{
+"id": "term-hash-table",
+"name": "Hash Table",
+"aliases": [
+"Hash Table"
+],
+"def": "A data structure that stores key–value pairs and uses a hash function to find a value very quickly from its key.",
+"example": "A Python dictionary: phone[\"Ava\"].",
+"link": true
 },
 {
 "id": "term-hashing",
@@ -544,7 +876,8 @@ window.HSC_GLOSSARY = [
 "Hashing"
 ],
 "def": "A one-way mathematical function that produces a fixed-length fingerprint of data. Used for secure password storage, data integrity verification, and digital signatures. Cryptographic hash functions (SHA-256, bcrypt) ensure that even identical inputs produce consistent outputs, but the original data cannot be recovered.",
-"example": "Storing a password as its SHA-256 hash rather than as plain text."
+"example": "Storing a password as its SHA-256 hash rather than as plain text.",
+"link": true
 },
 {
 "id": "term-headless-cms",
@@ -553,7 +886,8 @@ window.HSC_GLOSSARY = [
 "Headless CMS"
 ],
 "def": "A back-end-only content management system that stores and delivers content via API, decoupled from any front-end presentation layer. Allows content to be rendered on any platform or framework.",
-"example": "A school news site pulls articles from Strapi through an API."
+"example": "A school news site pulls articles from Strapi through an API.",
+"link": true
 },
 {
 "id": "term-h-bridge",
@@ -562,7 +896,18 @@ window.HSC_GLOSSARY = [
 "H-Bridge"
 ],
 "def": "A circuit (such as the L298N) that allows a microcontroller to control the speed and direction of a DC motor by switching transistors to forward or reverse current flow.",
-"example": "Reversing a robot's wheel motor by switching an L298N's inputs."
+"example": "Reversing a robot's wheel motor by switching an L298N's inputs.",
+"link": true
+},
+{
+"id": "term-hexadecimal",
+"name": "Hexadecimal",
+"aliases": [
+"Hexadecimal"
+],
+"def": "The base-16 number system, using digits 0–9 and A–F; each hex digit stands for four bits.",
+"example": "The colour #FF0000 is pure red.",
+"link": true
 },
 {
 "id": "term-html",
@@ -572,7 +917,8 @@ window.HSC_GLOSSARY = [
 "HyperText Markup Language"
 ],
 "def": "The standard markup language used to define the structure and content of web pages using semantic elements like headings, paragraphs, lists, and links.",
-"example": "<h1>Welcome</h1>"
+"example": "<h1>Welcome</h1>",
+"link": true
 },
 {
 "id": "term-http",
@@ -582,7 +928,8 @@ window.HSC_GLOSSARY = [
 "HyperText Transfer Protocol"
 ],
 "def": "The application-layer protocol used for transferring plain-text content between clients and servers. HTTP is stateless — each request is independent.",
-"example": "A browser sends GET /index.html and the server replies 200 OK."
+"example": "A browser sends GET /index.html and the server replies 200 OK.",
+"link": true
 },
 {
 "id": "term-https",
@@ -592,7 +939,8 @@ window.HSC_GLOSSARY = [
 "HTTPS"
 ],
 "def": "A secure version of HTTP encrypted with TLS/SSL to provide confidentiality and integrity of data in transit. Required for any website handling sensitive user data.",
-"example": "The padlock icon when logging in to online banking."
+"example": "The padlock icon when logging in to online banking.",
+"link": true
 },
 {
 "id": "term-i2c",
@@ -602,7 +950,8 @@ window.HSC_GLOSSARY = [
 "Inter-Integrated Circuit"
 ],
 "def": "A two-wire communication protocol (SDA and SCL) used to connect multiple sensors and displays to a master microcontroller. Supports multiple slave devices on the same bus.",
-"example": "An OLED display and a temperature sensor sharing the same two wires to an Arduino."
+"example": "An OLED display and a temperature sensor sharing the same two wires to an Arduino.",
+"link": true
 },
 {
 "id": "term-ide",
@@ -612,7 +961,29 @@ window.HSC_GLOSSARY = [
 "Integrated Development Environment"
 ],
 "def": "A software application providing comprehensive facilities for development, typically including a code editor, build tools, debugger, and integrated version control.",
-"example": "VS Code with its debugger and Git integration."
+"example": "VS Code with its debugger and Git integration.",
+"link": true
+},
+{
+"id": "term-image-recognition",
+"name": "Image Recognition",
+"aliases": [
+"Image Recognition"
+],
+"def": "Using ML, usually neural networks, to identify objects, people or features in images.",
+"example": "A phone app identifying a plant from a photo.",
+"link": true
+},
+{
+"id": "term-implementation-methods",
+"name": "Implementation Methods (Direct, Phased, Parallel, Pilot)",
+"aliases": [
+"Direct, Phased, Parallel, Pilot",
+"Implementation Methods"
+],
+"def": "Ways to change over from an old system to a new one: all at once (direct), in stages (phased), both running together (parallel), or at one site first (pilot).",
+"example": "A school trials new attendance software in Year 7 only (pilot) before every year group uses it.",
+"link": true
 },
 {
 "id": "term-inheritance",
@@ -621,7 +992,18 @@ window.HSC_GLOSSARY = [
 "Inheritance"
 ],
 "def": "A mechanism where a subclass (child) automatically acquires the attributes and methods of a superclass (parent), establishing an \"is-a\" relationship. Enables code reuse and polymorphism.",
-"example": "class Dog(Animal): gives Dog everything Animal has."
+"example": "class Dog(Animal): gives Dog everything Animal has.",
+"link": true
+},
+{
+"id": "term-instruction-set",
+"name": "Instruction Set",
+"aliases": [
+"Instruction Set"
+],
+"def": "The complete set of basic commands (opcodes) that a particular processor can execute.",
+"example": "Arduino Uno code is compiled for the AVR instruction set; a Raspberry Pi uses ARM.",
+"link": true
 },
 {
 "id": "term-integrity",
@@ -630,7 +1012,30 @@ window.HSC_GLOSSARY = [
 "Integrity"
 ],
 "def": "Guaranteeing that data has not been maliciously or accidentally altered without detection. One of the three pillars of the CIA triad, ensured through hashing and digital signatures.",
-"example": "A checksum shows a downloaded installer has not been altered."
+"example": "A checksum shows a downloaded installer has not been altered.",
+"link": true
+},
+{
+"id": "term-intellectual-property",
+"name": "Intellectual Property (IP)",
+"aliases": [
+"IP",
+"Intellectual Property"
+],
+"def": "Creations of the mind, such as software, designs and brand names, that the law protects.",
+"example": "A company's source code and logo.",
+"link": true
+},
+{
+"id": "term-internationalisation",
+"name": "Internationalisation (i18n)",
+"aliases": [
+"Internationalisation",
+"i18n"
+],
+"def": "Designing software so it can easily be adapted to different languages, regions and writing systems.",
+"example": "Storing all interface text in translation files and using UTF-8 so Arabic and Chinese display correctly.",
+"link": true
 },
 {
 "id": "term-interrupt",
@@ -639,7 +1044,18 @@ window.HSC_GLOSSARY = [
 "Interrupt"
 ],
 "def": "A signal that causes the CPU to pause its current task and execute a special handler routine (the ISR). Interrupts enable real-time responsiveness to external events without polling.",
-"example": "Pressing an emergency-stop button immediately halts a motor, whatever the program was doing."
+"example": "Pressing an emergency-stop button immediately halts a motor, whatever the program was doing.",
+"link": true
+},
+{
+"id": "term-ip-address",
+"name": "IP Address",
+"aliases": [
+"IP Address"
+],
+"def": "A number that identifies a device on a network so data can be delivered to it. IPv4 addresses have four parts from 0 to 255.",
+"example": "192.168.1.20",
+"link": true
 },
 {
 "id": "term-isr",
@@ -649,7 +1065,8 @@ window.HSC_GLOSSARY = [
 "Interrupt Service Routine"
 ],
 "def": "A specialised function executed immediately in response to an interrupt signal. Should be short and fast to avoid missing subsequent interrupts.",
-"example": "A short function that sets stop = True when a button pin changes."
+"example": "A short function that sets stop = True when a button pin changes.",
+"link": true
 },
 {
 "id": "term-iteration",
@@ -658,7 +1075,8 @@ window.HSC_GLOSSARY = [
 "Iteration"
 ],
 "def": "The repetition of a process or set of instructions. In programming, refers to loops (FOR, WHILE, REPEAT/UNTIL); in management, refers to repeated development cycles in Agile.",
-"example": "for mark in marks: total += mark"
+"example": "for mark in marks: total += mark",
+"link": true
 },
 {
 "id": "term-javascript",
@@ -667,7 +1085,8 @@ window.HSC_GLOSSARY = [
 "JavaScript"
 ],
 "def": "A client-side scripting language used to create interactivity and dynamic behaviour on web pages. Enables DOM manipulation, form validation, and asynchronous requests.",
-"example": "Showing an error message when a form field is left empty."
+"example": "Showing an error message when a form field is left empty.",
+"link": true
 },
 {
 "id": "term-jwt",
@@ -677,7 +1096,8 @@ window.HSC_GLOSSARY = [
 "JWT"
 ],
 "def": "An open standard for securely transmitting claims between parties as a compact, URL-safe JSON object. Widely used in stateless authentication flows.",
-"example": "After login, the app sends a signed token with each request instead of a password."
+"example": "After login, the app sends a signed token with each request instead of a password.",
+"link": true
 },
 {
 "id": "term-knn",
@@ -689,7 +1109,8 @@ window.HSC_GLOSSARY = [
 "KNN"
 ],
 "def": "An instance-based algorithm that makes predictions based on the labels of the K most similar training examples in feature space. Simple to implement but computationally expensive for large datasets.",
-"example": ""
+"example": "",
+"link": true
 },
 {
 "id": "term-linear-regression",
@@ -698,7 +1119,8 @@ window.HSC_GLOSSARY = [
 "Linear Regression"
 ],
 "def": "A supervised algorithm used to predict a continuous numerical value by fitting a straight line (or hyperplane) to the data. Outputs values on a continuous scale rather than discrete classes.",
-"example": "Predicting an exam score from hours studied."
+"example": "Predicting an exam score from hours studied.",
+"link": true
 },
 {
 "id": "term-linear-search",
@@ -707,7 +1129,18 @@ window.HSC_GLOSSARY = [
 "Linear Search"
 ],
 "def": "A search algorithm that checks every element in a list sequentially until a match is found or the list ends. Time complexity is O(n), making it slow for large datasets.",
-"example": "Checking each name on a roll, one by one, until you find \"Priya\"."
+"example": "Checking each name on a roll, one by one, until you find \"Priya\".",
+"link": true
+},
+{
+"id": "term-list",
+"name": "List",
+"aliases": [
+"List"
+],
+"def": "An ordered collection of items that can grow and shrink as the program runs.",
+"example": "names.append(\"Priya\")",
+"link": false
 },
 {
 "id": "term-logic-error",
@@ -716,7 +1149,8 @@ window.HSC_GLOSSARY = [
 "Logic Error"
 ],
 "def": "An error that causes a program to operate incorrectly or produce wrong output without crashing. The code is syntactically correct, but the algorithm or logic is flawed.",
-"example": "Using < instead of <=, so a mark of exactly 50 fails."
+"example": "Using < instead of <=, so a mark of exactly 50 fails.",
+"link": true
 },
 {
 "id": "term-logistic-regression",
@@ -725,7 +1159,18 @@ window.HSC_GLOSSARY = [
 "Logistic Regression"
 ],
 "def": "A classification algorithm that outputs the probability (between 0 and 1) of an input belonging to a specific class. Outputs are squashed to a range via the sigmoid function.",
-"example": "Predicting the probability that an email is spam."
+"example": "Predicting the probability that an email is spam.",
+"link": true
+},
+{
+"id": "term-machine-readable-data",
+"name": "Machine-Readable Data",
+"aliases": [
+"Machine-Readable Data"
+],
+"def": "Data in a structured format that software can process automatically.",
+"example": "Event details in JSON-LD so search engines can show dates and venues.",
+"link": true
 },
 {
 "id": "term-maintenance",
@@ -734,7 +1179,8 @@ window.HSC_GLOSSARY = [
 "Maintenance"
 ],
 "def": "The ongoing SDLC phase involving patching bugs, fixing security issues, and adding new features after software is deployed to production.",
-"example": "Releasing version 1.1 to fix a bug reported after launch."
+"example": "Releasing version 1.1 to fix a bug reported after launch.",
+"link": true
 },
 {
 "id": "term-manipulator",
@@ -743,7 +1189,8 @@ window.HSC_GLOSSARY = [
 "Manipulator"
 ],
 "def": "The parts of a mechatronic system (such as robotic grippers or arms) that physically interact with objects in the environment.",
-"example": "A two-finger gripper that picks up blocks."
+"example": "A two-finger gripper that picks up blocks.",
+"link": true
 },
 {
 "id": "term-manifest",
@@ -752,7 +1199,8 @@ window.HSC_GLOSSARY = [
 "Manifest"
 ],
 "def": "A JSON file (manifest.json) that defines a PWA's name, icons, theme colours, and installation settings for adding to a user's home screen.",
-"example": "{\"name\": \"Canteen App\", \"start_url\": \"/\"}"
+"example": "{\"name\": \"Canteen App\", \"start_url\": \"/\"}",
+"link": true
 },
 {
 "id": "term-mechatronics",
@@ -761,7 +1209,18 @@ window.HSC_GLOSSARY = [
 "Mechatronics"
 ],
 "def": "An interdisciplinary field integrating mechanical, electrical, and software engineering to design intelligent systems, robotics, and embedded devices.",
-"example": "An automatic irrigation system combining a moisture sensor, pump and control code."
+"example": "An automatic irrigation system combining a moisture sensor, pump and control code.",
+"link": true
+},
+{
+"id": "term-memory-management",
+"name": "Memory Management",
+"aliases": [
+"Memory Management"
+],
+"def": "Controlling how a program uses memory so it runs efficiently and cannot be exploited, for example through buffer overflows.",
+"example": "Closing files and database connections when they are no longer needed.",
+"link": true
 },
 {
 "id": "term-message-passing",
@@ -771,7 +1230,18 @@ window.HSC_GLOSSARY = [
 "Message-Passing"
 ],
 "def": "The process by which objects communicate by calling each other's methods. A fundamental concept in OOP describing object interaction.",
-"example": "cart.add(item): the checkout object sends a message to the cart object."
+"example": "cart.add(item): the checkout object sends a message to the cart object.",
+"link": true
+},
+{
+"id": "term-metadata",
+"name": "Metadata",
+"aliases": [
+"Metadata"
+],
+"def": "Data that describes other data.",
+"example": "A photo's date, camera model and GPS location.",
+"link": true
 },
 {
 "id": "term-method",
@@ -780,7 +1250,8 @@ window.HSC_GLOSSARY = [
 "Method"
 ],
 "def": "A function or procedure defined within a class that describes the behaviour of its objects. Methods operate on an object's attributes and can modify its state.",
-"example": "account.withdraw(50)"
+"example": "account.withdraw(50)",
+"link": true
 },
 {
 "id": "term-microcontroller",
@@ -789,7 +1260,8 @@ window.HSC_GLOSSARY = [
 "Microcontroller"
 ],
 "def": "An integrated circuit containing a processor, memory, and I/O peripherals on a single chip, used for real-time control of embedded systems.",
-"example": "An Arduino Uno or Raspberry Pi Pico."
+"example": "An Arduino Uno or Raspberry Pi Pico.",
+"link": true
 },
 {
 "id": "term-ml",
@@ -799,7 +1271,8 @@ window.HSC_GLOSSARY = [
 "Machine Learning"
 ],
 "def": "A specific subset of AI where systems automatically learn patterns from data and improve performance over time without being explicitly programmed for every scenario.",
-"example": "A model that learns to recognise handwritten digits from thousands of examples."
+"example": "A model that learns to recognise handwritten digits from thousands of examples.",
+"link": true
 },
 {
 "id": "term-mlops",
@@ -808,7 +1281,8 @@ window.HSC_GLOSSARY = [
 "MLOps"
 ],
 "def": "The automated process of designing, training, validating, deploying, and monitoring machine learning models, integrating DevOps principles into the ML lifecycle.",
-"example": "Automatically retraining and redeploying a recommendation model each month."
+"example": "Automatically retraining and redeploying a recommendation model each month.",
+"link": true
 },
 {
 "id": "term-mvc",
@@ -818,7 +1292,8 @@ window.HSC_GLOSSARY = [
 "Model-View-Controller"
 ],
 "def": "An architectural design pattern separating an application into three independent layers: Model (data & logic), View (UI), and Controller (input handling).",
-"example": "Flask routes (controller) fetch data (model) and render a template (view)."
+"example": "Flask routes (controller) fetch data (model) and render a template (view).",
+"link": true
 },
 {
 "id": "term-neural-network",
@@ -827,7 +1302,8 @@ window.HSC_GLOSSARY = [
 "Neural Network"
 ],
 "def": "A computational model inspired by the brain, composed of layers of interconnected artificial neurons that learn to recognise patterns in data through training.",
-"example": "A network with input, hidden and output layers that classifies photos of animals."
+"example": "A network with input, hidden and output layers that classifies photos of animals.",
+"link": true
 },
 {
 "id": "term-non-functional-requirements",
@@ -836,7 +1312,8 @@ window.HSC_GLOSSARY = [
 "Non-Functional Requirements"
 ],
 "def": "Requirements that describe *how well* a system should perform, such as security, usability, performance, reliability, and scalability — as opposed to what it should do.",
-"example": "\"Pages must load within 2 seconds.\""
+"example": "\"Pages must load within 2 seconds.\"",
+"link": true
 },
 {
 "id": "term-nosql-database",
@@ -845,7 +1322,8 @@ window.HSC_GLOSSARY = [
 "NoSQL Database"
 ],
 "def": "A schema-free database that stores data in flexible formats like JSON documents, key-value pairs, or wide columns, offering scalability and flexibility over strict consistency.",
-"example": "Storing user profiles as JSON documents in MongoDB."
+"example": "Storing user profiles as JSON documents in MongoDB.",
+"link": true
 },
 {
 "id": "term-object",
@@ -854,7 +1332,19 @@ window.HSC_GLOSSARY = [
 "Object"
 ],
 "def": "A specific runtime instance of a class, allocated in memory with its own state (attribute values). Multiple objects can exist from the same class blueprint, each maintaining independent state.",
-"example": "s1 = Student(\"Ava\") creates one student object."
+"example": "s1 = Student(\"Ava\") creates one student object.",
+"link": true
+},
+{
+"id": "term-orm",
+"name": "Object-Relational Mapping (ORM)",
+"aliases": [
+"ORM",
+"Object-Relational Mapping"
+],
+"def": "A technique that lets programmers work with database tables as objects in their programming language instead of writing SQL.",
+"example": "Student.query.filter_by(year=12) instead of SELECT * FROM student WHERE year = 12.",
+"link": true
 },
 {
 "id": "term-observer-pattern",
@@ -863,7 +1353,18 @@ window.HSC_GLOSSARY = [
 "Observer Pattern"
 ],
 "def": "A design pattern defining a one-to-many dependency so that when one object changes state, its dependents (observers) are automatically notified and updated.",
-"example": "A score display updates automatically whenever the game's score changes."
+"example": "A score display updates automatically whenever the game's score changes.",
+"link": true
+},
+{
+"id": "term-opcode",
+"name": "Opcode",
+"aliases": [
+"Opcode"
+],
+"def": "The part of a machine code instruction that tells the processor which operation to perform.",
+"example": "ADD or JMP in assembly language.",
+"link": true
 },
 {
 "id": "term-open-loop",
@@ -874,7 +1375,18 @@ window.HSC_GLOSSARY = [
 "Open-loop"
 ],
 "def": "A simple control system that operates on a fixed sequence or timer without using feedback. No mechanism to adjust output if conditions change.",
-"example": "A toaster that heats for a fixed time regardless of how brown the bread is."
+"example": "A toaster that heats for a fixed time regardless of how brown the bread is.",
+"link": true
+},
+{
+"id": "term-open-source",
+"name": "Open-Source Software",
+"aliases": [
+"Open-Source Software"
+],
+"def": "Software whose source code is freely available to use, study, change and share under a licence.",
+"example": "Linux, Python and VS Code.",
+"link": true
 },
 {
 "id": "term-overfitting",
@@ -883,7 +1395,28 @@ window.HSC_GLOSSARY = [
 "Overfitting"
 ],
 "def": "A model error where an algorithm memorises training noise instead of generalising, leading to high accuracy on training data but poor performance on unseen test data.",
-"example": "A model scores 99% on training data but 60% on new data."
+"example": "A model scores 99% on training data but 60% on new data.",
+"link": true
+},
+{
+"id": "term-parameter-passing",
+"name": "Parameter Passing",
+"aliases": [
+"Parameter Passing"
+],
+"def": "Sending values into a subprogram when it is called so it can work with them.",
+"example": "In calculate_gst(price), the value of price is passed in.",
+"link": true
+},
+{
+"id": "term-path-coverage",
+"name": "Path Coverage",
+"aliases": [
+"Path Coverage"
+],
+"def": "Testing so that every possible route through the code, such as every branch of each IF, is run at least once.",
+"example": "Test data that makes an IF statement both true and false.",
+"link": true
 },
 {
 "id": "term-penetration-testing",
@@ -892,7 +1425,8 @@ window.HSC_GLOSSARY = [
 "Penetration Testing"
 ],
 "def": "Authorised, realistic simulations of cyber attacks by ethical hackers to identify and exploit vulnerabilities. Provides evidence of real-world exploitability unlike SAST/DAST tools.",
-"example": "A hired ethical hacker tries to break into a school's student portal."
+"example": "A hired ethical hacker tries to break into a school's student portal.",
+"link": true
 },
 {
 "id": "term-peer-review",
@@ -901,7 +1435,8 @@ window.HSC_GLOSSARY = [
 "Peer Review"
 ],
 "def": "A process where colleagues systematically examine software products (code, documentation) to find defects and ensure adherence to standards before moving to the next stage.",
-"example": "Swapping algorithms with a classmate to check each other's logic."
+"example": "Swapping algorithms with a classmate to check each other's logic.",
+"link": true
 },
 {
 "id": "term-pid",
@@ -910,7 +1445,18 @@ window.HSC_GLOSSARY = [
 "PID Control"
 ],
 "def": "A control loop mechanism (Proportional-Integral-Derivative) that adjusts actuator output based on the error between a setpoint and actual state, enabling smooth, responsive control.",
-"example": "A drone adjusts motor speeds to hold a steady height despite wind."
+"example": "A drone adjusts motor speeds to hold a steady height despite wind.",
+"link": true
+},
+{
+"id": "term-plain-text",
+"name": "Plain Text",
+"aliases": [
+"Plain Text"
+],
+"def": "Readable data before it is encrypted, or after it is decrypted.",
+"example": "The message \"Meet at 3pm\" before encryption.",
+"link": true
 },
 {
 "id": "term-polling",
@@ -919,7 +1465,8 @@ window.HSC_GLOSSARY = [
 "Polling"
 ],
 "def": "A software technique where the CPU constantly checks a status flag to see if an event has occurred, rather than responding to interrupts. Less efficient than interrupts.",
-"example": "A loop that checks if button_pressed() every few milliseconds."
+"example": "A loop that checks if button_pressed() every few milliseconds.",
+"link": true
 },
 {
 "id": "term-polymorphism",
@@ -928,7 +1475,28 @@ window.HSC_GLOSSARY = [
 "Polymorphism"
 ],
 "def": "The ability for objects of different types to respond to the same method call in their own type-specific way. Achieved through method overriding (runtime) or overloading (compile-time).",
-"example": "shape.area() works for both a Circle and a Square."
+"example": "shape.area() works for both a Circle and a Square.",
+"link": true
+},
+{
+"id": "term-polynomial-regression",
+"name": "Polynomial Regression",
+"aliases": [
+"Polynomial Regression"
+],
+"def": "A regression model that fits a curve, rather than a straight line, to predict a numeric value.",
+"example": "Predicting a car's braking distance from its speed, which rises faster than a straight line.",
+"link": true
+},
+{
+"id": "term-privacy-by-design",
+"name": "Privacy by Design",
+"aliases": [
+"Privacy by Design"
+],
+"def": "An approach that builds privacy into software from the start: proactive, embedded in the design and respectful of users.",
+"example": "A fitness app that stores location data only on the phone unless the user chooses to share it.",
+"link": true
 },
 {
 "id": "term-prototype",
@@ -937,7 +1505,8 @@ window.HSC_GLOSSARY = [
 "Prototype"
 ],
 "def": "An early sample or interactive mock-up built to test a concept or elicit stakeholder requirements. Helps visualise the final system before full development.",
-"example": "A clickable Figma mock-up shown to the client before coding."
+"example": "A clickable Figma mock-up shown to the client before coding.",
+"link": true
 },
 {
 "id": "term-pseudocode",
@@ -946,7 +1515,8 @@ window.HSC_GLOSSARY = [
 "Pseudocode"
 ],
 "def": "A method of describing algorithm logic using capitalised keywords and indentation to show control structures, without language-specific syntax. NESA specifies a standard format for HSC examinations.",
-"example": "IF mark ≥ 50 THEN display \"Pass\" ENDIF"
+"example": "IF mark ≥ 50 THEN display \"Pass\" ENDIF",
+"link": true
 },
 {
 "id": "term-pwa",
@@ -956,7 +1526,8 @@ window.HSC_GLOSSARY = [
 "Progressive Web App"
 ],
 "def": "A web application built with standard technologies (HTML, CSS, JS) that offers a native-app-like experience, including offline functionality, push notifications, and installability.",
-"example": "A news site that can be installed on a phone and read offline."
+"example": "A news site that can be installed on a phone and read offline.",
+"link": true
 },
 {
 "id": "term-pwm",
@@ -966,7 +1537,39 @@ window.HSC_GLOSSARY = [
 "Pulse Width Modulation"
 ],
 "def": "A technique for controlling the average voltage delivered to a component by varying the duty cycle of a square wave. Used to control motor speed and LED brightness.",
-"example": "Dimming an LED by switching it on 25% of the time."
+"example": "Dimming an LED by switching it on 25% of the time.",
+"link": true
+},
+{
+"id": "term-quality-assurance",
+"name": "Quality Assurance (QA)",
+"aliases": [
+"QA",
+"Quality Assurance"
+],
+"def": "The planned, ongoing checks that make sure software meets agreed quality criteria and legal requirements.",
+"example": "Agreeing a 2-second load-time target and testing it on every release.",
+"link": true
+},
+{
+"id": "term-race-condition",
+"name": "Race Condition",
+"aliases": [
+"Race Condition"
+],
+"def": "A flaw where the result depends on the timing of two actions happening at once, which attackers can exploit.",
+"example": "Two withdrawals processed at the same moment both see $100 and both succeed.",
+"link": true
+},
+{
+"id": "term-record",
+"name": "Record",
+"aliases": [
+"Record"
+],
+"def": "A data structure that groups related fields of different types about one item.",
+"example": "A student record with name (string), ID (integer) and enrolled (Boolean).",
+"link": false
 },
 {
 "id": "term-recursion",
@@ -975,7 +1578,8 @@ window.HSC_GLOSSARY = [
 "Recursion"
 ],
 "def": "A programming technique where a function calls itself to solve a problem. Each call reduces the problem to a smaller subproblem until a base case is reached.",
-"example": "factorial(n) = n × factorial(n − 1), stopping at factorial(1) = 1."
+"example": "factorial(n) = n × factorial(n − 1), stopping at factorial(1) = 1.",
+"link": true
 },
 {
 "id": "term-reinforcement-learning",
@@ -984,7 +1588,8 @@ window.HSC_GLOSSARY = [
 "Reinforcement Learning"
 ],
 "def": "A machine learning model where an agent learns through trial and error by receiving rewards or penalties from an environment, improving policy over time.",
-"example": "A game-playing agent earns points for winning and learns better moves."
+"example": "A game-playing agent earns points for winning and learns better moves.",
+"link": true
 },
 {
 "id": "term-requirements-elicitation",
@@ -993,7 +1598,8 @@ window.HSC_GLOSSARY = [
 "Requirements Elicitation"
 ],
 "def": "The process of seeking and capturing requirements of a system from users and stakeholders through interviews, surveys, focus groups, and observation.",
-"example": "Interviewing library staff about how they currently track loans."
+"example": "Interviewing library staff about how they currently track loans.",
+"link": true
 },
 {
 "id": "term-rest",
@@ -1003,7 +1609,19 @@ window.HSC_GLOSSARY = [
 "Representational State Transfer"
 ],
 "def": "An architectural style for designing networked APIs using standard HTTP methods (GET, POST, PUT, DELETE) and stateless communication. The dominant approach for modern web services.",
-"example": "DELETE /api/students/42 removes student 42."
+"example": "DELETE /api/students/42 removes student 42.",
+"link": true
+},
+{
+"id": "term-rpa",
+"name": "Robotic Process Automation (RPA)",
+"aliases": [
+"RPA",
+"Robotic Process Automation"
+],
+"def": "Software bots that copy what a person does on a computer to complete repetitive, rule-based tasks.",
+"example": "A bot that copies invoice details from emails into an accounting system.",
+"link": true
 },
 {
 "id": "term-runtime-error",
@@ -1012,7 +1630,18 @@ window.HSC_GLOSSARY = [
 "Runtime Error"
 ],
 "def": "An error that occurs while a program is running, often causing it to crash due to impossible operations like division by zero or accessing an out-of-bounds array index.",
-"example": "Dividing by zero when a class has no students."
+"example": "Dividing by zero when a class has no students.",
+"link": true
+},
+{
+"id": "term-sandboxing",
+"name": "Sandboxing",
+"aliases": [
+"Sandboxing"
+],
+"def": "Running code in an isolated environment so it cannot harm the rest of the system.",
+"example": "A browser runs each tab in its own sandbox, so a malicious page cannot read your files.",
+"link": true
 },
 {
 "id": "term-sast",
@@ -1022,7 +1651,8 @@ window.HSC_GLOSSARY = [
 "Static Application Security Testing"
 ],
 "def": "Security testing conducted on source code, bytecode, or binaries without executing the application (white-box testing). Identifies vulnerabilities early in the SDLC.",
-"example": "A tool such as Bandit scans Python source code for insecure functions."
+"example": "A tool such as Bandit scans Python source code for insecure functions.",
+"link": true
 },
 {
 "id": "term-scrum",
@@ -1031,7 +1661,8 @@ window.HSC_GLOSSARY = [
 "Scrum"
 ],
 "def": "A lightweight Agile framework organising development into fixed-length iterations called Sprints (typically 2–4 weeks). Defines roles and ceremonies for iterative delivery.",
-"example": "A daily stand-up, a two-week sprint, and a sprint review with the client."
+"example": "A daily stand-up, a two-week sprint, and a sprint review with the client.",
+"link": true
 },
 {
 "id": "term-sdlc",
@@ -1041,7 +1672,18 @@ window.HSC_GLOSSARY = [
 "Software Development Life Cycle"
 ],
 "def": "The structured set of cyclical phases used to plan, design, develop, test, and deliver software. NESA defines four key phases: Defining & Understanding, Planning & Designing, Producing & Implementing, and Testing & Evaluating.",
-"example": "Moving a canteen app from requirements through design, testing and maintenance."
+"example": "Moving a canteen app from requirements through design, testing and maintenance.",
+"link": true
+},
+{
+"id": "term-security-by-design",
+"name": "Security by Design",
+"aliases": [
+"Security by Design"
+],
+"def": "Building security into software from the first design decisions rather than adding it at the end.",
+"example": "Choosing parameterised queries and role-based access before any code is written.",
+"link": true
 },
 {
 "id": "term-selection",
@@ -1050,7 +1692,8 @@ window.HSC_GLOSSARY = [
 "Selection"
 ],
 "def": "A control structure that evaluates a condition to choose between different execution paths using IF/ELSE or CASE statements.",
-"example": "if age >= 18: print(\"Adult\")"
+"example": "if age >= 18: print(\"Adult\")",
+"link": true
 },
 {
 "id": "term-semi-supervised-learning",
@@ -1059,7 +1702,8 @@ window.HSC_GLOSSARY = [
 "Semi-Supervised Learning"
 ],
 "def": "A machine learning model that uses a small amount of labelled data combined with a large pool of unlabelled data to improve learning efficiency.",
-"example": "Labelling 100 photos by hand, then letting the model label 10,000 more."
+"example": "Labelling 100 photos by hand, then letting the model label 10,000 more.",
+"link": true
 },
 {
 "id": "term-sensor",
@@ -1068,7 +1712,8 @@ window.HSC_GLOSSARY = [
 "Sensor"
 ],
 "def": "An input device that converts physical properties (light, temperature, motion, distance) into electrical signals for a microcontroller to process.",
-"example": "An ultrasonic sensor measuring the distance to a wall."
+"example": "An ultrasonic sensor measuring the distance to a wall.",
+"link": true
 },
 {
 "id": "term-sequence",
@@ -1077,7 +1722,18 @@ window.HSC_GLOSSARY = [
 "Sequence"
 ],
 "def": "A control structure where instructions are executed in order, one after another, as they are written.",
-"example": "Read two numbers, add them, then display the total."
+"example": "Read two numbers, add them, then display the total.",
+"link": true
+},
+{
+"id": "term-sequential-file",
+"name": "Sequential File",
+"aliases": [
+"Sequential File"
+],
+"def": "A file whose records are stored and read in order, one after another, from the start.",
+"example": "A CSV log file read line by line.",
+"link": true
 },
 {
 "id": "term-service-worker",
@@ -1086,7 +1742,8 @@ window.HSC_GLOSSARY = [
 "Service Worker"
 ],
 "def": "A JavaScript file that runs in the background to handle caching, push notifications, and offline functionality in Progressive Web Apps.",
-"example": "Caching a timetable so it still opens with no signal."
+"example": "Caching a timetable so it still opens with no signal.",
+"link": true
 },
 {
 "id": "term-servo-motor",
@@ -1095,7 +1752,38 @@ window.HSC_GLOSSARY = [
 "Servo Motor"
 ],
 "def": "A motor that provides precise angular control, typically using a PWM signal to set a position between 0 and 180 degrees. Includes built-in feedback control.",
-"example": "Setting a servo to 90° to point a camera straight ahead."
+"example": "Setting a servo to 90° to point a camera straight ahead.",
+"link": true
+},
+{
+"id": "term-session-management",
+"name": "Session Management",
+"aliases": [
+"Session Management"
+],
+"def": "Securely tracking a logged-in user across requests, including creating, protecting and ending their session.",
+"example": "Expiring a session after 15 minutes of inactivity and issuing a new session ID at login.",
+"link": true
+},
+{
+"id": "term-side-channel-attack",
+"name": "Side Channel Attack",
+"aliases": [
+"Side Channel Attack"
+],
+"def": "An attack that gathers secrets from how a system behaves, such as timing, power use or sound, rather than from its data.",
+"example": "Guessing a password one character at a time by measuring how long each check takes.",
+"link": true
+},
+{
+"id": "term-single-line-stepping",
+"name": "Single Line Stepping",
+"aliases": [
+"Single Line Stepping"
+],
+"def": "Running a program one line at a time in a debugger to watch exactly what each line does.",
+"example": "Stepping through a loop to see where total goes wrong.",
+"link": true
 },
 {
 "id": "term-singleton-pattern",
@@ -1104,7 +1792,8 @@ window.HSC_GLOSSARY = [
 "Singleton Pattern"
 ],
 "def": "A design pattern that ensures a class has only one instance and provides a global access point to it. Used for shared resources like database connections.",
-"example": "One shared database connection object used across an app."
+"example": "One shared database connection object used across an app.",
+"link": true
 },
 {
 "id": "term-spi",
@@ -1114,7 +1803,8 @@ window.HSC_GLOSSARY = [
 "Serial Peripheral Interface"
 ],
 "def": "A high-speed, four-wire communication protocol (MOSI, MISO, CLK, CS) used for devices like SD cards and ADCs. Faster than I2C but requires more wires.",
-"example": "Reading data from an SD card module on an Arduino."
+"example": "Reading data from an SD card module on an Arduino.",
+"link": true
 },
 {
 "id": "term-sql-database",
@@ -1124,7 +1814,8 @@ window.HSC_GLOSSARY = [
 "SQL (Relational) Database"
 ],
 "def": "A database that stores data in structured tables with rows and columns, enforcing relationships between tables using primary and foreign keys.",
-"example": "A Students table linked to an Enrolments table by student_id."
+"example": "A Students table linked to an Enrolments table by student_id.",
+"link": true
 },
 {
 "id": "term-sql-injection",
@@ -1133,7 +1824,28 @@ window.HSC_GLOSSARY = [
 "SQL Injection"
 ],
 "def": "A vulnerability where malicious SQL statements are inserted into input fields and executed by the database. Prevented via parameterised queries and input validation.",
-"example": "Entering ' OR 1=1 -- into a login box to bypass the password check."
+"example": "Entering ' OR 1=1 -- into a login box to bypass the password check.",
+"link": true
+},
+{
+"id": "term-ssl-certificate",
+"name": "SSL/TLS Certificate",
+"aliases": [
+"SSL/TLS Certificate"
+],
+"def": "A digital certificate that proves a website's identity and enables encrypted HTTPS connections.",
+"example": "The certificate that makes a bank's address show a padlock.",
+"link": true
+},
+{
+"id": "term-stack",
+"name": "Stack",
+"aliases": [
+"Stack"
+],
+"def": "A last in, first out (LIFO) data structure: items are added (pushed) and removed (popped) from the top.",
+"example": "The undo history in a text editor.",
+"link": false
 },
 {
 "id": "term-storyboard",
@@ -1142,7 +1854,8 @@ window.HSC_GLOSSARY = [
 "Storyboard"
 ],
 "def": "A sequence of visual layouts used in the Design phase to show the user's journey through a system, screen by screen.",
-"example": "Six sketched screens showing a student booking, paying and receiving a receipt."
+"example": "Six sketched screens showing a student booking, paying and receiving a receipt.",
+"link": true
 },
 {
 "id": "term-stepper-motor",
@@ -1151,7 +1864,8 @@ window.HSC_GLOSSARY = [
 "Stepper Motor"
 ],
 "def": "A motor that moves in discrete, precise steps rather than continuously, ideal for positioning tasks in 3D printers and CNC machines.",
-"example": "Moving a 3D printer's print head exactly 0.1 mm."
+"example": "Moving a 3D printer's print head exactly 0.1 mm.",
+"link": true
 },
 {
 "id": "term-stride",
@@ -1160,7 +1874,8 @@ window.HSC_GLOSSARY = [
 "STRIDE"
 ],
 "def": "A threat modelling framework identifying security risks: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, and Elevation of Privilege.",
-"example": "Asking \"Could someone spoof a teacher's login?\" while reviewing a design."
+"example": "Asking \"Could someone spoof a teacher's login?\" while reviewing a design.",
+"link": true
 },
 {
 "id": "term-structure-chart",
@@ -1169,7 +1884,18 @@ window.HSC_GLOSSARY = [
 "Structure Chart"
 ],
 "def": "A hierarchical tool showing how a system is divided into modules, functions within those modules, and their relationships. Used extensively in the Design phase.",
-"example": "A \"Process Results\" module split into \"Read Marks\", \"Calculate Average\" and \"Print Report\"."
+"example": "A \"Process Results\" module split into \"Read Marks\", \"Calculate Average\" and \"Print Report\".",
+"link": true
+},
+{
+"id": "term-stub",
+"name": "Stub",
+"aliases": [
+"Stub"
+],
+"def": "A placeholder subroutine that stands in for code not yet written, so the rest of the program can be tested.",
+"example": "def calculate_tax(pay): return 0 while the real tax rules are still being written.",
+"link": true
 },
 {
 "id": "term-supervised-learning",
@@ -1178,7 +1904,8 @@ window.HSC_GLOSSARY = [
 "Supervised Learning"
 ],
 "def": "A machine learning model trained on a labelled dataset where both inputs and correct outputs are provided, enabling the model to learn the mapping between them.",
-"example": "Training on house photos labelled with their sale prices."
+"example": "Training on house photos labelled with their sale prices.",
+"link": true
 },
 {
 "id": "term-symmetric-encryption",
@@ -1187,7 +1914,8 @@ window.HSC_GLOSSARY = [
 "Symmetric Encryption"
 ],
 "def": "A fast encryption method (like AES-256) where the same key is used for both encryption and decryption. Fast but requires secure key distribution.",
-"example": "Encrypting a zip file with AES and sharing the same password with a friend."
+"example": "Encrypting a zip file with AES and sharing the same password with a friend.",
+"link": true
 },
 {
 "id": "term-syntax-error",
@@ -1196,7 +1924,28 @@ window.HSC_GLOSSARY = [
 "Syntax Error"
 ],
 "def": "A violation of a programming language's grammar rules that prevents the code from running. Usually flagged by the IDE during compilation.",
-"example": "Forgetting the colon in if x > 5."
+"example": "Forgetting the colon in if x > 5.",
+"link": true
+},
+{
+"id": "term-tcp-ip",
+"name": "TCP/IP",
+"aliases": [
+"TCP/IP"
+],
+"def": "The core internet protocols: IP addresses and routes packets; TCP makes sure they all arrive, in order and without errors.",
+"example": "Loading a web page relies on TCP/IP to deliver every packet of the page.",
+"link": true
+},
+{
+"id": "term-template-engine",
+"name": "Template Engine",
+"aliases": [
+"Template Engine"
+],
+"def": "A tool that combines an HTML template with data to produce a web page.",
+"example": "Jinja2 filling {{ student.name }} in a Flask page.",
+"link": true
 },
 {
 "id": "term-test-set",
@@ -1205,7 +1954,8 @@ window.HSC_GLOSSARY = [
 "Test Set"
 ],
 "def": "Data held back entirely until final evaluation to provide an unbiased estimate of real-world model performance. Should never be used during development or hyperparameter tuning.",
-"example": "Keeping 20% of photos aside to measure the finished model's accuracy."
+"example": "Keeping 20% of photos aside to measure the finished model's accuracy.",
+"link": true
 },
 {
 "id": "term-tls",
@@ -1215,7 +1965,18 @@ window.HSC_GLOSSARY = [
 "Transport Layer Security"
 ],
 "def": "A modern cryptographic protocol that provides secure, encrypted communication over a network. The successor to SSL, used by HTTPS to secure web traffic.",
-"example": "The encryption behind the padlock in a browser address bar."
+"example": "The encryption behind the padlock in a browser address bar.",
+"link": true
+},
+{
+"id": "term-top-down-design",
+"name": "Top-Down Design",
+"aliases": [
+"Top-Down Design"
+],
+"def": "Designing a system by starting with the whole problem and breaking it into smaller and smaller parts.",
+"example": "\"Run canteen app\" → \"take orders\", \"take payments\", \"print dockets\".",
+"link": true
 },
 {
 "id": "term-training-set",
@@ -1224,7 +1985,18 @@ window.HSC_GLOSSARY = [
 "Training Set"
 ],
 "def": "The portion of a dataset (typically 70–80%) used by an algorithm to learn patterns and adjust weights. The model sees these examples repeatedly during training.",
-"example": ""
+"example": "",
+"link": true
+},
+{
+"id": "term-tree",
+"name": "Tree",
+"aliases": [
+"Tree"
+],
+"def": "A hierarchical data structure of nodes, where each node has one parent (except the root) and may have children.",
+"example": "A computer's folder structure.",
+"link": false
 },
 {
 "id": "term-twos-complement",
@@ -1235,7 +2007,8 @@ window.HSC_GLOSSARY = [
 "Twos complement"
 ],
 "def": "The standard method for representing negative integers in binary by inverting the bits of the positive equivalent and adding one. Enables efficient arithmetic on signed numbers.",
-"example": "−5 in 8 bits: 00000101 → invert to 11111010 → add 1 → 11111011."
+"example": "−5 in 8 bits: 00000101 → invert to 11111010 → add 1 → 11111011.",
+"link": true
 },
 {
 "id": "term-uart",
@@ -1245,7 +2018,8 @@ window.HSC_GLOSSARY = [
 "Universal Asynchronous Receiver-Transmitter"
 ],
 "def": "A two-wire serial protocol (TX and RX) that requires no clock signal, used for serial communication between microcontrollers and computers.",
-"example": "An Arduino sending sensor readings to a laptop over USB serial."
+"example": "An Arduino sending sensor readings to a laptop over USB serial.",
+"link": true
 },
 {
 "id": "term-uml",
@@ -1255,7 +2029,8 @@ window.HSC_GLOSSARY = [
 "Unified Modeling Language"
 ],
 "def": "A standardised visual language for specifying, visualising, constructing, and documenting software systems. HSC-relevant diagrams include Class, Use Case, Sequence, and Activity Diagrams.",
-"example": "A class diagram and a use case diagram for a library system."
+"example": "A class diagram and a use case diagram for a library system.",
+"link": true
 },
 {
 "id": "term-underfitting",
@@ -1264,7 +2039,8 @@ window.HSC_GLOSSARY = [
 "Underfitting"
 ],
 "def": "A model error where the algorithm is too simple to learn the underlying patterns in training data, resulting in poor performance on both training and test sets.",
-"example": "Fitting a straight line to data that clearly curves."
+"example": "Fitting a straight line to data that clearly curves.",
+"link": true
 },
 {
 "id": "term-unit-testing",
@@ -1273,7 +2049,18 @@ window.HSC_GLOSSARY = [
 "Unit Testing"
 ],
 "def": "The practice of testing individual units (functions, methods, classes) in isolation to verify correct behaviour. Foundation of automated test suites and CI/CD.",
-"example": "assert add(2, 3) == 5"
+"example": "assert add(2, 3) == 5",
+"link": true
+},
+{
+"id": "term-system-testing",
+"name": "Unit, Subsystem and System Testing",
+"aliases": [
+"Unit, Subsystem and System Testing"
+],
+"def": "Testing at three levels: single units such as functions, groups of units working together, and the whole system.",
+"example": "Test add_to_cart(), then the checkout subsystem, then a full order from login to receipt.",
+"link": true
 },
 {
 "id": "term-unsupervised-learning",
@@ -1282,7 +2069,8 @@ window.HSC_GLOSSARY = [
 "Unsupervised Learning"
 ],
 "def": "A machine learning model that analyses unlabelled data to find hidden patterns or groupings autonomously, without being told what the correct output should be.",
-"example": "Grouping shoppers into clusters by buying habits, with no labels given."
+"example": "Grouping shoppers into clusters by buying habits, with no labels given.",
+"link": true
 },
 {
 "id": "term-uat",
@@ -1292,7 +2080,8 @@ window.HSC_GLOSSARY = [
 "User Acceptance Testing"
 ],
 "def": "The final testing phase where actual users test the software in real-world scenarios to ensure it meets requirements and is ready for production deployment.",
-"example": "The canteen manager tries the finished ordering app before it goes live."
+"example": "The canteen manager tries the finished ordering app before it goes live.",
+"link": true
 },
 {
 "id": "term-use-case-diagram",
@@ -1301,7 +2090,8 @@ window.HSC_GLOSSARY = [
 "Use Case Diagram"
 ],
 "def": "A UML diagram representing interactions between users (actors) and the system to achieve specific goals (use cases). Helps define system scope and requirements.",
-"example": "A \"Student\" actor linked to \"Borrow Book\" and \"Return Book\"."
+"example": "A \"Student\" actor linked to \"Borrow Book\" and \"Return Book\".",
+"link": true
 },
 {
 "id": "term-user-stories",
@@ -1311,7 +2101,8 @@ window.HSC_GLOSSARY = [
 "User Story"
 ],
 "def": "Requirement statements written from an end-user's perspective in the format: \"As a [role], I want [feature] so that [benefit].\" Core to Agile development.",
-"example": "\"As a student, I want to see my timetable so that I know where to go.\""
+"example": "\"As a student, I want to see my timetable so that I know where to go.\"",
+"link": true
 },
 {
 "id": "term-validation-set",
@@ -1320,7 +2111,8 @@ window.HSC_GLOSSARY = [
 "Validation Set"
 ],
 "def": "Data used during development to tune hyperparameters and compare different model configurations. Separate from training data but evaluated during development, unlike the test set.",
-"example": "Comparing models with 3, 5 and 7 layers on held-out data before the final test."
+"example": "Comparing models with 3, 5 and 7 layers on held-out data before the final test.",
+"link": true
 },
 {
 "id": "term-variable",
@@ -1329,7 +2121,8 @@ window.HSC_GLOSSARY = [
 "Variable"
 ],
 "def": "A named location in memory used to store data that can change during program execution. Variables have names, types, and scope.",
-"example": "score = 0"
+"example": "score = 0",
+"link": true
 },
 {
 "id": "term-version-control",
@@ -1339,7 +2132,38 @@ window.HSC_GLOSSARY = [
 "Version Control"
 ],
 "def": "A system that tracks every change to code, allowing developers to revert to previous states, create branches, and collaborate safely. Git is the industry standard.",
-"example": "git commit -m \"Add login page\" saves a snapshot you can return to."
+"example": "git commit -m \"Add login page\" saves a snapshot you can return to.",
+"link": true
+},
+{
+"id": "term-virtual-assistant",
+"name": "Virtual Personal Assistant",
+"aliases": [
+"Virtual Personal Assistant"
+],
+"def": "Software that uses speech recognition and ML to understand requests and carry out tasks.",
+"example": "Asking Siri to set a timer.",
+"link": true
+},
+{
+"id": "term-vulnerability-assessment",
+"name": "Vulnerability Assessment",
+"aliases": [
+"Vulnerability Assessment"
+],
+"def": "A systematic review that finds, ranks and reports security weaknesses in a system.",
+"example": "A scanner reports an outdated library with a known exploit and rates it high risk.",
+"link": true
+},
+{
+"id": "term-watch",
+"name": "Watch",
+"aliases": [
+"Watch"
+],
+"def": "A debugger feature that shows the value of a chosen variable or expression as the program runs.",
+"example": "Watching len(queue) to see when the queue empties.",
+"link": false
 },
 {
 "id": "term-waterfall",
@@ -1348,7 +2172,8 @@ window.HSC_GLOSSARY = [
 "Waterfall"
 ],
 "def": "A linear, sequential development approach where each phase (requirements, design, implementation, testing) must be completed before the next begins. Best suited for large projects with fixed, well-understood requirements.",
-"example": "Finishing and signing off the full design before any code is written."
+"example": "Finishing and signing off the full design before any code is written.",
+"link": true
 },
 {
 "id": "term-wcag",
@@ -1359,7 +2184,8 @@ window.HSC_GLOSSARY = [
 "Web accessibility"
 ],
 "def": "International guidelines developed by the W3C to make web content usable for people with various disabilities. Covers visual, hearing, motor, and cognitive disabilities.",
-"example": "Adding alt text so a screen reader can describe an image."
+"example": "Adding alt text so a screen reader can describe an image.",
+"link": true
 },
 {
 "id": "term-wireframe",
@@ -1368,7 +2194,8 @@ window.HSC_GLOSSARY = [
 "Wireframe"
 ],
 "def": "A low-fidelity layout sketch of a single screen showing the placement of UI elements (buttons, text fields, navigation). Created early in Design phase before detailed visual design.",
-"example": "A grey-box sketch showing where the logo, menu and search bar go."
+"example": "A grey-box sketch showing where the logo, menu and search bar go.",
+"link": true
 },
 {
 "id": "term-white-box",
@@ -1379,7 +2206,8 @@ window.HSC_GLOSSARY = [
 "White-box testing"
 ],
 "def": "A testing technique where the tester has full knowledge of internal code structure and logic. Designs tests to cover all branches, paths, and conditions — maximising code coverage.",
-"example": "Writing tests that make every IF statement take both its true and false paths."
+"example": "Writing tests that make every IF statement take both its true and false paths.",
+"link": true
 },
 {
 "id": "term-wagile",
@@ -1388,7 +2216,19 @@ window.HSC_GLOSSARY = [
 "WAGILE"
 ],
 "def": "A hybrid of Waterfall and Agile where high-level phases are planned in advance, but internal development is iterative. Pragmatic approach balancing both methodologies.",
-"example": "A fixed-date project with a planned design phase, then Agile sprints for development."
+"example": "A fixed-date project with a planned design phase, then Agile sprints for development.",
+"link": true
+},
+{
+"id": "term-w3c",
+"name": "World Wide Web Consortium (W3C)",
+"aliases": [
+"W3C",
+"World Wide Web Consortium"
+],
+"def": "The international organisation that develops standards for the web, such as HTML, CSS and WCAG.",
+"example": "WCAG accessibility guidelines are published by the W3C's Web Accessibility Initiative.",
+"link": true
 },
 {
 "id": "term-xss",
@@ -1398,6 +2238,7 @@ window.HSC_GLOSSARY = [
 "XSS"
 ],
 "def": "A vulnerability where an attacker injects malicious client-side scripts into web pages viewed by other users. Caused by improper input validation and output encoding.",
-"example": "A comment containing <script> that runs in every reader's browser."
+"example": "A comment containing <script> that runs in every reader's browser.",
+"link": true
 }
 ];

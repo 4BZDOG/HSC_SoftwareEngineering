@@ -293,6 +293,8 @@
           <p class="outcome-subtitle">🎯 <em>(SE-11-03, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Research and evaluate</strong> the prevalence and use of online code collaboration tools</em></p>
 
+          <p>Almost every software team now shares its code online. Tools such as <strong>GitHub</strong>, <strong>GitLab</strong> and <strong>Bitbucket</strong> store a project's code in a shared repository and track every change, so people in different places can work on it at once. GitHub alone hosts well over 100 million developers, and most open-source projects live there.</p>
+
           <div class="table-wrap">
             <table>
               <thead>
@@ -321,6 +323,20 @@
               </tbody>
             </table>
           </div>
+
+          <h3>Evaluating collaboration tools</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Strengths</th><th>Limitations</th></tr></thead>
+              <tbody>
+                <tr><td>Everyone works from the same up-to-date code</td><td>Beginners find branching and merge conflicts confusing</td></tr>
+                <tr><td>Full history: you can see who changed what and roll back mistakes</td><td>Needs a reliable internet connection</td></tr>
+                <tr><td>Built-in review, issue tracking and automated testing</td><td>Private code is stored on another company's servers</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Online collaboration tools such as GitHub are now standard in the industry because they let distributed teams work on one codebase safely. Pull requests improve quality by requiring a peer review before code is merged, although teams must be trained to resolve merge conflicts."</em></div>
         </section>
 
 
@@ -337,8 +353,7 @@
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> computational thinking and algorithmic design by defining the key features of standard algorithms, including sequence, selection, iteration and identifying data that should be stored</em></p>
 
-          <h3>Key Features of Standard Algorithms</h3>
-          <p>Every <strong>algorithm</strong> uses fundamental building blocks to solve problems. Understanding these features allows programmers to design robust, efficient solutions:</p>
+                    <p>Every <strong>algorithm</strong> uses fundamental building blocks to solve problems. Understanding these features allows programmers to design robust, efficient solutions:</p>
 
           <!-- ── 1. Sequence ── -->
           <h4>1. Sequence</h4>
@@ -914,6 +929,16 @@ FUNCTION GetValidScore()
 
 <h3>Identifying Connections to Subroutines and Functions</h3>
           <p>Analyse how an <strong>algorithm</strong> calls other functions and what data is passed between them. Document the purpose of each function call and the parameters it receives, ensuring data flows correctly through the program.<br>🌏 <em>Example: An algorithm that calculates employee pay might call FUNCTION calculateTax(salary) and FUNCTION applyBonus(basePay, bonusPercent), understanding what each returns and how it affects the final result.</em></p>
+
+          <div class="callout info"><strong>Scenario:</strong> You're handed this algorithm with no explanation:
+            <pre class="inline-pseudo">BEGIN mystery(list)
+    result ← list[0]
+    FOR i ← 1 TO LEN(list) − 1
+        IF list[i] &gt; result THEN result ← list[i] ENDIF
+    NEXT i
+    RETURN result
+END</pre>
+            A desk check with <code>[4, 9, 2]</code> gives <code>result</code> = 4, then 9, then 9. <strong>Input:</strong> a list of numbers. <strong>Output:</strong> one number. <strong>Purpose:</strong> it finds the largest value.</div>
         </section>
 
         <hr class="divider" />
@@ -987,7 +1012,7 @@ def greet(name):
           <p>Programs are sequences of explicit commands (statements) that change program state step-by-step. Python, Java, and C are imperative languages. Focus on "how" to solve the problem (procedures and control flow).<br>🌏 <em>Example: "Set count to 0; LOOP: add next number to count; increment loop counter; IF loop counter &lt; 10, GO TO LOOP."</em></p>
 
 <h3>Logic Programming</h3>
-          <p>Programs state facts and rules; the interpreter derives new facts through logical inference. Less common than imperative, but heavily used in artificial intelligence, constraint logic, and database query planning (Outcome SE-11-02). Focus on "what" is true, not "how" to compute it.</p>
+          <p>Programs state facts and rules; the interpreter derives new facts through logical inference. Less common than imperative, but heavily used in artificial intelligence, constraint logic, and database query planning. Focus on "what" is true, not "how" to compute it.</p>
           
           <div class="code-block my-large">
             <div class="code-header"><span class="code-lang">Prolog — Logic Paradigm Lab</span></div>
@@ -1080,11 +1105,33 @@ sibling(A, B) :-
           <p class="outcome-subtitle">🎯 <em>(SE-11-03)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> the use of number systems for computing purposes, including binary, decimal and hexadecimal</em></p>
 
+          <p>Computers store everything as <strong>binary</strong>, but people read and write numbers in other bases. Software engineers move between three of them.</p>
+
           <ul>
             <li><strong>Binary (Base 2):</strong> Used by hardware for electrical on/off states.</li>
             <li><strong>Decimal (Base 10):</strong> The standard human system for counting.</li>
             <li><strong>Hexadecimal (Base 16):</strong> Efficiently represents bytes (e.g., <code>#FFFFFF</code> for white in CSS).</li>
           </ul>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Decimal</th><th>Binary</th><th>Hexadecimal</th><th>Where you'll see it</th></tr></thead>
+              <tbody>
+                <tr><td>10</td><td>1010</td><td>A</td><td>Counting, prices and marks</td></tr>
+                <tr><td>255</td><td>1111 1111</td><td>FF</td><td>The largest value in one byte; colour channels in <code>#FF8800</code></td></tr>
+                <tr><td>192</td><td>1100 0000</td><td>C0</td><td>The first part of an IPv4 address such as 192.168.0.1</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Converting between bases</h3>
+          <ul>
+            <li><strong>Binary → decimal:</strong> add the place values that hold a 1. For 1011: 8 + 0 + 2 + 1 = 11.</li>
+            <li><strong>Decimal → binary:</strong> divide by 2 repeatedly and read the remainders from bottom to top.</li>
+            <li><strong>Binary ↔ hexadecimal:</strong> split the binary into groups of four bits. 1010 1111 → A F → <code>AF</code>.</li>
+          </ul>
+
+          <div class="callout info"><strong>Why hexadecimal?</strong> One hex digit stands for exactly four bits, so a byte is always two hex digits. That makes long binary values, such as memory addresses and colour codes, much shorter and easier to read.</div>
         </section>
 
         <hr class="divider" />
@@ -1094,8 +1141,7 @@ sibling(A, B) :-
           <p class="outcome-subtitle">🎯 <em>(SE-11-03)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Represent</strong> integers using two’s complement</em></p>
 
-          <h3>Two's Complement</h3>
-          <p>Two's Complement is the standard method for representing signed (negative) integers in binary. To represent a negative number, the bits of the positive equivalent are inverted (0 to 1 and vice-versa) and 1 is added to the result. This system is preferred as it allows for simple addition/subtraction circuits and eliminates the 'double zero' (+0 and -0) problem used in older systems.</p>
+                    <p>Two's Complement is the standard method for representing signed (negative) integers in binary. To represent a negative number, the bits of the positive equivalent are inverted (0 to 1 and vice-versa) and 1 is added to the result. This system is preferred as it allows for simple addition/subtraction circuits and eliminates the 'double zero' (+0 and -0) problem used in older systems.</p>
 
           <strong>Worked Example — Representing -5 in 8-bit Two's Complement:</strong>
           <ol>
@@ -1134,6 +1180,8 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
           <p class="outcome-subtitle">🎯 <em>(SE-11-03, SE-11-04)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> standard data types</em></p>
           <ul class="syllabus-including" aria-label="Including"><li>char (character) and string</li><li>Boolean</li><li>real</li><li>single precision floating point</li><li>integer</li><li>date and time</li></ul>
+
+          <p>A <strong>data type</strong> tells the computer what kind of value a variable holds, how much memory to set aside, and which operations make sense. Choosing the right type prevents errors and saves memory.</p>
 
           <div class="table-wrap">
             <table>
@@ -1174,9 +1222,17 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
             </table>
           </div>
 
-          <p><strong>Data Dictionary:</strong> A metadata tool describing every variable's name, data type, size, description, and validation rules.<br>🌏 <em>Example: Documenting that 'User_ID' must be an integer between 1 and 9999.</em> (SE-11-04)</p>
-
           <!-- Data Dictionary Example -->
+
+          <h3>Choosing a data type</h3>
+          <ul>
+            <li>Use an <strong>integer</strong> for things you count (students, clicks). Use a <strong>real</strong> for things you measure (temperature, price).</li>
+            <li>A <strong>single precision floating point</strong> number uses 32 bits and keeps about 7 significant digits, so it can round large or very precise values. That's why money is often stored as whole cents.</li>
+            <li>Store phone numbers and postcodes as <strong>strings</strong>. You never do arithmetic on them, and a leading zero would disappear from an integer.</li>
+            <li>Store dates with a <strong>date/time</strong> type rather than text, so you can sort them and calculate differences.</li>
+          </ul>
+
+          <div class="callout info"><strong>Scenario:</strong> A canteen app stores <code>price = 0.1 + 0.2</code> as a float and shows $0.30000000000000004. Storing the price as an integer number of cents (<code>30</code>) avoids the rounding error.</div>
         </section>
 
         <hr class="divider" />
@@ -1185,6 +1241,8 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
           <h2 class="syllabus-phase">Data Dictionaries</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-03, SE-11-04)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Create</strong> data dictionaries as a tool to describe data and data types, structure data, and record relationships</em></p>
+
+          <p>A <strong>data dictionary</strong> is a table that describes every piece of data in a system before you write any code. It records each field's name, data type, size, description and validation rules, and how fields relate to each other. Everyone on the team then works from the same definitions.</p>
 
           <div class="diagram-block">
             <h4>Table - Data Dictionary Example</h4>
@@ -1244,6 +1302,9 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
               <strong>Try This:</strong> Create a data dictionary for a library book system. Include fields like ISBN, Title, Author, CopiesAvailable, and LastCheckedDate.
             </p>
           </div>
+
+          <h3>Recording relationships</h3>
+          <p>When data is split across tables, the dictionary also records how they link. For example, <code>Enrolment.Student_ID</code> must match an existing <code>Student.Student_ID</code>, so every enrolment belongs to a real student.</p>
         </section>
 
         <hr class="divider" />
@@ -1454,6 +1515,8 @@ print(undo())                <span class="cm"># type B</span></code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-05)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Compare</strong> the execution of the Waterfall and Agile project management models as applied to software development</em></p>
 
+          <p>Waterfall and Agile both take software from an idea to a finished product, but they <em>run</em> the project very differently. Waterfall completes each stage once, in order. Agile repeats short cycles and delivers working software along the way.</p>
+
           <div class="table-wrap">
             <table>
               <thead>
@@ -1477,6 +1540,21 @@ print(undo())                <span class="cm"># type B</span></code></pre>
               </tbody>
             </table>
           </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Execution</th><th>Waterfall</th><th>Agile</th></tr></thead>
+              <tbody>
+                <tr><td>Planning</td><td>All up front</td><td>A little before each sprint</td></tr>
+                <tr><td>Client involvement</td><td>At the start and the end</td><td>Throughout, at every review</td></tr>
+                <tr><td>Response to change</td><td>Slow and costly</td><td>Expected and welcomed</td></tr>
+                <tr><td>Working software</td><td>Near the end</td><td>After the first sprint</td></tr>
+                <tr><td>Documentation</td><td>Detailed at every stage</td><td>Just enough to support the work</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Waterfall suits the school's exam-timetable system because its requirements are fixed by policy and must be signed off before development. Agile suits the student wellbeing app, where features depend on feedback, because each two-week sprint delivers a version students can test and comment on."</em></div>
         </section>
 
         <hr class="divider" />
@@ -1485,6 +1563,8 @@ print(undo())                <span class="cm"># type B</span></code></pre>
           <h2 class="syllabus-phase">Testing and Evaluating Solutions</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Test and evaluate</strong> solutions, considering key aspects including functionality, performance, readability of code, quality of documentation</em></p>
+
+          <p>Testing asks "does it work?" Evaluating asks "is it good?" A solution can pass every test and still be slow, hard to read or poorly documented, so judge it against all four criteria.</p>
 
           <h3>Evaluation Criteria</h3>
           <p>Software solutions are evaluated on multiple dimensions:</p>
@@ -1537,8 +1617,7 @@ print(undo())                <span class="cm"># type B</span></code></pre>
           <p class="syllabus-concept">📌 <em><strong>Use</strong> debugging tools</em></p>
           <ul class="syllabus-including" aria-label="Including"><li>breakpoints</li><li>single line stepping</li><li>watches</li><li>interfaces between functions</li><li>debugging output statements</li><li>debugging software available in an integrated development environment (IDE)</li></ul>
 
-          <h3>Debugging Tools</h3>
-
+          
           <h4>Breakpoints</h4>
           <p>A breakpoint is an instruction set within an IDE (such as Visual Studio Code or PyCharm) that <strong>pauses program execution at a specific line</strong>, allowing the engineer to inspect the current state of all variables and memory at that exact moment. For example, when debugging a loop that is supposed to accumulate a total but is producing an incorrect result, placing a breakpoint at the beginning of each iteration allows the engineer to examine the running total before and after each calculation — pinpointing precisely where the logic diverges from the expected behaviour without having to add print statements throughout the code.</p>
 
@@ -1572,8 +1651,10 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
           <p class="syllabus-concept">📌 <em><strong>Determine</strong> sets of suitable test data</em></p>
           <ul class="syllabus-including" aria-label="Including"><li>boundary values</li><li>path coverage</li><li>faulty and abnormal data</li></ul>
 
+          <p>Good test data is chosen on purpose, not typed at random. A small, well-chosen set can find most errors. Imagine a program that accepts a mark from 1 to 100.</p>
+
           <h3>Test Data Selection</h3>
-          <p>Selecting the right data is critical for ensuring secure and robust code execution (SE-11-07).</p>
+          
           <div class="table-wrap">
             <table>
               <thead>
@@ -1602,6 +1683,8 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
               </tbody>
             </table>
           </div>
+
+          <div class="callout info"><strong>Tip:</strong> test just inside, on and just outside each boundary: 0, 1, 2 and 99, 100, 101. Off-by-one errors are among the most common bugs, and boundary values are what catch them.</div>
         </section>
 
         <hr class="divider" />
@@ -1611,8 +1694,7 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
           <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Determine</strong> typical errors experienced when developing code, including syntax, logic and runtime, and explain their likely causes</em></p>
 
-          <h3>Typical Errors in Code Development</h3>
-          <p>Understanding common error types helps programmers identify and fix problems systematically:</p>
+                    <p>Understanding common error types helps programmers identify and fix problems systematically:</p>
 
           <div class="structured-content">
             <h4>Syntax Errors</h4>
@@ -1665,8 +1747,8 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
     </div>
   </footer>
 
-  <script src="../js/glossary-data.js?v=1"></script>
-  <script src="../js/main.js?v=19"></script>
+  <script src="../js/glossary-data.js?v=2"></script>
+  <script src="../js/main.js?v=20"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
   <script src="../js/mermaid-init.js?v=4"></script>
   <script src="../js/algo-trace.js?v=1"></script>

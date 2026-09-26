@@ -1253,7 +1253,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const byId = new Map(data.map(t => [t.id, t]));
     const lookup = new Map();          // lower-case spelling → { id, exact }
-    data.forEach(t => t.aliases.forEach(a => {
+    data.filter(t => t.link !== false).forEach(t => t.aliases.forEach(a => {
       const acronym = /^[A-Z0-9/&-]{2,6}$/.test(a);
       const forms = acronym ? [a, a + 's'] : [a, a + 's', a + 'es', a.replace(/y$/, 'ies')];
       forms.forEach(f => {
