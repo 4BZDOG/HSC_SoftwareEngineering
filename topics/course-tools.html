@@ -45,7 +45,8 @@
   <meta name="description" content="Complete guide to HSC Software Engineering course tools — DFDs, pseudocode, SQL, ERDs, class diagrams, test tables, and all NESA-specified techniques." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=23" />
+  <link rel="stylesheet" href="../css/styles.css?v=25" />
+  <link rel="stylesheet" href="../css/paper.css?v=5" />
 </head>
 <body>
 
@@ -175,6 +176,8 @@
         <li><a href="#git-workflow">15. Git &amp; Version Control</a></li>
         <li><a href="#testing-frameworks">16. Testing Frameworks</a></li>
         <li><a href="#cicd">17. CI/CD</a></li>
+        <li class="sidebar-label">Part 6 — HSC Major Project</li>
+        <li><a href="#major-project-guidance">18. What Markers Look For</a></li>
       </ul>
     </aside>
 
@@ -1745,6 +1748,149 @@ jobs:
           </div>
         </section>
 
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  PART 6: HSC MAJOR PROJECT                              -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Part 6</span>
+          <span class="part-name">HSC Major Project</span>
+        </div>
+
+        <section id="major-project-guidance">
+          <h2 class="syllabus-phase">What Markers Look For</h2>
+          <p>This guidance supports the <a href="software-engineering-project.html">Software Engineering Project</a> focus area. It isn't syllabus content, but it shows how the dot points turn into marks.</p>
+
+          <div class="callout warning">
+            <strong>Common Student Mistakes — Avoid These:</strong>
+            <ul>
+              <li><strong>Starting to code in Phase 1:</strong> The most common mistake. Phase 1 must be completed (requirements gathered, feasibility assessed, client consulted) before any code is written. Evidence of planning is required.</li>
+              <li><strong>Missing non-functional requirements:</strong> Functional requirements alone are insufficient. Assessors expect performance, security, usability, and maintainability requirements to be explicitly documented.</li>
+              <li><strong>No client consultation evidence:</strong> Simply stating "I consulted a client" is not enough. You must include dated meeting minutes, a signed requirements document, survey results, or email evidence.</li>
+              <li><strong>Test data with only normal cases:</strong> A test table that only tests valid inputs misses the point of testing. You must include boundary and invalid test cases and demonstrate that your code handles them correctly.</li>
+              <li><strong>Evaluation that does not reference Phase 1 requirements:</strong> Your evaluation must explicitly go back to each requirement from Phase 1 and assess whether it was met. An evaluation that says "I think the project went well" without referencing requirements receives minimal marks.</li>
+              <li><strong>Process diary written retrospectively:</strong> The process diary must be written throughout the project. Assessors can tell when it was written all at once at the end — dated entries over several weeks are essential.</li>
+              <li><strong>No version control history:</strong> An empty or near-empty GitHub commit history suggests the project was completed in one sitting. Regular commits with meaningful messages are expected.</li>
+            </ul>
+          </div>
+
+<h3>What Markers Look for in Each Phase</h3>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h4>Phase 1 — Identifying &amp; Defining</h4>
+              <ul>
+                <li>Clear, genuine real-world problem statement</li>
+                <li>Evidence of client consultation (meeting minutes, survey)</li>
+                <li>Both functional AND non-functional requirements listed</li>
+                <li>Feasibility analysis (scheduling and resources)</li>
+                <li>Defined scope with explicit boundaries</li>
+                <li>User stories with acceptance criteria</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h4>Phase 2 — Research &amp; Planning</h4>
+              <ul>
+                <li>Justified choice of development approach (<strong>Agile</strong>/Waterfall)</li>
+                <li>Complete Gantt chart covering all phases</li>
+                <li>Risk register with mitigation strategies</li>
+                <li>Structure charts and/or DFDs</li>
+                <li>Storyboards or wireframes with annotations</li>
+                <li>Justified choice of implementation method</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h4>Phase 3 — Producing &amp; Implementing</h4>
+              <ul>
+                <li>Code that matches the planned design</li>
+                <li>Regular Git commits with meaningful messages</li>
+                <li>Modular, well-documented code (docstrings, PEP 8)</li>
+                <li>Evidence of iterative development (multiple versions)</li>
+                <li>Process diary entries describing decisions made</li>
+                <li>Prototype or UI screenshots</li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h4>Phase 4 — Testing &amp; Evaluating</h4>
+              <ul>
+                <li><strong>Functional Testing:</strong> Checking workflows against the functional requirements.</li>
+                <li><strong>Acceptance Testing:</strong> Client confirms the software solves their original problem (UAT).</li>
+                <li><strong>Live Data / Simulated Data Testing:</strong> Using real-world scale data OR generated datasets to trigger edge cases.</li>
+                <li><strong>Beta / Volume Testing:</strong> User trials before public release, and testing system limits under mass concurrent usage.</li>
+                <li>Test data table (normal, boundary, invalid) &amp; Defect log.</li>
+                <li>Evaluation against every Phase 1 requirement &amp; documented client feedback.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="code-block my-large">
+            <div class="code-header"><span class="code-lang">Python — Volume / Stress Test Script</span></div>
+            <pre><code># NESA testing methods require proof of Volume Testing.
+# Use scripts like this in your project to flood your system with simulated data
+# and produce a performance graph for your marking portfolio.
+
+import time
+import random
+
+# E.g., simulate a library database with 10,000 dummy records
+print("Generating 10,000 dummy library records for Volume Testing...")
+library_db = {f"ISBN-{i}": f"Book Title {i}" for i in range(10000)}
+
+def search_book(isbn):
+    return library_db.get(isbn, "Not Found")
+
+# Stress Test
+start_time = time.time()
+print("\nExecuting stress test: 50,000 simultaneous searches...")
+
+for _ in range(50000):
+    random_isbn = f"ISBN-{random.randint(0, 15000)}"
+    search_book(random_isbn)
+
+end_time = time.time()
+print(f"✅ Volume Testing Complete.")
+print(f"Time taken to process 50,000 queries over 10K records: {end_time - start_time:.4f} seconds")</code></pre>
+          </div>
+
+<h3>Submission Checklist</h3>
+          <p>Before submitting your Software Engineering Project, use this checklist to ensure your documentation package is complete:</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Required</th>
+                  <th>Completed?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Signed client requirements document</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Functional and non-functional requirements table</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>User stories with acceptance criteria</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Feasibility analysis (scheduling and resources)</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Gantt chart (all 4 phases)</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Risk register with mitigation strategies</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Structure chart or DFD (or both)</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Storyboard and/or wireframes</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Development approach justification</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Well-commented, PEP 8 compliant source code</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Git repository with regular commit history</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Test plan document</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Test data table (normal, boundary, invalid)</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Defect log</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Evaluation against all Phase 1 requirements</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Client feedback and UAT sign-off</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Process diary (dated, throughout project)</td><td>Essential</td><td>☐</td></tr>
+                <tr><td>Change request log (if requirements changed)</td><td>Recommended</td><td>☐</td></tr>
+                <tr><td>Data dictionary</td><td>Recommended</td><td>☐</td></tr>
+                <tr><td>Meeting minutes (all client meetings)</td><td>Recommended</td><td>☐</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <hr class="divider" />
+        </section>
+
         <div class="callout success">
           <span class="callout-icon">📘</span>
           <div class="callout-content">
@@ -1790,9 +1936,10 @@ jobs:
     </div>
   </footer>
 
-  <script src="../js/main.js?v=18"></script>
+  <script src="../js/glossary-data.js?v=3"></script>
+  <script src="../js/main.js?v=20"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="../js/mermaid-init.js?v=2"></script>
+  <script src="../js/mermaid-init.js?v=4"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->
@@ -1817,5 +1964,6 @@ jobs:
       </div>
     </div>
   </div>
+  <script src="../js/paper.js?v=2" defer></script>
 </body>
 </html>

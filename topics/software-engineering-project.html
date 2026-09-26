@@ -51,7 +51,8 @@
   <meta name="description" content="In-depth notes on the HSC Software Engineering major project — all SDLC phases, documentation requirements, testing, and assessment guidance." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=23" />
+  <link rel="stylesheet" href="../css/styles.css?v=25" />
+  <link rel="stylesheet" href="../css/paper.css?v=4" />
 </head>
 <body>
 
@@ -164,18 +165,34 @@
     <aside class="sidebar">
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
-        <li class="sidebar-label">Phase 1 — Identifying &amp; Defining</li>
-        <li><a href="#identifying-defining">1. Identifying &amp; Defining</a></li>
-        <li class="sidebar-label">Phase 2 — Research &amp; Planning</li>
-        <li><a href="#implementation-methods">2. Implementation Methods</a></li>
-        <li><a href="#development-approaches">3. Development Approaches</a></li>
-        <li><a href="#project-management">4. Project Management &amp; Communication</a></li>
-        <li><a href="#quality-backend">5. Quality Assurance &amp; Back-End Engineering</a></li>
-        <li class="sidebar-label">Phase 3 — Producing &amp; Implementing</li>
-        <li><a href="#producing">6. Producing &amp; Implementing</a></li>
-        <li class="sidebar-label">Phase 4 — Testing &amp; Evaluating</li>
-        <li><a href="#testing-evaluating">7. Testing &amp; Evaluating</a></li>
-        <li><a href="#post-project">8. Project Evaluation</a></li>
+        <li class="sidebar-label">Part 1 — Identifying and defining</li>
+        <li><a href="#identifying-defining">1. Defining and Analysing Requirements</a></li>
+        <li><a href="#idea-tools">2. Tools to Develop Ideas and Generate Solutions</a></li>
+        <li><a href="#implementation-methods">3. Software Implementation Methods</a></li>
+        <li class="sidebar-label">Part 2 — Research and planning</li>
+        <li><a href="#development-approaches">4. The Waterfall Approach</a></li>
+        <li><a href="#agile">5. The Agile Approach</a></li>
+        <li><a href="#wagile">6. The WAgile Approach</a></li>
+        <li><a href="#project-management">7. Applying Project Management</a></li>
+        <li><a href="#social-ethical">8. Social and Ethical Issues in Project Work</a></li>
+        <li><a href="#communication">9. Communication Issues in Project Work</a></li>
+        <li><a href="#quality-backend">10. Quality Assurance</a></li>
+        <li><a href="#modelling-tools">11. Using Modelling Tools</a></li>
+        <li><a href="#backend-engineering">12. The Contribution of Back-End Engineering</a></li>
+        <li class="sidebar-label">Part 3 — Producing and implementing</li>
+        <li><a href="#producing">13. Designing, Constructing and Implementing a Solution</a></li>
+        <li><a href="#presenting">14. Presenting Your Solution</a></li>
+        <li><a href="#documenting-algorithms">15. Developing and Documenting Algorithms</a></li>
+        <li><a href="#allocating-resources">16. Allocating Resources</a></li>
+        <li><a href="#data-backup">17. Programmed Data Backup</a></li>
+        <li><a href="#version-control">18. Implementing Version Control</a></li>
+        <li><a href="#difficulties">19. Responding to Difficulties</a></li>
+        <li><a href="#innovative-solution">20. Proposing an Innovative Solution</a></li>
+        <li class="sidebar-label">Part 4 — Testing and evaluating</li>
+        <li><a href="#testing-evaluating">21. Methodologies to Test and Evaluate Code</a></li>
+        <li><a href="#code-optimisation">22. Language-Dependent Code Optimisation</a></li>
+        <li><a href="#feedback">23. Analysing and Responding to Feedback</a></li>
+        <li><a href="#post-project">24. Evaluating the Effectiveness of Your Solution</a></li>
       </ul>
     </aside>
 
@@ -183,21 +200,21 @@
       <div class="content-body">
 
         <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  PHASE 1: IDENTIFYING AND DEFINING                      -->
+        <!--  IDENTIFYING AND DEFINING                              -->
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
-          <span class="part-number">Phase 1</span>
-          <span class="part-name">Identifying and Defining</span>
+          <span class="part-number">Syllabus Part 1</span>
+          <span class="part-name">Identifying and defining</span>
         </div>
 
-        <!-- 1. Identifying & Defining -->
         <section id="identifying-defining">
-          <h2 class="syllabus-phase">Identifying and Defining</h2>
+          <h2 class="syllabus-phase">Defining and Analysing Requirements</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-06)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Define and analyse</strong> the requirements of a problem to ensure the software engineering solution is viable and purposeful.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Define</strong> and analyse the requirements of a problem</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>demonstrating need(s) or opportunities</li><li>assessing scheduling and financial feasibility</li><li>generating requirements including functionality and performance</li><li>defining data structures and data types</li><li>defining boundaries</li></ul>
 
           <h3>Problem Requirements</h3>
-          <p>Before coding begins, a software engineer must define the core requirements (Outcome SE-12-01):</p>
+          <p>Before coding begins, a software engineer must define the core requirements:</p>
           <ul>
             <li><strong>🎯 Demonstrating needs or opportunities:</strong> Clearly identifying the real-world problem the software solves for the client.</li>
             <li><strong>💰 Assessing scheduling and financial feasibility:</strong> Determining if the project can be completed within the allocated timeframe and budget.</li>
@@ -206,41 +223,7 @@
             <li><strong>🚧 Defining boundaries:</strong> Establishing the scope to prevent "scope creep" during development.</li>
           </ul>
 
-          <h3>Tools for Idea Generation &amp; Solution Development</h3>
-          <p><strong>Explore</strong> the tools used to develop ideas and guide the project lifecycle (Outcome SE-12-06):</p>
-          <div class="key-terms">
-            <div class="key-term-item"><strong>💡 Idea Generation</strong><span>Brainstorming, mind-mapping, and Storyboards (Course Spec p. 9) to visualise user interfaces.</span></div>
-            <div class="key-term-item"><strong>📋 Data Definition</strong><span>Utilising Data dictionaries (Course Spec p. 8) to select appropriate data types and formats.</span></div>
-            <div class="key-term-item"><strong>💻 Development</strong><span><strong>Algorithm</strong> design (flowcharts/pseudocode), code generation, and rigorous testing and debugging.</span></div>
-            <div class="key-term-item"><strong>🚀 Post-Development</strong><span>Installation and ongoing maintenance procedures.</span></div>
-          </div>
-
-          <h3>Project Structure Chart</h3>
-          <p>A <strong>structure chart</strong> breaks the software solution into its major components before coding begins. It shows how the top-level system is decomposed into modules, and how those modules relate to each other. The chart below illustrates a typical school library management system.</p>
-
-          <div class="diagram-block">
-            <h4>Structure Chart — Library Management System</h4>
-            <p class="diagram-subtitle">Top-down decomposition of the student project</p>
-            <p class="diagram-description">
-              The structure chart below shows how the Library Management System is decomposed into functional modules. Each module represents a separate responsibility, allowing the engineer to plan which functions to build first and how they interact.
-            </p>
-            <pre class="text-diagram">Structure Chart: Library Management System
-==========================================
-                [Main Program]
-               /        |       \
-    [Book Module]  [Member Module]  [Report Module]
-      /    |   \       /    \          |       \
-[Add] [Search] [Return] [Register] [Update] [Loans] [Overdue]
-  |       |        |
-[Validate] [DB Lookup] [Fine Calc]</pre>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Plan the modular breakdown of the project before writing any code.<br>
-              <strong>Syllabus Link:</strong> SE-12-02, SE-12-06<br>
-              <strong>Tip:</strong> Each box in the structure chart typically becomes a Python function or class method in your implementation.
-            </p>
-          </div>
-
-          <h3>Requirements Analysis</h3>
+<h3>Requirements Analysis</h3>
           <p>Requirements must be clearly categorised before development starts. <strong>⚙️ Functional requirements</strong> describe <em>what</em> the system must do; <strong>⚡ Non-functional requirements</strong> describe <em>how well</em> it must do it (quality attributes). Documenting both types ensures the solution is both complete and fit for purpose.</p>
 
           <div class="table-wrap">
@@ -306,7 +289,7 @@
             </table>
           </div>
 
-          <h3>User Stories and Acceptance Criteria</h3>
+<h3>User Stories and Acceptance Criteria</h3>
           <p><strong>User stories</strong> capture requirements from the end-user's perspective in plain language. They follow the format: <em>"As a [role], I want [feature], so that [benefit]."</em> Each user story is accompanied by <strong>acceptance criteria</strong> — specific, testable conditions that confirm the story has been implemented correctly.</p>
 
           <div class="table-wrap">
@@ -368,19 +351,159 @@
 
         <hr class="divider" />
 
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  PHASE 2: RESEARCH AND PLANNING                         -->
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <div class="part-block">
-          <span class="part-number">Phase 2</span>
-          <span class="part-name">Research and Planning</span>
-        </div>
+        <section id="idea-tools">
+          <h2 class="syllabus-phase">Tools to Develop Ideas and Generate Solutions</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-06)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Explore</strong> tools used to develop ideas and generate solutions</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>brainstorming, mind-mapping and storyboards</li><li>data dictionaries, including selecting appropriate data types</li><li>algorithm design</li><li>code generation</li><li>testing and debugging</li><li>installation</li><li>maintenance</li></ul>
 
-        <!-- 2. Implementation Methods -->
+          <h3>Tools for Idea Generation &amp; Solution Development</h3>
+          <p><strong>Explore</strong> the tools used to develop ideas and guide the project lifecycle:</p>
+          <div class="key-terms">
+            <div class="key-term-item"><strong>💡 Idea Generation</strong><span>Brainstorming, mind-mapping, and Storyboards to visualise user interfaces.</span></div>
+            <div class="key-term-item"><strong>📋 Data Definition</strong><span>Utilising Data dictionaries to select appropriate data types and formats.</span></div>
+            <div class="key-term-item"><strong>💻 Development</strong><span><strong>Algorithm</strong> design (flowcharts/pseudocode), code generation, and rigorous testing and debugging.</span></div>
+            <div class="key-term-item"><strong>🚀 Post-Development</strong><span>Installation and ongoing maintenance procedures.</span></div>
+          </div>
+
+<h3>Storyboards and Wireframes</h3>
+          <p>A <strong>storyboard</strong> visually maps the sequence of screens a user encounters when completing a task. A <strong>wireframe</strong> is a low-fidelity layout sketch of a single screen, showing the placement of UI elements without colour or detailed styling. Together, they allow client feedback on the interface before any front-end code is written.</p>
+
+          <div class="callout tip">
+            <strong>Storyboard vs Wireframe — Key Differences:</strong>
+            <ul>
+              <li><strong>Storyboard:</strong> Shows a <em>sequence of interactions</em> — e.g., the steps a user takes from the login screen to completing a book search. Think of it as a comic strip of your application's workflow.</li>
+              <li><strong>Wireframe:</strong> Shows the <em>layout of a single screen</em> — where headers, navigation, input fields, and buttons are positioned. It does not include colour, fonts, or images.</li>
+              <li><strong>Prototype:</strong> A clickable, interactive mock-up of the interface, often built in a tool like <strong>Figma</strong> or <strong>Canva</strong>. It simulates real user interaction without any back-end code.</li>
+              <li><strong>Why include them:</strong> They demonstrate to assessors that you consulted the client about the UI <em>before</em> coding, which is a hallmark of professional software engineering practice.</li>
+            </ul>
+          </div>
+
+<h3>Data Dictionary</h3>
+          <p>A <strong>data dictionary</strong> formally defines every data item used in the system — its name, data type, size, valid range, and description. It ensures consistency between the design documents and the code implementation, and establishes the <strong>data structures</strong> required for the project.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Field Name</th>
+                  <th>Entity / Class</th>
+                  <th>Data Type</th>
+                  <th>Size / Range</th>
+                  <th>Required?</th>
+                  <th>Description &amp; Validation Rules</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>member_id</code></td>
+                  <td>Member</td>
+                  <td>Text</td>
+                  <td>8 characters</td>
+                  <td>Yes</td>
+                  <td>Unique identifier for each member. Format: "S" followed by 7 digits (e.g., "S0012345"). Generated automatically on registration.</td>
+                </tr>
+                <tr>
+                  <td><code>name</code></td>
+                  <td>Member</td>
+                  <td>Text</td>
+                  <td>1–100 characters</td>
+                  <td>Yes</td>
+                  <td>Member's full name. Must not be blank. Must be validated before storage.</td>
+                </tr>
+                <tr>
+                  <td><code>email</code></td>
+                  <td>Member</td>
+                  <td>Text</td>
+                  <td>5–254 characters</td>
+                  <td>Yes</td>
+                  <td>Member's email address. Must match email format pattern. Must be unique.</td>
+                </tr>
+                <tr>
+                  <td><code>isbn</code></td>
+                  <td>Book</td>
+                  <td>Text</td>
+                  <td>13 characters</td>
+                  <td>Yes</td>
+                  <td>International Standard Book Number (ISBN-13). Must be exactly 13 digits. Validated against ISBN checksum <strong>algorithm</strong>.</td>
+                </tr>
+                <tr>
+                  <td><code>title</code></td>
+                  <td>Book</td>
+                  <td>Text</td>
+                  <td>1–300 characters</td>
+                  <td>Yes</td>
+                  <td>Full title of the book. Must not be blank. Case-insensitive search support.</td>
+                </tr>
+                <tr>
+                  <td><code>available</code></td>
+                  <td>Book</td>
+                  <td>Boolean</td>
+                  <td>True / False</td>
+                  <td>Yes</td>
+                  <td>Whether the book is available for loan. Default: True. Set to False when issued; reset to True when returned.</td>
+                </tr>
+                <tr>
+                  <td><code>issue_date</code></td>
+                  <td>Loan</td>
+                  <td>Date</td>
+                  <td>Valid calendar date</td>
+                  <td>Yes</td>
+                  <td>The date the loan was issued. Automatically set to current date. Cannot be a future date.</td>
+                </tr>
+                <tr>
+                  <td><code>due_date</code></td>
+                  <td>Loan</td>
+                  <td>Date</td>
+                  <td>Valid calendar date</td>
+                  <td>Yes</td>
+                  <td>The date the book must be returned. Automatically calculated as 14 days after issue date.</td>
+                </tr>
+                <tr>
+                  <td><code>fine_amount</code></td>
+                  <td>Loan</td>
+                  <td>Number</td>
+                  <td>0.00 to 99.99</td>
+                  <td>No</td>
+                  <td>Overdue fine in Australian dollars. Default: 0.00. Calculated as $0.20 per day overdue.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+<h3>Project Structure Chart</h3>
+          <p>A <strong>structure chart</strong> breaks the software solution into its major components before coding begins. It shows how the top-level system is decomposed into modules, and how those modules relate to each other. The chart below illustrates a typical school library management system.</p>
+
+          <div class="diagram-block">
+            <h4>Structure Chart — Library Management System</h4>
+            <p class="diagram-subtitle">Top-down decomposition of the student project</p>
+            <p class="diagram-description">
+              The structure chart below shows how the Library Management System is decomposed into functional modules. Each module represents a separate responsibility, allowing the engineer to plan which functions to build first and how they interact.
+            </p>
+            <pre class="text-diagram">Structure Chart: Library Management System
+==========================================
+                [Main Program]
+               /        |       \
+    [Book Module]  [Member Module]  [Report Module]
+      /    |   \       /    \          |       \
+[Add] [Search] [Return] [Register] [Update] [Loans] [Overdue]
+  |       |        |
+[Validate] [DB Lookup] [Fine Calc]</pre>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Plan the modular breakdown of the project before writing any code.<br>
+              <strong>Syllabus Link:</strong> SE-12-02, SE-12-06<br>
+              <strong>Tip:</strong> Each box in the structure chart typically becomes a Python function or class method in your implementation.
+            </p>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
         <section id="implementation-methods">
           <h2 class="syllabus-phase">Software Implementation Methods</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-01)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Investigate</strong> types of software implementation methods used when transitioning a client from an old system to a new solution (Outcome SE-12-01).</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Investigate</strong> types of software implementation methods</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>direct</li><li>phased</li><li>parallel</li><li>pilot</li></ul>
 
           <div class="table-wrap">
             <table>
@@ -412,8 +535,9 @@
           </div>
 
           <div class="callout feature my-large">
-            <h3>Case Study Matcher: Justifying Your Method</h3>
-            <p>NESA highly values your ability to <strong>justify</strong> the method chosen for a specific scenario. Use the interactive examples below to match the scenario to the best implementation method.</p>
+
+<h3>Case Study Matcher: Justifying Your Method</h3>
+            <p>Be ready to <strong>justify</strong> the method chosen for a specific scenario. Use the interactive examples below to match the scenario to the best implementation method.</p>
 
             <details class="interactive-case">
               <summary>Scenario 1: A hospital is upgrading its critical patient records database. The system cannot afford any downtime or lost data. <em>Click to reveal method &amp; justification</em></summary>
@@ -441,58 +565,60 @@
           </div>
         </section>
 
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  RESEARCH AND PLANNING                                 -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Syllabus Part 2</span>
+          <span class="part-name">Research and planning</span>
+        </div>
+
+        <section id="development-approaches">
+          <h2 class="syllabus-phase">The Waterfall Approach</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Research and use</strong> the Waterfall software development approach</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>logical progression of steps used throughout the life cycle</li><li>stages of ‘falling water’</li><li>advantages and disadvantages</li><li>scale and types of developments</li></ul>
+
+          <p><strong>Waterfall</strong> works through the development steps one at a time, in order. Each stage is finished and signed off before the next begins, so the project flows downwards like water over a series of ledges.</p>
+
+          <ul>
+            <li><strong>Logical progression of steps:</strong> requirements → design → development → testing → installation → maintenance. Each stage produces documents that the next stage relies on.</li>
+            <li><strong>Stages of 'falling water':</strong> going back up is difficult and expensive. A change found during testing may mean redoing design and development.</li>
+          </ul>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead>
+              <tbody>
+                <tr><td>Clear milestones and deadlines that are easy to track</td><td>Hard to respond when the client changes their mind</td></tr>
+                <tr><td>Thorough documentation at every stage</td><td>The client sees working software only near the end</td></tr>
+                <tr><td>Easy to estimate cost and time up front</td><td>Problems are often found late, when they cost the most to fix</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p><strong>Scale and types of developments:</strong> Waterfall suits large projects with stable, well-understood requirements and strict regulation, such as a hospital records system or an aircraft control system.</p>
+
+          <div class="callout info"><strong>Using it in your project:</strong> if your requirements are fixed by an assessment brief and a single due date, a Waterfall plan with dated milestones in a Gantt chart is a sensible choice. Justify it by pointing to those stable requirements.</div>
+        </section>
+
         <hr class="divider" />
 
-        <!-- 3. Development Approaches -->
-        <section id="development-approaches">
-          <h2 class="syllabus-phase">Research and Planning: Development Approaches</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-12-01)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Research and use</strong> standard software development approaches to structure the engineering lifecycle.</em></p>
+        <section id="agile">
+          <h2 class="syllabus-phase">The Agile Approach</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Research and use</strong> the Agile software development approach</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>rate of developing a final solution</li><li>method tailoring</li><li>iteration workflow</li><li>scale and types of developments</li></ul>
 
-          <div class="info-grid">
-            <div class="info-card">
-              <h4>Waterfall Approach</h4>
-              <p>A sequential model with a <strong>logical progression of steps</strong>. Stages flow downwards like 'falling water' (Requirements → Design → Implementation → Testing → Maintenance). <br><br><strong>Pros:</strong> Highly documented, clear milestones. <br><strong>Cons:</strong> Inflexible to changing requirements. <br><strong>Scale:</strong> Best for massive, stable developments (e.g., government infrastructure).</p>
-            </div>
-            <div class="info-card">
-              <h4>Agile Approach</h4>
-              <p>An iterative <strong>workflow</strong> focusing on the rapid <strong>rate of developing a final solution</strong>. Allows for <strong>method tailoring</strong> to adapt to evolving client needs. <br><br><strong>Scale:</strong> Ideal for dynamic, medium-scale developments (e.g., commercial web apps) where requirements frequently shift.</p>
-            </div>
-            <div class="info-card col-full">
-              <h4>WAgile Approach &amp; Intervention</h4>
-              <p><strong>Research</strong> WAgile, understanding it is a <strong>hybrid model</strong>. It combines Waterfall's rigorous upfront planning with <strong>Agile</strong>'s iterative coding. <br><br><strong>Intervention:</strong> NESA requires you to analyze when and how <strong>intervention</strong> is applied. In WAgile, intervention is applied 'when' regulatory compliance requires strict phase-gate reviews (Waterfall style), but 'how' the code is written between these gates remains <strong>agile</strong>. <br><strong>Scale:</strong> Complex enterprise developments.</p>
-              
-              <div class="diagram-block mt-15px">
-                <p class="diagram-subtitle">WAgile Timeline: Agile sprints with Waterfall interventions</p>
-                <div class="mermaid">
-                  gantt
-                    title WAgile Development Timeline
-                    dateFormat  YYYY-MM-DD
-                    axisFormat  %m-%d
-                    
-                    section Waterfall Planning
-                    Requirements Doc (Intervention) :crit, req1, 2026-05-01, 7d
-                    Design Sign-off (Intervention)  :crit, des1, after req1, 5d
-                    
-                    section Agile Sprints
-                    Sprint 1 (Frontend UI)          :active, sp1, after des1, 10d
-                    Sprint 1 Review                 :milestone, m1, after sp1, 0d
-                    Sprint 2 (Backend API)          :active, sp2, after sp1, 10d
-                    Sprint 2 Review                 :milestone, m2, after sp2, 0d
-                    Sprint 3 (Integration)          :active, sp3, after sp2, 10d
-                    
-                    section Waterfall Deploy
-                    Final Security Audit (Intervention) :crit, aud1, after sp3, 5d
-                    Live Deployment                 :milestone, live, after aud1, 0d
-                </div>
-                <p class="diagram-caption">
-                  <strong>Purpose:</strong> Visualise how WAgile combines Waterfall phase-gate interventions with Agile sprint iterations<br>
-                  <strong>Syllabus Link:</strong> SE-12-02 — Compare project management models and intervention points<br>
-                  <strong>Try This:</strong> Identify which tasks are Waterfall "interventions" (critical path) and which are Agile sprints
-                </p>
-              </div>
-            </div>
-          </div>
+          <p><strong>Agile</strong> builds software in short cycles called iterations or sprints. Each cycle delivers a small working piece that the client can try and give feedback on, so the plan keeps adjusting as the project goes.</p>
+
+          <ul>
+            <li><strong>Rate of developing a final solution:</strong> a usable version appears early and improves every sprint, so value arrives sooner than in Waterfall.</li>
+            <li><strong>Method tailoring:</strong> teams adapt the process to suit the project, for example choosing one-week sprints or skipping formal ceremonies in a small team.</li>
+            <li><strong>Iteration workflow:</strong> plan → build → test → review with the client → adjust, then repeat.</li>
+            <li><strong>Scale and types of developments:</strong> best for small to medium projects where requirements are likely to change, such as a start-up's mobile app or a school's online booking system.</li>
+          </ul>
 
           <!-- Scrum / Agile Sprint Cycle Diagram -->
           <div class="diagram-block">
@@ -540,13 +666,60 @@
 
         <hr class="divider" />
 
-        <!-- 4. Project Management & Communication -->
+        <section id="wagile">
+          <h2 class="syllabus-phase">The WAgile Approach</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Research</strong> the WAgile software development approach</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>understanding it is a hybrid model</li><li>analysis of the ‘when’ and ‘how’ intervention is applied during the development life cycle</li><li>scale and types of developments</li></ul>
+
+          <p><strong>WAgile</strong> is a <strong>hybrid model</strong>: it plans and closes a project the Waterfall way but builds the software in Agile sprints.</p>
+
+          <ul>
+            <li><strong>When intervention is applied:</strong> at fixed checkpoints, such as signing off requirements, approving a design, and a final security audit before release.</li>
+            <li><strong>How intervention is applied:</strong> through formal reviews and sign-offs at those gates. Between them, the team works in sprints and adapts to feedback.</li>
+            <li><strong>Scale and types of developments:</strong> medium to large projects that need both flexibility and firm control, such as a bank adding a new feature to an existing regulated system.</li>
+          </ul>
+
+          <div class="diagram-block mt-15px">
+                <p class="diagram-subtitle">WAgile Timeline: Agile sprints with Waterfall interventions</p>
+                <div class="mermaid">
+                  gantt
+                    title WAgile Development Timeline
+                    dateFormat  YYYY-MM-DD
+                    axisFormat  %m-%d
+                    
+                    section Waterfall Planning
+                    Requirements Doc (Intervention) :crit, req1, 2026-05-01, 7d
+                    Design Sign-off (Intervention)  :crit, des1, after req1, 5d
+                    
+                    section Agile Sprints
+                    Sprint 1 (Frontend UI)          :active, sp1, after des1, 10d
+                    Sprint 1 Review                 :milestone, m1, after sp1, 0d
+                    Sprint 2 (Backend API)          :active, sp2, after sp1, 10d
+                    Sprint 2 Review                 :milestone, m2, after sp2, 0d
+                    Sprint 3 (Integration)          :active, sp3, after sp2, 10d
+                    
+                    section Waterfall Deploy
+                    Final Security Audit (Intervention) :crit, aud1, after sp3, 5d
+                    Live Deployment                 :milestone, live, after aud1, 0d
+                </div>
+                <p class="diagram-caption">
+                  <strong>Purpose:</strong> Visualise how WAgile combines Waterfall phase-gate interventions with Agile sprint iterations<br>
+                  <strong>Syllabus Link:</strong> SE-12-02 — Compare project management models and intervention points<br>
+                  <strong>Try This:</strong> Identify which tasks are Waterfall "interventions" (critical path) and which are Agile sprints
+                </p>
+              </div>
+        </section>
+
+        <hr class="divider" />
+
         <section id="project-management">
-          <h2 class="syllabus-phase">Project Management &amp; Communication</h2>
+          <h2 class="syllabus-phase">Applying Project Management</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-05, SE-12-09)</em></p>
-          
-          <h3>Project Management</h3>
-          <p><strong>Apply</strong> project management to plan and conduct the development of a software solution. This involves scheduling and tracking using software tools, notably 🛠️ <strong>Gantt charts</strong> (Course Spec p. 11), to allocate time to tasks, and using collaborative tools (e.g., GitHub, Jira) to track team progress (Outcome SE-12-09).</p>
+          <p class="syllabus-concept">📌 <em><strong>Apply</strong> project management to plan and conduct the development and implementation of a project and software engineering solution</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>scheduling and tracking using a software tool, including Gantt charts</li><li>using collaboration tools</li></ul>
+
+                    <p><strong>Apply</strong> project management to plan and conduct the development of a software solution. This involves scheduling and tracking using software tools, notably 🛠️ <strong>Gantt charts</strong>, to allocate time to tasks, and using collaborative tools (e.g., GitHub, Jira) to track team progress.</p>
 
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
@@ -556,10 +729,7 @@
             <p class="video-box-note">Meet the three key <strong>Scrum roles</strong> — <strong>Product Owner</strong>, <strong>Scrum Master</strong>, and <strong>Development Team</strong> — useful for understanding how project teams divide responsibility and communicate.</p>
           </div>
 
-          <h3>Communication &amp; Social Issues</h3>
-          <p><strong>Explore</strong> communication issues associated with project work. Engineers must prioritise <strong>involving and empowering the client</strong> through constant dialogue, <strong>enabling feedback</strong> during <strong>Agile</strong> iterations, and <strong>negotiating</strong> realistic deadlines and features (Outcome SE-12-09). <br><br>Furthermore, engineers must <strong>explore social and ethical issues</strong>, such as equitably dividing work when collaborating, acting professionally when working individually, and transparently responding to stakeholder concerns regarding data security (Outcome SE-12-05).</p>
-
-          <h3>Gantt Chart — Project Schedule</h3>
+<h3>Gantt Chart — Project Schedule</h3>
           <p>A <strong>Gantt chart</strong> is a horizontal bar chart that maps project tasks against a timeline. It visually shows the start date, duration, and end date of each task, and can indicate task dependencies (where one task must complete before another begins). In the SEP, your Gantt chart must cover all four project phases.</p>
 
           <div class="diagram-block">
@@ -597,111 +767,136 @@ Key: ███ = Task active during this week</pre>
             </p>
           </div>
 
-          <h3>Risk Management</h3>
-          <p>Risk management involves identifying potential threats to project success, assessing their likelihood and impact, and planning mitigation strategies in advance. A risk register is maintained throughout the project and updated as new risks emerge or existing risks are resolved.</p>
+<h3>Process Diary Example Excerpt</h3>
+          <p>The process diary is a chronological record of your development journey. It should demonstrate ongoing reflection, problem-solving, and client engagement throughout the project — not just a summary of what was done.</p>
 
           <div class="table-wrap">
             <table>
               <thead>
                 <tr>
-                  <th>Risk</th>
-                  <th>Likelihood</th>
-                  <th>Impact</th>
-                  <th>Risk Level</th>
-                  <th>Mitigation Strategy</th>
+                  <th>Date</th>
+                  <th>Activities Completed</th>
+                  <th>Decisions Made &amp; Reasoning</th>
+                  <th>Challenges &amp; Responses</th>
+                  <th>Next Steps</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Data loss due to hardware failure or accidental deletion</td>
-                  <td>Medium</td>
-                  <td>High</td>
-                  <td class="text-high-risk">High</td>
-                  <td>Use Git version control with daily commits; maintain an automated backup script to a secondary drive.</td>
+                  <td>Week 1<br>Mon 3 Feb</td>
+                  <td>Initial client meeting with the school librarian (Mrs Chen). Discussed current paper-based system and pain points.</td>
+                  <td>Identified loan tracking and overdue reporting as the two highest-priority problems. Decided to focus the project scope on these areas.</td>
+                  <td>Client had difficulty articulating technical requirements — used guided questions: "What does a typical day look like?" and "What is most frustrating about the current process?"</td>
+                  <td>Draft functional and non-functional requirements for client review by Week 2.</td>
                 </tr>
                 <tr>
-                  <td>Scope creep — client requests additional features mid-project</td>
-                  <td>High</td>
-                  <td>Medium</td>
-                  <td class="text-high-risk">High</td>
-                  <td>Formalise requirements in a signed document at Phase 1; use a change request log to evaluate new features.</td>
+                  <td>Week 3<br>Wed 12 Feb</td>
+                  <td>Completed structure chart and Level 0 DFD. Began <strong>algorithm</strong> design for the book search module using pseudocode.</td>
+                  <td>Chose <strong>Agile</strong> approach over Waterfall because requirements may evolve as the client sees prototypes. This will allow me to adapt designs based on feedback each <strong>iteration</strong>.</td>
+                  <td>Initially designed the search as a sequential scan — after research, switched to a dictionary-based lookup for O(1) ISBN lookups, significantly improving efficiency on large catalogues.</td>
+                  <td>Build the search and loan modules in Phase 3 Week 5–6.</td>
                 </tr>
                 <tr>
-                  <td>Technical skill gap — unfamiliarity with a required library</td>
-                  <td>Medium</td>
-                  <td>Medium</td>
-                  <td class="text-medium-risk">Medium</td>
-                  <td>Allocate one week for research and prototyping; consult official documentation and tutorial resources early.</td>
-                </tr>
-                <tr>
-                  <td>Time underestimation — tasks take longer than planned</td>
-                  <td>High</td>
-                  <td>Medium</td>
-                  <td class="text-high-risk">High</td>
-                  <td>Build a 1-week buffer into the schedule; prioritise core features using MoSCoW (Must, Should, Could, Won't) method.</td>
-                </tr>
-                <tr>
-                  <td>Security vulnerability — <strong>SQL injection</strong> or <strong>authentication</strong> bypass</td>
-                  <td>Low</td>
-                  <td>High</td>
-                  <td class="text-medium-risk">Medium</td>
-                  <td>Use parameterised queries for all database operations; implement input validation on all user-facing forms.</td>
-                </tr>
-                <tr>
-                  <td>Client unavailability for feedback sessions</td>
-                  <td>Medium</td>
-                  <td>Low</td>
-                  <td class="text-low-risk">Low</td>
-                  <td>Schedule client meetings at least one week in advance; use asynchronous feedback methods (e.g., email surveys) as a fallback.</td>
+                  <td>Week 7<br>Tue 4 Mar</td>
+                  <td>Implemented <code>LoanService</code> class. Discovered BUG-002 (loan limit not enforced) during manual testing.</td>
+                  <td>Fixed the off-by-one error in <code>can_borrow()</code> — changed <code>&lt;</code> to <code>&lt;=</code> in the comparison. Added a unit test to prevent regression.</td>
+                  <td>The bug was caused by incorrect operator choice. Added this case to the test data table as a boundary test to ensure the limit is correctly enforced on future changes.</td>
+                  <td>Complete UI implementation; schedule Phase 4 UAT session with Mrs Chen for Week 10.</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <!-- Risk Assessment Matrix Diagram -->
-          <div class="diagram-block">
-            <h4>Diagram - Risk Assessment Matrix</h4>
-            <p class="diagram-subtitle">Plotting the risk register by likelihood and impact</p>
-            <p class="diagram-description">
-              A risk matrix turns the register above into a visual priority map. Each risk is plotted by its <strong>likelihood</strong> (horizontal) and <strong>impact</strong> (vertical). Risks landing in the top-right are the most urgent — high likelihood <em>and</em> high impact — and must be mitigated first. The other quadrants guide whether to plan a contingency, monitor actively, or simply accept the risk.
-            </p>
-            <div class="mermaid">
-              quadrantChart
-                title Project Risk Matrix — Likelihood vs Impact
-                x-axis "Low Likelihood" --> "High Likelihood"
-                y-axis "Low Impact" --> "High Impact"
-                quadrant-1 "Critical — mitigate now"
-                quadrant-2 "Plan contingency"
-                quadrant-3 "Accept / monitor"
-                quadrant-4 "Monitor actively"
-                "Data loss": [0.5, 0.8]
-                "Scope creep": [0.82, 0.58]
-                "Time underestimation": [0.78, 0.5]
-                "Skill gap": [0.5, 0.5]
-                "Security vuln": [0.25, 0.82]
-                "Client unavailable": [0.5, 0.25]
-            </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Prioritise risks visually so mitigation effort targets the highest likelihood × impact threats first<br>
-              <strong>Syllabus Link:</strong> SE-12-05, SE-12-09<br>
-              <strong>Try This:</strong> Add a new risk to your own project and decide which quadrant it belongs in — then justify its mitigation priority
-            </p>
-          </div>
-
-          <h3>Storyboards and Wireframes</h3>
-          <p>A <strong>storyboard</strong> visually maps the sequence of screens a user encounters when completing a task. A <strong>wireframe</strong> is a low-fidelity layout sketch of a single screen, showing the placement of UI elements without colour or detailed styling. Together, they allow client feedback on the interface before any front-end code is written.</p>
-
           <div class="callout tip">
-            <strong>Storyboard vs Wireframe — Key Differences:</strong>
+            <strong>Process diary tips:</strong>
             <ul>
-              <li><strong>Storyboard:</strong> Shows a <em>sequence of interactions</em> — e.g., the steps a user takes from the login screen to completing a book search. Think of it as a comic strip of your application's workflow.</li>
-              <li><strong>Wireframe:</strong> Shows the <em>layout of a single screen</em> — where headers, navigation, input fields, and buttons are positioned. It does not include colour, fonts, or images.</li>
-              <li><strong>Prototype:</strong> A clickable, interactive mock-up of the interface, often built in a tool like <strong>Figma</strong> or <strong>Canva</strong>. It simulates real user interaction without any back-end code.</li>
-              <li><strong>Why include them:</strong> They demonstrate to assessors that you consulted the client about the UI <em>before</em> coding, which is a hallmark of professional software engineering practice.</li>
+              <li><strong>Date every entry:</strong> Your process diary must show the chronological development of your project. Undated entries will not receive credit for demonstrating ongoing engagement.</li>
+              <li><strong>Record decisions and reasoning:</strong> Don't just state what you did — explain <em>why</em> you chose one approach over another (e.g., "I chose a phased implementation because..."). This demonstrates higher-order thinking.</li>
+              <li><strong>Include annotated screenshots:</strong> Annotate wireframes, Gantt charts, and planning documents to show your understanding of their purpose. A screenshot without annotation adds little evidence.</li>
+              <li><strong>Record client feedback:</strong> Summarise every client interaction. Include what feedback was given and how you responded to it in your planning and design.</li>
+              <li><strong>Reflect on setbacks:</strong> Note when tasks took longer than expected and how you adjusted the schedule. This demonstrates project management competency.</li>
             </ul>
           </div>
+        </section>
 
-          <h3>Data Flow Diagram (DFD)</h3>
+        <hr class="divider" />
+
+        <section id="social-ethical">
+          <h2 class="syllabus-phase">Social and Ethical Issues in Project Work</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-05, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Explore</strong> social and ethical issues associated with project work, including working individually, collaboratively and responding to stakeholders</em></p>
+
+          <p>Project work raises social and ethical questions about how people are treated, whether you work alone or in a team.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Situation</th><th>Issues to manage</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Working individually</strong></td><td>Managing your own time, being honest about progress, and acknowledging code or ideas you did not write yourself.</td></tr>
+                <tr><td><strong>Working collaboratively</strong></td><td>Sharing work fairly, respecting different skills and views, and crediting each person's contribution.</td></tr>
+                <tr><td><strong>Responding to stakeholders</strong></td><td>Being transparent about what the software will and won't do, protecting users' data, and treating feedback respectfully.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout info"><strong>Scenario:</strong> A team member copies a login system from a tutorial without acknowledging it. The ethical response is to cite the source in the documentation and check that its licence allows reuse.</div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="communication">
+          <h2 class="syllabus-phase">Communication Issues in Project Work</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Explore</strong> communication issues associated with project work</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>involving and empowering the client</li><li>enabling feedback</li><li>negotiating</li></ul>
+
+          <p>Good communication keeps the client, the team and the software pointed at the same goal.</p>
+
+          <ul>
+            <li><strong>Involving and empowering the client:</strong> invite the client to reviews and let them make decisions about priorities, so the solution is theirs as well as yours.</li>
+            <li><strong>Enabling feedback:</strong> make it easy to comment, for example with a demo at the end of each sprint and a simple feedback form.</li>
+            <li><strong>Negotiating:</strong> agree on what is realistic. If a feature won't fit the deadline, offer options, such as a simpler version now and the full feature later.</li>
+          </ul>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Fortnightly demonstrations involved the client in each iteration and enabled feedback early, which revealed that teachers needed a printable roll. Negotiating the scope moved the attendance graph to a later release so the printable roll could be delivered on time."</em></div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="quality-backend">
+          <h2 class="syllabus-phase">Quality Assurance</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-06, SE-12-07)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Investigate</strong> how software engineering solutions are quality assured</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>defining criteria on which quality will be judged</li><li>ensuring requirements are met using a continual checking process</li><li>addressing compliance and legislative requirements</li></ul>
+
+          <p><strong>Quality assurance (QA)</strong> is everything a team does to make sure the finished software is good enough, not just at the end but throughout the project. It has three parts.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Part of QA</th><th>What it involves</th><th>Example for a library booking app</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Defining quality criteria</strong></td><td>Agree measurable targets with the client before building</td><td>Pages load in under 2 seconds; a booking takes no more than 3 clicks</td></tr>
+                <tr><td><strong>Continual checking</strong></td><td>Test against the requirements at every stage, not only at the end</td><td>Automated tests run on every commit; a client demo every sprint</td></tr>
+                <tr><td><strong>Compliance and legislation</strong></td><td>Meet the laws and standards that apply</td><td>Privacy Act 1988 for student data; WCAG 2.2 AA for accessibility</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Quality was assured by agreeing measurable criteria with the librarian, such as a two-second load time, and checking them continually through automated tests and fortnightly demonstrations. Storing only a student's name and ID helped the system comply with the Australian Privacy Principles."</em></div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="modelling-tools">
+          <h2 class="syllabus-phase">Using Modelling Tools</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-06)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Demonstrate</strong> the use of modelling tools</em></p>
+
+          <p>Modelling tools let you plan and explain a system before and while you build it. Choose the tool that answers the question you have: a <strong>data flow diagram</strong> for how data moves, a <strong>structure chart</strong> for how the program is divided into modules, and a <strong>decision tree</strong> or table for complex choices. In your project, show a model and explain how it shaped your code.</p>
+
+          
+
+<h3>Data Flow Diagram (DFD)</h3>
           <p>A <strong>Data Flow Diagram (DFD)</strong> models how data moves through a system. It shows external entities (users or other systems), processes that transform data, data stores (databases or files), and the data flows connecting them. A <strong>Level 0 DFD</strong> (Context Diagram) shows the entire system as a single process with all external entities. A <strong>Level 1 DFD</strong> expands the main process into its sub-processes.</p>
 
           <div class="diagram-block">
@@ -736,151 +931,44 @@ Key:
               <strong>Next Step:</strong> A Level 1 DFD would expand the central process into sub-processes (e.g., Search Books, Issue Loan, Generate Report) with data stores (e.g., Books DB, Members DB).
             </p>
           </div>
-
-          <div class="callout tip">
-            <strong>Process Diary Tips — Phase 2:</strong>
-            <ul>
-              <li><strong>Date every entry:</strong> Your process diary must show the chronological development of your project. Undated entries will not receive credit for demonstrating ongoing engagement.</li>
-              <li><strong>Record decisions and reasoning:</strong> Don't just state what you did — explain <em>why</em> you chose one approach over another (e.g., "I chose a phased implementation because..."). This demonstrates higher-order thinking.</li>
-              <li><strong>Include annotated screenshots:</strong> Annotate wireframes, Gantt charts, and planning documents to show your understanding of their purpose. A screenshot without annotation adds little evidence.</li>
-              <li><strong>Record client feedback:</strong> Summarise every client interaction. Include what feedback was given and how you responded to it in your planning and design.</li>
-              <li><strong>Reflect on setbacks:</strong> Note when tasks took longer than expected and how you adjusted the schedule. This demonstrates project management competency.</li>
-            </ul>
-          </div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 5. Quality Assurance & Back-End -->
-        <section id="quality-backend">
-          <h2 class="syllabus-phase">Quality Assurance &amp; Back-End Engineering</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-06, SE-12-07)</em></p>
+        <section id="backend-engineering">
+          <h2 class="syllabus-phase">The Contribution of Back-End Engineering</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-03)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Explain</strong> the contribution of back-end engineering to the success and ease of software development</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>technology used</li><li>error handling</li><li>interfacing with front end</li><li>security engineering</li></ul>
 
-          <h3>Quality Assurance (QA)</h3>
-          <p><strong>Investigate</strong> how software engineering solutions are quality assured. QA involves defining clear criteria on which quality will be judged (e.g., load times, error rates). It requires a <strong>continual checking process</strong> to ensure requirements are met, whilst strictly addressing compliance and legislative requirements (e.g., Australian Privacy Principles) (Outcome SE-12-01).</p>
-
-          <h3>Modelling Tools</h3>
-          <p><strong>Demonstrate</strong> the use of 🛠️ <strong>modelling tools</strong> to map out software logic. This includes Data Flow Diagrams (DFDs), Structure Charts, and Decision Trees (Course Spec p. 5-10) (Outcome SE-12-06).</p>
-
-          <h3>Back-End Engineering Contribution</h3>
-          <p><strong>Explain</strong> the contribution of back-end engineering to the success and ease of software development (Outcome SE-12-07):</p>
+                    <p><strong>Explain</strong> the contribution of back-end engineering to the success and ease of software development:</p>
 
           <h4>Technology Used</h4>
-          <p>The selection of server-side frameworks and database technologies fundamentally determines a project's performance, scalability, and long-term maintainability. For example, a <strong>Django</strong> (Python) framework provides a built-in ORM, <strong>authentication</strong> system, and admin panel — dramatically reducing development time for data-driven applications. Alternatively, <strong>Node.js</strong> enables non-blocking I/O suited to high-concurrency environments, such as real-time chat applications. Database choice is equally critical: a relational database such as <strong>PostgreSQL</strong> enforces data integrity through foreign keys and ACID transactions, whereas a NoSQL database such as <strong>MongoDB</strong> offers flexible document schemas suited to rapidly evolving data models.</p>
+          <p>The selection of server-side frameworks and database technologies fundamentally determines a project's performance, scalability, and long-term maintainability. For example, a <strong>Django</strong> (Python) framework provides a built-in ORM, <strong>authentication</strong> system, and admin panel — reducing development time for data-driven applications. Alternatively, <strong>Node.js</strong> enables non-blocking I/O suited to high-concurrency environments, such as real-time chat applications. Database choice is equally critical: a relational database such as <strong>PostgreSQL</strong> enforces data integrity through foreign keys and ACID transactions, whereas a NoSQL database such as <strong>MongoDB</strong> offers flexible document schemas suited to rapidly evolving data models.</p>
 
           <h4>Error Handling</h4>
-          <p>Robust error handling ensures the server remains stable and informative when unexpected inputs or system failures occur. Without it, an unhandled exception could crash the entire server process — making the application unavailable to all users simultaneously. For example, a <code>try/except</code> block in Python can catch a database connection timeout and return a user-friendly <strong>503 Service Unavailable</strong> <strong>HTTP</strong> response, rather than exposing a raw stack trace to the client. Additionally, structured logging (e.g., Python's <code>logging</code> module) records error details for post-mortem debugging, without leaking sensitive system information to end-users.</p>
+          <p>Robust error handling ensures the server remains stable and informative when unexpected inputs or system failures occur. Without it, an unhandled exception could crash the entire server process — making the application unavailable to all users simultaneously. For example, a <code>try/except</code> block in Python can catch a database connection timeout and return a user-friendly <strong>503 Service Unavailable</strong> <strong>HTTP</strong> response, rather than exposing a raw stack trace to the client. Also, structured logging (e.g., Python's <code>logging</code> module) records error details for post-mortem debugging, without leaking sensitive system information to end-users.</p>
 
           <h4>Interfacing with Front End</h4>
           <p>Back-end engineers design <strong>Application Programming Interfaces (APIs)</strong> that define precisely how the front-end client requests and receives data. A <strong>RESTful API</strong> uses standard <strong>HTTP</strong> methods (GET, POST, PUT, DELETE) with JSON payloads, allowing any front-end technology — React, Angular, or a mobile app — to consume the same endpoints without modification. For example, a GET request to <code>/api/students/42</code> would return a JSON object containing that student's profile. Efficient API design minimises data transfer by returning only required fields, and uses <strong>HTTP</strong> status codes correctly (200 OK, 404 Not Found, 401 Unauthorised) so the front end can respond appropriately to every outcome.</p>
 
           <h4>Security Engineering</h4>
-          <p>The back end is the primary line of defence against malicious attacks. <strong>Password security</strong> is implemented through cryptographic hashing <strong>algorithms</strong> such as <strong>bcrypt</strong>, which store a one-way hash rather than plaintext — meaning a complete database breach still cannot reveal user credentials. <strong>Input sanitisation</strong> and parameterised SQL queries prevent <strong>SQL injection</strong> attacks, where an attacker might otherwise embed SQL commands in a form field to manipulate or delete database records. Additionally, implementing <strong>HTTPS with TLS certificates</strong> encrypts all data in transit, protecting against man-in-the-middle attacks on public networks.</p>
+          <p>The back end is the primary line of defence against malicious attacks. <strong>Password security</strong> is implemented through cryptographic hashing <strong>algorithms</strong> such as <strong>bcrypt</strong>, which store a one-way hash rather than plaintext — meaning a complete database breach still cannot reveal user credentials. <strong>Input sanitisation</strong> and parameterised SQL queries prevent <strong>SQL injection</strong> attacks, where an attacker might otherwise embed SQL commands in a form field to manipulate or delete database records. Also, implementing <strong>HTTPS with TLS certificates</strong> encrypts all data in transit, protecting against man-in-the-middle attacks on public networks.</p>
         </section>
 
-        <hr class="divider" />
 
         <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  PHASE 3: PRODUCING AND IMPLEMENTING                    -->
+        <!--  PRODUCING AND IMPLEMENTING                            -->
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
-          <span class="part-number">Phase 3</span>
-          <span class="part-name">Producing and Implementing</span>
+          <span class="part-number">Syllabus Part 3</span>
+          <span class="part-name">Producing and implementing</span>
         </div>
 
-        <!-- 6. Producing & Implementing -->
         <section id="producing">
-          <h2 class="syllabus-phase">Producing and Implementing</h2>
+          <h2 class="syllabus-phase">Designing, Constructing and Implementing a Solution</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-04, SE-12-06, SE-12-09)</em></p>
-
-          <p class="syllabus-concept">📌 <em><strong>Design, construct and implement</strong> a solution to a software problem using appropriate development approaches. Engineers must <strong>develop, construct and document algorithms</strong> and allocate appropriate resources to support development (Outcome SE-12-02).</em></p>
-
-          <h3>Programmed Data Backup &amp; Version Control</h3>
-          <p><strong>Demonstrate</strong> the use of programmed data backup to ensure data integrity during development. Additionally, <strong>implement version control</strong> (e.g., Git) to safely track code changes, manage collaborative merges, and document the project's evolution (Outcome SE-12-04, SE-12-09).</p>
-
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Python — Programmed Data Backup Script</span></div>
-            <pre><code><span class="kw">import</span> shutil
-<span class="kw">from</span> datetime <span class="kw">import</span> datetime
-
-<span class="kw">def</span> <span class="fn">programmed_backup</span>(db_filepath, backup_directory):
-    <span class="str">"""Automates the backup of the project database with a timestamp."""</span>
-    timestamp = datetime.now().strftime(<span class="str">"%Y%m%d_%H%M%S"</span>)
-    backup_file = <span class="str">f"{backup_directory}/db_backup_{timestamp}.sqlite3"</span>
-    
-    <span class="kw">try</span>:
-        shutil.copy2(db_filepath, backup_file)
-        print(<span class="str">f"✅ Backup successful: {backup_file}"</span>)
-    <span class="kw">except</span> IOError <span class="kw">as</span> e:
-        print(<span class="str">f"❌ Backup failed: {e}"</span>)
-
-<span class="cm"># Execute backup before deploying a new feature</span>
-programmed_backup(<span class="str">'app_data.sqlite3'</span>, <span class="str">'./backups'</span>)</code></pre>
-          </div>
-
-          <h3>Strategies for Difficulties & Outsourcing</h3>
-          <p><strong>Explore</strong> strategies to respond to difficulties when developing. This includes searching for solutions online (e.g., official documentation, StackOverflow), seeking <strong>collaboration with peers</strong> for code reviews, or <strong>outsourcing</strong> specific technical components (e.g., paying for an external API service rather than building it from scratch) (Outcome SE-12-09).</p>
-
-          <div class="callout feature my-large">
-            <h4>"Buy vs. Build" Decision Guide</h4>
-            <p>NESA highly regards students who can justify their development strategies. If you face a complex difficulty (e.g., implementing secure logins), use this logic to justify <strong>outsourcing</strong>:</p>
-            <table class="decision-table">
-              <tr><th>Factor</th><th>Build (In-House)</th><th>Buy / Outsource (Third-Party)</th></tr>
-              <tr><td><strong>Time</strong></td><td>Takes weeks to code and test.</td><td>Instant integration via API.</td></tr>
-              <tr><td><strong>Cost</strong></td><td>High developer salary cost.</td><td>Ongoing subscription / per-use cost.</td></tr>
-              <tr><td><strong>Risk</strong></td><td>High risk of bugs / security flaws.</td><td>Low risk (tested by provider).</td></tr>
-              <tr><td><strong>Justification</strong></td><td><em>"I built the search algorithm because it's my core intellectual property."</em></td><td><em>"I outsourced authentication to Auth0 because rolling my own crypto was an unacceptable security risk."</em></td></tr>
-            </table>
-          </div>
-
-          <h3>Innovative UI Solutions</h3>
-          <p><strong>Propose</strong> an additional innovative solution using a <strong>prototype</strong> and a <strong>user interface (UI)</strong> design. Prototyping allows clients to interact with a mock-up of the system, providing early validation of the UI layout before heavy backend coding commences (Outcome SE-12-06).</p>
-
-          <h3>Version Control Workflow</h3>
-          <p><strong>Version control</strong> is a fundamental professional practice. Git allows engineers to track every change made to the codebase, revert to earlier versions if bugs are introduced, and collaborate without overwriting each other's work. The workflow below demonstrates the standard Git feature-branch workflow used in professional software engineering.</p>
-
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Bash — Git Feature-Branch Workflow</span></div>
-            <pre><code class="language-bash"># ── INITIAL SETUP ──────────────────────────────────────────
-# Initialise a new repository and make the first commit
-git init library-management-system
-cd library-management-system
-git add README.md
-git commit -m "Initial commit: project structure"
-
-# ── FEATURE DEVELOPMENT ────────────────────────────────────
-# Always create a new branch for each feature
-git checkout -b feature/book-search
-
-# After writing code, stage and commit your changes
-git add src/search.py tests/test_search.py
-git commit -m "Add book search by title and ISBN with unit tests"
-
-# ── MERGING A FEATURE ──────────────────────────────────────
-# Switch back to main and merge the completed feature
-git checkout main
-git merge feature/book-search --no-ff -m "Merge feature/book-search into main"
-
-# ── USEFUL COMMANDS ────────────────────────────────────────
-git log --oneline --graph    # View commit history as a graph
-git diff HEAD~1 HEAD         # See changes since the last commit
-git status                   # Check which files are staged/unstaged
-git stash                    # Temporarily save uncommitted changes
-
-# ── TAGGING A RELEASE ──────────────────────────────────────
-git tag -a v1.0 -m "Version 1.0 — submitted for client review"
-git push origin main --tags</code></pre>
-          </div>
-
-          <div class="callout tip">
-            <strong>Version Control Best Practices for the SEP:</strong>
-            <ul>
-              <li><strong>Commit frequently:</strong> Commit after every logical unit of work (e.g., after implementing one function). Small commits are far easier to review and revert than large, multi-feature commits.</li>
-              <li><strong>Write meaningful commit messages:</strong> Use the imperative mood and describe <em>what</em> the commit does: "Add login form validation" not "fixed stuff" or "wip".</li>
-              <li><strong>Use branches for features:</strong> Never code a new feature directly on <code>main</code>. Always create a feature branch (<code>git checkout -b feature/my-feature</code>) so the main branch stays stable.</li>
-              <li><strong>Link to your process diary:</strong> Your commit history in GitHub serves as timestamped evidence of ongoing development — reference it in your process diary entries.</li>
-            </ul>
-          </div>
+          <p class="syllabus-concept">📌 <em><strong>Design, construct and implement</strong> a solution to a software problem using appropriate development approach(es)</em></p>
 
           <h3>Modular Design — Python Example</h3>
           <p>A well-engineered solution separates concerns into distinct modules and classes. The example below shows how the Library Management System is implemented using modular Python, with each class responsible for a single aspect of the system.</p>
@@ -980,158 +1068,224 @@ if __name__ == "__main__":
     print(catalogue.search_by_title("gatsby"))
     print(loan_service.issue_loan(book1, member1))</code></pre>
           </div>
+        </section>
 
-          <h3>Code Review Checklist</h3>
-          <p>A <strong>code review</strong> is the systematic examination of code by a peer before it is merged into the main branch. It catches bugs, ensures style consistency, and improves overall code quality. The checklist below should be applied during every code review in a collaborative project.</p>
+        <hr class="divider" />
 
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Category</th>
-                  <th>Checklist Item</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Functionality</strong></td>
-                  <td>Does the code correctly implement the specified requirements?</td>
-                  <td>☐ Pass / ☐ Fail</td>
-                </tr>
-                <tr>
-                  <td><strong>Functionality</strong></td>
-                  <td>Are all edge cases and error conditions handled appropriately?</td>
-                  <td>☐ Pass / ☐ Fail</td>
-                </tr>
-                <tr>
-                  <td><strong>Readability</strong></td>
-                  <td>Are variable and function names clear and descriptive?</td>
-                  <td>☐ Pass / ☐ Fail</td>
-                </tr>
-                <tr>
-                  <td><strong>Readability</strong></td>
-                  <td>Does the code follow PEP 8 style conventions (Python)?</td>
-                  <td>☐ Pass / ☐ Fail</td>
-                </tr>
-                <tr>
-                  <td><strong>Documentation</strong></td>
-                  <td>Do all functions and classes have docstrings explaining purpose, parameters, and return values?</td>
-                  <td>☐ Pass / ☐ Fail</td>
-                </tr>
-                <tr>
-                  <td><strong>Testing</strong></td>
-                  <td>Are unit tests provided for all new functions, covering normal, boundary, and invalid inputs?</td>
-                  <td>☐ Pass / ☐ Fail</td>
-                </tr>
-                <tr>
-                  <td><strong>Security</strong></td>
-                  <td>Is all user input validated and sanitised before processing or storing?</td>
-                  <td>☐ Pass / ☐ Fail</td>
-                </tr>
-                <tr>
-                  <td><strong>Security</strong></td>
-                  <td>Are there any hardcoded passwords, API keys, or sensitive credentials in the code?</td>
-                  <td>☐ Pass / ☐ Fail</td>
-                </tr>
-                <tr>
-                  <td><strong>Performance</strong></td>
-                  <td>Are there any obviously inefficient <strong>algorithms</strong> (e.g., nested loops on large datasets) that should be refactored?</td>
-                  <td>☐ Pass / ☐ Fail</td>
-                </tr>
-                <tr>
-                  <td><strong>Version Control</strong></td>
-                  <td>Is the commit message clear and descriptive? Does the branch name follow the naming convention?</td>
-                  <td>☐ Pass / ☐ Fail</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <section id="presenting">
+          <h2 class="syllabus-phase">Presenting Your Solution</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Present</strong> a software engineering solution using presentation software</em></p>
 
-          <h3>Debugging Process</h3>
-          <p><strong>Debugging</strong> is the systematic process of identifying, isolating, and fixing defects in code. A structured debugging process is faster and more reliable than randomly changing code and hoping for improvement.</p>
+          <p>At the end of the project you present your solution to an audience such as your client, class or teacher. Presentation software such as PowerPoint, Google Slides or Keynote helps you show the problem, the solution and the evidence that it works.</p>
 
-          <div class="diagram-block">
-            <h4>Debugging Process Flowchart</h4>
-            <p class="diagram-subtitle">Systematic approach to identifying and resolving defects</p>
-            <p class="diagram-description">
-              The flowchart below shows the structured debugging process. It begins with observing the bug and ends with verifying the fix has not introduced any new defects (regression testing).
-            </p>
-            <div class="mermaid">
-flowchart TD
-    A([🔴 Bug Observed]) --> B[Reproduce the bug reliably\nwith a minimal test case]
-    B --> C{Can you reproduce\nconsistently?}
-    C -- No --> D[Add logging/print statements\nto narrow down occurrence]
-    D --> C
-    C -- Yes --> E[Isolate the affected\nmodule or function]
-    E --> F[Form a hypothesis\nabout the root cause]
-    F --> G[Test the hypothesis\nusing a debugger or print statements]
-    G --> H{Hypothesis\ncorrect?}
-    H -- No --> F
-    H -- Yes --> I[Implement the fix]
-    I --> J[Run the original\nfailing test case]
-    J --> K{Test passes?}
-    K -- No --> F
-    K -- Yes --> L[Run the full test suite\nto check for regressions]
-    L --> M{All tests\npass?}
-    M -- No --> N[Address new regressions\nintroduced by the fix]
-    N --> F
-    M -- Yes --> O([✅ Bug Fixed &amp; Verified])
-            </div>
-            <p class="diagram-caption">
-              <strong>Purpose:</strong> Apply a methodical, evidence-based approach to debugging rather than making random code changes.<br>
-              <strong>Syllabus Link:</strong> SE-12-02, SE-12-08<br>
-              <strong>Python Tools:</strong> Use the built-in <code>pdb</code> debugger (<code>python -m pdb script.py</code>), VS Code's integrated debugger, or add <code>print()</code> statements to trace variable values at key points.
-            </p>
+          <ul>
+            <li>Open with the need or opportunity you addressed.</li>
+            <li>Demonstrate the key features, using a live demo or screen recording.</li>
+            <li>Show evidence from testing and client feedback.</li>
+            <li>Finish with an honest evaluation and next steps.</li>
+          </ul>
+
+          <div class="callout info"><strong>Tip:</strong> keep slides to one idea each, use screenshots rather than code listings, and have a recording ready in case the live demo fails.</div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="documenting-algorithms">
+          <h2 class="syllabus-phase">Developing and Documenting Algorithms</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Develop, construct and document</strong> algorithms</em></p>
+
+          <p>Before and during coding, write the key parts of your solution as algorithms, then keep them with your documentation so others can follow your logic.</p>
+
+          <ul>
+            <li><strong>Develop:</strong> plan the logic in pseudocode or a flowchart before you write code.</li>
+            <li><strong>Construct:</strong> turn each algorithm into code, one subroutine at a time.</li>
+            <li><strong>Document:</strong> keep the final algorithms, with comments and a short description of inputs, outputs and purpose.</li>
+          </ul>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">pseudocode</span></div>
+            <pre><code>BEGIN checkBookingClash(room, start, finish)
+    FOR EACH booking IN bookings
+        IF booking.room = room AND start &lt; booking.finish AND finish &gt; booking.start THEN
+            RETURN True
+        ENDIF
+    NEXT booking
+    RETURN False
+END checkBookingClash</code></pre>
           </div>
         </section>
 
         <hr class="divider" />
 
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  PHASE 4: TESTING AND EVALUATING                        -->
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <div class="part-block">
-          <span class="part-number">Phase 4</span>
-          <span class="part-name">Testing and Evaluating</span>
-        </div>
+        <section id="allocating-resources">
+          <h2 class="syllabus-phase">Allocating Resources</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-06, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Allocate</strong> resources to support the development of a software engineering solution</em></p>
 
-        <!-- 7. Testing & Evaluating -->
-        <section id="testing-evaluating">
-          <h2 class="syllabus-phase">Testing and Evaluating</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-12-08, SE-12-09)</em></p>
+          <p>Allocating resources means deciding what time, people, hardware, software and money each part of the project will get.</p>
 
-          <p class="syllabus-concept">📌 <em><strong>Apply</strong> methodologies to test and evaluate code, and <strong>Analyse and respond</strong> to client feedback. Evaluating the effectiveness of a solution ensures it meets the initial problem requirements.</em></p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Resource</th><th>Example allocation in a school project</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Time</strong></td><td>Three weeks for development, one week for testing, shown on a Gantt chart</td></tr>
+                <tr><td><strong>People</strong></td><td>The client is available for a 15-minute review every second Friday</td></tr>
+                <tr><td><strong>Hardware</strong></td><td>A laptop for development; a Raspberry Pi as the test server</td></tr>
+                <tr><td><strong>Software</strong></td><td>VS Code, Python with Flask, SQLite and GitHub</td></tr>
+                <tr><td><strong>Budget</strong></td><td>Free tiers only, such as GitHub and a free hosting plan</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
-          <h3>Effectiveness &amp; Testing Data</h3>
-          <p>Evaluation involves generating a <strong>test plan</strong> and executing it using rigorous testing data based on <strong>path testing</strong> (ensuring every line of code executes) and <strong>boundary testing</strong> (testing the extreme limits of input constraints). Engineers evaluate success by <strong>comparing actual output with expected output</strong>, and develop a final report to synthesise client feedback (Outcome SE-12-08, SE-12-09).</p>
+        <hr class="divider" />
 
-          <h3>Language-Dependent Code Optimisation</h3>
-          <p><strong>Use</strong> language-dependent code optimisation techniques to refine execution speed and readability. In Python, this often involves using list comprehensions instead of standard loops, or utilising built-in C-optimised functions (Outcome SE-12-08).</p>
+        <section id="data-backup">
+          <h2 class="syllabus-phase">Programmed Data Backup</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-04, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Demonstrate</strong> the use of programmed data backup</em></p>
+
+          <p>A <strong>programmed data backup</strong> copies your data automatically on a schedule or before a risky change, so you don't have to remember to do it.</p>
 
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">Python — Code Optimisation &amp; Boundary Testing</span></div>
-            <pre><code><span class="kw">import</span> unittest
+            <div class="code-header"><span class="code-lang">Python — Programmed Data Backup Script</span></div>
+            <pre><code><span class="kw">import</span> shutil
+<span class="kw">from</span> datetime <span class="kw">import</span> datetime
 
-<span class="cm"># OPTIMISED CODE: Using list comprehension instead of a slow for-loop</span>
-<span class="kw">def</span> <span class="fn">get_valid_ages</span>(age_list):
-    <span class="str">"""Returns ages between 18 and 65 (inclusive) using fast list comprehension."""</span>
-    <span class="kw">return</span>[age <span class="kw">for</span> age <span class="kw">in</span> age_list <span class="kw">if</span> <span class="num">18</span> &lt;= age &lt;= <span class="num">65</span>]
+<span class="kw">def</span> <span class="fn">programmed_backup</span>(db_filepath, backup_directory):
+    <span class="str">"""Automates the backup of the project database with a timestamp."""</span>
+    timestamp = datetime.now().strftime(<span class="str">"%Y%m%d_%H%M%S"</span>)
+    backup_file = <span class="str">f"{backup_directory}/db_backup_{timestamp}.sqlite3"</span>
+    
+    <span class="kw">try</span>:
+        shutil.copy2(db_filepath, backup_file)
+        print(<span class="str">f"✅ Backup successful: {backup_file}"</span>)
+    <span class="kw">except</span> IOError <span class="kw">as</span> e:
+        print(<span class="str">f"❌ Backup failed: {e}"</span>)
 
-<span class="cm"># TESTING: Applying boundary testing methodology</span>
-<span class="kw">class</span> <span class="fn">TestAgeValidation</span>(unittest.TestCase):
-    <span class="kw">def</span> <span class="fn">test_boundaries</span>(self):
-        <span class="cm"># Boundary data: 17 (invalid), 18 (valid), 65 (valid), 66 (invalid)</span>
-        test_data =[<span class="num">17</span>, <span class="num">18</span>, <span class="num">40</span>, <span class="num">65</span>, <span class="num">66</span>]
-        expected_output =[<span class="num">18</span>, <span class="num">40</span>, <span class="num">65</span>]
-        actual_output = get_valid_ages(test_data)
-
-        <span class="cm"># Comparing actual output with expected output</span>
-        self.assertEqual(actual_output, expected_output)
-
-<span class="kw">if</span> __name__ == <span class="str">'__main__'</span>:
-    unittest.main()</code></pre>
+<span class="cm"># Execute backup before deploying a new feature</span>
+programmed_backup(<span class="str">'app_data.sqlite3'</span>, <span class="str">'./backups'</span>)</code></pre>
           </div>
+
+          <div class="callout info"><strong>Tip:</strong> test your backups by restoring one. A backup you can't restore is not a backup.</div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="version-control">
+          <h2 class="syllabus-phase">Implementing Version Control</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-06, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Implement</strong> version control when developing a software engineering solution</em></p>
+
+                    <p><strong>Version control</strong> is a fundamental professional practice. Git allows engineers to track every change made to the codebase, revert to earlier versions if bugs are introduced, and collaborate without overwriting each other's work. The workflow below demonstrates the standard Git feature-branch workflow used in professional software engineering.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Bash — Git Feature-Branch Workflow</span></div>
+            <pre><code class="language-bash"># ── INITIAL SETUP ──────────────────────────────────────────
+# Initialise a new repository and make the first commit
+git init library-management-system
+cd library-management-system
+git add README.md
+git commit -m "Initial commit: project structure"
+
+# ── FEATURE DEVELOPMENT ────────────────────────────────────
+# Always create a new branch for each feature
+git checkout -b feature/book-search
+
+# After writing code, stage and commit your changes
+git add src/search.py tests/test_search.py
+git commit -m "Add book search by title and ISBN with unit tests"
+
+# ── MERGING A FEATURE ──────────────────────────────────────
+# Switch back to main and merge the completed feature
+git checkout main
+git merge feature/book-search --no-ff -m "Merge feature/book-search into main"
+
+# ── USEFUL COMMANDS ────────────────────────────────────────
+git log --oneline --graph    # View commit history as a graph
+git diff HEAD~1 HEAD         # See changes since the last commit
+git status                   # Check which files are staged/unstaged
+git stash                    # Temporarily save uncommitted changes
+
+# ── TAGGING A RELEASE ──────────────────────────────────────
+git tag -a v1.0 -m "Version 1.0 — submitted for client review"
+git push origin main --tags</code></pre>
+          </div>
+
+          <div class="callout tip">
+            <strong>Version Control Best Practices for the SEP:</strong>
+            <ul>
+              <li><strong>Commit frequently:</strong> Commit after every logical unit of work (e.g., after implementing one function). Small commits are far easier to review and revert than large, multi-feature commits.</li>
+              <li><strong>Write meaningful commit messages:</strong> Use the imperative mood and describe <em>what</em> the commit does: "Add login form validation" not "fixed stuff" or "wip".</li>
+              <li><strong>Use branches for features:</strong> Never code a new feature directly on <code>main</code>. Always create a feature branch (<code>git checkout -b feature/my-feature</code>) so the main branch stays stable.</li>
+              <li><strong>Link to your process diary:</strong> Your commit history in GitHub serves as timestamped evidence of ongoing development — reference it in your process diary entries.</li>
+            </ul>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="difficulties">
+          <h2 class="syllabus-phase">Responding to Difficulties</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-04, SE-12-06, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Explore</strong> strategies to respond to difficulties when developing a software engineering solution</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>looking for a solution online</li><li>collaboration with peers</li><li>outsourcing</li></ul>
+
+          <p>Every project hits problems. What matters is how you respond:</p>
+          <ul>
+            <li><strong>Looking for a solution online:</strong> start with official documentation, then trusted forums such as Stack Overflow. Test anything you find, and cite code you reuse.</li>
+            <li><strong>Collaboration with peers:</strong> explain the problem to a classmate or ask for a code review. Often, explaining the problem is enough to spot the bug.</li>
+            <li><strong>Outsourcing:</strong> use an existing service or library for a hard, non-core part, such as a payment provider or a login service.</li>
+          </ul>
+
+          <div class="callout feature my-large">
+            <h4>"Buy vs. Build" Decision Guide</h4>
+            <p>For a large difficulty, such as implementing secure logins, weigh up whether to build it yourself or outsource it:</p>
+            <table class="decision-table">
+              <tr><th>Factor</th><th>Build (In-House)</th><th>Buy / Outsource (Third-Party)</th></tr>
+              <tr><td><strong>Time</strong></td><td>Takes weeks to code and test.</td><td>Instant integration via API.</td></tr>
+              <tr><td><strong>Cost</strong></td><td>High developer salary cost.</td><td>Ongoing subscription / per-use cost.</td></tr>
+              <tr><td><strong>Risk</strong></td><td>High risk of bugs / security flaws.</td><td>Low risk (tested by provider).</td></tr>
+              <tr><td><strong>Justification</strong></td><td><em>"I built the search algorithm because it's my core intellectual property."</em></td><td><em>"I outsourced authentication to Auth0 because rolling my own crypto was an unacceptable security risk."</em></td></tr>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="innovative-solution">
+          <h2 class="syllabus-phase">Proposing an Innovative Solution</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-04, SE-12-06, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Propose</strong> an additional innovative solution using a prototype and user interface (UI) design</em></p>
+
+          <p>Once your main solution works, propose one further idea that would make it better. Show it as a <strong>prototype</strong>, such as a clickable Figma mock-up or a paper sketch, with a clear <strong>UI design</strong>. You don't need to build it; you need to show it is worth building.</p>
+
+          <ul>
+            <li>Describe the problem the idea solves, using evidence from feedback.</li>
+            <li>Show the prototype screens and explain the UI choices, such as layout, colour, font size and accessibility.</li>
+            <li>Explain how it would fit into the existing system.</li>
+          </ul>
+
+          <div class="callout info"><strong>Scenario:</strong> Testers of a library booking system kept forgetting their bookings. The student proposes a "My week" view with reminder notifications, prototypes three screens in Figma, and tests them with two librarians before recommending the feature for version 2.</div>
+
+          
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!--  TESTING AND EVALUATING                                -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Syllabus Part 4</span>
+          <span class="part-name">Testing and evaluating</span>
+        </div>
+
+        <section id="testing-evaluating">
+          <h2 class="syllabus-phase">Methodologies to Test and Evaluate Code</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-08, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply</strong> methodologies to test and evaluate code</em></p>
 
           <h3>Test Data Table</h3>
           <p>A comprehensive test plan uses three categories of test data to verify correctness across all scenarios. <strong>Normal data</strong> tests typical valid inputs; <strong>boundary data</strong> tests values at the exact edges of valid ranges; <strong>invalid (erroneous) data</strong> tests inputs that should be rejected.</p>
@@ -1226,63 +1380,7 @@ flowchart TD
             </table>
           </div>
 
-          <h3>Test Plan Template</h3>
-          <p>A <strong>test plan</strong> is a document that outlines the testing strategy, scope, resources, schedule, and exit criteria for a software project. It is prepared <em>before</em> testing begins to ensure testing is systematic and complete.</p>
-
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Section</th>
-                  <th>Content</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Project Name</strong></td>
-                  <td>Library Management System v1.0</td>
-                </tr>
-                <tr>
-                  <td><strong>Test Objectives</strong></td>
-                  <td>Verify all functional requirements are met; confirm boundary conditions are correctly enforced; ensure invalid inputs are gracefully handled.</td>
-                </tr>
-                <tr>
-                  <td><strong>Scope — In Scope</strong></td>
-                  <td>Book search, loan issuance, loan return, overdue fine calculation, member registration, report generation.</td>
-                </tr>
-                <tr>
-                  <td><strong>Scope — Out of Scope</strong></td>
-                  <td>Payment processing (deferred to v2.0), email notification system.</td>
-                </tr>
-                <tr>
-                  <td><strong>Testing Types</strong></td>
-                  <td>Unit testing (individual functions), integration testing (modules working together), system testing (end-to-end user workflows), user acceptance testing (client feedback session).</td>
-                </tr>
-                <tr>
-                  <td><strong>Test Data Categories</strong></td>
-                  <td>Normal (valid expected inputs), Boundary (values at the edge of valid ranges), Invalid/Erroneous (inputs that should be rejected).</td>
-                </tr>
-                <tr>
-                  <td><strong>Tools</strong></td>
-                  <td>Python <code>unittest</code> framework, VS Code debugger, manual testing via the application UI.</td>
-                </tr>
-                <tr>
-                  <td><strong>Entry Criteria</strong></td>
-                  <td>All Phase 3 code is complete and committed to the main branch.</td>
-                </tr>
-                <tr>
-                  <td><strong>Exit Criteria</strong></td>
-                  <td>All test cases pass; no critical or high-severity defects remain open; client has signed off on UAT results.</td>
-                </tr>
-                <tr>
-                  <td><strong>Schedule</strong></td>
-                  <td>Unit testing: Weeks 8–9. Integration testing: Week 9. UAT: Week 10.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h3>Defect Log</h3>
+<h3>Defect Log</h3>
           <p>A <strong>defect log</strong> (also called a bug tracker or issue log) records every defect discovered during testing. Each entry includes enough information for the developer to reproduce and fix the defect. The defect log demonstrates to assessors that you conducted genuine testing and responded to the results.</p>
 
           <div class="table-wrap">
@@ -1339,7 +1437,260 @@ flowchart TD
             </table>
           </div>
 
-          <h3>Evaluation Criteria Checklist</h3>
+<h3>Code Review Checklist</h3>
+          <p>A <strong>code review</strong> is the systematic examination of code by a peer before it is merged into the main branch. It catches bugs, ensures style consistency, and improves overall code quality. The checklist below should be applied during every code review in a collaborative project.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Checklist Item</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Functionality</strong></td>
+                  <td>Does the code correctly implement the specified requirements?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Functionality</strong></td>
+                  <td>Are all edge cases and error conditions handled appropriately?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Readability</strong></td>
+                  <td>Are variable and function names clear and descriptive?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Readability</strong></td>
+                  <td>Does the code follow PEP 8 style conventions (Python)?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Documentation</strong></td>
+                  <td>Do all functions and classes have docstrings explaining purpose, parameters, and return values?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Testing</strong></td>
+                  <td>Are unit tests provided for all new functions, covering normal, boundary, and invalid inputs?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Security</strong></td>
+                  <td>Is all user input validated and sanitised before processing or storing?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Security</strong></td>
+                  <td>Are there any hardcoded passwords, API keys, or sensitive credentials in the code?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Performance</strong></td>
+                  <td>Are there any obviously inefficient <strong>algorithms</strong> (e.g., nested loops on large datasets) that should be refactored?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+                <tr>
+                  <td><strong>Version Control</strong></td>
+                  <td>Is the commit message clear and descriptive? Does the branch name follow the naming convention?</td>
+                  <td>☐ Pass / ☐ Fail</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+<h3>Debugging Process</h3>
+          <p><strong>Debugging</strong> is the systematic process of identifying, isolating, and fixing defects in code. A structured debugging process is faster and more reliable than randomly changing code and hoping for improvement.</p>
+
+          <div class="diagram-block">
+            <h4>Debugging Process Flowchart</h4>
+            <p class="diagram-subtitle">Systematic approach to identifying and resolving defects</p>
+            <p class="diagram-description">
+              The flowchart below shows the structured debugging process. It begins with observing the bug and ends with verifying the fix has not introduced any new defects (regression testing).
+            </p>
+            <div class="mermaid">
+flowchart TD
+    A([🔴 Bug Observed]) --> B[Reproduce the bug reliably\nwith a minimal test case]
+    B --> C{Can you reproduce\nconsistently?}
+    C -- No --> D[Add logging/print statements\nto narrow down occurrence]
+    D --> C
+    C -- Yes --> E[Isolate the affected\nmodule or function]
+    E --> F[Form a hypothesis\nabout the root cause]
+    F --> G[Test the hypothesis\nusing a debugger or print statements]
+    G --> H{Hypothesis\ncorrect?}
+    H -- No --> F
+    H -- Yes --> I[Implement the fix]
+    I --> J[Run the original\nfailing test case]
+    J --> K{Test passes?}
+    K -- No --> F
+    K -- Yes --> L[Run the full test suite\nto check for regressions]
+    L --> M{All tests\npass?}
+    M -- No --> N[Address new regressions\nintroduced by the fix]
+    N --> F
+    M -- Yes --> O([✅ Bug Fixed &amp; Verified])
+            </div>
+            <p class="diagram-caption">
+              <strong>Purpose:</strong> Apply a methodical, evidence-based approach to debugging rather than making random code changes.<br>
+              <strong>Syllabus Link:</strong> SE-12-02, SE-12-08<br>
+              <strong>Python Tools:</strong> Use the built-in <code>pdb</code> debugger (<code>python -m pdb script.py</code>), VS Code's integrated debugger, or add <code>print()</code> statements to trace variable values at key points.
+            </p>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="code-optimisation">
+          <h2 class="syllabus-phase">Language-Dependent Code Optimisation</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-08, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Use</strong> a language-dependent code optimisation technique</em></p>
+
+          <p>A <strong>language-dependent</strong> optimisation uses a feature of your particular programming language to make code faster or clearer. In Python, list comprehensions and built-in functions such as <code>sum()</code> and <code>sorted()</code> run in optimised C code, so they are usually quicker than writing the same loop yourself. Measure before and after, for example with <code>timeit</code>, to show the change helped.</p>
+
+          
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Code Optimisation &amp; Boundary Testing</span></div>
+            <pre><code><span class="kw">import</span> unittest
+
+<span class="cm"># OPTIMISED CODE: Using list comprehension instead of a slow for-loop</span>
+<span class="kw">def</span> <span class="fn">get_valid_ages</span>(age_list):
+    <span class="str">"""Returns ages between 18 and 65 (inclusive) using fast list comprehension."""</span>
+    <span class="kw">return</span>[age <span class="kw">for</span> age <span class="kw">in</span> age_list <span class="kw">if</span> <span class="num">18</span> &lt;= age &lt;= <span class="num">65</span>]
+
+<span class="cm"># TESTING: Applying boundary testing methodology</span>
+<span class="kw">class</span> <span class="fn">TestAgeValidation</span>(unittest.TestCase):
+    <span class="kw">def</span> <span class="fn">test_boundaries</span>(self):
+        <span class="cm"># Boundary data: 17 (invalid), 18 (valid), 65 (valid), 66 (invalid)</span>
+        test_data =[<span class="num">17</span>, <span class="num">18</span>, <span class="num">40</span>, <span class="num">65</span>, <span class="num">66</span>]
+        expected_output =[<span class="num">18</span>, <span class="num">40</span>, <span class="num">65</span>]
+        actual_output = get_valid_ages(test_data)
+
+        <span class="cm"># Comparing actual output with expected output</span>
+        self.assertEqual(actual_output, expected_output)
+
+<span class="kw">if</span> __name__ == <span class="str">'__main__'</span>:
+    unittest.main()</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="feedback">
+          <h2 class="syllabus-phase">Analysing and Responding to Feedback</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-08, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Analyse and respond</strong> to feedback</em></p>
+
+          <p>Feedback from your client, users and peers shows how well the solution meets its requirements. <strong>Analyse</strong> it to find patterns, then <strong>respond</strong> by deciding what to change, what to schedule for later and what to explain.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Feedback</th><th>Analysis</th><th>Response</th></tr></thead>
+              <tbody>
+                <tr><td>"I couldn't find the cancel button."</td><td>Usability issue, raised by 3 of 5 testers</td><td>Moved the button and relabelled it; retested</td></tr>
+                <tr><td>"Can it send reminders by SMS?"</td><td>New feature, outside the original scope</td><td>Added to the backlog for a future version</td></tr>
+                <tr><td>"The page is slow on my phone."</td><td>Performance issue with large images</td><td>Compressed images; load time down from 4 s to 1.2 s</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="post-project">
+          <h2 class="syllabus-phase">Evaluating the Effectiveness of Your Solution</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-08, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Evaluate</strong> the effectiveness of a software engineering solution</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>developing a report to synthesise feedback</li><li>developing a test plan</li><li>testing data used/generated based on path and boundary testing</li><li>comparing actual output with expected output</li></ul>
+
+          <h3>Effectiveness &amp; Testing Data</h3>
+          <p>Evaluation involves generating a <strong>test plan</strong> and executing it using rigorous testing data based on <strong>path testing</strong> (ensuring every line of code executes) and <strong>boundary testing</strong> (testing the extreme limits of input constraints). Engineers evaluate success by <strong>comparing actual output with expected output</strong>, and develop a final report to synthesise client feedback.</p>
+
+<h3>Test Plan Template</h3>
+          <p>A <strong>test plan</strong> is a document that outlines the testing strategy, scope, resources, schedule, and exit criteria for a software project. It is prepared <em>before</em> testing begins to ensure testing is systematic and complete.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Section</th>
+                  <th>Content</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Project Name</strong></td>
+                  <td>Library Management System v1.0</td>
+                </tr>
+                <tr>
+                  <td><strong>Test Objectives</strong></td>
+                  <td>Verify all functional requirements are met; confirm boundary conditions are correctly enforced; ensure invalid inputs are gracefully handled.</td>
+                </tr>
+                <tr>
+                  <td><strong>Scope — In Scope</strong></td>
+                  <td>Book search, loan issuance, loan return, overdue fine calculation, member registration, report generation.</td>
+                </tr>
+                <tr>
+                  <td><strong>Scope — Out of Scope</strong></td>
+                  <td>Payment processing (deferred to v2.0), email notification system.</td>
+                </tr>
+                <tr>
+                  <td><strong>Testing Types</strong></td>
+                  <td>Unit testing (individual functions), integration testing (modules working together), system testing (end-to-end user workflows), user acceptance testing (client feedback session).</td>
+                </tr>
+                <tr>
+                  <td><strong>Test Data Categories</strong></td>
+                  <td>Normal (valid expected inputs), Boundary (values at the edge of valid ranges), Invalid/Erroneous (inputs that should be rejected).</td>
+                </tr>
+                <tr>
+                  <td><strong>Tools</strong></td>
+                  <td>Python <code>unittest</code> framework, VS Code debugger, manual testing via the application UI.</td>
+                </tr>
+                <tr>
+                  <td><strong>Entry Criteria</strong></td>
+                  <td>All Phase 3 code is complete and committed to the main branch.</td>
+                </tr>
+                <tr>
+                  <td><strong>Exit Criteria</strong></td>
+                  <td>All test cases pass; no critical or high-severity defects remain open; client has signed off on UAT results.</td>
+                </tr>
+                <tr>
+                  <td><strong>Schedule</strong></td>
+                  <td>Unit testing: Weeks 8–9. Integration testing: Week 9. UAT: Week 10.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+<h3>Evaluating Against Requirements</h3>
+          <p>A thorough evaluation compares <strong>what you built</strong> against <strong>what you planned</strong> from Phase 1. For each functional and non-functional requirement, document:</p>
+          <ul>
+            <li>Was this requirement fully met? Partially? Not met?</li>
+            <li>What evidence demonstrates it is met? (test results, user feedback, system output)</li>
+            <li>If not fully met, what limited the implementation?</li>
+          </ul>
+
+<h3>Developing an Evaluation Report</h3>
+          <p>Your evaluation report should synthesise all feedback gathered throughout the project and systematically compare actual outputs with expected outcomes. This includes:</p>
+          <ul>
+            <li><strong>Requirement Coverage:</strong> Use your original requirements document and reference each requirement by number, demonstrating which were fully met, partially met, or deferred.</li>
+            <li><strong>Testing Evidence:</strong> Present test results showing how the system behaves against your test data (path and boundary testing cases).</li>
+            <li><strong>User Feedback:</strong> Document feedback from the client or stakeholders about whether the system meets their needs.</li>
+            <li><strong>Technical Evaluation:</strong> Discuss decisions made, challenges encountered, and how they were addressed.</li>
+          </ul>
+
+          <div class="callout tip">
+            <strong>Evaluation Best Practices:</strong><br>
+            Be specific and evidence-based — reference your test results and requirements document by number.<br>
+            Acknowledge any limitations honestly — explain what didn't work and why, demonstrating critical reflection.<br>
+            Use actual data — show test output, user feedback quotes, and measurable results rather than general statements.
+          </div>
+
+<h3>Evaluation Criteria Checklist</h3>
           <p>The final evaluation assesses whether the solution meets the original requirements. Evaluation must address every requirement documented in Phase 1, referencing specific test results and client feedback as evidence.</p>
 
           <div class="table-wrap">
@@ -1396,318 +1747,6 @@ flowchart TD
           </div>
         </section>
 
-        <hr class="divider" />
-
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  HSC ASSESSMENT GUIDANCE                                -->
-        <!-- ═══════════════════════════════════════════════════════ -->
-        <div class="part-block">
-          <span class="part-number">HSC Guidance</span>
-          <span class="part-name">HSC Assessment Guidance</span>
-        </div>
-
-        <section id="hsc-assessment-guidance">
-          <h2 class="syllabus-phase">HSC Assessment Guidance</h2>
-          <p class="outcome-subtitle">🎯 <em>(All Outcomes: SE-12-01 to SE-12-09)</em></p>
-          <p class="syllabus-concept">📌 <em>Understanding what assessors are looking for in each phase will help you maximise marks and avoid common pitfalls.</em></p>
-
-          <div class="callout warning">
-            <strong>Common Student Mistakes — Avoid These:</strong>
-            <ul>
-              <li><strong>Starting to code in Phase 1:</strong> The most common mistake. Phase 1 must be completed (requirements gathered, feasibility assessed, client consulted) before any code is written. Evidence of planning is required.</li>
-              <li><strong>Missing non-functional requirements:</strong> Functional requirements alone are insufficient. Assessors expect performance, security, usability, and maintainability requirements to be explicitly documented.</li>
-              <li><strong>No client consultation evidence:</strong> Simply stating "I consulted a client" is not enough. You must include dated meeting minutes, a signed requirements document, survey results, or email evidence.</li>
-              <li><strong>Test data with only normal cases:</strong> A test table that only tests valid inputs misses the point of testing. You must include boundary and invalid test cases and demonstrate that your code handles them correctly.</li>
-              <li><strong>Evaluation that does not reference Phase 1 requirements:</strong> Your evaluation must explicitly go back to each requirement from Phase 1 and assess whether it was met. An evaluation that says "I think the project went well" without referencing requirements receives minimal marks.</li>
-              <li><strong>Process diary written retrospectively:</strong> The process diary must be written throughout the project. Assessors can tell when it was written all at once at the end — dated entries over several weeks are essential.</li>
-              <li><strong>No version control history:</strong> An empty or near-empty GitHub commit history suggests the project was completed in one sitting. Regular commits with meaningful messages are expected.</li>
-            </ul>
-          </div>
-
-          <h3>What Markers Look for in Each Phase</h3>
-
-          <div class="info-grid">
-            <div class="info-card">
-              <h4>Phase 1 — Identifying &amp; Defining</h4>
-              <ul>
-                <li>Clear, genuine real-world problem statement</li>
-                <li>Evidence of client consultation (meeting minutes, survey)</li>
-                <li>Both functional AND non-functional requirements listed</li>
-                <li>Feasibility analysis (scheduling and resources)</li>
-                <li>Defined scope with explicit boundaries</li>
-                <li>User stories with acceptance criteria</li>
-              </ul>
-            </div>
-            <div class="info-card">
-              <h4>Phase 2 — Research &amp; Planning</h4>
-              <ul>
-                <li>Justified choice of development approach (<strong>Agile</strong>/Waterfall)</li>
-                <li>Complete Gantt chart covering all phases</li>
-                <li>Risk register with mitigation strategies</li>
-                <li>Structure charts and/or DFDs</li>
-                <li>Storyboards or wireframes with annotations</li>
-                <li>Justified choice of implementation method</li>
-              </ul>
-            </div>
-            <div class="info-card">
-              <h4>Phase 3 — Producing &amp; Implementing</h4>
-              <ul>
-                <li>Code that matches the planned design</li>
-                <li>Regular Git commits with meaningful messages</li>
-                <li>Modular, well-documented code (docstrings, PEP 8)</li>
-                <li>Evidence of iterative development (multiple versions)</li>
-                <li>Process diary entries describing decisions made</li>
-                <li>Prototype or UI screenshots</li>
-              </ul>
-            </div>
-            <div class="info-card">
-              <h4>Phase 4 — Testing &amp; Evaluating</h4>
-              <ul>
-                <li><strong>Functional Testing:</strong> Checking workflows against the functional requirements.</li>
-                <li><strong>Acceptance Testing:</strong> Client confirms the software solves their original problem (UAT).</li>
-                <li><strong>Live Data / Simulated Data Testing:</strong> Using real-world scale data OR generated datasets to trigger edge cases.</li>
-                <li><strong>Beta / Volume Testing:</strong> User trials before public release, and testing system limits under mass concurrent usage.</li>
-                <li>Test data table (normal, boundary, invalid) &amp; Defect log.</li>
-                <li>Evaluation against every Phase 1 requirement &amp; documented client feedback.</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="code-block my-large">
-            <div class="code-header"><span class="code-lang">Python — Volume / Stress Test Script</span></div>
-            <pre><code># NESA testing methods require proof of Volume Testing.
-# Use scripts like this in your project to flood your system with simulated data
-# and produce a performance graph for your marking portfolio.
-
-import time
-import random
-
-# E.g., simulate a library database with 10,000 dummy records
-print("Generating 10,000 dummy library records for Volume Testing...")
-library_db = {f"ISBN-{i}": f"Book Title {i}" for i in range(10000)}
-
-def search_book(isbn):
-    return library_db.get(isbn, "Not Found")
-
-# Stress Test
-start_time = time.time()
-print("\nExecuting stress test: 50,000 simultaneous searches...")
-
-for _ in range(50000):
-    random_isbn = f"ISBN-{random.randint(0, 15000)}"
-    search_book(random_isbn)
-
-end_time = time.time()
-print(f"✅ Volume Testing Complete.")
-print(f"Time taken to process 50,000 queries over 10K records: {end_time - start_time:.4f} seconds")</code></pre>
-          </div>
-
-          <h3>Process Diary Example Excerpt</h3>
-          <p>The process diary is a chronological record of your development journey. It should demonstrate ongoing reflection, problem-solving, and client engagement throughout the project — not just a summary of what was done.</p>
-
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Activities Completed</th>
-                  <th>Decisions Made &amp; Reasoning</th>
-                  <th>Challenges &amp; Responses</th>
-                  <th>Next Steps</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Week 1<br>Mon 3 Feb</td>
-                  <td>Initial client meeting with the school librarian (Mrs Chen). Discussed current paper-based system and pain points.</td>
-                  <td>Identified loan tracking and overdue reporting as the two highest-priority problems. Decided to focus the project scope on these areas.</td>
-                  <td>Client had difficulty articulating technical requirements — used guided questions: "What does a typical day look like?" and "What is most frustrating about the current process?"</td>
-                  <td>Draft functional and non-functional requirements for client review by Week 2.</td>
-                </tr>
-                <tr>
-                  <td>Week 3<br>Wed 12 Feb</td>
-                  <td>Completed structure chart and Level 0 DFD. Began <strong>algorithm</strong> design for the book search module using pseudocode.</td>
-                  <td>Chose <strong>Agile</strong> approach over Waterfall because requirements may evolve as the client sees prototypes. This will allow me to adapt designs based on feedback each <strong>iteration</strong>.</td>
-                  <td>Initially designed the search as a sequential scan — after research, switched to a dictionary-based lookup for O(1) ISBN lookups, significantly improving efficiency on large catalogues.</td>
-                  <td>Build the search and loan modules in Phase 3 Week 5–6.</td>
-                </tr>
-                <tr>
-                  <td>Week 7<br>Tue 4 Mar</td>
-                  <td>Implemented <code>LoanService</code> class. Discovered BUG-002 (loan limit not enforced) during manual testing.</td>
-                  <td>Fixed the off-by-one error in <code>can_borrow()</code> — changed <code>&lt;</code> to <code>&lt;=</code> in the comparison. Added a unit test to prevent regression.</td>
-                  <td>The bug was caused by incorrect operator choice. Added this case to the test data table as a boundary test to ensure the limit is correctly enforced on future changes.</td>
-                  <td>Complete UI implementation; schedule Phase 4 UAT session with Mrs Chen for Week 10.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h3>Submission Checklist</h3>
-          <p>Before submitting your Software Engineering Project, use this checklist to ensure your documentation package is complete:</p>
-
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Item</th>
-                  <th>Required</th>
-                  <th>Completed?</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>Signed client requirements document</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Functional and non-functional requirements table</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>User stories with acceptance criteria</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Feasibility analysis (scheduling and resources)</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Gantt chart (all 4 phases)</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Risk register with mitigation strategies</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Structure chart or DFD (or both)</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Storyboard and/or wireframes</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Development approach justification</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Well-commented, PEP 8 compliant source code</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Git repository with regular commit history</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Test plan document</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Test data table (normal, boundary, invalid)</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Defect log</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Evaluation against all Phase 1 requirements</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Client feedback and UAT sign-off</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Process diary (dated, throughout project)</td><td>Essential</td><td>☐</td></tr>
-                <tr><td>Change request log (if requirements changed)</td><td>Recommended</td><td>☐</td></tr>
-                <tr><td>Data dictionary</td><td>Recommended</td><td>☐</td></tr>
-                <tr><td>Meeting minutes (all client meetings)</td><td>Recommended</td><td>☐</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <hr class="divider" />
-
-          <h3>Data Dictionary</h3>
-          <p>A <strong>data dictionary</strong> formally defines every data item used in the system — its name, data type, size, valid range, and description. It ensures consistency between the design documents and the code implementation, and establishes the <strong>data structures</strong> required for the project.</p>
-
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Field Name</th>
-                  <th>Entity / Class</th>
-                  <th>Data Type</th>
-                  <th>Size / Range</th>
-                  <th>Required?</th>
-                  <th>Description &amp; Validation Rules</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>member_id</code></td>
-                  <td>Member</td>
-                  <td>Text</td>
-                  <td>8 characters</td>
-                  <td>Yes</td>
-                  <td>Unique identifier for each member. Format: "S" followed by 7 digits (e.g., "S0012345"). Generated automatically on registration.</td>
-                </tr>
-                <tr>
-                  <td><code>name</code></td>
-                  <td>Member</td>
-                  <td>Text</td>
-                  <td>1–100 characters</td>
-                  <td>Yes</td>
-                  <td>Member's full name. Must not be blank. Must be validated before storage.</td>
-                </tr>
-                <tr>
-                  <td><code>email</code></td>
-                  <td>Member</td>
-                  <td>Text</td>
-                  <td>5–254 characters</td>
-                  <td>Yes</td>
-                  <td>Member's email address. Must match email format pattern. Must be unique.</td>
-                </tr>
-                <tr>
-                  <td><code>isbn</code></td>
-                  <td>Book</td>
-                  <td>Text</td>
-                  <td>13 characters</td>
-                  <td>Yes</td>
-                  <td>International Standard Book Number (ISBN-13). Must be exactly 13 digits. Validated against ISBN checksum <strong>algorithm</strong>.</td>
-                </tr>
-                <tr>
-                  <td><code>title</code></td>
-                  <td>Book</td>
-                  <td>Text</td>
-                  <td>1–300 characters</td>
-                  <td>Yes</td>
-                  <td>Full title of the book. Must not be blank. Case-insensitive search support.</td>
-                </tr>
-                <tr>
-                  <td><code>available</code></td>
-                  <td>Book</td>
-                  <td>Boolean</td>
-                  <td>True / False</td>
-                  <td>Yes</td>
-                  <td>Whether the book is available for loan. Default: True. Set to False when issued; reset to True when returned.</td>
-                </tr>
-                <tr>
-                  <td><code>issue_date</code></td>
-                  <td>Loan</td>
-                  <td>Date</td>
-                  <td>Valid calendar date</td>
-                  <td>Yes</td>
-                  <td>The date the loan was issued. Automatically set to current date. Cannot be a future date.</td>
-                </tr>
-                <tr>
-                  <td><code>due_date</code></td>
-                  <td>Loan</td>
-                  <td>Date</td>
-                  <td>Valid calendar date</td>
-                  <td>Yes</td>
-                  <td>The date the book must be returned. Automatically calculated as 14 days after issue date.</td>
-                </tr>
-                <tr>
-                  <td><code>fine_amount</code></td>
-                  <td>Loan</td>
-                  <td>Number</td>
-                  <td>0.00 to 99.99</td>
-                  <td>No</td>
-                  <td>Overdue fine in Australian dollars. Default: 0.00. Calculated as $0.20 per day overdue.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        <hr class="divider" />
-
-        <!-- Project Evaluation -->
-        <section id="post-project">
-          <h2 class="syllabus-phase">Project Evaluation</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-12-07, SE-12-08, SE-12-09)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Evaluate</strong> the effectiveness of a software engineering solution by synthesising feedback and comparing actual output with expected output.</em></p>
-
-          <h3>Evaluating Against Requirements</h3>
-          <p>A thorough evaluation compares <strong>what you built</strong> against <strong>what you planned</strong> from Phase 1. For each functional and non-functional requirement, document:</p>
-          <ul>
-            <li>Was this requirement fully met? Partially? Not met?</li>
-            <li>What evidence demonstrates it is met? (test results, user feedback, system output)</li>
-            <li>If not fully met, what limited the implementation?</li>
-          </ul>
-
-          <h3>Developing an Evaluation Report</h3>
-          <p>Your evaluation report should synthesise all feedback gathered throughout the project and systematically compare actual outputs with expected outcomes. This includes:</p>
-          <ul>
-            <li><strong>Requirement Coverage:</strong> Use your original requirements document and reference each requirement by number, demonstrating which were fully met, partially met, or deferred.</li>
-            <li><strong>Testing Evidence:</strong> Present test results showing how the system behaves against your test data (path and boundary testing cases).</li>
-            <li><strong>User Feedback:</strong> Document feedback from the client or stakeholders about whether the system meets their needs.</li>
-            <li><strong>Technical Evaluation:</strong> Discuss decisions made, challenges encountered, and how they were addressed.</li>
-          </ul>
-
-          <div class="callout tip">
-            <strong>Evaluation Best Practices:</strong><br>
-            Be specific and evidence-based — reference your test results and requirements document by number.<br>
-            Acknowledge any limitations honestly — explain what didn't work and why, demonstrating critical reflection.<br>
-            Use actual data — show test output, user feedback quotes, and measurable results rather than general statements.
-          </div>
-        </section>
-
-
       </div>
     </main>
   </div>
@@ -1747,9 +1786,10 @@ print(f"Time taken to process 50,000 queries over 10K records: {end_time - start
     </div>
   </footer>
 
-  <script src="../js/main.js?v=18"></script>
+  <script src="../js/glossary-data.js?v=3"></script>
+  <script src="../js/main.js?v=20"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="../js/mermaid-init.js?v=2"></script>
+  <script src="../js/mermaid-init.js?v=4"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->
@@ -1774,5 +1814,6 @@ print(f"Time taken to process 50,000 queries over 10K records: {end_time - start
       </div>
     </div>
   </div>
+  <script src="../js/paper.js?v=2" defer></script>
 </body>
 </html>

@@ -51,7 +51,8 @@
   <meta name="description" content="Year 11 HSC Programming Mechatronics notes — sensors, actuators, control logic, hardware-software integration, and real-world robotics programming. NESA NSW." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=23" />
+  <link rel="stylesheet" href="../css/styles.css?v=25" />
+  <link rel="stylesheet" href="../css/paper.css?v=5" />
 </head>
 <body>
 
@@ -152,10 +153,10 @@
       <div class="topic-header-meta">
         <span class="meta-pill year11">Year 11 — Preliminary</span>
         <span class="meta-pill">~10 weeks</span>
-        <span class="meta-pill">Outcomes: SE-11-01 to SE-11-07</span>
+        <span class="meta-pill">Outcomes: SE-11-01 to 09</span>
       </div>
       <div class="callout exam-tip curriculum-banner yr11">
-        <strong>📚 Curriculum Aligned:</strong> This page covers NESA NSW Preliminary outcomes <strong>SE-11-01 to SE-11-07</strong> comprehensively. All content is aligned to official syllabus specifications — study with confidence. <a href="https://github.com/4BZDOG/HSC_SoftwareEngineering/blob/main/resources/Syllabus-Mapping.md" target="_blank" rel="noopener">View full mapping →</a>
+        <strong>📚 Curriculum Aligned:</strong> This page covers NESA NSW Preliminary outcomes <strong>SE-11-01 to SE-11-09</strong> comprehensively. All content is aligned to official syllabus specifications — study with confidence. <a href="https://github.com/4BZDOG/HSC_SoftwareEngineering/blob/main/resources/Syllabus-Mapping.md" target="_blank" rel="noopener">View full mapping →</a>
       </div>
     </div>
   </header>
@@ -164,21 +165,28 @@
     <aside class="sidebar">
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
-        <li class="sidebar-label">Part 1 — Understanding Hardware &amp; Software</li>
-        <li><a href="#applications">1. Mechatronic Applications</a></li>
-        <li><a href="#hardware">2. Microcontrollers &amp; Hardware Requirements</a></li>
-        <li><a href="#sensors-actuators">3. Sensors, Actuators &amp; Manipulators</a></li>
-        <li><a href="#data-processing">4. Data Types &amp; Processing</a></li>
-        <li><a href="#software-control">5. Software Control &amp; Dependencies</a></li>
-        <li><a href="#engineering">6. Power, Materials &amp; Wiring</a></li>
-        <li><a href="#accessibility">7. Specialist Requirements &amp; Accessibility</a></li>
-        <li class="sidebar-label">Part 2 — Designing Control Algorithms</li>
-        <li><a href="#control-design">8. Algorithm Development &amp; Control Systems</a></li>
-        <li><a href="#autonomous-features">9. Autonomous Control Features</a></li>
-        <li class="sidebar-label">Part 3 — Programming &amp; Building</li>
-        <li><a href="#design-develop">10. Design, Develop &amp; Produce Systems</a></li>
-        <li><a href="#implementation">11. Implementation &amp; Integration</a></li>
-        <li><a href="#prototyping">12. Prototyping, Simulation &amp; Testing</a></li>
+        <li class="sidebar-label">Part 1 — Understanding mechatronic hardware and software</li>
+        <li><a href="#applications">1. Applications of Mechatronic Systems</a></li>
+        <li><a href="#hardware">2. Hardware Requirements and Code Development</a></li>
+        <li><a href="#sensors-actuators">3. Sensors, Actuators and End Effectors</a></li>
+        <li><a href="#data-processing">4. Data in Mechatronic Systems</a></li>
+        <li><a href="#software-control">5. Software to Control Interactions and Dependencies</a></li>
+        <li><a href="#engineering">6. Power, Battery and Material Requirements</a></li>
+        <li><a href="#wiring">7. Wiring Diagrams</a></li>
+        <li><a href="#accessibility">8. Designing for People with Disability</a></li>
+        <li class="sidebar-label">Part 2 — Designing control algorithms</li>
+        <li><a href="#control-algorithms">9. Developing Control Algorithms</a></li>
+        <li><a href="#control-design">10. Open and Closed Control Systems</a></li>
+        <li><a href="#autonomous-features">11. Features of Autonomous Control</a></li>
+        <li class="sidebar-label">Part 3 — Programming and building</li>
+        <li><a href="#design-develop">12. Producing a Mechatronic System</a></li>
+        <li><a href="#implementation">13. Driving Mechatronic Devices</a></li>
+        <li><a href="#simulation">14. Simulations and Prototypes</a></li>
+        <li><a href="#closed-loop">15. Programming a Closed Loop Control System</a></li>
+        <li><a href="#integration">16. Integrating Sensors, Actuators and End Effectors</a></li>
+        <li><a href="#performance">17. Control Algorithms That Enhance Performance</a></li>
+        <li><a href="#user-interface">18. A User Interface to Control the System</a></li>
+        <li><a href="#prototyping">19. Unit Testing Control Algorithms</a></li>
       </ul>
     </aside>
 
@@ -186,22 +194,21 @@
       <div class="content-body">
 
         <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  PART 1: UNDERSTANDING MECHATRONIC HARDWARE & SOFTWARE  -->
+        <!--  UNDERSTANDING MECHATRONIC HARDWARE AND SOFTWARE       -->
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Syllabus Part 1</span>
-          <span class="part-name">Understanding Mechatronic Hardware and Software</span>
+          <span class="part-name">Understanding mechatronic hardware and software</span>
         </div>
 
-        <!-- 1. Outline Applications -->
         <section id="applications">
-          <h2 class="syllabus-phase">Mechatronic Applications</h2>
+          <h2 class="syllabus-phase">Applications of Mechatronic Systems</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-03)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Outline</strong> applications of mechatronic systems in a variety of specialised fields. Mechatronics involves the synergy of mechanical, electrical, and software engineering to create intelligent machines.</em></p>
-          
+          <p class="syllabus-concept">📌 <em><strong>Outline</strong> applications of mechatronic systems in a variety of specialised fields</em></p>
+
           <div class="key-terms">
             <div class="key-term-item"><strong>✈️ Aerospace</strong><span>Unmanned Aerial Vehicles (UAVs) use mechatronics for flight stabilisation, GPS navigation, and autonomous landing routines.</span></div>
-            <div class="key-term-item"><strong>🦾 Healthcare</strong><span>Advanced prosthetics utilise electromyography (EMG) sensors to detect muscle signals, allowing users to control bionic limbs with high precision.</span></div>
+            <div class="key-term-item"><strong>🦾 Healthcare</strong><span>Advanced prosthetics use electromyography (EMG) sensors to detect muscle signals, allowing users to control bionic limbs with high precision.</span></div>
             <div class="key-term-item"><strong>🚗 Automotive</strong><span>Modern vehicles incorporate mechatronic subsystems such as Anti-lock Braking Systems (ABS) and Electronic Stability Control (ESC) to enhance driver safety.</span></div>
           </div>
 
@@ -212,15 +219,27 @@
             </ul>
             <p class="video-box-note">A short overview of how <strong>mechanical</strong>, <strong>electrical</strong>, and <strong>software</strong> engineering combine to create intelligent <strong>mechatronic</strong> systems.</p>
           </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Field</th><th>Mechatronic system</th><th>What it senses → what it does</th></tr></thead>
+              <tbody>
+                <tr><td>Agriculture</td><td>Automated irrigation</td><td>Soil moisture → switches a pump on and off</td></tr>
+                <tr><td>Manufacturing</td><td>Pick-and-place robot arm</td><td>Camera finds a part → gripper picks it up and places it</td></tr>
+                <tr><td>Home</td><td>Robot vacuum</td><td>Bump and distance sensors → steers around furniture</td></tr>
+                <tr><td>Transport</td><td>Automatic train doors</td><td>Platform position and obstruction sensors → opens or holds the doors</td></tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 2. Hardware Requirements -->
         <section id="hardware">
-          <h2 class="syllabus-phase">Microcontrollers & Hardware</h2>
+          <h2 class="syllabus-phase">Hardware Requirements and Code Development</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-03)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Identify</strong> hardware requirements and <strong>Assess</strong> the relationship between microcontrollers and traditional CPUs.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Identify</strong> the hardware requirements to run a program and the effect on code development</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>assessing the relationship of microcontrollers and the central processing unit (CPU)</li><li>the influence of instruction set and opcodes</li><li>the use of address and data registers</li></ul>
 
           <h3>Microcontrollers vs CPUs</h3>
           <p>A <strong>Microcontroller</strong> (e.g., ATmega328P on an Arduino) is an integrated circuit containing a processor, memory (RAM/Flash), and I/O peripherals on a single chip. In contrast, a traditional <strong>CPU</strong> requires external components (RAM, Storage, Northbridge) to function. Microcontrollers are preferred for mechatronics because they allow direct, real-time control of hardware pins, are cost-effective, and have significantly lower power requirements than general-purpose CPUs.</p>
@@ -257,12 +276,12 @@
 
         <hr class="divider" />
 
-        <!-- 3. Sensors, Actuators & Manipulators -->
         <section id="sensors-actuators">
-          <h2 class="syllabus-phase">Sensors, Actuators & Manipulators</h2>
+          <h2 class="syllabus-phase">Sensors, Actuators and End Effectors</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-06)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Identify and Describe</strong> the hardware used in mechatronic systems to sense and react to the physical world.</em></p>
-          
+          <p class="syllabus-concept">📌 <em><strong>Identify and describe</strong> a range of sensors, actuators and end effectors/manipulators within existing mechatronic systems</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>motion sensors</li><li>light level sensors</li><li>hydraulic actuators</li><li>robotic grippers</li></ul>
+
           <div class="info-grid">
             <div class="info-card">
               <h4>Sensors (Inputs)</h4>
@@ -309,16 +328,15 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
 
         <hr class="divider" />
 
-        <!-- 4. Mechatronic Data Processing -->
         <section id="data-processing">
-          <h2 class="syllabus-phase">Mechatronic Data Processing</h2>
+          <h2 class="syllabus-phase">Data in Mechatronic Systems</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-04)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Use</strong> and <strong>Understand</strong> how data is obtained and processed, including diagnostic data for system optimisation.</em></p>
-          
+          <p class="syllabus-concept">📌 <em><strong>Use</strong> different types of data and understand how it is obtained and processed in a mechatronic system, including diagnostic data and data used for optimisation</em></p>
+
           <h3>Processing and Diagnostic Data</h3>
           <p>Mechatronic systems process raw analog signals (via ADCs) into digital data for decision-making. <strong>Diagnostic Data</strong> involves monitoring internal states—such as motor temperature, battery voltage, or current draw—to identify potential hardware failures before they occur. <strong>Optimisation Data</strong> is used to refine control algorithms, such as adjusting the duty cycle of a PWM signal to achieve maximum motor efficiency with minimal heat generation. Engineers use this data to perform "Predictive Maintenance", replacing components before a system-critical failure happens.</p>
 
-          <h3>Analog-to-Digital Conversion (ADC)</h3>
+<h3>Analog-to-Digital Conversion (ADC)</h3>
           <p>Sensors output continuous analog voltages. Microcontrollers use <strong>Analog-to-Digital Converters</strong> to sample these voltages and convert them to digital numbers for processing. An ADC typically has a resolution (e.g., 8-bit, 10-bit, 12-bit), determining how many discrete voltage levels it can represent.</p>
           <p><strong>ADC Formula:</strong> <code><strong>Digital Value = (Measured Voltage / Reference Voltage) × (2^Resolution - 1)</strong></code></p>
           <p>🌏 <em><strong>Example:</strong> A 10-bit ADC (1024 levels, 0-1023) with 5V reference, measuring 2.5V:</em></p>
@@ -330,19 +348,19 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
 
         <hr class="divider" />
 
-        <!-- 5. Software Control and Dependencies -->
         <section id="software-control">
-          <h2 class="syllabus-phase">Software Control and Dependencies</h2>
+          <h2 class="syllabus-phase">Software to Control Interactions and Dependencies</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Experiment</strong> with software to control interactions and dependencies within mechatronic systems, understanding motion constraints, degrees of freedom, and how subsystems combine.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Experiment</strong> with software to control interactions and dependencies within mechatronic systems</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>motion constraints</li><li>degrees of freedom</li><li>combination of subsystems</li><li>combination of sensors, actuators and end effectors to create viable subsystems</li></ul>
 
           <h3>Motion Constraints and Degrees of Freedom</h3>
           <p><strong>Motion Constraints</strong> are limitations on how a mechanical system can move, imposed by its physical design (e.g., a robotic arm pivot can only rotate within a specific range; a gripper can only open/close). <strong>Degrees of Freedom (DOF)</strong> refers to the number of independent directions in which a system can move. A gripper has 1 DOF (open/close); a planar robotic arm has 2 DOF (up/down, left/right); a full 3D robot arm has 6 DOF or more. Software must account for these constraints when generating movement commands—exceeding constraints can cause mechanical damage.</p>
 
-          <h3>Combination of Subsystems</h3>
+<h3>Combination of Subsystems</h3>
           <p>Complex mechatronic systems are built by combining simpler subsystems. For example, an automated warehouse robot combines: (1) a vision subsystem to identify items, (2) a navigation subsystem to move through the warehouse, (3) a gripper subsystem to pick items, and (4) a communication subsystem to report status. Software must coordinate these subsystems safely—ensuring the gripper only activates when the robot is stationary, and navigation only occurs when the gripper is closed.</p>
 
-          <h3>Combination of Sensors, Actuators, and End Effectors</h3>
+<h3>Combination of Sensors, Actuators, and End Effectors</h3>
           <p>Viable subsystems require careful integration of sensors (inputs), actuators (outputs), and end effectors (the working tool). For example, a 3D printer subsystem combines:</p>
           <ul>
             <li>Sensors: position encoders, temperature sensors, filament detection</li>
@@ -406,11 +424,12 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
 
         <hr class="divider" />
 
-        <!-- 6. Power, Materials and Wiring -->
         <section id="engineering">
-          <h2 class="syllabus-phase">Power, Materials and Wiring Diagrams</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-11-06)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Determine</strong> power, battery and material requirements for mechatronic components, and <strong>Develop</strong> wiring diagrams considering data and power supply needs.</em></p>
+          <h2 class="syllabus-phase">Power, Battery and Material Requirements</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-03, SE-11-06)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Determine</strong> power, battery and material requirements for components of a mechatronic system</em></p>
+
+          <p>Before you build, work out how much power the system needs, how long a battery will last, and what the parts should be made of. Getting this wrong leads to flat batteries, resets when motors start, or a frame that bends.</p>
 
           <div class="table-wrap">
             <table>
@@ -429,26 +448,54 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
                   <td><strong>Material Choice</strong></td>
                   <td>Choosing based on weight, strength, and environmental conditions.<br>🌏 <em>Example: Using carbon fibre for lightweight drone frames vs steel for industrial grippers.</em></td>
                 </tr>
-                <tr>
-                  <td>🛠️ <strong>Wiring Diagrams</strong></td>
-                  <td>Must utilise standard symbols (e.g., Resistor ⎓, Capacitor ╢, Motor Ⓜ). Diagrams ensure clear data and power supply documentation (SE-11-06).</td>
-                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Estimating battery life</h3>
+          <p><strong>Battery life (hours) ≈ battery capacity (mAh) ÷ average current (mA)</strong>. A 2000 mAh battery powering the 670 mA system above lasts about 2000 ÷ 670 ≈ 3 hours. In practice, allow 20–30% less, because batteries lose capacity as they age and as they get cold.</p>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"The greenhouse controller draws about 60 mA, but the pump draws 400 mA when it runs. The pump was therefore given its own 12 V supply through a relay, so its start-up current cannot cause the microcontroller to reset."</em></div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="wiring">
+          <h2 class="syllabus-phase">Wiring Diagrams</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-06)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Develop</strong> wiring diagrams for a mechatronic system, considering data and power supply requirements</em></p>
+
+          <p>A <strong>wiring diagram</strong> shows every connection in a mechatronic system: which pin connects to which component, and how power reaches each part. Draw it before you build, and update it whenever the circuit changes.</p>
+
+          <ul>
+            <li><strong>Data connections:</strong> label each microcontroller pin and what it does, such as <em>D9 → servo signal</em> or <em>A0 ← light sensor</em>.</li>
+            <li><strong>Power supply:</strong> show voltage and ground for every component. Give motors their own supply so they don't cause the microcontroller to brown out.</li>
+            <li><strong>Standard symbols and colours:</strong> red for positive, black for ground, and other colours for signals.</li>
+          </ul>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Component</th><th>Signal pin</th><th>Power</th><th>Ground</th></tr></thead>
+              <tbody>
+                <tr><td>Servo motor</td><td>D9 (PWM)</td><td>External 5 V</td><td>Common GND</td></tr>
+                <tr><td>Ultrasonic sensor</td><td>D7 trigger, D8 echo</td><td>5 V from board</td><td>GND</td></tr>
+                <tr><td>Light sensor (LDR)</td><td>A0</td><td>5 V through 10 kΩ resistor</td><td>GND</td></tr>
               </tbody>
             </table>
           </div>
 
           <div class="callout info">
-            <p><strong>Online Tool Suggestion:</strong> Students should use <strong>Tinkercad Circuits</strong> or <strong>Wokwi</strong> to develop wiring diagrams and simulate Arduino/ESP32 hardware connections virtually before building.</p>
+            <p><strong>Online Tool Suggestion:</strong> Try <strong>Tinkercad Circuits</strong> or <strong>Wokwi</strong> to develop wiring diagrams and simulate Arduino/ESP32 hardware connections virtually before building.</p>
           </div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 7. Specialist Requirements and Accessibility -->
         <section id="accessibility">
-          <h2 class="syllabus-phase">Specialist Requirements for People with Disability</h2>
+          <h2 class="syllabus-phase">Designing for People with Disability</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-05)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Determine</strong> specialist requirements that influence the design and functions of mechatronic systems designed for people with disability. Inclusive design ensures that technology enhances autonomy and quality of life.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Determine</strong> specialist requirements that influence the design and functions of mechatronic systems designed for people with disability</em></p>
 
           <h3>Accessibility Considerations</h3>
           <p>When designing mechatronic systems for users with disabilities, engineers must consider:</p>
@@ -485,24 +532,50 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <p>Specialist requirements often add complexity and cost, but they fundamentally expand accessibility and enable people with disabilities to perform tasks they could not otherwise accomplish independently.</p>
         </section>
 
-        <hr class="divider" />
 
         <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  PART 2: DESIGNING CONTROL ALGORITHMS                   -->
+        <!--  DESIGNING CONTROL ALGORITHMS                          -->
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Syllabus Part 2</span>
-          <span class="part-name">Designing Control Algorithms</span>
+          <span class="part-name">Designing control algorithms</span>
         </div>
 
-        <!-- 8. Control Algorithm Design -->
+        <section id="control-algorithms">
+          <h2 class="syllabus-phase">Developing Control Algorithms</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02, SE-11-08)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Develop, modify and apply</strong> algorithms to control a mechatronic system</em></p>
+
+          <p>A control algorithm reads sensors, decides what to do, and drives actuators, over and over. You <strong>develop</strong> one from the task, <strong>modify</strong> it when testing shows a problem, and <strong>apply</strong> it to the real hardware.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">pseudocode — line-following robot</span></div>
+            <pre><code>BEGIN followLine
+    WHILE running
+        left ← READ leftSensor
+        right ← READ rightSensor
+        IF left = dark AND right = light THEN
+            turnLeft()
+        ELSEIF right = dark AND left = light THEN
+            turnRight()
+        ELSE
+            driveForward()
+        ENDIF
+    ENDWHILE
+END followLine</code></pre>
+          </div>
+
+          <div class="callout info"><strong>Modifying the algorithm:</strong> testing shows the robot zig-zags on straight lines. Changing <code>turnLeft()</code> and <code>turnRight()</code> to slow one wheel rather than stop it gives smoother steering. Record each change and why you made it.</div>
+        </section>
+
+        <hr class="divider" />
+
         <section id="control-design">
-          <h2 class="syllabus-phase">Algorithm Development and Control Systems</h2>
+          <h2 class="syllabus-phase">Open and Closed Control Systems</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Develop, modify and apply</strong> algorithms to control a mechatronic system. <strong>Explore</strong> the algorithmic patterns, code and applications for open and closed control systems.</em></p>
-          
-          <h3>Open vs Closed Loop Systems</h3>
-          <p>The choice of control system depends on the task requirements for accuracy and self-correction. Engineers often use 🛠️ <strong>Decision Trees</strong> (Course Spec p.10) to map out these control paths.</p>
+          <p class="syllabus-concept">📌 <em><strong>Explore</strong> the algorithmic patterns, code and applications for open and closed control systems</em></p>
+
+                    <p>The choice of control system depends on the task requirements for accuracy and self-correction. Engineers often use 🛠️ <strong>Decision Trees</strong> to map out these control paths.</p>
 
           <div class="table-wrap">
             <table>
@@ -556,19 +629,16 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
               <strong>Try This:</strong> Design a closed loop temperature control system for a greenhouse. What sensor would you use? What setpoint? How would the system respond if external temperature drops?
             </p>
           </div>
-
         </section>
 
         <hr class="divider" />
 
-        <!-- 9. Autonomous Control Features -->
         <section id="autonomous-features">
-          <h2 class="syllabus-phase">Features of Autonomous Control Algorithms</h2>
+          <h2 class="syllabus-phase">Features of Autonomous Control</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Outline</strong> the features of an algorithm and program code used for autonomous control. Autonomous systems must make decisions independently, handle sensor data, and adapt to environmental changes.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Outline</strong> the features of an algorithm and program code used for autonomous control</em></p>
 
-          <h3>Key Features of Autonomous Algorithms</h3>
-          <ul>
+                    <ul>
             <li><strong>🔗 Sensor Fusion:</strong> Combining data from multiple sensors (e.g., distance sensors, IMU accelerometers, temperature sensors) to build a comprehensive understanding of the environment. Simple algorithms average sensor readings; advanced algorithms use Kalman filters for optimal estimation.</li>
             <li><strong>🧠 Decision Logic:</strong> Complex conditionals and state machines that determine what action to take based on current sensor readings and system state. Example: "IF obstacle detected within 20cm AND left sensor clear, TURN LEFT; ELSE IF right sensor clear, TURN RIGHT."</li>
             <li><strong>🔄 PID Control Loop:</strong> Proportional-Integral-Derivative control adjusts actuator output based on error (difference between desired and actual state). Common in maintaining speed, temperature, or position.</li>
@@ -632,21 +702,22 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           </div>
         </section>
 
-        <hr class="divider" />
 
         <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  PART 3: PROGRAMMING AND BUILDING                       -->
+        <!--  PROGRAMMING AND BUILDING                              -->
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Syllabus Part 3</span>
-          <span class="part-name">Programming and Building</span>
+          <span class="part-name">Programming and building</span>
         </div>
 
-        <!-- 10. Design, Develop and Produce -->
         <section id="design-develop">
-          <h2 class="syllabus-phase">Design, Develop and Produce a Mechatronic System</h2>
+          <h2 class="syllabus-phase">Producing a Mechatronic System</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-02, SE-11-05, SE-11-06, SE-11-07)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Design, develop and produce</strong> a mechatronic system for a real-world problem, integrating software control, mechanical engineering, electronics and mathematics.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Design, develop and produce</strong> a mechatronic system for a real-world problem</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>software control</li><li>mechanical engineering</li><li>electronics and mathematics</li></ul>
+
+          <div class="callout info"><strong>Running example — the smart greenhouse:</strong> a microcontroller reads a temperature sensor and a soil-moisture sensor, opens a roof vent with a servo when it gets too hot, and runs a pump when the soil is dry. The examples in this part build it one piece at a time.</div>
 
           <h3>Integrated System Design</h3>
           <p>Creating a complete mechatronic system requires simultaneous consideration of three domains:</p>
@@ -665,14 +736,12 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
 
         <hr class="divider" />
 
-        <!-- 11. Implementation and Integration -->
         <section id="implementation">
-          <h2 class="syllabus-phase">Implementation and Integration</h2>
+          <h2 class="syllabus-phase">Driving Mechatronic Devices</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-11-05, SE-11-06)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Implement</strong> algorithms and design programming code to drive mechatronic devices. <strong>Apply</strong> programming to integrate sensors, actuators and end effectors. <strong>Implement</strong> specific control algorithms for performance enhancement.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Implement</strong> algorithms and design programming code to drive mechatronic devices</em></p>
 
-          <h3>Driving Mechatronic Devices</h3>
-          <p>Code must correctly interface with hardware:</p>
+                    <p>Code must correctly interface with hardware:</p>
           <ul>
             <li><strong>PWM (Pulse Width Modulation):</strong> Varying the duty cycle (on-time vs off-time) of a square wave to control motor speed or LED brightness.</li>
             <li><strong>Analog-to-Digital Conversion:</strong> Reading analog sensor values (e.g., 0-5V) as digital numbers (0-1023) for processing.</li>
@@ -680,8 +749,115 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
             <li><strong>Interrupt Handling:</strong> Responding immediately to urgent events (e.g., collision detection) without waiting for the main program loop.</li>
           </ul>
 
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">MicroPython — driving a servo with PWM</span></div>
+            <pre><code><span class="kw">from</span> machine <span class="kw">import</span> Pin, PWM
+
+vent = PWM(Pin(<span class="str">15</span>), freq=<span class="str">50</span>)      <span class="cm"># servos expect a 50 Hz signal</span>
+
+<span class="kw">def</span> <span class="fn">set_angle</span>(degrees):
+    <span class="cm"># 0.5 ms pulse = 0°, 2.5 ms pulse = 180°</span>
+    pulse_us = <span class="str">500</span> + degrees * <span class="str">2000</span> // <span class="str">180</span>
+    vent.duty_ns(pulse_us * <span class="str">1000</span>)
+
+set_angle(<span class="str">90</span>)   <span class="cm"># open the vent halfway</span></code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="simulation">
+          <h2 class="syllabus-phase">Simulations and Prototypes</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-08)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Develop</strong> simulations and prototypes of a potential mechatronic system to test programming code</em></p>
+
+          <h3>Simulation vs Prototyping</h3>
+          <p><strong>Simulations</strong> (Wokwi, TinkerCAD, Gazebo) allow testing code in a risk-free virtual environment. Useful for debugging algorithms, testing edge cases, and exploring design variations before building hardware. However, simulations don't capture real-world issues like friction, vibration, electromagnetic interference, or component tolerances.</p>
+          <p><strong>Physical prototypes</strong> identify these real-world factors. Starting with a minimal viable prototype (MVP) and iteratively improving it is more cost-effective than building a perfect system immediately. Prototyping also allows testing with actual users and refining the design based on their feedback.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th></th><th>Simulation</th><th>Physical prototype</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Cost and risk</strong></td><td>Free; nothing can break</td><td>Costs parts; mistakes can damage them</td></tr>
+                <tr><td><strong>Speed of change</strong></td><td>Edit and rerun in seconds</td><td>Rewiring and rebuilding take time</td></tr>
+                <tr><td><strong>Realism</strong></td><td>Ideal sensors, no friction or noise</td><td>Shows real noise, friction and power problems</td></tr>
+                <tr><td><strong>Best for</strong></td><td>Checking logic and wiring early</td><td>Tuning and final testing</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout info"><strong>Tip:</strong> build the greenhouse circuit in Wokwi first. When the vent opens at the right temperature in the simulation, move the same code onto the real board.</div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="closed-loop">
+          <h2 class="syllabus-phase">Programming a Closed Loop Control System</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-02, SE-11-07)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> programming code for a closed loop control system</em></p>
+
+                    <p>Closed loop systems use sensor feedback to adjust actuator output continuously. Implementation requires:</p>
+          <ul>
+            <li>Clearly defining the <strong>setpoint</strong> (desired state) and <strong>feedback</strong> (actual state).</li>
+            <li>Calculating the <strong>error</strong> (setpoint - feedback).</li>
+            <li>Applying a control algorithm (PID, fuzzy logic, state machine) to generate corrective output.</li>
+            <li>Iterating: reading sensors, calculating, and updating actuators in a tight loop (typically 10-1000 Hz).</li>
+          </ul>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">MicroPython — closed loop vent control</span></div>
+            <pre><code>SETPOINT = <span class="str">26</span>          <span class="cm"># °C we want to hold</span>
+KP = <span class="str">10</span>                <span class="cm"># degrees of vent per °C of error</span>
+
+<span class="kw">while</span> True:
+    temp = read_temperature()          <span class="cm"># feedback: the actual state</span>
+    error = temp - SETPOINT            <span class="cm"># how far from the target?</span>
+    angle = max(<span class="str">0</span>, min(<span class="str">180</span>, error * KP))  <span class="cm"># bigger error → wider vent</span>
+    set_angle(angle)                   <span class="cm"># act on the error</span>
+    sleep(<span class="str">1</span>)                           <span class="cm"># repeat once a second</span></code></pre>
+          </div>
+
+          <p>This is <strong>proportional control</strong>: the correction grows with the error. Unlike an open loop timer, it keeps adjusting when a cloud passes or the door is left open.</p>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="integration">
+          <h2 class="syllabus-phase">Integrating Sensors, Actuators and End Effectors</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-07)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply</strong> programming code to integrate sensors, actuators and end effectors/manipulators</em></p>
+
+          <p>Each part may work on its own, but the system only works when sensors, actuators and end effectors run together under one program. Integrate in small steps: add one component, test it, then add the next.</p>
+
           <h3>Integrating Components into Viable Subsystems</h3>
           <p>Each subsystem (gripper, movement, vision) must be coded, tested, and debugged in isolation before integration. Components share power supplies, communication buses, and may have timing dependencies—careful integration prevents conflicts.</p>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">MicroPython — sensor, pump and vent working together</span></div>
+            <pre><code><span class="kw">while</span> True:
+    temp = read_temperature()
+    moisture = read_moisture()           <span class="cm"># 0 = dry, 100 = soaked</span>
+
+    set_angle(vent_angle_for(temp))      <span class="cm"># vent subsystem</span>
+
+    <span class="kw">if</span> moisture &lt; <span class="str">30</span> <span class="kw">and</span> <span class="kw">not</span> pump.value():
+        pump.on()                        <span class="cm"># watering subsystem</span>
+    <span class="kw">elif</span> moisture &gt; <span class="str">45</span>:
+        pump.off()                       <span class="cm"># gap between 30 and 45 stops rapid on/off</span>
+
+    sleep(<span class="str">1</span>)</code></pre>
+          </div>
+
+          <div class="callout info"><strong>Watch for conflicts:</strong> the pump and servo both draw current at the same moment, and a long <code>sleep()</code> in one subsystem delays every other one. Keep each step short and share one main loop.</div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="performance">
+          <h2 class="syllabus-phase">Control Algorithms That Enhance Performance</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-08)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Implement</strong> specific control algorithms that enhance the performance of a mechatronic system</em></p>
 
           <h3>Control Algorithm Optimisation</h3>
           <p>Specific algorithms enhance performance:</p>
@@ -690,31 +866,29 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
             <li><strong>Acceleration Ramping:</strong> Gradually increasing motor speed to reduce jerky movements and mechanical stress.</li>
             <li><strong>Sensor Filtering:</strong> Averaging or smoothing noisy sensor readings to improve decision quality.</li>
           </ul>
+
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">MicroPython — smoothing a noisy sensor</span></div>
+            <pre><code>readings = []
+
+<span class="kw">def</span> <span class="fn">smoothed_temperature</span>():
+    readings.append(read_temperature())
+    <span class="kw">if</span> len(readings) &gt; <span class="str">5</span>:
+        readings.pop(<span class="str">0</span>)                 <span class="cm"># keep the last 5 readings</span>
+    <span class="kw">return</span> sum(readings) / len(readings)  <span class="cm"># moving average</span></code></pre>
+          </div>
+
+          <p>Without smoothing, a single noisy reading can make the vent twitch open and shut. Averaging the last five readings makes the system calmer, and the servo lasts longer.</p>
         </section>
 
         <hr class="divider" />
 
-        <!-- 12. Prototyping, Simulation and Testing -->
-        <section id="prototyping">
-          <h2 class="syllabus-phase">Prototyping, Simulation and Testing</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Develop</strong> simulations and prototypes to test programming code. <strong>Design and implement</strong> closed loop control systems. <strong>Design and develop</strong> a user interface. <strong>Create and use</strong> unit tests for effectiveness and repeatability.</em></p>
+        <section id="user-interface">
+          <h2 class="syllabus-phase">A User Interface to Control the System</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-07)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> a user interface (UI) to control a mechatronic system</em></p>
 
-          <h3>Simulation vs Prototyping</h3>
-          <p><strong>Simulations</strong> (Wokwi, TinkerCAD, Gazebo) allow testing code in a risk-free virtual environment. Useful for debugging algorithms, testing edge cases, and exploring design variations before building hardware. However, simulations don't capture real-world issues like friction, vibration, electromagnetic interference, or component tolerances.</p>
-          <p><strong>Physical prototypes</strong> identify these real-world factors. Starting with a minimal viable prototype (MVP) and iteratively improving it is more cost-effective than building a perfect system immediately. Prototyping also allows testing with actual users and refining the design based on their feedback.</p>
-
-          <h3>Closed Loop Control System Design and Implementation</h3>
-          <p>Closed loop systems use sensor feedback to adjust actuator output continuously. Implementation requires:</p>
-          <ul>
-            <li>Clearly defining the <strong>setpoint</strong> (desired state) and <strong>feedback</strong> (actual state).</li>
-            <li>Calculating the <strong>error</strong> (setpoint - feedback).</li>
-            <li>Applying a control algorithm (PID, fuzzy logic, state machine) to generate corrective output.</li>
-            <li>Iterating: reading sensors, calculating, and updating actuators in a tight loop (typically 10-1000 Hz).</li>
-          </ul>
-
-          <h3>User Interface (UI) Design and Implementation</h3>
-          <p>Even autonomous systems often need interfaces for:</p>
+                    <p>Even autonomous systems often need interfaces for:</p>
           <ul>
             <li><strong>Manual Override:</strong> Emergency stop buttons, mode selection switches.</li>
             <li><strong>Status Display:</strong> LED indicators, LCD screens showing system state, error codes, sensor readings.</li>
@@ -723,8 +897,28 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           </ul>
           <p>UI code must be responsive and not interfere with real-time control loops. Separating UI from control logic (Model-View-Controller pattern) improves maintainability.</p>
 
-          <h3>Unit Testing for Effectiveness and Repeatability</h3>
-          <p>Mechatronic systems require rigorous testing of each component:</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">MicroPython — an emergency stop button</span></div>
+            <pre><code>stop_button = Pin(<span class="str">14</span>, Pin.IN, Pin.PULL_UP)
+
+<span class="kw">def</span> <span class="fn">emergency_stop</span>(pin):
+    pump.off()
+    set_angle(<span class="str">0</span>)
+    display.show(<span class="str">"STOPPED"</span>)
+
+<span class="cm"># an interrupt reacts at once, even in the middle of the main loop</span>
+stop_button.irq(trigger=Pin.IRQ_FALLING, handler=emergency_stop)</code></pre>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
+        <section id="prototyping">
+          <h2 class="syllabus-phase">Unit Testing Control Algorithms</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-11-06, SE-11-07)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Create and use</strong> unit tests to determine the effectiveness and repeatability of each component’s control algorithm</em></p>
+
+                    <p>Mechatronic systems require rigorous testing of each component:</p>
           <ul>
             <li><strong>Sensor Tests:</strong> Verify sensors return expected values for known inputs (temperature sensor in ice vs boiling water).</li>
             <li><strong>Actuator Tests:</strong> Confirm motors respond correctly to commands (PWM 50% = half speed).</li>
@@ -733,8 +927,24 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
             <li><strong>Stress Tests:</strong> Run systems continuously for extended periods to identify degradation or reliability issues.</li>
           </ul>
           <p><strong>Repeatability testing</strong> ensures the system behaves consistently across multiple trials—critical for autonomous systems where unpredictable behaviour is unacceptable. Logging sensor data and actuator commands during tests helps engineers debug failures and improve reliability.</p>
-        </section>
 
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — unit testing the vent algorithm</span></div>
+            <pre><code><span class="kw">def</span> <span class="fn">vent_angle_for</span>(temp, setpoint=<span class="str">26</span>, kp=<span class="str">10</span>):
+    <span class="kw">return</span> max(<span class="str">0</span>, min(<span class="str">180</span>, (temp - setpoint) * kp))
+
+<span class="kw">def</span> <span class="fn">test_closed_when_cool</span>():
+    <span class="kw">assert</span> vent_angle_for(<span class="str">20</span>) == <span class="str">0</span>
+
+<span class="kw">def</span> <span class="fn">test_opens_in_proportion</span>():
+    <span class="kw">assert</span> vent_angle_for(<span class="str">29</span>) == <span class="str">30</span>
+
+<span class="kw">def</span> <span class="fn">test_never_exceeds_servo_range</span>():
+    <span class="kw">assert</span> vent_angle_for(<span class="str">60</span>) == <span class="str">180</span></code></pre>
+          </div>
+
+          <p>Because the algorithm is a separate function, it can be tested on a laptop without any hardware. <strong>Repeatability</strong> is then checked on the real system by running the same test several times, for example heating the sensor to 29 °C five times and confirming the vent reaches about 30° each time.</p>
+        </section>
 
       </div>
     </main>
@@ -775,9 +985,10 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
     </div>
   </footer>
 
-  <script src="../js/main.js?v=18"></script>
+  <script src="../js/glossary-data.js?v=3"></script>
+  <script src="../js/main.js?v=20"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="../js/mermaid-init.js?v=2"></script>
+  <script src="../js/mermaid-init.js?v=4"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->
@@ -802,5 +1013,6 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
       </div>
     </div>
   </div>
+  <script src="../js/paper.js?v=2" defer></script>
 </body>
 </html>

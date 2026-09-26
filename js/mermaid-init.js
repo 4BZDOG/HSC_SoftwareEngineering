@@ -6,128 +6,153 @@
 (() => {
   if (typeof mermaid === 'undefined') return;
 
-  const DARK_FILL_MAP = {
-    '#e3f2fd': '#172340', '#bbdefb': '#172340', '#e1f5ff': '#172340',
-    '#b3e5fc': '#172340', '#e1f5fe': '#172340',
-    '#e8f5e9': '#17291c', '#c8e6c9': '#17291c', '#f1f8e9': '#17291c',
-    '#fff9c4': '#2a2617', '#ffe082': '#2a2617',
-    '#ffcdd2': '#2e1a1f', '#fce4ec': '#2e1a1f', '#ffebee': '#2e1a1f',
-    '#f3e5f5': '#231730', '#ede7f6': '#231730',
-    '#ffccbc': '#2e2217', '#fff3e0': '#2e2217', '#ffab91': '#2e2217',
-    '#ffb347': '#2e2217', '#ffe4b5': '#2e2217',
-    '#f8bbd0': '#2e1a24',
-    '#90ee90': '#1a3a1a',
-    '#f0f4c3': '#262917',
-    '#87ceeb': '#172a3a',
-    '#e0f2f1': '#1e293b', '#eceff1': '#1e293b', '#f5f5f5': '#1e293b',
-    '#e0e7ff': '#1e2a4a', '#ddd6fe': '#231740', '#c7d2fe': '#1e2a4a',
-    '#f0f4ff': '#1a2340',
-    '#dbeafe': '#172340', '#f3e8ff': '#231730', '#dcfce7': '#17291c',
-    '#e1f5ff': '#172340', '#01579b': '#60a5fa',
-    '#c8e6c9': '#17291c', '#2e7d32': '#4ade80',
-    '#fff3e0': '#2e2217', '#e65100': '#fb923c',
-    '#e0f0ff': '#172a3a', '#0277bd': '#38bdf8'
+  /* Paper-cut palette. Hand-written diagram styles use dozens of ad-hoc
+     colours; every fill is snapped to the nearest paper tone by hue so all
+     diagrams share one palette, and all strokes and text become ink. */
+  const PALETTE = {
+    light: {
+      neutral: '#fbf7ee', good: '#bff0cf', bad: '#ffd2cf', warn: '#fbe3a6',
+      info: '#d5e6e4', accent: '#e2dcff', rose: '#f6d3e2',
+      ink: '#1c1a17', line: '#4a443b', text: '#1c1a17', cluster: '#f4ecdb'
+    },
+    dark: {
+      neutral: '#2e2a24', good: '#1f3a2a', bad: '#472825', warn: '#43371c',
+      info: '#1f3534', accent: '#2d2750', rose: '#44263a',
+      ink: '#cfc5b1', line: '#a1978a', text: '#efe7d6', cluster: '#25221d'
+    }
   };
 
-  const DIM_STROKES = new Set(['#333', '#333333', '#999', '#999999']);
-
-  // Mermaid v11 applies node colours via an inline `style="fill:#xxx !important"`
-  // attribute rather than the SVG `fill` attribute, so remap hex colours inside
-  // a style string while preserving the rest of the declaration (incl. !important).
-  function remapStyleColor(styleStr, prop, map) {
-    return styleStr.replace(
-      new RegExp('(' + prop + '\\s*:\\s*)(#[0-9a-fA-F]{3,6})', 'g'),
-      (m, pre, hex) => {
-        const dark = map[hex.toLowerCase()];
-        return dark ? pre + dark : m;
-      }
-    );
+  function hexToHsl(hex) {
+    let h = hex.replace('#', '');
+    if (h.length === 3) h = h.split('').map(c => c + c).join('');
+    if (h.length !== 6) return null;
+    const r = parseInt(h.slice(0, 2), 16) / 255, g = parseInt(h.slice(2, 4), 16) / 255, b = parseInt(h.slice(4, 6), 16) / 255;
+    const max = Math.max(r, g, b), min = Math.min(r, g, b), l = (max + min) / 2;
+    let hue = 0, sat = 0;
+    if (max !== min) {
+      const d = max - min;
+      sat = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      hue = max === r ? (g - b) / d + (g < b ? 6 : 0) : max === g ? (b - r) / d + 2 : (r - g) / d + 4;
+      hue *= 60;
+    }
+    return { h: hue, s: sat, l };
   }
 
-  function applyDarkTint() {
-    // Fills: handle both the legacy `fill` attribute and inline `style` fills (v11).
-    document.querySelectorAll('.mermaid svg [fill], .mermaid svg [style*="fill"]').forEach(el => {
-      const fill = (el.getAttribute('fill') || '').toLowerCase();
-      if (DARK_FILL_MAP[fill]) el.setAttribute('fill', DARK_FILL_MAP[fill]);
-      const style = el.getAttribute('style');
-      if (style && style.indexOf('fill') !== -1) {
-        const next = remapStyleColor(style, 'fill', DARK_FILL_MAP);
-        if (next !== style) el.setAttribute('style', next);
-      }
-    });
+  function toneFor(hex) {
+    const c = hexToHsl(hex);
+    if (!c) return null;
+    if (c.s < 0.18 || (c.l > 0.93 && c.s < 0.5)) return 'neutral';
+    const h = c.h;
+    if (h < 18 || h >= 345) return 'bad';
+    if (h < 68) return 'warn';
+    if (h < 165) return 'good';
+    if (h < 250) return 'info';
+    if (h < 300) return 'accent';
+    return 'rose';
+  }
 
-    document.querySelectorAll('.mermaid svg text, .mermaid svg tspan').forEach(node => {
-      const currentFill = (node.getAttribute('fill') || '').toLowerCase();
-      if (currentFill === '#000' || currentFill === '#000000' || currentFill === '#01579b' ||
-          currentFill === '#e65100' || currentFill === '#0277bd' ||
-          currentFill === '' || currentFill === 'rgb(0, 0, 0)') {
-        node.setAttribute('fill', '#e2e8f0');
-        node.style.fill = '#e2e8f0';
-      }
-    });
+  function recolour(css, pal) {
+    return css
+      .replace(/(fill\s*:\s*)(#[0-9a-fA-F]{3,6})/g, (m, pre, hex) => {
+        const t = toneFor(hex);
+        return t ? pre + pal[t] : m;
+      })
+      .replace(/(stroke\s*:\s*)(#[0-9a-fA-F]{3,6})/g, (m, pre) => pre + pal.ink)
+      .replace(/((?:^|[;\s])color\s*:\s*)(#[0-9a-fA-F]{3,6}|white|black)/g, (m, pre) => pre + pal.text)
+      .replace(/stroke-width\s*:\s*[\d.]+px/g, 'stroke-width:1.4px');
+  }
 
-    document.querySelectorAll('.mermaid svg [stroke]').forEach(el => {
-      const s = (el.getAttribute('stroke') || '').toLowerCase();
-      if (DIM_STROKES.has(s)) {
-        el.setAttribute('stroke', '#64748b');
-      }
-      if (s === '#01579b') el.setAttribute('stroke', '#60a5fa');
-      if (s === '#e65100') el.setAttribute('stroke', '#fb923c');
-      if (s === '#2e7d32') el.setAttribute('stroke', '#4ade80');
-      if (s === '#f57f17') el.setAttribute('stroke', '#fbbf24');
-      if (s === '#0277bd') el.setAttribute('stroke', '#38bdf8');
-      if (s === '#c62828') el.setAttribute('stroke', '#f87171');
-      if (s === '#1976d2') el.setAttribute('stroke', '#60a5fa');
-      if (s === '#6a1b9a') el.setAttribute('stroke', '#d084fc');
-      if (s === '#c2185b') el.setAttribute('stroke', '#fb7185');
-    });
-
-    document.querySelectorAll('.mermaid svg [fill]').forEach(el => {
-      const fill = (el.getAttribute('fill') || '').toLowerCase();
-      if (fill === '#01579b') el.setAttribute('fill', '#60a5fa');
-      if (fill === '#e65100') el.setAttribute('fill', '#fb923c');
-      if (fill === '#0277bd') el.setAttribute('fill', '#38bdf8');
-    });
+  // Author styles live in `style X ...` / `classDef` lines; rewrite them in
+  // the source so Mermaid lays out and paints with the unified palette.
+  function normaliseSource(src, pal) {
+    return src.split('\n').map(line => {
+      if (/^\s*(style|classDef)\s/.test(line)) return recolour(line, pal);
+      return line;
+    }).join('\n');
   }
 
   function getThemeConfig(isDark) {
+    const p = isDark ? PALETTE.dark : PALETTE.light;
     return {
       startOnLoad: false,
-      theme: isDark ? 'dark' : 'default',
+      theme: 'base',
+      htmlLabels: false,
+      markdownAutoWrap: false,
       securityLevel: 'loose',
       flowchart: {
         useMaxWidth: true,
-        htmlLabels: true,
-        curve: 'linear',
-        diagramMarginX: 20,
-        diagramMarginY: 20
+        htmlLabels: false,
+        curve: 'basis',
+        padding: 14,
+        nodeSpacing: 42,
+        rankSpacing: 48,
+        diagramMarginX: 16,
+        diagramMarginY: 16
       },
-      sequence: {
-        useMaxWidth: true,
-        diagramMarginX: 60,
-        diagramMarginY: 20,
-        actorMargin: 60
-      },
-      class: { useMaxWidth: true, htmlLabels: true },
-      state: { useMaxWidth: true, diagramMarginX: 20, diagramMarginY: 20 },
+      sequence: { useMaxWidth: true, diagramMarginX: 40, diagramMarginY: 16, actorMargin: 56, mirrorActors: false },
+      class: { useMaxWidth: true, htmlLabels: false },
+      state: { useMaxWidth: true },
       themeVariables: {
         fontSize: '14px',
         fontFamily: 'Inter, system-ui, sans-serif',
-        primaryColor: isDark ? '#1e293b' : '#e7ebf9',
-        primaryBorderColor: isDark ? '#475569' : '#c2cdf0',
-        primaryTextColor: isDark ? '#f1f5f9' : '#0f172a',
-        secondBkgColor: isDark ? '#334155' : '#f3f2ec',
-        secondBorderColor: isDark ? '#475569' : '#aab8ec',
-        tertiaryColor: isDark ? '#475569' : '#ece9e0',
-        tertiaryBorderColor: isDark ? '#64748b' : '#ccc',
-        tertiaryTextColor: isDark ? '#cbd5e1' : '#0f172a',
-        noteBkgColor: isDark ? '#1e293b' : '#fff9e6',
-        noteBorderColor: isDark ? '#475569' : '#ccc',
-        noteTextColor: isDark ? '#f1f5f9' : '#0f172a',
-        textColor: isDark ? '#f1f5f9' : '#0f172a',
-        lineColor: isDark ? '#475569' : '#ccc',
-        signalColor: isDark ? '#cbd5e1' : '#333',
-        signalTextColor: isDark ? '#f1f5f9' : '#000'
+        background: 'transparent',
+        primaryColor: p.neutral,
+        primaryBorderColor: p.ink,
+        primaryTextColor: p.text,
+        secondaryColor: p.info,
+        secondaryBorderColor: p.ink,
+        secondaryTextColor: p.text,
+        tertiaryColor: p.cluster,
+        tertiaryBorderColor: p.line,
+        tertiaryTextColor: p.text,
+        mainBkg: p.neutral,
+        nodeBorder: p.ink,
+        clusterBkg: p.cluster,
+        clusterBorder: p.line,
+        titleColor: p.text,
+        edgeLabelBackground: isDark ? '#26231e' : '#f4ecdb',
+        lineColor: p.line,
+        textColor: p.text,
+        noteBkgColor: p.warn,
+        noteBorderColor: p.ink,
+        noteTextColor: p.text,
+        actorBkg: p.neutral,
+        actorBorder: p.ink,
+        actorTextColor: p.text,
+        actorLineColor: p.line,
+        signalColor: p.line,
+        signalTextColor: p.text,
+        labelBoxBkgColor: p.neutral,
+        labelBoxBorderColor: p.ink,
+        labelTextColor: p.text,
+        loopTextColor: p.text,
+        activationBkgColor: p.accent,
+        activationBorderColor: p.ink,
+        sequenceNumberColor: isDark ? '#1b1916' : '#fbf7ee',
+        // gantt / quadrant / state
+        sectionBkgColor: p.info,
+        altSectionBkgColor: p.neutral,
+        sectionBkgColor2: p.warn,
+        taskBkgColor: p.good,
+        taskBorderColor: p.ink,
+        taskTextColor: p.text,
+        taskTextDarkColor: p.text,
+        activeTaskBkgColor: p.warn,
+        activeTaskBorderColor: p.ink,
+        doneTaskBkgColor: p.cluster,
+        doneTaskBorderColor: p.line,
+        critBkgColor: p.bad,
+        critBorderColor: p.ink,
+        gridColor: p.line,
+        todayLineColor: '#c4553b',
+        quadrant1Fill: p.good, quadrant2Fill: p.info, quadrant3Fill: p.neutral, quadrant4Fill: p.warn,
+        quadrant1TextFill: p.text, quadrant2TextFill: p.text, quadrant3TextFill: p.text, quadrant4TextFill: p.text,
+        quadrantPointFill: '#c4553b', quadrantPointTextFill: p.text,
+        quadrantTitleFill: p.text, quadrantXAxisTextFill: p.text, quadrantYAxisTextFill: p.text,
+        quadrantInternalBorderStrokeFill: p.line, quadrantExternalBorderStrokeFill: p.ink,
+        classText: p.text,
+        labelColor: p.text,
+        altBackground: p.cluster
       }
     };
   }
@@ -163,16 +188,14 @@
 
       const id = 'mermaid-' + Math.random().toString(36).slice(2, 10);
       try {
-        const { svg } = await mermaid.render(id, source);
+        const pal = isDark ? PALETTE.dark : PALETTE.light;
+        const { svg } = await mermaid.render(id, normaliseSource(source, pal));
         el.innerHTML = svg;
       } catch (e) {
         console.warn('Mermaid render error:', e);
       }
     }
 
-    if (isDark) {
-      requestAnimationFrame(() => applyDarkTint());
-    }
   }
 
   storeOriginalSources();

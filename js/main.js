@@ -1237,310 +1237,151 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     block.appendChild(copyBtn);
   });
-  /* ── Automated Glossary Linker ── */
+  /* ── Glossary keywords: bold, linked, with an inline definition popover ──
+     Terms come from js/glossary-data.js (generated from glossary.html by
+     scripts/build-glossary.py). The first mention of each term in every
+     syllabus section becomes a button that opens a short definition and
+     example in place, with a link through to the full glossary. */
   (() => {
-    // Prevent it running on the glossary page itself to avoid infinite recursive loops
-    if (window.location.pathname.includes('glossary.html')) return;
-
+    const data = window.HSC_GLOSSARY;
+    if (!data || window.location.pathname.includes('glossary.html')) return;
     const contentBody = document.querySelector('.content-body');
     if (!contentBody) return;
 
-    // Determine correct path relative to current URL
-    const isRoot = window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('HSC_SoftwareEngineering/');
-    const basePath = isRoot ? 'topics/glossary.html' : 'glossary.html';
+    const inTopics = /\/topics\//.test(window.location.pathname);
+    const glossaryHref = inTopics ? 'glossary.html' : 'topics/glossary.html';
 
-    const DICTIONARY = {
-      'Abstract Class': 'term-abstract-class',
-      'Abstraction': 'term-abstraction',
-      'Acceptance Criteria': 'term-acceptance-criteria',
-      'Access Modifier': 'term-access-modifier',
-      'Accountability': 'term-accountability',
-      'Actuator': 'term-actuator',
-      'ADC': 'term-adc',
-      'Analog-to-Digital Converter': 'term-adc',
-      'Agile': 'term-agile',
-      'Agile Methodology': 'term-agile',
-      'AI': 'term-ai',
-      'Artificial Intelligence': 'term-ai',
-      'Algorithm': 'term-algorithm',
-      'API': 'term-api',
-      'Application Programming Interface': 'term-api',
-      'Array': 'term-array',
-      'Asymmetric Encryption': 'term-asymmetric-encryption',
-      'Attack Surface': 'term-attack-surface',
-      'Attribute': 'term-attribute',
-      'Authentication': 'term-authentication',
-      'Authorisation': 'term-authorisation',
-      'Availability': 'term-availability',
-      'Backlog': 'term-backlog',
-      'Product Backlog': 'term-backlog',
-      'Backpropagation': 'term-backpropagation',
-      'Backend': 'term-backend',
-      'Back-end': 'term-backend',
-      'Beta Testing': 'term-beta-testing',
-      'Binary Search': 'term-binary-search',
-      'Black-Box Testing': 'term-black-box',
-      'Boolean': 'term-boolean',
-      'CDN': 'term-cdn',
-      'Content Delivery Network': 'term-cdn',
-      'CI/CD': 'term-cicd',
-      'Continuous Integration / Continuous Deployment': 'term-cicd',
-      'Continuous Integration': 'term-cicd',
-      'Continuous Deployment': 'term-cicd',
-      'Class': 'term-class',
-      'Class Diagram': 'term-class-diagram',
-      'Closed Loop': 'term-closed-loop',
-      'Closed Loop System': 'term-closed-loop',
-      'Code Review': 'term-code-review',
-      'Cohesion': 'term-cohesion',
-      'Composition': 'term-composition',
-      'Confidentiality': 'term-confidentiality',
-      'Confusion Matrix': 'term-confusion-matrix',
-      'Constructor': 'term-constructor',
-      'CORS': 'term-cors',
-      'Cross-Origin Resource Sharing': 'term-cors',
-      'Coupling': 'term-coupling',
-      'CSRF': 'term-csrf',
-      'Cross-Site Request Forgery': 'term-csrf',
-      'CSS': 'term-css',
-      'Cascading Style Sheets': 'term-css',
-      'Data Dictionary': 'term-data-dictionary',
-      'DAST': 'term-dast',
-      'Dynamic Application Security Testing': 'term-dast',
-      'Decision Tree': 'term-decision-tree',
-      'Debugging': 'term-debugging',
-      'Degrees of Freedom': 'term-degrees-of-freedom',
-      'DOF': 'term-degrees-of-freedom',
-      'Desk Checking': 'term-desk-checking',
-      'DevOps': 'term-devops',
-      'Digital Signature': 'term-digital-signature',
-      'DNS': 'term-dns',
-      'Domain Name System': 'term-dns',
-      'DOM': 'term-dom',
-      'Document Object Model': 'term-dom',
-      'Encapsulation': 'term-encapsulation',
-      'Facade Pattern': 'term-facade-pattern',
-      'Feasibility Analysis': 'term-feasibility-analysis',
-      'Finite State Machine': 'term-fsm',
-      'FSM': 'term-fsm',
-      'Flowchart': 'term-flowchart',
-      'Frontend Framework': 'term-frontend-framework',
-      'Front-end Framework': 'term-frontend-framework',
-      'Functional Requirements': 'term-functional-requirements',
-      'Gantt Chart': 'term-gantt',
-      'Gantt': 'term-gantt',
-      'Generalisation': 'term-generalisation',
-      'GUI': 'term-gui',
-      'Graphical User Interface': 'term-gui',
-      'H-Bridge': 'term-h-bridge',
-      'Hashing': 'term-hashing',
-      'Headless CMS': 'term-headless-cms',
-      'HTML': 'term-html',
-      'HyperText Markup Language': 'term-html',
-      'HTTP': 'term-http',
-      'HyperText Transfer Protocol': 'term-http',
-      'HTTPS': 'term-https',
-      'HTTP Secure': 'term-https',
-      'I2C': 'term-i2c',
-      'Inter-Integrated Circuit': 'term-i2c',
-      'IDE': 'term-ide',
-      'Integrated Development Environment': 'term-ide',
-      'Inheritance': 'term-inheritance',
-      'Integrity': 'term-integrity',
-      'Interrupt': 'term-interrupt',
-      'ISR': 'term-isr',
-      'Interrupt Service Routine': 'term-isr',
-      'Iteration': 'term-iteration',
-      'JavaScript': 'term-javascript',
-      'JWT': 'term-jwt',
-      'JSON Web Token': 'term-jwt',
-      'KNN': 'term-knn',
-      'K-Nearest Neighbour': 'term-knn',
-      'Linear Regression': 'term-linear-regression',
-      'Linear Search': 'term-linear-search',
-      'Logic Error': 'term-logic-error',
-      'Logistic Regression': 'term-logistic-regression',
-      'ML': 'term-ml',
-      'Machine Learning': 'term-ml',
-      'MLOps': 'term-mlops',
-      'Maintenance': 'term-maintenance',
-      'Manipulator': 'term-manipulator',
-      'Manifest': 'term-manifest',
-      'Mechatronics': 'term-mechatronics',
-      'Message-Passing': 'term-message-passing',
-      'Method': 'term-method',
-      'Microcontroller': 'term-microcontroller',
-      'MVC': 'term-mvc',
-      'Model-View-Controller': 'term-mvc',
-      'Neural Network': 'term-neural-network',
-      'Non-Functional Requirements': 'term-non-functional-requirements',
-      'NoSQL': 'term-nosql-database',
-      'NoSQL Database': 'term-nosql-database',
-      'Object': 'term-object',
-      'Observer Pattern': 'term-observer-pattern',
-      'Open Loop': 'term-open-loop',
-      'Open Loop System': 'term-open-loop',
-      'Overfitting': 'term-overfitting',
-      'Penetration Testing': 'term-penetration-testing',
-      'Peer Review': 'term-peer-review',
-      'PID': 'term-pid',
-      'PID Control': 'term-pid',
-      'Polling': 'term-polling',
-      'Polymorphism': 'term-polymorphism',
-      'Prototype': 'term-prototype',
-      'Pseudocode': 'term-pseudocode',
-      'PWA': 'term-pwa',
-      'Progressive Web App': 'term-pwa',
-      'PWM': 'term-pwm',
-      'Pulse Width Modulation': 'term-pwm',
-      'Recursion': 'term-recursion',
-      'Reinforcement Learning': 'term-reinforcement-learning',
-      'Requirements Elicitation': 'term-requirements-elicitation',
-      'REST': 'term-rest',
-      'Representational State Transfer': 'term-rest',
-      'Runtime Error': 'term-runtime-error',
-      'SAST': 'term-sast',
-      'Static Application Security Testing': 'term-sast',
-      'Scrum': 'term-scrum',
-      'SDLC': 'term-sdlc',
-      'Software Development Life Cycle': 'term-sdlc',
-      'Selection': 'term-selection',
-      'Semi-Supervised Learning': 'term-semi-supervised-learning',
-      'Sensor': 'term-sensor',
-      'Sequence': 'term-sequence',
-      'Service Worker': 'term-service-worker',
-      'Servo Motor': 'term-servo-motor',
-      'Singleton Pattern': 'term-singleton-pattern',
-      'SPI': 'term-spi',
-      'Serial Peripheral Interface': 'term-spi',
-      'SQL': 'term-sql-database',
-      'SQL Database': 'term-sql-database',
-      'Relational Database': 'term-sql-database',
-      'SQL Injection': 'term-sql-injection',
-      'Stakeholder': 'term-stakeholder',
-      'Storyboard': 'term-storyboard',
-      'Stepper Motor': 'term-stepper-motor',
-      'STRIDE': 'term-stride',
-      'Structure Chart': 'term-structure-chart',
-      'Supervised Learning': 'term-supervised-learning',
-      'Symmetric Encryption': 'term-symmetric-encryption',
-      'Syntax Error': 'term-syntax-error',
-      'UART': 'term-uart',
-      'Universal Asynchronous Receiver-Transmitter': 'term-uart',
-      'UAT': 'term-uat',
-      'User Acceptance Testing': 'term-uat',
-      'UML': 'term-uml',
-      'Unified Modeling Language': 'term-uml',
-      'Unit Testing': 'term-unit-testing',
-      'Underfitting': 'term-underfitting',
-      'Unsupervised Learning': 'term-unsupervised-learning',
-      'Use Case Diagram': 'term-use-case-diagram',
-      'User Stories': 'term-user-stories',
-      'Validation Set': 'term-validation-set',
-      'Variable': 'term-variable',
-      'Version Control': 'term-version-control',
-      'WCAG': 'term-wcag',
-      'Web Accessibility': 'term-wcag',
-      'Waterfall': 'term-waterfall',
-      'WAGILE': 'term-wagile',
-      'White-Box Testing': 'term-white-box',
-      'Wireframe': 'term-wireframe',
-      'XSS': 'term-xss',
-      'Cross-Site Scripting': 'term-xss',
-      'Two\'s Complement': 'term-twos-complement',
-      'TLS': 'term-tls',
-      'Transport Layer Security': 'term-tls',
-      'Training Set': 'term-training-set',
-      'Test Set': 'term-test-set'
-    };
+    const byId = new Map(data.map(t => [t.id, t]));
+    const lookup = new Map();          // lower-case spelling → { id, exact }
+    data.filter(t => t.link !== false).forEach(t => t.aliases.forEach(a => {
+      const acronym = /^[A-Z0-9/&-]{2,6}$/.test(a);
+      const forms = acronym ? [a, a + 's'] : [a, a + 's', a + 'es', a.replace(/y$/, 'ies')];
+      forms.forEach(f => {
+        const k = f.toLowerCase();
+        if (!lookup.has(k)) lookup.set(k, { id: t.id, exact: acronym ? f : null });
+      });
+    }));
+    const spellings = [...lookup.keys()].sort((a, b) => b.length - a.length)
+      .map(t => t.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'));
+    const pattern = new RegExp(`(?<![\\w-])(${spellings.join('|')})(?![\\w-])`, 'gi');
 
-    // Order terms by length so "Continuous Integration" matches before "Integration"
-    const terms = Object.keys(DICTIONARY).sort((a, b) => b.length - a.length);
-    // Case-insensitive lookup from user-typed term → canonical dictionary key
-    const termLookup = new Map(terms.map(t => [t.toLowerCase(), t]));
-    // Build case-insensitive regex escaping regex-special chars
-    const patternStr = terms.map(t => t.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')).join('|');
-    const pattern = new RegExp(`\\b(${patternStr})\\b`, 'gi');
+    const excludeTags = new Set(['A', 'BUTTON', 'PRE', 'CODE', 'TH', 'SCRIPT', 'STYLE',
+      'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'SUMMARY', 'LABEL']);
+    const excludeClasses = ['mermaid', 'code-block', 'algo-trace', 'part-block',
+      'curriculum-banner', 'syllabus-phase', 'outcome-subtitle', 'syllabus-concept', 'gloss'];
 
-    const seenTerms = new Set();
-    // Skip tags where linking would break structure or is inappropriate.
-    // Headings (H1–H6) are excluded so glossary links never tint heading text
-    // (e.g. blue-on-blue inside the coloured syllabus-phase / part headings).
-    const excludeTags = new Set(['A', 'PRE', 'CODE', 'TH', 'SCRIPT', 'STYLE',
-      'H1', 'H2', 'H3', 'H4', 'H5', 'H6']);
-    // Coloured containers where a blue glossary link would be unreadable.
-    const excludeClasses = ['mermaid', 'code-block', 'nav-dropdown',
-      'part-block', 'curriculum-banner', 'syllabus-phase', 'outcome-subtitle',
-      'syllabus-concept'];
-
-    // Recursively walk text nodes
-    const walk = document.createTreeWalker(contentBody, NodeFilter.SHOW_TEXT, {
+    const walker = document.createTreeWalker(contentBody, NodeFilter.SHOW_TEXT, {
       acceptNode(node) {
-        let parent = node.parentNode;
-        while (parent && parent !== contentBody) {
-          if (excludeTags.has(parent.tagName) ||
-              (parent.classList && excludeClasses.some(c => parent.classList.contains(c)))) {
+        for (let el = node.parentElement; el && el !== contentBody; el = el.parentElement) {
+          if (excludeTags.has(el.tagName) || excludeClasses.some(c => el.classList.contains(c))) {
             return NodeFilter.FILTER_REJECT;
           }
-          parent = parent.parentNode;
         }
-        return NodeFilter.FILTER_ACCEPT;
+        return node.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+
+    // First mention per term per section, so each section introduces its own keywords.
+    const seen = new WeakMap();
+    nodes.forEach(node => {
+      const scope = node.parentElement.closest('section') || contentBody;
+      if (!seen.has(scope)) seen.set(scope, new Set());
+      const used = seen.get(scope);
+      const text = node.nodeValue;
+      let frag = null, last = 0, m;
+      pattern.lastIndex = 0;
+      while ((m = pattern.exec(text))) {
+        const hit = lookup.get(m[0].toLowerCase());
+        if (!hit || (hit.exact && m[0] !== hit.exact && m[0] !== hit.exact.replace(/s$/, ''))) continue;
+        if (used.has(hit.id)) continue;
+        used.add(hit.id);
+        frag = frag || document.createDocumentFragment();
+        frag.append(text.slice(last, m.index));
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'gloss';
+        btn.dataset.term = hit.id;
+        btn.setAttribute('aria-haspopup', 'dialog');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = m[0];
+        frag.append(btn);
+        last = pattern.lastIndex;
+      }
+      if (frag) {
+        frag.append(text.slice(last));
+        node.replaceWith(frag);
       }
     });
 
-    const nodesToReplace = [];
-    let currentNode;
-    while ((currentNode = walk.nextNode())) {
-      if (currentNode.nodeValue.trim().length > 0) {
-        nodesToReplace.push(currentNode);
-      }
+    // Popover
+    const pop = document.createElement('div');
+    pop.className = 'gloss-pop';
+    pop.setAttribute('role', 'dialog');
+    pop.hidden = true;
+    pop.innerHTML = '<button type="button" class="gloss-close" aria-label="Close definition">✕</button>' +
+      '<p class="gloss-name"></p><p class="gloss-def"></p><p class="gloss-ex"></p>' +
+      '<a class="gloss-more">Open in the glossary →</a>';
+    document.body.append(pop);
+    let opener = null;
+
+    function place(btn) {
+      const r = btn.getBoundingClientRect();
+      const w = Math.min(340, window.innerWidth - 24);
+      pop.style.width = w + 'px';
+      const left = Math.max(12, Math.min(r.left + r.width / 2 - w / 2, window.innerWidth - w - 12));
+      pop.style.left = left + window.scrollX + 'px';
+      const below = r.bottom + 10;
+      const h = pop.offsetHeight;
+      const top = below + h > window.innerHeight - 8 && r.top - h - 10 > 8 ? r.top - h - 10 : below;
+      pop.style.top = top + window.scrollY + 'px';
     }
 
-    nodesToReplace.forEach(node => {
-      let text = node.nodeValue;
-      let match;
-      let lastIndex = 0;
-      let fragment = null;
+    function open(btn) {
+      const t = byId.get(btn.dataset.term);
+      if (!t) return;
+      if (opener) opener.setAttribute('aria-expanded', 'false');
+      opener = btn;
+      pop.querySelector('.gloss-name').textContent = t.name;
+      pop.querySelector('.gloss-def').textContent = t.def;
+      const ex = pop.querySelector('.gloss-ex');
+      ex.hidden = !t.example;
+      ex.innerHTML = t.example ? '<strong>Example:</strong> ' : '';
+      if (t.example) ex.append(t.example);
+      pop.querySelector('.gloss-more').href = `${glossaryHref}#${t.id}`;
+      pop.setAttribute('aria-label', `Definition: ${t.name}`);
+      pop.hidden = false;
+      place(btn);
+      btn.setAttribute('aria-expanded', 'true');
+      pop.querySelector('.gloss-close').focus({ preventScroll: true });
+    }
 
-      // Reset regex index
-      pattern.lastIndex = 0;
-
-      while ((match = pattern.exec(text)) !== null) {
-        const termRaw = match[0];
-        const termKey = termLookup.get(termRaw.toLowerCase());
-
-        if (!termKey) continue;
-        // Only autolink the first appearance of each term per page.
-        if (seenTerms.has(termKey)) continue;
-
-        seenTerms.add(termKey);
-
-        if (!fragment) fragment = document.createDocumentFragment();
-
-        // Push text preceding the match
-        if (match.index > lastIndex) {
-          fragment.appendChild(document.createTextNode(text.substring(lastIndex, match.index)));
-        }
-
-        // Create the anchor replacement
-        const anchor = document.createElement('a');
-        anchor.href = `${basePath}#${DICTIONARY[termKey]}`;
-        anchor.className = 'glossary-link';
-        anchor.title = `View glossary definition for ${termRaw}`;
-        anchor.textContent = termRaw;
-
-        fragment.appendChild(anchor);
-        lastIndex = pattern.lastIndex;
+    function close(returnFocus) {
+      if (pop.hidden) return;
+      pop.hidden = true;
+      if (opener) {
+        opener.setAttribute('aria-expanded', 'false');
+        if (returnFocus) opener.focus({ preventScroll: true });
       }
+      opener = null;
+    }
 
-      if (fragment) {
-        // Push remaining text after the last match
-        if (lastIndex < text.length) {
-          fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
-        }
-        node.parentNode.replaceChild(fragment, node);
+    document.addEventListener('click', e => {
+      const btn = e.target.closest('.gloss');
+      if (btn) {
+        e.preventDefault();
+        if (opener === btn) close(false); else open(btn);
+      } else if (e.target.closest('.gloss-close')) {
+        close(true);
+      } else if (!e.target.closest('.gloss-pop')) {
+        close(false);
       }
     });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !pop.hidden) close(true);
+    });
+    window.addEventListener('resize', () => { if (opener) place(opener); });
   })();
 
 });

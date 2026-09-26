@@ -51,7 +51,8 @@
   <meta name="description" content="HSC Secure Software Architecture notes — CIA triad, STRIDE, authentication, encryption, defensive coding, and privacy by design. Year 12 NESA NSW." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=23" />
+  <link rel="stylesheet" href="../css/styles.css?v=25" />
+  <link rel="stylesheet" href="../css/paper.css?v=5" />
 </head>
 <body>
 
@@ -164,24 +165,26 @@
     <aside class="sidebar">
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
-        <li class="sidebar-label">Part 1 — Designing Software</li>
-        <li><a href="#benefits">1. Benefits of Secure Software</a></li>
-        <li><a href="#sdlc">2. SDLC for Secure Code</a></li>
-        <li><a href="#end-users">3. End-User Capabilities</a></li>
-        <li class="sidebar-label">Part 2 — Developing Secure Code</li>
-        <li><a href="#security-concepts">4. Core Security Concepts</a></li>
-        <li><a href="#by-design">5. Security by Design</a></li>
-        <li><a href="#privacy-design">6. Privacy by Design</a></li>
-        <li><a href="#resilience">7. Testing &amp; Resilience</a></li>
-        <li><a href="#testing-strategies">8. Security Testing Strategies</a></li>
-        <li><a href="#defensive-coding">9. Defensive Coding &amp; APIs</a></li>
-        <li><a href="#efficient-execution">10. Efficient Execution</a></li>
-        <li><a href="#user-controls">11. User Action Vulnerabilities</a></li>
-        <li><a href="#file-hardware">12. File &amp; Hardware Attacks</a></li>
-        <li class="sidebar-label">Part 3 — Impact</li>
-        <li><a href="#collaboration">13. Collaboration Benefits</a></li>
-        <li><a href="#enterprise">14. Enterprise Benefits</a></li>
-        <li><a href="#ramifications">15. Social, Ethical &amp; Legal</a></li>
+        <li class="sidebar-label">Part 1 — Designing software</li>
+        <li><a href="#benefits">1. Benefits of Developing Secure Software</a></li>
+        <li><a href="#sdlc">2. Software Development Steps for Secure Code</a></li>
+        <li><a href="#end-users">3. How End Users Influence Secure Design</a></li>
+        <li class="sidebar-label">Part 2 — Developing secure code</li>
+        <li><a href="#security-concepts">4. Security Concepts in Software Design</a></li>
+        <li><a href="#security-features">5. Applying Security Features</a></li>
+        <li><a href="#by-design">6. Security by Design: Cryptography and Sandboxing</a></li>
+        <li><a href="#privacy-design">7. Privacy by Design</a></li>
+        <li><a href="#resilience">8. Testing Security and Resilience</a></li>
+        <li><a href="#testing-strategies">9. Strategies to Manage Code Security</a></li>
+        <li><a href="#defensive-coding">10. Defensive Data Input Handling</a></li>
+        <li><a href="#safe-api">11. Designing a Safe API</a></li>
+        <li><a href="#efficient-execution">12. Efficient Execution for the User</a></li>
+        <li><a href="#user-controls">13. Secure User Action Controls</a></li>
+        <li><a href="#file-hardware">14. File and Side Channel Attacks</a></li>
+        <li class="sidebar-label">Part 3 — Impact of safe and secure software development</li>
+        <li><a href="#collaboration">15. Benefits of Collaboration</a></li>
+        <li><a href="#enterprise">16. Benefits to an Enterprise</a></li>
+        <li><a href="#ramifications">17. Social, Ethical and Legal Issues</a></li>
       </ul>
     </aside>
 
@@ -189,33 +192,33 @@
       <div class="content-body">
 
         <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  PART 1: DESIGNING SOFTWARE                             -->
+        <!--  DESIGNING SOFTWARE                                    -->
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Syllabus Part 1</span>
-          <span class="part-name">Designing Software</span>
+          <span class="part-name">Designing software</span>
         </div>
 
-        <!-- 1. Benefits of Secure Software -->
         <section id="benefits">
           <h2 class="syllabus-phase">Benefits of Developing Secure Software</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-05)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Describe</strong> the benefits of developing secure software, including data protection and minimising cyber attacks and vulnerabilities.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Describe</strong> the benefits of developing secure software</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>data protection</li><li>minimising cyber attacks and vulnerabilities</li></ul>
 
           <h3>Data Protection</h3>
           <p>Secure software design ensures that personal, financial, and proprietary data is protected from unauthorised access, modification, or destruction throughout its entire lifecycle — whether at rest in a database, in transit across a network, or in active use. <strong>Data encryption</strong> (e.g., AES-256 for stored data, <strong>TLS</strong> 1.3 for data in transit) makes intercepted data unreadable to attackers. <strong>Access controls</strong> ensure only authorised users can retrieve sensitive records. In Australia, the <strong>Privacy Act 1988</strong> and its Australian Privacy Principles (APPs) impose legal obligations on organisations to protect personal information — failure results in significant financial penalties and mandatory breach notifications under the Notifiable Data Breaches (NDB) scheme. Beyond legal compliance, effective data protection builds user trust, which is increasingly a critical competitive advantage. A single publicised data breach can permanently destroy a brand's reputation and cause lasting customer attrition.</p>
 
-          <h3>Minimising Cyber Attacks and Vulnerabilities</h3>
-          <p>Every software vulnerability — an unintended weakness in code — represents a potential entry point for a cyber attacker. Proactively designing software to minimise vulnerabilities dramatically reduces the <strong>attack surface</strong>: the total number of possible ways an attacker could interact with or compromise a system. This is achieved through secure coding practices (input validation, parameterised queries, output encoding), regular security testing (SAST, DAST, penetration testing), and timely patching of dependencies. The economic impact of cyber attacks is severe: IBM's 2023 Cost of a Data Breach Report found the average breach cost AU$6.5 million — including incident response, legal fees, regulatory fines, and lost business. Secure software development converts this reactive, crisis-driven cost into a predictable, manageable investment in engineering quality. Additionally, minimising vulnerabilities reduces an organisation's exposure to reputational damage, intellectual property theft, and the operational disruption of ransomware attacks that can halt business operations entirely.</p>
+<h3>Minimising Cyber Attacks and Vulnerabilities</h3>
+          <p>Every software vulnerability — an unintended weakness in code — represents a potential entry point for a cyber attacker. Proactively designing software to minimise vulnerabilities reduces the <strong>attack surface</strong>: the total number of possible ways an attacker could interact with or compromise a system. This is achieved through secure coding practices (input validation, parameterised queries, output encoding), regular security testing (SAST, DAST, penetration testing), and timely patching of dependencies. The economic impact of cyber attacks is severe: IBM's 2023 Cost of a Data Breach Report found the average breach cost AU$6.5 million — including incident response, legal fees, regulatory fines, and lost business. Secure software development converts this reactive, crisis-driven cost into a predictable, manageable investment in engineering quality. Also, minimising vulnerabilities reduces an organisation's exposure to reputational damage, intellectual property theft, and the operational disruption of ransomware attacks that can halt business operations entirely.</p>
         </section>
 
         <hr class="divider" />
 
-        <!-- 2. SDLC for Secure Code -->
         <section id="sdlc">
-          <h2 class="syllabus-phase">Applying the SDLC to Develop Secure Code</h2>
+          <h2 class="syllabus-phase">Software Development Steps for Secure Code</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-06)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Interpret and apply</strong> the fundamental software development steps to engineer secure code. Security must be embedded into every phase of the Software Development Life Cycle (SDLC) — a principle known as <strong>DevSecOps</strong> — rather than treated as a final checkbox before release.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Interpret and apply</strong> fundamental software development steps to develop secure code</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>requirements definition</li><li>determining specifications</li><li>design</li><li>development</li><li>integration</li><li>testing and debugging</li><li>installation</li><li>maintenance</li></ul>
 
           <div class="steps">
             <div class="step">
@@ -327,11 +330,10 @@
 
         <hr class="divider" />
 
-        <!-- 3. End-User Capabilities -->
         <section id="end-users">
-          <h2 class="syllabus-phase">How End-User Capabilities Influence Secure Design</h2>
+          <h2 class="syllabus-phase">How End Users Influence Secure Design</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-07)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Describe</strong> how the capabilities and experience of end users influence the secure design features of software.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Describe</strong> how the capabilities and experience of end users influence the secure design features of software</em></p>
 
           <p>A technically perfect security system that users cannot or will not use correctly provides no real protection. Engineers must design security features that are robust <em>and</em> usable — the two goals must be balanced, not traded off against each other.</p>
 
@@ -359,19 +361,20 @@
           </div>
         </section>
 
+
         <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  PART 2: DEVELOPING SECURE CODE                         -->
+        <!--  DEVELOPING SECURE CODE                                -->
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Syllabus Part 2</span>
-          <span class="part-name">Developing Secure Code</span>
+          <span class="part-name">Developing secure code</span>
         </div>
 
-        <!-- 4. Core Security Concepts -->
         <section id="security-concepts">
-          <h2 class="syllabus-phase">Fundamental Software Design Security Concepts</h2>
+          <h2 class="syllabus-phase">Security Concepts in Software Design</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-04)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Explore</strong> the six fundamental security concepts that underpin all secure software design decisions.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Explore</strong> fundamental software design security concepts when developing programming code</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>confidentiality</li><li>integrity</li><li>availability</li><li>authentication</li><li>authorisation</li><li>accountability</li></ul>
 
           <div class="info-grid">
             <div class="info-card">
@@ -466,15 +469,46 @@
             </ul>
             <p class="video-box-note">Short, beginner-friendly explainers on how <strong>encryption</strong> protects <strong>confidentiality</strong> and why passwords must be <strong>hashed and salted</strong> — not stored as plain text.</p>
           </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Authentication confirms who a user is, for example through a password and an authenticator code, while authorisation decides what that user may do, such as allowing only teachers to edit marks. Accountability links every action to a user through audit logs, so misuse can be traced."</em></div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 5. Security by Design -->
+        <section id="security-features">
+          <h2 class="syllabus-phase">Applying Security Features</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-04, SE-12-07)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply</strong> security features incorporated into software including data protection, security, privacy and regulatory compliance</em></p>
+
+          <p>Security features are the parts of a program that protect people and their data. Most secure software combines four kinds, and each one answers a different question.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Feature</th><th>The question it answers</th><th>Example in code</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Data protection</strong></td><td>Is the data safe if someone gets hold of it?</td><td>Hashing passwords with bcrypt; encrypting a database column that stores Medicare numbers.</td></tr>
+                <tr><td><strong>Security</strong></td><td>Can only the right people do the right things?</td><td>Login with multi-factor authentication; role checks before an admin page loads.</td></tr>
+                <tr><td><strong>Privacy</strong></td><td>Are we collecting and keeping only what we need?</td><td>Asking for a year of birth instead of a full date; deleting inactive accounts after two years.</td></tr>
+                <tr><td><strong>Regulatory compliance</strong></td><td>Does the software meet the law and industry rules?</td><td>A breach-notification process under the Notifiable Data Breaches scheme; PCI DSS rules for card payments.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout info">
+            <strong>Scenario:</strong> A school canteen app takes orders and payments. It hashes parent passwords (data protection), lets only canteen staff mark orders as paid (security), stores no card numbers because payments go through a provider such as Stripe (privacy and compliance), and records who refunded which order (accountability for compliance audits).
+          </div>
+
+          <div class="callout success">
+            <strong>HSC writing sample:</strong> <em>"The developer applied data protection by storing passwords as salted bcrypt hashes, so a stolen database does not reveal them. Privacy was improved by collecting only a student's first name and year group, which reduces the harm of any breach and supports compliance with the Australian Privacy Principles."</em>
+          </div>
+        </section>
+
+        <hr class="divider" />
+
         <section id="by-design">
           <h2 class="syllabus-phase">Security by Design: Cryptography and Sandboxing</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-03, SE-12-04)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Use and explain</strong> the contribution of cryptography and sandboxing to the "security by design" approach, and <strong>apply</strong> security features including data protection, security, privacy, and regulatory compliance.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Use and explain</strong> the contribution of cryptography and sandboxing to the ‘security by design’ approach in the development of software solutions</em></p>
 
           <h3>Cryptography in Security by Design</h3>
           <p><strong>Cryptography</strong> is the practice of securing information by transforming it into an unreadable form for anyone who does not hold the decryption key. In security-by-design, cryptography is not an optional add-on — it is specified in the requirements phase and embedded in the architecture from the first line of code.</p>
@@ -530,7 +564,7 @@
             <p class="video-box-note">A clear, plain-English analogy for how <strong>public</strong> and <strong>private keys</strong> work together — the foundation of <strong>asymmetric encryption</strong> and <strong>TLS/HTTPS</strong>.</p>
           </div>
 
-          <h3>Sandboxing in Security by Design</h3>
+<h3>Sandboxing in Security by Design</h3>
           <p><strong>Sandboxing</strong> executes potentially untrusted code in a strictly isolated, restricted environment that has no access to the host operating system, filesystem, network, or other running processes unless explicitly permitted. If the sandboxed code is malicious or compromised, it cannot escape the sandbox to cause broader harm. Security-by-design embeds sandboxing as an architectural decision for any component that handles untrusted external input.</p>
 
           <div class="info-grid">
@@ -549,27 +583,25 @@
           </div>
 
           <!-- STRIDE Threat Modelling Flowchart -->
-          <h3>Threat Modelling</h3>
-          <p>Threat modelling is a systematic process of identifying all possible attack vectors against a system. A <strong>Data Flow Diagram (DFD)</strong> is a visual tool used to model how data moves through a system, identifying where sensitive information flows between users, servers, databases, and external services. By mapping these data flows, engineers can identify vulnerable points in the architecture and design appropriate security controls at each stage.</p>
         </section>
 
         <hr class="divider" />
 
-        <!-- 6. Privacy by Design -->
         <section id="privacy-design">
           <h2 class="syllabus-phase">Privacy by Design</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-04, SE-12-05)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Use and explain</strong> the "privacy by design" approach in the development of software solutions, including a proactive approach, embedding privacy into design, and respect for user privacy.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Use and explain</strong> the ‘privacy by design’ approach in the development of software solutions</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>proactive not reactive approach</li><li>embed privacy into design</li><li>respect for user privacy</li></ul>
 
           <p>Privacy by Design (PbD), developed by Dr Ann Cavoukian, is a framework that treats privacy not as a legal compliance afterthought, but as a fundamental design requirement embedded into the architecture of software systems from the outset. It is now codified in major privacy legislation including the GDPR (Article 25) and increasingly referenced in Australian Privacy Act reforms.</p>
 
-          <h3>Proactive Not Reactive Approach</h3>
+<h3>Proactive Not Reactive Approach</h3>
           <p>A proactive approach means anticipating and preventing privacy violations before they occur, rather than detecting and remedying them after the fact. In practice, this means conducting a <strong>Privacy Impact Assessment (PIA)</strong> during the requirements phase — before architecture is finalised — to identify every point at which personal data enters, is processed, stored, or exits the system. Each data flow is scrutinised: Is this data actually necessary? Could we achieve the same outcome with anonymised or aggregated data? Could we collect less? By identifying and eliminating unnecessary data collection before code is written, engineers prevent entire categories of privacy risk from ever materialising. For example, a fitness app that collects precise GPS location for route tracking should ask: can we achieve the feature with neighbourhood-level precision rather than exact coordinates? Reducing data granularity proactively reduces the consequences of any future breach.</p>
 
-          <h3>Embedding Privacy into Design</h3>
+<h3>Embedding Privacy into Design</h3>
           <p>Privacy must be the <strong>default setting</strong> of the system — requiring no action from the user to be protected. The most privacy-respecting option must be the path of least resistance. This principle directly counters the industry-wide practice of defaulting to maximum data collection and sharing, requiring users to navigate complex settings menus to opt out. Specific design implementations include: new social media profiles default to private; marketing email preferences default to unsubscribed; location sharing defaults to off; analytics tracking requires explicit opt-in consent, not pre-ticked boxes. Privacy-preserving defaults are required by the GDPR and are becoming standard under the Australian Privacy Act. Architecturally, data minimisation (collecting only what is genuinely necessary) and purpose limitation (using data only for the stated collection purpose, not secondary commercial uses) must be enforced at the database schema level — if a field does not exist, it cannot be misused or breached.</p>
 
-          <h3>Respect for User Privacy</h3>
+<h3>Respect for User Privacy</h3>
           <p>Systems must offer users meaningful, granular, and genuinely exercisable control over their personal data. This is distinguished from performative compliance (lengthy privacy policies that nobody reads) by providing real mechanisms for data agency:</p>
 
           <div class="key-terms">
@@ -582,32 +614,36 @@
 
         <hr class="divider" />
 
-        <!-- 7. Testing Security and Resilience -->
         <section id="resilience">
-          <h2 class="syllabus-phase">Testing Security, Resilience, and Business Continuity</h2>
+          <h2 class="syllabus-phase">Testing Security and Resilience</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-06, SE-12-08)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Test and evaluate</strong> the security and resilience of software by determining vulnerabilities, hardening systems, handling breaches, maintaining business continuity, and conducting disaster recovery.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Test and evaluate</strong> the security and resilience of software by determining vulnerabilities, hardening systems, handling breaches, maintaining business continuity and conducting disaster recovery</em></p>
 
           <h3>Determining Vulnerabilities</h3>
           <p>Vulnerabilities must be identified before attackers find them. Engineers conduct <strong>vulnerability assessments</strong> — systematic scans of the application and its infrastructure to catalogue all known weaknesses (unpatched software, misconfigured services, exposed admin interfaces, default credentials). Vulnerability scanners (e.g., Nessus, OpenVAS) produce prioritised lists of findings rated by CVSS (Common Vulnerability Scoring System) severity. These findings are then remediated in priority order — critical vulnerabilities (CVSS 9.0–10.0) within 24 hours; high (7.0–8.9) within 7 days; medium within 30 days.</p>
 
-          <h3>Hardening Systems</h3>
+<h3>Threat Modelling</h3>
+          <p>Threat modelling is a systematic process of identifying all possible attack vectors against a system. A <strong>Data Flow Diagram (DFD)</strong> is a visual tool used to model how data moves through a system, identifying where sensitive information flows between users, servers, databases, and external services. By mapping these data flows, engineers can identify vulnerable points in the architecture and design appropriate security controls at each stage.</p>
+
+<h3>Hardening Systems</h3>
           <p>System hardening reduces the attack surface by eliminating everything that is not strictly necessary for the system's function. A hardened production server has: all unnecessary network ports closed by firewall rules; all unused software packages, services, and user accounts removed; default passwords and credentials changed; logging enabled for all administrative actions; and automatic security updates configured. A hardened web application has: Content Security Policy (CSP) headers preventing unauthorised script execution; <strong>HTTP</strong> Strict Transport Security (HSTS) preventing protocol downgrade attacks; security headers (X-Frame-Options, X-Content-Type-Options) blocking clickjacking and MIME sniffing attacks.</p>
 
-          <h3>Handling Breaches</h3>
+<h3>Handling Breaches</h3>
           <p>An <strong>Incident Response Plan (IRP)</strong> defines the pre-agreed, structured process for managing a detected security breach: (1) <strong>Containment</strong> — immediately isolate affected systems to prevent lateral movement (e.g., take the compromised server offline, revoke compromised credentials). (2) <strong>Eradication</strong> — identify and remove the root cause (malware, backdoor, compromised account). (3) <strong>Recovery</strong> — restore systems from known-good backups and verify integrity before bringing them back online. (4) <strong>Post-Incident Review</strong> — document what happened, how it was detected, how long it took to contain, and what changes will prevent recurrence. Under Australia's NDB scheme, organisations must notify affected individuals and the Office of the Australian Information Commissioner (OAIC) within 30 days of becoming aware of an eligible breach.</p>
 
-          <h3>Business Continuity and Disaster Recovery</h3>
+<h3>Business Continuity and Disaster Recovery</h3>
           <p><strong>Business Continuity Planning (BCP)</strong> ensures that critical business functions can continue during and after a major incident — whether a cyber attack, natural disaster, or infrastructure failure. Key metrics: <strong>RTO (Recovery Time Objective)</strong> — the maximum acceptable downtime (e.g., 4 hours); <strong>RPO (Recovery Point Objective)</strong> — the maximum acceptable data loss (e.g., 1 hour of transactions). Achieving these targets requires: geographically redundant server infrastructure; automated failover to standby systems; regular off-site encrypted backups with verified restoration procedures; and documented, regularly practised disaster recovery drills so that the response under pressure is familiar, not improvised.</p>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"The team evaluated the system's resilience by running a vulnerability scan, which found an outdated library with a known exploit. The system was hardened by updating the library and disabling unused services. A tested backup and recovery plan meant that, in a simulated ransomware attack, the booking service was restored within two hours, meeting the business continuity target."</em></div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 8. Security Testing Strategies -->
         <section id="testing-strategies">
-          <h2 class="syllabus-phase">Security Testing and Management Strategies</h2>
+          <h2 class="syllabus-phase">Strategies to Manage Code Security</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-06, SE-12-08)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Apply and evaluate</strong> strategies used by software developers to manage the security of programming code, including code review, SAST, DAST, vulnerability assessment, and penetration testing.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply and evaluate</strong> strategies used by software developers to manage the security of programming code</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>code review</li><li>static application security testing (SAST)</li><li>dynamic application security testing (DAST)</li><li>vulnerability assessment</li><li>penetration testing</li></ul>
 
           <div class="table-wrap">
             <table>
@@ -703,28 +739,35 @@
             </p>
           </div>
 
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"SAST was applied during development because it scans the source code quickly and flags insecure functions before the code runs. DAST complemented it by attacking the running web application, which revealed a cross-site scripting flaw that SAST missed. Using both gave more complete coverage than either alone, although penetration testing is still needed to find logic flaws in the login process."</em></div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 9. Defensive Coding & APIs -->
         <section id="defensive-coding">
-          <h2 class="syllabus-phase">Defensive Coding and Safe API Design</h2>
+          <h2 class="syllabus-phase">Defensive Data Input Handling</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-07)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> code using defensive data input handling practices, including input validation, sanitisation, and error handling; and <strong>design, develop and implement</strong> a safe API to minimise software vulnerabilities.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> code using defensive data input handling practices, including input validation, sanitisation and error handling</em></p>
 
           <h3>Input Validation</h3>
           <p>Input validation checks that all data received from external sources conforms to the expected format, type, length, and range before it is processed or stored. Validation must happen <strong>server-side</strong> — client-side validation is a UX convenience only; it can be bypassed by an attacker sending direct <strong>HTTP</strong> requests. Validation rules should be strict: if a field expects a 4-digit integer, reject anything that is not a 4-digit integer — including any string longer than 4 characters, any non-numeric character, and any value outside the permitted range.</p>
 
-          <h3>Sanitisation and Error Handling</h3>
+<h3>Sanitisation and Error Handling</h3>
           <p>Sanitisation transforms potentially malicious input into a safe form for use in the specific context where it will appear — HTML encoding for output in web pages, parameterised queries for database operations, path normalisation for file system operations. Error handling must never expose internal system details to the user — stack traces, database connection strings, server paths, or version information all provide attackers with a map of the system architecture. Parameterised queries prevent <strong>SQL injection</strong> by ensuring user input is treated as data, not executable code.</p>
 
           <div class="callout exam-tip">
             <strong>HSC Exam Tip:</strong> When asked about preventing <strong>SQL injection</strong>, always mention BOTH parameterised queries AND input validation — one protects the database, the other prevents bad data entering the system.
           </div>
+        </section>
 
-          <h3>Safe API Design</h3>
-          <p>An API (Application Programming Interface) that is insecurely designed is one of the most common and dangerous attack surfaces in modern software. A safe API enforces multiple protective layers:</p>
+        <hr class="divider" />
+
+        <section id="safe-api">
+          <h2 class="syllabus-phase">Designing a Safe API</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-07)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> a safe application programming interface (API) to minimise software vulnerabilities</em></p>
+
+                    <p>An API (Application Programming Interface) that is insecurely designed is one of the most common and dangerous attack surfaces in modern software. A safe API enforces multiple protective layers:</p>
 
           <div class="key-terms">
             <div class="key-term-item"><strong>🪙 Authentication Tokens</strong><span>Every API request must present a valid <strong>authentication</strong> token (e.g., <strong>JWT</strong> Bearer token or API key in the <strong>Authorization</strong> header). Unauthenticated requests are rejected with <strong>HTTP</strong> 401 Unauthorized before any processing occurs. Tokens must be short-lived (15–60 minutes for JWTs) and refreshed using secure refresh token flows.</span></div>
@@ -783,16 +826,16 @@
 
         <hr class="divider" />
 
-        <!-- 10. Efficient Execution -->
         <section id="efficient-execution">
-          <h2 class="syllabus-phase">Efficient Execution: Memory, Session and Exception Management</h2>
+          <h2 class="syllabus-phase">Efficient Execution for the User</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-07)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> code considering efficient execution for the user, including memory management, session management, and exception management.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> code considering efficient execution for the user</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>memory management</li><li>session management</li><li>exception management</li></ul>
 
           <h3>Memory Management</h3>
           <p><strong>Memory management</strong> ensures that the application allocates, uses, and releases memory resources efficiently — preventing memory leaks that degrade performance over time, and preventing memory-based vulnerabilities such as buffer overflows. A <strong>memory leak</strong> happens when memory the program reserved is never given back after it is finished with, slowly using up all available RAM until the application crashes or the server grinds to a halt. Good <strong>resource management</strong> means the program always closes what it opens — files, database connections, and network connections — as soon as they are no longer needed. This is critical for both security and performance.</p>
 
-          <h3>Session Management</h3>
+<h3>Session Management</h3>
           <p><strong>Session management</strong> controls how the server tracks authenticated users across multiple <strong>HTTP</strong> requests — since <strong>HTTP</strong> is stateless, each request must carry proof of identity. Insecure session management is consistently listed in the OWASP Top 10 most critical web vulnerabilities. Secure session management practices:</p>
 
           <div class="key-terms">
@@ -802,17 +845,17 @@
             <div class="key-term-item"><strong>🔄 Session Regeneration</strong><span>After a successful login, a new session ID must be issued — invalidating any pre-<strong>authentication</strong> session. This prevents session fixation attacks, where an attacker tricks a victim into using an attacker-controlled session ID before they log in.</span></div>
           </div>
 
-          <h3>Exception Management</h3>
+<h3>Exception Management</h3>
           <p><strong>Exception management</strong> ensures that when unexpected errors occur, the application handles them gracefully — maintaining availability for other users while preventing the exposure of sensitive system information. Unhandled exceptions that crash a web server process take the entire application offline for all users (an availability failure). Unhandled exceptions that display a stack trace to the user reveal the server technology stack, file paths, and code structure to attackers. Best practices: catch specific exception types rather than broad bare <code>except</code> clauses; log the full technical detail internally with a correlation ID; return a user-facing generic error message with the same correlation ID so support staff can look up the internal log; and implement a global exception handler as a last-resort safety net that catches any unhandled exception before it can crash the server process.</p>
         </section>
 
         <hr class="divider" />
 
-        <!-- 11. User Action Vulnerabilities -->
         <section id="user-controls">
-          <h2 class="syllabus-phase">Minimising Vulnerabilities in User Action Controls</h2>
+          <h2 class="syllabus-phase">Secure User Action Controls</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-07, SE-12-08)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> secure code to minimise vulnerabilities in user action controls, including broken authentication, XSS, CSRF, invalid forwarding and redirecting, and race conditions.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> secure code to minimise vulnerabilities in user action controls</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>broken authentication and session management</li><li>cross-site scripting (XSS) and cross-site request forgery (CSRF)</li><li>invalid forwarding and redirecting</li><li>race conditions</li></ul>
 
           <div class="key-terms">
             <div class="key-term-item"><strong>🔓 Broken Authentication and Session Management</strong><span><strong>Vulnerability:</strong> Weak passwords accepted, no account lockout on repeated failures, session tokens not invalidated on logout, or passwords stored in plaintext. An attacker can brute-force passwords, steal session cookies via <strong>XSS</strong>, or use credential-stuffing attacks with leaked databases. <strong>Prevention:</strong> Enforce minimum password complexity; implement bcrypt hashing with salt; lock accounts after 5 failed attempts; use <code>HttpOnly</code>, <code>Secure</code>, <code>SameSite</code> session cookies; invalidate server-side session on logout; implement MFA for sensitive operations.</span></div>
@@ -825,11 +868,10 @@
 
         <hr class="divider" />
 
-        <!-- 12. File and Hardware Vulnerabilities -->
         <section id="file-hardware">
-          <h2 class="syllabus-phase">Protecting Against File and Hardware Vulnerabilities</h2>
+          <h2 class="syllabus-phase">File and Side Channel Attacks</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-07, SE-12-08)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> secure code to protect user file and hardware vulnerabilities from file attacks and side channel attacks.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Design, develop and implement</strong> secure code to protect user file and hardware vulnerabilities from file attacks and side channel attacks</em></p>
 
           <h3>Protection Against File Attacks</h3>
 
@@ -839,7 +881,7 @@
             <div class="key-term-item"><strong>🔒 File Permission Hardening</strong><span>Application files should be owned by the web server process user, with the minimum required permissions. Configuration files containing secrets (database passwords, API keys) must not be world-readable. Sensitive files must never be placed in publicly accessible web directories. Use environment variables or secrets management systems (e.g., AWS Secrets Manager, HashiCorp Vault) rather than storing secrets in configuration files in the codebase.</span></div>
           </div>
 
-          <h3>Protection Against Side Channel Attacks</h3>
+<h3>Protection Against Side Channel Attacks</h3>
           <p><strong>Side channel attacks</strong> exploit information inadvertently leaked through the physical implementation of a system — such as power consumption, electromagnetic emissions, execution timing, or cache access patterns — rather than flaws in the <strong>algorithm</strong> itself. The attacker does not break the cryptographic <strong>algorithm</strong>; they observe the system's physical behaviour while it executes to infer secret values.</p>
 
           <div class="info-grid">
@@ -858,81 +900,85 @@
           </div>
         </section>
 
+
         <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  PART 3: IMPACT OF SAFE AND SECURE SOFTWARE DEVELOPMENT -->
+        <!--  IMPACT OF SAFE AND SECURE SOFTWARE DEVELOPMENT        -->
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Syllabus Part 3</span>
-          <span class="part-name">Impact of Safe and Secure Software Development</span>
+          <span class="part-name">Impact of safe and secure software development</span>
         </div>
 
-        <!-- 13. Collaboration Benefits -->
         <section id="collaboration">
-          <h2 class="syllabus-phase">Benefits of Collaboration in Secure Development</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-05, SE-12-09)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Apply and describe</strong> the benefits of collaboration to develop safe and secure software, including considering various points of view, delegating tasks based on expertise, and improving the quality of the solution.</em></p>
+          <h2 class="syllabus-phase">Benefits of Collaboration</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-05)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply and describe</strong> the benefits of collaboration to develop safe and secure software</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>considering various points of view</li><li>delegating tasks based on expertise</li><li>quality of the solution</li></ul>
 
           <h3>Considering Various Points of View</h3>
           <p>Security vulnerabilities often arise from blind spots — assumptions that every developer on a team unconsciously shares. Diverse, collaborative teams with members of different backgrounds, experience levels, and technical specialisations surface these blind spots before attackers do. A junior developer may question why a legacy <strong>authentication</strong> flow uses MD5 hashing (now cryptographically broken), sparking a critical security review that a senior team that has always used it might never initiate. UX designers identify where security mechanisms create friction that users will bypass. Quality assurance engineers approach the system adversarially — trying to break it — revealing edge cases that developers, focused on making features work, did not consider. Security engineers trained in offensive techniques think like attackers, anticipating exploitation paths that application developers are not trained to see. Collaboration across these different perspectives produces a more comprehensively reviewed, higher-confidence security posture than any single expert could achieve alone.</p>
 
-          <h3>Delegating Tasks Based on Expertise</h3>
+<h3>Delegating Tasks Based on Expertise</h3>
           <p>Secure software development encompasses highly specialised domains that no single developer can master completely. Effective teams delegate responsibilities to members with the specific expertise required. Cryptography implementations (key management, protocol selection, <strong>algorithm</strong> configuration) are assigned to engineers with dedicated security training — an incorrectly implemented cryptographic protocol may appear to work correctly while providing no actual security. Front-end developers focus on output encoding, Content Security Policy configuration, and <strong>XSS</strong> prevention in the client-side code they know deeply. Database administrators design the access control and auditing configuration of database servers according to their specialised knowledge of the database engine. Network engineers configure firewalls, <strong>TLS</strong> termination, and intrusion detection systems. This deliberate delegation ensures each security domain receives the depth of expertise it requires, rather than being shallowly addressed by generalists stretched across every area simultaneously.</p>
 
-          <h3>Quality of the Solution</h3>
+<h3>Quality of the Solution</h3>
           <p>Collaborative security practices — particularly peer code review and pair programming — produce measurably higher quality, more secure code than individual development. Peer code review is the single most cost-effective defect removal technique in software engineering: catching a vulnerability during code review costs a fraction of fixing it after deployment. When two developers review each other's security-critical code, logical errors, missing edge case handling, and subtle vulnerability patterns that the original author's familiarity blinds them to are caught before they ship. Collaboration also produces better documentation of security decisions — why a particular implementation was chosen over alternatives — reducing the risk that future maintainers unknowingly introduce vulnerabilities by changing security controls they do not understand the purpose of. Teams that practice collaborative security review consistently produce software with fewer critical vulnerabilities reaching production.</p>
         </section>
 
         <hr class="divider" />
 
-        <!-- 14. Enterprise Benefits -->
         <section id="enterprise">
-          <h2 class="syllabus-phase">Benefits to an Enterprise of Secure Development</h2>
+          <h2 class="syllabus-phase">Benefits to an Enterprise</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-05)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Investigate and explain</strong> the benefits to an enterprise of the implementation of safe and secure development practices, including improved products, influence on future development, work practices, productivity, and business interactivity.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Investigate and explain</strong> the benefits to an enterprise of the implementation of safe and secure development practices</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>improved products or services</li><li>influence on future software development</li><li>improved work practices</li><li>productivity</li><li>business interactivity</li></ul>
 
           <h3>Improved Products or Services</h3>
           <p>Software built with security embedded from the design phase is fundamentally more reliable and trustworthy than software that has security patched on reactively. Secure products experience fewer incidents — zero outages from ransomware, no emergency patches that break existing functionality, no data breach disclosures that destroy user trust. This reliability becomes a genuine product differentiator: enterprise customers conducting vendor due diligence explicitly assess security posture (often requiring SOC 2 Type II certification or ISO 27001 compliance) before signing contracts. A demonstrably secure product wins those procurement decisions. For consumer products, trust built over years of responsible data stewardship creates brand loyalty that is enormously difficult for competitors to erode — while a single major breach can permanently destroy it.</p>
 
-          <h3>Influence on Future Software Development</h3>
+<h3>Influence on Future Software Development</h3>
           <p>Enterprises that develop a culture of secure software engineering accumulate codified security knowledge — documented threat models, established security patterns, reusable security libraries, and tested compliance frameworks — that directly accelerates and improves the security of every subsequent product. The first product built with security by design takes significant investment to establish the patterns; the second product is built on top of proven, battle-tested security infrastructure. Over time, the enterprise develops internal expertise and reputation that attracts security-conscious talent and positions the organisation to participate in industry standards development (e.g., contributing to OWASP, Australian Cyber Security Centre guidance, or NIST frameworks), further enhancing reputation and influence. Security-mature organisations are also better positioned to respond to and shape evolving regulatory requirements — rather than scrambling to comply at the last moment.</p>
 
-          <h3>Improved Work Practices</h3>
+<h3>Improved Work Practices</h3>
           <p>The implementation of DevSecOps — integrating security into every stage of the development pipeline — transforms security from a gating checkpoint at the end of the development cycle into a continuous quality feedback mechanism throughout it. Automated SAST scanning in <strong>CI/CD</strong> pipelines means developers receive security feedback within minutes of committing code, while the context of what they wrote is still fresh in mind — making remediation fast and educational. Security champions programs embed security expertise within development teams rather than siloing it in a separate security department, improving security knowledge across the entire engineering organisation. These practices systematically reduce the volume of security debt accumulated over time, resulting in a healthier, more maintainable codebase that is faster and cheaper to extend.</p>
 
-          <h3>Productivity</h3>
-          <p>Counter-intuitively, building security in from the start dramatically improves long-term development productivity. The cost of fixing a security vulnerability increases by an order of magnitude at each stage of development: a vulnerability identified by a developer during coding takes minutes to fix; the same vulnerability caught in code review takes hours; caught in testing takes days (including regression testing); caught in production requires an emergency patch, incident response, possible customer notification, regulatory reporting, and forensic investigation — potentially weeks of disrupted work. Teams that invest in shift-left security (catching vulnerabilities earlier in the development cycle) spend a fraction of the total time on security compared to teams that rely on reactive patching. Additionally, a stable, low-incident production environment means developers spend time building new features rather than responding to security emergencies.</p>
+<h3>Productivity</h3>
+          <p>Counter-intuitively, building security in from the start improves long-term development productivity. The cost of fixing a security vulnerability increases by an order of magnitude at each stage of development: a vulnerability identified by a developer during coding takes minutes to fix; the same vulnerability caught in code review takes hours; caught in testing takes days (including regression testing); caught in production requires an emergency patch, incident response, possible customer notification, regulatory reporting, and forensic investigation — potentially weeks of disrupted work. Teams that invest in shift-left security (catching vulnerabilities earlier in the development cycle) spend a fraction of the total time on security compared to teams that rely on reactive patching. Also, a stable, low-incident production environment means developers spend time building new features rather than responding to security emergencies.</p>
 
-          <h3>Business Interactivity</h3>
+<h3>Business Interactivity</h3>
           <p>Modern enterprises operate through an ecosystem of interconnected systems — sharing data with partners, customers, suppliers, and regulators through APIs and integrations. Secure API design (with <strong>authentication</strong>, <strong>authorisation</strong> scopes, input validation, rate limiting, and <strong>encryption</strong>) enables this business interactivity without exposing corporate systems to the security risks inherent in external connections. An enterprise with a strong security posture can participate in data-sharing partnerships that competitors with weaker security practices are excluded from — particularly in regulated industries such as healthcare (requiring compliance with Australian Digital Health Agency standards), financial services (PCI-DSS, APRA CPS 234), and government contracting (IRAP assessments). Conversely, a publicised breach or regulatory sanction can immediately disqualify an organisation from business-critical partnerships, with devastating commercial consequences.</p>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Safe and secure development practices benefit an enterprise by improving its products and its productivity. Threat modelling and code review during design catch vulnerabilities before release, when they are cheapest to fix, so fewer emergency patches interrupt planned work. Customers also trust a service with a strong security record, which supports future growth."</em></div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 15. Social, Ethical & Legal Ramifications -->
         <section id="ramifications">
           <h2 class="syllabus-phase">Social, Ethical and Legal Issues</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-05)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Evaluate</strong> the social, ethical, and legal issues and ramifications that affect people and enterprises resulting from the development and implementation of safe and secure software, including employment, data security, privacy, copyright, intellectual property, and digital disruption.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Evaluate</strong> the social, ethical and legal issues and ramifications that affect people and enterprises resulting from the development and implementation of safe and secure software</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>employment</li><li>data security</li><li>privacy</li><li>copyright</li><li>intellectual property</li><li>digital disruption</li></ul>
 
           <h3>Employment</h3>
           <p>The growing emphasis on software security is creating significant structural shifts in the technology labour market. Demand for cybersecurity professionals is growing rapidly — Australia faces a shortfall of tens of thousands of cybersecurity workers, with the Australian Cyber Security Centre (ACSC) reporting the sector needs to grow by 7,000 workers annually to meet demand. This creates strong employment opportunities for software engineers with security specialisations. However, automation of routine security testing (SAST, DAST, vulnerability scanning) is reducing demand for lower-skilled security roles focused on running tools and interpreting standard outputs. The remaining and growing roles require higher-order skills: penetration testers who think creatively like attackers, security architects who design systemic defences, and incident responders who manage complex breaches under pressure. Developers who do not develop security competency risk being disadvantaged as "secure by default" coding practices become a baseline expectation of all engineering roles, not a specialist add-on.</p>
 
-          <h3>Data Security</h3>
+<h3>Data Security</h3>
           <p>Enterprises that handle personal data have both a legal obligation and an ethical duty to protect it. The legal framework in Australia includes the <strong>Privacy Act 1988</strong> (Australian Privacy Principles), the <strong>Notifiable Data Breaches (NDB) scheme</strong> (requiring notification of eligible breaches to the OAIC and affected individuals within 30 days), and sector-specific requirements such as the My Health Records Act for healthcare data. The ethical dimension extends beyond legal compliance: collecting more data than necessary, retaining it longer than required, or using it for purposes beyond those disclosed to users at collection represents a breach of user trust even if it is technically legal. Engineers bear professional responsibility for the security of systems they design — a negligently designed system that suffers an avoidable breach causes real harm to real individuals whose financial, medical, or personal information is exposed. The ethical obligation is to apply due diligence in security design proportionate to the sensitivity of the data handled.</p>
 
-          <h3>Privacy</h3>
+<h3>Privacy</h3>
           <p>Privacy is a fundamental human right recognised in Australian law through the Privacy Act 1988 and its APPs. Insecure software that exposes personal information — whether through a breach caused by negligent security design or through deliberately excessive data collection — violates this right with lasting consequences for affected individuals. Exposed personal information enables identity theft, financial fraud, targeted phishing, and in extreme cases stalking and physical harm. The social harm of large-scale breaches (such as the 2022 Optus breach affecting 9.8 million Australians, or the Medibank breach exposing sensitive health records) extends far beyond the immediate financial impact — creating lasting anxiety, distrust of digital services, and disproportionate harm to vulnerable individuals (domestic violence survivors, people with stigmatised health conditions) whose disclosed information can be weaponised against them. Engineers have an ethical obligation to treat privacy as a genuine design priority, not merely a compliance exercise.</p>
 
-          <h3>Copyright</h3>
+<h3>Copyright</h3>
           <p>Software is protected by copyright from the moment it is created, without requiring registration. Copyright protects the specific expression of code (the actual written source code) — not the underlying idea or functionality. Enterprises must ensure they do not incorporate third-party code without the appropriate licence. Using open-source libraries requires understanding and complying with their respective licences: MIT and Apache 2.0 allow use in proprietary software with attribution; GPL-licensed code requires any derivative work to also be open source — a requirement that can force an enterprise to open-source its proprietary codebase if GPL code is incorporated without understanding this obligation. AI-generated code introduces novel copyright questions that are not yet fully resolved in Australian law — the source of training data and the originality of generated output are active areas of legal debate with significant implications for enterprise software development.</p>
 
-          <h3>Intellectual Property</h3>
-          <p>Proprietary software <strong>algorithms</strong>, architectures, and business logic represent significant intellectual property (IP) assets that secure software design must protect from theft and unauthorised disclosure. Trade secrets (unpatented technical approaches that derive value from their secrecy) are protected under common law and the <em>Corporations Act 2001</em>, but only if the enterprise takes reasonable steps to maintain their secrecy — which requires technical security measures (code obfuscation, server-side execution of sensitive logic, access controls, NDAs with employees and contractors) and legal protections. A security breach that exposes proprietary source code, training data for ML models, or unique business <strong>algorithms</strong> can destroy the commercial value of years of R&amp;D investment. Additionally, engineers must ensure the software they develop does not unintentionally incorporate competitors' IP through reverse engineering — a legally and ethically fraught practice with significant liability exposure.</p>
+<h3>Intellectual Property</h3>
+          <p>Proprietary software <strong>algorithms</strong>, architectures, and business logic represent significant intellectual property (IP) assets that secure software design must protect from theft and unauthorised disclosure. Trade secrets (unpatented technical approaches that derive value from their secrecy) are protected under common law and the <em>Corporations Act 2001</em>, but only if the enterprise takes reasonable steps to maintain their secrecy — which requires technical security measures (code obfuscation, server-side execution of sensitive logic, access controls, NDAs with employees and contractors) and legal protections. A security breach that exposes proprietary source code, training data for ML models, or unique business <strong>algorithms</strong> can destroy the commercial value of years of R&amp;D investment. Also, engineers must ensure the software they develop does not unintentionally incorporate competitors' IP through reverse engineering — a legally and ethically fraught practice with significant liability exposure.</p>
 
-          <h3>Digital Disruption</h3>
+<h3>Digital Disruption</h3>
           <p>Highly secure, scalable digital platforms are a primary vehicle of digital disruption — displacing established industries by offering superior trust, convenience, and cost efficiency built on robust technical infrastructure. The disruption is bidirectional: secure fintech platforms (such as Afterpay, Revolut, and digital-only banks) disrupt traditional banking by offering comparable or superior financial services without physical branch infrastructure; conversely, a high-profile security failure by a disruptive digital entrant (such as a cryptocurrency exchange breach) can instantly restore consumer confidence in the incumbent institution it was displacing. For established enterprises, failing to invest in secure digital infrastructure creates vulnerability to disruption by more security-mature competitors — customers increasingly make choices based on perceived trustworthiness of digital platforms. The social dimension of digital disruption includes: geographic communities losing economic activity as digital services replace local businesses; skill displacement as digital processes automate roles that provided employment pathways; and concentration of market power in digital platform operators whose security and privacy practices affect vast user populations with limited alternatives.</p>
-        </section>
 
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Secure development has mostly positive effects on people and enterprises, but it is not without cost. Protecting data security and privacy maintains customer trust and avoids penalties under the Privacy Act, as the Medibank breach showed when millions of records were exposed. However, security requirements slow development and demand specialist skills, which can disadvantage small businesses. On balance, the cost of prevention is far lower than the financial and reputational damage of a breach."</em></div>
+        </section>
 
       </div>
     </main>
@@ -973,9 +1019,10 @@
     </div>
   </footer>
 
-  <script src="../js/main.js?v=18"></script>
+  <script src="../js/glossary-data.js?v=3"></script>
+  <script src="../js/main.js?v=20"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="../js/mermaid-init.js?v=2"></script>
+  <script src="../js/mermaid-init.js?v=4"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->
@@ -1000,5 +1047,6 @@
       </div>
     </div>
   </div>
+  <script src="../js/paper.js?v=2" defer></script>
 </body>
 </html>

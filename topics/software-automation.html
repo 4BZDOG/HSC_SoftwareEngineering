@@ -51,7 +51,8 @@
   <meta name="description" content="HSC Software Automation notes aligned with NESA NSW syllabus. Machine learning algorithms, OOP regression models, neural networks, DevOps and RPA automation, and ethical impacts of AI. Year 12 Software Engineering." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=23" />
+  <link rel="stylesheet" href="../css/styles.css?v=25" />
+  <link rel="stylesheet" href="../css/paper.css?v=5" />
 </head>
 <body>
 
@@ -164,20 +165,20 @@
     <aside class="sidebar">
       <div class="toc-title">Contents</div>
       <ul class="toc-list">
-        <li class="sidebar-label">Part 1 — <strong>Algorithms</strong> in ML</li>
-        <li><a href="#ai-vs-ml">1. AI vs Machine Learning</a></li>
-        <li><a href="#mlops">2. ML &amp; Automation</a></li>
-        <li><a href="#training-models">3. Training Models</a></li>
-        <li><a href="#ml-applications">4. ML Algorithm Applications</a></li>
-        <li><a href="#ml-design-models">5. Design Models (Trees &amp; Networks)</a></li>
-        <li><a href="#algorithm-types">6. Types of ML Algorithms</a></li>
-        <li class="sidebar-label">Part 2 — Programming for Automation</li>
-        <li><a href="#regression-oop">7. Regression Models &amp; OOP</a></li>
-        <li><a href="#neural-networks-oop">8. Neural Networks &amp; OOP</a></li>
-        <li class="sidebar-label">Part 3 — Significance &amp; Impact</li>
-        <li><a href="#societal-impact">9. Impact on Society</a></li>
-        <li><a href="#human-behaviour">10. Human Behaviour &amp; ML</a></li>
-        <li><a href="#bias">11. Bias in ML &amp; AI</a></li>
+        <li class="sidebar-label">Part 1 — Algorithms in machine learning</li>
+        <li><a href="#mlops">1. How Machine Learning Supports Automation</a></li>
+        <li><a href="#ai-vs-ml">2. Distinguishing AI from ML</a></li>
+        <li><a href="#training-models">3. Models of Training ML</a></li>
+        <li><a href="#ml-applications">4. Common Applications of ML Algorithms</a></li>
+        <li><a href="#ml-design-models">5. Design Models: Decision Trees and Neural Networks</a></li>
+        <li><a href="#algorithm-types">6. Types of Algorithms Associated with ML</a></li>
+        <li class="sidebar-label">Part 2 — Programming for automation</li>
+        <li><a href="#regression-oop">7. ML Regression Models Using OOP</a></li>
+        <li><a href="#neural-networks-oop">8. Neural Network Models Using OOP</a></li>
+        <li class="sidebar-label">Part 3 — Significance and impact of ML and AI</li>
+        <li><a href="#societal-impact">9. The Impact of Automation</a></li>
+        <li><a href="#human-behaviour">10. How Human Behaviour Influences ML and AI</a></li>
+        <li><a href="#bias">11. Human and Dataset Source Bias</a></li>
       </ul>
     </aside>
 
@@ -185,18 +186,36 @@
       <div class="content-body">
 
         <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  PART 1: ALGORITHMS IN MACHINE LEARNING                 -->
+        <!--  ALGORITHMS IN MACHINE LEARNING                        -->
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Syllabus Part 1</span>
-          <span class="part-name"><strong>Algorithms</strong> in Machine Learning</span>
+          <span class="part-name">Algorithms in machine learning</span>
         </div>
 
-        <!-- 1. AI vs ML -->
+        <section id="mlops">
+          <h2 class="syllabus-phase">How Machine Learning Supports Automation</h2>
+          <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-03, SE-12-09)</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Investigate</strong> how machine learning (ML) supports automation through the use of DevOps, robotic process automation (RPA) and business process automation (BPA)</em></p>
+
+          <h3>DevOps and Automation</h3>
+          <p><strong>DevOps</strong> is a software development practice that unifies development and operations teams to deliver software continuously and reliably. DevOps automation extends to machine learning workflows, enabling teams to efficiently deploy ML models into production environments and maintain their performance over time.</p>
+
+<h3>Robotic Process Automation (RPA)</h3>
+          <p><strong>RPA</strong> uses software "bots" to automate repetitive, rule-based digital tasks that humans would otherwise perform manually — such as copying data between systems, filling online forms, or processing invoices. Traditional RPA bots follow rigid scripts. When ML is integrated, the result is <strong>Intelligent Automation</strong>: bots that can read unstructured data (such as handwritten invoice fields or natural language emails), extract meaning from it, and make autonomous routing decisions. For example, an intelligent RPA bot in a hospital can read an unstructured doctor's referral email, extract the patient's details and condition, check availability, and automatically book the appropriate specialist appointment — a task that previously required a receptionist.</p>
+
+<h3>Business Process Automation (BPA)</h3>
+          <p><strong>BPA</strong> involves using technology to automate entire end-to-end business workflows — not just individual repetitive tasks, but complete multi-step processes involving multiple systems and decision points. ML-driven BPA integrates predictive intelligence into workflows. For example, an insurance claims BPA system uses ML to automatically assess a submitted photo of car damage, classify the severity, cross-reference the policy, calculate the repair estimate, and either auto-approve small claims or route complex cases to a human adjudicator — compressing a multi-day process into minutes. The key difference from RPA: BPA automates the <em>whole process</em>; RPA automates individual <em>steps within</em> a process.</p>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Machine learning supports business process automation by handling tasks that need judgement rather than fixed rules. An insurance company uses an ML model to read claim forms and flag likely fraud, while RPA bots copy the approved claims into the payment system. Together they reduce processing time, although staff must still review the claims the model flags."</em></div>
+        </section>
+
+        <hr class="divider" />
+
         <section id="ai-vs-ml">
-          <h2 class="syllabus-phase">Distinguishing AI from Machine Learning</h2>
+          <h2 class="syllabus-phase">Distinguishing AI from ML</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-03)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Distinguish</strong> between Artificial Intelligence (AI) and Machine Learning (ML) — two related but fundamentally different concepts that are frequently conflated.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Distinguish</strong> between artificial intelligence (AI) and ML</em></p>
 
           <div class="info-grid">
             <div class="info-card">
@@ -258,29 +277,11 @@
 
         <hr class="divider" />
 
-        <!-- 2. ML Automation through DevOps/RPA/BPA -->
-        <section id="mlops">
-          <h2 class="syllabus-phase">How ML Supports Automation</h2>
-          <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-03, SE-12-09)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Investigate</strong> how machine learning supports automation through the use of DevOps, Robotic Process Automation (RPA), and Business Process Automation (BPA).</em></p>
-
-          <h3>DevOps and Automation</h3>
-          <p><strong>DevOps</strong> is a software development practice that unifies development and operations teams to deliver software continuously and reliably. DevOps automation extends to machine learning workflows, enabling teams to efficiently deploy ML models into production environments and maintain their performance over time.</p>
-
-          <h3>Robotic Process Automation (RPA)</h3>
-          <p><strong>RPA</strong> uses software "bots" to automate repetitive, rule-based digital tasks that humans would otherwise perform manually — such as copying data between systems, filling online forms, or processing invoices. Traditional RPA bots follow rigid scripts. When ML is integrated, the result is <strong>Intelligent Automation</strong>: bots that can read unstructured data (such as handwritten invoice fields or natural language emails), extract meaning from it, and make autonomous routing decisions. For example, an intelligent RPA bot in a hospital can read an unstructured doctor's referral email, extract the patient's details and condition, check availability, and automatically book the appropriate specialist appointment — a task that previously required a receptionist.</p>
-
-          <h3>Business Process Automation (BPA)</h3>
-          <p><strong>BPA</strong> involves using technology to automate entire end-to-end business workflows — not just individual repetitive tasks, but complete multi-step processes involving multiple systems and decision points. ML-driven BPA integrates predictive intelligence into workflows. For example, an insurance claims BPA system uses ML to automatically assess a submitted photo of car damage, classify the severity, cross-reference the policy, calculate the repair estimate, and either auto-approve small claims or route complex cases to a human adjudicator — compressing a multi-day process into minutes. The key difference from RPA: BPA automates the <em>whole process</em>; RPA automates individual <em>steps within</em> a process.</p>
-        </section>
-
-        <hr class="divider" />
-
-        <!-- 3. Training Models -->
         <section id="training-models">
-          <h2 class="syllabus-phase">Models of Training Machine Learning</h2>
+          <h2 class="syllabus-phase">Models of Training ML</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-03)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Explore</strong> the four primary models used to train machine learning systems, each suited to different problem types and data availability.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Explore</strong> models of training ML</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>supervised learning</li><li>unsupervised learning</li><li>semi-supervised learning</li><li>reinforcement learning</li></ul>
 
           <div class="table-wrap">
             <table>
@@ -309,7 +310,7 @@
                   <td><strong>Semi-Supervised Learning</strong></td>
                   <td>Uses a <strong>small amount of labelled data</strong> combined with a <strong>large pool of unlabelled data</strong>. The model learns from the labelled examples and uses the unlabelled data to refine its understanding of the broader data distribution. This approach is cost-effective as labelling data is expensive and time-consuming.</td>
                   <td>Web content classification, medical image analysis.</td>
-                  <td>A medical AI trained to detect cancer on X-rays using a few hundred labelled scans and tens of thousands of unlabelled scans, dramatically reducing the costly expert-labelling burden.</td>
+                  <td>A medical AI trained to detect cancer on X-rays using a few hundred labelled scans and tens of thousands of unlabelled scans, reducing the costly expert-labelling burden.</td>
                 </tr>
                 <tr>
                   <td><strong>Reinforcement Learning</strong></td>
@@ -354,15 +355,16 @@
             </p>
           </div>
 
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Supervised learning suits spam filtering because thousands of emails have already been labelled as spam or not spam, so the model can learn from correct answers. Unsupervised learning suits grouping customers by shopping habits, where no labels exist and the aim is to discover patterns."</em></div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 5. Common Applications of Key ML Algorithms -->
         <section id="ml-applications">
-          <h2 class="syllabus-phase">Common Applications of Key ML Algorithms</h2>
+          <h2 class="syllabus-phase">Common Applications of ML Algorithms</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-03, SE-12-05)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Investigate</strong> common real-world applications of key machine learning algorithms, including data analysis and forecasting, virtual personal assistants, and image recognition.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Investigate</strong> common applications of key ML algorithms</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>data analysis and forecasting</li><li>virtual personal assistants</li><li>image recognition</li></ul>
 
           <h3>Data Analysis and Forecasting</h3>
           <p>ML algorithms applied to data analysis and forecasting use patterns in historical data to predict future outcomes. <strong>Regression algorithms</strong> (linear, polynomial) identify trends and project them forward. <strong>Time-series models</strong> (e.g., ARIMA, LSTM neural networks) specifically handle data ordered over time — such as stock prices, weather measurements, or website traffic. Key applications include:</p>
@@ -372,7 +374,7 @@
             <div class="key-term-item"><strong>⚡ Energy Grid Management</strong><span>Electricity providers use ML to forecast power demand hour-by-hour, optimising when to draw from renewable versus fossil fuel sources and preventing costly over- or under-generation.</span></div>
           </div>
 
-          <h3>Virtual Personal Assistants</h3>
+<h3>Virtual Personal Assistants</h3>
           <p>Virtual personal assistants (VPAs) such as Apple's Siri, Amazon's Alexa, and Google Assistant combine multiple ML domains into a seamless conversational interface:</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>🎤 Speech Recognition (ASR)</strong><span>Deep learning models convert spoken audio waveforms into text. Neural networks trained on thousands of hours of human speech learn to recognise phonemes and words — even across different accents, background noise levels, and speaking speeds.</span></div>
@@ -381,7 +383,7 @@
             <div class="key-term-item"><strong>🔄 Personalisation</strong><span>VPAs learn from individual user behaviour over time — remembering preferences, adapting to vocabulary, and improving accuracy for that specific user's voice and speech patterns through continuous learning.</span></div>
           </div>
 
-          <h3>Image Recognition</h3>
+<h3>Image Recognition</h3>
           <p><strong>Image recognition</strong> uses <strong>Convolutional Neural Networks (CNNs)</strong> — a specialised deep learning architecture designed to process grid-structured data (pixels). CNNs learn hierarchical visual features: early layers detect edges and colours; deeper layers recognise shapes and textures; the final layers identify objects. Key applications include:</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>🏥 Medical Diagnostics</strong><span>CNNs trained on tens of thousands of labelled medical scans can detect cancerous tumours, diabetic retinopathy in eye scans, and COVID-19 in chest X-rays — often matching or exceeding specialist radiologist accuracy.</span></div>
@@ -389,15 +391,17 @@
             <div class="key-term-item"><strong>🚗 Autonomous Vehicles</strong><span>Self-driving cars use CNNs to identify pedestrians, other vehicles, traffic signs, and lane markings in real time from camera feeds. The recognition system processes multiple camera angles simultaneously at high speed to make safe driving decisions.</span></div>
             <div class="key-term-item"><strong>🏭 Manufacturing Quality Control</strong><span>Automated visual inspection systems on production lines use image recognition to detect product defects (e.g., cracks, misalignments, surface blemishes) at speeds and consistency impossible for human inspectors.</span></div>
           </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Image recognition is a key application of ML in agriculture. A convolutional neural network trained on thousands of labelled leaf photos can identify crop diseases from a farmer's phone camera, allowing early treatment. Its accuracy depends on training images that match real field conditions, such as poor lighting and partly hidden leaves."</em></div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 5. Design Models: Decision Trees and Neural Networks -->
         <section id="ml-design-models">
-          <h2 class="syllabus-phase">Design Models for ML: Decision Trees &amp; Neural Networks</h2>
+          <h2 class="syllabus-phase">Design Models: Decision Trees and Neural Networks</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-03, SE-12-08)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Research</strong> the models used by software engineers to design and analyse machine learning systems, including decision trees and neural networks.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Research</strong> models used by software engineers to design and analyse ML</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>decision trees</li><li>neural networks</li></ul>
 
           <h3>Decision Trees</h3>
           <p>A <strong>decision tree</strong> is a supervised learning model that represents a series of binary questions (decisions) as a tree structure, branching at each internal node based on a feature value, and arriving at a prediction at each leaf node. Decision trees are highly interpretable — engineers and non-technical stakeholders can read the tree logic directly. They are also the foundation for more powerful <strong>ensemble methods</strong> such as Random Forests (many decision trees voting together) and Gradient Boosted Trees (iteratively correcting prediction errors).</p>
@@ -457,7 +461,7 @@
             </p>
           </div>
 
-          <h3>Neural Networks</h3>
+<h3>Neural Networks</h3>
           <p><strong>Artificial Neural Networks (ANNs)</strong> are designed to loosely mimic the biological structure of the human brain. They consist of layers of interconnected artificial <strong>neurones</strong> (nodes), each receiving weighted input signals, applying an <strong>activation function</strong>, and passing an output signal to the next layer.</p>
 
           <div class="info-grid">
@@ -523,11 +527,11 @@
 
         <hr class="divider" />
 
-        <!-- 6. Types of ML Algorithms -->
         <section id="algorithm-types">
           <h2 class="syllabus-phase">Types of Algorithms Associated with ML</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-03)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Describe</strong> the types of algorithms associated with machine learning, including linear regression, logistic regression, and K-nearest neighbour.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Describe</strong> types of algorithms associated with ML</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>linear regression</li><li>logistic regression</li><li>K-nearest neighbour</li></ul>
 
           <h3>Linear Regression</h3>
           <p><strong>Linear regression</strong> is a supervised learning algorithm used to predict a <strong>continuous numerical value</strong> based on one or more input features. It fits a straight line (or hyperplane in multiple dimensions) through the training data that minimises the total squared distance between each data point and the line — known as the <strong>Ordinary Least Squares (OLS)</strong> method. The resulting equation takes the form: <code>y = mx + c</code>, where <em>m</em> is the slope (coefficient) and <em>c</em> is the y-intercept. For example, a linear regression model trained on study hours and exam scores would output a predicted score for any given number of study hours.</p>
@@ -557,10 +561,25 @@ print(f"MSE: {mean_squared_error(y_test, y_pred):.2f}")
 print(f"Predicted score for 9 hours: {model.predict([[9]])[0]:.1f}")</code></pre>
           </div>
 
-          <h3>Logistic Regression</h3>
+          <p>Behind <code>mean_squared_error</code> is one of the simplest standard algorithms: a counting loop with an <strong>accumulator</strong>. It adds up each squared error, then divides by the number of items. The trace below shows the summing loop on its own. Enter some squared errors to see how the total builds.</p>
+
+          <figure class="trace-block">
+            <figcaption>
+              <h4>Trace — Accumulator Loop (Summing Errors)</h4>
+              <p class="diagram-subtitle">The same loop that totals the squared errors before MSE divides by n</p>
+            </figcaption>
+            <div class="algo-trace" data-trace="sumList"></div>
+            <p class="diagram-caption">
+              Every loss function in machine learning, and every average, starts with a loop like this one. Training a model runs it millions of times.<br>
+              <strong>Controls:</strong> ◀ Step and Step ▶ (or the arrow keys), Space to play or pause, R to reset.<br>
+              <strong>Try this:</strong> Enter the squared errors <code>4, 1, 9, 0, 16</code>. The total is 30, so MSE = 30 ÷ 5 = 6.
+            </p>
+          </figure>
+
+<h3>Logistic Regression</h3>
           <p>Despite its name, <strong>logistic regression</strong> is a <strong>classification algorithm</strong> — not used for predicting continuous values. It calculates the probability that an input belongs to a particular class (typically binary: 0 or 1, True or False). The <strong>sigmoid function</strong> squashes any input value into a probability between 0 and 1. A threshold (typically 0.5) converts this probability into a class prediction. For example, a logistic regression model assessing whether a bank transaction is fraudulent outputs a probability of fraud; if it exceeds 0.5 (or a risk-adjusted threshold), the transaction is flagged. Logistic regression is highly interpretable — each feature's coefficient indicates its influence on the predicted probability.</p>
 
-          <h3>K-Nearest Neighbour (KNN)</h3>
+<h3>K-Nearest Neighbour (KNN)</h3>
           <p><strong>K-Nearest Neighbour (KNN)</strong> is a simple, instance-based supervised learning algorithm used for both classification and regression. Rather than learning a model during training, KNN stores the entire training dataset. At prediction time, it finds the <em>K</em> training examples closest to the new input (using a distance metric such as Euclidean distance), and assigns the majority class (classification) or average value (regression) of those K neighbours as the prediction. KNN requires no explicit training phase, but is computationally expensive at prediction time on large datasets.</p>
 
           <div class="info-grid">
@@ -635,21 +654,20 @@ print(f"Loan approved: {'Yes' if prediction[0] == 1 else 'No'}")</code></pre>
           </div>
         </section>
 
-        <hr class="divider" />
 
         <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  PART 2: PROGRAMMING FOR AUTOMATION                     -->
+        <!--  PROGRAMMING FOR AUTOMATION                            -->
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Syllabus Part 2</span>
-          <span class="part-name">Programming for Automation</span>
+          <span class="part-name">Programming for automation</span>
         </div>
 
-        <!-- 7. Regression Models with OOP -->
         <section id="regression-oop">
           <h2 class="syllabus-phase">ML Regression Models Using OOP</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-08)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Design, develop and apply</strong> ML regression models using an Object-Oriented Programming (OOP) approach to predict numeric values, including linear regression, polynomial regression, and logistic regression.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Design, develop and apply</strong> ML regression models using an OOP to predict numeric values</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>linear regression</li><li>polynomial regression</li><li>logistic regression</li></ul>
 
           <h3>Linear Regression in Python (OOP via scikit-learn)</h3>
           <p>The <code>scikit-learn</code> library implements regression models as Python <strong>classes</strong> — each model is an <strong>object</strong> with <code>fit()</code> and <code>predict()</code> methods. This is a direct application of OOP: instantiating a model object, calling methods to train it, and calling methods to use it.</p>
@@ -678,7 +696,7 @@ print(f"Slope (coefficient): {model.coef_[0]:.2f}")       <span class="cm"># ~5.
 print(f"Intercept: {model.intercept_:.2f}")                <span class="cm"># ~40.0</span></code></pre>
           </div>
 
-          <h3>Polynomial Regression (Non-Linear Relationships)</h3>
+<h3>Polynomial Regression (Non-Linear Relationships)</h3>
           <p><strong>Polynomial regression</strong> extends linear regression to model <strong>curved (non-linear) relationships</strong> between variables. When plotting a scatter graph reveals a curve rather than a straight line, a polynomial fit is more appropriate. The input features are transformed to include powers (x², x³, etc.) using <code>PolynomialFeatures</code>, then passed into a standard <code>LinearRegression</code> model. For example, modelling how fuel efficiency decreases with speed follows a curved relationship — polynomial regression captures this more accurately than a straight line.</p>
 
           <div class="code-block">
@@ -704,7 +722,7 @@ X_test = poly.transform([[110]])
 print(f"Predicted efficiency at 110 km/h: {model.predict(X_test)[0]:.1f} L/100km")</code></pre>
           </div>
 
-          <h3>Logistic Regression — Binary Classification</h3>
+<h3>Logistic Regression — Binary Classification</h3>
           <p>Logistic regression classifies inputs into one of two categories by predicting a probability using the sigmoid function. The OOP interface is identical to linear regression — instantiate, fit, predict.</p>
 
           <div class="code-block">
@@ -730,11 +748,10 @@ print(f"Pass probability: {probability[0][1]:.2%}")</code></pre>
 
         <hr class="divider" />
 
-        <!-- 8. Neural Networks with OOP -->
         <section id="neural-networks-oop">
           <h2 class="syllabus-phase">Neural Network Models Using OOP</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-08)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Apply</strong> neural network models using an Object-Oriented Programming approach to make predictions. Neural networks are implemented as layered objects using frameworks such as <code>scikit-learn</code> (for simpler networks) or <code>TensorFlow/Keras</code> (for deep learning).</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Apply</strong> neural network models using an OOP to make predictions</em></p>
 
           <h3>Multi-Layer Perceptron (MLP) with scikit-learn</h3>
           <p>The <code>MLPClassifier</code> (Multi-Layer Perceptron) is a neural network class available in scikit-learn. It uses the same OOP interface as other models — instantiate with architecture parameters, call <code>fit()</code> to train, call <code>predict()</code> to classify. The <code>hidden_layer_sizes</code> parameter defines the number of hidden layers and neurons per layer.</p>
@@ -780,7 +797,7 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
             <strong>OOP in ML Models:</strong> Every scikit-learn model is a Python class. When you write <code>model = MLPClassifier(...)</code> you are <strong>instantiating an object</strong>. When you call <code>model.fit(X, y)</code> you are invoking a <strong>method</strong> that sets the object's internal weights (attributes). When you call <code>model.predict(X_new)</code> you are invoking another method that uses those stored weights to generate output. This is OOP in direct practice.
           </div>
 
-          <h3>Neural Network Training and Execution Cycles</h3>
+<h3>Neural Network Training and Execution Cycles</h3>
           <div class="info-grid">
             <div class="info-card">
               <h4>Training Cycle</h4>
@@ -793,33 +810,34 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           </div>
         </section>
 
+
         <!-- ═══════════════════════════════════════════════════════ -->
-        <!--  PART 3: SIGNIFICANCE AND IMPACT OF ML AND AI           -->
+        <!--  SIGNIFICANCE AND IMPACT OF ML AND AI                  -->
         <!-- ═══════════════════════════════════════════════════════ -->
         <div class="part-block">
           <span class="part-number">Syllabus Part 3</span>
-          <span class="part-name">Significance and Impact of ML and AI</span>
+          <span class="part-name">Significance and impact of ML and AI</span>
         </div>
 
-        <!-- 9. Societal Impact -->
         <section id="societal-impact">
-          <h2 class="syllabus-phase">Impact of Automation on Individuals, Society &amp; the Environment</h2>
+          <h2 class="syllabus-phase">The Impact of Automation</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-05)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Assess</strong> the impact of automation on individuals, society, and the environment across five key dimensions.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Assess</strong> the impact of automation on the individual, society and the environment</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>safety of workers</li><li>people with disability</li><li>the nature and skills required for employment</li><li>production efficiency, waste and the environment</li><li>the economy and distribution of wealth</li></ul>
 
           <h3>Safety of Workers</h3>
-          <p>Automation and robotics are progressively replacing human workers in physically dangerous environments, with significant positive safety outcomes. <strong>Automated drones</strong> now perform inspection of high-voltage power lines and offshore oil rigs, eliminating worker exposure to electrocution, heights, and toxic atmospheres. <strong>Robotic welding and material handling</strong> systems in manufacturing have dramatically reduced repetitive strain injuries and burn risks. In mining, <strong>autonomous haul trucks</strong> (e.g., Rio Tinto's AutoHaul system) operate in remote and hazardous pit environments without human operators. The net effect is a measurable reduction in workplace injury rates and fatalities. However, the displacement of human workers from these roles creates economic vulnerability for the affected communities.</p>
+          <p>Automation and robotics are progressively replacing human workers in physically dangerous environments, with significant positive safety outcomes. <strong>Automated drones</strong> now perform inspection of high-voltage power lines and offshore oil rigs, eliminating worker exposure to electrocution, heights, and toxic atmospheres. <strong>Robotic welding and material handling</strong> systems in manufacturing have reduced repetitive strain injuries and burn risks. In mining, <strong>autonomous haul trucks</strong> (e.g., Rio Tinto's AutoHaul system) operate in remote and hazardous pit environments without human operators. The net effect is a measurable reduction in workplace injury rates and fatalities. However, the displacement of human workers from these roles creates economic vulnerability for the affected communities.</p>
 
-          <h3>People with Disability</h3>
+<h3>People with Disability</h3>
           <p>AI-powered automation is providing unprecedented levels of independence and accessibility for people with disability. <strong>Computer vision systems</strong> enable real-time audio descriptions of the surrounding environment for visually impaired users (e.g., Microsoft's Seeing AI app describes people, currency, and written text through a smartphone camera). <strong>Speech-to-text and natural language interfaces</strong> allow people with motor disabilities to control computers and dictate documents without physical input. <strong>Autonomous vehicles</strong> could fundamentally transform mobility for people who cannot drive due to physical or visual impairment. <strong>AI captioning</strong> provides real-time speech-to-text conversion for deaf individuals during live conversations, video calls, and broadcasts. These advances promote social inclusion and reduce dependence on others, improving quality of life. The risk is that if these systems are not designed with universal design principles, the digital divide — where those without access to technology are further marginalised — may widen.</p>
 
-          <h3>Nature and Skills Required for Employment</h3>
+<h3>Nature and Skills Required for Employment</h3>
           <p>The adoption of automation is causing a significant structural shift in labour markets. <strong>Routine cognitive tasks</strong> (data entry, basic reporting, invoice processing) and <strong>routine physical tasks</strong> (assembly line work, packaging, basic quality inspection) are being automated at scale, displacing workers in these roles. Simultaneously, demand is growing rapidly for workers with skills in <strong>MLOps, data science, AI ethics, robotic maintenance, and human-AI collaboration</strong> — roles that require understanding of automation systems rather than performing the automated tasks themselves. Workers must engage in continuous reskilling and upskilling throughout their careers. Governments and educational institutions face the challenge of retraining displaced workers for emerging roles. The transition may exacerbate inequality if the benefits of automation accrue primarily to capital owners rather than being distributed across the workforce.</p>
 
-          <h3>Production Efficiency, Waste, and the Environment</h3>
+<h3>Production Efficiency, Waste, and the Environment</h3>
           <p>Automation offers significant environmental benefits through efficiency gains but also introduces new environmental costs. <strong>Optimised logistics and supply chains</strong> powered by ML reduce unnecessary transport and warehousing, cutting fuel consumption and emissions. <strong>Predictive maintenance</strong> extends the lifespan of industrial equipment, reducing material waste from premature replacements. <strong>Smart energy management systems</strong> use ML to optimise building heating, cooling, and lighting, reducing energy waste. Conversely, <strong>training large deep learning models</strong> (e.g., GPT-4) consumes enormous quantities of electricity — some estimates suggest training a single large language model produces CO₂ emissions equivalent to five car lifetimes. <strong>Data centres</strong> required to run AI services consume vast amounts of water for cooling. Engineers must evaluate the full lifecycle environmental cost of AI systems alongside their operational benefits.</p>
 
-          <h3>The Economy and Distribution of Wealth</h3>
+<h3>The Economy and Distribution of Wealth</h3>
           <p>Automation increases productivity and creates new industries and wealth. However, the distribution of that wealth is a critical societal concern. Historically, automation has created new types of employment alongside the jobs it displaces — but the transition period creates significant hardship for displaced workers. The current wave of AI-driven automation is occurring much faster than previous industrial revolutions, leaving less time for natural retraining. There is a risk of increasing economic polarisation: high-skill workers who can work alongside AI systems see wages rise, while low-skill workers face wage stagnation or displacement. Policy responses under discussion include universal basic income (UBI), robot taxes, and mandatory corporate investment in worker retraining programs.</p>
 
           <div class="video-box">
@@ -829,39 +847,40 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
             </ul>
             <p class="video-box-note">A thought-provoking look at how <strong>automation</strong> may reshape <strong>employment</strong> across many industries — excellent stimulus for discussing the social and economic impact of AI.</p>
           </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Automation has improved the safety of workers by moving dangerous jobs, such as handling chemicals, to robots. However, it has also changed the skills required for employment: routine roles are declining, while demand grows for people who can maintain and program automated systems. The overall impact depends on whether retraining is available, so the benefits of efficiency are shared rather than concentrated among business owners."</em></div>
         </section>
 
         <hr class="divider" />
 
-        <!-- 10. Human Behaviour Patterns -->
         <section id="human-behaviour">
-          <h2 class="syllabus-phase">Human Behaviour Patterns Influencing ML and AI</h2>
+          <h2 class="syllabus-phase">How Human Behaviour Influences ML and AI</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-04, SE-12-05)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Explore by implementation</strong> how patterns in human behaviour influence ML and AI software development, including psychological responses, patterns related to acute stress response, cultural protocols, and belief systems.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Explore by implementation</strong> how patterns in human behaviour influence ML and AI software development</em></p>
+          <ul class="syllabus-including" aria-label="Including"><li>psychological responses</li><li>patterns related to acute stress response</li><li>cultural protocols</li><li>belief systems</li></ul>
 
           <h3>Psychological Responses</h3>
           <p>Human psychology profoundly shapes how AI systems must be designed. Users must understand when they are interacting with AI systems, and designers must balance automation with appropriate levels of human oversight and control. Transparent communication about AI capabilities and limitations builds user trust and ensures that critical decisions involving human welfare maintain meaningful human involvement.</p>
 
-          <h3>Patterns Related to Acute Stress Response</h3>
+<h3>Patterns Related to Acute Stress Response</h3>
           <p>When individuals are operating under acute psychological stress (e.g., medical emergencies, financial crises, natural disasters), their cognitive performance changes significantly — attention narrows, working memory capacity decreases, and decision-making becomes impaired. AI interfaces designed for critical environments — such as intensive care unit monitoring systems, emergency dispatch platforms, or incident management dashboards — must account for these changes. Systems should prioritise the most critical information, minimise cognitive load, and use clear visual communication to guide operators appropriately during stressful situations.</p>
 
-          <h3>Cultural Protocols</h3>
-          <p>ML and AI systems deployed globally must be engineered to respect diverse regional cultural norms, communication expectations, and social protocols. A conversational AI that is appropriate in one cultural context may be offensive or ineffective in another. Engineers must consider varying expectations around formality, linguistic nuance, and culturally sensitive topics. Additionally, AI systems must comply with local legal frameworks governing privacy and data protection across different jurisdictions. Failure to embed cultural protocols into AI systems results in reputational damage, legal liability, and loss of user trust in international markets.</p>
+<h3>Cultural Protocols</h3>
+          <p>ML and AI systems deployed globally must be engineered to respect diverse regional cultural norms, communication expectations, and social protocols. A conversational AI that is appropriate in one cultural context may be offensive or ineffective in another. Engineers must consider varying expectations around formality, linguistic nuance, and culturally sensitive topics. Also, AI systems must comply with local legal frameworks governing privacy and data protection across different jurisdictions. Failure to embed cultural protocols into AI systems results in reputational damage, legal liability, and loss of user trust in international markets.</p>
 
-          <h3>Belief Systems</h3>
-          <p>Human belief systems — including religious beliefs, moral frameworks, and ethical worldviews — significantly influence both how AI is perceived and how it must be designed. In some religious and cultural traditions, there are deep concerns about AI making life-or-death decisions (e.g., autonomous weapons, medical triage AI) without human moral accountability. Engineers must engage with these perspectives during the design process rather than treating them as obstacles. AI systems for healthcare, justice, and education must be designed with <strong>explainability</strong> — the ability to provide human-understandable reasons for decisions — to allow individuals to challenge outcomes that conflict with their values or beliefs. Additionally, training data drawn from populations with specific belief systems will encode those beliefs into model outputs; engineers must actively test whether models produce fair and respectful outputs across diverse belief communities.</p>
+<h3>Belief Systems</h3>
+          <p>Human belief systems — including religious beliefs, moral frameworks, and ethical worldviews — significantly influence both how AI is perceived and how it must be designed. In some religious and cultural traditions, there are deep concerns about AI making life-or-death decisions (e.g., autonomous weapons, medical triage AI) without human moral accountability. Engineers must engage with these perspectives during the design process rather than treating them as obstacles. AI systems for healthcare, justice, and education must be designed with <strong>explainability</strong> — the ability to provide human-understandable reasons for decisions — to allow individuals to challenge outcomes that conflict with their values or beliefs. Also, training data drawn from populations with specific belief systems will encode those beliefs into model outputs; engineers must actively test whether models produce fair and respectful outputs across diverse belief communities.</p>
         </section>
 
         <hr class="divider" />
 
-        <!-- 11. Bias in ML and AI -->
         <section id="bias">
-          <h2 class="syllabus-phase">Human and Dataset Source Bias in ML and AI</h2>
+          <h2 class="syllabus-phase">Human and Dataset Source Bias</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-04, SE-12-05)</em></p>
-          <p class="syllabus-concept">📌 <em><strong>Investigate</strong> the effect of human and dataset source bias in the development of ML and AI solutions. Bias in training data is one of the most significant ethical risks in machine learning, as it causes AI systems to systematically produce unfair or discriminatory outcomes at scale.</em></p>
+          <p class="syllabus-concept">📌 <em><strong>Investigate</strong> the effect of human and dataset source bias in the development of ML and AI solutions</em></p>
 
           <h3>Sources of Bias</h3>
-          <p>Bias in ML systems can arise from multiple sources. Training data that reflects historical prejudices will cause AI systems to perpetuate those discriminatory patterns. When training datasets do not accurately represent the real-world population where the system will be used, the model produces systematically unfair outcomes for underrepresented groups. Developers may unconsciously select or weight data in ways that confirm their pre-existing assumptions. Additionally, when a biased model's predictions influence the collection of future data, it creates self-reinforcing cycles that entrench the original bias even further.</p>
+          <p>Bias in ML systems can arise from multiple sources. Training data that reflects historical prejudices will cause AI systems to perpetuate those discriminatory patterns. When training datasets do not accurately represent the real-world population where the system will be used, the model produces systematically unfair outcomes for underrepresented groups. Developers may unconsciously select or weight data in ways that confirm their pre-existing assumptions. Also, when a biased model's predictions influence the collection of future data, it creates self-reinforcing cycles that entrench the original bias even further.</p>
 
           <!-- Bias Feedback Loop Diagram -->
           <div class="diagram-block">
@@ -890,7 +909,7 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
             </p>
           </div>
 
-          <h3>Engineering Practices to Mitigate Bias</h3>
+<h3>Engineering Practices to Mitigate Bias</h3>
           <div class="info-grid">
             <div class="info-card">
               <h4>Diverse and Representative Data</h4>
@@ -909,6 +928,8 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
               <p>AI systems making consequential decisions (credit, employment, healthcare, justice) must be able to provide human-understandable explanations for their outputs. This enables affected individuals to challenge decisions and allows engineers to trace and correct the source of discriminatory outcomes.</p>
             </div>
           </div>
+
+          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Dataset source bias occurs when training data does not represent everyone the model will serve. A facial recognition system trained mostly on lighter-skinned faces misidentified darker-skinned people far more often. Human bias adds to this when developers label data using their own assumptions. Engineers can reduce these effects by auditing datasets for balance and testing accuracy separately for each group before release."</em></div>
         </section>
 
       </div>
@@ -950,9 +971,12 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
     </div>
   </footer>
 
-  <script src="../js/main.js?v=18"></script>
+  <script src="../js/glossary-data.js?v=3"></script>
+  <script src="../js/main.js?v=20"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="../js/mermaid-init.js?v=2"></script>
+  <script src="../js/mermaid-init.js?v=4"></script>
+  <script src="../js/algo-trace.js?v=1"></script>
+  <script src="../js/algo-traces.js?v=1"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->
@@ -977,5 +1001,6 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
       </div>
     </div>
   </div>
+  <script src="../js/paper.js?v=2" defer></script>
 </body>
 </html>
