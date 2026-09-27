@@ -40,7 +40,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="css/styles.css?v=25" />
-  <link rel="stylesheet" href="css/paper.css?v=26" />
+  <link rel="stylesheet" href="css/paper.css?v=27" />
 </head>
 <body>
 
@@ -57,17 +57,16 @@
 
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li class="nav-dropdown">
+        <li class="nav-dropdown nav-dropdown-y11">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
-            Resources
-            <span class="badge badge-all">Guides</span>
+            Year 11
+            <span class="badge badge-11">Prelim</span>
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="topics/course-tools.html" role="menuitem">Course Tools &amp; Specs</a>
-            <a href="topics/sdlc.html" role="menuitem">SDLC Guide</a>
-            <a href="topics/glossary.html" role="menuitem">Glossary</a>
-            <a href="topics/resources.html" role="menuitem">Certified Resources</a>
+            <a href="topics/programming-fundamentals.html" role="menuitem">Programming Fundamentals</a>
+            <a href="topics/object-oriented-paradigm.html" role="menuitem">Object-Oriented Paradigm</a>
+            <a href="topics/programming-mechatronics.html" role="menuitem">Programming Mechatronics</a>
           </div>
         </li>
         <li class="nav-dropdown nav-dropdown-y12">
@@ -83,16 +82,17 @@
             <a href="topics/software-engineering-project.html" role="menuitem">Software Engineering Project</a>
           </div>
         </li>
-        <li class="nav-dropdown nav-dropdown-y11">
+        <li class="nav-dropdown">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
-            Year 11
-            <span class="badge badge-11">Prelim</span>
+            Resources
+            <span class="badge badge-all">Guides</span>
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="topics/programming-fundamentals.html" role="menuitem">Programming Fundamentals</a>
-            <a href="topics/object-oriented-paradigm.html" role="menuitem">Object-Oriented Paradigm</a>
-            <a href="topics/programming-mechatronics.html" role="menuitem">Programming Mechatronics</a>
+            <a href="topics/course-tools.html" role="menuitem">Course Tools &amp; Specs</a>
+            <a href="topics/sdlc.html" role="menuitem">SDLC Guide</a>
+            <a href="topics/glossary.html" role="menuitem">Glossary</a>
+            <a href="topics/resources.html" role="menuitem">Certified Resources</a>
           </div>
         </li>
       </ul>
@@ -109,11 +109,10 @@
   <!-- ── Mobile Menu ── -->
   <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
     <div class="mobile-menu-section">
-      <div class="mobile-menu-label">Resources</div>
-      <a href="topics/course-tools.html">Course Tools &amp; Specifications</a>
-      <a href="topics/sdlc.html">SDLC Guide</a>
-      <a href="topics/glossary.html">Glossary</a>
-      <a href="topics/resources.html">Certified Resources</a>
+      <div class="mobile-menu-label">Year 11 — Preliminary</div>
+      <a href="topics/programming-fundamentals.html">Programming Fundamentals</a>
+      <a href="topics/object-oriented-paradigm.html">The Object-Oriented Paradigm</a>
+      <a href="topics/programming-mechatronics.html">Programming Mechatronics</a>
     </div>
     <div class="mobile-menu-section">
       <div class="mobile-menu-label">Year 12 — HSC</div>
@@ -123,10 +122,11 @@
       <a href="topics/software-engineering-project.html">Software Engineering Project</a>
     </div>
     <div class="mobile-menu-section">
-      <div class="mobile-menu-label">Year 11 — Preliminary</div>
-      <a href="topics/programming-fundamentals.html">Programming Fundamentals</a>
-      <a href="topics/object-oriented-paradigm.html">The Object-Oriented Paradigm</a>
-      <a href="topics/programming-mechatronics.html">Programming Mechatronics</a>
+      <div class="mobile-menu-label">Resources</div>
+      <a href="topics/course-tools.html">Course Tools &amp; Specifications</a>
+      <a href="topics/sdlc.html">SDLC Guide</a>
+      <a href="topics/glossary.html">Glossary</a>
+      <a href="topics/resources.html">Certified Resources</a>
     </div>
     <div class="mobile-menu-section">
     <button id="theme-toggle-mobile" class="btn btn-mobile-theme">Toggle theme</button>
@@ -262,6 +262,9 @@
               <span class="topic-tag">Security by design</span>
               <span class="topic-tag">Secure code</span>
               <span class="topic-tag">CIA triad</span>
+              <span class="topic-tag">Cryptography</span>
+              <span class="topic-tag">Defensive coding</span>
+              <span class="topic-tag">XSS &amp; CSRF</span>
             </div>
             <span class="card-arrow">→</span>
           </div>
@@ -276,6 +279,10 @@
               <span class="topic-tag">Web protocols</span>
               <span class="topic-tag">Back end</span>
               <span class="topic-tag">PWAs</span>
+              <span class="topic-tag">HTTPS &amp; TLS</span>
+              <span class="topic-tag">SQL</span>
+              <span class="topic-tag">CSS</span>
+              <span class="topic-tag">DNS</span>
             </div>
             <span class="card-arrow">→</span>
           </div>
@@ -290,6 +297,9 @@
               <span class="topic-tag">Machine learning</span>
               <span class="topic-tag">Neural networks</span>
               <span class="topic-tag">Bias</span>
+              <span class="topic-tag">Regression</span>
+              <span class="topic-tag">Decision trees</span>
+              <span class="topic-tag">KNN</span>
             </div>
             <span class="card-arrow">→</span>
           </div>
@@ -304,6 +314,9 @@
               <span class="topic-tag">Agile</span>
               <span class="topic-tag">Project management</span>
               <span class="topic-tag">Testing</span>
+              <span class="topic-tag">Waterfall</span>
+              <span class="topic-tag">Gantt charts</span>
+              <span class="topic-tag">Implementation</span>
             </div>
             <span class="card-arrow">→</span>
           </div>
@@ -331,6 +344,9 @@
               <span class="topic-tag">Algorithms</span>
               <span class="topic-tag">Data types</span>
               <span class="topic-tag">Debugging</span>
+              <span class="topic-tag">Flowcharts</span>
+              <span class="topic-tag">Control structures</span>
+              <span class="topic-tag">SDLC</span>
             </div>
             <span class="card-arrow">→</span>
           </div>
@@ -345,6 +361,9 @@
               <span class="topic-tag">Classes</span>
               <span class="topic-tag">Inheritance</span>
               <span class="topic-tag">Class diagrams</span>
+              <span class="topic-tag">Encapsulation</span>
+              <span class="topic-tag">Polymorphism</span>
+              <span class="topic-tag">Objects</span>
             </div>
             <span class="card-arrow">→</span>
           </div>
@@ -359,6 +378,9 @@
               <span class="topic-tag">Sensors</span>
               <span class="topic-tag">Control algorithms</span>
               <span class="topic-tag">Microcontrollers</span>
+              <span class="topic-tag">Actuators</span>
+              <span class="topic-tag">Feedback loops</span>
+              <span class="topic-tag">State machines</span>
             </div>
             <span class="card-arrow">→</span>
           </div>
@@ -469,7 +491,7 @@
     </div>
   </div>
 
-  <script src="js/main.js?v=29"></script>
+  <script src="js/main.js?v=30"></script>
   <script src="js/paper.js?v=6" defer></script>
   <script src="js/progress.js?v=1" defer></script>
 </body>

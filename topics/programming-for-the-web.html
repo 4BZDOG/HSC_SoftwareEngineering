@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=26" />
+  <link rel="stylesheet" href="../css/paper.css?v=27" />
   <link rel="stylesheet" href="../css/anim.css?v=4" />
 </head>
 <body>
@@ -69,17 +69,16 @@
 
       <ul class="nav-links">
         <li><a href="../index.html">Home</a></li>
-        <li class="nav-dropdown">
+        <li class="nav-dropdown nav-dropdown-y11">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
-            Resources
-            <span class="badge badge-all">Guides</span>
+            Year 11
+            <span class="badge badge-11">Prelim</span>
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="course-tools.html" role="menuitem">Course Tools &amp; Specs</a>
-            <a href="sdlc.html" role="menuitem">SDLC Guide</a>
-            <a href="glossary.html" role="menuitem">Glossary</a>
-            <a href="resources.html" role="menuitem">Certified Resources</a>
+            <a href="programming-fundamentals.html" role="menuitem">Programming Fundamentals</a>
+            <a href="object-oriented-paradigm.html" role="menuitem">Object-Oriented Paradigm</a>
+            <a href="programming-mechatronics.html" role="menuitem">Programming Mechatronics</a>
           </div>
         </li>
         <li class="nav-dropdown nav-dropdown-y12">
@@ -95,16 +94,17 @@
             <a href="software-engineering-project.html" role="menuitem">Software Engineering Project</a>
           </div>
         </li>
-        <li class="nav-dropdown nav-dropdown-y11">
+        <li class="nav-dropdown">
           <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
-            Year 11
-            <span class="badge badge-11">Prelim</span>
+            Resources
+            <span class="badge badge-all">Guides</span>
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
           </button>
           <div class="nav-dropdown-menu" role="menu">
-            <a href="programming-fundamentals.html" role="menuitem">Programming Fundamentals</a>
-            <a href="object-oriented-paradigm.html" role="menuitem">Object-Oriented Paradigm</a>
-            <a href="programming-mechatronics.html" role="menuitem">Programming Mechatronics</a>
+            <a href="course-tools.html" role="menuitem">Course Tools &amp; Specs</a>
+            <a href="sdlc.html" role="menuitem">SDLC Guide</a>
+            <a href="glossary.html" role="menuitem">Glossary</a>
+            <a href="resources.html" role="menuitem">Certified Resources</a>
           </div>
         </li>
       </ul>
@@ -776,17 +776,17 @@ git merge feature/user-login</code></pre>
                 <tr>
                   <td><strong>Traditional (Coupled)</strong></td>
                   <td>WordPress, Drupal, Joomla</td>
-                  <td><strong>Pros:</strong> All-in-one, large plugin ecosystem, easy for non-developers. <strong>Cons:</strong> Tightly coupled front-end limits design flexibility; common target for security exploits due to widespread use.</td>
+                  <td><strong class="lbl-pro">Pros:</strong> All-in-one, large plugin ecosystem, easy for non-developers. <strong class="lbl-con">Cons:</strong> Tightly coupled front-end limits design flexibility; common target for security exploits due to widespread use.</td>
                 </tr>
                 <tr>
                   <td><strong>Headless CMS</strong></td>
                   <td>Contentful, Sanity, Strapi</td>
-                  <td><strong>Pros:</strong> Content served via API to any front-end (web, mobile, IoT); maximum design flexibility; better performance. <strong>Cons:</strong> Requires developer to build the front-end separately; higher initial complexity.</td>
+                  <td><strong class="lbl-pro">Pros:</strong> Content served via API to any front-end (web, mobile, IoT); maximum design flexibility; better performance. <strong class="lbl-con">Cons:</strong> Requires developer to build the front-end separately; higher initial complexity.</td>
                 </tr>
                 <tr>
                   <td><strong>Visual / No-Code</strong></td>
                   <td>Webflow, Squarespace, Wix</td>
-                  <td><strong>Pros:</strong> Drag-and-drop interface; fast deployment; hosted infrastructure included. <strong>Cons:</strong> Limited customisation; vendor lock-in; less suited for complex custom functionality.</td>
+                  <td><strong class="lbl-pro">Pros:</strong> Drag-and-drop interface; fast deployment; hosted infrastructure included. <strong class="lbl-con">Cons:</strong> Limited customisation; vendor lock-in; less suited for complex custom functionality.</td>
                 </tr>
               </tbody>
             </table>
@@ -1012,12 +1012,12 @@ uploads.mkdir(parents=True, exist_ok=True)       <span class="cm"># make directo
                 <tr>
                   <td>🛠️ <strong>Raw SQL</strong></td>
                   <td>Queries written directly in SQL and sent to the database engine. Provides fine-grained control over every aspect of the query.</td>
-                  <td><strong>Pros:</strong> Maximum performance; expressive power for complex JOINs, subqueries, and aggregations; universal — works with any SQL database. <br><strong>Cons:</strong> Vulnerable to <strong>SQL injection</strong> if inputs aren't parameterised; verbose for simple CRUD operations; query strings are hard to refactor.</td>
+                  <td><strong class="lbl-pro">Pros:</strong> Maximum performance; expressive power for complex JOINs, subqueries, and aggregations; universal — works with any SQL database. <br><strong class="lbl-con">Cons:</strong> Vulnerable to <strong>SQL injection</strong> if inputs aren't parameterised; verbose for simple CRUD operations; query strings are hard to refactor.</td>
                 </tr>
                 <tr>
                   <td>🛠️ <strong>ORM</strong></td>
                   <td>Maps database tables to Python/JavaScript classes. Developers interact with objects; the ORM generates SQL automatically (e.g., Django ORM, SQLAlchemy, Sequelize).</td>
-                  <td><strong>Pros:</strong> Faster development for standard operations; built-in input sanitisation prevents injection; database-agnostic (swap PostgreSQL for MySQL with minimal changes); code is more readable and object-oriented. <br><strong>Cons:</strong> Can generate inefficient SQL for complex queries; adds an <strong>abstraction</strong> layer that obscures what is actually executed; requires learning the ORM API on top of SQL.</td>
+                  <td><strong class="lbl-pro">Pros:</strong> Faster development for standard operations; built-in input sanitisation prevents injection; database-agnostic (swap PostgreSQL for MySQL with minimal changes); code is more readable and object-oriented. <br><strong class="lbl-con">Cons:</strong> Can generate inefficient SQL for complex queries; adds an <strong>abstraction</strong> layer that obscures what is actually executed; requires learning the ORM API on top of SQL.</td>
                 </tr>
               </tbody>
             </table>
@@ -1246,7 +1246,7 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
   <script src="../js/quiz.js?v=3" defer></script>
   <script src="../js/nesa-diagram-data.js?v=3"></script>
   <script src="../js/nesa-diagrams.js?v=3" defer></script>
-  <script src="../js/main.js?v=29"></script>
+  <script src="../js/main.js?v=30"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->
