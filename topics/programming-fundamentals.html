@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=21" />
+  <link rel="stylesheet" href="../css/paper.css?v=22" />
 </head>
 <body>
 
@@ -213,35 +213,35 @@
           <div class="steps">
             <div class="step">
               <div class="step-num">1</div>
-              <div class="step-content"><h4>Requirements Definition</h4><p>The programmer identifies what the software must achieve by consulting stakeholders.<br>🌏 <em>Example: Conducting interviews with school staff to determine features for a new attendance portal.</em></p></div>
+              <div class="step-content"><h4>Requirements Definition</h4><p>The programmer identifies what the software must achieve by consulting stakeholders.<span class="eg"><em>Conducting interviews with school staff to determine features for a new attendance portal.</em></span></p></div>
             </div>
             <div class="step">
               <div class="step-num">2</div>
-              <div class="step-content"><h4>Determining Specifications</h4><p>Defining technical constraints such as hardware requirements, RAM limits, and supported operating systems.<br>🌏 <em>Example: Specifying that a game must run at 60fps on a Raspberry Pi 4.</em></p></div>
+              <div class="step-content"><h4>Determining Specifications</h4><p>Defining technical constraints such as hardware requirements, RAM limits, and supported operating systems.<span class="eg"><em>Specifying that a game must run at 60fps on a Raspberry Pi 4.</em></span></p></div>
             </div>
             <div class="step">
               <div class="step-num">3</div>
-              <div class="step-content"><h4>Design</h4><p><strong>Algorithms</strong> are planned using pseudocode or flowcharts.<br>🌏 <em>Example: Creating a structure chart to map out how the 'Calculate Tax' subroutine interacts with the main program.</em></p></div>
+              <div class="step-content"><h4>Design</h4><p><strong>Algorithms</strong> are planned using pseudocode or flowcharts.<span class="eg"><em>Creating a structure chart to map out how the 'Calculate Tax' subroutine interacts with the main program.</em></span></p></div>
             </div>
             <div class="step">
               <div class="step-num">4</div>
-              <div class="step-content"><h4>Development</h4><p>The design is translated into a programming language like Python.<br>🌏 <em>Example: Writing the 'if-else' logic to handle user login authentication.</em></p></div>
+              <div class="step-content"><h4>Development</h4><p>The design is translated into a programming language like Python.<span class="eg"><em>Writing the 'if-else' logic to handle user login authentication.</em></span></p></div>
             </div>
             <div class="step">
               <div class="step-num">5</div>
-              <div class="step-content"><h4>Integration</h4><p>Combining individual modules into a cohesive system.<br>🌏 <em>Example: Connecting the 'User Interface' module to the 'Database Management' module.</em></p></div>
+              <div class="step-content"><h4>Integration</h4><p>Combining individual modules into a cohesive system.<span class="eg"><em>Connecting the 'User Interface' module to the 'Database Management' module.</em></span></p></div>
             </div>
             <div class="step">
               <div class="step-num">6</div>
-              <div class="step-content"><h4>Testing and Debugging</h4><p>Identifying and rectifying errors using test data.<br>🌏 <em>Example: Running a 'Dry Run' to find out why a loop runs one too many times (an off-by-one error).</em></p></div>
+              <div class="step-content"><h4>Testing and Debugging</h4><p>Identifying and rectifying errors using test data.<span class="eg"><em>Running a 'Dry Run' to find out why a loop runs one too many times (an off-by-one error).</em></span></p></div>
             </div>
             <div class="step">
               <div class="step-num">7</div>
-              <div class="step-content"><h4>Installation</h4><p>Deploying the software to the user.<br>🌏 <em>Example: Providing a .dmg or .exe installer and a user manual to the client.</em></p></div>
+              <div class="step-content"><h4>Installation</h4><p>Deploying the software to the user.<span class="eg"><em>Providing a .dmg or .exe installer and a user manual to the client.</em></span></p></div>
             </div>
             <div class="step">
               <div class="step-num">8</div>
-              <div class="step-content"><h4>Maintenance</h4><p>The ongoing process of patching bugs and adding features.<br>🌏 <em>Example: Releasing a security patch to protect user data from a newly discovered vulnerability.</em></p></div>
+              <div class="step-content"><h4>Maintenance</h4><p>The ongoing process of patching bugs and adding features.<span class="eg"><em>Releasing a security patch to protect user data from a newly discovered vulnerability.</em></span></p></div>
             </div>
           </div>
 
@@ -345,8 +345,7 @@ flowchart LR
 
           <!-- ── 1. Sequence ── -->
           <h4>1. Sequence</h4>
-          <p><strong>Sequence</strong> means instructions are executed in order, one after another. Each step completes before the next begins — there is no branching or repetition.<br>
-          🌏 <em>Example: Reading a file, processing each line, then saving results.</em></p>
+          <p><strong>Sequence</strong> means instructions are executed in order, one after another. Each step completes before the next begins — there is no branching or repetition.<span class="eg"><em>Reading a file, processing each line, then saving results.</em></span></p>
 
           <figure class="figure">
           <figcaption class="figure-head">
@@ -387,8 +386,7 @@ END</code></pre>
 
           <!-- ── 2. Selection ── -->
           <h4>2. Selection</h4>
-          <p><strong>Selection</strong> means choosing different execution paths based on conditions using IF/ELSE or SWITCH statements. The program evaluates a condition and branches accordingly.<br>
-          🌏 <em>Example: Validating user input — if age &lt; 18, display "Too young"; otherwise, proceed.</em></p>
+          <p><strong>Selection</strong> means choosing different execution paths based on conditions using IF/ELSE or SWITCH statements. The program evaluates a condition and branches accordingly.<span class="eg"><em>Validating user input — if age &lt; 18, display "Too young"; otherwise, proceed.</em></span></p>
 
           <figure class="figure">
           <figcaption class="figure-head">
@@ -435,8 +433,7 @@ END</code></pre>
 
           <!-- ── 3. Iteration ── -->
           <h4>3. Iteration</h4>
-          <p><strong>Iteration</strong> means repeating a set of instructions while a condition is true, using FOR or WHILE loops. The loop body executes multiple times until the exit condition is met.<br>
-          🌏 <em>Example: Summing all numbers in a list by looping through each element.</em></p>
+          <p><strong>Iteration</strong> means repeating a set of instructions while a condition is true, using FOR or WHILE loops. The loop body executes multiple times until the exit condition is met.<span class="eg"><em>Summing all numbers in a list by looping through each element.</em></span></p>
 
           <figure class="figure">
           <figcaption class="figure-head">
@@ -493,8 +490,7 @@ END</code></pre>
 
           <!-- ── 4. Storing Data ── -->
           <h4>4. Storing Data</h4>
-          <p><strong>Storing Data</strong> means using variables and <strong>data structures</strong> to hold values needed across multiple steps of an <strong>algorithm</strong>. Without stored state, programs cannot track progress or accumulate results.<br>
-          🌏 <em>Example: Keeping track of a running total as you iterate through numbers.</em></p>
+          <p><strong>Storing Data</strong> means using variables and <strong>data structures</strong> to hold values needed across multiple steps of an <strong>algorithm</strong>. Without stored state, programs cannot track progress or accumulate results.<span class="eg"><em>Keeping track of a running total as you iterate through numbers.</em></span></p>
 
           <figure class="figure">
           <figcaption class="figure-head">
@@ -564,10 +560,10 @@ END</code></pre>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> divide and conquer and backtracking as algorithmic design strategies</em></p>
 
           <h3>Divide and Conquer</h3>
-          <p>This strategy involves breaking a complex problem into smaller, identical sub-problems until they are simple enough to solve directly. The solutions to these sub-problems are then combined to form the final result.<br>🌏 <em>Example: In a <strong>Merge Sort</strong>, a large list is repeatedly split in half until single elements remain, which are then merged back together in the correct order.</em> This approach is highly efficient for sorting and searching large datasets.</p>
+          <p>This strategy involves breaking a complex problem into smaller, identical sub-problems until they are simple enough to solve directly. The solutions to these sub-problems are then combined to form the final result.<span class="eg"><em>In a <strong>Merge Sort</strong>, a large list is repeatedly split in half until single elements remain, which are then merged back together in the correct order.</em></span> This approach is highly efficient for sorting and searching large datasets.</p>
 
 <h3>Backtracking</h3>
-          <p>Backtracking is an incremental approach to problem-solving that builds a solution one step at a time. If the <strong>algorithm</strong> reaches a state where the current path cannot possibly lead to a valid solution (violating a constraint), it "backtracks" to the previous step and tries a different option.<br>🌏 <em>Example: A <strong>Sudoku Solver</strong> attempts a number in a cell; if it later finds a conflict, it returns to that cell and tries the next available number.</em> This strategy is essential for pathfinding and optimisation problems.</p>
+          <p>Backtracking is an incremental approach to problem-solving that builds a solution one step at a time. If the <strong>algorithm</strong> reaches a state where the current path cannot possibly lead to a valid solution (violating a constraint), it "backtracks" to the previous step and tries a different option.<span class="eg"><em>A <strong>Sudoku Solver</strong> attempts a number in a cell; if it later finds a conflict, it returns to that cell and tries the next available number.</em></span> This strategy is essential for pathfinding and optimisation problems.</p>
 
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Algorithmic Strategies</span></div>
@@ -668,7 +664,7 @@ for i in range(8):
           <p class="syllabus-concept">📌 <em><strong>Develop</strong> structured algorithms using pseudocode and flowcharts, including the use of subprograms</em></p>
 
           <h3>Pseudocode</h3>
-          <p>Pseudocode is an informal, human-readable notation for writing <strong>algorithms</strong> — a bridge between natural language and programming code. It uses common programming keywords (IF, WHILE, FOR) mixed with English-like descriptions, making logic crystal clear without being tied to a specific programming language's syntax. This allows designers and developers to communicate <strong>algorithm</strong> logic to non-programmers, and to verify correctness before investing time in actual coding.<br>🌏 <em>Example:</em></p>
+          <p>Pseudocode is an informal, human-readable notation for writing <strong>algorithms</strong> — a bridge between natural language and programming code. It uses common programming keywords (IF, WHILE, FOR) mixed with English-like descriptions, making logic crystal clear without being tied to a specific programming language's syntax. This allows designers and developers to communicate <strong>algorithm</strong> logic to non-programmers, and to verify correctness before investing time in actual coding.<span class="eg"><em>Example:</em></span></p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Pseudocode — Linear Search <strong>Algorithm</strong></span></div>
             <pre><code>FUNCTION searchList(list, target)
@@ -682,7 +678,7 @@ END FUNCTION</code></pre>
           </div>
 
 <h3>Flowcharts</h3>
-          <p>Flowcharts use visual symbols to represent <strong>algorithm</strong> steps and decision points. Rectangles represent processes, diamonds represent decisions, and arrows show flow direction. This visual representation makes complex logic easy to follow, helps identify loops and branches, and allows stakeholders to validate correctness before implementation.<br>🌏 <em>Example:</em> A flowchart for validating user age would show a diamond (decision point) — "Is age ≥ 18?" — with two paths: YES leads to "Show full menu" and NO leads to "Show restricted menu."</p>
+          <p>Flowcharts use visual symbols to represent <strong>algorithm</strong> steps and decision points. Rectangles represent processes, diamonds represent decisions, and arrows show flow direction. This visual representation makes complex logic easy to follow, helps identify loops and branches, and allows stakeholders to validate correctness before implementation.<span class="eg"><em>Example:</em></span> A flowchart for validating user age would show a diamond (decision point) — "Is age ≥ 18?" — with two paths: YES leads to "Show full menu" and NO leads to "Show restricted menu."</p>
 
           <!-- Linear Search Algorithm Flowchart -->
           <figure class="figure">
@@ -785,7 +781,7 @@ flowchart TD
         </figure>
 
 <h3>Subprograms</h3>
-          <p>A subprogram (function or procedure) is a reusable block of code that performs a specific task. Pseudocode and flowcharts must clearly show how subprograms are called, what parameters they accept, and what they return. This modular approach reduces code duplication, improves readability, and makes testing easier.<br>🌏 <em>Example: A main program calls FUNCTION validatePassword(pwd) which returns TRUE or FALSE, allowing the validation logic to be reused across multiple entry points.</em></p>
+          <p>A subprogram (function or procedure) is a reusable block of code that performs a specific task. Pseudocode and flowcharts must clearly show how subprograms are called, what parameters they accept, and what they return. This modular approach reduces code duplication, improves readability, and makes testing easier.<span class="eg"><em>A main program calls FUNCTION validatePassword(pwd) which returns TRUE or FALSE, allowing the validation logic to be reused across multiple entry points.</em></span></p>
 
           <div class="callout tip">
             <strong>NESA Standard: Uncluttered Mainline Algorithms</strong>
@@ -840,7 +836,7 @@ FUNCTION GetValidScore()
           <p class="syllabus-concept">📌 <em><strong>Use</strong> modelling tools including structure charts, abstraction and refinement diagrams to support top-down and bottom-up design</em></p>
 
           <h3>Structure Charts</h3>
-          <p>Structure charts are a top-down tool used to show the hierarchy of subroutines in a system. They focus on modularity, showing which module calls another and what data (parameters) or control signals (flags) are passed between them.<br>🌏 <em>Example: A structure chart for an ATM would show the 'Main' module calling 'Verify PIN' and passing back a 'Valid/Invalid' flag.</em> This allows engineers to see high-level dependencies without getting bogged down in code logic.</p>
+          <p>Structure charts are a top-down tool used to show the hierarchy of subroutines in a system. They focus on modularity, showing which module calls another and what data (parameters) or control signals (flags) are passed between them.<span class="eg"><em>A structure chart for an ATM would show the 'Main' module calling 'Verify PIN' and passing back a 'Valid/Invalid' flag.</em></span> This allows engineers to see high-level dependencies without getting bogged down in code logic.</p>
 
           <!-- ATM Structure Chart Diagram -->
           <figure class="figure">
@@ -859,7 +855,7 @@ FUNCTION GetValidScore()
         </figure>
 
 <h3>Abstraction and Refinement</h3>
-          <p><strong>Abstraction</strong> involves hiding implementation details to focus on high-level goals (the 'What'). <strong>Stepwise Refinement</strong> is the process of breaking those high-level goals into smaller, more specific details (the 'How').<br>🌏 <em>Example: An abstract instruction like 'Initialise System' is refined into 'Set counter to 0', 'Clear display', and 'Open file stream'.</em> Together, they allow for manageable development of complex systems.</p>
+          <p><strong>Abstraction</strong> involves hiding implementation details to focus on high-level goals (the 'What'). <strong>Stepwise Refinement</strong> is the process of breaking those high-level goals into smaller, more specific details (the 'How').<span class="eg"><em>An abstract instruction like 'Initialise System' is refined into 'Set counter to 0', 'Clear display', and 'Open file stream'.</em></span> Together, they allow for manageable development of complex systems.</p>
         </section>
 
         <hr class="divider" />
@@ -871,13 +867,13 @@ FUNCTION GetValidScore()
           <ul class="syllabus-including" aria-label="Including"><li>determining inputs and outputs</li><li>determining the purpose of the algorithm</li><li>desk checking and peer checking</li><li>determining connections of written algorithms to other subroutines or functions</li></ul>
 
           <h3>Determining Inputs, Outputs, and Purpose</h3>
-          <p>Before writing code, clearly identify what data the <strong>algorithm</strong> needs (inputs), what it produces (outputs), and why it exists (purpose). This clarity prevents bugs and ensures the solution addresses the right problem.<br>🌏 <em>Example: A sorting algorithm has INPUT: unsorted list; OUTPUT: sorted list; PURPOSE: arrange items in ascending order for efficient searching.</em></p>
+          <p>Before writing code, clearly identify what data the <strong>algorithm</strong> needs (inputs), what it produces (outputs), and why it exists (purpose). This clarity prevents bugs and ensures the solution addresses the right problem.<span class="eg"><em>A sorting algorithm has INPUT: unsorted list; OUTPUT: sorted list; PURPOSE: arrange items in ascending order for efficient searching.</em></span></p>
 
 <h3>Desk Checking and Peer Checking</h3>
-          <p><strong>Desk checking</strong> (or "dry running") involves manually tracing through an <strong>algorithm</strong> step-by-step with sample data, recording the value of each variable at each step to verify correctness before implementation. <strong>Peer checking</strong> is having another person review the <strong>algorithm</strong> logic to catch errors or inefficiencies that the original author might miss.<br>🌏 <em>Example: Desk checking a loop from 1 to 10 — write down i=1, i=2, ... to verify the loop executes exactly 10 times, not 9 or 11.</em></p>
+          <p><strong>Desk checking</strong> (or "dry running") involves manually tracing through an <strong>algorithm</strong> step-by-step with sample data, recording the value of each variable at each step to verify correctness before implementation. <strong>Peer checking</strong> is having another person review the <strong>algorithm</strong> logic to catch errors or inefficiencies that the original author might miss.<span class="eg"><em>Desk checking a loop from 1 to 10 — write down i=1, i=2, ... to verify the loop executes exactly 10 times, not 9 or 11.</em></span></p>
 
 <h3>Identifying Connections to Subroutines and Functions</h3>
-          <p>Analyse how an <strong>algorithm</strong> calls other functions and what data is passed between them. Document the purpose of each function call and the parameters it receives, ensuring data flows correctly through the program.<br>🌏 <em>Example: An algorithm that calculates employee pay might call FUNCTION calculateTax(salary) and FUNCTION applyBonus(basePay, bonusPercent), understanding what each returns and how it affects the final result.</em></p>
+          <p>Analyse how an <strong>algorithm</strong> calls other functions and what data is passed between them. Document the purpose of each function call and the parameters it receives, ensuring data flows correctly through the program.<span class="eg"><em>An algorithm that calculates employee pay might call FUNCTION calculateTax(salary) and FUNCTION applyBonus(basePay, bonusPercent), understanding what each returns and how it affects the final result.</em></span></p>
 
           <div class="callout info"><strong>Scenario</strong> You're handed this algorithm with no explanation:
             <pre class="inline-pseudo">BEGIN mystery(list)
@@ -955,10 +951,10 @@ def greet(name):
           <p class="syllabus-concept">📌 <em><strong>Experiment</strong> with object-oriented programming, imperative, logic and functional programming paradigms</em></p>
 
           <h3>Object-Oriented Programming (OOP)</h3>
-          <p>Data and functions are bundled together in "objects" that model real-world entities. Emphasises reusability, modularity, and maintainability. Classes define blueprints; instances are created from them.<br>🌏 <em>Example: A Car class has properties (colour, speed) and methods (accelerate(), brake()); multiple car objects can be created from this template.</em></p>
+          <p>Data and functions are bundled together in "objects" that model real-world entities. Emphasises reusability, modularity, and maintainability. Classes define blueprints; instances are created from them.<span class="eg"><em>A Car class has properties (colour, speed) and methods (accelerate(), brake()); multiple car objects can be created from this template.</em></span></p>
 
 <h3>Imperative Programming</h3>
-          <p>Programs are sequences of explicit commands (statements) that change program state step-by-step. Python, Java, and C are imperative languages. Focus on "how" to solve the problem (procedures and control flow).<br>🌏 <em>Example: "Set count to 0; LOOP: add next number to count; increment loop counter; IF loop counter &lt; 10, GO TO LOOP."</em></p>
+          <p>Programs are sequences of explicit commands (statements) that change program state step-by-step. Python, Java, and C are imperative languages. Focus on "how" to solve the problem (procedures and control flow).<span class="eg"><em>"Set count to 0; LOOP: add next number to count; increment loop counter; IF loop counter &lt; 10, GO TO LOOP."</em></span></p>
 
 <h3>Logic Programming</h3>
           <p>Programs state facts and rules; the interpreter derives new facts through logical inference. Less common than imperative, but heavily used in artificial intelligence, constraint logic, and database query planning. Focus on "what" is true, not "how" to compute it.</p>
@@ -1003,7 +999,7 @@ sibling(A, B) :-
           </div>
 
 <h3>λ Functional Programming</h3>
-          <p>Programs are built from pure functions (same input always produces same output, no side effects) and immutable data. Emphasises <strong>recursion</strong> and function composition.<br>🌏 <em>Example (Lisp/Scheme): Computing factorial recursively as (factorial 5) = 5 × (factorial 4) × ... × 1, without modifying state.</em></p>
+          <p>Programs are built from pure functions (same input always produces same output, no side effects) and immutable data. Emphasises <strong>recursion</strong> and function composition.<span class="eg"><em>Example (Lisp/Scheme): Computing factorial recursively as (factorial 5) = 5 × (factorial 4) × ... × 1, without modifying state.</em></span></p>
 
           <!-- Programming Paradigms Comparison Diagram -->
           
@@ -1241,7 +1237,7 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
           <div class="info-grid">
             <div class="info-card">
               <h4>Arrays (Single and Multidimensional)</h4>
-              <p>Fixed-size collections of elements of the same type. Single-dimensional arrays store a list; multidimensional arrays form grids or tables.<br>🌏 <em>Example: scores = [45, 67, 89] (1D), or board = [[1,2,3],[4,5,6],[7,8,9]] (2D chessboard).</em></p>
+              <p>Fixed-size collections of elements of the same type. Single-dimensional arrays store a list; multidimensional arrays form grids or tables.<span class="eg"><em>scores = [45, 67, 89] (1D), or board = [[1,2,3],[4,5,6],[7,8,9]] (2D chessboard).</em></span></p>
               <div class="code-block">
                 <pre><code><span class="cm"># Single dimension</span>
 scores = [45, 67, 89]
@@ -1251,7 +1247,7 @@ board = [[0 <span class="kw">for</span> _ <span class="kw">in</span> range(8)] <
             </div>
             <div class="info-card">
               <h4>Records</h4>
-              <p>Structured collections that group related data fields of different types under one name. A record is like a row in a database table or an object with named fields.<br>🌏 <em>Example: A Student record contains {Name (string), StudentID (integer), GPA (float), EnrolmentDate (date)}.</em></p>
+              <p>Structured collections that group related data fields of different types under one name. A record is like a row in a database table or an object with named fields.<span class="eg"><em>A Student record contains {Name (string), StudentID (integer), GPA (float), EnrolmentDate (date)}.</em></span></p>
               <div class="code-block">
                 <pre><code><span class="cm"># In Python, using a class or dictionary</span>
 student = {
@@ -1263,22 +1259,22 @@ student = {
             </div>
             <div class="info-card">
               <h4>Trees</h4>
-              <p>Hierarchical structures with a root node and parent-child relationships. Used for representing file systems, organizational charts, and search optimisation.<br>🌏 <em>Example: A file system tree where C:\ is root, containing Users, Program Files, etc.</em></p>
+              <p>Hierarchical structures with a root node and parent-child relationships. Used for representing file systems, organizational charts, and search optimisation.<span class="eg"><em>A file system tree where C:\ is root, containing Users, Program Files, etc.</em></span></p>
             </div>
             <div class="info-card">
               <h4>Sequential Files</h4>
-              <p>Data stored in order in a file, accessed sequentially from beginning to end. Unlike databases, sequential access is required (cannot jump directly to record 100).<br>🌏 <em>Example: A CSV file of sales records is read line-by-line in order; to find a specific customer, the entire file must be scanned.</em></p>
+              <p>Data stored in order in a file, accessed sequentially from beginning to end. Unlike databases, sequential access is required (cannot jump directly to record 100).<span class="eg"><em>A CSV file of sales records is read line-by-line in order; to find a specific customer, the entire file must be scanned.</em></span></p>
             </div>
             <div class="info-card">
               <h4>Stacks (LIFO)</h4>
-              <p>Last-In-First-Out <strong>data structure</strong>. Last element added is the first removed. Used for function call stacks, undo features, expression evaluation.<br>🌏 <em>Example: The 'Undo' feature in Word — each action is pushed; undoing pops the most recent action.</em></p>
+              <p>Last-In-First-Out <strong>data structure</strong>. Last element added is the first removed. Used for function call stacks, undo features, expression evaluation.<span class="eg"><em>The 'Undo' feature in Word — each action is pushed; undoing pops the most recent action.</em></span></p>
               <div class="code-block">
                 <pre><code>history = []; history.append(<span class="str">"Action"</span>); history.pop()</code></pre>
               </div>
             </div>
             <div class="info-card">
               <h4>Hash Tables</h4>
-              <p>Key-value mappings for instant lookup. Hash functions convert keys to array indices, enabling O(1) average-case access time.<br>🌏 <em>Example: A username-to-profile dictionary where lookup("alice") instantly returns her profile without scanning.</em></p>
+              <p>Key-value mappings for instant lookup. Hash functions convert keys to array indices, enabling O(1) average-case access time.<span class="eg"><em>A username-to-profile dictionary where lookup("alice") instantly returns her profile without scanning.</em></span></p>
               <div class="code-block">
                 <pre><code>users = {<span class="str">"alice"</span>: {<span class="str">"age"</span>: 17, <span class="str">"year"</span>: 11}}</code></pre>
               </div>
@@ -1325,7 +1321,7 @@ student = {
           <p>Leveraging built-in libraries and functions (e.g., Python's math module, datetime module, string methods) instead of reinventing functionality. Standard modules are tested, optimised, and consistent across projects.</p>
 
 <h3>Creating Subprograms with Parameter Passing</h3>
-          <p>Writing functions and procedures that accept parameters (inputs), perform a specific task, and return results. Parameters can be passed by value (copy) or by reference (address), allowing functions to modify caller's data when needed.<br>🌏 <em>Example: FUNCTION calculateBonus(salary, percent) takes two parameters, calculates the bonus, and returns the result.</em></p>
+          <p>Writing functions and procedures that accept parameters (inputs), perform a specific task, and return results. Parameters can be passed by value (copy) or by reference (address), allowing functions to modify caller's data when needed.<span class="eg"><em>FUNCTION calculateBonus(salary, percent) takes two parameters, calculates the bonus, and returns the result.</em></span></p>
 
 <h3>Parameter Passing</h3>
           <p><strong>Pass by value:</strong> A copy of the variable is sent. The original variable in the caller is unchanged, even if the function modifies the parameter.</p>
@@ -1432,7 +1428,7 @@ do(<span class="str">"type A"</span>); do(<span class="str">"type B"</span>)
 print(undo())                <span class="cm"># type B</span></code></pre>
           </div>
 
-          <div class="callout info"><strong>Choosing a structure</strong> use a hash table when you look items up by a key (a student ID), a stack when the most recent item matters most (undo), and a 2D array when the data is naturally a grid (a seating plan).</div>
+          <div class="callout info"><strong>Choosing a structure</strong> Use a hash table when you look items up by a key (a student ID), a stack when the most recent item matters most (undo), and a 2D array when the data is naturally a grid (a seating plan).</div>
         </section>
 
         <hr class="divider" />
@@ -1611,7 +1607,7 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
             </table>
           </div>
 
-          <div class="callout info"><strong>Tip</strong> test just inside, on and just outside each boundary: 0, 1, 2 and 99, 100, 101. Off-by-one errors are among the most common bugs, and boundary values are what catch them.</div>
+          <div class="callout info"><strong>Tip</strong> Test just inside, on and just outside each boundary: 0, 1, 2 and 99, 100, 101. Off-by-one errors are among the most common bugs, and boundary values are what catch them.</div>
         </section>
 
         <hr class="divider" />
@@ -1625,13 +1621,13 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
 
           <div class="structured-content">
             <h4>Syntax Errors</h4>
-            <p><strong>Definition:</strong> Violations of the programming language's grammar rules. The interpreter/compiler cannot parse the code and refuses to run it.<br><strong>Likely Causes:</strong> Missing colons, mismatched brackets, incorrect indentation (Python), typos in keywords.<br>🌏 <em>Example: <code>if x > 5</code> (missing colon at the end) or <code>for i in range(10]</code> (mismatched bracket types).</em></p>
+            <p><strong>Definition:</strong> Violations of the programming language's grammar rules. The interpreter/compiler cannot parse the code and refuses to run it.<br><strong>Likely Causes:</strong> Missing colons, mismatched brackets, incorrect indentation (Python), typos in keywords.<span class="eg"><em><code>if x > 5</code> (missing colon at the end) or <code>for i in range(10]</code> (mismatched bracket types).</em></span></p>
 
             <h4>Logic Errors</h4>
-            <p><strong>Definition:</strong> The program runs without crashing, but produces wrong results because the algorithm is flawed.<br><strong>Likely Causes:</strong> Wrong operator (using + instead of ×), off-by-one loop errors, incorrect conditional logic, unreachable code.<br>🌏 <em>Example: A loop from 0 to 9 when you intended 1 to 10 (off-by-one error), or calculating tax as salary × 0.01 instead of salary × 0.10 (operator error).</em></p>
+            <p><strong>Definition:</strong> The program runs without crashing, but produces wrong results because the algorithm is flawed.<br><strong>Likely Causes:</strong> Wrong operator (using + instead of ×), off-by-one loop errors, incorrect conditional logic, unreachable code.<span class="eg"><em>A loop from 0 to 9 when you intended 1 to 10 (off-by-one error), or calculating tax as salary × 0.01 instead of salary × 0.10 (operator error).</em></span></p>
 
             <h4>Runtime Errors</h4>
-            <p><strong>Definition:</strong> The program starts running but crashes during execution due to impossible operations or resource exhaustion.<br><strong>Likely Causes:</strong> Division by zero, accessing an array index that doesn't exist, null pointer dereference, stack overflow from infinite recursion, out of memory.<br>🌏 <em>Example: <code>score[index]</code> where index is 10 but the array only has 5 elements, or <code>result = 100 / denominator</code> when denominator is 0.</em></p>
+            <p><strong>Definition:</strong> The program starts running but crashes during execution due to impossible operations or resource exhaustion.<br><strong>Likely Causes:</strong> Division by zero, accessing an array index that doesn't exist, null pointer dereference, stack overflow from infinite recursion, out of memory.<span class="eg"><em><code>score[index]</code> where index is 10 but the array only has 5 elements, or <code>result = 100 / denominator</code> when denominator is 0.</em></span></p>
           </div>
         </section>
 

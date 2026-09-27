@@ -2349,3 +2349,34 @@ a.pg-seen::after {
   :root[data-theme] :is(.info-grid, .key-terms):has(> :nth-child(2):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   :root[data-theme] :is(.info-grid, .key-terms):has(> :nth-child(3n+7):last-child) > :last-child { grid-column: 1 / -1; }
 }
+
+/* ============================================================
+   Polish pass: Year 11 topic pages
+   ============================================================ */
+
+/* Step numbers follow the page's year colour, like the rail beside them */
+:root[data-theme] .step-num { background: var(--pc-year); }
+
+/* Worked example under a step or definition: a small tabbed line */
+.eg {
+  display: block;
+  position: relative;
+  margin: .5rem 0 .1rem;
+  padding: .45rem .75rem .45rem 3.1rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--pc-year) 7%, var(--pc-cream));
+  box-shadow: inset 3px 0 0 var(--pc-year);
+  color: var(--pc-ink-soft);
+  font-size: .92em;
+  line-height: 1.55;
+}
+.eg::before {
+  content: 'e.g.';
+  position: absolute;
+  left: .7rem; top: .55rem;
+  font: 800 .66rem/1 var(--font-body);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--pc-year);
+}
+.eg em { font-style: normal; }
