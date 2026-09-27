@@ -1407,3 +1407,256 @@
   :root[data-theme] .topic-card:hover .card-arrow,
   :root[data-theme] .footer-col a:hover { transform: none; }
 }
+
+/* ============================================================
+   Polish pass: topic header, contents, subheadings,
+   expand/collapse motion and reading progress
+   ============================================================ */
+:root { --pc-year: var(--pc-terracotta); --pc-ease-out: cubic-bezier(.22,1,.36,1); --pc-spring: cubic-bezier(.34,1.56,.64,1); }
+:root.pc-y11 { --pc-year: var(--pc-sage); }
+
+/* ── Expand / collapse: rows ease open, content fades and settles in ── */
+:root[data-theme] .section-body {
+  transition: grid-template-rows 520ms var(--pc-ease-out), box-shadow 300ms ease, margin 520ms var(--pc-ease-out);
+}
+:root[data-theme] .section-body.section-collapsed {
+  max-height: none;              /* base CSS snapped the collapse shut */
+  transition: grid-template-rows 380ms cubic-bezier(.4,0,.2,1), box-shadow 300ms ease, margin 380ms ease;
+}
+:root[data-theme] .section-body-inner,
+:root[data-theme] .part-group-inner {
+  transition: opacity 360ms ease 90ms, transform 520ms var(--pc-ease-out), padding 480ms var(--pc-ease-out);
+}
+:root[data-theme] .section-body.section-collapsed .section-body-inner,
+:root[data-theme] .part-group.part-collapsed .part-group-inner {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 160ms ease, transform 380ms ease, padding 380ms ease;
+}
+:root[data-theme] .part-group { transition: grid-template-rows 560ms var(--pc-ease-out), margin 560ms var(--pc-ease-out); }
+:root[data-theme] .part-group.part-collapsed { transition: grid-template-rows 400ms cubic-bezier(.4,0,.2,1), margin 400ms ease; }
+
+:root[data-theme] .section-chevron {
+  width: 30px; height: 30px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  transition: transform 420ms var(--pc-spring), background 180ms ease;
+}
+:root[data-theme] .section-chevron svg { transition: none; }
+:root[data-theme] h2.syllabus-phase.section-collapsed .section-chevron { transform: rotate(-90deg); }
+:root[data-theme] .part-chevron svg { transition: transform 460ms var(--pc-spring); }
+:root[data-theme] h2.syllabus-phase:active .section-chevron,
+:root[data-theme] .part-block:active .part-chevron { scale: .9; }
+
+/* ── Topic header ── */
+:root[data-theme] .topic-breadcrumb {
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+:root[data-theme] .topic-breadcrumb a {
+  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 240ms var(--pc-ease-out), color 160ms ease;
+}
+:root[data-theme] .topic-breadcrumb a:hover { color: var(--pc-ink); background-size: 100% 1px; }
+:root[data-theme] .topic-header h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  letter-spacing: -.025em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+:root[data-theme] .topic-header-inner > p { max-width: 62ch; text-wrap: pretty; }
+:root[data-theme] .topic-header-meta { gap: .5rem; align-items: center; }
+:root[data-theme] .topic-header-meta > .meta-pill {
+  border-radius: 6px;
+  padding: .38rem .75rem;
+  font-size: .78rem;
+  border: 0;
+  background: var(--pc-cream);
+  box-shadow: var(--pc-shadow-1);
+}
+:root[data-theme] .topic-header-meta > .meta-pill:first-child {
+  background: var(--pc-year);
+  color: #fff;
+  transform: rotate(-1.5deg);
+}
+:root[data-theme="dark"] .topic-header-meta > .meta-pill:first-child { color: #1b1916; }
+
+/* ── Contents sidebar ── */
+:root[data-theme] .sidebar .toc-list a {
+  position: relative;
+  transition: background 160ms ease, color 160ms ease, padding 240ms var(--pc-ease-out);
+}
+:root[data-theme] .sidebar .toc-list a:hover { padding-left: calc(var(--toc-pad, .75rem) + 3px); }
+:root[data-theme] .sidebar .toc-list a.active,
+:root[data-theme] .sidebar .toc-list a:hover { border-left-color: var(--pc-year); }
+:root[data-theme] .toc-part-label { color: var(--pc-muted); transition: color 200ms ease; }
+:root[data-theme] .toc-part-label.toc-part-active { color: var(--pc-year); }
+
+/* ── Subheadings: a clean serif line with a small cut-paper marker ── */
+:root[data-theme] .content-body h3,
+:root[data-theme="light"] .content-body h3,
+:root[data-theme="dark"] .content-body h3 {
+  border: 0;
+  border-image: none;
+  padding: 0 0 0 1.15rem;
+  font-size: clamp(1.12rem, 1.45vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: -.01em;
+  color: var(--pc-ink);
+}
+:root[data-theme] .content-body h3::after { display: none; }
+:root[data-theme] .content-body h3::before {
+  content: '';
+  position: absolute;
+  left: 0; top: .42em;
+  width: .5em; height: .5em;
+  border-radius: 2px;
+  background: var(--pc-year);
+  transform: rotate(45deg);
+  box-shadow: 1px 1px 0 var(--pc-mustard);
+}
+:root[data-theme] .section-body-inner * + h3,
+:root[data-theme] .content-body section * + h3 {
+  border-top: 1px dashed var(--pc-rule-strong);
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+}
+:root[data-theme] .section-body-inner * + h3::before,
+:root[data-theme] .content-body section * + h3::before { top: calc(1.5rem + .42em); }
+:root[data-theme] .content-body h4,
+:root[data-theme] section h4 { letter-spacing: -.005em; }
+
+/* ── Reading progress ── */
+.pg-meter {
+  --pg: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  font-size: .74rem;
+  font-weight: 700;
+  color: var(--pc-ink-soft);
+}
+.pg-bar {
+  position: relative;
+  width: 72px; height: 7px;
+  border-radius: 7px;
+  background: var(--pc-rule);
+  box-shadow: inset 0 1px 1px rgba(70,45,15,.18);
+  overflow: hidden;
+}
+.pg-fill {
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: var(--pc-year, var(--pc-teal));
+  transform-origin: left;
+  transform: scaleX(var(--pg));
+  transition: transform 700ms var(--pc-ease-out, ease);
+}
+.pg-done .pg-fill { background: var(--pc-sage); }
+.pg-header {
+  padding: .3rem .7rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--pc-cream) 70%, transparent);
+  box-shadow: inset 0 1px 2px rgba(70,45,15,.14);
+}
+.pg-sidebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  margin: 0 0 .6rem;
+  padding: 0 .15rem;
+}
+.pg-sidebar .pg-bar { width: 84px; }
+.pg-reset {
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: .7rem;
+  color: var(--pc-muted);
+  cursor: pointer;
+  padding: .15rem .3rem;
+  border-radius: 4px;
+}
+.pg-reset:hover { color: var(--pc-terracotta); background: var(--pc-sheet); }
+.pg-card { margin: .1rem 0 .9rem; }
+.pg-card .pg-fill { background: var(--stock, var(--pc-teal)); }
+
+/* Heading stamp */
+.pg-stamp {
+  position: absolute;
+  top: .85rem; right: 3.4rem;
+  padding: .12rem .45rem;
+  border-radius: 3px;
+  font-family: var(--font-body);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--pc-sage);
+  border: 1.5px solid currentColor;
+  opacity: 0;
+  transform: rotate(-6deg) scale(1.5);
+  transition: opacity 200ms ease, transform 420ms var(--pc-spring, ease);
+  pointer-events: none;
+}
+h2.pg-seen .pg-stamp { opacity: .85; transform: rotate(-6deg) scale(1); }
+
+/* Contents ticks: a hollow ring until opened, then a filled tick */
+:root[data-theme] .sidebar .toc-list a.pg-tracked,
+:root[data-theme] .mobile-toc-list a.pg-tracked { position: relative; padding-right: 2rem; }
+a.pg-tracked::after {
+  content: '';
+  position: absolute;
+  right: .55rem; top: 50%;
+  width: 12px; height: 12px;
+  margin-top: -6px;
+  border-radius: 50%;
+  border: 1.5px solid var(--pc-rule-strong);
+  transition: background 240ms ease, border-color 240ms ease, transform 360ms var(--pc-spring, ease);
+}
+a.pg-seen::after {
+  border-color: var(--pc-sage);
+  background: var(--pc-sage) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M3 6.2l2 2 4-4.4' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 100% no-repeat;
+  transform: scale(1.08);
+}
+
+@media (max-width: 768px) {
+  .pg-stamp { position: static; display: none; }
+  h2.pg-seen .pg-stamp { display: inline-block; margin-top: .4rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme] .section-body,
+  :root[data-theme] .section-body.section-collapsed,
+  :root[data-theme] .section-body-inner,
+  :root[data-theme] .part-group,
+  :root[data-theme] .part-group.part-collapsed,
+  :root[data-theme] .part-group-inner,
+  :root[data-theme] .section-chevron,
+  :root[data-theme] .part-chevron svg,
+  .pg-fill, .pg-stamp, a.pg-tracked::after { transition: none; }
+  :root[data-theme] .section-collapsed .section-body-inner,
+  :root[data-theme] .part-collapsed .part-group-inner { transform: none; }
+}
+
+:root[data-theme] .mobile-toc-list a { display: flex; gap: .65rem; align-items: baseline; }
+:root[data-theme] .mobile-toc-list .toc-num { min-width: 1.4em; color: var(--pc-muted); font-variant-numeric: tabular-nums; }
+:root[data-theme] .content-body h4,
+:root[data-theme] .section-body-inner h4 {
+  color: var(--pc-teal);
+  font-weight: 700;
+  letter-spacing: -.005em;
+  border-left: 0;
+  border-image: none;
+  padding-left: 0;
+}
+:root[data-theme] .content-body h4 {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+:root[data-theme] .content-body h4::before { background: var(--pc-teal); opacity: .7; }
+.pg-sidebar .pg-text { white-space: nowrap; }

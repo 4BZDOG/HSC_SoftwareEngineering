@@ -618,6 +618,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isCollapsed) {
         block.classList.add('part-collapsed');
         group.classList.add('part-collapsed');
+        group.inert = true;
       }
 
       block.setAttribute('role', 'button');
@@ -627,6 +628,7 @@ document.addEventListener('DOMContentLoaded', () => {
       function toggle() {
         const nowCollapsed = block.classList.toggle('part-collapsed');
         group.classList.toggle('part-collapsed', nowCollapsed);
+        group.inert = nowCollapsed; // hidden content leaves the tab order
         block.setAttribute('aria-expanded', String(!nowCollapsed));
         setState(stateKey, nowCollapsed);
       }
@@ -700,6 +702,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (isCollapsed) {
         h2.classList.add('section-collapsed');
         body.classList.add('section-collapsed');
+        body.inert = true;
       }
 
       /* ── Accessibility ── */
@@ -711,6 +714,7 @@ document.addEventListener('DOMContentLoaded', () => {
       function toggle() {
         const nowCollapsed = h2.classList.toggle('section-collapsed');
         body.classList.toggle('section-collapsed', nowCollapsed);
+        body.inert = nowCollapsed; // hidden content leaves the tab order
         h2.setAttribute('aria-expanded', String(!nowCollapsed));
         setState(stateKey, nowCollapsed);
       }
