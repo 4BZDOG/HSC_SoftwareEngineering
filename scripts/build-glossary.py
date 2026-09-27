@@ -20,7 +20,8 @@ EXTRA_ALIASES = {
     'term-closed-loop': ['Closed Loop', 'Closed-loop', 'Closed-loop control'], 'term-open-loop': ['Open Loop', 'Open-loop'],
     'term-version-control': ['Version Control', 'Git'], 'term-white-box': ['White-box testing', 'White box testing'],
     'term-black-box': ['Black-box testing', 'Black box testing'], 'term-ml': ['Machine Learning'],
-    'term-ai': ['Artificial Intelligence'], 'term-sql-database': ['Relational Database'],
+    'term-ai': ['Artificial Intelligence'], 'term-mechatronics': ['Mechatronic'],
+    'term-system-testing': ['Unit testing', 'Subsystem testing', 'System testing'], 'term-sql-database': ['Relational Database'],
     'term-message-passing': ['Message passing'], 'term-twos-complement': ["Two's complement", 'Twos complement'],
     'term-degrees-of-freedom': ['Degrees of freedom'], 'term-user-stories': ['User Story'],
     'term-knn': ['K-nearest neighbour', 'K-Nearest Neighbours', 'KNN'], 'term-wcag': ['WCAG', 'Web accessibility'],
@@ -58,8 +59,12 @@ for part in re.split(r'(?=<div class="glossary-term" id=")', src)[1:]:
     aliases = {name}
     paren = re.match(r'(.+?)\s*\((.+)\)$', name)
     if paren:
-        aliases |= {paren.group(1).strip(), paren.group(2).strip()}
+        aliases.add(paren.group(1).strip())
+        # "(HTTPS)" is another name; "(Direct, Phased, Parallel, Pilot)" is a list, not a name.
+        if ',' not in paren.group(2):
+            aliases.add(paren.group(2).strip())
         aliases.discard(name)
+    aliases = {a for a in aliases if ',' not in a}
     aliases |= set(EXTRA_ALIASES.get(tid, []))
     terms.append({'id': tid, 'name': name, 'aliases': sorted(aliases), 'def': definition, 'example': example,
                   'link': tid not in NO_AUTOLINK})

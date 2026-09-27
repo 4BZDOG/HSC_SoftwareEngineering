@@ -967,7 +967,7 @@ gantt
           <p>Robust error handling ensures the server remains stable and informative when unexpected inputs or system failures occur. Without it, an unhandled exception could crash the entire server process — making the application unavailable to all users simultaneously. For example, a <code>try/except</code> block in Python can catch a database connection timeout and return a user-friendly <strong>503 Service Unavailable</strong> <strong>HTTP</strong> response, rather than exposing a raw stack trace to the client. Also, structured logging (e.g., Python's <code>logging</code> module) records error details for post-mortem debugging, without leaking sensitive system information to end-users.</p>
 
           <h4>Interfacing with Front End</h4>
-          <p>Back-end engineers design <strong>Application Programming Interfaces (APIs)</strong> that define precisely how the front-end client requests and receives data. A <strong>RESTful API</strong> uses standard <strong>HTTP</strong> methods (GET, POST, PUT, DELETE) with JSON payloads, allowing any front-end technology — React, Angular, or a mobile app — to consume the same endpoints without modification. For example, a GET request to <code>/api/students/42</code> would return a JSON object containing that student's profile. Efficient API design minimises data transfer by returning only required fields, and uses <strong>HTTP</strong> status codes correctly (200 OK, 404 Not Found, 401 Unauthorised) so the front end can respond appropriately to every outcome.</p>
+          <p>Back-end engineers design <strong>Application Programming Interfaces (APIs)</strong> that define precisely how the front-end client requests and receives data. A <strong>RESTful API</strong> uses standard <strong>HTTP</strong> methods (GET, POST, PUT, DELETE) with JSON payloads, allowing any front-end technology — React, Angular, or a mobile app — to consume the same endpoints without modification. For example, a GET request to <code>/api/students/42</code> would return a JSON object containing that student's profile. Efficient API design minimises data transfer by returning only required fields, and uses HTTP status codes correctly (200 OK, 404 Not Found, 401 Unauthorised) so the front end can respond appropriately to every outcome.</p>
 
           <h4>Security Engineering</h4>
           <p>The back end is the primary line of defence against malicious attacks. <strong>Password security</strong> is implemented through cryptographic hashing <strong>algorithms</strong> such as <strong>bcrypt</strong>, which store a one-way hash rather than plaintext — meaning a complete database breach still cannot reveal user credentials. <strong>Input sanitisation</strong> and parameterised SQL queries prevent <strong>SQL injection</strong> attacks, where an attacker might otherwise embed SQL commands in a form field to manipulate or delete database records. Also, implementing <strong>HTTPS with TLS certificates</strong> encrypts all data in transit, protecting against man-in-the-middle attacks on public networks.</p>
@@ -1819,12 +1819,12 @@ flowchart TD
     </div>
   </footer>
 
-  <script src="../js/glossary-data.js?v=4"></script>
+  <script src="../js/glossary-data.js?v=5"></script>
   <script src="../js/quizzes.js?v=1"></script>
   <script src="../js/quiz.js?v=3" defer></script>
   <script src="../js/nesa-diagram-data.js?v=3"></script>
   <script src="../js/nesa-diagrams.js?v=2" defer></script>
-  <script src="../js/main.js?v=27"></script>
+  <script src="../js/main.js?v=28"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->

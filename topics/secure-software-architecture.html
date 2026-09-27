@@ -771,7 +771,7 @@ flowchart TD
           <p><strong>Memory management</strong> ensures that the application allocates, uses, and releases memory resources efficiently — preventing memory leaks that degrade performance over time, and preventing memory-based vulnerabilities such as buffer overflows. A <strong>memory leak</strong> happens when memory the program reserved is never given back after it is finished with, slowly using up all available RAM until the application crashes or the server grinds to a halt. Good <strong>resource management</strong> means the program always closes what it opens — files, database connections, and network connections — as soon as they are no longer needed. This is critical for both security and performance.</p>
 
 <h3>Session Management</h3>
-          <p><strong>Session management</strong> controls how the server tracks authenticated users across multiple <strong>HTTP</strong> requests — since <strong>HTTP</strong> is stateless, each request must carry proof of identity. Insecure session management is consistently listed in the OWASP Top 10 most critical web vulnerabilities. Secure session management practices:</p>
+          <p><strong>Session management</strong> controls how the server tracks authenticated users across multiple <strong>HTTP</strong> requests — since HTTP is stateless, each request must carry proof of identity. Insecure session management is consistently listed in the OWASP Top 10 most critical web vulnerabilities. Secure session management practices:</p>
 
           <div class="key-terms">
             <div class="key-term-item"><strong>Cryptographically Random Session IDs</strong><span>Session tokens must be generated using a cryptographically secure random number generator — not sequential integers or predictable patterns. A predictable session ID can be guessed by an attacker who has observed one valid session ID.</span></div>
@@ -817,7 +817,7 @@ flowchart TD
           </div>
 
 <h3>Protection Against Side Channel Attacks</h3>
-          <p><strong>Side channel attacks</strong> exploit information inadvertently leaked through the physical implementation of a system — such as power consumption, electromagnetic emissions, execution timing, or cache access patterns — rather than flaws in the <strong>algorithm</strong> itself. The attacker does not break the cryptographic <strong>algorithm</strong>; they observe the system's physical behaviour while it executes to infer secret values.</p>
+          <p><strong>Side channel attacks</strong> exploit information inadvertently leaked through the physical implementation of a system — such as power consumption, electromagnetic emissions, execution timing, or cache access patterns — rather than flaws in the <strong>algorithm</strong> itself. The attacker does not break the cryptographic algorithm; they observe the system's physical behaviour while it executes to infer secret values.</p>
 
           <div class="info-grid">
             <div class="info-card">
@@ -910,7 +910,7 @@ flowchart TD
           <p>Software is protected by copyright from the moment it is created, without requiring registration. Copyright protects the specific expression of code (the actual written source code) — not the underlying idea or functionality. Enterprises must ensure they do not incorporate third-party code without the appropriate licence. Using open-source libraries requires understanding and complying with their respective licences: MIT and Apache 2.0 allow use in proprietary software with attribution; GPL-licensed code requires any derivative work to also be open source — a requirement that can force an enterprise to open-source its proprietary codebase if GPL code is incorporated without understanding this obligation. AI-generated code introduces novel copyright questions that are not yet fully resolved in Australian law — the source of training data and the originality of generated output are active areas of legal debate with significant implications for enterprise software development.</p>
 
 <h3>Intellectual Property</h3>
-          <p>Proprietary software <strong>algorithms</strong>, architectures, and business logic represent significant intellectual property (IP) assets that secure software design must protect from theft and unauthorised disclosure. Trade secrets (unpatented technical approaches that derive value from their secrecy) are protected under common law and the <em>Corporations Act 2001</em>, but only if the enterprise takes reasonable steps to maintain their secrecy — which requires technical security measures (code obfuscation, server-side execution of sensitive logic, access controls, NDAs with employees and contractors) and legal protections. A security breach that exposes proprietary source code, training data for ML models, or unique business <strong>algorithms</strong> can destroy the commercial value of years of R&amp;D investment. Also, engineers must ensure the software they develop does not unintentionally incorporate competitors' IP through reverse engineering — a legally and ethically fraught practice with significant liability exposure.</p>
+          <p>Proprietary software <strong>algorithms</strong>, architectures, and business logic represent significant intellectual property (IP) assets that secure software design must protect from theft and unauthorised disclosure. Trade secrets (unpatented technical approaches that derive value from their secrecy) are protected under common law and the <em>Corporations Act 2001</em>, but only if the enterprise takes reasonable steps to maintain their secrecy — which requires technical security measures (code obfuscation, server-side execution of sensitive logic, access controls, NDAs with employees and contractors) and legal protections. A security breach that exposes proprietary source code, training data for ML models, or unique business algorithms can destroy the commercial value of years of R&amp;D investment. Also, engineers must ensure the software they develop does not unintentionally incorporate competitors' IP through reverse engineering — a legally and ethically fraught practice with significant liability exposure.</p>
 
 <h3>Digital Disruption</h3>
           <p>Highly secure, scalable digital platforms are a primary vehicle of digital disruption — displacing established industries by offering superior trust, convenience, and cost efficiency built on robust technical infrastructure. The disruption is bidirectional: secure fintech platforms (such as Afterpay, Revolut, and digital-only banks) disrupt traditional banking by offering comparable or superior financial services without physical branch infrastructure; conversely, a high-profile security failure by a disruptive digital entrant (such as a cryptocurrency exchange breach) can instantly restore consumer confidence in the incumbent institution it was displacing. For established enterprises, failing to invest in secure digital infrastructure creates vulnerability to disruption by more security-mature competitors — customers increasingly make choices based on perceived trustworthiness of digital platforms. The social dimension of digital disruption includes: geographic communities losing economic activity as digital services replace local businesses; skill displacement as digital processes automate roles that provided employment pathways; and concentration of market power in digital platform operators whose security and privacy practices affect vast user populations with limited alternatives.</p>
@@ -961,12 +961,12 @@ flowchart TD
     </div>
   </footer>
 
-  <script src="../js/glossary-data.js?v=4"></script>
+  <script src="../js/glossary-data.js?v=5"></script>
   <script src="../js/quizzes.js?v=1"></script>
   <script src="../js/quiz.js?v=3" defer></script>
   <script src="../js/nesa-diagram-data.js?v=3"></script>
   <script src="../js/nesa-diagrams.js?v=2" defer></script>
-  <script src="../js/main.js?v=27"></script>
+  <script src="../js/main.js?v=28"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->
