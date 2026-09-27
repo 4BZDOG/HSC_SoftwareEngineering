@@ -140,7 +140,8 @@ for path in sorted(glob.glob(os.path.join(ROOT, 'topics', '*.html'))):
             name = re.search(r'data-anim="([^"]+)"', fig).group(1)
             scene = os.path.join(ROOT, 'js', 'anims', name + '.js')
             code = open(scene, encoding='utf-8').read() if os.path.exists(scene) else ''
-            if not re.search(r"shape: 'terminator', text: 'BEGIN", code) or not re.search(r"shape: 'terminator', text: 'END", code):
+            terminators = re.search(r"shape: 'terminator'", code) and re.search(r"text: 'BEGIN|T\(s, [^)]*'BEGIN", code) and re.search(r"text: 'END|T\(s, [^)]*'END", code)
+            if not terminators:
                 fail(f'js/anims/{name}.js: a flowchart must start with a BEGIN terminator and finish with END')
             if re.search(r"shape: '(circle|store|entity|card)'", code):
                 fail(f'js/anims/{name}.js: a flowchart may only use NESA flowchart symbols (terminator, process, decision, io, subprogram)')

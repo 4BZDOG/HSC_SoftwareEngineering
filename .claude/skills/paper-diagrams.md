@@ -37,6 +37,8 @@ flowcharts.
 | Data flow diagram | `js/nesa-diagrams.js` | Circle processes, rectangle external entities, open-ended data stores, curved labelled flows. |
 | Structure chart | `js/nesa-diagrams.js` | Modules, data (open) and flag (filled) couples, decision diamond, repetition arc. |
 | Sequence diagram | `s.sequence()` | Actors across the top, solid arrows for requests, dashed for replies, numbered steps. |
+| Class diagram | `s.classBox()` + `s.link()` | Name, attributes, methods compartments. Inheritance uses `marker: 'pa-inherit'` (hollow triangle at the parent). Label relationships and give multiplicities (`1..1`, `0..*`, `1..*`, `0..1`) as `pa-mult` text near each end; never "many". |
+| State diagram | `card` states + `s.link()` | A filled start dot, rounded states, every transition labelled with its trigger. |
 | Gantt / timeline | `s.gantt()` | Bars for tasks, diamonds for milestones, dashed dependency arrows, weeks on the axis. |
 | Concept, process, architecture, cycle | `card`, `s.link`, cast from the kit | Free form, but keep to the colour code below. |
 
@@ -106,6 +108,10 @@ HSCAnim.define('fc-example', {
 });
 ```
 
+One scene per file: the engine loads `js/anims/<name>.js` for `data-anim="<name>"`, so
+a file must define exactly the scene it is named after. Small shared helpers (for
+example `T()`, `IO()`, `D()` for flowchart symbols) are copied into each file.
+
 ### 2  Put it in the page
 
 ```html
@@ -144,6 +150,7 @@ python3 scripts/check-site.py
 | `s.node(parent, { x, y, w, h, shape, text, tone, size, id })` | A symbol centred on (x, y). `shape`: `process`, `terminator`, `decision`, `io`, `subprogram`, `card`, `circle`, `entity`, `store` (`id` adds the store's ID box). |
 | `s.port(node, side, offset)` | The point on a node's edge (`top`, `bottom`, `left`, `right`). |
 | `s.link(parent, a, b, { from, to, via, mid, curve, label, labelAt, labelNear, dashed, head, cls })` | A connector with an arrowhead. Right-angled by default; `via` points route around shapes; `curve` bends it (DFD style). `cls: 'is-good'` / `'is-bad'` colour it. |
+| `s.classBox(parent, { x, y, w, name, attrs, methods, tone })` | A UML class; works with `port()` and `link()`. |
 | `s.chip(parent, text, x, y)` | A small paper label. |
 | `s.sequence(parent, { x, y, w, actors, steps })` | Sequence diagram. Steps: `{ from, to, text, reply }`, `{ section }`, `{ note, over: [a, b] }`. Returns the bottom y. |
 | `s.gantt(parent, { x, y, w, days, labelW, tick, tickLabel, sections })` | Gantt chart. Rows: `{ id, label, start, dur, tone, milestone, after, tag }`. |

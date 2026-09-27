@@ -97,6 +97,7 @@
       <filter id="pa-lift" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow class="pa-shadow pa-shadow-lift" dx="0" dy="6" stdDeviation="4"/></filter>
       <pattern id="pa-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="pa-hatch-bg" width="7" height="7"/><rect class="pa-hatch-ink" width="2" height="7"/></pattern>
       <pattern id="pa-outage" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect class="pa-outage-bg" width="8" height="8"/><rect class="pa-outage-ink" width="3" height="8"/></pattern>
+      <marker id="pa-inherit" viewBox="0 0 14 14" refX="13" refY="7" markerWidth="12" markerHeight="12" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path class="pa-inherit-head" d="M1 1 L13 7 L1 13 Z"/></marker>
       <marker id="pa-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="pa-arrowhead" d="M0 0 L10 5 L0 10 z"/></marker>
     </defs>`;
     document.body.appendChild(s);
@@ -810,7 +811,7 @@
         pts.push(p1);
         d = 'M' + pts.map(p => `${r2(p[0])} ${r2(p[1])}`).join(' L');
       }
-      const path = this.el('path', { d, class: 'pa-link' + (o.dashed ? ' is-dashed' : '') + (o.cls ? ' ' + o.cls : ''), 'marker-end': o.head === false ? null : 'url(#pa-arrow)' }, parent);
+      const path = this.el('path', { d, class: 'pa-link' + (o.dashed ? ' is-dashed' : '') + (o.cls ? ' ' + o.cls : ''), 'marker-end': o.head === false ? null : `url(#${o.marker || 'pa-arrow'})` }, parent);
       if (o.label) {
         let lx, ly;
         if (o.labelAt) [lx, ly] = o.labelAt;
@@ -931,6 +932,26 @@
         this.el('path', { d: `M${sx} ${p.y} H${Math.max(sx + 6, ex - 8)} V${r.y + (r.y > p.y ? -rh * .34 : rh * .34)}`, class: 'pa-dep', 'marker-end': 'url(#pa-arrow)' }, g);
       });
       g.X = X; g.bottom = bottom;
+      return g;
+    },
+
+    // A UML class: name, then attributes, then methods. Returns a node, so port() and link() work.
+    classBox(parent, o) {
+      const w = o.w || 200, size = o.size || 13, lh = size * 1.35;
+      const attrs = o.attrs || [], methods = o.methods || [];
+      const hName = 34, hA = Math.max(1, attrs.length) * lh + 12, hM = Math.max(1, methods.length) * lh + 12;
+      const hh = hName + hA + hM;
+      const g = this.g(parent, 'pa-class', { x: o.x, y: o.y });
+      const art = this.g(g);
+      art.setAttribute('filter', 'url(#pa-cut)');
+      this.el('rect', { x: -w / 2, y: -hh / 2, width: w, height: hh, rx: 3, class: 'f-paper pa-outline' }, art);
+      this.el('rect', { x: -w / 2, y: -hh / 2, width: w, height: hName, rx: 3, class: 'f-' + (o.tone || 'teal-t') + ' pa-outline' }, art);
+      this.el('path', { d: `M${-w / 2} ${-hh / 2 + hName + hA} H${w / 2}`, class: 'pa-outline-line' }, art);
+      this.text(g, o.name, { y: -hh / 2 + hName / 2, valign: 'middle', cls: 'pa-node-t pa-strong', size: 14.5 });
+      const list = (items, y0) => items.forEach((t, i) => this.text(g, t, { x: -w / 2 + 10, y: y0 + 6 + lh * (i + .5), anchor: 'start', valign: 'middle', cls: 'pa-mono', size: size - 1 }));
+      list(attrs, -hh / 2 + hName);
+      list(methods, -hh / 2 + hName + hA);
+      g.box = { x: o.x, y: o.y, w, h: hh, shape: 'process' };
       return g;
     },
 

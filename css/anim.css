@@ -431,3 +431,5 @@
 .nesa-diagram .nd-note, .nesa-diagram .nd-flow-label { font: italic 600 13px var(--font-display); fill: var(--pc-ink-soft, #4a443b); }
 .nesa-diagram .nd-flow { stroke-width: 1.6; }
 .nesa-diagram .nd-data { fill: var(--nd-paper); }
+#pa-defs .pa-inherit-head { fill: var(--pc-cream, #fbf7ee); stroke: var(--pc-ink, #1c1a17); stroke-width: 1.5; stroke-linejoin: round; }
+.pa-mult { font: 600 12.5px var(--font-mono); fill: var(--pa-ink); }
