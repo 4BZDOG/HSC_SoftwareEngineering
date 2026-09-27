@@ -88,6 +88,54 @@
     onScroll();
   }
 
+  // Home hero: set the italic line letter by letter, with an elastic
+  // pull on hover. Screen readers still get the plain text.
+  function splitHeadline() {
+    const line = document.querySelector('.hero h1 span');
+    if (!line || line.dataset.split || reduce.matches) return;
+    line.dataset.split = '1';
+    const text = line.textContent;
+    const sr = document.createElement('span');
+    sr.className = 'sr-only';
+    sr.textContent = text;
+    const wrap = document.createElement('span');
+    wrap.setAttribute('aria-hidden', 'true');
+    let i = 0;
+    // Keep each word unbroken so the line still wraps between words.
+    text.split(/(\s+)/).forEach(part => {
+      if (!part) return;
+      if (/^\s+$/.test(part)) {
+        const sp = document.createElement('span');
+        sp.className = 'pc-letter is-space';
+        sp.style.setProperty('--i', i++);
+        sp.textContent = ' ';
+        wrap.appendChild(sp);
+        return;
+      }
+      const word = document.createElement('span');
+      word.className = 'pc-letters';
+      for (const ch of part) {
+        const l = document.createElement('span');
+        l.className = 'pc-letter';
+        l.style.setProperty('--i', i++);
+        l.textContent = ch;
+        word.appendChild(l);
+      }
+      wrap.appendChild(word);
+    });
+    line.textContent = '';
+    line.append(sr, wrap);
+    wrap.addEventListener('animationend', e => {
+      if (e.animationName === 'pc-letter-in') e.target.classList.add('is-set');
+    });
+    wrap.addEventListener('pointerover', e => {
+      const l = e.target.closest('.pc-letter');
+      if (!l || !l.classList.contains('is-set') || l.classList.contains('is-pulled') || l.classList.contains('is-space')) return;
+      l.classList.add('is-pulled');
+      l.addEventListener('animationend', () => l.classList.remove('is-pulled'), { once: true });
+    });
+  }
+
   function init() {
     document.querySelectorAll('.hero').forEach(h => mount(h, false));
     document.querySelectorAll('.topic-header').forEach(h => mount(h, true));
@@ -103,6 +151,7 @@
       label.textContent = m[2];
       a.append(num, label);
     });
+    splitHeadline();
     const crumb = document.querySelector('.topic-breadcrumb');
     if (crumb && /Year 11/.test(crumb.textContent)) document.documentElement.classList.add('pc-y11');
   }
