@@ -529,7 +529,7 @@
         <div class="gl-toolbar" id="gl-toolbar">
           <div class="glossary-search-container" id="search-wrapper">
             <svg class="gl-search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
-            <input type="search" id="glossary-search" class="glossary-search-input" placeholder="Search 221 terms" aria-label="Search the glossary" autocomplete="off" spellcheck="false">
+            <input type="search" id="glossary-search" class="glossary-search-input" placeholder="Search 338 terms" aria-label="Search the glossary" autocomplete="off" spellcheck="false">
             <kbd class="search-k-hint" id="search-k-hint">Ctrl K</kbd>
             <button class="search-clear-btn" id="search-clear" type="button" aria-label="Clear search">✕</button>
           </div>
@@ -539,7 +539,7 @@
               <button type="button" class="gl-filter chip chip-y12" data-filter="y12" aria-pressed="false">Year 12</button>
               <button type="button" class="gl-filter chip chip-core" data-filter="core" aria-pressed="false">Core</button>
             </div>
-            <p class="gl-count" id="gl-count" role="status" aria-live="polite"><strong id="total-terms-count">221</strong> terms · 7 topics · A–X</p>
+            <p class="gl-count" id="gl-count" role="status" aria-live="polite"><strong id="total-terms-count">338</strong> terms · 7 topics · A–Z</p>
           </div>
         </div>
 
@@ -576,7 +576,7 @@
           <a href="#alpha-W" class="alpha-btn">W</a>
           <a href="#alpha-X" class="alpha-btn">X</a>
           <span class="alpha-btn disabled">Y</span>
-          <span class="alpha-btn disabled">Z</span>
+          <a href="#alpha-Z" class="alpha-btn">Z</a>
         </div>
 
         <!-- ════════════ A ════════════ -->
@@ -618,6 +618,16 @@
               <p class="term-example"><strong>Example:</strong> "Given a wrong password three times, the account locks for 15 minutes."</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-user-stories">User Stories</a>, <a href="#term-uat">UAT</a></div>
             </div>
+            <div class="glossary-term" id="term-access-control">
+              <h3>Access Control</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>Rules and mechanisms that decide which users can view or change which resources.</p>
+              <p class="term-example"><strong>Example:</strong> Only teachers can edit marks; students can only view their own.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-access-modifier">
               <h3>Access Modifier</h3>
@@ -638,6 +648,24 @@
               <p class="term-example"><strong>Example:</strong> An audit log records that user <em>jchen</em> deleted invoice #204 at 10:14 am.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-authentication">Authentication</a>, <a href="#term-authorisation">Authorisation</a></div>
             </div>
+            <div class="glossary-term" id="term-accuracy">
+              <h3>Accuracy</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Automation</span>
+              </div>
+              <p>The proportion of a model's predictions that are correct.</p>
+              <p class="term-example"><strong>Example:</strong> 90 correct out of 100 test images is 90% accuracy.</p>
+            </div>
+            <div class="glossary-term" id="term-activation-function">
+              <h3>Activation Function</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Automation</span>
+              </div>
+              <p>A function applied to a neuron's output that adds non-linearity, so the network can learn complex patterns.</p>
+              <p class="term-example"><strong>Example:</strong> ReLU turns negative values into 0.</p>
+            </div>
+
+
 
             <div class="glossary-term" id="term-actuator">
               <h3>Actuator</h3>
@@ -665,6 +693,16 @@
               <p>A small, fast storage location inside a processor that holds the memory address of data or of the next instruction to fetch.</p>
               <p class="term-example"><strong>Example:</strong> While running a loop, the program counter (an address register) points to the next instruction in flash memory.</p>
             </div>
+            <div class="glossary-term" id="term-aes">
+              <h3>AES (Advanced Encryption Standard)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>A widely used symmetric encryption algorithm, often with 256-bit keys, for protecting stored and transmitted data.</p>
+              <p class="term-example"><strong>Example:</strong> Full-disk encryption on a laptop uses AES-256.</p>
+            </div>
+
 
 
             <div class="glossary-term" id="term-agile">
@@ -677,6 +715,16 @@
               <p class="term-example"><strong>Example:</strong> A team releases a school canteen app in two-week sprints, changing features after student feedback.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-scrum">Scrum</a>, <a href="#term-wagile">WAGILE</a>, <a href="#term-sprint">Sprint</a></div>
             </div>
+            <div class="glossary-term" id="term-api-key">
+              <h3>API Key</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>A secret code that identifies a program calling an API and controls its access; it must never be published in client-side code or a public repository.</p>
+              <p class="term-example"><strong>Example:</strong> Storing a weather API key in an environment variable instead of the source code.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-ai">
               <h3>Artificial Intelligence (AI)</h3>
@@ -719,6 +767,15 @@
               <p class="term-example"><strong>Example:</strong> <code>marks = [72, 85, 64]</code>, where <code>marks[1]</code> is 85.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-variable">Variable</a></div>
             </div>
+            <div class="glossary-term" id="term-ascii">
+              <h3>ASCII</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+              </div>
+              <p>A 7-bit character encoding for 128 characters, including English letters, digits and punctuation.</p>
+              <p class="term-example"><strong>Example:</strong> "A" is 65 in ASCII.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-asymmetric-encryption">
               <h3>Asymmetric Encryption</h3>
@@ -738,6 +795,15 @@
               <p>The total number of possible ways an attacker can interact with or compromise a software system. Minimising the attack surface — by reducing exposed endpoints, disabling unused features, and enforcing least privilege — is a core security principle.</p>
               <p class="term-example"><strong>Example:</strong> Closing an unused admin login page removes one way in for attackers.</p>
             </div>
+            <div class="glossary-term" id="term-attack-vector">
+              <h3>Attack Vector</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>The path or method an attacker uses to reach a system, such as email, a web form or an unpatched service.</p>
+              <p class="term-example"><strong>Example:</strong> Phishing emails are the most common attack vector for ransomware.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-attribute">
               <h3>Attribute</h3>
@@ -747,6 +813,24 @@
               <p>A data element or property defined within a class that stores the state of an object. For example, a <code>Car</code> class might have attributes like <code>colour</code>, <code>speed</code>, and <code>fuel_level</code>.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-method">Method</a>, <a href="#term-class">Class</a></div>
             </div>
+            <div class="glossary-term" id="term-audit-trail">
+              <h3>Audit Trail</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>A secure, time-stamped log of who did what in a system, used to detect misuse and investigate incidents.</p>
+              <p class="term-example"><strong>Example:</strong> A log showing which staff member changed a student's mark and when.</p>
+            </div>
+            <div class="glossary-term" id="term-apps">
+              <h3>Australian Privacy Principles</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>The 13 principles in the Privacy Act 1988 that set out how organisations must handle personal information, from collection to security and access.</p>
+              <p class="term-example"><strong>Example:</strong> APP 11 requires reasonable steps to protect personal information from misuse and unauthorised access.</p>
+            </div>
+
+
 
             <div class="glossary-term" id="term-authentication">
               <h3>Authentication</h3>
@@ -828,6 +912,54 @@
               <p>An algorithm design strategy that builds a solution step by step and, when a step leads to a dead end, undoes it and tries a different choice.</p>
               <p class="term-example"><strong>Example:</strong> Solving a maze by following a path until it is blocked, then stepping back to the last junction and trying another way.</p>
             </div>
+            <div class="glossary-term" id="term-backup">
+              <h3>Backup</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Software Engineering Project</span>
+              </div>
+              <p>A copy of data kept separately so it can be restored if the original is lost, damaged or encrypted by ransomware.</p>
+              <p class="term-example"><strong>Example:</strong> The 3-2-1 rule: three copies, on two kinds of media, one off-site.</p>
+            </div>
+            <div class="glossary-term" id="term-bandwidth">
+              <h3>Bandwidth</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>The maximum amount of data a network connection can carry per second.</p>
+              <p class="term-example"><strong>Example:</strong> A 100 Mbps home connection.</p>
+            </div>
+            <div class="glossary-term" id="term-bcrypt">
+              <h3>bcrypt</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>A deliberately slow password-hashing function that adds a salt automatically, making brute-force and rainbow table attacks impractical.</p>
+              <p class="term-example"><strong>Example:</strong> <code>bcrypt.hashpw(password, bcrypt.gensalt())</code></p>
+            </div>
+            <div class="glossary-term" id="term-beta-testing">
+              <h3>Beta Testing</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Engineering Project</span>
+              </div>
+              <p>Testing a nearly finished product with real users outside the development team before release.</p>
+              <p class="term-example"><strong>Example:</strong> Letting one class use the new app for a week and collecting feedback.</p>
+            </div>
+            <div class="glossary-term" id="term-bias">
+              <h3>Bias</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Automation</span>
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>Systematic unfairness in data or a model that produces worse results for some groups of people.</p>
+              <p class="term-example"><strong>Example:</strong> A face-recognition model trained mostly on light-skinned faces performing poorly on darker skin.</p>
+            </div>
+
+
+
+
+
             <div class="glossary-term" id="term-big-data">
               <h3>Big Data</h3>
               <div class="term-chips">
@@ -889,6 +1021,16 @@
               <p>Test data at, just inside and just outside the limits of a valid range, where off-by-one errors are most likely.</p>
               <p class="term-example"><strong>Example:</strong> For marks from 0 to 100: −1, 0, 1, 99, 100 and 101.</p>
             </div>
+            <div class="glossary-term" id="term-branching">
+              <h3>Branching</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Engineering Project</span>
+                <span class="chip chip-core">SDLC</span>
+              </div>
+              <p>In version control, creating a separate line of development so work can happen without affecting the main code.</p>
+              <p class="term-example"><strong>Example:</strong> A <code>feature/login</code> branch that is merged into <code>main</code> when finished.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-breakpoint">
               <h3>Breakpoint</h3>
@@ -898,6 +1040,33 @@
               <p>A marker set in an IDE that pauses a program at a chosen line so the programmer can inspect variables.</p>
               <p class="term-example"><strong>Example:</strong> Pausing at the line <code>total += price</code> to check the value of <code>price</code> on each loop.</p>
             </div>
+            <div class="glossary-term" id="term-bubble-sort">
+              <h3>Bubble Sort</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+              </div>
+              <p>A simple sorting algorithm that repeatedly swaps neighbouring items that are in the wrong order until the list is sorted.</p>
+              <p class="term-example"><strong>Example:</strong> Sorting [5, 2, 4] → [2, 5, 4] → [2, 4, 5].</p>
+            </div>
+            <div class="glossary-term" id="term-buffer-overflow">
+              <h3>Buffer Overflow</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>A flaw where a program writes more data into a block of memory than it can hold, overwriting nearby memory, which attackers can exploit.</p>
+              <p class="term-example"><strong>Example:</strong> Copying a 300-character name into a 256-byte buffer without checking its length.</p>
+            </div>
+            <div class="glossary-term" id="term-business-continuity">
+              <h3>Business Continuity</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>Planning so an organisation can keep its essential services running during and after a disruption.</p>
+              <p class="term-example"><strong>Example:</strong> A bank switching to a standby system so customers can still pay during an outage.</p>
+            </div>
+
+
+
 
             <div class="glossary-term" id="term-bpa">
               <h3>Business Process Automation (BPA)</h3>
@@ -969,6 +1138,15 @@
               <p class="term-example"><strong>Example:</strong> A box for <code>Book</code> listing <code>title</code>, <code>isbn</code> and <code>borrow()</code>, linked to <code>Library</code>.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-uml">UML</a>, <a href="#term-class">Class</a></div>
             </div>
+            <div class="glossary-term" id="term-classification">
+              <h3>Classification</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Automation</span>
+              </div>
+              <p>A machine learning task that predicts which category an input belongs to.</p>
+              <p class="term-example"><strong>Example:</strong> Predicting whether an email is spam or not spam.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-closed-loop">
               <h3>Closed Loop System</h3>
@@ -979,6 +1157,15 @@
               <p class="term-example"><strong>Example:</strong> A robot vacuum uses a bump sensor to change direction when it hits a wall.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-open-loop">Open Loop System</a>, <a href="#term-pid">PID Control</a></div>
             </div>
+            <div class="glossary-term" id="term-clustering">
+              <h3>Clustering</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Automation</span>
+              </div>
+              <p>An unsupervised learning task that groups similar data points without labels.</p>
+              <p class="term-example"><strong>Example:</strong> Grouping customers by their buying habits.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-code-review">
               <h3>Code Review</h3>
@@ -1001,6 +1188,16 @@
               <p class="term-example"><strong>Example:</strong> A <code>ReportPrinter</code> class that only formats and prints reports (high cohesion).</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-coupling">Coupling</a></div>
             </div>
+            <div class="glossary-term" id="term-compiler">
+              <h3>Compiler</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+                <span class="chip chip-y11">Programming Mechatronics</span>
+              </div>
+              <p>A program that translates the whole of a program's source code into machine code before it runs.</p>
+              <p class="term-example"><strong>Example:</strong> Arduino code is compiled before being uploaded to the board.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-composition">
               <h3>Composition</h3>
@@ -1018,6 +1215,16 @@
               <p>A way of solving problems using decomposition, pattern recognition, abstraction and algorithm design.</p>
               <p class="term-example"><strong>Example:</strong> Breaking "run the school canteen online" into ordering, paying and preparing, each solved separately.</p>
             </div>
+            <div class="glossary-term" id="term-computer-vision">
+              <h3>Computer Vision</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Automation</span>
+                <span class="chip chip-y11">Programming Mechatronics</span>
+              </div>
+              <p>The branch of AI that lets computers interpret images and video.</p>
+              <p class="term-example"><strong>Example:</strong> A self-driving car recognising stop signs.</p>
+            </div>
+
 
 
             <div class="glossary-term" id="term-confidentiality">
@@ -1056,6 +1263,26 @@
               <p>Software that lets people create, edit and publish web content through an interface rather than by writing code.</p>
               <p class="term-example"><strong>Example:</strong> Teachers posting school news in WordPress.</p>
             </div>
+            <div class="glossary-term" id="term-csp">
+              <h3>Content Security Policy (CSP)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>An HTTP header that tells the browser which sources of scripts, styles and images a page may load, limiting the damage of XSS.</p>
+              <p class="term-example"><strong>Example:</strong> <code>Content-Security-Policy: script-src 'self'</code></p>
+            </div>
+            <div class="glossary-term" id="term-cookie">
+              <h3>Cookie</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>A small piece of data a website stores in the browser and receives back with each request, often used to keep a user logged in.</p>
+              <p class="term-example"><strong>Example:</strong> A session cookie marked <code>HttpOnly; Secure; SameSite=Strict</code>.</p>
+            </div>
+
+
             <div class="glossary-term" id="term-copyright">
               <h3>Copyright</h3>
               <div class="term-chips">
@@ -1141,6 +1368,24 @@
               <p class="term-example"><strong>Example:</strong> Running an automated scanner against a live test site to find XSS vulnerabilities.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-sast">SAST</a>, <a href="#term-penetration-testing">Penetration Testing</a></div>
             </div>
+            <div class="glossary-term" id="term-data-at-rest">
+              <h3>Data at Rest</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>Data stored on a disk, in a database or in a backup rather than moving across a network.</p>
+              <p class="term-example"><strong>Example:</strong> Customer records stored in an encrypted database.</p>
+            </div>
+            <div class="glossary-term" id="term-data-breach">
+              <h3>Data Breach</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>An incident where personal or confidential data is accessed, disclosed or lost without authorisation.</p>
+              <p class="term-example"><strong>Example:</strong> Millions of customer records published online after a cyber attack.</p>
+            </div>
+
+
 
             <div class="glossary-term" id="term-data-dictionary">
               <h3>Data Dictionary</h3>
@@ -1160,6 +1405,16 @@
               <p>A diagram showing how data moves between external entities, processes and data stores in a system.</p>
               <p class="term-example"><strong>Example:</strong> A student enters login details → "Verify login" process → reads the Users data store.</p>
             </div>
+            <div class="glossary-term" id="term-data-in-transit">
+              <h3>Data in Transit</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>Data moving across a network between devices, which should be protected with encryption such as TLS.</p>
+              <p class="term-example"><strong>Example:</strong> A login form sent from the browser to the server over HTTPS.</p>
+            </div>
+
             <div class="glossary-term" id="term-data-mining">
               <h3>Data Mining</h3>
               <div class="term-chips">
@@ -1185,6 +1440,43 @@
               <p>A register inside a processor that holds a value currently being worked on.</p>
               <p class="term-example"><strong>Example:</strong> Holding a sensor reading while the processor compares it with a threshold.</p>
             </div>
+            <div class="glossary-term" id="term-data-type">
+              <h3>Data Type</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+              </div>
+              <p>The kind of value a variable holds, which decides what operations can be done with it and how it is stored.</p>
+              <p class="term-example"><strong>Example:</strong> Integer, float, string, Boolean.</p>
+            </div>
+            <div class="glossary-term" id="term-database">
+              <h3>Database</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+                <span class="chip chip-y12">Software Engineering Project</span>
+              </div>
+              <p>An organised collection of structured data that software can store, search and update efficiently.</p>
+              <p class="term-example"><strong>Example:</strong> A school database of students, classes and enrolments.</p>
+            </div>
+            <div class="glossary-term" id="term-schema">
+              <h3>Database Schema</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>The structure of a database: its tables, fields, data types, keys and relationships.</p>
+              <p class="term-example"><strong>Example:</strong> <code>CREATE TABLE student (id INTEGER PRIMARY KEY, name TEXT)</code></p>
+            </div>
+            <div class="glossary-term" id="term-dataset">
+              <h3>Dataset</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Automation</span>
+              </div>
+              <p>A collection of data used to train, validate and test a machine learning model.</p>
+              <p class="term-example"><strong>Example:</strong> 10 000 labelled photos of cats and dogs.</p>
+            </div>
+
+
+
+
             <div class="glossary-term" id="term-debugging">
               <h3>Debugging</h3>
               <div class="term-chips">
@@ -1227,6 +1519,25 @@
               <p class="term-example"><strong>Example:</strong> "Is it raining?" → yes: take the bus; no: "Is it far?" → …</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-overfitting">Overfitting</a>, <a href="#term-supervised-learning">Supervised Learning</a></div>
             </div>
+            <div class="glossary-term" id="term-decryption">
+              <h3>Decryption</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>Turning cipher text back into readable plain text using the correct key.</p>
+              <p class="term-example"><strong>Example:</strong> A browser decrypting the HTTPS response from a bank with the agreed session key.</p>
+            </div>
+            <div class="glossary-term" id="term-defence-in-depth">
+              <h3>Defence in Depth</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>Layering several independent security controls so an attacker who gets past one still faces others.</p>
+              <p class="term-example"><strong>Example:</strong> A firewall, input validation, parameterised queries and encrypted data all protecting one web app.</p>
+            </div>
+
+
 
             <div class="glossary-term" id="term-degrees-of-freedom">
               <h3>Degrees of Freedom (DOF)</h3>
@@ -1237,6 +1548,26 @@
               <p class="term-example"><strong>Example:</strong> A robot arm with a rotating base, shoulder and elbow has 3 DOF.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-manipulator">Manipulator</a></div>
             </div>
+            <div class="glossary-term" id="term-dos">
+              <h3>Denial of Service (DoS)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>An attack that overwhelms a system with traffic or requests so real users cannot use it. A distributed attack from many devices is a DDoS.</p>
+              <p class="term-example"><strong>Example:</strong> A botnet flooding a ticketing site when concert tickets go on sale.</p>
+            </div>
+            <div class="glossary-term" id="term-deployment">
+              <h3>Deployment</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+                <span class="chip chip-y12">Software Engineering Project</span>
+              </div>
+              <p>Releasing software to the environment where users can use it.</p>
+              <p class="term-example"><strong>Example:</strong> Pushing a tested version of a web app to the live server.</p>
+            </div>
+
+
             <div class="glossary-term" id="term-design-pattern">
               <h3>Design Pattern</h3>
               <div class="term-chips">
@@ -1285,6 +1616,16 @@
               <p class="term-example"><strong>Example:</strong> A software update is signed so users can confirm it came from the real developer.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-asymmetric-encryption">Asymmetric Encryption</a>, <a href="#term-hashing">Hashing</a></div>
             </div>
+            <div class="glossary-term" id="term-disaster-recovery">
+              <h3>Disaster Recovery</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Software Engineering Project</span>
+              </div>
+              <p>The plan and processes for restoring systems and data after a serious failure or attack.</p>
+              <p class="term-example"><strong>Example:</strong> Restoring last night's backup to a second data centre within four hours.</p>
+            </div>
+
             <div class="glossary-term" id="term-divide-and-conquer">
               <h3>Divide and Conquer</h3>
               <div class="term-chips">
@@ -1333,6 +1674,16 @@
               <p>Buying and selling goods or services online.</p>
               <p class="term-example"><strong>Example:</strong> An online store with a shopping cart and card payments.</p>
             </div>
+            <div class="glossary-term" id="term-edge-case">
+              <h3>Edge Case</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+                <span class="chip chip-y12">Software Engineering Project</span>
+              </div>
+              <p>An unusual or extreme input or situation at the limits of what a program handles.</p>
+              <p class="term-example"><strong>Example:</strong> An empty list, a name with an apostrophe, or February 29.</p>
+            </div>
+
 
 
             <div class="glossary-term" id="term-encapsulation">
@@ -1344,6 +1695,16 @@
               <p class="term-example"><strong>Example:</strong> A <code>BankAccount</code> hides <code>balance</code> and exposes <code>deposit()</code>.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-abstraction">Abstraction</a>, <a href="#term-access-modifier">Access Modifier</a></div>
             </div>
+            <div class="glossary-term" id="term-encryption">
+              <h3>Encryption</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>Converting readable data (plain text) into cipher text with an algorithm and a key, so only someone with the right key can read it.</p>
+              <p class="term-example"><strong>Example:</strong> AES-256 encrypting a customer database so a stolen copy is unreadable.</p>
+            </div>
+
 
                       <div class="glossary-term" id="term-end-effector">
               <h3>End Effector</h3>
@@ -1353,6 +1714,44 @@
               <p>The device at the end of a robotic arm that interacts with the environment.</p>
               <p class="term-example"><strong>Example:</strong> A gripper, suction cup or welding torch.</p>
             </div>
+            <div class="glossary-term" id="term-endpoint">
+              <h3>Endpoint</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>A URL on a server that an API client sends requests to for a particular resource or action.</p>
+              <p class="term-example"><strong>Example:</strong> <code>GET /api/students/42</code></p>
+            </div>
+            <div class="glossary-term" id="term-environment-variable">
+              <h3>Environment Variable</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>A named value set outside the code, used for settings and secrets so they are not stored in the source.</p>
+              <p class="term-example"><strong>Example:</strong> <code>os.environ["DATABASE_URL"]</code></p>
+            </div>
+            <div class="glossary-term" id="term-epoch">
+              <h3>Epoch</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Automation</span>
+              </div>
+              <p>One complete pass through the whole training set during training.</p>
+              <p class="term-example"><strong>Example:</strong> Training for 20 epochs means the model sees every example 20 times.</p>
+            </div>
+            <div class="glossary-term" id="term-exception">
+              <h3>Exception</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>An error that occurs while a program runs and can be caught and handled instead of crashing the program.</p>
+              <p class="term-example"><strong>Example:</strong> <code>try: … except ValueError: print("Enter a number")</code></p>
+            </div>
+
+
+
+
 
             <div class="glossary-term" id="term-exception-management">
               <h3>Exception Management</h3>
@@ -1361,6 +1760,15 @@
               </div>
               <p>Handling runtime errors so a program responds safely instead of crashing or revealing sensitive details.</p>
               <p class="term-example"><strong>Example:</strong> Catching a database error and showing "Something went wrong" while logging the details privately.</p>
+            </div>
+
+            <div class="glossary-term" id="term-exploit">
+              <h3>Exploit</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>Code or a technique that takes advantage of a vulnerability.</p>
+              <p class="term-example"><strong>Example:</strong> A crafted input string that uses a SQL injection flaw to dump the users table.</p>
             </div>
 
 </div>
@@ -1403,6 +1811,34 @@
               <p>An assessment of whether a project is viable across scheduling, financial, technical, and operational dimensions. Conducted during the Planning phase to determine project go/no-go decisions.</p>
               <p class="term-example"><strong>Example:</strong> Checking whether a booking app can be built in 10 weeks with the school's budget.</p>
             </div>
+            <div class="glossary-term" id="term-firewall">
+              <h3>Firewall</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>Hardware or software that filters network traffic against a set of rules, blocking connections that are not allowed.</p>
+              <p class="term-example"><strong>Example:</strong> Blocking every incoming port on a server except 443 for HTTPS.</p>
+            </div>
+            <div class="glossary-term" id="term-flask">
+              <h3>Flask</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>A lightweight Python web framework for building web apps and APIs.</p>
+              <p class="term-example"><strong>Example:</strong> <code>@app.route("/")</code> above a function that returns the home page.</p>
+            </div>
+            <div class="glossary-term" id="term-float">
+              <h3>Floating Point (Float)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+              </div>
+              <p>A data type for numbers with a decimal part, stored approximately.</p>
+              <p class="term-example"><strong>Example:</strong> <code>price = 19.95</code></p>
+            </div>
+
+
+
 
             <div class="glossary-term" id="term-flowchart">
               <h3>Flowchart</h3>
@@ -1414,6 +1850,15 @@
               <p class="term-example"><strong>Example:</strong> A diamond asks "age ≥ 18?" with yes and no arrows to different processes.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-algorithm">Algorithm</a>, <a href="#term-pseudocode">Pseudocode</a></div>
             </div>
+            <div class="glossary-term" id="term-foreign-key">
+              <h3>Foreign Key</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>A field in one table that refers to the primary key of another table, linking the two.</p>
+              <p class="term-example"><strong>Example:</strong> <code>student_id</code> in the Enrolments table points to a row in Students.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-frontend-framework">
               <h3>Front-end Framework</h3>
@@ -1467,6 +1912,15 @@
               <p>A horizontal bar chart used to visualise project schedules, task durations, and dependencies over time. A key tool during the Planning phase of the SDLC.</p>
               <p class="term-example"><strong>Example:</strong> A bar for "Design" in weeks 1–2 and "Development" in weeks 3–6.</p>
             </div>
+            <div class="glossary-term" id="term-gdpr">
+              <h3>GDPR (General Data Protection Regulation)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>The European Union's data protection law, which also applies to Australian organisations that offer services to people in the EU.</p>
+              <p class="term-example"><strong>Example:</strong> Letting EU users download or delete all the data held about them.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-generalisation">
               <h3>Generalisation</h3>
@@ -1477,6 +1931,15 @@
               <p class="term-example"><strong>Example:</strong> Moving <code>name</code> and <code>email</code> from <code>Student</code> and <code>Teacher</code> into a <code>Person</code> class.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-inheritance">Inheritance</a>, <a href="#term-class-diagram">Class Diagram</a></div>
             </div>
+            <div class="glossary-term" id="term-gradient-descent">
+              <h3>Gradient Descent</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Automation</span>
+              </div>
+              <p>An optimisation method that repeatedly adjusts a model's parameters a small step in the direction that reduces the loss most.</p>
+              <p class="term-example"><strong>Example:</strong> Nudging a line's slope and intercept until the error stops falling.</p>
+            </div>
+
             <div class="glossary-term" id="term-grey-box">
               <h3>Grey-Box Testing</h3>
               <div class="term-chips">
@@ -1554,6 +2017,15 @@
               <p>The base-16 number system, using digits 0–9 and A–F; each hex digit stands for four bits.</p>
               <p class="term-example"><strong>Example:</strong> The colour <code>#FF0000</code> is pure red.</p>
             </div>
+            <div class="glossary-term" id="term-hidden-layer">
+              <h3>Hidden Layer</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Automation</span>
+              </div>
+              <p>A layer of neurons between the input and output layers of a neural network.</p>
+              <p class="term-example"><strong>Example:</strong> A network with 784 inputs, two hidden layers of 128 neurons and 10 outputs.</p>
+            </div>
+
 
 
             <div class="glossary-term" id="term-html">
@@ -1575,6 +2047,15 @@
               <p class="term-example"><strong>Example:</strong> A browser sends <code>GET /index.html</code> and the server replies <code>200 OK</code>.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-https">HTTPS</a>, <a href="#term-rest">REST</a></div>
             </div>
+            <div class="glossary-term" id="term-status-code">
+              <h3>HTTP Status Code</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>A three-digit number in an HTTP response that tells the client what happened.</p>
+              <p class="term-example"><strong>Example:</strong> 200 OK, 404 Not Found, 500 Internal Server Error.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-https">
               <h3>HTTPS (HTTP Secure)</h3>
@@ -1646,6 +2127,17 @@
               <p class="term-example"><strong>Example:</strong> <code>class Dog(Animal):</code> gives <code>Dog</code> everything <code>Animal</code> has.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-polymorphism">Polymorphism</a>, <a href="#term-class">Class</a></div>
             </div>
+            <div class="glossary-term" id="term-input-validation">
+              <h3>Input Validation</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+                <span class="chip chip-y11">Programming Fundamentals</span>
+              </div>
+              <p>Checking that input has the expected type, length, format and range before a program uses it.</p>
+              <p class="term-example"><strong>Example:</strong> Rejecting an age of "abc" or −5 before it reaches the database.</p>
+            </div>
+
             <div class="glossary-term" id="term-instruction-set">
               <h3>Instruction Set</h3>
               <div class="term-chips">
@@ -1662,6 +2154,16 @@
               <p>A data type for whole numbers, positive or negative, with no decimal part.</p>
               <p class="term-example"><strong>Example:</strong> <code>students = 28</code></p>
             </div>
+            <div class="glossary-term" id="term-integration-testing">
+              <h3>Integration Testing</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Engineering Project</span>
+                <span class="chip chip-y11">Object-Oriented Paradigm</span>
+              </div>
+              <p>Testing that separate modules work correctly together.</p>
+              <p class="term-example"><strong>Example:</strong> Checking the cart module passes the right total to the payment module.</p>
+            </div>
+
 
 
 
@@ -1690,6 +2192,15 @@
               <p>Designing software so it can easily be adapted to different languages, regions and writing systems.</p>
               <p class="term-example"><strong>Example:</strong> Storing all interface text in translation files and using UTF-8 so Arabic and Chinese display correctly.</p>
             </div>
+            <div class="glossary-term" id="term-interpreter">
+              <h3>Interpreter</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+              </div>
+              <p>A program that translates and runs source code one statement at a time.</p>
+              <p class="term-example"><strong>Example:</strong> Python runs your script through its interpreter.</p>
+            </div>
+
 
 
 
@@ -1754,6 +2265,16 @@
               <p class="term-example"><strong>Example:</strong> Showing an error message when a form field is left empty.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-dom">DOM</a>, <a href="#term-html">HTML</a>, <a href="#term-css">CSS</a></div>
             </div>
+            <div class="glossary-term" id="term-json">
+              <h3>JSON (JavaScript Object Notation)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+                <span class="chip chip-y12">Software Automation</span>
+              </div>
+              <p>A lightweight text format for data made of key–value pairs and lists, widely used by web APIs.</p>
+              <p class="term-example"><strong>Example:</strong> <code>{"name": "Ava", "year": 12}</code></p>
+            </div>
+
 
             <div class="glossary-term" id="term-jwt">
               <h3>JWT (JSON Web Token)</h3>
@@ -1797,6 +2318,24 @@
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+            <div class="glossary-term" id="term-latency">
+              <h3>Latency</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>The delay between sending a request and the start of the response.</p>
+              <p class="term-example"><strong>Example:</strong> 200 ms latency to a server on another continent.</p>
+            </div>
+            <div class="glossary-term" id="term-learning-rate">
+              <h3>Learning Rate</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Automation</span>
+              </div>
+              <p>How big a step a model takes when it adjusts its weights during training.</p>
+              <p class="term-example"><strong>Example:</strong> Too high and training overshoots; too low and it takes forever.</p>
+            </div>
+
+
 
             <div class="glossary-term" id="term-linear-regression">
               <h3>Linear Regression</h3>
@@ -1825,6 +2364,15 @@
               <p>An ordered collection of items that can grow and shrink as the program runs.</p>
               <p class="term-example"><strong>Example:</strong> <code>names.append("Priya")</code></p>
             </div>
+            <div class="glossary-term" id="term-load-balancer">
+              <h3>Load Balancer</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>A server that spreads incoming requests across several servers so no single one is overloaded.</p>
+              <p class="term-example"><strong>Example:</strong> Sending each new visitor to whichever of four web servers is least busy.</p>
+            </div>
+
 
 
             <div class="glossary-term" id="term-logic-error">
@@ -1848,7 +2396,16 @@
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-linear-regression">Linear Regression</a>, <a href="#term-supervised-learning">Supervised Learning</a></div>
             </div>
 
-          </div>
+                      <div class="glossary-term" id="term-loss-function">
+              <h3>Loss Function</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Automation</span>
+              </div>
+              <p>A measure of how far a model's predictions are from the true values; training tries to make it as small as possible.</p>
+              <p class="term-example"><strong>Example:</strong> Mean squared error for a regression model.</p>
+            </div>
+
+</div>
           <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
@@ -1878,6 +2435,25 @@
               <p>The ongoing SDLC phase involving patching bugs, fixing security issues, and adding new features after software is deployed to production.</p>
               <p class="term-example"><strong>Example:</strong> Releasing version 1.1 to fix a bug reported after launch.</p>
             </div>
+            <div class="glossary-term" id="term-malware">
+              <h3>Malware</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>Malicious software, such as viruses, worms, spyware and ransomware, designed to damage systems or steal data.</p>
+              <p class="term-example"><strong>Example:</strong> A fake game download that records keystrokes.</p>
+            </div>
+            <div class="glossary-term" id="term-mitm">
+              <h3>Man-in-the-Middle Attack</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>An attack where someone secretly intercepts, and may change, the messages between two parties.</p>
+              <p class="term-example"><strong>Example:</strong> An attacker on a public Wi-Fi hotspot reading unencrypted HTTP traffic.</p>
+            </div>
+
+
 
             <div class="glossary-term" id="term-manipulator">
               <h3>Manipulator</h3>
@@ -1898,6 +2474,15 @@
               <p class="term-example"><strong>Example:</strong> <code>{"name": "Canteen App", "start_url": "/"}</code></p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-pwa">Progressive Web App</a></div>
             </div>
+            <div class="glossary-term" id="term-mse">
+              <h3>Mean Squared Error (MSE)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Automation</span>
+              </div>
+              <p>The average of the squared differences between predicted and actual values.</p>
+              <p class="term-example"><strong>Example:</strong> Errors of 2 and 4 give MSE = (4 + 16) ÷ 2 = 10.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-mechatronics">
               <h3>Mechatronics</h3>
@@ -1907,6 +2492,15 @@
               <p>An interdisciplinary field integrating mechanical, electrical, and software engineering to design intelligent systems, robotics, and embedded devices.</p>
               <p class="term-example"><strong>Example:</strong> An automatic irrigation system combining a moisture sensor, pump and control code.</p>
             </div>
+            <div class="glossary-term" id="term-media-query">
+              <h3>Media Query</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>A CSS rule that applies styles only when a condition, such as screen width, is met.</p>
+              <p class="term-example"><strong>Example:</strong> <code>@media (max-width: 600px) { … }</code></p>
+            </div>
+
             <div class="glossary-term" id="term-memory-management">
               <h3>Memory Management</h3>
               <div class="term-chips">
@@ -1915,6 +2509,15 @@
               <p>Controlling how a program uses memory so it runs efficiently and cannot be exploited, for example through buffer overflows.</p>
               <p class="term-example"><strong>Example:</strong> Closing files and database connections when they are no longer needed.</p>
             </div>
+            <div class="glossary-term" id="term-merge-conflict">
+              <h3>Merge Conflict</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Engineering Project</span>
+              </div>
+              <p>When two branches change the same lines of a file, so version control cannot combine them automatically.</p>
+              <p class="term-example"><strong>Example:</strong> Two students both edit the header of <code>index.html</code>.</p>
+            </div>
+
 
 
             <div class="glossary-term" id="term-message-passing">
@@ -1975,6 +2578,26 @@
               <p class="term-example"><strong>Example:</strong> Automatically retraining and redeploying a recommendation model each month.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-devops">DevOps</a>, <a href="#term-ml">Machine Learning</a></div>
             </div>
+            <div class="glossary-term" id="term-modularity">
+              <h3>Modularity</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+                <span class="chip chip-y11">Object-Oriented Paradigm</span>
+              </div>
+              <p>Building software from separate, self-contained parts that can be developed, tested and reused independently.</p>
+              <p class="term-example"><strong>Example:</strong> Keeping login, payments and reporting in separate modules.</p>
+            </div>
+            <div class="glossary-term" id="term-mfa">
+              <h3>Multi-Factor Authentication (MFA)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>Logging in with two or more different kinds of evidence: something you know, something you have or something you are.</p>
+              <p class="term-example"><strong>Example:</strong> A password plus a six-digit code from an authenticator app.</p>
+            </div>
+
+
 
             <div class="glossary-term" id="term-mvc">
               <h3>MVC (Model-View-Controller)</h3>
@@ -1997,6 +2620,25 @@
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+            <div class="glossary-term" id="term-naming-convention">
+              <h3>Naming Convention</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+                <span class="chip chip-y11">Object-Oriented Paradigm</span>
+              </div>
+              <p>Agreed rules for naming variables, functions and classes so code is consistent and readable.</p>
+              <p class="term-example"><strong>Example:</strong> <code>snake_case</code> for Python functions, <code>PascalCase</code> for classes.</p>
+            </div>
+            <div class="glossary-term" id="term-nlp">
+              <h3>Natural Language Processing (NLP)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Automation</span>
+              </div>
+              <p>The branch of AI that lets computers understand and generate human language.</p>
+              <p class="term-example"><strong>Example:</strong> A chatbot answering questions about school events.</p>
+            </div>
+
+
 
             <div class="glossary-term" id="term-neural-network">
               <h3>Neural Network</h3>
@@ -2007,6 +2649,24 @@
               <p class="term-example"><strong>Example:</strong> A network with input, hidden and output layers that classifies photos of animals.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-backpropagation">Backpropagation</a>, <a href="#term-ml">Machine Learning</a></div>
             </div>
+            <div class="glossary-term" id="term-neuron">
+              <h3>Neuron</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Automation</span>
+              </div>
+              <p>A unit in a neural network that multiplies its inputs by weights, adds them with a bias and passes the result through an activation function.</p>
+              <p class="term-example"><strong>Example:</strong> One neuron combining pixel values to detect an edge.</p>
+            </div>
+            <div class="glossary-term" id="term-nodejs">
+              <h3>Node.js</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>A runtime that lets JavaScript run on a server rather than only in the browser.</p>
+              <p class="term-example"><strong>Example:</strong> A chat app whose back end is written in JavaScript with Node.js.</p>
+            </div>
+
+
 
             <div class="glossary-term" id="term-non-functional-requirements">
               <h3>Non-Functional Requirements</h3>
@@ -2029,7 +2689,25 @@
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-sql-database">SQL Database</a></div>
             </div>
 
-          </div>
+                      <div class="glossary-term" id="term-ndb">
+              <h3>Notifiable Data Breaches (NDB) Scheme</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>The Australian requirement to notify affected people and the OAIC when a data breach is likely to cause them serious harm.</p>
+              <p class="term-example"><strong>Example:</strong> A retailer emailing customers and reporting to the OAIC after credit card data is stolen.</p>
+            </div>
+
+            <div class="glossary-term" id="term-npm">
+              <h3>npm</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>The package manager for JavaScript; it installs and tracks the libraries a project depends on.</p>
+              <p class="term-example"><strong>Example:</strong> <code>npm install express</code></p>
+            </div>
+
+</div>
           <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
@@ -2040,6 +2718,16 @@
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+            <div class="glossary-term" id="term-oauth">
+              <h3>OAuth</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>A standard that lets users give an app limited access to their account on another service without sharing their password.</p>
+              <p class="term-example"><strong>Example:</strong> "Sign in with Google" on a school app.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-object">
               <h3>Object</h3>
@@ -2096,6 +2784,25 @@
               <p>Software whose source code is freely available to use, study, change and share under a licence.</p>
               <p class="term-example"><strong>Example:</strong> Linux, Python and VS Code.</p>
             </div>
+            <div class="glossary-term" id="term-output-encoding">
+              <h3>Output Encoding</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>Converting special characters when data is displayed so a browser shows them as text instead of running them as code.</p>
+              <p class="term-example"><strong>Example:</strong> Writing <code>&amp;lt;</code> instead of <code>&lt;</code> in a page to prevent XSS.</p>
+            </div>
+            <div class="glossary-term" id="term-outsourcing">
+              <h3>Outsourcing</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Engineering Project</span>
+              </div>
+              <p>Paying an outside company or service to build or run part of a system.</p>
+              <p class="term-example"><strong>Example:</strong> Using Stripe for payments instead of building a payment system.</p>
+            </div>
+
+
 
 
             <div class="glossary-term" id="term-overfitting">
@@ -2119,6 +2826,15 @@
             <div class="glossary-divider-line"></div>
           </div>
           <div class="glossary-terms-grid">
+            <div class="glossary-term" id="term-parameter">
+              <h3>Parameter</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+              </div>
+              <p>A variable in a subprogram's definition that receives a value (the argument) when the subprogram is called.</p>
+              <p class="term-example"><strong>Example:</strong> In <code>def area(width, height)</code>, width and height are parameters.</p>
+            </div>
+
             <div class="glossary-term" id="term-parameter-passing">
               <h3>Parameter Passing</h3>
               <div class="term-chips">
@@ -2127,6 +2843,16 @@
               <p>Sending values into a subprogram when it is called so it can work with them.</p>
               <p class="term-example"><strong>Example:</strong> In <code>calculate_gst(price)</code>, the value of <code>price</code> is passed in.</p>
             </div>
+            <div class="glossary-term" id="term-parameterised-query">
+              <h3>Parameterised Query</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>A database query where user input is passed separately as parameters, so it can never change the structure of the SQL; the main defence against SQL injection.</p>
+              <p class="term-example"><strong>Example:</strong> <code>cur.execute("SELECT * FROM users WHERE name = ?", (name,))</code></p>
+            </div>
+
             <div class="glossary-term" id="term-path-coverage">
               <h3>Path Coverage</h3>
               <div class="term-chips">
@@ -2159,6 +2885,24 @@
               <p class="term-example"><strong>Example:</strong> Swapping algorithms with a classmate to check each other's logic.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-code-review">Code Review</a></div>
             </div>
+            <div class="glossary-term" id="term-personal-information">
+              <h3>Personal Information</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>Information or an opinion about an identified person, or one who could reasonably be identified, which the Privacy Act protects.</p>
+              <p class="term-example"><strong>Example:</strong> A name, address, date of birth or photo.</p>
+            </div>
+            <div class="glossary-term" id="term-phishing">
+              <h3>Phishing</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>A social engineering attack that uses a fake message or website to trick people into revealing passwords or other secrets.</p>
+              <p class="term-example"><strong>Example:</strong> An email "from IT" asking staff to confirm their password on a look-alike login page.</p>
+            </div>
+
+
 
             <div class="glossary-term" id="term-pid">
               <h3>PID Control</h3>
@@ -2207,6 +2951,33 @@
               <p>A regression model that fits a curve, rather than a straight line, to predict a numeric value.</p>
               <p class="term-example"><strong>Example:</strong> Predicting a car's braking distance from its speed, which rises faster than a straight line.</p>
             </div>
+            <div class="glossary-term" id="term-primary-key">
+              <h3>Primary Key</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>A field (or fields) whose value uniquely identifies each record in a database table.</p>
+              <p class="term-example"><strong>Example:</strong> <code>student_id</code> in the Students table.</p>
+            </div>
+            <div class="glossary-term" id="term-least-privilege">
+              <h3>Principle of Least Privilege</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>Giving each user, program or process only the access it needs to do its job, and no more.</p>
+              <p class="term-example"><strong>Example:</strong> A reporting app connects to the database with a read-only account.</p>
+            </div>
+            <div class="glossary-term" id="term-privacy-act">
+              <h3>Privacy Act 1988</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>The Australian law that regulates how government agencies and larger organisations collect, use, store and disclose personal information.</p>
+              <p class="term-example"><strong>Example:</strong> A company must tell users why it is collecting their email address.</p>
+            </div>
+
+
+
             <div class="glossary-term" id="term-privacy-by-design">
               <h3>Privacy by Design</h3>
               <div class="term-chips">
@@ -2215,6 +2986,26 @@
               <p>An approach that builds privacy into software from the start: proactive, embedded in the design and respectful of users.</p>
               <p class="term-example"><strong>Example:</strong> A fitness app that stores location data only on the phone unless the user chooses to share it.</p>
             </div>
+            <div class="glossary-term" id="term-private-key">
+              <h3>Private Key</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>In asymmetric encryption, the secret key kept only by its owner; it decrypts data or creates a digital signature.</p>
+              <p class="term-example"><strong>Example:</strong> The web server keeps its private key secret and uses it to prove its identity.</p>
+            </div>
+            <div class="glossary-term" id="term-product-owner">
+              <h3>Product Owner</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Engineering Project</span>
+                <span class="chip chip-core">SDLC</span>
+              </div>
+              <p>In Scrum, the person who represents the client, decides what goes in the product backlog and sets its priorities.</p>
+              <p class="term-example"><strong>Example:</strong> Deciding the login page matters more this sprint than the dark mode.</p>
+            </div>
+
+
 
 
 
@@ -2248,6 +3039,26 @@
               <p class="term-example"><strong>Example:</strong> A news site that can be installed on a phone and read offline.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-service-worker">Service Worker</a>, <a href="#term-manifest">Manifest</a></div>
             </div>
+            <div class="glossary-term" id="term-public-key">
+              <h3>Public Key</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>In asymmetric encryption, the key that can be shared with anyone; it encrypts data or verifies a signature.</p>
+              <p class="term-example"><strong>Example:</strong> A website's public key is sent inside its TLS certificate.</p>
+            </div>
+            <div class="glossary-term" id="term-pull-request">
+              <h3>Pull Request</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Engineering Project</span>
+                <span class="chip chip-core">SDLC</span>
+              </div>
+              <p>A request to merge changes from one branch into another, where teammates can review the code first.</p>
+              <p class="term-example"><strong>Example:</strong> Opening a pull request for the new login feature so a teammate can review it.</p>
+            </div>
+
+
 
             <div class="glossary-term" id="term-pwm">
               <h3>PWM (Pulse Width Modulation)</h3>
@@ -2281,6 +3092,15 @@
               <p class="term-example"><strong>Example:</strong> Agreeing a 2-second load-time target and testing it on every release.</p>
             </div>
 
+            <div class="glossary-term" id="term-queue">
+              <h3>Queue</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+              </div>
+              <p>A first in, first out (FIFO) data structure: items join at the back and leave from the front.</p>
+              <p class="term-example"><strong>Example:</strong> Print jobs waiting for a printer.</p>
+            </div>
+
 </div>
           <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
@@ -2300,6 +3120,15 @@
               <p>A flaw where the result depends on the timing of two actions happening at once, which attackers can exploit.</p>
               <p class="term-example"><strong>Example:</strong> Two withdrawals processed at the same moment both see $100 and both succeed.</p>
             </div>
+            <div class="glossary-term" id="term-ransomware">
+              <h3>Ransomware</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>Malware that encrypts a victim's files and demands payment for the key.</p>
+              <p class="term-example"><strong>Example:</strong> A hospital unable to open patient records until a ransom is paid, or until it restores from backup.</p>
+            </div>
+
             <div class="glossary-term" id="term-record">
               <h3>Record</h3>
               <div class="term-chips">
@@ -2320,6 +3149,25 @@
               <p class="term-example"><strong>Example:</strong> <code>factorial(n) = n × factorial(n − 1)</code>, stopping at <code>factorial(1) = 1</code>.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-iteration">Iteration</a></div>
             </div>
+            <div class="glossary-term" id="term-refactoring">
+              <h3>Refactoring</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Object-Oriented Paradigm</span>
+                <span class="chip chip-y12">Software Engineering Project</span>
+              </div>
+              <p>Improving the structure of code without changing what it does.</p>
+              <p class="term-example"><strong>Example:</strong> Replacing three copies of the same calculation with one function.</p>
+            </div>
+            <div class="glossary-term" id="term-regression-testing">
+              <h3>Regression Testing</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Engineering Project</span>
+              </div>
+              <p>Re-running earlier tests after a change to make sure nothing that worked before is now broken.</p>
+              <p class="term-example"><strong>Example:</strong> Running the full test suite after fixing a bug in the login code.</p>
+            </div>
+
+
 
             <div class="glossary-term" id="term-reinforcement-learning">
               <h3>Reinforcement Learning</h3>
@@ -2330,6 +3178,16 @@
               <p class="term-example"><strong>Example:</strong> A game-playing agent earns points for winning and learns better moves.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-ml">Machine Learning</a></div>
             </div>
+            <div class="glossary-term" id="term-repository">
+              <h3>Repository</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Engineering Project</span>
+                <span class="chip chip-core">SDLC</span>
+              </div>
+              <p>A store for a project's files and their complete version history, managed by a version control system such as Git.</p>
+              <p class="term-example"><strong>Example:</strong> A GitHub repository for the major project.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-requirements-elicitation">
               <h3>Requirements Elicitation</h3>
@@ -2340,6 +3198,15 @@
               <p>The process of seeking and capturing requirements of a system from users and stakeholders through interviews, surveys, focus groups, and observation.</p>
               <p class="term-example"><strong>Example:</strong> Interviewing library staff about how they currently track loans.</p>
             </div>
+            <div class="glossary-term" id="term-responsive-design">
+              <h3>Responsive Design</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>Designing web pages so their layout adapts to different screen sizes, from phones to desktops.</p>
+              <p class="term-example"><strong>Example:</strong> A three-column layout that becomes one column on a phone.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-rest">
               <h3>REST (Representational State Transfer)</h3>
@@ -2350,6 +3217,15 @@
               <p class="term-example"><strong>Example:</strong> <code>DELETE /api/students/42</code> removes student 42.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-api">API</a>, <a href="#term-http">HTTP</a></div>
             </div>
+            <div class="glossary-term" id="term-return-value">
+              <h3>Return Value</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+              </div>
+              <p>The value a function sends back to the code that called it.</p>
+              <p class="term-example"><strong>Example:</strong> <code>return total</code></p>
+            </div>
+
             <div class="glossary-term" id="term-rpa">
               <h3>Robotic Process Automation (RPA)</h3>
               <div class="term-chips">
@@ -2358,6 +3234,26 @@
               <p>Software bots that copy what a person does on a computer to complete repetitive, rule-based tasks.</p>
               <p class="term-example"><strong>Example:</strong> A bot that copies invoice details from emails into an accounting system.</p>
             </div>
+            <div class="glossary-term" id="term-rbac">
+              <h3>Role-Based Access Control (RBAC)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>Access control that grants permissions to roles, such as admin or student, rather than to individual users.</p>
+              <p class="term-example"><strong>Example:</strong> Assigning a new staff member the "teacher" role gives them every teacher permission at once.</p>
+            </div>
+            <div class="glossary-term" id="term-rsa">
+              <h3>RSA</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>An asymmetric encryption algorithm based on the difficulty of factoring very large numbers, used for key exchange and digital signatures.</p>
+              <p class="term-example"><strong>Example:</strong> Signing a software update with an RSA private key so users can verify it.</p>
+            </div>
+
+
 
 
             <div class="glossary-term" id="term-runtime-error">
@@ -2389,6 +3285,16 @@
               <p>Running code in an isolated environment so it cannot harm the rest of the system.</p>
               <p class="term-example"><strong>Example:</strong> A browser runs each tab in its own sandbox, so a malicious page cannot read your files.</p>
             </div>
+            <div class="glossary-term" id="term-sanitisation">
+              <h3>Sanitisation</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>Cleaning or escaping input so any characters with special meaning, such as HTML or SQL, are treated as plain data.</p>
+              <p class="term-example"><strong>Example:</strong> Converting <code>&lt;script&gt;</code> to harmless text before showing a comment.</p>
+            </div>
+
 
 
             <div class="glossary-term" id="term-sast">
@@ -2401,6 +3307,16 @@
               <p class="term-example"><strong>Example:</strong> A static analysis tool scans Python source code and flags insecure functions such as <code>eval()</code>.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-dast">DAST</a>, <a href="#term-penetration-testing">Penetration Testing</a></div>
             </div>
+            <div class="glossary-term" id="term-scope-creep">
+              <h3>Scope Creep</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Engineering Project</span>
+                <span class="chip chip-core">SDLC</span>
+              </div>
+              <p>Uncontrolled growth in a project's requirements after it has started, often causing delays and cost overruns.</p>
+              <p class="term-example"><strong>Example:</strong> A client adding "just one more feature" every week.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-scrum">
               <h3>Scrum</h3>
@@ -2461,6 +3377,15 @@
               <p class="term-example"><strong>Example:</strong> An ultrasonic sensor measuring the distance to a wall.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-actuator">Actuator</a>, <a href="#term-microcontroller">Microcontroller</a></div>
             </div>
+            <div class="glossary-term" id="term-sensor-fusion">
+              <h3>Sensor Fusion</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Mechatronics</span>
+              </div>
+              <p>Combining readings from several sensors to get a more accurate or reliable picture than any one sensor gives.</p>
+              <p class="term-example"><strong>Example:</strong> A drone combining its accelerometer, gyroscope and GPS to hold its position.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-sequence">
               <h3>Sequence</h3>
@@ -2577,6 +3502,15 @@
               <p class="term-example"><strong>Example:</strong> Entering <code>' OR 1=1 --</code> into a login box to bypass the password check.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-xss">XSS</a>, <a href="#term-dast">DAST</a></div>
             </div>
+            <div class="glossary-term" id="term-sqlite">
+              <h3>SQLite</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>A small, self-contained SQL database stored in a single file, built into Python.</p>
+              <p class="term-example"><strong>Example:</strong> A Flask project storing its data in <code>app.db</code>.</p>
+            </div>
+
             <div class="glossary-term" id="term-ssl-certificate">
               <h3>SSL/TLS Certificate</h3>
               <div class="term-chips">
@@ -2593,6 +3527,26 @@
               <p>A last in, first out (LIFO) data structure: items are added (pushed) and removed (popped) from the top.</p>
               <p class="term-example"><strong>Example:</strong> The undo history in a text editor.</p>
             </div>
+            <div class="glossary-term" id="term-stakeholder">
+              <h3>Stakeholder</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Engineering Project</span>
+                <span class="chip chip-core">SDLC</span>
+              </div>
+              <p>Anyone affected by, or with an interest in, a software project, such as clients, users, developers and managers.</p>
+              <p class="term-example"><strong>Example:</strong> Students, teachers and parents are all stakeholders in a school app.</p>
+            </div>
+            <div class="glossary-term" id="term-stand-up">
+              <h3>Stand-up Meeting</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Engineering Project</span>
+                <span class="chip chip-core">SDLC</span>
+              </div>
+              <p>A short daily Agile meeting where each team member says what they did, what they will do and what is blocking them.</p>
+              <p class="term-example"><strong>Example:</strong> A 15-minute meeting at 9 am, standing up to keep it short.</p>
+            </div>
+
+
 
 
 
@@ -2625,6 +3579,15 @@
               <p>A threat modelling framework identifying security risks: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, and Elevation of Privilege.</p>
               <p class="term-example"><strong>Example:</strong> Asking "Could someone spoof a teacher's login?" while reviewing a design.</p>
             </div>
+            <div class="glossary-term" id="term-string">
+              <h3>String</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+              </div>
+              <p>A data type for a sequence of characters, such as text.</p>
+              <p class="term-example"><strong>Example:</strong> <code>name = "Priya"</code></p>
+            </div>
+
 
             <div class="glossary-term" id="term-structure-chart">
               <h3>Structure Chart</h3>
@@ -2644,6 +3607,16 @@
               <p>A placeholder subroutine that stands in for code not yet written, so the rest of the program can be tested.</p>
               <p class="term-example"><strong>Example:</strong> <code>def calculate_tax(pay): return 0</code> while the real tax rules are still being written.</p>
             </div>
+            <div class="glossary-term" id="term-subprogram">
+              <h3>Subprogram</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+                <span class="chip chip-y11">Object-Oriented Paradigm</span>
+              </div>
+              <p>A named, reusable block of code (a function, procedure or subroutine) that performs one task.</p>
+              <p class="term-example"><strong>Example:</strong> <code>calculate_gst(price)</code></p>
+            </div>
+
 
 
             <div class="glossary-term" id="term-supervised-learning">
@@ -2695,6 +3668,16 @@
               <p>The core internet protocols: IP addresses and routes packets; TCP makes sure they all arrive, in order and without errors.</p>
               <p class="term-example"><strong>Example:</strong> Loading a web page relies on TCP/IP to deliver every packet of the page.</p>
             </div>
+            <div class="glossary-term" id="term-technical-debt">
+              <h3>Technical Debt</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Software Engineering Project</span>
+                <span class="chip chip-y11">Object-Oriented Paradigm</span>
+              </div>
+              <p>The future cost of rework caused by choosing a quick fix now instead of a better solution.</p>
+              <p class="term-example"><strong>Example:</strong> Hard-coding prices to meet a deadline, then having to change them in 20 places.</p>
+            </div>
+
             <div class="glossary-term" id="term-template-engine">
               <h3>Template Engine</h3>
               <div class="term-chips">
@@ -2703,6 +3686,26 @@
               <p>A tool that combines an HTML template with data to produce a web page.</p>
               <p class="term-example"><strong>Example:</strong> Jinja2 filling <code>{{ student.name }}</code> in a Flask page.</p>
             </div>
+            <div class="glossary-term" id="term-test-case">
+              <h3>Test Case</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+                <span class="chip chip-y12">Software Engineering Project</span>
+              </div>
+              <p>A single test: the input or action, the expected result, and the actual result.</p>
+              <p class="term-example"><strong>Example:</strong> Input 101 → expected "Invalid mark" → actual "Invalid mark" ✔</p>
+            </div>
+            <div class="glossary-term" id="term-test-data">
+              <h3>Test Data</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+                <span class="chip chip-y12">Software Engineering Project</span>
+              </div>
+              <p>Inputs chosen to check a program works, including normal, boundary and faulty or abnormal values.</p>
+              <p class="term-example"><strong>Example:</strong> Marks of 50, 0, 100, −1 and "abc".</p>
+            </div>
+
+
 
 
 
@@ -2715,6 +3718,15 @@
               <p class="term-example"><strong>Example:</strong> Keeping 20% of photos aside to measure the finished model's accuracy.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-training-set">Training Set</a>, <a href="#term-validation-set">Validation Set</a></div>
             </div>
+            <div class="glossary-term" id="term-threat-modelling">
+              <h3>Threat Modelling</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>Systematically identifying what could go wrong with a system's security, how likely it is, and how to prevent it, usually during design.</p>
+              <p class="term-example"><strong>Example:</strong> Using STRIDE on a data flow diagram to list threats to each process.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-tls">
               <h3>TLS (Transport Layer Security)</h3>
@@ -2798,6 +3810,15 @@
               <p class="term-example"><strong>Example:</strong> A class diagram and a use case diagram for a library system.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-class-diagram">Class Diagram</a>, <a href="#term-use-case-diagram">Use Case Diagram</a></div>
             </div>
+            <div class="glossary-term" id="term-unauthorised-access">
+              <h3>Unauthorised Access</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>Viewing, changing or using a system or data without permission.</p>
+              <p class="term-example"><strong>Example:</strong> A former employee still logging in to the payroll system after leaving.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-underfitting">
               <h3>Underfitting</h3>
@@ -2808,6 +3829,16 @@
               <p class="term-example"><strong>Example:</strong> Fitting a straight line to data that clearly curves.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-overfitting">Overfitting</a></div>
             </div>
+            <div class="glossary-term" id="term-unicode">
+              <h3>Unicode</h3>
+              <div class="term-chips">
+                <span class="chip chip-y11">Programming Fundamentals</span>
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>The character standard covering the writing systems of the world, usually stored as UTF-8.</p>
+              <p class="term-example"><strong>Example:</strong> Storing "Nguyễn" and "日本" correctly in a database.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-unit-testing">
               <h3>Unit Testing</h3>
@@ -2839,6 +3870,16 @@
               <p class="term-example"><strong>Example:</strong> Grouping shoppers into clusters by buying habits, with no labels given.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-supervised-learning">Supervised Learning</a>, <a href="#term-ml">Machine Learning</a></div>
             </div>
+            <div class="glossary-term" id="term-usability">
+              <h3>Usability</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+                <span class="chip chip-y12">Software Engineering Project</span>
+              </div>
+              <p>How easily users can learn and use software to reach their goals.</p>
+              <p class="term-example"><strong>Example:</strong> Testing whether new students can find their timetable within 30 seconds.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-uat">
               <h3>User Acceptance Testing (UAT)</h3>
@@ -2860,6 +3901,26 @@
               <p class="term-example"><strong>Example:</strong> A "Student" actor linked to "Borrow Book" and "Return Book".</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-uml">UML</a>, <a href="#term-functional-requirements">Functional Requirements</a></div>
             </div>
+            <div class="glossary-term" id="term-ux">
+              <h3>User Experience (UX)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+                <span class="chip chip-y12">Software Engineering Project</span>
+              </div>
+              <p>How easy, efficient and pleasant a product is to use from the user's point of view.</p>
+              <p class="term-example"><strong>Example:</strong> Cutting checkout from five steps to two after user testing.</p>
+            </div>
+            <div class="glossary-term" id="term-ui">
+              <h3>User Interface (UI)</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+                <span class="chip chip-y12">Software Engineering Project</span>
+              </div>
+              <p>The screens, controls and layout a person uses to interact with software.</p>
+              <p class="term-example"><strong>Example:</strong> Buttons, forms and menus in an app.</p>
+            </div>
+
+
 
             <div class="glossary-term" id="term-user-stories">
               <h3>User Stories</h3>
@@ -2914,6 +3975,15 @@
               <p class="term-example"><strong>Example:</strong> <code>git commit -m "Add login page"</code> saves a snapshot you can return to.</p>
               <div class="glossary-related"><strong>See also:</strong> <a href="#term-code-review">Code Review</a></div>
             </div>
+            <div class="glossary-term" id="term-viewport">
+              <h3>Viewport</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>The visible area of a web page in the browser window.</p>
+              <p class="term-example"><strong>Example:</strong> <code>&lt;meta name="viewport" content="width=device-width"&gt;</code></p>
+            </div>
+
 
                       <div class="glossary-term" id="term-virtual-assistant">
               <h3>Virtual Personal Assistant</h3>
@@ -2923,6 +3993,15 @@
               <p>Software that uses speech recognition and ML to understand requests and carry out tasks.</p>
               <p class="term-example"><strong>Example:</strong> Asking Siri to set a timer.</p>
             </div>
+            <div class="glossary-term" id="term-vulnerability">
+              <h3>Vulnerability</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>A weakness in software, hardware or processes that an attacker could use to cause harm.</p>
+              <p class="term-example"><strong>Example:</strong> A login form that does not limit the number of password attempts.</p>
+            </div>
+
 
             <div class="glossary-term" id="term-vulnerability-assessment">
               <h3>Vulnerability Assessment</h3>
@@ -2973,6 +4052,24 @@
               <p>International guidelines developed by the W3C to make web content usable for people with various disabilities. Covers visual, hearing, motor, and cognitive disabilities.</p>
               <p class="term-example"><strong>Example:</strong> Adding alt text so a screen reader can describe an image.</p>
             </div>
+            <div class="glossary-term" id="term-web-browser">
+              <h3>Web Browser</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>The client application that requests web pages, then renders HTML and CSS and runs JavaScript.</p>
+              <p class="term-example"><strong>Example:</strong> Chrome, Firefox and Safari.</p>
+            </div>
+            <div class="glossary-term" id="term-web-server">
+              <h3>Web Server</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Programming for the Web</span>
+              </div>
+              <p>Software (and the computer running it) that receives HTTP requests and sends back web pages, files or data.</p>
+              <p class="term-example"><strong>Example:</strong> Nginx serving a Flask app.</p>
+            </div>
+
+
 
             <div class="glossary-term" id="term-wireframe">
               <h3>Wireframe</h3>
@@ -3038,6 +4135,27 @@
             </div>
 
           </div>
+          <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
+        </div>
+
+        <!-- ════════════ Z ════════════ -->
+        <div class="glossary-group" id="alpha-Z">
+          <div class="glossary-divider">
+            <div class="glossary-letter-header">Z</div>
+            <div class="glossary-divider-line"></div>
+          </div>
+          <div class="glossary-terms-grid">
+
+                      <div class="glossary-term" id="term-zero-day">
+              <h3>Zero-Day Vulnerability</h3>
+              <div class="term-chips">
+                <span class="chip chip-y12">Secure Software Architecture</span>
+              </div>
+              <p>A security flaw that attackers know about before the developer has released a fix.</p>
+              <p class="term-example"><strong>Example:</strong> An exploit for a browser bug used in attacks the same day it is discovered.</p>
+            </div>
+
+</div>
           <a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>
         </div>
 
@@ -3194,7 +4312,7 @@
       if (location.hash.startsWith('#term-')) setTimeout(() => go(location.hash.slice(1), true), 120);
     });
   </script>
-  <script src="../js/glossary-data.js?v=5"></script>
+  <script src="../js/glossary-data.js?v=6"></script>
   <script src="../js/nesa-diagram-data.js?v=3"></script>
   <script src="../js/nesa-diagrams.js?v=3" defer></script>
   <script src="../js/main.js?v=31"></script>

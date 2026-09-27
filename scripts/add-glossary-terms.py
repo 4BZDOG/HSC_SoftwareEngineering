@@ -35,7 +35,7 @@ for t in sorted(TERMS, key=lambda x: x[1].lower()):
         continue
     letter = t[1][0].upper()
     if f'id="alpha-{letter}"' not in s:
-        nxt = min(g for g in re.findall(r'id="alpha-([A-Z])"', s) if g > letter)
+        later = [g for g in re.findall(r'id="alpha-([A-Z])"', s) if g > letter]
         group = f'''        <!-- ════════════ {letter} ════════════ -->
         <div class="glossary-group" id="alpha-{letter}">
           <div class="glossary-divider">
@@ -49,7 +49,11 @@ for t in sorted(TERMS, key=lambda x: x[1].lower()):
         </div>
 
 '''
-        i = s.index(f'        <!-- ════════════ {nxt} ════════════ -->')
+        if later:
+            i = s.index(f'        <!-- ════════════ {min(later)} ════════════ -->')
+        else:  # after the last letter group
+            end = '<a href="#alpha-jump" class="back-to-top-link">↑ Back to Top</a>\n        </div>\n'
+            i = s.rindex(end) + len(end) + 1
         s = s[:i] + group + s[i:]
         s = s.replace(f'<span class="alpha-btn disabled">{letter}</span>', f'<a href="#alpha-{letter}" class="alpha-btn">{letter}</a>')
     g0 = s.index(f'id="alpha-{letter}"')
