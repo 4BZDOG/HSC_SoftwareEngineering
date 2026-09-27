@@ -46,7 +46,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=19" />
+  <link rel="stylesheet" href="../css/paper.css?v=20" />
   <style>
     /* ── SDLC-specific styles ── */
     .sdlc-cycle-visual {
@@ -454,28 +454,28 @@
           <!-- Visual cycle -->
           <div class="sdlc-cycle-visual">
             <div class="sdlc-phase-card phase-1">
-              <span class="phase-icon">🎯</span>
+              <span class="phase-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6"/></svg></span>
               <div class="phase-num">1</div>
               <div class="phase-title">Identifying &amp; Defining</div>
               <div class="phase-subtitle">Problem analysis, requirements, feasibility</div>
             </div>
             <div class="sdlc-arrow">→</div>
             <div class="sdlc-phase-card phase-2">
-              <span class="phase-icon">🔬</span>
+              <span class="phase-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M4 20h16M9 20v-4a3 3 0 0 1 6 0v4M12 4v6M9 7h6"/></svg></span>
               <div class="phase-num">2</div>
               <div class="phase-title">Research &amp; Planning</div>
               <div class="phase-subtitle">Design, architecture, project scheduling</div>
             </div>
             <div class="sdlc-arrow">→</div>
             <div class="sdlc-phase-card phase-3">
-              <span class="phase-icon">💻</span>
+              <span class="phase-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20M10 9l-2 2 2 2M14 9l2 2-2 2"/></svg></span>
               <div class="phase-num">3</div>
               <div class="phase-title">Producing &amp; Implementing</div>
               <div class="phase-subtitle">Coding, integration, documentation</div>
             </div>
             <div class="sdlc-arrow">→</div>
             <div class="sdlc-phase-card phase-4">
-              <span class="phase-icon">🧪</span>
+              <span class="phase-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3M7.5 15h9"/></svg></span>
               <div class="phase-num">4</div>
               <div class="phase-title">Testing &amp; Evaluating</div>
               <div class="phase-subtitle">Validation, evaluation, maintenance</div>
@@ -951,19 +951,19 @@
             </div>
             <div class="tool-stage-body">
               <div class="tool-row">
-                <div class="tool-name">📋 Data Dictionary</div>
+                <div class="tool-name">Data Dictionary</div>
                 <div class="tool-detail">Define data fields with name, type, size, range, and validation rules. <em>Example artefact:</em> A table showing field <code>member_id</code> as VARCHAR(8), required, format "S" + 7 digits, auto-generated.</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">🖼️ Storyboards</div>
+                <div class="tool-name">Storyboards</div>
                 <div class="tool-detail">Hand-drawn or digital sketches of each screen/view in the application. <em>Example artefact:</em> Wireframe of the login screen showing input fields, submit button, and error message location.</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">👥 Use Case Diagrams</div>
+                <div class="tool-name">Use Case Diagrams</div>
                 <div class="tool-detail">UML diagram showing system actors and their interactions with system functions. <em>Example artefact:</em> Use case diagram showing Member, Staff, and Admin actors with their respective use cases (Search Books, Issue Loan, Generate Report).</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">📝 User Stories</div>
+                <div class="tool-name">User Stories</div>
                 <div class="tool-detail">Requirement statements in "As a [role], I want [feature] so that [benefit]" format with acceptance criteria. <em>Example artefact:</em> "As a member, I want to search books by title so I can find available items quickly." With 4 measurable acceptance criteria.</div>
               </div>
             </div>
@@ -976,35 +976,35 @@
             </div>
             <div class="tool-stage-body">
               <div class="tool-row">
-                <div class="tool-name">📐 Structure Charts</div>
+                <div class="tool-name">Structure Charts</div>
                 <div class="tool-detail">Hierarchical decomposition of the system into modules showing data passing between levels. <em>Example artefact:</em> Top-level [Main] decomposed into [Authentication], [Catalogue], [Loans], [Reports] with sub-modules under each.</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">💬 Pseudocode</div>
+                <div class="tool-name">Pseudocode</div>
                 <div class="tool-detail">Language-independent algorithm description using keywords BEGIN/END, IF/THEN/ELSE, FOR/WHILE, INPUT/OUTPUT. <em>Example artefact:</em> Pseudocode for a binary search algorithm across the book catalogue, 10–15 lines.</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">🔀 Flowcharts</div>
+                <div class="tool-name">Flowcharts</div>
                 <div class="tool-detail">Visual algorithm using standard symbols: terminator (BEGIN/END), rectangle (process), diamond (decision), parallelogram (input/output), double-sided rectangle (subprogram). <em>Example artefact:</em> Flowchart of the login validation process including the two-factor auth branch.</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">🧩 Class Diagrams (UML)</div>
+                <div class="tool-name">Class Diagrams (UML)</div>
                 <div class="tool-detail">Show classes with attributes (+/-/#), methods, and relationships (inheritance ▷, association ─, composition ◆). <em>Example artefact:</em> Class diagram showing <code>User ◁ Member</code> and <code>User ◁ Staff</code> inheritance with shared and unique attributes.</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">🗃️ ERD (Entity Relationship Diagram)</div>
+                <div class="tool-name">ERD (Entity Relationship Diagram)</div>
                 <div class="tool-detail">Database schema showing tables, primary keys (PK), foreign keys (FK), and cardinality. <em>Example artefact:</em> ERD showing Member (PK: member_id) one-to-many Loans (FK: member_id) many-to-one Book (PK: book_id).</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">🔄 Data Flow Diagrams</div>
+                <div class="tool-name">Data Flow Diagrams</div>
                 <div class="tool-detail">Show how data flows between external entities, processes, and data stores using Gane-Sarson or Yourdon notation. Level 0 (context) and Level 1 DFDs required. <em>Example artefact:</em> Level 1 DFD showing the Loan Management process decomposed into sub-processes.</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">📅 Gantt Chart</div>
+                <div class="tool-name">Gantt Chart</div>
                 <div class="tool-detail">Project schedule showing tasks, durations, dependencies, and milestones on a timeline. <em>Example artefact:</em> 10-week chart with tasks grouped by SDLC phase, including milestones for design review, code freeze, and UAT.</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">📋 Test Plan</div>
+                <div class="tool-name">Test Plan</div>
                 <div class="tool-detail">Document defining the testing scope, types, test cases (before coding), schedule, and entry/exit criteria. <em>Example artefact:</em> Test plan with 20 test cases derived from user stories, categorised by type (unit/integration/UAT).</div>
               </div>
             </div>
@@ -1017,19 +1017,19 @@
             </div>
             <div class="tool-stage-body">
               <div class="tool-row">
-                <div class="tool-name">🐍 Source Code</div>
+                <div class="tool-name">Source Code</div>
                 <div class="tool-detail">Implementation in Python (or web stack) following PEP 8, with docstrings, modular structure, and input validation. <em>Example artefact:</em> <code>book_service.py</code> with class <code>BookService</code>, docstrings, and parameterised SQL queries.</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">🔀 Git Version Control</div>
+                <div class="tool-name">Git Version Control</div>
                 <div class="tool-detail">Atomic commits with descriptive messages, feature branches, and a main branch protected by pull requests. <em>Example artefact:</em> Git log showing 40+ commits across development with messages like "feat: add book search by ISBN" and "fix: resolve off-by-one in loan due date".</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">🗄️ SQL Implementation</div>
+                <div class="tool-name">SQL Implementation</div>
                 <div class="tool-detail">Parameterised queries to prevent SQL injection, transactions for data integrity, and views for complex reporting queries. <em>Example artefact:</em> <code>CREATE TABLE members</code> with constraints, and a parameterised <code>SELECT</code> with JOIN for the loan report.</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">📝 Inline Documentation</div>
+                <div class="tool-name">Inline Documentation</div>
                 <div class="tool-detail">Docstrings for all public functions/classes, inline comments for complex logic, and a README with setup instructions. <em>Example artefact:</em> Google-style docstrings on every function with Args, Returns, and Raises documented.</div>
               </div>
             </div>
@@ -1042,19 +1042,19 @@
             </div>
             <div class="tool-stage-body">
               <div class="tool-row">
-                <div class="tool-name">📊 Test Tables</div>
+                <div class="tool-name">Test Tables</div>
                 <div class="tool-detail">Document every test with ID, description, type (unit/integration/system/UAT), data category, input, expected, actual, and pass/fail. <em>Example artefact:</em> 20-row table covering all 8 user stories with 3 data categories each.</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">🧪 Python unittest</div>
+                <div class="tool-name">Python unittest</div>
                 <div class="tool-detail">Automated test cases using <code>unittest.TestCase</code> subclasses. <em>Example artefact:</em> <code>test_book_service.py</code> with 10 test methods covering add, search, delete, and edge cases, run with <code>python -m unittest discover</code>.</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">🐛 Defect Log</div>
+                <div class="tool-name">Defect Log</div>
                 <div class="tool-detail">Track bugs with ID, description, severity, steps to reproduce, fix, and status. <em>Example artefact:</em> 8-row log showing defects discovered during UAT, their severities (1 critical, 3 high, 4 medium), and all resolved before submission.</div>
               </div>
               <div class="tool-row">
-                <div class="tool-name">📋 UAT Feedback Forms</div>
+                <div class="tool-name">UAT Feedback Forms</div>
                 <div class="tool-detail">Structured feedback collected from real or simulated clients during acceptance testing. <em>Example artefact:</em> Signed form from the teacher-acting-as-client noting 3 change requests, with change request log showing how each was addressed.</div>
               </div>
             </div>
@@ -1078,7 +1078,7 @@
           <!-- Spotify -->
           <div class="case-study success">
             <div class="case-study-header">
-              <span class="case-verdict">✅ Effective</span>
+              <span class="case-verdict">Effective</span>
               <div>
                 <h4>Spotify — Continuous Agile Delivery</h4>
                 <div class="case-company">Streaming Platform · Founded 2006 · 600M+ users</div>
@@ -1086,23 +1086,23 @@
             </div>
             <div class="case-study-body">
               <div class="case-phase-row">
-                <div class="case-phase-label">🎯 Phase 1</div>
+                <div class="case-phase-label">Phase 1</div>
                 <div class="case-phase-detail">Spotify identified a clear, bounded problem: illegal music piracy was rampant because legal alternatives were too expensive and inconvenient. Their requirements were built around eliminating friction for users, not replicating iTunes. The problem statement was sharp.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">🔬 Phase 2</div>
+                <div class="case-phase-label">Phase 2</div>
                 <div class="case-phase-detail">Spotify developed the "Squad Model" — an architectural plan for how independent squads (8–12 people) would own distinct product areas. This design decision allowed each squad to move independently through the SDLC simultaneously. Architecture was explicitly designed for parallelism.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">💻 Phase 3</div>
+                <div class="case-phase-label">Phase 3</div>
                 <div class="case-phase-detail">Squads used two-week sprints with continuous integration (CI). Every commit to main triggered automated tests and a build. Feature flags allowed incomplete features to be deployed to production but hidden from users — enabling real testing in production conditions.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">🧪 Phase 4</div>
+                <div class="case-phase-label">Phase 4</div>
                 <div class="case-phase-detail">Spotify used A/B testing to evaluate features with real users before full rollout. Data-driven evaluation replaced subjective opinion. The Discover Weekly feature (2015) was only rolled out globally after A/B tests showed a 25% increase in listening time.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">📚 HSC Lesson</div>
+                <div class="case-phase-label">HSC Lesson</div>
                 <div class="case-phase-detail"><strong>Methodology justification matters.</strong> Spotify chose full Agile because requirements evolved rapidly (new streaming rights, new device types), client feedback was immediate (user data), and the team was large and self-managing. Apply this reasoning to justify your own methodology choice in the project.</div>
               </div>
             </div>
@@ -1111,7 +1111,7 @@
           <!-- NASA Mars Rover -->
           <div class="case-study success">
             <div class="case-study-header">
-              <span class="case-verdict">✅ Effective</span>
+              <span class="case-verdict">Effective</span>
               <div>
                 <h4>NASA Mars Rover (Perseverance) — WAGILE for Safety-Critical Systems</h4>
                 <div class="case-company">NASA JPL · Launched 2020 · $2.7B USD</div>
@@ -1119,23 +1119,23 @@
             </div>
             <div class="case-study-body">
               <div class="case-phase-row">
-                <div class="case-phase-label">🎯 Phase 1</div>
+                <div class="case-phase-label">Phase 1</div>
                 <div class="case-phase-detail">Requirements were exhaustively defined before any design began. Every requirement had a priority level, rationale, source, and verification method. Non-functional requirements (reliability: must operate autonomously for 1 Martian year; safety: must not damage sample collection equipment) were documented as rigorously as functional requirements.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">🔬 Phase 2</div>
+                <div class="case-phase-label">Phase 2</div>
                 <div class="case-phase-detail">JPL used formal design reviews (PDR — Preliminary Design Review, CDR — Critical Design Review) with independent review boards before proceeding to implementation. Structure charts and formal specifications were produced for every subsystem. Security architecture was a first-class concern in the design phase.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">💻 Phase 3</div>
+                <div class="case-phase-label">Phase 3</div>
                 <div class="case-phase-detail">Code was written in C and C++ with strict adherence to NASA's coding standard (NPR 7150.2). Every function had a maximum of 60 lines. No dynamic memory allocation after initialisation. These constraints were enforced by automated tools. Modular design allowed each subsystem team to work independently.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">🧪 Phase 4</div>
+                <div class="case-phase-label">Phase 4</div>
                 <div class="case-phase-detail">JPL conducted over 10,000 unit tests with 100% code coverage on safety-critical paths. They ran the full mission simulation in a dedicated "testbed" rover on Earth before launch. Every defect was logged, root-caused, and fixed before certification. UAT was simulated with mission operators in a Mars-environment test lab.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">📚 HSC Lesson</div>
+                <div class="case-phase-label">HSC Lesson</div>
                 <div class="case-phase-detail"><strong>Non-functional requirements deserve equal weight.</strong> Reliability, safety, and performance were treated with the same rigour as functional features. In HSC projects, many students only test <em>what</em> the software does, not <em>how well</em> it does it. Test non-functional requirements explicitly.</div>
               </div>
             </div>
@@ -1144,7 +1144,7 @@
           <!-- GitHub Copilot -->
           <div class="case-study success">
             <div class="case-study-header">
-              <span class="case-verdict">✅ Effective</span>
+              <span class="case-verdict">Effective</span>
               <div>
                 <h4>GitHub Copilot — Iterative Research-Driven Development</h4>
                 <div class="case-company">GitHub / Microsoft · Launched 2021</div>
@@ -1152,19 +1152,19 @@
             </div>
             <div class="case-study-body">
               <div class="case-phase-row">
-                <div class="case-phase-label">🎯 Phase 1</div>
+                <div class="case-phase-label">Phase 1</div>
                 <div class="case-phase-detail">The identified problem was developer productivity: developers spent significant time writing boilerplate code. The team validated this with developer surveys and analysis of code search patterns on GitHub's existing platform.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">🔬 Phase 2</div>
+                <div class="case-phase-label">Phase 2</div>
                 <div class="case-phase-detail">The team spent significant time in the research phase exploring model architectures (Codex, a variant of GPT-3) before committing to an implementation. Technical feasibility was assessed via prototype. Security architecture had to address the risk of the model reproducing copyrighted code — a non-functional security requirement addressed in the design phase.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">🧪 Phase 4</div>
+                <div class="case-phase-label">Phase 4</div>
                 <div class="case-phase-detail">Copilot was released as a technical preview with a limited user base (Phase 4 as UAT at scale). Evaluation was data-driven: GitHub measured task completion time, suggestion acceptance rates, and code quality metrics. The iteration loop from evaluation back to Phase 3 (model fine-tuning) happened continuously.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">📚 HSC Lesson</div>
+                <div class="case-phase-label">HSC Lesson</div>
                 <div class="case-phase-detail"><strong>Research is a genuine phase, not a checkbox.</strong> The Copilot team's willingness to invest in research before committing to an implementation direction prevented expensive wrong-turns. In HSC terms: don't jump from a vague problem statement straight to coding. Research existing solutions, evaluate alternatives, and justify your design decisions.</div>
               </div>
             </div>
@@ -1188,7 +1188,7 @@
           <!-- Healthcare.gov -->
           <div class="case-study failure">
             <div class="case-study-header">
-              <span class="case-verdict">❌ Ineffective</span>
+              <span class="case-verdict">Ineffective</span>
               <div>
                 <h4>Healthcare.gov — Phase 1 &amp; 4 Failures</h4>
                 <div class="case-company">US Government · Launched October 2013 · $600M+ USD</div>
@@ -1200,15 +1200,15 @@
                 <div class="case-phase-detail">The US Affordable Care Act website launched nationally on October 1, 2013 and immediately crashed. Within the first day, only 6 people out of 4.7 million visitors successfully enrolled. The site was offline or severely degraded for over two months.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">🎯 Phase 1 Failure</div>
+                <div class="case-phase-label">Phase 1 Failure</div>
                 <div class="case-phase-detail">Requirements were poorly defined and changed repeatedly as legislation was still being drafted. Non-functional requirements for load capacity were not specified — the system was never designed to handle millions of simultaneous users. The scope was never frozen.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">🧪 Phase 4 Failure</div>
+                <div class="case-phase-label">Phase 4 Failure</div>
                 <div class="case-phase-detail">End-to-end system testing was only conducted in the final two weeks before launch. Load testing was inadequate — the system was tested with hundreds of simulated users when it needed to handle millions. UAT was effectively skipped. Senior officials were told the system was ready based on unit tests that passed, without integration or system testing.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">📚 HSC Lesson</div>
+                <div class="case-phase-label">HSC Lesson</div>
                 <div class="case-phase-detail"><strong>Testing types are not interchangeable.</strong> Unit tests passing does not mean the system works. You must test integration and system behaviour explicitly. In your major project, document <em>all four</em> testing types — assessors know the difference and will check whether you demonstrated each one.</div>
               </div>
             </div>
@@ -1217,7 +1217,7 @@
           <!-- Boeing 737 MAX -->
           <div class="case-study failure">
             <div class="case-study-header">
-              <span class="case-verdict">❌ Ineffective</span>
+              <span class="case-verdict">Ineffective</span>
               <div>
                 <h4>Boeing 737 MAX MCAS — Design and Testing Phase Catastrophe</h4>
                 <div class="case-company">Boeing · 346 fatalities in two crashes · 2018–2019</div>
@@ -1229,15 +1229,15 @@
                 <div class="case-phase-detail">The Maneuvering Characteristics Augmentation System (MCAS) — software that automatically pushed the nose of the aircraft down — was implicated in two fatal crashes (Lion Air 610 and Ethiopian Airlines 302). 346 people died. The entire 737 MAX fleet was grounded for 20 months.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">🔬 Phase 2 Failure</div>
+                <div class="case-phase-label">Phase 2 Failure</div>
                 <div class="case-phase-detail">The MCAS system was expanded in capability late in the design process without a corresponding review of safety requirements. Engineers relied on a single angle-of-attack sensor (a single point of failure) without a design review that would have caught this architectural flaw. The security/safety architecture was not revisited when the scope of MCAS changed.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">🧪 Phase 4 Failure</div>
+                <div class="case-phase-label">Phase 4 Failure</div>
                 <div class="case-phase-detail">Testing did not simulate the failure mode where the single sensor sent erroneous data. The FAA's own certification process accepted Boeing's safety analysis without independently verifying it. There was no test case for "what if the only angle-of-attack sensor fails?" — a boundary/erroneous data case that was never tested.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">📚 HSC Lesson</div>
+                <div class="case-phase-label">HSC Lesson</div>
                 <div class="case-phase-detail"><strong>Erroneous data testing is not optional.</strong> Your test plan must include cases where inputs are wrong, missing, or malformed. Single points of failure must be identified in the design phase (Phase 2) and tested explicitly in Phase 4. When you change the scope of a feature mid-development, go back to Phase 2 and review the design impact before continuing to Phase 3.</div>
               </div>
             </div>
@@ -1246,7 +1246,7 @@
           <!-- Therac-25 -->
           <div class="case-study failure">
             <div class="case-study-header">
-              <span class="case-verdict">❌ Ineffective</span>
+              <span class="case-verdict">Ineffective</span>
               <div>
                 <h4>Therac-25 — Software Defects with Fatal Consequences</h4>
                 <div class="case-company">Atomic Energy of Canada Limited · 6 radiation overdose incidents · 1985–1987</div>
@@ -1258,15 +1258,15 @@
                 <div class="case-phase-detail">The Therac-25 was a computer-controlled radiation therapy machine. A race condition in its software could cause the machine to deliver radiation doses up to 100 times the intended amount, resulting in radiation burns, paralysis, and death for at least six patients.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">💻 Phase 3 Failure</div>
+                <div class="case-phase-label">Phase 3 Failure</div>
                 <div class="case-phase-detail">Earlier hardware safety interlocks had been removed and replaced with software-only controls when the new software version was written. A race condition — where operator inputs and machine state collided in a specific timing window — was never detected because the defect only occurred when an operator typed quickly at a specific speed. The defect was in the code but also in the assumptions about operator behaviour (requirements).</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">🧪 Phase 4 Failure</div>
+                <div class="case-phase-label">Phase 4 Failure</div>
                 <div class="case-phase-detail">Testing was insufficient and relied on the same operator behaviour patterns as normal use. The specific sequence of rapid keystrokes that triggered the race condition was never included in the test plan. Patient reports of overdoses were dismissed as machine errors for over a year before the software root cause was identified.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">📚 HSC Lesson</div>
+                <div class="case-phase-label">HSC Lesson</div>
                 <div class="case-phase-detail"><strong>Software in safety-critical contexts requires defence in depth.</strong> Never rely on software as the <em>only</em> safeguard. This maps to the concept of redundancy in security architecture. In software terms: implement multiple layers of validation (client-side AND server-side). Always test edge cases systematically, not just the "happy path" — the defect that kills is always in the untested edge case.</div>
               </div>
             </div>
@@ -1275,7 +1275,7 @@
           <!-- Twitter/X rewrite -->
           <div class="case-study failure">
             <div class="case-study-header">
-              <span class="case-verdict">❌ Ineffective</span>
+              <span class="case-verdict">Ineffective</span>
               <div>
                 <h4>Twitter/X — Rushed Production Releases Without Testing</h4>
                 <div class="case-company">Twitter/X · 2022–2023 · Post-acquisition period</div>
@@ -1287,15 +1287,15 @@
                 <div class="case-phase-detail">Following the 2022 acquisition, Twitter's new management rapidly pushed features into production (Twitter Blue verification, API changes, UI modifications) without adequate testing cycles. Several features were rolled back within hours of launch due to widespread bugs. The platform experienced multiple outages that would not have occurred with proper Phase 4 validation.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">🔬 Phase 2 Failure</div>
+                <div class="case-phase-label">Phase 2 Failure</div>
                 <div class="case-phase-detail">New feature designs were not reviewed against existing system architecture. Twitter Blue verification (the blue tick) was released without designing for abuse prevention — within hours, impersonators had purchased verification for brands including major companies and politicians, causing significant reputational and financial damage (Eli Lilly's insulin pricing tweet caused a $15B stock drop).</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">🧪 Phase 4 Failure</div>
+                <div class="case-phase-label">Phase 4 Failure</div>
                 <div class="case-phase-detail">Features were pushed to all users simultaneously without incremental rollout (A/B testing or staged deployment). There was no UAT phase with representative user groups before full launch. Feedback from engineers warning about testing gaps was reportedly dismissed.</div>
               </div>
               <div class="case-phase-row">
-                <div class="case-phase-label">📚 HSC Lesson</div>
+                <div class="case-phase-label">HSC Lesson</div>
                 <div class="case-phase-detail"><strong>Speed and quality are a trade-off that must be managed, not ignored.</strong> Skipping Phase 4 to ship faster creates technical debt and real-world harm. In HSC terms: rushing your testing to finish the project is the most common student mistake. A well-tested project with fewer features is always preferable to an untested project with many features.</div>
               </div>
             </div>
