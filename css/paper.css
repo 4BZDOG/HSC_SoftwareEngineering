@@ -2380,3 +2380,136 @@ a.pg-seen::after {
   color: var(--pc-year);
 }
 .eg em { font-style: normal; }
+
+/* ============================================================
+   Certified Resources page (topics/resources.html)
+   ============================================================ */
+.res-page .res-note { margin-top: 0; }
+.res-section { margin: 2.5rem 0 0; scroll-margin-top: 90px; }
+.res-head { margin-bottom: 1.1rem; }
+.res-head h2 {
+  margin: .45rem 0 .25rem;
+  padding: 0;
+  border: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  letter-spacing: -.015em;
+  color: var(--pc-ink);
+  background: none;
+}
+.res-head h2::before, .res-head h2::after { display: none; }
+.res-head p { margin: 0; color: var(--pc-ink-soft); max-width: 62ch; }
+.res-stamp {
+  display: inline-block;
+  padding: .16rem .55rem .12rem;
+  border-radius: 4px;
+  font: 800 .64rem var(--font-body);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transform: rotate(-1.5deg);
+}
+.res-stamp-nesa { color: #fff; background: var(--pc-terracotta); box-shadow: 1px 2px 0 var(--pc-mustard); }
+.res-stamp-std { color: var(--pc-teal); box-shadow: inset 0 0 0 2px var(--pc-teal); }
+:root[data-theme="dark"] .res-stamp-nesa { color: #1b1916; }
+
+.res-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 1rem; }
+.res-card {
+  --tone: var(--pc-teal);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.1rem 1.05rem;
+  border-radius: 10px;
+  background: var(--pc-cream);
+  background-image: var(--pc-grain);
+  box-shadow: inset 0 3px 0 var(--tone), var(--pc-shadow-1);
+  transition: transform 260ms var(--pc-ease-out, ease), box-shadow 260ms ease;
+}
+#nesa-syllabus .res-card, #nesa-exam .res-card, #nesa-support .res-card { --tone: var(--pc-terracotta); }
+.res-card:hover, .res-card:focus-within { transform: translateY(-3px); box-shadow: inset 0 3px 0 var(--tone), var(--pc-shadow-2); }
+.res-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: .55rem; }
+.res-icon {
+  display: grid; place-items: center;
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  color: var(--tone);
+  background: color-mix(in srgb, var(--tone) 11%, var(--pc-cream));
+}
+.res-icon svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.res-fmt { font: 800 .62rem var(--font-body); letter-spacing: .1em; color: var(--pc-muted); padding: .12rem .4rem; border-radius: 4px; box-shadow: inset 0 0 0 1px var(--pc-rule-strong); }
+.content-body .res-title { margin: 0 0 .15rem; padding: 0; border: 0; font-size: 1.04rem; line-height: 1.35; }
+.content-body .res-title::before { display: none; }
+.res-title a { color: var(--pc-ink); text-decoration: none; }
+/* The whole card is the link target */
+.res-title a::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
+.res-title a::before { content: '↗'; float: right; margin-left: .4rem; color: var(--tone); transition: transform 220ms var(--pc-ease-out, ease); }
+.res-card:hover .res-title a::before { transform: translate(2px, -2px); }
+.res-title a:focus-visible { outline: none; }
+.res-card:has(.res-title a:focus-visible) { outline: 2px solid var(--pc-plum); outline-offset: 3px; }
+.res-pub { margin: 0 0 .5rem; font-size: .78rem; font-weight: 600; color: var(--pc-muted); }
+.res-why { margin: 0 0 .8rem; font-size: .9rem; line-height: 1.55; color: var(--pc-ink-soft); flex: 1; }
+.res-links { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; }
+.res-links-label { font: 700 .66rem var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--pc-muted); margin-right: .15rem; }
+.res-links .chip { position: relative; z-index: 1; font-size: .62rem; padding: .16rem .45rem; text-decoration: none; }
+.res-links a.chip:hover { filter: brightness(.95); text-decoration: underline; }
+@media (prefers-reduced-motion: reduce) {
+  .res-card, .res-title a::before { transition: none; }
+  .res-card:hover, .res-card:focus-within { transform: none; }
+}
+.res-links .chip { display: inline-flex; align-items: center; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; line-height: 1.4; }
+.res-links .chip-core { --tone: #b7811d; }
+:root[data-theme] .content-body .res-card .res-title {
+  margin: .1rem 0 .15rem;
+  padding: 0;
+  border: 0;
+  font-size: 1.04rem;
+}
+:root[data-theme] .content-body .res-card .res-title::before { display: none; }
+:root[data-theme] .content-body .res-head h2 {
+  margin: .45rem 0 .25rem;
+  padding: 0;
+  border: 0;
+  border-image: none;
+  background: none;
+  color: var(--pc-ink);
+  -webkit-text-fill-color: currentColor;
+  box-shadow: none;
+}
+:root[data-theme] .content-body .res-head h2::before,
+:root[data-theme] .content-body .res-head h2::after { display: none; }
+
+/* ── Home: the fourth study habit links to the resources page ── */
+@media (min-width: 1100px) {
+  :root[data-theme] .study-guide-grid:has(> :nth-child(4):last-child) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (min-width: 640px) and (max-width: 1099px) {
+  :root[data-theme] .study-guide-grid:has(> :nth-child(4):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.study-guide-card--link { color: inherit; text-decoration: none; box-shadow: inset 0 4px 0 var(--pc-terracotta), var(--pc-shadow-2); transition: transform 260ms var(--pc-ease-out, ease), box-shadow 260ms ease; }
+.study-guide-card--link:hover { transform: translateY(-4px) rotate(-.4deg); box-shadow: inset 0 4px 0 var(--pc-terracotta), var(--pc-shadow-3); }
+.study-guide-more { display: block; margin-top: .6rem; font-weight: 700; color: var(--pc-terracotta); }
+
+/* ── 404: every page one tap away ── */
+.lost-links { margin-top: 2.25rem; }
+.lost-label { margin: 0 0 .7rem; font: 800 .7rem var(--font-body); letter-spacing: .1em; text-transform: uppercase; color: var(--pc-muted); }
+.lost-links ul { display: flex; flex-wrap: wrap; justify-content: center; gap: .45rem; margin: 0; padding: 0; list-style: none; }
+.lost-link {
+  --tone: #b7811d;
+  display: inline-block;
+  padding: .38rem .75rem;
+  border-radius: 999px;
+  font-size: .84rem;
+  font-weight: 600;
+  color: var(--pc-ink);
+  text-decoration: none;
+  background: var(--pc-cream);
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--tone) 45%, transparent), var(--pc-shadow-1);
+  transition: transform 220ms var(--pc-spring, ease), background 160ms ease;
+}
+.lost-y12 { --tone: var(--pc-terracotta); }
+.lost-y11 { --tone: var(--pc-sage); }
+.lost-link:hover { transform: translateY(-2px) rotate(-1deg); background: color-mix(in srgb, var(--tone) 12%, var(--pc-cream)); }
+@media (prefers-reduced-motion: reduce) {
+  .lost-link, .study-guide-card--link { transition: none; }
+  .lost-link:hover, .study-guide-card--link:hover { transform: none; }
+}
