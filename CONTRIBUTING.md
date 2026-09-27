@@ -268,3 +268,13 @@ npm run diagrams   # draws new or edited diagrams as light and dark SVGs
 ```
 
 The source stays in the page inside `<template class="mermaid-source">`; edit it there and run `npm run diagrams` again. Use `npm run diagrams:all` to redraw everything (for example after changing the palette in `scripts/diagram-theme.js`). If Playwright cannot find a browser, run `npx playwright install chromium` or set `CHROMIUM_PATH`.
+
+## Animated diagrams
+
+Some concepts are processes: a forged request travelling to a bank, keys being exchanged, a model training, a rollout over several weeks. These are drawn as **animated diagrams** in the same paper-cut style as the rest of the site, with captions, play/pause, step controls, scenario tabs and a text transcript. They respect "reduce motion" and work at phone width and in dark mode.
+
+- `js/anim.js` is the engine and the shared kit of paper cut-outs (characters, buildings, browser windows, envelopes, keys, stamps, plots); `css/anim.css` styles it.
+- Each animation is one file, `js/anims/<name>.js`, loaded on demand from `<div class="anim" data-anim="<name>"></div>` inside a `.figure`.
+- A page with animations links `../css/anim.css` and `../js/anim.js` once. `scripts/check-site.py` checks the link and the scene file.
+
+The style guide, the scene API and a copy-paste template are in `.claude/skills/add-animation.md`.

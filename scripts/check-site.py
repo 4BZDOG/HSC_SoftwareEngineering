@@ -8,6 +8,7 @@ Fails (exit 1) when:
   * an internal link points at a page or #id that doesn't exist,
   * a page repeats an id,
   * <div>/<section>/<main>/<ul>/<ol>/<table> tags are unbalanced,
+  * an animated diagram has no scene in js/anims/, or its page doesn't load the engine,
   * js/glossary-data.js is out of date, or rebuilding the glossary changes glossary.html.
 """
 import hashlib
@@ -110,6 +111,25 @@ for path in sorted(glob.glob(os.path.join(ROOT, 'topics', '*.html'))):
                 exits = re.findall(rf'^\s*{d}\s*(--[^>]*?-->|-->)', code, re.M)
                 if any(e == '-->' for e in exits):
                     fail(f'{rel}: flowchart "{name}" has an unlabelled arrow leaving decision {d}')
+
+# 1e. Animated diagrams: each data-anim has a scene in js/anims/, and its page loads the engine
+for path in sorted(glob.glob(os.path.join(ROOT, 'topics', '*.html'))):
+    rel = os.path.relpath(path, ROOT)
+    src = open(path, encoding='utf-8').read()
+    names = re.findall(r'data-anim="([^"]+)"', src)
+    if not names:
+        continue
+    if '../css/anim.css' not in src or '../js/anim.js' not in src:
+        fail(f'{rel}: has animated diagrams but does not load css/anim.css and js/anim.js')
+    for name in names:
+        scene = os.path.join(ROOT, 'js', 'anims', name + '.js')
+        if not os.path.exists(scene):
+            fail(f'{rel}: animated diagram "{name}" has no scene file js/anims/{name}.js')
+        elif f"HSCAnim.define('{name}'" not in open(scene, encoding='utf-8').read():
+            fail(f'js/anims/{name}.js does not call HSCAnim.define(\'{name}\', …)')
+    for fig in re.findall(r'<figure class="figure">.*?</figure>', src, re.S):
+        if 'data-anim=' in fig and ('<span class="figure-kind">Animated diagram</span>' not in fig or 'figure-canvas--anim' not in fig):
+            fail(f'{rel}: an animated figure needs the "Animated diagram" kind and a .figure-canvas--anim canvas')
 
 # 1d. A term is bolded once per paragraph or list item: repeats, or a second
 #     spelling of it ("algorithm" then "algorithms"), add noise, not emphasis.
