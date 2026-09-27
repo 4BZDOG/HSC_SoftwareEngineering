@@ -1206,13 +1206,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const glossaryHref = inTopics ? 'glossary.html' : 'topics/glossary.html';
 
     const byId = new Map(data.map(t => [t.id, t]));
+    // Every obvious way a term is written in the notes: spaced, hyphenated or
+    // joined ("plain text", "plain-text", "plaintext"), singular or plural,
+    // possessive, Australian or US spelling, and straight or curly apostrophes.
     const lookup = new Map();          // lower-case spelling → { id, exact }
-    data.filter(t => t.link !== false).forEach(t => t.aliases.forEach(a => {
-      const acronym = /^[A-Z0-9/&-]{2,6}$/.test(a);
-      const forms = acronym ? [a, a + 's'] : [a, a + 's', a + 'es', a.replace(/y$/, 'ies')];
-      forms.forEach(f => {
-        const k = f.toLowerCase();
-        if (!lookup.has(k)) lookup.set(k, { id: t.id, exact: acronym ? f : null });
+    const add = (form, id, exact) => {
+      const k = form.toLowerCase();
+      if (!lookup.has(k)) lookup.set(k, { id, exact });
+    };
+    const numberForms = w => {
+      const out = [w];
+      if (/(?:ss|is|us)$/i.test(w)) out.push(w + 'es');                 // class → classes, analysis stays
+      else if (/[^aeiou]y$/i.test(w)) out.push(w.slice(0, -1) + 'ies'); // library → libraries
+      else if (/(?:s|x|z|ch|sh)$/i.test(w)) out.push(w + 'es');
+      else out.push(w + 's');
+      if (/[^s]s$/i.test(w) && !/(?:is|us|ies|ops)$/i.test(w) && w.length > 4) out.push(w.slice(0, -1)); // requirements → requirement
+      if (/ies$/i.test(w)) out.push(w.slice(0, -3) + 'y');              // user stories → user story
+      return out;
+    };
+    const spellingForms = w => {
+      const out = new Set([w]);
+      out.add(w.replace(/is(ation|e|ed|ing)\b/gi, 'iz$1'));             // authorisation ↔ authorization
+      out.add(w.replace(/iz(ation|e|ed|ing)\b/gi, 'is$1'));
+      out.add(w.replace(/'/g, '’'));
+      return [...out];
+    };
+    data.filter(t => t.link !== false).forEach(t => t.aliases.forEach(alias => {
+      const a = alias.replace(/’/g, "'");
+      if (/^[A-Z0-9/&-]{2,6}$/.test(a)) {                               // acronyms keep their case
+        [a, a + 's', a + "'s", a + '’s'].forEach(f => add(f, t.id, f));
+        return;
+      }
+      // Keep the alias's own separators ("non-functional requirements") and
+      // also try it all spaced, all hyphenated and all joined up.
+      const words = a.split(/[\s-]+/);
+      const own = a.match(/[\s-]+/g) || [];
+      const sepSets = [own, ...[' ', '-', ''].map(j => own.map(() => j))];
+      sepSets.forEach(seps => {
+        numberForms(words[words.length - 1]).forEach(last => {
+          const parts = [...words.slice(0, -1), last];
+          const base = parts.reduce((acc, w, i) => i ? acc + seps[i - 1] + w : w, '');
+          spellingForms(base).forEach(f => {
+            add(f, t.id, null);
+            add(f + "'s", t.id, null);
+            add(f + '’s', t.id, null);
+          });
+        });
       });
     }));
     const spellings = [...lookup.keys()].sort((a, b) => b.length - a.length)
@@ -1248,7 +1287,7 @@ document.addEventListener('DOMContentLoaded', () => {
       pattern.lastIndex = 0;
       while ((m = pattern.exec(text))) {
         const hit = lookup.get(m[0].toLowerCase());
-        if (!hit || (hit.exact && m[0] !== hit.exact && m[0] !== hit.exact.replace(/s$/, ''))) continue;
+        if (!hit || (hit.exact && m[0] !== hit.exact)) continue;
         if (used.has(hit.id)) continue;
         used.add(hit.id);
         frag = frag || document.createDocumentFragment();

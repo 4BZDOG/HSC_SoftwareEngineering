@@ -998,7 +998,6 @@ window.HSC_GLOSSARY = [
 "id": "term-implementation-methods",
 "name": "Implementation Methods (Direct, Phased, Parallel, Pilot)",
 "aliases": [
-"Direct, Phased, Parallel, Pilot",
 "Implementation Methods"
 ],
 "def": "Ways to change over from an old system to a new one: all at once (direct), in stages (phased), both running together (parallel), or at one site first (pilot).",
@@ -1236,6 +1235,7 @@ window.HSC_GLOSSARY = [
 "id": "term-mechatronics",
 "name": "Mechatronics",
 "aliases": [
+"Mechatronic",
 "Mechatronics"
 ],
 "def": "An interdisciplinary field integrating mechanical, electrical, and software engineering to design intelligent systems, robotics, and embedded devices.",
@@ -2096,7 +2096,9 @@ window.HSC_GLOSSARY = [
 "id": "term-system-testing",
 "name": "Unit, Subsystem and System Testing",
 "aliases": [
-"Unit, Subsystem and System Testing"
+"Subsystem testing",
+"System testing",
+"Unit testing"
 ],
 "def": "Testing at three levels: single units such as functions, groups of units working together, and the whole system.",
 "example": "Test add_to_cart(), then the checkout subsystem, then a full order from login to receipt.",

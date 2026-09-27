@@ -111,6 +111,29 @@ for path in sorted(glob.glob(os.path.join(ROOT, 'topics', '*.html'))):
                 if any(e == '-->' for e in exits):
                     fail(f'{rel}: flowchart "{name}" has an unlabelled arrow leaving decision {d}')
 
+# 1d. A term is bolded once per paragraph or list item: repeats, or a second
+#     spelling of it ("algorithm" then "algorithms"), add noise, not emphasis.
+def bold_key(fragment):
+    w = text(fragment).lower().replace('’', "'")
+    w = re.sub(r"'s$", '', w)
+    w = re.sub(r'[\s-]+', '', w).replace('isation', 'ization')
+    return re.sub(r'(ies|es|s)$', '', w)
+
+
+for page in sorted(glob.glob(os.path.join(ROOT, 'topics', '*.html'))):
+    name = os.path.basename(page)
+    if name in ('glossary.html', 'resources.html'):
+        continue
+    src = open(page, encoding='utf-8').read()
+    for block in re.findall(r'<(?:p|li)(?: [^>]*)?>.*?</(?:p|li)>', src, re.S):
+        seen = set()
+        for frag in re.findall(r'<strong>((?:(?!</?strong>).)*?)</strong>', block, re.S):
+            key = bold_key(frag)
+            if len(key) > 2 and not text(frag).endswith(':') and key in seen:
+                fail(f'{name}: "{text(frag)}" is bolded more than once in one paragraph')
+                break
+            seen.add(key)
+
 # 2–4. Links, ids, balance
 ids = {}
 for path in PAGES:
