@@ -1902,3 +1902,137 @@ a.pg-seen::after {
 :root[data-theme] .figure-canvas .mermaid { display: block; text-align: left; }
 .figure-canvas.is-scrollable svg { margin: 0; }
 .quiz-opt.is-answer:has(input:checked) .quiz-letter { background: var(--pc-sage); transform: none; }
+
+/* ============================================================
+   Polish pass: glossary and home hero
+   ============================================================ */
+
+/* Topic headers: keep the text clear of the paper scenery */
+.topic-header .pc-diorama svg { height: clamp(90px, 9.5vw, 150px); }
+:root[data-theme] .topic-header { padding-bottom: clamp(5.5rem, 10vw, 9rem); }
+
+/* ── Glossary chips: the course's year colours ── */
+:root[data-theme] .chip {
+  border: 0;
+  border-radius: 4px;
+  font-weight: 800;
+  letter-spacing: .07em;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tone) 35%, transparent);
+  background: color-mix(in srgb, var(--tone) 12%, var(--pc-cream));
+  color: color-mix(in srgb, var(--tone) 80%, var(--pc-ink));
+}
+:root[data-theme] .chip-y11  { --tone: var(--pc-sage); }
+:root[data-theme] .chip-y12  { --tone: var(--pc-terracotta); }
+:root[data-theme] .chip-core { --tone: #b7811d; }
+:root[data-theme="dark"] .chip { color: color-mix(in srgb, var(--tone) 70%, #fff); background: color-mix(in srgb, var(--tone) 18%, #1f1c18); }
+
+/* Stats and search: one paper strip */
+:root[data-theme] .glossary-stats {
+  border: 0;
+  border-radius: 10px;
+  background: var(--pc-cream);
+  background-image: var(--pc-grain);
+  box-shadow: var(--pc-shadow-2);
+}
+:root[data-theme] .glossary-stat-num { font-family: var(--font-display); color: var(--pc-ink); font-weight: 700; }
+:root[data-theme] .glossary-stat-label { color: var(--pc-muted); }
+:root[data-theme] .glossary-stats-divider { background: var(--pc-rule); }
+
+/* A–Z bar: a paper tab strip; one scrolling row on phones */
+:root[data-theme] .alpha-jump {
+  border: 0;
+  border-radius: 999px;
+  padding: .4rem .6rem;
+  background: var(--pc-cream);
+  background-image: var(--pc-grain);
+  box-shadow: var(--pc-shadow-2);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+:root[data-theme] .alpha-btn {
+  border-radius: 999px;
+  border: 0;
+  box-shadow: none;
+  color: var(--pc-ink-soft);
+  transition: background 160ms ease, color 160ms ease, transform 260ms var(--pc-spring, ease);
+}
+:root[data-theme] .alpha-btn:hover { background: var(--pc-sheet); color: var(--pc-ink); transform: translateY(-2px); }
+:root[data-theme] .alpha-btn.active {
+  background: var(--pc-terracotta);
+  color: #fff;
+  box-shadow: 1px 2px 0 var(--pc-mustard);
+  transform: rotate(-6deg) scale(1.08);
+}
+@media (max-width: 768px) {
+  :root[data-theme] .alpha-jump {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+    border-radius: 12px;
+    margin-inline: -.25rem;
+    -webkit-mask: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+    mask: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+  }
+  :root[data-theme] .alpha-jump::-webkit-scrollbar { display: none; }
+  :root[data-theme] .alpha-btn { flex: none; width: 2.3rem; height: 2.3rem; scroll-snap-align: center; }
+}
+
+/* Letter headings and term cards */
+:root[data-theme] .glossary-letter-header {
+  font-family: var(--font-display);
+  color: var(--pc-terracotta);
+  text-shadow: 2px 2px 0 color-mix(in srgb, var(--pc-mustard) 55%, transparent);
+}
+:root[data-theme] .glossary-divider-line { background: repeating-linear-gradient(90deg, var(--pc-rule-strong) 0 6px, transparent 6px 11px); height: 1px; opacity: 1; }
+:root[data-theme] .glossary-term {
+  border: 0;
+  border-radius: 8px;
+  background: var(--pc-cream);
+  background-image: var(--pc-grain);
+  box-shadow: var(--pc-shadow-1);
+  transition: transform 260ms var(--pc-ease-out, ease), box-shadow 260ms ease;
+}
+:root[data-theme] .glossary-term:hover { transform: translateY(-3px); box-shadow: var(--pc-shadow-2); }
+:root[data-theme] .glossary-term:target { box-shadow: 0 0 0 2px var(--pc-mustard), var(--pc-shadow-2); }
+
+/* ── Home hero: the headline sets itself, letter by letter ── */
+.pc-letters { display: inline-block; white-space: nowrap; }
+.pc-letter {
+  display: inline-block;
+  transform-origin: 50% 90%;
+  animation: pc-letter-in 720ms var(--pc-spring, cubic-bezier(.34,1.56,.64,1)) both;
+  animation-delay: calc(420ms + var(--i) * 38ms);
+}
+.pc-letter.is-space { width: .26em; }
+.pc-letter.is-set { animation: none; }
+@keyframes pc-letter-in {
+  from { opacity: 0; transform: translateY(.45em) rotate(8deg) scale(.9); }
+  to   { opacity: 1; transform: none; }
+}
+/* Elastic hover, like pulling at a paper cut-out */
+@media (hover: hover) {
+  .pc-letter.is-set.is-pulled { animation: pc-letter-pull 620ms cubic-bezier(.3,1.8,.5,1); }
+}
+@keyframes pc-letter-pull {
+  0%   { transform: none; }
+  30%  { transform: translateY(-.16em) scaleY(1.14) rotate(-4deg); }
+  60%  { transform: translateY(.03em) scaleY(.94); }
+  100% { transform: none; }
+}
+.hero-inner > * { animation: pc-rise 700ms var(--pc-ease-out, ease) both; }
+.hero-inner > :nth-child(1) { animation-delay: 60ms; }
+.hero-inner > :nth-child(2) { animation-delay: 140ms; }
+.hero-inner > :nth-child(3) { animation-delay: 700ms; }
+.hero-inner > :nth-child(4) { animation-delay: 800ms; }
+.hero-inner > :nth-child(5) { animation-delay: 900ms; }
+.hero-inner > :nth-child(6) { animation-delay: 1000ms; }
+:root[data-theme] .hero-pill { transition: transform 300ms var(--pc-spring, ease); }
+:root[data-theme] .hero-pill:hover { transform: rotate(-3deg) scale(1.04); }
+:root[data-theme] .hero-stat + .hero-stat { border-left: 1px dashed var(--pc-rule-strong); }
+
+@media (prefers-reduced-motion: reduce) {
+  .pc-letter, .pc-letter.is-pulled, .hero-inner > * { animation: none; }
+  :root[data-theme] .alpha-btn, :root[data-theme] .glossary-term { transition: none; }
+}
