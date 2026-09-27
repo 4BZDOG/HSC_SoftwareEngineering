@@ -438,6 +438,10 @@ Mermaid diagrams are drawn at build time, not in the browser. After adding or ed
 - **Structure charts and DFDs** are drawn by `js/nesa-diagrams.js` from `js/nesa-diagram-data.js` (data/flag couples, decision diamond, repetition arc; circle processes, open-ended data stores). Use `<div class="nesa-diagram" data-diagram="key"></div>` as the canvas.
 - **Class diagrams** use inheritance, labelled relationships and multiplicities (1..1, 0..*, 1..*, 0..1) only.
 
+### Paper-style static diagram
+
+Prefer a still diagram drawn with the diagram kit over Mermaid for new figures: NESA symbols, paper style, clear text on every screen. See `.claude/skills/paper-diagrams.md`.
+
 ### Animated diagram
 
 For a process or a "what if" comparison, use an animated diagram: a `.figure` of kind "Animated diagram" whose canvas is `<div class="figure-canvas figure-canvas--anim"><div class="anim" data-anim="name"></div></div>`, with the scene in `js/anims/name.js`. See `.claude/skills/add-animation.md`.

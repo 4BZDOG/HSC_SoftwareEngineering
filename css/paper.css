@@ -2619,3 +2619,49 @@ a.pg-seen::after {
   :root[data-theme] .glossary-term.gl-flash { animation: none; box-shadow: 0 0 0 3px var(--pc-mustard), var(--pc-shadow-2); }
   :root[data-theme] .gl-filter { transition: none; }
 }
+
+/* ── Figure breakouts: "What to notice" and "Try this" ──────
+   Serif headings with a small inked icon; Try this is a paper
+   task card with a mustard tab. */
+.figure-notes > div:first-child {
+  padding: .7rem .85rem .75rem;
+  background: color-mix(in srgb, var(--pc-teal, #2a6f73) 7%, var(--pc-cream, #fbf7ee));
+  border-radius: 8px;
+  box-shadow: inset 3px 0 0 var(--pc-teal, #2a6f73);
+}
+.figure-notes h5,
+.figure-try strong {
+  display: flex; align-items: center; gap: .45rem;
+  margin: 0 0 .35rem;
+  font: italic 600 1rem/1.2 var(--font-display);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--pc-ink, #1c1a17);
+}
+.figure-notes h5::before,
+.figure-try strong::before {
+  content: '';
+  flex: none;
+  width: 1.35rem; height: 1.35rem;
+  border-radius: 50%;
+  background-color: var(--pc-teal, #2a6f73);
+  -webkit-mask: var(--fn-icon) center / 70% no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask: var(--fn-icon) center / 70% no-repeat exclude, linear-gradient(#000 0 0);
+}
+/* eye: look closely */
+.figure-notes h5 { --fn-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z' fill='none' stroke='%23000' stroke-width='2.2'/%3E%3Ccircle cx='12' cy='12' r='3.4'/%3E%3C/svg%3E"); }
+/* pencil: have a go */
+.figure-try strong { --fn-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 20l1-5L16 4l4 4L9 19z' fill='none' stroke='%23000' stroke-width='2.2' stroke-linejoin='round'/%3E%3Cpath d='M13.5 6.5l4 4' stroke='%23000' stroke-width='2.2'/%3E%3C/svg%3E"); }
+.figure-try strong::before { background-color: var(--pc-mustard, #e0a93b); }
+.figure-try {
+  padding: .7rem .85rem .75rem;
+  background: color-mix(in srgb, var(--pc-mustard, #e0a93b) 13%, var(--pc-cream, #fbf7ee));
+  border-radius: 8px;
+  box-shadow: inset 3px 0 0 var(--pc-mustard, #e0a93b), var(--pc-shadow-1);
+  line-height: 1.55;
+}
+.figure-notes ul { padding-left: 1.05rem; }
+.figure-notes li::marker { color: var(--pc-teal, #2a6f73); }
+:root[data-theme="dark"] .figure-notes > div:first-child { background: color-mix(in srgb, var(--pc-teal) 12%, var(--pc-cream)); }
+:root[data-theme="dark"] .figure-try { background: color-mix(in srgb, var(--pc-mustard) 12%, var(--pc-cream)); }

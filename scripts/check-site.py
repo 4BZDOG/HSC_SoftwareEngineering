@@ -128,8 +128,22 @@ for path in sorted(glob.glob(os.path.join(ROOT, 'topics', '*.html'))):
         elif f"HSCAnim.define('{name}'" not in open(scene, encoding='utf-8').read():
             fail(f'js/anims/{name}.js does not call HSCAnim.define(\'{name}\', …)')
     for fig in re.findall(r'<figure class="figure">.*?</figure>', src, re.S):
-        if 'data-anim=' in fig and ('<span class="figure-kind">Animated diagram</span>' not in fig or 'figure-canvas--anim' not in fig):
-            fail(f'{rel}: an animated figure needs the "Animated diagram" kind and a .figure-canvas--anim canvas')
+        if 'data-anim=' not in fig:
+            continue
+        animated = '<span class="figure-kind">Animated diagram</span>' in fig
+        if animated and 'figure-canvas--anim' not in fig:
+            fail(f'{rel}: an animated figure needs a .figure-canvas--anim canvas')
+        if not animated and 'figure-canvas--still' not in fig:
+            fail(f'{rel}: a still diagram needs a .figure-canvas--still canvas (or the "Animated diagram" kind)')
+        # A still flowchart follows the NESA rules too: BEGIN and END terminators
+        if '<span class="figure-kind">Flowchart</span>' in fig:
+            name = re.search(r'data-anim="([^"]+)"', fig).group(1)
+            scene = os.path.join(ROOT, 'js', 'anims', name + '.js')
+            code = open(scene, encoding='utf-8').read() if os.path.exists(scene) else ''
+            if not re.search(r"shape: 'terminator', text: 'BEGIN", code) or not re.search(r"shape: 'terminator', text: 'END", code):
+                fail(f'js/anims/{name}.js: a flowchart must start with a BEGIN terminator and finish with END')
+            if re.search(r"shape: '(circle|store|entity|card)'", code):
+                fail(f'js/anims/{name}.js: a flowchart may only use NESA flowchart symbols (terminator, process, decision, io, subprogram)')
 
 # 1d. A term is bolded once per paragraph or list item: repeats, or a second
 #     spelling of it ("algorithm" then "algorithms"), add noise, not emphasis.

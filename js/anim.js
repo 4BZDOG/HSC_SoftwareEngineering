@@ -420,6 +420,9 @@
     shock: 'M0 -32.5 a2.6 3.2 0 1 0 .01 0 Z'
   };
   const FILLED = new Set(['grin', 'shock']);
+  const NODE_TONES = { terminator: 'teal', decision: 'mustard-t', io: 'blush-t', subprogram: 'sheet', entity: 'sheet' };
+  const DARK_TONES = ['teal', 'terra', 'sage', 'plum'];      // text in --pa-on
+  const LIGHT_TONES = ['mustard', 'blush', 'sky'];           // text stays dark in both themes
 
   Object.assign(KIT, {
     // A paper bean character standing on (0, 0).
@@ -729,6 +732,213 @@
       g.clip = `url(#${clip})`;
       g.X = X; g.Y = Y;
       return g;
+    },
+
+    /* ── Diagram kit: still diagrams in the course notation ──
+       Symbols keep a clear ink outline (they are the notation) on paper
+       fills with a cut shadow. Shapes: process, terminator, decision, io,
+       subprogram (flowcharts); entity, circle, store (DFDs); card (free). */
+    node(parent, o) {
+      const w = o.w || 150, hh = o.h || 44, shape = o.shape || 'process';
+      // Each symbol has its own colour, so a reader learns the notation by colour too
+      const tone = o.tone || NODE_TONES[shape] || 'paper';
+      const g = this.g(parent, 'pa-node is-' + shape, { x: o.x || 0, y: o.y || 0 });
+      const art = this.g(g);
+      art.setAttribute('filter', 'url(#pa-cut)');
+      const cls = 'f-' + tone + (shape === 'card' ? ' pa-card-edge' : ' pa-outline');
+      const x0 = -w / 2, y0 = -hh / 2;
+      if (shape === 'decision') {
+        this.el('path', { d: `M0 ${y0} L${w / 2} 0 L0 ${hh / 2} L${x0} 0 Z`, class: cls }, art);
+      } else if (shape === 'io') {
+        const k = Math.min(16, hh * .35);
+        this.el('path', { d: `M${x0 + k} ${y0} H${w / 2} L${w / 2 - k} ${hh / 2} H${x0} Z`, class: cls }, art);
+      } else if (shape === 'circle') {
+        this.el('circle', { r: w / 2, class: cls }, art);
+      } else if (shape === 'store') {
+        this.el('rect', { x: x0, y: y0, width: w, height: hh, class: 'f-' + tone }, art);
+        this.el('path', { d: `M${w / 2} ${y0} H${x0} V${hh / 2} H${w / 2}`, class: 'pa-outline-line' }, art);
+        if (o.id) {
+          this.el('path', { d: `M${x0 + 30} ${y0} V${hh / 2}`, class: 'pa-outline-line' }, art);
+          this.text(g, o.id, { x: x0 + 15, y: 0, valign: 'middle', cls: 'pa-node-t pa-strong', size: o.size || 14 });
+        }
+      } else {
+        const rx = shape === 'terminator' ? hh / 2 : shape === 'card' ? 10 : 3;
+        this.el('rect', { x: x0, y: y0, width: w, height: hh, rx, class: cls }, art);
+        if (shape === 'subprogram') this.el('path', { d: `M${x0 + 9} ${y0} V${hh / 2} M${w / 2 - 9} ${y0} V${hh / 2}`, class: 'pa-outline-line' }, art);
+      }
+      if (o.text != null) {
+        const tx = shape === 'store' && o.id ? 15 : 0;
+        const ink = o.on || DARK_TONES.includes(tone) ? ' pa-on' : LIGHT_TONES.includes(tone) ? ' pa-ink-fixed' : '';
+        g.label = this.text(g, o.text, { x: tx, y: 0, valign: 'middle', cls: 'pa-node-t' + ink + (o.cls ? ' ' + o.cls : ''), size: o.size || 14, lh: 1.25 });
+      }
+      g.box = { x: o.x || 0, y: o.y || 0, w, h: hh, shape };
+      return g;
+    },
+
+    // A point on a node's edge: side is top, bottom, left or right; `off` slides along it.
+    port(n, side = 'bottom', off = 0) {
+      const { x, y, w, h: hh, shape } = n.box;
+      const r = shape === 'circle' ? w / 2 : null;
+      if (side === 'top') return [x + off, y - (r || hh / 2)];
+      if (side === 'bottom') return [x + off, y + (r || hh / 2)];
+      if (side === 'left') return [x - (r || w / 2), y + off];
+      return [x + (r || w / 2), y + off];
+    },
+
+    // Connector from a to b (nodes or [x, y] points). Right-angle elbows unless
+    // `via` points or `curve` (a bend in px, for DFD flows) are given.
+    link(parent, a, b, o = {}) {
+      const from = o.from || 'bottom', to = o.to || 'top';
+      const p0 = Array.isArray(a) ? a : this.port(a, from, o.fromOff || 0);
+      const p1 = Array.isArray(b) ? b : this.port(b, to, o.toOff || 0);
+      let d, pts = [p0];
+      if (o.curve) {
+        const mx = (p0[0] + p1[0]) / 2, my = (p0[1] + p1[1]) / 2;
+        const len = Math.hypot(p1[0] - p0[0], p1[1] - p0[1]) || 1;
+        const cx = mx - (p1[1] - p0[1]) / len * o.curve, cy = my + (p1[0] - p0[0]) / len * o.curve;
+        d = `M${r2(p0[0])} ${r2(p0[1])} Q${r2(cx)} ${r2(cy)} ${r2(p1[0])} ${r2(p1[1])}`;
+        pts = [p0, [(p0[0] + 2 * cx + p1[0]) / 4, (p0[1] + 2 * cy + p1[1]) / 4], p1];
+      } else {
+        if (o.via) pts.push(...o.via);
+        else {
+          const v0 = from === 'top' || from === 'bottom', v1 = to === 'top' || to === 'bottom';
+          if (v0 && v1 && p0[0] !== p1[0]) { const my = o.mid != null ? o.mid : (p0[1] + p1[1]) / 2; pts.push([p0[0], my], [p1[0], my]); }
+          else if (!v0 && !v1 && p0[1] !== p1[1]) { const mx = o.mid != null ? o.mid : (p0[0] + p1[0]) / 2; pts.push([mx, p0[1]], [mx, p1[1]]); }
+          else if (v0 && !v1) pts.push([p0[0], p1[1]]);
+          else if (!v0 && v1) pts.push([p1[0], p0[1]]);
+        }
+        pts.push(p1);
+        d = 'M' + pts.map(p => `${r2(p[0])} ${r2(p[1])}`).join(' L');
+      }
+      const path = this.el('path', { d, class: 'pa-link' + (o.dashed ? ' is-dashed' : '') + (o.cls ? ' ' + o.cls : ''), 'marker-end': o.head === false ? null : 'url(#pa-arrow)' }, parent);
+      if (o.label) {
+        let lx, ly;
+        if (o.labelAt) [lx, ly] = o.labelAt;
+        else if (o.labelNear === 'start') {
+          const [q0, q1] = [pts[0], pts[1]], len = Math.hypot(q1[0] - q0[0], q1[1] - q0[1]) || 1, t = Math.min(1, 22 / len);
+          lx = q0[0] + (q1[0] - q0[0]) * t; ly = q0[1] + (q1[1] - q0[1]) * t;
+        } else {
+          let best = 0;
+          for (let i = 0; i < pts.length - 1; i++) {
+            const len = Math.hypot(pts[i + 1][0] - pts[i][0], pts[i + 1][1] - pts[i][1]);
+            if (len >= best) { best = len; lx = (pts[i][0] + pts[i + 1][0]) / 2; ly = (pts[i][1] + pts[i + 1][1]) / 2; }
+          }
+        }
+        this.chip(parent, o.label, lx + (o.dx || 0), ly + (o.dy || 0), { cls: o.labelCls, size: o.labelSize });
+      }
+      return path;
+    },
+
+    // A small paper label sitting on a line.
+    chip(parent, text, x, y, o = {}) {
+      const size = o.size || 12.5, lines = String(text).split('\n');
+      const w = this.measure(text, size) + 14, hh = lines.length * size * 1.25 + 8;
+      const g = this.g(parent, 'pa-chip', { x, y });
+      this.el('rect', { x: -w / 2, y: -hh / 2, width: w, height: hh, rx: Math.min(8, hh / 2), class: 'pa-chip-bg' }, g);
+      this.text(g, text, { y: 0, valign: 'middle', cls: 'pa-chip-t' + (o.cls ? ' ' + o.cls : ''), size, lh: 1.25 });
+      return g;
+    },
+
+    // A sequence diagram: actors across the top, numbered messages down the page.
+    // steps: { from, to, text, reply } · { note, over: [a, b] } · { section } (alt / else)
+    sequence(parent, o) {
+      const ids = o.actors.map(a => a.id);
+      const col = o.w / ids.length, X = id => o.x + col * (ids.indexOf(id) + .5);
+      const top = o.y, cardH = o.cardH || 46, row = o.row || 46;
+      const life = this.g(parent), lines = this.g(parent), cards = this.g(parent), marks = this.g(parent);
+      let y = top + cardH + 30, n = 0;
+      o.steps.forEach(st => {
+        if (st.section) {
+          this.el('path', { d: `M${o.x} ${y - 8} H${o.x + o.w}`, class: 'pa-section-line' }, marks);
+          this.chip(marks, st.section, o.x + this.measure(st.section, 12) / 2 + 12, y - 8, { cls: 'pa-strong' });
+          y += 26;
+          return;
+        }
+        if (st.note) {
+          const ends = st.over.map(X), a = Math.min(...ends), b = Math.max(...ends);
+          const nw = Math.max(this.measure(st.note, 12.5) + 28, b - a + 40);
+          const cx = clamp((a + b) / 2, o.x + nw / 2 + 2, o.x + o.w - nw / 2 - 2);
+          this.node(marks, { x: cx, y: y + 6, w: nw, h: 20 + 15.6 * String(st.note).split('\n').length, shape: 'card', tone: 'mustard-t', text: st.note, size: 12.5 });
+          y += row + 4 + (String(st.note).split('\n').length - 1) * 14;
+          return;
+        }
+        n++;
+        const xa = X(st.from), xb = X(st.to);
+        const tl = String(st.text).split('\n').length;
+        if (st.from === st.to) {
+          y += (tl - 1) * 15;
+          this.el('path', { d: `M${xa} ${y - 8} H${xa + 30} V${y + 12} H${xa + 4}`, class: 'pa-link' + (st.reply ? ' is-dashed' : ''), 'marker-end': 'url(#pa-arrow)' }, lines);
+          this.text(marks, st.text, { x: xa + 38, y: y - 3 - (tl - 1) * 15, anchor: 'start', valign: 'middle', cls: 'pa-seq-t', size: 12.5, lh: 1.2 });
+          this.numberDot(marks, xa, y - 8, n);
+          y += row + 4;
+          return;
+        }
+        y += (tl - 1) * 15;
+        this.el('path', { d: `M${xa} ${y} H${xb + (xb > xa ? -3 : 3)}`, class: 'pa-link' + (st.reply ? ' is-dashed' : ''), 'marker-end': 'url(#pa-arrow)' }, lines);
+        this.text(marks, st.text, { x: (xa + xb) / 2, y: y - 9 - (tl - 1) * 15, cls: 'pa-seq-t', size: 12.5, lh: 1.2 });
+        this.numberDot(marks, xa, y, n);
+        y += row;
+      });
+      const bottom = y - row / 2 + 10;
+      o.actors.forEach(a => {
+        const x = X(a.id);
+        this.el('path', { d: `M${x} ${top + cardH} V${bottom}`, class: 'pa-lifeline' }, life);
+        this.node(cards, { x, y: top + cardH / 2, w: Math.min(col - 10, o.cardW || 132), h: cardH, shape: 'card', tone: a.tone || 'sheet', text: a.label, size: 13, cls: 'pa-strong' + (a.on ? ' pa-on' : '') });
+      });
+      return bottom;
+    },
+
+    // A Gantt chart. sections: [{ name, rows: [{ id, label, start, dur, tone, milestone, after }] }]
+    // Times are in days; `after` draws a dependency arrow from that row's end.
+    gantt(parent, o) {
+      const { x, y, w, days } = o, lw = o.labelW || 180, rh = o.rowH || 30, cw = w - lw;
+      const X = d => x + lw + d / days * cw;
+      const g = this.g(parent, 'pa-gantt');
+      const rows = [];
+      let cy = y + 30;
+      o.sections.forEach(sec => {
+        this.el('rect', { x, y: cy, width: w, height: sec.rows.length * rh + 26, rx: 6, class: 'pa-gantt-band' }, g);
+        this.text(g, sec.name, { x: x + 10, y: cy + 15, anchor: 'start', cls: 'pa-group-t', size: 13 });
+        cy += 26;
+        sec.rows.forEach(r => { rows.push(Object.assign({ y: cy + rh / 2 }, r)); cy += rh; });
+      });
+      const bottom = cy;
+      const tick = o.tick || 7;
+      for (let d = 0; d <= days; d += tick) {
+        this.el('line', { x1: X(d), y1: y + 20, x2: X(d), y2: bottom, class: 'pa-week' }, g);
+        this.text(g, o.tickLabel ? o.tickLabel(d) : String(d), { x: X(d), y: y + 12, cls: 'pa-t-xs pa-muted' });
+      }
+      const byId = {};
+      const bars = this.g(g);
+      rows.forEach(r => {
+        byId[r.id] = r;
+        this.text(g, r.label, { x: x + lw - 10, y: r.y, anchor: 'end', valign: 'middle', cls: 'pa-t-sm' + (r.strong ? ' pa-strong' : '') });
+        if (r.milestone) {
+          const mx = X(r.start);
+          const m = this.g(bars, null, { x: mx, y: r.y });
+          m.setAttribute('filter', 'url(#pa-cut)');
+          this.el('path', { d: 'M0 -9 L9 0 L0 9 L-9 0 Z', class: 'f-' + (r.tone || 'terra') + ' pa-outline' }, m);
+        } else {
+          const b = this.g(bars);
+          b.setAttribute('filter', 'url(#pa-cut)');
+          this.el('rect', { x: X(r.start), y: r.y - rh * .32, width: X(r.start + r.dur) - X(r.start), height: rh * .64, rx: 4, class: 'f-' + (r.tone || 'teal') }, b);
+          if (r.tag) this.text(g, r.tag, { x: X(r.start) + 6, y: r.y, anchor: 'start', valign: 'middle', cls: 'pa-t-xs pa-strong ' + (['teal', 'terra', 'sage', 'plum'].includes(r.tone || 'teal') ? 'pa-on' : 'pa-ink-fixed') });
+        }
+      });
+      rows.forEach(r => {
+        if (!r.after) return;
+        const p = byId[r.after], sx = X(p.start + (p.dur || 0)), ex = X(r.start);
+        this.el('path', { d: `M${sx} ${p.y} H${Math.max(sx + 6, ex - 8)} V${r.y + (r.y > p.y ? -rh * .34 : rh * .34)}`, class: 'pa-dep', 'marker-end': 'url(#pa-arrow)' }, g);
+      });
+      g.X = X; g.bottom = bottom;
+      return g;
+    },
+
+    numberDot(parent, x, y, n) {
+      const g = this.g(parent, 'pa-num', { x, y });
+      this.el('circle', { r: 9, class: 'f-terra' }, g);
+      this.text(g, String(n), { y: 0, valign: 'middle', cls: 'pa-num-t', size: 10.5 });
+      return g;
     }
   });
   Object.assign(Scene.prototype, KIT);
@@ -1032,6 +1242,45 @@
     }
   }
 
+  /* ── Still diagrams: one frame, no player ──
+     A scene with `still: true` draws its setup once, in the same paper
+     style, and redraws only when the layout (wide / tall) changes. */
+
+  class Still {
+    constructor(root, name, def) {
+      this.root = root;
+      this.name = name;
+      this.def = def;
+      this.clock = new Clock();
+      this.clock.instant = true;
+      this.variants = [{ id: 'main' }];
+      this.vi = 0;
+      root.classList.add('anim', 'anim-still');
+      root.replaceChildren();
+      root.setAttribute('role', 'img');
+      root.setAttribute('aria-label', def.alt || def.title);
+      this.stage = h('div', 'anim-stage');
+      root.append(this.stage);
+      this.draw();
+      if ('ResizeObserver' in window && def.layouts && def.layouts.tall) {
+        new ResizeObserver(() => { if (this.pickMode() !== this.mode) this.draw(); }).observe(root);
+      }
+    }
+
+    pickMode() { return Player.prototype.pickMode.call(this); }
+
+    draw() {
+      this.mode = this.pickMode();
+      const s = new Scene(this, this.stage, this.mode);
+      this.def.setup(s);
+      // Never scale up past natural size (text stays at its designed size);
+      // wide ones keep a minimum width and scroll sideways on small screens.
+      s.svg.style.maxWidth = s.W + 'px';
+      const min = this.def.minWidth || s.L.minWidth;
+      if (min) s.svg.style.minWidth = min + 'px';
+    }
+  }
+
   /* ── Loading and mounting ── */
 
   const requested = {};
@@ -1050,7 +1299,7 @@
       if (el._anim) return;
       const name = el.dataset.anim;
       if (!DEFS[name]) { load(name); return; }
-      el._anim = new Player(el, name, DEFS[name]);
+      el._anim = DEFS[name].still ? new Still(el, name, DEFS[name]) : new Player(el, name, DEFS[name]);
     });
   }
 
