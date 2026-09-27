@@ -120,9 +120,18 @@
 /* ── Page ─────────────────────────────────────────────────── */
 :root[data-theme] body {
   background-color: var(--pc-kraft);
-  background-image: var(--pc-grain), var(--pc-fibre);
-  background-attachment: fixed;
   color: var(--pc-ink);
+}
+/* Grain lives on a fixed, composited layer: background-attachment: fixed
+   would force a full-page repaint on every scroll frame. */
+:root[data-theme] body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: var(--pc-grain), var(--pc-fibre);
+  transform: translateZ(0);
 }
 :root[data-theme] ::selection { background: color-mix(in srgb, var(--pc-mustard) 45%, transparent); color: var(--pc-ink); }
 :root[data-theme] a { text-decoration-thickness: 1px; text-underline-offset: .18em; }
@@ -202,15 +211,17 @@
   left: -4%;
   width: 108%;
   bottom: 0;
-  height: clamp(200px, 30vw, 380px);
+  height: clamp(200px, 24vw, 340px);
 }
 .topic-header .pc-diorama svg { height: clamp(120px, 13vw, 190px); }
 .pc-layer {
-  transform: translate3d(calc(var(--px, 0) * var(--d, 0) * 1px), calc(var(--py, 0) * var(--d, 0) * 1px), 0);
-  transition: transform 400ms cubic-bezier(.2,.7,.2,1);
+  transform: translate3d(
+    calc(var(--px, 0) * var(--d, 0) * 1.4px),
+    calc(var(--py, 0) * var(--d, 0) * 1px + var(--sy, 0) * var(--sd, 0) * 1px),
+    0);
+  filter: drop-shadow(0 -3px 3.5px rgba(59,42,18,.28));
   will-change: transform;
 }
-.pc-layer path { filter: url(#pc-cast); }
 .pc-sun { fill: var(--pc-mustard); }
 .pc-l1 { fill: #f4cf8e; } .pc-l2 { fill: #eaa98f; } .pc-l3 { fill: #8fb89a; }
 .pc-l4 { fill: #3f7d5c; } .pc-l5 { fill: #2a6f73; } .pc-l6 { fill: var(--pc-kraft); }
@@ -239,7 +250,7 @@
 :root[data-theme] .hero-inner,
 :root[data-theme] .topic-header-inner { position: relative; z-index: 2; }
 
-:root[data-theme] .hero { padding-bottom: clamp(9rem, 16vw, 13rem); margin-bottom: 0; }
+:root[data-theme] .hero { padding-bottom: clamp(9rem, 19vw, 17rem); margin-bottom: 0; }
 :root[data-theme] .hero h1 { color: var(--pc-ink); text-shadow: 0 1px 0 rgba(255,255,255,.5); }
 :root[data-theme] .hero h1 span {
   color: var(--pc-terracotta);
@@ -994,3 +1005,45 @@
 .figure-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 1rem; align-items: start; }
 @media (max-width: 640px) { .figure-pair { grid-template-columns: 1fr; } }
 .figure-pair-label { margin: 0 0 .35rem; text-align: center; font: 600 .75rem var(--font-body); letter-spacing: .06em; text-transform: uppercase; color: var(--pc-muted, #6c6558); }
+
+/* ── Topic cards: raking light follows the pointer (set by main.js) ── */
+:root[data-theme] .topic-card:hover {
+  background-image:
+    radial-gradient(circle at var(--sx, 50%) var(--sy, 50%), rgba(255,255,255,.55), transparent 55%),
+    var(--pc-grain);
+}
+:root[data-theme="dark"] .topic-card:hover {
+  background-image:
+    radial-gradient(circle at var(--sx, 50%) var(--sy, 50%), rgba(255,240,210,.08), transparent 55%),
+    var(--pc-grain);
+}
+
+/* ── Widescreen: use the room, and scale type so lines stay readable ── */
+@media (min-width: 1680px) {
+  html { font-size: 106.25%; }
+  :root[data-theme] .nav-inner,
+  :root[data-theme] .page-layout,
+  :root[data-theme] .main-content,
+  :root[data-theme] .topic-header-inner,
+  :root[data-theme] .footer-inner,
+  :root[data-theme] .footer-bottom { max-width: 1520px; }
+  :root[data-theme] .page-layout { grid-template-columns: 300px minmax(0, 1fr); gap: 3rem; }
+  :root[data-theme] .features-bar { padding-inline: max(1.5rem, calc((100% - 1520px) / 2)); }
+  :root[data-theme] .hero-inner { max-width: 1040px; }
+}
+@media (min-width: 2200px) {
+  html { font-size: 112.5%; }
+}
+
+/* ── Phones: give prose the width back from the step rail ── */
+@media (max-width: 480px) {
+  :root[data-theme] .step { gap: .7rem; }
+  :root[data-theme] .step-num { width: 28px; height: 28px; font-size: .8rem; flex-shrink: 0; }
+  :root[data-theme] .step:not(:last-child) .step-num::after { left: 13px; top: 32px; }
+}
+@media (max-width: 600px) {
+  :root[data-theme] .hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; flex-direction: row; }
+  :root[data-theme] .hero-stat { border: 0; padding: 0; min-width: 0; }
+  :root[data-theme] .hero-stat-num { font-size: clamp(1.4rem, 7vw, 1.9rem); }
+  :root[data-theme] .hero-stat-label { font-size: .72rem; }
+}

@@ -203,12 +203,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ── Shared scroll loop: every scroll-driven update runs once per frame ── */
+  const scrollTasks = [];
+  let scrollQueued = false;
+  function onScrollFrame(fn) { scrollTasks.push(fn); fn(); }
+  window.addEventListener('scroll', () => {
+    if (scrollQueued) return;
+    scrollQueued = true;
+    requestAnimationFrame(() => { scrollQueued = false; scrollTasks.forEach(fn => fn()); });
+  }, { passive: true });
+
   /* ── Navbar scrolled state ── */
   const navEl = document.querySelector('.navbar');
   if (navEl) {
     const updateNavState = () => navEl.classList.toggle('scrolled', window.scrollY > 8);
-    window.addEventListener('scroll', updateNavState, { passive: true });
-    updateNavState();
+    onScrollFrame(updateNavState);
   }
 
   /* ── Reading Progress Bar ── */
@@ -227,8 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // CSS uses `calc(var(--scroll-pct, 0) * 1%)` to size the bar.
         progressBar.style.setProperty('--scroll-pct', pct);
       };
-      window.addEventListener('scroll', updateProgress, { passive: true });
-      updateProgress();
+      onScrollFrame(updateProgress);
     }
   }
 
@@ -243,8 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateScrollBtn = () => {
     scrollBtn.classList.toggle('visible', window.scrollY > SCROLL_THRESHOLD);
   };
-  window.addEventListener('scroll', updateScrollBtn, { passive: true });
-  updateScrollBtn();
+  onScrollFrame(updateScrollBtn);
 
   scrollBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -304,7 +311,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const activeLink = document.querySelector(`.toc-list a[href="#${id}"]`);
         if (activeLink) {
           // Scroll sidebar to keep active link visible
-          activeLink.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          // Scroll only the sidebar list; scrollIntoView would also nudge the page.
+          const box = activeLink.closest('.sidebar');
+          if (box && box.scrollHeight > box.clientHeight) {
+            const lr = activeLink.getBoundingClientRect();
+            const br = box.getBoundingClientRect();
+            if (lr.top < br.top + 40 || lr.bottom > br.bottom - 40) {
+              box.scrollTo({ top: box.scrollTop + lr.top - br.top - br.height / 3, behavior: 'smooth' });
+            }
+          }
           setActivePart(activeLink.closest('li'));
         }
       });
@@ -368,10 +383,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const MAX_TILT = 5; // degrees
 
     document.querySelectorAll('.topic-card').forEach(card => {
+      let r = null, pending = null, raf = 0;
+      card.addEventListener('pointerenter', () => { r = card.getBoundingClientRect(); });
       card.addEventListener('pointermove', e => {
-        const r = card.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width;
-        const py = (e.clientY - r.top) / r.height;
+        pending = e;
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+        raf = 0;
+        r = r || card.getBoundingClientRect();
+        const px = (pending.clientX - r.left) / r.width;
+        const py = (pending.clientY - r.top) / r.height;
         // Spotlight follows the cursor
         card.style.setProperty('--sx', `${px * 100}%`);
         card.style.setProperty('--sy', `${py * 100}%`);
@@ -382,10 +403,13 @@ document.addEventListener('DOMContentLoaded', () => {
           card.style.transform =
             `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-4px)`;
         }
+        });
+      }, { passive: true });
+      card.addEventListener('pointerleave', () => {
+        r = null;
+        cancelAnimationFrame(raf); raf = 0;
+        if (!reduceMotion) card.style.transform = '';
       });
-      if (!reduceMotion) {
-        card.addEventListener('pointerleave', () => { card.style.transform = ''; });
-      }
     });
 
     /* ── Hero cursor light ── */

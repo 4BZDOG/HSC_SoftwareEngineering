@@ -20,22 +20,25 @@
     ['{ }', 250, 118, 2], ['</>', 1150, 92, 5], ['01', 520, 150, 9], ['( )', 930, 140, 11]
   ];
 
+  // Each layer is its own <svg> so the browser can rasterise its shadow once
+  // and move it on the compositor, instead of re-filtering the scene per frame.
+  // Scroll factor: far sheets drift down as the page scrolls, the ground stays put.
+  const sd = d => (d ? (26 - d) / 26 * 0.32 : 0).toFixed(3);
+  const VIEW = 'viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false"';
+
   function scene(compact) {
-    const g = LAYERS.map(l =>
-      `<g class="pc-layer" style="--d:${l.d}"><path class="${l.cls}" d="${l.path}"/></g>`
-    );
+    const sun = `<svg class="pc-layer" style="--d:2;--sd:${sd(2)}" ${VIEW}><circle class="pc-sun" cx="${compact ? 1260 : 1180}" cy="${compact ? 120 : 96}" r="${compact ? 34 : 46}"/></svg>`;
     const glyphs = compact ? '' : GLYPHS.map(([t, x, y, d]) =>
-      `<g class="pc-layer" style="--d:${d}"><text class="pc-glyph" x="${x}" y="${y}" filter="url(#pc-cast)">${t}</text></g>`
+      `<svg class="pc-layer" style="--d:${d};--sd:${sd(d)}" ${VIEW}><text class="pc-glyph" x="${x}" y="${y}">${t}</text></svg>`
     ).join('');
-    return `<svg viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
-      <defs><filter id="pc-cast" x="-10%" y="-40%" width="120%" height="180%">
-        <feDropShadow dx="0" dy="-3" stdDeviation="3.5" flood-color="#3b2a12" flood-opacity=".28"/>
-      </filter></defs>
-      <g class="pc-layer" style="--d:2"><circle class="pc-sun" cx="${compact ? 1260 : 1180}" cy="${compact ? 120 : 96}" r="${compact ? 34 : 46}" filter="url(#pc-cast)"/></g>
-      ${glyphs}${g.join('')}
-    </svg>`;
+    const layers = LAYERS.map(l =>
+      `<svg class="pc-layer" style="--d:${l.d};--sd:${sd(l.d)}" ${VIEW}><path class="${l.cls}" d="${l.path}"/></svg>`
+    ).join('');
+    return sun + glyphs + layers;
   }
 
+  // One rAF loop per diorama: eases towards the pointer target and the
+  // scroll offset, then stops once it has settled.
   function mount(host, compact) {
     if (host.querySelector('.pc-diorama')) return;
     const d = document.createElement('div');
@@ -44,15 +47,45 @@
     d.innerHTML = scene(compact);
     host.prepend(d);
     if (reduce.matches) return;
-    host.addEventListener('pointermove', e => {
-      const r = host.getBoundingClientRect();
-      d.style.setProperty('--px', ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
-      d.style.setProperty('--py', ((e.clientY - r.top) / r.height - 0.5).toFixed(3) * 0.4);
-    });
-    host.addEventListener('pointerleave', () => {
-      d.style.setProperty('--px', 0);
-      d.style.setProperty('--py', 0);
-    });
+
+    const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    let tx = 0, ty = 0, x = 0, y = 0, s = 0, ts = 0, raf = 0, rect = null, visible = true;
+
+    const frame = () => {
+      raf = 0;
+      x += (tx - x) * 0.09;
+      y += (ty - y) * 0.09;
+      s += (ts - s) * 0.2;
+      d.style.setProperty('--px', x.toFixed(4));
+      d.style.setProperty('--py', y.toFixed(4));
+      d.style.setProperty('--sy', s.toFixed(2));
+      if (Math.abs(tx - x) > 0.0005 || Math.abs(ty - y) > 0.0005 || Math.abs(ts - s) > 0.05) kick();
+    };
+    const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
+
+    if (fine) {
+      host.addEventListener('pointerenter', () => { rect = host.getBoundingClientRect(); });
+      host.addEventListener('pointermove', e => {
+        rect = rect || host.getBoundingClientRect();
+        tx = (e.clientX - rect.left) / rect.width - 0.5;
+        ty = ((e.clientY - rect.top) / rect.height - 0.5) * 0.4;
+        kick();
+      }, { passive: true });
+      host.addEventListener('pointerleave', () => { tx = 0; ty = 0; rect = null; kick(); });
+    }
+
+    // Scroll depth: nearer layers slide faster, so the scene opens up as you read on.
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(host);
+    }
+    const onScroll = () => {
+      rect = null;
+      if (!visible) return;
+      ts = Math.min(window.scrollY, host.offsetHeight);
+      kick();
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
 
   function init() {
