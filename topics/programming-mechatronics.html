@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=21" />
+  <link rel="stylesheet" href="../css/paper.css?v=22" />
 </head>
 <body>
 
@@ -207,9 +207,9 @@
           <p class="syllabus-concept">📌 <em><strong>Outline</strong> applications of mechatronic systems in a variety of specialised fields</em></p>
 
           <div class="key-terms">
-            <div class="key-term-item"><strong>✈️ Aerospace</strong><span>Unmanned Aerial Vehicles (UAVs) use mechatronics for flight stabilisation, GPS navigation, and autonomous landing routines.</span></div>
-            <div class="key-term-item"><strong>🦾 Healthcare</strong><span>Advanced prosthetics use electromyography (EMG) sensors to detect muscle signals, allowing users to control bionic limbs with high precision.</span></div>
-            <div class="key-term-item"><strong>🚗 Automotive</strong><span>Modern vehicles incorporate mechatronic subsystems such as Anti-lock Braking Systems (ABS) and Electronic Stability Control (ESC) to enhance driver safety.</span></div>
+            <div class="key-term-item"><strong>Aerospace</strong><span>Unmanned Aerial Vehicles (UAVs) use mechatronics for flight stabilisation, GPS navigation, and autonomous landing routines.</span></div>
+            <div class="key-term-item"><strong>Healthcare</strong><span>Advanced prosthetics use electromyography (EMG) sensors to detect muscle signals, allowing users to control bionic limbs with high precision.</span></div>
+            <div class="key-term-item"><strong>Automotive</strong><span>Modern vehicles incorporate mechatronic subsystems such as Anti-lock Braking Systems (ABS) and Electronic Stability Control (ESC) to enhance driver safety.</span></div>
           </div>
 
           <div class="video-box">
@@ -254,11 +254,11 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>📜 <strong>Instruction Set</strong></td>
+                  <td><strong>Instruction Set</strong></td>
                   <td>The predefined set of basic commands (Opcodes) that a processor understands. Mechatronic code must be compiled for a specific instruction set (e.g., ARM or AVR).</td>
                 </tr>
                 <tr>
-                  <td>🛠️ <strong>Registers</strong></td>
+                  <td><strong>Registers</strong></td>
                   <td><strong>Data Registers</strong> store temporary values being processed (like a sensor reading), while <strong>Address Registers</strong> hold the memory location of the next instruction.</td>
                 </tr>
               </tbody>
@@ -287,24 +287,24 @@
               <h4>Sensors (Inputs)</h4>
               <p>Devices that convert physical properties into electrical signals.</p>
               <ul>
-                <li><strong>🔘 Motion:</strong> PIR (Passive Infrared) sensors detect heat radiation moving across a background.</li>
-                <li><strong>💡 Light:</strong> LDRs (Light Dependent Resistors) change resistance based on ambient light levels.</li>
+                <li><strong>Motion:</strong> PIR (Passive Infrared) sensors detect heat radiation moving across a background.</li>
+                <li><strong>Light:</strong> LDRs (Light Dependent Resistors) change resistance based on ambient light levels.</li>
               </ul>
             </div>
             <div class="info-card">
               <h4>Actuators (Outputs)</h4>
               <p>Components that convert electrical energy into physical motion.</p>
               <ul>
-                <li><strong>💧 Hydraulic:</strong> Utilise pressurised fluid to generate high force (e.g., in excavators).</li>
-                <li><strong>⚡ Electric:</strong> DC motors or Servos that provide rotational movement.</li>
+                <li><strong>Hydraulic:</strong> Utilise pressurised fluid to generate high force (e.g., in excavators).</li>
+                <li><strong>Electric:</strong> DC motors or Servos that provide rotational movement.</li>
               </ul>
             </div>
             <div class="info-card">
               <h4>Manipulators</h4>
               <p>The parts of the system that physically interact with objects.</p>
               <ul>
-                <li><strong>🗜️ Robotic Gripper:</strong> An end effector designed to grasp and release objects.</li>
-                <li><strong>🔄 Degrees of Freedom:</strong> The number of independent directions in which a robot can move.</li>
+                <li><strong>Robotic Gripper:</strong> An end effector designed to grasp and release objects.</li>
+                <li><strong>Degrees of Freedom:</strong> The number of independent directions in which a robot can move.</li>
               </ul>
             </div>
           </div>
@@ -339,7 +339,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
 <h3>Analog-to-Digital Conversion (ADC)</h3>
           <p>Sensors output continuous analog voltages. Microcontrollers use <strong>Analog-to-Digital Converters</strong> to sample these voltages and convert them to digital numbers for processing. An ADC typically has a resolution (e.g., 8-bit, 10-bit, 12-bit), determining how many discrete voltage levels it can represent.</p>
           <p><strong>ADC Formula:</strong> <code><strong>Digital Value = (Measured Voltage / Reference Voltage) × (2^Resolution - 1)</strong></code></p>
-          <p>🌏 <em><strong>Example:</strong> A 10-bit ADC (1024 levels, 0-1023) with 5V reference, measuring 2.5V:</em></p>
+          <p><span class="eg"><em>A 10-bit ADC (1024 levels, 0-1023) with 5V reference, measuring 2.5V:</em></span></p>
           <ul>
             <li>Digital Value = (2.5 / 5) × (2^10 - 1) = 0.5 × 1023 = 511.5 ≈ 511 (raw value)</li>
             <li>This 511 value is then used in software to make decisions—for example, if the voltage from a temperature sensor crosses a threshold, trigger a cooling system.</li>
@@ -447,11 +447,11 @@ graph LR
               <tbody>
                 <tr>
                   <td><strong>Power & Battery</strong></td>
-                  <td><strong>Current Draw Calculation:</strong> Total system current is calculated by summing the individual component currents: <code><strong>Total Current (mA) = Σ(Component Current)</strong></code><br>🌏 <em>Example: If a microcontroller draws 50 mA, two DC motors draw 300 mA each, and an LED draws 20 mA, total = 50 + 300 + 300 + 20 = 670 mA. A 5V supply must provide at least 670 mA capacity.</em><br>Actuators often require separate power supplies from the controller to avoid "brownouts" (voltage drops) or component damage caused by the high current demands of motors.</td>
+                  <td><strong>Current Draw Calculation:</strong> Total system current is calculated by summing the individual component currents: <code><strong>Total Current (mA) = Σ(Component Current)</strong></code><span class="eg"><em>If a microcontroller draws 50 mA, two DC motors draw 300 mA each, and an LED draws 20 mA, total = 50 + 300 + 300 + 20 = 670 mA. A 5V supply must provide at least 670 mA capacity.</em></span><br>Actuators often require separate power supplies from the controller to avoid "brownouts" (voltage drops) or component damage caused by the high current demands of motors.</td>
                 </tr>
                 <tr>
                   <td><strong>Material Choice</strong></td>
-                  <td>Choosing based on weight, strength, and environmental conditions.<br>🌏 <em>Example: Using carbon fibre for lightweight drone frames vs steel for industrial grippers.</em></td>
+                  <td>Choosing based on weight, strength, and environmental conditions.<span class="eg"><em>Using carbon fibre for lightweight drone frames vs steel for industrial grippers.</em></span></td>
                 </tr>
                 
               </tbody>
@@ -573,7 +573,7 @@ graph LR
 END followLine</code></pre>
           </div>
 
-          <div class="callout info"><strong>Modifying the algorithm</strong> testing shows the robot zig-zags on straight lines. Changing <code>turnLeft()</code> and <code>turnRight()</code> to slow one wheel rather than stop it gives smoother steering. Record each change and why you made it.</div>
+          <div class="callout info"><strong>Modifying the algorithm</strong> Testing shows the robot zig-zags on straight lines. Changing <code>turnLeft()</code> and <code>turnRight()</code> to slow one wheel rather than stop it gives smoother steering. Record each change and why you made it.</div>
         </section>
 
         <hr class="divider" />
@@ -583,7 +583,7 @@ END followLine</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Explore</strong> the algorithmic patterns, code and applications for open and closed control systems</em></p>
 
-                    <p>The choice of control system depends on the task requirements for accuracy and self-correction. Engineers often use 🛠️ <strong>Decision Trees</strong> to map out these control paths.</p>
+                    <p>The choice of control system depends on the task requirements for accuracy and self-correction. Engineers often use <strong>Decision Trees</strong> to map out these control paths.</p>
 
           <div class="table-wrap">
             <table>
@@ -597,12 +597,12 @@ END followLine</code></pre>
               <tbody>
                 <tr>
                   <td><strong>Open Loop</strong></td>
-                  <td>Operates on a fixed sequence or timer without feedback.<br>🌏 <em>Example: A sprinkler system on a timer.</em></td>
+                  <td>Operates on a fixed sequence or timer without feedback.<span class="eg"><em>A sprinkler system on a timer.</em></span></td>
                   <td>Pros: Simple, low cost. <br> Cons: Cannot adjust to changes (e.g., if it rains).</td>
                 </tr>
                 <tr>
                   <td><strong>Closed Loop</strong></td>
-                  <td>Uses sensor feedback to adjust output in real-time.<br>🌏 <em>Example: A thermostat maintaining room temperature.</em></td>
+                  <td>Uses sensor feedback to adjust output in real-time.<span class="eg"><em>A thermostat maintaining room temperature.</em></span></td>
                   <td>Pros: Accurate, self-correcting. <br> Cons: Complex, potential for instability.</td>
                 </tr>
               </tbody>
@@ -651,12 +651,12 @@ flowchart LR
           <p class="syllabus-concept">📌 <em><strong>Outline</strong> the features of an algorithm and program code used for autonomous control</em></p>
 
                     <ul>
-            <li><strong>🔗 Sensor Fusion:</strong> Combining data from multiple sensors (e.g., distance sensors, IMU accelerometers, temperature sensors) to build a comprehensive understanding of the environment. Simple algorithms average sensor readings; advanced algorithms use Kalman filters for optimal estimation.</li>
-            <li><strong>🧠 Decision Logic:</strong> Complex conditionals and state machines that determine what action to take based on current sensor readings and system state. Example: "IF obstacle detected within 20cm AND left sensor clear, TURN LEFT; ELSE IF right sensor clear, TURN RIGHT."</li>
-            <li><strong>🔄 PID Control Loop:</strong> Proportional-Integral-Derivative control adjusts actuator output based on error (difference between desired and actual state). Common in maintaining speed, temperature, or position.</li>
-            <li><strong>📊 State Management:</strong> Tracking the current state of the system (idle, moving, gripper_open, gripper_closed) and transitioning between states safely based on sensor feedback and logic.</li>
-            <li><strong>⚡ Real-Time Response:</strong> Meeting strict timing requirements—responding to sensors and issuing commands within specified time windows. Delays in real-time systems can cause crashes or safety failures.</li>
-            <li><strong>🛡️ Fallback Safety Logic:</strong> Default safe states (e.g., "all motors stop" if communication is lost) to prevent uncontrolled operation.</li>
+            <li><strong>Sensor Fusion:</strong> Combining data from multiple sensors (e.g., distance sensors, IMU accelerometers, temperature sensors) to build a comprehensive understanding of the environment. Simple algorithms average sensor readings; advanced algorithms use Kalman filters for optimal estimation.</li>
+            <li><strong>Decision Logic:</strong> Complex conditionals and state machines that determine what action to take based on current sensor readings and system state. Example: "IF obstacle detected within 20cm AND left sensor clear, TURN LEFT; ELSE IF right sensor clear, TURN RIGHT."</li>
+            <li><strong>PID Control Loop:</strong> Proportional-Integral-Derivative control adjusts actuator output based on error (difference between desired and actual state). Common in maintaining speed, temperature, or position.</li>
+            <li><strong>State Management:</strong> Tracking the current state of the system (idle, moving, gripper_open, gripper_closed) and transitioning between states safely based on sensor feedback and logic.</li>
+            <li><strong>Real-Time Response:</strong> Meeting strict timing requirements—responding to sensors and issuing commands within specified time windows. Delays in real-time systems can cause crashes or safety failures.</li>
+            <li><strong>Fallback Safety Logic:</strong> Default safe states (e.g., "all motors stop" if communication is lost) to prevent uncontrolled operation.</li>
           </ul>
 
           <p>Autonomous algorithms typically use flowcharts, state diagrams, and pseudocode to be designed clearly before implementation. Testing autonomous systems requires extensive simulation and careful incremental real-world validation.</p>
@@ -737,7 +737,7 @@ stateDiagram-v2
           <p class="syllabus-concept">📌 <em><strong>Design, develop and produce</strong> a mechatronic system for a real-world problem</em></p>
           <ul class="syllabus-including" aria-label="Including"><li>software control</li><li>mechanical engineering</li><li>electronics and mathematics</li></ul>
 
-          <div class="callout info"><strong>Running example — the smart greenhouse</strong> a microcontroller reads a temperature sensor and a soil-moisture sensor, opens a roof vent with a servo when it gets too hot, and runs a pump when the soil is dry. The examples in this part build it one piece at a time.</div>
+          <div class="callout info"><strong>Running example — the smart greenhouse</strong> A microcontroller reads a temperature sensor and a soil-moisture sensor, opens a roof vent with a servo when it gets too hot, and runs a pump when the soil is dry. The examples in this part build it one piece at a time.</div>
 
           <h3>Integrated System Design</h3>
           <p>Creating a complete mechatronic system requires simultaneous consideration of three domains:</p>
@@ -807,7 +807,7 @@ set_angle(<span class="str">90</span>)   <span class="cm"># open the vent halfwa
             </table>
           </div>
 
-          <div class="callout info"><strong>Tip</strong> build the greenhouse circuit in Wokwi first. When the vent opens at the right temperature in the simulation, move the same code onto the real board.</div>
+          <div class="callout info"><strong>Tip</strong> Build the greenhouse circuit in Wokwi first. When the vent opens at the right temperature in the simulation, move the same code onto the real board.</div>
         </section>
 
         <hr class="divider" />
@@ -869,7 +869,7 @@ KP = <span class="str">10</span>                <span class="cm"># degrees of ve
     sleep(<span class="str">1</span>)</code></pre>
           </div>
 
-          <div class="callout info"><strong>Watch for conflicts</strong> the pump and servo both draw current at the same moment, and a long <code>sleep()</code> in one subsystem delays every other one. Keep each step short and share one main loop.</div>
+          <div class="callout info"><strong>Watch for conflicts</strong> The pump and servo both draw current at the same moment, and a long <code>sleep()</code> in one subsystem delays every other one. Keep each step short and share one main loop.</div>
         </section>
 
         <hr class="divider" />
