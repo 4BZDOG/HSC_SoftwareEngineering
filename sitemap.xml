@@ -67,4 +67,10 @@
     <priority>0.6</priority>
   </url>
 
+  <url>
+    <loc>https://4bzdog.github.io/HSC_SoftwareEngineering/topics/resources.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

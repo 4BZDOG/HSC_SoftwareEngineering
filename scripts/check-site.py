@@ -163,7 +163,7 @@ for path in PAGES:
         elif anchor and target_path.endswith('.html') and anchor not in ids.get(target_path, set()):
             fail(f'{rel}: link to missing #{anchor} in {os.path.basename(target_path)}')
 
-# 5. Glossary data is current and the build is idempotent
+# 5. Glossary data and the resources page are current, and both builds are idempotent
 with tempfile.TemporaryDirectory() as tmp:
     for d in ('scripts', 'topics', 'js'):
         shutil.copytree(os.path.join(ROOT, d), os.path.join(tmp, d))
@@ -171,6 +171,10 @@ with tempfile.TemporaryDirectory() as tmp:
     for rel in ('topics/glossary.html', 'js/glossary-data.js'):
         if open(os.path.join(tmp, rel), encoding='utf-8').read() != open(os.path.join(ROOT, rel), encoding='utf-8').read():
             fail(f'{rel} changes when scripts/build-glossary.py runs; run it and commit the result')
+    # The resources page is built from sdlc.html's shell and the data in build-resources.py
+    subprocess.run([sys.executable, os.path.join(tmp, 'scripts', 'build-resources.py')], check=True, capture_output=True)
+    if open(os.path.join(tmp, 'topics', 'resources.html'), encoding='utf-8').read() != open(os.path.join(ROOT, 'topics', 'resources.html'), encoding='utf-8').read():
+        fail('topics/resources.html changes when scripts/build-resources.py runs; run it and commit the result')
 
 if errors:
     print(f'{len(errors)} problem(s):')

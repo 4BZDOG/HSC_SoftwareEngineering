@@ -83,8 +83,8 @@ print_header "Check 2: Syllabus Outcome Metadata"
 
 echo "Checking every syllabus section carries outcome badges..."
 
-# Resource pages (glossary, course tools, SDLC guide) are not syllabus focus areas.
-topic_files=$(find "$PROJECT_ROOT/topics" -name "*.html" -type f ! -name glossary.html ! -name course-tools.html ! -name sdlc.html)
+# Resource pages (glossary, course tools, SDLC guide, certified resources) are not syllabus focus areas.
+topic_files=$(find "$PROJECT_ROOT/topics" -name "*.html" -type f ! -name glossary.html ! -name course-tools.html ! -name sdlc.html ! -name resources.html)
 outcome_pattern='class="outcome-subtitle">🎯 <em>\(SE-1[12]-0[0-9]'
 missing_annotations=0
 
