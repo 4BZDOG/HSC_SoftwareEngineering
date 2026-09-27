@@ -10,6 +10,7 @@ Fails (exit 1) when:
   * <div>/<section>/<main>/<ul>/<ol>/<table> tags are unbalanced,
   * js/glossary-data.js is out of date, or rebuilding the glossary changes glossary.html.
 """
+import hashlib
 import glob
 import html
 import html.parser
@@ -83,10 +84,17 @@ for path in sorted(glob.glob(os.path.join(ROOT, 'topics', '*.html'))):
         name = text(title.group(1)) if title else '(untitled figure)'
         if not title or '<p class="figure-lead">' not in fig:
             fail(f'{rel}: figure "{name}" needs a title and a lead sentence')
-        code = re.search(r'<div class="mermaid">(.*?)</div>', fig, re.S)
-        if not code:
+        if '<div class="mermaid">' in fig:
+            fail(f'{rel}: figure "{name}" has a diagram that has not been drawn; run npm run diagrams')
             continue
-        code = html.unescape(code.group(1))
+        block = re.search(r'<div class="mermaid" data-diagram="([0-9a-f]+)">(.*?)<template class="mermaid-source">(.*?)</template>', fig, re.S)
+        if not block:
+            continue
+        code = html.unescape(block.group(3)).strip()
+        if hashlib.sha1(code.encode('utf-8')).hexdigest()[:10] != block.group(1):
+            fail(f'{rel}: figure "{name}" was edited since it was drawn; run npm run diagrams')
+        if 'dg-light' not in block.group(2) or 'dg-dark' not in block.group(2):
+            fail(f'{rel}: figure "{name}" needs both its light and dark SVG; run npm run diagrams')
         if EMOJI.search(code):
             fail(f'{rel}: figure "{name}" has emoji inside the diagram')
         kind = re.search(r'<span class="figure-kind">(.*?)</span>', fig)

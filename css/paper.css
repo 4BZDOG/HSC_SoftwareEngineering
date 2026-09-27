@@ -2036,3 +2036,9 @@ a.pg-seen::after {
   .pc-letter, .pc-letter.is-pulled, .hero-inner > * { animation: none; }
   :root[data-theme] .alpha-btn, :root[data-theme] .glossary-term { transition: none; }
 }
+
+/* ── Pre-rendered diagrams: one SVG per theme (scripts/render-diagrams.mjs) ── */
+.mermaid .dg-dark { display: none; }
+:root[data-theme="dark"] .mermaid .dg-light { display: none; }
+:root[data-theme="dark"] .mermaid .dg-dark { display: block; }
+.mermaid > template { display: none; }

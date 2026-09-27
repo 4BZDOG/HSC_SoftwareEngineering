@@ -136,6 +136,24 @@
     });
   }
 
+  // Wide diagrams keep a readable size and scroll sideways; say so.
+  function markWideFigures() {
+    document.querySelectorAll('.figure-canvas .mermaid').forEach(el => {
+      const canvas = el.closest('.figure-canvas');
+      const wide = el.scrollWidth > el.clientWidth + 2;
+      canvas.classList.toggle('is-scrollable', wide);
+      let hint = canvas.nextElementSibling;
+      if (!hint || !hint.classList.contains('figure-scroll-hint')) {
+        if (!wide) return;
+        hint = document.createElement('p');
+        hint.className = 'figure-scroll-hint';
+        hint.textContent = 'Scroll sideways to see the whole diagram, or use Enlarge.';
+        canvas.after(hint);
+      }
+      hint.hidden = !wide;
+    });
+  }
+
   function init() {
     document.querySelectorAll('.hero').forEach(h => mount(h, false));
     document.querySelectorAll('.topic-header').forEach(h => mount(h, true));
@@ -152,6 +170,16 @@
       a.append(num, label);
     });
     splitHeadline();
+    markWideFigures();
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(markWideFigures, 150);
+    });
+    document.addEventListener('click', e => {
+      // Expanding a section lays out its diagrams for the first time.
+      if (e.target.closest('h2.syllabus-phase, .part-block')) setTimeout(markWideFigures, 600);
+    });
     const crumb = document.querySelector('.topic-breadcrumb');
     if (crumb && /Year 11/.test(crumb.textContent)) document.documentElement.classList.add('pc-y11');
   }
