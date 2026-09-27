@@ -2042,3 +2042,298 @@ a.pg-seen::after {
 :root[data-theme="dark"] .mermaid .dg-light { display: none; }
 :root[data-theme="dark"] .mermaid .dg-dark { display: block; }
 .mermaid > template { display: none; }
+
+/* ============================================================
+   Polish pass: SDLC guide and course tools
+   ============================================================ */
+
+/* Phase tones: the cycle reads round the four paper colours */
+:root { --ph1: var(--pc-teal); --ph2: var(--pc-terracotta); --ph3: var(--pc-sage); --ph4: #b7811d; }
+:root[data-theme="dark"] { --ph4: var(--pc-mustard); }
+
+/* ── SDLC cycle: four cut cards joined by a dashed thread ── */
+:root[data-theme] .sdlc-cycle-visual { gap: .5rem; align-items: stretch; }
+:root[data-theme] .sdlc-phase-card {
+  position: relative;
+  border: 0;
+  border-radius: 10px;
+  background: var(--pc-cream);
+  background-image: var(--pc-grain);
+  box-shadow: inset 0 4px 0 var(--tone), var(--pc-shadow-2);
+  transition: transform 300ms var(--pc-ease-out, ease), box-shadow 300ms ease;
+}
+:root[data-theme] .sdlc-phase-card.phase-1 { --tone: var(--ph1); }
+:root[data-theme] .sdlc-phase-card.phase-2 { --tone: var(--ph2); }
+:root[data-theme] .sdlc-phase-card.phase-3 { --tone: var(--ph3); }
+:root[data-theme] .sdlc-phase-card.phase-4 { --tone: var(--ph4); }
+:root[data-theme] .sdlc-phase-card:hover { transform: translateY(-4px) rotate(-.6deg); box-shadow: inset 0 4px 0 var(--tone), var(--pc-shadow-3); }
+:root[data-theme] .phase-icon {
+  display: grid; place-items: center;
+  width: 46px; height: 46px;
+  margin: 0 auto .55rem;
+  border-radius: 12px;
+  color: var(--tone);
+  background: color-mix(in srgb, var(--tone) 12%, var(--pc-cream));
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--tone) 30%, transparent);
+  transition: transform 360ms var(--pc-spring, ease);
+}
+:root[data-theme] .phase-icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+:root[data-theme] .sdlc-phase-card:hover .phase-icon { transform: rotate(-8deg) scale(1.06); }
+:root[data-theme] .phase-num {
+  background: var(--tone);
+  color: #fff;
+  font-family: var(--font-display);
+  box-shadow: 1px 2px 0 var(--pc-mustard);
+}
+:root[data-theme="dark"] .phase-num { color: #1b1916; }
+:root[data-theme] .phase-title { color: var(--pc-ink); font-family: var(--font-display); font-size: 1.02rem; }
+:root[data-theme] .phase-subtitle { color: var(--pc-ink-soft); }
+:root[data-theme] .sdlc-arrow {
+  align-self: center;
+  color: var(--pc-rule-strong);
+  font-size: 0;
+  width: 26px; height: 2px;
+  background: repeating-linear-gradient(90deg, var(--pc-rule-strong) 0 4px, transparent 4px 8px);
+  position: relative;
+}
+:root[data-theme] .sdlc-arrow::after {
+  content: '';
+  position: absolute; right: -2px; top: -4px;
+  border: 5px solid transparent;
+  border-left-color: var(--pc-rule-strong);
+  border-right: 0;
+}
+
+/* ── Methodology cards ── */
+:root[data-theme] .method-card {
+  border: 0;
+  border-radius: 10px;
+  background: var(--pc-cream);
+  background-image: var(--pc-grain);
+  box-shadow: inset 0 4px 0 var(--tone), var(--pc-shadow-2);
+}
+:root[data-theme] .method-card.agile  { --tone: var(--pc-sage); }
+:root[data-theme] .method-card.wagile { --tone: var(--pc-teal); }
+:root[data-theme] .method-card .method-badge,
+:root[data-theme="dark"] .method-card .method-badge {
+  border-radius: 4px;
+  background: var(--tone);
+  color: #fff;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: .64rem;
+  transform: rotate(-1.5deg);
+  box-shadow: 0 1px 0 rgba(70,45,15,.25);
+}
+:root[data-theme="dark"] .method-card .method-badge { color: #1b1916; }
+:root[data-theme] .method-card .method-badge a,
+:root[data-theme] .method-card .method-badge .glossary-term { color: inherit; }
+:root[data-theme] .method-card li::marker { color: var(--tone); }
+
+/* Decision guide: two facing sheets */
+:root[data-theme] .decision-card {
+  border: 0;
+  border-radius: 10px;
+  background: var(--pc-sheet);
+  background-image: var(--pc-grain);
+  box-shadow: var(--pc-shadow-1);
+}
+:root[data-theme] .decision-col {
+  padding: 1rem 1.1rem;
+  border-radius: 8px;
+  background: var(--pc-cream);
+  box-shadow: inset 4px 0 0 var(--pc-sage), var(--pc-shadow-1);
+}
+:root[data-theme] .decision-col + .decision-col { box-shadow: inset 4px 0 0 var(--pc-teal), var(--pc-shadow-1); }
+:root[data-theme] .decision-col strong { color: var(--pc-ink); }
+
+/* ── Tool mapping per phase ── */
+:root[data-theme] .tool-stage {
+  border: 0;
+  border-radius: 10px;
+  background: var(--pc-cream);
+  background-image: var(--pc-grain);
+  box-shadow: var(--pc-shadow-2);
+  overflow: hidden;
+}
+:root[data-theme] .tool-stage:nth-of-type(4n+1) { --tone: var(--ph1); }
+:root[data-theme] .tool-stage:nth-of-type(4n+2) { --tone: var(--ph2); }
+:root[data-theme] .tool-stage:nth-of-type(4n+3) { --tone: var(--ph3); }
+:root[data-theme] .tool-stage:nth-of-type(4n+4) { --tone: var(--ph4); }
+:root[data-theme] .tool-stage-header {
+  background: color-mix(in srgb, var(--tone, var(--pc-teal)) 10%, var(--pc-sheet));
+  border-bottom: 1px dashed var(--pc-rule-strong);
+  align-items: center;
+}
+:root[data-theme] .tool-stage-header h4 { margin: 0; padding: 0; color: var(--pc-ink); }
+:root[data-theme] .tool-stage-header h4::before { display: none; }
+:root[data-theme] .stage-badge {
+  border-radius: 4px;
+  background: var(--tone, var(--pc-teal));
+  color: #fff;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: .66rem;
+  transform: rotate(-2deg);
+  box-shadow: 1px 2px 0 var(--pc-mustard);
+}
+:root[data-theme="dark"] .stage-badge { color: #1b1916; }
+:root[data-theme] .tool-row { border-bottom-color: var(--pc-rule); transition: background 180ms ease; }
+:root[data-theme] .tool-row:hover { background: color-mix(in srgb, var(--tone, var(--pc-teal)) 5%, transparent); }
+:root[data-theme] .tool-name { color: var(--pc-ink); }
+:root[data-theme] .tool-name::before {
+  content: '';
+  display: inline-block;
+  width: .45rem; height: .45rem;
+  margin-right: .5rem;
+  border-radius: 2px;
+  background: var(--tone, var(--pc-teal));
+  transform: rotate(45deg) translateY(-2px);
+}
+
+/* ── Case studies: a verdict stamp and a phase rail ── */
+:root[data-theme] .case-study {
+  border: 0;
+  border-radius: 10px;
+  background: var(--pc-cream);
+  background-image: var(--pc-grain);
+  box-shadow: var(--pc-shadow-2);
+}
+:root[data-theme] .case-study.success { --tone: var(--pc-sage); }
+:root[data-theme] .case-study.failure { --tone: var(--pc-terracotta); }
+:root[data-theme] .case-study .case-study-header,
+:root[data-theme="dark"] .case-study .case-study-header {
+  background: color-mix(in srgb, var(--tone) 9%, var(--pc-sheet));
+  border-bottom: 1px dashed color-mix(in srgb, var(--tone) 45%, transparent);
+}
+:root[data-theme] .case-study .case-verdict {
+  border-radius: 4px;
+  background: transparent;
+  color: var(--tone);
+  box-shadow: inset 0 0 0 2px var(--tone);
+  transform: rotate(-4deg);
+  font-weight: 800;
+}
+:root[data-theme] .case-study-header h4 { margin: 0; padding: 0; border: 0; font-size: 1.1rem; color: var(--pc-ink); }
+:root[data-theme] .case-study-header h4::before { display: none; }
+:root[data-theme] .case-study-header .case-company { color: var(--pc-muted); }
+:root[data-theme] .case-phase-row { border-bottom-color: var(--pc-rule); }
+:root[data-theme] .case-phase-label {
+  flex-basis: 120px;
+  color: var(--tone);
+  font-size: .74rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding-top: .15rem;
+}
+:root[data-theme] .case-phase-detail { color: var(--pc-ink-soft); }
+
+/* ── Course tools: a real Gantt chart ── */
+.gantt {
+  --weeks: 4;
+  margin: 1rem 0 1.25rem;
+  padding: .5rem 0 .75rem;
+  border-radius: 10px;
+  background: var(--pc-cream);
+  background-image: var(--pc-grain);
+  box-shadow: var(--pc-shadow-2);
+  overflow-x: auto;
+  font-size: .9rem;
+}
+.gantt-row {
+  display: grid;
+  grid-template-columns: minmax(11rem, 1.3fr) minmax(16rem, 3fr) minmax(7rem, .9fr);
+  align-items: center;
+  gap: 1rem;
+  padding: .55rem 1.1rem;
+  min-width: 36rem;
+}
+.gantt-row + .gantt-row { border-top: 1px dashed var(--pc-rule); }
+.gantt-head {
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+}
+.gantt-task { color: var(--pc-ink); font-weight: 600; }
+.gantt-dep { color: var(--pc-ink-soft); font-size: .84rem; }
+.gantt-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--weeks), 1fr);
+  height: 1.6rem;
+  align-items: center;
+  background: repeating-linear-gradient(90deg, transparent 0 calc(100% / var(--weeks) - 1px), var(--pc-rule) calc(100% / var(--weeks) - 1px) calc(100% / var(--weeks)));
+}
+.gantt-head .gantt-track { background: none; height: auto; }
+.gantt-head .gantt-track span { padding-left: .35rem; }
+.gantt-bar, .gantt-slack {
+  grid-row: 1;
+  grid-column: var(--start) / span var(--span);
+  height: .95rem;
+  margin: 0 3px;
+  border-radius: 4px;
+}
+.gantt-bar {
+  background: var(--pc-teal);
+  box-shadow: 1px 2px 0 var(--pc-mustard);
+  transform-origin: left;
+  animation: gantt-grow 700ms var(--pc-ease-out, ease) both;
+  animation-delay: calc(var(--start) * 90ms);
+}
+.gantt-row:nth-child(3) .gantt-bar { background: var(--pc-terracotta); }
+.gantt-row:nth-child(4) .gantt-bar { background: var(--pc-sage); }
+.gantt-row:nth-child(5) .gantt-bar { background: #b7811d; }
+.gantt-slack {
+  background: repeating-linear-gradient(135deg, var(--pc-rule-strong) 0 2px, transparent 2px 6px);
+  box-shadow: inset 0 0 0 1px var(--pc-rule-strong);
+  opacity: .8;
+}
+@keyframes gantt-grow { from { transform: scaleX(0); } to { transform: none; } }
+.gantt-key {
+  display: flex; align-items: center; gap: .45rem;
+  margin: .5rem 1.1rem 0;
+  font-size: .76rem;
+  color: var(--pc-muted);
+}
+.gantt-key .gantt-bar, .gantt-key .gantt-slack { display: inline-block; width: 1.6rem; height: .7rem; margin: 0 .1rem 0 .6rem; animation: none; }
+.gantt-key .gantt-bar:first-child { margin-left: 0; }
+
+/* Course tools h5 labels in content (outside figures) */
+:root[data-theme] .section-body-inner h5:not(.figure-notes h5) {
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+}
+
+@media (max-width: 768px) {
+  :root[data-theme] .sdlc-cycle-visual { flex-direction: column; flex-wrap: nowrap; align-items: stretch; }
+  :root[data-theme] .sdlc-phase-card { width: auto; max-width: none; margin: 0; }
+  :root[data-theme] .sdlc-arrow { align-self: center; width: 2px; height: 22px; margin: .15rem 0; background: repeating-linear-gradient(180deg, var(--pc-rule-strong) 0 4px, transparent 4px 8px); }
+  :root[data-theme] .sdlc-arrow::after { right: -4px; top: auto; bottom: -4px; border: 5px solid transparent; border-top-color: var(--pc-rule-strong); border-bottom: 0; }
+  .gantt-row { grid-template-columns: 8.5rem minmax(15rem, 1fr) 6.5rem; gap: .75rem; padding: .5rem .8rem; min-width: 32rem; }
+  .gantt-task, .gantt-head > :first-child {
+    position: sticky; left: 0; z-index: 1;
+    margin: -.5rem 0 -.5rem -.8rem; padding: .5rem .5rem .5rem .8rem;
+    background: var(--pc-cream);
+    box-shadow: 6px 0 8px -6px rgba(70,45,15,.25);
+    font-size: .84rem;
+  }
+  .gantt-key { flex-wrap: wrap; margin-inline: .8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gantt-bar { animation: none; }
+  :root[data-theme] .sdlc-phase-card, :root[data-theme] .phase-icon { transition: none; }
+  :root[data-theme] .sdlc-phase-card:hover, :root[data-theme] .sdlc-phase-card:hover .phase-icon { transform: none; }
+}
+:root[data-theme] .sdlc-phase-card[class*="phase-"] .phase-num { background: var(--tone); }
+:root[data-theme] .sdlc-phase-card .phase-icon { font-size: 0; display: grid; }
+:root[data-theme] .tool-name { display: flex; align-items: baseline; gap: .5rem; }
+:root[data-theme] .tool-name::before { flex: none; margin-right: 0; }
+.gantt-key { gap: .4rem 1.1rem; }
+.gantt-key-item { display: inline-flex; align-items: center; gap: .45rem; white-space: nowrap; }
+.gantt-key .gantt-bar, .gantt-key .gantt-slack { margin: 0; }

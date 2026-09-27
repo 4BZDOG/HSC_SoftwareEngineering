@@ -46,7 +46,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=19" />
+  <link rel="stylesheet" href="../css/paper.css?v=20" />
 </head>
 <body>
 
@@ -277,7 +277,7 @@
           </div>
 
           <div class="callout info">
-            <strong>Which IDE for which HSC task?</strong><br><br>
+            <strong>Which IDE for which HSC task?</strong>
             Use <strong>VS Code</strong> for general Python development, web programming tasks, and any project where you want Git integration without a heavyweight install.<br>
             Use <strong>PyCharm</strong> for larger Python projects that benefit from advanced refactoring, deeper type checking, and database tools (Community Edition is free).<br>
             Use <strong>Arduino IDE</strong> for all Arduino-based mechatronics tasks — it handles board-specific compilation and serial communication.<br>
@@ -478,18 +478,13 @@ flowchart TD
 
           <h3>Gantt Charts</h3>
           <p>A horizontal bar chart that displays all project tasks against a timeline, making it easy to see what needs to happen, in what order, and how long each task should take.</p>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr><th>Task</th><th>Week 1</th><th>Week 2</th><th>Week 3</th><th>Week 4</th><th>Depends on</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Requirements analysis</td><td>████</td><td></td><td></td><td></td><td>—</td></tr>
-                <tr><td>Design (DFD, structure chart)</td><td>░░</td><td>████</td><td></td><td></td><td>Requirements</td></tr>
-                <tr><td>Coding</td><td></td><td>░░</td><td>████</td><td>░░</td><td>Design</td></tr>
-                <tr><td>Testing</td><td></td><td></td><td>░░</td><td>████</td><td>Coding</td></tr>
-              </tbody>
-            </table>
+          <div class="gantt" role="table" aria-label="Example Gantt chart over four weeks">
+            <div class="gantt-row gantt-head" role="row"><span role="columnheader">Task</span><span class="gantt-track" role="columnheader"><span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span></span><span role="columnheader">Depends on</span></div>
+              <div class="gantt-row" role="row"><span class="gantt-task" role="rowheader">Requirements analysis</span><span class="gantt-track" role="cell" aria-label="Week 1"><span class="gantt-bar" style="--start:1;--span:1"></span></span><span class="gantt-dep" role="cell">—</span></div>
+              <div class="gantt-row" role="row"><span class="gantt-task" role="rowheader">Design (DFD, structure chart)</span><span class="gantt-track" role="cell" aria-label="Week 2"><span class="gantt-bar" style="--start:2;--span:1"></span><span class="gantt-slack" style="--start:1;--span:1"></span></span><span class="gantt-dep" role="cell">Requirements</span></div>
+              <div class="gantt-row" role="row"><span class="gantt-task" role="rowheader">Coding</span><span class="gantt-track" role="cell" aria-label="Week 3"><span class="gantt-bar" style="--start:3;--span:1"></span><span class="gantt-slack" style="--start:2;--span:1"></span><span class="gantt-slack" style="--start:4;--span:1"></span></span><span class="gantt-dep" role="cell">Design</span></div>
+              <div class="gantt-row" role="row"><span class="gantt-task" role="rowheader">Testing</span><span class="gantt-track" role="cell" aria-label="Week 4"><span class="gantt-bar" style="--start:4;--span:1"></span><span class="gantt-slack" style="--start:3;--span:1"></span></span><span class="gantt-dep" role="cell">Coding</span></div>
+            <p class="gantt-key"><span class="gantt-key-item"><span class="gantt-bar"></span>Planned work</span><span class="gantt-key-item"><span class="gantt-slack"></span>Overlap or slack</span></p>
           </div>
           <div class="key-terms">
             <div class="key-term-item"><strong>Task bars</strong><span>Horizontal bars showing the planned start, duration, and end of each task.</span></div>
@@ -697,7 +692,7 @@ END</code></pre>
           <h3>Selection</h3>
           <p>Allows the program to choose between different paths based on a condition.</p>
 
-          <h4>2️⃣ Binary Selection</h4>
+          <h4>Binary Selection</h4>
           <p>Chooses between exactly <strong>two</strong> outcomes: one path if the condition is true, another if it is false.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Pseudocode — Pass or fail</span></div>
@@ -950,7 +945,7 @@ for s in passing:
             </div>
           </div>
           <div class="callout info">
-            <strong>Tracing a circuit — LED with current-limiting resistor:</strong><br><br>
+            <strong>Tracing a circuit — LED with current-limiting resistor:</strong>
             <code>+5V → [Resistor 220Ω] → [LED Anode (+)] → [LED Cathode (−)] → GND</code><br><br>
             In wiring diagrams, always trace from the <strong>positive supply (VCC/5V)</strong> through each component in series to <strong>ground (GND)</strong>. The resistor limits current so the LED doesn't burn out (LEDs typically need 20mA at 2V forward voltage; at 5V supply: R = (5 − 2) / 0.02 = <strong>150Ω minimum</strong> — 220Ω is the standard safe choice).<br><br>
             In Arduino projects: digital output pin → resistor → LED → GND. When the pin outputs HIGH (5V), current flows and the LED illuminates.
