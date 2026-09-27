@@ -53,7 +53,7 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
   <link rel="stylesheet" href="../css/paper.css?v=25" />
-  <link rel="stylesheet" href="../css/anim.css?v=1" />
+  <link rel="stylesheet" href="../css/anim.css?v=2" />
 </head>
 <body>
 
@@ -233,6 +233,21 @@
 
           <h3>Data Packets</h3>
           <p>When data is sent over the internet, it is broken into small, manageable units called <strong>data packets</strong>. Each packet contains a <strong>header</strong> (source IP, destination IP, sequence number, protocol type) and a <strong>payload</strong> (the actual data fragment). Packets from the same transmission may take different routes through the network and are reassembled in the correct order at the destination. This packet-switching model means the failure of one route does not disrupt the overall transmission — other paths are used instead.</p>
+
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Animated diagram</span></p>
+            <h4 class="figure-title">Data packets: split up, sent separately, put back together</h4>
+            <p class="figure-lead">One message becomes four packets that cross the internet by different routes and are reassembled at the server.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--anim">
+            <div class="anim" data-anim="packets"></div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Routers only read the header: the destination IP address tells them where to send each packet next.</li><li>Packets can arrive out of order; the sequence numbers let TCP rebuild the message in the right order.</li><li>A gap in the sequence numbers is how the receiver knows a packet was lost, so it can ask for it again.</li></ul><p class="figure-controls">Choose a journey with the tabs. Step with ◀ and ▶ (or the arrow keys), play or pause with Space.</p></div>
+            <p class="figure-try"><strong>Try this</strong>Why is it useful for packets from one message to take <em>different</em> routes? Give one advantage and one problem it creates.</p>
+          </div>
+        </figure>
 
 <h3>IP Addresses and IPv4</h3>
           <p>Every device on a network is assigned an <strong>Internet Protocol (IP) address</strong> — a unique numerical label used to identify it for communication purposes. <strong>IPv4</strong> (Internet Protocol version 4) addresses are 32-bit numbers expressed in dotted-decimal notation, divided into four octets (e.g., <code>192.168.1.1</code>). IPv4 supports approximately 4.3 billion unique addresses. Due to address exhaustion, <strong>Network Address Translation (NAT)</strong> is used so that multiple devices on a private network can share a single public IP address. <strong>IPv6</strong> was introduced to address this limitation using 128-bit addresses.</p>
@@ -1410,6 +1425,6 @@ flowchart TD
   </div>
   <script src="../js/paper.js?v=6" defer></script>
   <script src="../js/progress.js?v=1" defer></script>
-  <script src="../js/anim.js?v=1" defer></script>
+  <script src="../js/anim.js?v=2" defer></script>
 </body>
 </html>

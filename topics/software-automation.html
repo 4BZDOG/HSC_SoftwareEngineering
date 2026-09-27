@@ -53,7 +53,7 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
   <link rel="stylesheet" href="../css/paper.css?v=25" />
-  <link rel="stylesheet" href="../css/anim.css?v=1" />
+  <link rel="stylesheet" href="../css/anim.css?v=2" />
 </head>
 <body>
 
@@ -594,6 +594,21 @@ print(f"Predicted score for 9 hours: {model.predict([[9]])[0]:.1f}")</code></pre
             <strong>KNN Example</strong> To classify whether a new plant is Species A or B based on petal length and width, KNN finds the 5 most similar plants in the training set (K=5). If 4 of those 5 are Species A, the new plant is classified as Species A with high confidence.
           </div>
 
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Animated diagram</span></p>
+            <h4 class="figure-title">K-nearest neighbour: classifying a new plant, and why K matters</h4>
+            <p class="figure-lead">The same new plant, the same data: only K changes, and so does the answer.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--anim">
+            <div class="anim" data-anim="knn"></div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>KNN has no training step: all the work happens at prediction time, by measuring the distance to every stored example.</li><li>K = 1 follows the single closest example, noise and all; a very large K ignores local detail. K is usually chosen by testing several values.</li><li>The distance only makes sense if the features are on similar scales, which is why the code below scales them first.</li></ul><p class="figure-controls">Choose K with the tabs. Step with ◀ and ▶ (or the arrow keys), play or pause with Space.</p></div>
+            <p class="figure-try"><strong>Try this</strong>Predict the answer for K = 7 before you count. (The 6th and 7th nearest plants are both Species A.)</p>
+          </div>
+        </figure>
+
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — K-Nearest Neighbour Classification (scikit-learn)</span></div>
             <pre><code class="language-python">from sklearn.neighbors import KNeighborsClassifier
@@ -1032,6 +1047,6 @@ flowchart LR
   </div>
   <script src="../js/paper.js?v=6" defer></script>
   <script src="../js/progress.js?v=1" defer></script>
-  <script src="../js/anim.js?v=1" defer></script>
+  <script src="../js/anim.js?v=2" defer></script>
 </body>
 </html>

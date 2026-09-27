@@ -53,7 +53,7 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
   <link rel="stylesheet" href="../css/paper.css?v=25" />
-  <link rel="stylesheet" href="../css/anim.css?v=1" />
+  <link rel="stylesheet" href="../css/anim.css?v=2" />
 </head>
 <body>
 
@@ -815,6 +815,21 @@ flowchart TD
             <p class="figure-try"><strong>Try this</strong>Explain how CSRF differs from XSS. (Hint: in XSS the attacker's script runs <em>on</em> the bank's page; in CSRF the attacker never touches the bank's page at all.)</p>
           </div>
         </figure>
+
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Animated diagram</span></p>
+            <h4 class="figure-title">A race condition: two withdrawals and one balance</h4>
+            <p class="figure-lead">Two requests read, check and write the same balance. Watch what happens when their steps interleave, then add a lock.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--anim">
+            <div class="anim" data-anim="race-condition"></div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The bug is in the gap between <em>reading</em> the balance and <em>writing</em> it back. Each step is correct on its own; the order in which they interleave is what goes wrong.</li><li>A lock (or a database transaction) makes read, check and write one atomic step, so the second request sees the first one's result.</li><li>Race conditions are hard to find in testing because they only happen when the timing lines up, often under heavy load.</li></ul><p class="figure-controls">Switch between no lock and a lock with the tabs. Step with ◀ and ▶ (or the arrow keys), play or pause with Space.</p></div>
+            <p class="figure-try"><strong>Try this</strong>Explain why Request B saw $600 in the first run but $100 in the second. What exactly did the lock change?</p>
+          </div>
+        </figure>
         </section>
 
         <hr class="divider" />
@@ -1009,6 +1024,6 @@ flowchart TD
   </div>
   <script src="../js/paper.js?v=6" defer></script>
   <script src="../js/progress.js?v=1" defer></script>
-  <script src="../js/anim.js?v=1" defer></script>
+  <script src="../js/anim.js?v=2" defer></script>
 </body>
 </html>
