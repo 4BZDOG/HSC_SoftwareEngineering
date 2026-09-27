@@ -1660,3 +1660,245 @@ a.pg-seen::after {
 }
 :root[data-theme] .content-body h4::before { background: var(--pc-teal); opacity: .7; }
 .pg-sidebar .pg-text { white-space: nowrap; }
+
+/* ============================================================
+   Polish pass: quizzes, figures, steps and tools breakouts
+   ============================================================ */
+
+/* ── Quizzes: a question card per fieldset, lettered answer tiles ── */
+.quiz { padding: 1.5rem 1.5rem 1.25rem; border-top: 0; box-shadow: inset 0 5px 0 var(--pc-mustard), var(--pc-shadow-2); }
+.quiz-head { display: grid; grid-template-columns: auto 1fr; gap: .1rem .85rem; align-items: center; margin-bottom: 1.1rem; }
+.quiz-head::before {
+  content: '?';
+  grid-row: span 2;
+  display: grid; place-items: center;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--pc-mustard);
+  color: var(--pc-ink);
+  font: 700 1.35rem var(--font-display);
+  box-shadow: 2px 2px 0 var(--pc-terracotta), var(--pc-shadow-1);
+  transform: rotate(-4deg);
+}
+.quiz-kicker { font-size: 1.25rem; letter-spacing: -.01em; }
+.quiz-sub { margin: 0; }
+.quiz-q {
+  padding: 1rem 1.1rem 1.05rem;
+  background: var(--pc-sheet);
+  border-left: 0;
+  border-radius: 8px;
+  box-shadow: inset 4px 0 0 var(--pc-rule-strong);
+  transition: box-shadow 260ms ease;
+}
+.quiz-q.is-right { box-shadow: inset 4px 0 0 var(--pc-sage); }
+.quiz-q.is-wrong { box-shadow: inset 4px 0 0 var(--pc-terracotta); }
+.quiz-q legend { margin-bottom: .7rem; line-height: 1.4; }
+.quiz-num { background: var(--pc-ink); box-shadow: 1px 1px 0 var(--pc-mustard); }
+.quiz-opt {
+  position: relative;
+  align-items: center;
+  gap: .7rem;
+  margin: .35rem 0;
+  padding: .55rem .75rem;
+  border-radius: 8px;
+  background: var(--pc-cream);
+  box-shadow: 0 0 0 1px var(--pc-rule), 0 1px 0 rgba(70,45,15,.08);
+  transition: box-shadow 180ms ease, transform 200ms var(--pc-ease-out, ease), background 180ms ease;
+}
+.quiz-opt:hover { background: var(--pc-cream); box-shadow: 0 0 0 1px var(--pc-rule-strong), var(--pc-shadow-1); transform: translateX(2px); }
+.quiz-opt input { position: absolute; opacity: 0; pointer-events: none; }
+.quiz-letter {
+  flex: none;
+  display: grid; place-items: center;
+  width: 1.7rem; height: 1.7rem;
+  border-radius: 6px;
+  font: 700 .78rem var(--font-body);
+  color: var(--pc-ink-soft);
+  background: var(--pc-sheet);
+  box-shadow: inset 0 0 0 1.5px var(--pc-rule-strong);
+  transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease, transform 320ms var(--pc-spring, ease);
+}
+.quiz-opt:has(input:checked) { box-shadow: 0 0 0 2px var(--pc-teal), var(--pc-shadow-1); }
+.quiz-opt:has(input:checked) .quiz-letter { background: var(--pc-teal); color: #fff; box-shadow: none; transform: rotate(-6deg) scale(1.06); }
+.quiz-opt:has(input:focus-visible) { outline: 2px solid var(--pc-plum); outline-offset: 2px; }
+.quiz-opt:has(input:disabled):hover { transform: none; box-shadow: 0 0 0 1px var(--pc-rule); }
+/* After checking: the right answer glows sage; a wrong pick is struck through */
+.quiz-q.is-right .quiz-opt.is-answer,
+.quiz-q.is-wrong .quiz-opt.is-answer {
+  background: color-mix(in srgb, var(--pc-sage) 16%, var(--pc-cream));
+  box-shadow: 0 0 0 2px var(--pc-sage);
+  font-weight: 600;
+}
+.quiz-opt.is-answer .quiz-letter { background: var(--pc-sage); color: #fff; box-shadow: none; }
+.quiz-opt.is-answer .quiz-letter { font-size: 0; }
+.quiz-opt.is-answer .quiz-letter::after { content: '✓'; font-size: .85rem; }
+.quiz-q.is-wrong .quiz-opt:has(input:checked):not(.is-answer) { box-shadow: 0 0 0 2px var(--pc-terracotta); }
+.quiz-q.is-wrong .quiz-opt:has(input:checked):not(.is-answer) .quiz-letter { background: var(--pc-terracotta); font-size: 0; }
+.quiz-q.is-wrong .quiz-opt:has(input:checked):not(.is-answer) .quiz-letter::after { content: '✕'; font-size: .8rem; }
+.quiz-q.is-wrong .quiz-opt:has(input:checked):not(.is-answer) .quiz-opt-text { text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--pc-terracotta) 70%, transparent); }
+.quiz-opt:has(input:disabled):not(.is-answer):not(:has(input:checked)) { opacity: .6; }
+.quiz-feedback {
+  margin: .75rem 0 0;
+  padding: .6rem .8rem;
+  border-radius: 6px;
+  background: var(--pc-cream);
+  color: var(--pc-ink-soft);
+  line-height: 1.55;
+  animation: pc-rise 360ms var(--pc-ease-out, ease) both;
+}
+.quiz-q.is-right .quiz-feedback { box-shadow: inset 3px 0 0 var(--pc-sage); }
+.quiz-q.is-wrong .quiz-feedback { box-shadow: inset 3px 0 0 var(--pc-terracotta); }
+.quiz-bar { margin-top: .25rem; }
+.quiz-btn { transition: transform 160ms ease, box-shadow 160ms ease; }
+.quiz-btn:hover { transform: translateY(-1px); box-shadow: var(--pc-shadow-2); }
+.quiz-btn:active { transform: translateY(1px); }
+.quiz-score:not(:empty) {
+  padding: .35rem .7rem;
+  border-radius: 6px;
+  background: var(--pc-sheet);
+  animation: pc-rise 360ms var(--pc-ease-out, ease) both;
+}
+.quiz[data-score="full"] .quiz-score { background: color-mix(in srgb, var(--pc-sage) 18%, var(--pc-cream)); color: var(--pc-ink); }
+@keyframes pc-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ── Figures ── */
+.figure { padding: 1.2rem 1.3rem 1.25rem; box-shadow: inset 0 4px 0 var(--pc-teal), var(--pc-shadow-2); }
+.figure-kicker { flex-wrap: nowrap; }
+.figure-kind { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.figure-canvas { border-radius: 6px; box-shadow: inset 0 1px 3px rgba(70,45,15,.08); scrollbar-width: thin; }
+/* A fading edge and hint when a wide diagram scrolls sideways */
+.figure-canvas.is-scrollable .mermaid {
+  background:
+    linear-gradient(90deg, #fffdf8 30%, transparent) left / 24px 100% no-repeat local,
+    linear-gradient(270deg, #fffdf8 30%, transparent) right / 24px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(70,45,15,.18), transparent) left / 10px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(70,45,15,.18), transparent) right / 10px 100% no-repeat scroll,
+    #fffdf8;
+}
+:root[data-theme="dark"] .figure-canvas.is-scrollable .mermaid {
+  background:
+    linear-gradient(90deg, #1f1c18 30%, transparent) left / 24px 100% no-repeat local,
+    linear-gradient(270deg, #1f1c18 30%, transparent) right / 24px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, rgba(0,0,0,.5), transparent) left / 10px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,.5), transparent) right / 10px 100% no-repeat scroll,
+    #1f1c18;
+}
+.figure-scroll-hint {
+  display: flex; align-items: center; gap: .4rem;
+  margin: -.55rem 0 .8rem;
+  font-size: .74rem;
+  color: var(--pc-muted);
+}
+.figure-scroll-hint::before { content: '↔'; font-weight: 700; color: var(--pc-teal); }
+.figure-scroll-hint[hidden] { display: none; }
+.figure-zoom { transition: background 160ms ease, transform 200ms var(--pc-spring, ease); }
+.figure-zoom:hover { transform: scale(1.05); }
+.figure-try { border-left: 0; border-radius: 6px; box-shadow: inset 3px 0 0 var(--pc-mustard); }
+
+/* ── Steps: one continuous rail between the numbers ── */
+:root[data-theme] .step:not(:last-child) .step-num::after { display: none; }
+:root[data-theme] .step:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 15px; top: 38px; bottom: -1.1rem;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(var(--pc-year), color-mix(in srgb, var(--pc-year) 20%, transparent));
+}
+:root[data-theme] .step-num { position: relative; z-index: 1; transition: transform 320ms var(--pc-spring, ease); }
+:root[data-theme] .step:hover .step-num { transform: rotate(-8deg) scale(1.08); box-shadow: 2px 2px 0 var(--pc-mustard); }
+:root[data-theme] .step-content h4 { color: var(--pc-ink); }
+
+/* ── Tools breakouts ── */
+.tools-icon {
+  flex: none;
+  width: 1.05em; height: 1.05em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+/* Inline: after a step's explanation */
+.tools-used {
+  margin: .85rem 0 .25rem;
+  padding: .75rem .9rem .8rem;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--pc-teal) 7%, var(--pc-cream));
+  background-image: var(--pc-grain);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--pc-teal) 22%, transparent), var(--pc-shadow-1);
+}
+.tools-used-label {
+  display: inline-flex; align-items: center; gap: .4rem;
+  margin: 0 0 .45rem;
+  padding: .16rem .55rem .14rem .45rem;
+  border-radius: 4px;
+  font: 800 .66rem var(--font-body);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--pc-teal);
+  transform: rotate(-1.2deg);
+  box-shadow: 0 1px 0 rgba(70,45,15,.25);
+}
+.tools-used ul { margin: 0; padding: 0; list-style: none; display: grid; gap: .35rem; }
+.tools-used li { position: relative; padding-left: 1.1rem; font-size: .92rem; line-height: 1.5; color: var(--pc-ink-soft); }
+.tools-used li::before {
+  content: '';
+  position: absolute; left: .15rem; top: .55em;
+  width: .42rem; height: .42rem;
+  border-radius: 2px;
+  background: var(--pc-teal);
+  transform: rotate(45deg);
+}
+:root[data-theme="dark"] .tools-used-label { color: #1b1916; }
+/* Panel: a heading and its grid of tool cards */
+.tools-panel {
+  margin: 1.75rem 0;
+  padding: 1.1rem 1.2rem 1.25rem;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--pc-teal) 8%, var(--pc-sheet));
+  background-image: var(--pc-grain);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--pc-teal) 20%, transparent);
+}
+:root[data-theme] .content-body .tools-panel h3,
+:root[data-theme] .section-body-inner .tools-panel h3 {
+  display: flex; align-items: center; gap: .6rem;
+  margin: 0 0 .9rem;
+  padding: 0;
+  border: 0;
+}
+:root[data-theme] .content-body .tools-panel h3::before { display: none; }
+.tools-panel h3 .tools-icon {
+  width: 2rem; height: 2rem;
+  padding: .42rem;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--pc-teal);
+  box-shadow: 2px 2px 0 var(--pc-mustard);
+  transform: rotate(-5deg);
+}
+.tools-panel .key-terms { margin: 0; }
+.tools-panel > p { margin: 0 0 .8rem; }
+
+@media (max-width: 600px) {
+  :root[data-theme] .section-body-inner { padding: 1.15rem .9rem; }
+  .figure { padding: .95rem .8rem 1rem; }
+  .figure-canvas { padding: .6rem; }
+  .quiz { padding: 1.15rem .9rem 1rem; }
+  .quiz-q { padding: .85rem .75rem .9rem; }
+  .tools-panel { padding: .95rem .8rem 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quiz-opt, .quiz-letter, .quiz-btn, .figure-zoom, :root[data-theme] .step-num { transition: none; }
+  .quiz-feedback, .quiz-score:not(:empty) { animation: none; }
+  .quiz-opt:hover, :root[data-theme] .step:hover .step-num { transform: none; }
+}
+:root[data-theme] .content-body .tools-used-label { color: #fff; }
+:root[data-theme="dark"] .content-body .tools-used-label { color: #1b1916; }
+.figure-kicker, .figure-kicker::before { white-space: nowrap; }
+/* Wide diagrams start at their left edge so the whole chart can be scrolled */
+:root[data-theme] .figure-canvas .mermaid { display: block; text-align: left; }
+.figure-canvas.is-scrollable svg { margin: 0; }
+.quiz-opt.is-answer:has(input:checked) .quiz-letter { background: var(--pc-sage); transform: none; }

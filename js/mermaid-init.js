@@ -71,6 +71,38 @@
     }).join('\n');
   }
 
+  // Mermaid's viewBox can clip the outermost nodes, and useMaxWidth shrinks
+  // wide charts until labels are unreadable. Refit the viewBox to the drawn
+  // content, and keep text at a readable size (the canvas scrolls instead).
+  const MIN_SCALE = 0.62;
+  function fitSvg(el) {
+    const svg = el.querySelector('svg');
+    if (!svg) return;
+    let bb;
+    try { bb = svg.getBBox(); } catch { return; }
+    if (!bb.width || !bb.height) return;
+    const pad = 12;
+    const w = bb.width + pad * 2, h = bb.height + pad * 2;
+    svg.setAttribute('viewBox', `${bb.x - pad} ${bb.y - pad} ${w} ${h}`);
+    svg.removeAttribute('height');
+    svg.style.maxWidth = `${Math.ceil(w)}px`;
+    svg.style.minWidth = `${Math.ceil(w * MIN_SCALE)}px`;
+    const canvas = el.closest('.figure-canvas');
+    if (canvas) requestAnimationFrame(() => {
+      const wide = el.scrollWidth > el.clientWidth + 2 || canvas.scrollWidth > canvas.clientWidth + 2;
+      canvas.classList.toggle('is-scrollable', wide);
+      let hint = canvas.nextElementSibling;
+      if (!hint || !hint.classList.contains('figure-scroll-hint')) {
+        if (!wide) return;
+        hint = document.createElement('p');
+        hint.className = 'figure-scroll-hint';
+        hint.textContent = 'Scroll sideways to see the whole diagram, or use Enlarge.';
+        canvas.after(hint);
+      }
+      hint.hidden = !wide;
+    });
+  }
+
   function getThemeConfig(isDark) {
     const p = isDark ? PALETTE.dark : PALETTE.light;
     return {
@@ -191,6 +223,7 @@
         const pal = isDark ? PALETTE.dark : PALETTE.light;
         const { svg } = await mermaid.render(id, normaliseSource(source, pal));
         el.innerHTML = svg;
+        fitSvg(el);
       } catch (e) {
         console.warn('Mermaid render error:', e);
       }

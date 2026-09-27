@@ -46,7 +46,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=16" />
+  <link rel="stylesheet" href="../css/paper.css?v=17" />
   <style>
     /* ── SDLC-specific styles ── */
     .sdlc-cycle-visual {
@@ -682,13 +682,15 @@
             </div>
           </div>
 
-          <h3>Course Tools Used in Phase 1</h3>
+          <div class="tools-panel">
+            <h3><svg class="tools-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.6 17.1a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.1-.6-.6-2.1z"/></svg>Course Tools Used in Phase 1</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>📝 Storyboards</strong><span>Sketch the user interface flow and screen transitions before writing any code. Assessors expect to see storyboards for every major screen/view.</span></div>
             <div class="key-term-item"><strong>🗄️ Data Dictionaries</strong><span>Formally define every data field — name, type, size, range, required/optional, and description. This ensures design consistency and is a mandatory deliverable for the major project.</span></div>
             <div class="key-term-item"><strong>📊 Use Case Diagrams</strong><span>Show all actors (users, external systems) and the functions they interact with. Particularly important for identifying which stakeholders drive which requirements.</span></div>
             <div class="key-term-item"><strong>🧠 Mind Maps</strong><span>Brainstorm and organise initial ideas, feature clusters, and stakeholder categories before writing formal requirements.</span></div>
             <div class="key-term-item"><strong>📋 User Stories / Acceptance Criteria</strong><span>User stories anchor requirements to real user needs. Each story must be accompanied by measurable acceptance criteria for assessors to evaluate completeness.</span></div>
+          </div>
           </div>
 
           <div class="callout assessor">
@@ -744,7 +746,8 @@
             </div>
           </div>
 
-          <h3>Course Tools Used in Phase 2</h3>
+          <div class="tools-panel">
+            <h3><svg class="tools-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.6 17.1a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.1-.6-.6-2.1z"/></svg>Course Tools Used in Phase 2</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>📐 Structure Charts</strong><span>Decompose the system into modules and show their hierarchical relationships and data passing. Required for the major project and assessed in exams.</span></div>
             <div class="key-term-item"><strong>💬 Pseudocode</strong><span>Language-independent algorithm description. Write pseudocode for all major algorithms before coding them. Examiners strongly prefer pseudocode to actual code in written responses.</span></div>
@@ -754,6 +757,7 @@
             <div class="key-term-item"><strong>📅 Gantt Charts</strong><span>Visualise project schedule with tasks, durations, dependencies, and milestones. Tools: MS Project, Trello, Excel, Canva. A completed vs planned Gantt comparison is excellent evidence for evaluation.</span></div>
             <div class="key-term-item"><strong>🔄 Data Flow Diagrams (DFDs)</strong><span>Show how data moves through the system — external entities, processes, data stores, and data flows. DFDs are listed in the NESA course specifications. Level 0 (context diagram) and Level 1 DFDs are required.</span></div>
             <div class="key-term-item"><strong>🛡️ Threat Modelling (STRIDE)</strong><span>Identify and categorise security threats: Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege. Used in Secure Software Architecture.</span></div>
+          </div>
           </div>
 
           <div class="callout assessor">
@@ -809,7 +813,8 @@
             </div>
           </div>
 
-          <h3>Course Tools Used in Phase 3</h3>
+          <div class="tools-panel">
+            <h3><svg class="tools-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.6 17.1a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.1-.6-.6-2.1z"/></svg>Course Tools Used in Phase 3</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>🐍 Python (or chosen language)</strong><span>The primary implementation language for HSC projects. Must be used with PEP 8 style, docstrings, and modular design. OOP features (classes, inheritance) are expected in Year 12 submissions.</span></div>
             <div class="key-term-item"><strong>🔀 Git / Version Control</strong><span>All code must be tracked with Git. Commit messages should be descriptive and atomic. Provide the repository URL or a commit log extract as project evidence.</span></div>
@@ -817,6 +822,7 @@
             <div class="key-term-item"><strong>🌐 HTML / CSS / JavaScript</strong><span>For web-based projects. HTML for structure (semantic elements), CSS for presentation (responsive design), JavaScript for client-side behaviour. Must follow web standards and accessibility guidelines.</span></div>
             <div class="key-term-item"><strong>🧪 Unit Test Stubs</strong><span>Write test stubs alongside your code (test-driven development approach). Importing Python's <code>unittest</code> module and writing test cases alongside implementation is highly regarded by assessors.</span></div>
             <div class="key-term-item"><strong>🛠️ IDE Tools</strong><span>Use VS Code or PyCharm with linting, debugging, and version control integration. Demonstrate awareness of how the IDE supports professional development practice.</span></div>
+          </div>
           </div>
 
           <div class="callout assessor">
@@ -906,13 +912,15 @@
             </div>
           </div>
 
-          <h3>Course Tools Used in Phase 4</h3>
+          <div class="tools-panel">
+            <h3><svg class="tools-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.6 17.1a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.1-.6-.6-2.1z"/></svg>Course Tools Used in Phase 4</h3>
           <div class="key-terms">
             <div class="key-term-item"><strong>🧪 Python unittest</strong><span>Write automated unit tests using Python's built-in <code>unittest</code> module. Demonstrate that tests run and pass with screenshot evidence. Automated tests are more credible than manual testing alone.</span></div>
             <div class="key-term-item"><strong>📊 Test Tables</strong><span>A structured table documenting every test case. Listed in the NESA course specifications. Every major feature must have test cases using normal, boundary, and erroneous data.</span></div>
             <div class="key-term-item"><strong>🐛 Defect / Bug Logs</strong><span>Track every discovered defect with severity, reproduction steps, and resolution. GitHub Issues, Jira, or a spreadsheet are all acceptable formats. The log demonstrates genuine testing activity.</span></div>
             <div class="key-term-item"><strong>📋 UAT Feedback Forms</strong><span>Document client/user feedback from acceptance testing sessions. Include the date, tester name, findings, and how feedback was incorporated. Written evidence of UAT is mandatory for the major project.</span></div>
             <div class="key-term-item"><strong>📈 Gantt Chart (Planned vs Actual)</strong><span>Compare your original schedule against what actually happened. Identify where tasks ran over/under, and explain variance. This comparison is a rich source of process evaluation content.</span></div>
+          </div>
           </div>
 
           <div class="callout assessor">
