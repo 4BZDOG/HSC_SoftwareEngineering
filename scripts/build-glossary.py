@@ -25,6 +25,14 @@ EXTRA_ALIASES = {
     'term-message-passing': ['Message passing'], 'term-twos-complement': ["Two's complement", 'Twos complement'],
     'term-degrees-of-freedom': ['Degrees of freedom'], 'term-user-stories': ['User Story'],
     'term-knn': ['K-nearest neighbour', 'K-Nearest Neighbours', 'KNN'], 'term-wcag': ['WCAG', 'Web accessibility'],
+    'term-apps': ['APP', 'Australian Privacy Principle'], 'term-ndb': ['Notifiable Data Breaches', 'NDB scheme'],
+    'term-privacy-act': ['Privacy Act'], 'term-dos': ['DoS', 'DDoS', 'Distributed Denial of Service', 'Denial-of-Service'],
+    'term-mitm': ['Man-in-the-Middle', 'MITM'], 'term-zero-day': ['Zero-Day'], 'term-rbac': ['Role-based access'],
+    'term-least-privilege': ['Least Privilege'], 'term-parameterised-query': ['Parameterised Statement', 'Prepared Statement'],
+    'term-float': ['Float', 'Floating-point'], 'term-subprogram': ['Subroutine', 'Sub-program'],
+    'term-stand-up': ['Stand-up', 'Daily stand-up'], 'term-status-code': ['Status Code'],
+    'term-schema': ['Schema'], 'term-unicode': ['UTF-8'], 'term-encryption': ['Encrypted'],
+    'term-exploit': ['Exploits'], 'term-mse': ['MSE'], 'term-aes': ['AES-256', 'AES-128'],
 }
 
 # Everyday words that should stay in the glossary but not be auto-linked in prose.
