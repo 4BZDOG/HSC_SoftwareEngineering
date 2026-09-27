@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=24" />
+  <link rel="stylesheet" href="../css/paper.css?v=25" />
   <style>
     /* ── Glossary Page Layout ── */
     .glossary-wrapper {
@@ -510,7 +510,7 @@
       </nav>
       <h1>Software Engineering Glossary</h1>
       <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
-        A complete <strong>A–Z reference</strong> of the key terms and <strong>syllabus keywords</strong> you need for NESA NSW HSC Software Engineering. Use the <strong>search</strong> box to find any term instantly, and the colour-coded chips to see which course topic each term belongs to.
+        A complete <strong>A–Z reference</strong> of the key terms and <strong>syllabus keywords</strong> you need for NESA NSW HSC Software Engineering. Search definitions and examples, filter by <strong>Year 11</strong>, <strong>Year 12</strong> or <strong>core</strong> terms, and follow <strong>See also</strong> links between related ideas.
       </p>
       <div class="topic-header-meta">
         <span class="meta-pill year12">Year 11 &amp; 12</span>
@@ -525,41 +525,28 @@
     <div class="glossary-wrapper">
       <div class="content-body">
 
-        <!-- ── Stats Bar ── -->
-        <div class="glossary-stats">
-          <div class="glossary-stat">
-            <span class="glossary-stat-num" id="total-terms-count">140</span>
-            <span class="glossary-stat-label">Terms</span>
-          </div>
-          <div class="glossary-stats-divider"></div>
-          <div class="glossary-stat">
-            <span class="glossary-stat-num">7</span>
-            <span class="glossary-stat-label">Topics</span>
-          </div>
-          <div class="glossary-stats-divider"></div>
-          <div class="glossary-stat">
-            <span class="glossary-stat-num">A–X</span>
-            <span class="glossary-stat-label">Coverage</span>
-          </div>
-          <div class="glossary-stats-divider"></div>
-          <div style="display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
-            <span class="chip chip-y11">Yr 11 Topics</span>
-            <span class="chip chip-y12">Yr 12 Topics</span>
-            <span class="chip chip-core">Core / Cross-Course</span>
-          </div>
-          <div class="glossary-stats-divider"></div>
+        <!-- ── Search and filters ── -->
+        <div class="gl-toolbar" id="gl-toolbar">
           <div class="glossary-search-container" id="search-wrapper">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="glossary-search" class="glossary-search-input" placeholder="Search terminology..." aria-label="Search terminology">
-            <span class="search-k-hint">Ctrl+K</span>
-            <button class="search-clear-btn" id="search-clear" title="Clear search">✕</button>
+            <svg class="gl-search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+            <input type="search" id="glossary-search" class="glossary-search-input" placeholder="Search 221 terms" aria-label="Search the glossary" autocomplete="off" spellcheck="false">
+            <kbd class="search-k-hint" id="search-k-hint">Ctrl K</kbd>
+            <button class="search-clear-btn" id="search-clear" type="button" aria-label="Clear search">✕</button>
+          </div>
+          <div class="gl-filter-row">
+            <div class="gl-filters" role="group" aria-label="Show terms from">
+              <button type="button" class="gl-filter chip chip-y11" data-filter="y11" aria-pressed="false">Year 11</button>
+              <button type="button" class="gl-filter chip chip-y12" data-filter="y12" aria-pressed="false">Year 12</button>
+              <button type="button" class="gl-filter chip chip-core" data-filter="core" aria-pressed="false">Core</button>
+            </div>
+            <p class="gl-count" id="gl-count" role="status" aria-live="polite"><strong id="total-terms-count">221</strong> terms · 7 topics · A–X</p>
           </div>
         </div>
 
         <div id="no-results-msg" class="hidden">
           <h3>No terms found</h3>
-          <p>We couldn't find any results matching your search. Try a different keyword or browse the categories.</p>
-          <button class="btn btn-secondary mt-3" onclick="document.getElementById('search-clear').click()">Clear Search</button>
+          <p>Nothing matches that search. Try a shorter word, or clear the year filters.</p>
+          <button type="button" class="btn btn-outline mt-3" onclick="document.getElementById('search-clear').click();document.querySelectorAll('.gl-filter').forEach(f=>f.getAttribute('aria-pressed')==='true'&&f.click())">Clear search and filters</button>
         </div>
 
         <!-- ── Alphabet Jump Bar ── -->
@@ -3096,145 +3083,115 @@
   </footer>
 
   <script>
+    /* Glossary search, year filters, A–Z index and deep links. */
     document.addEventListener('DOMContentLoaded', () => {
-      const searchInput = document.getElementById('glossary-search');
-      const searchWrapper = document.getElementById('search-wrapper');
-      const searchClear = document.getElementById('search-clear');
-      const termCards = document.querySelectorAll('.glossary-term');
-      const letterGroups = document.querySelectorAll('.glossary-group');
+      const input = document.getElementById('glossary-search');
+      const wrap = document.getElementById('search-wrapper');
+      const clear = document.getElementById('search-clear');
+      const count = document.getElementById('gl-count');
       const noResults = document.getElementById('no-results-msg');
-      const totalCountEl = document.getElementById('total-terms-count');
-      const alphaButtons = document.querySelectorAll('.alpha-btn:not(.disabled)');
-      const headerOffset = 180; // Buffer for sticky header
+      const groups = [...document.querySelectorAll('.glossary-group')];
+      const filters = [...document.querySelectorAll('.gl-filter')];
+      const letters = [...document.querySelectorAll('.alpha-btn')];
+      const total = document.querySelectorAll('.glossary-term').length;
+      const hint = document.getElementById('search-k-hint');
+      if (/Mac|iPhone|iPad/.test(navigator.platform)) hint.textContent = '⌘ K';
 
-      // Set initial count
-      totalCountEl.textContent = termCards.length;
+      // Index each card once: its title, all its text, and which years it belongs to.
+      const cards = [...document.querySelectorAll('.glossary-term')].map(el => {
+        const h3 = el.querySelector('h3');
+        return {
+          el, h3, title: h3.textContent,
+          text: el.textContent.toLowerCase(),
+          years: new Set([...el.querySelectorAll('.term-chips .chip')].map(c =>
+            c.classList.contains('chip-y11') ? 'y11' : c.classList.contains('chip-y12') ? 'y12' : 'core'))
+        };
+      });
 
-      /* ── 🔍 Search Logic ── */
-      function performSearch() {
-        const query = searchInput.value.toLowerCase().trim();
-        let visibleCount = 0;
+      const html = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+      const escRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      // Title as HTML, with any match of the query wrapped in <mark>.
+      const mark = (title, q) => q
+        ? html(title).replace(new RegExp(escRe(html(q)), 'ig'), m => `<mark>${m}</mark>`)
+        : html(title);
 
-        if (query === "") {
-          searchWrapper.classList.remove('has-val');
-          termCards.forEach(card => card.classList.remove('hidden'));
-          letterGroups.forEach(group => group.classList.remove('hidden'));
-          noResults.classList.add('hidden');
-          totalCountEl.textContent = termCards.length;
-          return;
-        }
-
-        searchWrapper.classList.add('has-val');
-        
-        letterGroups.forEach(group => {
-          let hasVisibleInGroup = false;
-          const cardsInGroup = group.querySelectorAll('.glossary-term');
-          
-          cardsInGroup.forEach(card => {
-            const title = card.querySelector('h3').textContent.toLowerCase();
-            const text = card.querySelector('p').textContent.toLowerCase();
-            const chips = Array.from(card.querySelectorAll('.chip')).map(c => c.textContent.toLowerCase()).join(' ');
-            
-            if (title.includes(query) || text.includes(query) || chips.includes(query)) {
-              card.classList.remove('hidden');
-              hasVisibleInGroup = true;
-              visibleCount++;
-            } else {
-              card.classList.add('hidden');
-            }
-          });
-
-          if (hasVisibleInGroup) {
-            group.classList.remove('hidden');
-          } else {
-            group.classList.add('hidden');
-          }
+      function apply() {
+        const q = input.value.trim();
+        const ql = q.toLowerCase();
+        const on = filters.filter(f => f.getAttribute('aria-pressed') === 'true').map(f => f.dataset.filter);
+        let shown = 0;
+        cards.forEach(c => {
+          const hit = (!ql || c.text.includes(ql)) && (!on.length || on.some(y => c.years.has(y)));
+          c.el.classList.toggle('hidden', !hit);
+          c.h3.innerHTML = mark(c.title, hit ? q : '');
+          if (hit) shown++;
         });
-
-        totalCountEl.textContent = visibleCount;
-        if (visibleCount === 0) {
-          noResults.classList.remove('hidden');
-        } else {
-          noResults.classList.add('hidden');
-        }
+        groups.forEach(g => {
+          const any = !!g.querySelector('.glossary-term:not(.hidden)');
+          g.classList.toggle('hidden', !any);
+          const btn = letters.find(l => l.getAttribute('href') === '#' + g.id);
+          if (btn) btn.classList.toggle('is-empty', !any);
+        });
+        wrap.classList.toggle('has-val', !!q);
+        noResults.classList.toggle('hidden', shown > 0);
+        const filtered = q || on.length;
+        count.innerHTML = filtered
+          ? `<strong>${shown}</strong> of ${total} terms`
+          : `<strong>${total}</strong> terms · 7 topics · A–X`;
+        const url = new URL(location.href);
+        q ? url.searchParams.set('q', q) : url.searchParams.delete('q');
+        history.replaceState(null, '', url);
       }
 
-      searchInput.addEventListener('input', performSearch);
-      searchClear.addEventListener('click', () => {
-        searchInput.value = '';
-        performSearch();
-        searchInput.focus();
+      let t;
+      input.addEventListener('input', () => { clearTimeout(t); t = setTimeout(apply, 90); });
+      clear.addEventListener('click', () => { input.value = ''; apply(); input.focus(); });
+      filters.forEach(f => f.addEventListener('click', () => {
+        f.setAttribute('aria-pressed', f.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+        apply();
+      }));
+
+      document.addEventListener('keydown', e => {
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); input.focus(); input.select(); }
+        if (e.key === 'Escape' && document.activeElement === input) { input.value = ''; apply(); input.blur(); }
       });
 
-      /* ── ⌨️ Shortcuts ── */
-      document.addEventListener('keydown', (e) => {
-        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-          e.preventDefault();
-          searchInput.focus();
+      // Scroll to a card or letter below the sticky bars, and flash a card on arrival.
+      function go(id, flash) {
+        let el = document.getElementById(id);
+        if (!el) return;
+        if (el.closest('.hidden')) {
+          input.value = '';
+          filters.forEach(f => f.setAttribute('aria-pressed', 'false'));
+          apply();
         }
-        if (e.key === 'Escape' && document.activeElement === searchInput) {
-          searchInput.value = '';
-          performSearch();
-          searchInput.blur();
-        }
-      });
-
-      /* ── 📍 Scroll-spy (Alpha Highlighting) ── */
-      const observerOptions = {
-        root: null,
-        rootMargin: '-10% 0px -80% 0px',
-        threshold: 0
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            const letter = id.replace('alpha-', '');
-            
-            alphaButtons.forEach(btn => {
-              if (btn.getAttribute('href') === `#${id}`) {
-                btn.classList.add('active');
-              } else {
-                btn.classList.remove('active');
-              }
-            });
-          }
-        });
-      }, observerOptions);
-
-      letterGroups.forEach(group => observer.observe(group));
-
-      /* ── Smooth Scroll Adjust ── */
-      function smoothScrollTo(targetId) {
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          const elementPosition = targetElement.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - 120;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth"
-          });
-
-          // Update URL without jump
-          history.pushState(null, null, targetId);
+        const top = el.getBoundingClientRect().top + scrollY - 150;
+        scrollTo({ top, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+        history.replaceState(null, '', '#' + id + location.search);
+        if (flash && el.classList.contains('glossary-term')) {
+          el.classList.remove('gl-flash'); void el.offsetWidth; el.classList.add('gl-flash');
         }
       }
-
-      alphaButtons.forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          smoothScrollTo(this.getAttribute('href'));
-        });
+      document.addEventListener('click', e => {
+        const a = e.target.closest('a[href^="#"]');
+        if (!a || !a.closest('.glossary-wrapper')) return;
+        const id = a.getAttribute('href').slice(1);
+        if (!id) return;
+        e.preventDefault();
+        go(id, id.startsWith('term-'));
       });
 
-      document.querySelectorAll('.back-to-top-link').forEach(link => {
-        link.addEventListener('click', function (e) {
-          e.preventDefault();
-          smoothScrollTo(this.getAttribute('href'));
-        });
-      });
+      // Highlight the letter in view.
+      const spy = new IntersectionObserver(entries => entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        letters.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + en.target.id));
+      }), { rootMargin: '-20% 0px -75% 0px' });
+      groups.forEach(g => spy.observe(g));
+
+      // Deep links: ?q=term searches; #term-x jumps to and flashes that card.
+      const q0 = new URL(location.href).searchParams.get('q');
+      if (q0) { input.value = q0; apply(); }
+      if (location.hash.startsWith('#term-')) setTimeout(() => go(location.hash.slice(1), true), 120);
     });
   </script>
   <script src="../js/glossary-data.js?v=4"></script>
