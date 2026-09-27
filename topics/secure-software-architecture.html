@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=16" />
+  <link rel="stylesheet" href="../css/paper.css?v=17" />
 </head>
 <body>
 
@@ -225,7 +225,8 @@
               <div class="step-num">1</div>
               <div class="step-content">
                 <h4>Requirements Definition</h4>
-                <p>The team identifies the problem, the target audience, and the critical security and regulatory compliance needs (e.g., Australian Privacy Principles, GDPR) before any architecture is planned. Security requirements must be explicit at this stage — not assumed. For example, a hospital booking system must define that patient medical records are strictly confidential, accessible only to authorised practitioners, and that all access must be audit-logged. Tools used: <strong>Storyboards</strong> map secure user navigation flows; <strong>Process Diaries</strong> log initial stakeholder meetings and security constraints.</p>
+                <p>The team identifies the problem, the target audience, and the critical security and regulatory compliance needs (e.g., Australian Privacy Principles, GDPR) before any architecture is planned. Security requirements must be explicit at this stage — not assumed. For example, a hospital booking system must define that patient medical records are strictly confidential, accessible only to authorised practitioners, and that all access must be audit-logged.</p>
+                <div class="tools-used"><p class="tools-used-label"><svg class="tools-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.6 17.1a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.1-.6-.6-2.1z"/></svg>Tools used</p><ul><li><strong>Storyboards</strong> map secure user navigation flows</li><li><strong>Process Diaries</strong> log initial stakeholder meetings and security constraints</li></ul></div>
               </div>
             </div>
             <div class="step">
@@ -239,7 +240,8 @@
               <div class="step-num">3</div>
               <div class="step-content">
                 <h4>Design</h4>
-                <p>Creating the blueprint for the secure software architecture. This involves <strong>threat modelling</strong> — systematically identifying all possible attack vectors against the system using frameworks such as STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege). The design phase applies "Security by Design" so security controls are built into the architecture, not bolted on afterward. For example, the <strong>authentication</strong> flow is designed to automatically lock an account after five failed attempts to prevent brute-force attacks. Tools: <strong>Data Flow Diagrams (DFDs)</strong> track how sensitive data moves between user, server, and database; <strong>Structure Charts</strong> map the hierarchy of secure modules; <strong>Decision Trees</strong> model complex <strong>authorisation</strong> logic.</p>
+                <p>Creating the blueprint for the secure software architecture. This involves <strong>threat modelling</strong> — systematically identifying all possible attack vectors against the system using frameworks such as STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege). The design phase applies "Security by Design" so security controls are built into the architecture, not bolted on afterward. For example, the <strong>authentication</strong> flow is designed to automatically lock an account after five failed attempts to prevent brute-force attacks.</p>
+                <div class="tools-used"><p class="tools-used-label"><svg class="tools-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.6 17.1a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.1-.6-.6-2.1z"/></svg>Tools used</p><ul><li><strong>Data Flow Diagrams (DFDs)</strong> track how sensitive data moves between user, server, and database</li><li><strong>Structure Charts</strong> map the hierarchy of secure modules</li><li><strong>Decision Trees</strong> model complex <strong>authorisation</strong> logic</li></ul></div>
               </div>
             </div>
             <div class="step">
@@ -947,12 +949,12 @@ flowchart TD
 
   <script src="../js/glossary-data.js?v=4"></script>
   <script src="../js/quizzes.js?v=1"></script>
-  <script src="../js/quiz.js?v=2" defer></script>
+  <script src="../js/quiz.js?v=3" defer></script>
   <script src="../js/nesa-diagram-data.js?v=3"></script>
   <script src="../js/nesa-diagrams.js?v=2" defer></script>
   <script src="../js/main.js?v=26"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
-  <script src="../js/mermaid-init.js?v=6"></script>
+  <script src="../js/mermaid-init.js?v=8"></script>
   <!-- ═══════════════════════════════════════════════════════ -->
   <!-- Diagram Lightbox Modal -->
   <!-- ═══════════════════════════════════════════════════════ -->

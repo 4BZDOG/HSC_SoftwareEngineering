@@ -37,7 +37,7 @@
         input.type = 'radio';
         input.name = `${id}-q${qi}`;
         input.value = String(oi);
-        lab.append(input, el('span', null, opt));
+        lab.append(input, el('span', 'quiz-letter', 'ABCDEFGH'[oi]), el('span', 'quiz-opt-text', opt));
         fs.append(lab);
       });
       const fb = el('p', 'quiz-feedback');
@@ -57,6 +57,13 @@
     score.setAttribute('aria-live', 'polite');
     bar.append(check, reset, score);
     form.append(bar);
+
+    const updateCount = () => {
+      const n = form.querySelectorAll('input:checked').length;
+      check.textContent = n === questions.length ? 'Check answers' : `Check answers (${n}/${questions.length})`;
+    };
+    form.addEventListener('change', updateCount);
+    updateCount();
 
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -85,6 +92,7 @@
       form.querySelectorAll('input').forEach(i => { i.disabled = true; });
       check.hidden = true;
       reset.hidden = false;
+      host.dataset.score = right === questions.length ? 'full' : right === 0 ? 'none' : 'some';
       score.textContent = `You got ${right} out of ${questions.length}` +
         (answered < questions.length ? ` (${questions.length - answered} not answered).` : '.') +
         (right === questions.length ? ' Great work!' : ' Read the explanations, then try again.');
@@ -100,8 +108,10 @@
         fs.querySelectorAll('.quiz-opt').forEach(l => l.classList.remove('is-answer'));
       });
       score.textContent = '';
+      delete host.dataset.score;
       reset.hidden = true;
       check.hidden = false;
+      updateCount();
       form.querySelector('input').focus();
     });
 
