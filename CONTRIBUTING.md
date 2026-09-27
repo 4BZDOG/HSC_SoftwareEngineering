@@ -278,3 +278,7 @@ Some concepts are processes: a forged request travelling to a bank, keys being e
 - A page with animations links `../css/anim.css` and `../js/anim.js` once. `scripts/check-site.py` checks the link and the scene file.
 
 The style guide, the scene API and a copy-paste template are in `.claude/skills/add-animation.md`.
+
+## Static diagrams in the paper style
+
+Year 12 static figures (flowcharts, decision trees, sequence diagrams, Gantt charts, concept diagrams) are drawn by the same engine as the animations, in "still" mode: `<div class="anim" data-anim="<name>"></div>` inside a `.figure-canvas--still`, with the drawing in `js/anims/<name>.js`. They use the NESA symbols, a fixed colour per symbol, and text no smaller than 13px. The spec, including the notation rules and a template, is in `.claude/skills/paper-diagrams.md`.

@@ -104,7 +104,7 @@
     const boxes = svg('g', {}, root);
     for (const id in def.modules) {
       const p = pos[id];
-      svg('rect', { x: p.x - W / 2, y: p.y - H / 2, width: W, height: H, class: 'nd-box' }, boxes);
+      svg('rect', { x: p.x - W / 2, y: p.y - H / 2, width: W, height: H, class: 'nd-box nd-module' + (id === def.root ? ' nd-root' : '') }, boxes);
       label(boxes, p.x, p.y + 4, def.modules[id].label);
     }
     host.appendChild(root);
@@ -153,9 +153,9 @@
     for (const id in N) {
       const n = N[id];
       if (n.type === 'process') {
-        svg('circle', { cx: n.x, cy: n.y, r: n.r || SIZE.process, class: 'nd-box' }, shapes);
+        svg('circle', { cx: n.x, cy: n.y, r: n.r || SIZE.process, class: 'nd-box nd-process' }, shapes);
       } else if (n.type === 'entity') {
-        svg('rect', { x: n.x - SIZE.entityW / 2, y: n.y - SIZE.entityH / 2, width: SIZE.entityW, height: SIZE.entityH, class: 'nd-box' }, shapes);
+        svg('rect', { x: n.x - SIZE.entityW / 2, y: n.y - SIZE.entityH / 2, width: SIZE.entityW, height: SIZE.entityH, class: 'nd-box nd-entity' }, shapes);
       } else {
         // Data store: a rectangle open on the right.
         const x = n.x - SIZE.storeW / 2, y = n.y - SIZE.storeH / 2;

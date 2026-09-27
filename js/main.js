@@ -959,7 +959,7 @@ document.addEventListener('DOMContentLoaded', () => {
       init() {
         // Every figure with a drawn diagram gets a real "Enlarge" button.
         document.querySelectorAll('.figure-canvas:not(.figure-canvas--trace)').forEach(canvas => {
-          if (!canvas.querySelector('.mermaid, .nesa-diagram')) return;
+          if (!canvas.querySelector('.mermaid, .nesa-diagram, .anim-still, [data-anim]') || canvas.classList.contains('figure-canvas--anim')) return;
           const btn = document.createElement('button');
           btn.type = 'button';
           btn.className = 'figure-zoom';

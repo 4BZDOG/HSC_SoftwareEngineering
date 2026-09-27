@@ -4,7 +4,7 @@
    scenes re-theme for dark mode without any per-scene rules.
    ============================================================ */
 
-.anim {
+.anim, .anim-svg {
   --pa-ink:      var(--pc-ink, #1c1a17);
   --pa-soft:     var(--pc-ink-soft, #4a443b);
   --pa-muted:    var(--pc-muted, #6c6558);
@@ -29,7 +29,8 @@
   --pa-on:       #fbf7ee;       /* text on teal, terracotta, sage, plum */
   --pa-shadow:   rgba(70,45,15,.30);
   --pa-accent:   var(--pc-plum, #5b4bdb);
-
+}
+.anim {
   position: relative;
   margin: 0;
   background: var(--pa-stage);
@@ -38,7 +39,8 @@
   color: var(--pa-ink);
   overflow: hidden;
 }
-:root[data-theme="dark"] .anim {
+:root[data-theme="dark"] .anim,
+:root[data-theme="dark"] .anim-svg {
   --pa-paper:    #2b2721;
   --pa-stage:    #1f1c18;
   --pa-on:       #1b1916;
@@ -367,3 +369,65 @@
   .anim-tabs, .anim-controls { display: none; }
   .anim-transcript summary { list-style: none; }
 }
+
+/* ============================================================
+   Still diagrams (HSCAnim scenes with still: true)
+   ============================================================ */
+.anim.anim-still { border: 0; border-radius: 0; background: none; overflow: visible; }
+.anim-still .anim-stage { background: none; }
+.anim-still .anim-svg { max-height: none; }
+.anim-still * { animation: none !important; }
+.figure-canvas--still { padding: .75rem .5rem; }
+.figure-canvas--still .anim-svg { margin: 0 auto; }
+
+/* Course notation: a clear ink outline on paper */
+.pa-outline      { stroke: var(--pa-ink); stroke-width: 1.6; stroke-linejoin: round; }
+.pa-outline-line { fill: none; stroke: var(--pa-ink); stroke-width: 1.6; stroke-linejoin: round; }
+.pa-card-edge    { stroke: var(--pa-rule-2); stroke-width: 1; }
+.pa-node-t       { font: 500 14px var(--font-body); fill: var(--pa-ink); }
+.pa-link         { fill: none; stroke: var(--pa-soft); stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
+.pa-link.is-dashed { stroke-dasharray: 6 5; }
+.anim-svg .pa-link.is-good { fill: none; stroke: var(--pa-sage); }
+.anim-svg .pa-link.is-bad  { fill: none; stroke: var(--pa-terra); }
+.pa-chip-bg      { fill: var(--pa-stage, #fffdf8); stroke: var(--pa-rule-2); stroke-width: 1; }
+.pa-chip-t       { font: italic 600 12.5px var(--font-display); fill: var(--pa-soft); }
+.pa-lifeline     { fill: none; stroke: var(--pa-rule-2); stroke-width: 1.5; stroke-dasharray: 3 5; }
+.pa-section-line { fill: none; stroke: var(--pa-rule-2); stroke-width: 1.2; stroke-dasharray: 8 6; }
+.pa-seq-t        { font: 500 12.5px var(--font-body); fill: var(--pa-ink); }
+.pa-num-t        { font: 700 10.5px var(--font-body); fill: var(--pa-on); }
+.pa-group        { fill: var(--pa-sheet); stroke: var(--pa-rule-2); stroke-width: 1.2; stroke-dasharray: 6 4; }
+.pa-group-t      { font: italic 600 14px var(--font-display); fill: var(--pa-soft); }
+
+/* Soft tints of the palette for large shapes; text stays in theme ink */
+.f-teal-t    { fill: color-mix(in srgb, var(--pa-teal) 22%, var(--pa-paper)); }
+.f-sage-t    { fill: color-mix(in srgb, var(--pa-sage) 22%, var(--pa-paper)); }
+.f-terra-t   { fill: color-mix(in srgb, var(--pa-terra) 20%, var(--pa-paper)); }
+.f-mustard-t { fill: color-mix(in srgb, var(--pa-mustard) 34%, var(--pa-paper)); }
+.f-plum-t    { fill: color-mix(in srgb, var(--pa-plum) 18%, var(--pa-paper)); }
+.f-sky-t     { fill: color-mix(in srgb, var(--pa-sky) 30%, var(--pa-paper)); }
+.f-blush-t   { fill: color-mix(in srgb, var(--pa-blush) 55%, var(--pa-paper)); }
+.anim-svg text.pa-on { fill: var(--pa-on); }
+.anim-svg text.pa-ink-fixed { fill: var(--pa-fixed-ink); }
+.pa-gantt-band { fill: var(--pa-sheet); opacity: .7; }
+.pa-dep { fill: none; stroke: var(--pa-soft); stroke-width: 1.4; stroke-dasharray: 3 3; }
+.pa-weight { stroke: var(--pa-rule-2); stroke-width: 1; opacity: .55; }
+.pa-cycle  { fill: none; stroke: var(--pa-terra); stroke-width: 2.4; stroke-dasharray: 2 0; opacity: .55; }
+
+/* NESA structure charts and DFDs (js/nesa-diagrams.js) in the paper style.
+   The symbols stay exactly as specified; they gain paper fills and a cut shadow. */
+.nesa-diagram .nd-svg { --nd-paper: #fffdf8; }
+:root[data-theme="dark"] .nesa-diagram .nd-svg { --nd-paper: #2b2721; }
+.nesa-diagram .nd-box, .nesa-diagram .nd-store-fill, .nesa-diagram .nd-diamond {
+  filter: drop-shadow(0 1.5px 1.2px rgba(70,45,15,.28));
+}
+:root[data-theme="dark"] .nesa-diagram .nd-box { filter: drop-shadow(0 1.5px 1.5px rgba(0,0,0,.6)); }
+.nesa-diagram .nd-box { fill: var(--nd-paper); stroke-width: 1.6; }
+.nesa-diagram .nd-root { fill: color-mix(in srgb, var(--pc-teal, #2a6f73) 22%, var(--nd-paper)); }
+.nesa-diagram .nd-module { rx: 4px; }
+.nesa-diagram .nd-process { fill: color-mix(in srgb, var(--pc-teal, #2a6f73) 20%, var(--nd-paper)); }
+.nesa-diagram .nd-entity { fill: var(--pc-sheet, #f4ecdb); }
+.nesa-diagram .nd-store-fill { fill: color-mix(in srgb, var(--pc-mustard, #e0a93b) 26%, var(--nd-paper)); }
+.nesa-diagram .nd-text { font: 500 14px var(--font-body); }
+.nesa-diagram .nd-note, .nesa-diagram .nd-flow-label { font: italic 600 13px var(--font-display); fill: var(--pc-ink-soft, #4a443b); }
+.nesa-diagram .nd-flow { stroke-width: 1.6; }
+.nesa-diagram .nd-data { fill: var(--nd-paper); }
