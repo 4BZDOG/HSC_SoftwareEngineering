@@ -27,10 +27,13 @@ HSC_SoftwareEngineering/
 ├── og-image.png                        # Social media preview image (1200×630px)
 │
 ├── css/
-│   └── styles.css                      # Premium design system (light/dark theme)
+│   ├── styles.css                      # Premium design system (light/dark theme)
+│   └── anim.css                        # Animated diagrams (player and paper kit)
 │
 ├── js/
-│   └── main.js                         # Navigation, theme toggle, lightbox
+│   ├── main.js                         # Navigation, theme toggle, lightbox
+│   ├── anim.js                         # Animated diagram engine and paper kit
+│   └── anims/                          # One file per animated diagram
 │
 ├── topics/                             # Topic pages (8 total)
 │   ├── sdlc.html                       # NEW: SDLC Guide (Phase 1–4, case studies)
@@ -69,6 +72,7 @@ HSC_SoftwareEngineering/
 - **SDLC Guide** — a cross-curriculum reference covering all four phases with real-world case studies (Spotify, NASA, Boeing, Healthcare.gov) and assessor tips
 - **Assessment guidance** — aligned to NESA command verbs and HSC marking criteria
 - **Interactive sidebars** with table of contents on every page for easy navigation
+- **Animated diagrams** — step-through "paper theatre" animations for hard, process-shaped concepts: CSRF, how HTTPS works, training a regression model by gradient descent, and implementation methods (see `.claude/skills/add-animation.md` to add more)
 
 ### Design & UX
 - **Premium dark mode** with smooth theme toggle (saves preference to localStorage)
@@ -287,7 +291,7 @@ https://4bzdog.github.io/HSC_SoftwareEngineering/
 - **No analytics** — consider adding Google Analytics for user insights
 - **No search** — site is small enough that navigation works well; could add search if it grows
 - **PDF resources** — currently in `/resources/` but not integrated into pages; could link from relevant topics
-- **Diagram interactivity** — Mermaid diagrams are static; could add zoom/pan/animation
+- **Diagram interactivity** — Mermaid diagrams are static; process-shaped concepts can use an animated diagram instead
 
 ---
 

@@ -53,6 +53,7 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
   <link rel="stylesheet" href="../css/paper.css?v=25" />
+  <link rel="stylesheet" href="../css/anim.css?v=1" />
 </head>
 <body>
 
@@ -799,6 +800,21 @@ flowchart TD
             <div class="key-term-item"><strong>↩️ Invalid Forwarding and Redirecting</strong><span><strong>Vulnerability:</strong> An application redirects users to a URL provided as a parameter — e.g., <code>/login?next=https://evil.com</code>. After login, the application blindly redirects to the attacker's site. The user, trusting that they authenticated on the real site, does not notice the redirect — a phishing vector. <strong>Prevention:</strong> Never use user-supplied URLs as redirect targets without validation. Maintain a strict allowlist of permitted redirect destinations and reject anything not on the list. Prefer internal relative paths (e.g., <code>/dashboard</code>) over absolute URLs for post-login redirects.</span></div>
             <div class="key-term-item"><strong>Race Conditions</strong><span><strong>Vulnerability:</strong> When two concurrent requests interact with shared data simultaneously, the final state may be incorrect. For example, two concurrent requests to withdraw $500 from an account with $600 may both read the balance as $600, both deduct $500, and leave a balance of $100 — allowing $1000 withdrawn from a $600 account. <strong>Prevention:</strong> Use database transactions with appropriate isolation levels (SERIALIZABLE); employ pessimistic locking (SELECT FOR UPDATE) to prevent concurrent modification of the same row; implement atomic operations for financial transactions.</span></div>
           </div>
+
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Animated diagram</span></p>
+            <h4 class="figure-title">Cross-site request forgery: how a kitten page spends your money</h4>
+            <p class="figure-lead">Follow one forged request from a harmless-looking page to the bank, then switch on a defence and watch the attack fail.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--anim">
+            <div class="anim" data-anim="csrf"></div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The browser attaches a site's cookie to <em>every</em> request to that site, whichever page started it. The cookie alone can't tell a forged request from a real one.</li><li>A CSRF token works because other sites can't read the bank's pages, so a forged request can't include it.</li><li>Modern browsers treat cookies as <code>SameSite=Lax</code> unless told otherwise, which blocks this image trick. Older browsers, and cookies set to <code>SameSite=None</code>, don't.</li></ul><p class="figure-controls">Choose a defence with the tabs. Step with ◀ and ▶ (or the arrow keys), play or pause with Space.</p></div>
+            <p class="figure-try"><strong>Try this</strong>Explain how CSRF differs from XSS. (Hint: in XSS the attacker's script runs <em>on</em> the bank's page; in CSRF the attacker never touches the bank's page at all.)</p>
+          </div>
+        </figure>
         </section>
 
         <hr class="divider" />
@@ -993,5 +1009,6 @@ flowchart TD
   </div>
   <script src="../js/paper.js?v=6" defer></script>
   <script src="../js/progress.js?v=1" defer></script>
+  <script src="../js/anim.js?v=1" defer></script>
 </body>
 </html>

@@ -52,7 +52,8 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=4" />
+  <link rel="stylesheet" href="../css/paper.css?v=25" />
+  <link rel="stylesheet" href="../css/anim.css?v=1" />
 </head>
 <body>
 
@@ -530,6 +531,21 @@
               </tbody>
             </table>
           </div>
+
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Animated diagram</span></p>
+            <h4 class="figure-title">Four ways to switch over: direct, phased, parallel and pilot</h4>
+            <p class="figure-lead">The same four teams move from an old system to a new one. Watch where a bug strikes under each method as the timeline chart builds.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--anim">
+            <div class="anim" data-anim="implementation-methods"></div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The timeline chart is the diagram to sketch in an exam: an old-system bar and a new-system bar for each group, showing where they hand over or overlap.</li><li>A bug hurts most under direct (everyone at once, with nothing to fall back on) and least under parallel (the old system keeps working).</li><li><em>Phased</em> splits the system into modules; <em>pilot</em> splits the users. These two are easy to mix up.</li></ul><p class="figure-controls">Choose a method with the tabs. Step with ◀ and ▶ (or the arrow keys), play or pause with Space.</p></div>
+            <p class="figure-try"><strong>Try this</strong>Try the Case Study Matcher below. For each scenario, sketch the timeline chart you would draw, and say what a bug in week 3 would cost.</p>
+          </div>
+        </figure>
 
           <div class="callout feature my-large">
 
@@ -1851,5 +1867,6 @@ flowchart TD
   </div>
   <script src="../js/paper.js?v=6" defer></script>
   <script src="../js/progress.js?v=1" defer></script>
+  <script src="../js/anim.js?v=1" defer></script>
 </body>
 </html>

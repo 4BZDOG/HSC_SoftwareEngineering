@@ -53,6 +53,7 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
   <link rel="stylesheet" href="../css/paper.css?v=25" />
+  <link rel="stylesheet" href="../css/anim.css?v=1" />
 </head>
 <body>
 
@@ -695,6 +696,21 @@ print(f"Slope (coefficient): {model.coef_[0]:.2f}")       <span class="cm"># ~5.
 print(f"Intercept: {model.intercept_:.2f}")                <span class="cm"># ~40.0</span></code></pre>
           </div>
 
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Animated diagram</span></p>
+            <h4 class="figure-title">Training a regression model: shrinking the squared errors</h4>
+            <p class="figure-lead">Gradient descent nudges a line, one epoch at a time, until the mean squared error is as small as it can be.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--anim">
+            <div class="anim" data-anim="gradient-descent"></div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Each coloured square is one squared error. The MSE is the average of their areas, so training really is shrinking the squares.</li><li>The learning rate sets the size of each step. Too small and training crawls; too big and every step overshoots until the model diverges.</li><li>scikit-learn's <code>LinearRegression</code> finds the same best line in one calculation (least squares). Neural networks can't, so they train by gradient descent, step by step like this.</li></ul><p class="figure-controls">Choose a learning rate with the tabs. Step with ◀ and ▶ (or the arrow keys), play or pause with Space.</p></div>
+            <p class="figure-try"><strong>Try this</strong>Before you switch to <em>Too big</em>, predict what the loss curve will do. Then explain why the fix is a smaller learning rate rather than more epochs.</p>
+          </div>
+        </figure>
+
 <h3>Polynomial Regression (Non-Linear Relationships)</h3>
           <p><strong>Polynomial regression</strong> extends linear regression to model <strong>curved (non-linear) relationships</strong> between variables. When plotting a scatter graph reveals a curve rather than a straight line, a polynomial fit is more appropriate. The input features are transformed to include powers (x², x³, etc.) using <code>PolynomialFeatures</code>, then passed into a standard <code>LinearRegression</code> model. For example, modelling how fuel efficiency decreases with speed follows a curved relationship — polynomial regression captures this more accurately than a straight line.</p>
 
@@ -1016,5 +1032,6 @@ flowchart LR
   </div>
   <script src="../js/paper.js?v=6" defer></script>
   <script src="../js/progress.js?v=1" defer></script>
+  <script src="../js/anim.js?v=1" defer></script>
 </body>
 </html>

@@ -53,6 +53,7 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
   <link rel="stylesheet" href="../css/paper.css?v=25" />
+  <link rel="stylesheet" href="../css/anim.css?v=1" />
 </head>
 <body>
 
@@ -484,6 +485,21 @@ sequenceDiagram
             <h4>Digital Signatures</h4>
             <p>A <strong>digital signature</strong> is a cryptographic mechanism that proves the authenticity and integrity of a message or document. The sender hashes the content, then encrypts the hash with their <strong>private key</strong> to produce the signature. The recipient decrypts the signature using the sender's <strong>public key</strong> and compares it to their own hash of the received content. If they match, the message has not been tampered with and genuinely originated from the claimed sender. Digital signatures provide <strong>non-repudiation</strong> — the sender cannot later deny having sent the message.</p>
           </div>
+
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Animated diagram</span></p>
+            <h4 class="figure-title">Putting it together: how HTTPS secures a connection</h4>
+            <p class="figure-lead">This whole dot point in one animation: a certificate, hash values, a digital signature, public and private keys, and plain text becoming cipher text.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--anim">
+            <div class="anim" data-anim="https"></div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Asymmetric encryption is slow, so HTTPS uses it only to check who the site is and to deliver the session key. The data itself is encrypted with the fast symmetric session key.</li><li>Checking the certificate is checking a digital signature: the CA signed a hash of the certificate with its private key, and the browser checks it with the CA's public key.</li><li>Eve can copy everything that passes, but without the private key she only ever sees cipher text.</li><li>TLS 1.3 agrees the session key with a key exchange (Diffie–Hellman) rather than sending it in a locked box, but the idea is the same: asymmetric cryptography sets up a shared symmetric key.</li></ul><p class="figure-controls">Compare connections with the tabs. Step with ◀ and ▶ (or the arrow keys), play or pause with Space.</p></div>
+            <p class="figure-try"><strong>Try this</strong>Switch to <em>Imposter site</em>. Which check catches the fake? What would Eve need to pass it? (Answer: the CA's private key, to make a valid signature.)</p>
+          </div>
+        </figure>
         </section>
 
         <hr class="divider" />
@@ -1394,5 +1410,6 @@ flowchart TD
   </div>
   <script src="../js/paper.js?v=6" defer></script>
   <script src="../js/progress.js?v=1" defer></script>
+  <script src="../js/anim.js?v=1" defer></script>
 </body>
 </html>
