@@ -36,6 +36,10 @@ Existing scenes, to copy from:
 | `https` | Programming for the Web › `securing-web` | props moving along a wire, scramble to cipher text, padlocks and keys |
 | `gradient-descent` | Software Automation › `regression-oop` | data-driven redraw each frame with `s.tween`, plots |
 | `implementation-methods` | Software Engineering Project › `implementation-methods` | one `render(s)` driven by a timeline value, four variants from one plan table |
+| `race-condition` | Secure Software Architecture › `user-controls` | two actors sharing state, a lock that makes one wait |
+| `packets` | Programming for the Web › `data-transfer` | many props travelling in parallel along routes, a fixed landing table so rewinds match |
+| `knn` | Software Automation › `algorithm-types` | the same data under three parameter values (K), a vote card |
+| `waterfall-agile` | Software Engineering Project › `development-approaches` | two different casts from one `setup`, sharing a value chart |
 
 ---
 
@@ -223,7 +227,10 @@ beats instantly. So:
    only with `s.wait()` or other `s.*` promises. Never `await` a raw
    `setTimeout`, fetch or event: it won't finish instantly when rewinding.
 4. Anything random must use `s.rand()`, not `Math.random()`.
-5. For a data-driven scene, keep the state on `s` (e.g. `s.t`) and redraw
+5. When props move in parallel, don't let the order they *finish* in decide
+   anything (such as which slot a packet lands in): rewinding finishes them
+   in a different order. Fix the outcome in a table instead.
+6. For a data-driven scene, keep the state on `s` (e.g. `s.t`) and redraw
    everything from it in one `render(s)` called from `s.tween`.
 
 ---

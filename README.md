@@ -72,7 +72,7 @@ HSC_SoftwareEngineering/
 - **SDLC Guide** — a cross-curriculum reference covering all four phases with real-world case studies (Spotify, NASA, Boeing, Healthcare.gov) and assessor tips
 - **Assessment guidance** — aligned to NESA command verbs and HSC marking criteria
 - **Interactive sidebars** with table of contents on every page for easy navigation
-- **Animated diagrams** — step-through "paper theatre" animations for hard, process-shaped concepts: CSRF, how HTTPS works, training a regression model by gradient descent, and implementation methods (see `.claude/skills/add-animation.md` to add more)
+- **Animated diagrams** — step-through "paper theatre" animations for hard, process-shaped concepts: CSRF and race conditions, data packets and how HTTPS works, gradient descent and K-nearest neighbour, implementation methods and Waterfall vs Agile (see `.claude/skills/add-animation.md` to add more)
 
 ### Design & UX
 - **Premium dark mode** with smooth theme toggle (saves preference to localStorage)

@@ -267,11 +267,23 @@
     show(el, o = {}) { return this.to(el, { o: 1 }, { dur: o.dur || 320, delay: o.delay }); }
     hide(el, o = {}) { return this.to(el, { o: 0 }, { dur: o.dur || 280, delay: o.delay }); }
 
+    // One jiggle at a time per element: a second one mid-air would take the
+    // wrong resting place. Returns a function to call when it ends.
+    busy(el, kind) {
+      const tag = '_pa' + kind;
+      if (el[tag]) return null;
+      el[tag] = true;
+      return () => { el[tag] = false; };
+    }
+
     // Jump on the spot, with a little squash on landing.
     hop(el, o = {}) {
       const high = o.h == null ? 12 : o.h, n = o.n || 1;
+      const free = this.busy(el, 'hop');
+      if (!free) return Promise.resolve();
       let y0;
       return this.tween({ dur: (o.dur || 440) * n, ease: 'linear', delay: o.delay }, (k, done) => {
+        if (done) free();
         const s = st(el);
         if (y0 == null) y0 = s.y;
         const p = (k * n) % 1;
@@ -286,8 +298,11 @@
     // Side-to-side shake: "no", or a failed attempt.
     shake(el, o = {}) {
       const amp = o.amp || 5, n = o.n || 3;
+      const free = this.busy(el, 'shake');
+      if (!free) return Promise.resolve();
       let x0;
       return this.tween({ dur: o.dur || 480, ease: 'linear', delay: o.delay }, (k, done) => {
+        if (done) free();
         const s = st(el);
         if (x0 == null) x0 = s.x;
         s.x = done ? x0 : x0 + amp * Math.sin(k * n * Math.PI * 2) * (1 - k);
@@ -298,8 +313,11 @@
     // Rock back and forth about the anchor.
     wobble(el, o = {}) {
       const amp = o.amp || 8, n = o.n || 2;
+      const free = this.busy(el, 'wobble');
+      if (!free) return Promise.resolve();
       let r0;
       return this.tween({ dur: o.dur || 600, ease: 'linear', delay: o.delay }, (k, done) => {
+        if (done) free();
         const s = st(el);
         if (r0 == null) r0 = s.r;
         s.r = done ? r0 : r0 + amp * Math.sin(k * n * Math.PI * 2) * (1 - k);

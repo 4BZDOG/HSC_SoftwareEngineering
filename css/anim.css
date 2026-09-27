@@ -299,6 +299,12 @@
 .pa-loss   { fill: none; stroke: var(--pa-plum); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
 .pa-eq     { font: italic 600 17px var(--font-display); fill: var(--pa-ink); }
 
+.pa-knn-ring { fill: var(--pa-plum); fill-opacity: .07; stroke: var(--pa-plum); stroke-width: 2; stroke-dasharray: 6 5; }
+
+.pa-fall  { fill: none; stroke: var(--pa-sky); stroke-width: 4; stroke-linecap: round; opacity: .8; }
+.pa-loop  { fill: none; stroke: var(--pa-rule-2); stroke-width: 3; stroke-dasharray: 2 7; stroke-linecap: round; }
+.pa-value { fill: var(--pa-teal); fill-opacity: .25; stroke: var(--pa-teal); stroke-width: 2.4; stroke-linejoin: round; }
+
 /* Timelines */
 .pa-week { stroke: var(--pa-rule); stroke-width: 1; stroke-dasharray: 2 4; }
 .pa-lane { fill: var(--pa-sheet); }

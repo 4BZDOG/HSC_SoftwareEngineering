@@ -53,7 +53,7 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
   <link rel="stylesheet" href="../css/paper.css?v=25" />
-  <link rel="stylesheet" href="../css/anim.css?v=1" />
+  <link rel="stylesheet" href="../css/anim.css?v=2" />
 </head>
 <body>
 
@@ -613,6 +613,21 @@
               </tbody>
             </table>
           </div>
+
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Animated diagram</span></p>
+            <h4 class="figure-title">Waterfall and Agile: when does the client get working software?</h4>
+            <p class="figure-lead">The same twelve-week project run both ways, with the same change of mind in week 6.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--anim">
+            <div class="anim" data-anim="waterfall-agile"></div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>In Waterfall the value chart stays flat until the end; in Agile it climbs every sprint. This is the core trade-off to explain in an exam.</li><li>A late change is costly in Waterfall because finished stages must be reopened. Agile expects change and absorbs it in the next sprint.</li><li>Waterfall's strength is certainty: fixed requirements, clear milestones and documents at every stage. WAgile, later in this section, mixes the two.</li></ul><p class="figure-controls">Choose an approach with the tabs. Step with ◀ and ▶ (or the arrow keys), play or pause with Space.</p></div>
+            <p class="figure-try"><strong>Try this</strong>For your own project, which approach fits better? Justify it using the shape of the value chart and how likely your requirements are to change.</p>
+          </div>
+        </figure>
 
           <p><strong>Scale and types of developments:</strong> Waterfall suits large projects with stable, well-understood requirements and strict regulation, such as a hospital records system or an aircraft control system.</p>
 
@@ -1867,6 +1882,6 @@ flowchart TD
   </div>
   <script src="../js/paper.js?v=6" defer></script>
   <script src="../js/progress.js?v=1" defer></script>
-  <script src="../js/anim.js?v=1" defer></script>
+  <script src="../js/anim.js?v=2" defer></script>
 </body>
 </html>
