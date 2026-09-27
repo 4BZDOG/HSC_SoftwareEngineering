@@ -2513,3 +2513,109 @@ a.pg-seen::after {
   .lost-link, .study-guide-card--link { transition: none; }
   .lost-link:hover, .study-guide-card--link:hover { transform: none; }
 }
+
+/* ============================================================
+   Glossary: search-first toolbar, year filters, match highlights
+   ============================================================ */
+.gl-toolbar {
+  margin-bottom: 1.25rem;
+  padding: 1rem 1.1rem .9rem;
+  border-radius: 12px;
+  background: var(--pc-cream);
+  background-image: var(--pc-grain);
+  box-shadow: var(--pc-shadow-2);
+}
+:root[data-theme] .gl-toolbar .glossary-search-container { position: relative; min-width: 0; width: 100%; }
+.gl-search-icon {
+  position: absolute; left: 1rem; top: 50%;
+  width: 20px; height: 20px; margin-top: -10px;
+  fill: none; stroke: var(--pc-muted); stroke-width: 2; stroke-linecap: round;
+  pointer-events: none;
+}
+:root[data-theme] .gl-toolbar .glossary-search-input {
+  width: 100%;
+  height: 52px;
+  padding: 0 5.5rem 0 2.9rem;
+  border: 0;
+  border-radius: 10px;
+  font-size: 1.02rem;
+  color: var(--pc-ink);
+  background: var(--pc-sheet);
+  box-shadow: inset 0 1px 3px rgba(70,45,15,.16), inset 0 0 0 1px var(--pc-rule);
+  transition: box-shadow 180ms ease, background 180ms ease;
+  -webkit-appearance: none;
+  appearance: none;
+}
+:root[data-theme] .gl-toolbar .glossary-search-input::-webkit-search-cancel-button { display: none; }
+:root[data-theme] .gl-toolbar .glossary-search-input:focus {
+  outline: none;
+  background: var(--pc-cream);
+  box-shadow: inset 0 0 0 2px var(--pc-teal), 0 0 0 4px color-mix(in srgb, var(--pc-teal) 18%, transparent);
+}
+:root[data-theme] .gl-toolbar .search-k-hint {
+  position: absolute; right: .85rem; top: 50%; transform: translateY(-50%);
+  padding: .15rem .45rem;
+  border-radius: 5px;
+  font: 700 .72rem var(--font-body);
+  color: var(--pc-muted);
+  background: var(--pc-cream);
+  box-shadow: inset 0 0 0 1px var(--pc-rule-strong), 0 1px 0 var(--pc-rule-strong);
+}
+@media (hover: none) { :root[data-theme] .gl-toolbar .search-k-hint { display: none; } }
+:root[data-theme] .gl-toolbar .search-clear-btn {
+  position: absolute; right: .6rem; top: 50%; transform: translateY(-50%);
+  width: 32px; height: 32px;
+  border: 0; border-radius: 50%;
+  color: var(--pc-ink-soft);
+  background: var(--pc-sheet);
+  cursor: pointer;
+}
+:root[data-theme] .gl-toolbar .search-clear-btn:hover { background: var(--pc-rule); color: var(--pc-ink); }
+.gl-filter-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .6rem 1rem; margin-top: .8rem; }
+.gl-filters { display: flex; flex-wrap: wrap; gap: .4rem; }
+:root[data-theme] .gl-filter {
+  --tone: #b7811d;
+  cursor: pointer;
+  border: 0;
+  padding: .38rem .8rem;
+  font: 800 .7rem var(--font-body);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  transition: background 160ms ease, color 160ms ease, transform 220ms var(--pc-spring, ease);
+}
+:root[data-theme] .gl-filter.chip-y11 { --tone: var(--pc-sage); }
+:root[data-theme] .gl-filter.chip-y12 { --tone: var(--pc-terracotta); }
+:root[data-theme] .gl-filter:hover { transform: translateY(-1px); }
+:root[data-theme] .gl-filter[aria-pressed="true"] { background: var(--tone); color: #fff; box-shadow: 1px 2px 0 var(--pc-mustard); }
+:root[data-theme="dark"] .gl-filter[aria-pressed="true"] { color: #1b1916; }
+:root[data-theme] .gl-filter[aria-pressed="true"]::before { content: '✓ '; }
+.gl-count { margin: 0; font-size: .82rem; color: var(--pc-muted); }
+.gl-count strong { color: var(--pc-ink); font-family: var(--font-display); font-size: 1.05rem; }
+
+/* A–Z letters with nothing left after searching */
+:root[data-theme] .alpha-btn.is-empty { opacity: .25; pointer-events: none; }
+
+/* Matches in term titles, and the card a See also link lands on */
+.glossary-term h3 mark {
+  color: inherit;
+  background: linear-gradient(transparent 55%, color-mix(in srgb, var(--pc-mustard) 60%, transparent) 55%);
+  padding: 0 .05em;
+}
+@keyframes gl-flash { 0%, 30% { box-shadow: 0 0 0 3px var(--pc-mustard), var(--pc-shadow-2); } 100% { box-shadow: var(--pc-shadow-1); } }
+:root[data-theme] .glossary-term.gl-flash { animation: gl-flash 1.6s ease-out; }
+:root[data-theme] .glossary-related a { font-weight: 600; }
+
+:root[data-theme] #no-results-msg { border: 2px dashed var(--pc-rule-strong); background: var(--pc-cream); border-radius: 12px; }
+:root[data-theme] #no-results-msg h3 { border: 0; padding: 0; }
+:root[data-theme] #no-results-msg h3::before { display: none; }
+
+@media (max-width: 600px) {
+  .gl-toolbar { padding: .8rem; }
+  :root[data-theme] .gl-toolbar .glossary-search-input { height: 48px; font-size: 1rem; }
+  .gl-count { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root[data-theme] .glossary-term.gl-flash { animation: none; box-shadow: 0 0 0 3px var(--pc-mustard), var(--pc-shadow-2); }
+  :root[data-theme] .gl-filter { transition: none; }
+}
