@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=20" />
+  <link rel="stylesheet" href="../css/paper.css?v=21" />
 </head>
 <body>
 
@@ -156,7 +156,7 @@
         <span class="meta-pill">Outcomes: SE-11-01, 02, 03, 04, 06, 07</span>
       </div>
       <div class="callout exam-tip curriculum-banner yr11">
-        <strong>📚 Curriculum Aligned:</strong> This page covers NESA NSW Preliminary outcomes <strong>SE-11-01, SE-11-02, SE-11-03, SE-11-04, SE-11-06 and SE-11-07</strong> comprehensively. All content is aligned to official syllabus specifications — study with confidence. <a href="https://github.com/4BZDOG/HSC_SoftwareEngineering/blob/main/resources/Syllabus-Mapping.md" target="_blank" rel="noopener">View full mapping →</a>
+        <strong>Curriculum Aligned</strong> This page covers NESA NSW Preliminary outcomes <strong>SE-11-01, SE-11-02, SE-11-03, SE-11-04, SE-11-06 and SE-11-07</strong> comprehensively. All content is aligned to official syllabus specifications — study with confidence. <a href="https://github.com/4BZDOG/HSC_SoftwareEngineering/blob/main/resources/Syllabus-Mapping.md" target="_blank" rel="noopener">View full mapping →</a>
       </div>
     </div>
   </header>
@@ -321,7 +321,7 @@ flowchart LR
             </table>
           </div>
 
-          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Online collaboration tools such as GitHub are now standard in the industry because they let distributed teams work on one codebase safely. Pull requests improve quality by requiring a peer review before code is merged, although teams must be trained to resolve merge conflicts."</em></div>
+          <div class="callout success"><strong>HSC writing sample</strong> <em>"Online collaboration tools such as GitHub are now standard in the industry because they let distributed teams work on one codebase safely. Pull requests improve quality by requiring a peer review before code is merged, although teams must be trained to resolve merge conflicts."</em></div>
         </section>
 
         <div class="quiz" data-quiz="pf-1"></div>
@@ -648,7 +648,7 @@ for i in range(8):
           </div>
 
           <div class="callout info">
-            <strong>When to use recursion vs iteration:</strong> Use recursion when the problem is naturally recursive (tree traversal, factorial, divide-and-conquer). Use iteration when you need performance — recursive calls create function stack frames that use more memory. Python's default recursion limit is 1000 calls.
+            <strong>When to use recursion vs iteration</strong> Use recursion when the problem is naturally recursive (tree traversal, factorial, divide-and-conquer). Use iteration when you need performance — recursive calls create function stack frames that use more memory. Python's default recursion limit is 1000 calls.
           </div>
 
           <div class="video-box">
@@ -879,7 +879,7 @@ FUNCTION GetValidScore()
 <h3>Identifying Connections to Subroutines and Functions</h3>
           <p>Analyse how an <strong>algorithm</strong> calls other functions and what data is passed between them. Document the purpose of each function call and the parameters it receives, ensuring data flows correctly through the program.<br>🌏 <em>Example: An algorithm that calculates employee pay might call FUNCTION calculateTax(salary) and FUNCTION applyBonus(basePay, bonusPercent), understanding what each returns and how it affects the final result.</em></p>
 
-          <div class="callout info"><strong>Scenario:</strong> You're handed this algorithm with no explanation:
+          <div class="callout info"><strong>Scenario</strong> You're handed this algorithm with no explanation:
             <pre class="inline-pseudo">BEGIN mystery(list)
     result ← list[0]
     FOR i ← 1 TO LEN(list) − 1
@@ -1155,7 +1155,7 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
             <li>Store dates with a <strong>date/time</strong> type rather than text, so you can sort them and calculate differences.</li>
           </ul>
 
-          <div class="callout info"><strong>Scenario:</strong> A canteen app stores <code>price = 0.1 + 0.2</code> as a float and shows $0.30000000000000004. Storing the price as an integer number of cents (<code>30</code>) avoids the rounding error.</div>
+          <div class="callout info"><strong>Scenario</strong> A canteen app stores <code>price = 0.1 + 0.2</code> as a float and shows $0.30000000000000004. Storing the price as an integer number of cents (<code>30</code>) avoids the rounding error.</div>
         </section>
 
         <hr class="divider" />
@@ -1353,7 +1353,7 @@ print(results)   # [80, 75, 90, 95] — list WAS modified</code></pre>
           </div>
 
           <div class="callout info">
-            <strong>Python Mutability Rule:</strong> Immutable types (int, float, str, tuple) always behave like pass-by-value — a function cannot change the caller's variable. Mutable types (list, dict, set) behave like pass-by-reference — modifications inside a function affect the original object.
+            <strong>Python Mutability Rule</strong> Immutable types (int, float, str, tuple) always behave like pass-by-value — a function cannot change the caller's variable. Mutable types (list, dict, set) behave like pass-by-reference — modifications inside a function affect the original object.
           </div>
 
 <h3>Variable Scope</h3>
@@ -1389,7 +1389,7 @@ print(counter)   # 1</code></pre>
           </div>
 
           <div class="callout warning">
-            <strong>Best Practice:</strong> Prefer returning values over using <code>global</code> variables. Global state makes programs harder to debug and test. If multiple functions need the same data, pass it as a parameter.
+            <strong>Best Practice</strong> Prefer returning values over using <code>global</code> variables. Global state makes programs harder to debug and test. If multiple functions need the same data, pass it as a parameter.
           </div>
         </section>
 
@@ -1432,7 +1432,7 @@ do(<span class="str">"type A"</span>); do(<span class="str">"type B"</span>)
 print(undo())                <span class="cm"># type B</span></code></pre>
           </div>
 
-          <div class="callout info"><strong>Choosing a structure:</strong> use a hash table when you look items up by a key (a student ID), a stack when the most recent item matters most (undo), and a 2D array when the data is naturally a grid (a seating plan).</div>
+          <div class="callout info"><strong>Choosing a structure</strong> use a hash table when you look items up by a key (a student ID), a stack when the most recent item matters most (undo), and a 2D array when the data is naturally a grid (a seating plan).</div>
         </section>
 
         <hr class="divider" />
@@ -1481,7 +1481,7 @@ print(undo())                <span class="cm"># type B</span></code></pre>
             </table>
           </div>
 
-          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Waterfall suits the school's exam-timetable system because its requirements are fixed by policy and must be signed off before development. Agile suits the student wellbeing app, where features depend on feedback, because each two-week sprint delivers a version students can test and comment on."</em></div>
+          <div class="callout success"><strong>HSC writing sample</strong> <em>"Waterfall suits the school's exam-timetable system because its requirements are fixed by policy and must be signed off before development. Agile suits the student wellbeing app, where features depend on feedback, because each two-week sprint delivers a version students can test and comment on."</em></div>
         </section>
 
         <hr class="divider" />
@@ -1528,7 +1528,7 @@ print(undo())                <span class="cm"># type B</span></code></pre>
           </div>
 
           <div class="callout info">
-            <strong>Variable Declaration Best Practices:</strong><br>
+            <strong>Variable Declaration Best Practices</strong><br>
             1. Declare variables close to where they are first used — not all at the top.<br>
             2. Initialise variables to sensible defaults (e.g. <code>total = 0</code>, <code>names = []</code>).<br>
             3. Use constants for magic numbers — replace <code>score * 0.9</code> with <code>score * PASS_THRESHOLD</code>.<br>
@@ -1611,7 +1611,7 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
             </table>
           </div>
 
-          <div class="callout info"><strong>Tip:</strong> test just inside, on and just outside each boundary: 0, 1, 2 and 99, 100, 101. Off-by-one errors are among the most common bugs, and boundary values are what catch them.</div>
+          <div class="callout info"><strong>Tip</strong> test just inside, on and just outside each boundary: 0, 1, 2 and 99, 100, 101. Off-by-one errors are among the most common bugs, and boundary values are what catch them.</div>
         </section>
 
         <hr class="divider" />

@@ -46,7 +46,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=20" />
+  <link rel="stylesheet" href="../css/paper.css?v=21" />
 </head>
 <body>
 
@@ -340,7 +340,7 @@
             <div class="key-term-item"><strong>Repetition (curved arrow)</strong><span>The connected modules are called repeatedly, e.g. until no more books.</span></div>
           </div>
           <div class="callout info">
-            <strong>Example:</strong> A top-level <em>Main</em> module calls <em>GetInput</em>, <em>ProcessData</em>, and <em>DisplayResult</em>. An arrow from <em>GetInput</em> back to <em>Main</em> carries the data parameter <em>userScore</em>.
+            <strong>Example</strong> A top-level <em>Main</em> module calls <em>GetInput</em>, <em>ProcessData</em>, and <em>DisplayResult</em>. An arrow from <em>GetInput</em> back to <em>Main</em> carries the data parameter <em>userScore</em>.
           </div>
 
           <figure class="figure">
@@ -437,7 +437,7 @@ classDiagram
           </ul>
 
           <div class="callout info">
-            <strong>Design phase:</strong> Storyboards are created <em>before any code is written</em> — during the Design phase of the SDLC. They allow clients to approve the interface and user flow before development begins, which avoids costly rework. For the HSC project, a storyboard typically shows 4–8 frames: a home/login screen, a main feature screen, an input form, and a results/output screen.
+            <strong>Design phase</strong> Storyboards are created <em>before any code is written</em> — during the Design phase of the SDLC. They allow clients to approve the interface and user flow before development begins, which avoids costly rework. For the HSC project, a storyboard typically shows 4–8 frames: a home/login screen, a main feature screen, an input form, and a results/output screen.
           </div>
 
           <h3>Decision Trees</h3>
@@ -664,7 +664,7 @@ flowchart TD
           </div>
         </figure>
           <div class="callout info">
-            <strong>Pseudocode vs Flowcharts:</strong> Both express the same algorithm. Pseudocode is preferred for complex logic and is easier to convert to code. Flowcharts are better for visualising branching and communicating with non-programmers.
+            <strong>Pseudocode vs Flowcharts</strong> Both express the same algorithm. Pseudocode is preferred for complex logic and is easier to convert to code. Flowcharts are better for visualising branching and communicating with non-programmers.
           </div>
         </section>
 
@@ -769,7 +769,7 @@ average ← total / 5
 OUTPUT "Class average: ", average</code></pre>
           </div>
           <div class="callout info">
-            <strong>Choosing the right loop:</strong> Use <code>FOR/NEXT</code> when the count is known. Use <code>WHILE</code> when checking a condition before starting. Use <code>REPEAT/UNTIL</code> when the body must run at least once (e.g. input validation).
+            <strong>Choosing the right loop</strong> Use <code>FOR/NEXT</code> when the count is known. Use <code>WHILE</code> when checking a condition before starting. Use <code>REPEAT/UNTIL</code> when the body must run at least once (e.g. input validation).
           </div>
         </section>
 
@@ -780,7 +780,7 @@ OUTPUT "Class average: ", average</code></pre>
           <h2 class="syllabus-phase">Subroutines</h2>
           <p>A subroutine is a named, reusable block of code that performs a specific task. Subroutines promote modularity — breaking a large problem into smaller, manageable pieces.</p>
           <div class="callout info">
-            <strong>Procedure vs Function:</strong> A <em>procedure (subroutine)</em> performs an action but does not return a value. A <em>function</em> performs a calculation and <strong>returns</strong> a result to the caller.
+            <strong>Procedure vs Function</strong> A <em>procedure (subroutine)</em> performs an action but does not return a value. A <em>function</em> performs a calculation and <strong>returns</strong> a result to the caller.
           </div>
 
           <h3>Using a Subroutine with One Parameter</h3>
@@ -945,7 +945,7 @@ for s in passing:
             </div>
           </div>
           <div class="callout info">
-            <strong>Tracing a circuit — LED with current-limiting resistor:</strong>
+            <strong>Tracing a circuit — LED with current-limiting resistor</strong>
             <code>+5V → [Resistor 220Ω] → [LED Anode (+)] → [LED Cathode (−)] → GND</code><br><br>
             In wiring diagrams, always trace from the <strong>positive supply (VCC/5V)</strong> through each component in series to <strong>ground (GND)</strong>. The resistor limits current so the LED doesn't burn out (LEDs typically need 20mA at 2V forward voltage; at 5V supply: R = (5 − 2) / 0.02 = <strong>150Ω minimum</strong> — 220Ω is the standard safe choice).<br><br>
             In Arduino projects: digital output pin → resistor → LED → GND. When the pin outputs HIGH (5V), current flows and the LED illuminates.
@@ -966,13 +966,13 @@ for s in passing:
             <div class="key-term-item"><strong>Angular</strong><span>A full framework by Google that includes routing, state management, and dependency injection built in.</span></div>
           </div>
           <div class="callout info">
-            <strong>Framework vs Library:</strong> A <em>library</em> (like React) is called by your code when you need it. A <em>framework</em> (like Angular) calls your code — it provides the overall structure and you fill in the details.
+            <strong>Framework vs Library</strong> A <em>library</em> (like React) is called by your code when you need it. A <em>framework</em> (like Angular) calls your code — it provides the overall structure and you fill in the details.
           </div>
 
           <h3>Cross-site Scripting (XSS)</h3>
           <p>XSS is a web security vulnerability where an attacker injects malicious client-side scripts into web pages that other users then view. The injected script runs in the victim's browser with the same trust level as the legitimate site.</p>
           <div class="callout warning">
-            <strong>Attack scenario:</strong> A forum site displays user comments without sanitising them. An attacker posts a comment containing a <code>&lt;script&gt;</code> tag. Every visitor who loads the page runs the script in their own browser — the attacker can steal session cookies, redirect users, or log keystrokes.
+            <strong>Attack scenario</strong> A forum site displays user comments without sanitising them. An attacker posts a comment containing a <code>&lt;script&gt;</code> tag. Every visitor who loads the page runs the script in their own browser — the attacker can steal session cookies, redirect users, or log keystrokes.
           </div>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">XSS — Vulnerable vs Safe output (Python Flask)</span></div>
@@ -989,7 +989,7 @@ return f"&lt;p&gt;{safe_comment}&lt;/p&gt;"
 # &lt;script&gt; becomes &amp;lt;script&amp;gt; — displayed as text, never executed</code></pre>
           </div>
           <div class="callout success">
-            <strong>Mitigation checklist:</strong>
+            <strong>Mitigation checklist</strong>
             (1) <strong>Escape output</strong> — convert <code>&lt; &gt; &amp; " '</code> to HTML entities before rendering any user-supplied content.<br>
             (2) <strong>Validate input server-side</strong> — reject input that doesn't match an expected format or whitelist.<br>
             (3) <strong>Content Security Policy (CSP)</strong> — set a response header restricting which scripts may execute on your page.
@@ -1145,10 +1145,10 @@ graph LR
           <h4>Training Cycle</h4>
           <p>Repeated many times (each complete pass through training data is called an <em>epoch</em>) until the model's error is minimised.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>1️⃣ Forward pass</strong><span>Input data flows through the network layer by layer to produce a prediction.</span></div>
-            <div class="key-term-item"><strong>2️⃣ Loss calculation</strong><span>A loss function (e.g. mean squared error) measures how far the prediction is from the expected output.</span></div>
-            <div class="key-term-item"><strong>3️⃣ Backpropagation</strong><span>The loss gradient is computed and propagated backwards through the network to find each weight's contribution to the error.</span></div>
-            <div class="key-term-item"><strong>4️⃣ Weight update</strong><span>An optimiser (e.g. gradient descent) nudges weights in the direction that reduces the loss.</span></div>
+            <div class="key-term-item"><strong>Forward pass</strong><span>Input data flows through the network layer by layer to produce a prediction.</span></div>
+            <div class="key-term-item"><strong>Loss calculation</strong><span>A loss function (e.g. mean squared error) measures how far the prediction is from the expected output.</span></div>
+            <div class="key-term-item"><strong>Backpropagation</strong><span>The loss gradient is computed and propagated backwards through the network to find each weight's contribution to the error.</span></div>
+            <div class="key-term-item"><strong>Weight update</strong><span>An optimiser (e.g. gradient descent) nudges weights in the direction that reduces the loss.</span></div>
           </div>
 
           <h4>Execution Cycle (Inference)</h4>
@@ -1201,7 +1201,7 @@ graph LR
             </table>
           </div>
           <div class="callout info">
-            <strong>Exam tip:</strong> Always test at the boundary values and one step either side of them. Off-by-one errors (e.g. using <code>&gt;</code> instead of <code>&gt;=</code>) are one of the most common programming bugs and will only be caught by boundary test data.
+            <strong>Exam tip</strong> Always test at the boundary values and one step either side of them. Off-by-one errors (e.g. using <code>&gt;</code> instead of <code>&gt;=</code>) are one of the most common programming bugs and will only be caught by boundary test data.
           </div>
         </section>
 
@@ -1234,7 +1234,7 @@ graph LR
             </table>
           </div>
           <div class="callout info">
-            <strong>Case conversion trick:</strong> Notice that <code>'A'</code> = 65 and <code>'a'</code> = 97 — a difference of exactly 32 (0b00100000). To convert uppercase to lowercase in binary, you simply set bit 5 to 1. This is why character encoding matters to developers beyond just storing text.
+            <strong>Case conversion trick</strong> Notice that <code>'A'</code> = 65 and <code>'a'</code> = 97 — a difference of exactly 32 (0b00100000). To convert uppercase to lowercase in binary, you simply set bit 5 to 1. This is why character encoding matters to developers beyond just storing text.
           </div>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Character encoding examples</span></div>
@@ -1481,7 +1481,7 @@ finally:
     print(("Processing complete."))   # Runs whether exception occurred or not</code></pre>
           </div>
           <div class="callout info">
-            <strong>When to use try/except:</strong> Wrap code that interacts with the outside world — user input, file I/O, network calls, and type conversions — since these can fail for reasons beyond your control. Do <em>not</em> use exceptions to control normal program flow; use IF/ELSE for expected conditions.
+            <strong>When to use try/except</strong> Wrap code that interacts with the outside world — user input, file I/O, network calls, and type conversions — since these can fail for reasons beyond your control. Do <em>not</em> use exceptions to control normal program flow; use IF/ELSE for expected conditions.
           </div>
 
           <div class="video-box">
@@ -1617,7 +1617,7 @@ build/
           </div>
 
           <div class="callout info">
-            <strong>Good Commit Message Guide:</strong><br>
+            <strong>Good Commit Message Guide</strong><br>
             ✓ Use imperative mood: "Add login page" not "Added login page"<br>
             ✓ Keep subject line under 50 characters<br>
             ✓ Explain <em>why</em> the change was made, not just what<br>
@@ -1748,7 +1748,7 @@ def test_deposit_parametrized(account, amount, expected):
 ──────────────────────────────────────────</pre>
 
           <div class="callout info">
-            <strong>Code Coverage:</strong> Run <code>coverage run -m pytest</code> then <code>coverage report</code> to see what percentage of your code is executed by tests. Aim for &gt;80% coverage. Missing lines shown with <code>coverage html</code> → open <code>htmlcov/index.html</code>.
+            <strong>Code Coverage</strong> Run <code>coverage run -m pytest</code> then <code>coverage report</code> to see what percentage of your code is executed by tests. Aim for &gt;80% coverage. Missing lines shown with <code>coverage html</code> → open <code>htmlcov/index.html</code>.
           </div>
         </section>
 
@@ -1801,7 +1801,7 @@ jobs:
           </div>
 
           <div class="callout info">
-            <strong>CI/CD Benefits for HSC Projects:</strong><br>
+            <strong>CI/CD Benefits for HSC Projects</strong><br>
             Even for solo HSC projects, a CI pipeline adds value — every push is automatically tested, so you always know whether your changes broke anything. It also demonstrates professional development practice in your folio documentation.
           </div>
         </section>
@@ -1819,7 +1819,7 @@ jobs:
           <p>This guidance supports the <a href="software-engineering-project.html">Software Engineering Project</a> focus area. It isn't syllabus content, but it shows how the dot points turn into marks.</p>
 
           <div class="callout warning">
-            <strong>Common Student Mistakes — Avoid These:</strong>
+            <strong>Common Student Mistakes — Avoid These</strong>
             <ul>
               <li><strong>Starting to code in Phase 1:</strong> The most common mistake. Phase 1 must be completed (requirements gathered, feasibility assessed, client consulted) before any code is written. Evidence of planning is required.</li>
               <li><strong>Missing non-functional requirements:</strong> Functional requirements alone are insufficient. Assessors expect performance, security, usability, and maintainability requirements to be explicitly documented.</li>

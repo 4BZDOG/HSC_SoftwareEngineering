@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=20" />
+  <link rel="stylesheet" href="../css/paper.css?v=21" />
 </head>
 <body>
 
@@ -156,7 +156,7 @@
         <span class="meta-pill">Outcomes: SE-12-01 to 09</span>
       </div>
       <div class="callout exam-tip curriculum-banner yr12">
-        <strong>📚 Curriculum Aligned:</strong> This page covers NESA NSW HSC outcomes <strong>SE-12-01 to SE-12-09</strong> comprehensively. All content is aligned to official syllabus specifications — study with confidence. <a href="https://github.com/4BZDOG/HSC_SoftwareEngineering/blob/main/resources/Syllabus-Mapping.md" target="_blank" rel="noopener">View full mapping →</a>
+        <strong>Curriculum Aligned</strong> This page covers NESA NSW HSC outcomes <strong>SE-12-01 to SE-12-09</strong> comprehensively. All content is aligned to official syllabus specifications — study with confidence. <a href="https://github.com/4BZDOG/HSC_SoftwareEngineering/blob/main/resources/Syllabus-Mapping.md" target="_blank" rel="noopener">View full mapping →</a>
       </div>
     </div>
   </header>
@@ -217,7 +217,7 @@
 <h3>Progressive Web Apps (PWAs)</h3>
           <p>PWAs are web applications built with standard web technologies (HTML, CSS, JavaScript) that offer a native-app-like experience. They are installable on the user's home screen, can work <strong>offline</strong> via service workers, and receive push notifications. Examples include Twitter Lite, Google Maps, and Starbucks. PWAs are significant because they eliminate the need for a separate iOS/Android codebase while still appearing as a native application to the end-user.</p>
 
-          <div class="callout info"><strong>Scenario:</strong> A local bakery wants to take pre-orders. An <strong>interactive page</strong> shows today's stock and updates the total as customers choose items; <strong>e-commerce</strong> features take a secure card payment; and making it a <strong>PWA</strong> lets regulars add it to their home screen and reorder with one tap, without the cost of building separate iOS and Android apps.</div>
+          <div class="callout info"><strong>Scenario</strong> A local bakery wants to take pre-orders. An <strong>interactive page</strong> shows today's stock and updates the total as customers choose items; <strong>e-commerce</strong> features take a secure card payment; and making it a <strong>PWA</strong> lets regulars add it to their home screen and reorder with one tap, without the cost of building separate iOS and Android apps.</div>
         </section>
 
         <hr class="divider" />
@@ -238,7 +238,7 @@
           <p>The <strong>Domain Name System (DNS)</strong> translates human-readable domain names (e.g., <code>www.google.com</code>) into machine-readable IP addresses (e.g., <code>142.250.70.142</code>). When a user types a URL, the browser queries a <strong>DNS resolver</strong> (usually provided by their ISP), which traverses a hierarchy of DNS servers (Root → TLD → Authoritative) to resolve the domain. The resolved IP address is then cached locally (for a duration defined by TTL — Time To Live) to speed up future requests.</p>
 
           <div class="callout info">
-            <strong>DNS Resolution Order:</strong> Browser cache → OS cache → Router cache → ISP Resolver → Root Name Server → TLD Server (e.g., .com) → Authoritative Name Server → IP address returned.
+            <strong>DNS Resolution Order</strong> Browser cache → OS cache → Router cache → ISP Resolver → Root Name Server → TLD Server (e.g., .com) → Authoritative Name Server → IP address returned.
           </div>
 
           <!-- DNS Resolution Diagram -->
@@ -501,7 +501,7 @@ sequenceDiagram
           <h4>Streaming Service Management</h4>
           <p>Streaming services (e.g., YouTube, Netflix, Spotify) manage enormous volumes of concurrent data delivery. Key architectural solutions include: <strong>Content Delivery Networks (CDNs)</strong> — geographically distributed server networks that cache and serve content from the nearest node to reduce latency; <strong>Adaptive Bitrate Streaming (ABR)</strong> — which dynamically adjusts video quality based on the user's current bandwidth; and <strong>load balancers</strong> that distribute incoming requests across multiple server instances to prevent any single server from being overwhelmed.</p>
 
-          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Big data has changed web architecture from single servers to distributed systems. Streaming services such as Netflix store copies of popular shows on CDN servers close to viewers, so one data centre is not overloaded and playback starts quickly. However, mining viewing data to personalise recommendations raises privacy concerns, because users may not know how much of their behaviour is recorded."</em></div>
+          <div class="callout success"><strong>HSC writing sample</strong> <em>"Big data has changed web architecture from single servers to distributed systems. Streaming services such as Netflix store copies of popular shows on CDN servers close to viewers, so one data centre is not overloaded and playback starts quickly. However, mining viewing data to personalise recommendations raises privacy concerns, because users may not know how much of their behaviour is recorded."</em></div>
         </section>
 
         <div class="quiz" data-quiz="web-1"></div>
@@ -545,7 +545,7 @@ sequenceDiagram
             </div>
           </div>
 
-          <div class="callout success"><strong>HSC writing sample:</strong> <em>"The W3C shapes web applications by publishing open standards that every browser follows. Its Web Accessibility Initiative produces WCAG, which is why developers add alt text and keyboard navigation so people using screen readers can use a site. Standards for internationalisation, such as UTF-8, let one application display English, Arabic and Chinese correctly."</em></div>
+          <div class="callout success"><strong>HSC writing sample</strong> <em>"The W3C shapes web applications by publishing open standards that every browser follows. Its Web Accessibility Initiative produces WCAG, which is why developers add alt text and keyboard navigation so people using screen readers can use a site. Standards for internationalisation, such as UTF-8, let one application display English, Arabic and Chinese correctly."</em></div>
         </section>
 
         <hr class="divider" />
@@ -606,15 +606,15 @@ sequenceDiagram
 <h3>Developer (Dev) Tools</h3>
           <p>All modern browsers include built-in <strong>developer tools</strong> (opened with F12 or right-click → Inspect) that allow engineers to inspect, debug, and optimise web applications in real time:</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>🌳 Elements Panel</strong><span>Inspect and live-edit the HTML DOM tree and CSS styles. See computed styles, box model, and layout information.</span></div>
-            <div class="key-term-item"><strong>⚙️ Console</strong><span>Execute JavaScript, view runtime errors, warnings, and <code>console.log()</code> output for debugging.</span></div>
-            <div class="key-term-item"><strong>🌐 Network Tab</strong><span>Monitor all <strong>HTTP</strong> requests made by the page — see request/response headers, payload data, status codes, and load times.</span></div>
-            <div class="key-term-item"><strong>📊 Performance</strong><span>Record and analyse page load and runtime performance — identify JavaScript bottlenecks and rendering slowdowns.</span></div>
-            <div class="key-term-item"><strong>💡 Lighthouse</strong><span>Automated audit tool that scores a page on Performance, Accessibility, SEO, and PWA compliance with actionable recommendations.</span></div>
-            <div class="key-term-item"><strong>📱 Device Mode</strong><span>Simulate different screen sizes and device pixel ratios to test responsive design without a physical device.</span></div>
+            <div class="key-term-item"><strong>Elements Panel</strong><span>Inspect and live-edit the HTML DOM tree and CSS styles. See computed styles, box model, and layout information.</span></div>
+            <div class="key-term-item"><strong>Console</strong><span>Execute JavaScript, view runtime errors, warnings, and <code>console.log()</code> output for debugging.</span></div>
+            <div class="key-term-item"><strong>Network Tab</strong><span>Monitor all <strong>HTTP</strong> requests made by the page — see request/response headers, payload data, status codes, and load times.</span></div>
+            <div class="key-term-item"><strong>Performance</strong><span>Record and analyse page load and runtime performance — identify JavaScript bottlenecks and rendering slowdowns.</span></div>
+            <div class="key-term-item"><strong>Lighthouse</strong><span>Automated audit tool that scores a page on Performance, Accessibility, SEO, and PWA compliance with actionable recommendations.</span></div>
+            <div class="key-term-item"><strong>Device Mode</strong><span>Simulate different screen sizes and device pixel ratios to test responsive design without a physical device.</span></div>
           </div>
 
-          <div class="callout info"><strong>Scenario:</strong> A form's "Submit" button does nothing on a phone. In dev tools, the <strong>Console</strong> shows a JavaScript error, the <strong>Network</strong> tab shows no request was sent, and <strong>Device Mode</strong> reproduces the bug on a narrow screen. The cause: a hidden element covers the button at small widths, and one CSS change fixes it.</div>
+          <div class="callout info"><strong>Scenario</strong> A form's "Submit" button does nothing on a phone. In dev tools, the <strong>Console</strong> shows a JavaScript error, the <strong>Network</strong> tab shows no request was sent, and <strong>Device Mode</strong> reproduces the bug on a narrow screen. The cause: a hidden element covers the button at small widths, and one CSS change fixes it.</div>
         </section>
 
         <hr class="divider" />
@@ -655,9 +655,9 @@ sequenceDiagram
 
 <h3>CSS Maintenance Tools</h3>
           <div class="key-terms">
-            <div class="key-term-item"><strong>🔷 Sass / SCSS</strong><span>A CSS preprocessor that adds variables, nesting, mixins, and functions to CSS, then compiles to standard CSS. Greatly improves maintainability of large stylesheets.</span></div>
-            <div class="key-term-item"><strong>⚙️ PostCSS</strong><span>A tool that transforms CSS via JavaScript plugins — can auto-prefix vendor prefixes (autoprefixer), lint CSS, and minify output for production.</span></div>
-            <div class="key-term-item"><strong>🎨 CSS-in-JS</strong><span>Libraries (e.g., Styled Components, Emotion) that write CSS directly inside JavaScript components, scoping styles automatically and enabling dynamic theming.</span></div>
+            <div class="key-term-item"><strong>Sass / SCSS</strong><span>A CSS preprocessor that adds variables, nesting, mixins, and functions to CSS, then compiles to standard CSS. Greatly improves maintainability of large stylesheets.</span></div>
+            <div class="key-term-item"><strong>PostCSS</strong><span>A tool that transforms CSS via JavaScript plugins — can auto-prefix vendor prefixes (autoprefixer), lint CSS, and minify output for production.</span></div>
+            <div class="key-term-item"><strong>CSS-in-JS</strong><span>Libraries (e.g., Styled Components, Emotion) that write CSS directly inside JavaScript components, scoping styles automatically and enabling dynamic theming.</span></div>
           </div>
         </section>
 
@@ -720,9 +720,9 @@ git merge feature/user-login</code></pre>
           <h3>Frameworks for Complex Web Applications</h3>
           <p><strong>Front-end frameworks</strong> provide a structured architecture for building large, complex web applications. They enforce separation of concerns (UI components, state management, routing) and provide build tools that optimise code for production.</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>⚛️ React</strong><span>A component-based UI library by Meta. Uses a virtual DOM for efficient re-rendering. The most widely adopted framework in industry (2024).</span></div>
-            <div class="key-term-item"><strong>💚 Vue.js</strong><span>A progressive framework with a gentle learning curve. Combines a template-based syntax with reactive data binding. Popular for smaller to medium-scale applications.</span></div>
-            <div class="key-term-item"><strong>🔺 Angular</strong><span>A full-featured framework by Google. Uses TypeScript, has built-in routing, forms, and <strong>HTTP</strong> client. Common in large enterprise applications.</span></div>
+            <div class="key-term-item"><strong>React</strong><span>A component-based UI library by Meta. Uses a virtual DOM for efficient re-rendering. The most widely adopted framework in industry (2024).</span></div>
+            <div class="key-term-item"><strong>Vue.js</strong><span>A progressive framework with a gentle learning curve. Combines a template-based syntax with reactive data binding. Popular for smaller to medium-scale applications.</span></div>
+            <div class="key-term-item"><strong>Angular</strong><span>A full-featured framework by Google. Uses TypeScript, has built-in routing, forms, and <strong>HTTP</strong> client. Common in large enterprise applications.</span></div>
           </div>
 
 <h3>Template Engines and CSS Frameworks</h3>
@@ -741,7 +741,7 @@ git merge feature/user-login</code></pre>
             </table>
           </div>
 
-          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Code libraries are significant because they let a small team build a professional interface quickly. Bootstrap's predesigned classes made the booking site responsive without custom CSS, and Jinja2 templates meant the header and navigation were written once. The trade-off is dependence on third-party code, which must be kept up to date for security."</em></div>
+          <div class="callout success"><strong>HSC writing sample</strong> <em>"Code libraries are significant because they let a small team build a professional interface quickly. Bootstrap's predesigned classes made the booking site responsive without custom CSS, and Jinja2 templates meant the header and navigation were written once. The trade-off is dependence on third-party code, which must be kept up to date for security."</em></div>
         </section>
 
         <hr class="divider" />
@@ -756,9 +756,9 @@ git merge feature/user-login</code></pre>
           <h4>Licences and Attribution</h4>
           <p>Open-source software is governed by licences that define how it may be used, modified, and redistributed. Engineers must understand these before incorporating libraries into commercial projects:</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>✅ MIT Licence</strong><span>Very permissive — allows use, modification, and distribution in any project (including proprietary) with attribution. Most popular licence for web libraries (React, jQuery).</span></div>
-            <div class="key-term-item"><strong>📋 Apache 2.0</strong><span>Permissive, similar to MIT but includes an explicit patent licence grant. Used by many enterprise projects (Android, Kubernetes).</span></div>
-            <div class="key-term-item"><strong>🔗 GPL v3</strong><span>Copyleft — any derivative work must also be released as open source under the same GPL licence. Prevents proprietary use of the original code.</span></div>
+            <div class="key-term-item"><strong>MIT Licence</strong><span>Very permissive — allows use, modification, and distribution in any project (including proprietary) with attribution. Most popular licence for web libraries (React, jQuery).</span></div>
+            <div class="key-term-item"><strong>Apache 2.0</strong><span>Permissive, similar to MIT but includes an explicit patent licence grant. Used by many enterprise projects (Android, Kubernetes).</span></div>
+            <div class="key-term-item"><strong>GPL v3</strong><span>Copyleft — any derivative work must also be released as open source under the same GPL licence. Prevents proprietary use of the original code.</span></div>
           </div>
 
           <h4>Security Dependency Risk</h4>
@@ -799,7 +799,7 @@ git merge feature/user-login</code></pre>
             </div>
           </div>
 
-          <div class="callout info"><strong>Scenario:</strong> A school news site takes 6 seconds to load on a phone. Lighthouse shows three 4 MB photos. Resizing and compressing them to WebP (300 KB each), adding <code>loading="lazy"</code> to images below the fold and turning on caching brings the first load to 1.8 seconds and repeat visits to under a second.</div>
+          <div class="callout info"><strong>Scenario</strong> A school news site takes 6 seconds to load on a phone. Lighthouse shows three 4 MB photos. Resizing and compressing them to WebP (300 KB each), adding <code>loading="lazy"</code> to images below the fold and turning on caching brings the first load to 1.8 seconds and repeat visits to under a second.</div>
         </section>
 
         <hr class="divider" />
@@ -892,7 +892,7 @@ graph TB
           </div>
         </figure>
 
-          <div class="callout success"><strong>HSC writing sample:</strong> <em>"A traditional CMS such as WordPress suits the school's newsletter because staff can publish articles without coding and plugins add features quickly. Its popularity makes it a common attack target, so plugins must be kept updated. A headless CMS would suit a school that wants the same content in a website and a mobile app, but it needs developers to build the front end."</em></div>
+          <div class="callout success"><strong>HSC writing sample</strong> <em>"A traditional CMS such as WordPress suits the school's newsletter because staff can publish articles without coding and plugins add features quickly. Its popularity makes it a common attack target, so plugins must be kept updated. A headless CMS would suit a school that wants the same content in a website and a mobile app, but it needs developers to build the front end."</em></div>
         </section>
 
         <hr class="divider" />
@@ -913,7 +913,7 @@ graph TB
           <h4>Security Enforcement</h4>
           <p>The back end is the primary security boundary of a web application. It implements <strong>authentication</strong> (password hashing with bcrypt, <strong>JWT</strong> token management), <strong>authorisation</strong> (role-based access control), input sanitisation (preventing <strong>SQL injection</strong> and <strong>XSS</strong>), and rate limiting (preventing brute-force login attacks). A poorly secured back end exposes the entire database and all user data to attackers.</p>
 
-          <div class="callout success"><strong>HSC writing sample:</strong> <em>"The back end contributes most to the application's success through security and data integrity. Because prices and stock levels are checked on the server rather than in the browser, a user cannot change a price with developer tools. Choosing Django also sped up development, since its built-in authentication and admin panel did not have to be written from scratch."</em></div>
+          <div class="callout success"><strong>HSC writing sample</strong> <em>"The back end contributes most to the application's success through security and data integrity. Because prices and stock levels are checked on the server rather than in the browser, a user cannot change a price with developer tools. Choosing Django also sped up development, since its built-in authentication and admin panel did not have to be written from scratch."</em></div>
         </section>
 
         <hr class="divider" />
@@ -926,15 +926,15 @@ graph TB
 
           <h3>The Request-Response Lifecycle</h3>
           <div class="key-terms">
-            <div class="key-term-item"><strong>🌐 Web Server Software</strong><span>Software such as <strong>Nginx</strong> or <strong>Apache</strong> receives the raw <strong>HTTP</strong> request and routes it to the correct application handler. Nginx is also used as a reverse proxy and for serving static files efficiently.</span></div>
-            <div class="key-term-item"><strong>⚙️ Web Framework</strong><span>The framework (e.g., Flask, Django, Express) parses the request URL and <strong>HTTP</strong> method, matches it against defined <strong>routes</strong>, and calls the appropriate handler function (view/controller).</span></div>
-            <div class="key-term-item"><strong>📦 Objects</strong><span>The framework provides <strong>Request</strong> and <strong>Response</strong> objects — structured wrappers around the raw <strong>HTTP</strong> data. The Request object gives access to headers, query parameters, form data, and cookies; the Response object is used to construct the reply.</span></div>
-            <div class="key-term-item"><strong>📚 Libraries</strong><span>The handler uses imported libraries to perform specialised tasks — <strong>authentication</strong> libraries (e.g., Passport.js), email sending libraries (e.g., Nodemailer), file handling, or cryptographic operations.</span></div>
-            <div class="key-term-item"><strong>🗄️ Databases</strong><span>The handler queries the database (via raw SQL or ORM) to retrieve, insert, update, or delete records. The database returns results which the handler uses to construct the response payload (JSON or rendered HTML).</span></div>
+            <div class="key-term-item"><strong>Web Server Software</strong><span>Software such as <strong>Nginx</strong> or <strong>Apache</strong> receives the raw <strong>HTTP</strong> request and routes it to the correct application handler. Nginx is also used as a reverse proxy and for serving static files efficiently.</span></div>
+            <div class="key-term-item"><strong>Web Framework</strong><span>The framework (e.g., Flask, Django, Express) parses the request URL and <strong>HTTP</strong> method, matches it against defined <strong>routes</strong>, and calls the appropriate handler function (view/controller).</span></div>
+            <div class="key-term-item"><strong>Objects</strong><span>The framework provides <strong>Request</strong> and <strong>Response</strong> objects — structured wrappers around the raw <strong>HTTP</strong> data. The Request object gives access to headers, query parameters, form data, and cookies; the Response object is used to construct the reply.</span></div>
+            <div class="key-term-item"><strong>Libraries</strong><span>The handler uses imported libraries to perform specialised tasks — <strong>authentication</strong> libraries (e.g., Passport.js), email sending libraries (e.g., Nodemailer), file handling, or cryptographic operations.</span></div>
+            <div class="key-term-item"><strong>Databases</strong><span>The handler queries the database (via raw SQL or ORM) to retrieve, insert, update, or delete records. The database returns results which the handler uses to construct the response payload (JSON or rendered HTML).</span></div>
           </div>
 
           <div class="callout info">
-            <strong>Full Request Lifecycle:</strong> Browser → DNS → Web Server (Nginx) → Framework Router → Handler Function → Library Calls → Database Query → Data returned → Handler builds Response → JSON/HTML sent back → Browser renders result.
+            <strong>Full Request Lifecycle</strong> Browser → DNS → Web Server (Nginx) → Framework Router → Handler Function → Library Calls → Database Query → Data returned → Handler builds Response → JSON/HTML sent back → Browser renders result.
           </div>
 
           <!-- Request-Response Lifecycle Sequence Diagram -->
@@ -1020,7 +1020,7 @@ find templates/ -name "*.html" | xargs wc -l</code></pre>
           </div>
 
           <div class="callout info">
-            <strong>Key Shell Commands:</strong> <code>mkdir -p</code> creates nested directories recursively; <code>touch</code> creates empty files; <code>grep -rn</code> searches recursively with line numbers; <code>find</code> locates files by name, type, or modification time.
+            <strong>Key Shell Commands</strong> <code>mkdir -p</code> creates nested directories recursively; <code>touch</code> creates empty files; <code>grep -rn</code> searches recursively with line numbers; <code>find</code> locates files by name, type, or modification time.
           </div>
 
           <div class="code-block">
@@ -1035,7 +1035,7 @@ uploads.mkdir(parents=True, exist_ok=True)       <span class="cm"># make directo
     <span class="kw">return</span> [line <span class="kw">for</span> line <span class="kw">in</span> open(log) <span class="kw">if</span> <span class="str">"ERROR"</span> <span class="kw">in</span> line]  <span class="cm"># search text</span></code></pre>
           </div>
 
-          <div class="callout info"><strong>Tip:</strong> keep a <code>setup.sh</code> script in your project. Anyone who clones the repository can run one command to create the folders, install packages and start the server.</div>
+          <div class="callout info"><strong>Tip</strong> Keep a <code>setup.sh</code> script in your project. Anyone who clones the repository can run one command to create the folders, install packages and start the server.</div>
         </section>
 
         <hr class="divider" />
@@ -1146,7 +1146,7 @@ results = Product.objects.filter(category=<span class="str">'Electronics'</span>
 <span class="cm"># Django automatically generates: SELECT name, price FROM products WHERE category = 'Electronics'</span></code></pre>
           </div>
 
-          <div class="callout success"><strong>HSC writing sample:</strong> <em>"An ORM such as SQLAlchemy speeds up development because tables are used as Python classes, and it parameterises queries automatically, which reduces the risk of SQL injection. Raw SQL gives more control and can be faster for complex reports that join several tables, so many applications use an ORM for everyday queries and raw SQL for a few performance-critical ones."</em></div>
+          <div class="callout success"><strong>HSC writing sample</strong> <em>"An ORM such as SQLAlchemy speeds up development because tables are used as Python classes, and it parameterises queries automatically, which reduces the risk of SQL injection. Raw SQL gives more control and can be faster for complex reports that join several tables, so many applications use an ORM for everyday queries and raw SQL for a few performance-critical ones."</em></div>
         </section>
 
         <hr class="divider" />
@@ -1209,11 +1209,11 @@ results = Product.objects.filter(category=<span class="str">'Electronics'</span>
 <h3>Accessibility and Inclusivity</h3>
           <p>PWA interfaces must be designed to be usable by everyone, including people with visual, auditory, cognitive, or motor disabilities:</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>🏷️ Semantic HTML</strong><span>Use correct elements for their purpose (<code>&lt;button&gt;</code> for buttons, <code>&lt;nav&gt;</code> for navigation, <code>&lt;main&gt;</code> for content). Screen readers rely on semantic structure to describe pages to blind users.</span></div>
-            <div class="key-term-item"><strong>🖼️ Alt Text</strong><span>Every non-decorative image must have descriptive <code>alt</code> attribute text. Decorative images use <code>alt=""</code> so screen readers skip them.</span></div>
+            <div class="key-term-item"><strong>Semantic HTML</strong><span>Use correct elements for their purpose (<code>&lt;button&gt;</code> for buttons, <code>&lt;nav&gt;</code> for navigation, <code>&lt;main&gt;</code> for content). Screen readers rely on semantic structure to describe pages to blind users.</span></div>
+            <div class="key-term-item"><strong>Alt Text</strong><span>Every non-decorative image must have descriptive <code>alt</code> attribute text. Decorative images use <code>alt=""</code> so screen readers skip them.</span></div>
             <div class="key-term-item"><strong>⌨️ Keyboard Navigation</strong><span>All interactive elements must be reachable and operable using only a keyboard (Tab to focus, Enter to activate). Required for users who cannot use a mouse.</span></div>
-            <div class="key-term-item"><strong>📢 ARIA Attributes</strong><span>ARIA (Accessible Rich Internet Applications) attributes (e.g., <code>aria-label</code>, <code>aria-expanded</code>, <code>role</code>) describe the state and purpose of dynamic UI components to assistive technologies.</span></div>
-            <div class="key-term-item"><strong>🎯 Focus Management</strong><span>When a modal or dialog opens, keyboard focus must move into it. When it closes, focus returns to the triggering element. This ensures keyboard users don't lose their place in the interface.</span></div>
+            <div class="key-term-item"><strong>ARIA Attributes</strong><span>ARIA (Accessible Rich Internet Applications) attributes (e.g., <code>aria-label</code>, <code>aria-expanded</code>, <code>role</code>) describe the state and purpose of dynamic UI components to assistive technologies.</span></div>
+            <div class="key-term-item"><strong>Focus Management</strong><span>When a modal or dialog opens, keyboard focus must move into it. When it closes, focus returns to the triggering element. This ensures keyboard users don't lose their place in the interface.</span></div>
           </div>
 
 <h3>Core PWA Technical Requirements</h3>

@@ -2337,3 +2337,15 @@ a.pg-seen::after {
 .gantt-key { gap: .4rem 1.1rem; }
 .gantt-key-item { display: inline-flex; align-items: center; gap: .45rem; white-space: nowrap; }
 .gantt-key .gantt-bar, .gantt-key .gantt-slack { margin: 0; }
+
+/* ============================================================
+   Polish pass: Year 12 topic pages
+   ============================================================ */
+
+/* Card grids never strand one card on its own row: four sit 2 x 2,
+   and a lone last card in a longer grid stretches across the row. */
+@media (min-width: 900px) {
+  :root[data-theme] :is(.info-grid, .key-terms):has(> :nth-child(4):last-child),
+  :root[data-theme] :is(.info-grid, .key-terms):has(> :nth-child(2):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  :root[data-theme] :is(.info-grid, .key-terms):has(> :nth-child(3n+7):last-child) > :last-child { grid-column: 1 / -1; }
+}

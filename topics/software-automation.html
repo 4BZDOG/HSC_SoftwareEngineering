@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=20" />
+  <link rel="stylesheet" href="../css/paper.css?v=21" />
 </head>
 <body>
 
@@ -156,7 +156,7 @@
         <span class="meta-pill">Outcomes: SE-12-01 to SE-12-09</span>
       </div>
       <div class="callout exam-tip curriculum-banner yr12">
-        <strong>📚 Curriculum Aligned:</strong> This page covers NESA NSW HSC outcomes <strong>SE-12-01 to SE-12-09</strong> comprehensively. All content is aligned to official syllabus specifications — study with confidence. <a href="https://github.com/4BZDOG/HSC_SoftwareEngineering/blob/main/resources/Syllabus-Mapping.md" target="_blank" rel="noopener">View full mapping →</a>
+        <strong>Curriculum Aligned</strong> This page covers NESA NSW HSC outcomes <strong>SE-12-01 to SE-12-09</strong> comprehensively. All content is aligned to official syllabus specifications — study with confidence. <a href="https://github.com/4BZDOG/HSC_SoftwareEngineering/blob/main/resources/Syllabus-Mapping.md" target="_blank" rel="noopener">View full mapping →</a>
       </div>
     </div>
   </header>
@@ -207,7 +207,7 @@
 <h3>Business Process Automation (BPA)</h3>
           <p><strong>BPA</strong> involves using technology to automate entire end-to-end business workflows — not just individual repetitive tasks, but complete multi-step processes involving multiple systems and decision points. ML-driven BPA integrates predictive intelligence into workflows. For example, an insurance claims BPA system uses ML to automatically assess a submitted photo of car damage, classify the severity, cross-reference the policy, calculate the repair estimate, and either auto-approve small claims or route complex cases to a human adjudicator — compressing a multi-day process into minutes. The key difference from RPA: BPA automates the <em>whole process</em>; RPA automates individual <em>steps within</em> a process.</p>
 
-          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Machine learning supports business process automation by handling tasks that need judgement rather than fixed rules. An insurance company uses an ML model to read claim forms and flag likely fraud, while RPA bots copy the approved claims into the payment system. Together they reduce processing time, although staff must still review the claims the model flags."</em></div>
+          <div class="callout success"><strong>HSC writing sample</strong> <em>"Machine learning supports business process automation by handling tasks that need judgement rather than fixed rules. An insurance company uses an ML model to read claim forms and flag likely fraud, while RPA bots copy the approved claims into the payment system. Together they reduce processing time, although staff must still review the claims the model flags."</em></div>
         </section>
 
         <hr class="divider" />
@@ -229,7 +229,7 @@
           </div>
 
           <div class="callout info">
-            <strong>🔄 Key Distinction:</strong> All machine learning is AI, but not all AI is machine learning. A traditional chess program following programmed rules is AI but not ML. A system that learns chess by playing millions of games is both AI and ML. ML cannot function without data — it learns from examples rather than explicit instructions.
+            <strong>Key Distinction</strong> All machine learning is AI, but not all AI is machine learning. A traditional chess program following programmed rules is AI but not ML. A system that learns chess by playing millions of games is both AI and ML. ML cannot function without data — it learns from examples rather than explicit instructions.
           </div>
 
           <!-- AI vs ML vs Deep Learning Diagram -->
@@ -354,7 +354,7 @@ flowchart TD
           </div>
         </figure>
 
-          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Supervised learning suits spam filtering because thousands of emails have already been labelled as spam or not spam, so the model can learn from correct answers. Unsupervised learning suits grouping customers by shopping habits, where no labels exist and the aim is to discover patterns."</em></div>
+          <div class="callout success"><strong>HSC writing sample</strong> <em>"Supervised learning suits spam filtering because thousands of emails have already been labelled as spam or not spam, so the model can learn from correct answers. Unsupervised learning suits grouping customers by shopping habits, where no labels exist and the aim is to discover patterns."</em></div>
         </section>
 
         <hr class="divider" />
@@ -368,30 +368,30 @@ flowchart TD
           <h3>Data Analysis and Forecasting</h3>
           <p>ML algorithms applied to data analysis and forecasting use patterns in historical data to predict future outcomes. <strong>Regression algorithms</strong> (linear, polynomial) identify trends and project them forward. <strong>Time-series models</strong> (e.g., ARIMA, LSTM neural networks) specifically handle data ordered over time — such as stock prices, weather measurements, or website traffic. Key applications include:</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>📈 Financial Forecasting</strong><span>Banks and investment firms use ML regression models to predict asset prices, credit default risk, and portfolio performance. For example, a logistic regression model assesses a loan applicant's risk of default based on income, employment history, and existing debts.</span></div>
-            <div class="key-term-item"><strong>🌦️ Demand and Supply Planning</strong><span>Retailers like Amazon use forecasting models to predict product demand at each warehouse location weeks in advance, automatically triggering stock replenishment orders before items run out.</span></div>
-            <div class="key-term-item"><strong>⚡ Energy Grid Management</strong><span>Electricity providers use ML to forecast power demand hour-by-hour, optimising when to draw from renewable versus fossil fuel sources and preventing costly over- or under-generation.</span></div>
+            <div class="key-term-item"><strong>Financial Forecasting</strong><span>Banks and investment firms use ML regression models to predict asset prices, credit default risk, and portfolio performance. For example, a logistic regression model assesses a loan applicant's risk of default based on income, employment history, and existing debts.</span></div>
+            <div class="key-term-item"><strong>Demand and Supply Planning</strong><span>Retailers like Amazon use forecasting models to predict product demand at each warehouse location weeks in advance, automatically triggering stock replenishment orders before items run out.</span></div>
+            <div class="key-term-item"><strong>Energy Grid Management</strong><span>Electricity providers use ML to forecast power demand hour-by-hour, optimising when to draw from renewable versus fossil fuel sources and preventing costly over- or under-generation.</span></div>
           </div>
 
 <h3>Virtual Personal Assistants</h3>
           <p>Virtual personal assistants (VPAs) such as Apple's Siri, Amazon's Alexa, and Google Assistant combine multiple ML domains into a seamless conversational interface:</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>🎤 Speech Recognition (ASR)</strong><span>Deep learning models convert spoken audio waveforms into text. Neural networks trained on thousands of hours of human speech learn to recognise phonemes and words — even across different accents, background noise levels, and speaking speeds.</span></div>
-            <div class="key-term-item"><strong>💬 Natural Language Processing (NLP)</strong><span>The transcribed text is parsed by NLP models to extract <em>intent</em> (what the user wants to do) and <em>entities</em> (the specific objects involved). For example, "Set a timer for 10 minutes" → intent: SetTimer, entity: 10 minutes.</span></div>
-            <div class="key-term-item"><strong>🗣️ Text-to-Speech (TTS)</strong><span>The assistant's text response is converted back to natural-sounding speech using neural TTS models. Modern systems sound nearly indistinguishable from human speech, using emotion and intonation modelling.</span></div>
-            <div class="key-term-item"><strong>🔄 Personalisation</strong><span>VPAs learn from individual user behaviour over time — remembering preferences, adapting to vocabulary, and improving accuracy for that specific user's voice and speech patterns through continuous learning.</span></div>
+            <div class="key-term-item"><strong>Speech Recognition (ASR)</strong><span>Deep learning models convert spoken audio waveforms into text. Neural networks trained on thousands of hours of human speech learn to recognise phonemes and words — even across different accents, background noise levels, and speaking speeds.</span></div>
+            <div class="key-term-item"><strong>Natural Language Processing (NLP)</strong><span>The transcribed text is parsed by NLP models to extract <em>intent</em> (what the user wants to do) and <em>entities</em> (the specific objects involved). For example, "Set a timer for 10 minutes" → intent: SetTimer, entity: 10 minutes.</span></div>
+            <div class="key-term-item"><strong>Text-to-Speech (TTS)</strong><span>The assistant's text response is converted back to natural-sounding speech using neural TTS models. Modern systems sound nearly indistinguishable from human speech, using emotion and intonation modelling.</span></div>
+            <div class="key-term-item"><strong>Personalisation</strong><span>VPAs learn from individual user behaviour over time — remembering preferences, adapting to vocabulary, and improving accuracy for that specific user's voice and speech patterns through continuous learning.</span></div>
           </div>
 
 <h3>Image Recognition</h3>
           <p><strong>Image recognition</strong> uses <strong>Convolutional Neural Networks (CNNs)</strong> — a specialised deep learning architecture designed to process grid-structured data (pixels). CNNs learn hierarchical visual features: early layers detect edges and colours; deeper layers recognise shapes and textures; the final layers identify objects. Key applications include:</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>🏥 Medical Diagnostics</strong><span>CNNs trained on tens of thousands of labelled medical scans can detect cancerous tumours, diabetic retinopathy in eye scans, and COVID-19 in chest X-rays — often matching or exceeding specialist radiologist accuracy.</span></div>
-            <div class="key-term-item"><strong>🔓 Facial Recognition</strong><span>Used in smartphone unlock systems, border security, and law enforcement. The CNN maps the geometric relationships between facial landmarks and compares them against stored templates. Raises significant ethical concerns regarding privacy and racial bias in training data.</span></div>
-            <div class="key-term-item"><strong>🚗 Autonomous Vehicles</strong><span>Self-driving cars use CNNs to identify pedestrians, other vehicles, traffic signs, and lane markings in real time from camera feeds. The recognition system processes multiple camera angles simultaneously at high speed to make safe driving decisions.</span></div>
-            <div class="key-term-item"><strong>🏭 Manufacturing Quality Control</strong><span>Automated visual inspection systems on production lines use image recognition to detect product defects (e.g., cracks, misalignments, surface blemishes) at speeds and consistency impossible for human inspectors.</span></div>
+            <div class="key-term-item"><strong>Medical Diagnostics</strong><span>CNNs trained on tens of thousands of labelled medical scans can detect cancerous tumours, diabetic retinopathy in eye scans, and COVID-19 in chest X-rays — often matching or exceeding specialist radiologist accuracy.</span></div>
+            <div class="key-term-item"><strong>Facial Recognition</strong><span>Used in smartphone unlock systems, border security, and law enforcement. The CNN maps the geometric relationships between facial landmarks and compares them against stored templates. Raises significant ethical concerns regarding privacy and racial bias in training data.</span></div>
+            <div class="key-term-item"><strong>Autonomous Vehicles</strong><span>Self-driving cars use CNNs to identify pedestrians, other vehicles, traffic signs, and lane markings in real time from camera feeds. The recognition system processes multiple camera angles simultaneously at high speed to make safe driving decisions.</span></div>
+            <div class="key-term-item"><strong>Manufacturing Quality Control</strong><span>Automated visual inspection systems on production lines use image recognition to detect product defects (e.g., cracks, misalignments, surface blemishes) at speeds and consistency impossible for human inspectors.</span></div>
           </div>
 
-          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Image recognition is a key application of ML in agriculture. A convolutional neural network trained on thousands of labelled leaf photos can identify crop diseases from a farmer's phone camera, allowing early treatment. Its accuracy depends on training images that match real field conditions, such as poor lighting and partly hidden leaves."</em></div>
+          <div class="callout success"><strong>HSC writing sample</strong> <em>"Image recognition is a key application of ML in agriculture. A convolutional neural network trained on thousands of labelled leaf photos can identify crop diseases from a farmer's phone camera, allowing early treatment. Its accuracy depends on training images that match real field conditions, such as poor lighting and partly hidden leaves."</em></div>
         </section>
 
         <hr class="divider" />
@@ -417,7 +417,7 @@ flowchart TD
           </div>
 
           <div class="callout info">
-            <strong>Decision Tree Example — Loan Approval:</strong> Root: Annual income &gt; $60,000? → Yes: Credit score &gt; 700? → Yes: Approve loan; No: Review manually. No: Employment status = Full-time? → Yes: Review manually; No: Reject loan.
+            <strong>Decision Tree Example — Loan Approval</strong> Root: Annual income &gt; $60,000? → Yes: Credit score &gt; 700? → Yes: Approve loan; No: Review manually. No: Employment status = Full-time? → Yes: Review manually; No: Reject loan.
           </div>
 
           <!-- Decision Tree Diagram -->
@@ -588,7 +588,7 @@ print(f"Predicted score for 9 hours: {model.predict([[9]])[0]:.1f}")</code></pre
           </div>
 
           <div class="callout info">
-            <strong>KNN Example:</strong> To classify whether a new plant is Species A or B based on petal length and width, KNN finds the 5 most similar plants in the training set (K=5). If 4 of those 5 are Species A, the new plant is classified as Species A with high confidence.
+            <strong>KNN Example</strong> To classify whether a new plant is Species A or B based on petal length and width, KNN finds the 5 most similar plants in the training set (K=5). If 4 of those 5 are Species A, the new plant is classified as Species A with high confidence.
           </div>
 
           <div class="code-block">
@@ -791,7 +791,7 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           </div>
 
           <div class="callout info">
-            <strong>OOP in ML Models:</strong> Every scikit-learn model is a Python class. When you write <code>model = MLPClassifier(...)</code> you are <strong>instantiating an object</strong>. When you call <code>model.fit(X, y)</code> you are invoking a <strong>method</strong> that sets the object's internal weights (attributes). When you call <code>model.predict(X_new)</code> you are invoking another method that uses those stored weights to generate output. This is OOP in direct practice.
+            <strong>OOP in ML Models</strong> Every scikit-learn model is a Python class. When you write <code>model = MLPClassifier(...)</code> you are <strong>instantiating an object</strong>. When you call <code>model.fit(X, y)</code> you are invoking a <strong>method</strong> that sets the object's internal weights (attributes). When you call <code>model.predict(X_new)</code> you are invoking another method that uses those stored weights to generate output. This is OOP in direct practice.
           </div>
 
 <h3>Neural Network Training and Execution Cycles</h3>
@@ -848,7 +848,7 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
             <p class="video-box-note">A thought-provoking look at how <strong>automation</strong> may reshape <strong>employment</strong> across many industries — excellent stimulus for discussing the social and economic impact of AI.</p>
           </div>
 
-          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Automation has improved the safety of workers by moving dangerous jobs, such as handling chemicals, to robots. However, it has also changed the skills required for employment: routine roles are declining, while demand grows for people who can maintain and program automated systems. The overall impact depends on whether retraining is available, so the benefits of efficiency are shared rather than concentrated among business owners."</em></div>
+          <div class="callout success"><strong>HSC writing sample</strong> <em>"Automation has improved the safety of workers by moving dangerous jobs, such as handling chemicals, to robots. However, it has also changed the skills required for employment: routine roles are declining, while demand grows for people who can maintain and program automated systems. The overall impact depends on whether retraining is available, so the benefits of efficiency are shared rather than concentrated among business owners."</em></div>
         </section>
 
         <hr class="divider" />
@@ -934,7 +934,7 @@ flowchart LR
             </div>
           </div>
 
-          <div class="callout success"><strong>HSC writing sample:</strong> <em>"Dataset source bias occurs when training data does not represent everyone the model will serve. A facial recognition system trained mostly on lighter-skinned faces misidentified darker-skinned people far more often. Human bias adds to this when developers label data using their own assumptions. Engineers can reduce these effects by auditing datasets for balance and testing accuracy separately for each group before release."</em></div>
+          <div class="callout success"><strong>HSC writing sample</strong> <em>"Dataset source bias occurs when training data does not represent everyone the model will serve. A facial recognition system trained mostly on lighter-skinned faces misidentified darker-skinned people far more often. Human bias adds to this when developers label data using their own assumptions. Engineers can reduce these effects by auditing datasets for balance and testing accuracy separately for each group before release."</em></div>
         </section>
 
       

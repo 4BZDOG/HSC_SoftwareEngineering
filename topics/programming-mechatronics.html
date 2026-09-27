@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=20" />
+  <link rel="stylesheet" href="../css/paper.css?v=21" />
 </head>
 <body>
 
@@ -156,7 +156,7 @@
         <span class="meta-pill">Outcomes: SE-11-01 to 09</span>
       </div>
       <div class="callout exam-tip curriculum-banner yr11">
-        <strong>📚 Curriculum Aligned:</strong> This page covers NESA NSW Preliminary outcomes <strong>SE-11-01 to SE-11-09</strong> comprehensively. All content is aligned to official syllabus specifications — study with confidence. <a href="https://github.com/4BZDOG/HSC_SoftwareEngineering/blob/main/resources/Syllabus-Mapping.md" target="_blank" rel="noopener">View full mapping →</a>
+        <strong>Curriculum Aligned</strong> This page covers NESA NSW Preliminary outcomes <strong>SE-11-01 to SE-11-09</strong> comprehensively. All content is aligned to official syllabus specifications — study with confidence. <a href="https://github.com/4BZDOG/HSC_SoftwareEngineering/blob/main/resources/Syllabus-Mapping.md" target="_blank" rel="noopener">View full mapping →</a>
       </div>
     </div>
   </header>
@@ -461,7 +461,7 @@ graph LR
           <h3>Estimating battery life</h3>
           <p><strong>Battery life (hours) ≈ battery capacity (mAh) ÷ average current (mA)</strong>. A 2000 mAh battery powering the 670 mA system above lasts about 2000 ÷ 670 ≈ 3 hours. In practice, allow 20–30% less, because batteries lose capacity as they age and as they get cold.</p>
 
-          <div class="callout success"><strong>HSC writing sample:</strong> <em>"The greenhouse controller draws about 60 mA, but the pump draws 400 mA when it runs. The pump was therefore given its own 12 V supply through a relay, so its start-up current cannot cause the microcontroller to reset."</em></div>
+          <div class="callout success"><strong>HSC writing sample</strong> <em>"The greenhouse controller draws about 60 mA, but the pump draws 400 mA when it runs. The pump was therefore given its own 12 V supply through a relay, so its start-up current cannot cause the microcontroller to reset."</em></div>
         </section>
 
         <hr class="divider" />
@@ -573,7 +573,7 @@ graph LR
 END followLine</code></pre>
           </div>
 
-          <div class="callout info"><strong>Modifying the algorithm:</strong> testing shows the robot zig-zags on straight lines. Changing <code>turnLeft()</code> and <code>turnRight()</code> to slow one wheel rather than stop it gives smoother steering. Record each change and why you made it.</div>
+          <div class="callout info"><strong>Modifying the algorithm</strong> testing shows the robot zig-zags on straight lines. Changing <code>turnLeft()</code> and <code>turnRight()</code> to slow one wheel rather than stop it gives smoother steering. Record each change and why you made it.</div>
         </section>
 
         <hr class="divider" />
@@ -640,7 +640,7 @@ flowchart LR
           </div>
         </figure>
 
-          <div class="callout success"><strong>HSC writing sample:</strong> <em>"An open loop algorithm suits the greenhouse misting system, which runs for 30 seconds every hour, because exact humidity is not critical and it needs no sensor. The roof vent needs closed loop control: the algorithm reads the temperature, compares it with the 26 °C setpoint and adjusts the vent, so it corrects itself when the weather changes."</em></div>
+          <div class="callout success"><strong>HSC writing sample</strong> <em>"An open loop algorithm suits the greenhouse misting system, which runs for 30 seconds every hour, because exact humidity is not critical and it needs no sensor. The roof vent needs closed loop control: the algorithm reads the temperature, compares it with the 26 °C setpoint and adjusts the vent, so it corrects itself when the weather changes."</em></div>
         </section>
 
         <hr class="divider" />
@@ -737,7 +737,7 @@ stateDiagram-v2
           <p class="syllabus-concept">📌 <em><strong>Design, develop and produce</strong> a mechatronic system for a real-world problem</em></p>
           <ul class="syllabus-including" aria-label="Including"><li>software control</li><li>mechanical engineering</li><li>electronics and mathematics</li></ul>
 
-          <div class="callout info"><strong>Running example — the smart greenhouse:</strong> a microcontroller reads a temperature sensor and a soil-moisture sensor, opens a roof vent with a servo when it gets too hot, and runs a pump when the soil is dry. The examples in this part build it one piece at a time.</div>
+          <div class="callout info"><strong>Running example — the smart greenhouse</strong> a microcontroller reads a temperature sensor and a soil-moisture sensor, opens a roof vent with a servo when it gets too hot, and runs a pump when the soil is dry. The examples in this part build it one piece at a time.</div>
 
           <h3>Integrated System Design</h3>
           <p>Creating a complete mechatronic system requires simultaneous consideration of three domains:</p>
@@ -807,7 +807,7 @@ set_angle(<span class="str">90</span>)   <span class="cm"># open the vent halfwa
             </table>
           </div>
 
-          <div class="callout info"><strong>Tip:</strong> build the greenhouse circuit in Wokwi first. When the vent opens at the right temperature in the simulation, move the same code onto the real board.</div>
+          <div class="callout info"><strong>Tip</strong> build the greenhouse circuit in Wokwi first. When the vent opens at the right temperature in the simulation, move the same code onto the real board.</div>
         </section>
 
         <hr class="divider" />
@@ -869,7 +869,7 @@ KP = <span class="str">10</span>                <span class="cm"># degrees of ve
     sleep(<span class="str">1</span>)</code></pre>
           </div>
 
-          <div class="callout info"><strong>Watch for conflicts:</strong> the pump and servo both draw current at the same moment, and a long <code>sleep()</code> in one subsystem delays every other one. Keep each step short and share one main loop.</div>
+          <div class="callout info"><strong>Watch for conflicts</strong> the pump and servo both draw current at the same moment, and a long <code>sleep()</code> in one subsystem delays every other one. Keep each step short and share one main loop.</div>
         </section>
 
         <hr class="divider" />
