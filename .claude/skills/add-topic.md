@@ -429,6 +429,8 @@ flowchart TD
 </figure>
 ```
 
+Mermaid diagrams are drawn at build time, not in the browser. After adding or editing one, run `npm run diagrams` (first time: `npm install`). It replaces the `<div class="mermaid">` source with a light and a dark SVG and keeps the source in a `<template class="mermaid-source">` inside the same div; to change a drawn diagram, edit the text in that template and run it again. `scripts/check-site.py` fails if a diagram is undrawn or its source has changed since it was drawn.
+
 **NESA conventions** (Course Specifications pp. 5–19; `scripts/check-site.py` enforces the flowchart rules):
 
 - **Flowcharts** use only: terminator `(["BEGIN"])`/`(["END"])`, process `["…"]`, decision `{"…"}`, input/output `[/"…"/]`, subprogram `[["…"]]`. Label every arrow leaving a decision (Yes/No or True/False). Write `#lt;` and `#gt;` for < and > inside labels. No emoji.

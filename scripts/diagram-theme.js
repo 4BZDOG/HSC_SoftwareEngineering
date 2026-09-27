@@ -1,10 +1,11 @@
 /* ============================================================
-   Mermaid diagram initialisation + dark-mode re-rendering.
-   Shared across all topic pages. Requires mermaid to be loaded.
+   Diagram theme for the build step (scripts/render-diagrams.mjs).
+   Loaded into a headless browser next to Mermaid; exposes the
+   paper palette and config as window.HSC_DIAGRAM. Pages no longer
+   run Mermaid: they ship the SVGs this produces.
    ============================================================ */
 
 (() => {
-  if (typeof mermaid === 'undefined') return;
 
   /* Paper-cut palette. Hand-written diagram styles use dozens of ad-hoc
      colours; every fill is snapped to the nearest paper tone by hue so all
@@ -69,38 +70,6 @@
       if (/^\s*(style|classDef)\s/.test(line)) return recolour(line, pal);
       return line;
     }).join('\n');
-  }
-
-  // Mermaid's viewBox can clip the outermost nodes, and useMaxWidth shrinks
-  // wide charts until labels are unreadable. Refit the viewBox to the drawn
-  // content, and keep text at a readable size (the canvas scrolls instead).
-  const MIN_SCALE = 0.62;
-  function fitSvg(el) {
-    const svg = el.querySelector('svg');
-    if (!svg) return;
-    let bb;
-    try { bb = svg.getBBox(); } catch { return; }
-    if (!bb.width || !bb.height) return;
-    const pad = 12;
-    const w = bb.width + pad * 2, h = bb.height + pad * 2;
-    svg.setAttribute('viewBox', `${bb.x - pad} ${bb.y - pad} ${w} ${h}`);
-    svg.removeAttribute('height');
-    svg.style.maxWidth = `${Math.ceil(w)}px`;
-    svg.style.minWidth = `${Math.ceil(w * MIN_SCALE)}px`;
-    const canvas = el.closest('.figure-canvas');
-    if (canvas) requestAnimationFrame(() => {
-      const wide = el.scrollWidth > el.clientWidth + 2 || canvas.scrollWidth > canvas.clientWidth + 2;
-      canvas.classList.toggle('is-scrollable', wide);
-      let hint = canvas.nextElementSibling;
-      if (!hint || !hint.classList.contains('figure-scroll-hint')) {
-        if (!wide) return;
-        hint = document.createElement('p');
-        hint.className = 'figure-scroll-hint';
-        hint.textContent = 'Scroll sideways to see the whole diagram, or use Enlarge.';
-        canvas.after(hint);
-      }
-      hint.hidden = !wide;
-    });
   }
 
   function getThemeConfig(isDark) {
@@ -189,69 +158,5 @@
     };
   }
 
-  // The diagram source is authored with literal <br/> tags for multi-line node
-  // labels. The browser parses those into real <br> elements, and textContent
-  // would silently drop them (merging the lines). Convert each <br> back into the
-  // literal "<br/>" text Mermaid expects before reading the source.
-  function extractSource(el) {
-    const clone = el.cloneNode(true);
-    clone.querySelectorAll('br').forEach(br => {
-      br.replaceWith(document.createTextNode('<br/>'));
-    });
-    return clone.textContent.trim();
-  }
-
-  function storeOriginalSources() {
-    document.querySelectorAll('.mermaid').forEach(el => {
-      if (!el.dataset.source) {
-        el.dataset.source = extractSource(el);
-      }
-    });
-  }
-
-  async function renderAll() {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    mermaid.initialize(getThemeConfig(isDark));
-
-    const diagrams = document.querySelectorAll('.mermaid');
-    for (const el of diagrams) {
-      const source = el.dataset.source;
-      if (!source) continue;
-
-      const id = 'mermaid-' + Math.random().toString(36).slice(2, 10);
-      try {
-        const pal = isDark ? PALETTE.dark : PALETTE.light;
-        const { svg } = await mermaid.render(id, normaliseSource(source, pal));
-        el.innerHTML = svg;
-        fitSvg(el);
-      } catch (e) {
-        console.warn('Mermaid render error:', e);
-      }
-    }
-
-  }
-
-  storeOriginalSources();
-
-  // Mermaid measures HTML labels to size nodes. If it runs before the web fonts
-  // have loaded, those measurements can be wildly off and the diagram renders
-  // with a huge viewBox (microscopic, illegible). Wait for fonts to settle first.
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(renderAll, renderAll);
-  } else {
-    renderAll();
-  }
-
-  let themeChangeQueued = false;
-  new MutationObserver(() => {
-    if (themeChangeQueued) return;
-    themeChangeQueued = true;
-    requestAnimationFrame(() => {
-      themeChangeQueued = false;
-      renderAll();
-    });
-  }).observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ['data-theme']
-  });
+  window.HSC_DIAGRAM = { PALETTE, getThemeConfig, normaliseSource };
 })();

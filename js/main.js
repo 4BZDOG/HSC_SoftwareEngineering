@@ -967,7 +967,8 @@ document.addEventListener('DOMContentLoaded', () => {
           const title = canvas.closest('.figure')?.querySelector('.figure-title')?.textContent || 'diagram';
           btn.setAttribute('aria-label', `Enlarge: ${title}`);
           btn.addEventListener('click', () => {
-            const svg = canvas.querySelector('svg');
+            // Pre-rendered diagrams ship a light and a dark SVG; open the one on show.
+            const svg = [...canvas.querySelectorAll('svg')].find(s => s.getClientRects().length);
             if (svg) this.open(svg, btn);
           });
           const head = canvas.closest('.figure')?.querySelector('.figure-kicker');

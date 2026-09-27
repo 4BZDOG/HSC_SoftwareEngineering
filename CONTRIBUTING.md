@@ -220,7 +220,7 @@ A: Create a new `.html` file in `/topics/` following the template structure, upd
 A: Preferably not — this site is intentionally dependency-free. If absolutely necessary, discuss in an issue first.
 
 **Q: How are diagrams handled?**  
-A: Diagrams use Mermaid.js and are embedded as code blocks. See `diagrams/README.md` for details.
+A: Diagrams are written in Mermaid and pre-rendered to inline SVG by `npm run diagrams` (see Diagrams below). Pages do not load Mermaid.
 
 **Q: What if my change breaks dark mode?**  
 A: Test with `[data-theme="dark"]` selector. All colors should be defined via CSS custom properties. Check the existing callout styles or section backgrounds for patterns.
@@ -259,3 +259,12 @@ Thank you for contributing! Your help makes this resource better for students. �
 ## Diagrams
 
 Every diagram is a numbered `.figure` with a title, a one-sentence lead, "What to notice" points and a "Try this" prompt (see `.claude/skills/add-topic.md`). Flowcharts, structure charts, DFDs, decision trees and class diagrams must follow the symbols in the NESA Software Engineering Course Specifications; `scripts/check-site.py` rejects flowcharts that use other symbols, miss BEGIN/END terminators, leave decision arrows unlabelled or contain emoji. Structure charts and DFDs are drawn by `js/nesa-diagrams.js` from data in `js/nesa-diagram-data.js`.
+
+Mermaid diagrams are pre-rendered, so pages load no diagram library and work on networks that block CDNs. Write the source in `<div class="mermaid">…</div>`, then run:
+
+```bash
+npm install        # once: Mermaid, Playwright and the Inter font
+npm run diagrams   # draws new or edited diagrams as light and dark SVGs
+```
+
+The source stays in the page inside `<template class="mermaid-source">`; edit it there and run `npm run diagrams` again. Use `npm run diagrams:all` to redraw everything (for example after changing the palette in `scripts/diagram-theme.js`). If Playwright cannot find a browser, run `npx playwright install chromium` or set `CHROMIUM_PATH`.
