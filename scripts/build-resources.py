@@ -9,6 +9,7 @@ Check each URL still resolves before adding it, and update CHECKED.
     python3 scripts/build-resources.py
 """
 import html
+import importlib.util
 import os
 import re
 
@@ -229,7 +230,13 @@ def build():
     page = re.sub(r'  <script src="\.\./js/nesa-diagram[^\n]*\n', '', page)
     page = re.sub(r'\n  <div class="lightbox-modal"[\s\S]*?\n  </div>\n', '\n', page)
     page = page.replace('© 2026 HSC SoftEng Notes · SDLC Guide', '© 2026 HSC SoftEng Notes · Certified Resources')
-    open(os.path.join(ROOT, 'topics', 'resources.html'), 'w', encoding='utf-8').write(page)
+    out = os.path.join(ROOT, 'topics', 'resources.html')
+    open(out, 'w', encoding='utf-8').write(page)
+    # Title and contents icons, as on every other page
+    spec = importlib.util.spec_from_file_location('topic_icons', os.path.join(ROOT, 'scripts', 'topic-icons.py'))
+    icons = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(icons)
+    icons.apply(os.path.abspath(out))
     print(f'topics/resources.html: {total} resources in {len(SECTIONS)} sections')
 
 

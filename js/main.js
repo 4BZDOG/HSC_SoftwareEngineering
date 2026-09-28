@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateThemeIcon(btn, theme) {
     if (!btn) return;
     const icon = theme === 'dark' ? SUN_ICON : MOON_ICON;
-    const label = btn.id === 'theme-toggle-mobile' ? ' Toggle theme' : '';
+    const label = btn.id === 'theme-toggle-mobile' ? (theme === 'dark' ? ' Light mode' : ' Dark mode') : '';
     btn.innerHTML = icon + label;
     btn.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
   }
@@ -115,10 +115,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const filename = window.location.pathname.split('/').pop() || 'index.html';
 
     // Mark matching links active and flag parent dropdown
-    document.querySelectorAll('.nav-links > li > a, .nav-dropdown-menu a').forEach(link => {
+    document.querySelectorAll('.nav-links > li > a, .nav-dropdown-menu a, .mobile-menu a').forEach(link => {
       const href = link.getAttribute('href') || '';
       if (href.split('/').pop() === filename) {
         link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
         const dropdown = link.closest('.nav-dropdown');
         if (dropdown) dropdown.classList.add('nav-dropdown--has-active');
       }
@@ -205,26 +206,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileMenu = document.getElementById('mobile-menu');
 
   if (hamburger && mobileMenu) {
-    const bars = hamburger.querySelectorAll('span');
-    const setBars = open => {
-      if (bars[0]) bars[0].style.transform = open ? 'rotate(45deg) translate(5px, 5px)' : '';
-      if (bars[1]) bars[1].style.opacity   = open ? '0' : '1';
-      if (bars[2]) bars[2].style.transform = open ? 'rotate(-45deg) translate(5px, -5px)' : '';
+    // The bars fold into a cross in CSS, keyed off aria-expanded
+    const setOpen = open => {
+      mobileMenu.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', String(open));
+      hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     };
 
-    hamburger.addEventListener('click', () => {
-      const open = mobileMenu.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', String(open));
-      setBars(open);
-    });
+    hamburger.addEventListener('click', () => setOpen(!mobileMenu.classList.contains('open')));
 
-    // Close on link click
-    mobileMenu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        bars.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-      });
+    // Close on link click or Escape
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) { setOpen(false); hamburger.focus(); }
     });
   }
 
