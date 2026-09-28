@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Apply the shared topic icons and navigation markup to every page.
+"""Apply the shared site chrome (navigation, footer, topic icons) to every page.
 
-    python3 scripts/topic-icons.py
+    python3 scripts/site-chrome.py
 
 One icon per page lives in ICONS below. The script rewrites, on index.html,
 404.html and every page in topics/:
@@ -10,7 +10,8 @@ One icon per page lives in ICONS below. The script rewrites, on index.html,
   * the mobile menu (rebuilt from one template so every page matches),
   * the icon beside the page's <h1>,
   * the icon on the sidebar "Contents" title,
-  * icons on footer links to other pages,
+  * the footer (rebuilt from one template), with icons on its links,
+  * type="button" on any button that lacks a type,
   * the previous / next topic cards at the end of each topic page,
   * the topic tags on glossary terms (icon, and a button that filters the
     glossary to that topic). New terms from add-glossary-terms.py come in
@@ -127,6 +128,33 @@ def dropdown_items(text, prefix):
     return ''.join(out)
 
 
+def footer(prefix, home, page_title):
+    cols = []
+    for group, label, _ in GROUPS:
+        links = [f'        <a href="{prefix}{s}.html">{t}</a>' for s, (g, t, _) in PAGES.items() if g == group]
+        if group == 'core':
+            links.append('        <a href="https://curriculum.nsw.edu.au/learning-areas/tas/software-engineering-11-12-2022" '
+                         'target="_blank" rel="noopener">NESA Syllabus ↗</a>')
+        cols.append(f'      <div class="footer-col footer-col-{group}">\n        <h4>{label}</h4>\n' + '\n'.join(links) + '\n      </div>')
+    where = f' · {page_title}' if page_title else ''
+    return f'''<footer>
+    <div class="footer-inner">
+      <div>
+        <a href="{home}" class="footer-brand">
+          <div class="footer-logo" aria-hidden="true">{{&hairsp;}}</div>
+          <span class="footer-name">SoftEng Notes</span>
+        </a>
+        <p class="footer-desc">Notes for every dot point of the NSW HSC Software Engineering syllabus, from Year 11 foundations to the Year 12 exam.</p>
+      </div>
+{chr(10).join(cols)}
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 HSC SoftEng Notes{where}</span>
+      <span>Aligned to the NESA syllabus · For educational purposes only</span>
+    </div>
+  </footer>'''
+
+
 def footer_icons(text, prefix, home):
     m = re.search(r'<footer\b.*?</footer>', text, re.S)
     if not m:
@@ -213,7 +241,14 @@ def apply(path):
         text = re.sub(r'<div class="toc-title">(?:<span class="toc-ico[^"]*" aria-hidden="true"><svg.*?</svg></span>)*',
                       f'<div class="toc-title">{svg(slug, "toc-ico ti-" + group)}', text)
 
+    # One footer on every page
+    title = PAGES[slug][1].replace('&amp;', '&') if slug in PAGES else ''
+    title = {'Course Tools & Specs': 'Course Tools & Specifications'}.get(title, title)
+    text = re.sub(r'<footer>.*?</footer>', lambda m: footer(prefix, home, title.replace('&', '&amp;')), text, count=1, flags=re.S)
     text = footer_icons(text, prefix, home)
+
+    # Every button gets an explicit type
+    text = re.sub(r'<button(?![^>]*\btype=)', '<button type="button"', text)
 
     # Previous / next topic cards, just after the content column
     if slug in SEQUENCE:

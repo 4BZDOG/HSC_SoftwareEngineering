@@ -1372,8 +1372,8 @@
   border-radius: 2px;
   background: currentColor;
 }
-:root[data-theme] .footer-inner > :nth-child(2) h4 { color: #f0a58f; }
-:root[data-theme] .footer-inner > :nth-child(3) h4 { color: #9fcfae; }
+:root[data-theme] .footer-col-y12 h4 { color: #f0a58f; }
+:root[data-theme] .footer-col-y11 h4 { color: #9fcfae; }
 :root[data-theme] .footer-col a {
   width: fit-content;
   padding: .18rem 0;
@@ -3380,3 +3380,7 @@ button.chip-topic:focus-visible { outline: 2px solid currentColor; outline-offse
 @media (prefers-reduced-motion: reduce) {
   .pager-card, .pager-ico, button.chip-topic { transition: none; }
 }
+a.footer-brand { text-decoration: none; color: inherit; width: fit-content; }
+a.footer-brand:hover .footer-logo { transform: rotate(-6deg); }
+.footer-logo { transition: transform 260ms cubic-bezier(.3,1.6,.5,1); }
+.footer-bottom { padding-right: 4rem; }

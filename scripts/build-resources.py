@@ -233,7 +233,7 @@ def build():
     out = os.path.join(ROOT, 'topics', 'resources.html')
     open(out, 'w', encoding='utf-8').write(page)
     # Title and contents icons, as on every other page
-    spec = importlib.util.spec_from_file_location('topic_icons', os.path.join(ROOT, 'scripts', 'topic-icons.py'))
+    spec = importlib.util.spec_from_file_location('site_chrome', os.path.join(ROOT, 'scripts', 'site-chrome.py'))
     icons = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(icons)
     icons.apply(os.path.abspath(out))

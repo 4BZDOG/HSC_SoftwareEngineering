@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=27" />
-  <link rel="stylesheet" href="../css/paper.css?v=34" />
+  <link rel="stylesheet" href="../css/paper.css?v=36" />
   <link rel="stylesheet" href="../css/anim.css?v=4" />
 </head>
 <body>
@@ -70,7 +70,7 @@
       <ul class="nav-links">
         <li><a href="../index.html" class="nav-home"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></svg></span>Home</a></li>
         <li class="nav-dropdown nav-dropdown-y11">
-          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
             Year 11
             <span class="badge badge-11">Prelim</span>
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
@@ -82,7 +82,7 @@
           </div>
         </li>
         <li class="nav-dropdown nav-dropdown-y12">
-          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
             Year 12
             <span class="badge badge-12">HSC</span>
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
@@ -95,7 +95,7 @@
           </div>
         </li>
         <li class="nav-dropdown">
-          <button class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
             Resources
             <span class="badge badge-all">Guides</span>
             <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
@@ -110,8 +110,8 @@
       </ul>
 
       <div class="nav-actions">
-        <button class="btn-icon" id="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <button class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <button type="button" class="btn-icon" id="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button type="button" class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -1614,36 +1614,37 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
   <footer>
     <div class="footer-inner">
       <div>
-        <div class="footer-brand">
+        <a href="../index.html" class="footer-brand">
           <div class="footer-logo" aria-hidden="true">{&hairsp;}</div>
           <span class="footer-name">SoftEng Notes</span>
-        </div>
-        <p class="footer-desc">HSC Software Engineering notes for NSW students.</p>
+        </a>
+        <p class="footer-desc">Notes for every dot point of the NSW HSC Software Engineering syllabus, from Year 11 foundations to the Year 12 exam.</p>
       </div>
-      <div class="footer-col">
-        <h4>Year 12</h4>
-        <a href="secure-software-architecture.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></span>Secure Architecture</a>
-        <a href="programming-for-the-web.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.4 3.8 5.6 3.8 9s-1.3 6.6-3.8 9c-2.5-2.4-3.8-5.6-3.8-9s1.3-6.6 3.8-9z"/></svg></span>Web Programming</a>
-        <a href="software-automation.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M20 8a8.1 8.1 0 0 0-14.9 1M4 16a8.1 8.1 0 0 0 14.9-1"/><path d="M4 4v5h5M20 20v-5h-5"/></svg></span>Software Automation</a>
-        <a href="software-engineering-project.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M9 10h6M9 14h6M9 18h3.5"/></svg></span>Engineering Project</a>
-      </div>
-      <div class="footer-col">
+      <div class="footer-col footer-col-y11">
         <h4>Year 11</h4>
         <a href="programming-fundamentals.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 8l-4.5 4L8 16M16 8l4.5 4L16 16M13 5l-2 14"/></svg></span>Programming Fundamentals</a>
-        <a href="object-oriented-paradigm.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span>OOP</a>
-        <a href="programming-mechatronics.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="3" height="3"/><path d="M9.5 7V4M14.5 7V4M9.5 20v-3M14.5 20v-3M7 9.5H4M7 14.5H4M20 9.5h-3M20 14.5h-3"/></svg></span>Mechatronics</a>
+        <a href="object-oriented-paradigm.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span>Object-Oriented Paradigm</a>
+        <a href="programming-mechatronics.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="3" height="3"/><path d="M9.5 7V4M14.5 7V4M9.5 20v-3M14.5 20v-3M7 9.5H4M7 14.5H4M20 9.5h-3M20 14.5h-3"/></svg></span>Programming Mechatronics</a>
       </div>
-      <div class="footer-col">
-        <h4>Navigate</h4>
-        <a href="../index.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></svg></span>Back to Home</a>
+      <div class="footer-col footer-col-y12">
+        <h4>Year 12</h4>
+        <a href="secure-software-architecture.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></span>Secure Software Architecture</a>
+        <a href="programming-for-the-web.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.4 3.8 5.6 3.8 9s-1.3 6.6-3.8 9c-2.5-2.4-3.8-5.6-3.8-9s1.3-6.6 3.8-9z"/></svg></span>Programming for the Web</a>
+        <a href="software-automation.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M20 8a8.1 8.1 0 0 0-14.9 1M4 16a8.1 8.1 0 0 0 14.9-1"/><path d="M4 4v5h5M20 20v-5h-5"/></svg></span>Software Automation</a>
+        <a href="software-engineering-project.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M9 10h6M9 14h6M9 18h3.5"/></svg></span>Software Engineering Project</a>
+      </div>
+      <div class="footer-col footer-col-core">
+        <h4>Resources</h4>
+        <a href="course-tools.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.6 17.1a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.1-.6-.6-2.1z"/></svg></span>Course Tools &amp; Specs</a>
+        <a href="sdlc.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17.5l9 5 9-5"/></svg></span>SDLC Guide</a>
         <a href="glossary.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3 5.5c3-1.3 6-1.3 9 .5 3-1.8 6-1.8 9-.5V19c-3-1.3-6-1.3-9 .5-3-1.8-6-1.8-9-.5z"/><path d="M12 6v13.5"/></svg></span>Glossary</a>
         <a href="resources.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6.5 3h11v18l-5.5-3.8L6.5 21z"/><path d="M9.5 9.5l2 2 3.5-3.5"/></svg></span>Certified Resources</a>
-        <a href="sdlc.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17.5l9 5 9-5"/></svg></span>SDLC Guide</a>
-        <a href="object-oriented-paradigm.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span>OOP →</a>
+        <a href="https://curriculum.nsw.edu.au/learning-areas/tas/software-engineering-11-12-2022" target="_blank" rel="noopener">NESA Syllabus ↗</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 HSC SoftEng Notes · Programming Fundamentals · Australian English Standards</span>
+      <span>© 2026 HSC SoftEng Notes · Programming Fundamentals</span>
+      <span>Aligned to the NESA syllabus · For educational purposes only</span>
     </div>
   </footer>
 
@@ -1663,16 +1664,16 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
     <div class="lightbox-container">
       <div class="lightbox-header">
         <h2 id="lightbox-title" class="lightbox-title">Diagram View</h2>
-        <button class="lightbox-close" aria-label="Close diagram view">✕</button>
+        <button type="button" class="lightbox-close" aria-label="Close diagram view">✕</button>
       </div>
       <div class="lightbox-canvas">
         <div class="lightbox-content" id="lightbox-content"></div>
       </div>
       <div class="lightbox-controls">
-        <button class="lightbox-btn" id="zoom-out" aria-label="Zoom out">−</button>
+        <button type="button" class="lightbox-btn" id="zoom-out" aria-label="Zoom out">−</button>
         <span class="lightbox-zoom-level" id="zoom-level">100%</span>
-        <button class="lightbox-btn" id="zoom-in" aria-label="Zoom in">+</button>
-        <button class="lightbox-btn" id="reset-view" aria-label="Reset view">⟲</button>
+        <button type="button" class="lightbox-btn" id="zoom-in" aria-label="Zoom in">+</button>
+        <button type="button" class="lightbox-btn" id="reset-view" aria-label="Reset view">⟲</button>
       </div>
       <div class="lightbox-info">
         <p>Scroll to zoom • Drag to pan • <kbd>Esc</kbd> to close</p>
