@@ -220,6 +220,22 @@
       color: #fcd34d;
     }
 
+    /* ── Topic selector ── */
+    .gl-topic-select {
+      font: inherit;
+      font-size: 0.85rem;
+      padding: 0.35rem 2rem 0.35rem 0.75rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border, rgba(100,116,139,.35));
+      background: var(--bg-card, #fff);
+      color: var(--text-primary, inherit);
+      cursor: pointer;
+      max-width: 100%;
+    }
+    .gl-topic-select:focus-visible { outline: 2px solid #6366F1; outline-offset: 2px; }
+    [data-theme="dark"] .gl-topic-select { background: rgba(255,255,255,.06); color: #e2e8f0; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
     /* ── Term body ── */
     .glossary-term p {
       font-size: 0.9rem;
@@ -539,6 +555,20 @@
               <button type="button" class="gl-filter chip chip-y12" data-filter="y12" aria-pressed="false">Year 12</button>
               <button type="button" class="gl-filter chip chip-core" data-filter="core" aria-pressed="false">Core</button>
             </div>
+            <label class="gl-topic-label" for="gl-topic">
+              <span class="visually-hidden">Show keywords for topic</span>
+              <select id="gl-topic" class="gl-topic-select" aria-label="Show keywords for topic">
+                <option value="">All topics</option>
+                <option value="Programming Fundamentals">Programming Fundamentals</option>
+                <option value="Object-Oriented Paradigm">Object-Oriented Paradigm</option>
+                <option value="Programming Mechatronics">Programming Mechatronics</option>
+                <option value="Secure Software Architecture">Secure Software Architecture</option>
+                <option value="Programming for the Web">Programming for the Web</option>
+                <option value="Software Automation">Software Automation</option>
+                <option value="Software Engineering Project">Software Engineering Project</option>
+                <option value="SDLC">SDLC</option>
+              </select>
+            </label>
             <p class="gl-count" id="gl-count" role="status" aria-live="polite"><strong id="total-terms-count">338</strong> terms · 7 topics · A–Z</p>
           </div>
         </div>
@@ -546,7 +576,7 @@
         <div id="no-results-msg" class="hidden">
           <h3>No terms found</h3>
           <p>Nothing matches that search. Try a shorter word, or clear the year filters.</p>
-          <button type="button" class="btn btn-outline mt-3" onclick="document.getElementById('search-clear').click();document.querySelectorAll('.gl-filter').forEach(f=>f.getAttribute('aria-pressed')==='true'&&f.click())">Clear search and filters</button>
+          <button type="button" class="btn btn-outline mt-3" onclick="document.getElementById('search-clear').click();document.querySelectorAll('.gl-filter').forEach(f=>f.getAttribute('aria-pressed')==='true'&&f.click());var ts=document.getElementById('gl-topic');if(ts.value){ts.value='';ts.dispatchEvent(new Event('change'))}">Clear search and filters</button>
         </div>
 
         <!-- ── Alphabet Jump Bar ── -->
@@ -4210,6 +4240,7 @@
       const noResults = document.getElementById('no-results-msg');
       const groups = [...document.querySelectorAll('.glossary-group')];
       const filters = [...document.querySelectorAll('.gl-filter')];
+      const topicSel = document.getElementById('gl-topic');
       const letters = [...document.querySelectorAll('.alpha-btn')];
       const total = document.querySelectorAll('.glossary-term').length;
       const hint = document.getElementById('search-k-hint');
@@ -4222,7 +4253,8 @@
           el, h3, title: h3.textContent,
           text: el.textContent.toLowerCase(),
           years: new Set([...el.querySelectorAll('.term-chips .chip')].map(c =>
-            c.classList.contains('chip-y11') ? 'y11' : c.classList.contains('chip-y12') ? 'y12' : 'core'))
+            c.classList.contains('chip-y11') ? 'y11' : c.classList.contains('chip-y12') ? 'y12' : 'core')),
+          topics: new Set([...el.querySelectorAll('.term-chips .chip')].map(c => c.textContent.trim()))
         };
       });
 
@@ -4237,9 +4269,10 @@
         const q = input.value.trim();
         const ql = q.toLowerCase();
         const on = filters.filter(f => f.getAttribute('aria-pressed') === 'true').map(f => f.dataset.filter);
+        const topic = topicSel.value;
         let shown = 0;
         cards.forEach(c => {
-          const hit = (!ql || c.text.includes(ql)) && (!on.length || on.some(y => c.years.has(y)));
+          const hit = (!ql || c.text.includes(ql)) && (!on.length || on.some(y => c.years.has(y))) && (!topic || c.topics.has(topic));
           c.el.classList.toggle('hidden', !hit);
           c.h3.innerHTML = mark(c.title, hit ? q : '');
           if (hit) shown++;
@@ -4252,17 +4285,19 @@
         });
         wrap.classList.toggle('has-val', !!q);
         noResults.classList.toggle('hidden', shown > 0);
-        const filtered = q || on.length;
+        const filtered = q || on.length || topic;
         count.innerHTML = filtered
-          ? `<strong>${shown}</strong> of ${total} terms`
-          : `<strong>${total}</strong> terms · 7 topics · A–X`;
+          ? `<strong>${shown}</strong> of ${total} terms${topic ? ' · ' + html(topic) : ''}`
+          : `<strong>${total}</strong> terms · 7 topics · A–Z`;
         const url = new URL(location.href);
         q ? url.searchParams.set('q', q) : url.searchParams.delete('q');
+        topic ? url.searchParams.set('topic', topic) : url.searchParams.delete('topic');
         history.replaceState(null, '', url);
       }
 
       let t;
       input.addEventListener('input', () => { clearTimeout(t); t = setTimeout(apply, 90); });
+      topicSel.addEventListener('change', apply);
       clear.addEventListener('click', () => { input.value = ''; apply(); input.focus(); });
       filters.forEach(f => f.addEventListener('click', () => {
         f.setAttribute('aria-pressed', f.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
@@ -4281,6 +4316,7 @@
         if (el.closest('.hidden')) {
           input.value = '';
           filters.forEach(f => f.setAttribute('aria-pressed', 'false'));
+          topicSel.value = '';
           apply();
         }
         const top = el.getBoundingClientRect().top + scrollY - 150;
@@ -4308,7 +4344,10 @@
 
       // Deep links: ?q=term searches; #term-x jumps to and flashes that card.
       const q0 = new URL(location.href).searchParams.get('q');
-      if (q0) { input.value = q0; apply(); }
+      const t0 = new URL(location.href).searchParams.get('topic');
+      if (t0 && [...topicSel.options].some(o => o.value === t0)) topicSel.value = t0;
+      if (q0) input.value = q0;
+      if (q0 || topicSel.value) apply();
       if (location.hash.startsWith('#term-')) setTimeout(() => go(location.hash.slice(1), true), 120);
     });
   </script>

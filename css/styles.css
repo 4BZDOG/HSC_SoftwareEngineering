@@ -4684,3 +4684,9 @@ html.theme-transition::view-transition-new(root) {
 @media (max-width: 600px) {
   .topic-breakout { padding: 1rem 1.1rem; }
 }
+.topic-breakout.subtopic-breakout {
+  margin: .75rem 0 1.75rem;
+  padding: 1rem 1.25rem;
+  border-left-width: 4px;
+  font-size: .95rem;
+}
