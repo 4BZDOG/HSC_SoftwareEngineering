@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Insert any terms from scripts/glossary_new_terms.py that aren't in topics/glossary.html yet.
 
-    python3 scripts/add-glossary-terms.py && python3 scripts/build-glossary.py
+    python3 scripts/add-glossary-terms.py && python3 scripts/build-glossary.py && python3 scripts/site-chrome.py
+
+The last step adds the topic icons to the new terms' topic tags.
 
 Terms are placed alphabetically in their letter group; a missing letter group is created.
 """

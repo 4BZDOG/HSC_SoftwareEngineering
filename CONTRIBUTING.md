@@ -67,9 +67,12 @@ git checkout -b claude/your-feature-name
 2. Update `<title>` and meta tags
 3. Update the breadcrumb in the header
 4. Create full page content with sidebar TOC
-5. Add links to the page in:
-   - `index.html` (nav dropdowns + mobile menu)
-   - All other topic pages (footer Navigate column)
+5. Add the page to `PAGES` and `ICONS` (and `SEQUENCE` for a syllabus topic) in
+   `scripts/site-chrome.py`, then run `python3 scripts/site-chrome.py`. It rebuilds the
+   nav dropdowns, mobile menu, footer and previous / next cards on every page, so don't
+   edit those by hand.
+6. Add the page to:
+   - `index.html` (topic card)
    - `sitemap.xml` (SEO)
    - `README.md` (documentation)
 
@@ -214,7 +217,7 @@ README.md            # Documentation
 ## Common Questions
 
 **Q: How do I add a new course topic?**  
-A: Create a new `.html` file in `/topics/` following the template structure, update nav dropdowns in all pages, add to sitemap.xml, and document in README.md.
+A: Create a new `.html` file in `/topics/` following the template structure, add it to `scripts/site-chrome.py` and run it (this updates the nav and footer on every page), add it to sitemap.xml, and document it in README.md.
 
 **Q: Can I add JavaScript frameworks or libraries?**  
 A: Preferably not — this site is intentionally dependency-free. If absolutely necessary, discuss in an issue first.

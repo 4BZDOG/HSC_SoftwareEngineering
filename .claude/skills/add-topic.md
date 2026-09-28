@@ -326,30 +326,29 @@ Pick 3 representative `<span class="topic-tag">` items. Update the section's
 </a>
 ```
 
-Also add a footer link in `index.html` under the matching year column:
-
-```html
-<a href="topics/{{SLUG}}.html">{{TITLE}}</a>
-```
+Use the topic's SVG icon in `.card-icon` (the same one you add to `ICONS` in step 3), not an emoji.
 
 ---
 
-### 3  Wire into every other topic page
+### 3  Wire into the navigation, footer and icons
 
-Every existing `topics/*.html` must have the new page added to:
+Do **not** edit the nav, mobile menu or footer by hand: `scripts/site-chrome.py`
+rebuilds them on every page from one list. In that script:
 
-- **Desktop nav dropdown** — add `<a href="{{SLUG}}.html" role="menuitem">{{EMOJI}} {{TITLE}}</a>`
-  inside the correct `.nav-dropdown-menu` (Year 12 or Year 11)
-- **Mobile menu section** — add `<a href="{{SLUG}}.html">{{EMOJI}} {{TITLE}}</a>`
-  inside the matching `.mobile-menu-section`
-- **Footer column** — add `<a href="{{SLUG}}.html">{{TITLE}}</a>`
-  under the matching `<h4>` in the footer
+- add the icon's inner SVG markup to `ICONS` under `{{SLUG}}`
+- add `'{{SLUG}}': ('y{{YEAR}}', '{{TITLE}}', '<one-line summary>')` to `PAGES`
+  (use `'core'` for a Resources page)
+- add `{{SLUG}}` to `SEQUENCE` in course order, if it is a syllabus topic
+  (this places it in the previous / next topic cards)
 
-Run this grep to find every file that needs updating:
+Then run it and check nothing else changed unexpectedly:
 
 ```bash
-grep -rl "nav-dropdown-y12\|nav-dropdown-y11" topics/ index.html
+python3 scripts/site-chrome.py
+python3 scripts/check-site.py
 ```
+
+It also puts the icon beside the page title and on the sidebar contents title.
 
 ---
 

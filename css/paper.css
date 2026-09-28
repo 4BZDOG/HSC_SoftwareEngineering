@@ -1372,8 +1372,8 @@
   border-radius: 2px;
   background: currentColor;
 }
-:root[data-theme] .footer-inner > :nth-child(2) h4 { color: #f0a58f; }
-:root[data-theme] .footer-inner > :nth-child(3) h4 { color: #9fcfae; }
+:root[data-theme] .footer-col-y12 h4 { color: #f0a58f; }
+:root[data-theme] .footer-col-y11 h4 { color: #9fcfae; }
 :root[data-theme] .footer-col a {
   width: fit-content;
   padding: .18rem 0;
@@ -3307,3 +3307,80 @@ section[id], h3[id^="tool-"] { scroll-margin-top: 90px; }
 .path-stage-y12 { --stock-ink: var(--pc-terracotta-ink); }
 .lost-link:has(.f-ico) { display: inline-flex; align-items: center; gap: .45rem; }
 .lost-link .f-ico { opacity: .85; }
+
+/* Code block titles leave room for the Copy button */
+:root[data-theme] .code-block:has(> .copy-btn) > .code-header { padding-right: 5rem; }
+:root[data-theme] .code-header .code-lang { min-width: 0; overflow-wrap: anywhere; }
+/* Breadcrumb wraps between items, not inside them */
+:root[data-theme] .topic-breadcrumb { flex-wrap: wrap; row-gap: .2rem; }
+:root[data-theme] .topic-breadcrumb a { white-space: nowrap; }
+
+/* ── Glossary: topic tags filter the glossary to that topic ── */
+button.chip-topic {
+  display: inline-flex; align-items: center; gap: .35rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+button.chip-topic:hover, button.chip-topic:focus-visible { transform: translateY(-1px); filter: brightness(.95) saturate(1.2); }
+button.chip-topic:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+.c-ico { display: inline-grid; }
+.c-ico svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── Previous / next topic cards ── */
+.topic-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 3rem 0 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px dashed var(--pc-rule-strong, #ccc);
+}
+.pager-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border-radius: 10px;
+  background: var(--pc-cream);
+  background-image: var(--pc-grain);
+  box-shadow: var(--pc-shadow-2);
+  color: var(--pc-ink);
+  text-decoration: none;
+  transition: transform 200ms cubic-bezier(.2,.7,.2,1), box-shadow 200ms ease;
+}
+.pager-next { grid-template-columns: 1fr auto; text-align: right; }
+.pager-next .pager-ico { order: 2; }
+.pager-card:hover { transform: translateY(-3px); box-shadow: var(--pc-shadow-3); }
+.pager-card:focus-visible { outline: 2px solid var(--stock); outline-offset: 3px; }
+.pager-empty { background: none; box-shadow: none; }
+.pager-ico {
+  display: grid; place-items: center;
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: var(--stock);
+  color: var(--on-stock);
+  box-shadow: 2px 2px 0 color-mix(in srgb, var(--stock) 45%, var(--pc-mustard));
+  transition: transform 300ms cubic-bezier(.3,1.6,.5,1);
+}
+.pager-card:hover .pager-ico { transform: rotate(-6deg) scale(1.05); }
+.pager-ico svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.pager-text { display: grid; gap: .15rem; min-width: 0; }
+.pager-dir { font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--stock-ink); }
+.pager-prev .pager-dir::before { content: '← '; }
+.pager-next .pager-dir::after { content: ' →'; }
+.pager-title { font-family: var(--font-display); font-size: 1.15rem; line-height: 1.25; color: var(--pc-ink); }
+.pager-desc { font-size: .82rem; color: var(--pc-muted); }
+:root[data-theme="dark"] .pager-card:not(.pager-empty) { outline: 1px solid rgba(255,255,255,.07); outline-offset: -1px; }
+@media (max-width: 640px) {
+  .topic-pager { grid-template-columns: 1fr; }
+  .pager-empty { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pager-card, .pager-ico, button.chip-topic { transition: none; }
+}
+a.footer-brand { text-decoration: none; color: inherit; width: fit-content; }
+a.footer-brand:hover .footer-logo { transform: rotate(-6deg); }
+.footer-logo { transition: transform 260ms cubic-bezier(.3,1.6,.5,1); }
+.footer-bottom { padding-right: 4rem; }
