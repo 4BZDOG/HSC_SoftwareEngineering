@@ -3305,3 +3305,5 @@ section[id], h3[id^="tool-"] { scroll-margin-top: 90px; }
 :root[data-theme] .path-stage .path-count { color: var(--stock-ink, var(--stock)); }
 .path-stage-y11 { --stock-ink: var(--pc-sage-ink); }
 .path-stage-y12 { --stock-ink: var(--pc-terracotta-ink); }
+.lost-link:has(.f-ico) { display: inline-flex; align-items: center; gap: .45rem; }
+.lost-link .f-ico { opacity: .85; }

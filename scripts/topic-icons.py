@@ -3,8 +3,8 @@
 
     python3 scripts/topic-icons.py
 
-One icon per page lives in ICONS below. The script rewrites, on index.html
-and every page in topics/:
+One icon per page lives in ICONS below. The script rewrites, on index.html,
+404.html and every page in topics/:
 
   * the desktop dropdown items (icon, title and a one-line summary),
   * the mobile menu (rebuilt from one template so every page matches),
@@ -106,7 +106,7 @@ def dropdown_items(text, prefix):
     for m in re.finditer(r'<div class="nav-dropdown-menu" role="menu">', text):
         end = block_end(text, m.start())
         body = text[m.end():end - len('</div>')]
-        slugs = re.findall(r'href="(?:topics/)?([a-z-]+)\.html"', body)
+        slugs = re.findall(r'href="[^"]*?([a-z-]+)\.html"', body)
         role = ' role="menuitem"'
         links = '\n'.join('            ' + item(s, prefix, role) for s in slugs if s in PAGES)
         out.append(text[pos:m.end()] + '\n' + links + '\n          </div>')
@@ -129,7 +129,7 @@ def footer_icons(text, prefix, home):
         # Drop a leading emoji or arrow; the icon replaces it.
         label = re.sub(r'^(?:[^\w&<]|&[a-z]+;)+\s*', '', label.strip())
         return f'<a href="{href}">{svg(slug, "f-ico")}{label}</a>'
-    foot = re.sub(r'<a href="((?:\.\./)?(?:topics/)?[a-z-]+\.html)">([^<]*)</a>', link, foot)
+    foot = re.sub(r'<a href="((?:/[\w-]+/)?(?:\.\./)?(?:topics/)?[a-z-]+\.html)">([^<]*)</a>', link, foot)
     return text[:m.start()] + foot + text[m.end():]
 
 
@@ -140,14 +140,19 @@ def page_slug(path):
 def apply(path):
     text = open(path, encoding='utf-8').read()
     orig = text
-    is_index = path.endswith('index.html') and '/topics/' not in path
-    prefix, home = ('topics/', 'index.html') if is_index else ('', '../index.html')
+    name = os.path.relpath(path, ROOT)
+    if name == 'index.html':
+        prefix, home = 'topics/', 'index.html'
+    elif name == '404.html':  # served from any path, so links are site-absolute
+        prefix, home = '/HSC_SoftwareEngineering/topics/', '/HSC_SoftwareEngineering/index.html'
+    else:
+        prefix, home = '', '../index.html'
     slug = page_slug(path)
 
     text = dropdown_items(text, prefix)
 
     # Home link in the desktop bar
-    text = re.sub(r'<li><a href="((?:\.\./)?index\.html)"[^>]*>(?:<span class="nav-ico" aria-hidden="true"><svg.*?</svg></span>)?Home</a></li>',
+    text = re.sub(r'<li><a href="([^"]*index\.html)"[^>]*>(?:<span class="nav-ico" aria-hidden="true"><svg.*?</svg></span>)?Home</a></li>',
                   lambda m: f'<li><a href="{m.group(1)}" class="nav-home">{svg("home", "nav-ico")}Home</a></li>', text)
 
     m = re.search(r'<div class="mobile-menu" id="mobile-menu"', text)
@@ -167,11 +172,18 @@ def apply(path):
                       f'<div class="toc-title">{svg(slug, "toc-ico ti-" + group)}', text)
 
     text = footer_icons(text, prefix, home)
+
+    # Topic chips on the 404 page
+    def chip(c):
+        slug = c.group(2).rsplit('/', 1)[-1][:-5]
+        return f'{c.group(1)}{svg(slug, "f-ico")}' if slug in ICONS else c.group(0)
+    text = re.sub(r'(<a class="lost-link[^"]*" href="([^"]+\.html)">)(?:<span class="f-ico" aria-hidden="true"><svg.*?</svg></span>)?',
+                  chip, text)
     if text != orig:
         open(path, 'w', encoding='utf-8').write(text)
         print('updated', os.path.relpath(path, ROOT))
 
 
 if __name__ == '__main__':
-    for p in [os.path.join(ROOT, 'index.html')] + sorted(glob.glob(os.path.join(ROOT, 'topics', '*.html'))):
+    for p in [os.path.join(ROOT, 'index.html'), os.path.join(ROOT, '404.html')] + sorted(glob.glob(os.path.join(ROOT, 'topics', '*.html'))):
         apply(p)
