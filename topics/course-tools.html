@@ -46,7 +46,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=26" />
-  <link rel="stylesheet" href="../css/paper.css?v=30" />
+  <link rel="stylesheet" href="../css/paper.css?v=31" />
 </head>
 <body>
 
@@ -299,7 +299,7 @@
         <section id="modelling-tools">
           <h2 class="syllabus-phase">System and Data Modelling Tools</h2>
 
-          <h3>Data Flow Diagrams (DFD)</h3>
+          <h3 id="tool-dfd">Data Flow Diagrams (DFD)</h3>
           <p>Used to represent the flow of data through an information system. DFDs show <em>what</em> data moves through a system and <em>where</em> it goes — not how or when.</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>Process (circle)</strong><span>Uses input data to generate output data, e.g. Validate login.</span></div>
@@ -332,7 +332,7 @@
         </figure>
           <p><strong>Example scenario — Online Bookshop:</strong> A <em>Customer</em> (external entity) sends an <em>order request</em> (data flow) to the <em>Process Order</em> (process), which reads from the <em>D1 Book Catalogue</em> (data store) and sends a <em>confirmation</em> back to the customer.</p>
 
-          <h3>Structure Charts</h3>
+          <h3 id="tool-structure-charts">Structure Charts</h3>
           <p>Represent a system's modular design — showing how subroutines are called from one another in a hierarchy. Modules at the top control modules below them.</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>Module (rectangle)</strong><span>A named subroutine, e.g. Calculate total.</span></div>
@@ -360,7 +360,7 @@
           </div>
         </figure>
 
-          <h3>Data Dictionary</h3>
+          <h3 id="tool-data-dictionary">Data Dictionary</h3>
           <p>A structured reference that documents every variable and data element in a system. Each entry includes: <strong>Name, Data Type, Format, Size, Description, Example value, and Validation rules</strong>.</p>
           <div class="table-wrap">
             <table>
@@ -376,7 +376,7 @@
             </table>
           </div>
 
-          <h3>Class Diagrams</h3>
+          <h3 id="tool-class-diagrams">Class Diagrams</h3>
           <p>Used in object-oriented design to show classes, their attributes, methods, and the relationships between them. Each class is drawn as a box divided into three compartments.</p>
           <figure class="figure">
           <figcaption class="figure-head">
@@ -428,7 +428,7 @@ classDiagram
             <div class="key-term-item"><strong>Multiplicity</strong><span>1..1 only one · 0..* zero or more · 1..* one or more · 0..1 zero or one · m..n at least m, at most n.</span></div>
           </div>
 
-          <h3>Storyboard</h3>
+          <h3 id="tool-storyboards">Storyboard</h3>
           <p>A visual sequence of annotated screen layouts showing the user's journey through a system. Created in the design phase before any code is written, storyboards allow stakeholders to review and approve the interface before development begins.</p>
           <p>Each frame in a storyboard typically includes:</p>
           <ul>
@@ -442,7 +442,7 @@ classDiagram
             <strong>Design phase</strong> Storyboards are created <em>before any code is written</em> — during the Design phase of the SDLC. They allow clients to approve the interface and user flow before development begins, which avoids costly rework. For the HSC project, a storyboard typically shows 4–8 frames: a home/login screen, a main feature screen, an input form, and a results/output screen.
           </div>
 
-          <h3>Decision Trees</h3>
+          <h3 id="tool-decision-trees">Decision Trees</h3>
           <p>A tree-based diagram that models decision logic. Starting from a root condition, each branch represents a possible outcome of a test. Decision trees are useful for representing complex nested logic clearly.</p>
           <figure class="figure">
           <figcaption class="figure-head">
@@ -478,7 +478,7 @@ flowchart TD
         <section id="project-management">
           <h2 class="syllabus-phase">Project Management Tools</h2>
 
-          <h3>Gantt Charts</h3>
+          <h3 id="tool-gantt">Gantt Charts</h3>
           <p>A horizontal bar chart that displays all project tasks against a timeline, making it easy to see what needs to happen, in what order, and how long each task should take.</p>
           <div class="gantt" role="table" aria-label="Example Gantt chart over four weeks">
             <div class="gantt-row gantt-head" role="row"><span role="columnheader">Task</span><span class="gantt-track" role="columnheader"><span>Week 1</span><span>Week 2</span><span>Week 3</span><span>Week 4</span></span><span role="columnheader">Depends on</span></div>
@@ -495,7 +495,7 @@ flowchart TD
             <div class="key-term-item"><strong>Critical path</strong><span>The sequence of dependent tasks that determines the minimum project duration.</span></div>
           </div>
 
-          <h3>Process Diaries / Log Books</h3>
+          <h3 id="tool-process-diaries">Process Diaries / Log Books</h3>
           <p>A regular written record kept throughout the project. Entries are made at consistent intervals (e.g. after each work session, weekly, or at each milestone) and serve as evidence of the development process.</p>
           <p>A typical log entry includes:</p>
           <ul>
@@ -591,7 +591,7 @@ print(total)  # 30</code></pre>
           <h2 class="syllabus-phase">Algorithms</h2>
           <p>An algorithm is a precise, step-by-step set of instructions for solving a problem. In HSC Software Engineering, algorithms are communicated using <strong>pseudocode</strong> or <strong>flowcharts</strong>.</p>
 
-          <h3>Pseudocode</h3>
+          <h3 id="tool-pseudocode">Pseudocode</h3>
           <p>A structured English-like notation for expressing algorithms. It is not executable code — it communicates logic without worrying about syntax. NSW HSC conventions:</p>
           <ul>
             <li>Keywords in <strong>CAPITALS</strong> (e.g. <code>IF</code>, <code>WHILE</code>, <code>FOR</code>)</li>
@@ -613,7 +613,7 @@ print(total)  # 30</code></pre>
 END</code></pre>
           </div>
 
-          <h3>Flowcharts</h3>
+          <h3 id="tool-flowcharts">Flowcharts</h3>
           <p>A visual diagram using standardised shapes connected by arrows to show the flow of logic through an algorithm.</p>
           <div class="key-terms">
             <div class="key-term-item"><strong>Terminator (rounded rectangle)</strong><span>Marks BEGIN and END. A subroutine's terminators use its name, e.g. BEGIN read(arrayname).</span></div>
@@ -851,7 +851,7 @@ OUTPUT "Your grade is: ", grade    # Your grade is: B</code></pre>
         <section id="relational-databases">
           <h2 class="syllabus-phase">Relational Databases</h2>
 
-          <h3>SQL</h3>
+          <h3 id="tool-sql">SQL</h3>
           <p>Structured Query Language (SQL) is the standard language for interacting with relational databases. A relational database stores data in <strong>tables</strong> (relations), where each row is a record and each column is a field.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">SQL — Standard Syntax</span></div>
@@ -1183,7 +1183,7 @@ graph LR
             <div class="key-term-item"><strong>📦 Volume testing</strong><span>Evaluates system performance under large quantities of data to identify scalability and performance bottlenecks.</span></div>
           </div>
 
-          <h3>Test Data Categories</h3>
+          <h3 id="tool-test-data">Test Data Categories</h3>
           <p>When designing test cases, you should always include data from three categories:</p>
           <div class="table-wrap">
             <table>
@@ -1508,7 +1508,7 @@ finally:
           <h2 class="syllabus-phase">Git &amp; Version Control Workflow</h2>
           <p>Git is a distributed version control system that tracks every change to your code. Every commit is a snapshot — you can revert to any previous state, compare versions, and collaborate without overwriting each other's work.</p>
 
-          <h3>Core Git Commands Reference</h3>
+          <h3 id="tool-git">Core Git Commands Reference</h3>
           <div class="table-wrap">
             <table>
               <thead>
@@ -1643,7 +1643,7 @@ build/
           <h2 class="syllabus-phase">Testing Frameworks</h2>
           <p>Python has two primary testing frameworks. Both allow you to write automated tests that verify your code behaves correctly — automatically, every time you make a change.</p>
 
-          <h3>unittest — Built-in Python Testing</h3>
+          <h3 id="tool-unittest">unittest — Built-in Python Testing</h3>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — unittest example with setUp</span></div>
             <pre><code>import unittest

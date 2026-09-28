@@ -3006,3 +3006,37 @@ strong.lbl-con { color: var(--pc-terracotta, #c4553b); }
 @media (prefers-reduced-motion: reduce) {
   .path-topic, .path-topic-icon { transition: none; }
 }
+
+/* ── Tool links to the Course Tools page ── */
+a.tool-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--pc-teal) 45%, transparent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: color 160ms ease, text-decoration-color 160ms ease;
+}
+a.tool-link:hover, a.tool-link:focus-visible {
+  color: var(--pc-teal);
+  text-decoration-color: var(--pc-teal);
+}
+a.tool-link:focus-visible { outline: 2px solid var(--pc-teal); outline-offset: 2px; border-radius: 2px; }
+.tool-link-arrow {
+  display: inline-block;
+  margin-left: .25em;
+  font-size: .8em;
+  opacity: .55;
+  text-decoration: none;
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+a.tool-link:hover .tool-link-arrow { opacity: 1; transform: translate(2px, -2px); }
+/* Land tool anchors below the sticky nav */
+section[id], h3[id^="tool-"] { scroll-margin-top: 90px; }
+:root[data-theme] h3[id^="tool-"]:target {
+  background: color-mix(in srgb, var(--pc-mustard) 30%, transparent);
+  border-radius: 4px;
+  box-shadow: 0 0 0 .4rem color-mix(in srgb, var(--pc-mustard) 30%, transparent);
+}
+@media (prefers-reduced-motion: reduce) {
+  a.tool-link, .tool-link-arrow { transition: none; }
+}
