@@ -41,6 +41,7 @@ ICONS = {
     'course-tools': '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.6 17.1a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.1-.6-.6-2.1z"/>',
     'glossary': '<path d="M3 5.5c3-1.3 6-1.3 9 .5 3-1.8 6-1.8 9-.5V19c-3-1.3-6-1.3-9 .5-3-1.8-6-1.8-9-.5z"/><path d="M12 6v13.5"/>',
     'resources': '<path d="M6.5 3h11v18l-5.5-3.8L6.5 21z"/><path d="M9.5 9.5l2 2 3.5-3.5"/>',
+    'example-project': '<path d="M12 21v-8.5"/><path d="M12 12.5c0-4.2 3.1-7.5 8-7.5 0 4.2-3.1 7.5-8 7.5z"/><path d="M12 15c0-3.3-2.6-6-6.5-6 0 3.3 2.6 6 6.5 6z"/>',
 }
 
 # slug: (group, title, summary)
@@ -54,6 +55,7 @@ PAGES = {
     'software-engineering-project': ('y12', 'Software Engineering Project', 'Plan, build and evaluate'),
     'course-tools': ('core', 'Course Tools &amp; Specs', 'Symbols, syntax and tools'),
     'sdlc': ('core', 'SDLC Guide', 'The development life cycle'),
+    'example-project': ('core', 'Example Major Project', 'A working project, live in the browser'),
     'glossary': ('core', 'Glossary', 'Every syllabus keyword'),
     'resources': ('core', 'Certified Resources', 'Official NESA documents'),
 }
@@ -119,9 +121,11 @@ def dropdown_items(text, prefix):
     for m in re.finditer(r'<div class="nav-dropdown-menu" role="menu">', text):
         end = block_end(text, m.start())
         body = text[m.end():end - len('</div>')]
-        slugs = re.findall(r'href="[^"]*?([a-z-]+)\.html"', body)
+        # The menu lists every page in its group, so a page added to PAGES appears everywhere
+        known = [x for x in re.findall(r'href="[^"]*?([a-z-]+)\.html"', body) if x in PAGES]
+        group = PAGES[known[0]][0] if known else None
         role = ' role="menuitem"'
-        links = '\n'.join('            ' + item(s, prefix, role) for s in slugs if s in PAGES)
+        links = '\n'.join('            ' + item(x, prefix, role) for x, (g, _, _) in PAGES.items() if g == group)
         out.append(text[pos:m.end()] + '\n' + links + '\n          </div>')
         pos = end
     out.append(text[pos:])
