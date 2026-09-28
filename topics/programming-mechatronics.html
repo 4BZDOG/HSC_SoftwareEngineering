@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=27" />
-  <link rel="stylesheet" href="../css/paper.css?v=33" />
+  <link rel="stylesheet" href="../css/paper.css?v=34" />
   <link rel="stylesheet" href="../css/anim.css?v=4" />
 </head>
 <body>
@@ -902,6 +902,11 @@ stop_button.irq(trigger=Pin.IRQ_FALLING, handler=emergency_stop)</code></pre>
 
         <div class="quiz" data-quiz="mech-3"></div>
 </div>
+
+        <nav class="topic-pager" aria-label="Previous and next topic">
+          <a class="pager-card pager-prev nav-item-y11" href="object-oriented-paradigm.html" rel="prev"><span class="pager-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span><span class="pager-text"><span class="pager-dir">Previous topic</span><span class="pager-title">Object-Oriented Paradigm</span><span class="pager-desc">Classes, objects and design</span></span></a>
+          <a class="pager-card pager-next nav-item-y12" href="secure-software-architecture.html" rel="next"><span class="pager-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></span><span class="pager-text"><span class="pager-dir">Next topic</span><span class="pager-title">Secure Software Architecture</span><span class="pager-desc">Secure design and defensive code</span></span></a>
+        </nav>
     </main>
   </div>
 

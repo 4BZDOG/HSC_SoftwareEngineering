@@ -10,7 +10,11 @@ One icon per page lives in ICONS below. The script rewrites, on index.html,
   * the mobile menu (rebuilt from one template so every page matches),
   * the icon beside the page's <h1>,
   * the icon on the sidebar "Contents" title,
-  * icons on footer links to other pages.
+  * icons on footer links to other pages,
+  * the previous / next topic cards at the end of each topic page,
+  * the topic tags on glossary terms (icon, and a button that filters the
+    glossary to that topic). New terms from add-glossary-terms.py come in
+    as plain tags; re-run this script afterwards.
 
 It is safe to run again: blocks it has already rewritten are rebuilt, not
 duplicated. Add a new page to PAGES (and ICONS) and re-run it.
@@ -52,6 +56,14 @@ PAGES = {
     'glossary': ('core', 'Glossary', 'Every syllabus keyword'),
     'resources': ('core', 'Certified Resources', 'Official NESA documents'),
 }
+# Course order for the previous / next cards
+SEQUENCE = ['programming-fundamentals', 'object-oriented-paradigm', 'programming-mechatronics',
+            'secure-software-architecture', 'programming-for-the-web', 'software-automation',
+            'software-engineering-project']
+# Glossary tag text -> page
+CHIP_SLUGS = {PAGES[k][1]: k for k in SEQUENCE}
+CHIP_SLUGS['SDLC'] = 'sdlc'
+
 GROUPS = [
     ('y11', 'Year 11', '<span class="badge badge-11">Prelim</span>'),
     ('y12', 'Year 12', '<span class="badge badge-12">HSC</span>'),
@@ -133,6 +145,36 @@ def footer_icons(text, prefix, home):
     return text[:m.start()] + foot + text[m.end():]
 
 
+def pager(slug):
+    i = SEQUENCE.index(slug)
+    cells = []
+    for j, rel in ((i - 1, 'prev'), (i + 1, 'next')):
+        if 0 <= j < len(SEQUENCE):
+            t = SEQUENCE[j]
+            group, title, summary = PAGES[t]
+            label = 'Previous topic' if rel == 'prev' else 'Next topic'
+            cells.append(f'<a class="pager-card pager-{rel} nav-item-{group}" href="{t}.html" rel="{rel}">'
+                         f'{svg(t, "pager-ico")}<span class="pager-text"><span class="pager-dir">{label}</span>'
+                         f'<span class="pager-title">{title}</span><span class="pager-desc">{summary}</span></span></a>')
+        else:
+            cells.append(f'<span class="pager-card pager-{rel} pager-empty" aria-hidden="true"></span>')
+    return ('<nav class="topic-pager" aria-label="Previous and next topic">\n          '
+            + '\n          '.join(cells) + '\n        </nav>')
+
+
+def glossary_chips(text):
+    def chip(m):
+        cls, label = m.group(1), m.group(2).strip()
+        slug = CHIP_SLUGS.get(label)
+        if not slug:
+            return m.group(0)
+        return (f'<button type="button" class="{cls} chip-topic" data-topic="{label}" '
+                f'title="Show every {label} keyword">{svg(slug, "c-ico")}{label}</button>')
+    return re.sub(r'<(?:span|button type="button") class="(chip chip-[a-z0-9]+)(?: chip-topic)?"[^>]*>'
+                  r'(?:<span class="c-ico" aria-hidden="true"><svg.*?</svg></span>)?([^<]+)</(?:span|button)>',
+                  chip, text)
+
+
 def page_slug(path):
     return os.path.basename(path)[:-5]
 
@@ -172,6 +214,16 @@ def apply(path):
                       f'<div class="toc-title">{svg(slug, "toc-ico ti-" + group)}', text)
 
     text = footer_icons(text, prefix, home)
+
+    # Previous / next topic cards, just after the content column
+    if slug in SEQUENCE:
+        text = re.sub(r'\n\s*<nav class="topic-pager".*?</nav>', '', text, flags=re.S)
+        m = re.search(r'<div class="content-body">', text)
+        end = block_end(text, m.start())
+        text = text[:end] + '\n\n        ' + pager(slug) + text[end:]
+
+    if slug == 'glossary':
+        text = glossary_chips(text)
 
     # Topic chips on the 404 page
     def chip(c):

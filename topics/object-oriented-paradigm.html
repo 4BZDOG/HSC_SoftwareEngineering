@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=27" />
-  <link rel="stylesheet" href="../css/paper.css?v=33" />
+  <link rel="stylesheet" href="../css/paper.css?v=34" />
   <link rel="stylesheet" href="../css/anim.css?v=4" />
 </head>
 <body>
@@ -875,6 +875,11 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
 
         <div class="quiz" data-quiz="oop-2"></div>
 </div>
+
+        <nav class="topic-pager" aria-label="Previous and next topic">
+          <a class="pager-card pager-prev nav-item-y11" href="programming-fundamentals.html" rel="prev"><span class="pager-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 8l-4.5 4L8 16M16 8l4.5 4L16 16M13 5l-2 14"/></svg></span><span class="pager-text"><span class="pager-dir">Previous topic</span><span class="pager-title">Programming Fundamentals</span><span class="pager-desc">Algorithms, data and testing</span></span></a>
+          <a class="pager-card pager-next nav-item-y11" href="programming-mechatronics.html" rel="next"><span class="pager-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="3" height="3"/><path d="M9.5 7V4M14.5 7V4M9.5 20v-3M14.5 20v-3M7 9.5H4M7 14.5H4M20 9.5h-3M20 14.5h-3"/></svg></span><span class="pager-text"><span class="pager-dir">Next topic</span><span class="pager-title">Programming Mechatronics</span><span class="pager-desc">Sensors, actuators and control</span></span></a>
+        </nav>
     </main>
   </div>
 

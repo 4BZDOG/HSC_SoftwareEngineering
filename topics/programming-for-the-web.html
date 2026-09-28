@@ -52,7 +52,7 @@
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=27" />
-  <link rel="stylesheet" href="../css/paper.css?v=33" />
+  <link rel="stylesheet" href="../css/paper.css?v=34" />
   <link rel="stylesheet" href="../css/anim.css?v=4" />
 </head>
 <body>
@@ -1223,6 +1223,11 @@ self.addEventListener(<span class="str">'fetch'</span>, event => {
 
         <div class="quiz" data-quiz="web-2"></div>
 </div>
+
+        <nav class="topic-pager" aria-label="Previous and next topic">
+          <a class="pager-card pager-prev nav-item-y12" href="secure-software-architecture.html" rel="prev"><span class="pager-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></span><span class="pager-text"><span class="pager-dir">Previous topic</span><span class="pager-title">Secure Software Architecture</span><span class="pager-desc">Secure design and defensive code</span></span></a>
+          <a class="pager-card pager-next nav-item-y12" href="software-automation.html" rel="next"><span class="pager-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M20 8a8.1 8.1 0 0 0-14.9 1M4 16a8.1 8.1 0 0 0 14.9-1"/><path d="M4 4v5h5M20 20v-5h-5"/></svg></span><span class="pager-text"><span class="pager-dir">Next topic</span><span class="pager-title">Software Automation</span><span class="pager-desc">Machine learning and AI</span></span></a>
+        </nav>
     </main>
   </div>
 
