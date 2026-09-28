@@ -3307,3 +3307,10 @@ section[id], h3[id^="tool-"] { scroll-margin-top: 90px; }
 .path-stage-y12 { --stock-ink: var(--pc-terracotta-ink); }
 .lost-link:has(.f-ico) { display: inline-flex; align-items: center; gap: .45rem; }
 .lost-link .f-ico { opacity: .85; }
+
+/* Code block titles leave room for the Copy button */
+:root[data-theme] .code-block:has(> .copy-btn) > .code-header { padding-right: 5rem; }
+:root[data-theme] .code-header .code-lang { min-width: 0; overflow-wrap: anywhere; }
+/* Breadcrumb wraps between items, not inside them */
+:root[data-theme] .topic-breadcrumb { flex-wrap: wrap; row-gap: .2rem; }
+:root[data-theme] .topic-breadcrumb a { white-space: nowrap; }
