@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example Major Project: Smart Greenhouse | HSC Software Engineering</title>
+  <!-- ── SEO ── -->
+  <link rel="canonical" href="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/example-project.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Example Major Project | HSC Software Engineering" />
+  <meta property="og:description" content="Master the Software Development Life Cycle for HSC Software Engineering — Agile vs WAGILE, tool mapping for every phase, and real-world case studies." />
+  <meta property="og:url" content="https://4bzdog.github.io/HSC_SoftwareEngineering/topics/example-project.html" />
+  <meta property="og:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <meta property="og:image:alt" content="HSC Software Engineering Notes — NESA NSW" />
+  <meta property="og:site_name" content="HSC Software Engineering Notes" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Example Major Project | HSC Software Engineering" />
+  <meta name="twitter:description" content="Master the Software Development Life Cycle for HSC Software Engineering — Agile vs WAGILE, tool mapping for every phase, and real-world case studies." />
+  <meta name="twitter:image" content="https://4bzdog.github.io/HSC_SoftwareEngineering/og-image.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Example Major Project",
+      "item": "https://4bzdog.github.io/HSC_SoftwareEngineering/topics/example-project.html"
+    }
+    ]
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%232D46B9'/><text x='50' y='71' font-size='58' fill='%23F4F3EE' text-anchor='middle' font-family='Georgia,serif'>{}</text></svg>" />
+  <meta name="theme-color" content="#2D46B9" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <meta name="description" content="A complete example HSC Software Engineering major project, a smart greenhouse controller that runs live in your browser and draws on every focus area of the course." />
+  <!-- Theme init: prevents flash of wrong theme -->
+  <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
+  <link rel="stylesheet" href="../css/styles.css?v=27" />
+  <link rel="stylesheet" href="../css/paper.css?v=37" />
+  <link rel="stylesheet" href="../css/greenhouse.css?v=1" />
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-brand">
+        <div class="nav-logo" aria-hidden="true">{&hairsp;}</div>
+        <div>
+          <div class="nav-title">SoftEng Notes</div>
+          <div class="nav-subtitle">NESA NSW HSC</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="../index.html" class="nav-home"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></svg></span>Home</a></li>
+        <li class="nav-dropdown nav-dropdown-y11">
+          <button type="button" class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            Year 11
+            <span class="badge badge-11">Prelim</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="programming-fundamentals.html" role="menuitem" class="nav-item nav-item-y11"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 8l-4.5 4L8 16M16 8l4.5 4L16 16M13 5l-2 14"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Programming Fundamentals</span><span class="nav-item-desc">Algorithms, data and testing</span></span></a>
+            <a href="object-oriented-paradigm.html" role="menuitem" class="nav-item nav-item-y11"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Object-Oriented Paradigm</span><span class="nav-item-desc">Classes, objects and design</span></span></a>
+            <a href="programming-mechatronics.html" role="menuitem" class="nav-item nav-item-y11"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="3" height="3"/><path d="M9.5 7V4M14.5 7V4M9.5 20v-3M14.5 20v-3M7 9.5H4M7 14.5H4M20 9.5h-3M20 14.5h-3"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Programming Mechatronics</span><span class="nav-item-desc">Sensors, actuators and control</span></span></a>
+          </div>
+        </li>
+        <li class="nav-dropdown nav-dropdown-y12">
+          <button type="button" class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            Year 12
+            <span class="badge badge-12">HSC</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="secure-software-architecture.html" role="menuitem" class="nav-item nav-item-y12"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Secure Software Architecture</span><span class="nav-item-desc">Secure design and defensive code</span></span></a>
+            <a href="programming-for-the-web.html" role="menuitem" class="nav-item nav-item-y12"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.4 3.8 5.6 3.8 9s-1.3 6.6-3.8 9c-2.5-2.4-3.8-5.6-3.8-9s1.3-6.6 3.8-9z"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Programming for the Web</span><span class="nav-item-desc">Protocols, front end and back end</span></span></a>
+            <a href="software-automation.html" role="menuitem" class="nav-item nav-item-y12"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M20 8a8.1 8.1 0 0 0-14.9 1M4 16a8.1 8.1 0 0 0 14.9-1"/><path d="M4 4v5h5M20 20v-5h-5"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Software Automation</span><span class="nav-item-desc">Machine learning and AI</span></span></a>
+            <a href="software-engineering-project.html" role="menuitem" class="nav-item nav-item-y12"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M9 10h6M9 14h6M9 18h3.5"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Software Engineering Project</span><span class="nav-item-desc">Plan, build and evaluate</span></span></a>
+          </div>
+        </li>
+        <li class="nav-dropdown">
+          <button type="button" class="nav-dropdown-btn" aria-haspopup="true" aria-expanded="false">
+            Resources
+            <span class="badge badge-all">Guides</span>
+            <svg class="nav-chevron" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="currentColor"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="course-tools.html" role="menuitem" class="nav-item nav-item-core"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.6 17.1a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.1-.6-.6-2.1z"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Course Tools &amp; Specs</span><span class="nav-item-desc">Symbols, syntax and tools</span></span></a>
+            <a href="sdlc.html" role="menuitem" class="nav-item nav-item-core"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17.5l9 5 9-5"/></svg></span><span class="nav-item-text"><span class="nav-item-title">SDLC Guide</span><span class="nav-item-desc">The development life cycle</span></span></a>
+            <a href="example-project.html" role="menuitem" class="nav-item nav-item-core"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 21v-8.5"/><path d="M12 12.5c0-4.2 3.1-7.5 8-7.5 0 4.2-3.1 7.5-8 7.5z"/><path d="M12 15c0-3.3-2.6-6-6.5-6 0 3.3 2.6 6 6.5 6z"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Example Major Project</span><span class="nav-item-desc">A working project, live in the browser</span></span></a>
+            <a href="glossary.html" role="menuitem" class="nav-item nav-item-core"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3 5.5c3-1.3 6-1.3 9 .5 3-1.8 6-1.8 9-.5V19c-3-1.3-6-1.3-9 .5-3-1.8-6-1.8-9-.5z"/><path d="M12 6v13.5"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Glossary</span><span class="nav-item-desc">Every syllabus keyword</span></span></a>
+            <a href="resources.html" role="menuitem" class="nav-item nav-item-core"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6.5 3h11v18l-5.5-3.8L6.5 21z"/><path d="M9.5 9.5l2 2 3.5-3.5"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Certified Resources</span><span class="nav-item-desc">Official NESA documents</span></span></a>
+          </div>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <button type="button" class="btn-icon" id="theme-toggle" aria-label="Toggle theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button type="button" class="btn-icon hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Mobile Menu ── -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+    <a href="../index.html" class="nav-item mobile-home"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3.5 11 12 4l8.5 7"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5.5h4V20"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Home</span><span class="nav-item-desc">All topics and study tips</span></span></a>
+    <div class="mobile-menu-section mobile-menu-y11">
+      <div class="mobile-menu-label">Year 11 <span class="badge badge-11">Prelim</span></div>
+      <a href="programming-fundamentals.html" class="nav-item nav-item-y11"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 8l-4.5 4L8 16M16 8l4.5 4L16 16M13 5l-2 14"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Programming Fundamentals</span><span class="nav-item-desc">Algorithms, data and testing</span></span></a>
+      <a href="object-oriented-paradigm.html" class="nav-item nav-item-y11"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Object-Oriented Paradigm</span><span class="nav-item-desc">Classes, objects and design</span></span></a>
+      <a href="programming-mechatronics.html" class="nav-item nav-item-y11"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="3" height="3"/><path d="M9.5 7V4M14.5 7V4M9.5 20v-3M14.5 20v-3M7 9.5H4M7 14.5H4M20 9.5h-3M20 14.5h-3"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Programming Mechatronics</span><span class="nav-item-desc">Sensors, actuators and control</span></span></a>
+    </div>
+    <div class="mobile-menu-section mobile-menu-y12">
+      <div class="mobile-menu-label">Year 12 <span class="badge badge-12">HSC</span></div>
+      <a href="secure-software-architecture.html" class="nav-item nav-item-y12"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Secure Software Architecture</span><span class="nav-item-desc">Secure design and defensive code</span></span></a>
+      <a href="programming-for-the-web.html" class="nav-item nav-item-y12"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.4 3.8 5.6 3.8 9s-1.3 6.6-3.8 9c-2.5-2.4-3.8-5.6-3.8-9s1.3-6.6 3.8-9z"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Programming for the Web</span><span class="nav-item-desc">Protocols, front end and back end</span></span></a>
+      <a href="software-automation.html" class="nav-item nav-item-y12"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M20 8a8.1 8.1 0 0 0-14.9 1M4 16a8.1 8.1 0 0 0 14.9-1"/><path d="M4 4v5h5M20 20v-5h-5"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Software Automation</span><span class="nav-item-desc">Machine learning and AI</span></span></a>
+      <a href="software-engineering-project.html" class="nav-item nav-item-y12"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M9 10h6M9 14h6M9 18h3.5"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Software Engineering Project</span><span class="nav-item-desc">Plan, build and evaluate</span></span></a>
+    </div>
+    <div class="mobile-menu-section mobile-menu-core">
+      <div class="mobile-menu-label">Resources <span class="badge badge-all">Guides</span></div>
+      <a href="course-tools.html" class="nav-item nav-item-core"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.6 17.1a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.1-.6-.6-2.1z"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Course Tools &amp; Specs</span><span class="nav-item-desc">Symbols, syntax and tools</span></span></a>
+      <a href="sdlc.html" class="nav-item nav-item-core"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17.5l9 5 9-5"/></svg></span><span class="nav-item-text"><span class="nav-item-title">SDLC Guide</span><span class="nav-item-desc">The development life cycle</span></span></a>
+      <a href="example-project.html" class="nav-item nav-item-core"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 21v-8.5"/><path d="M12 12.5c0-4.2 3.1-7.5 8-7.5 0 4.2-3.1 7.5-8 7.5z"/><path d="M12 15c0-3.3-2.6-6-6.5-6 0 3.3 2.6 6 6.5 6z"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Example Major Project</span><span class="nav-item-desc">A working project, live in the browser</span></span></a>
+      <a href="glossary.html" class="nav-item nav-item-core"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3 5.5c3-1.3 6-1.3 9 .5 3-1.8 6-1.8 9-.5V19c-3-1.3-6-1.3-9 .5-3-1.8-6-1.8-9-.5z"/><path d="M12 6v13.5"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Glossary</span><span class="nav-item-desc">Every syllabus keyword</span></span></a>
+      <a href="resources.html" class="nav-item nav-item-core"><span class="nav-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6.5 3h11v18l-5.5-3.8L6.5 21z"/><path d="M9.5 9.5l2 2 3.5-3.5"/></svg></span><span class="nav-item-text"><span class="nav-item-title">Certified Resources</span><span class="nav-item-desc">Official NESA documents</span></span></a>
+    </div>
+    <div class="mobile-menu-section mobile-menu-theme">
+      <button id="theme-toggle-mobile" class="btn btn-mobile-theme" type="button">Toggle theme</button>
+    </div>
+  </div>
+
+  <!-- ── Page Header ── -->
+  <header class="topic-header">
+    <div class="topic-header-inner">
+      <nav class="topic-breadcrumb">
+        <a href="../index.html">Home</a> <span>›</span>
+        <a href="software-engineering-project.html">Software Engineering Project</a> <span>›</span>
+        <span>Example Major Project</span>
+      </nav>
+      <div class="topic-title-row"><span class="topic-hero-icon ti-core" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 21v-8.5"/><path d="M12 12.5c0-4.2 3.1-7.5 8-7.5 0 4.2-3.1 7.5-8 7.5z"/><path d="M12 15c0-3.3-2.6-6-6.5-6 0 3.3 2.6 6 6.5 6z"/></svg></span><h1>Example Major Project</h1></div>
+      <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
+        A <strong>smart greenhouse controller</strong> built and documented as an HSC major project, from the brief and requirements to <strong>class design</strong>, <strong>algorithms</strong>, <strong>testing</strong> and <strong>evaluation</strong>. It runs live in your browser.
+      </p>
+      <div class="topic-header-meta">
+        <span class="meta-pill year12">Year 12</span>
+        <span class="meta-pill">All 7 focus areas</span>
+        <span class="meta-pill">Outcomes: SE-12-01 to SE-12-09</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Page Layout ── -->
+  <div class="page-layout">
+    <aside class="sidebar">
+      <div class="toc-title"><span class="toc-ico ti-core" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 21v-8.5"/><path d="M12 12.5c0-4.2 3.1-7.5 8-7.5 0 4.2-3.1 7.5-8 7.5z"/><path d="M12 15c0-3.3-2.6-6-6.5-6 0 3.3 2.6 6 6.5 6z"/></svg></span>Contents</div>
+      <ul class="toc-list">
+        <li class="sidebar-label">Part 1 — See it running</li>
+        <li><a href="#live">Live Demo</a></li>
+        <li class="sidebar-label">Part 2 — Identifying and defining</li>
+        <li><a href="#brief">The Brief</a></li>
+        <li><a href="#requirements">Requirements</a></li>
+        <li class="sidebar-label">Part 3 — Research, planning and design</li>
+        <li><a href="#course-map">Where Each Topic Appears</a></li>
+        <li><a href="#design">Class Design</a></li>
+        <li><a href="#algorithms">Key Algorithms</a></li>
+        <li><a href="#data">Data Dictionary</a></li>
+        <li class="sidebar-label">Part 4 — Testing and evaluating</li>
+        <li><a href="#testing">Test Results</a></li>
+        <li><a href="#evaluation">Evaluation</a></li>
+      </ul>
+    </aside>
+
+    <main class="page-content">
+      <div class="content-body">
+
+        <aside class="topic-breakout" aria-label="Topic introduction">
+          <span class="breakout-label">Why this matters now</span>
+          <p>Farms, hospitals and warehouses now run on small systems that sense the world, decide what to do and act on it without anyone watching, from irrigation controllers that water by soil moisture to cold-chain monitors that alert a phone when a fridge fails. Building one touches almost every part of this course at once.</p>
+          <p>This page is a complete example major project: a Smart Greenhouse Controller, documented the way your portfolio should be and running live below. Every part of it is linked back to the topic it comes from.</p>
+          <p class="breakout-question"><span class="bq-lead">As you explore it, ask</span> Which of these ideas could you reuse for a problem at your own school or home?</p>
+        </aside>
+
+        <div class="part-block">
+          <span class="part-number">Part 1</span>
+          <span class="part-name">See it running</span>
+        </div>
+
+        <section id="live">
+          <h2 class="syllabus-phase">Live Demo</h2>
+          <p>This is the real control code running in your browser. The greenhouse itself is simulated: the physics model stands in for the hardware, so the sensors, controller, model and security code all behave as they would on a microcontroller. One real second is ten simulated minutes at 1× speed.</p>
+          <div class="callout tip"><strong>Things to try</strong> Set the weather to <em>Heatwave</em> and watch the fan and the trend chart. <em>Break</em> the moisture sensor and see the controller stop watering. Sign in as <code>tech</code> with the password <code>Gr0w-Safe!</code>, then try saving a low mark of <code>&lt;script&gt;</code> or <code>70</code>.</div>
+
+          <div class="gh-app" id="gh-app" data-role="guest">
+            <div class="gh-top">
+              <div class="gh-clock"><span class="gh-day" id="gh-day">Day 1</span><span class="gh-time" id="gh-clock">06:00</span><span class="gh-phase" id="gh-phase">Daylight</span></div>
+              <div class="gh-sim" role="group" aria-label="Simulation">
+                <button type="button" class="gh-btn" id="gh-play" aria-pressed="false">Pause</button>
+                <span class="gh-seg" role="group" aria-label="Speed">
+                  <button type="button" class="gh-btn" data-speed="1" aria-pressed="true">1×</button>
+                  <button type="button" class="gh-btn" data-speed="4" aria-pressed="false">4×</button>
+                  <button type="button" class="gh-btn" data-speed="12" aria-pressed="false">12×</button>
+                </span>
+              </div>
+            </div>
+            <p class="gh-alerts" id="gh-alerts" role="status" aria-live="polite">All systems normal</p>
+
+            <div class="gh-grid">
+              <div class="gh-tiles">
+                <div class="gh-tile" data-sensor="temp"><span class="gh-label">Temperature</span><span class="gh-reading"><span class="gh-val">–</span> <span class="gh-unit">°C</span></span><span class="gh-bar"><i></i></span><span class="gh-note"></span></div>
+                <div class="gh-tile" data-sensor="moisture"><span class="gh-label">Soil moisture</span><span class="gh-reading"><span class="gh-val">–</span> <span class="gh-unit">%</span></span><span class="gh-bar"><i></i></span><span class="gh-note"></span></div>
+                <div class="gh-tile" data-sensor="light"><span class="gh-label">Light</span><span class="gh-reading"><span class="gh-val">–</span> <span class="gh-unit">lux</span></span><span class="gh-bar"><i></i></span><span class="gh-note">Lamp below 250 lux</span></div>
+                <div class="gh-tile" data-sensor="humidity"><span class="gh-label">Humidity</span><span class="gh-reading"><span class="gh-val">–</span> <span class="gh-unit">%</span></span><span class="gh-bar"><i></i></span><span class="gh-note">Monitored only</span></div>
+              </div>
+
+              <div class="gh-panel gh-actuators">
+                <h3 class="gh-h">Actuators <span class="gh-mode">Mode: <b id="gh-mode">Automatic</b></span></h3>
+                <div class="gh-act" data-act="pump"><span class="gh-dot" aria-hidden="true"></span><span class="gh-act-name">Pump</span><span class="gh-act-state">off</span><span class="gh-act-energy">0 kWh</span><button type="button" class="gh-btn gh-sm" aria-pressed="false" aria-label="Toggle pump">Toggle</button></div>
+                <div class="gh-act" data-act="fan"><span class="gh-dot" aria-hidden="true"></span><span class="gh-act-name">Fan</span><span class="gh-act-state">off</span><span class="gh-act-energy">0 kWh</span><button type="button" class="gh-btn gh-sm" aria-pressed="false" aria-label="Toggle fan">Toggle</button></div>
+                <div class="gh-act" data-act="lamp"><span class="gh-dot" aria-hidden="true"></span><span class="gh-act-name">Grow lamp</span><span class="gh-act-state">off</span><span class="gh-act-energy">0 kWh</span><button type="button" class="gh-btn gh-sm" aria-pressed="false" aria-label="Toggle grow lamp">Toggle</button></div>
+                <div class="gh-tank"><span>Water tank</span><span class="gh-bar"><i id="gh-tank-bar"></i></span><b id="gh-tank">120 L</b></div>
+                <div class="gh-row">
+                  <button type="button" class="gh-btn gh-protected" id="gh-mode-btn">Switch auto / manual</button>
+                  <button type="button" class="gh-btn gh-protected" id="gh-refill">Refill tank</button>
+                </div>
+              </div>
+
+              <div class="gh-panel gh-chart">
+                <h3 class="gh-h">Last 24 hours <span class="gh-key"><i class="k-temp"></i>Temperature <i class="k-moist"></i>Soil moisture <i class="k-band"></i>Target band</span></h3>
+                <canvas id="gh-trend" class="gh-canvas" role="img" aria-label="Line chart of temperature and soil moisture over the last 24 simulated hours"></canvas>
+              </div>
+
+              <div class="gh-panel gh-ml">
+                <h3 class="gh-h">Watering forecast (machine learning)</h3>
+                <canvas id="gh-ml-plot" class="gh-canvas gh-canvas-sm" role="img" aria-label="Scatter plot of evaporation rate against temperature with the fitted regression line"></canvas>
+                <dl class="gh-stats">
+                  <div><dt>Model</dt><dd id="gh-ml-eq">Collecting data…</dd></div>
+                  <div><dt>Samples</dt><dd id="gh-ml-n">0</dd></div>
+                  <div><dt>R²</dt><dd id="gh-ml-r2">—</dd></div>
+                  <div><dt>MSE</dt><dd id="gh-ml-mse">—</dd></div>
+                  <div class="gh-stat-wide"><dt>Next watering</dt><dd id="gh-ml-next">—</dd></div>
+                </dl>
+              </div>
+
+              <div class="gh-panel gh-security">
+                <h3 class="gh-h">Access <span class="gh-who" id="gh-who">Guest: view only</span></h3>
+                <form id="gh-login" class="gh-form" autocomplete="off">
+                  <label>Username <input name="username" required maxlength="32" autocapitalize="none" spellcheck="false"></label>
+                  <label>Password <input name="password" type="password" required maxlength="64"></label>
+                  <button type="submit" class="gh-btn gh-primary">Sign in</button>
+                  <p class="gh-form-msg is-error" id="gh-login-msg" role="alert"></p>
+                </form>
+                <button type="button" class="gh-btn" id="gh-logout" hidden>Sign out</button>
+                <form id="gh-setpoints" class="gh-form gh-sp" novalidate>
+                  <label>Moisture low (%) <input name="moistureLow" value="35" inputmode="decimal" maxlength="4" class="gh-protected"></label>
+                  <label>Moisture high (%) <input name="moistureHigh" value="55" inputmode="decimal" maxlength="4" class="gh-protected"></label>
+                  <label>Vent above (°C) <input name="tempMax" value="28" inputmode="decimal" maxlength="4" class="gh-protected"></label>
+                  <button type="submit" class="gh-btn gh-primary gh-protected">Save setpoints</button>
+                  <p class="gh-form-msg" id="gh-sp-msg" role="status"></p>
+                </form>
+              </div>
+
+              <div class="gh-panel gh-scenario">
+                <h3 class="gh-h">Scenario</h3>
+                <div class="gh-seg" role="group" aria-label="Weather">
+                  <button type="button" class="gh-btn" data-weather="clear" aria-pressed="true">Clear</button>
+                  <button type="button" class="gh-btn" data-weather="cloudy" aria-pressed="false">Overcast</button>
+                  <button type="button" class="gh-btn" data-weather="heatwave" aria-pressed="false">Heatwave</button>
+                </div>
+                <button type="button" class="gh-btn" id="gh-fault" aria-pressed="false">Break moisture sensor</button>
+                <h3 class="gh-h gh-h-sub">Data log</h3>
+                <form id="gh-find" class="gh-form gh-inline">
+                  <label>Day <input name="day" type="number" min="1" value="2" inputmode="numeric"></label>
+                  <label>Time <input name="when" value="12:00" maxlength="5" placeholder="HH:MM"></label>
+                  <button type="submit" class="gh-btn">Find</button>
+                </form>
+                <div class="gh-row">
+                  <button type="button" class="gh-btn" id="gh-hottest">Hottest 5</button>
+                  <button type="button" class="gh-btn" id="gh-export">Export CSV</button>
+                </div>
+                <p class="gh-query-out" id="gh-query-out" aria-live="polite">Search the log by time, or sort it.</p>
+              </div>
+
+              <div class="gh-panel gh-events">
+                <h3 class="gh-h">Event log</h3>
+                <ol class="gh-log" id="gh-log" aria-live="off"></ol>
+              </div>
+            </div>
+          </div>
+          <noscript><p class="callout warning"><strong>JavaScript needed</strong> The live demo needs JavaScript. The rest of this page still describes the project in full.</p></noscript>
+        </section>
+
+        <div class="part-block">
+          <span class="part-number">Part 2</span>
+          <span class="part-name">Identifying and defining</span>
+        </div>
+
+        <section id="brief">
+          <h2 class="syllabus-phase">The Brief</h2>
+          <p>The school's agriculture class grows seedlings in a small greenhouse. Plants die over long weekends and holidays because nobody is there to water them, open the vents on hot days or switch on the grow lamp in winter. Students also want to see what is happening inside the greenhouse from a classroom computer.</p>
+          <div class="callout info"><strong>Problem statement</strong> Design and build a controller that keeps soil moisture and temperature in a safe range without a person present, shows live conditions on a web dashboard, and lets only an authorised technician change its settings.</div>
+          <h3>Stakeholders</h3>
+          <ul>
+            <li><strong>Agriculture teacher</strong>: the client. Needs healthy plants and a record of conditions for lessons.</li>
+            <li><strong>Students</strong>: view the dashboard, but must not be able to change settings.</li>
+            <li><strong>Technician</strong>: sets targets, runs the system by hand for maintenance and refills the tank.</li>
+          </ul>
+          <h3>Constraints</h3>
+          <ul>
+            <li>Hardware budget under $150: a microcontroller with Wi-Fi, a capacitive soil moisture sensor, a temperature and humidity sensor, a light sensor, a relay board, a 12 V pump, a fan and an LED grow lamp.</li>
+            <li>Must fail safe: a broken sensor or an empty tank must never flood the beds or burn out the pump.</li>
+            <li>Ten weeks of development time, working alone.</li>
+          </ul>
+        </section>
+
+        <section id="requirements">
+          <h2 class="syllabus-phase">Requirements</h2>
+          <p>Each requirement is written so it can be tested. The last column names the test that proves it, so the evaluation at the end can point to evidence rather than opinion.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>ID</th><th>Functional requirement</th><th>Evidence</th></tr></thead>
+              <tbody>
+                <tr><td>F1</td><td>Water the beds when soil moisture falls below the low mark and stop at the high mark.</td><td>T3, T4, T5</td></tr>
+                <tr><td>F2</td><td>Run the fan when the temperature rises above the maximum, and stop 3 °C below it.</td><td>Live demo: try a heatwave</td></tr>
+                <tr><td>F3</td><td>Run the grow lamp during growing hours (06:00–20:00) when light is low.</td><td>Live demo: try an overcast day</td></tr>
+                <tr><td>F4</td><td>Detect an out-of-range sensor reading, stop watering and raise an alert.</td><td>T1, T2, T6</td></tr>
+                <tr><td>F5</td><td>Log readings every 10 minutes for 7 days; search by time, list the hottest readings and export CSV.</td><td>T9, T10, T11</td></tr>
+                <tr><td>F6</td><td>Predict when the next watering is due from the conditions so far.</td><td>T8</td></tr>
+                <tr><td>F7</td><td>Only a signed-in technician can change setpoints, switch to manual mode or refill the tank.</td><td>T12–T17</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>ID</th><th>Non-functional requirement</th><th>Evidence</th></tr></thead>
+              <tbody>
+                <tr><td>N1</td><td>Dashboard updates at least once a second.</td><td>Live demo refreshes 10 times a second</td></tr>
+                <tr><td>N2</td><td>Passwords are never stored or logged in plain text.</td><td>Salted SHA-256 hashes; see the sign-in code</td></tr>
+                <tr><td>N3</td><td>Sign-in locks for 20 seconds after three wrong attempts.</td><td>T16, T17</td></tr>
+                <tr><td>N4</td><td>Usable by keyboard and screen reader; works on a phone.</td><td>Labelled controls, live-region log, responsive layout</td></tr>
+                <tr><td>N5</td><td>Every setting change is recorded with who made it.</td><td>Event log (AUTH and CTRL entries)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <div class="part-block">
+          <span class="part-number">Part 3</span>
+          <span class="part-name">Research, planning and design</span>
+        </div>
+
+        <section id="course-map">
+          <h2 class="syllabus-phase">Where Each Topic Appears</h2>
+          <p>A strong major project draws on more than one focus area. This one uses all seven. Each card names what the project borrows from that topic and where to see it in the demo.</p>
+          <div class="ep-map">
+            <a class="ep-card nav-item-y11" href="programming-fundamentals.html"><span class="ep-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 8l-4.5 4L8 16M16 8l4.5 4L16 16M13 5l-2 14"/></svg></span><span class="ep-t">Programming Fundamentals</span><span class="ep-d">Binary search and merge sort over the data log, validation of every input, and a test plan using normal, boundary and erroneous data.</span><span class="ep-w">See: Data log, Test results</span></a>
+            <a class="ep-card nav-item-y11" href="object-oriented-paradigm.html"><span class="ep-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span><span class="ep-t">Object-Oriented Paradigm</span><span class="ep-d">A <code>Sensor</code> base class with four subclasses that each override <code>measure()</code>, and a <code>Greenhouse</code> object composed of the rest.</span><span class="ep-w">See: Class design</span></a>
+            <a class="ep-card nav-item-y11" href="programming-mechatronics.html"><span class="ep-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="3" height="3"/><path d="M9.5 7V4M14.5 7V4M9.5 20v-3M14.5 20v-3M7 9.5H4M7 14.5H4M20 9.5h-3M20 14.5h-3"/></svg></span><span class="ep-t">Programming Mechatronics</span><span class="ep-d">Sensors, actuators and a closed-loop control algorithm with hysteresis, fault detection and a fail-safe state.</span><span class="ep-w">See: Actuators, Scenario</span></a>
+            <a class="ep-card nav-item-y12" href="secure-software-architecture.html"><span class="ep-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></span><span class="ep-t">Secure Software Architecture</span><span class="ep-d">Salted password hashes, a lockout against brute force, role-based access, server-side style checks and an audit trail.</span><span class="ep-w">See: Access, Event log</span></a>
+            <a class="ep-card nav-item-y12" href="programming-for-the-web.html"><span class="ep-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.4 3.8 5.6 3.8 9s-1.3 6.6-3.8 9c-2.5-2.4-3.8-5.6-3.8-9s1.3-6.6 3.8-9z"/></svg></span><span class="ep-t">Programming for the Web</span><span class="ep-d">A responsive dashboard that updates live, draws charts on a canvas and exports data, with output written safely as text.</span><span class="ep-w">See: the whole dashboard</span></a>
+            <a class="ep-card nav-item-y12" href="software-automation.html"><span class="ep-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M20 8a8.1 8.1 0 0 0-14.9 1M4 16a8.1 8.1 0 0 0 14.9-1"/><path d="M4 4v5h5M20 20v-5h-5"/></svg></span><span class="ep-t">Software Automation</span><span class="ep-d">A linear regression model trained continuously on sensor data to predict evaporation and forecast the next watering.</span><span class="ep-w">See: Watering forecast</span></a>
+            <a class="ep-card nav-item-y12" href="software-engineering-project.html"><span class="ep-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M9 10h6M9 14h6M9 18h3.5"/></svg></span><span class="ep-t">Software Engineering Project</span><span class="ep-d">Requirements tied to tests, a data dictionary, a test table and an evaluation against the original brief.</span><span class="ep-w">See: this page's structure</span></a>
+          </div>
+        </section>
+
+        <section id="design">
+          <h2 class="syllabus-phase">Class Design</h2>
+          <p>Each class has one job. The controller only <em>decides</em>: it returns the actuator states it wants and never switches hardware itself. That separation is what makes it possible to unit test the control logic without a greenhouse.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Class</th><th>Responsibility</th><th>Key methods</th><th>Relationship</th></tr></thead>
+              <tbody>
+                <tr><td><code>Sensor</code></td><td>Take a reading and check it is physically possible</td><td><code>read()</code>, <code>measure()</code>, <code>inRange()</code></td><td>Abstract parent</td></tr>
+                <tr><td><code>TemperatureSensor</code>, <code>MoistureSensor</code>, <code>LightSensor</code>, <code>HumiditySensor</code></td><td>Measure one quantity</td><td><code>measure()</code> (overridden)</td><td>Inherit from <code>Sensor</code></td></tr>
+                <tr><td><code>Actuator</code></td><td>Switch a device and track its energy use</td><td><code>set()</code>, <code>energyWh()</code></td><td>Used by <code>Greenhouse</code></td></tr>
+                <tr><td><code>Controller</code></td><td>Turn readings into decisions; validate setpoints</td><td><code>decide()</code>, <code>validateSetpoints()</code></td><td>Used by <code>Greenhouse</code></td></tr>
+                <tr><td><code>DataLogger</code></td><td>Keep 7 days of records; search, sort and export them</td><td><code>findByTime()</code>, <code>mergeSort()</code>, <code>toCSV()</code></td><td>Used by <code>Greenhouse</code></td></tr>
+                <tr><td><code>LinearRegression</code></td><td>Learn evaporation rate from temperature</td><td><code>add()</code>, <code>fit()</code>, <code>predict()</code></td><td>Used by <code>Greenhouse</code></td></tr>
+                <tr><td><code>AuthService</code></td><td>Store salted hashes, check sign-ins, enforce lockout</td><td><code>addUser()</code>, <code>login()</code></td><td>Used by the dashboard</td></tr>
+                <tr><td><code>Greenhouse</code></td><td>Run one minute: sense, decide, act, record, learn</td><td><code>tick()</code>, <code>forecastWatering()</code></td><td>Composed of all of the above</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Inheritance and polymorphism in the sensors</span></div>
+            <pre><code><span class="kw">class</span> <span class="fn">Sensor</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, name, minimum, maximum):
+        self.name = name
+        self.minimum = minimum
+        self.maximum = maximum
+        self.valid = <span class="kw">False</span>
+
+    <span class="kw">def</span> <span class="fn">measure</span>(self):
+        <span class="kw">raise</span> NotImplementedError   <span class="cm"># each subclass reads its own hardware</span>
+
+    <span class="kw">def</span> <span class="fn">read</span>(self):
+        value = self.measure()
+        self.valid = self.minimum &lt;= value &lt;= self.maximum
+        <span class="kw">return</span> value
+
+
+<span class="kw">class</span> <span class="fn">MoistureSensor</span>(Sensor):
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, pin):
+        super().__init__(<span class="str">"Soil moisture"</span>, 0, 100)
+        self.pin = pin
+
+    <span class="kw">def</span> <span class="fn">measure</span>(self):
+        raw = self.pin.read_u16()              <span class="cm"># 0–65535 from the ADC</span>
+        <span class="kw">return</span> (52000 - raw) / 300      <span class="cm"># calibrated: dry air 0 %, water 100 %</span></code></pre>
+          </div>
+          <p>The demo runs the same design in JavaScript so it can run in a browser. On the real hardware, MicroPython runs the Python version above.</p>
+        </section>
+
+        <section id="algorithms">
+          <h2 class="syllabus-phase">Key Algorithms</h2>
+          <h3>Control loop with hysteresis</h3>
+          <p>Switching the pump on below 35% and off at the same value would make it chatter on and off as the reading wobbles. Using two marks, a low one to start and a high one to stop, gives a <strong>dead band</strong> in between where nothing changes.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Pseudocode — One control cycle</span></div>
+            <pre><code>BEGIN ControlCycle
+    READ moisture, temperature, light
+    IF moisture reading is outside 0–100 THEN
+        pump ← OFF
+        RAISE ALERT "Moisture sensor fault"
+    ELSEIF tank level = 0 THEN
+        pump ← OFF
+        RAISE ALERT "Tank empty"
+    ELSEIF moisture &lt; lowMark THEN
+        pump ← ON
+    ELSEIF moisture ≥ highMark THEN
+        pump ← OFF
+    ENDIF
+    IF temperature &gt; maxTemp THEN
+        fan ← ON
+    ELSEIF temperature &lt; maxTemp − 3 THEN
+        fan ← OFF
+    ENDIF
+    IF hour is between 06:00 and 20:00 AND light &lt; 250 THEN
+        lamp ← ON
+    ELSEIF hour is outside 06:00–20:00 OR light &gt; 700 THEN
+        lamp ← OFF
+    ENDIF
+    WRITE log record every 10 minutes
+END ControlCycle</code></pre>
+          </div>
+          <h3>Learning the evaporation rate</h3>
+          <p>Soil dries faster when it is hot. While the pump is off, the system measures how fast moisture falls over each 10 minutes and pairs it with the temperature at the time. A least-squares line through those points predicts the drying rate at any temperature, which gives the time until the next watering. This is <strong>supervised learning</strong>: every sample has a known answer, the measured rate.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Least-squares regression</span></div>
+            <pre><code><span class="kw">def</span> <span class="fn">fit_line</span>(xs, ys):
+    <span class="str">"""Return slope a, intercept b and R² for y = a*x + b."""</span>
+    n = len(xs)
+    mean_x = sum(xs) / n
+    mean_y = sum(ys) / n
+    sxy = sum((x - mean_x) * (y - mean_y) <span class="kw">for</span> x, y <span class="kw">in</span> zip(xs, ys))
+    sxx = sum((x - mean_x) ** 2 <span class="kw">for</span> x <span class="kw">in</span> xs)
+    a = sxy / sxx
+    b = mean_y - a * mean_x
+    ss_res = sum((y - (a * x + b)) ** 2 <span class="kw">for</span> x, y <span class="kw">in</span> zip(xs, ys))
+    ss_tot = sum((y - mean_y) ** 2 <span class="kw">for</span> y <span class="kw">in</span> ys)
+    <span class="kw">return</span> a, b, 1 - ss_res / ss_tot
+
+
+<span class="kw">def</span> <span class="fn">minutes_until_watering</span>(moisture, low_mark, temperature, a, b):
+    rate = a * temperature + b             <span class="cm"># predicted % lost per minute</span>
+    <span class="kw">return</span> (moisture - low_mark) / rate</code></pre>
+          </div>
+          <h3>Signing in safely</h3>
+          <p>The system stores a random <strong>salt</strong> and the SHA-256 <strong>hash</strong> of salt plus password, never the password. Wrong usernames and wrong passwords get the same message, so an attacker can't learn which accounts exist, and three failures lock sign-in for 20 seconds.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Salted hash with lockout</span></div>
+            <pre><code><span class="kw">import</span> hashlib, secrets, time
+
+users = {}                 <span class="cm"># username -&gt; (salt, hash, role)</span>
+failures, locked_until = 0, 0
+
+<span class="kw">def</span> <span class="fn">add_user</span>(username, password, role):
+    salt = secrets.token_hex(8)
+    digest = hashlib.sha256((salt + password).encode()).hexdigest()
+    users[username] = (salt, digest, role)
+
+<span class="kw">def</span> <span class="fn">login</span>(username, password):
+    <span class="kw">global</span> failures, locked_until
+    <span class="kw">if</span> time.time() &lt; locked_until:
+        <span class="kw">return</span> <span class="kw">None</span>, <span class="str">"Too many attempts. Try again soon."</span>
+    salt, digest, role = users.get(username, (<span class="str">"x"</span>, <span class="kw">None</span>, <span class="kw">None</span>))
+    <span class="kw">if</span> hashlib.sha256((salt + password).encode()).hexdigest() == digest:
+        failures = 0
+        <span class="kw">return</span> role, <span class="str">"Signed in"</span>
+    failures += 1
+    <span class="kw">if</span> failures &gt;= 3:
+        failures, locked_until = 0, time.time() + 20
+    <span class="kw">return</span> <span class="kw">None</span>, <span class="str">"Incorrect username or password."</span></code></pre>
+          </div>
+          <div class="callout warning"><strong>Good enough for a school project, not for production</strong> A real system would use a slow hashing algorithm built for passwords, such as bcrypt or Argon2, so that stolen hashes take far longer to crack.</div>
+        </section>
+
+        <section id="data">
+          <h2 class="syllabus-phase">Data Dictionary</h2>
+          <p>One record is written to the log every 10 simulated minutes. The log holds 1,008 records (7 days); the oldest record is dropped when a new one arrives. Records stay in time order, which is what makes binary search possible.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Field</th><th>Data type</th><th>Format / unit</th><th>Validation</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td><code>time</code></td><td>Integer</td><td>Minutes since start</td><td>Multiple of 10, increasing</td><td>1560 (Day 2 02:00)</td></tr>
+                <tr><td><code>temp</code></td><td>Real</td><td>°C, 1 decimal place</td><td>−10 to 60, else sensor fault</td><td>24.6</td></tr>
+                <tr><td><code>moisture</code></td><td>Real</td><td>% volumetric</td><td>0 to 100, else sensor fault</td><td>41.0</td></tr>
+                <tr><td><code>light</code></td><td>Real</td><td>lux</td><td>0 to 2000</td><td>612</td></tr>
+                <tr><td><code>humidity</code></td><td>Real</td><td>% relative</td><td>0 to 100</td><td>58</td></tr>
+                <tr><td><code>pump</code>, <code>fan</code>, <code>lamp</code></td><td>Boolean</td><td>1 = on, 0 = off</td><td>0 or 1</td><td>1</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <div class="part-block">
+          <span class="part-number">Part 4</span>
+          <span class="part-name">Testing and evaluating</span>
+        </div>
+
+        <section id="testing">
+          <h2 class="syllabus-phase">Test Results</h2>
+          <p>These unit tests run the real classes in your browser, separately from the live demo. Each uses a chosen category of test data: <strong>normal</strong> data the system should accept, <strong>boundary</strong> data at the exact edge of a range, and <strong>erroneous</strong> data it must reject.</p>
+          <div class="gh-tests">
+            <div class="gh-row"><button type="button" class="gh-btn gh-primary" id="gh-run-tests">Run the tests</button><span id="gh-test-summary" class="gh-test-summary" role="status">Not run yet</span></div>
+            <div class="table-wrap">
+              <table class="gh-test-table">
+                <thead><tr><th>Test</th><th>Description</th><th>Test data</th><th>Expected</th><th>Actual</th><th>Result</th></tr></thead>
+                <tbody id="gh-test-body"><tr><td colspan="6">Press “Run the tests” to fill this table.</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="evaluation">
+          <h2 class="syllabus-phase">Evaluation</h2>
+          <p>The evaluation goes back to the brief and the requirements, and judges each one against evidence.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Requirement</th><th>Met?</th><th>Evidence and comment</th></tr></thead>
+              <tbody>
+                <tr><td>F1 Watering</td><td>Yes</td><td>T3–T5 pass. The trend chart shows moisture held inside the target band across day and night.</td></tr>
+                <tr><td>F2 Venting</td><td>Yes</td><td>In a heatwave the fan runs through the afternoon, but the temperature can still pass the maximum: the fan alone is not enough on the hottest days.</td></tr>
+                <tr><td>F4 Fault handling</td><td>Yes</td><td>T6 passes; breaking the sensor stops watering and raises an alert within one cycle.</td></tr>
+                <tr><td>F6 Forecast</td><td>Partly</td><td>R² settles between about 0.75 and 0.8 after a day of data. The model uses temperature only, and sunshine raises both temperature and drying, so the slope comes out slightly high and forecasts are least accurate at dawn and on overcast days.</td></tr>
+                <tr><td>F7, N2, N3 Security</td><td>Yes</td><td>T12–T17 pass. Passwords are hashed with a salt; lockout works. See the note above on production hashing.</td></tr>
+                <tr><td>N4 Accessibility</td><td>Yes</td><td>All controls are buttons or labelled inputs, alerts use a live region, and the layout stacks on a phone.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Improvements for the next version</h3>
+          <ul>
+            <li>Add light as a second feature in the model (multiple linear regression) to improve dawn forecasts.</li>
+            <li>Add shade cloth on a servo for heatwaves, since venting alone can't hold the maximum.</li>
+            <li>Send a phone notification when the tank is low, rather than only showing an alert.</li>
+            <li>Replace SHA-256 with a password-hashing algorithm such as bcrypt when moving to a real server.</li>
+          </ul>
+          <div class="callout tip"><strong>Using this as a model for your own project</strong> Notice the thread from brief to requirements to tests to evaluation: every requirement has an ID, every test names the requirement it proves, and the evaluation quotes the evidence. Markers look for that link. Your topic can be completely different; the structure is what transfers.</div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <a href="../index.html" class="footer-brand">
+          <div class="footer-logo" aria-hidden="true">{&hairsp;}</div>
+          <span class="footer-name">SoftEng Notes</span>
+        </a>
+        <p class="footer-desc">Notes for every dot point of the NSW HSC Software Engineering syllabus, from Year 11 foundations to the Year 12 exam.</p>
+      </div>
+      <div class="footer-col footer-col-y11">
+        <h4>Year 11</h4>
+        <a href="programming-fundamentals.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M8 8l-4.5 4L8 16M16 8l4.5 4L16 16M13 5l-2 14"/></svg></span>Programming Fundamentals</a>
+        <a href="object-oriented-paradigm.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span>Object-Oriented Paradigm</a>
+        <a href="programming-mechatronics.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="3" height="3"/><path d="M9.5 7V4M14.5 7V4M9.5 20v-3M14.5 20v-3M7 9.5H4M7 14.5H4M20 9.5h-3M20 14.5h-3"/></svg></span>Programming Mechatronics</a>
+      </div>
+      <div class="footer-col footer-col-y12">
+        <h4>Year 12</h4>
+        <a href="secure-software-architecture.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></span>Secure Software Architecture</a>
+        <a href="programming-for-the-web.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.4 3.8 5.6 3.8 9s-1.3 6.6-3.8 9c-2.5-2.4-3.8-5.6-3.8-9s1.3-6.6 3.8-9z"/></svg></span>Programming for the Web</a>
+        <a href="software-automation.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M20 8a8.1 8.1 0 0 0-14.9 1M4 16a8.1 8.1 0 0 0 14.9-1"/><path d="M4 4v5h5M20 20v-5h-5"/></svg></span>Software Automation</a>
+        <a href="software-engineering-project.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M9 10h6M9 14h6M9 18h3.5"/></svg></span>Software Engineering Project</a>
+      </div>
+      <div class="footer-col footer-col-core">
+        <h4>Resources</h4>
+        <a href="course-tools.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.6 17.1a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.1-.6-.6-2.1z"/></svg></span>Course Tools &amp; Specs</a>
+        <a href="sdlc.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17.5l9 5 9-5"/></svg></span>SDLC Guide</a>
+        <a href="example-project.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 21v-8.5"/><path d="M12 12.5c0-4.2 3.1-7.5 8-7.5 0 4.2-3.1 7.5-8 7.5z"/><path d="M12 15c0-3.3-2.6-6-6.5-6 0 3.3 2.6 6 6.5 6z"/></svg></span>Example Major Project</a>
+        <a href="glossary.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3 5.5c3-1.3 6-1.3 9 .5 3-1.8 6-1.8 9-.5V19c-3-1.3-6-1.3-9 .5-3-1.8-6-1.8-9-.5z"/><path d="M12 6v13.5"/></svg></span>Glossary</a>
+        <a href="resources.html"><span class="f-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M6.5 3h11v18l-5.5-3.8L6.5 21z"/><path d="M9.5 9.5l2 2 3.5-3.5"/></svg></span>Certified Resources</a>
+        <a href="https://curriculum.nsw.edu.au/learning-areas/tas/software-engineering-11-12-2022" target="_blank" rel="noopener">NESA Syllabus ↗</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 HSC SoftEng Notes · Example Major Project</span>
+      <span>Aligned to the NESA syllabus · For educational purposes only</span>
+    </div>
+  </footer>
+
+  <script src="../js/glossary-data.js?v=6"></script>
+  <script src="../js/main.js?v=33"></script>
+  <script src="../js/paper.js?v=6" defer></script>
+  <script src="../js/progress.js?v=1" defer></script>
+  <script src="../js/greenhouse.js?v=1" defer></script>
+</body>
+</html>
