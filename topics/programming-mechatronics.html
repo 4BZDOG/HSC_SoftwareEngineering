@@ -51,8 +51,8 @@
   <meta name="description" content="Year 11 HSC Programming Mechatronics notes — sensors, actuators, control logic, hardware-software integration, and real-world robotics programming. NESA NSW." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=29" />
+  <link rel="stylesheet" href="../css/styles.css?v=26" />
+  <link rel="stylesheet" href="../css/paper.css?v=30" />
   <link rel="stylesheet" href="../css/anim.css?v=4" />
 </head>
 <body>
@@ -196,7 +196,8 @@
     <main class="page-content">
       <div class="content-body">
 
-        <aside class="topic-breakout" aria-label="Topic introduction">
+        <aside class="yr11 topic-breakout" aria-label="Topic introduction">
+          <span class="breakout-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="3" height="3"/><path d="M9.5 7V4M14.5 7V4M9.5 20v-3M14.5 20v-3M7 9.5H4M7 14.5H4M20 9.5h-3M20 14.5h-3"/></svg></span>
           <span class="breakout-label">⚡ Why this matters now</span>
           <p>Drones delivering parcels, robotic vacuum cleaners mapping your lounge room, self-driving cars trialling on real roads and prosthetic hands controlled by muscle signals: mechatronics is where software meets the physical world. Here a bug is not just an error message, it can be a robot arm moving the wrong way or a sensor reading that crashes a drone.</p>
           <p>In this topic you will study the syllabus content on sensors, actuators and end effectors, microcontroller code, control algorithms, power and wiring, and how software manages real-time interactions. Keep this question in mind: <em>how do you write code you can trust when it controls something that moves?</em></p>
@@ -211,7 +212,7 @@
           <span class="part-name">Understanding mechatronic hardware and software</span>
         </div>
 
-        <aside class="topic-breakout subtopic-breakout" aria-label="Part introduction">
+        <aside class="yr11 topic-breakout subtopic-breakout" aria-label="Part introduction">
           <span class="breakout-label">⚡ Why this part matters</span>
           <p>From robot lawn mowers to the automated milking machines used on Australian dairy farms, mechatronic systems combine sensors, motors and code. This part covers applications, hardware requirements, sensors, actuators, end effectors, data and power. <em>Which sensors would a robot need to cross a road safely?</em></p>
         </aside>
@@ -523,7 +524,7 @@ servo = PWM(Pin(15))      <span class="cm"># Actuator</span>
           <span class="part-name">Designing control algorithms</span>
         </div>
 
-        <aside class="topic-breakout subtopic-breakout" aria-label="Part introduction">
+        <aside class="yr11 topic-breakout subtopic-breakout" aria-label="Part introduction">
           <span class="breakout-label">⚡ Why this part matters</span>
           <p>A drone hovering in the wind is constantly adjusting its motors based on sensor readings, many times every second. This part covers designing control algorithms, including feedback loops and how software responds to changing conditions. <em>How does a system know when it has reached its target?</em></p>
         </aside>
@@ -654,7 +655,7 @@ END followLine</code></pre>
           <span class="part-name">Programming and building</span>
         </div>
 
-        <aside class="topic-breakout subtopic-breakout" aria-label="Part introduction">
+        <aside class="yr11 topic-breakout subtopic-breakout" aria-label="Part introduction">
           <span class="breakout-label">⚡ Why this part matters</span>
           <p>Robotics competitions such as FIRST and RoboCup show that a working prototype beats a perfect plan. This part covers producing and testing a mechatronic system, from wiring and code to evaluating the final build. <em>What will you do when your robot works on the bench but fails on the floor?</em></p>
         </aside>

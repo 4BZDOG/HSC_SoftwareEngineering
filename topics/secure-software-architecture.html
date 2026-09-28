@@ -51,8 +51,8 @@
   <meta name="description" content="HSC Secure Software Architecture notes — CIA triad, STRIDE, authentication, encryption, defensive coding, and privacy by design. Year 12 NESA NSW." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="../css/styles.css?v=25" />
-  <link rel="stylesheet" href="../css/paper.css?v=29" />
+  <link rel="stylesheet" href="../css/styles.css?v=26" />
+  <link rel="stylesheet" href="../css/paper.css?v=30" />
   <link rel="stylesheet" href="../css/anim.css?v=4" />
 </head>
 <body>
@@ -194,7 +194,8 @@
     <main class="page-content">
       <div class="content-body">
 
-        <aside class="topic-breakout" aria-label="Topic introduction">
+        <aside class="yr12 topic-breakout" aria-label="Topic introduction">
+          <span class="breakout-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></span>
           <span class="breakout-label">⚡ Why this matters now</span>
           <p>In recent years Australians have lived through major data breaches at Optus, Medibank and MediSecure, exposing the personal and health details of millions of people. Most breaches are not Hollywood-style hacks but ordinary coding mistakes: unvalidated input, weak authentication or sensitive data stored in plain text. With privacy laws tightening, companies now expect every developer to build security in from day one.</p>
           <p>In this topic you will cover the syllabus content on secure-by-design development, end-user influence on design, authentication, authorisation and accountability, cryptography, and defending against attacks such as SQL injection and cross-site scripting. As you read, ask: <em>if I were an attacker, where would I try to break this code?</em></p>
@@ -209,7 +210,7 @@
           <span class="part-name">Designing software</span>
         </div>
 
-        <aside class="topic-breakout subtopic-breakout" aria-label="Part introduction">
+        <aside class="yr12 topic-breakout subtopic-breakout" aria-label="Part introduction">
           <span class="breakout-label">⚡ Why this part matters</span>
           <p>Fixing a security flaw after release can cost many times more than preventing it during design, and the Optus and Medibank breaches show what is at stake. This part covers the benefits of secure software, secure development steps and how end users influence design. <em>Who might want to misuse the app you are designing?</em></p>
         </aside>
@@ -358,7 +359,7 @@
           <span class="part-name">Developing secure code</span>
         </div>
 
-        <aside class="topic-breakout subtopic-breakout" aria-label="Part introduction">
+        <aside class="yr12 topic-breakout subtopic-breakout" aria-label="Part introduction">
           <span class="breakout-label">⚡ Why this part matters</span>
           <p>Most real attacks exploit simple mistakes such as a login form that trusts user input. This part covers authentication, authorisation, accountability, cryptography, sandboxing and defending against attacks like SQL injection and XSS. <em>Would your login page survive someone typing code instead of a password?</em></p>
         </aside>
@@ -842,7 +843,7 @@
           <span class="part-name">Impact of safe and secure software development</span>
         </div>
 
-        <aside class="topic-breakout subtopic-breakout" aria-label="Part introduction">
+        <aside class="yr12 topic-breakout subtopic-breakout" aria-label="Part introduction">
           <span class="breakout-label">⚡ Why this part matters</span>
           <p>Security affects people, businesses and the law. Australia's privacy laws and mandatory breach reporting mean companies are publicly accountable when things go wrong. This part covers collaboration, the impact of secure development and legal and ethical responsibilities. <em>Who should pay when a company leaks your data?</em></p>
         </aside>
