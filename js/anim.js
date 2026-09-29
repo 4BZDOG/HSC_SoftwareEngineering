@@ -97,7 +97,7 @@
       <filter id="pa-lift" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow class="pa-shadow pa-shadow-lift" dx="0" dy="6" stdDeviation="4"/></filter>
       <pattern id="pa-hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="pa-hatch-bg" width="7" height="7"/><rect class="pa-hatch-ink" width="2" height="7"/></pattern>
       <pattern id="pa-outage" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect class="pa-outage-bg" width="8" height="8"/><rect class="pa-outage-ink" width="3" height="8"/></pattern>
-      <marker id="pa-inherit" viewBox="0 0 14 14" refX="13" refY="7" markerWidth="12" markerHeight="12" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path class="pa-inherit-head" d="M1 1 L13 7 L1 13 Z"/></marker>
+      <marker id="pa-rel" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="11" markerHeight="11" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path class="pa-rel-head" d="M1 1 L11 6 L1 11"/></marker><marker id="pa-inherit" viewBox="0 0 14 14" refX="13" refY="7" markerWidth="12" markerHeight="12" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path class="pa-inherit-head" d="M1 1 L13 7 L1 13 Z"/></marker>
       <marker id="pa-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="pa-arrowhead" d="M0 0 L10 5 L0 10 z"/></marker>
     </defs>`;
     document.body.appendChild(s);

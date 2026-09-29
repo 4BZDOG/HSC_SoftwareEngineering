@@ -53,7 +53,8 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=27" />
   <link rel="stylesheet" href="../css/paper.css?v=37" />
-  <link rel="stylesheet" href="../css/anim.css?v=4" />
+  <link rel="stylesheet" href="../css/anim.css?v=5" />
+  <link rel="stylesheet" href="../css/pages/object-oriented-paradigm.css?v=1" />
 </head>
 <body>
 
@@ -219,40 +220,111 @@
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> the key features of an object-oriented programming (OOP) language</em></p>
           <ul class="syllabus-including" aria-label="Including"><li>objects</li><li>classes</li><li>encapsulation</li><li>abstraction</li><li>inheritance</li><li>generalisation</li><li>polymorphism</li></ul>
 
-          <h3>Objects and Classes</h3>
-          <p><strong>Objects</strong> are individual instances of data and behaviour that exist within a running program. A <strong>class</strong> is a blueprint or template that defines the structure and behaviour of all objects created from it. Classes specify what attributes (data) and methods (behaviour) objects will have. For example, a <code>Car</code> class defines that all car objects will have attributes like colour and speed, and methods like accelerate() and brake().</p>
+          <p>This section uses one running example, a small lending system for <strong>Riverbend Library</strong>. The library lends books and DVDs to members. Every code block is real Python 3 that you can paste into an editor and run; the output shown was produced by running it. The same classes come back in later sections, where they are tested, refactored and drawn as a class diagram. NESA's syllabus glossary defines object-oriented programming as <em>"a paradigm based on the concept of 'objects' that can contain data and code in the form of procedures"</em>. The Course Specifications add that students are expected to be able to code in Python, so the examples use it.</p>
 
-<h3>Encapsulation</h3>
-          <p><strong>Encapsulation</strong> is the process of bundling data and the methods that operate on that data into a single unit, known as a class. It involves "data hiding" by using access modifiers (like private attributes in Python) to prevent external code from directly modifying an object's internal state. This ensures that data can only be changed through validated methods (setters), which maintains the integrity and security of the system.</p>
-
-<h3>Abstraction</h3>
-          <p><strong>Abstraction</strong> focuses on hiding complex implementation details and showing only the essential features of an object to the user. In software engineering, this allows developers to interact with a class through a simplified interface without needing to understand the underlying code logic. It reduces system complexity and allows the internal implementation to change without affecting the parts of the program that use it.</p>
-
-<h3>Inheritance &amp; Generalisation</h3>
-          <p><strong>Inheritance</strong> allows a new class (subclass) to adopt the attributes and methods of an existing class (superclass). <strong>Generalisation</strong> is the engineering process of identifying common traits among multiple classes and moving them into a shared parent class. This promotes massive code reuse and establishes a logical hierarchy within the software architecture.</p>
-
-<h3>Polymorphism</h3>
-          <p><strong>Polymorphism</strong>, meaning "many forms", allows different classes to be treated as instances of the same superclass through a uniform interface. A programmer can call the same method name on different objects, and each object will respond in its own specific way. This makes the code highly flexible and easier to extend with new object types.</p>
-
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Python — Applying OOP Pillars</span></div>
-            <pre><code><span class="kw">class</span> <span class="fn">Account</span>: <span class="cm"># Generalisation / Abstraction</span>
-    <span class="kw">def</span> <span class="fn">__init__</span>(self, owner, balance):
-        self.owner = owner
-        self.__balance = balance <span class="cm"># Encapsulation (Private)</span>
-
-    <span class="kw">def</span> <span class="fn">get_balance</span>(self): <span class="kw">return</span> self.__balance
-
-<span class="kw">class</span> <span class="fn">Savings</span>(Account): <span class="cm"># Inheritance</span>
-    <span class="kw">def</span> <span class="fn">apply_interest</span>(self):
-        <span class="cm"># Logic for interest...</span>
-        <span class="kw">pass</span>
-
-<span class="kw">def</span> <span class="fn">show_info</span>(acc): <span class="cm"># Polymorphism</span>
-    print(<span class="str">f"Owner: {acc.owner}"</span>)</code></pre>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Key feature</th><th>What it means</th><th>Where you will see it at Riverbend Library</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Class</strong></td><td>A blueprint that defines the attributes and methods every object of that type has.</td><td><code>Book</code>, <code>DVD</code>, <code>Member</code>, <code>Library</code></td></tr>
+                <tr><td><strong>Object</strong></td><td>One instance of a class, holding its own attribute values.</td><td>The book "River Road" and the DVD "Star Coast"</td></tr>
+                <tr><td><strong>Encapsulation</strong></td><td>Bundling data with the methods that use it, and controlling access to the data.</td><td>A member's loans can only change through <code>borrow()</code> and <code>give_back()</code></td></tr>
+                <tr><td><strong>Abstraction</strong></td><td>Showing only what a user of the class needs and hiding the rest.</td><td>Code calls <code>item.loan_days()</code> without knowing how each item type decides</td></tr>
+                <tr><td><strong>Inheritance</strong></td><td>A subclass reuses the attributes and methods of a superclass.</td><td><code>Book</code> and <code>DVD</code> inherit from <code>LibraryItem</code></td></tr>
+                <tr><td><strong>Generalisation</strong></td><td>Finding what several classes share and moving it up into one superclass.</td><td>Title, id and loan status pulled out of <code>Book</code> and <code>DVD</code> into <code>LibraryItem</code></td></tr>
+                <tr><td><strong>Polymorphism</strong></td><td>One message, many forms: different objects respond to the same method call in their own way.</td><td><code>describe()</code> gives a different result for a book and a DVD</td></tr>
+              </tbody>
+            </table>
           </div>
 
-          <!-- Encapsulation Access Control Diagram -->
+          <h3>Objects and Classes</h3>
+          <p>A <strong>class</strong> is a blueprint. It lists the <strong>attributes</strong> (the data each object holds) and the <strong>methods</strong> (the behaviour each object can perform). An <strong>object</strong> is one instance built from that blueprint while the program runs. Two objects of the same class have the same attributes and methods, but each keeps its own values. The <strong>constructor</strong> (<code>__init__</code> in Python) runs when an object is created and sets its starting state. Inside a method, <code>self</code> means "the object this method was called on".</p>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — a class and two objects</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Book</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, title, author):   <span class="cm"># constructor: runs when an object is created</span>
+        self.title = title               <span class="cm"># attributes: this object's data</span>
+        self.author = author
+        self.on_loan = <span class="kw">False</span>
+
+    <span class="kw">def</span> <span class="fn">describe</span>(self):                  <span class="cm"># method: behaviour</span>
+        status = <span class="str">"on loan"</span> <span class="kw">if</span> self.on_loan <span class="kw">else</span> <span class="str">"available"</span>
+        <span class="kw">return</span> <span class="str">f"{self.title} by {self.author} [{status}]"</span>
+
+
+book1 = Book(<span class="str">"River Road"</span>, <span class="str">"A. Nguyen"</span>)  <span class="cm"># object 1</span>
+book2 = Book(<span class="str">"Salt Country"</span>, <span class="str">"M. Okafor"</span>)  <span class="cm"># object 2</span>
+book1.on_loan = <span class="kw">True</span>                     <span class="cm"># changes book1 only</span>
+
+print(book1.describe())
+print(book2.describe())
+print(book1 <span class="kw">is</span> book2)                    <span class="cm"># two separate objects</span></code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>River Road by A. Nguyen [on loan]
+Salt Country by M. Okafor [available]
+False</code></pre>
+          </div>
+
+          <p>Attributes set inside <code>__init__</code> belong to each object (instance attributes). A value written directly in the class body, such as <code>MAX_LOANS = 3</code> in the full program later, belongs to the class and is shared by every object (a class attribute). Use a class attribute for a rule that is the same for everyone and an instance attribute for anything that differs between objects.</p>
+
+          <h3>Encapsulation</h3>
+          <p><strong>Encapsulation</strong> bundles an object's data with the methods that operate on it, and controls how outside code can reach that data. The aim is that an object can never be left in an invalid state by accident: every change goes through a method that can check it first. In Python, a leading underscore (<code>_name</code>) is a convention meaning "internal, please don't touch", and a double underscore (<code>__loans</code>) triggers <em>name mangling</em>, which renames the attribute to <code>_Member__loans</code> so it is awkward to reach by accident. Python does not have a true <code>private</code> keyword as Java and C# do, so private here is a strong signal rather than a lock. What matters for the HSC is the design intent: keep data hidden and expose a small, controlled interface.</p>
+          <p>A <strong>getter</strong> reads a value and a <strong>setter</strong> changes it, usually after validating it. Python's <code>@property</code> decorator lets you write them so that outside code still uses simple attribute syntax.</p>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — private data, a getter and a validating setter</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Member</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, name, email):
+        self._name = name
+        self.email = email              <span class="cm"># goes through the setter below</span>
+        self.__loans = []               <span class="cm"># private list of borrowed items</span>
+
+    @property
+    <span class="kw">def</span> <span class="fn">email</span>(self):                    <span class="cm"># getter</span>
+        <span class="kw">return</span> self._email
+
+    @email.setter
+    <span class="kw">def</span> <span class="fn">email</span>(self, value):             <span class="cm"># setter with validation</span>
+        <span class="kw">if</span> <span class="str">"@"</span> <span class="kw">not</span> <span class="kw">in</span> value:
+            <span class="kw">raise</span> ValueError(<span class="str">"email must contain @"</span>)
+        self._email = value
+
+    @property
+    <span class="kw">def</span> <span class="fn">loan_count</span>(self):               <span class="cm"># read-only: there is no setter</span>
+        <span class="kw">return</span> len(self.__loans)
+
+
+m = Member(<span class="str">"Priya"</span>, <span class="str">"priya@example.com"</span>)
+m.email = <span class="str">"priya.s@example.com"</span>         <span class="cm"># allowed: passes validation</span>
+print(m.email, m.loan_count)
+
+<span class="kw">try</span>:
+    m.email = <span class="str">"not-an-email"</span>            <span class="cm"># rejected by the setter</span>
+<span class="kw">except</span> ValueError <span class="kw">as</span> err:
+    print(<span class="str">"Rejected:"</span>, err)
+
+<span class="kw">try</span>:
+    m.loan_count = <span class="num">5</span>                    <span class="cm"># no setter, so this is refused</span>
+<span class="kw">except</span> AttributeError <span class="kw">as</span> err:
+    print(<span class="str">"Refused:"</span>, err)
+
+print(hasattr(m, <span class="str">"__loans"</span>), hasattr(m, <span class="str">"_Member__loans"</span>))   <span class="cm"># name mangling in action</span></code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>priya.s@example.com 0
+Rejected: email must contain @
+Refused: property 'loan_count' of 'Member' object has no setter
+False True</code></pre>
+          </div>
+
+          <p>Python's exact error wording differs slightly between versions (for example, the abstract-class message below), but the type of error is the same.</p>
+
+          <div class="callout warning"><strong>Encapsulation is not the same as abstraction</strong> Encapsulation is about <em>protecting data</em>: bundling it with its methods and restricting access. Abstraction is about <em>simplifying the view</em>: showing only what a user of the class needs. A car's locked bonnet is encapsulation; the steering wheel and pedals that let you drive without understanding the engine are abstraction. Students often swap the two, so write the difference into your answer.</div>
+
           <figure class="figure">
           <figcaption class="figure-head">
             <p class="figure-kicker"><span class="figure-kind">Concept diagram</span></p>
@@ -268,7 +340,97 @@
           </div>
         </figure>
 
-          <!-- OOP Class Diagram -->
+          <h3>Abstraction</h3>
+          <p><strong>Abstraction</strong> means modelling only the details that matter for the problem and hiding the rest behind a simple interface. A <code>Member</code> class for a library needs a name and an email address; it does not need height or favourite colour. A user of the class calls <code>borrow(item)</code> without knowing how the loan list is stored, and the developer can change the storage from a list to a database later without breaking any calling code. This is why abstraction reduces complexity and allows the internal implementation to change without affecting the parts of the program that use it.</p>
+          <p>An <strong>abstract class</strong> takes this further. It defines a method that every subclass must provide, but does not say how, and it cannot be instantiated itself. Python provides this through the <code>abc</code> module.</p>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — an abstract class defines the interface, subclasses supply the detail</span></div>
+            <pre><code class="language-python"><span class="kw">from</span> abc <span class="kw">import</span> ABC, abstractmethod
+
+
+<span class="kw">class</span> <span class="fn">LibraryItem</span>(ABC):
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, title):
+        self._title = title
+
+    @abstractmethod
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self):                <span class="cm"># a promise: every item type must answer this</span>
+        ...
+
+
+<span class="kw">class</span> <span class="fn">Book</span>(LibraryItem):
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self):
+        <span class="kw">return</span> <span class="num">14</span>
+
+
+<span class="kw">class</span> <span class="fn">DVD</span>(LibraryItem):
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self):
+        <span class="kw">return</span> <span class="num">7</span>
+
+
+print(Book(<span class="str">"River Road"</span>).loan_days(), DVD(<span class="str">"Star Coast"</span>).loan_days())
+
+<span class="kw">try</span>:
+    LibraryItem(<span class="str">"Something"</span>)            <span class="cm"># an abstract idea, not a real item</span>
+<span class="kw">except</span> TypeError <span class="kw">as</span> err:
+    print(<span class="str">"TypeError:"</span>, err)</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>14 7
+TypeError: Can't instantiate abstract class LibraryItem with abstract method loan_days</code></pre>
+          </div>
+
+          <h3>Inheritance</h3>
+          <p><strong>Inheritance</strong> lets a new class (the <strong>subclass</strong> or child) take on the attributes and methods of an existing class (the <strong>superclass</strong> or parent) and then add or change behaviour. It models an <em>is-a</em> relationship: a Book <em>is a</em> library item. A subclass can <em>add</em> new attributes and methods (a <code>Book</code> has an author), <em>reuse</em> inherited ones unchanged (<code>check_out()</code>), or <em>override</em> a method by defining one with the same name. Inside an overriding method, <code>super()</code> calls the parent's version so the subclass can extend it rather than repeat it.</p>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — a subclass reusing, extending and overriding</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">LibraryItem</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, item_id, title):
+        self._item_id = item_id
+        self._title = title
+        self._on_loan = <span class="kw">False</span>
+
+    <span class="kw">def</span> <span class="fn">check_out</span>(self):
+        <span class="kw">if</span> self._on_loan:
+            <span class="kw">return</span> <span class="kw">False</span>
+        self._on_loan = <span class="kw">True</span>
+        <span class="kw">return</span> <span class="kw">True</span>
+
+    <span class="kw">def</span> <span class="fn">describe</span>(self):
+        status = <span class="str">"on loan"</span> <span class="kw">if</span> self._on_loan <span class="kw">else</span> <span class="str">"available"</span>
+        <span class="kw">return</span> <span class="str">f"{self._title} [{status}]"</span>
+
+
+<span class="kw">class</span> <span class="fn">Book</span>(LibraryItem):
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, item_id, title, author):
+        super().__init__(item_id, title)   <span class="cm"># reuse the parent's constructor</span>
+        self._author = author              <span class="cm"># add something new</span>
+
+    <span class="kw">def</span> <span class="fn">describe</span>(self):                    <span class="cm"># override, but extend using super()</span>
+        <span class="kw">return</span> <span class="str">f"{super().describe()} by {self._author}"</span>
+
+
+<span class="kw">class</span> <span class="fn">ReferenceBook</span>(Book):
+    <span class="kw">def</span> <span class="fn">check_out</span>(self):                   <span class="cm"># override completely: never lendable</span>
+        <span class="kw">return</span> <span class="kw">False</span>
+
+
+atlas = ReferenceBook(<span class="str">"R1"</span>, <span class="str">"Atlas of Australia"</span>, <span class="str">"P. Smith"</span>)
+print(atlas.check_out())                   <span class="cm"># ReferenceBook's own version</span>
+print(atlas.describe())                    <span class="cm"># Book's version, which calls LibraryItem's</span>
+print(isinstance(atlas, Book), isinstance(atlas, LibraryItem))</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>False
+Atlas of Australia [available] by P. Smith
+True True</code></pre>
+          </div>
+
+          <p>Use inheritance only when the is-a test is honest. A <code>Member</code> is not a kind of <code>LibraryItem</code>, so it must not inherit from it. When the relationship is <em>has-a</em> (a library has items; a member has loans), use <strong>composition</strong>: hold the other object in an attribute. Deep chains of inheritance are harder to read than shallow ones, so two or three levels is plenty for a school project.</p>
+
           <figure class="figure">
           <figcaption class="figure-head">
             <p class="figure-kicker"><span class="figure-kind">Class diagram</span></p>
@@ -279,10 +441,116 @@
             <div class="anim" data-anim="cd-vehicle"></div>
           </div>
           <div class="figure-notes">
-            <div><h5>What to notice</h5><ul><li>Each class box has three parts: name, attributes, methods.</li><li>The hollow triangle points to the parent class (inheritance).</li><li>The plain arrow with 1 and 1 is a relationship: each vehicle has exactly one engine.</li></ul></div>
+            <div><h5>What to notice</h5><ul><li>Each class box has three parts: name, attributes, methods.</li><li>The filled arrowhead points to the parent class (inheritance), as in the NESA Course Specifications.</li><li>The plain arrow with 1 and 1 is a relationship: each vehicle has exactly one engine.</li></ul></div>
             <p class="figure-try"><strong>Try this</strong>Add an ElectricCar class. Which class should it inherit from, and what attribute would it add?</p>
           </div>
         </figure>
+
+          <h3>Generalisation</h3>
+          <p><strong>Generalisation</strong> is the design activity that produces a superclass. You notice that several classes repeat the same attributes and methods, so you move the shared parts up into a new parent class and leave only the differences in each child. Inheritance is the mechanism; generalisation is the reasoning that decides <em>what</em> to inherit. The opposite direction, adding a more specific subclass to an existing class, is <strong>specialisation</strong>.</p>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — before: Book and DVD repeat the same code</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Book</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, item_id, title, author):
+        self._item_id = item_id          <span class="cm"># duplicated</span>
+        self._title = title              <span class="cm"># duplicated</span>
+        self._on_loan = <span class="kw">False</span>            <span class="cm"># duplicated</span>
+        self._author = author
+
+<span class="kw">class</span> <span class="fn">DVD</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, item_id, title, minutes):
+        self._item_id = item_id          <span class="cm"># duplicated</span>
+        self._title = title              <span class="cm"># duplicated</span>
+        self._on_loan = <span class="kw">False</span>            <span class="cm"># duplicated</span>
+        self._minutes = minutes</code></pre>
+          </div>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — after: the shared parts are generalised into LibraryItem</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">LibraryItem</span>:                       <span class="cm"># the generalisation</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, item_id, title):
+        self._item_id = item_id
+        self._title = title
+        self._on_loan = <span class="kw">False</span>
+
+<span class="kw">class</span> <span class="fn">Book</span>(LibraryItem):                 <span class="cm"># only what makes a Book different</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, item_id, title, author):
+        super().__init__(item_id, title)
+        self._author = author
+
+<span class="kw">class</span> <span class="fn">DVD</span>(LibraryItem):                  <span class="cm"># only what makes a DVD different</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, item_id, title, minutes):
+        super().__init__(item_id, title)
+        self._minutes = minutes</code></pre>
+          </div>
+
+          <p>The benefit is that a rule such as "an item cannot be checked out twice" is written once. Fix a bug in <code>LibraryItem</code> and every subclass is fixed as well.</p>
+
+          <h3>Polymorphism</h3>
+          <p><strong>Polymorphism</strong> means "many forms". The same message (method call) can be sent to objects of different classes, and each responds in the way that suits its own class. The calling code does not need to check what type it has. Python gives you polymorphism in two ways:</p>
+          <ul>
+            <li><strong>Overriding (inheritance-based polymorphism):</strong> subclasses provide their own version of a method that the superclass defines. Python decides which version to run when the call happens, by looking at the class of the object receiving the message.</li>
+            <li><strong>Duck typing:</strong> if an object has the method being called, it works, whatever its class. "If it walks like a duck and quacks like a duck, it is treated as a duck." The classes do not need a shared parent.</li>
+          </ul>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — one loop, many forms</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">LibraryItem</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, title):
+        self._title = title
+
+    <span class="kw">def</span> <span class="fn">describe</span>(self):
+        <span class="kw">return</span> <span class="str">f"{self._title}"</span>
+
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self):
+        <span class="kw">return</span> <span class="num">0</span>
+
+
+<span class="kw">class</span> <span class="fn">Book</span>(LibraryItem):
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self):                   <span class="cm"># override</span>
+        <span class="kw">return</span> <span class="num">14</span>
+
+    <span class="kw">def</span> <span class="fn">describe</span>(self):
+        <span class="kw">return</span> <span class="str">f"Book: {self._title}"</span>
+
+
+<span class="kw">class</span> <span class="fn">DVD</span>(LibraryItem):
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self):                   <span class="cm"># override</span>
+        <span class="kw">return</span> <span class="num">7</span>
+
+    <span class="kw">def</span> <span class="fn">describe</span>(self):
+        <span class="kw">return</span> <span class="str">f"DVD: {self._title}"</span>
+
+
+<span class="kw">class</span> <span class="fn">MobileLibraryVan</span>:                    <span class="cm"># NOT a LibraryItem: no shared parent</span>
+    <span class="kw">def</span> <span class="fn">describe</span>(self):
+        <span class="kw">return</span> <span class="str">"Van: Riverbend Mobile Library"</span>
+
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self):
+        <span class="kw">return</span> <span class="num">3</span>
+
+
+things = [Book(<span class="str">"River Road"</span>), DVD(<span class="str">"Star Coast"</span>), MobileLibraryVan()]
+<span class="kw">for</span> thing <span class="kw">in</span> things:                       <span class="cm"># the loop never checks the type</span>
+    print(thing.describe(), <span class="str">"-&gt;"</span>, thing.loan_days(), <span class="str">"days"</span>)</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>Book: River Road -&gt; 14 days
+DVD: Star Coast -&gt; 7 days
+Van: Riverbend Mobile Library -&gt; 3 days</code></pre>
+          </div>
+
+          <p>The <code>MobileLibraryVan</code> works in the loop purely by duck typing: it has <code>describe()</code> and <code>loan_days()</code>, so the loop accepts it. The benefit is that new types can be added without changing existing code that sends the messages. Note that Python does not support <em>method overloading</em> (several methods with one name but different parameter lists) in the way Java does. The last definition wins, and you use default arguments instead. On the HSC, "polymorphism" almost always means overriding.</p>
+
+          <div class="oop-widget" data-oop="resolve">
+            <h4>Method lookup explorer</h4>
+            <p class="oop-lead">Pick an object and a message, then trace which class's method actually runs. Switch overrides off to see Python fall back to the parent.</p>
+            <noscript><p>This widget needs JavaScript. In short: Python looks in the object's own class first, then each parent in turn, and runs the first matching method it finds.</p></noscript>
+          </div>
+
+          <div class="callout assessor"><strong>Exam tip: "Apply"</strong> An <em>apply</em> question wants you to use the feature on a given situation, not just define it. Name the feature, point to where it appears in the scenario or code, and say what benefit it gives there. For example, for "explain the benefit of encapsulation in the Member class": <em>"Encapsulation keeps the loan list private so it can only change through borrow() and give_back(). Those methods enforce the three-item limit, so no other code can give a member four loans by mistake, and the list could be replaced by a database without changing any calling code."</em> A one-line definition alone earns few marks. Common errors: swapping encapsulation and abstraction, describing inheritance as "copying code", and saying polymorphism "means many classes".</div>
 
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
@@ -292,28 +560,6 @@
             <p class="video-box-note">A fast, beginner-friendly tour of the four pillars — <strong>encapsulation</strong>, <strong>abstraction</strong>, <strong>inheritance</strong>, and <strong>polymorphism</strong> — with simple real-world analogies.</p>
           </div>
 
-<div class="code-block">
-            <div class="code-header"><span class="code-lang">Python — Applying OOP Key Features</span></div>
-            <pre><code><span class="kw">class</span> <span class="fn">Account</span>: <span class="cm"># Class definition (blueprint)</span>
-    <span class="kw">def</span> <span class="fn">__init__</span>(self, owner, balance):
-        self.owner = owner
-        self.__balance = balance <span class="cm"># Encapsulation (private)</span>
-
-    <span class="kw">def</span> <span class="fn">get_balance</span>(self): <span class="cm"># Abstraction - interface</span>
-        <span class="kw">return</span> self.__balance
-
-<span class="kw">class</span> <span class="fn">SavingsAccount</span>(Account): <span class="cm"># Inheritance</span>
-    <span class="kw">def</span> <span class="fn">apply_interest</span>(self):
-        <span class="cm"># Specialised behaviour</span>
-        <span class="kw">pass</span>
-
-acc1 = Account(<span class="str">"Alice"</span>, 1000) <span class="cm"># Object instance</span>
-acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
-
-<span class="kw">def</span> <span class="fn">display_account</span>(acc): <span class="cm"># Polymorphism</span>
-    print(f<span class="str">"Owner: {acc.owner}"</span>)</code></pre>
-          </div>
-
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
             <ul class="video-list">
@@ -321,6 +567,7 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
             </ul>
             <p class="video-box-note">A clear, hands-on introduction to <strong>classes</strong> and <strong>objects</strong> — the core idea behind object-oriented programming.</p>
           </div>
+
         </section>
 
         <hr class="divider" />
@@ -330,7 +577,7 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Compare</strong> procedural programming with OOP</em></p>
 
-          <p>Both paradigms can solve the same problem. The difference is how the code is organised: <strong>procedural</strong> programs are a sequence of functions that act on data passed around between them, while <strong>OOP</strong> programs are made of objects that keep their data and the methods that use it together.</p>
+          <p>Both paradigms can solve the same problem. The difference is how the code is organised: <strong>procedural</strong> programs are a sequence of functions that act on data passed between them, while <strong>OOP</strong> programs are made of objects that keep their data and the methods that use it together. Procedural programming is one style of the <em>imperative</em> paradigm (statements that change state, organised into subroutines), so the two are related rather than opposites: an OOP method body is itself imperative code.</p>
 
           <div class="table-wrap">
             <table>
@@ -349,24 +596,33 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
                 </tr>
                 <tr>
                   <td><strong>Data Handling</strong></td>
-                  <td>Data is separate and often global.</td>
-                  <td>Data and methods are encapsulated.</td>
+                  <td>Data is kept apart from the functions, passed as parameters or shared as global variables.</td>
+                  <td>Data and methods are encapsulated together; access can be restricted.</td>
                 </tr>
                 <tr>
                   <td><strong>Reusability</strong></td>
-                  <td>Limited; relies on copying functions.</td>
-                  <td>High; via <strong>inheritance</strong> and classes.</td>
+                  <td>Reuse through functions and modules; supporting a new kind of data usually means editing or copying functions.</td>
+                  <td>Reuse through classes, <strong>inheritance</strong> and composition; a new kind of object can be added as a subclass.</td>
                 </tr>
                 <tr>
                   <td><strong>Maintenance</strong></td>
-                  <td>Challenging; one change ripples through.</td>
-                  <td>Easier; changes are isolated in classes.</td>
+                  <td>A change to how data is stored can ripple through every function that touches it.</td>
+                  <td>Changes to internal details stay inside the class as long as its interface stays the same.</td>
+                </tr>
+                <tr>
+                  <td><strong>Modelling</strong></td>
+                  <td>Models the <em>process</em>: what happens, in what order.</td>
+                  <td>Models the <em>things</em> in the problem and what each is responsible for.</td>
+                </tr>
+                <tr>
+                  <td><strong>Best suited to</strong></td>
+                  <td>Short scripts, calculations and pipelines with a clear start-to-finish flow.</td>
+                  <td>Larger systems with several kinds of entity that have their own data and behaviour.</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <!-- OOP vs Procedural Comparison Diagram -->
           <figure class="figure">
           <figcaption class="figure-head">
             <p class="figure-kicker"><span class="figure-kind">Concept diagram</span></p>
@@ -383,18 +639,18 @@ acc2 = SavingsAccount(<span class="str">"Bob"</span>, 2000)
         </figure>
 
           <h3>The same task, two ways</h3>
-          <div class="code-block">
+<div class="code-block">
             <div class="code-header"><span class="code-lang">Python — procedural</span></div>
-            <pre><code>balance = <span class="str">100</span>
+            <pre><code class="language-python">balance = <span class="num">100</span>
 
 <span class="kw">def</span> <span class="fn">withdraw</span>(balance, amount):
     <span class="kw">return</span> balance - amount
 
-balance = withdraw(balance, <span class="str">30</span>)   <span class="cm"># any code can change balance directly</span></code></pre>
+balance = withdraw(balance, <span class="num">30</span>)   <span class="cm"># any code can change balance directly</span></code></pre>
           </div>
-          <div class="code-block">
+<div class="code-block">
             <div class="code-header"><span class="code-lang">Python — object-oriented</span></div>
-            <pre><code><span class="kw">class</span> <span class="fn">Account</span>:
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Account</span>:
     <span class="kw">def</span> <span class="fn">__init__</span>(self, balance):
         self.__balance = balance       <span class="cm"># hidden inside the object</span>
 
@@ -402,11 +658,90 @@ balance = withdraw(balance, <span class="str">30</span>)   <span class="cm"># an
         <span class="kw">if</span> amount &lt;= self.__balance:     <span class="cm"># the object protects its own data</span>
             self.__balance -= amount
 
-acc = Account(<span class="str">100</span>)
-acc.withdraw(<span class="str">30</span>)</code></pre>
+acc = Account(<span class="num">100</span>)
+acc.withdraw(<span class="num">30</span>)</code></pre>
           </div>
 
+          <p>Notice that the procedural <code>withdraw()</code> happily returns a negative balance, and nothing stops other code from writing <code>balance = -500</code>. In the OOP version the rule lives beside the data it protects.</p>
+
+          <h3>What changes when a new type is added?</h3>
+          <p>The real difference shows up when the program has to grow. At Riverbend Library, books are lent for 14 days. The library now adds DVDs, lent for 7 days. Compare the two designs.</p>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — procedural: every function must know about every item type</span></div>
+            <pre><code class="language-python"><span class="kw">def</span> <span class="fn">loan_days</span>(item):
+    <span class="kw">if</span> item[<span class="str">"type"</span>] == <span class="str">"book"</span>:
+        <span class="kw">return</span> <span class="num">14</span>
+    <span class="kw">elif</span> item[<span class="str">"type"</span>] == <span class="str">"dvd"</span>:            <span class="cm"># edited to add DVDs</span>
+        <span class="kw">return</span> <span class="num">7</span>
+
+<span class="kw">def</span> <span class="fn">describe</span>(item):
+    <span class="kw">if</span> item[<span class="str">"type"</span>] == <span class="str">"book"</span>:
+        <span class="kw">return</span> <span class="str">f"Book: {item['title']}"</span>
+    <span class="kw">elif</span> item[<span class="str">"type"</span>] == <span class="str">"dvd"</span>:            <span class="cm"># edited again</span>
+        <span class="kw">return</span> <span class="str">f"DVD: {item['title']} ({item['minutes']} min)"</span>
+
+items = [{<span class="str">"type"</span>: <span class="str">"book"</span>, <span class="str">"title"</span>: <span class="str">"River Road"</span>},
+         {<span class="str">"type"</span>: <span class="str">"dvd"</span>, <span class="str">"title"</span>: <span class="str">"Star Coast"</span>, <span class="str">"minutes"</span>: <span class="num">95</span>}]
+<span class="kw">for</span> item <span class="kw">in</span> items:
+    print(describe(item), loan_days(item))</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>Book: River Road 14
+DVD: Star Coast (95 min) 7</code></pre>
+          </div>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — object-oriented: a new type is a new class, existing code is untouched</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Book</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, title):
+        self.title = title
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self):
+        <span class="kw">return</span> <span class="num">14</span>
+    <span class="kw">def</span> <span class="fn">describe</span>(self):
+        <span class="kw">return</span> <span class="str">f"Book: {self.title}"</span>
+
+<span class="kw">class</span> <span class="fn">DVD</span>:                                 <span class="cm"># the only new code</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, title, minutes):
+        self.title = title
+        self.minutes = minutes
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self):
+        <span class="kw">return</span> <span class="num">7</span>
+    <span class="kw">def</span> <span class="fn">describe</span>(self):
+        <span class="kw">return</span> <span class="str">f"DVD: {self.title} ({self.minutes} min)"</span>
+
+items = [Book(<span class="str">"River Road"</span>), DVD(<span class="str">"Star Coast"</span>, <span class="num">95</span>)]
+<span class="kw">for</span> item <span class="kw">in</span> items:                         <span class="cm"># this loop did not change</span>
+    print(item.describe(), item.loan_days())</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>Book: River Road 14
+DVD: Star Coast (95 min) 7</code></pre>
+          </div>
+
+          <p>In the procedural version, adding a third type (say, an audio book) means finding and editing every function that has an <code>if</code> on <code>type</code>, and forgetting one causes a bug. In the OOP version it means writing one new class. That is the practical meaning of "easier to extend and maintain".</p>
+
+          <h3>Other paradigms in the Course Specifications</h3>
+          <p>The Course Specifications name four paradigms. You are expected to know what each involves, and this course asks you to compare procedural code with OOP specifically. In one line each:</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Paradigm</th><th>Organised around</th><th>Typical building blocks</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Imperative / procedural</strong></td><td>Commands that change state, grouped into subroutines</td><td>Variables, assignment, control structures, subroutines</td></tr>
+                <tr><td><strong>Object-oriented</strong></td><td>Objects that hold state and respond to messages</td><td>Classes, objects, inheritance, polymorphism, encapsulation, message passing</td></tr>
+                <tr><td><strong>Functional</strong></td><td>Functions applied to values, avoiding shared changing state</td><td>Function calls, recursion, functions as first-class values, collections</td></tr>
+                <tr><td><strong>Logic</strong></td><td>Facts and rules from which the system works out answers</td><td>Facts, rules, queries</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Python supports several of these in one program, so a real project often mixes them: OOP for the overall structure, with small functional-style helpers inside methods.</p>
+
           <div class="callout success"><strong>HSC writing sample</strong> <em>"Procedural programming suits a short script that converts a file once, because a few functions are quicker to write than classes. OOP suits a school management system, because classes such as Student and Teacher keep each type of data with the methods that change it, making the system easier to extend and maintain as it grows."</em></div>
+
+          <div class="callout assessor"><strong>Exam tip: "Compare"</strong> A <em>compare</em> question wants similarities and differences on the same criteria, not two separate descriptions. Choose two or three criteria (how data is handled, how new features are added, how easy it is to maintain), then write one sentence per criterion that uses a linking word such as <em>whereas</em> or <em>in contrast</em>. Add a concrete example from the scenario. Both paradigms can solve the problem, so avoid saying OOP is "better": say which suits the situation and why. A common mistake is listing OOP features without saying what the procedural version does.</div>
+
         </section>
 
         <hr class="divider" />
@@ -416,10 +751,104 @@ acc.withdraw(<span class="str">30</span>)</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-11-01, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Use</strong> data flow diagrams, structure charts and class diagrams to represent a system</em></p>
 
+          <p>The Course Specifications give you three modelling tools. Each shows a different view of the same system, so choosing the right one is part of the skill. All three use NESA's notation, summarised on the <a href="course-tools.html">Course Tools &amp; Specs</a> page.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Tool</th><th>Question it answers</th><th>Use it in OOP to show</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Class diagram</strong> (Course Specifications p. 9)</td><td>What are the classes and how are they related?</td><td>Classes with their attributes and methods, inheritance, and relationships with multiplicities. The primary tool for OOP.</td></tr>
+                <tr><td><strong>Data flow diagram</strong> (p. 5)</td><td>Where does data come from, where does it go and how is it changed?</td><td>How data moves between external entities, processes and data stores, before you decide which classes will do the work.</td></tr>
+                <tr><td><strong>Structure chart</strong> (p. 7)</td><td>How is the program broken into modules and what do they pass to each other?</td><td>The calls and parameters between modules or methods, such as a mainline calling subroutines. Common in top-down design.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Class diagrams: NESA notation</h3>
+          <p>A class diagram models <strong>classes</strong>, their <strong>attributes</strong> and <strong>methods</strong>, and the <strong>relationships</strong> between classes. It shows the structure of the system, not the order in which things happen. The symbols in the Course Specifications are:</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Symbol</th><th>Meaning</th></tr></thead>
+              <tbody>
+                <tr><td>Box in three parts</td><td>Class name at the top, attributes in the middle, methods at the bottom.</td></tr>
+                <tr><td>Line with a closed triangle head</td><td><strong>Inheritance</strong>. The triangle touches the <em>parent</em> class; the line starts at the child.</td></tr>
+                <tr><td>Line with an open arrow head, and a label</td><td>A <strong>relationship</strong> between two classes, named with a verb such as "borrows".</td></tr>
+                <tr><td><code>1..1</code> &nbsp; <code>0..*</code> &nbsp; <code>1..*</code> &nbsp; <code>0..1</code> &nbsp; <code>m..n</code></td><td>Multiplicity: only one; zero or more; one or more; zero or only one; at least m and at most n.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Class diagram</span></p>
+            <h4 class="figure-title">Class diagram: the Riverbend Library system</h4>
+            <p class="figure-lead">The running example from this page: three item classes, a member and the library.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--still">
+            <div class="anim" data-anim="oop-loans"></div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Book and DVD point to LibraryItem with the triangle at the parent, and ReferenceBook points to Book: a three-level hierarchy.</li><li>Only the differences appear in the child boxes. Book does not repeat itemId or title, because it inherits them.</li><li>0..1 at the Member end and 0..3 at the LibraryItem end together say: an item is on loan to at most one member, and a member has up to three items.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Add a Fine class. A member can have zero or more fines, and each fine belongs to exactly one member. Which multiplicity goes at which end?</p>
+          </div>
+        </figure>
+
+          <h3>Reading multiplicities</h3>
+          <p>A multiplicity is written at the end of the line next to the class it counts, and answers "for <em>one</em> object at the other end, how many objects of this class?". Read each line in both directions and say it as a sentence. That is also how to check your own diagram.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>On the diagram</th><th>Read as</th></tr></thead>
+              <tbody>
+                <tr><td>Library <code>1..1</code> holds <code>0..*</code> LibraryItem</td><td>One library holds zero or more items. Each item belongs to exactly one library.</td></tr>
+                <tr><td>Member <code>0..1</code> borrows <code>0..3</code> LibraryItem</td><td>A member borrows between zero and three items. An item is borrowed by zero or one member (zero when it is on the shelf).</td></tr>
+                <tr><td>Student <code>0..*</code> studies <code>1..*</code> Subject (Course Specifications example)</td><td>A student must study one or more subjects. A subject can have zero or more students enrolled.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>From diagram to code</h3>
+          <p>A class diagram is a plan for code, and the mapping is direct. Each box becomes a class, each attribute becomes an instance attribute, each method becomes a method, an inheritance arrow becomes the parent in brackets, and a relationship with a multiplicity becomes an attribute that holds the other object or a collection of them. The upper limit of a multiplicity (the <code>3</code> in <code>0..3</code>) becomes a check in the code.</p>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — the class diagram as a code skeleton</span></div>
+            <pre><code class="language-python"><span class="kw">from</span> abc <span class="kw">import</span> ABC, abstractmethod
+
+<span class="kw">class</span> <span class="fn">LibraryItem</span>(ABC):                    <span class="cm"># box: LibraryItem</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, item_id, title):
+        self._item_id = item_id            <span class="cm"># attribute: itemId</span>
+        self._title = title                <span class="cm"># attribute: title</span>
+        self._on_loan = <span class="kw">False</span>              <span class="cm"># attribute: onLoan</span>
+
+    @abstractmethod
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self): ...               <span class="cm"># method: loanDays()</span>
+
+<span class="kw">class</span> <span class="fn">Book</span>(LibraryItem):                   <span class="cm"># inheritance arrow: Book -&gt; LibraryItem</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, item_id, title, author):
+        super().__init__(item_id, title)
+        self._author = author              <span class="cm"># attribute only Book has</span>
+
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self):
+        <span class="kw">return</span> <span class="num">14</span>
+
+<span class="kw">class</span> <span class="fn">ReferenceBook</span>(Book):                 <span class="cm"># inheritance arrow: ReferenceBook -&gt; Book</span>
+    <span class="kw">pass</span>
+
+<span class="kw">class</span> <span class="fn">Member</span>:
+    MAX_LOANS = <span class="num">3</span>                          <span class="cm"># multiplicity 0..3 becomes a limit</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self):
+        self.__loans = []                  <span class="cm"># relationship "borrows": zero or more items</span>
+
+print([c.__name__ <span class="kw">for</span> c <span class="kw">in</span> ReferenceBook.__mro__])   <span class="cm"># inheritance chain, child first (ABC and object are Python's own)</span></code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>['ReferenceBook', 'Book', 'LibraryItem', 'ABC', 'object']</code></pre>
+          </div>
+
+          <h3>Data flow diagrams and structure charts in an OOP project</h3>
           <ul>
-            <li><strong>Class Diagrams (p. 9):</strong> The primary tool for OOP. It represents classes as three-part boxes (Name, Attributes, Methods) and uses solid lines with hollow arrows to show <strong>inheritance</strong>.</li>
-            <li><strong>Data Flow Diagrams (p. 5):</strong> Useful for showing how data moves between objects and external entities, focusing on the "transformation" of data.</li>
-            <li><strong>Structure Charts (p. 7):</strong> While often procedural, they are used in OOP to map out complex method calls and parameter passing between modules.</li>
+            <li><strong>Data flow diagram (Course Specifications p. 5):</strong> useful early, for showing how data moves between external entities (a member), processes (Check out item) and data stores (Loans). It shows the <em>transformation</em> of data and does not mention classes, so it helps you discover what the classes must do.</li>
+            <li><strong>Structure chart (Course Specifications p. 7):</strong> a hierarchy of modules with the data and flags passed between them. In OOP it is a good way to plan the calls inside one operation, for example a <code>checkout()</code> method that calls <code>find_member()</code>, <code>find_item()</code> and <code>borrow()</code>.</li>
           </ul>
 
           <figure class="figure">
@@ -437,7 +866,7 @@ acc.withdraw(<span class="str">30</span>)</code></pre>
           </div>
         </figure>
 
-        <figure class="figure">
+          <figure class="figure">
           <figcaption class="figure-head">
             <p class="figure-kicker"><span class="figure-kind">Data flow diagram</span></p>
             <h4 class="figure-title">Data flow diagram: canteen ordering (Level 1)</h4>
@@ -453,8 +882,24 @@ acc.withdraw(<span class="str">30</span>)</code></pre>
         </figure>
 
           <div class="callout info">
-            <p><strong>Online Tool Suggestion:</strong> Try <strong>Lucidchart</strong>, <strong>Draw.io</strong>, or <strong>Mermaid.js</strong> to create professional UML Class Diagrams and DFDs.</p>
+            <p><strong>Online Tool Suggestion:</strong> Try <strong>Lucidchart</strong>, <strong>Draw.io</strong>, or <strong>Mermaid.js</strong> to create professional UML Class Diagrams and DFDs. Tools may add UML extras (visibility signs, diamonds for composition) that are not in the Course Specifications; in an assessment, stick to NESA's symbols.</p>
           </div>
+
+          <h3>Which diagram for which question?</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Situation</th><th>Best tool</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td>"Show how the library's classes are related."</td><td>Class diagram</td><td>Structure: classes, inheritance and multiplicities.</td></tr>
+                <tr><td>"Show how a loan request flows from the member to the records."</td><td>Data flow diagram</td><td>Movement of data between entities, processes and stores.</td></tr>
+                <tr><td>"Show how the checkout task is divided into modules."</td><td>Structure chart</td><td>Module hierarchy with the data passed between modules.</td></tr>
+                <tr><td>"Show the order in which two objects exchange messages."</td><td>Sequence diagram (used on this page for message passing; not one of the three required tools)</td><td>Time order of calls between objects.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout assessor"><strong>Exam tip: "Use" and drawing a class diagram</strong> A <em>use</em> question asks you to draw or complete the diagram for a described system. Work in this order: (1) underline the nouns in the scenario and pick the classes; (2) draw each as a three-part box; (3) put in only the attributes and methods the scenario needs, with types on attributes; (4) draw an inheritance arrow from each child <em>to</em> its parent with the triangle at the parent; (5) draw and <strong>label</strong> a relationship line for every other link and put a multiplicity at <em>both</em> ends. Check each relationship by reading it aloud in both directions. Common mistakes: the inheritance arrow pointing the wrong way, repeating the parent's attributes in the child box, a relationship line with no label or with a multiplicity at one end only, and using "many" instead of <code>0..*</code> or <code>1..*</code>. NESA's published 2025 HSC marking guidelines (the only published exam so far, so treat it as one example, not a promise) included a 3-mark class diagram question about inheritance and removing redundant attributes, and marker feedback asked for "appropriate symbols for class diagrams".</div>
+
         </section>
 
         <hr class="divider" />
@@ -465,50 +910,143 @@ acc.withdraw(<span class="str">30</span>)</code></pre>
           <p class="syllabus-concept">📌 <em><strong>Describe</strong> the process of design used to develop code in an OOP language</em></p>
           <ul class="syllabus-including" aria-label="Including"><li>task definition</li><li>top-down and bottom-up</li><li>facade pattern</li><li>agility</li></ul>
 
-          <h3>Task Definition</h3>
-          <p>The initial phase where engineers formally outline the problem scope and define the specific objects and classes required to solve it. This involves understanding the requirements, identifying the key entities (objects) in the problem domain, and determining their relationships and responsibilities.</p>
+          <p>Design is what happens between "we have a need" and "we start typing code". In OOP the process is about deciding <em>which classes exist, what each is responsible for and how they work together</em>. The four parts below are usually used together, not one after another.</p>
 
-<h3>Top-down and Bottom-up Design</h3>
+          <h3>Task Definition</h3>
+          <p>The initial phase where engineers formally outline the problem scope and define the specific objects and classes required to solve it. This involves understanding the requirements, identifying the key entities (objects) in the problem domain, and determining their relationships and responsibilities. A useful technique is to write the need as a short statement and then read it for <strong>nouns</strong> (candidate classes or attributes) and <strong>verbs</strong> (candidate methods).</p>
+
+          <div class="callout info"><strong>Task definition: Riverbend Library</strong> <em>"Riverbend Library lends books and DVDs to members. A member can borrow up to three items at once. Books can be kept for 14 days and DVDs for 7. Reference books can be read in the library but never borrowed. Staff need to check items out, check them in and print a list of what is on the shelves."</em></div>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Found in the statement</th><th>Design decision</th></tr></thead>
+              <tbody>
+                <tr><td>Nouns: library, member, item, book, DVD, reference book</td><td>Candidate classes. "Book", "DVD" and "reference book" are kinds of item, so <code>LibraryItem</code> is a generalisation and <code>Book</code>, <code>DVD</code> and <code>ReferenceBook</code> are subclasses.</td></tr>
+                <tr><td>Nouns that describe a noun: title, author, minutes, email</td><td>Attributes of those classes (<code>title</code> belongs to every item; <code>author</code> only to a book).</td></tr>
+                <tr><td>Verbs: lends, borrow, check out, check in, print</td><td>Methods: <code>borrow()</code>, <code>check_out()</code>, <code>check_in()</code>, <code>report()</code>.</td></tr>
+                <tr><td>Rules: up to three items; 14 days; 7 days; never borrowed</td><td>A limit in <code>Member</code>, and overriding of <code>loan_days()</code> and <code>check_out()</code> in the subclasses.</td></tr>
+                <tr><td>Inputs and outputs: member id and item id in; a message and a report out</td><td>The parameters and return values of <code>Library.checkout()</code> and <code>Library.report()</code>.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>The result of task definition is a written list of requirements, a first list of classes with responsibilities, and a draft class diagram (see the previous section).</p>
+
+          <h3>Top-down and Bottom-up Design</h3>
           <p><strong>Top-down design</strong> starts with high-level system requirements and breaks them down into smaller sub-systems or classes. This approach defines the overall structure first, then fills in details for each class. <strong>Bottom-up design</strong> involves building and testing robust base classes first, then combining them to create the final application. Effective OOP engineering often uses a hybrid approach, ensuring individual objects are functional (bottom-up) while meeting the overall system architecture (top-down).</p>
 
-<h3>Facade Pattern</h3>
-          <p>The facade pattern is a design technique that provides a simplified "front-end" interface to a complex set of classes, hiding the internal complexity from the user. By creating a single facade class that coordinates multiple internal classes, developers make the system easier to use, understand, and maintain. The user interacts only with the facade, not the complex subsystems behind it.</p>
-
-          <p><span class="eg"><em>A <strong>WebServerFacade</strong> that simplifies accessing a complex library system. Instead of manually handling authentication, database queries, caching, and logging:</em></span></p>
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Python — Facade Pattern Example</span></div>
-            <pre><code><span class="cm"># Complex internal classes (hidden from user)</span>
-<span class="kw">class</span> <span class="fn">AuthenticationService</span>: <span class="cm"># Handles user login</span>
-    <span class="kw">def</span> <span class="fn">authenticate</span>(self, username, password): <span class="kw">pass</span>
-
-<span class="kw">class</span> <span class="fn">DatabaseService</span>: <span class="cm"># Queries the database</span>
-    <span class="kw">def</span> <span class="fn">query</span>(self, sql): <span class="kw">pass</span>
-
-<span class="kw">class</span> <span class="fn">CacheService</span>: <span class="cm"># Stores frequently accessed data</span>
-    <span class="kw">def</span> <span class="fn">get</span>(self, key): <span class="kw">pass</span>
-
-<span class="cm"># FACADE: Single simple interface</span>
-<span class="kw">class</span> <span class="fn">LibraryFacade</span>:
-    <span class="kw">def</span> <span class="fn">__init__</span>(self):
-        self.auth = AuthenticationService()
-        self.db = DatabaseService()
-        self.cache = CacheService()
-
-    <span class="kw">def</span> <span class="fn">get_book_info</span>(self, username, book_id):
-        <span class="cm"># User calls ONE method; facade handles everything inside</span>
-        <span class="kw">if</span> <span class="kw">not</span> self.auth.authenticate(username):
-            <span class="kw">return</span> <span class="kw">None</span>
-        <span class="kw">if</span> book_data := self.cache.get(book_id):
-            <span class="kw">return</span> book_data
-        <span class="kw">return</span> self.db.query(f<span class="str">"SELECT * FROM books WHERE id={book_id}"</span>)
-
-<span class="cm"># User only sees the simple facade interface</span>
-library = LibraryFacade()
-book = library.get_book_info(<span class="str">"john_doe"</span>, 42)</code></pre>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th></th><th>Top-down</th><th>Bottom-up</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Starts with</strong></td><td>The whole system and its main task</td><td>The smallest reusable classes</td></tr>
+                <tr><td><strong>Riverbend example</strong></td><td>Write <code>Library.checkout()</code> first, calling classes that do not exist yet</td><td>Write and test <code>LibraryItem</code> and <code>Book</code> first, then <code>Member</code>, then <code>Library</code></td></tr>
+                <tr><td><strong>Needs</strong></td><td>Stubs for the parts not yet written</td><td>A test for each class before it is combined</td></tr>
+                <tr><td><strong>Strength</strong></td><td>The overall structure is clear early; teams can work in parallel against agreed interfaces</td><td>Every finished part is already tested and reusable</td></tr>
+                <tr><td><strong>Risk</strong></td><td>Details discovered later may force the top to change</td><td>The parts may not fit together into what the user needs</td></tr>
+              </tbody>
+            </table>
           </div>
 
-<h3>Agility</h3>
+          <p>A top-down start looks like this. The top-level behaviour is written and can already be run, while each lower-level class is only a <strong>stub</strong> (a placeholder that returns a fixed answer) until it is developed properly.</p>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — top-down: the top-level logic first, stubs underneath</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Member</span>:                               <span class="cm"># stub: real rules not written yet</span>
+    <span class="kw">def</span> <span class="fn">borrow</span>(self, item):
+        <span class="kw">return</span> <span class="kw">True</span>                         <span class="cm"># always says yes for now</span>
+
+<span class="kw">class</span> <span class="fn">Book</span>:                                 <span class="cm"># stub</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, title):
+        self.title = title
+
+
+<span class="kw">class</span> <span class="fn">Library</span>:                              <span class="cm"># the top of the design</span>
+    <span class="kw">def</span> <span class="fn">checkout</span>(self, member, item):
+        <span class="kw">if</span> member.borrow(item):
+            <span class="kw">return</span> <span class="str">f"Checked out {item.title}"</span>
+        <span class="kw">return</span> <span class="str">f"Cannot lend {item.title}"</span>
+
+
+print(Library().checkout(Member(), Book(<span class="str">"River Road"</span>)))</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>Checked out River Road</code></pre>
+          </div>
+
+          <p>The stubs let you run and test the shape of the program on day one. Later you replace each stub with the real class (<code>Member</code> with the three-item limit, <code>Book</code> inheriting from <code>LibraryItem</code>) and the same <code>Library.checkout()</code> keeps working.</p>
+
+          <h3>Facade Pattern</h3>
+          <p>A <strong>design pattern</strong> is a proven, reusable solution to a common design problem. The <strong>facade pattern</strong> provides one simplified interface to a complex set of classes, hiding the internal complexity from the user. A single facade class coordinates the internal classes, so the rest of the program deals only with the facade. This reduces coupling: the client no longer depends on every subsystem class, and the subsystems can change without the client noticing.</p>
+
+          <p><span class="eg"><em>Checking out a book involves three subsystems: checking the member's card, finding the item in the catalogue and recording the loan. A <strong>LibraryDesk</strong> facade lets the client do all three with one call.</em></span></p>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — a facade over three subsystems</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">MemberRegistry</span>:                       <span class="cm"># subsystem 1</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self):
+        self._cards = {<span class="str">"M1"</span>: <span class="str">"Priya"</span>, <span class="str">"M2"</span>: <span class="str">"Tom"</span>}
+
+    <span class="kw">def</span> <span class="fn">is_valid</span>(self, member_id):
+        <span class="kw">return</span> member_id <span class="kw">in</span> self._cards
+
+
+<span class="kw">class</span> <span class="fn">Catalogue</span>:                            <span class="cm"># subsystem 2</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self):
+        self._titles = {<span class="str">"B1"</span>: <span class="str">"River Road"</span>, <span class="str">"B2"</span>: <span class="str">"Salt Country"</span>}
+
+    <span class="kw">def</span> <span class="fn">find</span>(self, item_id):
+        <span class="kw">return</span> self._titles.get(item_id)
+
+
+<span class="kw">class</span> <span class="fn">LoanRecorder</span>:                         <span class="cm"># subsystem 3</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self):
+        self._loans = []
+
+    <span class="kw">def</span> <span class="fn">record</span>(self, member_id, item_id):
+        self._loans.append((member_id, item_id))
+
+
+<span class="kw">class</span> <span class="fn">LibraryDesk</span>:                          <span class="cm"># the FACADE: one simple interface</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self):
+        self._registry = MemberRegistry()
+        self._catalogue = Catalogue()
+        self._recorder = LoanRecorder()
+
+    <span class="kw">def</span> <span class="fn">borrow</span>(self, member_id, item_id):
+        <span class="kw">if</span> <span class="kw">not</span> self._registry.is_valid(member_id):
+            <span class="kw">return</span> <span class="str">"Invalid member card"</span>
+        title = self._catalogue.find(item_id)
+        <span class="kw">if</span> title <span class="kw">is</span> <span class="kw">None</span>:
+            <span class="kw">return</span> <span class="str">"No such item"</span>
+        self._recorder.record(member_id, item_id)
+        <span class="kw">return</span> <span class="str">f"Loan recorded: {title}"</span>
+
+
+desk = LibraryDesk()                        <span class="cm"># the client only ever meets the facade</span>
+print(desk.borrow(<span class="str">"M1"</span>, <span class="str">"B2"</span>))
+print(desk.borrow(<span class="str">"M9"</span>, <span class="str">"B1"</span>))
+print(desk.borrow(<span class="str">"M2"</span>, <span class="str">"B7"</span>))</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>Loan recorded: Salt Country
+Invalid member card
+No such item</code></pre>
+          </div>
+          <p>The client never creates or calls <code>MemberRegistry</code>, <code>Catalogue</code> or <code>LoanRecorder</code>. If the catalogue is later moved from a dictionary to a database, only <code>LibraryDesk</code> changes. Use a facade when a group of classes is complicated to use directly; do not add one when a single class would do, because an unnecessary layer is extra code to maintain. The <code>Library.checkout()</code> method in the full program later on this page is a small facade of the same kind.</p>
+
+          <h3>Agility</h3>
           <p>Agility in OOP design refers to implementing an iterative development cycle where code is regularly reviewed and updated based on testing, user feedback, and changing requirements. <strong>Agile</strong> approaches favour frequent refactoring, continuous improvement, and adaptive design rather than rigid upfront planning. This flexibility allows software to evolve as understanding of the problem deepens.</p>
+          <p>OOP suits an agile approach because well-separated classes can be changed one at a time. A possible sequence for the library:</p>
+          <ol>
+            <li><strong>Iteration 1:</strong> a <code>Book</code> class that can be checked out and returned, with tests. Show it to the librarian.</li>
+            <li><strong>Iteration 2:</strong> feedback says DVDs are needed. Duplicated code appears, so generalise it into <code>LibraryItem</code> and re-run the tests to prove nothing broke.</li>
+            <li><strong>Iteration 3:</strong> feedback asks for a loan limit per member. Add it inside <code>Member.borrow()</code>; no other class changes.</li>
+          </ol>
+          <p>Each pass is short, is tested and is checked with the client, so wrong assumptions are found early and cheaply. Agile does not mean "no design": the class diagram is still drawn, but it is updated as the design changes. See the <a href="sdlc.html">SDLC Guide</a> for how agile compares with a plan-driven approach.</p>
+
+          <div class="callout assessor"><strong>Exam tip: "Describe"</strong> A <em>describe</em> question wants the features of the process in a sensible order, not an evaluation. Name each stage (task definition, top-down and bottom-up, facade, agility), say what it involves in one sentence and tie it to an example from the scenario, for instance "top-down: write <code>Library.checkout()</code> first using stubs". If a question names a pattern, say what problem it solves and how the classes are arranged: for a facade, "one class gives a simple interface to several subsystem classes". Do not confuse top-down and bottom-up, and do not describe a facade as inheritance.</div>
+
         </section>
 
         <hr class="divider" />
@@ -529,11 +1067,83 @@ book = library.get_book_info(<span class="str">"john_doe"</span>, 42)</code></pr
             <li><strong>Scalability:</strong> Can the code be extended with new features or adapted to larger problems without major restructuring?</li>
           </ul>
 
-          <p>In OOP, effectiveness is enhanced through proper use of classes, <strong>inheritance</strong>, and <strong>encapsulation</strong>. A well-designed class hierarchy makes code more testable, reusable, and maintainable. Poor design—such as overly deep inheritance chains or god objects (classes that do too much)—reduces effectiveness.</p>
+          <p>In OOP, effectiveness is enhanced through proper use of classes, <strong>inheritance</strong>, and <strong>encapsulation</strong>. A well-designed class hierarchy makes code more testable, reusable, and maintainable. Poor design, such as overly deep inheritance chains or god objects (classes that do too much), reduces effectiveness.</p>
+
+          <h3>Where the evidence comes from</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Criterion</th><th>Evidence you can gather</th></tr></thead>
+              <tbody>
+                <tr><td>Correctness</td><td>A test table of normal, boundary and abnormal inputs with expected and actual results (see the testing section).</td></tr>
+                <tr><td>Efficiency</td><td>Count the steps the algorithm takes for a small and a large input, or time it, and say how it grows.</td></tr>
+                <tr><td>Maintainability</td><td>Read the code: clear names, one task per method, no duplicated blocks, private data behind methods, comments that explain why.</td></tr>
+                <tr><td>Robustness</td><td>Try invalid input (empty, negative, wrong type, missing item) and see whether the program fails safely with a useful message.</td></tr>
+                <tr><td>Scalability</td><td>Ask what it would take to add a new item type or ten thousand records. If the answer is "edit five methods", the design does not scale.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Worked assessment: two ways to find a member</h3>
+          <p>Riverbend Library needs a method that finds a member by id. Two developers implement it. Both pass the same tests, so both are <em>correct</em>. The step counts below are measured by the program itself, so they are the same every time it is run.</p>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — comparing two implementations by counting steps</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Member</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, member_id, name):
+        self.member_id = member_id
+        self.name = name
+
+
+<span class="kw">def</span> <span class="fn">find_in_list</span>(members, member_id):          <span class="cm"># Version A: scan the list</span>
+    steps = <span class="num">0</span>
+    <span class="kw">for</span> m <span class="kw">in</span> members:
+        steps += <span class="num">1</span>
+        <span class="kw">if</span> m.member_id == member_id:
+            <span class="kw">return</span> m, steps
+    <span class="kw">return</span> <span class="kw">None</span>, steps
+
+
+<span class="kw">def</span> <span class="fn">find_in_dict</span>(index, member_id):            <span class="cm"># Version B: look up in a dictionary</span>
+    <span class="kw">return</span> index.get(member_id), <span class="num">1</span>
+
+
+<span class="kw">for</span> size <span class="kw">in</span> (<span class="num">10</span>, <span class="num">1000</span>):
+    members = [Member(<span class="str">f"M{i}"</span>, <span class="str">f"Person {i}"</span>) <span class="kw">for</span> i <span class="kw">in</span> range(size)]
+    index = {m.member_id: m <span class="kw">for</span> m <span class="kw">in</span> members}
+    last = <span class="str">f"M{size - 1}"</span>                      <span class="cm"># worst case for the list</span>
+    _, a = find_in_list(members, last)
+    _, b = find_in_dict(index, last)
+    print(<span class="str">f"{size} members: list needs {a} steps, dictionary needs {b}"</span>)
+
+print(<span class="str">"empty library:"</span>, find_in_list([], <span class="str">"M1"</span>)[<span class="num">0</span>], find_in_dict({}, <span class="str">"M1"</span>)[<span class="num">0</span>])   <span class="cm"># robustness</span></code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>10 members: list needs 10 steps, dictionary needs 1
+1000 members: list needs 1000 steps, dictionary needs 1
+empty library: None None</code></pre>
+          </div>
+          <p>An assessment of these two might read: <em>Both versions are correct and both handle an empty library by returning None (robustness). Maintainability is similar, because each is short and clearly named. Efficiency differs: the list version's steps grow with the number of members, whereas the dictionary version takes one step however large the library gets. Because a public library could have thousands of members, Version B is the more effective implementation, at the cost of keeping the dictionary in step with the list if members are added or removed.</em> Notice the pattern: a claim, evidence, and a weighed judgement that includes a trade-off.</p>
+
+          <h3>Design problems that reduce effectiveness in OOP</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Problem</th><th>What it looks like</th><th>Effect</th><th>Fix</th></tr></thead>
+              <tbody>
+                <tr><td>God object</td><td>One <code>Library</code> class that stores data, validates input, prints reports and sends emails</td><td>Hard to test and to change; every edit risks breaking something unrelated</td><td>Split into classes with one responsibility each</td></tr>
+                <tr><td>Public data</td><td>Other code writes <code>member.loans = []</code> directly</td><td>Rules such as the three-item limit can be bypassed</td><td>Encapsulate; change state only through methods</td></tr>
+                <tr><td>Duplicated code in subclasses</td><td><code>Book</code> and <code>DVD</code> both copy the same check-out logic</td><td>A fix has to be made in several places</td><td>Generalise into a superclass</td></tr>
+                <tr><td>Wrong or very deep inheritance</td><td>A <code>Member</code> inheriting from <code>LibraryItem</code> to reuse one method</td><td>Confusing design; changes to the parent break unrelated children</td><td>Use inheritance only for a true is-a relationship; otherwise use composition</td></tr>
+                <tr><td>Tight coupling</td><td>A class reaches into another class's internal attributes</td><td>Changing one class forces changes in the other</td><td>Send messages through public methods</td></tr>
+              </tbody>
+            </table>
+          </div>
 
           <div class="callout info"><strong>Scenario</strong> Two students implement "find a student by ID". Version A loops through a list of 2,000 students every time. Version B stores students in a dictionary keyed by ID. Both are <em>correct</em>, but B is far more <em>efficient</em> (one lookup instead of up to 2,000 comparisons) and just as readable. B is the more effective implementation.</div>
 
           <div class="callout success"><strong>HSC writing sample</strong> <em>"The code is effective because it produced the expected output for all 12 test cases, including boundary values. However, its efficiency is limited: the search method is O(n), and replacing the list with a dictionary would make lookups constant-time for large class sizes."</em></div>
+
+          <div class="callout assessor"><strong>Exam tip: "Assess"</strong> An <em>assess</em> question wants a judgement about how well the code works, supported by evidence. Pick the criteria that matter for the scenario (usually correctness first, then one or two others), give a piece of evidence for each (a test result, a step count, a design feature) and finish with a clear overall judgement such as "effective, but limited by...". Marks are lost for a list of criteria with no verdict, for judging efficiency without evidence, and for saying code is "good" without naming what makes it so.</div>
+
         </section>
 
         <hr class="divider" />
@@ -543,8 +1153,126 @@ book = library.get_book_info(<span class="str">"john_doe"</span>, 42)</code></pr
           <p class="outcome-subtitle">🎯 <em>(SE-11-08)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> how OOP languages handle message-passing between objects</em></p>
 
-                    <p>When Object A calls a method on Object B, Object A is sending a "message" to Object B requesting it to perform a specific action. The syntax looks like <code>objectB.methodName(parameters)</code>. This allows for decoupling: Object A needs to know <em>what</em> Object B can do (its interface), but not <em>how</em> it does it (its implementation).</p>
+          <p>In an object-oriented program, objects work by asking each other to do things. When Object A calls a method on Object B, Object A is sending a <strong>message</strong> to Object B requesting it to perform a specific action. The syntax looks like <code>objectB.methodName(arguments)</code>. This allows for decoupling: Object A needs to know <em>what</em> Object B can do (its interface), but not <em>how</em> it does it (its implementation).</p>
 
+          <h3>Anatomy of a message</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Part</th><th>In <code>account.withdraw(500)</code></th><th>Role</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Receiver</strong></td><td><code>account</code></td><td>The object that receives the message and decides how to respond.</td></tr>
+                <tr><td><strong>Method name</strong></td><td><code>withdraw</code></td><td>Names the request. Together with the parameters it forms the receiver's interface.</td></tr>
+                <tr><td><strong>Arguments</strong></td><td><code>500</code></td><td>Extra information the receiver needs (parameter passing).</td></tr>
+                <tr><td><strong>Reply</strong></td><td>the returned <code>True</code> or <code>False</code></td><td>What comes back to the sender. A method with no <code>return</code> replies with <code>None</code>.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — one object sends a message to another</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">BankAccount</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, balance):
+        self.balance = balance
+
+    <span class="kw">def</span> <span class="fn">withdraw</span>(self, amount):
+        <span class="cm"># Message received: "withdraw this amount from me"</span>
+        <span class="kw">if</span> amount &lt;= self.balance:
+            self.balance -= amount
+            <span class="kw">return</span> <span class="kw">True</span>
+        <span class="kw">return</span> <span class="kw">False</span>
+
+
+account = BankAccount(<span class="num">800</span>)
+result = account.withdraw(<span class="num">500</span>)     <span class="cm"># the caller sends the message and gets a reply</span>
+print(result, account.balance)
+print(account.withdraw(<span class="num">500</span>), account.balance)   <span class="cm"># same message, different reply</span></code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>True 300
+False 300</code></pre>
+          </div>
+
+          <h3>How Python handles a message</h3>
+          <p>Python decides what a message means <em>at run time</em>. When the line <code>item.describe()</code> runs, Python looks at the class of the object that <code>item</code> refers to, searches that class and then its parent classes for a method called <code>describe</code>, and runs the first one it finds. This is called <strong>dynamic dispatch</strong>. It is the mechanism that makes polymorphism work: the same message goes to different receivers and each finds its own method. If no class in the chain has the method, Python raises an <code>AttributeError</code>, which is the receiver saying "I do not understand that message".</p>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — the same message, different receivers, and one that cannot answer</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Book</span>:
+    <span class="kw">def</span> <span class="fn">describe</span>(self):
+        <span class="kw">return</span> <span class="str">"a book"</span>
+
+<span class="kw">class</span> <span class="fn">DVD</span>:
+    <span class="kw">def</span> <span class="fn">describe</span>(self):
+        <span class="kw">return</span> <span class="str">"a DVD"</span>
+
+<span class="kw">class</span> <span class="fn">Chair</span>:                       <span class="cm"># no describe() method at all</span>
+    <span class="kw">pass</span>
+
+<span class="kw">for</span> receiver <span class="kw">in</span> (Book(), DVD(), Chair()):
+    <span class="kw">try</span>:
+        print(receiver.describe())
+    <span class="kw">except</span> AttributeError <span class="kw">as</span> err:
+        print(<span class="str">"Not understood:"</span>, err)</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>a book
+a DVD
+Not understood: 'Chair' object has no attribute 'describe'</code></pre>
+          </div>
+
+          <h3>Objects collaborating through messages</h3>
+          <p>A real operation is a chain of messages. When the librarian asks the library to check out an item, the library asks the member to borrow it, the member asks the item to check itself out, and each replies to whoever called it. No object reaches inside another to change its data. This trace uses the classes from the full program in the design section:</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Step</th><th>Sender</th><th>Message</th><th>Receiver</th><th>Reply</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>main program</td><td><code>checkout("M1", "B1")</code></td><td>Library</td><td>a message string (at the end)</td></tr>
+                <tr><td>2</td><td>Library</td><td><code>borrow(item)</code></td><td>Member</td><td>True or False</td></tr>
+                <tr><td>3</td><td>Member</td><td><code>check_out()</code></td><td>LibraryItem</td><td>True (item was free) or False (already on loan)</td></tr>
+                <tr><td>4</td><td>Member</td><td><em>adds the item to its own loan list, then replies to the Library</em></td><td>&nbsp;</td><td>True</td></tr>
+                <tr><td>5</td><td>Library</td><td><code>loan_days()</code> and <code>title</code></td><td>LibraryItem</td><td>14 and "River Road", used to build the reply for step 1</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Tell, don't ask</h3>
+          <p>Good message passing <em>tells</em> an object to do something rather than <em>asking</em> for its data and then making the decision for it. The first version below breaks encapsulation, because the caller has to know how the loan list works and repeats the rule; the second sends one message and leaves the rule inside <code>Member</code>.</p>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — asking versus telling</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Member</span>:
+    MAX_LOANS = <span class="num">3</span>
+    <span class="kw">def</span> <span class="fn">__init__</span>(self):
+        self.loans = []                        <span class="cm"># public: anyone can reach in</span>
+
+    <span class="kw">def</span> <span class="fn">borrow</span>(self, item):                    <span class="cm"># the rule lives here</span>
+        <span class="kw">if</span> len(self.loans) &gt;= Member.MAX_LOANS:
+            <span class="kw">return</span> <span class="kw">False</span>
+        self.loans.append(item)
+        <span class="kw">return</span> <span class="kw">True</span>
+
+
+m = Member()
+<span class="kw">for</span> title <span class="kw">in</span> (<span class="str">"A"</span>, <span class="str">"B"</span>, <span class="str">"C"</span>):
+    m.borrow(title)
+
+<span class="cm"># ASK: the caller looks inside and repeats the rule, but writes &lt;= instead of &lt;</span>
+<span class="kw">if</span> len(m.loans) &lt;= <span class="num">3</span>:
+    m.loans.append(<span class="str">"D"</span>)
+print(<span class="str">"asking version:"</span>, len(m.loans), <span class="str">"loans"</span>)     <span class="cm"># the limit has been broken</span>
+
+<span class="cm"># TELL: one message; Member applies its own rule.</span>
+print(<span class="str">"telling version:"</span>, m.borrow(<span class="str">"E"</span>))</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>asking version: 4 loans
+telling version: False</code></pre>
+          </div>
+          <p>The "asking" version copied the rule into the caller and got it slightly wrong, so the member ended up with four items. Every place that copies a rule is another place for that mistake. In the "telling" version the rule exists once, inside <code>borrow()</code>, and the request was correctly refused. Making <code>loans</code> private as well would stop code from bypassing <code>borrow()</code> altogether.</p>
+
+          <h3>Benefits and limits</h3>
           <p>This investigated feature enables several OOP benefits:</p>
           <ul>
             <li><strong>Modularity:</strong> Each object is independent and can be tested, modified, or replaced without affecting other objects that use its interface.</li>
@@ -552,23 +1280,8 @@ book = library.get_book_info(<span class="str">"john_doe"</span>, 42)</code></pr
             <li><strong>Scalability:</strong> New classes can be added without modifying existing code that sends messages through a common interface.</li>
             <li><strong>Maintainability:</strong> Changes to an object's internal implementation don't affect other objects as long as the interface (method signatures) remains the same.</li>
           </ul>
+          <p>There are limits and costs. Each message is a function call, so a design with very many tiny objects sending long chains of messages can be harder to follow and slightly slower. A change to a method's name or parameters is a change to the contract, and every sender must be updated. In a dynamically typed language such as Python, a misspelt message is only discovered when that line runs, which is one more reason for tests. Weigh these against the gains: for most systems the clarity of small, well-defined interfaces is worth far more than the cost of the calls.</p>
 
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Python — Message-Passing Example</span></div>
-            <pre><code><span class="kw">class</span> <span class="fn">BankAccount</span>:
-    <span class="kw">def</span> <span class="fn">withdraw</span>(self, amount):
-        <span class="cm"># Message: "withdraw 500 from this account"</span>
-        <span class="kw">if</span> amount &lt;= self.balance:
-            self.balance -= amount
-            <span class="kw">return</span> <span class="kw">True</span>
-        <span class="kw">return</span> <span class="kw">False</span>
-
-account = BankAccount()
-result = account.withdraw(500) <span class="cm"># Passing message to account object</span>
-<span class="cm"># The account handles the message; caller doesn't care how</span></code></pre>
-          </div>
-
-          <!-- Message Passing Sequence Diagram -->
           <figure class="figure">
           <figcaption class="figure-head">
             <p class="figure-kicker"><span class="figure-kind">Sequence diagram</span></p>
@@ -583,6 +1296,9 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
             <p class="figure-try"><strong>Try this</strong>Add a message that records the withdrawal in a TransactionLog object.</p>
           </div>
         </figure>
+
+          <div class="callout assessor"><strong>Exam tip: "Investigate"</strong> An <em>investigate</em> question wants you to examine how something works and what follows from it. Define message passing accurately (one object calls a method on another, which handles it and may reply), show it with a specific call from the scenario such as <code>account.withdraw(500)</code>, explain <em>how</em> the language handles it (the method is found in the receiver's class at run time, which is why the same message can produce different results), and give at least one benefit and one limitation. A frequent mistake is describing message passing as "sending data" without saying that the receiver runs a method.</div>
+
         </section>
 
         <hr class="divider" />
@@ -592,20 +1308,125 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <p class="outcome-subtitle">🎯 <em>(SE-11-08)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Explain</strong> code optimisation in software engineering</em></p>
 
+          <p><strong>Code optimisation</strong> means changing a program so that it uses fewer resources (time, memory, storage or network) while producing exactly the same results. Optimised code performs better on the target hardware, consumes fewer resources, and provides a better user experience. The important word is <em>same</em>: if the behaviour changes, that is a new feature or a bug, not an optimisation.</p>
+
+          <h3>Measure first</h3>
+          <p>Programmers are notoriously poor at guessing which part of a program is slow. The professional approach is to <strong>profile</strong> the code, meaning to measure where the time or memory actually goes, and then to optimise only that part. Python has the <code>time</code> module for simple timing and <code>cProfile</code> for a full breakdown by function.</p>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — time the two lookups before choosing one</span></div>
+            <pre><code class="language-python"><span class="kw">import</span> time
+
+names = [<span class="str">f"Person {i}"</span> <span class="kw">for</span> i <span class="kw">in</span> range(<span class="num">20000</span>)]
+lookup = {name: <span class="kw">True</span> <span class="kw">for</span> name <span class="kw">in</span> names}
+target = <span class="str">"Person 19999"</span>                          <span class="cm"># worst case for the list</span>
+
+start = time.perf_counter()
+<span class="kw">for</span> _ <span class="kw">in</span> range(<span class="num">200</span>):
+    target <span class="kw">in</span> names                              <span class="cm"># scans the list</span>
+list_time = time.perf_counter() - start
+
+start = time.perf_counter()
+<span class="kw">for</span> _ <span class="kw">in</span> range(<span class="num">200</span>):
+    target <span class="kw">in</span> lookup                             <span class="cm"># one hash lookup</span>
+dict_time = time.perf_counter() - start
+
+print(<span class="str">"dictionary faster:"</span>, dict_time &lt; list_time)   <span class="cm"># exact times vary between computers</span></code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>dictionary faster: True</code></pre>
+          </div>
+          <p>The exact times differ from computer to computer, so a good report compares <em>ratios</em> or shows the timing method rather than quoting one number.</p>
+
           <h3>Optimisation Techniques in OOP</h3>
           <ul>
-            <li><strong>Algorithm Refinement:</strong> Improving the efficiency of <strong>algorithms</strong> within methods by choosing faster <strong>data structures</strong> or reducing iterations.</li>
-            <li><strong>Lazy Instantiation:</strong> Creating objects only when needed, rather than upfront, to reduce memory overhead.</li>
-            <li><strong>Inheritance Hierarchy Optimisation:</strong> Ensuring <strong>inheritance</strong> chains are not unnecessarily deep, which can slow method lookups.</li>
+            <li><strong>Algorithm Refinement:</strong> Improving the efficiency of <strong>algorithms</strong> within methods by choosing faster <strong>data structures</strong> or reducing iterations. Replacing a list scan with a dictionary lookup, as in the worked assessment earlier, is the classic case.</li>
+            <li><strong>Lazy Instantiation:</strong> Creating objects only when needed, rather than upfront, to reduce memory overhead and start-up time.</li>
             <li><strong>Caching:</strong> Storing results of expensive operations to avoid recalculating them.</li>
+            <li><strong>Avoiding repeated work:</strong> Moving a calculation that gives the same answer every time out of a loop, or storing a value in a variable instead of asking for it again.</li>
+            <li><strong>Inheritance Hierarchy Optimisation:</strong> Keeping <strong>inheritance</strong> chains as shallow as the design allows. In Python a call walks up the chain until it finds the method, which costs very little, so the main gain from a shallow hierarchy is that the code is simpler to read and change.</li>
             <li><strong>Code Profiling:</strong> Identifying bottlenecks (slow parts) in code using profiling tools to target optimisation efforts where they matter most.</li>
           </ul>
 
-          <p>Optimised code performs better on target hardware, consumes fewer resources, and provides a better user experience. However, optimisation must be balanced against code readability and maintainability—premature optimisation can make code harder to understand without providing meaningful performance gains.</p>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — lazy instantiation: build the expensive object only if it is needed</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">ReportGenerator</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self):
+        print(<span class="str">"  (building the report generator: slow, uses memory)"</span>)
 
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Python — Clean Implementation</span></div>
-            <pre><code><span class="kw">class</span> <span class="fn">SystemManager</span>:
+    <span class="kw">def</span> <span class="fn">make</span>(self, title):
+        <span class="kw">return</span> <span class="str">f"Report: {title}"</span>
+
+
+<span class="kw">class</span> <span class="fn">Library</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self):
+        self._reports = <span class="kw">None</span>                   <span class="cm"># nothing built yet</span>
+
+    @property
+    <span class="kw">def</span> <span class="fn">reports</span>(self):
+        <span class="kw">if</span> self._reports <span class="kw">is</span> <span class="kw">None</span>:              <span class="cm"># build on first use only</span>
+            self._reports = ReportGenerator()
+        <span class="kw">return</span> self._reports
+
+
+lib = Library()
+print(<span class="str">"Library created"</span>)                       <span class="cm"># no ReportGenerator yet</span>
+print(lib.reports.make(<span class="str">"Overdue items"</span>))       <span class="cm"># built now</span>
+print(lib.reports.make(<span class="str">"New members"</span>))         <span class="cm"># reused, not rebuilt</span></code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>Library created
+  (building the report generator: slow, uses memory)
+Report: Overdue items
+Report: New members</code></pre>
+          </div>
+
+          <h3>Before and after</h3>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — caching an expensive result</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Report</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, marks):
+        self.marks = marks
+        self._average = <span class="kw">None</span>                 <span class="cm"># not calculated yet</span>
+
+    <span class="kw">def</span> <span class="fn">average</span>(self):
+        <span class="kw">if</span> self._average <span class="kw">is</span> <span class="kw">None</span>:           <span class="cm"># calculate once…</span>
+            self._average = sum(self.marks) / len(self.marks)
+        <span class="kw">return</span> self._average                 <span class="cm"># …then reuse it</span></code></pre>
+          </div>
+
+          <p>If a web page calls <code>average()</code> 50 times, the original version adds up every mark 50 times; the optimised version does it once. The output is the same, but the program does less work. The cost is that the stored value goes out of date if <code>marks</code> changes, so a cached class must reset <code>_average</code> whenever the data it depends on changes. Python also provides <code>functools.lru_cache</code> to cache the results of a function automatically.</p>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — the same idea using functools.lru_cache</span></div>
+            <pre><code class="language-python"><span class="kw">from</span> functools <span class="kw">import</span> lru_cache
+
+calls = <span class="num">0</span>
+
+@lru_cache(maxsize=<span class="kw">None</span>)
+<span class="kw">def</span> <span class="fn">loan_fee</span>(days_late):
+    <span class="kw">global</span> calls
+    calls += <span class="num">1</span>                                   <span class="cm"># counts real calculations</span>
+    <span class="kw">return</span> round(<span class="num">0.25</span> * days_late, <span class="num">2</span>)
+
+
+<span class="kw">for</span> _ <span class="kw">in</span> range(<span class="num">1000</span>):
+    loan_fee(<span class="num">8</span>)                                  <span class="cm"># 1000 requests for the same answer</span>
+
+print(loan_fee(<span class="num">8</span>), <span class="str">"calculated"</span>, calls, <span class="str">"time(s)"</span>)</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>2.0 calculated 1 time(s)</code></pre>
+          </div>
+
+          <h3>Structure supports optimisation</h3>
+          <p>Well-structured code is easier to optimise. Because each method does one task, a profiler points at one small method rather than at a 200-line function, and because callers use only the interface, the method's insides can be replaced without touching anything else.</p>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — readable structure: small methods and a private helper</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">SystemManager</span>:
     <span class="kw">def</span> <span class="fn">__init__</span>(self):
         self.active = <span class="kw">True</span> <span class="cm"># Initialise state</span>
 
@@ -617,21 +1438,11 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
         <span class="kw">pass</span> <span class="cm"># Ease of maintenance</span></code></pre>
           </div>
 
-          <h3>Before and after</h3>
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Python — caching an expensive result</span></div>
-            <pre><code><span class="kw">class</span> <span class="fn">Report</span>:
-    <span class="kw">def</span> <span class="fn">__init__</span>(self, marks):
-        self.marks = marks
-        self._average = None                 <span class="cm"># not calculated yet</span>
+          <h3>The trade-off: speed against readability</h3>
+          <p>Optimisation has costs: more code, more complexity and often more bugs. <strong>Premature optimisation</strong>, tuning code before you know it is slow, wastes effort and makes code harder to understand without providing meaningful performance gains. A sensible order is: make it correct, make it clear, measure, and only then make it faster where the measurements say it matters. Keep the tests from earlier so that you can prove each optimisation left the results unchanged.</p>
 
-    <span class="kw">def</span> <span class="fn">average</span>(self):
-        <span class="kw">if</span> self._average <span class="kw">is</span> None:           <span class="cm"># calculate once…</span>
-            self._average = sum(self.marks) / len(self.marks)
-        <span class="kw">return</span> self._average                 <span class="cm"># …then reuse it</span></code></pre>
-          </div>
+          <div class="callout assessor"><strong>Exam tip: "Explain"</strong> An <em>explain</em> question wants each idea linked to its reason. Name a technique, say what it does, and say <em>why</em> it improves performance, using a short example such as "caching stores the average after the first calculation, so fifty calls do the addition once instead of fifty times". Mention profiling as the way to find where to optimise, and note the trade-off with readability. A common mistake is to say optimisation makes code "better" without stating which resource (time or memory) is saved.</div>
 
-          <p>If a web page calls <code>average()</code> 50 times, the original version adds up every mark 50 times; the optimised version does it once. The output is the same, but the program does less work.</p>
         </section>
 
         <hr class="divider" />
@@ -642,23 +1453,84 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <p class="syllabus-concept">📌 <em><strong>Outline</strong> the features of OOP that support collaborative code development</em></p>
           <ul class="syllabus-including" aria-label="Including"><li>consistency</li><li>code commenting</li><li>version control</li><li>feedback</li></ul>
 
-          <ul>
-            <li><strong>Consistency:</strong> Using classes and standard naming conventions (e.g., PascalCase for classes) ensures the codebase is predictable for all team members.</li>
-            <li><strong>Code Commenting:</strong> Professional documentation within classes (Docstrings) explains the purpose of methods to other developers.</li>
-            <li><strong>Version Control:</strong> Tools like Git allow multiple engineers to work on different classes simultaneously and merge their work into a single repository.</li>
-            <li><strong>Feedback:</strong> Peer reviews of class structures and logic ensure that code is modular, reusable, and free of logic errors.</li>
-          </ul>
+          <p>Large programs are written by teams, and even a solo student project is read by a teacher, a partner and your own future self. OOP helps because a program is divided into classes with clear interfaces, so different people can build different classes at the same time and agree only on the interface. The four supports below are the ones the syllabus names.</p>
 
-          <div class="code-block">
+          <h3>Consistency</h3>
+          <p>Using classes and standard naming conventions ensures the codebase is predictable for all team members. A team agrees the conventions once and everyone follows them, so that any class looks familiar even if someone else wrote it. Python's community style guide (PEP 8) is a common choice. Consistency also means the same structure for every class (constructor first, then properties, then methods), one class per file in a larger project, and the same way of handling errors.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Item</th><th>Convention</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td>Class names</td><td>PascalCase, a noun</td><td><code>LibraryItem</code>, <code>Member</code></td></tr>
+                <tr><td>Method and variable names</td><td>snake_case, methods are verbs</td><td><code>check_out()</code>, <code>loan_count</code></td></tr>
+                <tr><td>Constants</td><td>UPPER_SNAKE_CASE</td><td><code>MAX_LOANS</code></td></tr>
+                <tr><td>Internal attributes</td><td>Leading underscore (or two for name mangling)</td><td><code>_title</code>, <code>__loans</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>The class diagram is also a consistency tool: it is the team's agreed contract. If the diagram says <code>Member</code> has <code>borrow(item)</code>, the person writing <code>Library</code> can call it before it exists, using a stub (see the implementation section).</p>
+
+          <h3>Code Commenting</h3>
+          <p>Professional documentation within classes (docstrings) explains the purpose of methods to other developers. Comments describe <em>why</em> the code does something and anything that is not obvious; they should not repeat what the code plainly says. A <strong>docstring</strong> is a string placed first inside a class or method. Python stores it, so tools and other programmers can read it without opening the source file.</p>
+<div class="code-block">
             <div class="code-header"><span class="code-lang">Python — a docstring that helps teammates</span></div>
-            <pre><code><span class="kw">class</span> <span class="fn">Booking</span>:
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Booking</span>:
     <span class="str">"""A single room booking.
 
     Attributes:
         room (str): room code, e.g. "L204"
-        start (datetime): when the booking begins
-    """</span></code></pre>
+        hours (int): length of the booking in whole hours
+    """</span>
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, room, hours):
+        self.room = room
+        self.hours = hours
+
+    <span class="kw">def</span> <span class="fn">cost</span>(self, rate):
+        <span class="str">"""Return the cost in dollars: hours multiplied by the hourly rate."""</span>
+        <span class="kw">return</span> self.hours * rate
+
+
+help(Booking.cost)                       <span class="cm"># a teammate can read this without the source</span>
+print(Booking(<span class="str">"L204"</span>, <span class="num">3</span>).cost(<span class="num">12.5</span>))</code></pre>
           </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>Help on function cost in module __main__:
+
+cost(self, rate)
+    Return the cost in dollars: hours multiplied by the hourly rate.
+
+37.5</code></pre>
+          </div>
+
+          <h3>Version Control</h3>
+          <p>Tools like Git allow multiple engineers to work on different classes simultaneously and merge their work into a single repository. Every change is saved as a commit with a message, the full history is kept, and any earlier version can be restored. Because OOP puts each class in its own file, two people editing different classes rarely change the same lines, which keeps <strong>merge conflicts</strong> rare.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Git command</th><th>What it does</th></tr></thead>
+              <tbody>
+                <tr><td><code>git clone &lt;url&gt;</code></td><td>Copies the shared repository to your computer.</td></tr>
+                <tr><td><code>git switch -c add-dvd-class</code></td><td>Creates a branch so your work does not disturb others.</td></tr>
+                <tr><td><code>git add dvd.py</code> then <code>git commit -m "Add DVD subclass with 7 day loan"</code></td><td>Saves a snapshot with a clear message.</td></tr>
+                <tr><td><code>git push</code></td><td>Shares your branch. A pull request then asks a teammate to review it before it is merged.</td></tr>
+                <tr><td><code>git pull</code></td><td>Brings teammates' merged changes to your computer.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Feedback</h3>
+          <p>Peer reviews of class structures and logic ensure that code is modular, reusable, and free of logic errors. Feedback also comes from test results, from the client trying an iteration, and from pair programming (two people at one computer, one typing and one reviewing). Good feedback is specific and about the code, not the person. A short checklist keeps a review of OOP code focused:</p>
+          <ul>
+            <li>Does each class have one clear responsibility, and is its name a noun that says what it is?</li>
+            <li>Is data private, with changes made only through methods?</li>
+            <li>Does inheritance pass the is-a test, and is duplicated code generalised?</li>
+            <li>Do methods do one task and have names that are verbs?</li>
+            <li>Are there docstrings and tests, and do the tests pass?</li>
+          </ul>
+
+          <div class="callout assessor"><strong>Exam tip: "Outline"</strong> An <em>outline</em> question wants the main points briefly, so give each feature a heading word and one sentence that ties it to <em>OOP</em> specifically, then an example. For instance: "Version control: Git lets team members edit different classes on separate branches and merge them, so nobody overwrites another person's work." Do not just define the term. Marks are lost when an answer describes teamwork in general (communication, meetings) instead of features of the code and its tools.</div>
+
         </section>
 
         <div class="quiz" data-quiz="oop-1"></div>
@@ -683,26 +1555,28 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <p class="outcome-subtitle">🎯 <em>(SE-11-02)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Design and implement</strong> computer programs involving branching, iteration and functions in an OOP language for an identified need or opportunity</em></p>
 
+          <p>The Course Specifications expect you to define classes, objects, attributes and methods, use inheritance, polymorphism and encapsulation, perform message passing, and use control structures and variables. This section puts all of that together in one complete, runnable program for an <strong>identified need</strong>: the Riverbend Library statement from the design section.</p>
+
           <h3>Program Structure with Control Flow</h3>
           <p>Effective OOP programs combine three fundamental control structures:</p>
           <ul>
-            <li><strong>Branching:</strong> Using if/else and switch statements to make decisions based on object state or input. For example, a <code>BankAccount.withdraw()</code> method checks if sufficient balance exists.</li>
-            <li><strong>Iteration:</strong> Using for, while, and foreach loops to process collections of objects or repeat operations. For example, iterating through a list of Customer objects.</li>
+            <li><strong>Branching:</strong> Using if/elif/else (or <code>match</code> in modern Python) to make decisions based on object state or input. For example, <code>Member.borrow()</code> checks whether the member is at their limit and whether the item is free.</li>
+            <li><strong>Iteration:</strong> Using <code>for</code> and <code>while</code> loops to process collections of objects or repeat operations. For example, looping through every item to print a report.</li>
             <li><strong>Functions (Methods):</strong> Encapsulating logic in methods that accept parameters and return results. Each method should perform one logical task.</li>
           </ul>
 
-<h3>Real-World Application</h3>
+          <h3>Real-World Application</h3>
           <p>When designing OOP programs for actual needs, engineers must:</p>
-          <ul>
+          <ol>
             <li>Identify the objects in the problem domain (e.g., Student, Course, Enrolment for a school system).</li>
             <li>Define classes with appropriate attributes and methods.</li>
             <li>Design relationships between classes (<strong>inheritance</strong>, composition).</li>
             <li>Implement logic using branching and <strong>iteration</strong> within methods.</li>
             <li>Test each class independently before integration.</li>
-          </ul>
+          </ol>
 
-<h3>Library Management System — Class Diagram</h3>
-          <p>A Library Management System is an ideal HSC project because it has multiple entity types with clear IS-A and HAS-A relationships. The diagram below shows how <code>Book</code>, <code>Member</code>, and <code>Library</code> interact:</p>
+          <h3>Library Management System — Class Diagram</h3>
+          <p>A Library Management System is an ideal HSC project because it has multiple entity types with clear IS-A and HAS-A relationships. The first-cut diagram below shows how <code>Book</code>, <code>Member</code>, and <code>Library</code> interact. It uses <code>+</code> and <code>-</code> visibility marks, which come from UML; the Course Specifications notation leaves them out.</p>
 
           <figure class="figure">
           <figcaption class="figure-head">
@@ -719,51 +1593,223 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           </div>
         </figure>
 
-<h3>Python Implementation — Book and EBook Classes</h3>
-          <p>The following implementation demonstrates all four OOP pillars. Note how <strong>encapsulation</strong> is achieved with private attributes (double underscore prefix), <strong>abstraction</strong> through the property decorator, <strong>inheritance</strong> via <code>EBook(Book)</code>, and <strong>polymorphism</strong> by overriding <code>checkout()</code>:</p>
+          <p>Writing the code exposed something the first cut missed: books and DVDs share most of their data and behaviour. So the design was <em>generalised</em>, and the refined diagram from the modelling section (Book, DVD and ReferenceBook inheriting from LibraryItem) is the one implemented below. Revising a diagram after learning something is a normal part of design.</p>
 
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Python — Library System OOP Implementation</span></div>
-            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Book</span>:
-    <span class="kw">def</span> <span class="fn">__init__</span>(self, isbn: str, title: str, author: str):
-        self.__isbn = isbn          <span class="cm"># Private attribute</span>
-        self.__title = title
-        self.__author = author
-        self.__available = <span class="kw">True</span>
+          <h3>Python Implementation: the complete program</h3>
+          <p>The classes below use encapsulation (private data, properties), abstraction (an abstract <code>LibraryItem</code>), inheritance (<code>Book</code>, <code>DVD</code> and <code>ReferenceBook</code>), polymorphism (each subclass answers <code>loan_days()</code> and <code>describe()</code> in its own way) and message passing (the library asks the member, who asks the item). The mainline at the bottom is short: it creates objects and sends messages.</p>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — Riverbend Library: the complete program</span></div>
+            <pre><code class="language-python"><span class="kw">from</span> abc <span class="kw">import</span> ABC, abstractmethod
+
+
+<span class="kw">class</span> <span class="fn">LibraryItem</span>(ABC):
+    <span class="str">"""Anything the library lends. Abstract: only real item types can be created."""</span>
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, item_id, title):
+        self._item_id = item_id
+        self._title = title
+        self._on_loan = <span class="kw">False</span>
 
     @property
-    <span class="kw">def</span> <span class="fn">title</span>(self):               <span class="cm"># Getter (encapsulation)</span>
-        <span class="kw">return</span> self.__title
+    <span class="kw">def</span> <span class="fn">item_id</span>(self):
+        <span class="kw">return</span> self._item_id
 
     @property
-    <span class="kw">def</span> <span class="fn">available</span>(self):
-        <span class="kw">return</span> self.__available
+    <span class="kw">def</span> <span class="fn">title</span>(self):
+        <span class="kw">return</span> self._title
 
-    <span class="kw">def</span> <span class="fn">checkout</span>(self) -> bool:
-        <span class="kw">if</span> self.__available:
-            self.__available = <span class="kw">False</span>
-            <span class="kw">return</span> <span class="kw">True</span>
-        <span class="kw">return</span> <span class="kw">False</span>
+    @property
+    <span class="kw">def</span> <span class="fn">on_loan</span>(self):
+        <span class="kw">return</span> self._on_loan
 
-    <span class="kw">def</span> <span class="fn">return_book</span>(self) -> <span class="kw">None</span>:
-        self.__available = <span class="kw">True</span>
+    @abstractmethod
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self):
+        <span class="str">"""How many days this kind of item may be kept."""</span>
 
-    <span class="kw">def</span> <span class="fn">__str__</span>(self):             <span class="cm"># String representation</span>
-        status = <span class="str">"Available"</span> <span class="kw">if</span> self.__available <span class="kw">else</span> <span class="str">"Checked out"</span>
-        <span class="kw">return</span> f<span class="str">"{self.__title} by {self.__author} [{status}]"</span>
+    <span class="kw">def</span> <span class="fn">check_out</span>(self):
+        <span class="kw">if</span> self._on_loan:                  <span class="cm"># branching</span>
+            <span class="kw">return</span> <span class="kw">False</span>
+        self._on_loan = <span class="kw">True</span>
+        <span class="kw">return</span> <span class="kw">True</span>
+
+    <span class="kw">def</span> <span class="fn">check_in</span>(self):
+        self._on_loan = <span class="kw">False</span>
+
+    <span class="kw">def</span> <span class="fn">describe</span>(self):
+        status = <span class="str">"on loan"</span> <span class="kw">if</span> self._on_loan <span class="kw">else</span> <span class="str">"available"</span>
+        <span class="kw">return</span> <span class="str">f"{self._title} [{status}]"</span>
 
 
-<span class="kw">class</span> <span class="fn">EBook</span>(Book):                 <span class="cm"># Inheritance</span>
-    <span class="kw">def</span> <span class="fn">__init__</span>(self, isbn, title, author, file_format: str):
-        super().__init__(isbn, title, author)
-        self.__file_format = file_format
+<span class="kw">class</span> <span class="fn">Book</span>(LibraryItem):
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, item_id, title, author):
+        super().__init__(item_id, title)
+        self._author = author
 
-    <span class="kw">def</span> <span class="fn">download</span>(self) -> str:     <span class="cm"># Polymorphism - new behaviour</span>
-        <span class="kw">return</span> f<span class="str">"Downloading {self.title} as {self.__file_format}..."</span>
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self):
+        <span class="kw">return</span> <span class="num">14</span>
 
-    <span class="kw">def</span> <span class="fn">checkout</span>(self) -> bool:    <span class="cm"># Polymorphism - override</span>
-        <span class="cm"># EBooks can always be checked out (no physical limit)</span>
-        <span class="kw">return</span> <span class="kw">True</span></code></pre>
+    <span class="kw">def</span> <span class="fn">describe</span>(self):
+        <span class="kw">return</span> <span class="str">f"{super().describe()} by {self._author}"</span>
+
+
+<span class="kw">class</span> <span class="fn">ReferenceBook</span>(Book):
+    <span class="kw">def</span> <span class="fn">check_out</span>(self):
+        <span class="kw">return</span> <span class="kw">False</span>                       <span class="cm"># reference books never leave the library</span>
+
+
+<span class="kw">class</span> <span class="fn">DVD</span>(LibraryItem):
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, item_id, title, minutes):
+        super().__init__(item_id, title)
+        self._minutes = minutes
+
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self):
+        <span class="kw">return</span> <span class="num">7</span>
+
+    <span class="kw">def</span> <span class="fn">describe</span>(self):
+        <span class="kw">return</span> <span class="str">f"{super().describe()}, {self._minutes} min"</span>
+
+
+<span class="kw">class</span> <span class="fn">Member</span>:
+    MAX_LOANS = <span class="num">3</span>                          <span class="cm"># class attribute: the same rule for everyone</span>
+
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, member_id, name, email):
+        self._member_id = member_id
+        self._name = name
+        self.email = email                 <span class="cm"># runs the validating setter</span>
+        self.__loans = []                  <span class="cm"># private</span>
+
+    @property
+    <span class="kw">def</span> <span class="fn">member_id</span>(self):
+        <span class="kw">return</span> self._member_id
+
+    @property
+    <span class="kw">def</span> <span class="fn">name</span>(self):
+        <span class="kw">return</span> self._name
+
+    @property
+    <span class="kw">def</span> <span class="fn">email</span>(self):
+        <span class="kw">return</span> self._email
+
+    @email.setter
+    <span class="kw">def</span> <span class="fn">email</span>(self, value):
+        <span class="kw">if</span> <span class="str">"@"</span> <span class="kw">not</span> <span class="kw">in</span> value:
+            <span class="kw">raise</span> ValueError(<span class="str">"email must contain @"</span>)
+        self._email = value
+
+    @property
+    <span class="kw">def</span> <span class="fn">loan_count</span>(self):
+        <span class="kw">return</span> len(self.__loans)
+
+    <span class="kw">def</span> <span class="fn">borrow</span>(self, item):
+        <span class="kw">if</span> len(self.__loans) &gt;= Member.MAX_LOANS:
+            <span class="kw">return</span> <span class="kw">False</span>
+        <span class="kw">if</span> <span class="kw">not</span> item.check_out():           <span class="cm"># message passing: ask the item</span>
+            <span class="kw">return</span> <span class="kw">False</span>
+        self.__loans.append(item)
+        <span class="kw">return</span> <span class="kw">True</span>
+
+    <span class="kw">def</span> <span class="fn">give_back</span>(self, item):
+        <span class="kw">if</span> item <span class="kw">in</span> self.__loans:
+            self.__loans.remove(item)
+            item.check_in()
+
+
+<span class="kw">class</span> <span class="fn">Library</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self):
+        self._items = {}                   <span class="cm"># data structure: dictionary keyed by id</span>
+        self._members = {}
+
+    <span class="kw">def</span> <span class="fn">add_item</span>(self, item):
+        self._items[item.item_id] = item
+
+    <span class="kw">def</span> <span class="fn">join</span>(self, member):
+        self._members[member.member_id] = member
+
+    <span class="kw">def</span> <span class="fn">checkout</span>(self, member_id, item_id):
+        member = self._members.get(member_id)
+        item = self._items.get(item_id)
+        <span class="kw">if</span> member <span class="kw">is</span> <span class="kw">None</span> <span class="kw">or</span> item <span class="kw">is</span> <span class="kw">None</span>:
+            <span class="kw">return</span> <span class="str">"Unknown member or item"</span>
+        <span class="kw">if</span> member.borrow(item):
+            <span class="kw">return</span> <span class="str">f"{member.name} borrowed {item.title} for {item.loan_days()} days"</span>
+        <span class="kw">return</span> <span class="str">f"{member.name} could not borrow {item.title}"</span>
+
+    <span class="kw">def</span> <span class="fn">report</span>(self):
+        <span class="kw">for</span> item <span class="kw">in</span> self._items.values():  <span class="cm"># iteration</span>
+            print(item.describe())         <span class="cm"># polymorphism: each item describes itself</span>
+
+
+<span class="kw">def</span> <span class="fn">main</span>():
+    library = Library()
+    library.add_item(Book(<span class="str">"B1"</span>, <span class="str">"River Road"</span>, <span class="str">"A. Nguyen"</span>))
+    library.add_item(DVD(<span class="str">"D1"</span>, <span class="str">"Star Coast"</span>, <span class="num">95</span>))
+    library.add_item(ReferenceBook(<span class="str">"R1"</span>, <span class="str">"Atlas of Australia"</span>, <span class="str">"P. Smith"</span>))
+    library.join(Member(<span class="str">"M1"</span>, <span class="str">"Priya"</span>, <span class="str">"priya@example.com"</span>))
+
+    print(library.checkout(<span class="str">"M1"</span>, <span class="str">"B1"</span>))
+    print(library.checkout(<span class="str">"M1"</span>, <span class="str">"D1"</span>))
+    print(library.checkout(<span class="str">"M1"</span>, <span class="str">"R1"</span>))
+    print(library.checkout(<span class="str">"M1"</span>, <span class="str">"B1"</span>))
+    print(library.checkout(<span class="str">"M9"</span>, <span class="str">"B1"</span>))
+    library.report()
+
+
+main()</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>Priya borrowed River Road for 14 days
+Priya borrowed Star Coast for 7 days
+Priya could not borrow Atlas of Australia
+Priya could not borrow River Road
+Unknown member or item
+River Road [on loan] by A. Nguyen
+Star Coast [on loan], 95 min
+Atlas of Australia [available] by P. Smith</code></pre>
+          </div>
+
+          <h3>Reading the program against the design</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Requirement from the task definition</th><th>Where the code meets it</th></tr></thead>
+              <tbody>
+                <tr><td>A member can borrow up to three items</td><td><code>Member.MAX_LOANS</code> checked in <code>borrow()</code> (branching)</td></tr>
+                <tr><td>Books 14 days, DVDs 7</td><td>Each subclass overrides <code>loan_days()</code></td></tr>
+                <tr><td>Reference books are never borrowed</td><td><code>ReferenceBook</code> overrides <code>check_out()</code> to return False. No other class changed.</td></tr>
+                <tr><td>An item cannot be borrowed twice</td><td>The <code>_on_loan</code> flag, tested in <code>LibraryItem.check_out()</code></td></tr>
+                <tr><td>Staff can print what is on the shelves</td><td><code>Library.report()</code> loops (iteration) and calls <code>describe()</code> on each item</td></tr>
+                <tr><td>Bad input is handled</td><td>An unknown id returns a message instead of crashing; a bad email raises <code>ValueError</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Extending the program</h3>
+          <p>A design is good if new needs can be met without rewriting what works. The library now buys audio books, lent for 21 days. Because <code>Library</code> only sends the messages <code>loan_days()</code> and <code>describe()</code>, the only new code is one subclass. Nothing in <code>Library</code>, <code>Member</code> or <code>LibraryItem</code> is edited.</p>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — a new item type: one new class, no edits elsewhere</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">AudioBook</span>(Book):
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, item_id, title, author, hours):
+        super().__init__(item_id, title, author)
+        self._hours = hours
+
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self):
+        <span class="kw">return</span> <span class="num">21</span>
+
+    <span class="kw">def</span> <span class="fn">describe</span>(self):
+        <span class="kw">return</span> <span class="str">f"{super().describe()}, {self._hours} h audio"</span>
+
+
+library = Library()
+library.add_item(AudioBook(<span class="str">"A1"</span>, <span class="str">"Salt Country"</span>, <span class="str">"M. Okafor"</span>, <span class="num">9</span>))
+library.join(Member(<span class="str">"M2"</span>, <span class="str">"Tom"</span>, <span class="str">"tom@example.com"</span>))
+print(library.checkout(<span class="str">"M2"</span>, <span class="str">"A1"</span>))
+library.report()</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>Tom borrowed Salt Country for 21 days
+Salt Country [on loan] by M. Okafor, 9 h audio</code></pre>
           </div>
 
           <div class="callout exam-tip">
@@ -787,6 +1833,9 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
               <li><strong>For your HSC project:</strong> if your system involves 3 or more entity types that each have their own data <em>and</em> behaviour, OOP is the right choice and will earn better marks for design quality.</li>
             </ul>
           </div>
+
+          <div class="callout assessor"><strong>Exam tip: "Design and implement"</strong> Questions that ask you to design and implement a program for a stated need are marked on whether the <em>design fits the need</em> and the <em>code works</em>. Start from the scenario: list the classes, say which inherits from which, then write the code with each requirement traceable to a line (a limit becomes a branch, a list of objects becomes a loop, a repeated task becomes a method). Comment the important lines. Keep the mainline short and let objects do the work. Typical lost marks: data left public, logic in the mainline instead of in a method, an inheritance relationship that fails the is-a test, and code that has never been run. NESA's marker feedback on the 2025 HSC online exam (one exam only) asked for code "able to be executed in the coding environment", correct indentation, and functions called in the main program only after they are defined, so practise typing and running Python, not just reading it. If you are short of time, write the class and method headers with comments first (a skeleton) and fill in what you can.</div>
+
         </section>
 
         <hr class="divider" />
@@ -797,33 +1846,191 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <p class="syllabus-concept">📌 <em><strong>Implement and modify</strong> OOP programming code</em></p>
           <ul class="syllabus-including" aria-label="Including"><li>clear and uncluttered mainline</li><li>one logical task per subroutine</li><li>use of stubs</li><li>use of control structures and data structures</li><li>ease of maintenance</li><li>version control</li><li>regular backup</li></ul>
 
+          <p>Implementing a class and <em>modifying</em> existing code are different skills. Modifying is what most programmers do most of the time, and the practices below are what make it safe. Each one is shown on the Riverbend Library code.</p>
+
           <h3>Clear and Uncluttered Mainline</h3>
-          <p>The main program should be clean and easy to read, delegating complex logic to helper methods. Avoid embedding business logic directly in the main method. Instead, create objects and call their methods. This separation of concerns makes the flow of the program obvious and maintainable.</p>
+          <p>The main program should be clean and easy to read, delegating complex logic to helper methods. Avoid embedding business logic directly in the main method. Instead, create objects and call their methods. This separation of concerns makes the flow of the program obvious and maintainable. Compare the two mainlines below, which produce the same output.</p>
 
-<h3>One Logical Task Per Subroutine</h3>
-          <p>Each method should do one thing and do it well (the Single Responsibility Principle). A method named <code>processPayment()</code> should handle payment logic only, not also send emails and update inventory. This principle makes code easier to understand, test, and reuse.</p>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — cluttered mainline: the rules are mixed into the main program</span></div>
+            <pre><code class="language-python">loans = {<span class="str">"M1"</span>: <span class="num">2</span>}
+limit = <span class="num">3</span>
+items = {<span class="str">"B1"</span>: <span class="kw">True</span>, <span class="str">"D1"</span>: <span class="kw">False</span>}          <span class="cm"># True = available</span>
+member_id, item_id = <span class="str">"M1"</span>, <span class="str">"B1"</span>
 
-<h3>Use of Stubs</h3>
-          <p>A stub is a minimal implementation or placeholder for a subroutine, method, or class that will be fully developed later. Stubs allow high-level logic to be tested before all detailed methods are complete. For example, a <code>DatabaseConnection.save()</code> stub might just print "Saving..." while development of the actual database code continues elsewhere. This enables parallel development and testing.</p>
+<span class="kw">if</span> member_id <span class="kw">in</span> loans:
+    <span class="kw">if</span> item_id <span class="kw">in</span> items:
+        <span class="kw">if</span> items[item_id]:
+            <span class="kw">if</span> loans[member_id] &lt; limit:
+                items[item_id] = <span class="kw">False</span>
+                loans[member_id] += <span class="num">1</span>
+                print(<span class="str">"Borrowed"</span>, item_id)
+            <span class="kw">else</span>:
+                print(<span class="str">"Limit reached"</span>)
+        <span class="kw">else</span>:
+            print(<span class="str">"Already on loan"</span>)
+    <span class="kw">else</span>:
+        print(<span class="str">"No such item"</span>)
+<span class="kw">else</span>:
+    print(<span class="str">"No such member"</span>)</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>Borrowed B1</code></pre>
+          </div>
 
-<h3>Control Structures and Data Structures</h3>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — uncluttered mainline: the objects hold the rules</span></div>
+            <pre><code class="language-python"><span class="kw">def</span> <span class="fn">main</span>():
+    library = Library()
+    library.add_item(Book(<span class="str">"B1"</span>, <span class="str">"River Road"</span>, <span class="str">"A. Nguyen"</span>))
+    library.join(Member(<span class="str">"M1"</span>, <span class="str">"Priya"</span>, <span class="str">"priya@example.com"</span>))
+    print(library.checkout(<span class="str">"M1"</span>, <span class="str">"B1"</span>))
+
+
+main()</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>Priya borrowed River Road for 14 days</code></pre>
+          </div>
+          <p>The second mainline reads like a description of what the program does. The four levels of nested <code>if</code> have not vanished: they live in <code>Library.checkout()</code> and <code>Member.borrow()</code>, where each is small, named and can be tested alone.</p>
+
+          <h3>One Logical Task Per Subroutine</h3>
+          <p>Each method should do one thing and do it well (the Single Responsibility Principle). A method named <code>process_loan()</code> should handle the loan only, not also print receipts and update statistics. This makes code easier to understand, test and reuse, and it means a bug has fewer places to hide. If you have to use the word "and" to describe what a method does, split it.</p>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — refactoring one method that does four jobs into four methods</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">LoanDesk</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self):
+        self.count = <span class="num">0</span>
+
+    <span class="cm"># BEFORE: validates, records, counts AND formats, all in one method</span>
+    <span class="kw">def</span> <span class="fn">process_loan_v1</span>(self, member, title, days):
+        <span class="kw">if</span> days &lt;= <span class="num">0</span>:
+            <span class="kw">return</span> <span class="str">"Invalid loan period"</span>
+        self.count += <span class="num">1</span>
+        <span class="kw">return</span> <span class="str">f"Loan {self.count}: {member} has {title} for {days} days"</span>
+
+    <span class="cm"># AFTER: each method has one job</span>
+    <span class="kw">def</span> <span class="fn">_is_valid</span>(self, days):
+        <span class="kw">return</span> days &gt; <span class="num">0</span>
+
+    <span class="kw">def</span> <span class="fn">_record</span>(self):
+        self.count += <span class="num">1</span>
+        <span class="kw">return</span> self.count
+
+    <span class="kw">def</span> <span class="fn">_receipt</span>(self, number, member, title, days):
+        <span class="kw">return</span> <span class="str">f"Loan {number}: {member} has {title} for {days} days"</span>
+
+    <span class="kw">def</span> <span class="fn">process_loan_v2</span>(self, member, title, days):
+        <span class="kw">if</span> <span class="kw">not</span> self._is_valid(days):
+            <span class="kw">return</span> <span class="str">"Invalid loan period"</span>
+        <span class="kw">return</span> self._receipt(self._record(), member, title, days)
+
+
+desk1, desk2 = LoanDesk(), LoanDesk()
+print(desk1.process_loan_v1(<span class="str">"Priya"</span>, <span class="str">"River Road"</span>, <span class="num">14</span>))
+print(desk2.process_loan_v2(<span class="str">"Priya"</span>, <span class="str">"River Road"</span>, <span class="num">14</span>))     <span class="cm"># same behaviour</span>
+print(desk2.process_loan_v2(<span class="str">"Priya"</span>, <span class="str">"River Road"</span>, <span class="num">0</span>))</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>Loan 1: Priya has River Road for 14 days
+Loan 1: Priya has River Road for 14 days
+Invalid loan period</code></pre>
+          </div>
+          <p>Changing the structure of code without changing what it does is called <strong>refactoring</strong>. The identical output above is the proof that the behaviour was kept, which is why refactoring is always done with tests to run before and after.</p>
+
+          <h3>Use of Stubs</h3>
+          <p>A stub is a minimal implementation or placeholder for a subroutine, method, or class that will be fully developed later. Stubs allow high-level logic to be tested before all detailed methods are complete. This enables parallel development: one student can write <code>Library</code> against a stub while another writes the real <code>Member</code>. A stub should either return a fixed, believable value or say clearly that it is not finished, so that nobody mistakes it for real code.</p>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — two kinds of stub</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Database</span>:
+    <span class="kw">def</span> <span class="fn">save</span>(self, record):                 <span class="cm"># stub 1: fixed behaviour so callers can run</span>
+        print(<span class="str">"Saving..."</span>, record)
+        <span class="kw">return</span> <span class="kw">True</span>
+
+    <span class="kw">def</span> <span class="fn">load</span>(self, record_id):              <span class="cm"># stub 2: refuses to pretend</span>
+        <span class="kw">raise</span> NotImplementedError(<span class="str">"load() is not written yet"</span>)
+
+
+db = Database()
+print(db.save({<span class="str">"item"</span>: <span class="str">"B1"</span>}))
+<span class="kw">try</span>:
+    db.load(<span class="str">"B1"</span>)
+<span class="kw">except</span> NotImplementedError <span class="kw">as</span> err:
+    print(<span class="str">"Stub reached:"</span>, err)</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>Saving... {'item': 'B1'}
+True
+Stub reached: load() is not written yet</code></pre>
+          </div>
+
+          <h3>Control Structures and Data Structures</h3>
           <p>Implementation must effectively use both control structures (if/else, loops) to direct program flow and <strong>data structures</strong> (arrays, lists, trees) to organise data. Choosing the right combination improves both efficiency and code clarity.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Need</th><th>Structure</th><th>Riverbend example</th></tr></thead>
+              <tbody>
+                <tr><td>An ordered group where the same kind of thing is added and removed</td><td>List</td><td>A member's loans (<code>__loans</code>)</td></tr>
+                <tr><td>Fast lookup by a key</td><td>Dictionary</td><td>Items and members keyed by id</td></tr>
+                <tr><td>Membership only, no duplicates</td><td>Set</td><td>Ids of overdue items</td></tr>
+                <tr><td>Do something for every object</td><td><code>for</code> loop</td><td><code>Library.report()</code></td></tr>
+                <tr><td>Repeat until a condition changes</td><td><code>while</code> loop</td><td>A menu that runs until the librarian chooses Exit</td></tr>
+                <tr><td>Choose between actions</td><td><code>if</code>/<code>elif</code>/<code>else</code></td><td>The checks inside <code>borrow()</code></td></tr>
+              </tbody>
+            </table>
+          </div>
 
-<h3>Ease of Maintenance</h3>
+          <h3>Ease of Maintenance</h3>
           <p>Code should be maintainable through:</p>
           <ul>
             <li>Clear naming conventions for classes, methods, and variables.</li>
-            <li>Proper <strong>encapsulation</strong>—hiding implementation details behind clear interfaces.</li>
+            <li>Proper <strong>encapsulation</strong>, hiding implementation details behind clear interfaces.</li>
             <li>Comprehensive comments explaining non-obvious logic.</li>
             <li>Avoiding deep nesting and overly complex methods.</li>
             <li>Following consistent formatting and style.</li>
+            <li>Named constants in place of "magic numbers", so a rule is changed in one place.</li>
           </ul>
+          <p>A maintenance task shows the payoff. The council extends loans on all books from 14 to 21 days. In the Riverbend code that is a change to one line inside <code>Book.loan_days()</code>, and every part of the program that asks for the loan period now gets the new answer. Had the number 14 been typed into several methods, one of them would almost certainly have been missed.</p>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — a one-line modification</span></div>
+            <pre><code class="language-python"><span class="kw">class</span> <span class="fn">Book</span>(LibraryItem):
+    <span class="kw">def</span> <span class="fn">loan_days</span>(self):
+        <span class="kw">return</span> <span class="num">21</span>                          <span class="cm"># was 14: the only line that changes</span></code></pre>
+          </div>
 
-<h3>Version Control</h3>
-          <p>Using version control systems (Git, GitLab, Bitbucket) is essential for OOP development. Version control allows multiple developers to work on different classes simultaneously, track changes, revert to previous versions if needed, and maintain an audit trail of who changed what and why. Commits should be frequent and have clear messages describing the changes made.</p>
+          <h3>Version Control</h3>
+          <p>Using version control systems (Git, GitLab, Bitbucket) is essential for OOP development. Version control allows multiple developers to work on different classes simultaneously, track changes, revert to previous versions if needed, and maintain an audit trail of who changed what and why. Commits should be frequent and small, each with a message that says what changed and why.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Weak commit message</th><th>Better commit message</th></tr></thead>
+              <tbody>
+                <tr><td><code>fixed stuff</code></td><td><code>Stop members borrowing a fourth item</code></td></tr>
+                <tr><td><code>update</code></td><td><code>Add ReferenceBook: overrides check_out to refuse loans</code></td></tr>
+                <tr><td><code>final version 2</code></td><td><code>Extend book loans from 14 to 21 days</code></td></tr>
+              </tbody>
+            </table>
+          </div>
 
-<h3>Regular Backup</h3>
-          <p>Beyond version control, regular backups of the entire codebase ensure protection against data loss from hardware failures. Backups should be stored off-site or in the cloud to protect against local disasters. Automated backup systems are preferred to ensure consistency and reliability.</p>
+          <h3>Regular Backup</h3>
+          <p>Beyond version control, regular backups of the entire codebase ensure protection against data loss from hardware failures. Backups should be stored off-site or in the cloud to protect against local disasters, and automated backups are preferred to ensure consistency and reliability. A common guideline is the <strong>3-2-1 rule</strong>: three copies of the data, on two different kinds of storage, with one copy off-site. A backup is only proven when you have tested restoring from it.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th></th><th>Version control</th><th>Backup</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Main purpose</strong></td><td>Track and share changes; return to any earlier version</td><td>Recover the whole project after loss or damage</td></tr>
+                <tr><td><strong>Protects against</strong></td><td>A bad change; two people overwriting each other</td><td>A failed disk, theft, fire, accidental deletion, ransomware</td></tr>
+                <tr><td><strong>Works if the computer is lost?</strong></td><td>Only if the repository is also hosted somewhere else</td><td>Yes, if a copy is off-site</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout assessor"><strong>Exam tip: "Implement and modify"</strong> Expect a short piece of OOP code and a request such as "modify the class so that...". Read the whole class first, change only what the requirement needs, and keep the rest of the design intact: add a subclass or override rather than editing every caller. Then say <em>why</em> your change is safe: the interface did not change, so callers are unaffected. When a question asks about practices, link each one to a result (a clear mainline makes the program readable; one task per subroutine makes methods testable; stubs allow early testing; version control gives you history and a way to revert). Do not treat version control and backup as the same thing.</div>
+
         </section>
 
         <hr class="divider" />
@@ -834,43 +2041,223 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> methodologies to test and evaluate code</em></p>
           <ul class="syllabus-including" aria-label="Including"><li>unit, subsystem and system testing</li><li>black, white and grey box testing</li><li>quality assurance</li></ul>
 
+          <p><strong>Testing</strong> is how you gather the evidence that code works. It is done at several levels and with several viewpoints, and it is never finished on the first pass: every time code changes, the tests are run again. The examples below test the Riverbend Library program from the design section.</p>
+
           <h3>Testing Hierarchy: Unit, Subsystem, and System</h3>
           <p>Testing occurs at multiple levels, building from smallest to largest components:</p>
 
           <div class="structured-content">
             <h4>Unit Testing</h4>
-            <p>Testing individual classes or methods in isolation to ensure they perform their intended function correctly. For example, testing a <code>BankAccount.withdraw()</code> method with various inputs (sufficient balance, insufficient balance, negative amount, zero amount). Unit tests are the most granular and should be written by the developer who wrote the code.</p>
-
-            <h4>Subsystem Testing</h4>
-            <p>Testing groups of related classes that work together as a functional subsystem. For example, testing the interaction between <code>Customer</code>, <code>Order</code>, and <code>Payment</code> classes to ensure orders are created and payments are processed correctly. This level catches integration issues that unit tests might miss.</p>
-
-            <h4>System Testing</h4>
-            <p>Testing the entire integrated application end-to-end to ensure all components work together and meet the overall requirements. System testing includes testing the application's interaction with external systems (databases, APIs, etc.) and verifying that the entire workflow functions as expected.</p>
+            <p>Testing individual classes or methods in isolation to ensure they perform their intended function correctly. For example, testing a <code>Member.borrow()</code> method with various inputs (a free item, an item already on loan, a member already at the limit). Unit tests are the most granular and should be written by the developer who wrote the code.</p>
           </div>
 
-<h3>Testing Approaches: Black, White, and Grey Box</h3>
+          <p>A unit test can be as simple as a function that sets up an object, sends it a message and uses <code>assert</code> to state what must be true. If the condition is false, Python raises an <code>AssertionError</code> and the test fails. Good unit tests cover <strong>normal</strong> data, <strong>boundary</strong> data (at the edge of a rule) and <strong>abnormal</strong> data (invalid input).</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Test</th><th>Kind of data</th><th>Input</th><th>Expected result</th></tr></thead>
+              <tbody>
+                <tr><td>A new item is available</td><td>Normal</td><td>New Book</td><td><code>on_loan</code> is False</td></tr>
+                <tr><td>Borrow a free book</td><td>Normal</td><td>Member with 0 loans</td><td>True; loan count 1</td></tr>
+                <tr><td>Third item allowed</td><td>Boundary (last allowed)</td><td>Member borrows 3 items</td><td>All three succeed</td></tr>
+                <tr><td>Fourth item refused</td><td>Boundary (first refused)</td><td>Member borrows a 4th</td><td>False; count stays 3</td></tr>
+                <tr><td>Reference book</td><td>Abnormal for a loan</td><td>Any member borrows it</td><td>False</td></tr>
+                <tr><td>Invalid email</td><td>Abnormal</td><td><code>"no-at-sign"</code></td><td><code>ValueError</code> raised</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — unit tests using simple asserts</span></div>
+            <pre><code class="language-python"><span class="kw">def</span> <span class="fn">test_new_item_is_available</span>():
+    <span class="kw">assert</span> Book(<span class="str">"B1"</span>, <span class="str">"River Road"</span>, <span class="str">"A. Nguyen"</span>).on_loan <span class="kw">is</span> <span class="kw">False</span>
+
+
+<span class="kw">def</span> <span class="fn">test_borrow_free_book</span>():
+    member = Member(<span class="str">"M1"</span>, <span class="str">"Priya"</span>, <span class="str">"p@example.com"</span>)
+    book = Book(<span class="str">"B1"</span>, <span class="str">"River Road"</span>, <span class="str">"A. Nguyen"</span>)
+    <span class="kw">assert</span> member.borrow(book) <span class="kw">is</span> <span class="kw">True</span>
+    <span class="kw">assert</span> member.loan_count == <span class="num">1</span>
+
+
+<span class="kw">def</span> <span class="fn">test_limit_boundary</span>():
+    member = Member(<span class="str">"M1"</span>, <span class="str">"Priya"</span>, <span class="str">"p@example.com"</span>)
+    <span class="kw">for</span> n <span class="kw">in</span> range(<span class="num">3</span>):
+        book = Book(<span class="str">f"B{n}"</span>, <span class="str">"Title"</span>, <span class="str">"Author"</span>)
+        <span class="kw">assert</span> member.borrow(book) <span class="kw">is</span> <span class="kw">True</span>, <span class="str">f"item {n + 1} should be allowed"</span>
+    extra = Book(<span class="str">"B9"</span>, <span class="str">"Title"</span>, <span class="str">"Author"</span>)
+    <span class="kw">assert</span> member.borrow(extra) <span class="kw">is</span> <span class="kw">False</span>, <span class="str">"fourth item should be refused"</span>
+    <span class="kw">assert</span> member.loan_count == <span class="num">3</span>
+
+
+<span class="kw">def</span> <span class="fn">test_reference_book_never_lent</span>():
+    member = Member(<span class="str">"M1"</span>, <span class="str">"Priya"</span>, <span class="str">"p@example.com"</span>)
+    atlas = ReferenceBook(<span class="str">"R1"</span>, <span class="str">"Atlas"</span>, <span class="str">"P. Smith"</span>)
+    <span class="kw">assert</span> member.borrow(atlas) <span class="kw">is</span> <span class="kw">False</span>
+
+
+<span class="kw">def</span> <span class="fn">test_bad_email_rejected</span>():
+    <span class="kw">try</span>:
+        Member(<span class="str">"M1"</span>, <span class="str">"Priya"</span>, <span class="str">"no-at-sign"</span>)
+    <span class="kw">except</span> ValueError:
+        <span class="kw">return</span>                                <span class="cm"># the expected outcome</span>
+    <span class="kw">assert</span> <span class="kw">False</span>, <span class="str">"ValueError was not raised"</span>
+
+
+tests = [test_new_item_is_available, test_borrow_free_book, test_limit_boundary,
+         test_reference_book_never_lent, test_bad_email_rejected]
+passed = <span class="num">0</span>
+<span class="kw">for</span> test <span class="kw">in</span> tests:
+    <span class="kw">try</span>:
+        test()
+        print(<span class="str">"PASS"</span>, test.__name__)
+        passed += <span class="num">1</span>
+    <span class="kw">except</span> AssertionError <span class="kw">as</span> err:
+        print(<span class="str">"FAIL"</span>, test.__name__, err)
+print(<span class="str">f"{passed} of {len(tests)} tests passed"</span>)</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>PASS test_new_item_is_available
+PASS test_borrow_free_book
+PASS test_limit_boundary
+PASS test_reference_book_never_lent
+PASS test_bad_email_rejected
+5 of 5 tests passed</code></pre>
+          </div>
+
+          <p>The tests exercise the objects only through their public methods and properties (<code>borrow()</code>, <code>loan_count</code>), never by reaching into private data. That keeps them valid when the internals are refactored.</p>
+
+          <p>A failing test is useful because it points at the fault. Here a developer wrote the limit check with the wrong comparison, and the boundary tests catch it. Boundary values are where off-by-one errors live, so always test on both sides of the edge.</p>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — a boundary test that finds a bug</span></div>
+            <pre><code class="language-python"><span class="kw">def</span> <span class="fn">can_borrow</span>(current_loans, limit=<span class="num">3</span>):
+    <span class="kw">return</span> current_loans &lt;= limit          <span class="cm"># BUG: should be &lt; (allows a fourth item)</span>
+
+
+<span class="kw">def</span> <span class="fn">test_can_borrow</span>():
+    <span class="kw">assert</span> can_borrow(<span class="num">0</span>) <span class="kw">is</span> <span class="kw">True</span>, <span class="str">"0 loans: should be allowed"</span>
+    <span class="kw">assert</span> can_borrow(<span class="num">2</span>) <span class="kw">is</span> <span class="kw">True</span>, <span class="str">"2 loans: third item should be allowed"</span>
+    <span class="kw">assert</span> can_borrow(<span class="num">3</span>) <span class="kw">is</span> <span class="kw">False</span>, <span class="str">"3 loans: fourth item should be refused"</span>
+
+
+<span class="kw">try</span>:
+    test_can_borrow()
+    print(<span class="str">"PASS"</span>)
+<span class="kw">except</span> AssertionError <span class="kw">as</span> err:
+    print(<span class="str">"FAIL:"</span>, err)</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>FAIL: 3 loans: fourth item should be refused</code></pre>
+          </div>
+
+          <div class="structured-content">
+            <h4>Subsystem Testing</h4>
+            <p>Testing groups of related classes that work together as a functional subsystem. For example, testing the interaction between <code>Library</code>, <code>Member</code> and <code>LibraryItem</code> to check that a checkout changes the state of both the member and the item. This level catches integration issues that unit tests might miss: each class can pass its own tests and still be called with the wrong arguments or in the wrong order by another.</p>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — subsystem test: three classes working together</span></div>
+            <pre><code class="language-python">library = Library()
+book = Book(<span class="str">"B1"</span>, <span class="str">"River Road"</span>, <span class="str">"A. Nguyen"</span>)
+priya = Member(<span class="str">"M1"</span>, <span class="str">"Priya"</span>, <span class="str">"priya@example.com"</span>)
+library.add_item(book)
+library.join(priya)
+
+message = library.checkout(<span class="str">"M1"</span>, <span class="str">"B1"</span>)
+<span class="kw">assert</span> message == <span class="str">"Priya borrowed River Road for 14 days"</span>
+<span class="kw">assert</span> book.on_loan <span class="kw">is</span> <span class="kw">True</span>                <span class="cm"># the item changed...</span>
+<span class="kw">assert</span> priya.loan_count == <span class="num">1</span>               <span class="cm"># ...and so did the member</span>
+
+priya.give_back(book)
+<span class="kw">assert</span> book.on_loan <span class="kw">is</span> <span class="kw">False</span> <span class="kw">and</span> priya.loan_count == <span class="num">0</span>
+print(<span class="str">"Subsystem test passed"</span>)</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>Subsystem test passed</code></pre>
+          </div>
+
+          <div class="structured-content">
+            <h4>System Testing</h4>
+            <p>Testing the entire integrated application end-to-end to ensure all components work together and meet the overall requirements. System testing includes testing the application's interaction with external systems (databases, APIs, etc.) and verifying that the entire workflow functions as expected, using the program as a user would.</p>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Python — system test: run the whole program and check what the user sees</span></div>
+            <pre><code class="language-python"><span class="kw">import</span> io
+<span class="kw">from</span> contextlib <span class="kw">import</span> redirect_stdout
+
+buffer = io.StringIO()
+<span class="kw">with</span> redirect_stdout(buffer):              <span class="cm"># capture everything the program prints</span>
+    main()
+lines = buffer.getvalue().splitlines()
+
+<span class="kw">assert</span> lines[<span class="num">0</span>] == <span class="str">"Priya borrowed River Road for 14 days"</span>
+<span class="kw">assert</span> lines[<span class="num">2</span>] == <span class="str">"Priya could not borrow Atlas of Australia"</span>
+<span class="kw">assert</span> lines[<span class="num">4</span>] == <span class="str">"Unknown member or item"</span>
+<span class="kw">assert</span> len(lines) == <span class="num">8</span>
+print(<span class="str">"System test passed:"</span>, len(lines), <span class="str">"lines of output checked"</span>)</code></pre>
+          </div>
+<div class="code-block">
+            <div class="code-header"><span class="code-lang">Output</span></div>
+            <pre><code>System test passed: 8 lines of output checked</code></pre>
+          </div>
+
+          <h3>Testing Approaches: Black, White, and Grey Box</h3>
+          <p>These describe how much the tester knows about the code, not how big the thing under test is. The same unit, <code>Member.borrow()</code>, can be tested in all three ways.</p>
 
           <div class="structured-content">
             <h4>Black Box Testing</h4>
-            <p>Testing inputs and outputs without access to or knowledge of the internal code structure. The tester treats the software as a "black box" and tests it purely based on specifications. This approach ensures the software meets functional requirements from a user's perspective. For example, testing that a login system correctly accepts valid credentials and rejects invalid ones, without examining the <strong>authentication</strong> code.</p>
+            <p>Testing inputs and outputs without access to or knowledge of the internal code structure. The tester treats the software as a "black box" and tests it purely based on specifications. This approach ensures the software meets functional requirements from a user's perspective. For example, using only the statement "a member can borrow up to three items", try borrowing one, three and four items and check the results, without reading <code>borrow()</code>. The unit tests above are black-box tests.</p>
 
             <h4>White Box Testing</h4>
-            <p>Testing with complete access to and understanding of the internal code structure. The tester examines the code logic, control flow, and data flow to ensure all paths and conditions are tested. This approach is critical for security, ensuring all potential vulnerabilities and logic errors are identified. For example, verifying that all conditional branches (IF/ELSE statements) in a method execute correctly under different conditions.</p>
-
+            <p>Testing with complete access to and understanding of the internal code structure. The tester examines the code logic, control flow, and data flow to ensure all paths and conditions are tested. This approach is critical for security, ensuring all potential vulnerabilities and logic errors are identified. For <code>borrow()</code>, reading the code shows three paths, so at least three tests are needed to run every branch (path coverage):</p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Path through <code>borrow()</code></th><th>Test that reaches it</th><th>Result</th></tr></thead>
+              <tbody>
+                <tr><td>1. <code>len(loans) &gt;= MAX_LOANS</code> is true</td><td>Member already holds 3 items</td><td>False</td></tr>
+                <tr><td>2. Limit not reached, but <code>check_out()</code> returns False</td><td>Item already on loan, or a ReferenceBook</td><td>False</td></tr>
+                <tr><td>3. Both checks pass</td><td>Free item, member under the limit</td><td>True, item appended</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="structured-content">
             <h4>Grey Box Testing</h4>
-            <p>A hybrid approach where the tester has partial knowledge of the internal structure (like knowing which classes exist and their general purpose) but not the implementation details. This allows more targeted testing than black box while being less resource-intensive than white box. For example, knowing the database schema but not the exact SQL queries used.</p>
+            <p>A hybrid approach where the tester has partial knowledge of the internal structure (like knowing which classes exist and their general purpose) but not the implementation details. This allows more targeted testing than black box while being less resource-intensive than white box. For example, knowing that <code>Member</code> delegates to <code>LibraryItem.check_out()</code> and that the limit is a constant, the tester chooses the "item already on loan" and "third versus fourth item" cases deliberately, but still checks only through the public interface.</p>
           </div>
 
-<h3>Quality Assurance Process</h3>
-          <p>Quality Assurance (QA) is the systematic process of ensuring software meets specified engineering standards and quality criteria. QA includes:</p>
+          <div class="callout info"><strong>NESA glossary wording</strong>
+            <ul>
+              <li><strong>Black box testing:</strong> "A testing technique where there is no knowledge of the internal workings of an application. A user will provide inputs and observe the outputs in order to determine functionality of the program."</li>
+              <li><strong>White box testing:</strong> "A testing technique used to examine the internal workings of an application including the design, code and inner workings of software. This technique gives the ability to verify the flow of inputs and outputs through the application."</li>
+              <li><strong>Grey box testing:</strong> "A testing technique where there is a partial knowledge of the internal workings of an application. Its purpose is to search for defects related to improper code structure or the improper use of functions. This technique gives the ability to test both the code and the presentation layer of an application."</li>
+            </ul>
+            <p>Source: NESA, Software Engineering 11–12 syllabus glossary.</p>
+          </div>
+
+          <h3>Testing objects: things to remember</h3>
           <ul>
-            <li><strong>Requirements Verification:</strong> Ensuring the code implements all specified requirements.</li>
+            <li><strong>Test through the interface.</strong> Check state with public methods and properties. A test that reads a private attribute breaks when the class is refactored.</li>
+            <li><strong>Test polymorphism by looping.</strong> Run the same test over every subclass (Book, DVD, ReferenceBook), since each may override behaviour. A subclass must still honour what the superclass promises, unless its documentation says otherwise.</li>
+            <li><strong>Isolate with stubs.</strong> To unit-test <code>Library</code> without a real <code>Member</code>, pass in a stub that returns fixed answers.</li>
+            <li><strong>Re-run after every change.</strong> <strong>Regression testing</strong> means running the old tests again to prove new code did not break old behaviour. This is what makes refactoring safe.</li>
+          </ul>
+
+          <h3>Quality Assurance Process</h3>
+          <p>Quality Assurance (QA) is the systematic process of ensuring software meets specified engineering standards and quality criteria. It looks at the whole process, not just at running tests. QA includes:</p>
+          <ul>
+            <li><strong>Requirements Verification:</strong> Ensuring the code implements all specified requirements (each line of the task definition has a passing test).</li>
             <li><strong>Code Review:</strong> Peer examination of code for logic errors, adherence to standards, and maintainability.</li>
             <li><strong>Automated Testing:</strong> Using test suites that run automatically on every code change to catch regressions.</li>
             <li><strong>Documentation:</strong> Ensuring code is properly documented so maintainability is assured.</li>
             <li><strong>Performance Testing:</strong> Verifying the code meets performance requirements under expected and peak loads.</li>
-            <li><strong>Security Testing:</strong> Identifying and fixing security vulnerabilities (part of Secure Software Development as per SE-12-X topics).</li>
+            <li><strong>Security Testing:</strong> Identifying and fixing security vulnerabilities. This is developed further in Year 12 (Secure Software Architecture).</li>
           </ul>
+
+          <div class="callout assessor"><strong>Exam tip: "Apply" methodologies to test and evaluate</strong> Be ready to (a) design test data for a described method, labelled as normal, boundary or abnormal, each with an <em>expected</em> result, and (b) state which level or box type a described test is. Quick rules: one method or class alone is a unit test; several classes together is a subsystem test; the whole program from the user's side is a system test. Black box means the tester cannot see the code, white box means they can, grey box means partly. A full-mark test table always gives the expected output <em>before</em> running the code. Common mistakes: confusing the level of testing (unit, subsystem, system) with the box type (black, white, grey), and giving only normal data.</div>
+
         </section>
 
       
@@ -924,7 +2311,7 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
   </footer>
 
   <script src="../js/glossary-data.js?v=6"></script>
-  <script src="../js/quizzes/object-oriented-paradigm.js?v=1"></script>
+  <script src="../js/quizzes/object-oriented-paradigm.js?v=2"></script>
   <script src="../js/quiz.js?v=3" defer></script>
   <script src="../js/nesa-diagram-data.js?v=3"></script>
   <script src="../js/nesa-diagrams.js?v=3" defer></script>
@@ -953,8 +2340,9 @@ result = account.withdraw(500) <span class="cm"># Passing message to account obj
       </div>
     </div>
   </div>
+  <script src="../js/pages/object-oriented-paradigm.js?v=1" defer></script>
   <script src="../js/paper.js?v=6" defer></script>
   <script src="../js/progress.js?v=1" defer></script>
-  <script src="../js/anim.js?v=4" defer></script>
+  <script src="../js/anim.js?v=5" defer></script>
 </body>
 </html>

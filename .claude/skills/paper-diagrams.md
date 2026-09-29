@@ -37,7 +37,7 @@ flowcharts.
 | Data flow diagram | `js/nesa-diagrams.js` | Circle processes, rectangle external entities, open-ended data stores, curved labelled flows. |
 | Structure chart | `js/nesa-diagrams.js` | Modules, data (open) and flag (filled) couples, decision diamond, repetition arc. |
 | Sequence diagram | `s.sequence()` | Actors across the top, solid arrows for requests, dashed for replies, numbered steps. |
-| Class diagram | `s.classBox()` + `s.link()` | Name, attributes, methods compartments. Inheritance uses `marker: 'pa-inherit'` (hollow triangle at the parent). Label relationships and give multiplicities (`1..1`, `0..*`, `1..*`, `0..1`) as `pa-mult` text near each end; never "many". |
+| Class diagram | `s.classBox()` + `s.link()` | Name, attributes, methods compartments. Inheritance uses `marker: 'pa-inherit'` (filled arrowhead at the parent, as NESA draws it). Label relationships and give multiplicities (`1..1`, `0..*`, `1..*`, `0..1`) as `pa-mult` text near each end; never "many". |
 | State diagram | `card` states + `s.link()` | A filled start dot, rounded states, every transition labelled with its trigger. |
 | Gantt / timeline | `s.gantt()` | Bars for tasks, diamonds for milestones, dashed dependency arrows, weeks on the axis. |
 | Concept, process, architecture, cycle | `card`, `s.link`, cast from the kit | Free form, but keep to the colour code below. |

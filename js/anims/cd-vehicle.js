@@ -15,7 +15,7 @@ HSCAnim.define('cd-vehicle', {
       s.classBox(s.root, { x: 650, y: 380, w: 210, name: 'Truck', tone: 'sage-t', attrs: ['cargoCapacity: float'], methods: ['loadCargo(amount)'] })
     ];
     kids.forEach(k => s.link(L, k, v, { from: 'top', to: 'bottom', mid: 250, marker: 'pa-inherit' }));
-    s.link(L, v, e, { from: 'right', to: 'left', label: 'has' });
+    s.link(L, v, e, { from: 'right', to: 'left', label: 'has', marker: 'pa-rel' });
     s.text(s.root, '1..1', { x: 424, y: 92, anchor: 'start', cls: 'pa-mult' });
     s.text(s.root, '1..1', { x: 540, y: 92, anchor: 'end', cls: 'pa-mult' });
     s.text(s.root, 'inherits from', { x: 470, y: 244, anchor: 'start', cls: 'pa-name', size: 13 });
