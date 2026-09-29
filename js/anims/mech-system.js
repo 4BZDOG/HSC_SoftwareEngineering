@@ -3,13 +3,13 @@
 HSCAnim.define('mech-system', {
   still: true,
   title: 'System diagram: inside a mechatronic system',
-  alt: 'Sensors (camera, ultrasonic, IMU gyro, motor encoder) send analogue and digital signals to a microcontroller such as an Arduino or Raspberry Pi. The microcontroller passes sensor data to the control algorithm (path planning, obstacle detection, PID control) and receives control decisions back, then sends PWM and GPIO commands to actuators (DC motors, servos, LEDs, buzzer). A power system of batteries and regulators supplies 3.3 V to the sensors, 5 V to the microcontroller and 12 V to the actuators.',
+  alt: 'Sensors (camera, ultrasonic, IMU gyro, motor encoder) send analogue and digital signals to a microcontroller such as an Arduino or a Raspberry Pi Pico. The microcontroller passes sensor data to the control algorithm (path planning, obstacle detection, PID control) and receives control decisions back, then sends PWM and GPIO commands to actuators (DC motors, servos, LEDs, buzzer). A power system of batteries and regulators supplies 3.3 V to the sensors, 5 V to the microcontroller and 12 V to the actuators.',
   layout: { size: [780, 440], minWidth: 640 },
   setup(s) {
     const L = s.g(s.back);
     const sens = s.node(s.root, { x: 100, y: 210, w: 170, h: 130, shape: 'card', tone: 'sky-t', text: 'Sensors\n\ncamera\nultrasonic\nIMU gyro\nmotor encoder', size: 13.5 });
     const logic = s.node(s.root, { x: 390, y: 60, w: 250, h: 76, shape: 'card', tone: 'plum-t', text: 'Control algorithm\npath planning · obstacle\ndetection · PID control', size: 13.5 });
-    const mcu = s.node(s.root, { x: 390, y: 210, w: 220, h: 62, shape: 'card', tone: 'mustard-t', text: 'Microcontroller\nArduino / Raspberry Pi', size: 14, cls: 'pa-strong' });
+    const mcu = s.node(s.root, { x: 390, y: 210, w: 220, h: 62, shape: 'card', tone: 'mustard-t', text: 'Microcontroller\nArduino / Pico', size: 14, cls: 'pa-strong' });
     const act = s.node(s.root, { x: 680, y: 210, w: 170, h: 130, shape: 'card', tone: 'sage-t', text: 'Actuators\n\nDC motors\nservos\nLEDs\nbuzzer', size: 13.5 });
     const pow = s.node(s.root, { x: 390, y: 380, w: 230, h: 56, shape: 'card', tone: 'terra-t', text: 'Power system\nbattery + regulators', size: 13.5 });
     s.link(L, sens, mcu, { from: 'right', to: 'left', label: 'signals' });

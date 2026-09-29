@@ -120,6 +120,14 @@ for page in FOCUS_AREAS:
         elif len(re.findall(r'\{\s*q:', block.group(1))) < 3:
             fail(f'{page}: quiz "{key}" has fewer than 3 questions')
 
+# 1b2. Pseudocode follows the Course Specifications (updated March 2026): nested IF is written
+#      ELSE / IF with one ENDIF per IF; ELSEIF and ELSE IF are not NESA pseudocode.
+for path in sorted(glob.glob(os.path.join(ROOT, 'topics', '*.html'))) + sorted(glob.glob(os.path.join(ROOT, 'js', 'anims', '*.js'))) + [os.path.join(ROOT, 'js', 'algo-traces.js')]:
+    body = open(path, encoding='utf-8').read()
+    for m in re.finditer(r'\bELSE ?IF\b', body):
+        line = body.count('\n', 0, m.start()) + 1
+        fail(f'{os.path.relpath(path, ROOT)}:{line}: "{m.group(0)}" is not NESA pseudocode; nest ELSE / IF with one ENDIF per IF')
+
 # 1c. Figures follow the NESA conventions
 EMOJI = re.compile('[\U0001F000-\U0001FAFF\u2600-\u27BF\u2B00-\u2BFF]')
 for path in sorted(glob.glob(os.path.join(ROOT, 'topics', '*.html'))):
