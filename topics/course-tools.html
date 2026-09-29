@@ -711,7 +711,7 @@ ENDIF</code></pre>
           </div>
 
           <h4>Multi-way Selection</h4>
-          <p>Selects from <strong>several</strong> possible outcomes based on a single expression's value. More readable than a chain of IF/ELSE IF.</p>
+          <p>Selects from <strong>several</strong> possible outcomes based on a single expression's value. More readable than a deep nested IF when every branch tests the same expression.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Pseudocode — Menu selection</span></div>
             <pre><code>CASEWHERE menuChoice equals
@@ -829,12 +829,16 @@ displayResult("Ben", 43)</code></pre>
             <pre><code>FUNCTION getGrade(score)
   IF score >= 90 THEN
     RETURN "A"
-  ELSE IF score >= 75 THEN
-    RETURN "B"
-  ELSE IF score >= 50 THEN
-    RETURN "C"
   ELSE
-    RETURN "Fail"
+    IF score >= 75 THEN
+      RETURN "B"
+    ELSE
+      IF score >= 50 THEN
+        RETURN "C"
+      ELSE
+        RETURN "Fail"
+      ENDIF
+    ENDIF
   ENDIF
 END FUNCTION
 
@@ -1960,7 +1964,7 @@ print(f"Time taken to process 50,000 queries over 10K records: {end_time - start
           <span class="callout-icon">📘</span>
           <div class="callout-content">
             <strong>Syllabus Alignment</strong>
-            <p>These specifications are based on the NESA Software Engineering 11–12 Course Specifications (updated Feb 2025).</p>
+            <p>These specifications are based on the NESA Software Engineering 11–12 Course Specifications (updated March 2026).</p>
           </div>
         </div>
 

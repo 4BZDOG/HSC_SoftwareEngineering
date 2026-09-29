@@ -435,23 +435,33 @@
     IF moisture reading is outside 0–100 THEN
         pump ← OFF
         RAISE ALERT "Moisture sensor fault"
-    ELSEIF tank level = 0 THEN
-        pump ← OFF
-        RAISE ALERT "Tank empty"
-    ELSEIF moisture &lt; lowMark THEN
-        pump ← ON
-    ELSEIF moisture ≥ highMark THEN
-        pump ← OFF
+    ELSE
+        IF tank level = 0 THEN
+            pump ← OFF
+            RAISE ALERT "Tank empty"
+        ELSE
+            IF moisture &lt; lowMark THEN
+                pump ← ON
+            ELSE
+                IF moisture ≥ highMark THEN
+                    pump ← OFF
+                ENDIF
+            ENDIF
+        ENDIF
     ENDIF
     IF temperature &gt; maxTemp THEN
         fan ← ON
-    ELSEIF temperature &lt; maxTemp − 3 THEN
-        fan ← OFF
+    ELSE
+        IF temperature &lt; maxTemp − 3 THEN
+            fan ← OFF
+        ENDIF
     ENDIF
     IF hour is between 06:00 and 20:00 AND light &lt; 250 THEN
         lamp ← ON
-    ELSEIF hour is outside 06:00–20:00 OR light &gt; 700 THEN
-        lamp ← OFF
+    ELSE
+        IF hour is outside 06:00–20:00 OR light &gt; 700 THEN
+            lamp ← OFF
+        ENDIF
     ENDIF
     WRITE log record every 10 minutes
 END ControlCycle</code></pre>

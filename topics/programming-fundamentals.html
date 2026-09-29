@@ -758,15 +758,18 @@ BEGIN
     WHILE score &lt; 0 OR score &gt; 100
         OUTPUT "Invalid. Please enter a valid score: "
         INPUT score
-    END WHILE
+    ENDWHILE
 
     // Processing logic
     IF score &gt;= 85 THEN
         grade = "High Distinction"
-    ELSE IF score &gt;= 75 THEN
-        grade = "Distinction"
-    ... (and so on) ...
-    END IF
+    ELSE
+        IF score &gt;= 75 THEN
+            grade = "Distinction"
+        ELSE
+            ... (and so on) ...
+        ENDIF
+    ENDIF
     
     // Output
     OUTPUT "Your grade is ", grade
