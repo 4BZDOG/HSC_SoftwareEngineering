@@ -146,7 +146,7 @@ def build(key, write=False):
     if len(spec['parts']) != len(syllabus):
         raise SystemExit(f'{key}: spec has {len(spec["parts"])} parts, syllabus has {len(syllabus)}')
     num = 0
-    quiz_key = spec.get('quiz', key)   # key into js/quizzes.js
+    quiz_key = spec.get('quiz', key)   # key into js/quizzes/<page>.js
     for p_i, ((sub_name, points), part) in enumerate(zip(syllabus, spec['parts']), 1):
         if len(part) != len(points):
             raise SystemExit(f'{key} / {sub_name}: spec has {len(part)} entries, syllabus has {len(points)} dot points')

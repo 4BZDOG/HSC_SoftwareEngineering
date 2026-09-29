@@ -257,6 +257,8 @@ Thank you for contributing! Your help makes this resource better for students. ð
 - Glossary terms live in `topics/glossary.html`. After editing it, run `python3 scripts/build-glossary.py` to regenerate `js/glossary-data.js`, which powers the inline definition popovers.
 - `python3 scripts/build-mapping.py` regenerates `resources/Syllabus-Mapping.md`.
 - To add glossary terms, append them to `scripts/glossary_new_terms.py`, then run `python3 scripts/add-glossary-terms.py && python3 scripts/build-glossary.py`.
+- Each topic page's quiz questions live in `js/quizzes/<slug>.js` (five per part, one quiz per NESA subheading). `scripts/check-site.py` also checks that each section's "Including" list is NESA's, that outcome codes belong to the focus area, and that the sidebar lists the sections in order.
+- `CLAUDE.md` and `.claude/content-brief.md` describe the conventions for AI-assisted edits, shared with the sister Enterprise Computing site.
 - Before opening a pull request, run `python3 scripts/check-site.py` and `bash scripts/validate-alignment.sh`. Both run automatically on every pull request (`.github/workflows/checks.yml`).
 
 ## Diagrams

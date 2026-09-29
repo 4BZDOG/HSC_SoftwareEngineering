@@ -49,6 +49,24 @@ def text(fragment):
 
 # 1. Dot points match NESA
 syllabus = load_syllabus()
+
+
+def _area_outcomes():
+    """{focus area: set of outcome codes}, from the *Outcomes:* line under each focus area."""
+    md = open(os.path.join(ROOT, 'resources', 'nesa-syllabus-content.md'), encoding='utf-8').read()
+    out = {}
+    for title, line in re.findall(r'^## Year 1[12] — (.+)\n\*Outcomes: ([^*]+)\*', md, re.M):
+        codes = set()
+        for part in line.split(','):
+            m = re.match(r'\s*(SE-1[12])-(\d\d)(?: to SE-1[12]-(\d\d))?', part)
+            if m:
+                lo, hi = int(m.group(2)), int(m.group(3) or m.group(2))
+                codes |= {f'{m.group(1)}-{n:02d}' for n in range(lo, hi + 1)}
+        out[title.strip()] = codes
+    return out
+
+
+AREA_OUTCOMES = _area_outcomes()
 for page, area in FOCUS_AREAS.items():
     src = open(os.path.join(ROOT, 'topics', page), encoding='utf-8').read()
     on_page = [text(m) for m in re.findall(r'<p class="syllabus-concept">📌 <em>(.*?)</em></p>', src, re.S)]
@@ -64,14 +82,43 @@ for page, area in FOCUS_AREAS.items():
     if parts != [s for s, _ in syllabus[area]]:
         fail(f'{page}: parts {parts} do not match NESA subheadings')
 
-# 1b. Every quiz placeholder has questions
-bank = open(os.path.join(ROOT, 'js', 'quizzes.js'), encoding='utf-8').read()
-quiz_keys = set(re.findall(r"^\s*'([a-z]+-\d+)':\s*\[", bank, re.M))
+    # "Including" lists, section by section, verbatim and in order
+    sections = re.findall(r'<section id="([^"]+)"[^>]*>(.*?)</section>', src, re.S)
+    points = [p for _, pts in syllabus[area] for p in pts]
+    for (sid, body), point in zip(sections, points):
+        block = re.search(r'<ul class="syllabus-including"[^>]*>(.*?)</ul>', body, re.S)
+        items = [text(li) for li in re.findall(r'<li>(.*?)</li>', block.group(1), re.S)] if block else []
+        if items != point['including']:
+            fail(f'{page}#{sid}: "Including" list differs from NESA ({items[:2]} vs {point["including"][:2]})')
+
+    # Outcome codes on each section belong to this focus area
+    allowed = AREA_OUTCOMES[area]
+    for sid, body in sections:
+        sub = re.search(r'<p class="outcome-subtitle">(.*?)</p>', body, re.S)
+        for code in re.findall(r'SE-1[12]-\d\d', sub.group(1) if sub else ''):
+            if code not in allowed:
+                fail(f'{page}#{sid}: outcome {code} is not listed for {area}')
+
+    # Sidebar contents <-> sections
+    toc = re.search(r'<ul class="toc-list"[^>]*>(.*?)</ul>', src, re.S)
+    toc_ids = re.findall(r'<a href="#([^"]+)"', toc.group(1)) if toc else []
+    if toc_ids != [sid for sid, _ in sections]:
+        fail(f'{page}: sidebar contents do not list the sections in order')
+
+# 1b. Every quiz placeholder has questions in that page's own bank (js/quizzes/<page>.js)
 for page in FOCUS_AREAS:
     src = open(os.path.join(ROOT, 'topics', page), encoding='utf-8').read()
+    slug = page[:-5]
+    bank_path = os.path.join(ROOT, 'js', 'quizzes', slug + '.js')
+    bank = open(bank_path, encoding='utf-8').read() if os.path.exists(bank_path) else ''
+    if f'../js/quizzes/{slug}.js' not in src:
+        fail(f'{page}: does not load js/quizzes/{slug}.js')
     for key in re.findall(r'<div class="quiz" data-quiz="([^"]+)">', src):
-        if key not in quiz_keys:
-            fail(f'{page}: quiz "{key}" has no questions in js/quizzes.js')
+        block = re.search(r"'" + re.escape(key) + r"':\s*\[(.*?)\n  \]", bank, re.S)
+        if not block:
+            fail(f'{page}: quiz "{key}" has no questions in js/quizzes/{slug}.js')
+        elif len(re.findall(r'\{\s*q:', block.group(1))) < 3:
+            fail(f'{page}: quiz "{key}" has fewer than 3 questions')
 
 # 1c. Figures follow the NESA conventions
 EMOJI = re.compile('[\U0001F000-\U0001FAFF\u2600-\u27BF\u2B00-\u2BFF]')
