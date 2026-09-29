@@ -1,7 +1,7 @@
 /* ============================================================
    "Check your understanding" quizzes.
    Fills every <div class="quiz" data-quiz="key"></div> from
-   window.HSC_QUIZZES (js/quizzes.js). Real radio groups in
+   window.HSC_QUIZZES (js/quizzes/<page>.js). Real radio groups in
    fieldsets; feedback and explanations appear after checking.
    ============================================================ */
 (() => {
