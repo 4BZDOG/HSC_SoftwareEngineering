@@ -54,6 +54,7 @@
   <link rel="stylesheet" href="../css/styles.css?v=27" />
   <link rel="stylesheet" href="../css/paper.css?v=37" />
   <link rel="stylesheet" href="../css/anim.css?v=5" />
+  <link rel="stylesheet" href="../css/pages/software-automation.css?v=1" />
 </head>
 <body>
 
@@ -219,16 +220,133 @@
           <p class="outcome-subtitle">🎯 <em>(SE-12-01, SE-12-03, SE-12-09)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> how machine learning (ML) supports automation through the use of DevOps, robotic process automation (RPA) and business process automation (BPA)</em></p>
 
+          
+          <p>A trained model does nothing until it is built into a process that runs reliably, day after day. Three kinds of automation carry ML into real work: <strong>DevOps</strong> (building and releasing software), <strong>RPA</strong> (bots that do single tasks) and <strong>BPA</strong> (whole workflows). Behind them sits <strong>MLOps</strong>, the discipline of building, releasing and looking after the models themselves. This section covers MLOps first, because the Course Specifications name its stages, and then shows how ML supports each of the three.</p>
+
+          <h3>MLOps: designing, training and deploying models by automation</h3>
+          <p>The Course Specifications describe MLOps as the automated process of designing, training and deploying ML models. It borrows many of the principles and practices of DevOps, bringing together the teams that develop models and the operational teams that deploy and support them in production. You are expected to know its three stages.</p>
+
+          <figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Cycle diagram</span></p>
+            <h4 class="figure-title">The three stages of MLOps</h4>
+            <p class="figure-lead">Design, model development and operations form a loop, not a line.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--still">
+            <div class="anim" data-anim="auto-mlops"></div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The bullet points are the steps the Course Specifications list under each stage.</li><li>The dashed arrow is the point of MLOps: monitoring in operations can send the team back to develop a new model.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>A hospital's model for predicting bed demand becomes less accurate after a new suburb opens. Which stage detects it, and which stage fixes it?</p>
+          </div>
+        </figure>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Stage</th><th>Steps (NESA's list)</th><th>What automation does</th><th>What people still decide</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1. Design</strong></td>
+                  <td>defining the business problem to be solved; refactoring the business problem into a machine learning problem; defining success metrics; researching available data</td>
+                  <td>Little. The agreed success metric is written into the pipeline as a number that later stages test against.</td>
+                  <td>Whether ML is the right tool at all, what counts as success, and whether the data may be used.</td>
+                </tr>
+                <tr>
+                  <td><strong>2. Model development</strong></td>
+                  <td>data wrangling; feature engineering; model training; model testing and validation</td>
+                  <td>Scripts clean and reshape the data, retrain on a schedule or when new data arrives, and run automated tests that reject a model scoring below the target.</td>
+                  <td>Which features to build, which algorithm to try, and how to read a surprising result.</td>
+                </tr>
+                <tr>
+                  <td><strong>3. Operations</strong></td>
+                  <td>model deployment; supporting operations/use; monitoring model performance</td>
+                  <td>A release pipeline deploys the approved model, health checks watch it, alerts fire when accuracy drops, and a bad release can be rolled back.</td>
+                  <td>What to do when monitoring raises an alert: retrain, redesign or switch the model off.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>Worked example: a courier's delivery-time predictor</h4>
+          <p>A courier company gets many phone calls asking when a parcel will arrive. Follow the project through the three stages.</p>
+          <ul>
+            <li><strong>Design.</strong> The business problem is "too many customers phone to ask where their parcel is". Refactored as an ML problem it becomes "predict the delivery time of each parcel", a regression task. The team sets a success metric, for example "predictions within 30 minutes for at least 85% of parcels", and researches the data: past delivery scans, distances, depots and weather records. They also check that using customers' addresses is allowed under the Privacy Act 1988.</li>
+            <li><strong>Model development.</strong> <em>Data wrangling</em> removes duplicate scans, fixes missing timestamps and puts times into one format. <em>Feature engineering</em> creates useful inputs such as distance, hour of day and whether it is a public holiday. The model is trained on past deliveries, then tested and validated on the most recent month, which it has not seen, to check it meets the success metric.</li>
+            <li><strong>Operations.</strong> The approved model is deployed behind the tracking app. The help desk is briefed on what the estimate means (supporting operations/use). Each week a script compares predictions with what actually happened (monitoring model performance).</li>
+          </ul>
+          <p>The last step is where automation earns its keep. Suppose the company opens deliveries to new suburbs, or a holiday rush changes the pattern. The model has not changed but the world has, so accuracy quietly falls. This is called <strong>model drift</strong> (or data drift, when the incoming data no longer looks like the training data). A monitoring script catches it before customers do.</p>
+
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: a weekly monitoring check (Operations stage)</span></div><pre><code class="language-python"># Weekly check of a deployed spam filter. Each pair is (model's prediction, true label); 1 = spam.
+ACCURACY_TARGET = 0.85           # the success metric agreed in the Design stage
+
+weekly_results = {
+    "Week 1": [(1, 1), (0, 0), (1, 1), (0, 0), (0, 0), (1, 1), (0, 0), (1, 1), (0, 0), (1, 1)],
+    "Week 2": [(1, 1), (0, 0), (0, 0), (0, 0), (1, 1), (1, 1), (0, 1), (1, 1), (0, 0), (1, 1)],
+    "Week 3": [(0, 1), (0, 0), (1, 1), (0, 1), (0, 0), (1, 1), (0, 1), (1, 1), (0, 0), (0, 0)],
+}
+
+def accuracy(pairs):
+    correct = sum(1 for predicted, actual in pairs if predicted == actual)
+    return correct / len(pairs)
+
+for week, pairs in weekly_results.items():
+    score = accuracy(pairs)
+    if score &gt;= ACCURACY_TARGET:
+        print(f"{week}: accuracy {score:.0%} - OK, keep serving this model")
+    else:
+        print(f"{week}: accuracy {score:.0%} - BELOW TARGET, alert the team and start retraining")</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Week 1: accuracy 100% - OK, keep serving this model
+Week 2: accuracy 90% - OK, keep serving this model
+Week 3: accuracy 70% - BELOW TARGET, alert the team and start retraining</code></pre></div>
+
+          <p>The check reports week 3 at 70%, below the 85% target from the Design stage, so it raises the alert. In a full MLOps pipeline the alert would start the next automated loop: retrain on newer data, test, and deploy only if the new model beats the old one. In NESA pseudocode that decision is a nested selection:</p>
+
+          <div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode: retrain decision</span></div><pre><code>BEGIN RetrainCheck
+    accuracy ← accuracy of the live model on this week's results
+    IF accuracy &gt;= target THEN
+        OUTPUT "Keep serving the current model"
+    ELSE
+        retrain the model on the newest data
+        IF new model accuracy &gt; accuracy THEN
+            deploy the new model
+            OUTPUT "New model deployed"
+        ELSE
+            OUTPUT "Alert the team"
+        ENDIF
+    ENDIF
+END RetrainCheck</code></pre></div>
+
+          <div class="callout info"><strong>Why automate MLOps?</strong> Models decay, so releasing one is the start of the work, not the end. Automation makes each release <em>repeatable</em> (the same steps every time), <em>faster</em> (a fix reaches users in hours), <em>safer</em> (tests run every time, and a bad model can be rolled back) and <em>auditable</em> (a record of which data and code produced which model). It also frees people for the parts that need judgement.</div>
+
           <h3>DevOps and Automation</h3>
-          <p><strong>DevOps</strong> is a software development practice that unifies development and operations teams to deliver software continuously and reliably. DevOps automation extends to machine learning workflows, enabling teams to efficiently deploy ML models into production environments and maintain their performance over time.</p>
+          <p><strong>DevOps</strong> is a software development practice that unifies development and operations teams to deliver software continuously and reliably. A typical DevOps pipeline is automated from end to end: a developer commits code, a server builds it, automated tests run, and if they pass the release is deployed. MLOps reuses this idea, but the pipeline has extra things to test and version, because an ML system changes when its <em>data</em> changes, not only when its code changes. The trained model becomes another build artefact, and a pipeline can rebuild and redeploy it when new data arrives. ML also supports DevOps itself, for example by learning which code changes are most likely to cause test failures so those tests run first.</p>
 
-<h3>Robotic Process Automation (RPA)</h3>
-          <p><strong>RPA</strong> uses software "bots" to automate repetitive, rule-based digital tasks that humans would otherwise perform manually — such as copying data between systems, filling online forms, or processing invoices. Traditional RPA bots follow rigid scripts. When ML is integrated, the result is <strong>Intelligent Automation</strong>: bots that can read unstructured data (such as handwritten invoice fields or natural language emails), extract meaning from it, and make autonomous routing decisions. For example, an intelligent RPA bot in a hospital can read an unstructured doctor's referral email, extract the patient's details and condition, check availability, and automatically book the appropriate specialist appointment — a task that previously required a receptionist.</p>
+          <h3>Robotic Process Automation (RPA)</h3>
+          <p><strong>RPA</strong> uses software "bots" to automate repetitive, rule-based digital tasks that humans would otherwise perform manually, such as copying data between systems, filling online forms, or processing invoices. Traditional RPA bots follow rigid scripts and break when a form changes layout or a document arrives in an unexpected format. When ML is integrated, the result is <strong>Intelligent Automation</strong>: bots that can read unstructured data (such as handwritten invoice fields or natural language emails), extract meaning from it, and make routing decisions. For example, an intelligent RPA bot in a hospital can read an unstructured doctor's referral email, extract the patient's details and condition, check availability, and book the appropriate specialist appointment, a task that previously required a receptionist.</p>
 
-<h3>Business Process Automation (BPA)</h3>
-          <p><strong>BPA</strong> involves using technology to automate entire end-to-end business workflows — not just individual repetitive tasks, but complete multi-step processes involving multiple systems and decision points. ML-driven BPA integrates predictive intelligence into workflows. For example, an insurance claims BPA system uses ML to automatically assess a submitted photo of car damage, classify the severity, cross-reference the policy, calculate the repair estimate, and either auto-approve small claims or route complex cases to a human adjudicator — compressing a multi-day process into minutes. The key difference from RPA: BPA automates the <em>whole process</em>; RPA automates individual <em>steps within</em> a process.</p>
+          <h3>Business Process Automation (BPA)</h3>
+          <p><strong>BPA</strong> involves using technology to automate entire end-to-end business workflows: not just individual repetitive tasks, but complete multi-step processes involving multiple systems and decision points. ML-driven BPA integrates predictive intelligence into workflows. For example, an insurance claims BPA system uses ML to assess a submitted photo of car damage, classify the severity, cross-reference the policy, calculate the repair estimate, and either auto-approve small claims or route complex cases to a human adjudicator, compressing a multi-day process into minutes. The key difference from RPA is that BPA automates the <em>whole process</em>, while RPA automates individual <em>steps within</em> a process.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th></th><th>DevOps / MLOps</th><th>RPA</th><th>BPA</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>What is automated</strong></td><td>Building, testing, releasing and monitoring software and models</td><td>Single, repetitive digital tasks</td><td>A complete multi-step workflow</td></tr>
+                <tr><td><strong>What ML adds</strong></td><td>Learns from data; monitoring catches drift; retraining can be triggered automatically</td><td>Reads unstructured input and copes with variation</td><td>Predicts, classifies and makes the decisions inside the workflow</td></tr>
+                <tr><td><strong>Example</strong></td><td>The courier's weekly accuracy check and retraining pipeline</td><td>A bot reads referral emails and enters the details into a booking system</td><td>An insurer's claim flows from photo to payment with a human for complex cases</td></tr>
+                <tr><td><strong>Main risk</strong></td><td>A silent drift in accuracy, or a bad model released without tests</td><td>Errors copied at machine speed if the model misreads input</td><td>Unfair or wrong decisions at scale with no one checking</td></tr>
+              </tbody>
+            </table>
+          </div>
 
           <div class="callout success"><strong>HSC writing sample</strong> <em>"Machine learning supports business process automation by handling tasks that need judgement rather than fixed rules. An insurance company uses an ML model to read claim forms and flag likely fraud, while RPA bots copy the approved claims into the payment system. Together they reduce processing time, although staff must still review the claims the model flags."</em></div>
+
+          <div class="callout assessor"><strong>Exam tip</strong> "Investigate how ML supports automation" asks for more than definitions. Name the technology (DevOps, RPA or BPA), say what the ML model contributes (reading, predicting, classifying), give a specific example and a limitation, then reach a judgement. If asked about MLOps, give NESA's three stages in order (Design, Model development, Operations) with a step from each, and use monitoring and drift to show why the loop never ends. Common mistakes are treating RPA and BPA as the same thing, and describing MLOps as "just DevOps" without mentioning data, models or monitoring accuracy.</div>
+
         </section>
 
         <hr class="divider" />
@@ -241,7 +359,7 @@
           <div class="info-grid">
             <div class="info-card">
               <h4>Artificial Intelligence (AI)</h4>
-              <p>The <strong>broad concept</strong> of building machines that can perform tasks requiring human-like intelligence. AI encompasses any technique that allows computers to simulate cognitive functions — including expert systems, natural language processing, robotics, and machine learning. AI can use simple rule-based logic (e.g., an IF-THEN chess-playing <strong>algorithm</strong>) without any learning from data.</p>
+              <p>The <strong>broad concept</strong> of building machines that can perform tasks requiring human-like intelligence. AI encompasses any technique that allows computers to simulate cognitive functions — including expert systems, natural language processing, robotics, and machine learning. AI can be built from rules written by people, for example an expert system that diagnoses faults from fixed IF–THEN rules, without any learning from data.</p>
             </div>
             <div class="info-card">
               <h4>Machine Learning (ML)</h4>
@@ -250,8 +368,73 @@
           </div>
 
           <div class="callout info">
-            <strong>Key Distinction</strong> All machine learning is AI, but not all AI is machine learning. A traditional chess program following programmed rules is AI but not ML. A system that learns chess by playing millions of games is both AI and ML. ML cannot function without data — it learns from examples rather than explicit instructions.
+            <strong>Key Distinction</strong> All machine learning is AI, but not all AI is machine learning. A traditional chess program that searches moves and scores positions using rules written by programmers is AI but not ML. A system that learns chess by playing millions of games is both AI and ML. ML cannot function without data — it learns from examples rather than explicit instructions.
           </div>
+
+          <h3>The differences, side by side</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Question</th><th>AI</th><th>ML</th></tr></thead>
+              <tbody>
+                <tr><td><strong>What is it?</strong></td><td>The goal: machines doing tasks that seem to need human intelligence</td><td>One method for reaching that goal: learning patterns from data</td></tr>
+                <tr><td><strong>Where does the behaviour come from?</strong></td><td>Rules written by people, search, or learning</td><td>Learned from examples, not written line by line</td></tr>
+                <tr><td><strong>Does it need training data?</strong></td><td>Not always</td><td>Always</td></tr>
+                <tr><td><strong>How does it change?</strong></td><td>When a programmer edits the rules (unless it also uses ML)</td><td>When it is retrained on new data</td></tr>
+                <tr><td><strong>Can you trace why it decided?</strong></td><td>Usually yes: follow the rules that fired</td><td>Sometimes (a decision tree), often hard (a large neural network)</td></tr>
+                <tr><td><strong>Examples</strong></td><td>An expert system, a route planner, a chess engine, a robot, a chatbot</td><td>A spam filter, house-price prediction, face unlock, a recommendation engine</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>The same task done both ways</h3>
+          <p>Both approaches below flag spam by counting exclamation marks. The first is AI without ML: a programmer picks the rule. The second is ML: the program chooses its own threshold from labelled examples. Then the spammers change their style, and the two approaches react differently.</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: a hand-written rule and a learned rule</span></div><pre><code class="language-python"># Task: flag spam using the number of exclamation marks in an email.
+# Each example is (exclamation marks, label) where 1 = spam and 0 = not spam.
+training = [(0, 0), (1, 0), (0, 0), (2, 0), (1, 0), (4, 1), (5, 1), (3, 1), (6, 1), (2, 0)]
+
+# Approach 1: AI without ML. A programmer chooses the rule by hand.
+def rule_based(marks):
+    return 1 if marks &gt;= 4 else 0
+
+# Approach 2: ML. The program picks the threshold that makes the fewest mistakes on the data.
+def learn_threshold(examples):
+    best_threshold, fewest_mistakes = 0, len(examples) + 1
+    for threshold in range(0, 10):
+        mistakes = sum(1 for marks, label in examples if (1 if marks &gt;= threshold else 0) != label)
+        if mistakes &lt; fewest_mistakes:
+            best_threshold, fewest_mistakes = threshold, mistakes
+    return best_threshold
+
+def accuracy(predict, examples):
+    return sum(1 for marks, label in examples if predict(marks) == label) / len(examples)
+
+learned = learn_threshold(training)
+print("Learned threshold:", learned)
+print(f"Hand-written rule on training data: {accuracy(rule_based, training):.0%}")
+print(f"Learned rule on training data:      {accuracy(lambda m: 1 if m &gt;= learned else 0, training):.0%}")
+
+# Spammers change style: new spam uses fewer exclamation marks. Same rule, new data.
+new_data = [(0, 0), (1, 0), (0, 0), (2, 1), (3, 1), (2, 1), (1, 0), (3, 1), (2, 1), (0, 0)]
+print(f"Hand-written rule on new data: {accuracy(rule_based, new_data):.0%}")
+relearned = learn_threshold(new_data)
+print("Re-learned threshold:", relearned)
+print(f"Re-trained model on new data: {accuracy(lambda m: 1 if m &gt;= relearned else 0, new_data):.0%}")</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Learned threshold: 3
+Hand-written rule on training data: 90%
+Learned rule on training data:      100%
+Hand-written rule on new data: 50%
+Re-learned threshold: 2
+Re-trained model on new data: 100%</code></pre></div>
+          <p>The hand-written rule (four or more marks) misses the spam with three marks, so it is only 90% accurate on the data it was designed for. The learned threshold is 3 and scores 100%. When new spam uses fewer exclamation marks, the fixed rule drops to 50% and stays there until a programmer edits the code. The ML program only has to be run again on fresh data: the same code learns a new threshold of 2. That is what "learning from data" means in practice. It is not magic, though. Both programs look at a single feature, and the ML version is only as good as the examples it was given.</p>
+
+          <h3>Common confusions</h3>
+          <ul>
+            <li><strong>"AI means robots."</strong> Robots use AI, but so does a chatbot or a route planner with no body at all.</li>
+            <li><strong>"ML and AI are the same."</strong> ML is one way of building AI. A rule-based expert system is AI with no learning.</li>
+            <li><strong>"Deep learning is something else."</strong> Deep learning is ML that uses neural networks with many layers, so it sits inside ML.</li>
+            <li><strong>"Generative AI is not ML."</strong> Chatbots and image generators are trained on huge datasets, so they are ML, and specifically deep learning.</li>
+            <li><strong>"The system understands."</strong> A trained model finds statistical patterns in its data. It can be confidently wrong when the input is unlike what it saw in training.</li>
+          </ul>
 
           <!-- AI vs ML vs Deep Learning Diagram -->
           <figure class="figure">
@@ -268,6 +451,8 @@
             <p class="figure-try"><strong>Try this</strong>Is a chess program that follows fixed rules AI, ML or both?</p>
           </div>
         </figure>
+
+          <div class="callout assessor"><strong>Exam tip</strong> "Distinguish" means to show the difference, so do not just define each term in its own paragraph. Write sentences that contrast them: "AI is the broad goal of machines performing tasks that need intelligence, whereas ML is a method within it in which the system learns its behaviour from training data." Then add one example that separates them (a rule-based chess engine is AI but not ML) and one that shows the overlap (a spam filter trained on labelled emails is both). Avoid "ML is better than AI" or "AI means robots".</div>
 
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
@@ -319,7 +504,7 @@
                   <td><strong>Reinforcement Learning</strong></td>
                   <td>An <strong>agent</strong> learns to make decisions by interacting with an <strong>environment</strong>. It receives <strong>rewards</strong> for correct actions and <strong>penalties</strong> for incorrect ones, gradually learning a policy that maximises cumulative reward over time. There is no labelled dataset — the agent learns through trial and error.</td>
                   <td>Autonomous navigation, robotics, game-playing, resource scheduling.</td>
-                  <td>Google DeepMind's AlphaGo used reinforcement learning to master the board game Go, ultimately defeating the world champion — a feat previously considered decades away.</td>
+                  <td>Google DeepMind's AlphaGo first learned from recorded games played by people (supervised learning), then improved by playing against itself with reinforcement learning. In 2016 it beat Lee Sedol, one of the world's strongest Go players.</td>
                 </tr>
               </tbody>
             </table>
@@ -340,6 +525,120 @@
             <p class="figure-try"><strong>Try this</strong>A robot learns to walk by trying moves and being scored. Follow the tree.</p>
           </div>
         </figure>
+
+          <h3>Worked examples</h3>
+          <p>Each program below uses only the Python standard library and is short enough to trace by hand. They are simplified teaching versions of real algorithms, but the training idea in each is genuine. NESA does not ask you to code them: the aim is to see what "labelled", "unlabelled" and "reward" mean in practice.</p>
+
+          <h4>Supervised learning: learn from labelled examples</h4>
+          <p>The mango grader is given six mangoes already labelled ripe or unripe, each scored 0 to 10 for sweetness and softness. "Training" finds the average point for each label, and a new mango takes the label of the nearest average (a nearest-centroid classifier).</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: supervised learning</span></div><pre><code class="language-python"># Supervised learning: labelled examples of mangoes as (sweetness, softness), each scored 0-10.
+labelled = [((8, 7), "ripe"), ((9, 8), "ripe"), ((7, 8), "ripe"),
+            ((3, 2), "unripe"), ((2, 3), "unripe"), ((4, 1), "unripe")]
+
+def centroid(points):
+    return tuple(round(sum(values) / len(points), 1) for values in zip(*points))
+
+def distance(a, b):
+    return sum((x - y) ** 2 for x, y in zip(a, b)) ** 0.5
+
+# "Training": find the average point of each labelled group.
+centroids = {label: centroid([p for p, l in labelled if l == label]) for label in ("ripe", "unripe")}
+print(centroids)
+
+# "Prediction": choose the label whose centroid is nearest to the new mango.
+def predict(point):
+    return min(centroids, key=lambda label: distance(point, centroids[label]))
+
+print(predict((6, 6)), predict((3, 4)))</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>{'ripe': (8.0, 7.7), 'unripe': (3.0, 2.0)}
+ripe unripe</code></pre></div>
+          <p>The mango scoring (6, 6) is about 2.6 units from the ripe average and 5 from the unripe one, so it is graded ripe. The mango scoring (3, 4) is 2 units from the unripe average, so it is graded unripe. The correct answers in the training data are what made this possible.</p>
+
+          <h4>Unsupervised learning: find groups without labels</h4>
+          <p>A shop has twelve customers' weekly spend and no labels. The <strong>k-means</strong> algorithm repeats two steps: put each value in the group with the nearest centre, then move each centre to the average of its group.</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: unsupervised learning (k-means)</span></div><pre><code class="language-python"># Unsupervised learning: group customers by weekly spend (dollars). There are NO labels.
+spend = [12, 15, 14, 11, 95, 102, 88, 110, 47, 52, 50, 13]
+
+# k-means with k = 3: start the centres at the lowest, middle and highest values, then repeat.
+centres = [min(spend), sorted(spend)[len(spend) // 2], max(spend)]
+for step in range(10):
+    groups = [[] for _ in centres]
+    for value in spend:
+        nearest = min(range(len(centres)), key=lambda i: abs(value - centres[i]))
+        groups[nearest].append(value)
+    centres = [sum(g) / len(g) for g in groups]
+
+for i, group in enumerate(groups):
+    print(f"Group {i + 1}: centre {centres[i]:.1f}, members {sorted(group)}")</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Group 1: centre 13.0, members [11, 12, 13, 14, 15]
+Group 2: centre 49.7, members [47, 50, 52]
+Group 3: centre 98.8, members [88, 95, 102, 110]</code></pre></div>
+          <p>The program found three groups of shoppers: small, medium and big spenders. Nobody told it what the groups mean. A person still has to choose how many groups to look for (k = 3 here) and decide what the groups are called.</p>
+
+          <h4>Semi-supervised learning: a few labels, many unlabelled examples</h4>
+          <p>Here only two points are labelled and six are not. <em>Self-training</em> repeatedly gives the unlabelled point closest to an already-labelled point the same label, so the labels spread outwards.</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: semi-supervised learning (self-training)</span></div><pre><code class="language-python"># Semi-supervised learning: 2 labelled points and 6 unlabelled points on a 0-10 scale.
+labelled = {1.0: "low risk", 9.0: "high risk"}
+unlabelled = [2.0, 3.0, 4.5, 6.0, 7.5, 8.0]
+
+# Self-training: repeatedly label the unlabelled point closest to something already labelled.
+while unlabelled:
+    value = min(unlabelled, key=lambda u: min(abs(u - known) for known in labelled))
+    nearest = min(labelled, key=lambda known: abs(value - known))
+    labelled[value] = labelled[nearest]
+    unlabelled.remove(value)
+    print(f"{value} gets the label '{labelled[value]}' from its neighbour {nearest}")</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>2.0 gets the label 'low risk' from its neighbour 1.0
+3.0 gets the label 'low risk' from its neighbour 2.0
+8.0 gets the label 'high risk' from its neighbour 9.0
+7.5 gets the label 'high risk' from its neighbour 8.0
+4.5 gets the label 'low risk' from its neighbour 3.0
+6.0 gets the label 'high risk' from its neighbour 7.5</code></pre></div>
+          <p>Two hand-labelled points were enough to label all eight. The risk is visible too: if one early guess were wrong, every later label built on it would inherit the mistake, which is why real projects have experts check a sample of the machine-made labels.</p>
+
+          <h4>Reinforcement learning: learn from rewards</h4>
+          <p>An agent walks along a corridor of five cells and must find the goal at cell 4. It gets +10 for reaching the goal and −1 for every other move. It keeps a table of how good each action is in each cell (a <strong>Q-table</strong>), and 30% of the time it tries a random move to explore instead of using what it already knows.</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: reinforcement learning (Q-learning)</span></div><pre><code class="language-python">import random
+
+# Reinforcement learning: an agent in a corridor of 5 cells (0 to 4). The goal is cell 4.
+# Reward: +10 for reaching the goal, -1 for every other move. Actions: 0 = left, 1 = right.
+rng = random.Random(1)
+q = [[0.0, 0.0] for _ in range(5)]        # Q-table: expected future reward for each state and action
+ALPHA, GAMMA, EPSILON = 0.5, 0.9, 0.3     # learning rate, discount, chance of exploring
+
+def best_action(state):
+    return max((0, 1), key=lambda a: (q[state][a], a))
+
+for episode in range(200):
+    state = 0
+    while state != 4:
+        action = rng.randint(0, 1) if rng.random() &lt; EPSILON else best_action(state)
+        next_state = max(0, state - 1) if action == 0 else state + 1
+        reward = 10 if next_state == 4 else -1
+        q[state][action] += ALPHA * (reward + GAMMA * max(q[next_state]) - q[state][action])
+        state = next_state
+
+for state in range(4):
+    print(f"Cell {state}: left {q[state][0]:6.2f}  right {q[state][1]:6.2f}  -&gt; {'right' if best_action(state) else 'left'}")</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Cell 0: left   3.12  right   4.58  -&gt; right
+Cell 1: left   3.12  right   6.20  -&gt; right
+Cell 2: left   4.58  right   8.00  -&gt; right
+Cell 3: left   6.20  right  10.00  -&gt; right</code></pre></div>
+          <p>No one told the agent the answer, yet it learned to go right from every cell. The values show the reward spreading backwards from the goal: 10.00 for stepping into the goal from cell 3, then 8.00 (−1 + 0.9 × 10) from cell 2, then 6.20 from cell 1. The 0.9 is the discount that makes nearer rewards worth more.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Approach</th><th>Feedback the model gets</th><th>What it produces</th><th>A limitation</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Supervised</strong></td><td>The correct answer for every training example</td><td>A prediction or a class</td><td>Labelling is slow and costly</td></tr>
+                <tr><td><strong>Unsupervised</strong></td><td>None</td><td>Groups or unusual items</td><td>Groups need a person to interpret them</td></tr>
+                <tr><td><strong>Semi-supervised</strong></td><td>Correct answers for a small share of the examples</td><td>A prediction or a class</td><td>Wrong early labels can spread</td></tr>
+                <tr><td><strong>Reinforcement</strong></td><td>A reward or penalty after actions, often delayed</td><td>A policy: what to do in each situation</td><td>Needs very many trials, so usually a simulator</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout assessor"><strong>Exam tip</strong> "Explore models of training" is answered by matching each approach to the data you have. Start from the scenario: labelled data points to supervised, no labels to unsupervised, few labels plus many unlabelled to semi-supervised, and an agent acting for rewards to reinforcement. Name the feedback the model receives and one example output. Common mistakes are saying unsupervised learning means "no human is involved", saying reinforcement learning uses a labelled dataset, and mixing up clustering (finds groups) with classification (assigns a known label).</div>
 
           <div class="callout success"><strong>HSC writing sample</strong> <em>"Supervised learning suits spam filtering because thousands of emails have already been labelled as spam or not spam, so the model can learn from correct answers. Unsupervised learning suits grouping customers by shopping habits, where no labels exist and the aim is to discover patterns."</em></div>
         </section>
@@ -372,11 +671,45 @@
 <h3>Image Recognition</h3>
           <p><strong>Image recognition</strong> uses <strong>Convolutional Neural Networks (CNNs)</strong> — a specialised deep learning architecture designed to process grid-structured data (pixels). CNNs learn hierarchical visual features: early layers detect edges and colours; deeper layers recognise shapes and textures; the final layers identify objects. Key applications include:</p>
           <div class="key-terms">
-            <div class="key-term-item"><strong>Medical Diagnostics</strong><span>CNNs trained on tens of thousands of labelled medical scans can detect cancerous tumours, diabetic retinopathy in eye scans, and COVID-19 in chest X-rays — often matching or exceeding specialist radiologist accuracy.</span></div>
+            <div class="key-term-item"><strong>Medical Diagnostics</strong><span>CNNs trained on large sets of labelled medical scans are used to help find conditions such as tumours and diabetic retinopathy. On some narrow tasks they have matched specialist accuracy in studies, but they are used to support clinicians, who make the final decision.</span></div>
             <div class="key-term-item"><strong>Facial Recognition</strong><span>Used in smartphone unlock systems, border security, and law enforcement. The CNN maps the geometric relationships between facial landmarks and compares them against stored templates. Raises significant ethical concerns regarding privacy and racial bias in training data.</span></div>
             <div class="key-term-item"><strong>Autonomous Vehicles</strong><span>Self-driving cars use CNNs to identify pedestrians, other vehicles, traffic signs, and lane markings in real time from camera feeds. The recognition system processes multiple camera angles simultaneously at high speed to make safe driving decisions.</span></div>
             <div class="key-term-item"><strong>Manufacturing Quality Control</strong><span>Automated visual inspection systems on production lines use image recognition to detect product defects (e.g., cracks, misalignments, surface blemishes) at speeds and consistency impossible for human inspectors.</span></div>
           </div>
+
+          <h3>Comparing the three applications</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th></th><th>Data analysis and forecasting</th><th>Virtual personal assistants</th><th>Image recognition</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Typical model</strong></td><td>Linear, polynomial or logistic regression; time-series models</td><td>Neural networks for speech and language</td><td>Convolutional neural networks</td></tr>
+                <tr><td><strong>Training approach</strong></td><td>Supervised: past records with known outcomes</td><td>Mostly supervised, on large sets of labelled speech and text</td><td>Supervised: images with labels</td></tr>
+                <tr><td><strong>Input</strong></td><td>Historical numbers such as sales, prices or demand</td><td>Spoken audio, then text</td><td>Grids of pixel values</td></tr>
+                <tr><td><strong>Output</strong></td><td>A predicted number, or a probability such as risk of default</td><td>A spoken or on-screen answer, or an action</td><td>A label and a confidence, such as "leaf rust, 92%"</td></tr>
+                <tr><td><strong>Main risk</strong></td><td>The past stops predicting the future (drift)</td><td>Privacy of recordings; misheard accents</td><td>Bias in training images; confident mistakes</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>How a voice assistant answers, in order</h4>
+          <ol>
+            <li>A small model on the device listens only for the wake word.</li>
+            <li>Speech recognition turns the audio into text.</li>
+            <li>Natural language processing extracts the intent and entities: "Set a timer for 10 minutes" becomes SetTimer with 10 minutes.</li>
+            <li>The assistant carries out the action, for example by calling the clock service.</li>
+            <li>A text reply is generated and text-to-speech reads it aloud.</li>
+          </ol>
+
+          <h4>Investigating an application: questions to ask</h4>
+          <ul>
+            <li><strong>Accuracy in real conditions.</strong> Was it tested on data like the real world (noisy audio, poor lighting, new customers), or only on tidy samples?</li>
+            <li><strong>Data.</strong> Where did the training data come from, and does it represent everyone who will use the system?</li>
+            <li><strong>Human oversight.</strong> Who checks a wrong or unexpected output before it affects someone?</li>
+            <li><strong>Privacy and consent.</strong> What personal data is collected, and is the person told?</li>
+            <li><strong>Cost and benefit.</strong> Does the gain in speed or accuracy justify the risks and the running cost?</li>
+          </ul>
+
+          <div class="callout assessor"><strong>Exam tip</strong> An "investigate" answer looks at more than one application and reaches a conclusion. Link each application to the algorithm behind it, give the data it needs, and name one benefit and one risk. NESA's marking guidelines for the 2025 HSC online exam include a question (Q25, 5 marks) on a neural network inside a virtual personal assistant that asks for one positive and one negative impact. That is one paper, not a prediction, but it shows the expected pattern: a named technology, a scenario, and a balanced answer with both sides.</div>
 
           <div class="callout success"><strong>HSC writing sample</strong> <em>"Image recognition is a key application of ML in agriculture. A convolutional neural network trained on thousands of labelled leaf photos can identify crop diseases from a farmer's phone camera, allowing early treatment. Its accuracy depends on training images that match real field conditions, such as poor lighting and partly hidden leaves."</em></div>
         </section>
@@ -406,6 +739,41 @@
           <div class="callout info">
             <strong>Decision Tree Example — Loan Approval</strong> Root: Annual income &gt; $60,000? → Yes: Credit score &gt; 700? → Yes: Approve loan; No: Review manually. No: Employment status = Full-time? → Yes: Review manually; No: Reject loan.
           </div>
+
+          <h3>How a tree chooses its questions</h3>
+          <p>A tree-building algorithm tries every available question and keeps the one that separates the labels best. A common measure is <strong>Gini impurity</strong>: 0 means a group holds only one label and 0.5 means an even mix of two. The best question leaves the lowest impurity, averaged over the two groups it creates and weighted by their sizes. Below, eight labelled emails ("spam", or "ham" for genuine mail) are tested against three yes/no questions.</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: choosing the root of a decision tree</span></div><pre><code class="language-python"># Choosing the root question of a decision tree with Gini impurity.
+# Each email: (says "free", has a link, sender is a contact, label)
+emails = [
+    (1, 1, 0, "spam"), (1, 0, 0, "spam"), (1, 1, 0, "spam"), (0, 1, 0, "spam"),
+    (0, 0, 1, "ham"),  (0, 1, 1, "ham"),  (1, 0, 1, "ham"),  (0, 0, 0, "ham"),
+]
+questions = ["says 'free'", "has a link", "sender is a contact"]
+
+def gini(rows):
+    """Impurity of a group: 0 = all one label, 0.5 = an even mix of two labels."""
+    if not rows:
+        return 0.0
+    share_spam = sum(1 for r in rows if r[-1] == "spam") / len(rows)
+    return 1 - share_spam ** 2 - (1 - share_spam) ** 2
+
+def split_impurity(rows, feature):
+    yes = [r for r in rows if r[feature] == 1]
+    no = [r for r in rows if r[feature] == 0]
+    return (len(yes) * gini(yes) + len(no) * gini(no)) / len(rows)
+
+print(f"Impurity before any question: {gini(emails):.3f}")
+for feature, question in enumerate(questions):
+    print(f"Split on '{question}': weighted impurity {split_impurity(emails, feature):.3f}")
+
+best = min(range(len(questions)), key=lambda f: split_impurity(emails, f))
+print("Best root question:", questions[best])</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Impurity before any question: 0.500
+Split on 'says 'free'': weighted impurity 0.375
+Split on 'has a link': weighted impurity 0.375
+Split on 'sender is a contact': weighted impurity 0.200
+Best root question: sender is a contact</code></pre></div>
+          <p>Check the winner by hand. Three emails come from a contact and all are ham, so that group's impurity is 0. The other five hold four spam and one ham, so the impurity is 1 − 0.8² − 0.2² = 0.32. Weighted by size, (3 × 0 + 5 × 0.32) ÷ 8 = 0.200, the lowest of the three, so "sender is a contact" becomes the root. The algorithm then repeats the process inside each group until the leaves are pure or a limit such as a maximum depth is reached. Limits and <em>pruning</em> matter: a tree grown until every leaf is pure has just memorised its training emails (overfitting).</p>
 
           <!-- Decision Tree Diagram -->
           <figure class="figure">
@@ -445,6 +813,15 @@
             </div>
           </div>
 
+          <h3>Following NESA's description</h3>
+          <p>The Course Specifications describe a neural network as a series of interconnected nodes (artificial neurones), each able to accept a binary input signal and potentially output a signal to connected nodes. Two ideas from that description matter for the code in Part 2.</p>
+          <ul>
+            <li><strong>Weightings and threshold values.</strong> Each connection has a weighting and each node has a threshold. A node fires when the weighted total of its inputs reaches its threshold. In NESA's diagram the thicker lines are the stronger weightings: those inputs count for more in the final output.</li>
+            <li><strong>Training cycle, then execution cycle.</strong> In the training cycle the network is shown inputs with known answers and its weightings and thresholds are adjusted; regular exposure improves accuracy and pattern matching. In the execution cycle those values are fixed and used to produce the output.</li>
+          </ul>
+          <p>The Specifications say training uses "linear regression with backward chaining" to work out the values step by step. Most textbooks call the same idea <em>backpropagation with gradient descent</em>: the error at the output is passed backwards through the network and each weighting is nudged to reduce it. Use NESA's wording if a question does, and know the standard term as well.</p>
+          <p>A worked forward pass shows the execution cycle. A node has weightings 1.0 and 0.5 and a threshold of 1.5. For the inputs (1, 1) the weighted total is 1.0 × 1 + 0.5 × 1 = 1.5, which reaches the threshold, so the node fires and outputs 1. For (1, 0) the total is 1.0, below 1.5, so it outputs 0. That node behaves as an AND gate, and Part 2 shows the training cycle that finds those numbers.</p>
+
           <!-- Neural Network Topology Diagram -->
           <figure class="figure">
           <figcaption class="figure-head">
@@ -460,6 +837,22 @@
             <p class="figure-try"><strong>Try this</strong>A network predicts house prices from 4 features. How many input and output nodes does it need?</p>
           </div>
         </figure>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th></th><th>Decision tree</th><th>Neural network</th></tr></thead>
+              <tbody>
+                <tr><td><strong>How it decides</strong></td><td>A chain of yes/no questions, one feature at a time</td><td>Weighted sums passed through layers of neurones</td></tr>
+                <tr><td><strong>How it learns</strong></td><td>Picks the questions that reduce impurity most</td><td>Adjusts weightings over many epochs using the error</td></tr>
+                <tr><td><strong>Explaining a result</strong></td><td>Follow the path from root to leaf</td><td>Hard: the reasoning is spread across many weights</td></tr>
+                <tr><td><strong>Data needed</strong></td><td>Works with modest amounts</td><td>Usually much more, especially for deep networks</td></tr>
+                <tr><td><strong>Suits</strong></td><td>Tables of clear features where decisions must be explained, such as loans or triage</td><td>Images, speech and language, where features are hard to hand-write</td></tr>
+                <tr><td><strong>Main risk</strong></td><td>Overfitting; small data changes can give a different tree</td><td>Opaque decisions, data and energy hunger, bias hidden in the data</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout assessor"><strong>Exam tip</strong> A "research" answer uses evidence and reaches a conclusion. For decision trees, describe root, branches and leaves, say how the tree chooses its questions, and give a limitation (overfitting). For neural networks, use NESA's terms: nodes, weightings, thresholds, the training cycle and the execution cycle. Then compare the two for a scenario: a bank that must explain a loan refusal should lean towards a tree, while photo recognition needs a neural network. Do not say a neural network "thinks like a brain"; NESA says networks were designed to <em>mimic</em> processing in the brain.</div>
 
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
@@ -505,6 +898,10 @@ print(f"R² Score: {r2_score(y_test, y_pred):.3f}")
 print(f"MSE: {mean_squared_error(y_test, y_pred):.2f}")
 print(f"Predicted score for 9 hours: {model.predict([[9]])[0]:.1f}")</code></pre>
           </div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output (scikit-learn 1.9.1)</span></div><pre><code>R² Score: 0.963
+MSE: 3.70
+Predicted score for 9 hours: 93.3</code></pre></div>
+          <p>The output comes from only two test points, so the scores are rough. The idea to take from it is the workflow: split the data, fit on the training part, and judge the model on data it has not seen.</p>
 
           <p>Behind <code>mean_squared_error</code> is one of the simplest standard algorithms: a counting loop with an <strong>accumulator</strong>. It adds up each squared error, then divides by the number of items. The trace below shows the summing loop on its own. Enter some squared errors to see how the total builds.</p>
 
@@ -525,6 +922,14 @@ print(f"Predicted score for 9 hours: {model.predict([[9]])[0]:.1f}")</code></pre
 
 <h3>Logistic Regression</h3>
           <p>Despite its name, <strong>logistic regression</strong> is a <strong>classification algorithm</strong> — not used for predicting continuous values. It calculates the probability that an input belongs to a particular class (typically binary: 0 or 1, True or False). The <strong>sigmoid function</strong> squashes any input value into a probability between 0 and 1. A threshold (typically 0.5) converts this probability into a class prediction. For example, a logistic regression model assessing whether a bank transaction is fraudulent outputs a probability of fraud; if it exceeds 0.5 (or a risk-adjusted threshold), the transaction is flagged. Logistic regression is highly interpretable — each feature's coefficient indicates its influence on the predicted probability.</p>
+
+<div class="table-wrap">
+            <table>
+              <thead><tr><th>z (weighted sum + bias)</th><th>−4</th><th>−2</th><th>0</th><th>2</th><th>4</th></tr></thead>
+              <tbody><tr><td><strong>Sigmoid 1 ÷ (1 + e<sup>−z</sup>)</strong></td><td>0.018</td><td>0.119</td><td>0.500</td><td>0.881</td><td>0.982</td></tr></tbody>
+            </table>
+          </div>
+          <p>A large negative sum gives a probability near 0, a sum of 0 gives exactly 0.5 (the usual decision boundary), and a large positive sum gives a probability near 1. That is why logistic regression can turn any score into a class.</p>
 
 <h3>K-Nearest Neighbour (KNN)</h3>
           <p><strong>K-Nearest Neighbour (KNN)</strong> is a simple, instance-based supervised learning algorithm used for both classification and regression. Rather than learning a model during training, KNN stores the entire training dataset. At prediction time, it finds the <em>K</em> training examples closest to the new input (using a distance metric such as Euclidean distance), and assigns the majority class (classification) or average value (regression) of those K neighbours as the prediction. KNN requires no explicit training phase, but is computationally expensive at prediction time on large datasets.</p>
@@ -581,6 +986,7 @@ new_customer = scaler.transform([[30, 45000]])
 prediction = knn.predict(new_customer)
 print(f"Loan approved: {'Yes' if prediction[0] == 1 else 'No'}")</code></pre>
           </div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output (scikit-learn 1.9.1)</span></div><pre><code>Loan approved: No</code></pre></div>
 
           <div class="table-wrap">
             <table>
@@ -614,6 +1020,8 @@ print(f"Loan approved: {'Yes' if prediction[0] == 1 else 'No'}")</code></pre>
               </tbody>
             </table>
           </div>
+        <div class="callout assessor"><strong>Exam tip</strong> "Describe" is answered in a sentence or two per algorithm: what it predicts, how it works, and one use. Linear regression predicts a number by fitting the straight line with the smallest squared errors. Logistic regression predicts a class by passing a weighted sum through the sigmoid to get a probability, then applying a threshold. K-nearest neighbour predicts by letting the K closest training examples vote. Common mistakes are saying logistic regression predicts a continuous value because of its name, and forgetting that KNN needs features scaled so that one large-valued feature does not dominate the distance.</div>
+
         </section>
 
         <div class="quiz" data-quiz="auto-1"></div>
@@ -629,7 +1037,7 @@ print(f"Loan approved: {'Yes' if prediction[0] == 1 else 'No'}")</code></pre>
         </div>
 
         <aside class="yr12 topic-breakout subtopic-breakout" aria-label="Part introduction">
-          <p>You do not need a supercomputer to build a working ML model. A few lines of Python with libraries such as scikit-learn can predict house prices or exam results. This part covers programming regression models using OOP and evaluating their accuracy.</p>
+          <p>You do not need a supercomputer to build a working ML model. A few lines of Python with libraries such as scikit-learn can predict house prices or exam results. This part covers regression models and neural networks written as Python classes, first with scikit-learn and then built from scratch so you can see every step, and how to judge whether their predictions are any good.</p>
           <p class="breakout-question">How would you know whether your model's predictions are any good?</p>
         </aside>
 
@@ -638,9 +1046,32 @@ print(f"Loan approved: {'Yes' if prediction[0] == 1 else 'No'}")</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-08)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Design, develop and apply</strong> ML regression models using an OOP to predict numeric values</em></p>
           <ul class="syllabus-including" aria-label="Including"><li>linear regression</li><li>polynomial regression</li><li>logistic regression</li></ul>
+          <p>The Course Specifications say students should know how to design programs that use and apply regression algorithms, and are not expected to implement (or code) these complex algorithms themselves. Linear and polynomial regression predict values in a continuous range, and logistic regression is used for classification. This section therefore does two jobs. It shows the scikit-learn style that the Specifications use, and it builds each model from scratch as a Python class so that you can see exactly what <code>fit()</code> does. The from-scratch code is optional depth, but it is the best way to understand why the library calls work.</p>
 
-          <h3>Linear Regression in Python (OOP via scikit-learn)</h3>
-          <p>The <code>scikit-learn</code> library implements regression models as Python <strong>classes</strong> — each model is an <strong>object</strong> with <code>fit()</code> and <code>predict()</code> methods. This is a direct application of OOP: instantiating a model object, calling methods to train it, and calling methods to use it.</p>
+          <h3>Designing a regression program</h3>
+          <p>Choose the model from the shape of the answer you need and the pattern in the data, then follow the same six steps whichever model you pick.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th></th><th>Linear regression</th><th>Polynomial regression</th><th>Logistic regression</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Predicts</strong></td><td>A number</td><td>A number</td><td>A probability, then a class (0 or 1)</td></tr>
+                <tr><td><strong>Use when</strong></td><td>The scatter plot follows a straight line</td><td>The scatter plot follows a curve</td><td>The answer is yes or no, such as pass or fail</td></tr>
+                <tr><td><strong>Example</strong></td><td>Hours studied to mark</td><td>Speed to fuel use</td><td>Hours studied to pass or fail</td></tr>
+                <tr><td><strong>Judge it with</strong></td><td>Mean squared error, R²</td><td>Mean squared error, R²</td><td>Accuracy on unseen data</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <ol>
+            <li>Collect and inspect the data (plot it: is it a line or a curve?).</li>
+            <li>Split it into training data and test data.</li>
+            <li>Create the model object.</li>
+            <li>Call <code>fit()</code> on the training data.</li>
+            <li>Call <code>predict()</code> on new inputs.</li>
+            <li>Measure the error on the test data and decide if it is good enough.</li>
+          </ol>
+
+          <h3>Linear regression in Python (OOP via scikit-learn)</h3>
+          <p>The <code>scikit-learn</code> library implements regression models as Python <strong>classes</strong>. Each model is an <strong>object</strong> with <code>fit()</code> and <code>predict()</code> methods. This is a direct application of OOP: instantiating a model object, calling methods to train it, and calling methods to use it. Install it with <code>pip install scikit-learn</code>; it also needs NumPy.</p>
 
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Linear Regression via scikit-learn OOP</span></div>
@@ -665,6 +1096,92 @@ print(f"Predicted score for 9 hours: {prediction[0]:.1f}")  <span class="cm"># ~
 print(f"Slope (coefficient): {model.coef_[0]:.2f}")       <span class="cm"># ~5.0</span>
 print(f"Intercept: {model.intercept_:.2f}")                <span class="cm"># ~40.0</span></code></pre>
           </div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output (scikit-learn 1.9.1)</span></div><pre><code>Predicted score for 9 hours: 85.0
+Slope (coefficient): 5.00
+Intercept: 40.00</code></pre></div>
+
+          <p>The Course Specifications use the same calls on eight points that lie exactly on the line y = x − 1. Because the relationship is perfectly linear, <code>predict([[4]])</code> returns 3 (a known point) and <code>predict([[4.5]])</code> returns 3.5, a value the model was never shown. Real data is noisy, so a real model only gets close.</p>
+
+          <h3>Linear regression from first principles</h3>
+          <p>What does <code>fit()</code> compute? For a line y = mx + c, <strong>ordinary least squares</strong> chooses the slope and intercept that make the sum of the squared errors as small as possible. The formulas are m = Σ(x − x̄)(y − ȳ) ÷ Σ(x − x̄)² and c = ȳ − m·x̄, where x̄ and ȳ are the means. Here it is worked on eight students' study hours and marks (invented data):</p>
+          <div class="table-wrap"><table><thead><tr><th>Hours x</th><th>Mark y</th><th>x − x̄ (x̄ = 4.5)</th><th>y − ȳ (ȳ = 65)</th><th>(x − x̄)(y − ȳ)</th><th>(x − x̄)²</th></tr></thead><tbody><tr><td>1</td><td>45</td><td>−3.5</td><td>−20</td><td>70</td><td>12.25</td></tr><tr><td>2</td><td>52</td><td>−2.5</td><td>−13</td><td>32.5</td><td>6.25</td></tr><tr><td>3</td><td>58</td><td>−1.5</td><td>−7</td><td>10.5</td><td>2.25</td></tr><tr><td>4</td><td>61</td><td>−0.5</td><td>−4</td><td>2</td><td>0.25</td></tr><tr><td>5</td><td>68</td><td>0.5</td><td>3</td><td>1.5</td><td>0.25</td></tr><tr><td>6</td><td>74</td><td>1.5</td><td>9</td><td>13.5</td><td>2.25</td></tr><tr><td>7</td><td>77</td><td>2.5</td><td>12</td><td>30</td><td>6.25</td></tr><tr><td>8</td><td>85</td><td>3.5</td><td>20</td><td>70</td><td>12.25</td></tr><tr><td colspan="4"><strong>Totals</strong></td><td><strong>230</strong></td><td><strong>42</strong></td></tr></tbody></table></div>
+          <p>The slope is 230 ÷ 42 = 5.476 marks per extra hour, and the intercept is 65 − 5.476 × 4.5 = 40.357. In NESA pseudocode the training step is a single loop:</p>
+
+          <div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode: least squares training step</span></div><pre><code>BEGIN FitLine (xs, ys)
+    n ← number of values in xs
+    meanX ← sum of xs / n
+    meanY ← sum of ys / n
+    sxy ← 0
+    sxx ← 0
+    FOR i = 1 TO n STEP 1
+        sxy ← sxy + (xs[i] - meanX) * (ys[i] - meanY)
+        sxx ← sxx + (xs[i] - meanX) * (xs[i] - meanX)
+    NEXT i
+    slope ← sxy / sxx
+    intercept ← meanY - slope * meanX
+    RETURN slope, intercept
+END FitLine (xs, ys)</code></pre></div>
+
+          <p>Now the same calculation as a class. The design uses OOP in three ways. <em>State:</em> each object keeps its own <code>slope</code> and <code>intercept</code> as attributes. <em>Behaviour:</em> <code>fit()</code> sets that state and <code>predict()</code> uses it. <em>Inheritance:</em> the base class <code>RegressionModel</code> supplies <code>mse()</code> and <code>r_squared()</code>, so any model that provides <code>predict()</code> inherits them.</p>
+
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: linear regression as a class (standard library only)</span></div><pre><code class="language-python">class RegressionModel:
+    """Base class: every model learns with fit() and answers with predict()."""
+
+    def fit(self, xs, ys):
+        raise NotImplementedError
+
+    def predict(self, x):
+        raise NotImplementedError
+
+    def mse(self, xs, ys):
+        """Mean squared error: the average of the squared gaps between prediction and truth."""
+        errors = [(self.predict(x) - y) ** 2 for x, y in zip(xs, ys)]
+        return sum(errors) / len(errors)
+
+    def r_squared(self, xs, ys):
+        """1.0 = perfect fit; 0.0 = no better than always guessing the mean."""
+        mean_y = sum(ys) / len(ys)
+        total = sum((y - mean_y) ** 2 for y in ys)
+        residual = sum((y - self.predict(x)) ** 2 for x, y in zip(xs, ys))
+        return 1 - residual / total
+
+
+class LinearRegression(RegressionModel):
+    """A straight line, y = slope * x + intercept, fitted by ordinary least squares."""
+
+    def __init__(self):
+        self.slope = 0.0
+        self.intercept = 0.0
+
+    def fit(self, xs, ys):
+        n = len(xs)
+        mean_x = sum(xs) / n
+        mean_y = sum(ys) / n
+        s_xy = sum((x - mean_x) * (y - mean_y) for x, y in zip(xs, ys))
+        s_xx = sum((x - mean_x) ** 2 for x in xs)
+        self.slope = s_xy / s_xx
+        self.intercept = mean_y - self.slope * mean_x
+        return self
+
+    def predict(self, x):
+        return self.slope * x + self.intercept
+
+
+hours = [1, 2, 3, 4, 5, 6, 7, 8]
+marks = [45, 52, 58, 61, 68, 74, 77, 85]
+
+model = LinearRegression()
+model.fit(hours, marks)
+print(f"slope = {model.slope:.3f}, intercept = {model.intercept:.3f}")
+print(f"Predicted mark for 9 hours: {model.predict(9):.1f}")
+print(f"MSE on the training data: {model.mse(hours, marks):.3f}")
+print(f"R squared: {model.r_squared(hours, marks):.3f}")</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>slope = 5.476, intercept = 40.357
+Predicted mark for 9 hours: 89.6
+MSE on the training data: 1.060
+R squared: 0.993</code></pre></div>
+
+          <p>The slope and intercept match the hand working, and scikit-learn's <code>LinearRegression</code> gives the same 5.476 and 40.357 for this data. The MSE of 1.060 means predictions are typically about one mark out (the square root of the MSE is about 1.03). An R² of 0.993 says the line explains nearly all the variation in marks.</p>
 
           <figure class="figure">
           <figcaption class="figure-head">
@@ -681,35 +1198,114 @@ print(f"Intercept: {model.intercept_:.2f}")                <span class="cm"># ~4
           </div>
         </figure>
 
-<h3>Polynomial Regression (Non-Linear Relationships)</h3>
-          <p><strong>Polynomial regression</strong> extends linear regression to model <strong>curved (non-linear) relationships</strong> between variables. When plotting a scatter graph reveals a curve rather than a straight line, a polynomial fit is more appropriate. The input features are transformed to include powers (x², x³, etc.) using <code>PolynomialFeatures</code>, then passed into a standard <code>LinearRegression</code> model. For example, modelling how fuel efficiency decreases with speed follows a curved relationship — polynomial regression captures this more accurately than a straight line.</p>
+          <p>Least squares has a direct formula, but neural networks do not, so most ML training uses <strong>gradient descent</strong> instead: start with a guess, measure how the error changes as each parameter changes, and step downhill. This method finds the same line:</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: the same line found by gradient descent</span></div><pre><code class="language-python"># Continues from the previous block: gradient descent finds the same line by repeated small steps.
+def fit_by_gradient_descent(xs, ys, learning_rate=0.01, epochs=20000):
+    slope, intercept = 0.0, 0.0
+    n = len(xs)
+    for epoch in range(epochs):
+        # how much the MSE changes if slope or intercept increases a little
+        slope_gradient = sum(2 * (slope * x + intercept - y) * x for x, y in zip(xs, ys)) / n
+        intercept_gradient = sum(2 * (slope * x + intercept - y) for x, y in zip(xs, ys)) / n
+        slope -= learning_rate * slope_gradient
+        intercept -= learning_rate * intercept_gradient
+    return slope, intercept
 
-          <div class="code-block">
-            <div class="code-header"><span class="code-lang">Python — Polynomial Regression (degree 2 — quadratic curve)</span></div>
-            <pre><code><span class="kw">import</span> numpy <span class="kw">as</span> np
-<span class="kw">from</span> sklearn.preprocessing <span class="kw">import</span> PolynomialFeatures
-<span class="kw">from</span> sklearn.linear_model <span class="kw">import</span> LinearRegression
+slope, intercept = fit_by_gradient_descent(hours, marks)
+print(f"gradient descent: slope = {slope:.3f}, intercept = {intercept:.3f}")</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>gradient descent: slope = 5.476, intercept = 40.357</code></pre></div>
 
-<span class="cm"># Non-linear data: speed vs fuel efficiency (curved relationship)</span>
+          <h3>Explore it: fit a line yourself</h3>
+          <p>Drag the sliders to place a line through the eight points and watch the mean squared error. Then use <em>Gradient step</em> to see training improve the line one step at a time, and <em>Snap to least squares</em> to jump to the answer.</p>
+          <div class="auto-lab" data-auto-lab="linefit"><p class="auto-lead">This explorer needs JavaScript. Without it, work through the table above: the least-squares line for the eight points is mark = 5.476 × hours + 40.357, with a mean squared error of 1.060.</p></div>
+
+          <h3>Judging a model</h3>
+          <ul>
+            <li><strong>Mean squared error</strong> is the average squared gap between predictions and true values. Smaller is better, and squaring punishes big misses.</li>
+            <li><strong>R squared</strong> compares the model with always guessing the mean: 1 is perfect, 0 is no better than the mean.</li>
+            <li><strong>Test on unseen data.</strong> A model can score well on the data it trained on and badly on new data (overfitting), so hold some data back.</li>
+            <li><strong>Do not extrapolate blindly.</strong> The line above predicts 89.6 for 9 hours, which is sensible. For 20 hours it predicts a mark of about 150, which is impossible, because 20 hours lies far outside the 1 to 8 hours the model saw.</li>
+          </ul>
+
+          <h3>Polynomial Regression (Non-Linear Relationships)</h3>
+          <p><strong>Polynomial regression</strong> extends linear regression to model <strong>curved (non-linear) relationships</strong> between variables. When a scatter graph shows a curve rather than a straight line, a polynomial fit is more appropriate. The trick is to add powers of the input (x², x³ and so on) as extra features, then fit an ordinary linear model to them. Fuel use against speed is a good example: it falls as a car leaves slow traffic, then rises again at high speed, which no straight line can follow.</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: polynomial regression with scikit-learn (degree 2)</span></div><pre><code class="language-python">import numpy as np
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+
+# Speed (km/h) against fuel use (L/100 km): a curved relationship (invented sample data)
 X = np.array([[40], [60], [80], [100], [120], [140]])
-y = np.array([35, 40, 38, 32, 24, 14])  <span class="cm"># efficiency peaks then drops</span>
+y = np.array([8.4, 6.5, 5.9, 6.6, 8.3, 11.2])
 
-<span class="cm"># Transform features to include x and x² (degree 2 polynomial)</span>
+# Transform features to include x and x squared (degree 2 polynomial)
 poly = PolynomialFeatures(degree=2)
 X_poly = poly.fit_transform(X)
 
-<span class="cm"># Fit a linear regression model to the transformed features</span>
+# Fit a linear regression model to the transformed features
 model = LinearRegression()
 model.fit(X_poly, y)
 
-<span class="cm"># Predict efficiency at 110 km/h</span>
+# Predict fuel use at 110 km/h
 X_test = poly.transform([[110]])
-print(f"Predicted efficiency at 110 km/h: {model.predict(X_test)[0]:.1f} L/100km")</code></pre>
-          </div>
+print(f"Predicted fuel use at 110 km/h: {model.predict(X_test)[0]:.1f} L/100km")</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output (scikit-learn 1.9.1)</span></div><pre><code>Predicted fuel use at 110 km/h: 7.3 L/100km</code></pre></div>
+          <p>Here is the same idea built from scratch. Fitting the powers by least squares gives a set of "normal equations", which the <code>solve()</code> function handles by Gaussian elimination. The class reuses <code>RegressionModel</code> and <code>LinearRegression</code> from the previous program, so it inherits <code>mse()</code> for free.</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: polynomial regression as a class (continues the previous program)</span></div><pre><code class="language-python">def solve(a, b):
+    """Solve the linear equations a * w = b by Gaussian elimination."""
+    n = len(b)
+    for col in range(n):
+        pivot = max(range(col, n), key=lambda r: abs(a[r][col]))
+        a[col], a[pivot] = a[pivot], a[col]
+        b[col], b[pivot] = b[pivot], b[col]
+        for row in range(col + 1, n):
+            factor = a[row][col] / a[col][col]
+            for k in range(col, n):
+                a[row][k] -= factor * a[col][k]
+            b[row] -= factor * b[col]
+    w = [0.0] * n
+    for row in range(n - 1, -1, -1):
+        w[row] = (b[row] - sum(a[row][k] * w[k] for k in range(row + 1, n))) / a[row][row]
+    return w
 
-<h3>Logistic Regression — Binary Classification</h3>
-          <p>Logistic regression classifies inputs into one of two categories by predicting a probability using the sigmoid function. The OOP interface is identical to linear regression — instantiate, fit, predict.</p>
 
+class PolynomialRegression(RegressionModel):
+    """y = c0 + c1*x + c2*x**2 + ... : linear regression on the powers of x."""
+
+    def __init__(self, degree=2):
+        self.degree = degree
+        self.coefficients = []
+
+    def _powers(self, x):
+        return [x ** p for p in range(self.degree + 1)]
+
+    def fit(self, xs, ys):
+        rows = [self._powers(x) for x in xs]
+        size = self.degree + 1
+        # Least squares gives the "normal equations": (X^T X) w = X^T y
+        a = [[sum(r[i] * r[j] for r in rows) for j in range(size)] for i in range(size)]
+        b = [sum(r[i] * y for r, y in zip(rows, ys)) for i in range(size)]
+        self.coefficients = solve(a, b)
+        return self
+
+    def predict(self, x):
+        return sum(c * p for c, p in zip(self.coefficients, self._powers(x)))
+
+
+speed = [40, 60, 80, 100, 120, 140]                # km/h
+fuel = [8.4, 6.5, 5.9, 6.6, 8.3, 11.2]             # litres per 100 km (invented sample data)
+
+straight = LinearRegression().fit(speed, fuel)
+curve = PolynomialRegression(degree=2).fit(speed, fuel)
+print(f"Straight line MSE: {straight.mse(speed, fuel):.3f}")
+print(f"Quadratic MSE:     {curve.mse(speed, fuel):.3f}")
+print(f"Fuel use at 110 km/h: line {straight.predict(110):.1f}, curve {curve.predict(110):.1f} L/100 km")</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Straight line MSE: 2.189
+Quadratic MSE:     0.002
+Fuel use at 110 km/h: line 8.4, curve 7.3 L/100 km</code></pre></div>
+          <p>The curve's error is close to zero, while the straight line misses badly, and its prediction at 110 km/h (7.3) agrees with scikit-learn's. A higher degree is not automatically better. With six points, a degree-5 polynomial can pass through every point exactly and then swing wildly between them, which is overfitting again.</p>
+
+          <h3>Logistic Regression — Binary Classification</h3>
+          <p>Logistic regression classifies inputs into one of two categories by predicting a probability using the sigmoid function. The OOP interface is identical to linear regression: instantiate, fit, predict.</p>
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Logistic Regression: Pass/Fail Prediction</span></div>
             <pre><code><span class="kw">from</span> sklearn.linear_model <span class="kw">import</span> LogisticRegression
@@ -729,6 +1325,56 @@ probability = classifier.predict_proba([[5, 5]])
 print(f"Prediction: {'Pass' if prediction[0] == 1 else 'Fail'}")
 print(f"Pass probability: {probability[0][1]:.2%}")</code></pre>
           </div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output (scikit-learn 1.9.1)</span></div><pre><code>Prediction: Pass
+Pass probability: 93.49%</code></pre></div>
+          <p>Building it by hand shows what happens inside <code>fit()</code>. For each training example the class predicts a probability, measures how far it is from the truth (the label 0 or 1), and moves the weight and bias to reduce the gap. That is gradient descent again, with the sigmoid inside the loop.</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: logistic regression as a class (standard library only)</span></div><pre><code class="language-python">import math
+
+
+class LogisticRegression:
+    """Predicts the probability of class 1 with a sigmoid, trained by gradient descent."""
+
+    def __init__(self, learning_rate=0.1, epochs=5000):
+        self.learning_rate = learning_rate
+        self.epochs = epochs
+        self.weight = 0.0
+        self.bias = 0.0
+
+    @staticmethod
+    def sigmoid(z):
+        return 1 / (1 + math.exp(-z))
+
+    def predict_proba(self, x):
+        return self.sigmoid(self.weight * x + self.bias)
+
+    def fit(self, xs, labels):
+        for epoch in range(self.epochs):
+            for x, label in zip(xs, labels):
+                error = self.predict_proba(x) - label      # prediction minus truth
+                self.weight -= self.learning_rate * error * x
+                self.bias -= self.learning_rate * error
+        return self
+
+    def predict(self, x, threshold=0.5):
+        return 1 if self.predict_proba(x) &gt;= threshold else 0
+
+
+study_hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+passed      = [0, 0, 0, 1, 0, 1, 1, 0, 1, 1]      # 1 = passed the test (invented sample data)
+
+classifier = LogisticRegression().fit(study_hours, passed)
+print(f"weight = {classifier.weight:.3f}, bias = {classifier.bias:.3f}")
+for hours_studied in (2, 5.5, 8):
+    p = classifier.predict_proba(hours_studied)
+    print(f"{hours_studied} hours: P(pass) = {p:.2f} -&gt; {'Pass' if classifier.predict(hours_studied) else 'Fail'}")</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>weight = 1.239, bias = -6.068
+2 hours: P(pass) = 0.03 -&gt; Fail
+5.5 hours: P(pass) = 0.68 -&gt; Pass
+8 hours: P(pass) = 0.98 -&gt; Pass</code></pre></div>
+          <p>Check one prediction by hand. For 5.5 hours the weighted sum is z = 1.239 × 5.5 − 6.068 = 0.747, and the sigmoid of 0.747 is about 0.68. That is above the 0.5 threshold, so the class predicts a pass, though with only 68% confidence. The data overlaps (the student with 5 hours failed and the student with 6 passed), so a sensible model does not claim certainty.</p>
+
+          <div class="callout assessor"><strong>Exam tip</strong> "Design, develop and apply" questions reward a working, reasoned program more than memorised syntax. Choose the model from the data (a number from a straight-line trend needs linear regression, a curve needs polynomial, a yes/no outcome needs logistic), then show the steps: create the model object, <code>fit()</code> on training data, <code>predict()</code> on new input, and check the error on unseen data. Name the OOP ideas in your answer: the model is an object, its learned weights are attributes, and <code>fit()</code> and <code>predict()</code> are methods. Common mistakes are using linear regression for a classification problem, testing only on the training data, and forgetting to call <code>fit()</code> before <code>predict()</code>.</div>
+
         </section>
 
         <hr class="divider" />
@@ -738,8 +1384,210 @@ print(f"Pass probability: {probability[0][1]:.2%}")</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-12-02, SE-12-08)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Apply</strong> neural network models using an OOP to make predictions</em></p>
 
+          
+          <p>A neural network is a natural fit for OOP. Its weightings and thresholds are the object's <em>state</em>, and the two cycles in the Course Specifications become <em>methods</em>: the training cycle adjusts the state using examples with known answers, and the execution cycle uses that state to make a prediction. This section builds a single neurone and then a small network from scratch, using only the standard library, and then shows the scikit-learn version that a real project would use. You are not expected to write these from memory in the exam. The aim is to see every step of the two cycles.</p>
+
+          <h3>A single neurone as a class</h3>
+          <p>The simplest neural network is one neurone, called a <strong>perceptron</strong>. It multiplies each input by a weighting, adds the results, and fires (outputs 1) if the total reaches its threshold. Like NESA's neurone, it takes binary inputs. It learns by the training cycle: for each example it compares its output with the known answer, and if it is wrong it nudges each weighting and the threshold.</p>
+
+          <div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode: the training cycle for one neurone</span></div><pre><code>BEGIN TrainNeurone (input1, input2, target, learningRate)
+    weight1 ← 0
+    weight2 ← 0
+    threshold ← 0
+    REPEAT
+        mistakes ← 0
+        FOR i = 1 TO 4 STEP 1
+            total ← weight1 * input1[i] + weight2 * input2[i]
+            IF total &gt;= threshold THEN
+                output ← 1
+            ELSE
+                output ← 0
+            ENDIF
+            error ← target[i] - output
+            IF error != 0 THEN
+                mistakes ← mistakes + 1
+            ENDIF
+            weight1 ← weight1 + learningRate * error * input1[i]
+            weight2 ← weight2 + learningRate * error * input2[i]
+            threshold ← threshold - learningRate * error
+        NEXT i
+    UNTIL mistakes = 0
+END TrainNeurone (input1, input2, target, learningRate)</code></pre></div>
+
+          <p>The class below is that algorithm. <code>predict()</code> is the execution cycle (a forward pass), <code>train_step()</code> is one pass of the training cycle for one example, and <code>train()</code> repeats it for whole epochs. The learning rate is 0.5, which keeps every number exact in binary arithmetic so the output is the same on every machine.</p>
+
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: a perceptron learns AND</span></div><pre><code class="language-python">class Perceptron:
+    """One artificial neurone: weighted inputs, a threshold and a step output."""
+
+    def __init__(self, n_inputs, learning_rate=0.5):
+        self.weights = [0.0] * n_inputs
+        self.threshold = 0.0
+        self.learning_rate = learning_rate
+
+    def predict(self, inputs):
+        """Execution cycle: the forward pass. Fire (1) if the weighted sum reaches the threshold."""
+        total = 0.0
+        for weight, x in zip(self.weights, inputs):
+            total += weight * x
+        return 1 if total &gt;= self.threshold else 0
+
+    def train_step(self, inputs, target):
+        """Training cycle: predict, measure the error, then nudge every weight."""
+        error = target - self.predict(inputs)
+        for i, x in enumerate(inputs):
+            self.weights[i] += self.learning_rate * error * x
+        self.threshold -= self.learning_rate * error
+        return error
+
+    def train(self, examples, max_epochs=20, show=True):
+        for epoch in range(1, max_epochs + 1):
+            mistakes = sum(abs(self.train_step(inputs, target)) for inputs, target in examples)
+            if show:
+                w = [round(v, 2) for v in self.weights]
+                print(f"Epoch {epoch}: {mistakes} mistakes, weights {w}, threshold {self.threshold:.2f}")
+            if mistakes == 0:
+                return epoch
+        return None
+
+
+AND = [((0, 0), 0), ((0, 1), 0), ((1, 0), 0), ((1, 1), 1)]
+
+neurone = Perceptron(2)
+neurone.train(AND)
+for inputs, target in AND:
+    print(inputs, "-&gt;", neurone.predict(inputs), "(expected", target, ")")</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Epoch 1: 2 mistakes, weights [0.5, 0.5], threshold 0.00
+Epoch 2: 3 mistakes, weights [1.0, 0.5], threshold 0.50
+Epoch 3: 3 mistakes, weights [1.0, 0.5], threshold 1.00
+Epoch 4: 2 mistakes, weights [1.0, 1.0], threshold 1.00
+Epoch 5: 1 mistakes, weights [1.0, 0.5], threshold 1.50
+Epoch 6: 0 mistakes, weights [1.0, 0.5], threshold 1.50
+(0, 0) -&gt; 0 (expected 0 )
+(0, 1) -&gt; 0 (expected 0 )
+(1, 0) -&gt; 0 (expected 0 )
+(1, 1) -&gt; 1 (expected 1 )</code></pre></div>
+
+          <p>Trace the first epoch by hand from weights (0, 0) and threshold 0:</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Example</th><th>Weighted total</th><th>Threshold</th><th>Output</th><th>Target</th><th>Error</th><th>New weights</th><th>New threshold</th></tr></thead>
+              <tbody>
+                <tr><td>(0, 0)</td><td>0</td><td>0</td><td>1</td><td>0</td><td>−1</td><td>(0, 0)</td><td>0.5</td></tr>
+                <tr><td>(0, 1)</td><td>0</td><td>0.5</td><td>0</td><td>0</td><td>0</td><td>(0, 0)</td><td>0.5</td></tr>
+                <tr><td>(1, 0)</td><td>0</td><td>0.5</td><td>0</td><td>0</td><td>0</td><td>(0, 0)</td><td>0.5</td></tr>
+                <tr><td>(1, 1)</td><td>0</td><td>0.5</td><td>0</td><td>1</td><td>+1</td><td>(0.5, 0.5)</td><td>0</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Two mistakes, ending on weights (0.5, 0.5) and threshold 0, which matches the first line of output. The first example was wrong only because the neurone started out saying 1 to everything, and the fourth because it then said 0 to everything. After six epochs the weightings are 1.0 and 0.5 and the threshold is 1.5: only when both inputs are 1 does the total (1.5) reach the threshold, which is exactly AND.</p>
+
+          <h3>Explore it: step a perceptron through training</h3>
+          <p>Pick a function, then press <em>Step</em> to watch the weighted total, error and weight changes for one example at a time. The dividing line on the right is where the total equals the threshold. Try AND and OR, then try XOR.</p>
+          <div class="auto-lab" data-auto-lab="perceptron"><p class="auto-lead">This stepper needs JavaScript. Without it, use the hand trace above: for AND the perceptron reaches weightings 1.0 and 0.5 with a threshold of 1.5 after six epochs.</p></div>
+
+          <h3>What one neurone cannot do</h3>
+          <p>The same class learns OR in four epochs but never learns XOR ("one or the other, but not both"):</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: OR is learnable, XOR is not (continues the previous program)</span></div><pre><code class="language-python">OR  = [((0, 0), 0), ((0, 1), 1), ((1, 0), 1), ((1, 1), 1)]
+XOR = [((0, 0), 0), ((0, 1), 1), ((1, 0), 1), ((1, 1), 0)]
+
+for name, examples in (("OR", OR), ("XOR", XOR)):
+    neurone = Perceptron(2)
+    epochs = neurone.train(examples, max_epochs=100, show=False)
+    if epochs:
+        print(f"{name}: learned in {epochs} epochs, weights {[round(w, 2) for w in neurone.weights]}, threshold {neurone.threshold:.2f}")
+    else:
+        print(f"{name}: still making mistakes after 100 epochs")</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>OR: learned in 4 epochs, weights [0.5, 0.5], threshold 0.50
+XOR: still making mistakes after 100 epochs</code></pre></div>
+          <p>A single neurone draws one straight line through the input space. AND and OR can be separated by a straight line, but no straight line separates XOR's 1s from its 0s. This is why real networks have <strong>hidden layers</strong>: the hidden neurones each draw a line and the output neurone combines them.</p>
+
+          <h3>A network with a hidden layer</h3>
+          <p>The next class has two inputs, two hidden neurones and one output neurone. It uses a smooth sigmoid instead of a hard threshold (the <code>bias</code> plays the part of NESA's threshold), because smooth outputs let the error be traced backwards. <code>predict()</code> is again the execution cycle. <code>train_step()</code> is the training cycle: a forward pass, then how far the output is from the target, then that error is shared backwards with each hidden neurone in proportion to the weighting that connects it (backpropagation), and finally every weighting is adjusted a little.</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: a small neural network learns XOR</span></div><pre><code class="language-python">import math
+import random
+
+
+def sigmoid(z):
+    return 1 / (1 + math.exp(-z))
+
+
+class Neuron:
+    def __init__(self, n_inputs, rng):
+        self.weights = [rng.uniform(-1, 1) for _ in range(n_inputs)]
+        self.bias = rng.uniform(-1, 1)          # plays the part of the threshold
+        self.inputs = []
+        self.output = 0.0
+        self.delta = 0.0                        # this neurone's share of the error
+
+    def forward(self, inputs):
+        self.inputs = inputs
+        z = sum(w * x for w, x in zip(self.weights, inputs)) + self.bias
+        self.output = sigmoid(z)
+        return self.output
+
+
+class NeuralNetwork:
+    """A network with one hidden layer, trained by backpropagation."""
+
+    def __init__(self, n_inputs, n_hidden, seed=1, learning_rate=0.5):
+        rng = random.Random(seed)
+        self.hidden = [Neuron(n_inputs, rng) for _ in range(n_hidden)]
+        self.output = Neuron(n_hidden, rng)
+        self.learning_rate = learning_rate
+
+    def predict(self, inputs):
+        """Execution cycle: pass the signals forward, layer by layer."""
+        hidden_outputs = [neuron.forward(inputs) for neuron in self.hidden]
+        return self.output.forward(hidden_outputs)
+
+    def train_step(self, inputs, target):
+        """Training cycle: forward pass, then push the error backwards and adjust weights."""
+        prediction = self.predict(inputs)
+        self.output.delta = (target - prediction) * prediction * (1 - prediction)
+        for i, neuron in enumerate(self.hidden):
+            neuron.delta = neuron.output * (1 - neuron.output) * self.output.weights[i] * self.output.delta
+        for neuron in [self.output] + self.hidden:
+            for j, x in enumerate(neuron.inputs):
+                neuron.weights[j] += self.learning_rate * neuron.delta * x
+            neuron.bias += self.learning_rate * neuron.delta
+        return (target - prediction) ** 2
+
+    def train(self, examples, epochs):
+        for epoch in range(1, epochs + 1):
+            loss = sum(self.train_step(inputs, target) for inputs, target in examples) / len(examples)
+            if epoch in (1, 1000, 5000, 10000):
+                print(f"Epoch {epoch:&gt;5}: mean squared error {loss:.4f}")
+
+
+XOR = [((0, 0), 0), ((0, 1), 1), ((1, 0), 1), ((1, 1), 0)]
+
+network = NeuralNetwork(n_inputs=2, n_hidden=2, seed=1)
+network.train(XOR, epochs=10000)
+for inputs, target in XOR:
+    print(inputs, f"-&gt; {network.predict(inputs):.3f} (expected {target})")</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Epoch     1: mean squared error 0.2707
+Epoch  1000: mean squared error 0.2542
+Epoch  5000: mean squared error 0.0010
+Epoch 10000: mean squared error 0.0003
+(0, 0) -&gt; 0.018 (expected 0)
+(0, 1) -&gt; 0.983 (expected 1)
+(1, 0) -&gt; 0.979 (expected 1)
+(1, 1) -&gt; 0.017 (expected 0)</code></pre></div>
+          <p>The mean squared error falls from 0.27 to 0.0003, and the four outputs end up close to 0, 1, 1 and 0. Two things are worth noticing. Training is not smooth: at epoch 1000 the error had barely moved, then it dropped quickly. And the starting weights are random, seeded here so the run repeats. A different start can matter. With seed 7 this same network stayed stuck with two examples wrong (error 0.129 after 10,000 epochs), which is why real projects train several times or add more hidden neurones. Small differences in the last digit are possible on other machines.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>NESA's term</th><th>What it means</th><th>Where it is in the code</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Weightings and threshold values</strong></td><td>The learned numbers that define the network</td><td>The <code>weights</code>, <code>threshold</code> and <code>bias</code> attributes</td></tr>
+                <tr><td><strong>Training cycle</strong></td><td>Show examples with known answers; adjust the numbers</td><td><code>train_step()</code> and <code>train()</code></td></tr>
+                <tr><td><strong>Execution cycle</strong></td><td>Use the fixed numbers to produce an output</td><td><code>predict()</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+
           <h3>Multi-Layer Perceptron (MLP) with scikit-learn</h3>
-          <p>The <code>MLPClassifier</code> (Multi-Layer Perceptron) is a neural network class available in scikit-learn. It uses the same OOP interface as other models — instantiate with architecture parameters, call <code>fit()</code> to train, call <code>predict()</code> to classify. The <code>hidden_layer_sizes</code> parameter defines the number of hidden layers and neurons per layer.</p>
+          <p>The <code>MLPClassifier</code> (Multi-Layer Perceptron) is a neural network class available in scikit-learn. It uses the same OOP interface as other models: instantiate with architecture parameters, call <code>fit()</code> to train, and call <code>predict()</code> to classify. The <code>hidden_layer_sizes</code> parameter defines the number of hidden layers and neurons per layer.</p>
 
           <div class="code-block">
             <div class="code-header"><span class="code-lang">Python — Neural Network (MLPClassifier) via scikit-learn OOP</span></div>
@@ -777,12 +1625,13 @@ prediction = nn_model.predict(new_data)
 labels = {0: 'Sunny', 1: 'Cloudy', 2: 'Rainy'}
 print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           </div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output (scikit-learn 1.9.1; you may also see a convergence warning)</span></div><pre><code>Predicted weather: Sunny</code></pre></div>
 
           <div class="callout info">
             <strong>OOP in ML Models</strong> Every scikit-learn model is a Python class. When you write <code>model = MLPClassifier(...)</code> you are <strong>instantiating an object</strong>. When you call <code>model.fit(X, y)</code> you are invoking a <strong>method</strong> that sets the object's internal weights (attributes). When you call <code>model.predict(X_new)</code> you are invoking another method that uses those stored weights to generate output. This is OOP in direct practice.
           </div>
 
-<h3>Neural Network Training and Execution Cycles</h3>
+          <h3>Neural Network Training and Execution Cycles</h3>
           <div class="info-grid">
             <div class="info-card">
               <h4>Training Cycle</h4>
@@ -793,6 +1642,9 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
               <p>After training, the network's weights are fixed. For each new input, the data is passed forward through the network layer-by-layer (no backpropagation). Each neurone applies its learned weights and activation function, and the output layer produces the final prediction. Inference is computationally much cheaper than training.</p>
             </div>
           </div>
+
+          <div class="callout assessor"><strong>Exam tip</strong> "Apply neural network models to make predictions" is about using the model on a scenario. Say what the inputs and output are (for example temperature and humidity in, weather type out), describe the training cycle (examples with known answers, error measured, weightings adjusted, repeated over epochs) and then the execution cycle (fixed weightings used to produce the output). Use NESA's terms: nodes, weightings, thresholds. A full-mark answer also says why training data matters, since a network can only be as good as its examples. Common mistakes are saying the network keeps learning during the execution cycle, and describing the training cycle without mentioning known answers.</div>
+
         </section>
 
         <div class="quiz" data-quiz="auto-2"></div>
@@ -819,7 +1671,7 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           <ul class="syllabus-including" aria-label="Including"><li>safety of workers</li><li>people with disability</li><li>the nature and skills required for employment</li><li>production efficiency, waste and the environment</li><li>the economy and distribution of wealth</li></ul>
 
           <h3>Safety of Workers</h3>
-          <p>Automation and robotics are progressively replacing human workers in physically dangerous environments, with significant positive safety outcomes. <strong>Automated drones</strong> now perform inspection of high-voltage power lines and offshore oil rigs, eliminating worker exposure to electrocution, heights, and toxic atmospheres. <strong>Robotic welding and material handling</strong> systems in manufacturing have reduced repetitive strain injuries and burn risks. In mining, <strong>autonomous haul trucks</strong> (e.g., Rio Tinto's AutoHaul system) operate in remote and hazardous pit environments without human operators. The net effect is a measurable reduction in workplace injury rates and fatalities. However, the displacement of human workers from these roles creates economic vulnerability for the affected communities.</p>
+          <p>Automation and robotics are progressively replacing human workers in physically dangerous environments, with significant positive safety outcomes. <strong>Automated drones</strong> now perform inspection of high-voltage power lines and offshore oil rigs, eliminating worker exposure to electrocution, heights, and toxic atmospheres. <strong>Robotic welding and material handling</strong> systems in manufacturing have reduced repetitive strain injuries and burn risks. In Western Australian mining, <strong>autonomous haul trucks</strong> carry ore in remote pits without drivers, and Rio Tinto's AutoHaul network runs driverless trains across the Pilbara. Taking people out of the most dangerous tasks reduces their exposure to harm, but new risks appear, such as maintenance workers servicing machines that move on their own. The displacement of workers from these roles also creates economic vulnerability for the communities that depend on them.</p>
 
 <h3>People with Disability</h3>
           <p>AI-powered automation is providing unprecedented levels of independence and accessibility for people with disability. <strong>Computer vision systems</strong> enable real-time audio descriptions of the surrounding environment for visually impaired users (e.g., Microsoft's Seeing AI app describes people, currency, and written text through a smartphone camera). <strong>Speech-to-text and natural language interfaces</strong> allow people with motor disabilities to control computers and dictate documents without physical input. <strong>Autonomous vehicles</strong> could fundamentally transform mobility for people who cannot drive due to physical or visual impairment. <strong>AI captioning</strong> provides real-time speech-to-text conversion for deaf individuals during live conversations, video calls, and broadcasts. These advances promote social inclusion and reduce dependence on others, improving quality of life. The risk is that if these systems are not designed with universal design principles, the digital divide — where those without access to technology are further marginalised — may widen.</p>
@@ -828,10 +1680,42 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           <p>The adoption of automation is causing a significant structural shift in labour markets. <strong>Routine cognitive tasks</strong> (data entry, basic reporting, invoice processing) and <strong>routine physical tasks</strong> (assembly line work, packaging, basic quality inspection) are being automated at scale, displacing workers in these roles. Simultaneously, demand is growing rapidly for workers with skills in <strong>MLOps, data science, AI ethics, robotic maintenance, and human-AI collaboration</strong> — roles that require understanding of automation systems rather than performing the automated tasks themselves. Workers must engage in continuous reskilling and upskilling throughout their careers. Governments and educational institutions face the challenge of retraining displaced workers for emerging roles. The transition may exacerbate inequality if the benefits of automation accrue primarily to capital owners rather than being distributed across the workforce.</p>
 
 <h3>Production Efficiency, Waste, and the Environment</h3>
-          <p>Automation offers significant environmental benefits through efficiency gains but also introduces new environmental costs. <strong>Optimised logistics and supply chains</strong> powered by ML reduce unnecessary transport and warehousing, cutting fuel consumption and emissions. <strong>Predictive maintenance</strong> extends the lifespan of industrial equipment, reducing material waste from premature replacements. <strong>Smart energy management systems</strong> use ML to optimise building heating, cooling, and lighting, reducing energy waste. Conversely, <strong>training large deep learning models</strong> (e.g., GPT-4) consumes enormous quantities of electricity — some estimates suggest training a single large language model produces CO₂ emissions equivalent to five car lifetimes. <strong>Data centres</strong> required to run AI services consume vast amounts of water for cooling. Engineers must evaluate the full lifecycle environmental cost of AI systems alongside their operational benefits.</p>
+          <p>Automation offers significant environmental benefits through efficiency gains but also introduces new environmental costs. <strong>Optimised logistics and supply chains</strong> powered by ML reduce unnecessary transport and warehousing, cutting fuel consumption and emissions. <strong>Predictive maintenance</strong> extends the lifespan of industrial equipment, reducing material waste from premature replacements. <strong>Smart energy management systems</strong> use ML to optimise building heating, cooling, and lighting, reducing energy waste. Conversely, <strong>training large deep learning models</strong>, such as those behind chatbots, uses a great deal of electricity. Published estimates vary widely between models and studies, so treat any single figure with caution. <strong>Data centres</strong> that run AI services also need large amounts of electricity and often use water for cooling. Engineers must evaluate the full lifecycle environmental cost of AI systems alongside their operational benefits.</p>
 
 <h3>The Economy and Distribution of Wealth</h3>
           <p>Automation increases productivity and creates new industries and wealth. However, the distribution of that wealth is a critical societal concern. Historically, automation has created new types of employment alongside the jobs it displaces — but the transition period creates significant hardship for displaced workers. The current wave of AI-driven automation is occurring much faster than previous industrial revolutions, leaving less time for natural retraining. There is a risk of increasing economic polarisation: high-skill workers who can work alongside AI systems see wages rise, while low-skill workers face wage stagnation or displacement. Policy responses under discussion include universal basic income (UBI), robot taxes, and mandatory corporate investment in worker retraining programs.</p>
+
+          <h3>Weighing the five areas</h3>
+          <p>To <em>assess</em> an impact, set the benefits against the harms, say who carries each, and reach a judgement. The same technology can land differently on different people.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Area</th><th>Benefit</th><th>Harm or risk</th><th>Who carries the risk</th><th>What reduces the harm</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Safety of workers</strong></td><td>Robots and drones take on dangerous tasks</td><td>New hazards around machines; job loss</td><td>Maintenance staff and displaced workers</td><td>Safety design and worker consultation</td></tr>
+                <tr><td><strong>People with disability</strong></td><td>Captions, image description and voice control widen independence</td><td>Systems tested only on typical users can exclude people</td><td>People with disability, and those without access to technology</td><td>Involving users with disability in design and testing</td></tr>
+                <tr><td><strong>Employment</strong></td><td>New roles in data, maintenance and oversight</td><td>Routine jobs decline faster than people can retrain</td><td>Workers in routine roles</td><td>Retraining and education</td></tr>
+                <tr><td><strong>Efficiency and environment</strong></td><td>Less waste, better logistics, smarter energy use</td><td>Electricity and cooling water for training and data centres</td><td>Communities near data centres, and the wider climate</td><td>Efficient models, renewable power, measuring the full life cycle</td></tr>
+                <tr><td><strong>Economy and wealth</strong></td><td>Higher productivity and new industries</td><td>Gains concentrated among owners and high-skill workers</td><td>Lower-income workers</td><td>Tax, training and wage policy</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Australian context: ethics principles and law</h3>
+          <p>The Australian Government published <a href="https://www.industry.gov.au/publications/australias-ai-ethics-principles" target="_blank" rel="noopener">Australia's AI Ethics Principles</a> in 2019. They are voluntary guidance for the people who design, build and use AI, not law. There are eight:</p>
+          <ol>
+            <li><strong>Human, societal and environmental wellbeing:</strong> AI should benefit people, society and the environment, and its impacts should be assessed.</li>
+            <li><strong>Human-centred values:</strong> respect human rights, diversity and the autonomy of individuals.</li>
+            <li><strong>Fairness:</strong> be inclusive and accessible, and avoid unfair discrimination.</li>
+            <li><strong>Privacy protection and security:</strong> protect personal data and protect the system from attack.</li>
+            <li><strong>Reliability and safety:</strong> work as intended, with testing and monitoring throughout the system's life.</li>
+            <li><strong>Transparency and explainability:</strong> people should be able to tell when AI is affecting them and understand the outcome.</li>
+            <li><strong>Contestability:</strong> there should be a way for people to challenge a significant decision.</li>
+            <li><strong>Accountability:</strong> people remain responsible for AI systems and their outcomes at every stage.</li>
+          </ol>
+          <p>Several laws and bodies apply too. Personal information used to train or run a system is covered by the Privacy Act 1988 and the Australian Privacy Principles, regulated by the OAIC. Anti-discrimination law applies whether a person or a program makes the decision. The <a href="https://www.digital.nsw.gov.au/policy/artificial-intelligence/nsw-artificial-intelligence-assessment-framework" target="_blank" rel="noopener">NSW AI Assessment Framework</a> is a mandatory risk self-assessment that NSW Government agencies must complete for AI projects.</p>
+          <p>The Australian case that best shows what goes wrong without these safeguards is <strong>Robodebt</strong>. From the mid-2010s a government scheme automatically raised debts against welfare recipients by averaging their income data, and left people to prove the debts were wrong. It used rule-based automation rather than machine learning, but it is the standard example of an automated decision made at scale with too little human checking and no easy way to contest it. The Royal Commission into the Robodebt Scheme reported in 2023 and found the scheme unlawful. Read it against the principles above: contestability, accountability and human-centred values were all missing.</p>
+
+          <div class="callout assessor"><strong>Exam tip</strong> "Assess" asks you to weigh, so a full-mark answer gives at least one benefit and one harm, says who is affected, and ends with a judgement. Use the scenario's own details. NESA's marking guidelines for the 2025 HSC online exam include a question (Q24, 5 marks) about an AI safety monitoring system and workers, which shows how the safety-of-workers dot point is examined in context. A balanced sentence pattern that works: "This improves X for [group] because [reason]. However, it may harm Y because [reason]. Overall, the impact is [positive/negative] provided that [condition]." Avoid one-sided answers, and avoid figures you cannot source.</div>
 
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
@@ -851,18 +1735,151 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-12-04, SE-12-05)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Explore by implementation</strong> how patterns in human behaviour influence ML and AI software development</em></p>
           <ul class="syllabus-including" aria-label="Including"><li>psychological responses</li><li>patterns related to acute stress response</li><li>cultural protocols</li><li>belief systems</li></ul>
+          <p>ML systems are shaped by people at both ends. They learn from what people do (clicks, purchases, recordings), and they are used by people who are tired, stressed, trusting or sceptical. The syllabus asks you to <em>explore by implementation</em>, so each pattern below comes with a short Python program that shows how the pattern changes a design decision. All of them use only the standard library, and the output shown is real.</p>
 
           <h3>Psychological Responses</h3>
-          <p>Human psychology profoundly shapes how AI systems must be designed. Users must understand when they are interacting with AI systems, and designers must balance automation with appropriate levels of human oversight and control. Transparent communication about AI capabilities and limitations builds user trust and ensures that critical decisions involving human welfare maintain meaningful human involvement.</p>
+          <p>Human psychology profoundly shapes how AI systems must be designed. Users must understand when they are interacting with AI systems, and designers must balance automation with appropriate levels of human oversight and control. Two responses matter most. <strong>Automation bias</strong> is the tendency to trust an automated suggestion and stop checking it, so a confident but wrong output goes unchallenged. And people's habits become training data: a system that learns from clicks learns what people did, not necessarily what they would choose if they saw more.</p>
+          <p>The program below is a recommender that fills a news feed using each category's share of the person's past clicks. The simulated person clicks a sport story half the time it appears, science 40%, news 30% and music 20%. Run for 2000 rounds, once with no exploration and once with 20% of stories chosen at random.</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: a click-driven recommender</span></div><pre><code class="language-python">import random
 
-<h3>Patterns Related to Acute Stress Response</h3>
-          <p>When individuals are operating under acute psychological stress (e.g., medical emergencies, financial crises, natural disasters), their cognitive performance changes significantly — attention narrows, working memory capacity decreases, and decision-making becomes impaired. AI interfaces designed for critical environments — such as intensive care unit monitoring systems, emergency dispatch platforms, or incident management dashboards — must account for these changes. Systems should prioritise the most critical information, minimise cognitive load, and use clear visual communication to guide operators appropriately during stressful situations.</p>
+CATEGORIES = ["sport", "science", "news", "music"]
+# How likely this person is to click a story from each category when it appears in the feed.
+CLICK_CHANCE = {"sport": 0.50, "science": 0.40, "news": 0.30, "music": 0.20}
 
-<h3>Cultural Protocols</h3>
-          <p>ML and AI systems deployed globally must be engineered to respect diverse regional cultural norms, communication expectations, and social protocols. A conversational AI that is appropriate in one cultural context may be offensive or ineffective in another. Engineers must consider varying expectations around formality, linguistic nuance, and culturally sensitive topics. Also, AI systems must comply with local legal frameworks governing privacy and data protection across different jurisdictions. Failure to embed cultural protocols into AI systems results in reputational damage, legal liability, and loss of user trust in international markets.</p>
 
-<h3>Belief Systems</h3>
-          <p>Human belief systems — including religious beliefs, moral frameworks, and ethical worldviews — significantly influence both how AI is perceived and how it must be designed. In some religious and cultural traditions, there are deep concerns about AI making life-or-death decisions (e.g., autonomous weapons, medical triage AI) without human moral accountability. Engineers must engage with these perspectives during the design process rather than treating them as obstacles. AI systems for healthcare, justice, and education must be designed with <strong>explainability</strong> — the ability to provide human-understandable reasons for decisions — to allow individuals to challenge outcomes that conflict with their values or beliefs. Also, training data drawn from populations with specific belief systems will encode those beliefs into model outputs; engineers must actively test whether models produce fair and respectful outputs across diverse belief communities.</p>
+class Recommender:
+    """Fills a feed using each category's share of the person's past clicks."""
+
+    def __init__(self, explore=0.0, seed=1):
+        self.clicks = {c: 1 for c in CATEGORIES}      # start with one click each, so all are equal
+        self.explore = explore                        # chance of showing a random category instead
+        self.rng = random.Random(seed)
+
+    def pick_category(self):
+        if self.rng.random() &lt; self.explore:
+            return self.rng.choice(CATEGORIES)
+        point = self.rng.random() * sum(self.clicks.values())
+        for category in CATEGORIES:
+            point -= self.clicks[category]
+            if point &lt; 0:
+                return category
+        return CATEGORIES[-1]
+
+    def record_click(self, category):
+        self.clicks[category] += 1
+
+    def share(self):
+        total = sum(self.clicks.values())
+        return {c: self.clicks[c] / total for c in CATEGORIES}
+
+
+def simulate(explore, rounds=2000):
+    recommender = Recommender(explore)
+    person = random.Random(7)
+    for _ in range(rounds):
+        category = recommender.pick_category()               # the feed shows one story
+        if person.random() &lt; CLICK_CHANCE[category]:          # the person may click it
+            recommender.record_click(category)
+    return recommender.share()
+
+
+for explore in (0.0, 0.2):
+    shares = simulate(explore)
+    print(f"explore = {explore}: " + ", ".join(f"{c} {shares[c]:.0%}" for c in CATEGORIES))</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>explore = 0.0: sport 34%, science 64%, news 1%, music 1%
+explore = 0.2: sport 59%, science 21%, news 13%, music 7%</code></pre></div>
+          <p>The person likes sport best, yet the click-driven feed ended up 64% science with almost no news or music. Early random clicks snowballed, because whatever is shown gets clicked, and whatever is clicked gets shown more. This is a feedback loop of the kind described in the bias section. With 20% exploration every category kept a place, and sport, the person's real favourite, came out on top. Designers respond to these psychological patterns with exploration, a visible "not interested" control, labels that say when content is machine-selected, and confidence indicators that discourage blind trust.</p>
+
+          <h3>Patterns Related to Acute Stress Response</h3>
+          <p>When individuals are operating under acute psychological stress (for example medical emergencies, financial crises or natural disasters), their cognitive performance changes significantly: attention narrows, working memory capacity decreases, and decision-making becomes impaired. AI interfaces designed for critical environments, such as intensive care monitoring systems, emergency dispatch platforms or incident management dashboards, must account for these changes. Systems should prioritise the most critical information, minimise cognitive load, and use clear visual communication to guide operators during stressful situations.</p>
+          <p>This class shows the idea as code. In normal use the panel lists every alert with its detail. When the system is told that an emergency is under way, it shows only the top three alerts, as short commands, and says how many it has hidden.</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: an alert panel that adapts to stress</span></div><pre><code class="language-python">class AlertPanel:
+    """Decides what an operator sees. Under stress, show fewer, shorter, clearer messages."""
+
+    def __init__(self, stress_limit=3):
+        self.stress_limit = stress_limit
+
+    def render(self, alerts, high_stress):
+        ranked = sorted(alerts, key=lambda a: a["priority"], reverse=True)   # most urgent first
+        if not high_stress:
+            return [f'P{a["priority"]}  {a["title"]}: {a["detail"]}' for a in ranked]
+        top = ranked[:self.stress_limit]                                   # narrow attention: top few only
+        lines = [f'{a["title"].upper()}: {a["action"]}' for a in top]
+        hidden = len(ranked) - len(top)
+        if hidden:
+            lines.append(f"({hidden} lower-priority alerts hidden. Press M for more.)")
+        return lines
+
+
+alerts = [
+    {"priority": 2, "title": "Filter change due", "detail": "Ward 4 air filter is 80% used", "action": "Book maintenance"},
+    {"priority": 9, "title": "Oxygen low", "detail": "Bed 12 saturation 86% for 3 minutes", "action": "Check patient in bed 12"},
+    {"priority": 5, "title": "Battery low", "detail": "Infusion pump 7 at 15%", "action": "Plug in pump 7"},
+    {"priority": 7, "title": "Heart rate high", "detail": "Bed 3 at 138 bpm", "action": "Check patient in bed 3"},
+    {"priority": 1, "title": "Software update", "detail": "Monitor firmware 2.4 available", "action": "Schedule update"},
+]
+
+panel = AlertPanel()
+print("--- Normal shift ---")
+print("\n".join(panel.render(alerts, high_stress=False)))
+print("--- Emergency in progress ---")
+print("\n".join(panel.render(alerts, high_stress=True)))</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>--- Normal shift ---
+P9  Oxygen low: Bed 12 saturation 86% for 3 minutes
+P7  Heart rate high: Bed 3 at 138 bpm
+P5  Battery low: Infusion pump 7 at 15%
+P2  Filter change due: Ward 4 air filter is 80% used
+P1  Software update: Monitor firmware 2.4 available
+--- Emergency in progress ---
+OXYGEN LOW: Check patient in bed 12
+HEART RATE HIGH: Check patient in bed 3
+BATTERY LOW: Plug in pump 7
+(2 lower-priority alerts hidden. Press M for more.)</code></pre></div>
+          <p>The design choices are all visible in the output: alerts ranked by priority, fewer items, imperative wording ("Check patient in bed 12" instead of a sentence of readings), and a way to see the rest. Nothing is deleted, so a careful operator can still find the low-priority items later.</p>
+
+          <h3>Cultural Protocols</h3>
+          <p>ML and AI systems deployed across communities must be engineered to respect diverse cultural norms, communication expectations and social protocols. A conversational AI that is appropriate in one cultural context may be offensive or ineffective in another. Engineers must consider varying expectations around formality, language and culturally sensitive topics. Systems must also comply with the privacy and data protection laws of each jurisdiction. Ignoring cultural protocols leads to reputational damage, legal liability and loss of trust.</p>
+          <p>An Australian example: in some Aboriginal and Torres Strait Islander communities it is culturally sensitive to see the name or image of a person who has died, and broadcasters and archives commonly add a warning before showing such material. A photo-memories feature that learns which pictures people engage with could easily surface exactly that content. The program below adds a protocol setting that the family or community chooses.</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: honouring a cultural protocol</span></div><pre><code class="language-python"># Cultural protocols: a photo-memories feature that respects a setting chosen by the family or community.
+def memory_card(photo, protocols):
+    if "avoid_images_of_deceased" in protocols and photo["person_deceased"]:
+        return f'Content warning: this photo shows {photo["person"]}, who has died. Show anyway?'
+    return f'On this day: {photo["caption"]}'
+
+photo = {"person": "Grandpa Lee", "person_deceased": True, "caption": "Fishing at the lake"}
+print(memory_card(photo, protocols=set()))
+print(memory_card(photo, protocols={"avoid_images_of_deceased"}))</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>On this day: Fishing at the lake
+Content warning: this photo shows Grandpa Lee, who has died. Show anyway?</code></pre></div>
+          <p>The important design point is who decides. The protocol comes from the people concerned, not from the developer's assumptions, and the safe default is to warn first and let the person choose.</p>
+
+          <h3>Belief Systems</h3>
+          <p>Human belief systems, including religious beliefs, moral frameworks and ethical worldviews, influence both how AI is perceived and how it must be designed. In some religious and cultural traditions there are deep concerns about AI making life-or-death decisions (for example autonomous weapons or medical triage) without human moral accountability. Engineers must engage with these perspectives during design rather than treat them as obstacles. AI systems for healthcare, justice and education should offer <strong>explainability</strong>, the ability to give human-understandable reasons for a decision, so people can challenge outcomes that conflict with their values. Training data drawn from populations with particular belief systems will also encode those beliefs, so models need testing for fair and respectful outputs across belief communities.</p>
+          <p>Many beliefs are not preferences to be predicted but rules to be obeyed, such as halal, kosher or vegetarian eating. In this meal recommender, the model's predicted score ranks the dishes, but the diner's declared requirement is applied first as a hard filter that no score can override.</p>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: a declared belief overrides a predicted preference</span></div><pre><code class="language-python"># Belief systems: hard rules that a learned model must not override.
+menu = [
+    {"dish": "Pork ribs",      "tags": {"pork"},               "predicted_score": 0.94},
+    {"dish": "Lamb kofta",     "tags": {"halal"},              "predicted_score": 0.88},
+    {"dish": "Chickpea curry", "tags": {"vegetarian", "halal"}, "predicted_score": 0.81},
+    {"dish": "Beef burger",    "tags": set(),                  "predicted_score": 0.79},
+]
+
+def suggest(menu, must_have=(), must_avoid=()):
+    allowed = [item for item in menu
+               if set(must_have) &lt;= item["tags"] and not (set(must_avoid) &amp; item["tags"])]
+    ranked = sorted(allowed, key=lambda item: item["predicted_score"], reverse=True)
+    return [item["dish"] for item in ranked]
+
+print("Model's raw ranking:   ", suggest(menu))
+print("Diner needs halal food:", suggest(menu, must_have=["halal"]))
+print("Diner is vegetarian:   ", suggest(menu, must_have=["vegetarian"]))</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Model's raw ranking:    ['Pork ribs', 'Lamb kofta', 'Chickpea curry', 'Beef burger']
+Diner needs halal food: ['Lamb kofta', 'Chickpea curry']
+Diner is vegetarian:    ['Chickpea curry']</code></pre></div>
+          <p>The model's favourite dish, pork ribs, disappears for a diner who needs halal food. Notice that the belief is <em>declared</em> by the person. A system should not try to infer someone's religion from what they eat or watch: under the Privacy Act 1988, information about religious beliefs is "sensitive information", which needs the person's consent to collect.</p>
+
+          <div class="callout assessor"><strong>Exam tip</strong> "Explore by implementation" means showing a pattern of behaviour and how it changes what you build. For each pattern, name it, say what people do (narrowed attention under stress, trusting the machine, cultural expectations), then state a concrete design or code decision that responds (show only the top three alerts, add an exploration rate, apply a hard filter before ranking). Examples from the code on this page make your answer specific. Avoid vague statements such as "AI should be culturally sensitive" with no mechanism, and avoid stereotyping any group: let users declare their own needs.</div>
+
         </section>
 
         <hr class="divider" />
@@ -872,10 +1889,26 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           <p class="outcome-subtitle">🎯 <em>(SE-12-04, SE-12-05)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Investigate</strong> the effect of human and dataset source bias in the development of ML and AI solutions</em></p>
 
-          <h3>Sources of Bias</h3>
-          <p>Bias in ML systems can arise from multiple sources. Training data that reflects historical prejudices will cause AI systems to perpetuate those discriminatory patterns. When training datasets do not accurately represent the real-world population where the system will be used, the model produces systematically unfair outcomes for underrepresented groups. Developers may unconsciously select or weight data in ways that confirm their pre-existing assumptions. Also, when a biased model's predictions influence the collection of future data, it creates self-reinforcing cycles that entrench the original bias even further.</p>
+          
+          <p>A model learns whatever pattern is in its data, whether or not that pattern is fair. <strong>Bias</strong> in ML means systematically worse outcomes for some people or groups. It can enter through the people who build and use a system (human bias) and through the data the system learns from (dataset source bias). It rarely announces itself: overall accuracy can look excellent while one group is badly served.</p>
 
-          <!-- Bias Feedback Loop Diagram -->
+          <h3>Sources of Bias</h3>
+          <p>Bias in ML systems can arise from multiple sources. Training data that reflects historical prejudices will cause AI systems to perpetuate those discriminatory patterns. When training datasets do not accurately represent the real-world population where the system will be used, the model produces systematically unfair outcomes for underrepresented groups. Developers may unconsciously select or weight data in ways that confirm their pre-existing assumptions. And when a biased model's predictions influence the collection of future data, it creates self-reinforcing cycles that entrench the original bias even further.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Source</th><th>How it enters</th><th>Example</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Historical bias</strong> (human)</td><td>The data records past unfair decisions, and the model copies them</td><td>Reuters reported in 2018 that Amazon dropped an experimental CV-screening tool that favoured men, because it had learned from years of mostly male hiring.</td></tr>
+                <tr><td><strong>Representation bias</strong> (dataset)</td><td>Some groups are missing or scarce in the training data</td><td>The 2018 Gender Shades study found commercial face-analysis systems made far more errors on darker-skinned women than on lighter-skinned men.</td></tr>
+                <tr><td><strong>Measurement and label bias</strong></td><td>The label or feature measures the wrong thing, or labellers apply their own opinions</td><td>A widely used US hospital algorithm used past healthcare spending as a stand-in for health need and so under-estimated the needs of Black patients (Obermeyer and colleagues, 2019).</td></tr>
+                <tr><td><strong>Proxy variables</strong></td><td>A feature that looks neutral stands in for a protected one</td><td>Postcode standing in for ethnicity or income group.</td></tr>
+                <tr><td><strong>Selection bias</strong></td><td>Data exists only for the cases that were selected</td><td>Repayment results are known only for people who were given a loan.</td></tr>
+                <tr><td><strong>Developer and user bias</strong> (human)</td><td>Choices about features, labels and testing reflect assumptions; users over-trust results</td><td>A team tests only on its own staff, who are not typical customers.</td></tr>
+                <tr><td><strong>Feedback loops</strong></td><td>The model's outputs shape the data it later learns from</td><td>Heavier policing of one suburb finds more crime there, which "proves" the model right.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
           <figure class="figure">
           <figcaption class="figure-head">
             <p class="figure-kicker"><span class="figure-kind">Cycle diagram</span></p>
@@ -891,7 +1924,73 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
           </div>
         </figure>
 
-<h3>Engineering Practices to Mitigate Bias</h3>
+          <h3>A worked example: a loan model that copies unfair history</h3>
+          <p>The program below builds 4000 synthetic applicants (invented data). Everyone with an income of $50,000 or more would repay a loan, in both group A and group B. But in the historical records, human loan officers approved 95% of the good applicants from group A and only 40% of the good applicants from group B. Group is not given to the models. Postcode is, and 90% of group A live in the north while 90% of group B live in the south, so postcode leaks the group. The fair answer is that every applicant who would repay gets a loan.</p>
+          <ul>
+            <li><strong>Model 1</strong> learns from the past <em>decisions</em>, using postcode and income band.</li>
+            <li><strong>Model 2</strong> learns from what really happened, whether the person <em>repays</em>, using income band only.</li>
+          </ul>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Python: measuring bias in a loan model</span></div><pre><code class="language-python">import random
+
+rng = random.Random(42)
+
+
+def make_applicant():
+    group = "A" if rng.random() &lt; 0.5 else "B"
+    # Postcode is a proxy: 90% of group A live in the north and 90% of group B in the south.
+    home = "north" if group == "A" else "south"
+    other = "south" if home == "north" else "north"
+    postcode = home if rng.random() &lt; 0.9 else other
+    income = rng.randint(20, 100)                     # thousands of dollars a year
+    repays = income &gt;= 50                             # what would really happen if a loan was made
+    # HISTORY: human officers approved 95% of good applicants from A but only 40% from B.
+    if repays:
+        past_decision = rng.random() &lt; (0.95 if group == "A" else 0.40)
+    else:
+        past_decision = False
+    return {"group": group, "postcode": postcode, "income": income,
+            "repays": repays, "past_decision": past_decision}
+
+
+applicants = [make_applicant() for _ in range(4000)]
+
+
+def train(label_of, features):
+    """Learn the share of applicants with each combination of features who got label 1."""
+    counts = {}
+    for a in applicants:
+        positive, total = counts.get(features(a), (0, 0))
+        counts[features(a)] = (positive + label_of(a), total + 1)
+    return {key: positive / total for key, (positive, total) in counts.items()}
+
+
+by_postcode = lambda a: (a["postcode"], a["income"] // 10)    # the group is NOT a feature
+by_income = lambda a: a["income"] // 10
+
+table1 = train(lambda a: a["past_decision"], by_postcode)     # Model 1: copy past decisions
+table2 = train(lambda a: a["repays"], by_income)              # Model 2: learn who repays
+
+
+def report(name, decides):
+    rates = []
+    for group in ("A", "B"):
+        good = [a for a in applicants if a["repays"] and a["group"] == group]
+        rates.append(sum(1 for a in good if decides(a)) / len(good))
+    print(f"{name:&lt;38} A {rates[0]:4.0%}   B {rates[1]:4.0%}   gap {abs(rates[0] - rates[1]) * 100:2.0f} points")
+
+
+print("Share of applicants who WOULD repay that get a loan (fair = same for A and B):")
+report("Past human decisions", lambda a: a["past_decision"])
+report("Model 1: trained on past decisions", lambda a: table1[by_postcode(a)] &gt;= 0.5)
+report("Model 2: trained on repayment", lambda a: table2[by_income(a)] &gt;= 0.5)</code></pre></div>
+          <div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Share of applicants who WOULD repay that get a loan (fair = same for A and B):
+Past human decisions                   A  95%   B  42%   gap 53 points
+Model 1: trained on past decisions     A  92%   B  31%   gap 61 points
+Model 2: trained on repayment          A 100%   B 100%   gap  0 points</code></pre></div>
+          <p>Read the three rows in turn. The officers' history already has a 53-point gap. Model 1 never saw the group column, yet its gap is 61 points, even wider, because postcode is a proxy and the model turns a tendency into a rule: a whole southern postcode band is now declined. This is why "we removed the sensitive column" is not enough. Model 2 has no gap, because its label measures the real outcome rather than someone's past choice. One caution: in real life repayment is known only for people who were approved (selection bias), so building Model 2 is much harder than this simulation suggests.</p>
+          <p>The measure used here asks: among people who would repay, does each group have the same chance of approval? Fairness can be defined in several ways, and they cannot all be satisfied at once, so engineers must choose a definition, state it and test against it.</p>
+
+          <h3>Engineering Practices to Mitigate Bias</h3>
           <div class="info-grid">
             <div class="info-card">
               <h4>Diverse and Representative Data</h4>
@@ -899,7 +1998,7 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
             </div>
             <div class="info-card">
               <h4>Bias Auditing and Fairness Metrics</h4>
-              <p>After training, models must be evaluated not just on overall accuracy but on <strong>fairness metrics</strong> across demographic subgroups — checking that error rates, false positive rates, and false negative rates are equitable across gender, race, age, and other protected characteristics.</p>
+              <p>After training, models must be evaluated not just on overall accuracy but on <strong>fairness metrics</strong> across demographic subgroups, checking that error rates, false positive rates, and false negative rates are equitable across gender, race, age, and other protected characteristics.</p>
             </div>
             <div class="info-card">
               <h4>Diverse Development Teams</h4>
@@ -910,8 +2009,25 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
               <p>AI systems making consequential decisions (credit, employment, healthcare, justice) must be able to provide human-understandable explanations for their outputs. This enables affected individuals to challenge decisions and allows engineers to trace and correct the source of discriminatory outcomes.</p>
             </div>
           </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Stage</th><th>Practice</th><th>What it would have changed in the loan example</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Data</strong></td><td>Audit who is in the data; question every proxy; document where data came from</td><td>Spot that postcode predicts group and past approvals differ by group</td></tr>
+                <tr><td><strong>Training</strong></td><td>Choose labels that measure the true outcome; reweight under-represented groups</td><td>Train on repayment (Model 2), not on past approvals (Model 1)</td></tr>
+                <tr><td><strong>Evaluation</strong></td><td>Report error and approval rates for each group, not one overall score</td><td>Reveal the 61-point gap that an overall accuracy figure hides</td></tr>
+                <tr><td><strong>Deployment</strong></td><td>Keep a human in the loop for significant decisions; offer an appeal; monitor over time</td><td>Let a declined applicant have the decision reviewed</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Australian context</h3>
+          <p>Bias is a legal as well as an engineering problem. Australia's anti-discrimination laws, such as the Racial Discrimination Act 1975 and the Sex Discrimination Act 1984, protect people from unfair treatment, and an organisation cannot escape responsibility by saying "the algorithm decided". Fairness and contestability are also two of the eight Australian Government AI Ethics Principles described in the impact section above, and the NSW AI Assessment Framework requires NSW Government agencies to assess and mitigate risks such as bias before an AI project goes ahead.</p>
 
           <div class="callout success"><strong>HSC writing sample</strong> <em>"Dataset source bias occurs when training data does not represent everyone the model will serve. A facial recognition system trained mostly on lighter-skinned faces misidentified darker-skinned people far more often. Human bias adds to this when developers label data using their own assumptions. Engineers can reduce these effects by auditing datasets for balance and testing accuracy separately for each group before release."</em></div>
+
+          <div class="callout assessor"><strong>Exam tip</strong> "Investigate the effect of bias" needs cause, effect and response. Name the type of bias (human bias in the labels, or dataset source bias because a group is under-represented), show how it produces unfair results with a specific example, and give a mitigation that matches (audit the dataset, test each group separately, add human review). NESA's marking guidelines for the 2025 HSC online exam include a 6-mark question on human bias and the usefulness of AI, with a video as stimulus, and the marker feedback asks students to engage with the stimulus material and use course-specific terms. Refer to what the stimulus actually shows. Do not claim that "AI is biased because computers are unfair": the bias comes from the data, the labels or the people who built it.</div>
+
         </section>
 
       
@@ -965,7 +2081,7 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
   </footer>
 
   <script src="../js/glossary-data.js?v=6"></script>
-  <script src="../js/quizzes/software-automation.js?v=1"></script>
+  <script src="../js/quizzes/software-automation.js?v=2"></script>
   <script src="../js/quiz.js?v=3" defer></script>
   <script src="../js/nesa-diagram-data.js?v=3"></script>
   <script src="../js/nesa-diagrams.js?v=3" defer></script>
@@ -999,5 +2115,6 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
   <script src="../js/paper.js?v=6" defer></script>
   <script src="../js/progress.js?v=1" defer></script>
   <script src="../js/anim.js?v=5" defer></script>
+  <script src="../js/pages/software-automation.js?v=1" defer></script>
 </body>
 </html>
