@@ -1,0 +1,94 @@
+/* Software Automation: line-fit explorer and perceptron stepper.
+   Uses the theme's custom properties so light and dark mode both work. */
+.auto-lab {
+  --auto-ok: #cfe8d6;  --auto-ok-ink: #123d26;
+  --auto-bad: #f6c4bd; --auto-bad-ink: #5c1410;
+  --auto-next: #f6e0a8;
+  --auto-one: var(--primary);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.1rem 1.2rem;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-sm);
+  color: var(--text-primary);
+  min-width: 0;
+}
+[data-theme="dark"] .auto-lab {
+  --auto-ok: #21503a;  --auto-ok-ink: #d8f3e3;
+  --auto-bad: #6b2a26; --auto-bad-ink: #fde0dc;
+  --auto-next: #5d4a12;
+}
+.auto-lab h4 { margin: 0 0 .25rem; font-size: 1.05rem; }
+.auto-lead { margin: 0 0 .9rem; color: var(--text-secondary); font-size: .92rem; }
+.auto-muted { color: var(--text-secondary); }
+
+.auto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: 1rem; align-items: start; }
+.auto-plotbox { min-width: 0; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--bg-tertiary); padding: .5rem; }
+.auto-plotbox-sq { max-width: 22rem; }
+.auto-side { min-width: 0; display: grid; gap: .75rem; }
+.auto-plot { display: block; width: 100%; height: auto; }
+.auto-plotnote { margin: .4rem .2rem .1rem; font-size: .82rem; }
+
+/* Plot marks */
+.auto-grid-line { stroke: var(--border); stroke-width: 1; }
+.auto-box { fill: none; stroke: var(--border-strong); stroke-width: 1.2; }
+.auto-tick { fill: var(--text-secondary); font: 500 11.5px var(--font-body, sans-serif); }
+.auto-axis { fill: var(--text-secondary); font: 600 12px var(--font-body, sans-serif); }
+.auto-point { fill: var(--primary); stroke: var(--surface); stroke-width: 1.5; }
+.auto-fitline { stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; }
+.auto-resid { stroke: #c2410c; stroke-width: 2; stroke-dasharray: 4 3; }
+[data-theme="dark"] .auto-resid { stroke: #fb923c; }
+.auto-pt-one { fill: var(--primary); stroke: var(--primary); stroke-width: 2; }
+.auto-pt-zero { fill: var(--surface); stroke: var(--primary); stroke-width: 2.5; }
+.auto-pt-label { font: 700 12px var(--font-mono, monospace); fill: var(--text-primary); pointer-events: none; }
+.auto-pt-one + .auto-pt-label { fill: var(--text-inverse, #fff); }
+
+/* Controls */
+.auto-fields { display: grid; gap: .7rem; }
+.auto-field { display: grid; grid-template-columns: 1fr auto; gap: .2rem .6rem; align-items: center; }
+.auto-field label { font-weight: 700; font-size: .85rem; }
+.auto-field input[type="range"] { grid-column: 1 / -1; width: 100%; accent-color: var(--primary); min-height: 1.5rem; }
+.auto-val { font-family: var(--font-mono); font-size: .85rem; }
+.auto-stats { display: grid; gap: .15rem; }
+.auto-stat { margin: 0; font-family: var(--font-mono); font-size: .85rem; overflow-wrap: anywhere; }
+.auto-verdict { margin: 0; padding: .5rem .7rem; border-radius: var(--radius-md); background: var(--bg-tertiary); border: 1px solid var(--border); font-size: .9rem; }
+.auto-verdict.auto-good { background: var(--auto-ok); color: var(--auto-ok-ink); border-color: transparent; }
+.auto-verdict.auto-badmsg { background: var(--auto-bad); color: var(--auto-bad-ink); border-color: transparent; }
+.auto-btnrow { display: flex; flex-wrap: wrap; gap: .45rem; }
+.auto-btn, .auto-tab {
+  font: inherit; font-size: .86rem; font-weight: 600; cursor: pointer; min-height: 2.5rem;
+  padding: .4rem .85rem; border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong); background: var(--bg-tertiary); color: var(--text-primary);
+}
+.auto-btn:hover, .auto-tab:hover { background: var(--surface-hover); }
+.auto-btn-primary, .auto-tab[aria-pressed="true"] { background: var(--primary); border-color: var(--primary); color: var(--text-inverse, #fff); }
+.auto-btn-primary:hover, .auto-tab[aria-pressed="true"]:hover { background: var(--primary-dark); }
+.auto-btn:focus-visible, .auto-tab:focus-visible, .auto-field input:focus-visible, .auto-history summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.auto-tabs { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1rem; }
+
+/* Perceptron table and log */
+.auto-tablewrap { overflow-x: auto; }
+.auto-table { border-collapse: collapse; width: 100%; font-size: .88rem; }
+.auto-table th, .auto-table td { padding: .35rem .6rem; border-bottom: 1px solid var(--border); text-align: center; }
+.auto-table th { font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--text-secondary); }
+.auto-table td.auto-ok { color: var(--auto-ok-ink); background: var(--auto-ok); font-weight: 700; }
+.auto-table td.auto-bad { color: var(--auto-bad-ink); background: var(--auto-bad); font-weight: 700; }
+.auto-table tr.auto-next td { box-shadow: inset 0 2px 0 var(--accent), inset 0 -2px 0 var(--accent); }
+.auto-table tr.auto-next td:not(.auto-ok):not(.auto-bad) { background: var(--auto-next); }
+.auto-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.auto-detail { font-size: .88rem; min-height: 6.5rem; }
+.auto-detail p { margin: 0 0 .35rem; }
+.auto-history { font-size: .85rem; }
+.auto-history summary { cursor: pointer; font-weight: 600; }
+.auto-loglist { margin: .4rem 0 0; padding-left: 1.3rem; font-family: var(--font-mono); font-size: .8rem; }
+
+@media (max-width: 520px) {
+  .auto-table th, .auto-table td { padding: .35rem .25rem; }
+  .auto-table th { font-size: .68rem; letter-spacing: 0; }
+  .auto-lab { padding: .9rem .8rem 1rem; }
+  .auto-btn { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .auto-btn, .auto-tab { transition: background-color .15s ease; }
+}

@@ -353,6 +353,16 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-ai-ethics-principles",
+"name": "Australia's AI Ethics Principles",
+"aliases": [
+"Australia's AI Ethics Principles"
+],
+"def": "Eight voluntary principles published by the Australian Government in 2019 to guide the design, development and use of AI.",
+"example": "Fairness and contestability are two of the eight.",
+"link": true
+},
+{
 "id": "term-apps",
 "name": "Australian Privacy Principles",
 "aliases": [
@@ -382,6 +392,16 @@ window.HSC_GLOSSARY = [
 ],
 "def": "The process of determining what an authenticated user is permitted to do, based on the principle of least privilege. Answers the question: \"What are you allowed to do?\"",
 "example": "A student can view their own results but only a teacher can edit them.",
+"link": true
+},
+{
+"id": "term-automation-bias",
+"name": "Automation Bias",
+"aliases": [
+"Automation Bias"
+],
+"def": "The human tendency to trust an automated suggestion and stop checking it.",
+"example": "An operator accepts a wrong alert because the system is usually right.",
 "link": true
 },
 {
@@ -1003,6 +1023,16 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-constraint",
+"name": "Constraint",
+"aliases": [
+"Constraint"
+],
+"def": "A limit on how a project may be carried out, such as time, budget, skills, technology, law or policy.",
+"example": "The project must be finished in seven weeks using free tools.",
+"link": false
+},
+{
 "id": "term-constructor",
 "name": "Constructor",
 "aliases": [
@@ -1033,6 +1063,26 @@ window.HSC_GLOSSARY = [
 "def": "An HTTP header that tells the browser which sources of scripts, styles and images a page may load, limiting the damage of XSS.",
 "example": "Content-Security-Policy: script-src 'self'",
 "link": true
+},
+{
+"id": "term-contestability",
+"name": "Contestability",
+"aliases": [
+"Contestability"
+],
+"def": "The principle that people affected by a significant AI decision can challenge it through an accessible process.",
+"example": "A person refused a service can ask for a human to review the decision.",
+"link": true
+},
+{
+"id": "term-contingency",
+"name": "Contingency",
+"aliases": [
+"Contingency"
+],
+"def": "Extra time or money added to an estimate to cover tasks that take longer than expected or problems that arise.",
+"example": "Adding 15% contingency to a 42-hour estimate gives 48.3 hours.",
+"link": false
 },
 {
 "id": "term-contract-test",
@@ -1123,6 +1173,16 @@ window.HSC_GLOSSARY = [
 ],
 "def": "The degree of interdependence between software modules. Loose coupling — minimising direct knowledge between modules — improves maintainability, testability, and security isolation.",
 "example": "A login module that calls a shared UserService rather than reading the database directly (loose coupling).",
+"link": true
+},
+{
+"id": "term-critical-path",
+"name": "Critical Path",
+"aliases": [
+"Critical Path"
+],
+"def": "The longest chain of dependent tasks in a schedule, which decides the earliest date the project can finish.",
+"example": "In the Library Loans plan, tasks A, B, C, F, G, H and J form a 32-day critical path.",
 "link": true
 },
 {
@@ -1290,6 +1350,16 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-data-drift",
+"name": "Data Drift",
+"aliases": [
+"Data Drift"
+],
+"def": "A change in the data a deployed model receives, so that it no longer resembles the training data and accuracy falls.",
+"example": "A courier's delivery-time model becomes less accurate after deliveries begin in new suburbs.",
+"link": true
+},
+{
 "id": "term-data-flow-diagram",
 "name": "Data Flow Diagram (DFD)",
 "aliases": [
@@ -1371,6 +1441,16 @@ window.HSC_GLOSSARY = [
 "example": "Integer, float, string, Boolean.",
 "link": true,
 "nesa": true
+},
+{
+"id": "term-data-wrangling",
+"name": "Data Wrangling",
+"aliases": [
+"Data Wrangling"
+],
+"def": "Cleaning, correcting and reshaping raw data into a form a model can learn from.",
+"example": "Removing duplicate parcel scans and putting all timestamps into one format.",
+"link": true
 },
 {
 "id": "term-database",
@@ -1498,6 +1578,16 @@ window.HSC_GLOSSARY = [
 "def": "An attack that overwhelms a system with traffic or requests so real users cannot use it. A distributed attack from many devices is a DDoS.",
 "example": "A botnet flooding a ticketing site when concert tickets go on sale.",
 "link": true
+},
+{
+"id": "term-dependency",
+"name": "Dependency",
+"aliases": [
+"Dependency"
+],
+"def": "A relationship in which one task cannot start until another has finished.",
+"example": "Integration testing depends on both the Loan module and the interface build.",
+"link": false
 },
 {
 "id": "term-deployment",
@@ -1765,6 +1855,17 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-equal-opportunity",
+"name": "Equal Opportunity (Fairness Measure)",
+"aliases": [
+"Equal Opportunity",
+"Fairness Measure"
+],
+"def": "A fairness check that people who would achieve a good outcome have the same chance of being selected, whatever their group.",
+"example": "Among applicants who would repay a loan, both groups are approved at the same rate.",
+"link": true
+},
+{
 "id": "term-evaluate",
 "name": "Evaluate",
 "aliases": [
@@ -1793,6 +1894,16 @@ window.HSC_GLOSSARY = [
 ],
 "def": "Handling runtime errors so a program responds safely instead of crashing or revealing sensitive details.",
 "example": "Catching a database error and showing \"Something went wrong\" while logging the details privately.",
+"link": true
+},
+{
+"id": "term-explainability",
+"name": "Explainability",
+"aliases": [
+"Explainability"
+],
+"def": "The ability to give human-understandable reasons for how an AI system reached a decision.",
+"example": "A decision tree's path from root to leaf shows why a loan was declined.",
 "link": true
 },
 {
@@ -1865,6 +1976,26 @@ window.HSC_GLOSSARY = [
 "def": "Testing in code whether a browser supports a feature before using it, so that unsupported browsers get a working fallback.",
 "example": "if ('serviceWorker' in navigator) registers a service worker only where it is supported.",
 "link": true
+},
+{
+"id": "term-feature-engineering",
+"name": "Feature Engineering",
+"aliases": [
+"Feature Engineering"
+],
+"def": "Creating or choosing the input values (features) that help a model make better predictions.",
+"example": "Turning a delivery timestamp into 'hour of day' and 'public holiday' features.",
+"link": true
+},
+{
+"id": "term-feedback-loop",
+"name": "Feedback Loop",
+"aliases": [
+"Feedback Loop"
+],
+"def": "A cycle in which a system's outputs influence the data it later learns from, so an early pattern is strengthened.",
+"example": "A recommender shows more of what was clicked, so those items are clicked even more.",
+"link": false
 },
 {
 "id": "term-firewall",
@@ -2028,6 +2159,16 @@ window.HSC_GLOSSARY = [
 ],
 "def": "A getter is a method that reads an attribute's value and a setter is a method that changes it, usually after validating the new value.",
 "example": "A Member email setter raises ValueError if the new address has no @ sign.",
+"link": true
+},
+{
+"id": "term-gini-impurity",
+"name": "Gini Impurity",
+"aliases": [
+"Gini Impurity"
+],
+"def": "A measure of how mixed the labels in a group are, from 0 (one label only) to 0.5 (an even mix of two), used to choose decision tree questions.",
+"example": "A group of four spam and one genuine email has a Gini impurity of 0.32.",
 "link": true
 },
 {
@@ -2403,6 +2544,16 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-intelligent-automation",
+"name": "Intelligent Automation",
+"aliases": [
+"Intelligent Automation"
+],
+"def": "Automation, such as RPA, that uses ML so it can read unstructured input and make decisions rather than follow a rigid script.",
+"example": "A bot that reads a referral email and books the right specialist appointment.",
+"link": true
+},
+{
 "id": "term-interlock",
 "name": "Interlock",
 "aliases": [
@@ -2527,6 +2678,16 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-k-means",
+"name": "K-Means Clustering",
+"aliases": [
+"K-Means Clustering"
+],
+"def": "An unsupervised algorithm that repeatedly assigns points to the nearest of k centres and then moves each centre to the average of its group.",
+"example": "Grouping customers into small, medium and big spenders.",
+"link": true
+},
+{
 "id": "term-knn",
 "name": "K-Nearest Neighbour (KNN)",
 "aliases": [
@@ -2547,6 +2708,16 @@ window.HSC_GLOSSARY = [
 ],
 "def": "A deliberately slow password-hashing method, such as PBKDF2, bcrypt or Argon2, that makes every password guess expensive for an attacker.",
 "example": "hashlib.pbkdf2_hmac('sha256', password, salt, 600000) repeats the calculation 600,000 times.",
+"link": true
+},
+{
+"id": "term-language-dependent-optimisation",
+"name": "Language-Dependent Optimisation",
+"aliases": [
+"Language-Dependent Optimisation"
+],
+"def": "An improvement to speed, memory use or clarity that relies on a feature of a particular programming language.",
+"example": "Replacing a manual loop with Python's built-in sum().",
 "link": true
 },
 {
@@ -2590,6 +2761,16 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-least-squares",
+"name": "Least Squares",
+"aliases": [
+"Least Squares"
+],
+"def": "The method of fitting a line by choosing the slope and intercept that make the sum of the squared errors as small as possible.",
+"example": "Fitting a line through study hours and marks.",
+"link": true
+},
+{
 "id": "term-left-join",
 "name": "Left Join",
 "aliases": [
@@ -2620,6 +2801,16 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-linear-separability",
+"name": "Linear Separability",
+"aliases": [
+"Linear Separability"
+],
+"def": "The property of data whose classes can be divided by a single straight line, which decides whether one neurone can learn it.",
+"example": "AND is linearly separable but XOR is not.",
+"link": true
+},
+{
 "id": "term-list",
 "name": "List",
 "aliases": [
@@ -2628,6 +2819,16 @@ window.HSC_GLOSSARY = [
 "def": "An ordered collection of items that can grow and shrink as the program runs.",
 "example": "names.append(\"Priya\")",
 "link": false
+},
+{
+"id": "term-list-comprehension",
+"name": "List Comprehension",
+"aliases": [
+"List Comprehension"
+],
+"def": "A compact Python expression that builds a new list from an existing collection, optionally filtering the items.",
+"example": "[age for age in ages if 18 <= age <= 65]",
+"link": true
 },
 {
 "id": "term-live-data",
@@ -2926,6 +3127,26 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-milestone",
+"name": "Milestone",
+"aliases": [
+"Milestone"
+],
+"def": "A marked point on a schedule, shown as a diamond on a Gantt chart, that signals an important event or deliverable.",
+"example": "Specifications signed off by the client.",
+"link": false
+},
+{
+"id": "term-mind-map",
+"name": "Mind Map",
+"aliases": [
+"Mind Map"
+],
+"def": "A diagram that organises ideas in branches around a central topic.",
+"example": "A map of Library Loans with branches for loans, catalogue, reports and members.",
+"link": true
+},
+{
 "id": "term-minification",
 "name": "Minification",
 "aliases": [
@@ -2965,6 +3186,36 @@ window.HSC_GLOSSARY = [
 "example": "A class diagram of a library system, or a scale physical model of a robot arm.",
 "link": false,
 "nesa": true
+},
+{
+"id": "term-model-drift",
+"name": "Model Drift",
+"aliases": [
+"Model Drift"
+],
+"def": "The gradual fall in a deployed model's accuracy as the real world changes after training.",
+"example": "A weekly monitoring check shows a spam filter's accuracy dropping from 90% to 70%.",
+"link": true
+},
+{
+"id": "term-model-monitoring",
+"name": "Model Monitoring",
+"aliases": [
+"Model Monitoring"
+],
+"def": "Checking a deployed model's performance over time and raising an alert when it falls below the agreed target.",
+"example": "A script compares each week's predictions with what actually happened.",
+"link": true
+},
+{
+"id": "term-model-validation",
+"name": "Model Validation",
+"aliases": [
+"Model Validation"
+],
+"def": "Testing a trained model on data it has not seen to check it meets the success metric.",
+"example": "Holding back the most recent month of deliveries to test a delivery-time model.",
+"link": true
 },
 {
 "id": "term-modularity",
@@ -3361,6 +3612,16 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-perceptron",
+"name": "Perceptron",
+"aliases": [
+"Perceptron"
+],
+"def": "A single artificial neurone that fires when the weighted total of its inputs reaches a threshold, and learns by adjusting its weightings after each mistake.",
+"example": "A perceptron that learns the AND function.",
+"link": true
+},
+{
 "id": "term-permissive-licence",
 "name": "Permissive Licence",
 "aliases": [
@@ -3461,6 +3722,16 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-post-project-review",
+"name": "Post-Project Review",
+"aliases": [
+"Post-Project Review"
+],
+"def": "A structured look back at a finished project that compares the plan with what happened and records lessons for the future.",
+"example": "Critical path slipped 2 days early on, so a larger buffer is planned after requirements next time.",
+"link": true
+},
+{
 "id": "term-premature-optimisation",
 "name": "Premature Optimisation",
 "aliases": [
@@ -3544,6 +3815,16 @@ window.HSC_GLOSSARY = [
 "nesa": true
 },
 {
+"id": "term-process-diary",
+"name": "Process Diary",
+"aliases": [
+"Process Diary"
+],
+"def": "A dated record of a project's progress, decisions, problems and reflections, also called a log book.",
+"example": "An entry records the date, author, tasks achieved, stumbling blocks, next steps and resources used.",
+"link": true
+},
+{
 "id": "term-product-owner",
 "name": "Product Owner",
 "aliases": [
@@ -3615,6 +3896,16 @@ window.HSC_GLOSSARY = [
 "nesa": true
 },
 {
+"id": "term-proxy-variable",
+"name": "Proxy Variable",
+"aliases": [
+"Proxy Variable"
+],
+"def": "A feature that looks neutral but carries the same information as a protected characteristic.",
+"example": "Postcode standing in for ethnicity in a loan model.",
+"link": true
+},
+{
 "id": "term-pseudocode",
 "name": "Pseudocode",
 "aliases": [
@@ -3678,6 +3969,16 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-q-learning",
+"name": "Q-Learning",
+"aliases": [
+"Q-Learning"
+],
+"def": "A reinforcement learning method in which an agent keeps a table of how good each action is in each state and updates it from rewards.",
+"example": "An agent in a corridor learns to move right to reach the goal.",
+"link": true
+},
+{
 "id": "term-quality-assurance",
 "name": "Quality Assurance (QA)",
 "aliases": [
@@ -3696,6 +3997,16 @@ window.HSC_GLOSSARY = [
 ],
 "def": "A first in, first out (FIFO) data structure: items join at the back and leave from the front.",
 "example": "Print jobs waiting for a printer.",
+"link": true
+},
+{
+"id": "term-r-squared",
+"name": "R Squared",
+"aliases": [
+"R Squared"
+],
+"def": "A score from 0 to 1 showing how much of the variation in the data a regression model explains, compared with always guessing the mean.",
+"example": "An R squared of 0.993 means the line explains nearly all the variation in marks.",
 "link": true
 },
 {
@@ -3985,6 +4296,17 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-float-slack",
+"name": "Schedule Float (Slack)",
+"aliases": [
+"Schedule Float",
+"Slack"
+],
+"def": "The number of days a task can be delayed without delaying the project finish date, worked out as latest start minus earliest start.",
+"example": "The Loan module has 5 days of float, so a 4-day delay does not move the finish date.",
+"link": true
+},
+{
 "id": "term-scope-creep",
 "name": "Scope Creep",
 "aliases": [
@@ -3992,6 +4314,16 @@ window.HSC_GLOSSARY = [
 ],
 "def": "Uncontrolled growth in a project's requirements after it has started, often causing delays and cost overruns.",
 "example": "A client adding \"just one more feature\" every week.",
+"link": true
+},
+{
+"id": "term-scope-statement",
+"name": "Scope Statement",
+"aliases": [
+"Scope Statement"
+],
+"def": "A written description of what a project will and will not deliver.",
+"example": "Version 1 covers search, loans, returns and overdue lists, and excludes email reminders.",
 "link": true
 },
 {
@@ -4197,6 +4529,16 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-sigmoid-function",
+"name": "Sigmoid Function",
+"aliases": [
+"Sigmoid Function"
+],
+"def": "A curve that squashes any number into a value between 0 and 1, used to turn a weighted sum into a probability.",
+"example": "The sigmoid of 0 is 0.5 and the sigmoid of 4 is about 0.98.",
+"link": true
+},
+{
 "id": "term-sign-bit",
 "name": "Sign Bit",
 "aliases": [
@@ -4391,6 +4733,16 @@ window.HSC_GLOSSARY = [
 "link": true
 },
 {
+"id": "term-story-points",
+"name": "Story Points",
+"aliases": [
+"Story Points"
+],
+"def": "A relative measure of the effort a user story needs, used to plan and forecast work in an Agile project.",
+"example": "Issuing a loan is sized at 5 points and refusing a loan at the limit at 3.",
+"link": true
+},
+{
 "id": "term-storyboard",
 "name": "Storyboard",
 "aliases": [
@@ -4543,6 +4895,16 @@ window.HSC_GLOSSARY = [
 ],
 "def": "A violation of a programming language's grammar rules that prevents the code from running. Usually flagged by the IDE during compilation.",
 "example": "Forgetting the colon in if x > 5.",
+"link": true
+},
+{
+"id": "term-system-boundary",
+"name": "System Boundary",
+"aliases": [
+"System Boundary"
+],
+"def": "The line that separates what a system will do and contain from the external people and systems it interacts with.",
+"example": "Loans and overdue lists are inside the boundary; email reminders are outside.",
 "link": true
 },
 {
@@ -4888,6 +5250,16 @@ window.HSC_GLOSSARY = [
 "def": "A named location in memory used to store data that can change during program execution. Variables have names, types, and scope.",
 "example": "score = 0",
 "link": true
+},
+{
+"id": "term-velocity",
+"name": "Velocity",
+"aliases": [
+"Velocity"
+],
+"def": "The number of story points a team completes in one sprint, averaged over past sprints to forecast the remaining work.",
+"example": "An average of 7 points a sprint with 5 points left forecasts one more sprint.",
+"link": false
 },
 {
 "id": "term-version-control",

@@ -39,7 +39,10 @@ EXTRA_ALIASES = {
 NO_AUTOLINK = {'term-list', 'term-watch', 'term-record', 'term-tree', 'term-stack', 'term-decimal',
                # NESA glossary words that are also ordinary English
                'term-app', 'term-assets', 'term-collaborate', 'term-data', 'term-evaluate', 'term-information',
-               'term-model', 'term-route'}
+               'term-model', 'term-route',
+               # scheduling and ML words that mean something else elsewhere (e.g. a control feedback loop)
+               'term-dependency', 'term-constraint', 'term-velocity', 'term-contingency', 'term-feedback-loop',
+               'term-milestone'}
 
 text = lambda frag: html.unescape(re.sub(r'<.*?>', '', frag)).strip()
 src = open(GLOSSARY, encoding='utf-8').read()
