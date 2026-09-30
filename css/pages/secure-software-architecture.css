@@ -1,0 +1,99 @@
+/* Secure Software Architecture: input handling lab.
+   Uses the theme's custom properties so light and dark mode both work. */
+.ssa-lab {
+  --ssa-ok: #cfe8d6;   --ssa-ok-ink: #123d26;
+  --ssa-bad: #f6c4bd;  --ssa-bad-ink: #5c1410;
+  --ssa-info: #f6e0a8; --ssa-info-ink: #4a3300;
+  --ssa-skip: #ece6d6; --ssa-skip-ink: #5a5346;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.1rem 1.2rem;
+  margin: 1.5rem 0;
+  box-shadow: var(--shadow-sm);
+  color: var(--text-primary);
+  min-width: 0;
+}
+[data-theme="dark"] .ssa-lab {
+  --ssa-ok: #21503a;   --ssa-ok-ink: #d8f3e3;
+  --ssa-bad: #6b2a26;  --ssa-bad-ink: #fde0dc;
+  --ssa-info: #5d4a12; --ssa-info-ink: #fdecb8;
+  --ssa-skip: #34322d; --ssa-skip-ink: #c9c2b2;
+}
+.ssa-lab h4 { margin: 0 0 .25rem; font-size: 1.05rem; }
+.ssa-intro, .ssa-lead { margin: 0 0 .9rem; color: var(--text-secondary); font-size: .92rem; }
+
+/* Tabs */
+.ssa-tabs { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border); padding-bottom: .6rem; }
+.ssa-tab {
+  font: inherit; font-size: .88rem; font-weight: 600; cursor: pointer;
+  padding: .45rem .85rem; border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong); background: var(--bg-tertiary); color: var(--text-primary);
+}
+.ssa-tab[aria-selected="true"] { background: var(--primary); border-color: var(--primary); color: var(--text-inverse, #fff); }
+.ssa-tab:focus-visible, .ssa-chip:focus-visible, .ssa-input:focus-visible, .ssa-check input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ssa-tabpanel[hidden] { display: none; }
+
+/* Controls */
+.ssa-controls { display: grid; gap: .7rem; margin-bottom: 1rem; }
+.ssa-field { display: grid; gap: .25rem; }
+.ssa-field label { font-weight: 700; font-size: .85rem; }
+.ssa-input {
+  font: inherit; font-family: var(--font-mono); font-size: .9rem; width: 100%; box-sizing: border-box;
+  padding: .5rem .65rem; border-radius: var(--radius-md);
+  border: 1px solid var(--border-strong); background: var(--bg-tertiary); color: var(--text-primary);
+}
+.ssa-presets { display: flex; flex-wrap: wrap; gap: .4rem; }
+.ssa-chip {
+  font: inherit; font-size: .82rem; cursor: pointer; padding: .3rem .65rem; border-radius: var(--radius-full);
+  border: 1px solid var(--border-strong); background: var(--bg-tertiary); color: var(--text-primary);
+}
+.ssa-chip:hover { background: var(--surface-hover); }
+.ssa-check { display: flex; align-items: flex-start; gap: .5rem; font-size: .88rem; cursor: pointer; }
+.ssa-check input { width: 1.05rem; height: 1.05rem; flex: none; margin-top: .15rem; }
+
+/* Results */
+.ssa-results { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: 1rem; align-items: start; }
+.ssa-results--one { grid-template-columns: minmax(0, 1fr); }
+.ssa-results > .ssa-note { grid-column: 1 / -1; }
+.ssa-panel { border: 1px solid var(--border); border-radius: var(--radius-md); padding: .8rem .9rem; background: var(--bg-tertiary); min-width: 0; }
+.ssa-panel h5 { margin: 0 0 .5rem; font-size: .95rem; }
+.ssa-panel h6 { margin: .7rem 0 .25rem; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; color: var(--text-muted); }
+.ssa-panel p { margin: .4rem 0; font-size: .88rem; }
+.ssa-code {
+  margin: 0; padding: .55rem .65rem; border-radius: var(--radius-sm); border: 1px solid var(--border);
+  background: var(--surface); font-family: var(--font-mono); font-size: .8rem; line-height: 1.5;
+  white-space: pre-wrap; overflow-wrap: anywhere; word-break: break-word;
+}
+.ssa-code code { font: inherit; background: none; padding: 0; color: var(--text-primary); }
+.ssa-inj { background: var(--ssa-bad); color: var(--ssa-bad-ink); padding: 0 .15rem; border-radius: 3px; }
+.ssa-error { font-family: var(--font-mono); font-size: .82rem; color: var(--ssa-bad-ink); background: var(--ssa-bad); padding: .4rem .55rem; border-radius: var(--radius-sm); overflow-wrap: anywhere; }
+.ssa-none { color: var(--text-secondary); font-style: italic; }
+.ssa-note { color: var(--text-secondary); font-size: .85rem; margin: .5rem 0 0; }
+.ssa-preview { padding: .5rem .65rem; border: 1px dashed var(--border-strong); border-radius: var(--radius-sm); background: var(--surface); overflow-wrap: anywhere; }
+
+.ssa-table-wrap { overflow-x: auto; }
+.ssa-table { border-collapse: collapse; width: 100%; font-size: .85rem; }
+.ssa-table th, .ssa-table td { text-align: left; padding: .3rem .5rem; border-bottom: 1px solid var(--border); }
+.ssa-table th { font-weight: 700; color: var(--text-secondary); }
+
+.ssa-badge { display: inline-block; margin-top: .55rem; padding: .25rem .6rem; border-radius: var(--radius-full); font-size: .8rem; font-weight: 700; overflow-wrap: anywhere; }
+.ssa-ok { background: var(--ssa-ok); color: var(--ssa-ok-ink); }
+.ssa-bad { background: var(--ssa-bad); color: var(--ssa-bad-ink); }
+.ssa-info { background: var(--ssa-info); color: var(--ssa-info-ink); }
+
+.ssa-rules { list-style: none; margin: .5rem 0; padding: 0; display: grid; gap: .35rem; }
+.ssa-rule { display: flex; gap: .55rem; align-items: baseline; font-size: .88rem; }
+.ssa-mark { flex: none; min-width: 4.6rem; text-align: center; padding: .1rem .4rem; border-radius: var(--radius-full); font-size: .74rem; font-weight: 700; }
+.ssa-mark--pass { background: var(--ssa-ok); color: var(--ssa-ok-ink); }
+.ssa-mark--fail { background: var(--ssa-bad); color: var(--ssa-bad-ink); }
+.ssa-mark--skip { background: var(--ssa-skip); color: var(--ssa-skip-ink); }
+.ssa-rule-text { overflow-wrap: anywhere; min-width: 0; }
+
+@media (max-width: 480px) {
+  .ssa-lab { padding: .9rem .75rem 1rem; }
+  .ssa-tab { flex: 1 1 auto; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ssa-lab * { transition: none !important; animation: none !important; }
+}
