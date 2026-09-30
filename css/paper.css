@@ -3203,7 +3203,7 @@ section[id], h3[id^="tool-"] { scroll-margin-top: 90px; }
 }
 :root[data-theme] .mobile-menu-label .badge { font-size: .58rem; padding: .1rem .4rem; border-radius: 4px; letter-spacing: .06em; }
 :root[data-theme] .mobile-menu-theme { margin-top: 1.5rem; }
-@media (min-width: 769px) { .mobile-menu { display: none; } }
+@media (min-width: 920px) { .mobile-menu { display: none; } }  /* matches the hamburger breakpoint in styles.css */
 
 /* ============================================================
    Dark mode: contrast fixes
