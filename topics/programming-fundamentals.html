@@ -54,6 +54,7 @@
   <link rel="stylesheet" href="../css/styles.css?v=27" />
   <link rel="stylesheet" href="../css/paper.css?v=37" />
   <link rel="stylesheet" href="../css/anim.css?v=5" />
+  <link rel="stylesheet" href="../css/pages/programming-fundamentals.css?v=1" />
 </head>
 <body>
 
@@ -281,6 +282,53 @@
             <p class="figure-try"><strong>Try this</strong>Pick an app you use. Which step would a bug fix after launch belong to?</p>
           </div>
         </figure>
+
+<h3>A mini-project through the steps</h3><p>Reading the eight steps is easier once you watch one small project pass through all of them. A school canteen asks for a program that totals a lunch order. Follow the <strong>canteen order calculator</strong> from the first interview to the first patch.</p><div class="table-wrap"><table><thead><tr><th>Step</th><th>What the team does for the canteen program</th><th>What the step produces</th></tr></thead><tbody><tr><td>1. Requirements definition</td><td>Interview the canteen manager and two volunteers. They want to enter each item&rsquo;s price and quantity, see the order total, give <strong>10% off orders of 10 or more items</strong>, and be stopped from typing rubbish.</td><td>A list of what the software must do, agreed with the client</td></tr><tr><td>2. Determining specifications</td><td>Turn the wishes into technical limits: runs on the canteen&rsquo;s Windows laptop with Python 3, keyboard input only, answers instantly, prices stored as whole <strong>cents</strong> to avoid rounding errors.</td><td>A specification of hardware, software, performance and data formats</td></tr><tr><td>3. Design</td><td>Sketch the mainline and subroutines in pseudocode (below) and choose the data to store: <code>items</code>, <code>total</code>.</td><td>Pseudocode, a structure chart, a data dictionary</td></tr><tr><td>4. Development</td><td>Write each subroutine in Python from the design.</td><td>Source code</td></tr><tr><td>5. Integration</td><td>Join <code>get_order</code>, <code>apply_discount</code> and <code>format_dollars</code> under one <code>main</code> and check the modules pass the right data to each other.</td><td>One working program</td></tr><tr><td>6. Testing and debugging</td><td>Run test data (9 items, 10 items, no items, the letter &ldquo;a&rdquo;), compare actual with expected results and fix what fails.</td><td>A test table and a corrected program</td></tr><tr><td>7. Installation</td><td>Copy the program to the canteen laptop, add a desktop shortcut and hand over a one-page guide.</td><td>Software in the client&rsquo;s hands, with instructions</td></tr><tr><td>8. Maintenance</td><td>Next term the canteen wants a 15% teacher discount. Change one constant, retest and release version 1.1.</td><td>Patches, upgrades and a version history</td></tr></tbody></table></div><p>The <strong>design</strong> step for this project produces an uncluttered mainline. Notice that it names each subroutine and shows only the order they run in.</p><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode: design</span></div><pre><code>BEGIN Mainline
+    GetOrder (items, total)
+    ApplyDiscount (total, items)
+    DisplayTotal (total)
+END Mainline</code></pre></div><p>The <strong>development</strong> and <strong>integration</strong> steps turn that design into Python. Each subroutine is written and tried on its own, then <code>main</code> joins them.</p><div class="code-block"><div class="code-header"><span class="code-lang">Python: development and integration</span></div><pre><code class="language-python">DISCOUNT_ITEMS = 10          # orders this size or larger get a discount
+DISCOUNT_PERCENT = 10
+
+def read_whole_number(prompt):
+    """Keep asking until the user types a whole number of 0 or more."""
+    while True:
+        text = input(prompt)
+        if text.isdigit():
+            return int(text)
+        print("Please enter a whole number of 0 or more.")
+
+def get_order():
+    items = 0
+    total = 0                    # cents
+    price = read_whole_number("Price in cents (0 to finish): ")
+    while price != 0:
+        quantity = read_whole_number("Quantity: ")
+        items = items + quantity
+        total = total + price * quantity
+        price = read_whole_number("Price in cents (0 to finish): ")
+    return items, total
+
+def apply_discount(total, items):
+    if items &gt;= DISCOUNT_ITEMS:
+        return total - total * DISCOUNT_PERCENT // 100
+    return total
+
+def format_dollars(cents):
+    return f"${cents // 100}.{cents % 100:02d}"
+
+def main():
+    items, total = get_order()
+    total = apply_discount(total, items)
+    print("Total:", format_dollars(total))
+
+main()</code></pre></div><p>During <strong>testing and debugging</strong>, a run with six items at 450 cents and four items at 300 cents gives:</p><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Price in cents (0 to finish): 450
+Quantity: 6
+Price in cents (0 to finish): 300
+Quantity: 4
+Price in cents (0 to finish): 0
+Total: $35.10</code></pre></div><p>Check it by hand: 6 &times; 450 + 4 &times; 300 = 3900 cents; ten items qualify, so 390 cents come off, leaving 3510 cents, which displays as $35.10. The same program is used again in the testing sections of this page to show boundary, path and abnormal test data.</p><div class="callout info"><strong>Requirements versus specifications</strong> <strong>Requirements</strong> say <em>what</em> the client needs in the client&rsquo;s words (&ldquo;staff must be able to reprint a receipt&rdquo;). <strong>Specifications</strong> say <em>how well and on what</em> the software must do it, in technical terms (&ldquo;responds in under a second on a 4 GB laptop&rdquo;). Requirements come first and drive the specifications.</div><h3>Why the steps form a cycle</h3><p>The steps are drawn in order, but real projects loop. A test failure sends the team back to development, a design flaw found during integration sends them back to design, and maintenance requests become the requirements for the next version. The flow is a cycle, not a one-way street. The <a href="sdlc.html">SDLC Guide</a> compares this ordered view with Waterfall and Agile, which are covered later on this page.</p><div class="callout assessor"><strong>Exam tip: &ldquo;Explore&rdquo;</strong> An <em>explore</em> question is open, so cover more than a list. Name the steps that matter to the scenario, say what each produces, and show how they connect: &ldquo;the specification gives design its constraints; testing sends faults back to development.&rdquo; Anchor the answer in one concrete project, as above. Common mistakes are treating requirements and specifications as the same step, and forgetting that maintenance continues after installation.</div>
+
         </section>
 
         <hr class="divider" />
@@ -290,7 +338,7 @@
           <p class="outcome-subtitle">🎯 <em>(SE-11-03, SE-11-06)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Research and evaluate</strong> the prevalence and use of online code collaboration tools</em></p>
 
-          <p>Almost every software team now shares its code online. Tools such as <strong>GitHub</strong>, <strong>GitLab</strong> and <strong>Bitbucket</strong> store a project's code in a shared repository and track every change, so people in different places can work on it at once. GitHub alone hosts well over 100 million developers, and most open-source projects live there.</p>
+          <p>Almost every software team now shares its code online. Tools such as <strong>GitHub</strong>, <strong>GitLab</strong> and <strong>Bitbucket</strong> store a project's code in a shared repository and track every change, so people in different places can work on it at once. GitHub is used by many millions of developers, and a large share of open-source projects live there.</p>
 
           <div class="table-wrap">
             <table>
@@ -309,8 +357,8 @@
                 </tr>
                 <tr>
                   <td><strong>Pull Requests</strong></td>
-                  <td>Enables peer review where code is checked for security and efficiency before being merged. This significantly reduces logic errors in production.</td>
-                  <td>An engineer at <em>Atlassian</em> reviewing a colleague's code before updating Jira.</td>
+                  <td>Enables peer review where code is checked for security and efficiency before being merged. Reviewers often catch logic errors before they reach users.</td>
+                  <td>A team member reading a colleague&rsquo;s change to a payment calculation before it is merged into the main branch.</td>
                 </tr>
                 <tr>
                   <td><strong>Branching</strong></td>
@@ -334,6 +382,20 @@
           </div>
 
           <div class="callout success"><strong>HSC writing sample</strong> <em>"Online collaboration tools such as GitHub are now standard in the industry because they let distributed teams work on one codebase safely. Pull requests improve quality by requiring a peer review before code is merged, although teams must be trained to resolve merge conflicts."</em></div>
+
+<h3>Prevalence and use</h3><p>Online code collaboration tools are now the normal way teams share code, from a two-person school project to a large open-source product. They are used to store the code, keep its history, review changes, track bugs and run automated checks. Students meet them in the same way: a shared repository for a group project, with each person working on their own branch.</p><div class="table-wrap"><table><thead><tr><th>Tool</th><th>Best known for</th><th>Worth noting</th></tr></thead><tbody><tr><td><strong>GitHub</strong></td><td>Hosting Git repositories, pull requests, issue tracking, automated workflows (GitHub Actions)</td><td>Very large public community; free private repositories with limits</td></tr><tr><td><strong>GitLab</strong></td><td>Repository hosting with built-in CI/CD; a pull request is called a <em>merge request</em></td><td>Can be installed on an organisation&rsquo;s own servers</td></tr><tr><td><strong>Bitbucket</strong></td><td>Git hosting from Atlassian that links to Jira issue tracking</td><td>Suits teams already using Atlassian tools</td></tr><tr><td><strong>Shared online editors</strong> (for example Replit or VS Code Live Share)</td><td>Several people editing and running the same code at once</td><td>Good for pair programming; not a replacement for version control</td></tr></tbody></table></div><h3>A typical workflow</h3><p>Most teams follow the same loop: copy the repository, make a branch, commit small changes, push the branch and ask for a review. Here is the loop as Git commands, with what each does.</p><div class="code-block"><div class="code-header"><span class="code-lang">Terminal: one change from start to pull request</span></div><pre><code>git clone https://github.com/example-team/canteen-app.git   # copy the shared repository to your computer
+git checkout -b add-teacher-discount                        # start a new branch so main stays stable
+# ... edit apply_discount() and test it ...
+git add canteen.py                                          # choose the changed file for the next commit
+git commit -m "Add 15% teacher discount"                    # save a snapshot with a message
+git push origin add-teacher-discount                        # upload the branch, then open a pull request</code></pre></div><p>On the platform, a teammate reads the <strong>pull request</strong>, comments on lines they question and approves it. Automated tests can run on every pull request, so a change that breaks the tests is caught before it is merged.</p><h3>Resolving a merge conflict</h3><p>A <strong>merge conflict</strong> happens when two branches change the same lines. Git cannot decide which version is right, so it marks both in the file and waits for a person to choose.</p><div class="code-block"><div class="code-header"><span class="code-lang">What Git writes into the file</span></div><pre><code>def apply_discount(total, items):
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+    if items &gt;= 10:
+=======
+    if items &gt;= 8:
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; add-teacher-discount
+        return total - total * 10 // 100</code></pre></div><p>Everything between <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> and <code>=======</code> is the version on the current branch; everything down to <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> is the incoming version. The developer keeps one version (or combines them), deletes the marker lines, tests, then commits. Talking to the teammate first is often faster than guessing which threshold is right.</p><h3>Evaluating a tool for your team</h3><div class="table-wrap"><table><thead><tr><th>Criterion</th><th>Questions to ask</th></tr></thead><tbody><tr><td>Fit to the task</td><td>Does it provide version control, review and issue tracking, or only one of them?</td></tr><tr><td>Learning curve</td><td>Can every team member use branching and merging after one lesson? Is there a graphical option?</td></tr><tr><td>Cost and limits</td><td>Are private repositories, storage and automation free for a school team?</td></tr><tr><td>Privacy and security</td><td>Where is the code stored, and who can see it? Never commit passwords or API keys; remove one that slips in and change it.</td></tr><tr><td>Integration</td><td>Does it connect to the team&rsquo;s editor, testing and project-tracking tools?</td></tr></tbody></table></div><div class="callout assessor"><strong>Exam tip: &ldquo;Research and evaluate&rdquo;</strong> A full-mark <em>evaluate</em> answer makes a judgement, not a list. Name a tool and a feature (pull requests), say what it achieves (peer review before merging), give a limitation (merge conflicts confuse beginners, or the code sits on another company&rsquo;s servers) and end with a conclusion for the scenario given, such as &ldquo;for a five-person school team, GitHub&rsquo;s free private repositories and pull requests outweigh the learning curve.&rdquo; Avoid answers that describe version control in general without saying why the team benefits.</div>
+
         </section>
 
         <div class="quiz" data-quiz="pf-1"></div>
@@ -384,19 +446,18 @@
               <span class="code-lang">pseudocode</span>
             </div>
             <pre><code>BEGIN
-    OPEN file "data.txt" FOR READING
-    READ all lines FROM file INTO linesList
-    FOR EACH line IN linesList
-        processedLine ← UPPERCASE(line)
-    END FOR
-    SAVE processedLines TO "output.txt"
-    CLOSE file
+    OUTPUT "Enter the length: "
+    INPUT length
+    OUTPUT "Enter the width: "
+    INPUT width
+    area ← length * width
+    OUTPUT "The area is: ", area
 END</code></pre>
           </div>
 
           <!-- ── 2. Selection ── -->
           <h4>2. Selection</h4>
-          <p><strong>Selection</strong> means choosing different execution paths based on conditions using IF/ELSE or SWITCH statements. The program evaluates a condition and branches accordingly.<span class="eg"><em>Validating user input — if age &lt; 18, display "Too young"; otherwise, proceed.</em></span></p>
+          <p><strong>Selection</strong> means choosing different execution paths based on conditions using IF … ELSE, nested IF or a multi-way CASEWHERE structure. The program evaluates a condition and branches accordingly.<span class="eg"><em>Validating user input — if age &lt; 18, display "Too young"; otherwise, proceed.</em></span></p>
 
           <figure class="figure">
           <figcaption class="figure-head">
@@ -420,15 +481,33 @@ END</code></pre>
             <pre><code>BEGIN
     OUTPUT "Enter your age: "
     INPUT age
-    IF age ≥ 18 THEN
+    IF age >= 18 THEN
         OUTPUT "Welcome!"
-        CALL ShowFullMenu()
+        ShowFullMenu ()
     ELSE
-        OUTPUT "Too young — access denied."
-        EXIT program
-    END IF
+        OUTPUT "Too young - access denied."
+    ENDIF
 END</code></pre>
           </div>
+
+<p>Two more selection forms appear in NESA&rsquo;s Course Specifications. <strong>Multi-way selection</strong> chooses one of several cases by evaluating a single expression, and only one branch runs. It is written <code>CASEWHERE … OTHERWISE … END CASE</code>.</p><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>CASEWHERE menuChoice evaluates to
+    1: OUTPUT "New game"
+    2: OUTPUT "Load game"
+    3: OUTPUT "High scores"
+    OTHERWISE: OUTPUT "Invalid choice"
+END CASE</code></pre></div><p><strong>Nested IF</strong> tests several conditions in turn when only one process should run. Each further test is a complete <code>IF</code> indented inside the <code>ELSE</code> of the one before it, and every <code>IF</code> has its own <code>ENDIF</code>.</p><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>IF mark &gt;= 85 THEN
+    OUTPUT "High"
+ELSE
+    IF mark &gt;= 65 THEN
+        OUTPUT "Medium"
+    ELSE
+        IF mark &gt;= 50 THEN
+            OUTPUT "Pass"
+        ELSE
+            OUTPUT "Fail"
+        ENDIF
+    ENDIF
+ENDIF</code></pre></div><div class="callout tip"><strong>Count the ENDIFs</strong> Three <code>IF</code> lines need three <code>ENDIF</code> lines, closed from the inside out. If the counts do not match, the structure is wrong. Python&rsquo;s <code>elif</code> expresses the same nested decision in shorter form.</div>
 
           <!-- ── 3. Iteration ── -->
           <h4>3. Iteration</h4>
@@ -456,9 +535,9 @@ END</code></pre>
             <pre><code>BEGIN
     numbers ← [10, 25, 3, 47, 8]
     total ← 0
-    FOR i ← 0 TO LENGTH(numbers) - 1
+    FOR i = 0 TO LENGTH(numbers) - 1
         total ← total + numbers[i]
-    END FOR
+    NEXT i
     OUTPUT "The sum is: " + total
 END</code></pre>
           </div>
@@ -477,6 +556,14 @@ END</code></pre>
             <p class="figure-try"><strong>Try this</strong>Enter your own list and predict the final total before pressing Play. How many loop tests does a list of <em>n</em> items need? (Answer: <em>n</em> + 1 — the last test is the one that fails.)</p>
           </div>
         </figure>
+
+<p>NESA describes three loops. <code>WHILE</code> is a <strong>pre-test</strong> loop, so its body may never run. <code>REPEAT … UNTIL</code> is a <strong>post-test</strong> loop, so its body always runs at least once, which suits input validation. <code>FOR … NEXT</code> is a counted loop; <code>STEP</code> sets the increment and can be negative.</p><div class="table-wrap"><table><thead><tr><th>Loop</th><th>Tests the condition</th><th>Body runs</th><th>Use it when</th></tr></thead><tbody><tr><td><code>WHILE … ENDWHILE</code></td><td>Before each pass</td><td>Zero or more times</td><td>You do not know how many passes, and none may be needed (read until a sentinel)</td></tr><tr><td><code>REPEAT … UNTIL</code></td><td>After each pass</td><td>At least once</td><td>The body must run first, for example asking for a value until it is valid</td></tr><tr><td><code>FOR … NEXT</code></td><td>Counts from start to finish</td><td>A known number of times</td><td>You know the count, or you are visiting every position of an array</td></tr></tbody></table></div><div class="info-grid"><div class="info-card"><h4>REPEAT … UNTIL</h4><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>REPEAT
+    OUTPUT "Enter a mark from 0 to 100: "
+    INPUT mark
+UNTIL mark &gt;= 0 AND mark &lt;= 100</code></pre></div></div><div class="info-card"><h4>FOR … NEXT with STEP</h4><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>FOR i = 1 TO 10 STEP 2
+    OUTPUT i
+NEXT i
+// Output: 1 3 5 7 9</code></pre></div></div></div>
 
           <!-- ── 4. Storing Data ── -->
           <h4>4. Storing Data</h4>
@@ -506,21 +593,48 @@ END</code></pre>
     count ← 0
     OUTPUT "Enter numbers (-1 to finish): "
     INPUT number
-    WHILE number ≠ -1
+    WHILE number != -1
         runningTotal ← runningTotal + number
         count ← count + 1
         INPUT number
-    END WHILE
+    ENDWHILE
     IF count > 0 THEN
         average ← runningTotal / count
         OUTPUT "Average: " + average
     ELSE
         OUTPUT "No data entered."
-    END IF
+    ENDIF
 END</code></pre>
           </div>
 
-          <p><strong>Computational thinking</strong> is a systematic approach to problem-solving that breaks a complex problem into manageable pieces and recognises patterns. By combining <strong>sequence</strong>, <strong>selection</strong>, <strong>iteration</strong>, and effective data storage, <strong>algorithms</strong> become clear, testable, and maintainable.</p>
+<h4>Identifying the data that should be stored</h4><p>Before writing steps, decide what the algorithm must <em>remember</em>. Three questions find every stored item: what comes in (inputs), what must be carried from one step to the next (state such as totals, counters and &ldquo;best so far&rdquo;), and what goes out (outputs). Anything that does not need to survive to the next step can be a temporary value.</p><h4>Worked example: the highest mark and the number of passes</h4><p>Problem: marks are typed in one at a time until <code>-1</code> is entered. Report the highest mark and how many students scored 50 or more.</p><div class="table-wrap"><table><thead><tr><th>Data</th><th>Kind</th><th>Why it is stored</th><th>Type</th></tr></thead><tbody><tr><td><code>mark</code></td><td>Input</td><td>The value just entered; the loop tests it</td><td>Integer</td></tr><tr><td><code>highest</code></td><td>State</td><td>The largest mark so far, compared with each new mark</td><td>Integer, starts at 0</td></tr><tr><td><code>passCount</code></td><td>State</td><td>A running count of marks of 50 or more</td><td>Integer, starts at 0</td></tr><tr><td>Sentinel <code>-1</code></td><td>Constant</td><td>Tells the loop that input has finished; never counted as a mark</td><td>Integer</td></tr></tbody></table></div><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>BEGIN FindHighest
+    highest ← 0
+    passCount ← 0
+    INPUT mark
+    WHILE mark != -1
+        IF mark &gt; highest THEN
+            highest ← mark
+        ENDIF
+        IF mark &gt;= 50 THEN
+            passCount ← passCount + 1
+        ENDIF
+        INPUT mark
+    ENDWHILE
+    OUTPUT "Highest: ", highest
+    OUTPUT "Passes: ", passCount
+END FindHighest</code></pre></div><p>This one algorithm uses all three structures: <strong>sequence</strong> (initialise, loop, report), <strong>selection</strong> (two independent <code>IF</code> tests) and <strong>iteration</strong> (the <code>WHILE</code> loop). A desk check with the marks 72, 45, 91, 50 records the stored values after each pass:</p><div class="table-wrap"><table><thead><tr><th>Input mark</th><th>mark &gt; highest?</th><th>highest</th><th>mark &gt;= 50?</th><th>passCount</th></tr></thead><tbody><tr><td>(start)</td><td></td><td>0</td><td></td><td>0</td></tr><tr><td>72</td><td>Yes</td><td>72</td><td>Yes</td><td>1</td></tr><tr><td>45</td><td>No</td><td>72</td><td>No</td><td>1</td></tr><tr><td>91</td><td>Yes</td><td>91</td><td>Yes</td><td>2</td></tr><tr><td>50</td><td>No</td><td>91</td><td>Yes</td><td>3</td></tr><tr><td>-1</td><td>loop ends</td><td>91</td><td></td><td>3</td></tr></tbody></table></div><p>The same design in Python reads the marks from a list, so it can be run and checked straight away.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">marks = [72, 45, 91, 50]
+highest = 0
+pass_count = 0
+for mark in marks:
+    if mark &gt; highest:
+        highest = mark
+    if mark &gt;= 50:
+        pass_count = pass_count + 1
+print("Highest:", highest)
+print("Passes:", pass_count)</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Highest: 91
+Passes: 3</code></pre></div><h4>Computational thinking</h4><p><strong>Computational thinking</strong> is the habit behind every design above. It has four parts, and you use all four whenever you plan an algorithm.</p><div class="key-terms"><div class="key-term-item"><strong>Decomposition</strong><span>Breaking a big problem into smaller parts you can solve separately, such as get input, process, report.</span></div><div class="key-term-item"><strong>Pattern recognition</strong><span>Spotting that a new problem resembles one you have solved, such as &ldquo;find the largest&rdquo; and &ldquo;find the smallest&rdquo;.</span></div><div class="key-term-item"><strong>Abstraction</strong><span>Keeping the details that matter and ignoring the rest, such as treating a student as an ID and a mark.</span></div><div class="key-term-item"><strong>Algorithm design</strong><span>Writing the exact steps, using sequence, selection and iteration, so anyone (or a computer) can follow them.</span></div></div><div class="callout assessor"><strong>Exam tip: &ldquo;Apply&rdquo;</strong> An <em>apply</em> question gives you a situation and expects the ideas used on it, not a definition. If asked to design an algorithm for a scenario, name what is stored, use the correct NESA keywords with matching pairs (<code>IF/ENDIF</code>, <code>WHILE/ENDWHILE</code>, <code>FOR/NEXT</code>) and indent each structure. Marks are lost for a loop that never changes its condition, an accumulator that is not initialised, and mixing up <code>WHILE</code> and <code>REPEAT … UNTIL</code>.</div>
+
+          <p>By combining <strong>sequence</strong>, <strong>selection</strong>, <strong>iteration</strong> and effective data storage, <strong>algorithms</strong> become clear, testable and maintainable.</p>
 
           <div class="video-box">
             <div class="video-box-label"><span class="video-icon">▶</span> Watch &amp; Learn</div>
@@ -540,6 +654,57 @@ END</code></pre>
 
           <h3>Divide and Conquer</h3>
           <p>This strategy involves breaking a complex problem into smaller, identical sub-problems until they are simple enough to solve directly. The solutions to these sub-problems are then combined to form the final result.<span class="eg"><em>In a <strong>Merge Sort</strong>, a large list is repeatedly split in half until single elements remain, which are then merged back together in the correct order.</em></span> This approach is highly efficient for sorting and searching large datasets.</p>
+
+<h4>The three steps</h4><ol><li><strong>Divide</strong> the problem into smaller sub-problems of the same kind.</li><li><strong>Conquer</strong> each sub-problem, by solving it directly when it is small enough (the base case) or by applying the same method again.</li><li><strong>Combine</strong> the sub-solutions into the answer to the original problem. Binary search needs no combining because it discards the half that cannot contain the target.</li></ol><h4>Worked example: binary search</h4><p>Binary search finds a target in a <strong>sorted</strong> list by checking the middle item and discarding the half that cannot contain it. NESA-style pseudocode for the algorithm:</p><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>BEGIN BinarySearch (list, target)
+    low ← 0
+    high ← LENGTH(list) - 1
+    WHILE low &lt;= high
+        mid ← whole number part of (low + high) / 2
+        IF list[mid] = target THEN
+            RETURN mid
+        ELSE
+            IF list[mid] &lt; target THEN
+                low ← mid + 1
+            ELSE
+                high ← mid - 1
+            ENDIF
+        ENDIF
+    ENDWHILE
+    RETURN -1
+END BinarySearch (list, target)</code></pre></div><p>Trace it with the sorted list <code>[12, 19, 25, 31, 44, 57, 63, 78, 90]</code> (indexes 0 to 8) and the target <code>57</code>:</p><div class="table-wrap"><table><thead><tr><th>Pass</th><th>low</th><th>high</th><th>mid</th><th>list[mid]</th><th>Comparison</th><th>Action</th></tr></thead><tbody><tr><td>1</td><td>0</td><td>8</td><td>4</td><td>44</td><td>44 &lt; 57</td><td>Discard the left half: low ← 5</td></tr><tr><td>2</td><td>5</td><td>8</td><td>6</td><td>63</td><td>63 &gt; 57</td><td>Discard the right half: high ← 5</td></tr><tr><td>3</td><td>5</td><td>5</td><td>5</td><td>57</td><td>57 = 57</td><td>Found: RETURN 5</td></tr></tbody></table></div><p>Three comparisons found the target. Linear search would have needed six. For a target that is absent, such as <code>50</code>, the same three passes end with <code>low</code> greater than <code>high</code> and the algorithm returns <code>-1</code>. Step through binary search yourself in the interactive trace in the next section.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def binary_search(items, target):
+    low = 0
+    high = len(items) - 1
+    while low &lt;= high:
+        mid = (low + high) // 2
+        if items[mid] == target:
+            return mid
+        elif items[mid] &lt; target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+
+marks = [12, 19, 25, 31, 44, 57, 63, 78, 90]
+print(binary_search(marks, 57))
+print(binary_search(marks, 50))</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>5
+-1</code></pre></div><h4>Worked example: merge sort</h4><p>Merge sort divides until every list has one item (a list of one item is already sorted, so this is the base case), then combines by <strong>merging</strong> two sorted lists into one. Here the list <code>[38, 27, 43, 3, 9, 82, 10]</code> is divided and then combined:</p><div class="table-wrap"><table><thead><tr><th>Phase</th><th>Lists at this stage</th></tr></thead><tbody><tr><td>Start</td><td>[38, 27, 43, 3, 9, 82, 10]</td></tr><tr><td>Divide</td><td>[38, 27, 43] and [3, 9, 82, 10]</td></tr><tr><td>Divide again</td><td>[38] [27, 43] and [3, 9] [82, 10]</td></tr><tr><td>Base case: single items</td><td>[38] [27] [43] and [3] [9] [82] [10]</td></tr><tr><td>Merge pairs</td><td>[27, 43] and [3, 9] and [10, 82]</td></tr><tr><td>Merge again</td><td>[27, 38, 43] and [3, 9, 10, 82]</td></tr><tr><td>Final merge</td><td>[3, 9, 10, 27, 38, 43, 82]</td></tr></tbody></table></div><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def merge_sort(items):
+    if len(items) &lt;= 1:                 # base case
+        return items
+    middle = len(items) // 2
+    left = merge_sort(items[:middle])   # divide and conquer each half
+    right = merge_sort(items[middle:])
+    merged = []
+    i = j = 0
+    while i &lt; len(left) and j &lt; len(right):   # combine: merge two sorted lists
+        if left[i] &lt;= right[j]:
+            merged.append(left[i])
+            i = i + 1
+        else:
+            merged.append(right[j])
+            j = j + 1
+    return merged + left[i:] + right[j:]
+
+print(merge_sort([38, 27, 43, 3, 9, 82, 10]))</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>[3, 9, 10, 27, 38, 43, 82]</code></pre></div><h4>Why it is efficient</h4><div class="table-wrap"><table><thead><tr><th>Items in the list</th><th>Linear search, worst case</th><th>Binary search, worst case</th></tr></thead><tbody><tr><td>9</td><td>9 comparisons</td><td>4 comparisons</td></tr><tr><td>1 000</td><td>1 000 comparisons</td><td>10 comparisons</td></tr><tr><td>1 000 000</td><td>1 000 000 comparisons</td><td>20 comparisons</td></tr></tbody></table></div><p>Each pass halves the range, so doubling the list adds only one more comparison. That is why binary search is described as <strong>O(log n)</strong> and linear search as <strong>O(n)</strong>. The price is the requirement that the data is already sorted. Merge sort takes roughly <em>n</em> log <em>n</em> steps, far fewer than the <em>n</em>&sup2; of bubble sort on a large list.</p>
 
 <h3>Backtracking</h3>
           <p>Backtracking is an incremental approach to problem-solving that builds a solution one step at a time. If the <strong>algorithm</strong> reaches a state where the current path cannot possibly lead to a valid solution (violating a constraint), it "backtracks" to the previous step and tries a different option.<span class="eg"><em>A <strong>Sudoku Solver</strong> attempts a number in a cell; if it later finds a conflict, it returns to that cell and tries the next available number.</em></span> This strategy is essential for pathfinding and optimisation problems.</p>
@@ -570,6 +735,75 @@ visited = set()
 
     <span class="kw">return</span> <span class="kw">False</span> <span class="cm"># Backtrack to previous cell</span></code></pre>
           </div>
+
+<h4>Worked example: a maze, step by step</h4><p>The maze below has a wrong turn built in. The search tries directions in the order right, down, left, up. Watch the <strong>call stack</strong> on the right: each recursive call adds a line, and a dead end removes lines as the function returns <code>False</code> and control backs up to an earlier choice.</p><figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Animated diagram</span></p>
+            <h4 class="figure-title">Backtracking out of a dead end</h4>
+            <p class="figure-lead">A recursive search tries right, down, left, up, and undoes a wrong turn when nothing is left to try.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--anim">
+            <div class="anim" data-anim="pf-maze"></div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>The dead end (red) is only discovered by trying it; nothing warned the function in advance.</li><li>Backtracking is not starting again. The search returns to the most recent junction that still has an untried direction.</li><li>Visited squares stay marked, so no square is searched twice.</li></ul><p class="figure-controls">Step with ◀ and ▶ (or the arrow keys), play or pause with Space.</p></div>
+            <p class="figure-try"><strong>Try this</strong>Change the order of directions to up, left, down, right. Predict which squares would be visited before deciding, then check with the Python below.</p>
+          </div>
+        </figure><p>The complete function below matches the animation. The variable <code>path</code> collects the squares on the winning route as each call returns <code>True</code>, so it is built from the exit back to the start.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">MAZE = ["...#.",
+        "##.#.",
+        ".....",
+        ".####",
+        "....."]
+ROWS, COLS = len(MAZE), len(MAZE[0])
+visited = set()
+path = []
+
+def find_path(x, y):
+    """Return True if the exit (bottom-right) can be reached from (x, y)."""
+    if (x, y) == (COLS - 1, ROWS - 1):
+        path.append((x, y))
+        return True                                   # base case: exit found
+    if not (0 &lt;= x &lt; COLS and 0 &lt;= y &lt; ROWS):
+        return False                                  # off the grid
+    if MAZE[y][x] == "#" or (x, y) in visited:
+        return False                                  # wall, or already tried
+    visited.add((x, y))
+    for dx, dy in [(1, 0), (0, 1), (-1, 0), (0, -1)]: # right, down, left, up
+        if find_path(x + dx, y + dy):
+            path.append((x, y))
+            return True
+    return False                                      # dead end: backtrack
+
+print(find_path(0, 0))
+print(path[::-1])</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>True
+[(0, 0), (1, 0), (2, 0), (2, 1), (2, 2), (1, 2), (0, 2), (0, 3), (0, 4), (1, 4), (2, 4), (3, 4), (4, 4)]</code></pre></div><h4>Worked example: four queens</h4><p>Place four queens on a 4 &times; 4 board so that no two share a row, column or diagonal. Backtracking places one queen per row, and undoes the last placement as soon as a row has no safe column. The trace shows the attempts in order:</p><div class="table-wrap"><table><thead><tr><th>Step</th><th>What the search does</th><th>Result</th></tr></thead><tbody><tr><td>1</td><td>Row 1: try column 1</td><td>Safe, placed</td></tr><tr><td>2</td><td>Row 2: try columns 1, 2, 3</td><td>Columns 1 and 2 are attacked; column 3 is safe, placed</td></tr><tr><td>3</td><td>Row 3: try columns 1 to 4</td><td>Every column is attacked: dead end, so <strong>backtrack</strong> and remove the queen from row 2</td></tr><tr><td>4</td><td>Row 2: try column 4</td><td>Safe, placed</td></tr><tr><td>5</td><td>Row 3: try columns 1, 2</td><td>Column 1 is attacked; column 2 is safe, placed</td></tr><tr><td>6</td><td>Row 4: try columns 1 to 4</td><td>Every column is attacked: dead end, so backtrack; row 3 has no other safe column, so remove row 2&rsquo;s queen as well</td></tr><tr><td>7</td><td>Row 2 has no more columns, so remove row 1&rsquo;s queen. Row 1: try column 2</td><td>Safe, placed</td></tr><tr><td>8</td><td>Rows 2, 3, 4</td><td>Row 2 column 4, row 3 column 1, row 4 column 3 are all safe. <strong>Solution found</strong></td></tr></tbody></table></div><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def is_safe(columns, row, col):
+    """columns[r] is the column of the queen already placed in row r."""
+    for r, c in enumerate(columns):
+        if c == col or abs(c - col) == row - r:   # same column or same diagonal
+            return False
+    return True
+
+def place_queens(columns, size):
+    row = len(columns)
+    if row == size:
+        return True                               # every row has a queen
+    for col in range(size):
+        if is_safe(columns, row, col):
+            columns.append(col)                   # try this square
+            if place_queens(columns, size):
+                return True
+            columns.pop()                         # undo it: backtrack
+    return False
+
+columns = []
+place_queens(columns, 4)
+print([c + 1 for c in columns])
+for col in columns:
+    print(" ".join("Q" if c == col else "." for c in range(4)))</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>[2, 4, 1, 3]
+. Q . .
+. . . Q
+Q . . .
+. . Q .</code></pre></div><p>Both examples share a pattern you can reuse: <strong>choose</strong> an option, <strong>check</strong> the constraint, <strong>recurse</strong> to the next choice, and <strong>undo</strong> the choice if the recursion fails.</p><h4>Choosing between the two strategies</h4><div class="table-wrap"><table><thead><tr><th></th><th>Divide and conquer</th><th>Backtracking</th></tr></thead><tbody><tr><td>Core idea</td><td>Split into smaller versions of the same problem, solve, combine</td><td>Build a solution step by step and undo a step when it breaks a constraint</td></tr><tr><td>Sub-problems</td><td>Independent; each half is solved on its own</td><td>Dependent; each choice affects the choices after it</td></tr><tr><td>Examples</td><td>Binary search, merge sort</td><td>Maze paths, four queens, Sudoku</td></tr><tr><td>Cost</td><td>Fast because the problem shrinks quickly</td><td>Can be slow because many dead ends may be tried</td></tr></tbody></table></div><div class="callout assessor"><strong>Exam tip: &ldquo;Apply&rdquo;</strong> When asked to <em>apply</em> divide and conquer or backtracking to given data, show the working, not just the answer. For binary search, list <code>low</code>, <code>high</code> and <code>mid</code> for every pass. For backtracking, show each dead end and the step where the choice is undone. A full-mark answer also names the base case that stops the recursion. A common mistake is describing backtracking as &ldquo;trying everything at random&rdquo; when it abandons a path as soon as it fails a constraint.</div>
 
 <h3>Recursive Functions</h3>
           <p>A recursive function is one that calls itself. Every recursive function must have:</p>
@@ -645,19 +879,48 @@ for i in range(8):
           <h3>Pseudocode</h3>
           <p>Pseudocode is an informal, human-readable notation for writing <strong>algorithms</strong> — a bridge between natural language and programming code. It uses common programming keywords (IF, WHILE, FOR) mixed with English-like descriptions, making logic crystal clear without being tied to a specific programming language's syntax. This allows designers and developers to communicate algorithm logic to non-programmers, and to verify correctness before investing time in actual coding.<span class="eg"><em>Example:</em></span></p>
           <div class="code-block">
-            <div class="code-header"><span class="code-lang">Pseudocode — Linear Search <strong>Algorithm</strong></span></div>
-            <pre><code>FUNCTION searchList(list, target)
-    FOR index FROM 0 TO length(list) - 1
-        IF list[index] EQUALS target THEN
+            <div class="code-header"><span class="code-lang">Pseudocode: linear search</span></div>
+            <pre><code>BEGIN SearchList (list, target)
+    FOR index = 0 TO LENGTH(list) - 1
+        IF list[index] = target THEN
             RETURN index
-        END IF
-    END FOR
-    RETURN -1  // Not found
-END FUNCTION</code></pre>
+        ENDIF
+    NEXT index
+    RETURN -1        // not found
+END SearchList (list, target)</code></pre>
           </div>
 
 <h3>Flowcharts</h3>
           <p>Flowcharts use visual symbols to represent <strong>algorithm</strong> steps and decision points. Rectangles represent processes, diamonds represent decisions, and arrows show flow direction. This visual representation makes complex logic easy to follow, helps identify loops and branches, and allows stakeholders to validate correctness before implementation.<span class="eg"><em>Example:</em></span> A flowchart for validating user age would show a diamond (decision point) — "Is age ≥ 18?" — with two paths: YES leads to "Show full menu" and NO leads to "Show restricted menu."</p>
+
+          <h4>NESA pseudocode conventions</h4><p>NESA&rsquo;s Course Specifications set the rules for pseudocode in the exam. Learn them as a checklist:</p><ul><li>Keywords are written in <strong>capitals</strong>.</li><li>Structural elements come in <strong>pairs</strong>: every <code>BEGIN</code> has an <code>END</code>, every <code>IF</code> has an <code>ENDIF</code>, every <code>WHILE</code> an <code>ENDWHILE</code>, every <code>FOR</code> a <code>NEXT</code>.</li><li>Indentation shows which lines belong to which control structure.</li><li>When refining a solution, a subroutine can be <strong>referred to by name</strong>, with a separate algorithm of the same name giving its detail.</li></ul><div class="table-wrap"><table><thead><tr><th>Structure</th><th>NESA pseudocode</th></tr></thead><tbody><tr><td>Sequence</td><td><pre class="inline-pseudo">process 1
+process 2
+process 3</pre></td></tr><tr><td>Binary selection</td><td><pre class="inline-pseudo">IF condition THEN
+    process 1
+ELSE
+    process 2
+ENDIF</pre></td></tr><tr><td>Multi-way selection</td><td><pre class="inline-pseudo">CASEWHERE expression evaluates to
+    choice a: process a
+    choice b: process b
+    OTHERWISE: default process
+END CASE</pre></td></tr><tr><td>Nested IF</td><td><pre class="inline-pseudo">IF condition A THEN
+    process 1
+ELSE
+    IF condition B THEN
+        process 2
+    ELSE
+        process 3
+    ENDIF
+ENDIF</pre></td></tr><tr><td>Pre-test loop</td><td><pre class="inline-pseudo">WHILE condition is true
+    process
+ENDWHILE</pre></td></tr><tr><td>Post-test loop</td><td><pre class="inline-pseudo">REPEAT
+    process
+UNTIL condition is true</pre></td></tr><tr><td>Counted loop</td><td><pre class="inline-pseudo">FOR variable = start TO finish STEP increment
+    statements
+NEXT variable</pre></td></tr><tr><td>Subroutine and function</td><td><pre class="inline-pseudo">BEGIN name (parameters)
+    statements
+    RETURN value    // functions only
+END name (parameters)</pre></td></tr></tbody></table></div><div class="callout warning"><strong>Old-style pseudocode</strong> Many textbooks and websites use a combined else-if keyword, or write closers as two words (END and IF, END and WHILE, END and FOR). NESA does not; it uses the single keywords <code>ENDIF</code>, <code>ENDWHILE</code> and <code>NEXT</code>. Write a nested IF as an <code>IF</code> inside the <code>ELSE</code> of the previous one, with one <code>ENDIF</code> per <code>IF</code>.</div><h4>From flowchart to pseudocode</h4><div class="table-wrap"><table><thead><tr><th>Flowchart symbol</th><th>What it means</th><th>Pseudocode it becomes</th></tr></thead><tbody><tr><td>Terminator (rounded)</td><td>Start or end of an algorithm or subroutine</td><td><code>BEGIN</code> and <code>END</code></td></tr><tr><td>Parallelogram</td><td>Input or output</td><td><code>INPUT age</code>, <code>OUTPUT total</code></td></tr><tr><td>Rectangle</td><td>A process such as a calculation or assignment</td><td><code>total ← total + price</code></td></tr><tr><td>Diamond</td><td>A decision with labelled exits</td><td><code>IF … ENDIF</code>, or the test of a loop</td></tr><tr><td>Rectangle with double side lines</td><td>A call to a subprogram</td><td>The subroutine&rsquo;s name and arguments: <code>DisplayTotal (total)</code></td></tr></tbody></table></div>
 
           <!-- Linear Search Algorithm Flowchart -->
           <figure class="figure">
@@ -762,7 +1025,7 @@ BEGIN
 
     // Processing logic
     IF score &gt;= 85 THEN
-        grade = "High Distinction"
+        grade ← "High Distinction"
     ELSE
         IF score &gt;= 75 THEN
             grade = "Distinction"
@@ -780,15 +1043,102 @@ END</code></pre>
             <div class="code-header"><span class="code-lang">pseudocode</span></div>
             <pre><code><span class="cm">// ✅ NESA-Standard Uncluttered Mainline</span>
 BEGIN Mainline
-    score ← CALL GetValidScore()
-    grade ← CALL CalculateGrade(score)
-    CALL DisplayResult(grade)
+    score ← GetValidScore ()
+    grade ← CalculateGrade (score)
+    DisplayResult (grade)
 END Mainline
 
-// Subroutines are defined separately below:
-FUNCTION GetValidScore()
-...</code></pre>
+// Each subroutine is developed separately, using the same name.
+// The next three algorithms give the detail.</code></pre>
           </div>
+
+<p>The three subroutines named in the mainline are developed next. Each is short, does one job and is named for it. The pseudocode is on the left and the same logic in Python is on the right.</p><div class="info-grid"><div class="info-card"><h4>NESA pseudocode</h4><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>BEGIN GetValidScore ()
+    OUTPUT "Enter your score out of 100: "
+    INPUT score
+    WHILE score &lt; 0 OR score &gt; 100
+        OUTPUT "Invalid. Enter a valid score: "
+        INPUT score
+    ENDWHILE
+    RETURN score
+END GetValidScore ()</code></pre></div></div><div class="info-card"><h4>Python</h4><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def get_valid_score():
+    score = int(input("Enter your score out of 100: "))
+    while score &lt; 0 or score &gt; 100:
+        score = int(input("Invalid. Enter a valid score: "))
+    return score</code></pre></div></div></div><div class="info-grid"><div class="info-card"><h4>NESA pseudocode</h4><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>BEGIN CalculateGrade (score)
+    IF score &gt;= 85 THEN
+        grade ← "High Distinction"
+    ELSE
+        IF score &gt;= 75 THEN
+            grade ← "Distinction"
+        ELSE
+            IF score &gt;= 50 THEN
+                grade ← "Pass"
+            ELSE
+                grade ← "Fail"
+            ENDIF
+        ENDIF
+    ENDIF
+    RETURN grade
+END CalculateGrade (score)</code></pre></div></div><div class="info-card"><h4>Python</h4><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def calculate_grade(score):
+    if score &gt;= 85:
+        return "High Distinction"
+    elif score &gt;= 75:
+        return "Distinction"
+    elif score &gt;= 50:
+        return "Pass"
+    else:
+        return "Fail"</code></pre></div></div></div><div class="info-grid"><div class="info-card"><h4>NESA pseudocode</h4><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>BEGIN DisplayResult (grade)
+    OUTPUT "Your grade is ", grade
+END DisplayResult (grade)</code></pre></div></div><div class="info-card"><h4>Python</h4><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def display_result(grade):
+    print("Your grade is", grade)
+
+def main():
+    score = get_valid_score()
+    grade = calculate_grade(score)
+    display_result(grade)
+
+main()</code></pre></div></div></div><div class="code-block"><div class="code-header"><span class="code-lang">Sample run</span></div><pre><code>Enter your score out of 100: 78
+Your grade is Distinction</code></pre></div><h4>Passing data in and out</h4><p>A subroutine that needs data receives it through <strong>parameters</strong>. A <strong>procedure</strong> carries out an action; a <strong>function</strong> is a subroutine that passes a single value back with <code>RETURN</code>. These three short examples show one parameter, several parameters, and a returned value.</p><div class="info-grid"><div class="info-card"><h4>One parameter</h4><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>BEGIN ShowGreeting (name)
+    OUTPUT "Welcome, ", name, "!"
+END ShowGreeting (name)
+
+BEGIN Mainline
+    ShowGreeting ("Alice")
+    ShowGreeting ("Ben")
+END Mainline</code></pre></div></div><div class="info-card"><h4>Python</h4><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def show_greeting(name):
+    print("Welcome, " + name + "!")
+
+show_greeting("Alice")
+show_greeting("Ben")</code></pre></div></div></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Welcome, Alice!
+Welcome, Ben!</code></pre></div><div class="info-grid"><div class="info-card"><h4>Several parameters, result passed back through a parameter</h4><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>BEGIN Multiply (a, b, product)
+    product ← a * b
+END Multiply (a, b, product)
+
+BEGIN Mainline
+    FOR i = 1 TO 3
+        Multiply (i, 4, answer)
+        OUTPUT answer
+    NEXT i
+END Mainline</code></pre></div></div><div class="info-card"><h4>Python: an integer cannot be changed by the subroutine, so it returns the value</h4><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def multiply(a, b):
+    return a * b
+
+for i in range(1, 4):
+    answer = multiply(i, 4)
+    print(answer)</code></pre></div></div></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>4
+8
+12</code></pre></div><div class="info-grid"><div class="info-card"><h4>A function that returns one value</h4><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>BEGIN CalculateGST (price)
+    RETURN price * 0.10
+END CalculateGST (price)
+
+BEGIN Mainline
+    total ← 100 + CalculateGST (100)
+    OUTPUT total
+END Mainline</code></pre></div></div><div class="info-card"><h4>Python</h4><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def calculate_gst(price):
+    return price * 0.10
+
+total = 100 + calculate_gst(100)
+print(total)</code></pre></div></div></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>110.0</code></pre></div><div class="callout assessor"><strong>Exam tip: &ldquo;Develop&rdquo;</strong> A <em>develop</em> question asks you to produce a working design. Start with an uncluttered mainline that only names subroutines, then give each subroutine its own algorithm with the same name in <code>BEGIN name (parameters) … END name (parameters)</code>. Show every parameter the subroutine receives, and use <code>RETURN</code> when it is a function. Check that every keyword has its matching partner and that indentation shows the structure. Do not mix flowchart symbols with pseudocode in the same answer unless the question asks for both.</div>
+
         </section>
 
         <hr class="divider" />
@@ -819,6 +1169,28 @@ FUNCTION GetValidScore()
 
 <h3>Abstraction and Refinement</h3>
           <p><strong>Abstraction</strong> involves hiding implementation details to focus on high-level goals (the 'What'). <strong>Stepwise Refinement</strong> is the process of breaking those high-level goals into smaller, more specific details (the 'How').<span class="eg"><em>An abstract instruction like 'Initialise System' is refined into 'Set counter to 0', 'Clear display', and 'Open file stream'.</em></span> Together, they allow for manageable development of complex systems.</p>
+
+<h3>Top-down and bottom-up design</h3><p><strong>Top-down design</strong> starts with the whole problem and breaks it into smaller and smaller subroutines until each is simple enough to code. <strong>Bottom-up design</strong> starts with small, tested building blocks (or existing library functions) and joins them into larger parts. Most real projects use both: plan from the top, but build on reliable pieces at the bottom.</p><div class="table-wrap"><table><thead><tr><th></th><th>Top-down</th><th>Bottom-up</th></tr></thead><tbody><tr><td>Starts with</td><td>The overall goal</td><td>Small, well-understood components</td></tr><tr><td>Tool that supports it</td><td>Structure chart, then refinement of each box</td><td>A list of available modules and functions, joined by a mainline</td></tr><tr><td>Strength</td><td>Keeps the whole system in view; easy to divide work in a team</td><td>Reuses tested code; early progress on the hard parts</td></tr><tr><td>Risk</td><td>Detail is left until late, so a hard part may surprise you</td><td>Pieces may not fit together into the required whole</td></tr><tr><td>Example</td><td>Canteen program: Get order, Apply discount, Display total, then refine each</td><td>Reuse Python&rsquo;s <code>isdigit</code> and <code>input</code> to build <code>read_whole_number</code>, then build up from there</td></tr></tbody></table></div><h3>Reading a structure chart</h3><p>The structure chart in the ATM figure uses four symbols from NESA&rsquo;s Course Specifications. Each one answers a question about how the modules relate:</p><div class="key-terms"><div class="key-term-item"><strong>Empty circle on an arrow</strong><span>Data moving between subroutines, usually passed as a parameter, such as <code>pin</code> or <code>amount</code>.</span></div><div class="key-term-item"><strong>Filled circle on an arrow</strong><span>A flag or control variable, such as <code>valid</code> or <code>cardRemoved</code>, passed between subroutines.</span></div><div class="key-term-item"><strong>Small diamond</strong><span>A decision: the subroutine is called only as the result of a binary or multi-way selection, or is optional.</span></div><div class="key-term-item"><strong>Curved arrow</strong><span>Repetition: the subroutine, or set of subroutines, is executed several times.</span></div></div><h3>Worked example: refining the canteen program</h3><p><strong>Stepwise refinement</strong> works down through levels, adding detail only where it is needed. Each level is a complete, readable algorithm on its own. Level 0 is the mainline; level 1 refines <code>GetOrder</code>; level 2 refines the input check.</p><div class="info-grid"><div class="info-card"><h4>Level 0: mainline</h4><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>BEGIN Mainline
+    GetOrder (items, total)
+    ApplyDiscount (total, items)
+    DisplayTotal (total)
+END Mainline</code></pre></div></div><div class="info-card"><h4>Level 1: refine GetOrder</h4><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>BEGIN GetOrder (items, total)
+    items ← 0
+    total ← 0
+    ReadWholeNumber (price)
+    WHILE price != 0
+        ReadWholeNumber (quantity)
+        items ← items + quantity
+        total ← total + price * quantity
+        ReadWholeNumber (price)
+    ENDWHILE
+END GetOrder (items, total)</code></pre></div></div></div><div class="code-block"><div class="code-header"><span class="code-lang">Level 2: refine ReadWholeNumber</span></div><pre><code>BEGIN ReadWholeNumber (number)
+    REPEAT
+        INPUT text
+    UNTIL text is a whole number of 0 or more
+    number ← text as a number
+END ReadWholeNumber (number)</code></pre></div><p>The same hierarchy is what the structure chart shows: <code>Mainline</code> at the top calling <code>GetOrder</code>, <code>ApplyDiscount</code> and <code>DisplayTotal</code>, with <code>GetOrder</code> calling <code>ReadWholeNumber</code> repeatedly (a curved arrow), and <code>items</code> and <code>total</code> passed back up as data (empty circles). A refinement level can be drawn as its own structure chart with the same name as the box it refines.</p><div class="callout info"><strong>Abstraction in this example</strong> At level 0 you do not know, or need to know, how a whole number is checked. <em>ReadWholeNumber</em> hides that detail behind its name. Abstraction is what lets a team member use the subroutine without reading its code.</div><div class="callout assessor"><strong>Exam tip: &ldquo;Use&rdquo;</strong> A <em>use</em> question about modelling tools usually gives a scenario and asks you to <em>draw</em> or <em>complete</em> a structure chart. Name each box as a verb and noun (<code>Verify PIN</code>), put the empty circle on data and the filled circle on flags, and show the diamond only where a call is optional. When asked to show refinement, give the higher level and a lower-level algorithm with the <em>same name</em>. Marks are lost for drawing flowchart symbols in a structure chart, or for putting decisions inside the boxes instead of on the connecting lines.</div>
+
         </section>
 
         <hr class="divider" />
@@ -839,14 +1211,31 @@ FUNCTION GetValidScore()
           <p>Analyse how an <strong>algorithm</strong> calls other functions and what data is passed between them. Document the purpose of each function call and the parameters it receives, ensuring data flows correctly through the program.<span class="eg"><em>An algorithm that calculates employee pay might call FUNCTION calculateTax(salary) and FUNCTION applyBonus(basePay, bonusPercent), understanding what each returns and how it affects the final result.</em></span></p>
 
           <div class="callout info"><strong>Scenario</strong> You're handed this algorithm with no explanation:
-            <pre class="inline-pseudo">BEGIN mystery(list)
+            <pre class="inline-pseudo">BEGIN Mystery (list)
     result ← list[0]
-    FOR i ← 1 TO LEN(list) − 1
-        IF list[i] &gt; result THEN result ← list[i] ENDIF
+    FOR i = 1 TO LEN(list) - 1
+        IF list[i] &gt; result THEN
+            result ← list[i]
+        ENDIF
     NEXT i
     RETURN result
-END</pre>
+END Mystery (list)</pre>
             A desk check with <code>[4, 9, 2]</code> gives <code>result</code> = 4, then 9, then 9. <strong>Input:</strong> a list of numbers. <strong>Output:</strong> one number. <strong>Purpose:</strong> it finds the largest value.</div>
+
+<h4>Clues that reveal purpose</h4><div class="table-wrap"><table><thead><tr><th>Look at…</th><th>It tells you…</th><th>In <code>Mystery</code></th></tr></thead><tbody><tr><td>Parameters and inputs</td><td>What data the algorithm works on</td><td>A <code>list</code> of numbers</td></tr><tr><td>Starting values</td><td>What is being accumulated or compared</td><td><code>result</code> starts as the first item, so it tracks a &ldquo;best so far&rdquo;</td></tr><tr><td>The test inside the loop</td><td>What counts as better or a match</td><td><code>list[i] &gt; result</code>: bigger wins</td></tr><tr><td>What is returned</td><td>The output</td><td>A single number, the largest</td></tr></tbody></table></div><h4>Worked desk check: finding a logic error</h4><p>An algorithm should count the marks of <strong>50 or more</strong> in a list. It compiles and runs, so a <strong>desk check</strong> with chosen data is how the fault is found. The array positions run from 1 in this algorithm.</p><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>BEGIN CountPasses (marks)
+    count ← 0
+    FOR i = 1 TO LENGTH(marks)
+        IF marks[i] &gt; 50 THEN
+            count ← count + 1
+        ENDIF
+    NEXT i
+    RETURN count
+END CountPasses (marks)</code></pre></div><p>Test data: <code>marks = [45, 60, 50]</code>. Expected result: <strong>2</strong> (60 and 50 are passes). Record each variable after every pass of the loop:</p><div class="table-wrap"><table><thead><tr><th>i</th><th>marks[i]</th><th>marks[i] &gt; 50?</th><th>count</th></tr></thead><tbody><tr><td>(start)</td><td></td><td></td><td>0</td></tr><tr><td>1</td><td>45</td><td>No</td><td>0</td></tr><tr><td>2</td><td>60</td><td>Yes</td><td>1</td></tr><tr><td>3</td><td>50</td><td>No</td><td>1</td></tr><tr><td>end</td><td></td><td></td><td>RETURN 1</td></tr></tbody></table></div><p>The desk check returns <strong>1</strong>, not 2. The mismatch appears at <code>i = 3</code>: a mark of exactly 50 is rejected because the test uses <code>&gt;</code> instead of <code>&gt;=</code>. This is a boundary fault, and it is the reason boundary values are always part of the test data. Choosing 50 as one of the desk-check values is what exposed it.</p><h4>Peer checking</h4><p>A peer checker reads the algorithm without the author&rsquo;s assumptions. Give them a short checklist so the review is systematic:</p><ul><li>Can they state the purpose, inputs and outputs from the algorithm alone?</li><li>Does every variable start with a sensible value before it is used?</li><li>Does each loop change something that eventually ends it?</li><li>Are boundary values (first, last, empty, exactly on a limit) handled?</li><li>Do names, indentation and matching pairs (<code>IF/ENDIF</code>, <code>WHILE/ENDWHILE</code>) make the structure clear?</li></ul><h4>Following the data through subroutine calls</h4><p>Connections between algorithms are where data is often lost or mixed up. Draw up a small table of every call: what is passed in, what the parameter is called, and what comes back. Here is the pay example from above.</p><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>BEGIN PayEmployee (salary, bonusPercent)
+    tax ← CalculateTax (salary)
+    pay ← salary - tax + ApplyBonus (salary, bonusPercent)
+    RETURN pay
+END PayEmployee (salary, bonusPercent)</code></pre></div><div class="table-wrap"><table><thead><tr><th>Call</th><th>Passed in</th><th>Parameters</th><th>Comes back</th><th>Used for</th></tr></thead><tbody><tr><td><code>CalculateTax (salary)</code></td><td><code>salary</code></td><td><code>salary</code></td><td>The tax owed (one value)</td><td>Subtracted from pay</td></tr><tr><td><code>ApplyBonus (salary, bonusPercent)</code></td><td><code>salary</code>, <code>bonusPercent</code></td><td><code>basePay</code>, <code>percent</code> (names may differ)</td><td>The bonus amount</td><td>Added to pay</td></tr></tbody></table></div><p>The parameter names inside a subroutine need not match the caller&rsquo;s names, but the <em>order, number and type</em> of the arguments must. Passing <code>bonusPercent</code> first and <code>salary</code> second would run without a crash and give a wrong answer.</p><div class="callout assessor"><strong>Exam tip: &ldquo;Analyse&rdquo;</strong> An <em>analyse</em> question gives you an algorithm you have not seen. Say its input, its output and its purpose in one sentence each, then support it with a desk check: draw a trace table for chosen data, show the values changing, and state what the result proves. Use data that includes a boundary. Do not just re-read the code line by line in words.</div>
+
         </section>
 
         <hr class="divider" />
@@ -904,6 +1293,29 @@ def greet(name):
     print(f"Hello, {name}!")
     # no return statement → returns None implicitly</code></pre>
           </div>
+
+<h3>Parameters and arguments</h3><p>A <strong>parameter</strong> is the name a subprogram gives to a piece of data it expects. An <strong>argument</strong> is the actual value supplied when it is called. In <code>calculate_gst(price)</code>, <code>price</code> is the parameter; in <code>calculate_gst(80)</code>, <code>80</code> is the argument. NESA treats <em>subroutine</em>, <em>module</em>, <em>subprogram</em> and <em>procedure</em> as interchangeable words for a named group of statements; a <strong>function</strong> is the kind that returns a single value.</p><h3>Worked example: identify each subprogram</h3><p>Read this algorithm and decide, for each named subprogram, whether it is a procedure or a function.</p><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>BEGIN ProcessOrder (items, total)
+    ShowWelcome ()
+    gst ← CalculateGST (total)
+    final ← total + gst
+    IF items &gt;= 10 THEN
+        final ← final - Discount (final)
+    ENDIF
+    PrintReceipt (items, final)
+END ProcessOrder (items, total)</code></pre></div><div class="table-wrap"><table><thead><tr><th>Subprogram</th><th>Procedure or function?</th><th>Evidence in the algorithm</th></tr></thead><tbody><tr><td><code>ShowWelcome</code></td><td>Procedure</td><td>Stands alone on its own line; nothing is assigned or used from it</td></tr><tr><td><code>CalculateGST</code></td><td>Function</td><td>Its result is assigned: <code>gst ← CalculateGST (total)</code></td></tr><tr><td><code>Discount</code></td><td>Function</td><td>Its result is used inside an expression: <code>final - Discount (final)</code></td></tr><tr><td><code>PrintReceipt</code></td><td>Procedure</td><td>Called as a statement; it carries out an action (printing)</td></tr></tbody></table></div><h3>Common mistakes with return values</h3><p>A function&rsquo;s value is lost unless the caller does something with it. Two errors appear again and again in student code:</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def calculate_gst(price):
+    return price * 0.10
+
+calculate_gst(80)               # mistake: the returned 8.0 is thrown away
+print(calculate_gst(80))        # 8.0: the value is used
+
+def show_total(total):
+    print("Total:", total)      # a procedure: prints, returns None
+
+result = show_total(90)
+print(result)                   # None: there is nothing useful to store</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>8.0
+Total: 90
+None</code></pre></div><p><code>RETURN</code> also ends the subprogram immediately. Any statement written after it in the same path never runs, which is why linear search returns from inside the loop as soon as it finds a match.</p><div class="callout info"><strong>Flowcharts</strong> In a flowchart, a call to a subprogram is drawn as a rectangle with a double line on each side, labelled with the subprogram&rsquo;s name and arguments. The subprogram has its own flowchart whose terminators carry the same name, so you can match call and detail.</div>
+
         </section>
 
         <hr class="divider" />
@@ -962,12 +1374,41 @@ sibling(A, B) :-
           </div>
 
 <h3>λ Functional Programming</h3>
-          <p>Programs are built from pure functions (same input always produces same output, no side effects) and immutable data. Emphasises <strong>recursion</strong> and function composition.<span class="eg"><em>Example (Lisp/Scheme): Computing factorial recursively as (factorial 5) = 5 × (factorial 4) × ... × 1, without modifying state.</em></span></p>
+          <p>Programs are built from pure functions (same input always produces same output, no side effects) and immutable data. Emphasises <strong>recursion</strong> and function composition.<span class="eg"><em>Example (Lisp/Scheme): Computing factorial recursively as (factorial 5) = 5 × (factorial 4), where (factorial 4) = 4 × (factorial 3), and so on down to (factorial 1) = 1, without modifying any variable.</em></span></p>
 
           <!-- Programming Paradigms Comparison Diagram -->
           
 
           <p>Modern development often uses <strong>hybrid approaches</strong> — Python supports both OOP and functional styles; JavaScript supports imperative and functional paradigms. Experimenting with different paradigms strengthens problem-solving skills and helps you choose the best tool for each context.</p>
+
+<h3>Experiment: one problem, four ways</h3><p>The syllabus asks you to <em>experiment</em> with the paradigms, and the best way is to solve one problem in each and compare. The problem: a canteen order has three items priced <code>10.00</code>, <code>25.50</code> and <code>4.50</code> dollars. Add 10% GST to each and report the total.</p><h4>Imperative: a sequence of steps that change state</h4><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">prices = [10.00, 25.50, 4.50]
+total = 0
+for price in prices:
+    total = total + price * 1.10     # total is changed on every pass
+print(round(total, 2))</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>44.0</code></pre></div><h4>Functional: expressions with no changing variables</h4><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">prices = [10.00, 25.50, 4.50]
+add_gst = lambda price: price * 1.10        # a pure function
+print(round(sum(add_gst(p) for p in prices), 2))</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>44.0</code></pre></div><h4>Object-oriented: data and behaviour bundled in a class</h4><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">class Cart:
+    def __init__(self):
+        self.prices = []
+
+    def add(self, price):
+        self.prices.append(price)
+
+    def total_with_gst(self):
+        return round(sum(self.prices) * 1.10, 2)
+
+cart = Cart()
+for price in [10.00, 25.50, 4.50]:
+    cart.add(price)
+print(cart.total_with_gst())</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>44.0</code></pre></div><h4>Logic: facts and rules, then a query</h4><p>Prolog has no loop. You state facts and a rule, then ask a question and the engine works out the answer. Here the rule says a price with GST is the price times 11, divided by 10.</p><div class="code-block"><div class="code-header"><span class="code-lang">Prolog</span></div><pre><code class="language-prolog">price(pen, 10.00).
+price(book, 25.50).
+price(bag, 4.50).
+
+with_gst(Item, Total) :- price(Item, P), Total is P * 11 / 10.
+
+% Query:  ?- with_gst(book, T).
+% Answer: T = 28.05</code></pre></div><p>The first three give the same 44.0. The Prolog query asks about one item (25.50 with GST is 28.05) because a logic program answers questions rather than running steps. What differs between the paradigms is how you think about the problem.</p><div class="table-wrap"><table><thead><tr><th>Paradigm</th><th>Core idea</th><th>You describe…</th><th>Suits</th><th>Python support</th></tr></thead><tbody><tr><td>Imperative</td><td>Commands that change state step by step</td><td>How to do it</td><td>Scripts, control code, most beginner programs</td><td>Loops, assignment, functions</td></tr><tr><td>Object-oriented</td><td>Objects bundle data with the methods that use it</td><td>Things and what they can do</td><td>Large programs modelling real entities</td><td>Classes, inheritance</td></tr><tr><td>Logic</td><td>Facts and rules; the engine infers answers</td><td>What is true</td><td>Rule-based problems, knowledge bases</td><td>Not built in; libraries exist</td></tr><tr><td>Functional</td><td>Pure functions, no changing state</td><td>What to compute</td><td>Data transformation, easy-to-test code</td><td>Lambda, comprehensions, <code>map</code></td></tr></tbody></table></div><p><strong>Try this:</strong> add a fourth price with the imperative version, then with each of the others. Which was easiest to change? Which is easiest to test on its own? Write two sentences on which paradigm you would choose for a rule-based timetable checker and why.</p><div class="callout assessor"><strong>Exam tip: &ldquo;Experiment&rdquo; and paradigm questions</strong> Paradigm questions usually give you a short piece of code or a situation and ask you to <em>identify</em> the paradigm or <em>compare</em> two. Justify with a feature visible in the code: a class and methods (object-oriented), a loop changing a variable (imperative), facts and rules with no loop (logic), or a pure function with no side effects (functional). A common mistake is saying Python is &ldquo;only&rdquo; one paradigm; it supports several.</div>
+
         </section>
 
         <div class="quiz" data-quiz="pf-2"></div>
@@ -1019,6 +1460,20 @@ sibling(A, B) :-
           </ul>
 
           <div class="callout info"><strong>Why hexadecimal?</strong> One hex digit stands for exactly four bits, so a byte is always two hex digits. That makes long binary values, such as memory addresses and colour codes, much shorter and easier to read.</div>
+
+<h3>Place value in three bases</h3><p>Every base works the same way: each digit is worth the digit times a <strong>place value</strong>, and each place is the base times bigger than the one on its right. Decimal places are powers of 10, binary places are powers of 2 and hexadecimal places are powers of 16.</p><div class="table-wrap"><table><thead><tr><th>Base</th><th>Digits used</th><th>Place values (right to left)</th><th>Example</th></tr></thead><tbody><tr><td>Decimal (10)</td><td>0 to 9</td><td>1, 10, 100, 1000</td><td><code>214</code> = 2&times;100 + 1&times;10 + 4&times;1</td></tr><tr><td>Binary (2)</td><td>0 and 1</td><td>1, 2, 4, 8, 16, 32, 64, 128</td><td><code>11010110</code> = 128 + 64 + 16 + 4 + 2 = 214</td></tr><tr><td>Hexadecimal (16)</td><td>0 to 9, then A to F</td><td>1, 16, 256, 4096</td><td><code>D6</code> = 13&times;16 + 6&times;1 = 214</td></tr></tbody></table></div><p>Hexadecimal needs sixteen digits, so the letters A to F stand for the values 10 to 15:</p><div class="table-wrap"><table><thead><tr><th>Hex</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr></thead><tbody><tr><td>Decimal</td><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td></tr><tr><td>Binary</td><td>0000</td><td>0001</td><td>0010</td><td>0011</td><td>0100</td><td>0101</td><td>0110</td><td>0111</td><td>1000</td><td>1001</td><td>1010</td><td>1011</td><td>1100</td><td>1101</td><td>1110</td><td>1111</td></tr></tbody></table></div><h3>Worked conversions</h3><h4>Decimal to binary: repeated division by 2</h4><p>Convert <strong>156</strong>. Divide by 2, record the remainder, and repeat with the quotient until it reaches 0.</p><div class="table-wrap"><table><thead><tr><th>Division</th><th>Quotient</th><th>Remainder</th></tr></thead><tbody><tr><td>156 &divide; 2</td><td>78</td><td>0</td></tr><tr><td>78 &divide; 2</td><td>39</td><td>0</td></tr><tr><td>39 &divide; 2</td><td>19</td><td>1</td></tr><tr><td>19 &divide; 2</td><td>9</td><td>1</td></tr><tr><td>9 &divide; 2</td><td>4</td><td>1</td></tr><tr><td>4 &divide; 2</td><td>2</td><td>0</td></tr><tr><td>2 &divide; 2</td><td>1</td><td>0</td></tr><tr><td>1 &divide; 2</td><td>0</td><td>1</td></tr></tbody></table></div><p>Read the remainders from the <strong>bottom up</strong>: <code>10011100</code>. Check by adding place values: 128 + 16 + 8 + 4 = 156.</p><h4>Binary to hexadecimal, and back</h4><p>Split the binary number into groups of four from the right, then convert each group with the table above: <code>1001 1100</code> is <code>9</code> and <code>C</code>, so 156 is <code>9C</code> in hexadecimal. To go back, replace each hex digit with its four bits.</p><h4>Hexadecimal to decimal</h4><p>Multiply each digit by its place value and add: <code>9C</code> = 9 &times; 16 + 12 &times; 1 = 144 + 12 = <strong>156</strong>. This matches the other two forms.</p><h4>Decimal to hexadecimal directly</h4><p>Divide by 16 instead of 2: 156 &divide; 16 = 9 remainder 12, and 12 is C. Reading the remainders from the bottom gives <code>9C</code>.</p><h3>Checking conversions in Python</h3><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">number = 156
+print(bin(number))              # 0b10011100
+print(hex(number))              # 0x9c
+print(f"{number:08b}")          # 10011100  (8 bits, padded with zeros)
+print(f"{number:X}")            # 9C
+print(int("10011100", 2))       # 156
+print(int("9C", 16))            # 156</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>0b10011100
+0x9c
+10011100
+9C
+156
+156</code></pre></div><h3>Where each base is used</h3><ul><li><strong>Binary</strong> is how hardware stores everything. A <strong>bit</strong> is one binary digit; a <strong>byte</strong> is eight bits and can hold 2<sup>8</sup> = 256 different values (0 to 255).</li><li><strong>Hexadecimal</strong> shortens binary for people: colour codes such as <code>#FF8800</code> (red FF = 255, green 88 = 136, blue 00 = 0), memory addresses and MAC addresses.</li><li><strong>Decimal</strong> is for people: prices, marks and counts.</li></ul><div class="table-wrap"><table><thead><tr><th>Number of bits</th><th>Different values</th><th>Unsigned range</th></tr></thead><tbody><tr><td>4</td><td>16</td><td>0 to 15</td></tr><tr><td>8</td><td>256</td><td>0 to 255</td></tr><tr><td>16</td><td>65 536</td><td>0 to 65 535</td></tr><tr><td>32</td><td>4 294 967 296</td><td>0 to 4 294 967 295</td></tr></tbody></table></div><details class="pf-check"><summary>Quick self-check: four conversions</summary><ol><li>Convert decimal 45 to binary.</li><li>Convert hexadecimal B7 to decimal.</li><li>Convert hexadecimal 2F to binary.</li><li>What is the largest value an unsigned 8-bit number can hold, in decimal and in hexadecimal?</li></ol><p><strong>Answers.</strong> (1) 45 = 32 + 8 + 4 + 1 = <code>101101</code>, or <code>00101101</code> in 8 bits. (2) B7 = 11 &times; 16 + 7 = <strong>183</strong>. (3) 2 = 0010 and F = 1111, so <code>00101111</code>. (4) 255, which is <code>FF</code>.</p></details><div class="callout assessor"><strong>Exam tip: &ldquo;Investigate&rdquo; and conversions</strong> Conversion questions are marked on working as well as the answer. Show the repeated division and the remainders in order, or the place values you added, and state the final answer with its base (for example <code>9C</code> in hexadecimal). Pad binary answers to the number of bits asked for. For <em>investigate</em>, also say <em>why</em> a base is used: binary because hardware has two states, hexadecimal because one digit stands for exactly four bits.</div>
+
         </section>
 
         <hr class="divider" />
@@ -1058,6 +1513,17 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
             </ul>
             <p class="video-box-note">An approachable explainer on how computers store everything as <strong>binary</strong> — perfect background for understanding <strong>number systems</strong> and <strong>two's complement</strong>.</p>
           </div>
+
+<h3>Why two&rsquo;s complement?</h3><p>A computer needs a way to store negative whole numbers using only 0s and 1s. The simplest idea is to use the left-hand bit as a sign, but that gives two zeros (<code>+0</code> and <code>&minus;0</code>) and makes subtraction awkward. In <strong>two&rsquo;s complement</strong> there is one zero, and the same adding circuit handles positive and negative numbers.</p><h3>Range of an n-bit number</h3><p>The left-hand bit is the <strong>sign bit</strong>: 0 for zero and positive numbers, 1 for negative numbers. With <em>n</em> bits the range is &minus;2<sup>n&minus;1</sup> to 2<sup>n&minus;1</sup> &minus; 1. There is one more negative value than positive.</p><div class="table-wrap"><table><thead><tr><th>Bits</th><th>Smallest</th><th>Largest</th></tr></thead><tbody><tr><td>4</td><td>&minus;8</td><td>7</td></tr><tr><td>8</td><td>&minus;128</td><td>127</td></tr><tr><td>16</td><td>&minus;32 768</td><td>32 767</td></tr><tr><td>32</td><td>&minus;2 147 483 648</td><td>2 147 483 647</td></tr></tbody></table></div><h3>More worked examples (8 bits)</h3><div class="table-wrap"><table><thead><tr><th>Value</th><th>Positive form</th><th>Invert</th><th>Add 1</th><th>Result</th></tr></thead><tbody><tr><td>&minus;5</td><td><code>00000101</code></td><td><code>11111010</code></td><td><code>11111011</code></td><td><code>11111011</code></td></tr><tr><td>&minus;1</td><td><code>00000001</code></td><td><code>11111110</code></td><td><code>11111111</code></td><td><code>11111111</code></td></tr><tr><td>&minus;20</td><td><code>00010100</code></td><td><code>11101011</code></td><td><code>11101100</code></td><td><code>11101100</code></td></tr><tr><td>&minus;128</td><td><code>10000000</code> (no +128 in 8 bits)</td><td><code>01111111</code></td><td><code>10000000</code></td><td><code>10000000</code></td></tr></tbody></table></div><h4>Reading a negative pattern</h4><p>To find the value of <code>11110110</code>: the sign bit is 1, so it is negative. Invert the bits (<code>00001001</code>), add 1 (<code>00001010</code> = 10) and put a minus sign in front: <strong>&minus;10</strong>. You can check with signed place values: the sign bit is worth &minus;128, so &minus;128 + 64 + 32 + 16 + 4 + 2 = &minus;10.</p><h4>Subtraction becomes addition</h4><p>To calculate 7 &minus; 5, add 7 and &minus;5: <code>00000111</code> + <code>11111011</code> = <code>1 00000010</code>. The carry out of the eighth bit is discarded, leaving <code>00000010</code>, which is <strong>2</strong>.</p><h4>Overflow</h4><p>If a result does not fit in the available bits, it wraps round. In 8 bits, <code>01111111</code> (127) plus 1 is <code>10000000</code>, which is &minus;128. This is <strong>overflow</strong>, and it is why the Year 2038 problem in the section introduction matters: a 32-bit signed count of seconds runs out of positive values in January 2038.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">print(f"{-5 &amp; 0xFF:08b}")           # 11111011   -5 as 8 bits
+print(int("11111011", 2) - 256)     # -5         read 8 bits back as signed
+print(f"{-20 &amp; 0xFF:08b}")          # 11101100
+print(int("11110110", 2) - 256)     # -10</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>11111011
+-5
+11101100
+-10</code></pre></div><p>In Python, <code>&amp; 0xFF</code> keeps only the lowest eight bits, which is what an 8-bit store would keep. Subtracting 256 (2<sup>8</sup>) from a pattern whose sign bit is 1 gives its signed value.</p><h3>Explore it: number base and two&rsquo;s complement workbench</h3><p>Use the workbench to check your own conversions. Type a number in any base, or click the bits, and it shows the working. Try &minus;5, then <code>127</code> with the <strong>Add 1</strong> button to see overflow, then open the self-check at the bottom.</p><div class="pf-numlab" data-pf-numlab>
+            <p>This workbench needs JavaScript. Without it, use the worked examples above: for a negative number write the positive value in binary, invert every bit, then add 1; to read a pattern whose left-hand bit is 1, invert, add 1 and put a minus sign in front.</p>
+          </div><details class="pf-check"><summary>Quick self-check: two&rsquo;s complement</summary><ol><li>Write &minus;7 as a 4-bit two&rsquo;s complement number.</li><li>What decimal number is <code>10011010</code> in 8-bit two&rsquo;s complement?</li><li>What is the range of a 6-bit two&rsquo;s complement number?</li></ol><p><strong>Answers.</strong> (1) 7 = <code>0111</code>; invert to <code>1000</code>; add 1 to get <code>1001</code>. (2) The sign bit is 1: invert to <code>01100101</code>, add 1 to get <code>01100110</code> = 102, so the value is <strong>&minus;102</strong>. (3) &minus;2<sup>5</sup> to 2<sup>5</sup> &minus; 1, which is &minus;32 to 31.</p></details>
+
         </section>
 
         <hr class="divider" />
@@ -1102,7 +1568,7 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
                 </tr>
                 <tr>
                   <td><strong>Date / Time</strong></td>
-                  <td>Stored as seconds from an epoch (e.g., Jan 1st, 1970).</td>
+                  <td>Often stored as a count of seconds from an epoch such as 1 January 1970. NESA specifies that a date and time is stored as 32 bits (4 bytes).</td>
                   <td><code>import datetime</code></td>
                 </tr>
               </tbody>
@@ -1120,6 +1586,36 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
           </ul>
 
           <div class="callout info"><strong>Scenario</strong> A canteen app stores <code>price = 0.1 + 0.2</code> as a float and shows $0.30000000000000004. Storing the price as an integer number of cents (<code>30</code>) avoids the rounding error.</div>
+
+<h3>The six standard types in detail</h3><h4>char (character) and string</h4><p>A <strong>char</strong> holds one character: a letter, digit, space or symbol. Internally it is stored as a number, its code in <strong>ASCII</strong> or <strong>Unicode</strong>. A <strong>string</strong> is a sequence of characters. Python has no separate char type; a char is a string of length 1.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">print(ord("A"))            # 65    the code for A
+print(chr(97))             # a     the character with code 97
+word = "HSC"
+print(word[0], word[1:], len(word))   # H SC 3</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>65
+a
+H SC 3</code></pre></div><h4>Boolean</h4><p>A <strong>Boolean</strong> holds one of two values, <code>True</code> or <code>False</code>. Every comparison produces one, and every <code>IF</code> and <code>WHILE</code> test relies on one. It needs only a single bit of storage. Name Boolean variables as questions: <code>is_valid</code>, <code>has_discount</code>.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">mark = 50
+passed = mark &gt;= 50
+print(passed, type(passed).__name__)    # True bool</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>True bool</code></pre></div><h4>integer</h4><p>An <strong>integer</strong> is a whole number with no fractional part, positive or negative, stored in binary (two&rsquo;s complement for negatives). Use it for anything you count. In many languages an integer has a fixed size; a 16-bit signed integer holds &minus;32 768 to 32 767 and a 32-bit one about &plusmn;2 billion. Python integers grow as needed, so overflow is a concern in other languages and in hardware.</p><h4>real</h4><p>A <strong>real</strong> number has a fractional part, such as a measurement or a rate. It is stored in <strong>floating point</strong> form, which stores most values only approximately. That leads to a classic surprise:</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">print(0.1 + 0.2)                        # 0.30000000000000004
+print(0.1 + 0.2 == 0.3)                 # False
+print(abs((0.1 + 0.2) - 0.3) &lt; 1e-9)    # True: compare with a small tolerance
+print(round(0.1 + 0.2, 2))              # 0.3</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>0.30000000000000004
+False
+True
+0.3</code></pre></div><p>Never test two real numbers for exact equality. Compare them within a small tolerance, or store money as whole cents.</p><h4>single precision floating point</h4><p><strong>Single precision</strong> uses 32 bits (4 bytes) for a real number: 1 sign bit, 8 bits for the exponent (the scale) and 23 bits for the fraction (the digits). That gives about 7 significant decimal digits. Values beyond that precision are rounded, as the next example shows.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">import struct
+
+def as_single(value):
+    """Store value as a 32-bit float and read it back."""
+    return struct.unpack("f", struct.pack("f", value))[0]
+
+print(as_single(0.1))         # 0.10000000149011612
+print(as_single(16777217))    # 16777216.0</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>0.10000000149011612
+16777216.0</code></pre></div><p>The first line shows that 0.1 cannot be stored exactly. The second shows that after 16 777 216 (2<sup>24</sup>) single precision can no longer represent every whole number, so 16 777 217 is stored as 16 777 216. Double precision (64 bits) is the default real type in Python and gives about 15 to 16 digits.</p><h4>date and time</h4><p>A <strong>date and time</strong> type stores a moment as one number, so dates can be sorted and subtracted. NESA specifies that it is always stored as 32 bits (4 bytes) and displayed in whatever format the program chooses, such as <code>DD/MM/YYYY</code>. A 32-bit count of seconds from 1 January 1970 runs out in January 2038, which is the Year 2038 problem.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">from datetime import date
+
+enrolled = date(2026, 3, 14)
+print(enrolled.strftime("%d/%m/%Y"))    # 14/03/2026
+deadline = date(2026, 10, 12)
+print((deadline - enrolled).days)           # 212  days between the two dates</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>14/03/2026
+212</code></pre></div><p>Storing a date as text such as <code>"14/03/2026"</code> would sort in the wrong order and make date arithmetic hard, which is why a real date type is used.</p><div class="table-wrap"><table><thead><tr><th>Data</th><th>Best type</th><th>Reason</th></tr></thead><tbody><tr><td>Student ID such as 10482</td><td>Integer, or string if leading zeros matter</td><td>Whole number; you never do arithmetic on it</td></tr><tr><td>Price in a canteen</td><td>Integer number of cents</td><td>Avoids floating point rounding</td></tr><tr><td>Temperature from a sensor</td><td>Real (single precision is often enough)</td><td>Has a fractional part; a few digits are enough</td></tr><tr><td>Is the user logged in?</td><td>Boolean</td><td>Only two states</td></tr><tr><td>Enrolment date</td><td>Date and time</td><td>Sorting and calculating differences</td></tr><tr><td>First initial</td><td>Char (string of length 1)</td><td>A single character</td></tr></tbody></table></div><div class="callout assessor"><strong>Exam tip: &ldquo;Investigate&rdquo; data types</strong> When asked to choose or justify a data type, name the type <em>and</em> give a reason tied to what is stored: &ldquo;string, because a phone number has a leading zero and is never used in a calculation.&rdquo; A one-word answer earns few marks. Watch for questions that ask for the storage size: single precision is 32 bits (4 bytes) and a date and time is 32 bits, as in NESA&rsquo;s data dictionary example.</div>
+
         </section>
 
         <hr class="divider" />
@@ -1129,70 +1625,44 @@ print(int(<span class="str">"1010"</span>, 2)) <span class="cm"># 10</span></cod
           <p class="outcome-subtitle">🎯 <em>(SE-11-03, SE-11-04)</em></p>
           <p class="syllabus-concept">📌 <em><strong>Create</strong> data dictionaries as a tool to describe data and data types, structure data, and record relationships</em></p>
 
-          <p>A <strong>data dictionary</strong> is a table that describes every piece of data in a system before you write any code. It records each field's name, data type, size, description and validation rules, and how fields relate to each other. Everyone on the team then works from the same definitions.</p>
+          <p>A <strong>data dictionary</strong> is a table that gives a comprehensive description of each variable stored or referred to in a system, before any code is written. NESA&rsquo;s Course Specifications list what it commonly includes: the variable name, data type, format for display, size in bytes, size for display, the purpose of the variable, a relevant example and any validation rules. Everyone on the team then works from the same definitions.</p>
 
           <figure class="figure">
           <figcaption class="figure-head">
             <p class="figure-kicker"><span class="figure-kind">Table</span></p>
             <h4 class="figure-title">Data dictionary: a student management system</h4>
-            <p class="figure-lead">Every field is described before any code is written.</p>
+            <p class="figure-lead">Every variable is described before any code is written, using the columns in NESA&rsquo;s Course Specifications.</p>
           </figcaption>
           <div class="figure-canvas">
-            <div class="code-block">
-              <table class="decision-table">
-                <tr>
-                  <th>Field Name</th>
-                  <th>Data Type</th>
-                  <th>Size</th>
-                  <th>Description</th>
-                  <th>Validation Rules</th>
-                </tr>
-                <tr>
-                  <td><strong>Student_ID</strong></td>
-                  <td>Integer</td>
-                  <td>5 digits</td>
-                  <td>Unique identifier for each student</td>
-                  <td>1000-99999, Cannot be NULL</td>
-                </tr>
-                <tr>
-                  <td><strong>First_Name</strong></td>
-                  <td>String</td>
-                  <td>Max 50 chars</td>
-                  <td>Student's first name</td>
-                  <td>Letters only, Cannot be NULL</td>
-                </tr>
-                <tr>
-                  <td><strong>Email</strong></td>
-                  <td>String</td>
-                  <td>Max 100 chars</td>
-                  <td>Student email address</td>
-                  <td>Must match email format (xxx@xxx.com)</td>
-                </tr>
-                <tr>
-                  <td><strong>Grade_Level</strong></td>
-                  <td>Integer</td>
-                  <td>2 digits</td>
-                  <td>Current year level (11 or 12)</td>
-                  <td>Must be 11 or 12</td>
-                </tr>
-                <tr>
-                  <td><strong>Enrollment_Date</strong></td>
-                  <td>Date</td>
-                  <td>YYYY-MM-DD</td>
-                  <td>When student enrolled</td>
-                  <td>Cannot be in future, after 2008</td>
-                </tr>
-              </table>
-            </div>
+<div class="table-wrap"><table><thead><tr><th>Variable</th><th>Data type</th><th>Format for display</th><th>Size in bytes</th><th>Size for display</th><th>Description</th><th>Example</th><th>Validation</th></tr></thead><tbody><tr><td><strong>StudentId</strong></td><td>Integer</td><td>NNNNN</td><td>4</td><td>5</td><td>Primary key; identifies a student</td><td>10482</td><td>10000 to 99999; unique</td></tr><tr><td><strong>FirstName</strong></td><td>String</td><td>Xxxx&hellip;</td><td>20</td><td>20</td><td>Student&rsquo;s given name</td><td>Priya</td><td>Not empty; letters only; first letter a capital</td></tr><tr><td><strong>YearLevel</strong></td><td>Integer</td><td>NN</td><td>1</td><td>2</td><td>Current year of school</td><td>11</td><td>Must be 11 or 12</td></tr><tr><td><strong>EnrolDate</strong></td><td>Date and Time</td><td>DD/MM/YYYY</td><td>4</td><td>10</td><td>Date the student enrolled</td><td>05/02/2025</td><td>Valid date, not in the future</td></tr><tr><td><strong>FeesOwing</strong></td><td>Floating Point</td><td>$NNN.NN</td><td>4</td><td>7</td><td>Fees still to be paid</td><td>$45.50</td><td>Decimal from 0 to 999.99</td></tr><tr><td><strong>HasConsent</strong></td><td>Boolean</td><td>X</td><td>1 bit</td><td>1</td><td>Photo permission</td><td>Y</td><td>Y or N</td></tr><tr><td><strong>Subjects</strong></td><td>Array (string)</td><td></td><td>20 &times; subjects</td><td>N/A</td><td>Subjects studied</td><td>Software Engineering</td><td>From a drop-down list</td></tr></tbody></table></div>
           </div>
           <div class="figure-notes">
-            <div><h5>What to notice</h5><ul><li>Each row gives the field's name, data type, size, purpose and validation rules.</li><li>Validation rules become the checks your code performs on input.</li></ul></div>
-            <p class="figure-try"><strong>Try this</strong>Write a data dictionary for a library book: ISBN, title, author, copies available and last borrowed date.</p>
+            <div><h5>What to notice</h5><ul><li>Each row describes one variable across eight columns: name, type, display format, storage size, display size, purpose, example and validation.</li><li>Size in bytes is what is stored; size for display is the number of characters shown, including any decimal point or dollar sign.</li><li>Validation rules become the checks your code performs on input.</li></ul></div>
+            <p class="figure-try"><strong>Try this</strong>Write a data dictionary for a library book: ISBN, title, author, copies available and last borrowed date. Include all eight columns.</p>
           </div>
         </figure>
 
           <h3>Recording relationships</h3>
-          <p>When data is split across tables, the dictionary also records how they link. For example, <code>Enrolment.Student_ID</code> must match an existing <code>Student.Student_ID</code>, so every enrolment belongs to a real student.</p>
+          <p>When data is split across tables, the dictionary also records how they link. For example, <code>Enrolment.StudentId</code> must match an existing <code>Student.StudentId</code>, so every enrolment belongs to a real student. The <strong>primary key</strong> (<code>Student.StudentId</code>) uniquely identifies each row; the matching column in the other table is a <strong>foreign key</strong>. One student can have many enrolments, so this is a one-to-many relationship. Note the key and the link in the Description or Validation column.</p>
+
+<h3>Describing data and data types</h3><p>Each column answers a different question a programmer will ask when writing or testing code:</p><div class="table-wrap"><table><thead><tr><th>Column</th><th>Question it answers</th><th>Tip for writing it</th></tr></thead><tbody><tr><td>Variable</td><td>What is it called in the code?</td><td>Use one consistent style, such as <code>StudentId</code>, and the same name in the program</td></tr><tr><td>Data type</td><td>What kind of value is it?</td><td>Choose from the standard types: string, integer, floating point, Boolean, date and time</td></tr><tr><td>Format for display</td><td>How does it look on screen?</td><td>Use <code>N</code> for a digit and <code>X</code> for a letter, such as <code>XXNNN</code></td></tr><tr><td>Size in bytes</td><td>How much storage does it need?</td><td>Integer 4, single precision 4, date and time 4, Boolean 1 bit</td></tr><tr><td>Size for display</td><td>How many characters are shown?</td><td>Count decimal points, currency symbols and slashes as well</td></tr><tr><td>Description</td><td>What is it for?</td><td>State the purpose in the user&rsquo;s terms; note if it is a key</td></tr><tr><td>Example</td><td>What does a real value look like?</td><td>Use a realistic value that passes validation</td></tr><tr><td>Validation</td><td>What values are allowed?</td><td>State a testable rule: a range, a format, a list, unique, not empty</td></tr></tbody></table></div><h3>Structuring data</h3><p>A data dictionary also records how variables are grouped. The variables above form one <strong>record</strong>: a student. Several students form an <strong>array of records</strong>. The dictionary can list the record once, then note that the system stores an array of them. In Python:</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">students = [
+    {"StudentId": 10482, "FirstName": "Priya", "YearLevel": 11},
+    {"StudentId": 10517, "FirstName": "Marcus", "YearLevel": 12},
+]
+for student in students:
+    print(student["StudentId"], student["FirstName"])</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>10482 Priya
+10517 Marcus</code></pre></div><h3>Turning validation rules into code</h3><p>Every validation entry in the dictionary should become a check in the program, and a test case. Here are two rules from the table:</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def valid_year_level(value):
+    """YearLevel: integer, must be 11 or 12."""
+    return isinstance(value, int) and value in (11, 12)
+
+def valid_student_id(value, existing_ids):
+    """StudentId: whole number 10000 to 99999, unique."""
+    return isinstance(value, int) and 10000 &lt;= value &lt;= 99999 and value not in existing_ids
+
+print(valid_year_level(11), valid_year_level(10), valid_year_level("11"))
+print(valid_student_id(10482, [10517]), valid_student_id(10517, [10517]), valid_student_id(9999, []))</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>True False False
+True False False</code></pre></div><h3>Worked example: creating a data dictionary</h3><p>Follow these steps for any system. For the canteen order calculator: (1) list every value the algorithm needs from the requirements; (2) name each in one style; (3) choose a data type; (4) decide the display format and sizes; (5) write a description and a realistic example; (6) add a validation rule you can test.</p><div class="table-wrap"><table><thead><tr><th>Variable</th><th>Data type</th><th>Format for display</th><th>Size in bytes</th><th>Size for display</th><th>Description</th><th>Example</th><th>Validation</th></tr></thead><tbody><tr><td><strong>PriceCents</strong></td><td>Integer</td><td>NNNN</td><td>4</td><td>4</td><td>Price of one item in cents</td><td>450</td><td>Whole number 1 to 9999</td></tr><tr><td><strong>Quantity</strong></td><td>Integer</td><td>NN</td><td>2</td><td>2</td><td>How many of that item</td><td>6</td><td>Whole number 1 to 99</td></tr><tr><td><strong>ItemCount</strong></td><td>Integer</td><td>NNN</td><td>4</td><td>3</td><td>Running count of items in the order</td><td>10</td><td>Whole number 0 or more</td></tr><tr><td><strong>OrderTotal</strong></td><td>Integer</td><td>$NNN.NN</td><td>4</td><td>7</td><td>Order total in cents, shown in dollars</td><td>$35.10</td><td>Whole number 0 or more</td></tr></tbody></table></div><div class="callout assessor"><strong>Exam tip: &ldquo;Create&rdquo;</strong> A <em>create</em> question on data dictionaries expects a table with the columns NESA lists, and realistic rows for the scenario. Give every variable a sensible data type, a size in bytes and a size for display (they are different), a real example, and a validation rule that can be tested. Marks are lost for missing columns, an example that breaks its own rule, and storing a phone number or postcode as an integer.</div>
+
         </section>
 
         <hr class="divider" />
@@ -1256,6 +1726,52 @@ student = {
             </ul>
             <p class="video-box-note">Shows how data is organised using <strong>arrays</strong>, <strong>stacks</strong>, <strong>queues</strong>, and <strong>trees</strong> — and why choosing the right structure matters.</p>
           </div>
+
+<h3>Using each structure: worked examples</h3><h4>Arrays</h4><p>An array is read by position. Positions start at 0. A two-dimensional array needs a row and a column. (Python lists are more flexible than the fixed-size arrays of other languages, but are used the same way.)</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">scores = [45, 67, 89]
+print(scores[0], scores[2], len(scores))     # first, last, how many
+
+board = [[1, 2, 3],
+         [4, 5, 6],
+         [7, 8, 9]]
+print(board[1][2])                           # row 1, column 2
+for row in board:
+    print(row)</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>45 89 3
+6
+[1, 2, 3]
+[4, 5, 6]
+[7, 8, 9]</code></pre></div><h4>Records</h4><p>A record groups fields of different types about one thing. A collection of records is a list of them.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">student = {"name": "Alice", "id": 12345, "gpa": 3.95}
+print(student["name"], student["id"])
+student["gpa"] = 4.0
+print(student)</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Alice 12345
+{'name': 'Alice', 'id': 12345, 'gpa': 4.0}</code></pre></div><h4>Trees</h4><p>A tree is naturally processed by a function that handles one node, then calls itself on each child. This prints a folder hierarchy with indentation for depth:</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">folders = {"Documents": {"Reports": {}, "Photos": {"2026": {}}}, "Music": {}}
+
+def show(tree, depth=0):
+    for name, children in tree.items():
+        print("    " * depth + name)
+        show(children, depth + 1)
+
+show(folders)</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Documents
+    Reports
+    Photos
+        2026
+Music</code></pre></div><h4>Sequential files</h4><p>A sequential file is written and read from the start, one record at a time. To find one record you scan from the top until you reach it.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">with open("scores.txt", "w") as file:          # write mode replaces the file
+    for name, mark in [("Ava", 72), ("Ben", 85), ("Cai", 64)]:
+        file.write(f"{name},{mark}\n")
+
+with open("scores.txt") as file:               # read it back in order
+    for line in file:
+        name, mark = line.strip().split(",")
+        print(name, mark)</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Ava 72
+Ben 85
+Cai 64</code></pre></div><p>The file <code>scores.txt</code> now holds three lines, <code>Ava,72</code>, <code>Ben,85</code> and <code>Cai,64</code>. Using <code>with</code> closes the file automatically, even if an error occurs.</p><h4>Stacks and hash tables</h4><p>A stack only lets you add and remove at the top. A hash table uses a <strong>hash function</strong> to turn a key into a slot number, so it can jump straight to a value. Two keys can land in the same slot; that is a <strong>collision</strong>, and the table needs a plan for it (implemented in the next part). A toy hash function that adds the character codes and takes the remainder after dividing by 7 shows this:</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def toy_hash(key, size=7):
+    return sum(ord(ch) for ch in key) % size
+
+for key in ["Ava", "Ben", "Cai", "Dev"]:
+    print(key, "goes to slot", toy_hash(key))</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Ava goes to slot 0
+Ben goes to slot 4
+Cai goes to slot 3
+Dev goes to slot 0</code></pre></div><p>&ldquo;Ava&rdquo; and &ldquo;Dev&rdquo; collide in slot 0.</p><h3>Choosing a structure</h3><div class="table-wrap"><table><thead><tr><th>Structure</th><th>Access</th><th>Good for</th><th>Weakness</th></tr></thead><tbody><tr><td>Array</td><td>By position (index)</td><td>Lists and grids of the same type</td><td>Adding or removing in the middle is awkward</td></tr><tr><td>Record</td><td>By field name</td><td>One thing with mixed-type fields</td><td>One record only; combine records in an array</td></tr><tr><td>Tree</td><td>From the root down</td><td>Hierarchies such as folders, and fast searching</td><td>More complex to build and traverse</td></tr><tr><td>Sequential file</td><td>In order, start to end</td><td>Storing data after the program ends</td><td>Finding one record means scanning</td></tr><tr><td>Stack</td><td>Top only (last in, first out)</td><td>Undo, back button, function calls</td><td>No access to items below the top</td></tr><tr><td>Hash table</td><td>By key</td><td>Fast lookup by ID or name</td><td>Unordered; collisions must be handled</td></tr></tbody></table></div><div class="callout assessor"><strong>Exam tip: &ldquo;Use&rdquo; data structures</strong> Questions often give a scenario and ask which structure suits it, with a reason. Name the structure, then link it to how the data is accessed: &ldquo;a stack, because undo must remove the most recent action first (last in, first out).&rdquo; For code questions, check the index: an array of five items has positions 0 to 4, and index 5 causes a runtime error.</div>
+
         </section>
 
         <div class="quiz" data-quiz="pf-3"></div>
@@ -1322,7 +1838,7 @@ print(results)   # [80, 75, 90, 95] — list WAS modified</code></pre>
           </div>
 
           <div class="callout info">
-            <strong>Python Mutability Rule</strong> Immutable types (int, float, str, tuple) always behave like pass-by-value — a function cannot change the caller's variable. Mutable types (list, dict, set) behave like pass-by-reference — modifications inside a function affect the original object.
+            <strong>Python Mutability Rule</strong> Python passes a reference to the object. Immutable types (int, float, str, tuple) cannot be changed in place, so a function cannot change the caller's variable and the result behaves like pass-by-value. Mutable types (list, dict, set) can be changed in place, so changes inside a function are seen by the caller. <em>Reassigning</em> the parameter (<code>scores = []</code>) only re-points the local name and never changes the caller's list.
           </div>
 
 <h3>Variable Scope</h3>
@@ -1360,6 +1876,77 @@ print(counter)   # 1</code></pre>
           <div class="callout warning">
             <strong>Best Practice</strong> Prefer returning values over using <code>global</code> variables. Global state makes programs harder to debug and test. If multiple functions need the same data, pass it as a parameter.
           </div>
+
+<h3>Worked example: converting NESA pseudocode to Python</h3><p>Converting is a line-by-line translation, once you know the equivalent of each NESA structure in Python.</p><div class="table-wrap"><table><thead><tr><th>NESA pseudocode</th><th>Python</th><th>Note</th></tr></thead><tbody><tr><td><code>total ← total + price</code></td><td><code>total = total + price</code></td><td>Assignment uses <code>=</code> in Python</td></tr><tr><td><code>IF … THEN … ELSE … ENDIF</code></td><td><code>if … : … else: …</code></td><td>Indentation replaces <code>ENDIF</code></td></tr><tr><td>Nested IF (an IF inside each ELSE)</td><td><code>if … : … elif … : … else: …</code></td><td><code>elif</code> is the flattened form of the nested structure</td></tr><tr><td><code>CASEWHERE … OTHERWISE … END CASE</code></td><td><code>match … : case … : case _ :</code></td><td><code>match</code> needs Python 3.10 or later; <code>if/elif</code> also works</td></tr><tr><td><code>WHILE condition</code> … <code>ENDWHILE</code></td><td><code>while condition:</code></td><td>Pre-test loop</td></tr><tr><td><code>REPEAT … UNTIL condition</code></td><td><code>while True: … if condition: break</code></td><td>Python has no post-test loop, so the test is at the end</td></tr><tr><td><code>FOR i = 1 TO 5</code> … <code>NEXT i</code></td><td><code>for i in range(1, 6):</code></td><td><code>range</code> stops <em>before</em> its second value</td></tr><tr><td><code>BEGIN name (a, b)</code> … <code>RETURN x</code></td><td><code>def name(a, b): … return x</code></td><td>Parameters are passed in the brackets</td></tr></tbody></table></div><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">menu_choice = 2
+match menu_choice:                  # CASEWHERE menuChoice evaluates to
+    case 1:
+        print("New game")
+    case 2:
+        print("Load game")
+    case 3:
+        print("High scores")
+    case _:                         # OTHERWISE
+        print("Invalid choice")</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Load game</code></pre></div><h3>Worked example: a marks report using all five skills</h3><p>This short program converts an algorithm into code and uses control structures, a data structure (a list), a standard module (<code>statistics</code>) and subprograms with parameters. The algorithm is written first.</p><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>BEGIN MarksReport
+    marks ← [72, 85, 64, 90, 58]
+    OUTPUT "Average: ", Average (marks)
+    OUTPUT "Highest: ", Highest (marks)
+    OUTPUT "Grade of highest: ", GradeFor (Highest (marks))
+END MarksReport
+
+BEGIN GradeFor (mark)
+    IF mark &gt;= 85 THEN
+        RETURN "High Distinction"
+    ELSE
+        IF mark &gt;= 75 THEN
+            RETURN "Distinction"
+        ELSE
+            IF mark &gt;= 50 THEN
+                RETURN "Pass"
+            ELSE
+                RETURN "Fail"
+            ENDIF
+        ENDIF
+    ENDIF
+END GradeFor (mark)</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">import statistics                   # standard module: tested code we do not have to write
+
+def average(marks):
+    return statistics.mean(marks)
+
+def highest(marks):
+    best = marks[0]
+    for mark in marks:              # iteration over a list (data structure)
+        if mark &gt; best:             # selection
+            best = mark
+    return best
+
+def grade_for(mark):
+    if mark &gt;= 85:
+        return "High Distinction"
+    elif mark &gt;= 75:
+        return "Distinction"
+    elif mark &gt;= 50:
+        return "Pass"
+    else:
+        return "Fail"
+
+marks = [72, 85, 64, 90, 58]
+print("Average:", round(average(marks), 1))
+print("Highest:", highest(marks))
+print("Grade of highest:", grade_for(highest(marks)))</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Average: 73.8
+Highest: 90
+Grade of highest: High Distinction</code></pre></div><p>Standard modules save time and are already tested. Three you will use often: <code>math</code> (for example <code>math.sqrt(144)</code> gives <code>12.0</code>), <code>statistics</code> (<code>mean</code>, <code>median</code>) and <code>datetime</code> (dates and times). Import a module once at the top, then call its functions.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def reset_scores(scores):
+    scores = []            # re-points the local name only
+
+def clear_scores(scores):
+    scores.clear()         # changes the caller's list in place
+
+results = [80, 75, 90]
+reset_scores(results)
+print(results)             # [80, 75, 90]  unchanged
+clear_scores(results)
+print(results)             # []            changed</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>[80, 75, 90]
+[]</code></pre></div><div class="callout assessor"><strong>Exam tip: &ldquo;Apply&rdquo; and code questions</strong> When you convert an algorithm, keep the same names and structure so a marker can match each line. Check that loops run the right number of times (<code>range(1, 6)</code> gives 1 to 5), that every branch of a nested decision returns or assigns a value, and that arguments are passed in the order the parameters expect. Where a question shows a subroutine that changes a list, state whether the caller sees the change and why.</div>
+
         </section>
 
         <hr class="divider" />
@@ -1402,6 +1989,83 @@ print(undo())                <span class="cm"># type B</span></code></pre>
           </div>
 
           <div class="callout info"><strong>Choosing a structure</strong> Use a hash table when you look items up by a key (a student ID), a stack when the most recent item matters most (undo), and a 2D array when the data is naturally a grid (a seating plan).</div>
+
+<h3>Single and multidimensional arrays</h3><p>Create a grid with a loop, not by repeating a row: <code>[["free"] * 4] * 3</code> makes three references to the <em>same</em> row, so changing one seat changes them all.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">plan = [["free"] * 4 for _ in range(3)]    # 3 rows, 4 seats, each row separate
+plan[1][2] = "Ava"                          # row 1, seat 2
+for row in plan:
+    print(row)</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>['free', 'free', 'free', 'free']
+['free', 'free', 'Ava', 'free']
+['free', 'free', 'free', 'free']</code></pre></div><h3>Lists</h3><p>A list grows and shrinks, which makes it the usual choice when the number of items is not known in advance.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">queue = ["Priya", "Ben"]
+queue.append("Cai")        # add to the end
+queue.insert(0, "Ava")     # add at the front
+queue.remove("Ben")        # remove by value
+print(queue, len(queue))
+queue.sort()
+print(queue)</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>['Ava', 'Priya', 'Cai'] 3
+['Ava', 'Cai', 'Priya']</code></pre></div><h3>Trees</h3><p>A binary search tree keeps smaller values to the left and larger to the right, so an in-order walk visits values in sorted order.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+def insert(node, value):
+    if node is None:
+        return Node(value)                     # base case: an empty spot
+    if value &lt; node.value:
+        node.left = insert(node.left, value)
+    else:
+        node.right = insert(node.right, value)
+    return node
+
+def in_order(node):
+    if node is not None:
+        in_order(node.left)
+        print(node.value, end=" ")
+        in_order(node.right)
+
+root = None
+for name in ["Kim", "Ben", "Zoe", "Ava", "Leo"]:
+    root = insert(root, name)
+in_order(root)</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>Ava Ben Kim Leo Zoe</code></pre></div><h3>Stacks</h3><p>The undo example above pushes and pops. Stacks also check that brackets match: push each opening bracket and pop when a closing one appears.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def balanced(text):
+    stack = []
+    pairs = {")": "(", "]": "["}
+    for ch in text:
+        if ch in "([":
+            stack.append(ch)                              # push
+        elif ch in ")]":
+            if not stack or stack.pop() != pairs[ch]:     # pop and compare
+                return False
+    return not stack                                      # nothing left open
+
+print(balanced("(a[1] + 2)"), balanced("(a[1)]"))</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>True False</code></pre></div><h3>Hash tables</h3><p>Python&rsquo;s <code>dict</code> is a hash table. Building a small one shows what happens inside: a hash function picks a slot, and each slot holds a short list so that colliding keys can share it.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">class HashTable:
+    def __init__(self, size=7):
+        self.slots = [[] for _ in range(size)]
+
+    def _index(self, key):
+        return sum(ord(c) for c in key) % len(self.slots)
+
+    def put(self, key, value):
+        bucket = self.slots[self._index(key)]
+        for pair in bucket:
+            if pair[0] == key:             # key already stored: replace
+                pair[1] = value
+                return
+        bucket.append([key, value])
+
+    def get(self, key):
+        for k, v in self.slots[self._index(key)]:
+            if k == key:
+                return v
+        return None
+
+table = HashTable()
+table.put("Ava", 72)
+table.put("Dev", 55)                        # collides with Ava in slot 0
+table.put("Ben", 85)
+print(table.get("Dev"), table.get("Ava"), table.get("Zed"))
+print(table.slots[0])</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>55 72 None
+[['Ava', 72], ['Dev', 55]]</code></pre></div><div class="callout assessor"><strong>Exam tip: &ldquo;Implement&rdquo;</strong> An <em>implement</em> question wants working code or precise pseudocode for a structure, not only its definition. Show how items are added and retrieved (<code>append</code>/<code>pop</code> for a stack, index for an array, key for a hash table) and what happens at the edges: popping an empty stack, an index past the end, a missing key. State which structure you chose and why.</div>
+
         </section>
 
         <hr class="divider" />
@@ -1451,6 +2115,22 @@ print(undo())                <span class="cm"># type B</span></code></pre>
           </div>
 
           <div class="callout success"><strong>HSC writing sample</strong> <em>"Waterfall suits the school's exam-timetable system because its requirements are fixed by policy and must be signed off before development. Agile suits the student wellbeing app, where features depend on feedback, because each two-week sprint delivers a version students can test and comment on."</em></div>
+
+<h3>How each model runs</h3><p><strong>Waterfall</strong> runs the development steps as a sequence of phases, each finished and signed off before the next begins: requirements, design, development, testing, installation, maintenance. It relies on getting the requirements right at the start, because going back is costly. <strong>Agile</strong> repeats the steps in short cycles. In a common form, work is taken from a prioritised <strong>backlog</strong> into a fixed-length <strong>sprint</strong> (often one to four weeks), the team meets briefly each day, and at the end shows working software to the client, reviews what happened and plans the next sprint. The Agile Manifesto values working software, customer collaboration and responding to change over comprehensive documentation, contracts and following a plan, though it still values the items on the right.</p><figure class="figure">
+          <figcaption class="figure-head">
+            <p class="figure-kicker"><span class="figure-kind">Animated diagram</span></p>
+            <h4 class="figure-title">Waterfall and Agile: when the client gets working software</h4>
+            <p class="figure-lead">The same project run both ways. Choose a tab, then step through the twelve weeks.</p>
+          </figcaption>
+          <div class="figure-canvas figure-canvas--anim">
+            <div class="anim" data-anim="waterfall-agile"></div>
+          </div>
+          <div class="figure-notes">
+            <div><h5>What to notice</h5><ul><li>Waterfall delivers everything at the end; the client sees nothing usable until then.</li><li>Agile delivers a usable part every sprint, so the client can react early.</li></ul><p class="figure-controls">Choose Waterfall or Agile with the tabs. Step with ◀ and ▶ (or the arrow keys), play or pause with Space.</p></div>
+            <p class="figure-try"><strong>Try this</strong>The client changes a requirement in week 5. Which model absorbs that more easily, and why?</p>
+          </div>
+        </figure><h3>The canteen program under each model</h3><div class="table-wrap"><table><thead><tr><th>Question</th><th>Waterfall</th><th>Agile</th></tr></thead><tbody><tr><td>How is the work organised?</td><td>Requirements for the whole program written and signed off; then design; then code; then test</td><td>Sprint 1: enter items and totals. Sprint 2: discount. Sprint 3: input checks and receipts</td></tr><tr><td>When does the canteen manager first see it?</td><td>When testing is finished</td><td>At the end of sprint 1, working but basic</td></tr><tr><td>The manager asks for a teacher discount</td><td>A change request: revise the requirements and design, then rework code and tests</td><td>Add it to the backlog and choose which sprint it goes in</td></tr><tr><td>Main risk</td><td>The finished program does not match what is now needed</td><td>Without care, features keep growing (scope creep) and documentation is thin</td></tr></tbody></table></div><h3>Choosing between them</h3><ul><li><strong>Waterfall</strong> suits projects with fixed, well-understood requirements and heavy documentation or approval needs, such as safety-critical control software or a system that must meet a legal specification.</li><li><strong>Agile</strong> suits projects where requirements will change or be discovered as the team learns, and where a client can be involved often, such as a new app.</li><li>Many teams mix them: fixed planning up front and iterative delivery inside it. You meet this hybrid, called WAgile, in Year 12.</li></ul><div class="callout assessor"><strong>Exam tip: &ldquo;Compare&rdquo;</strong> A <em>compare</em> answer covers similarities <em>and</em> differences, on the same points for both models. Use a structured set of criteria (planning, client involvement, response to change, when working software appears, documentation) and give a scenario-based judgement. A frequent mistake is describing each model in a separate paragraph without ever linking them with words such as &ldquo;whereas&rdquo;.</div>
+
         </section>
 
         <hr class="divider" />
@@ -1503,6 +2183,49 @@ print(undo())                <span class="cm"># type B</span></code></pre>
             3. Use constants for magic numbers — replace <code>score * 0.9</code> with <code>score * PASS_THRESHOLD</code>.<br>
             4. One variable, one purpose — don't reuse a variable for different things in the same function.
           </div>
+
+<h3>Applying the four criteria</h3><p>To evaluate a solution, look for evidence against each criterion. The two functions below do the same job. Judge them.</p><div class="info-grid"><div class="info-card"><h4>Version A</h4><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def f(a, b):
+    return a * b * 0.1</code></pre></div></div><div class="info-card"><h4>Version B</h4><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">GST_RATE = 0.10
+
+def gst_amount(price, quantity):
+    """Return the GST in dollars for one line item."""
+    return price * quantity * GST_RATE</code></pre></div></div></div><div class="table-wrap"><table><thead><tr><th>Criterion</th><th>Version A</th><th>Version B</th></tr></thead><tbody><tr><td>Functionality</td><td>Correct output for GST, but no way to tell that from the code</td><td>Same output, and the purpose is stated</td></tr><tr><td>Performance</td><td>One multiplication chain: fast</td><td>Same cost: fast</td></tr><tr><td>Readability</td><td><code>f</code>, <code>a</code>, <code>b</code> and a bare <code>0.1</code> hide the meaning</td><td>Descriptive names and a named constant explain themselves</td></tr><tr><td>Quality of documentation</td><td>None</td><td>A docstring states the purpose and units</td></tr></tbody></table></div><p>Both are equally correct and fast, but B is far easier to check, change and hand over. That is what evaluating adds beyond testing.</p><h3>Testing methods you should know</h3><p>NESA&rsquo;s Course Specifications list six methods for testing a software solution:</p><div class="table-wrap"><table><thead><tr><th>Method</th><th>What it is</th><th>Example</th></tr></thead><tbody><tr><td>Functional testing</td><td>Checking each function of the software against the specification</td><td>Entering 10 items and confirming the 10% discount is applied</td></tr><tr><td>Acceptance testing</td><td>The client or users confirm the software meets their needs before accepting it</td><td>The canteen manager works through a real lunch order</td></tr><tr><td>Live data</td><td>Testing with real data from actual operation</td><td>Using last week&rsquo;s real orders</td></tr><tr><td>Simulated data</td><td>Testing with made-up data that imitates real data</td><td>Generating 500 pretend orders, including extreme values</td></tr><tr><td>Beta testing</td><td>Release to a limited group of real users outside the development team</td><td>Two canteens use version 0.9 for a week and report problems</td></tr><tr><td>Volume testing</td><td>Testing with a large amount of data or many users</td><td>Feeding in 100 000 orders to see if it slows or fails</td></tr></tbody></table></div><h3>Evaluating performance without a stopwatch</h3><p>Counting the steps an algorithm takes is a fair way to compare designs, because it does not depend on the computer. Count comparisons for linear and binary search on a sorted list of 1000 numbers, looking for the last one:</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def linear_comparisons(items, target):
+    count = 0
+    for item in items:
+        count += 1
+        if item == target:
+            break
+    return count
+
+def binary_comparisons(items, target):
+    low, high, count = 0, len(items) - 1, 0
+    while low &lt;= high:
+        mid = (low + high) // 2
+        count += 1
+        if items[mid] == target:
+            break
+        elif items[mid] &lt; target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return count
+
+data = list(range(1, 1001))
+print(linear_comparisons(data, 1000), binary_comparisons(data, 1000))</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>1000 10</code></pre></div><h3>Documentation that helps</h3><p>Good documentation answers questions the code cannot. A short <strong>docstring</strong> states what a function does and what it expects. <strong>Comments</strong> explain <em>why</em>, not <em>what</em>: <code># cents, to avoid rounding errors</code> is useful; <code># add 1 to i</code> is noise. A README tells a new user how to install and run the program. Documentation is judged on being accurate, current and useful to its reader.</p><h3>Automated tests</h3><p>A test function with <code>assert</code> statements re-checks every case each time the code changes. An <code>assert</code> that is false stops the program with an <code>AssertionError</code>.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">DISCOUNT_ITEMS = 10
+
+def apply_discount(total, items):
+    if items &gt;= DISCOUNT_ITEMS:
+        return total - total * 10 // 100
+    return total
+
+def test_apply_discount():
+    assert apply_discount(4500, 9) == 4500     # just below the boundary
+    assert apply_discount(4500, 10) == 4050    # on the boundary
+    assert apply_discount(0, 0) == 0           # empty order
+
+test_apply_discount()
+print("All tests passed")</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>All tests passed</code></pre></div><div class="callout assessor"><strong>Exam tip: &ldquo;Test and evaluate&rdquo;</strong> This verb has two parts and needs both. <em>Test</em>: name the test data, the expected result and the actual result. <em>Evaluate</em>: use all four criteria (functionality, performance, readability, quality of documentation) with a piece of evidence for each and finish with a judgement, such as &ldquo;the solution is correct but its unclear names make it costly to maintain.&rdquo; Answers that only say &ldquo;it works&rdquo; do not evaluate.</div>
+
         </section>
 
         <hr class="divider" />
@@ -1537,6 +2260,39 @@ print(undo())                <span class="cm"># type B</span></code></pre>
 print(process_input(100))   <span class="cm"># Boundary: Valid</span>
 print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal: Handled</span></code></pre>
           </div>
+
+<h4>Debugging output statements</h4><p>The simplest tool is a temporary statement that prints a value at a chosen point. It works anywhere, including where no debugger is available, but you must remove the statements afterwards and it can flood the screen inside a loop. Label each output so you can find it:</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def apply_discount(total, items):
+    print(f"DEBUG apply_discount: total={total!r}, items={items!r}")
+    if items &gt;= 10:
+        return total - total * 10 // 100
+    return total</code></pre></div><h4>Interfaces between functions</h4><p>The <strong>interface</strong> of a function is what it expects in (parameters) and what it gives back (return value). Many faults are not inside a function but in the hand-over between two of them: the wrong units, the wrong order of arguments, or the wrong type. To debug an interface, print or watch the values <em>as they cross the boundary</em>, before and after the call.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def format_dollars(cents):
+    return f"${cents // 100}.{cents % 100:02d}"
+
+total = 45.00                       # dollars, but the next function expects cents
+total = apply_discount(total, 10)
+print("DEBUG total after discount:", total)
+print(format_dollars(total))</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>DEBUG total after discount: 41.0
+Traceback (most recent call last):
+  ...
+ValueError: Unknown format code 'd' for object of type 'float'
+(the exact traceback lines vary between Python versions)</code></pre></div><p>The debugging output shows <code>41.0</code>, a float in dollars, arriving where whole cents are expected. The fault is in the caller, which passed dollars, not in either function.</p><h4>Debugging software in an IDE</h4><p>An integrated development environment (IDE) such as Visual Studio Code, PyCharm or Thonny includes a debugger that combines the tools above in one window: breakpoints, stepping controls, a variables panel, a watch list and a call stack. In Visual Studio Code the usual keys are <kbd>F9</kbd> to toggle a breakpoint, <kbd>F5</kbd> to run or continue, <kbd>F10</kbd> to step over a line and <kbd>F11</kbd> to step into a function. Python also ships a text debugger: writing <code>breakpoint()</code> in the code, or running <code>python -m pdb file.py</code>, starts it, where <code>n</code> runs the next line, <code>s</code> steps into a call, <code>c</code> continues and <code>p expression</code> prints a value.</p><h4>Worked example: finding a bug with a breakpoint and a watch</h4><p>This function should return the average of the marks. The expected result for <code>[80, 70, 90]</code> is <code>80.0</code>.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def average(marks):
+    total = 0
+    for i in range(1, len(marks)):
+        total += marks[i]
+    return total / len(marks)
+
+print(average([80, 70, 90]))</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>53.333333333333336</code></pre></div><p>The result is wrong but there is no error message, so this is a logic error. Put a <strong>breakpoint</strong> on the line <code>total += marks[i]</code> and add a <strong>watch</strong> on <code>i</code> and <code>total</code>. Continue to the breakpoint each time and record the watch values:</p><div class="table-wrap"><table><thead><tr><th>Hit</th><th>i</th><th>total (before the line runs)</th><th>marks[i]</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>0</td><td>70</td></tr><tr><td>2</td><td>2</td><td>70</td><td>90</td></tr><tr><td>(loop ends)</td><td></td><td>160</td><td></td></tr></tbody></table></div><p>The first value added is 70, not 80. The loop starts at <code>i = 1</code>, so <code>marks[0]</code> is never counted: 160 &divide; 3 = 53.33. The fix is <code>range(len(marks))</code>, or <code>range(0, len(marks))</code>. The same session in Python&rsquo;s text debugger, using <code>b 4</code> to set the breakpoint on that line and <code>p i, total</code> to inspect:</p><div class="code-block"><div class="code-header"><span class="code-lang">Python debugger session</span></div><pre><code>(Pdb) b 4
+(Pdb) c
+&gt; avg.py(4)average()
+-&gt; total += marks[i]
+(Pdb) p i, total
+(1, 0)
+(Pdb) c
+&gt; avg.py(4)average()
+-&gt; total += marks[i]
+(Pdb) p i, total
+(2, 70)</code></pre></div><div class="callout assessor"><strong>Exam tip: &ldquo;Use&rdquo; debugging tools</strong> Say what the tool does <em>and</em> what you would look for with it. &ldquo;A breakpoint pauses the program at line 4 so I can read the value of <code>total</code> before it changes&rdquo; earns more than &ldquo;a breakpoint stops the program.&rdquo; Match the tool to the fault: a watch for a variable that changes unexpectedly, single-line stepping to see which branch runs, debugging output where no debugger is available.</div>
+
         </section>
 
         <hr class="divider" />
@@ -1581,6 +2337,50 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
           </div>
 
           <div class="callout info"><strong>Tip</strong> Test just inside, on and just outside each boundary: 0, 1, 2 and 99, 100, 101. Off-by-one errors are among the most common bugs, and boundary values are what catch them.</div>
+
+<h3>Boundary values</h3><p><strong>Boundary values</strong> are at the edges of what is valid. For every limit, test the value <em>on</em> it, the one just <em>inside</em> and the one just <em>outside</em>. For a mark from 0 to 100 that is &minus;1, 0, 1 and 99, 100, 101. Most off-by-one errors, such as <code>&lt;</code> written instead of <code>&lt;=</code>, are only caught here. The boundaries between grade bands (49 and 50, 64 and 65, 84 and 85) need the same treatment.</p><h3>Path coverage</h3><p><strong>Path coverage</strong> means the test data makes every route through the algorithm run at least once. Count the paths in the decision structure, then choose one input for each. This function has five paths (invalid, and four grades), so it needs at least five tests.</p><div class="code-block"><div class="code-header"><span class="code-lang">Pseudocode</span></div><pre><code>BEGIN Classify (mark)
+    IF mark &lt; 0 OR mark &gt; 100 THEN
+        RETURN "Invalid"
+    ELSE
+        IF mark &gt;= 85 THEN
+            RETURN "High"
+        ELSE
+            IF mark &gt;= 65 THEN
+                RETURN "Medium"
+            ELSE
+                IF mark &gt;= 50 THEN
+                    RETURN "Pass"
+                ELSE
+                    RETURN "Fail"
+                ENDIF
+            ENDIF
+        ENDIF
+    ENDIF
+END Classify (mark)</code></pre></div><h3>Faulty and abnormal data</h3><p><strong>Abnormal data</strong> is the wrong type or is outside the range the program should accept, such as the text <code>"fifty"</code>, <code>-5</code> or <code>1000</code> for a mark. <strong>Faulty data</strong> is data that contains errors: a missing field, a corrupted value, or entries that contradict each other. A robust program rejects or reports both instead of crashing or accepting them.</p><h3>Worked example: a test table for Classify</h3><div class="table-wrap"><table><thead><tr><th>#</th><th>Purpose</th><th>Test data</th><th>Expected result</th></tr></thead><tbody><tr><td>1</td><td>Boundary: just below the range</td><td>-1</td><td>Invalid</td></tr><tr><td>2</td><td>Boundary: lowest valid mark</td><td>0</td><td>Fail</td></tr><tr><td>3</td><td>Boundary: just above lowest</td><td>1</td><td>Fail</td></tr><tr><td>4</td><td>Boundary and path: below Pass</td><td>49</td><td>Fail</td></tr><tr><td>5</td><td>Boundary and path: lowest Pass</td><td>50</td><td>Pass</td></tr><tr><td>6</td><td>Boundary: top of Pass</td><td>64</td><td>Pass</td></tr><tr><td>7</td><td>Boundary and path: lowest Medium</td><td>65</td><td>Medium</td></tr><tr><td>8</td><td>Boundary: top of Medium</td><td>84</td><td>Medium</td></tr><tr><td>9</td><td>Boundary and path: lowest High</td><td>85</td><td>High</td></tr><tr><td>10</td><td>Boundary: highest valid mark</td><td>100</td><td>High</td></tr><tr><td>11</td><td>Boundary: just above the range</td><td>101</td><td>Invalid</td></tr><tr><td>12</td><td>Abnormal: text</td><td>"fifty"</td><td>Invalid</td></tr><tr><td>13</td><td>Abnormal: no value</td><td>None</td><td>Invalid</td></tr><tr><td>14</td><td>Abnormal: not a whole number</td><td>72.5</td><td>Invalid</td></tr></tbody></table></div><p>Every one of the five paths is covered, and every boundary is tested on both sides. Running the tests in Python, with the function written to check the type first:</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">def classify(mark):
+    if isinstance(mark, bool) or not isinstance(mark, int):
+        return "Invalid"
+    if mark &lt; 0 or mark &gt; 100:
+        return "Invalid"
+    elif mark &gt;= 85:
+        return "High"
+    elif mark &gt;= 65:
+        return "Medium"
+    elif mark &gt;= 50:
+        return "Pass"
+    else:
+        return "Fail"
+
+tests = [(-1, "Invalid"), (0, "Fail"), (1, "Fail"), (49, "Fail"), (50, "Pass"),
+         (64, "Pass"), (65, "Medium"), (84, "Medium"), (85, "High"), (100, "High"),
+         (101, "Invalid"), ("fifty", "Invalid"), (None, "Invalid"), (72.5, "Invalid")]
+failed = 0
+for mark, expected in tests:
+    actual = classify(mark)
+    if actual != expected:
+        failed += 1
+        print("FAIL", repr(mark), "expected", expected, "got", actual)
+print(len(tests), "tests run,", failed, "failed")</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>14 tests run, 0 failed</code></pre></div><p>If the developer had written <code>mark &gt; 50</code> for the Pass band, test 5 would print <code>FAIL 50 expected Pass got Fail</code>, and the boundary test would have found the fault that a typical mark such as 72 never would.</p><h3>The canteen program&rsquo;s tests</h3><div class="table-wrap"><table><thead><tr><th>Test data</th><th>Type</th><th>Expected</th></tr></thead><tbody><tr><td>9 items totalling 4500 cents</td><td>Boundary (just below 10)</td><td>4500 cents: no discount</td></tr><tr><td>10 items totalling 4500 cents</td><td>Boundary (on 10)</td><td>4050 cents: 10% off</td></tr><tr><td>0 items (price 0 straight away)</td><td>Boundary (empty order)</td><td>Total $0.00</td></tr><tr><td>Price typed as <code>abc</code> or <code>-5</code></td><td>Abnormal</td><td>Message; asks again</td></tr><tr><td>A very large order (for example 100 000 items)</td><td>Volume</td><td>Correct total, no slowdown</td></tr></tbody></table></div><div class="callout assessor"><strong>Exam tip: &ldquo;Determine&rdquo; test data</strong> A <em>determine</em> question gives a specification and expects you to <em>choose</em> data, not just name categories. Give exact values and label each with its purpose (boundary, path, abnormal). For a range 1 to 100, write 0, 1, 100 and 101, and add an abnormal value such as <code>"abc"</code>. Add the expected result for each; a test without an expected result cannot pass or fail. Marks are lost for only typical values such as 50 and 75.</div>
+
         </section>
 
         <hr class="divider" />
@@ -1602,6 +2402,12 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
             <h4>Runtime Errors</h4>
             <p><strong>Definition:</strong> The program starts running but crashes during execution due to impossible operations or resource exhaustion.<br><strong>Likely Causes:</strong> Division by zero, accessing an array index that doesn't exist, null pointer dereference, stack overflow from infinite recursion, out of memory.<span class="eg"><em><code>score[index]</code> where index is 10 but the array only has 5 elements, or <code>result = 100 / denominator</code> when denominator is 0.</em></span></p>
           </div>
+
+<h3>What the computer reports</h3><p>Each type of error appears at a different time, so a different tool finds it.</p><div class="table-wrap"><table><thead><tr><th>Error type</th><th>When it appears</th><th>What you see</th><th>How to find it</th></tr></thead><tbody><tr><td>Syntax</td><td>Before the program runs (Python reports it when the file is read)</td><td>An error message with a line number and no output at all</td><td>Read the message; check the line and the one before it</td></tr><tr><td>Runtime</td><td>While the program is running, at the moment the impossible operation happens</td><td>The program stops with an error message (a traceback)</td><td>Read the last line of the traceback; check the values on that line</td></tr><tr><td>Logic</td><td>Never reported by the computer</td><td>The program runs to the end but the output is wrong</td><td>Desk check, trace table, boundary test data, breakpoint and watch</td></tr></tbody></table></div><h3>Real error messages and their causes</h3><p>The last line of a Python error message names the type of error and describes it. The wording can differ slightly between versions.</p><div class="table-wrap"><table><thead><tr><th>Code</th><th>Error message</th><th>Type</th><th>Likely cause</th></tr></thead><tbody><tr><td><code>if x &gt; 5</code></td><td><code>SyntaxError: expected &#x27;:&#x27;</code></td><td>Syntax</td><td>Missing colon at the end of the line</td></tr><tr><td><code>for i in range(10]:</code></td><td><code>SyntaxError: closing parenthesis &#x27;]&#x27; does not match opening parenthesis &#x27;(&#x27;</code></td><td>Syntax</td><td>Mismatched brackets</td></tr><tr><td><code>print(&quot;hi&quot;</code></td><td><code>SyntaxError: &#x27;(&#x27; was never closed</code></td><td>Syntax</td><td>A bracket left open</td></tr><tr><td><code>print(totl)</code></td><td><code>NameError: name &#x27;totl&#x27; is not defined</code></td><td>Runtime</td><td>A misspelt variable name, or use before assignment</td></tr><tr><td><code>100 / 0</code></td><td><code>ZeroDivisionError: division by zero</code></td><td>Runtime</td><td>A divisor that can be 0, such as an empty list&rsquo;s count</td></tr><tr><td><code>marks[5]</code> on 3 items</td><td><code>IndexError: list index out of range</code></td><td>Runtime</td><td>An index past the end, often an off-by-one</td></tr><tr><td><code>int(&quot;abc&quot;)</code></td><td><code>ValueError: invalid literal for int() with base 10: &#x27;abc&#x27;</code></td><td>Runtime</td><td>Converting text that is not a number</td></tr><tr><td><code>&quot;Total: &quot; + 5</code></td><td><code>TypeError: can only concatenate str (not &quot;int&quot;) to str</code></td><td>Runtime</td><td>Mixing types without converting</td></tr></tbody></table></div><h3>A logic error worked through</h3><p>The program below runs without complaint, yet the answer is wrong. A student wants the average of two marks.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">mark1 = 70
+mark2 = 80
+average = mark1 + mark2 / 2
+print(average)</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>110.0</code></pre></div><p>The expected answer is 75.0. Division is done before addition, so Python calculates <code>70 + (80 / 2)</code>. The cause is <strong>operator precedence</strong>; the fix is brackets: <code>(mark1 + mark2) / 2</code>. Other common causes of logic errors are off-by-one loops, the wrong comparison operator (<code>&lt;</code> for <code>&lt;=</code>), a variable not reset before a loop, and a condition that can never be true.</p><h3>Spot the error</h3><details class="pf-check"><summary>Classify each fault, then check</summary><ol><li><code>while count &lt; 10</code> with no colon.</li><li>A loop that adds prices but starts <code>total</code> at 1.</li><li><code>names[len(names)]</code> to get the last name.</li><li><code>age = input("Age: ")</code> followed by <code>age + 1</code>.</li></ol><p><strong>Answers.</strong> (1) Syntax error: missing colon. (2) Logic error: the run is fine but every total is one too high. (3) Runtime error (<code>IndexError</code>): the last index is <code>len(names) - 1</code>. (4) Runtime error (<code>TypeError</code>): <code>input</code> returns a string; convert with <code>int()</code>.</p></details><div class="callout assessor"><strong>Exam tip: &ldquo;Determine&rdquo; typical errors</strong> To <em>determine</em> an error, name its type, point to the line, and explain the cause. &ldquo;Logic error: the condition on line 6 uses &gt; instead of &gt;=, so a mark of exactly 50 is treated as a fail&rdquo; scores; &ldquo;there is a bug on line 6&rdquo; does not. Match the type to when it shows up: a syntax error stops the program before it starts, a runtime error stops it partway, and a logic error never stops it.</div>
+
         </section>
 
       
@@ -1655,7 +2461,7 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
   </footer>
 
   <script src="../js/glossary-data.js?v=6"></script>
-  <script src="../js/quizzes/programming-fundamentals.js?v=1"></script>
+  <script src="../js/quizzes/programming-fundamentals.js?v=2"></script>
   <script src="../js/quiz.js?v=3" defer></script>
   <script src="../js/nesa-diagram-data.js?v=3"></script>
   <script src="../js/nesa-diagrams.js?v=3" defer></script>
@@ -1689,5 +2495,6 @@ print(process_input(<span class="str">"ABC"</span>)) <span class="cm"># Abnormal
   <script src="../js/paper.js?v=6" defer></script>
   <script src="../js/progress.js?v=1" defer></script>
   <script src="../js/anim.js?v=5" defer></script>
+  <script src="../js/pages/programming-fundamentals.js?v=1" defer></script>
 </body>
 </html>

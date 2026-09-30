@@ -1,0 +1,106 @@
+/* Programming Fundamentals: number base and two's complement workbench.
+   Uses the theme's custom properties so light and dark mode both work. */
+.pf-numlab {
+  margin: 1.5rem 0;
+  padding: 1.1rem;
+  border-radius: 14px;
+  background: var(--pc-sheet, var(--bg-secondary));
+  box-shadow: inset 0 0 0 1px var(--pc-rule, var(--border)), var(--shadow-sm);
+  color: var(--text-primary);
+  font-size: .9rem;
+}
+.pf-numlab h4 { margin: 0 0 .25rem; font-size: 1.05rem; }
+.pf-numlab .nl-lead { margin: 0 0 .9rem; color: var(--text-secondary); font-size: .9rem; }
+.pf-numlab .nl-h { margin: 1rem 0 .4rem; font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; color: var(--text-muted); }
+
+.pf-numlab .nl-controls { display: flex; flex-wrap: wrap; gap: .7rem 1rem; align-items: flex-end; margin-bottom: .6rem; }
+.pf-numlab .nl-seg { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 2px; border-radius: 10px; background: var(--pc-kraft, var(--bg)); }
+.pf-numlab .nl-btn {
+  font: 600 .82rem/1.2 var(--font-body, inherit);
+  padding: .5rem .8rem; min-height: 40px;
+  border: 0; border-radius: 8px; cursor: pointer;
+  background: transparent; color: var(--text-secondary);
+}
+.pf-numlab .nl-btn:hover { color: var(--text-primary); }
+.pf-numlab .nl-seg .nl-btn[aria-pressed="true"] { background: var(--pc-cream, var(--surface)); color: var(--text-primary); box-shadow: var(--shadow-sm); }
+.pf-numlab .nl-btn-quiet, .pf-numlab .nl-check-row .nl-btn:first-of-type { border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-primary); }
+.pf-numlab .nl-btn:focus-visible,
+.pf-numlab .nl-bit:focus-visible,
+.pf-numlab .nl-input:focus-visible,
+.pf-numlab summary:focus-visible { outline: 2px solid var(--pc-plum, var(--accent)); outline-offset: 2px; }
+
+.pf-numlab .nl-field { display: flex; flex-direction: column; gap: .2rem; }
+.pf-numlab .nl-field label { font-weight: 600; font-size: .78rem; color: var(--text-secondary); }
+.pf-numlab .nl-input {
+  font: 500 .95rem/1.2 var(--font-mono, monospace);
+  min-height: 40px; padding: .4rem .6rem; min-width: 0;
+  border: 1px solid var(--border-strong); border-radius: 8px;
+  background: var(--surface); color: var(--text-primary);
+}
+.pf-numlab .nl-field .nl-input { width: 11rem; max-width: 100%; }
+
+.pf-numlab .nl-msg { min-height: 1.4em; margin: 0 0 .4rem; font-size: .85rem; color: var(--text-secondary); }
+.pf-numlab .nl-msg.is-on { color: var(--pc-terracotta, #b3402a); font-weight: 600; }
+
+.pf-numlab .nl-bits { display: flex; flex-direction: column; gap: .5rem; margin-bottom: .5rem; }
+.pf-numlab .nl-bitrow { display: flex; gap: 4px; flex-wrap: nowrap; }
+.pf-numlab .nl-bitcell { display: flex; flex-direction: column; align-items: center; gap: 2px; flex: 0 1 44px; min-width: 0; }
+.pf-numlab .nl-place { font: 500 .68rem/1 var(--font-mono, monospace); color: var(--text-muted); white-space: nowrap; }
+.pf-numlab .nl-place.is-sign { color: var(--pc-terracotta, #b3402a); font-weight: 700; }
+.pf-numlab .nl-bit {
+  width: 100%; min-width: 32px; aspect-ratio: 1 / 1.1; max-height: 48px;
+  font: 700 1.05rem/1 var(--font-mono, monospace);
+  border: 1px solid var(--border-strong); border-radius: 8px; cursor: pointer;
+  background: var(--surface); color: var(--text-muted);
+}
+.pf-numlab .nl-bit.is-on { background: var(--pc-teal, #2a6f73); border-color: var(--pc-teal, #2a6f73); color: #fff; }
+.pf-numlab .nl-bit.is-sign { box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--pc-terracotta, #b3402a) 55%, transparent); }
+.pf-numlab .nl-bit:hover { border-color: var(--text-primary); }
+.pf-numlab .nl-nudge { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .8rem; }
+
+.pf-numlab .nl-results { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .6rem; margin: 0; }
+.pf-numlab .nl-results > div { padding: .55rem .7rem; border-radius: 10px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--border); min-width: 0; }
+.pf-numlab .nl-results dt { font-size: .72rem; color: var(--text-muted); margin: 0 0 .15rem; }
+.pf-numlab .nl-results dd { margin: 0; font: 700 1rem var(--font-mono, monospace); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+
+.pf-numlab .nl-steps { margin: 0; padding-left: 1.3rem; display: grid; gap: .5rem; }
+.pf-numlab .nl-steps li { line-height: 1.5; }
+.pf-numlab .nl-lines {
+  margin: .25rem 0 0; padding: .45rem .65rem; border-radius: 8px;
+  background: var(--surface); box-shadow: inset 0 0 0 1px var(--border);
+  font: 500 .8rem/1.55 var(--font-mono, monospace); color: var(--text-primary);
+  white-space: pre-wrap; overflow-wrap: anywhere;
+}
+
+.pf-numlab .nl-check { margin-top: 1rem; padding-top: .6rem; border-top: 1px dashed var(--border-strong); }
+.pf-numlab .nl-check summary { cursor: pointer; font-weight: 600; font-size: .9rem; padding: .3rem 0; }
+.pf-numlab .nl-q { margin: .6rem 0; font-weight: 600; }
+.pf-numlab .nl-check-row { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+.pf-numlab .nl-check-row .nl-input { width: 12rem; max-width: 100%; }
+.pf-numlab .nl-fb { margin-top: .6rem; }
+.pf-numlab .nl-ok { margin: 0 0 .3rem; font-weight: 700; color: var(--pc-sage-deep, #2f6b46); }
+.pf-numlab .nl-no { margin: 0 0 .3rem; font-weight: 700; color: var(--pc-terracotta, #b3402a); }
+
+@media (max-width: 480px) {
+  .pf-numlab { padding: .85rem; }
+  .pf-numlab .nl-seg { display: flex; width: 100%; }
+  .pf-numlab .nl-seg .nl-btn { flex: 1 1 auto; padding: .5rem .3rem; }
+  .pf-numlab .nl-field { flex: 1 1 9rem; }
+  .pf-numlab .nl-field .nl-input { width: 100%; }
+  .pf-numlab .nl-bit { min-width: 0; font-size: .95rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .pf-numlab .nl-bit { transition: background-color .12s, border-color .12s; }
+}
+
+/* Self-check panels used in the notes (native details element) */
+.pf-check { margin: 1rem 0; padding: .6rem .9rem; border-radius: 10px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--border); }
+.pf-check summary { cursor: pointer; font-weight: 600; padding: .2rem 0; }
+.pf-check summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.pf-check[open] summary { margin-bottom: .4rem; }
+.pf-check ol { margin: .3rem 0 .6rem; padding-left: 1.4rem; }
+.pf-check p { margin: .3rem 0; }
+
+/* The eight-column data dictionary tables are wide: tighten them so they fit more often. */
+#data-dictionaries .table-wrap table { font-size: .8rem; }
+#data-dictionaries .table-wrap th, #data-dictionaries .table-wrap td { padding: .45rem .5rem; }
