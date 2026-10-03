@@ -3441,8 +3441,8 @@ a.footer-brand:hover .footer-logo { transform: rotate(-6deg); }
 :root[data-theme="dark"][data-focus="oop"] { --fx: #A79BFF; --on-fx: #1b1916; }
 :root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="object-oriented-paradigm.html"] { --fx: #A79BFF; --on-fx: #1b1916; --stock: #A79BFF; --stock-ink: color-mix(in srgb, #A79BFF 62%, #fff); }
 
-:root[data-focus="mech"][data-theme][lang] { --fx: #A86A00; --on-fx: #fff; }
-:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="programming-mechatronics.html"] { --fx: #A86A00; --on-fx: #fff; --stock: #A86A00; --stock-ink: color-mix(in srgb, #A86A00 72%, #000); }
+:root[data-focus="mech"][data-theme][lang] { --fx: #9A6000; --on-fx: #fff; }
+:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="programming-mechatronics.html"] { --fx: #9A6000; --on-fx: #fff; --stock: #9A6000; --stock-ink: color-mix(in srgb, #9A6000 72%, #000); }
 :root[data-theme="dark"][data-focus="mech"] { --fx: #F0B94D; --on-fx: #1b1916; }
 :root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="programming-mechatronics.html"] { --fx: #F0B94D; --on-fx: #1b1916; --stock: #F0B94D; --stock-ink: color-mix(in srgb, #F0B94D 62%, #fff); }
 
@@ -3566,7 +3566,7 @@ a.footer-brand:hover .footer-logo { transform: rotate(-6deg); }
 @media (prefers-reduced-motion: reduce) { .topic-part, .topic-part:hover { transition: none; transform: none; } }
 
 /* Home: strip of the seven focus areas under the hero text, and card illustrations */
-.hero-topics { display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem .7rem; max-width: 74rem; margin: 2rem auto 0; }
+.hero-topics { display: flex; flex-wrap: wrap; justify-content: center; gap: .7rem; width: min(72rem, 92vw); position: relative; left: 50%; transform: translateX(-50%); margin-top: 2rem; }
 .hero-topic {
   display: inline-flex; align-items: center; gap: .55rem; padding: .35rem .95rem .35rem .4rem;
   border-radius: 999px; background: var(--pc-cream); color: var(--pc-ink); text-decoration: none;
@@ -3591,3 +3591,19 @@ a.footer-brand:hover .footer-logo { transform: rotate(-6deg); }
 }
 .card-art.topic-viz { margin-top: 0; }
 .card-art svg { max-height: 160px; }
+
+/* Glossary: topic tags take their focus area's colour (the same values as above) */
+:root[data-theme] button.chip-topic[data-topic="Programming Fundamentals"] { --tone: #2A6F73; }
+:root[data-theme="dark"] button.chip-topic[data-topic="Programming Fundamentals"] { --tone: #6FC3C7; }
+:root[data-theme] button.chip-topic[data-topic="Object-Oriented Paradigm"] { --tone: #5B4BDB; }
+:root[data-theme="dark"] button.chip-topic[data-topic="Object-Oriented Paradigm"] { --tone: #A79BFF; }
+:root[data-theme] button.chip-topic[data-topic="Programming Mechatronics"] { --tone: #9A6000; }
+:root[data-theme="dark"] button.chip-topic[data-topic="Programming Mechatronics"] { --tone: #F0B94D; }
+:root[data-theme] button.chip-topic[data-topic="Secure Software Architecture"] { --tone: #B83A3A; }
+:root[data-theme="dark"] button.chip-topic[data-topic="Secure Software Architecture"] { --tone: #F08A7A; }
+:root[data-theme] button.chip-topic[data-topic="Programming for the Web"] { --tone: #2F6DB5; }
+:root[data-theme="dark"] button.chip-topic[data-topic="Programming for the Web"] { --tone: #7FB0F0; }
+:root[data-theme] button.chip-topic[data-topic="Software Automation"] { --tone: #3F7D5C; }
+:root[data-theme="dark"] button.chip-topic[data-topic="Software Automation"] { --tone: #8CCB9F; }
+:root[data-theme] button.chip-topic[data-topic="Software Engineering Project"] { --tone: #A24E8F; }
+:root[data-theme="dark"] button.chip-topic[data-topic="Software Engineering Project"] { --tone: #E39BD0; }
