@@ -3607,3 +3607,30 @@ a.footer-brand:hover .footer-logo { transform: rotate(-6deg); }
 :root[data-theme="dark"] button.chip-topic[data-topic="Software Automation"] { --tone: #8CCB9F; }
 :root[data-theme] button.chip-topic[data-topic="Software Engineering Project"] { --tone: #A24E8F; }
 :root[data-theme="dark"] button.chip-topic[data-topic="Software Engineering Project"] { --tone: #E39BD0; }
+
+/* Illustrations: pieces settle onto the sheet, and a few move gently in the topic header only */
+@media (prefers-reduced-motion: no-preference) {
+  .topic-viz .sv-p { animation: sv-settle 700ms cubic-bezier(.2, .7, .2, 1) both; animation-delay: 120ms; }
+  .topic-viz .a-pop { transform-box: fill-box; transform-origin: 50% 50%; animation: sv-pop 450ms cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--i, 0) * 90ms + 500ms); }
+  .topic-header .a-spin { transform-box: fill-box; transform-origin: 50% 50%; animation: sv-spin 18s linear infinite; }
+  .topic-header .a-pulse { transform-box: fill-box; transform-origin: 50% 50%; animation: sv-pulse 2.4s ease-in-out infinite; }
+  .topic-header .a-req { animation: sv-req 3.2s ease-in-out infinite; }
+  .topic-header .a-res { animation: sv-res 3.2s ease-in-out infinite; animation-delay: 1.6s; }
+  .topic-header .a-lit { animation: sv-lit 4s ease-in-out infinite; animation-delay: calc(var(--i, 0) * 1s); }
+  .topic-header .a-travel { animation: sv-travel 7s ease-in-out infinite alternate; }
+  .topic-header .sv-edge, .topic-header .sv-line.dash { stroke-dasharray: 3 6; animation: sv-flow 1.8s linear infinite; }
+  @keyframes sv-settle { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes sv-pop { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  @keyframes sv-spin { to { transform: rotate(360deg); } }
+  @keyframes sv-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.18); } }
+  @keyframes sv-req { 0% { transform: translateX(0); opacity: 0; } 15%, 85% { opacity: 1; } 100% { transform: translateX(62px); opacity: 0; } }
+  @keyframes sv-res { 0% { transform: translateX(0); opacity: 0; } 15%, 85% { opacity: 1; } 100% { transform: translateX(-62px); opacity: 0; } }
+  @keyframes sv-lit { 0%, 100% { opacity: 1; } 25% { opacity: .45; } }
+  @keyframes sv-travel { from { transform: translateX(0); } to { transform: translateX(432px); } }
+  @keyframes sv-flow { to { stroke-dashoffset: -18; } }
+}
+
+/* Print: the decorative header and card art stay off the page */
+@media print {
+  .topic-viz, .topic-stats, .topic-parts, .topic-map-link, .hero-topics { display: none !important; }
+}

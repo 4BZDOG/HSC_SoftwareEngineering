@@ -77,7 +77,7 @@ def art_pf():
         b += t(278 + ind * 16, 72 + i * 24, ln, 'sv-text code')
     for i, v in enumerate(['0110', '1011', '0001']):
         x = 352 + i * 40
-        b += f'<rect class="sv-t2" x="{x}" y="256" width="34" height="24" rx="5"/>' + t(x + 17, 273, v, 'sv-text s', 'middle')
+        b += f'<rect class="sv-t2 a-lit" style="--i:{i}" x="{x}" y="256" width="34" height="24" rx="5"/>' + t(x + 17, 273, v, 'sv-text s', 'middle')
     b += t(352, 246, 'BINARY', 'sv-text s') + '</g>'
     return svg(b)
 
@@ -115,13 +115,14 @@ def art_mech():
     b += '<path class="sv-line" d="M104 124 H168" fill="none"/><path class="sv-line" d="M186 168 H112 V258" fill="none"/>'
     # gear (motor)
     cx, cy = 440, 234
+    b += '<g class="a-spin">'
     for k in range(10):
         a = k * 36
         b += f'<rect class="sv-t2" x="{cx-7}" y="{cy-46}" width="14" height="16" rx="2" transform="rotate({a} {cx} {cy})"/>'
-    b += f'<circle class="sv-t2" cx="{cx}" cy="{cy}" r="36"/><circle class="sv-w" cx="{cx}" cy="{cy}" r="12"/>' + t(cx, cy + 66, 'MOTOR', 'sv-text s', 'middle')
+    b += f'<circle class="sv-t2" cx="{cx}" cy="{cy}" r="36"/><circle class="sv-w" cx="{cx}" cy="{cy}" r="12"/></g>' + t(cx, cy + 66, 'MOTOR', 'sv-text s', 'middle')
     b += '<path class="sv-line" d="M354 180 H400 V234 H404" fill="none"/>'
     # LED
-    b += '<circle class="sv-m" cx="440" cy="92" r="20"/><circle class="sv-w" cx="440" cy="92" r="8"/>' + t(440, 138, 'LED', 'sv-text s', 'middle')
+    b += '<circle class="sv-m a-pulse" cx="440" cy="92" r="20"/><circle class="sv-w" cx="440" cy="92" r="8"/>' + t(440, 138, 'LED', 'sv-text s', 'middle')
     b += '<path class="sv-line" d="M354 132 H420" fill="none"/>'
     b += '<rect class="sv-t3" x="40" y="258" width="170" height="40" rx="6"/>' + t(125, 283, 'if temp > 30: fan.on()', 'sv-text s', 'middle')
     return svg(b + '</g>')
@@ -140,7 +141,7 @@ def art_ssa():
     for i, (lab, tone) in enumerate([('AUTHENTICATE', 'sv-t'), ('VALIDATE INPUT', 'sv-t2'), ('ENCRYPT DATA', 'sv-m')]):
         y = 56 + i * 76
         b += f'<rect class="{tone}" x="270" y="{y}" width="204" height="52" rx="6"/>' + t(288, y + 31, lab, 'sv-text' + (' w' if tone == 'sv-t' else ''))
-        b += f'<circle class="sv-w" cx="452" cy="{y+26}" r="11"/><path class="sv-line thin" d="M446 {y+26} l4 4 l8 -9" fill="none"/>'
+        b += f'<g class="a-pop" style="--i:{i*3+2}"><circle class="sv-w" cx="452" cy="{y+26}" r="11"/><path class="sv-line thin" d="M446 {y+26} l4 4 l8 -9" fill="none"/></g>'
     b += arrow(250, 90, 266, 90) + arrow(250, 166, 266, 166) + arrow(250, 242, 266, 242)
     b += t(270, 300, 'DEFENCE IN DEPTH', 'sv-text s')
     return svg(b + '</g>')
@@ -161,6 +162,7 @@ def art_web():
         b += f'<rect class="{"sv-code" if i != 1 else "sv-t"}" x="396" y="{y}" width="102" height="42" rx="6"/><circle class="sv-m" cx="412" cy="{y+21}" r="5"/><rect class="sv-w" x="428" y="{y+17}" width="56" height="8" rx="3"/>'
     b += t(447, 56, 'SERVER', 'sv-text s', 'middle')
     b += arrow(326, 104, 392, 104) + t(334, 96, 'GET', 'sv-text s') + arrow(392, 160, 326, 160) + t(334, 178, '200 OK', 'sv-text s')
+    b += '<circle class="sv-m a-req" cx="326" cy="104" r="5"/><circle class="sv-t a-res" cx="392" cy="160" r="5"/>'
     b += '<rect class="sv-t2" x="40" y="268" width="62" height="34" rx="8"/>' + t(71, 290, '</>', 'sv-text', 'middle')
     b += '<rect class="sv-m" x="114" y="268" width="62" height="34" rx="8"/>' + t(145, 290, '{ }', 'sv-text', 'middle')
     b += '<rect class="sv-t" x="188" y="268" width="62" height="34" rx="8"/>' + t(219, 290, 'SQL', 'sv-text w', 'middle')
@@ -187,7 +189,7 @@ def art_auto():
     steps = ['DATA', 'TRAIN', 'TEST', 'DEPLOY']
     for i, s in enumerate(steps):
         x = 40 + i * 118
-        b += f'<rect class="{["sv-t3", "sv-t2", "sv-t", "sv-m"][i]}" x="{x}" y="236" width="92" height="44" rx="22"/>' + t(x + 46, 263, s, 'sv-text' + (' w' if i == 2 else ''), 'middle')
+        b += f'<rect class="{["sv-t3", "sv-t2", "sv-t", "sv-m"][i]} a-lit" style="--i:{i}" x="{x}" y="236" width="92" height="44" rx="22"/>' + t(x + 46, 263, s, 'sv-text' + (' w' if i == 2 else ''), 'middle')
         if i < 3:
             b += arrow(x + 94, 258, x + 116, 258)
     b += '<path class="sv-line dash" d="M486 292 Q260 330 86 292" fill="none"/>'
@@ -211,6 +213,7 @@ def art_sep():
     for i in range(5):
         x = 44 + i * 108
         b += f'<circle class="{"sv-m" if i == 3 else "sv-t"}" cx="{x}" cy="288" r="8"/>'
+    b += '<circle class="sv-m a-travel" cx="44" cy="288" r="11"/>'
     b += t(44, 316, 'SPRINT 1', 'sv-text s') + t(260, 316, 'REVIEW', 'sv-text s') + t(436, 316, 'RELEASE', 'sv-text s', 'middle')
     return svg(b + '</g>')
 
