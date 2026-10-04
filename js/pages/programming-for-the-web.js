@@ -326,7 +326,8 @@
         Object.keys(st).forEach(p => node.style.setProperty(p, st[p]));
         if (id === state.el) node.classList.add('is-target');
       };
-      const h1 = el('h1', 'web-p-h1', 'Welcome!'); apply(h1, 'h1');
+      /* A div with a heading role: the preview is a picture of a page, so it must not add a second <h1> to this one */
+      const h1 = el('div', 'web-p-h1', 'Welcome!'); h1.setAttribute('role', 'heading'); h1.setAttribute('aria-level', '4'); apply(h1, 'h1');
       const p1 = el('p', 'web-p', 'Welcome to my website!'); apply(p1, 'welcome');
       const p2 = el('p', 'web-p', 'This text should be red'); apply(p2, 'red-p');
       const p3 = el('p', 'web-p');
