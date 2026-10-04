@@ -91,7 +91,7 @@
   background: #fff; color: #222; border: 1px solid var(--border-strong); border-radius: var(--radius-md); padding: .6rem .8rem;
   font-family: Georgia, 'Times New Roman', serif;
 }
-.web-paint .web-p-h1 { margin: 0 0 .3rem; font-size: 32px; }
+.web-paint .web-p-h1 { margin: 0 0 .3rem; font-size: 32px; font-weight: 700; line-height: 1.2; }
 .web-paint .web-p { margin: .2rem 0; font-size: 16px; }
 .web-paint .is-target { outline: 2px dashed #2d46b9; outline-offset: 2px; }
 

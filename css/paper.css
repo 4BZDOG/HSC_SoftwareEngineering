@@ -626,7 +626,7 @@
 :root[data-theme] .footer-bottom { color: #a1978a; }
 
 /* Search */
-:root[data-theme] .search-bar,
+:root[data-theme] .search-bar { background: none; border: 0; box-shadow: none; border-radius: 999px; }
 :root[data-theme] .search-input {
   background: var(--pc-cream);
   color: var(--pc-ink);
@@ -3432,39 +3432,39 @@ a.footer-brand:hover .footer-logo { transform: rotate(-6deg); }
    Light mode uses the deeper value, dark mode the brighter one. */
 
 :root[data-focus="pf"][data-theme][lang] { --fx: #2A6F73; --on-fx: #fff; }
-:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="programming-fundamentals.html"] { --fx: #2A6F73; --on-fx: #fff; --stock: #2A6F73; --stock-ink: color-mix(in srgb, #2A6F73 72%, #000); }
+:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="programming-fundamentals.html"] { --fx: #2A6F73; --on-fx: #fff; --stock: #2A6F73; --stock-ink: color-mix(in srgb, #2A6F73 72%, #000); }
 :root[data-theme="dark"][data-focus="pf"] { --fx: #6FC3C7; --on-fx: #1b1916; }
-:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="programming-fundamentals.html"] { --fx: #6FC3C7; --on-fx: #1b1916; --stock: #6FC3C7; --stock-ink: color-mix(in srgb, #6FC3C7 62%, #fff); }
+:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="programming-fundamentals.html"] { --fx: #6FC3C7; --on-fx: #1b1916; --stock: #6FC3C7; --stock-ink: color-mix(in srgb, #6FC3C7 62%, #fff); }
 
 :root[data-focus="oop"][data-theme][lang] { --fx: #5B4BDB; --on-fx: #fff; }
-:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="object-oriented-paradigm.html"] { --fx: #5B4BDB; --on-fx: #fff; --stock: #5B4BDB; --stock-ink: color-mix(in srgb, #5B4BDB 72%, #000); }
+:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="object-oriented-paradigm.html"] { --fx: #5B4BDB; --on-fx: #fff; --stock: #5B4BDB; --stock-ink: color-mix(in srgb, #5B4BDB 72%, #000); }
 :root[data-theme="dark"][data-focus="oop"] { --fx: #A79BFF; --on-fx: #1b1916; }
-:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="object-oriented-paradigm.html"] { --fx: #A79BFF; --on-fx: #1b1916; --stock: #A79BFF; --stock-ink: color-mix(in srgb, #A79BFF 62%, #fff); }
+:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="object-oriented-paradigm.html"] { --fx: #A79BFF; --on-fx: #1b1916; --stock: #A79BFF; --stock-ink: color-mix(in srgb, #A79BFF 62%, #fff); }
 
 :root[data-focus="mech"][data-theme][lang] { --fx: #9A6000; --on-fx: #fff; }
-:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="programming-mechatronics.html"] { --fx: #9A6000; --on-fx: #fff; --stock: #9A6000; --stock-ink: color-mix(in srgb, #9A6000 72%, #000); }
+:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="programming-mechatronics.html"] { --fx: #9A6000; --on-fx: #fff; --stock: #9A6000; --stock-ink: color-mix(in srgb, #9A6000 72%, #000); }
 :root[data-theme="dark"][data-focus="mech"] { --fx: #F0B94D; --on-fx: #1b1916; }
-:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="programming-mechatronics.html"] { --fx: #F0B94D; --on-fx: #1b1916; --stock: #F0B94D; --stock-ink: color-mix(in srgb, #F0B94D 62%, #fff); }
+:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="programming-mechatronics.html"] { --fx: #F0B94D; --on-fx: #1b1916; --stock: #F0B94D; --stock-ink: color-mix(in srgb, #F0B94D 62%, #fff); }
 
 :root[data-focus="ssa"][data-theme][lang] { --fx: #B83A3A; --on-fx: #fff; }
-:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="secure-software-architecture.html"] { --fx: #B83A3A; --on-fx: #fff; --stock: #B83A3A; --stock-ink: color-mix(in srgb, #B83A3A 72%, #000); }
+:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="secure-software-architecture.html"] { --fx: #B83A3A; --on-fx: #fff; --stock: #B83A3A; --stock-ink: color-mix(in srgb, #B83A3A 72%, #000); }
 :root[data-theme="dark"][data-focus="ssa"] { --fx: #F08A7A; --on-fx: #1b1916; }
-:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="secure-software-architecture.html"] { --fx: #F08A7A; --on-fx: #1b1916; --stock: #F08A7A; --stock-ink: color-mix(in srgb, #F08A7A 62%, #fff); }
+:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="secure-software-architecture.html"] { --fx: #F08A7A; --on-fx: #1b1916; --stock: #F08A7A; --stock-ink: color-mix(in srgb, #F08A7A 62%, #fff); }
 
 :root[data-focus="web"][data-theme][lang] { --fx: #2F6DB5; --on-fx: #fff; }
-:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="programming-for-the-web.html"] { --fx: #2F6DB5; --on-fx: #fff; --stock: #2F6DB5; --stock-ink: color-mix(in srgb, #2F6DB5 72%, #000); }
+:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="programming-for-the-web.html"] { --fx: #2F6DB5; --on-fx: #fff; --stock: #2F6DB5; --stock-ink: color-mix(in srgb, #2F6DB5 72%, #000); }
 :root[data-theme="dark"][data-focus="web"] { --fx: #7FB0F0; --on-fx: #1b1916; }
-:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="programming-for-the-web.html"] { --fx: #7FB0F0; --on-fx: #1b1916; --stock: #7FB0F0; --stock-ink: color-mix(in srgb, #7FB0F0 62%, #fff); }
+:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="programming-for-the-web.html"] { --fx: #7FB0F0; --on-fx: #1b1916; --stock: #7FB0F0; --stock-ink: color-mix(in srgb, #7FB0F0 62%, #fff); }
 
 :root[data-focus="auto"][data-theme][lang] { --fx: #3F7D5C; --on-fx: #fff; }
-:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="software-automation.html"] { --fx: #3F7D5C; --on-fx: #fff; --stock: #3F7D5C; --stock-ink: color-mix(in srgb, #3F7D5C 72%, #000); }
+:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="software-automation.html"] { --fx: #3F7D5C; --on-fx: #fff; --stock: #3F7D5C; --stock-ink: color-mix(in srgb, #3F7D5C 72%, #000); }
 :root[data-theme="dark"][data-focus="auto"] { --fx: #8CCB9F; --on-fx: #1b1916; }
-:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="software-automation.html"] { --fx: #8CCB9F; --on-fx: #1b1916; --stock: #8CCB9F; --stock-ink: color-mix(in srgb, #8CCB9F 62%, #fff); }
+:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="software-automation.html"] { --fx: #8CCB9F; --on-fx: #1b1916; --stock: #8CCB9F; --stock-ink: color-mix(in srgb, #8CCB9F 62%, #fff); }
 
 :root[data-focus="sep"][data-theme][lang] { --fx: #A24E8F; --on-fx: #fff; }
-:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="software-engineering-project.html"] { --fx: #A24E8F; --on-fx: #fff; --stock: #A24E8F; --stock-ink: color-mix(in srgb, #A24E8F 72%, #000); }
+:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="software-engineering-project.html"] { --fx: #A24E8F; --on-fx: #fff; --stock: #A24E8F; --stock-ink: color-mix(in srgb, #A24E8F 72%, #000); }
 :root[data-theme="dark"][data-focus="sep"] { --fx: #E39BD0; --on-fx: #1b1916; }
-:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="software-engineering-project.html"] { --fx: #E39BD0; --on-fx: #1b1916; --stock: #E39BD0; --stock-ink: color-mix(in srgb, #E39BD0 62%, #fff); }
+:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="software-engineering-project.html"] { --fx: #E39BD0; --on-fx: #1b1916; --stock: #E39BD0; --stock-ink: color-mix(in srgb, #E39BD0 62%, #fff); }
 
 /* The page's accent colour replaces the year colour inside the header and the page body */
 :root[data-focus][data-theme] :is(.topic-header, .page-layout) {
@@ -3633,4 +3633,24 @@ a.footer-brand:hover .footer-logo { transform: rotate(-6deg); }
 /* Print: the decorative header and card art stay off the page */
 @media print {
   .topic-viz, .topic-stats, .topic-parts, .topic-map-link, .hero-topics { display: none !important; }
+}
+
+/* Home: course path rows take their topic's colour */
+:root[data-theme] a.path-topic[href] {
+  --on-stock: var(--on-fx);
+  background: color-mix(in srgb, var(--fx) 9%, var(--pc-sheet));
+  box-shadow: inset 4px 0 0 var(--fx), var(--pc-shadow-1);
+}
+:root[data-theme] a.path-topic[href]:hover, :root[data-theme] a.path-topic[href]:focus-visible { box-shadow: inset 4px 0 0 var(--fx), var(--pc-shadow-2); }
+
+/* Hero strip on phones: stay inside the column, two to a row, and take less height */
+@media (max-width: 1100px) {
+  .hero-topics { width: auto; left: 0; transform: none; }
+}
+@media (max-width: 600px) {
+  .hero-topics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; margin-top: 1.4rem; }
+  .hero-topic, .hero-topic:nth-child(odd), .hero-topic:nth-child(even) { transform: none; border-radius: 14px; padding: .4rem .6rem .4rem .4rem; align-items: center; }
+  .hero-topic:last-child { grid-column: 1 / -1; justify-self: center; }
+  .ht-name { font-size: .78rem; line-height: 1.2; }
+  .ht-ico { width: 26px; height: 26px; }
 }
