@@ -165,6 +165,12 @@ def footer(prefix, home, page_title):
       <span>© 2026 HSC SoftEng Notes{where}</span>
       <span>Aligned to the NESA syllabus · For educational purposes only</span>
     </div>
+    <nav class="footer-more" aria-label="More from 4BZDOG">
+      <span>More from 4BZDOG</span>
+      <a href="https://4bzdog.github.io/HSC-Enterprise-Computing/" rel="noopener">Enterprise Computing Notes ↗</a>
+      <a href="https://4bzdog.github.io/" rel="noopener">All projects ↗</a>
+      <a href="https://github.com/4BZDOG/HSC_SoftwareEngineering" rel="noopener">Source on GitHub ↗</a>
+    </nav>
   </footer>'''
 
 
