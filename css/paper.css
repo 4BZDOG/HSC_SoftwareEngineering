@@ -3792,3 +3792,92 @@ a.footer-brand:hover .footer-logo { transform: rotate(-6deg); }
 @media (hover: none) {
   :root[data-theme] .btn-icon:hover { transform: none; box-shadow: var(--pc-shadow-1); }
 }
+
+/* ── Clearer layers: the cards and tables on a section's content area get an edge ──
+   Cream cards on the tan content area relied on a soft shadow alone. They now have a thin
+   edge as well, so each reads as a sheet laid on the one below. */
+:root[data-theme="light"] :is(.table-wrap, .info-card, .key-term-item, .figure, .quiz-opt, .res-card, .ex-card, .def-card) {
+  border: 1px solid var(--pc-rule-strong);
+}
+:root[data-theme="light"] .section-body { border: 1px solid var(--pc-rule-strong); }
+:root[data-theme="light"] .quiz { border: 1px solid var(--pc-rule-strong); }
+
+/* ── Tables: clearer rows, columns, header and caption ── */
+:root[data-theme] .table-wrap { border-radius: 10px; margin: 1.5rem 0; }
+:root[data-theme] table { border-collapse: separate; border-spacing: 0; width: 100%; }
+:root[data-theme] thead th { padding: .85rem 1rem; border-left: 1px solid rgba(255, 255, 255, .18); }
+:root[data-theme] thead th:first-child { border-left: 0; }
+:root[data-theme] tbody td, :root[data-theme] tbody th { padding: .8rem 1rem; vertical-align: top; line-height: 1.55; border-bottom: 1px solid color-mix(in srgb, var(--pc-rule-strong) 70%, transparent); }
+:root[data-theme] tbody td + td { border-left: 1px solid color-mix(in srgb, var(--pc-rule) 85%, transparent); }
+:root[data-theme] tbody tr:last-child td { border-bottom: 0; }
+:root[data-theme] tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--pc-teal) 8%, var(--pc-sheet)); }
+:root[data-theme] tbody tr:hover td { background: color-mix(in srgb, var(--pc-teal) 16%, var(--pc-sheet)); }
+:root[data-theme] tbody td:first-child { background-color: color-mix(in srgb, var(--pc-teal) 7%, var(--pc-cream)); border-right: 2px solid color-mix(in srgb, var(--pc-teal) 40%, transparent); font-weight: 600; color: var(--pc-ink); }
+:root[data-theme] tbody tr:nth-child(even) td:first-child { background-color: color-mix(in srgb, var(--pc-teal) 14%, var(--pc-sheet)); }
+:root[data-theme] caption {
+  caption-side: top; text-align: left;
+  padding: .7rem 1rem; margin: 0;
+  font: 700 .85rem/1.4 var(--font-body); color: var(--pc-ink);
+  background: color-mix(in srgb, var(--pc-teal) 12%, var(--pc-cream));
+  border-bottom: 1px solid color-mix(in srgb, var(--pc-teal) 35%, transparent);
+}
+@media (max-width: 640px) {
+  :root[data-theme] tbody td, :root[data-theme] tbody th { padding: .65rem .75rem; }
+  :root[data-theme] thead th { padding: .7rem .75rem; }
+}
+
+/* ── Year 11 and Year 12, set apart ──
+   On the home page each year is its own sheet: a coloured banner with the year numeral, a tinted
+   area and a coloured edge. In the navigation the two year menus are divided and each dropdown
+   opens with a labelled header. */
+:root[data-theme] :is(#year11, #year12) {
+  --yc: var(--pc-sage); --on-yc: #fff;
+  position: relative; margin: 2.5rem 0 0; overflow: clip;
+  border: 1px solid color-mix(in srgb, var(--yc) 50%, var(--pc-rule-strong));
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--yc) 7%, var(--pc-sheet));
+  box-shadow: 0 5px 0 -1px color-mix(in srgb, var(--yc) 70%, #000), var(--pc-shadow-2);
+}
+:root[data-theme] #year12 { --yc: var(--pc-terracotta); }
+:root[data-theme="dark"] :is(#year11, #year12) { --on-yc: #1b1916; }
+:root[data-theme] :is(#year11, #year12) > .section-header {
+  position: relative; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem 1rem;
+  margin: 0 0 1.6rem; padding: 1.2rem 1.6rem;
+  background: var(--yc); border: 0; overflow: hidden;
+}
+:root[data-theme] :is(#year11, #year12) > .section-header::after { display: none; }
+:root[data-theme] #year11 > .section-header::before, :root[data-theme] #year12 > .section-header::before {
+  position: absolute; right: 1.2rem; top: 50%; translate: 0 -50%;
+  font: 700 4rem/1 var(--font-display); color: var(--on-yc); opacity: .2; pointer-events: none;
+}
+:root[data-theme] #year11 > .section-header::before { content: '11'; }
+:root[data-theme] #year12 > .section-header::before { content: '12'; }
+:root[data-theme] :is(#year11, #year12) .section-title { color: var(--on-yc); position: relative; }
+:root[data-theme] :is(#year11, #year12) .year-badge { background: color-mix(in srgb, var(--on-yc) 22%, transparent); color: var(--on-yc); border: 1px solid color-mix(in srgb, var(--on-yc) 45%, transparent); box-shadow: none; }
+:root[data-theme] :is(#year11, #year12) .topic-count { position: relative; margin-right: 6.5rem; color: var(--on-yc); opacity: .92; }
+:root[data-theme] :is(#year11, #year12) > .topics-grid { padding: 0 1.4rem 1.8rem; }
+@media (max-width: 640px) {
+  :root[data-theme] :is(#year11, #year12) > .section-header { padding: 1rem 1.1rem 1.1rem; flex-direction: column; align-items: flex-start; text-align: left; }
+  :root[data-theme] :is(#year11, #year12) .section-title { text-align: left; }
+  :root[data-theme] :is(#year11, #year12) .topic-count { margin-right: 0; }
+  :root[data-theme] :is(#year11, #year12) > .topics-grid { padding: 0 .8rem 1.3rem; }
+  :root[data-theme] #year11 > .section-header::before, :root[data-theme] #year12 > .section-header::before { font-size: 3.4rem; top: auto; bottom: -.35rem; translate: 0 0; }
+}
+
+/* Navigation: a divider between the groups, and a labelled header on each dropdown */
+@media (min-width: 920px) {
+  :root[data-theme] .nav-links > li.nav-dropdown-y12::before,
+  :root[data-theme] .nav-links > li.nav-dropdown:not(.nav-dropdown-y11):not(.nav-dropdown-y12)::before {
+    content: ''; position: absolute; left: -.25rem; top: 24%; bottom: 24%; width: 1px; background: var(--pc-rule-strong); opacity: .9;
+  }
+  :root[data-theme] .nav-dropdown-menu { width: max-content; min-width: 270px; max-width: min(440px, 92vw); }
+}
+.nav-dropdown-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  margin: .1rem .25rem .45rem; padding: .35rem .5rem .5rem;
+  border-bottom: 2px solid var(--yc, var(--pc-teal));
+  font-weight: 700; font-size: .68rem; line-height: 1.2; letter-spacing: .1em; text-transform: uppercase; color: var(--pc-ink-soft);
+}
+.nav-dropdown-head span:last-child { font-weight: 500; letter-spacing: .06em; }
+.nav-dropdown-y11 .nav-dropdown-head { --yc: var(--pc-sage); color: var(--pc-sage-ink, #2c5c42); }
+.nav-dropdown-y12 .nav-dropdown-head { --yc: var(--pc-terracotta); color: var(--pc-terracotta-ink, #9c3d27); }

@@ -132,7 +132,10 @@ def dropdown_items(text, prefix):
         group = PAGES[known[0]][0] if known else None
         role = ' role="menuitem"'
         links = '\n'.join('            ' + item(x, prefix, role) for x, (g, _, _) in PAGES.items() if g == group)
-        out.append(text[pos:m.end()] + '\n' + links + '\n          </div>')
+        n = sum(1 for g, _, _ in PAGES.values() if g == group)
+        label, noun = {'y11': ('Year 11 · Preliminary', 'topics'), 'y12': ('Year 12 · HSC', 'topics'), 'core': ('Resources', 'guides')}[group]
+        head = f'            <div class="nav-dropdown-head" aria-hidden="true"><span>{label}</span><span>{n} {noun}</span></div>\n'
+        out.append(text[pos:m.end()] + '\n' + head + links + '\n          </div>')
         pos = end
     out.append(text[pos:])
     return ''.join(out)
