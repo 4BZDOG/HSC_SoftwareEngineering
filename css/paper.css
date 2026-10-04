@@ -3762,3 +3762,33 @@ a.footer-brand:hover .footer-logo { transform: rotate(-6deg); }
   @keyframes th-pop { from { opacity: 0; scale: .5; rotate: -16deg; } to { opacity: 1; scale: 1; rotate: 0deg; } }
   @keyframes th-nudge { 0%, 70%, 100% { box-shadow: 0 3px 0 var(--fx), var(--pc-shadow-2); } 85% { box-shadow: 0 3px 0 var(--fx), 0 0 0 9px color-mix(in srgb, var(--fx) 0%, transparent), var(--pc-shadow-2); } }
 }
+
+/* ── Navigation, brought in line with the topic headers ──
+   On a focus-area page the reading line and the current-section underline use that topic's
+   colour; menus and the logo have a little motion. */
+:root[data-focus][data-theme] .reading-progress { height: 4px; background: linear-gradient(90deg, var(--fx), var(--pc-mustard)); }
+:root[data-focus][data-theme] .nav-dropdown-y11.nav-dropdown--has-active .nav-dropdown-btn::after,
+:root[data-focus][data-theme] .nav-dropdown-y12.nav-dropdown--has-active .nav-dropdown-btn::after,
+:root[data-focus][data-theme] .nav-links > li > a[aria-current]::after { background: var(--fx); }
+/* Phone menu and dropdown: the current topic's row takes its colour */
+:root[data-theme] :is(.mobile-menu, .nav-dropdown-menu) a.nav-item[aria-current] { background: color-mix(in srgb, var(--stock, var(--fx)) 16%, var(--pc-cream)); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .nav-dropdown.open .nav-dropdown-menu a.nav-item { animation: nv-in 320ms cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(var(--i, 0) * 45ms + 40ms); }
+  .nav-dropdown.open .nav-dropdown-menu a.nav-item .nav-ico { animation: nv-pop 420ms cubic-bezier(.3, 1.6, .5, 1) both; animation-delay: calc(var(--i, 0) * 45ms + 140ms); }
+  .mobile-menu.open a.nav-item { animation: nv-slide 380ms cubic-bezier(.2, .7, .2, 1) both; animation-delay: calc(min(var(--i, 0), 10) * 32ms + 110ms); }
+  .mobile-menu.open .mobile-menu-label { animation: nv-in 320ms cubic-bezier(.2, .7, .2, 1) both; animation-delay: 160ms; }
+  .nav-links > li > a[aria-current]::after,
+  :root[data-theme] .nav-dropdown.nav-dropdown--has-active .nav-dropdown-btn::after { animation: nv-line 520ms cubic-bezier(.2, .7, .2, 1) 220ms both; }
+  .nav-brand:hover .nav-logo { animation: nv-wiggle 560ms cubic-bezier(.2, .7, .2, 1); }
+  @keyframes nv-in { from { opacity: 0; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
+  @keyframes nv-slide { from { opacity: 0; translate: -18px 0; } to { opacity: 1; translate: 0 0; } }
+  @keyframes nv-pop { from { scale: .5; } to { scale: 1; } }
+  @keyframes nv-line { from { scale: 0 1; opacity: 0; } to { scale: 1 1; opacity: 1; } }
+  @keyframes nv-wiggle { 0%, 100% { rotate: 0deg; } 30% { rotate: -9deg; } 65% { rotate: 6deg; } }
+}
+
+/* Touch screens keep :hover after a tap, which left the menu button tilted and its cross skewed */
+@media (hover: none) {
+  :root[data-theme] .btn-icon:hover { transform: none; box-shadow: var(--pc-shadow-1); }
+}

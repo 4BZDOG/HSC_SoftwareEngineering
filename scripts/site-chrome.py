@@ -12,6 +12,7 @@ One icon per page lives in ICONS below. The script rewrites, on index.html,
   * the icon on the sidebar "Contents" title,
   * the footer (rebuilt from one template), with icons on its links,
   * type="button" on any button that lacks a type,
+  * a position number on every dropdown and mobile-menu item (--i), so the menus animate in one by one,
   * the previous / next topic cards at the end of each topic page,
   * the ?v= cache-busting query on every css/ and js/ link (a short hash of
     the file, so it changes exactly when the file does and visitors never
@@ -246,6 +247,24 @@ def versioned(text, base_dir):
     return re.sub(r'\b(href|src)="((?:\.\./|/HSC_SoftwareEngineering/)?(?:css|js)/[^"?#]+\.(?:css|js))(?:\?v=[^"]*)?"', one, text)
 
 
+def stagger(text):
+    """Number the items of each dropdown and of the mobile menu (style="--i:N") so the menus can animate in one by one."""
+    def number(chunk):
+        n = [0]
+        def one(m):
+            n[0] += 1
+            tag = re.sub(r' style="--i:\d+"', '', m.group(0))
+            return tag[:-1] + f' style="--i:{n[0]}">'
+        return re.sub(r'<a [^>]*class="nav-item[^"]*"[^>]*>', one, chunk)
+    text = re.sub(r'(<div class="nav-dropdown-menu"[^>]*>)(.*?)(</div>)',
+                  lambda m: m.group(1) + number(m.group(2)) + m.group(3), text, flags=re.S)
+    m = re.search(r'<div class="mobile-menu" id="mobile-menu"', text)
+    if m:
+        end = block_end(text, m.start())
+        text = text[:m.start()] + number(text[m.start():end]) + text[end:]
+    return text
+
+
 def apply(path):
     text = open(path, encoding='utf-8').read()
     orig = text
@@ -305,6 +324,7 @@ def apply(path):
         return f'{c.group(1)}{svg(slug, "f-ico")}' if slug in ICONS else c.group(0)
     text = re.sub(r'(<a class="lost-link[^"]*" href="([^"]+\.html)">)(?:<span class="f-ico" aria-hidden="true"><svg.*?</svg></span>)?',
                   chip, text)
+    text = stagger(text)
     text = versioned(text, os.path.dirname(path))
     if text != orig:
         open(path, 'w', encoding='utf-8').write(text)
