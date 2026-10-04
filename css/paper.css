@@ -3654,3 +3654,12 @@ a.footer-brand:hover .footer-logo { transform: rotate(-6deg); }
   .ht-name { font-size: .78rem; line-height: 1.2; }
   .ht-ico { width: 26px; height: 26px; }
 }
+
+/* Phones: grids must not grow to their widest child (a code card or a long term), and long outcome badges wrap */
+.info-grid > *, .key-terms > * { min-width: 0; }
+@media (max-width: 768px) {
+  :root[data-theme] .info-grid, :root[data-theme] .key-terms { grid-template-columns: minmax(0, 1fr); }
+}
+:root[data-theme] .outcome-badge { white-space: normal; max-width: 100%; border-radius: 1rem; line-height: 1.35; }
+:not(pre) > code { overflow-wrap: anywhere; }
+.video-meta { white-space: normal; overflow-wrap: anywhere; }
