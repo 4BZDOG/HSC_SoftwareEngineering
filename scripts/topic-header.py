@@ -9,6 +9,7 @@ illustration (ART below). The script:
 
   * sets data-focus="<key>" on <html> of each focus-area page, which switches
     the page's accent colour and tints the header and its paper hills,
+  * loads js/topic-header.js (header motion and the slim bar),
   * rewrites <header class="topic-header"> to add the illustration, a row of
     figures (dot points, parts, outcomes, length) and a strip of part cards
     that jump to each part; counts are read from the page, so they follow
@@ -329,6 +330,8 @@ def main():
         new = build_header(slug, page)
         page = re.sub(r'<header class="topic-header">.*?</header>', lambda _: new, page, count=1, flags=re.S)
         page = re.sub(r'<html lang="en"[^>]*>', f'<html lang="en" data-theme="light" data-focus="{key}">', page, count=1)
+        if 'js/topic-header.js' not in page:
+            page = re.sub(r'(<script src="\.\./js/progress\.js[^"]*" defer></script>)', r'\1\n  <script src="../js/topic-header.js" defer></script>', page, count=1)
         with open(path, 'w', encoding='utf-8') as f:
             f.write(page)
         print('updated', slug)
