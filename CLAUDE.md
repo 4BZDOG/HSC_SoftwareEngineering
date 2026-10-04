@@ -31,7 +31,7 @@ resources/  syllabus content, research notes, mapping      .claude/skills/  add-
 Focus-area slugs and quiz prefixes: `programming-fundamentals` (pf), `object-oriented-paradigm` (oop), `programming-mechatronics` (mech) for Year 11; `secure-software-architecture` (ssa), `programming-for-the-web` (web), `software-automation` (auto), `software-engineering-project` (sep) for Year 12.
 
 ## Never hand-edit
-- **Navigation, mobile menu, footer, previous/next cards, title and sidebar icons**: `python3 scripts/site-chrome.py` rebuilds them on every page from `PAGES`, `ICONS` and `SEQUENCE`.
+- **Navigation, mobile menu, footer, previous/next cards, title and sidebar icons, `?v=` cache-busting queries**: `python3 scripts/site-chrome.py` rebuilds them on every page from `PAGES`, `ICONS` and `SEQUENCE` (the `?v=` is a content hash of each css/ and js/ file, so edit the file, run the script, and visitors get the new version).
 - `js/glossary-data.js` (`build-glossary.py`), `resources/Syllabus-Mapping.md` (`build-mapping.py`), `topics/resources.html` (`build-resources.py`).
 - The syllabus scaffolding on focus-area pages: each `.part-name`, `<p class="syllabus-concept">` and `<ul class="syllabus-including">`. `scripts/check-site.py` fails if they differ from NESA's text, if an outcome code doesn't belong to the focus area, or if the sidebar doesn't list the sections in order.
 - Mermaid diagrams are pre-rendered: edit the `<template class="mermaid-source">` and run `npm run diagrams`.
