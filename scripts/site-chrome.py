@@ -13,6 +13,10 @@ One icon per page lives in ICONS below. The script rewrites, on index.html,
   * the footer (rebuilt from one template), with icons on its links,
   * type="button" on any button that lacks a type,
   * the previous / next topic cards at the end of each topic page,
+  * the ?v= cache-busting query on every css/ and js/ link (a short hash of
+    the file, so it changes exactly when the file does and visitors never
+    keep a stale stylesheet or script; js/anim.js passes its ?v= on to the
+    scene files it loads, so its hash also covers every file in js/anims/),
   * the topic tags on glossary terms (icon, and a button that filters the
     glossary to that topic). New terms from add-glossary-terms.py come in
     as plain tags; re-run this script afterwards.
@@ -21,6 +25,7 @@ It is safe to run again: blocks it has already rewritten are rebuilt, not
 duplicated. Add a new page to PAGES (and ICONS) and re-run it.
 """
 import glob
+import hashlib
 import os
 import re
 
@@ -211,6 +216,36 @@ def page_slug(path):
     return os.path.basename(path)[:-5]
 
 
+BASE_PATH = '/HSC_SoftwareEngineering/'
+
+
+def asset_version(path):
+    """Short content hash of a css/ or js/ file, used as its ?v= cache-busting query."""
+    h = hashlib.md5()
+    with open(path, 'rb') as f:
+        h.update(f.read())
+    if os.path.basename(path) == 'anim.js':
+        # The engine loads js/anims/<scene>.js with its own ?v=, so a changed scene must change this hash too
+        for scene in sorted(glob.glob(os.path.join(os.path.dirname(path), 'anims', '*.js'))):
+            with open(scene, 'rb') as f:
+                h.update(f.read())
+    return h.hexdigest()[:8]
+
+
+def versioned(text, base_dir):
+    """Set ?v=<hash> on every local css/ and js/ link in a page (the 404 page links site-absolutely)."""
+    def one(m):
+        rel = m.group(2)
+        if rel.startswith(BASE_PATH):
+            target = os.path.join(ROOT, rel[len(BASE_PATH):])
+        else:
+            target = os.path.normpath(os.path.join(base_dir, rel))
+        if not os.path.exists(target):
+            return m.group(0)
+        return f'{m.group(1)}="{rel}?v={asset_version(target)}"'
+    return re.sub(r'\b(href|src)="((?:\.\./|/HSC_SoftwareEngineering/)?(?:css|js)/[^"?#]+\.(?:css|js))(?:\?v=[^"]*)?"', one, text)
+
+
 def apply(path):
     text = open(path, encoding='utf-8').read()
     orig = text
@@ -270,6 +305,7 @@ def apply(path):
         return f'{c.group(1)}{svg(slug, "f-ico")}' if slug in ICONS else c.group(0)
     text = re.sub(r'(<a class="lost-link[^"]*" href="([^"]+\.html)">)(?:<span class="f-ico" aria-hidden="true"><svg.*?</svg></span>)?',
                   chip, text)
+    text = versioned(text, os.path.dirname(path))
     if text != orig:
         open(path, 'w', encoding='utf-8').write(text)
         print('updated', os.path.relpath(path, ROOT))
