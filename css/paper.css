@@ -3881,3 +3881,15 @@ a.footer-brand:hover .footer-logo { transform: rotate(-6deg); }
 .nav-dropdown-head span:last-child { font-weight: 500; letter-spacing: .06em; }
 .nav-dropdown-y11 .nav-dropdown-head { --yc: var(--pc-sage); color: var(--pc-sage-ink, #2c5c42); }
 .nav-dropdown-y12 .nav-dropdown-head { --yc: var(--pc-terracotta); color: var(--pc-terracotta-ink, #9c3d27); }
+
+/* Footer: sister sites and source, under the copyright line */
+:root[data-theme] .footer-more {
+  max-width: 1280px; margin: .9rem auto 0; padding-right: 4rem;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem 1.1rem;
+  font-size: .76rem; letter-spacing: .02em;
+}
+:root[data-theme] .footer-more span { color: #a1978a; text-transform: uppercase; font-size: .68rem; letter-spacing: .1em; font-weight: 700; }
+:root[data-theme] .footer-more a { text-decoration: underline; text-decoration-color: rgba(217,207,187,.3); text-underline-offset: 3px; }
+:root[data-theme] .footer-more a:hover { text-decoration-color: currentColor; }
+@media (min-width: 1500px) { :root[data-theme] .footer-more { max-width: 1520px; } }
+@media (max-width: 768px) { :root[data-theme] .footer-more { padding-right: 4.5rem; } }
