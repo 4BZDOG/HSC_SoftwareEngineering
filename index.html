@@ -39,8 +39,8 @@
   <meta name="description" content="Comprehensive HSC Software Engineering notes for Year 11 and 12 — NESA NSW syllabus, exam tips, algorithms, OOP, security, and the major project." />
   <!-- Theme init: prevents flash of wrong theme -->
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
-  <link rel="stylesheet" href="css/styles.css?v=2eb03cc6" />
-  <link rel="stylesheet" href="css/paper.css?v=7bb3113a" />
+  <link rel="stylesheet" href="css/styles.css?v=b089095f" />
+  <link rel="stylesheet" href="css/paper.css?v=8f5b545f" />
 </head>
 <body>
 
@@ -48,7 +48,7 @@
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="index.html" class="nav-brand">
-        <div class="nav-logo" aria-hidden="true">{&hairsp;}</div>
+        <div class="nav-logo" aria-hidden="true"><svg class="brand-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.5 4.5c-2.1 0-2.9 1-2.9 2.7v2.1c0 1.3-.6 2.2-2.1 2.7 1.5.5 2.1 1.4 2.1 2.7v2.1c0 1.7.8 2.7 2.9 2.7"/><path d="M14.5 4.5c2.1 0 2.9 1 2.9 2.7v2.1c0 1.3.6 2.2 2.1 2.7-1.5.5-2.1 1.4-2.1 2.7v2.1c0 1.7-.8 2.7-2.9 2.7"/></svg></div>
         <div>
           <div class="nav-title">SoftEng Notes</div>
           <div class="nav-subtitle">NESA NSW HSC</div>
@@ -143,138 +143,63 @@
   <section class="hero" id="hero">
     <div class="hero-grid"></div>
     <div class="hero-inner">
-      <div class="hero-pill">NESA NSW · Stage 6 Syllabus</div>
+      <div class="hero-pill">NESA NSW · Stage 6 · Software Engineering</div>
       <h1>Software Engineering notes,<br><span>written to be read.</span></h1>
-      <p>Every dot point of the NSW HSC Software Engineering course, explained properly — from Year 11 foundations through to the Year 12 exam. No filler, no fluff.</p>
-
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-num" data-count="7">7</div>
-          <div class="hero-stat-label">Topics covered</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num" data-count="100" data-suffix="%">100%</div>
-          <div class="hero-stat-label">Syllabus aligned</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">Y11–12</div>
-          <div class="hero-stat-label">Full course</div>
-        </div>
-      </div>
+      <p>Every dot point of the NSW HSC Software Engineering course, explained properly: from Year 11 foundations through to the Year 12 exam. No filler, no fluff.</p>
 
       <div class="hero-cta">
         <a href="#year11" class="btn btn-primary">Start Year 11 <span class="btn-arrow">→</span></a>
         <a href="#year12" class="btn btn-outline">Browse Year 12 <span class="btn-arrow">→</span></a>
       </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num" data-count="7">7</div><div class="hero-stat-label">Focus areas</div></div>
+        <div class="hero-stat"><div class="hero-stat-num" data-count="124">124</div><div class="hero-stat-label">Dot points</div></div>
+        <div class="hero-stat"><div class="hero-stat-num" data-count="18">18</div><div class="hero-stat-label">Outcomes</div></div>
+        <div class="hero-stat"><div class="hero-stat-num" data-count="240">240</div><div class="hero-stat-label">Hours</div></div>
+      </div>
       <!-- hero-topics -->
       <nav class="hero-topics" aria-label="The seven focus areas"><a class="hero-topic" href="topics/programming-fundamentals.html"><span class="ht-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 8l-4.5 4L8 16M16 8l4.5 4L16 16M13 5l-2 14"/></svg></span><span class="ht-text"><span class="ht-year">Year 11</span><span class="ht-name">Programming Fundamentals</span></span></a><a class="hero-topic" href="topics/object-oriented-paradigm.html"><span class="ht-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span><span class="ht-text"><span class="ht-year">Year 11</span><span class="ht-name">Object-Oriented Paradigm</span></span></a><a class="hero-topic" href="topics/programming-mechatronics.html"><span class="ht-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="3" height="3"/><path d="M9.5 7V4M14.5 7V4M9.5 20v-3M14.5 20v-3M7 9.5H4M7 14.5H4M20 9.5h-3M20 14.5h-3"/></svg></span><span class="ht-text"><span class="ht-year">Year 11</span><span class="ht-name">Programming Mechatronics</span></span></a><a class="hero-topic" href="topics/secure-software-architecture.html"><span class="ht-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></span><span class="ht-text"><span class="ht-year">Year 12</span><span class="ht-name">Secure Software Architecture</span></span></a><a class="hero-topic" href="topics/programming-for-the-web.html"><span class="ht-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.4 3.8 5.6 3.8 9s-1.3 6.6-3.8 9c-2.5-2.4-3.8-5.6-3.8-9s1.3-6.6 3.8-9z"/></svg></span><span class="ht-text"><span class="ht-year">Year 12</span><span class="ht-name">Programming for the Web</span></span></a><a class="hero-topic" href="topics/software-automation.html"><span class="ht-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 8a8.1 8.1 0 0 0-14.9 1M4 16a8.1 8.1 0 0 0 14.9-1"/><path d="M4 4v5h5M20 20v-5h-5"/></svg></span><span class="ht-text"><span class="ht-year">Year 12</span><span class="ht-name">Software Automation</span></span></a><a class="hero-topic" href="topics/software-engineering-project.html"><span class="ht-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M9 10h6M9 14h6M9 18h3.5"/></svg></span><span class="ht-text"><span class="ht-year">Year 12</span><span class="ht-name">Software Engineering Project</span></span></a></nav>
       <!-- /hero-topics -->
-      </div>
-  </section>
-
-  <!-- ── Features Bar ── -->
-  <div class="features-bar">
-    <div class="feature-item">
-      <div class="feature-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M12 5.5C10.5 4 8.5 3.5 6 3.5c-1 0-2 .15-3 .5v15c1-.35 2-.5 3-.5 2.5 0 4.5.5 6 2 1.5-1.5 3.5-2 6-2 1 0 2 .15 3 .5v-15c-1-.35-2-.5-3-.5-2.5 0-4.5.5-6 2zm0 0v15"/></svg>
-      </div>
-      <div class="feature-text">
-        <strong>Full syllabus coverage</strong>
-        <span>Every dot point addressed</span>
-      </div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/></svg>
-      </div>
-      <div class="feature-text">
-        <strong>Worked examples</strong>
-        <span>Code samples &amp; diagrams</span>
-      </div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M9.5 14.5L21 3M15 3h6v6M10 4a7 7 0 1 0 7 7c0-.7-.1-1.4-.3-2"/></svg>
-      </div>
-      <div class="feature-text">
-        <strong>Key terms defined</strong>
-        <span>Clear, precise definitions</span>
-      </div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
-      </div>
-      <div class="feature-text">
-        <strong>Dark mode</strong>
-        <span>Easy on the eyes</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── Learning Path ── -->
-  <section class="learning-path" aria-labelledby="path-heading">
-    <h2 id="path-heading" class="visually-hidden">Your learning path</h2>
-    <div class="learning-path-inner">
-      <div class="path-stage path-stage-y11">
-        <div class="path-head">
-          <div class="path-icon" aria-hidden="true">11</div>
-          <div>
-            <div class="path-title">Year 11 — Foundations</div>
-            <div class="path-count">Preliminary · 3 topics</div>
-          </div>
-        </div>
-        <p class="path-desc">Build your programming fundamentals, OOP and mechatronics skills.</p>
-        <ol class="path-topics">
-          <li><a href="topics/programming-fundamentals.html" class="path-topic">
-            <span class="path-topic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 8l-4.5 4L8 16M16 8l4.5 4L16 16M13 5l-2 14"/></svg></span>
-            <span class="path-topic-name">Programming Fundamentals</span>
-          </a></li>
-          <li><a href="topics/object-oriented-paradigm.html" class="path-topic">
-            <span class="path-topic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span>
-            <span class="path-topic-name">Object-Oriented Paradigm</span>
-          </a></li>
-          <li><a href="topics/programming-mechatronics.html" class="path-topic">
-            <span class="path-topic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="3" height="3"/><path d="M9.5 7V4M14.5 7V4M9.5 20v-3M14.5 20v-3M7 9.5H4M7 14.5H4M20 9.5h-3M20 14.5h-3"/></svg></span>
-            <span class="path-topic-name">Programming Mechatronics</span>
-          </a></li>
-        </ol>
-      </div>
-      <div class="path-connector" aria-hidden="true">
-        <div class="path-arrow">→</div>
-      </div>
-      <div class="path-stage path-stage-y12">
-        <div class="path-head">
-          <div class="path-icon" aria-hidden="true">12</div>
-          <div>
-            <div class="path-title">Year 12 — Mastery</div>
-            <div class="path-count">HSC · 4 topics</div>
-          </div>
-        </div>
-        <p class="path-desc">Apply advanced concepts: security, the web, automation and your major project.</p>
-        <ol class="path-topics">
-          <li><a href="topics/secure-software-architecture.html" class="path-topic">
-            <span class="path-topic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></span>
-            <span class="path-topic-name">Secure Software Architecture</span>
-          </a></li>
-          <li><a href="topics/programming-for-the-web.html" class="path-topic">
-            <span class="path-topic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.4 3.8 5.6 3.8 9s-1.3 6.6-3.8 9c-2.5-2.4-3.8-5.6-3.8-9s1.3-6.6 3.8-9z"/></svg></span>
-            <span class="path-topic-name">Programming for the Web</span>
-          </a></li>
-          <li><a href="topics/software-automation.html" class="path-topic">
-            <span class="path-topic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 8a8.1 8.1 0 0 0-14.9 1M4 16a8.1 8.1 0 0 0 14.9-1"/><path d="M4 4v5h5M20 20v-5h-5"/></svg></span>
-            <span class="path-topic-name">Software Automation</span>
-          </a></li>
-          <li><a href="topics/software-engineering-project.html" class="path-topic">
-            <span class="path-topic-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M9 10h6M9 14h6M9 18h3.5"/></svg></span>
-            <span class="path-topic-name">Software Engineering Project</span>
-          </a></li>
-        </ol>
-      </div>
     </div>
   </section>
+
   <!-- ── Main Content ── -->
   <main class="main-content site-main-padding">
+
+    <!-- How to use these notes -->
+    <section class="study-guide-section study-guide-section--top" id="how-to-use" aria-labelledby="how-heading">
+      <div class="study-guide-header">
+        <h2 class="study-guide-title" id="how-heading">How to use these notes</h2>
+        <p class="study-guide-subtitle">Four habits</p>
+      </div>
+      <div class="study-guide-grid">
+        <div class="study-guide-card">
+          <div class="study-guide-step">01</div>
+          <div class="study-guide-icon-wrap" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <h3>Follow the syllabus</h3>
+          <p>Each topic follows NESA dot points exactly. Use the sidebar table of contents to jump to any section in seconds.</p>
+        </div>
+        <div class="study-guide-card">
+          <div class="study-guide-step">02</div>
+          <div class="study-guide-icon-wrap" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></div>
+          <h3>Study the examples</h3>
+          <p>Code samples, diagrams drawn to the NESA course specifications, and summary tables illustrate every concept.</p>
+        </div>
+        <div class="study-guide-card">
+          <div class="study-guide-step">03</div>
+          <div class="study-guide-icon-wrap" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4.5"/><path d="M11.2 11.8L20 3M16 7l3 3M13.5 9.5l2 2"/></svg></div>
+          <h3>Revise key terms</h3>
+          <p>Definitions are highlighted in call-out boxes. Scan them quickly before exams or deep-dive for full understanding.</p>
+        </div>
+        <a class="study-guide-card study-guide-card--link" href="topics/resources.html">
+          <div class="study-guide-step">04</div>
+          <div class="study-guide-icon-wrap" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Check the source</h3>
+          <p>The official NESA syllabus, course specifications and marking guidelines, gathered on one page. <span class="study-guide-more">Certified Resources →</span></p>
+        </a>
+      </div>
+    </section>
 
     <!-- Search -->
     <div class="search-bar">
@@ -295,18 +220,22 @@
     <div id="year11">
       <div class="section-header">
         <h2 class="section-title">
-          Year 11 — Preliminary Course
+          Year 11: Preliminary Course
           <span class="year-badge year-badge-11">Preliminary</span>
         </h2>
-        <span class="topic-count">3 topics</span>
+        <span class="topic-count">3 focus areas · 120 hrs</span>
       </div>
 
       <div class="topics-grid">
         <a href="topics/programming-fundamentals.html" class="topic-card year11">
           <div class="card-art topic-viz" aria-hidden="true"><svg viewBox="0 0 520 340" role="presentation" focusable="false"><rect class="sv-sheet" x="12" y="14" width="496" height="314" rx="14"/><rect class="sv-tape" x="222" y="4" width="76" height="24" rx="3" transform="rotate(-3 260 16)"/><g class="sv-p"><rect class="sv-t" x="52" y="44" width="116" height="34" rx="17"/><text class="sv-text w" x="110" y="66" text-anchor="middle">START</text><line class="sv-line" x1="110" y1="78" x2="110.0" y2="95.0"/><polygon class="sv-ink" points="110,104 115.0,95.0 105.0,95.0"/><rect class="sv-t2" x="52" y="104" width="116" height="40" rx="3"/><text class="sv-text" x="110" y="129" text-anchor="middle">READ n</text><line class="sv-line" x1="110" y1="144" x2="110.0" y2="159.0"/><polygon class="sv-ink" points="110,168 115.0,159.0 105.0,159.0"/><polygon class="sv-m" points="110,168 168,208 110,248 52,208"/><text class="sv-text" x="110" y="213" text-anchor="middle">n &gt; 0 ?</text><line class="sv-line" x1="168" y1="208" x2="205.0" y2="208.0"/><polygon class="sv-ink" points="214,208 205.0,203.0 205.0,213.0"/><text class="sv-text s" x="178" y="200" text-anchor="start">YES</text><rect class="sv-t3" x="214" y="188" width="104" height="40" rx="3"/><text class="sv-text" x="266" y="213" text-anchor="middle">total + n</text><line class="sv-line" x1="110" y1="248" x2="110.0" y2="267.0"/><polygon class="sv-ink" points="110,276 115.0,267.0 105.0,267.0"/><text class="sv-text s" x="118" y="266" text-anchor="start">NO</text><rect class="sv-t" x="52" y="276" width="116" height="30" rx="15"/><text class="sv-text w" x="110" y="296" text-anchor="middle">END</text><rect class="sv-code" x="262" y="44" width="210" height="112" rx="8"/><text class="sv-text code" x="278" y="72" text-anchor="start">while n &gt; 0:</text><text class="sv-text code" x="294" y="96" text-anchor="start">total += n</text><text class="sv-text code" x="294" y="120" text-anchor="start">n -= 1</text><text class="sv-text code" x="278" y="144" text-anchor="start">print(total)</text><rect class="sv-t2 a-lit" style="--i:0" x="352" y="256" width="34" height="24" rx="5"/><text class="sv-text s" x="369" y="273" text-anchor="middle">0110</text><rect class="sv-t2 a-lit" style="--i:1" x="392" y="256" width="34" height="24" rx="5"/><text class="sv-text s" x="409" y="273" text-anchor="middle">1011</text><rect class="sv-t2 a-lit" style="--i:2" x="432" y="256" width="34" height="24" rx="5"/><text class="sv-text s" x="449" y="273" text-anchor="middle">0001</text><text class="sv-text s" x="352" y="246" text-anchor="start">BINARY</text></g></svg></div>
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 8l-4.5 4L8 16M16 8l4.5 4L16 16M13 5l-2 14"/></svg></div>
+          <div class="card-top">
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 8l-4.5 4L8 16M16 8l4.5 4L16 16M13 5l-2 14"/></svg></div>
+            <div class="card-kicker"><span>Focus area 01</span><span class="card-hrs">40 hrs</span></div>
+          </div>
           <div class="card-title">Programming Fundamentals</div>
           <p class="card-desc">Software development steps, designing algorithms with pseudocode and flowcharts, number systems and data types, data structures, testing and debugging.</p>
+          <div class="card-outcomes"><span><b>SE-11-01</b> → <b>11-07</b></span><span>21 dot points</span></div>
           <div class="card-meta">
             <div class="card-topics">
               <span class="topic-tag">Algorithms</span>
@@ -316,15 +245,19 @@
               <span class="topic-tag">Control structures</span>
               <span class="topic-tag">SDLC</span>
             </div>
-            <span class="card-arrow">→</span>
+            <span class="card-arrow" aria-hidden="true">→</span>
           </div>
         </a>
 
         <a href="topics/object-oriented-paradigm.html" class="topic-card year11">
           <div class="card-art topic-viz" aria-hidden="true"><svg viewBox="0 0 520 340" role="presentation" focusable="false"><rect class="sv-sheet" x="12" y="14" width="496" height="314" rx="14"/><rect class="sv-tape" x="222" y="4" width="76" height="24" rx="3" transform="rotate(-3 260 16)"/><g class="sv-p"><rect class="sv-w" x="180" y="38" width="160" height="102" rx="4"/><rect class="sv-t" x="180" y="38" width="160" height="28" rx="4"/><text class="sv-text w" x="260.0" y="57" text-anchor="middle">Animal</text><line class="sv-line thin" x1="180" y1="66" x2="340" y2="66"/><text class="sv-text s" x="190" y="86" text-anchor="start">+ name : str</text><line class="sv-line thin" x1="180" y1="98" x2="340" y2="98"/><text class="sv-text s" x="190" y="118" text-anchor="start">+ speak()</text><rect class="sv-w" x="36" y="206" width="170" height="102" rx="4"/><rect class="sv-t2" x="36" y="206" width="170" height="28" rx="4"/><text class="sv-text w" x="121.0" y="225" text-anchor="middle">Dog</text><line class="sv-line thin" x1="36" y1="234" x2="206" y2="234"/><text class="sv-text s" x="46" y="254" text-anchor="start">+ breed : str</text><line class="sv-line thin" x1="36" y1="266" x2="206" y2="266"/><text class="sv-text s" x="46" y="286" text-anchor="start">+ speak()</text><rect class="sv-w" x="314" y="206" width="170" height="102" rx="4"/><rect class="sv-m" x="314" y="206" width="170" height="28" rx="4"/><text class="sv-text w" x="399.0" y="225" text-anchor="middle">Cat</text><line class="sv-line thin" x1="314" y1="234" x2="484" y2="234"/><text class="sv-text s" x="324" y="254" text-anchor="start">+ indoor : bool</text><line class="sv-line thin" x1="314" y1="266" x2="484" y2="266"/><text class="sv-text s" x="324" y="286" text-anchor="start">+ speak()</text><path class="sv-line" d="M121 206 V172 H260 V156 M399 206 V172 H260" fill="none"/><polygon class="sv-w stroke" points="248,156 260,136 272,156"/><circle class="sv-m" cx="432" cy="76" r="26"/><text class="sv-text" x="432" y="80" text-anchor="middle">rex</text><text class="sv-text s" x="432" y="118" text-anchor="middle">OBJECT</text><path class="sv-line dash" d="M406 76 H345" fill="none"/></g></svg></div>
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div>
+          <div class="card-top">
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></div>
+            <div class="card-kicker"><span>Focus area 02</span><span class="card-hrs">40 hrs</span></div>
+          </div>
           <div class="card-title">The Object-Oriented Paradigm</div>
           <p class="card-desc">Key features of OOP, comparing procedural code with OOP, modelling a system, the OOP design process, and writing, modifying and testing OOP programs.</p>
+          <div class="card-outcomes"><span><b>SE-11-01</b> → <b>11-09</b></span><span>11 dot points</span></div>
           <div class="card-meta">
             <div class="card-topics">
               <span class="topic-tag">Classes</span>
@@ -334,15 +267,19 @@
               <span class="topic-tag">Polymorphism</span>
               <span class="topic-tag">Objects</span>
             </div>
-            <span class="card-arrow">→</span>
+            <span class="card-arrow" aria-hidden="true">→</span>
           </div>
         </a>
 
         <a href="topics/programming-mechatronics.html" class="topic-card year11">
           <div class="card-art topic-viz" aria-hidden="true"><svg viewBox="0 0 520 340" role="presentation" focusable="false"><rect class="sv-sheet" x="12" y="14" width="496" height="314" rx="14"/><rect class="sv-tape" x="222" y="4" width="76" height="24" rx="3" transform="rotate(-3 260 16)"/><g class="sv-p"><rect class="sv-k" x="168" y="120" width="22" height="7" rx="2"/><rect class="sv-k" x="332" y="120" width="22" height="7" rx="2"/><rect class="sv-k" x="168" y="144" width="22" height="7" rx="2"/><rect class="sv-k" x="332" y="144" width="22" height="7" rx="2"/><rect class="sv-k" x="168" y="168" width="22" height="7" rx="2"/><rect class="sv-k" x="332" y="168" width="22" height="7" rx="2"/><rect class="sv-k" x="168" y="192" width="22" height="7" rx="2"/><rect class="sv-k" x="332" y="192" width="22" height="7" rx="2"/><rect class="sv-k" x="168" y="216" width="22" height="7" rx="2"/><rect class="sv-k" x="332" y="216" width="22" height="7" rx="2"/><rect class="sv-code" x="186" y="98" width="150" height="150" rx="10"/><text class="sv-text c b" x="261" y="176" text-anchor="middle">MCU</text><text class="sv-text s c" x="261" y="198" text-anchor="middle">loop()</text><circle class="sv-m" cx="261" cy="124" r="6"/><circle class="sv-t" cx="76" cy="124" r="28"/><circle class="sv-w" cx="76" cy="124" r="10"/><path class="sv-line thin" d="M48 96 A40 40 0 0 1 104 96" fill="none"/><path class="sv-line thin" d="M40 88 A52 52 0 0 1 112 88" fill="none"/><text class="sv-text s" x="76" y="176" text-anchor="middle">SENSOR</text><path class="sv-line" d="M104 124 H168" fill="none"/><path class="sv-line" d="M186 168 H112 V258" fill="none"/><g class="a-spin"><rect class="sv-t2" x="433" y="188" width="14" height="16" rx="2" transform="rotate(0 440 234)"/><rect class="sv-t2" x="433" y="188" width="14" height="16" rx="2" transform="rotate(36 440 234)"/><rect class="sv-t2" x="433" y="188" width="14" height="16" rx="2" transform="rotate(72 440 234)"/><rect class="sv-t2" x="433" y="188" width="14" height="16" rx="2" transform="rotate(108 440 234)"/><rect class="sv-t2" x="433" y="188" width="14" height="16" rx="2" transform="rotate(144 440 234)"/><rect class="sv-t2" x="433" y="188" width="14" height="16" rx="2" transform="rotate(180 440 234)"/><rect class="sv-t2" x="433" y="188" width="14" height="16" rx="2" transform="rotate(216 440 234)"/><rect class="sv-t2" x="433" y="188" width="14" height="16" rx="2" transform="rotate(252 440 234)"/><rect class="sv-t2" x="433" y="188" width="14" height="16" rx="2" transform="rotate(288 440 234)"/><rect class="sv-t2" x="433" y="188" width="14" height="16" rx="2" transform="rotate(324 440 234)"/><circle class="sv-t2" cx="440" cy="234" r="36"/><circle class="sv-w" cx="440" cy="234" r="12"/></g><text class="sv-text s" x="440" y="300" text-anchor="middle">MOTOR</text><path class="sv-line" d="M354 180 H400 V234 H404" fill="none"/><circle class="sv-m a-pulse" cx="440" cy="92" r="20"/><circle class="sv-w" cx="440" cy="92" r="8"/><text class="sv-text s" x="440" y="138" text-anchor="middle">LED</text><path class="sv-line" d="M354 132 H420" fill="none"/><rect class="sv-t3" x="40" y="258" width="170" height="40" rx="6"/><text class="sv-text s" x="125" y="283" text-anchor="middle">if temp &gt; 30: fan.on()</text></g></svg></div>
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="3" height="3"/><path d="M9.5 7V4M14.5 7V4M9.5 20v-3M14.5 20v-3M7 9.5H4M7 14.5H4M20 9.5h-3M20 14.5h-3"/></svg></div>
+          <div class="card-top">
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><rect x="10.5" y="10.5" width="3" height="3"/><path d="M9.5 7V4M14.5 7V4M9.5 20v-3M14.5 20v-3M7 9.5H4M7 14.5H4M20 9.5h-3M20 14.5h-3"/></svg></div>
+            <div class="card-kicker"><span>Focus area 03</span><span class="card-hrs">40 hrs</span></div>
+          </div>
           <div class="card-title">Programming Mechatronics</div>
           <p class="card-desc">Mechatronic hardware and software: sensors, actuators and microcontrollers, wiring and power, open and closed loop control, and building and testing a system.</p>
+          <div class="card-outcomes"><span><b>SE-11-01</b> → <b>11-09</b></span><span>19 dot points</span></div>
           <div class="card-meta">
             <div class="card-topics">
               <span class="topic-tag">Sensors</span>
@@ -352,7 +289,7 @@
               <span class="topic-tag">Feedback loops</span>
               <span class="topic-tag">State machines</span>
             </div>
-            <span class="card-arrow">→</span>
+            <span class="card-arrow" aria-hidden="true">→</span>
           </div>
         </a>
       </div>
@@ -362,18 +299,22 @@
     <div id="year12" class="section-spacer">
       <div class="section-header">
         <h2 class="section-title">
-          Year 12 — HSC Course
+          Year 12: HSC Course
           <span class="year-badge year-badge-12">HSC</span>
         </h2>
-        <span class="topic-count">4 topics</span>
+        <span class="topic-count">4 focus areas · 120 hrs</span>
       </div>
 
       <div class="topics-grid">
         <a href="topics/secure-software-architecture.html" class="topic-card year12">
           <div class="card-art topic-viz" aria-hidden="true"><svg viewBox="0 0 520 340" role="presentation" focusable="false"><rect class="sv-sheet" x="12" y="14" width="496" height="314" rx="14"/><rect class="sv-tape" x="222" y="4" width="76" height="24" rx="3" transform="rotate(-3 260 16)"/><g class="sv-p"><path class="sv-t3" d="M138 40 L238.0 75.0 V170.0 C238.0 240.0 182.0 272.5 138 290 C94.0 272.5 38.0 240.0 38.0 170.0 V75.0 Z"/><path class="sv-t2" d="M138 70 L213.0 96.6 V168.8 C213.0 222.0 171.0 246.70000000000002 138 260 C105.0 246.70000000000002 63.0 222.0 63.0 168.8 V96.6 Z"/><path class="sv-t" d="M138 100 L188.0 118.2 V167.60000000000002 C188.0 204.0 160.0 220.9 138 230 C116.0 220.9 88.0 204.0 88.0 167.60000000000002 V118.2 Z"/><circle class="sv-m" cx="138" cy="160" r="14"/><rect class="sv-m" x="134" y="168" width="8" height="26" rx="2"/><circle class="sv-code" cx="138" cy="160" r="5"/><rect class="sv-t" x="270" y="56" width="204" height="52" rx="6"/><text class="sv-text w" x="288" y="87" text-anchor="start">AUTHENTICATE</text><g class="a-pop" style="--i:2"><circle class="sv-w" cx="452" cy="82" r="11"/><path class="sv-line thin" d="M446 82 l4 4 l8 -9" fill="none"/></g><rect class="sv-t2" x="270" y="132" width="204" height="52" rx="6"/><text class="sv-text" x="288" y="163" text-anchor="start">VALIDATE INPUT</text><g class="a-pop" style="--i:5"><circle class="sv-w" cx="452" cy="158" r="11"/><path class="sv-line thin" d="M446 158 l4 4 l8 -9" fill="none"/></g><rect class="sv-m" x="270" y="208" width="204" height="52" rx="6"/><text class="sv-text" x="288" y="239" text-anchor="start">ENCRYPT DATA</text><g class="a-pop" style="--i:8"><circle class="sv-w" cx="452" cy="234" r="11"/><path class="sv-line thin" d="M446 234 l4 4 l8 -9" fill="none"/></g><line class="sv-line" x1="250" y1="90" x2="257.0" y2="90.0"/><polygon class="sv-ink" points="266,90 257.0,85.0 257.0,95.0"/><line class="sv-line" x1="250" y1="166" x2="257.0" y2="166.0"/><polygon class="sv-ink" points="266,166 257.0,161.0 257.0,171.0"/><line class="sv-line" x1="250" y1="242" x2="257.0" y2="242.0"/><polygon class="sv-ink" points="266,242 257.0,237.0 257.0,247.0"/><text class="sv-text s" x="270" y="300" text-anchor="start">DEFENCE IN DEPTH</text></g></svg></div>
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></div>
+          <div class="card-top">
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-3z"/><rect x="9" y="10.5" width="6" height="5" rx="1"/><path d="M10.5 10.5V9a1.5 1.5 0 0 1 3 0v1.5"/></svg></div>
+            <div class="card-kicker"><span>Focus area 04</span><span class="card-hrs">30 hrs</span></div>
+          </div>
           <div class="card-title">Secure Software Architecture</div>
           <p class="card-desc">Design and write secure code: security concepts, security and privacy by design, security testing, defensive coding, and the impact of secure development.</p>
+          <div class="card-outcomes"><span><b>SE-12-01</b> → <b>12-08</b></span><span>17 dot points</span></div>
           <div class="card-meta">
             <div class="card-topics">
               <span class="topic-tag">Security by design</span>
@@ -383,15 +324,19 @@
               <span class="topic-tag">Defensive coding</span>
               <span class="topic-tag">XSS &amp; CSRF</span>
             </div>
-            <span class="card-arrow">→</span>
+            <span class="card-arrow" aria-hidden="true">→</span>
           </div>
         </a>
 
         <a href="topics/programming-for-the-web.html" class="topic-card year12">
           <div class="card-art topic-viz" aria-hidden="true"><svg viewBox="0 0 520 340" role="presentation" focusable="false"><rect class="sv-sheet" x="12" y="14" width="496" height="314" rx="14"/><rect class="sv-tape" x="222" y="4" width="76" height="24" rx="3" transform="rotate(-3 260 16)"/><g class="sv-p"><rect class="sv-w stroke" x="32" y="44" width="290" height="206" rx="8"/><rect class="sv-t" x="32" y="44" width="290" height="30" rx="8"/><rect class="sv-t" x="32" y="60" width="290" height="14"/><circle class="sv-m" cx="50" cy="59" r="4.5"/><circle class="sv-t3" cx="66" cy="59" r="4.5"/><circle class="sv-t3" cx="82" cy="59" r="4.5"/><rect class="sv-t3" x="106" y="50" width="200" height="18" rx="9"/><text class="sv-text s" x="124" y="63" text-anchor="start">https://notes.example</text><rect class="sv-t2" x="48" y="90" width="258" height="64" rx="4"/><text class="sv-text" x="64" y="128" text-anchor="start">&lt;h1&gt;Hello&lt;/h1&gt;</text><rect class="sv-t3" x="48" y="168" width="80" height="62" rx="4"/><rect class="sv-t" x="56" y="178" width="40" height="6" rx="2"/><rect class="sv-t2" x="56" y="192" width="60" height="5" rx="2"/><rect class="sv-t2" x="56" y="204" width="48" height="5" rx="2"/><rect class="sv-t3" x="136" y="168" width="80" height="62" rx="4"/><rect class="sv-t" x="144" y="178" width="40" height="6" rx="2"/><rect class="sv-t2" x="144" y="192" width="60" height="5" rx="2"/><rect class="sv-t2" x="144" y="204" width="48" height="5" rx="2"/><rect class="sv-t3" x="224" y="168" width="80" height="62" rx="4"/><rect class="sv-t" x="232" y="178" width="40" height="6" rx="2"/><rect class="sv-t2" x="232" y="192" width="60" height="5" rx="2"/><rect class="sv-t2" x="232" y="204" width="48" height="5" rx="2"/><rect class="sv-code" x="396" y="70" width="102" height="42" rx="6"/><circle class="sv-m" cx="412" cy="91" r="5"/><rect class="sv-w" x="428" y="87" width="56" height="8" rx="3"/><rect class="sv-t" x="396" y="122" width="102" height="42" rx="6"/><circle class="sv-m" cx="412" cy="143" r="5"/><rect class="sv-w" x="428" y="139" width="56" height="8" rx="3"/><rect class="sv-code" x="396" y="174" width="102" height="42" rx="6"/><circle class="sv-m" cx="412" cy="195" r="5"/><rect class="sv-w" x="428" y="191" width="56" height="8" rx="3"/><text class="sv-text s" x="447" y="56" text-anchor="middle">SERVER</text><line class="sv-line" x1="326" y1="104" x2="383.0" y2="104.0"/><polygon class="sv-ink" points="392,104 383.0,99.0 383.0,109.0"/><text class="sv-text s" x="334" y="96" text-anchor="start">GET</text><line class="sv-line" x1="392" y1="160" x2="335.0" y2="160.0"/><polygon class="sv-ink" points="326,160 335.0,165.0 335.0,155.0"/><text class="sv-text s" x="334" y="178" text-anchor="start">200 OK</text><circle class="sv-m a-req" cx="326" cy="104" r="5"/><circle class="sv-t a-res" cx="392" cy="160" r="5"/><rect class="sv-t2" x="40" y="268" width="62" height="34" rx="8"/><text class="sv-text" x="71" y="290" text-anchor="middle">&lt;/&gt;</text><rect class="sv-m" x="114" y="268" width="62" height="34" rx="8"/><text class="sv-text" x="145" y="290" text-anchor="middle">{ }</text><rect class="sv-t" x="188" y="268" width="62" height="34" rx="8"/><text class="sv-text w" x="219" y="290" text-anchor="middle">SQL</text><text class="sv-text s" x="300" y="290" text-anchor="start">HTTPS · API · DNS</text></g></svg></div>
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.4 3.8 5.6 3.8 9s-1.3 6.6-3.8 9c-2.5-2.4-3.8-5.6-3.8-9s1.3-6.6 3.8-9z"/></svg></div>
+          <div class="card-top">
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.4 3.8 5.6 3.8 9s-1.3 6.6-3.8 9c-2.5-2.4-3.8-5.6-3.8-9s1.3-6.6 3.8-9z"/></svg></div>
+            <div class="card-kicker"><span>Focus area 05</span><span class="card-hrs">30 hrs</span></div>
+          </div>
           <div class="card-title">Programming for the Web</div>
           <p class="card-desc">How data travels on the web, web protocols and security, designing web applications, front-end and back-end development, SQL, and progressive web apps.</p>
+          <div class="card-outcomes"><span><b>SE-12-01</b> → <b>12-09</b></span><span>21 dot points</span></div>
           <div class="card-meta">
             <div class="card-topics">
               <span class="topic-tag">Web protocols</span>
@@ -402,15 +347,19 @@
               <span class="topic-tag">CSS</span>
               <span class="topic-tag">DNS</span>
             </div>
-            <span class="card-arrow">→</span>
+            <span class="card-arrow" aria-hidden="true">→</span>
           </div>
         </a>
 
         <a href="topics/software-automation.html" class="topic-card year12">
           <div class="card-art topic-viz" aria-hidden="true"><svg viewBox="0 0 520 340" role="presentation" focusable="false"><rect class="sv-sheet" x="12" y="14" width="496" height="314" rx="14"/><rect class="sv-tape" x="222" y="4" width="76" height="24" rx="3" transform="rotate(-3 260 16)"/><g class="sv-p"><rect class="sv-w stroke" x="32" y="44" width="220" height="150" rx="8"/><text class="sv-text s" x="46" y="64" text-anchor="start">REGRESSION</text><line class="sv-line thin" x1="52" y1="172" x2="240" y2="84" stroke-dasharray="6 4"/><circle class="sv-m" cx="62" cy="168" r="5"/><circle class="sv-t" cx="82" cy="156" r="5"/><circle class="sv-t" cx="98" cy="160" r="5"/><circle class="sv-m" cx="116" cy="138" r="5"/><circle class="sv-t" cx="134" cy="142" r="5"/><circle class="sv-t" cx="152" cy="122" r="5"/><circle class="sv-m" cx="170" cy="126" r="5"/><circle class="sv-t" cx="190" cy="104" r="5"/><circle class="sv-t" cx="208" cy="108" r="5"/><circle class="sv-m" cx="228" cy="88" r="5"/><rect class="sv-code" x="274" y="44" width="214" height="150" rx="8"/><text class="sv-text s c" x="290" y="64" text-anchor="start">NEURAL NETWORK</text><line class="sv-edge" x1="310" y1="102" x2="380" y2="98"/><line class="sv-edge" x1="310" y1="102" x2="380" y2="125"/><line class="sv-edge" x1="310" y1="102" x2="380" y2="153"/><line class="sv-edge" x1="310" y1="102" x2="380" y2="180"/><line class="sv-edge" x1="310" y1="139" x2="380" y2="98"/><line class="sv-edge" x1="310" y1="139" x2="380" y2="125"/><line class="sv-edge" x1="310" y1="139" x2="380" y2="153"/><line class="sv-edge" x1="310" y1="139" x2="380" y2="180"/><line class="sv-edge" x1="310" y1="176" x2="380" y2="98"/><line class="sv-edge" x1="310" y1="176" x2="380" y2="125"/><line class="sv-edge" x1="310" y1="176" x2="380" y2="153"/><line class="sv-edge" x1="310" y1="176" x2="380" y2="180"/><line class="sv-edge" x1="380" y1="98" x2="450" y2="112"/><line class="sv-edge" x1="380" y1="98" x2="450" y2="166"/><line class="sv-edge" x1="380" y1="125" x2="450" y2="112"/><line class="sv-edge" x1="380" y1="125" x2="450" y2="166"/><line class="sv-edge" x1="380" y1="153" x2="450" y2="112"/><line class="sv-edge" x1="380" y1="153" x2="450" y2="166"/><line class="sv-edge" x1="380" y1="180" x2="450" y2="112"/><line class="sv-edge" x1="380" y1="180" x2="450" y2="166"/><circle class="sv-t2" cx="310" cy="102" r="8"/><circle class="sv-t2" cx="310" cy="139" r="8"/><circle class="sv-t2" cx="310" cy="176" r="8"/><circle class="sv-t2" cx="380" cy="98" r="8"/><circle class="sv-t2" cx="380" cy="125" r="8"/><circle class="sv-t2" cx="380" cy="153" r="8"/><circle class="sv-t2" cx="380" cy="180" r="8"/><circle class="sv-m" cx="450" cy="112" r="8"/><circle class="sv-m" cx="450" cy="166" r="8"/><rect class="sv-t3 a-lit" style="--i:0" x="40" y="236" width="92" height="44" rx="22"/><text class="sv-text" x="86" y="263" text-anchor="middle">DATA</text><line class="sv-line" x1="134" y1="258" x2="147.0" y2="258.0"/><polygon class="sv-ink" points="156,258 147.0,253.0 147.0,263.0"/><rect class="sv-t2 a-lit" style="--i:1" x="158" y="236" width="92" height="44" rx="22"/><text class="sv-text" x="204" y="263" text-anchor="middle">TRAIN</text><line class="sv-line" x1="252" y1="258" x2="265.0" y2="258.0"/><polygon class="sv-ink" points="274,258 265.0,253.0 265.0,263.0"/><rect class="sv-t a-lit" style="--i:2" x="276" y="236" width="92" height="44" rx="22"/><text class="sv-text w" x="322" y="263" text-anchor="middle">TEST</text><line class="sv-line" x1="370" y1="258" x2="383.0" y2="258.0"/><polygon class="sv-ink" points="392,258 383.0,253.0 383.0,263.0"/><rect class="sv-m a-lit" style="--i:3" x="394" y="236" width="92" height="44" rx="22"/><text class="sv-text" x="440" y="263" text-anchor="middle">DEPLOY</text><path class="sv-line dash" d="M486 292 Q260 330 86 292" fill="none"/></g></svg></div>
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 8a8.1 8.1 0 0 0-14.9 1M4 16a8.1 8.1 0 0 0 14.9-1"/><path d="M4 4v5h5M20 20v-5h-5"/></svg></div>
+          <div class="card-top">
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 8a8.1 8.1 0 0 0-14.9 1M4 16a8.1 8.1 0 0 0 14.9-1"/><path d="M4 4v5h5M20 20v-5h-5"/></svg></div>
+            <div class="card-kicker"><span>Focus area 06</span><span class="card-hrs">30 hrs</span></div>
+          </div>
           <div class="card-title">Software Automation</div>
           <p class="card-desc">Machine learning and automation: training models, decision trees and neural networks, regression in OOP, and the impact and bias of ML and AI.</p>
+          <div class="card-outcomes"><span><b>SE-12-01</b> → <b>12-09</b></span><span>11 dot points</span></div>
           <div class="card-meta">
             <div class="card-topics">
               <span class="topic-tag">Machine learning</span>
@@ -420,15 +369,19 @@
               <span class="topic-tag">Decision trees</span>
               <span class="topic-tag">KNN</span>
             </div>
-            <span class="card-arrow">→</span>
+            <span class="card-arrow" aria-hidden="true">→</span>
           </div>
         </a>
 
         <a href="topics/software-engineering-project.html" class="topic-card year12">
           <div class="card-art topic-viz" aria-hidden="true"><svg viewBox="0 0 520 340" role="presentation" focusable="false"><rect class="sv-sheet" x="12" y="14" width="496" height="314" rx="14"/><rect class="sv-tape" x="222" y="4" width="76" height="24" rx="3" transform="rotate(-3 260 16)"/><g class="sv-p"><rect class="sv-t3" x="34" y="44" width="142" height="196" rx="8"/><text class="sv-text" x="46" y="64" text-anchor="start">TO DO</text><rect class="sv-w" x="44" y="76" width="122" height="40" rx="4"/><rect class="sv-t" x="52" y="85" width="64" height="6" rx="2"/><rect class="sv-w" x="44" y="124" width="122" height="54" rx="4"/><rect class="sv-t" x="52" y="133" width="78" height="6" rx="2"/><rect class="sv-t3" x="52" y="146" width="76" height="5" rx="2"/><rect class="sv-w" x="44" y="186" width="122" height="40" rx="4"/><rect class="sv-t" x="52" y="195" width="64" height="6" rx="2"/><rect class="sv-t2" x="190" y="44" width="142" height="196" rx="8"/><text class="sv-text" x="202" y="64" text-anchor="start">DOING</text><rect class="sv-m" x="200" y="76" width="122" height="54" rx="4"/><rect class="sv-t" x="208" y="85" width="78" height="6" rx="2"/><rect class="sv-t3" x="208" y="98" width="76" height="5" rx="2"/><rect class="sv-w" x="200" y="138" width="122" height="40" rx="4"/><rect class="sv-t" x="208" y="147" width="64" height="6" rx="2"/><rect class="sv-t" x="346" y="44" width="142" height="196" rx="8"/><text class="sv-text w" x="358" y="64" text-anchor="start">DONE</text><rect class="sv-w" x="356" y="76" width="122" height="40" rx="4"/><rect class="sv-t" x="364" y="85" width="64" height="6" rx="2"/><rect class="sv-w" x="356" y="124" width="122" height="40" rx="4"/><rect class="sv-t" x="364" y="133" width="64" height="6" rx="2"/><rect class="sv-w" x="356" y="172" width="122" height="54" rx="4"/><rect class="sv-t" x="364" y="181" width="78" height="6" rx="2"/><rect class="sv-t3" x="364" y="194" width="76" height="5" rx="2"/><line class="sv-line" x1="44" y1="288" x2="478" y2="288"/><circle class="sv-t" cx="44" cy="288" r="8"/><circle class="sv-t" cx="152" cy="288" r="8"/><circle class="sv-t" cx="260" cy="288" r="8"/><circle class="sv-m" cx="368" cy="288" r="8"/><circle class="sv-t" cx="476" cy="288" r="8"/><circle class="sv-m a-travel" cx="44" cy="288" r="11"/><text class="sv-text s" x="44" y="316" text-anchor="start">SPRINT 1</text><text class="sv-text s" x="260" y="316" text-anchor="start">REVIEW</text><text class="sv-text s" x="436" y="316" text-anchor="middle">RELEASE</text></g></svg></div>
-          <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M9 10h6M9 14h6M9 18h3.5"/></svg></div>
+          <div class="card-top">
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5V3h6v1.5M9 10h6M9 14h6M9 18h3.5"/></svg></div>
+            <div class="card-kicker"><span>Focus area 07</span><span class="card-hrs">30 hrs</span></div>
+          </div>
           <div class="card-title">Software Engineering Project</div>
           <p class="card-desc">Plan, build and evaluate your major project: defining requirements, Waterfall, Agile and WAgile, project management, implementation, testing and evaluation.</p>
+          <div class="card-outcomes"><span><b>SE-12-01</b> → <b>12-09</b></span><span>24 dot points</span></div>
           <div class="card-meta">
             <div class="card-topics">
               <span class="topic-tag">Agile</span>
@@ -438,56 +391,109 @@
               <span class="topic-tag">Gantt charts</span>
               <span class="topic-tag">Implementation</span>
             </div>
-            <span class="card-arrow">→</span>
+            <span class="card-arrow" aria-hidden="true">→</span>
           </div>
         </a>
       </div>
     </div>
 
-    <!-- Example major project -->
-    <a class="ep-banner" href="topics/example-project.html">
-      <span class="ep-banner-ico" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M12 21v-8.5"/><path d="M12 12.5c0-4.2 3.1-7.5 8-7.5 0 4.2-3.1 7.5-8 7.5z"/><path d="M12 15c0-3.3-2.6-6-6.5-6 0 3.3 2.6 6 6.5 6z"/></svg></span>
-      <span class="ep-banner-text">
-        <span class="ep-banner-kicker">Example major project · runs live</span>
-        <span class="ep-banner-title">Smart Greenhouse Controller</span>
-        <span class="ep-banner-desc">Sensors, a control loop, a learning model and a secure dashboard, built and documented as an HSC major project. Try it in your browser.</span>
-      </span>
-      <span class="ep-banner-go" aria-hidden="true">→</span>
-    </a>
-
-    <!-- Study Guide Section -->
-    <div class="study-guide-section">
-      <div class="study-guide-header">
-        <h2 class="study-guide-title">How to Use These Notes</h2>
-        <p class="study-guide-subtitle">Four habits to get the most out of every topic</p>
+    <!-- Resources -->
+    <div id="resources" class="section-spacer">
+      <div class="section-header">
+        <h2 class="section-title">
+          Resources
+          <span class="year-badge year-badge-all">Guides</span>
+        </h2>
+        <span class="topic-count">5 pages</span>
       </div>
-      <div class="study-guide-grid">
-        <div class="study-guide-card">
-          <div class="study-guide-step">01</div>
-          <div class="study-guide-icon-wrap" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
-          <h3>Follow the Syllabus</h3>
-          <p>Each topic follows NESA dot points exactly. Use the sidebar table of contents to jump to any section in seconds.</p>
-        </div>
-        <div class="study-guide-card">
-          <div class="study-guide-step">02</div>
-          <div class="study-guide-icon-wrap" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg></div>
-          <h3>Study the Examples</h3>
-          <p>Code samples, diagrams drawn to the NESA course specifications, and summary tables illustrate every concept.</p>
-        </div>
-        <div class="study-guide-card">
-          <div class="study-guide-step">03</div>
-          <div class="study-guide-icon-wrap" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4.5"/><path d="M11.2 11.8L20 3M16 7l3 3M13.5 9.5l2 2"/></svg></div>
-          <h3>Revise Key Terms</h3>
-          <p>Definitions are highlighted in call-out boxes. Scan them quickly before exams or deep-dive for full understanding.</p>
-        </div>
-        <a class="study-guide-card study-guide-card--link" href="topics/resources.html">
-          <div class="study-guide-step">04</div>
-          <div class="study-guide-icon-wrap" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
-          <h3>Check the Source</h3>
-          <p>The official NESA syllabus, course specifications and marking guidelines, gathered on one page. <span class="study-guide-more">Certified Resources →</span></p>
+
+      <div class="topics-grid topics-grid--compact">
+        <a href="topics/course-tools.html" class="topic-card core">
+          <div class="card-top">
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3.6 17.1a1.9 1.9 0 0 0 2.7 2.7l5.7-5.7a4 4 0 0 0 5.1-5.4l-2.5 2.5-2.1-.6-.6-2.1z"/></svg></div>
+            <div class="card-kicker"><span>Resource</span></div>
+          </div>
+          <div class="card-title">Course Tools &amp; Specs</div>
+          <p class="card-desc">Symbols, syntax and tools: DFDs, flowcharts, pseudocode, SQL, class diagrams and test tables.</p>
+          <div class="card-meta"><span class="card-arrow" aria-hidden="true">→</span></div>
+        </a>
+        <a href="topics/sdlc.html" class="topic-card core">
+          <div class="card-top">
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17.5l9 5 9-5"/></svg></div>
+            <div class="card-kicker"><span>Resource</span></div>
+          </div>
+          <div class="card-title">SDLC Guide</div>
+          <p class="card-desc">The development life cycle: Agile and WAgile, tools for each phase, and case studies.</p>
+          <div class="card-meta"><span class="card-arrow" aria-hidden="true">→</span></div>
+        </a>
+        <a href="topics/example-project.html" class="topic-card core">
+          <div class="card-top">
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21v-8.5"/><path d="M12 12.5c0-4.2 3.1-7.5 8-7.5 0 4.2-3.1 7.5-8 7.5z"/><path d="M12 15c0-3.3-2.6-6-6.5-6 0 3.3 2.6 6 6.5 6z"/></svg></div>
+            <div class="card-kicker"><span>Runs live</span></div>
+          </div>
+          <div class="card-title">Example Major Project</div>
+          <p class="card-desc">A smart greenhouse controller that runs live in your browser and draws on every focus area.</p>
+          <div class="card-meta"><span class="card-arrow" aria-hidden="true">→</span></div>
+        </a>
+        <a href="topics/glossary.html" class="topic-card core">
+          <div class="card-top">
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 5.5c3-1.3 6-1.3 9 .5 3-1.8 6-1.8 9-.5V19c-3-1.3-6-1.3-9 .5-3-1.8-6-1.8-9-.5z"/><path d="M12 6v13.5"/></svg></div>
+            <div class="card-kicker"><span>Resource</span></div>
+          </div>
+          <div class="card-title">Glossary</div>
+          <p class="card-desc">Every syllabus keyword, defined, from A to Z.</p>
+          <div class="card-meta"><span class="card-arrow" aria-hidden="true">→</span></div>
+        </a>
+        <a href="topics/resources.html" class="topic-card core">
+          <div class="card-top">
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 3h11v18l-5.5-3.8L6.5 21z"/><path d="M9.5 9.5l2 2 3.5-3.5"/></svg></div>
+            <div class="card-kicker"><span>Resource</span></div>
+          </div>
+          <div class="card-title">Certified Resources</div>
+          <p class="card-desc">Official NESA syllabus documents, specifications and marking guidelines in one place.</p>
+          <div class="card-meta"><span class="card-arrow" aria-hidden="true">→</span></div>
         </a>
       </div>
     </div>
+
+    <!-- Course at a glance -->
+    <section class="glance" id="glance" aria-labelledby="glance-heading">
+      <div class="section-header">
+        <h2 class="section-title" id="glance-heading">Course at a glance</h2>
+        <span class="topic-count">18 outcomes · 240 hrs</span>
+      </div>
+      <div class="glance-grid">
+        <div class="glance-card year11">
+          <div class="glance-top">
+            <div><div class="glance-kicker">Year 11 · Preliminary</div><div class="glance-hours">120<small>hours</small></div></div>
+            <span class="glance-delta">3 focus areas</span>
+          </div>
+          <div class="hours-bar" role="group" aria-label="120 hours split into 3 focus areas of 40 indicative hours each"><a class="hours-seg h40" href="topics/programming-fundamentals.html">FUNDAMENTALS</a><a class="hours-seg h40" href="topics/object-oriented-paradigm.html">OBJECT-ORIENTED</a><a class="hours-seg h40" href="topics/programming-mechatronics.html">MECHATRONICS</a></div>
+          <ul class="hours-legend"><li><a href="topics/programming-fundamentals.html">Programming Fundamentals</a><b>40 hrs</b></li><li><a href="topics/object-oriented-paradigm.html">Object-Oriented Paradigm</a><b>40 hrs</b></li><li><a href="topics/programming-mechatronics.html">Programming Mechatronics</a><b>40 hrs</b></li></ul>
+        </div>
+        <div class="glance-card year12">
+          <div class="glance-top">
+            <div><div class="glance-kicker">Year 12 · HSC</div><div class="glance-hours">120<small>hours</small></div></div>
+            <span class="glance-delta">4 focus areas</span>
+          </div>
+          <div class="hours-bar" role="group" aria-label="120 hours split into 4 focus areas of 30 indicative hours each"><a class="hours-seg h30" href="topics/secure-software-architecture.html">SECURE</a><a class="hours-seg h30" href="topics/programming-for-the-web.html">WEB</a><a class="hours-seg h30" href="topics/software-automation.html">AUTOMATION</a><a class="hours-seg h30" href="topics/software-engineering-project.html">PROJECT</a></div>
+          <ul class="hours-legend"><li><a href="topics/secure-software-architecture.html">Secure Software Architecture</a><b>30 hrs</b></li><li><a href="topics/programming-for-the-web.html">Programming for the Web</a><b>30 hrs</b></li><li><a href="topics/software-automation.html">Software Automation</a><b>30 hrs</b></li><li><a href="topics/software-engineering-project.html">Software Engineering Project</a><b>30 hrs</b></li></ul>
+        </div>
+      </div>
+      <details class="glance-outcomes">
+        <summary>Course outcomes<span class="count">SE-11-01 to SE-12-09</span></summary>
+        <div class="outcomes-cols">
+          <div class="outcome-col year11">
+            <h3>Year 11 · Preliminary</h3>
+            <dl class="outcome-list"><div class="outcome-row"><dt>SE-11-01</dt><dd>Describes methods used to plan, develop and engineer software solutions</dd></div><div class="outcome-row"><dt>SE-11-02</dt><dd>Explains how structural elements are used to develop programming code</dd></div><div class="outcome-row"><dt>SE-11-03</dt><dd>Describes how current hardware, software and emerging technologies influence the development of software engineering solutions</dd></div><div class="outcome-row"><dt>SE-11-04</dt><dd>Applies safe and secure practices to collect, use and store data</dd></div><div class="outcome-row"><dt>SE-11-05</dt><dd>Describes the social, ethical and legal implications of software engineering on the individual, society and the environment</dd></div><div class="outcome-row"><dt>SE-11-06</dt><dd>Applies tools and resources to design, develop, manage and evaluate software</dd></div><div class="outcome-row"><dt>SE-11-07</dt><dd>Implements safe and secure programming solutions</dd></div><div class="outcome-row"><dt>SE-11-08</dt><dd>Applies language structures to refine code</dd></div><div class="outcome-row"><dt>SE-11-09</dt><dd>Manages and documents the development of a software project</dd></div></dl>
+          </div>
+          <div class="outcome-col year12">
+            <h3>Year 12 · HSC</h3>
+            <dl class="outcome-list"><div class="outcome-row"><dt>SE-12-01</dt><dd>Justifies methods used to plan, develop and engineer software solutions</dd></div><div class="outcome-row"><dt>SE-12-02</dt><dd>Applies structural elements to develop programming code</dd></div><div class="outcome-row"><dt>SE-12-03</dt><dd>Analyses how current hardware, software and emerging technologies influence the development of software engineering solutions</dd></div><div class="outcome-row"><dt>SE-12-04</dt><dd>Evaluates practices to safely and securely collect, use and store data</dd></div><div class="outcome-row"><dt>SE-12-05</dt><dd>Explains the social, ethical and legal implications of software engineering on the individual, society and the environment</dd></div><div class="outcome-row"><dt>SE-12-06</dt><dd>Justifies the selection and use of tools and resources to design, develop, manage and evaluate software</dd></div><div class="outcome-row"><dt>SE-12-07</dt><dd>Designs, develops and implements safe and secure programming solutions</dd></div><div class="outcome-row"><dt>SE-12-08</dt><dd>Tests and evaluates language structures to refine code</dd></div><div class="outcome-row"><dt>SE-12-09</dt><dd>Applies methods to manage and document the development of a software project</dd></div></dl>
+          </div>
+        </div>
+      </details>
+    </section>
 
   </main>
 
@@ -496,7 +502,7 @@
     <div class="footer-inner">
       <div>
         <a href="index.html" class="footer-brand">
-          <div class="footer-logo" aria-hidden="true">{&hairsp;}</div>
+          <div class="footer-logo" aria-hidden="true"><svg class="brand-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.5 4.5c-2.1 0-2.9 1-2.9 2.7v2.1c0 1.3-.6 2.2-2.1 2.7 1.5.5 2.1 1.4 2.1 2.7v2.1c0 1.7.8 2.7 2.9 2.7"/><path d="M14.5 4.5c2.1 0 2.9 1 2.9 2.7v2.1c0 1.3.6 2.2 2.1 2.7-1.5.5-2.1 1.4-2.1 2.7v2.1c0 1.7-.8 2.7-2.9 2.7"/></svg></div>
           <span class="footer-name">SoftEng Notes</span>
         </a>
         <p class="footer-desc">Notes for every dot point of the NSW HSC Software Engineering syllabus, from Year 11 foundations to the Year 12 exam.</p>
@@ -561,7 +567,7 @@
     </div>
   </div>
 
-  <script src="js/main.js?v=5cd05a78"></script>
+  <script src="js/main.js?v=477ecdbe"></script>
   <script src="js/paper.js?v=942669ea" defer></script>
   <script src="js/progress.js?v=4cd84c12" defer></script>
 </body>
