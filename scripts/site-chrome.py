@@ -10,6 +10,7 @@ One icon per page lives in ICONS below. The script rewrites, on index.html,
   * the mobile menu (rebuilt from one template so every page matches),
   * the icon beside the page's <h1>,
   * the icon on the sidebar "Contents" title,
+  * the logo glyph and name in the navigation bar,
   * the footer (rebuilt from one template), with icons on its links,
   * type="button" on any button that lacks a type,
   * a position number on every dropdown and mobile-menu item (--i), so the menus animate in one by one,
@@ -49,6 +50,20 @@ ICONS = {
     'resources': '<path d="M6.5 3h11v18l-5.5-3.8L6.5 21z"/><path d="M9.5 9.5l2 2 3.5-3.5"/>',
     'example-project': '<path d="M12 21v-8.5"/><path d="M12 12.5c0-4.2 3.1-7.5 8-7.5 0 4.2-3.1 7.5-8 7.5z"/><path d="M12 15c0-3.3-2.6-6-6.5-6 0 3.3 2.6 6 6.5 6z"/>',
 }
+
+# The logo tile: a pair of braces (stroked in the tile's colour; styled by css/paper.css)
+BRAND_GLYPH = ('<svg class="brand-glyph" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+               '<path d="M9.5 4.5c-2.1 0-2.9 1-2.9 2.7v2.1c0 1.3-.6 2.2-2.1 2.7 1.5.5 2.1 1.4 2.1 2.7v2.1c0 1.7.8 2.7 2.9 2.7"/>'
+               '<path d="M14.5 4.5c2.1 0 2.9 1 2.9 2.7v2.1c0 1.3.6 2.2 2.1 2.7-1.5.5-2.1 1.4-2.1 2.7v2.1c0 1.7-.8 2.7-2.9 2.7"/></svg>')
+SITE_NAME = 'SoftEng Notes'
+NESA_URL = 'https://curriculum.nsw.edu.au/learning-areas/tas/software-engineering-11-12-2022'
+# The footer's "More from 4BZDOG" row: the sister site first, then the author's projects and this site's source.
+# The sister site's script (HSC-Enterprise-Computing/scripts/site-chrome.py) mirrors this row; keep the two in step.
+MORE_LINKS = [
+    ('Enterprise Computing Notes', 'https://4bzdog.github.io/HSC-Enterprise-Computing/'),
+    ('All projects', 'https://4bzdog.github.io/'),
+    ('Source on GitHub', 'https://github.com/4BZDOG/HSC_SoftwareEngineering'),
+]
 
 # slug: (group, title, summary)
 PAGES = {
@@ -146,30 +161,28 @@ def footer(prefix, home, page_title):
     for group, label, _ in GROUPS:
         links = [f'        <a href="{prefix}{s}.html">{t}</a>' for s, (g, t, _) in PAGES.items() if g == group]
         if group == 'core':
-            links.append('        <a href="https://curriculum.nsw.edu.au/learning-areas/tas/software-engineering-11-12-2022" '
-                         'target="_blank" rel="noopener">NESA Syllabus ↗</a>')
+            links.append(f'        <a href="{NESA_URL}" target="_blank" rel="noopener">NESA Syllabus ↗</a>')
         cols.append(f'      <div class="footer-col footer-col-{group}">\n        <h4>{label}</h4>\n' + '\n'.join(links) + '\n      </div>')
     where = f' · {page_title}' if page_title else ''
+    more = '\n'.join(f'      <a href="{u}" rel="noopener">{t} ↗</a>' for t, u in MORE_LINKS)
     return f'''<footer>
     <div class="footer-inner">
       <div>
         <a href="{home}" class="footer-brand">
-          <div class="footer-logo" aria-hidden="true">{{&hairsp;}}</div>
-          <span class="footer-name">SoftEng Notes</span>
+          <div class="footer-logo" aria-hidden="true">{BRAND_GLYPH}</div>
+          <span class="footer-name">{SITE_NAME}</span>
         </a>
         <p class="footer-desc">Notes for every dot point of the NSW HSC Software Engineering syllabus, from Year 11 foundations to the Year 12 exam.</p>
       </div>
 {chr(10).join(cols)}
     </div>
     <div class="footer-bottom">
-      <span>© 2026 HSC SoftEng Notes{where}</span>
+      <span>© 2026 HSC {SITE_NAME}{where}</span>
       <span>Aligned to the NESA syllabus · For educational purposes only</span>
     </div>
     <nav class="footer-more" aria-label="More from 4BZDOG">
       <span>More from 4BZDOG</span>
-      <a href="https://4bzdog.github.io/HSC-Enterprise-Computing/" rel="noopener">Enterprise Computing Notes ↗</a>
-      <a href="https://4bzdog.github.io/" rel="noopener">All projects ↗</a>
-      <a href="https://github.com/4BZDOG/HSC_SoftwareEngineering" rel="noopener">Source on GitHub ↗</a>
+{more}
     </nav>
   </footer>'''
 
@@ -285,6 +298,11 @@ def apply(path):
     else:
         prefix, home = '', '../index.html'
     slug = page_slug(path)
+
+    # The logo tile and name in the bar
+    text = re.sub(r'(<a href="[^"]*" class="nav-brand">\s*)<div class="nav-logo" aria-hidden="true">.*?</div>(\s*<div>\s*)<div class="nav-title">[^<]*</div>',
+                  lambda m: f'{m.group(1)}<div class="nav-logo" aria-hidden="true">{BRAND_GLYPH}</div>{m.group(2)}<div class="nav-title">{SITE_NAME}</div>',
+                  text, count=1, flags=re.S)
 
     text = dropdown_items(text, prefix)
 

@@ -289,6 +289,33 @@ with tempfile.TemporaryDirectory() as tmp:
     if open(os.path.join(tmp, 'topics', 'resources.html'), encoding='utf-8').read() != open(os.path.join(ROOT, 'topics', 'resources.html'), encoding='utf-8').read():
         fail('topics/resources.html changes when scripts/build-resources.py runs; run it and commit the result')
 
+# Home page figures are written by hand, so check them against the pages they describe
+home_html = open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read()
+area_dots = {}
+for page in FOCUS_AREAS:
+    page_html = open(os.path.join(ROOT, 'topics', page), encoding='utf-8').read()
+    area_dots[page] = len(re.findall(r'<p class="syllabus-concept"', page_html))
+    card = re.search(rf'<a href="topics/{re.escape(page)}" class="topic-card[^"]*">.*?</a>', home_html, re.S)
+    said = re.search(r'(\d+) dot points', card.group(0)) if card else None
+    if not card:
+        fail(f'index.html: no card for {page}')
+    elif not said or int(said.group(1)) != area_dots[page]:
+        fail(f'index.html: the {page} card says {said.group(1) if said else "no"} dot points, the page has {area_dots[page]}')
+
+
+def home_stat(label):
+    m = re.search(r'data-count="(\d+)">[^<]*</div>\s*<div class="hero-stat-label">' + label + '<', home_html)
+    return int(m.group(1)) if m else None
+
+
+main_js_src = open(os.path.join(ROOT, 'js', 'main.js'), encoding='utf-8').read()
+hours_on_cards = sum(int(h) for h in re.findall(r'class="card-hrs">(\d+) hrs', home_html))
+for label, want in (('Focus areas', len(FOCUS_AREAS)), ('Dot points', sum(area_dots.values())),
+                    ('Outcomes', len(re.findall(r"'[A-Z]{2}-1[12]-\d\d':", main_js_src))), ('Hours', hours_on_cards)):
+    got = home_stat(label)
+    if got != want:
+        fail(f'index.html: the hero says {got} for "{label}", the site has {want}')
+
 if errors:
     print(f'{len(errors)} problem(s):')
     for e in errors:

@@ -150,18 +150,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // ── Hover (desktop) ──────────────────────────────────────
       // Small close-delay so fast mouse movement between items doesn't flash closed.
+      // Only where a pointer can hover: a tap on a touch screen sends mouseenter first, which opened the
+      // menu and then let the same tap's click shut it again.
+      const canHover = window.matchMedia('(hover: hover)');
       dd.addEventListener('mouseenter', () => {
+        if (!canHover.matches) return;
         clearTimeout(closeTimer);
         closeAll(dd);
         openDd(dd);
       });
       dd.addEventListener('mouseleave', () => {
+        if (!canHover.matches) return;   // on touch, a tap elsewhere (the document click) closes it
         closeTimer = setTimeout(() => closeDd(dd), 80);
       });
 
       // ── Click / touch toggle ──────────────────────────────────
-      btn.addEventListener('click', () => {
+      // A mouse click on a menu that hover has already opened keeps it open, not shut under the pointer.
+      btn.addEventListener('click', e => {
         const wasOpen = dd.classList.contains('open');
+        if (wasOpen && e.detail > 0 && canHover.matches) return;
         closeAll();
         if (!wasOpen) openDd(dd);
       });
@@ -484,7 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })();
 
   /* ── Reveal-on-scroll for home page sections ── */
-  const revealEls = document.querySelectorAll('.feature-item, .path-stage, .study-guide-card');
+  const revealEls = document.querySelectorAll('.study-guide-card, .glance-card, .glance-outcomes');
   if (revealEls.length && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     revealEls.forEach((el, i) => {
       el.classList.add('reveal-item');
@@ -807,6 +814,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(fab);
     document.body.appendChild(backdrop);
     document.body.appendChild(panel);
+
+    // The footer's last rows sit where the button floats: it steps aside while the footer reaches that zone
+    const footerEl = document.querySelector('footer');
+    if (footerEl && 'IntersectionObserver' in window) {
+      new IntersectionObserver(entries => fab.classList.toggle('is-over-footer', entries[0].isIntersecting),
+        { rootMargin: '0px 0px -90px 0px' }).observe(footerEl);
+    }
 
     let lastFocus = null;
     const open = () => {
