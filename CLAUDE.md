@@ -20,10 +20,10 @@ A free static study-notes site for NSW HSC Software Engineering (NESA Software E
 ```
 index.html  404.html  sitemap.xml  robots.txt  og-image.png  package.json
 topics/     7 focus-area pages + course-tools, sdlc, example-project, glossary, resources
-css/        styles.css (base), paper.css (paper-cut theme), anim.css (diagram kit), greenhouse.css
+css/        styles.css (base), paper.css (paper-cut theme), anim.css (diagram kit), greenhouse.css, fonts/ (self-hosted WOFF2)
 js/         main.js, progress.js, quiz.js, quizzes/<slug>.js, glossary-data.js (generated), paper.js,
             nesa-diagrams.js, nesa-diagram-data.js, anim.js, anims/<scene>.js, algo-trace(s).js, greenhouse.js
-scripts/    site-chrome.py, check-site.py, validate-alignment.sh, restructure.py, page_specs.py,
+scripts/    site-chrome.py, check-site.py, check-layout.mjs, validate-alignment.sh, restructure.py, page_specs.py,
             build-glossary.py, add-glossary-terms.py, glossary_new_terms.py, glossary_examples.py,
             build-mapping.py, build-resources.py, copy_audit.py, render-diagrams.mjs
 resources/  syllabus content, research notes, mapping      .claude/skills/  add-topic, paper-diagrams, add-animation
@@ -44,7 +44,7 @@ python3 scripts/build-mapping.py
 python3 scripts/check-site.py
 bash scripts/validate-alignment.sh
 ```
-`python3 scripts/copy_audit.py` lists each section's length against the scope its verb implies. Serve locally with `python3 -m http.server <port>`; screenshot with Playwright (`require('/opt/node22/lib/node_modules/playwright')`; never run `playwright install`). Check light and dark mode and a 390 px phone width (no horizontal page scroll).
+`python3 scripts/copy_audit.py` lists each section's length against the scope its verb implies. `node scripts/check-layout.mjs` (add `--quick` for a shorter run) checks for sideways scrolling at 375 to 1440 px and that the shared page frame holds; it needs Playwright and is not part of CI, so run it before a pull request that touches layout or styling. Serve locally with `python3 -m http.server <port>`; screenshot with Playwright (`require('/opt/node22/lib/node_modules/playwright')`; never run `playwright install`). Check light and dark mode and a 390 px phone width (no horizontal page scroll).
 
 ## Content conventions
 - **Callouts**: `<div class="callout tip|info|warning|danger|success|assessor">` with a leading `<strong>Label</strong>`; `assessor` is for HSC exam guidance (at least one per part).
@@ -65,6 +65,7 @@ Enterprise Computing and Software Engineering are one family: a student moving b
 
 ## Storage, dependencies, links
 - Storage keys: `hsc-theme`, `hsc-parts`, `hsc-collapsed`, plus progress keys in `js/progress.js`. The Enterprise Computing site on the same origin uses `ec-` keys, so they don't collide; keep new SE keys `hsc-`/`se-` prefixed and wrap storage access in try/catch.
+- **Fonts are served from `css/fonts/`** (licences in its `README.md`); no page or stylesheet may call a font host, and `check-site.py` fails if one does.
 - **No external JS or CSS libraries and no CDNs** in pages. Vanilla HTML/CSS/JS; use the theme's custom properties so light and dark mode work; respect `prefers-reduced-motion`.
 - External links only to reputable, stable sources; check each returns HTTP 200.
 

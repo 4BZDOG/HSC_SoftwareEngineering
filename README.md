@@ -78,7 +78,7 @@ HSC_SoftwareEngineering/
 - **Premium dark mode** with smooth theme toggle (saves preference to localStorage)
 - **Responsive mobile-first layout** (works on all devices)
 - **Accessible** — semantic HTML, ARIA labels, keyboard navigation
-- **Fast loading** — optimised CSS, SVG favicon, preconnected Google Fonts
+- **Fast loading** — optimised CSS, SVG favicon, self-hosted fonts
 
 ### SEO & Discoverability
 - **Canonical URLs** on all pages to prevent duplicate-content penalties
@@ -280,7 +280,7 @@ https://4bzdog.github.io/HSC_SoftwareEngineering/
 - **No external dependencies** — pure HTML/CSS/JavaScript
 - **Minimal CSS** — single stylesheet (~15KB gzipped)
 - **Lazy-loaded theme** — theme preference loaded before page renders (prevents FOUC)
-- **Preconnected fonts** — Google Fonts preconnect for faster font delivery
+- **Self-hosted fonts** — WOFF2 files served from `css/fonts/`, so no request goes to a font host
 - **SVG favicon** — inline data URI, no additional request
 
 ---

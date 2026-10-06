@@ -306,29 +306,8 @@
 :root[data-theme] .btn-primary { background: var(--pc-ink); color: var(--pc-cream); border: 0; }
 :root[data-theme] .btn-outline { background: var(--pc-cream); color: var(--pc-ink); border: 0; }
 
-/* ── Features bar and home sections ──────────────────────── */
-:root[data-theme] .features-bar {
-  background: transparent;
-  border: 0;
-  position: relative;
-  z-index: 3;
-  margin-top: -3.5rem;
-}
-:root[data-theme] .feature-item {
-  background: var(--pc-cream);
-  border-radius: 6px;
-  padding: 1rem 1.1rem;
-  box-shadow: var(--pc-shadow-2);
-}
-:root[data-theme] .feature-item:nth-child(odd) { transform: rotate(-.6deg); }
-:root[data-theme] .feature-item:nth-child(even) { transform: rotate(.5deg); }
-:root[data-theme] .feature-icon {
-  background: var(--pc-sheet);
-  color: var(--pc-teal);
-  border: 0;
-  box-shadow: var(--pc-shadow-1);
-}
-:root[data-theme] .feature-text strong { color: var(--pc-ink); }
+/* ── Home sections ───────────────────────────────────────── */
+
 :root[data-theme] .section-title { color: var(--pc-ink); }
 
 /* Topic cards: a cream sheet on a coloured backing sheet */
@@ -366,8 +345,7 @@
 }
 :root[data-theme] .card-arrow { color: var(--stock); }
 
-:root[data-theme] .study-guide-card,
-:root[data-theme] .path-stage {
+:root[data-theme] .study-guide-card {
   background: var(--pc-cream);
   border: 0;
   border-radius: 6px;
@@ -639,7 +617,7 @@
 
 @media (max-width: 768px) {
   :root[data-theme] .section-body { margin: -4px 4px 0; }
-  :root[data-theme] .features-bar { margin-top: -2.5rem; }
+  
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3224,66 +3202,12 @@ section[id], h3[id^="tool-"] { scroll-margin-top: 90px; }
 :root[data-theme="dark"] .alpha-btn.active { color: var(--on-stock); }
 .video-box-label .video-icon, [data-theme="dark"] .video-box-label .video-icon { background: #c62828; }
 /* Cards get a hairline edge: paper shadows vanish on a dark page */
-:root[data-theme="dark"] :is(.topic-card, .study-guide-card, .path-stage, .feature-card, .callout, .info-card,
+:root[data-theme="dark"] :is(.topic-card, .study-guide-card, .callout, .info-card,
   .key-term-item, .tools-panel, .tools-used, .video-box, .nav-dropdown-menu, .sidebar .toc-list,
-  .content-body h2.syllabus-phase, .topic-breakout.subtopic-breakout, .quiz, .figure, .path-topic) {
+  .content-body h2.syllabus-phase, .topic-breakout.subtopic-breakout, .quiz, .figure) {
   outline: 1px solid rgba(255,255,255,.07);
   outline-offset: -1px;
 }
-/* ── Landing page learning path ── */
-:root[data-theme] .learning-path-inner { max-width: 1100px; align-items: stretch; }
-:root[data-theme] .path-stage {
-  --stock: var(--pc-sage);
-  text-align: left;
-  padding: 1.6rem 1.6rem 1.4rem;
-  border-top: 6px solid var(--stock);
-  display: flex; flex-direction: column;
-}
-:root[data-theme] .path-stage-y12 { --stock: var(--pc-terracotta); }
-:root[data-theme] .path-stage:hover { transform: translateY(-3px); border-color: var(--stock); }
-.path-head { display: flex; align-items: center; gap: 1rem; margin-bottom: .75rem; }
-:root[data-theme] .path-head .path-icon {
-  flex: none; margin: 0;
-  width: 56px; height: 56px;
-  background: var(--stock); color: var(--on-stock); border: 0;
-  box-shadow: var(--pc-shadow-1);
-}
-:root[data-theme] .path-title { color: var(--pc-ink); font-size: 1.2rem; margin-bottom: .2rem; }
-:root[data-theme] .path-count {
-  padding: 0; background: none; color: var(--stock);
-  font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em;
-}
-:root[data-theme] .path-desc { color: var(--pc-ink-soft); font-size: .95rem; margin: 0 0 1rem; }
-.path-topics { list-style: none; margin: 0; padding: 0; display: grid; gap: .55rem; }
-.path-topic {
-  display: flex; align-items: center; gap: .8rem;
-  padding: .55rem .75rem;
-  border-radius: 8px;
-  text-decoration: none;
-  color: var(--pc-ink);
-  font-weight: 600;
-  background: var(--pc-sheet, rgba(0,0,0,.03));
-  box-shadow: var(--pc-shadow-1);
-  transition: transform 200ms ease, box-shadow 200ms ease;
-}
-.path-topic:hover, .path-topic:focus-visible { transform: translateX(4px); box-shadow: var(--pc-shadow-2); }
-.path-topic:focus-visible { outline: 2px solid var(--stock); outline-offset: 2px; }
-.path-topic-icon {
-  flex: none;
-  width: 36px; height: 36px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 8px;
-  background: var(--stock); color: var(--on-stock);
-  transition: transform 320ms cubic-bezier(.3,1.6,.5,1);
-}
-.path-topic:hover .path-topic-icon { transform: rotate(-8deg) scale(1.08); }
-.path-topic-icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-:root[data-theme] .path-connector { align-self: center; }
-@media (prefers-reduced-motion: reduce) {
-  .path-topic, .path-topic-icon { transition: none; }
-}
-
-
 /* Part label: full opacity so it reads on the banner */
 :root[data-theme] .part-block .part-number { opacity: 1; color: rgba(255,255,255,.88); }
 
@@ -3297,9 +3221,7 @@ section[id], h3[id^="tool-"] { scroll-margin-top: 90px; }
 :root[data-theme] .phase-4 .phase-num,
 :root[data-theme] .badge-phase4 { color: #1b1916; }
 :root[data-theme] .code-block:has(> table) > .copy-btn { display: none; }
-:root[data-theme] .path-stage .path-count { color: var(--stock-ink, var(--stock)); }
-.path-stage-y11 { --stock-ink: var(--pc-sage-ink); }
-.path-stage-y12 { --stock-ink: var(--pc-terracotta-ink); }
+
 .lost-link:has(.f-ico) { display: inline-flex; align-items: center; gap: .45rem; }
 .lost-link .f-ico { opacity: .85; }
 
@@ -3379,46 +3301,6 @@ a.footer-brand { text-decoration: none; color: inherit; width: fit-content; }
 a.footer-brand:hover .footer-logo { transform: rotate(-6deg); }
 .footer-logo { transition: transform 260ms cubic-bezier(.3,1.6,.5,1); }
 
-/* ── Home page: example major project banner ── */
-.ep-banner {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 1.25rem;
-  margin: 2.5rem 0 1rem;
-  padding: 1.4rem 1.6rem;
-  border-radius: 14px;
-  background: var(--pc-cream);
-  background-image: var(--pc-grain);
-  box-shadow: -8px 10px 0 -1px var(--pc-sage), var(--pc-shadow-2);
-  color: var(--pc-ink);
-  text-decoration: none;
-  transition: transform 220ms cubic-bezier(.2,.7,.2,1), box-shadow 220ms ease;
-}
-.ep-banner:hover { transform: translateY(-3px); box-shadow: -10px 12px 0 -1px var(--pc-sage), var(--pc-shadow-3); }
-.ep-banner:focus-visible { outline: 2px solid var(--pc-sage); outline-offset: 4px; }
-.ep-banner-ico {
-  display: grid; place-items: center;
-  width: 64px; height: 64px; border-radius: 16px;
-  background: var(--pc-sage); color: var(--on-stock);
-  box-shadow: 3px 3px 0 var(--pc-mustard);
-  transform: rotate(-4deg);
-}
-.ep-banner-ico svg { width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-.ep-banner-text { display: grid; gap: .25rem; }
-.ep-banner-kicker { font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--pc-sage-ink); }
-.ep-banner-title { font-family: var(--font-display); font-size: 1.45rem; line-height: 1.2; }
-.ep-banner-desc { color: var(--pc-ink-soft); font-size: .92rem; }
-.ep-banner-go { font-size: 1.6rem; color: var(--pc-sage-ink); transition: transform 200ms ease; }
-.ep-banner:hover .ep-banner-go { transform: translateX(4px); }
-:root[data-theme="dark"] .ep-banner { outline: 1px solid rgba(255,255,255,.07); outline-offset: -1px; }
-@media (max-width: 640px) {
-  .ep-banner { grid-template-columns: auto 1fr; padding: 1.1rem; }
-  .ep-banner-go { display: none; }
-  .ep-banner-ico { width: 48px; height: 48px; }
-}
-@media (prefers-reduced-motion: reduce) { .ep-banner, .ep-banner-go { transition: none; } }
-
 /* ── Focus-area colours, topic headers and home strip ─────────
    Each focus area has its own colour, set on the page
    (<html data-focus="…">, written by scripts/topic-header.py) and on the
@@ -3426,39 +3308,39 @@ a.footer-brand:hover .footer-logo { transform: rotate(-6deg); }
    Light mode uses the deeper value, dark mode the brighter one. */
 
 :root[data-focus="pf"][data-theme][lang] { --fx: #2A6F73; --on-fx: #fff; }
-:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="programming-fundamentals.html"] { --fx: #2A6F73; --on-fx: #fff; --stock: #2A6F73; --stock-ink: color-mix(in srgb, #2A6F73 72%, #000); }
+:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="programming-fundamentals.html"] { --fx: #2A6F73; --on-fx: #fff; --stock: #2A6F73; --stock-ink: color-mix(in srgb, #2A6F73 72%, #000); }
 :root[data-theme="dark"][data-focus="pf"] { --fx: #6FC3C7; --on-fx: #1b1916; }
-:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="programming-fundamentals.html"] { --fx: #6FC3C7; --on-fx: #1b1916; --stock: #6FC3C7; --stock-ink: color-mix(in srgb, #6FC3C7 62%, #fff); }
+:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="programming-fundamentals.html"] { --fx: #6FC3C7; --on-fx: #1b1916; --stock: #6FC3C7; --stock-ink: color-mix(in srgb, #6FC3C7 62%, #fff); }
 
 :root[data-focus="oop"][data-theme][lang] { --fx: #5B4BDB; --on-fx: #fff; }
-:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="object-oriented-paradigm.html"] { --fx: #5B4BDB; --on-fx: #fff; --stock: #5B4BDB; --stock-ink: color-mix(in srgb, #5B4BDB 72%, #000); }
+:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="object-oriented-paradigm.html"] { --fx: #5B4BDB; --on-fx: #fff; --stock: #5B4BDB; --stock-ink: color-mix(in srgb, #5B4BDB 72%, #000); }
 :root[data-theme="dark"][data-focus="oop"] { --fx: #A79BFF; --on-fx: #1b1916; }
-:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="object-oriented-paradigm.html"] { --fx: #A79BFF; --on-fx: #1b1916; --stock: #A79BFF; --stock-ink: color-mix(in srgb, #A79BFF 62%, #fff); }
+:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="object-oriented-paradigm.html"] { --fx: #A79BFF; --on-fx: #1b1916; --stock: #A79BFF; --stock-ink: color-mix(in srgb, #A79BFF 62%, #fff); }
 
 :root[data-focus="mech"][data-theme][lang] { --fx: #9A6000; --on-fx: #fff; }
-:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="programming-mechatronics.html"] { --fx: #9A6000; --on-fx: #fff; --stock: #9A6000; --stock-ink: color-mix(in srgb, #9A6000 72%, #000); }
+:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="programming-mechatronics.html"] { --fx: #9A6000; --on-fx: #fff; --stock: #9A6000; --stock-ink: color-mix(in srgb, #9A6000 72%, #000); }
 :root[data-theme="dark"][data-focus="mech"] { --fx: #F0B94D; --on-fx: #1b1916; }
-:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="programming-mechatronics.html"] { --fx: #F0B94D; --on-fx: #1b1916; --stock: #F0B94D; --stock-ink: color-mix(in srgb, #F0B94D 62%, #fff); }
+:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="programming-mechatronics.html"] { --fx: #F0B94D; --on-fx: #1b1916; --stock: #F0B94D; --stock-ink: color-mix(in srgb, #F0B94D 62%, #fff); }
 
 :root[data-focus="ssa"][data-theme][lang] { --fx: #B83A3A; --on-fx: #fff; }
-:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="secure-software-architecture.html"] { --fx: #B83A3A; --on-fx: #fff; --stock: #B83A3A; --stock-ink: color-mix(in srgb, #B83A3A 72%, #000); }
+:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="secure-software-architecture.html"] { --fx: #B83A3A; --on-fx: #fff; --stock: #B83A3A; --stock-ink: color-mix(in srgb, #B83A3A 72%, #000); }
 :root[data-theme="dark"][data-focus="ssa"] { --fx: #F08A7A; --on-fx: #1b1916; }
-:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="secure-software-architecture.html"] { --fx: #F08A7A; --on-fx: #1b1916; --stock: #F08A7A; --stock-ink: color-mix(in srgb, #F08A7A 62%, #fff); }
+:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="secure-software-architecture.html"] { --fx: #F08A7A; --on-fx: #1b1916; --stock: #F08A7A; --stock-ink: color-mix(in srgb, #F08A7A 62%, #fff); }
 
 :root[data-focus="web"][data-theme][lang] { --fx: #2F6DB5; --on-fx: #fff; }
-:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="programming-for-the-web.html"] { --fx: #2F6DB5; --on-fx: #fff; --stock: #2F6DB5; --stock-ink: color-mix(in srgb, #2F6DB5 72%, #000); }
+:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="programming-for-the-web.html"] { --fx: #2F6DB5; --on-fx: #fff; --stock: #2F6DB5; --stock-ink: color-mix(in srgb, #2F6DB5 72%, #000); }
 :root[data-theme="dark"][data-focus="web"] { --fx: #7FB0F0; --on-fx: #1b1916; }
-:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="programming-for-the-web.html"] { --fx: #7FB0F0; --on-fx: #1b1916; --stock: #7FB0F0; --stock-ink: color-mix(in srgb, #7FB0F0 62%, #fff); }
+:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="programming-for-the-web.html"] { --fx: #7FB0F0; --on-fx: #1b1916; --stock: #7FB0F0; --stock-ink: color-mix(in srgb, #7FB0F0 62%, #fff); }
 
 :root[data-focus="auto"][data-theme][lang] { --fx: #3F7D5C; --on-fx: #fff; }
-:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="software-automation.html"] { --fx: #3F7D5C; --on-fx: #fff; --stock: #3F7D5C; --stock-ink: color-mix(in srgb, #3F7D5C 72%, #000); }
+:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="software-automation.html"] { --fx: #3F7D5C; --on-fx: #fff; --stock: #3F7D5C; --stock-ink: color-mix(in srgb, #3F7D5C 72%, #000); }
 :root[data-theme="dark"][data-focus="auto"] { --fx: #8CCB9F; --on-fx: #1b1916; }
-:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="software-automation.html"] { --fx: #8CCB9F; --on-fx: #1b1916; --stock: #8CCB9F; --stock-ink: color-mix(in srgb, #8CCB9F 62%, #fff); }
+:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="software-automation.html"] { --fx: #8CCB9F; --on-fx: #1b1916; --stock: #8CCB9F; --stock-ink: color-mix(in srgb, #8CCB9F 62%, #fff); }
 
 :root[data-focus="sep"][data-theme][lang] { --fx: #A24E8F; --on-fx: #fff; }
-:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="software-engineering-project.html"] { --fx: #A24E8F; --on-fx: #fff; --stock: #A24E8F; --stock-ink: color-mix(in srgb, #A24E8F 72%, #000); }
+:root[data-theme][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="software-engineering-project.html"] { --fx: #A24E8F; --on-fx: #fff; --stock: #A24E8F; --stock-ink: color-mix(in srgb, #A24E8F 72%, #000); }
 :root[data-theme="dark"][data-focus="sep"] { --fx: #E39BD0; --on-fx: #1b1916; }
-:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card, .path-topic)[href$="software-engineering-project.html"] { --fx: #E39BD0; --on-fx: #1b1916; --stock: #E39BD0; --stock-ink: color-mix(in srgb, #E39BD0 62%, #fff); }
+:root[data-theme="dark"][lang] a:is(.topic-card, .hero-topic, .nav-item, .pager-card)[href$="software-engineering-project.html"] { --fx: #E39BD0; --on-fx: #1b1916; --stock: #E39BD0; --stock-ink: color-mix(in srgb, #E39BD0 62%, #fff); }
 
 /* The page's accent colour replaces the year colour inside the header and the page body */
 :root[data-focus][data-theme] :is(.topic-header, .page-layout) {
@@ -3628,14 +3510,6 @@ a.footer-brand:hover .footer-logo { transform: rotate(-6deg); }
 @media print {
   .topic-viz, .topic-stats, .topic-parts, .topic-map-link, .hero-topics { display: none !important; }
 }
-
-/* Home: course path rows take their topic's colour */
-:root[data-theme] a.path-topic[href] {
-  --on-stock: var(--on-fx);
-  background: color-mix(in srgb, var(--fx) 9%, var(--pc-sheet));
-  box-shadow: inset 4px 0 0 var(--fx), var(--pc-shadow-1);
-}
-:root[data-theme] a.path-topic[href]:hover, :root[data-theme] a.path-topic[href]:focus-visible { box-shadow: inset 4px 0 0 var(--fx), var(--pc-shadow-2); }
 
 /* Hero strip on phones: stay inside the column, two to a row, and take less height */
 @media (max-width: 1100px) {
