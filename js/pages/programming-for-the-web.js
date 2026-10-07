@@ -359,6 +359,7 @@
    3. Page load explorer: a waterfall of the requests a page makes, and how compression, caching, a CDN and lazy loading change it.
    4. Responsive layout explorer: change the screen width and see which CSS media queries apply.
    5. Git sandbox: commit, branch and merge (see js/gitlab.js).
+   6. SQL practice on the running Games database (see js/minisql.js).
    All numbers are illustrative. */
 (() => {
   'use strict';
@@ -557,12 +558,45 @@
     update();
   }
 
+
+  /* 6. SQL practice on the running Games database (js/minisql.js, extended mode) */
+  function buildSql(host) {
+    const D = { n: 'Developer_ID', type: 'int' };
+    const db = {
+      Publishers: { cols: [{ n: 'Publisher_ID', type: 'int' }, { n: 'Name', type: 'text' }], rows: [[1, 'Games Inc'], [2, 'Pixel Harbour'], [3, 'Coral Studios']] },
+      Developers: { cols: [D, { n: 'First_name', type: 'text' }, { n: 'Last_name', type: 'text' }], rows: [[1, 'Ava', 'Nguyen'], [2, 'Ben', 'Clarke'], [3, 'Chloe', 'Zhang'], [4, 'Dev', 'Patel']] },
+      Games: {
+        cols: [{ n: 'ID', type: 'int' }, { n: 'Name', type: 'text' }, { n: 'Release_date', type: 'text' }, { n: 'Cost', type: 'dec2' }, { n: 'Publisher_ID', type: 'int' }, D],
+        rows: [[1, 'Reef Runner', '2022-03-15', 25, 1, 1], [2, 'Lava Lab', '2022-11-02', 30, 1, 2], [3, 'Kelp Quest', '2021-08-09', 20, 1, 1], [4, 'Star Sailor', '2023-03-20', 45, 2, 1], [5, 'Bush Tracker', '2023-06-01', 35, 2, 3], [6, 'Quest for Coral', '2023-01-12', 40, 3, 3], [7, 'Outback Odyssey', '2022-03-31', 50, 1, 2]]
+      }
+    };
+    MiniSQL.lab(host, {
+      cls: 'web-sql', extended: true, free: true,
+      title: 'SQL practice: games, publishers and developers',
+      lead: 'Write queries on the running database from this section. Each task is checked by running a model answer on the same data and comparing results. The tool runs a small subset of SQL (SELECT, FROM, JOIN, WHERE, GROUP BY, HAVING, ORDER BY, LIMIT, with COUNT, SUM, AVG, MAX and MIN), so it is for practice, not a replacement for a real database.',
+      db, keys: { Publishers: ['Publisher_ID'], Developers: ['Developer_ID'], Games: ['ID'] },
+      placeholder: 'SELECT ...\nFROM ...\nJOIN ... ON ...\nWHERE ...\nGROUP BY ...\nORDER BY ...',
+      freeText: 'Free practice: write any query you like on these tables. = compares text exactly (capital letters matter), while LIKE ignores them.',
+      tasks: [
+        { q: 'Display the Name and Cost of every game.', answer: 'SELECT Name, Cost\nFROM Games', hint: 'List the two fields after SELECT, separated by a comma, then FROM Games.' },
+        { q: 'Display each game\'s Name and a field called Sale_price that is $5 less than its Cost.', answer: 'SELECT Name, Cost - 5 AS Sale_price\nFROM Games', hint: 'A calculation can be written in SELECT. Give it a display name with AS.' },
+        { q: 'Display the Name and Release_date of games released during 2023, with the earliest first.', answer: "SELECT Name, Release_date\nFROM Games\nWHERE Release_date >= '2023-01-01' AND Release_date <= '2023-12-31'\nORDER BY Release_date ASC", hint: 'Dates are text in year-month-day form, so compare them with >= and <= and put them in single quotes. ORDER BY Release_date ASC puts the earliest first.' },
+        { q: 'Display the Name and Cost of games whose name contains "Quest" and that cost less than $30.', answer: "SELECT Name, Cost\nFROM Games\nWHERE Name LIKE '%Quest%' AND Cost < 30", hint: "LIKE '%Quest%' matches Quest anywhere in the name. Join the two conditions with AND." },
+        { q: 'Show how many games each publisher has. Display the publisher\'s name and a count called Titles, with the largest count first.', answer: 'SELECT Publishers.Name, COUNT(Games.ID) AS Titles\nFROM Games\nINNER JOIN Publishers ON Games.Publisher_ID = Publishers.Publisher_ID\nGROUP BY Publishers.Publisher_ID\nORDER BY Titles DESC', hint: 'Join Games to Publishers on the key (ON Games.Publisher_ID = Publishers.Publisher_ID), then GROUP BY the publisher and use COUNT. Write Publishers.Name because Name is also a field of Games.' },
+        { q: 'Show the total cost of the games each developer made. Display First_name and a total called Totalcost.', answer: 'SELECT Developers.First_name, SUM(Games.Cost) AS Totalcost\nFROM Games\nINNER JOIN Developers ON Games.Developer_ID = Developers.Developer_ID\nGROUP BY Developers.Developer_ID', hint: 'Join Games to Developers, group by the developer and use SUM(Games.Cost).' },
+        { q: 'List every developer\'s First_name with the number of games they made (Titles), including developers who made none.', answer: 'SELECT Developers.First_name, COUNT(Games.ID) AS Titles\nFROM Developers\nLEFT JOIN Games ON Developers.Developer_ID = Games.Developer_ID\nGROUP BY Developers.Developer_ID', hint: 'An inner join drops developers with no games. Start from Developers and use LEFT JOIN Games, then count Games.ID (COUNT of a field ignores NULL).' },
+        { q: 'Display the First_name of developers who have made no games.', answer: 'SELECT Developers.First_name\nFROM Developers\nLEFT JOIN Games ON Developers.Developer_ID = Games.Developer_ID\nWHERE Games.ID IS NULL', hint: 'After a LEFT JOIN, a developer with no games has NULL in every Games field. Test for it with IS NULL, not = NULL.' }
+      ]
+    });
+  }
+
   function init() {
     document.querySelectorAll('[data-weblab="protocols"]').forEach(buildProtocols);
     document.querySelectorAll('[data-weblab="ip"]').forEach(buildIp);
     document.querySelectorAll('[data-weblab="perf"]').forEach(buildPerf);
     document.querySelectorAll('[data-weblab="responsive"]').forEach(buildResponsive);
     document.querySelectorAll('[data-weblab="git"]').forEach(h => GitLab.build(h, { files: ['index.html', 'style.css', 'app.py'] }));
+    document.querySelectorAll('[data-weblab="sql"]').forEach(h => { try { buildSql(h); } catch (e) { /* leave the static description in place */ } });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
