@@ -45,6 +45,7 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=5e89f790" />
   <link rel="stylesheet" href="../css/paper.css?v=83aab05f" />
+  <link rel="stylesheet" href="../css/labs.css?v=9bf5d06c" />
 </head>
 <body>
 
@@ -476,6 +477,12 @@ flowchart TD
             <p class="figure-try"><strong>Try this</strong>Add a grade for scores of 40–49. Where does the new branch go?</p>
           </div>
         </figure>
+
+          <div data-toolslab="which" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Which tool or diagram?</h4>
+            <p class="lab-lead">Match eight jobs to the right diagram or chart. Enable JavaScript to use this tool. In short: a DFD shows data movement, a structure chart shows modules, a data dictionary lists fields, a class diagram shows classes, a storyboard shows screens, a decision tree shows conditions and outcomes, and a Gantt chart shows tasks over time.</p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -2047,5 +2054,7 @@ print(f"Time taken to process 50,000 queries over 10K records: {end_time - start
   </div>
   <script src="../js/paper.js?v=942669ea" defer></script>
   <script src="../js/progress.js?v=4cd84c12" defer></script>
+  <script src="../js/labs.js?v=aaf76492" defer></script>
+  <script src="../js/pages/course-tools.js?v=b372f561" defer></script>
 </body>
 </html>
