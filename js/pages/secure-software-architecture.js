@@ -548,3 +548,163 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
+
+/* Secure Software Architecture: labs built on the shared kit (css/labs.css, js/labs.js).
+   1. Hashing and salting: a hash is a one-way fingerprint; a salt stops two equal passwords looking equal and stops a pre-made table.
+   2. Access control: authentication (401) against authorisation (403), and why the server must check.
+   3. Practice sets: which security concept, and which vulnerability.
+   Hashing here is plain SHA-256 so that the values can be checked; real password storage uses a slow, purpose-built algorithm. */
+(() => {
+  'use strict';
+  const el = Labs.el;
+  const code = text => () => el('pre', 'lab-code ssa-snip', text);
+
+// compact synchronous SHA-256 for the teaching lab (UTF-8 input, hex output)
+function sha256(msg) {
+  const K = new Uint32Array([0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2]);
+  const bytes = new TextEncoder().encode(msg), l = bytes.length, total = ((l + 9 + 63) >> 6) << 6, buf = new Uint8Array(total);
+  buf.set(bytes); buf[l] = 0x80;
+  const dv = new DataView(buf.buffer); dv.setUint32(total - 8, Math.floor(l * 8 / 4294967296)); dv.setUint32(total - 4, (l * 8) >>> 0);
+  let h0 = 0x6a09e667, h1 = 0xbb67ae85, h2 = 0x3c6ef372, h3 = 0xa54ff53a, h4 = 0x510e527f, h5 = 0x9b05688c, h6 = 0x1f83d9ab, h7 = 0x5be0cd19;
+  const w = new Uint32Array(64), rotr = (x, n) => (x >>> n) | (x << (32 - n));
+  for (let o = 0; o < total; o += 64) {
+    for (let i = 0; i < 16; i++) w[i] = dv.getUint32(o + i * 4);
+    for (let i = 16; i < 64; i++) { const s0 = rotr(w[i - 15], 7) ^ rotr(w[i - 15], 18) ^ (w[i - 15] >>> 3), s1 = rotr(w[i - 2], 17) ^ rotr(w[i - 2], 19) ^ (w[i - 2] >>> 10); w[i] = (w[i - 16] + s0 + w[i - 7] + s1) >>> 0; }
+    let a = h0, b = h1, c = h2, d = h3, e = h4, f = h5, g = h6, h = h7;
+    for (let i = 0; i < 64; i++) { const S1 = rotr(e, 6) ^ rotr(e, 11) ^ rotr(e, 25), ch = (e & f) ^ (~e & g), t1 = (h + S1 + ch + K[i] + w[i]) >>> 0, S0 = rotr(a, 2) ^ rotr(a, 13) ^ rotr(a, 22), mj = (a & b) ^ (a & c) ^ (b & c), t2 = (S0 + mj) >>> 0; h = g; g = f; f = e; e = (d + t1) >>> 0; d = c; c = b; b = a; a = (t1 + t2) >>> 0; }
+    h0 = (h0 + a) >>> 0; h1 = (h1 + b) >>> 0; h2 = (h2 + c) >>> 0; h3 = (h3 + d) >>> 0; h4 = (h4 + e) >>> 0; h5 = (h5 + f) >>> 0; h6 = (h6 + g) >>> 0; h7 = (h7 + h) >>> 0;
+  }
+  return [h0, h1, h2, h3, h4, h5, h6, h7].map(x => x.toString(16).padStart(8, '0')).join('');
+}
+
+  /* ---------- 1. Hashing and salting ---------- */
+  function buildHash(host) {
+    Labs.shell(host, 'ssa-hash', 'Hashing and salting', 'A hash function turns any input into a fixed-length fingerprint. It is one-way: you cannot get the input back from the hash, but the same input always gives the same hash. Type a password, change one letter, then see why a salt matters.');
+    const f = el('div', 'lab-field'), l = el('label', null, 'Password'), inp = el('input'); l.htmlFor = inp.id = 'ssa-h-in'; inp.type = 'text'; inp.value = 'sunshine1'; inp.maxLength = 40; inp.autocomplete = 'off'; f.append(l, inp);
+    const row = el('div', 'lab-row'); row.append(f); host.append(row);
+    const hashBox = el('div', 'ssa-hash-box'); const cmp = el('div', 'ssa-hash-box');
+    const stats = el('div', 'lab-stats'); host.append(el('h5', 'lab-sub', 'A. One-way and sensitive to every change'), hashBox, cmp, stats);
+    const b = el('div', 'lab-actions'); const bSave = el('button', 'lab-btn', 'Remember this hash to compare'); bSave.type = 'button'; b.append(bSave); host.append(b);
+    let saved = null;
+    function hexDiffBits(a, c) { let n = 0; for (let i = 0; i < a.length; i++) { let x = parseInt(a[i], 16) ^ parseInt(c[i], 16); while (x) { n += x & 1; x >>= 1; } } return n; }
+    function showHash(box, label, hex, other) { box.replaceChildren(el('span', 'ssa-hash-label', label)); const c = el('code', 'ssa-hash-hex'); hex.split('').forEach((ch, i) => c.append(el('span', other && other[i] !== ch ? 'is-diff' : null, ch))); box.append(c); }
+    function updateA() {
+      const h = sha256(inp.value); showHash(hashBox, 'SHA-256 of "' + inp.value + '" (' + h.length * 4 + ' bits as ' + h.length + ' hex digits)', h, saved);
+      cmp.replaceChildren(); stats.replaceChildren();
+      const stat = (a, c) => { const s = el('div', 'lab-stat'); s.append(el('span', null, a), el('b', null, c)); stats.append(s); };
+      stat('Length of input', inp.value.length + ' characters'); stat('Length of hash', '64 hex digits (always)');
+      if (saved) { const bits = hexDiffBits(h, saved); stat('Bits different from the saved hash', bits + ' of 256 (' + Math.round(bits / 2.56) + '%)'); showHash(cmp, 'Saved hash, with the digits that differ marked', saved, h); }
+      else stat('Try this', 'Press Remember, then change one letter');
+    }
+    bSave.addEventListener('click', () => { saved = sha256(inp.value); updateA(); });
+    inp.addEventListener('input', () => { updateA(); updateB(); });
+
+    // Part B: salting
+    host.append(el('h5', 'lab-sub', 'B. Three users choose the same password'));
+    const salt = el('label', 'lab-check'), cb = el('input'); cb.type = 'checkbox'; salt.append(cb, document.createTextNode('Add a different random salt to each user\'s password before hashing'));
+    host.append(salt);
+    const tab = Labs.table(['User', 'Salt (stored)', 'Hash stored in the database'], { stack: true }); host.append(tab.wrap);
+    const out = el('div', 'lab-readout'); out.setAttribute('role', 'status'); host.append(out);
+    const bw = el('div', 'lab-actions'); const bAtk = el('button', 'lab-btn', 'Attacker: try a list of common passwords'); bAtk.type = 'button'; bw.append(bAtk); host.append(bw);
+    const atk = el('div', 'lab-feedback is-info'); atk.hidden = true; atk.setAttribute('role', 'status'); host.append(atk);
+    host.append(el('p', 'lab-note', 'Real systems use a slow algorithm made for passwords (such as bcrypt, scrypt or Argon2), with a unique salt for each user, so that every guess costs an attacker real time. Plain SHA-256 is fast, which is useful for checking files but a weakness for passwords. Passwords must never be stored as plain text, and must never be stored with a reversible encryption either.'));
+    const users = ['ava', 'ben', 'cara'], SALTS = ['x7Qa91', 'p3Ld0m', 'k8Zt52'];
+    function updateB() {
+      tab.clear();
+      const hs = users.map((u, i) => sha256((cb.checked ? SALTS[i] : '') + inp.value));
+      users.forEach((u, i) => tab.add([u, cb.checked ? SALTS[i] : '(none)', hs[i].slice(0, 24) + '…']).lastElementChild.classList.add('lab-wide'));
+      const same = new Set(hs).size === 1;
+      out.className = 'lab-readout ' + (same ? 'is-bad' : 'is-good');
+      out.textContent = same ? 'All three hashes are identical, so anyone who steals the table can see at once that Ava, Ben and Cara share a password. If one of them is cracked, all three are.' : 'The same password gives three different hashes, because each user\'s salt is different. An attacker cannot tell that the passwords match, and must attack each user separately.';
+      atk.hidden = true;
+    }
+    bAtk.addEventListener('click', () => {
+      const words = ['password', '123456', 'qwerty', 'letmein', 'sunshine1', 'iloveyou', 'dragon', 'football'];
+      const users3 = users.map((u, i) => ({ u, salt: cb.checked ? SALTS[i] : '', h: sha256((cb.checked ? SALTS[i] : '') + inp.value) }));
+      let work = 0, found = [];
+      if (!cb.checked) { const table = {}; words.forEach(w => { table[sha256(w)] = w; work++; }); users3.forEach(x => { if (table[x.h]) found.push(x.u + ' = ' + table[x.h]); }); }
+      else users3.forEach(x => { words.forEach(w => { work++; if (sha256(x.salt + w) === x.h) found.push(x.u + ' = ' + w); }); });
+      atk.hidden = false; atk.className = 'lab-feedback ' + (found.length ? 'is-bad' : 'is-good');
+      atk.textContent = (cb.checked ? 'With salts, the attacker must hash every guess once for every user: ' : 'Without salts, one pre-computed table of hashes works against every user at once: ') + work + ' hash calculations for ' + words.length + ' guesses. ' + (found.length ? 'Cracked: ' + found.join(', ') + '.' : 'Nothing matched this small list, but a real attack would try billions of guesses.');
+    });
+    cb.addEventListener('change', updateB);
+    updateA(); updateB();
+  }
+
+  /* ---------- 2. Access control ---------- */
+  const ROLES = { guest: { n: 'Not signed in', signedIn: false, can: [] }, student: { n: 'Student (Ava)', signedIn: true, can: ['own'] }, teacher: { n: 'Teacher (Mr Lee)', signedIn: true, can: ['own', 'class', 'edit'] }, admin: { n: 'Administrator', signedIn: true, can: ['own', 'class', 'edit', 'delete', 'audit'] } };
+  const ACTIONS = { own: 'View my own marks', class: 'View the whole class\'s marks', edit: 'Edit a mark', delete: 'Delete a student record', audit: 'View the audit log' };
+  function buildAccess(host) {
+    Labs.shell(host, 'ssa-access', 'Who is allowed to do what?', 'A results website receives a request. First it must know who is asking (authentication), then decide whether that person may do this (authorisation). Each request is also written to an audit log (accountability). Choose a user and an action and send the request.');
+    const st = { who: 'student', act: 'edit', check: true, log: [] };
+    const row = el('div', 'lab-row');
+    const f1 = el('div', 'lab-field'), l1 = el('label', null, 'Who is signed in'), s1 = el('select'); l1.htmlFor = s1.id = 'ssa-ac-who'; Object.keys(ROLES).forEach(k => { const o = el('option', null, ROLES[k].n); o.value = k; s1.append(o); }); s1.value = st.who; f1.append(l1, s1);
+    const f2 = el('div', 'lab-field'), l2 = el('label', null, 'Action requested'), s2 = el('select'); l2.htmlFor = s2.id = 'ssa-ac-act'; Object.keys(ACTIONS).forEach(k => { const o = el('option', null, ACTIONS[k]); o.value = k; s2.append(o); }); s2.value = st.act; f2.append(l2, s2);
+    const send = el('button', 'lab-btn lab-btn--primary', 'Send the request'); send.type = 'button';
+    row.append(f1, f2, send); host.append(row);
+    const cb = el('input'); cb.type = 'checkbox'; cb.checked = true; const lab = el('label', 'lab-check'); lab.append(cb, document.createTextNode('The server checks permissions on every request (turn off to see a common mistake: the page only hides the buttons)')); host.append(lab);
+    const ui = el('div', 'lab-panel'); ui.append(el('h5', null, 'What this user sees in the page')); const btns = el('div', 'lab-chips'); ui.append(btns); host.append(ui);
+    const res = el('div', 'lab-feedback is-info'); res.setAttribute('role', 'status'); res.hidden = true; host.append(res);
+    const tab = Labs.table(['Time', 'User', 'Request', 'Result'], { stack: true }); host.append(el('h5', 'lab-sub', 'Audit log (accountability)'), tab.wrap);
+    host.append(el('p', 'lab-note', '401 Unauthorized really means "not authenticated": the server does not know who you are. 403 Forbidden means "authenticated, but not allowed". Hiding a button is a convenience, not security: anyone can send a request by hand, so the server has to check every time.'));
+    let t = 0;
+    function drawUi() { btns.replaceChildren(); ROLES[st.who].can.forEach(a => { const c = el('span', 'lab-badge is-info', ACTIONS[a]); btns.append(c); }); if (!ROLES[st.who].can.length) btns.append(el('span', 'lab-note', st.who === 'guest' ? 'A sign-in form only.' : 'Nothing.')); }
+    function sendReq() {
+      const r = ROLES[st.who]; let code, why;
+      if (!r.signedIn) { code = 401; why = 'The server cannot tell who is asking, so it refuses: 401 Unauthorized (authentication failed).'; }
+      else if (st.check && !r.can.includes(st.act)) { code = 403; why = 'The server knows who it is (' + r.n + '), but this role may not ' + ACTIONS[st.act].toLowerCase() + ': 403 Forbidden (authorisation failed).'; }
+      else if (!st.check && !r.can.includes(st.act)) { code = 200; why = 'The page did not show this button to ' + r.n + ', but nothing on the server stopped the request, so it succeeded. This is broken access control: the permission check must happen on the server.'; }
+      else { code = 200; why = 'Signed in and allowed: 200 OK.'; }
+      res.hidden = false; res.className = 'lab-feedback ' + (code === 200 ? (!st.check && !r.can.includes(st.act) ? 'is-bad' : 'is-good') : 'is-warn'); res.textContent = code + ': ' + why;
+      t += 7; const stamp = '09:' + String(10 + Math.floor(t / 60)).padStart(2, '0') + ':' + String(t % 60).padStart(2, '0');
+      st.log.unshift([stamp, r.signedIn ? r.n : '(unknown)', ACTIONS[st.act], String(code)]); st.log = st.log.slice(0, 6); tab.clear(); st.log.forEach(x => tab.add(x));
+    }
+    send.addEventListener('click', sendReq); s1.addEventListener('change', () => { st.who = s1.value; res.hidden = true; drawUi(); }); s2.addEventListener('change', () => { st.act = s2.value; }); cb.addEventListener('change', () => { st.check = cb.checked; });
+    drawUi();
+  }
+
+  /* ---------- 3. Practice sets ---------- */
+  function buildConcepts(host) {
+    Labs.sorter(host, {
+      cls: 'ssa-conceptsort', keepCase: true, title: 'Which security concept?',
+      lead: 'Each situation shows one of the six concepts. Remember: authentication is who you are, authorisation is what you may do, accountability is proof of what you did.',
+      noun: 'situation', groupLabel: 'Security concept',
+      choices: ['Confidentiality', 'Integrity', 'Availability', 'Authentication', 'Authorisation', 'Accountability'].map(k => ({ key: k, label: k })),
+      items: [
+        { text: 'A patient\'s record is encrypted, so a stolen laptop reveals nothing.', ans: 'Confidentiality', why: 'Only people who are allowed to read the data can read it.' },
+        { text: 'A digital signature shows that a software update has not been altered since it was published.', ans: 'Integrity', why: 'Changes are detected, so the data can be trusted to be accurate and complete.' },
+        { text: 'An online ticket shop stays up, using extra servers, when thousands of fans arrive at once.', ans: 'Availability', why: 'The service is usable when it is needed.' },
+        { text: 'A banking app asks for a fingerprint before opening.', ans: 'Authentication', why: 'It verifies who the user is before anything else happens.' },
+        { text: 'A librarian can add books, but a visitor can only search them.', ans: 'Authorisation', why: 'Once the user is known, what they are allowed to do depends on their role.' },
+        { text: 'Every change to a bank balance records who made it and when, in a log that cannot be edited.', ans: 'Accountability', why: 'Actions can be traced back to a person, so misuse can be investigated.' },
+        { text: 'A login form shows the same message ("incorrect username or password") whichever one was wrong.', ans: 'Confidentiality', why: 'It avoids revealing which usernames exist, protecting information about accounts.' }
+      ],
+      closing: 'In a written answer, give each concept a one-line definition and a control that fits the scenario.'
+    });
+  }
+  function buildVulns(host) {
+    Labs.sorter(host, {
+      cls: 'ssa-vulnsort', keepCase: true, title: 'Which vulnerability is it?',
+      lead: 'Each snippet or description shows a weakness in how user actions are handled. Name the vulnerability, then read how to fix it.',
+      noun: 'example', groupLabel: 'Vulnerability',
+      choices: [{ key: 'SQL injection', label: 'SQL injection' }, { key: 'Cross-site scripting (XSS)', label: 'XSS' }, { key: 'Cross-site request forgery (CSRF)', label: 'CSRF' }, { key: 'Broken authentication', label: 'Broken authentication' }, { key: 'Race condition', label: 'Race condition' }, { key: 'Invalid redirect', label: 'Invalid redirect' }],
+      items: [
+        { text: 'A search page builds its query from what the user types.', visual: code('db.execute("SELECT * FROM students WHERE surname = \'" + name + "\'")'), ans: 'SQL injection', why: 'The input becomes part of the SQL command, so a value such as \' OR \'1\'=\'1 changes its meaning. Fix: a parameterised query.' },
+        { text: 'A comment is shown on a page exactly as it was typed.', visual: code('page = "<p>" + comment + "</p>"'), ans: 'Cross-site scripting (XSS)', why: 'A comment containing a script tag would run in other visitors\' browsers. Fix: encode output (turn < into &lt;) and validate input.' },
+        { text: 'A bank site changes an account detail whenever a signed-in user\'s browser sends this request, with no further check. A fake page on another site makes the browser send it.', visual: code('POST /transfer?to=4421&amount=500'), ans: 'Cross-site request forgery (CSRF)', why: 'The browser attaches the user\'s session automatically, so the server cannot tell who really asked. Fix: an anti-CSRF token on every state-changing request, and SameSite cookies.' },
+        { text: 'Anyone can try unlimited passwords for an account, and the error message says which part was wrong.', ans: 'Broken authentication', why: 'No lockout or rate limit makes guessing easy, and the detailed message confirms valid usernames. Fix: lock out or slow repeated failures, one general message, and multi-factor authentication.' },
+        { text: 'Two requests withdraw money at the same moment. Both read a balance of 100 and both succeed.', visual: code('if balance >= amount:\n    balance = balance - amount'), ans: 'Race condition', why: 'The check and the update are separate steps, and another request slips in between. Fix: make them one atomic step with a lock or a database transaction.' },
+        { text: 'After sign-in, the site sends the user wherever the web address says.', visual: code('redirect(request.args["next"])'), ans: 'Invalid redirect', why: 'An attacker can send a link whose next value is a fake site. Fix: only redirect to an allow-list of known destinations.' }
+      ],
+      closing: 'Most of these come down to the same rule: never trust input, and check on the server every time.'
+    });
+  }
+
+  function init2() {
+    document.querySelectorAll('[data-ssalab="hash"]').forEach(buildHash);
+    document.querySelectorAll('[data-ssalab="access"]').forEach(buildAccess);
+    document.querySelectorAll('[data-ssalab="concepts"]').forEach(buildConcepts);
+    document.querySelectorAll('[data-ssalab="vulns"]').forEach(buildVulns);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init2); else init2();
+})();

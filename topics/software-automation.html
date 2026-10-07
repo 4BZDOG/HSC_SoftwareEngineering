@@ -51,8 +51,9 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=5e89f790" />
   <link rel="stylesheet" href="../css/paper.css?v=83aab05f" />
-  <link rel="stylesheet" href="../css/anim.css?v=2548fe75" />
-  <link rel="stylesheet" href="../css/pages/software-automation.css?v=995c91e1" />
+  <link rel="stylesheet" href="../css/anim.css?v=a45ef57a" />
+  <link rel="stylesheet" href="../css/labs.css?v=4b2dbc74" />
+  <link rel="stylesheet" href="../css/pages/software-automation.css?v=a3f28cee" />
 </head>
 <body>
 
@@ -429,6 +430,12 @@ Re-learned threshold: 2
 Re-trained model on new data: 100%</code></pre></div>
           <p>The hand-written rule (four or more marks) misses the spam with three marks, so it is only 90% accurate on the data it was designed for. The learned threshold is 3 and scores 100%. When new spam uses fewer exclamation marks, the fixed rule drops to 50% and stays there until a programmer edits the code. The ML program only has to be run again on fresh data: the same code learns a new threshold of 2. That is what "learning from data" means in practice. It is not magic, though. Both programs look at a single feature, and the ML version is only as good as the examples it was given.</p>
 
+          <div data-autolab="aiml" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">AI, ML or deep learning?</h4>
+            <p class="lab-lead">Sort eight systems into the three nested circles. Enable JavaScript to use this tool. In short: all deep learning is ML and all ML is AI, but rules written by programmers are AI without ML.</p>
+          </div>
+
           <h3>Common confusions</h3>
           <ul>
             <li><strong>"AI means robots."</strong> Robots use AI, but so does a chatbot or a route planner with no body at all.</li>
@@ -527,6 +534,24 @@ Re-trained model on new data: 100%</code></pre></div>
             <p class="figure-try"><strong>Try this</strong>A robot learns to walk by trying moves and being scored. Follow the tree.</p>
           </div>
         </figure>
+
+          <div data-autolab="kmeans" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">K-means: letting the computer find the groups</h4>
+            <p class="lab-lead">Step through unsupervised clustering on 30 unlabelled customers. Enable JavaScript to use this tool. In short: k-means repeats two steps, joining each point to its nearest centre and moving each centre to the average of its group, until nothing changes.</p>
+          </div>
+
+          <div data-autolab="rl" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Reinforcement learning: an agent learns a corridor</h4>
+            <p class="lab-lead">Run episodes and watch an agent learn from rewards and penalties. Enable JavaScript to use this tool. In short: the agent is rewarded at the goal, penalised in the pit and charged a small cost per move, and it slowly learns which way to move from each cell.</p>
+          </div>
+
+          <div data-autolab="training" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Which training model?</h4>
+            <p class="lab-lead">Practise choosing supervised, unsupervised, semi-supervised or reinforcement learning. Enable JavaScript to use this tool. In short: look for labels (supervised), no labels (unsupervised), a few labels (semi-supervised) or rewards for actions (reinforcement).</p>
+          </div>
 
           <h3>Worked examples</h3>
           <p>Each program below uses only the Python standard library and is short enough to trace by hand. They are simplified teaching versions of real algorithms, but the training idea in each is genuine. NESA does not ask you to code them: the aim is to see what "labelled", "unlabelled" and "reward" mean in practice.</p>
@@ -1375,6 +1400,12 @@ for hours_studied in (2, 5.5, 8):
 8 hours: P(pass) = 0.98 -&gt; Pass</code></pre></div>
           <p>Check one prediction by hand. For 5.5 hours the weighted sum is z = 1.239 × 5.5 − 6.068 = 0.747, and the sigmoid of 0.747 is about 0.68. That is above the 0.5 threshold, so the class predicts a pass, though with only 68% confidence. The data overlaps (the student with 5 hours failed and the student with 6 passed), so a sensible model does not claim certainty.</p>
 
+          <div data-autolab="logistic" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Logistic regression: where do you draw the line?</h4>
+            <p class="lab-lead">Move the threshold and see accuracy, precision and recall change for ten students. Enable JavaScript to use this tool. In short: lowering the threshold finds more passes but adds false alarms, and raising it does the opposite.</p>
+          </div>
+
           <div class="callout assessor"><strong>Exam tip</strong> "Design, develop and apply" questions reward a working, reasoned program more than memorised syntax. Choose the model from the data (a number from a straight-line trend needs linear regression, a curve needs polynomial, a yes/no outcome needs logistic), then show the steps: create the model object, <code>fit()</code> on training data, <code>predict()</code> on new input, and check the error on unseen data. Name the OOP ideas in your answer: the model is an object, its learned weights are attributes, and <code>fit()</code> and <code>predict()</code> are methods. Common mistakes are using linear regression for a classification problem, testing only on the training data, and forgetting to call <code>fit()</code> before <code>predict()</code>.</div>
 
         </section>
@@ -1702,6 +1733,12 @@ print(f"Predicted weather: {labels[prediction[0]]}")</code></pre>
             </table>
           </div>
 
+          <div data-autolab="impact" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Which area of impact?</h4>
+            <p class="lab-lead">Sort seven statements into the five areas of impact. Enable JavaScript to use this tool. In short: the five areas are safety of workers, people with disability, employment, production efficiency, waste and the environment, and the economy and distribution of wealth.</p>
+          </div>
+
           <h3>Australian context: ethics principles and law</h3>
           <p>The Australian Government published <a href="https://www.industry.gov.au/publications/australias-ai-ethics-principles" target="_blank" rel="noopener">Australia's AI Ethics Principles</a> in 2019. They are voluntary guidance for the people who design, build and use AI, not law. There are eight:</p>
           <ol>
@@ -1992,6 +2029,12 @@ Model 2: trained on repayment          A 100%   B 100%   gap  0 points</code></p
           <p>Read the three rows in turn. The officers' history already has a 53-point gap. Model 1 never saw the group column, yet its gap is 61 points, even wider, because postcode is a proxy and the model turns a tendency into a rule: a whole southern postcode band is now declined. This is why "we removed the sensitive column" is not enough. Model 2 has no gap, because its label measures the real outcome rather than someone's past choice. One caution: in real life repayment is known only for people who were approved (selection bias), so building Model 2 is much harder than this simulation suggests.</p>
           <p>The measure used here asks: among people who would repay, does each group have the same chance of approval? Fairness can be defined in several ways, and they cannot all be satisfied at once, so engineers must choose a definition, state it and test against it.</p>
 
+          <div data-autolab="bias" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Bias lab: what does the loan model learn from?</h4>
+            <p class="lab-lead">Change what the model learns from and what it can see, and compare approval rates for two groups. Enable JavaScript to use this tool. In short: a model trained on past decisions can copy their unfairness through a proxy such as postcode, while one trained on real outcomes does not.</p>
+          </div>
+
           <h3>Engineering Practices to Mitigate Bias</h3>
           <div class="info-grid">
             <div class="info-card">
@@ -2123,7 +2166,8 @@ Model 2: trained on repayment          A 100%   B 100%   gap  0 points</code></p
   <script src="../js/paper.js?v=942669ea" defer></script>
   <script src="../js/progress.js?v=4cd84c12" defer></script>
   <script src="../js/topic-header.js?v=af48f2c4" defer></script>
-  <script src="../js/anim.js?v=a5602e8e" defer></script>
-  <script src="../js/pages/software-automation.js?v=599cc8c1" defer></script>
+  <script src="../js/anim.js?v=46a77ce0" defer></script>
+  <script src="../js/labs.js?v=aaf76492" defer></script>
+  <script src="../js/pages/software-automation.js?v=9585a867" defer></script>
 </body>
 </html>

@@ -73,3 +73,32 @@
   .mech-sim .ms-seg { display: flex; width: 100%; }
   .mech-sim .ms-seg .ms-btn { flex: 1 1 auto; padding: .5rem .4rem; }
 }
+
+/* Labs built on the shared kit (css/labs.css) */
+.mech-in { width: 4.5rem; }
+.lab .lab-stage svg { color: var(--text-secondary); }
+.mech-txt { fill: var(--text-secondary); font-family: var(--font-body); font-size: calc(13px * var(--u, 1)); }
+.mech-axis { stroke: var(--border-strong); stroke-width: 1.5; }
+.mech-dim { stroke: var(--text-secondary); stroke-width: 1.5; }
+.mech-wave { stroke: var(--primary); stroke-width: 3; stroke-linejoin: round; }
+.mech-step { stroke: var(--primary); stroke-width: 2.5; stroke-linejoin: round; }
+.mech-ideal { stroke: var(--text-secondary); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.mech-mark { stroke: var(--text-primary); stroke-width: 1.5; stroke-dasharray: 3 3; }
+.mech-dot { fill: #d9534a; }
+.mech-arm-stage svg { max-height: 320px; }
+.mech-floor { stroke: var(--border-strong); stroke-width: 2; }
+.mech-link { stroke: var(--text-primary); stroke-width: 9; stroke-linecap: round; opacity: .85; }
+.mech-joint { fill: var(--surface); stroke: var(--text-primary); stroke-width: 3; }
+.mech-end { fill: #d9534a; stroke: var(--surface); stroke-width: 2; }
+.mech-reach { fill: var(--primary); opacity: .22; }
+.mech-fsm-stage { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; margin: 0 0 .8rem; }
+.mech-fsm-state { display: grid; gap: .15rem; place-items: center; padding: .9rem .5rem; border: 3px solid var(--border-strong); border-radius: 999px; background: var(--bg-tertiary); text-align: center; opacity: .6; transition: opacity .15s, transform .15s; }
+.mech-fsm-state small { color: var(--text-secondary); }
+.mech-fsm-state.is-now { opacity: 1; transform: scale(1.04); }
+.mech-fsm-state.is-green.is-now { border-color: #2f9461; background: var(--lab-good); color: var(--lab-good-ink); }
+.mech-fsm-state.is-yellow.is-now { border-color: #d9a020; background: var(--lab-warn); color: var(--lab-warn-ink); }
+.mech-fsm-state.is-red.is-now { border-color: #d9534a; background: var(--lab-bad); color: var(--lab-bad-ink); }
+.mech-fsm-state.is-now small { color: inherit; }
+.mech-fsm-log { margin: .8rem 0; padding-left: 1.3rem; font-size: .9rem; }
+.mech-fsm-log li:last-child { font-weight: 700; }
+@media (max-width: 480px) { .mech-fsm-stage { grid-template-columns: minmax(0, 1fr); } }

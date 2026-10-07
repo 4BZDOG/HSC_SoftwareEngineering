@@ -51,8 +51,9 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=5e89f790" />
   <link rel="stylesheet" href="../css/paper.css?v=83aab05f" />
-  <link rel="stylesheet" href="../css/anim.css?v=2548fe75" />
-  <link rel="stylesheet" href="../css/pages/programming-mechatronics.css?v=4c76a4c4" />
+  <link rel="stylesheet" href="../css/anim.css?v=a45ef57a" />
+  <link rel="stylesheet" href="../css/labs.css?v=4b2dbc74" />
+  <link rel="stylesheet" href="../css/pages/programming-mechatronics.css?v=5f0e495b" />
 
 </head>
 <body>
@@ -492,6 +493,12 @@ DARK_BELOW = <span class="str">20000</span>               <span class="cm"># fou
           <p><strong>ADC formula:</strong> <code><strong>count = (measured voltage ÷ reference voltage) × 2<sup>n</sup></strong></code>, limited to a maximum of 2<sup>n</sup> − 1. Some textbooks use 2<sup>n</sup> − 1 as the multiplier, which changes the result by about one count.</p>
           <p><span class="eg"><em>A 10-bit ADC (1024 levels, counts 0 to 1023) with a 5 V reference measuring 2.5 V gives (2.5 ÷ 5) × 1024 = 512.</em></span> One count is 5 V ÷ 1024 ≈ 4.9 mV, the smallest change the ADC can notice. Software then uses the count to make decisions, for example switching on a cooling fan when a temperature crosses a threshold.</p>
 
+          <div data-mechlab="adc" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Analog-to-digital converter explorer</h4>
+            <p class="lab-lead">See how the number of bits changes the count a program reads from a sensor. Enable JavaScript to use this tool. In short: an n-bit ADC has 2^n levels, so each step is the reference voltage divided by 2^n.</p>
+          </div>
+
           <h3>Worked example: from raw count to a decision</h3>
           <p>A TMP36 temperature sensor outputs 10 mV per °C with 0.5 V at 0 °C. A 10-bit ADC (5 V reference) reads a count of 158. The steps are: count → volts → °C → decision.</p>
           <ol>
@@ -567,6 +574,12 @@ print(safe_angles(<span class="str">200</span>, -<span class="str">20</span>))</
                 <tr><td>Six-axis industrial arm</td><td>6</td><td>Six joint angles, giving any position and orientation in 3D space</td></tr>
               </tbody>
             </table>
+          </div>
+
+          <div data-mechlab="arm" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Two-joint arm: degrees of freedom and limits</h4>
+            <p class="lab-lead">Move two joints, set a target and switch joint limits on or off. Enable JavaScript to use this tool. In short: each independent joint is one degree of freedom, and limits written in code restrict where the end effector can go.</p>
           </div>
 
           <h3>Combination of Subsystems</h3>
@@ -717,6 +730,12 @@ REFUSED: gripper is open</code></pre>
                 <tr><td>Lithium-ion or LiPo</td><td>3.7 V nominal</td><td>High capacity for its weight; needs a matching charger and protection circuit</td></tr>
               </tbody>
             </table>
+          </div>
+
+          <div data-mechlab="power" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Power budget calculator</h4>
+            <p class="lab-lead">Add up the current of each part, size the supply and estimate battery life. Enable JavaScript to use this tool. In short: total current is the sum of each part's current, the supply must cover the worst case plus a margin, and battery life is capacity divided by average current.</p>
           </div>
 
           <h3>Regulating voltage and limiting current</h3>
@@ -1309,6 +1328,12 @@ IDLE + obstacle -> IDLE</code></pre>
         </figure>
 
           <div class="callout assessor"><strong>Exam tip: "Outline" autonomous control</strong> Give the features as short, specific points and tie each to an example: a state machine keeps track of what the robot is doing, sensor fusion combines several sensors, and fallback logic stops the motors if a sensor fails. Distinguish <em>autonomous</em> (senses and decides for itself) from <em>automatic</em> (follows a fixed schedule). Two or three features, each with an example, is stronger than a list of six names.</div>
+
+          <div data-mechlab="fsm" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">State machine: a pedestrian crossing</h4>
+            <p class="lab-lead">Send events to a state machine and see which rule fires. Enable JavaScript to use this tool. In short: a controller is in one state, an event may move it to another state if a condition allows it, and it remembers things such as a pending request.</p>
+          </div>
         </section>
 
         <div class="quiz" data-quiz="mech-2"></div>
@@ -1466,6 +1491,12 @@ set_angle(<span class="str">90</span>)   <span class="cm"># open the vent halfwa
 
           <h3>Driving a stepper motor</h3>
           <p>A stepper turns a fixed angle for each pulse from its driver. A common motor has a 1.8° step angle, so one revolution is 360 ÷ 1.8 = 200 steps and a 90° turn is 50 steps. Microstepping splits each step: with 16 microsteps a 90° turn is 800 pulses. The program counts pulses instead of reading a sensor, which is open loop control, so an overloaded motor can silently lose steps.</p>
+
+          <div data-mechlab="pwm" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">PWM explorer</h4>
+            <p class="lab-lead">Change the duty cycle of a PWM signal or the pulse width for a servo. Enable JavaScript to use this tool. In short: average voltage = duty cycle × supply voltage, and a servo angle is set by the width of a pulse repeated every 20 ms.</p>
+          </div>
 
           <h3>Polling and interrupts</h3>
           <p><strong>Polling</strong> checks an input each time round the main loop. It is simple, but an event that arrives during a long <code>sleep()</code> is noticed late. An <strong>interrupt</strong> makes the CPU pause the main program and run a short <em>handler</em> function as soon as the event occurs. Keep handlers very short: set a flag or switch off an output, and leave printing and slow work to the main loop. The emergency stop in the user-interface section uses this approach.</p>
@@ -2301,8 +2332,9 @@ print(<span class="str">"mean"</span>, mean, <span class="str">"spread"</span>, 
   <script src="../js/paper.js?v=942669ea" defer></script>
   <script src="../js/progress.js?v=4cd84c12" defer></script>
   <script src="../js/topic-header.js?v=af48f2c4" defer></script>
-  <script src="../js/anim.js?v=a5602e8e" defer></script>
-  <script src="../js/pages/programming-mechatronics.js?v=cf043fd7" defer></script>
+  <script src="../js/anim.js?v=46a77ce0" defer></script>
+  <script src="../js/labs.js?v=aaf76492" defer></script>
+  <script src="../js/pages/programming-mechatronics.js?v=1634fa3e" defer></script>
 
 </body>
 </html>

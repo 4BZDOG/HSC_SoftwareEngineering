@@ -51,8 +51,9 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=5e89f790" />
   <link rel="stylesheet" href="../css/paper.css?v=83aab05f" />
-  <link rel="stylesheet" href="../css/anim.css?v=2548fe75" />
-  <link rel="stylesheet" href="../css/pages/programming-fundamentals.css?v=8530b1d9" />
+  <link rel="stylesheet" href="../css/anim.css?v=a45ef57a" />
+  <link rel="stylesheet" href="../css/labs.css?v=4b2dbc74" />
+  <link rel="stylesheet" href="../css/pages/programming-fundamentals.css?v=130faeee" />
 </head>
 <body>
 
@@ -1411,6 +1412,11 @@ with_gst(Item, Total) :- price(Item, P), Total is P * 11 / 10.
 % Query:  ?- with_gst(book, T).
 % Answer: T = 28.05</code></pre></div><p>The first three give the same 44.0. The Prolog query asks about one item (25.50 with GST is 28.05) because a logic program answers questions rather than running steps. What differs between the paradigms is how you think about the problem.</p><div class="table-wrap"><table><thead><tr><th>Paradigm</th><th>Core idea</th><th>You describe…</th><th>Suits</th><th>Python support</th></tr></thead><tbody><tr><td>Imperative</td><td>Commands that change state step by step</td><td>How to do it</td><td>Scripts, control code, most beginner programs</td><td>Loops, assignment, functions</td></tr><tr><td>Object-oriented</td><td>Objects bundle data with the methods that use it</td><td>Things and what they can do</td><td>Large programs modelling real entities</td><td>Classes, inheritance</td></tr><tr><td>Logic</td><td>Facts and rules; the engine infers answers</td><td>What is true</td><td>Rule-based problems, knowledge bases</td><td>Not built in; libraries exist</td></tr><tr><td>Functional</td><td>Pure functions, no changing state</td><td>What to compute</td><td>Data transformation, easy-to-test code</td><td>Lambda, comprehensions, <code>map</code></td></tr></tbody></table></div><p><strong>Try this:</strong> add a fourth price with the imperative version, then with each of the others. Which was easiest to change? Which is easiest to test on its own? Write two sentences on which paradigm you would choose for a rule-based timetable checker and why.</p><div class="callout assessor"><strong>Exam tip: &ldquo;Experiment&rdquo; and paradigm questions</strong> Paradigm questions usually give you a short piece of code or a situation and ask you to <em>identify</em> the paradigm or <em>compare</em> two. Justify with a feature visible in the code: a class and methods (object-oriented), a loop changing a variable (imperative), facts and rules with no loop (logic), or a pure function with no side effects (functional). A common mistake is saying Python is &ldquo;only&rdquo; one paradigm; it supports several.</div>
 
+          <div data-pflab="paradigms" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Which programming paradigm?</h4>
+            <p class="lab-lead">Practise recognising object-oriented, imperative, logic and functional code. Enable JavaScript to use this tool. In short: objects bundle data and methods, imperative code is a list of commands, logic code states facts and rules, and functional code applies functions.</p>
+          </div>
         </section>
 
         <div class="quiz" data-quiz="pf-2"></div>
@@ -1588,6 +1594,12 @@ print(int("11110110", 2) - 256)     # -10</code></pre></div><div class="code-blo
           </ul>
 
           <div class="callout info"><strong>Scenario</strong> A canteen app stores <code>price = 0.1 + 0.2</code> as a float and shows $0.30000000000000004. Storing the price as an integer number of cents (<code>30</code>) avoids the rounding error.</div>
+
+          <div data-pflab="float" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Single precision floating point explorer</h4>
+            <p class="lab-lead">See the 32 stored bits of a decimal number and the value that is really kept. Enable JavaScript to use this tool. In short: a single precision float has 1 sign bit, 8 exponent bits and 23 fraction bits, and most decimal fractions such as 0.1 cannot be stored exactly.</p>
+          </div>
 
 <h3>The six standard types in detail</h3><h4>char (character) and string</h4><p>A <strong>char</strong> holds one character: a letter, digit, space or symbol. Internally it is stored as a number, its code in <strong>ASCII</strong> or <strong>Unicode</strong>. A <strong>string</strong> is a sequence of characters. Python has no separate char type; a char is a string of length 1.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">print(ord("A"))            # 65    the code for A
 print(chr(97))             # a     the character with code 97
@@ -2068,6 +2080,11 @@ print(table.get("Dev"), table.get("Ava"), table.get("Zed"))
 print(table.slots[0])</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>55 72 None
 [['Ava', 72], ['Dev', 55]]</code></pre></div><div class="callout assessor"><strong>Exam tip: &ldquo;Implement&rdquo;</strong> An <em>implement</em> question wants working code or precise pseudocode for a structure, not only its definition. Show how items are added and retrieved (<code>append</code>/<code>pop</code> for a stack, index for an array, key for a hash table) and what happens at the edges: popping an empty stack, an index past the end, a missing key. State which structure you chose and why.</div>
 
+          <div data-pflab="structures" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Data structure playground</h4>
+            <p class="lab-lead">Use a stack, a hash table and a binary search tree. Enable JavaScript to use this tool. In short: a stack is last in, first out; a hash table turns a key into a slot number; and a binary search tree sends smaller values left and larger values right.</p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -2295,6 +2312,11 @@ print(average([80, 70, 90]))</code></pre></div><div class="code-block"><div clas
 (Pdb) p i, total
 (2, 70)</code></pre></div><div class="callout assessor"><strong>Exam tip: &ldquo;Use&rdquo; debugging tools</strong> Say what the tool does <em>and</em> what you would look for with it. &ldquo;A breakpoint pauses the program at line 4 so I can read the value of <code>total</code> before it changes&rdquo; earns more than &ldquo;a breakpoint stops the program.&rdquo; Match the tool to the fault: a watch for a variable that changes unexpectedly, single-line stepping to see which branch runs, debugging output where no debugger is available.</div>
 
+          <div data-pflab="debug" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Debugger: find the bug</h4>
+            <p class="lab-lead">Set a breakpoint, step through a program and read the watched variables. Enable JavaScript to use this tool. In short: a breakpoint pauses the program, stepping runs one line at a time and a watch shows how a variable changes.</p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -2408,7 +2430,14 @@ print(len(tests), "tests run,", failed, "failed")</code></pre></div><div class="
 <h3>What the computer reports</h3><p>Each type of error appears at a different time, so a different tool finds it.</p><div class="table-wrap"><table><thead><tr><th>Error type</th><th>When it appears</th><th>What you see</th><th>How to find it</th></tr></thead><tbody><tr><td>Syntax</td><td>Before the program runs (Python reports it when the file is read)</td><td>An error message with a line number and no output at all</td><td>Read the message; check the line and the one before it</td></tr><tr><td>Runtime</td><td>While the program is running, at the moment the impossible operation happens</td><td>The program stops with an error message (a traceback)</td><td>Read the last line of the traceback; check the values on that line</td></tr><tr><td>Logic</td><td>Never reported by the computer</td><td>The program runs to the end but the output is wrong</td><td>Desk check, trace table, boundary test data, breakpoint and watch</td></tr></tbody></table></div><h3>Real error messages and their causes</h3><p>The last line of a Python error message names the type of error and describes it. The wording can differ slightly between versions.</p><div class="table-wrap"><table><thead><tr><th>Code</th><th>Error message</th><th>Type</th><th>Likely cause</th></tr></thead><tbody><tr><td><code>if x &gt; 5</code></td><td><code>SyntaxError: expected &#x27;:&#x27;</code></td><td>Syntax</td><td>Missing colon at the end of the line</td></tr><tr><td><code>for i in range(10]:</code></td><td><code>SyntaxError: closing parenthesis &#x27;]&#x27; does not match opening parenthesis &#x27;(&#x27;</code></td><td>Syntax</td><td>Mismatched brackets</td></tr><tr><td><code>print(&quot;hi&quot;</code></td><td><code>SyntaxError: &#x27;(&#x27; was never closed</code></td><td>Syntax</td><td>A bracket left open</td></tr><tr><td><code>print(totl)</code></td><td><code>NameError: name &#x27;totl&#x27; is not defined</code></td><td>Runtime</td><td>A misspelt variable name, or use before assignment</td></tr><tr><td><code>100 / 0</code></td><td><code>ZeroDivisionError: division by zero</code></td><td>Runtime</td><td>A divisor that can be 0, such as an empty list&rsquo;s count</td></tr><tr><td><code>marks[5]</code> on 3 items</td><td><code>IndexError: list index out of range</code></td><td>Runtime</td><td>An index past the end, often an off-by-one</td></tr><tr><td><code>int(&quot;abc&quot;)</code></td><td><code>ValueError: invalid literal for int() with base 10: &#x27;abc&#x27;</code></td><td>Runtime</td><td>Converting text that is not a number</td></tr><tr><td><code>&quot;Total: &quot; + 5</code></td><td><code>TypeError: can only concatenate str (not &quot;int&quot;) to str</code></td><td>Runtime</td><td>Mixing types without converting</td></tr></tbody></table></div><h3>A logic error worked through</h3><p>The program below runs without complaint, yet the answer is wrong. A student wants the average of two marks.</p><div class="code-block"><div class="code-header"><span class="code-lang">python</span></div><pre><code class="language-python">mark1 = 70
 mark2 = 80
 average = mark1 + mark2 / 2
-print(average)</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>110.0</code></pre></div><p>The expected answer is 75.0. Division is done before addition, so Python calculates <code>70 + (80 / 2)</code>. The cause is <strong>operator precedence</strong>; the fix is brackets: <code>(mark1 + mark2) / 2</code>. Other common causes of logic errors are off-by-one loops, the wrong comparison operator (<code>&lt;</code> for <code>&lt;=</code>), a variable not reset before a loop, and a condition that can never be true.</p><h3>Spot the error</h3><details class="pf-check"><summary>Classify each fault, then check</summary><ol><li><code>while count &lt; 10</code> with no colon.</li><li>A loop that adds prices but starts <code>total</code> at 1.</li><li><code>names[len(names)]</code> to get the last name.</li><li><code>age = input("Age: ")</code> followed by <code>age + 1</code>.</li></ol><p><strong>Answers.</strong> (1) Syntax error: missing colon. (2) Logic error: the run is fine but every total is one too high. (3) Runtime error (<code>IndexError</code>): the last index is <code>len(names) - 1</code>. (4) Runtime error (<code>TypeError</code>): <code>input</code> returns a string; convert with <code>int()</code>.</p></details><div class="callout assessor"><strong>Exam tip: &ldquo;Determine&rdquo; typical errors</strong> To <em>determine</em> an error, name its type, point to the line, and explain the cause. &ldquo;Logic error: the condition on line 6 uses &gt; instead of &gt;=, so a mark of exactly 50 is treated as a fail&rdquo; scores; &ldquo;there is a bug on line 6&rdquo; does not. Match the type to when it shows up: a syntax error stops the program before it starts, a runtime error stops it partway, and a logic error never stops it.</div>
+print(average)</code></pre></div><div class="code-block"><div class="code-header"><span class="code-lang">Output</span></div><pre><code>110.0</code></pre></div><p>The expected answer is 75.0. Division is done before addition, so Python calculates <code>70 + (80 / 2)</code>. The cause is <strong>operator precedence</strong>; the fix is brackets: <code>(mark1 + mark2) / 2</code>. Other common causes of logic errors are off-by-one loops, the wrong comparison operator (<code>&lt;</code> for <code>&lt;=</code>), a variable not reset before a loop, and a condition that can never be true.</p><h3>Spot the error</h3><details class="pf-check"><summary>Classify each fault, then check</summary><ol><li><code>while count &lt; 10</code> with no colon.</li><li>A loop that adds prices but starts <code>total</code> at 1.</li><li><code>names[len(names)]</code> to get the last name.</li><li><code>age = input("Age: ")</code> followed by <code>age + 1</code>.</li></ol><p><strong>Answers.</strong> (1) Syntax error: missing colon. (2) Logic error: the run is fine but every total is one too high. (3) Runtime error (<code>IndexError</code>): the last index is <code>len(names) - 1</code>. (4) Runtime error (<code>TypeError</code>): <code>input</code> returns a string; convert with <code>int()</code>.</p></details>
+          <div data-pflab="errors" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Syntax, logic or runtime error?</h4>
+            <p class="lab-lead">Practise naming the type of error in a program. Enable JavaScript to use this tool. In short: a syntax error stops the program before it starts, a runtime error stops it part way and a logic error gives wrong results without stopping.</p>
+          </div>
+
+<div class="callout assessor"><strong>Exam tip: &ldquo;Determine&rdquo; typical errors</strong> To <em>determine</em> an error, name its type, point to the line, and explain the cause. &ldquo;Logic error: the condition on line 6 uses &gt; instead of &gt;=, so a mark of exactly 50 is treated as a fail&rdquo; scores; &ldquo;there is a bug on line 6&rdquo; does not. Match the type to when it shows up: a syntax error stops the program before it starts, a runtime error stops it partway, and a logic error never stops it.</div>
 
         </section>
 
@@ -2503,7 +2532,8 @@ print(average)</code></pre></div><div class="code-block"><div class="code-header
   <script src="../js/paper.js?v=942669ea" defer></script>
   <script src="../js/progress.js?v=4cd84c12" defer></script>
   <script src="../js/topic-header.js?v=af48f2c4" defer></script>
-  <script src="../js/anim.js?v=a5602e8e" defer></script>
-  <script src="../js/pages/programming-fundamentals.js?v=71fb550b" defer></script>
+  <script src="../js/anim.js?v=46a77ce0" defer></script>
+  <script src="../js/labs.js?v=aaf76492" defer></script>
+  <script src="../js/pages/programming-fundamentals.js?v=e0cdc3b9" defer></script>
 </body>
 </html>

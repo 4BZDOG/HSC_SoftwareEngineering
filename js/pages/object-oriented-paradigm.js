@@ -235,3 +235,111 @@
     try { build(host); } catch (e) { /* leave the static fallback in place */ }
   });
 })();
+
+/* The Object-Oriented Paradigm: labs built on the shared kit (css/labs.css, js/labs.js).
+   1. Objects and encapsulation: members of the library, a rule enforced inside the class, and what happens when outside code ignores it.
+   2. Practice sets: which feature of OOP, and which kind of testing.
+   The classes mirror the Member example in the notes. */
+(() => {
+  'use strict';
+  const el = Labs.el;
+  const code = text => () => el('pre', 'lab-code oop-snip', text);
+
+  /* ---------- 1. Objects and encapsulation ---------- */
+  const TITLES = ['Atlas of Australia', 'Dune', 'Emma', 'Holes', 'Maus', 'The Hobbit'];
+  function buildObjects(host) {
+    Labs.shell(host, 'oop-objects', 'Objects and encapsulation: the Member class', 'A class is a blueprint; each object made from it has its own data. The Member class keeps its list of loans private and lets only borrow() and give_back() change it, because borrow() checks the three-book limit. Try the allowed way, then reach in and break the rule.');
+    const state = { max: 3, members: [{ n: 'ava', name: 'Ava', loans: [] }, { n: 'ben', name: 'Ben', loans: [] }], sel: 0, log: [] };
+    const classBox = el('div', 'lab-panel oop-class'); classBox.append(el('h5', null, 'class Member'));
+    const classBody = el('div'); classBox.append(classBody);
+    const split = el('div', 'lab-split'); const left = el('div', 'lab-stack'); const right = el('div', 'lab-stack'); split.append(left, right);
+    left.append(classBox);
+    const cards = el('div', 'oop-cards'); left.append(cards);
+    const row = el('div', 'lab-row');
+    const f1 = el('div', 'lab-field'), l1 = el('label', null, 'Send a message to'), s1 = el('select'); l1.htmlFor = s1.id = 'oop-ob-who'; f1.append(l1, s1);
+    const f2 = el('div', 'lab-field'), l2 = el('label', null, 'Book'), s2 = el('select'); l2.htmlFor = s2.id = 'oop-ob-book'; TITLES.forEach(t => { const o = el('option', null, t); o.value = t; s2.append(o); }); f2.append(l2, s2);
+    row.append(f1, f2); right.append(row);
+    const acts = el('div', 'lab-actions oop-acts');
+    const mk = (txt, cls) => { const b = el('button', 'lab-btn' + (cls ? ' ' + cls : ''), txt); b.type = 'button'; acts.append(b); return b; };
+    const bBorrow = mk('borrow(title)', 'lab-btn--primary'), bBack = mk('give_back(title)'), bCount = mk('loan_count'), bBypass = mk('Reach inside: _Member__loans.append(…)'), bMax = mk('Change Member.MAX_LOANS to 2'), bNew = mk('Make another Member'), bRst = mk('Start again', 'lab-btn--quiet');
+    right.append(acts);
+    const logBox = el('div', 'lab-readout oop-log'); logBox.setAttribute('role', 'status'); right.append(logBox);
+    host.append(split);
+    host.append(el('p', 'lab-note', 'Python has no true private keyword. A double underscore (__loans) makes Python rename the attribute to _Member__loans, which discourages access but does not prevent it. Good design relies on the class\'s interface: outside code that bypasses the methods can break the rules the class was written to protect.'));
+
+    const who = () => state.members[state.sel];
+    function say(lines, kind) { logBox.className = 'lab-readout ' + (kind || ''); logBox.replaceChildren(); lines.forEach((t, i) => logBox.append(el(i === 0 ? 'pre' : 'p', i === 0 ? 'lab-code oop-call' : null, t))); }
+    function draw() {
+      classBody.replaceChildren();
+      classBody.append(el('p', 'lab-mono oop-attr', 'MAX_LOANS = ' + state.max + '    # class attribute, shared by every Member'));
+      classBody.append(el('p', 'lab-mono oop-attr', 'name, email, __loans    # instance attributes: each object has its own'));
+      classBody.append(el('p', 'lab-mono oop-attr', 'borrow(title)  give_back(title)  loan_count'));
+      cards.replaceChildren(); s1.replaceChildren();
+      state.members.forEach((m, i) => {
+        const c = el('button', 'oop-card' + (i === state.sel ? ' is-sel' : '')); c.type = 'button'; c.addEventListener('click', () => { state.sel = i; draw(); });
+        c.append(el('b', null, m.n + ' = Member("' + m.name + '")'));
+        const ul = el('ul'); m.loans.forEach(t => ul.append(el('li', null, t))); if (!m.loans.length) ul.append(el('li', 'oop-none', 'no loans'));
+        c.append(el('span', 'oop-count' + (m.loans.length > state.max ? ' is-bad' : ''), m.loans.length + ' / ' + state.max + ' loans'), ul); cards.append(c);
+        const o = el('option', null, m.n); o.value = i; s1.append(o);
+      });
+      s1.value = state.sel;
+    }
+    s1.addEventListener('change', () => { state.sel = +s1.value; draw(); });
+    bBorrow.addEventListener('click', () => {
+      const m = who(), t = s2.value, call = m.n + '.borrow("' + t + '")';
+      if (m.loans.includes(t)) return say([call, 'Refused: ' + m.name + ' already has "' + t + '".'], 'is-warn');
+      if (m.loans.length >= state.max) return say([call, 'Refused. borrow() checks len(__loans) >= MAX_LOANS (' + state.max + ') before changing anything, so the object stays valid.'], 'is-warn');
+      m.loans.push(t); draw(); say([call, 'Accepted. ' + m.name + ' now has ' + m.loans.length + ' loan' + (m.loans.length > 1 ? 's' : '') + '.'], 'is-good');
+    });
+    bBack.addEventListener('click', () => { const m = who(), t = s2.value, call = m.n + '.give_back("' + t + '")'; const i = m.loans.indexOf(t); if (i < 0) return say([call, m.name + ' does not have "' + t + '", so there is nothing to return.'], 'is-warn'); m.loans.splice(i, 1); draw(); say([call, 'Returned.'], 'is-good'); });
+    bCount.addEventListener('click', () => { const m = who(); say([m.n + '.loan_count', String(m.loans.length) + '  # a read-only property: it has a getter but no setter, so m.loan_count = 5 would raise AttributeError'], ''); });
+    bBypass.addEventListener('click', () => { const m = who(), t = s2.value, call = m.n + '._Member__loans.append("' + t + '")'; m.loans.push(t); draw(); say([call, m.loans.length > state.max ? 'It worked: ' + m.name + ' now has ' + m.loans.length + ' loans, more than the limit of ' + state.max + '. The rule inside borrow() was skipped, so the object is in an invalid state. This is why outside code should only use the public methods.' : 'It worked, but only because ' + m.name + ' was under the limit. The limit was not checked.'], m.loans.length > state.max ? 'is-bad' : 'is-warn'); });
+    bMax.addEventListener('click', () => { state.max = state.max === 3 ? 2 : 3; bMax.textContent = 'Change Member.MAX_LOANS to ' + (state.max === 3 ? '2' : '3'); draw(); say(['Member.MAX_LOANS = ' + state.max, 'One assignment on the class changes the limit for every Member, because MAX_LOANS is a class attribute shared by all the objects. An instance attribute such as __loans belongs to a single object.'], ''); });
+    bNew.addEventListener('click', () => { if (state.members.length >= 4) return say(['Member("…")', 'This playground holds up to four members.'], 'is-warn'); const names = ['Cara', 'Dev']; const nm = names[state.members.length - 2]; state.members.push({ n: nm.toLowerCase(), name: nm, loans: [] }); state.sel = state.members.length - 1; draw(); say([nm.toLowerCase() + ' = Member("' + nm + '", "' + nm.toLowerCase() + '@example.com")', 'A new object is created from the same blueprint. It starts with its own empty list of loans, separate from every other member.'], 'is-good'); });
+    bRst.addEventListener('click', () => { state.max = 3; state.members = [{ n: 'ava', name: 'Ava', loans: [] }, { n: 'ben', name: 'Ben', loans: [] }]; state.sel = 0; bMax.textContent = 'Change Member.MAX_LOANS to 2'; draw(); say(['', 'Two members, no loans.'], ''); logBox.firstChild && (logBox.firstChild.hidden = true); });
+    draw(); say(['', 'Choose a member and a book, then press borrow() four times. Then try Reach inside.'], ''); logBox.firstChild.hidden = true;
+  }
+
+  /* ---------- 2. Practice sets ---------- */
+  function buildFeatures(host) {
+    Labs.sorter(host, {
+      cls: 'oop-featsort', keepCase: true, title: 'Which feature of OOP?',
+      lead: 'Each snippet or description shows one feature of object-oriented programming. Choose the best match.',
+      noun: 'example', groupLabel: 'Feature',
+      choices: [{ key: 'Encapsulation', label: 'Encapsulation' }, { key: 'Abstraction', label: 'Abstraction' }, { key: 'Inheritance', label: 'Inheritance' }, { key: 'Polymorphism', label: 'Polymorphism' }, { key: 'Generalisation', label: 'Generalisation' }],
+      items: [
+        { text: 'Why can this class not be left with a negative balance?', visual: code('class Account:\n    def __init__(self):\n        self.__balance = 0\n    def withdraw(self, amount):\n        if amount <= self.__balance:\n            self.__balance -= amount'), ans: 'Encapsulation', why: 'The data is hidden and can change only through a method that checks it first.' },
+        { text: 'The calling code only needs the method names.', visual: code('player.play()\nplayer.pause()\n# how the audio is decoded stays inside the class'), ans: 'Abstraction', why: 'Abstraction shows only what a user needs (the interface) and hides how it is done.' },
+        { text: 'What does Dog get without writing it again?', visual: code('class Animal:\n    def eat(self): ...\nclass Dog(Animal):\n    def bark(self): ...'), ans: 'Inheritance', why: 'Dog is a kind of Animal and inherits eat(), so the code is written once and reused.' },
+        { text: 'The same call does different things.', visual: code('for shape in [Circle(2), Square(3)]:\n    print(shape.area())'), ans: 'Polymorphism', why: 'One message, area(), is answered differently by each type of object.' },
+        { text: 'Two classes, Car and Bus, both have wheels, a speed and brake().', visual: code('class Vehicle:\n    def brake(self): ...'), ans: 'Generalisation', why: 'Generalisation pulls the features shared by several classes up into a more general parent class, here Vehicle.' },
+        { text: 'A class bundles data with the methods that use it, and the data is marked "do not touch".', ans: 'Encapsulation', why: 'Encapsulation joins data and behaviour in one unit and controls access to the data.' }
+      ],
+      closing: 'In an exam, name the feature, point to where it appears in the code, and say what benefit it gives there.'
+    });
+  }
+  function buildTestKinds(host) {
+    Labs.sorter(host, {
+      cls: 'oop-testsort', keepCase: true, title: 'Which kind of testing?',
+      lead: 'Choose the kind of testing described. Levels (unit, subsystem, system) say what is tested; approaches (black, white and grey box) say how much of the code the tester can see.',
+      noun: 'description', groupLabel: 'Kind of testing',
+      choices: [{ key: 'Unit testing', label: 'Unit' }, { key: 'Subsystem testing', label: 'Subsystem' }, { key: 'System testing', label: 'System' }, { key: 'Black box', label: 'Black box' }, { key: 'White box', label: 'White box' }, { key: 'Grey box', label: 'Grey box' }],
+      items: [
+        { text: 'A developer checks that Member.borrow() refuses a fourth book, with nothing else running.', ans: 'Unit testing', why: 'A single method or class is tested on its own.' },
+        { text: 'The Loan, Book and Member classes are tested together to check that a loan updates both the member and the book.', ans: 'Subsystem testing', why: 'Several units that work together are tested as a group.' },
+        { text: 'Staff run the whole library program from sign-in to returning a book, using the real screens.', ans: 'System testing', why: 'The complete system is tested against the requirements.' },
+        { text: 'A tester enters inputs and checks the outputs without ever seeing the code.', ans: 'Black box', why: 'Only inputs and outputs are visible, so tests are based on the requirements.' },
+        { text: 'A developer writes tests so that every branch of an if statement in the code is run at least once.', ans: 'White box', why: 'The tester sees the internal structure and designs tests to cover it.' },
+        { text: 'A tester knows the database tables but not the code, and uses that knowledge to design the inputs.', ans: 'Grey box', why: 'Partial knowledge of the internals guides the tests, which are still run through the interface.' }
+      ],
+      closing: 'A real project uses several kinds together: unit tests as code is written, then subsystem and system tests, with black, white and grey box approaches where each helps.'
+    });
+  }
+
+  function init() {
+    document.querySelectorAll('[data-ooplab="objects"]').forEach(buildObjects);
+    document.querySelectorAll('[data-ooplab="features"]').forEach(buildFeatures);
+    document.querySelectorAll('[data-ooplab="tests"]').forEach(buildTestKinds);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();

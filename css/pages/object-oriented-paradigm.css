@@ -79,3 +79,17 @@
 @media (prefers-reduced-motion: reduce) {
   .oop-class { transition: none; }
 }
+
+/* Labs built on the shared kit (css/labs.css) */
+.oop-snip { margin: .6rem 0 0; font-size: .82rem; max-width: 34rem; }
+.oop-attr { margin: .15rem 0; font-size: .82rem; overflow-wrap: anywhere; }
+.oop-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: .5rem; }
+.oop-card { text-align: left; padding: .6rem .7rem; border: 2px solid var(--border-strong); border-radius: var(--radius-md); background: var(--bg-tertiary); cursor: pointer; font: inherit; color: var(--text-primary); display: grid; gap: .25rem; }
+.oop-card.is-sel { border-color: var(--primary); background: var(--lab-info); color: var(--lab-info-ink); }
+.oop-card b { font: 700 .8rem var(--font-mono); overflow-wrap: anywhere; }
+.oop-card ul { margin: 0; padding-left: 1.1rem; font-size: .84rem; }
+.oop-none { list-style: none; margin-left: -1.1rem; color: var(--text-secondary); font-style: italic; }
+.oop-count { font: 700 .76rem var(--font-body); }
+.oop-count.is-bad { color: var(--lab-bad-ink); background: var(--lab-bad); border-radius: 999px; padding: .05rem .5rem; justify-self: start; }
+.oop-acts { margin-top: .2rem; }
+.oop-log .oop-call { margin: 0 0 .4rem; font-size: .84rem; white-space: pre-wrap; overflow-wrap: anywhere; }

@@ -534,3 +534,172 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 })();
+
+/* ══════════ Labs built on the shared kit (css/labs.css, js/labs.js) ══════════
+   Requirements and implementation practice sets, a weighted decision matrix, a development-approach
+   practice set, a backup what-if and the Git sandbox. Everything shown is written with textContent. */
+(() => {
+  'use strict';
+  if (!window.Labs) return;
+  const el = Labs.el;
+  const seg = (host, label, options, initial, onPick) => {
+    const g = el('div', 'lab-seg'); g.setAttribute('role', 'group'); g.setAttribute('aria-label', label);
+    const bs = options.map(o => { const b = el('button', null, o[1]); b.type = 'button'; b.addEventListener('click', () => { onPick(o[0]); mark(o[0]); }); g.append(b); return [o[0], b]; });
+    const mark = v => bs.forEach(([k, b]) => b.setAttribute('aria-pressed', String(k === v)));
+    mark(initial); host.append(g);
+  };
+  const stat = (box, a, b) => { const s = el('div', 'lab-stat'); s.append(el('span', null, a), el('b', null, b)); box.append(s); };
+  const btn = (text, cls, fn) => { const b = el('button', 'lab-btn' + (cls ? ' ' + cls : ''), text); b.type = 'button'; b.addEventListener('click', fn); return b; };
+
+  /* ---------- 1. Requirements ---------- */
+  function buildReqs(host) {
+    Labs.sorter(host, {
+      cls: 'sep-reqs', title: 'Requirement, constraint or boundary?',
+      lead: 'Library Loans statements to classify. A functional requirement says what the system does, a non-functional requirement says how well, a constraint limits how the project is carried out, and a boundary says what is in or out of scope.',
+      noun: 'statement', groupLabel: 'Kind of statement',
+      choices: [{ key: 'F', label: 'Functional' }, { key: 'N', label: 'Non-functional' }, { key: 'C', label: 'Constraint' }, { key: 'B', label: 'Boundary' }],
+      items: [
+        { text: 'Staff can record a return, and the book becomes available again.', ans: 'F', why: 'It describes something the system does for a user.' },
+        { text: 'Search results appear within 2 seconds for a catalogue of 10,000 titles.', ans: 'N', why: 'It says how well the search must perform. Performance is a quality attribute, and the number makes it testable.' },
+        { text: 'The project has seven weeks and no budget, so only free tools can be used.', ans: 'C', why: 'Time and money limit how the project can be carried out.' },
+        { text: 'Online payment of fines is not part of this project.', ans: 'B', why: 'It states what the system will not do, which protects the project from scope creep.' },
+        { text: 'The fine is 20 cents for each day overdue, up to a maximum of $10.00.', ans: 'F', why: 'It is a rule about what the system calculates, so it is functional.' },
+        { text: 'The system must run on the library\'s existing computer with no internet needed at the desk.', ans: 'C', why: 'It limits the technology the solution may use.' },
+        { text: 'A new staff member can use the system without training within 15 minutes.', ans: 'N', why: 'It describes usability, which is how well the system can be used.' },
+        { text: 'A mobile app for members is outside the scope of this project.', ans: 'B', why: 'It sets the edge of the project. If the client wants it later, it becomes a new project.' },
+        { text: 'Only signed-in staff can use the system, and passwords are stored as salted hashes.', ans: 'N', why: 'This is a security requirement, a quality attribute of the whole system.', extra: 'Some statements could be written two ways. "Staff sign in" can be functional, while "only staff can reach the data" is a security quality. Decide what you are describing: an action, or how well the system protects.' }
+      ],
+      extraLabel: 'Note',
+      closing: 'A requirement can be tested. A constraint limits the project. A boundary draws the edge of what you will build.'
+    });
+  }
+
+  /* ---------- 2. Implementation methods ---------- */
+  function buildImpl(host) {
+    Labs.sorter(host, {
+      cls: 'sep-impl', title: 'Which implementation method?',
+      lead: 'Choose the method that best fits each situation, then read the justification. In an exam, justify with the risk, the cost and the number of people affected.',
+      noun: 'situation', groupLabel: 'Implementation method',
+      choices: [{ key: 'D', label: 'Direct' }, { key: 'PH', label: 'Phased' }, { key: 'PA', label: 'Parallel' }, { key: 'PI', label: 'Pilot' }],
+      items: [
+        { text: 'A bank replaces the system that holds account balances. A fault must never put customers\' money at risk.', ans: 'PA', why: 'The old system keeps running beside the new one, so there is a safe fallback. It costs more because the work is done twice.' },
+        { text: 'A school adds a timetable module this term, a reports module next term and a payments module after that.', ans: 'PH', why: 'The new system arrives in stages (modules), so problems are found and fixed one part at a time.' },
+        { text: 'A chain tries its new stock-ordering software in one store for a month, fixes the problems, then installs it in every store.', ans: 'PI', why: 'A small group of real users tries the whole system first, and only then is it rolled out to everyone.', extra: 'A pilot tests the whole system with some users. A phased rollout brings in some parts of the system for everyone.' },
+        { text: 'A small cafe replaces its paper order pad with a tablet app that starts on Monday morning.', ans: 'D', why: 'The business is small and the risk is low, so switching straight over is cheapest and avoids running two systems.' },
+        { text: 'A payroll system for 5,000 staff is run alongside the old one for two pay cycles so the results can be compared.', ans: 'PA', why: 'Running both and comparing the results is the defining feature of parallel implementation.' },
+        { text: 'A university gives its new student portal to the Law faculty first, then to other faculties once the faults are fixed.', ans: 'PI', why: 'One department acts as the trial group before the system is rolled out to the rest.' }
+      ],
+      extraLabel: 'Note',
+      closing: 'Direct is cheap but risky, parallel is safe but costly, phased spreads the change over stages, and pilot proves the whole system with a small group first.'
+    });
+  }
+
+  /* ---------- 3. Weighted decision matrix ---------- */
+  function buildMatrix(host) {
+    Labs.shell(host, 'sep-matrix', 'Decision matrix: change what matters', 'The ratings below come from the Library Loans table. The weights say how much each criterion matters to the client. Change the weights and see whether the best approach changes.');
+    const CRIT = [['Requirements likely to change', 'Changes', [2, 5, 4]], ['Client can review often', 'Reviews', [2, 5, 4]], ['Fixed deadline and scope', 'Fixed scope', [5, 3, 4]], ['Documents and sign-offs needed', 'Sign-offs', [5, 2, 4]], ['Fit for a solo developer', 'Solo', [4, 3, 3]]];
+    const NAMES = ['Waterfall', 'Agile', 'WAgile'];
+    const st = { w: [3, 2, 3, 2, 1] };
+    const presets = el('div', 'lab-actions');
+    const set = w => { st.w = w.slice(); sync(); draw(); };
+    [['Library Loans (table above)', [3, 2, 3, 2, 1]], ['A start-up with unclear needs', [5, 4, 1, 0, 2]], ['A regulated payroll upgrade', [1, 1, 5, 5, 1]]].forEach(p => presets.append(btn(p[0], '', () => set(p[1]))));
+    host.append(presets);
+    const grid = el('div', 'lab-row sep-matrix-sliders'); host.append(grid);
+    const outs = [], ins = [];
+    CRIT.forEach((c, i) => {
+      const f = el('div', 'lab-field'), l = el('label'), o = el('output'), r = el('input');
+      l.htmlFor = r.id = 'sep-mx-' + i; l.append(document.createTextNode(c[0] + ': weight '), o);
+      r.type = 'range'; r.min = 0; r.max = 5; r.step = 1; r.value = st.w[i];
+      r.addEventListener('input', () => { st.w[i] = +r.value; draw(); });
+      f.append(l, r); grid.append(f); outs.push(o); ins.push(r);
+    });
+    const bars = el('div', 'sep-matrix-bars'); host.append(bars);
+    const out = el('div', 'lab-readout'); out.setAttribute('role', 'status'); host.append(out);
+    host.append(el('p', 'lab-note', 'Each total is the sum of weight × rating. A matrix does not make the decision for you: the weights are a judgement, which is why you must justify them. If a small change to a weight flips the winner, the options are close and you should say so.'));
+    function sync() { ins.forEach((r, i) => { r.value = st.w[i]; }); }
+    function draw() {
+      bars.replaceChildren();
+      const totals = NAMES.map((n, j) => CRIT.reduce((a, c, i) => a + st.w[i] * c[2][j], 0));
+      const max = Math.max(1, 5 * st.w.reduce((a, b) => a + b, 0)), top = Math.max.apply(null, totals);
+      outs.forEach((o, i) => { o.textContent = String(st.w[i]); });
+      NAMES.forEach((n, j) => {
+        const line = el('div', 'sep-bar-line'), meter = el('div', 'lab-meter'), fill = el('span', totals[j] === top && top > 0 ? 'is-good' : '');
+        fill.style.width = (totals[j] / max * 100) + '%'; meter.append(fill);
+        line.append(el('span', 'sep-bar-name', n), meter, el('b', null, String(totals[j]))); bars.append(line);
+      });
+      const winners = NAMES.filter((n, j) => totals[j] === top);
+      const sorted = totals.slice().sort((a, b) => b - a);
+      out.className = 'lab-readout';
+      out.textContent = top === 0 ? 'Every weight is 0, so no approach scores anything. Give at least one criterion a weight.' : winners.length > 1 ? winners.join(' and ') + ' tie on ' + top + '. When totals tie, look at the criteria with the highest weights, or ask the client what matters most.' : winners[0] + ' scores highest with ' + top + ', ' + (top - sorted[1]) + ' ahead of the next. ' + (top - sorted[1] <= 3 ? 'That is a narrow lead, so say that the choice is close.' : 'That is a clear lead for these weights.');
+    }
+    draw();
+  }
+
+  /* ---------- 4. Development approach practice ---------- */
+  function buildMethods(host) {
+    Labs.sorter(host, {
+      cls: 'sep-methods', title: 'Waterfall, Agile or WAgile?',
+      lead: 'Choose the development approach that best fits each project, and give the reason in your own words before you read the feedback.',
+      noun: 'project', groupLabel: 'Development approach',
+      choices: [{ key: 'W', label: 'Waterfall' }, { key: 'A', label: 'Agile' }, { key: 'H', label: 'WAgile' }],
+      items: [
+        { text: 'A payroll upgrade has fixed, signed-off requirements, and the regulator needs documented approval at each stage.', ans: 'W', why: 'Requirements are stable and sign-offs are essential, which is the case for Waterfall.' },
+        { text: 'A start-up does not yet know what customers want, so it releases a small version every two weeks and adjusts.', ans: 'A', why: 'Unclear, changing requirements and quick feedback suit short sprints.' },
+        { text: 'A bank adds a feature to a regulated system. The scope and the security audit are fixed, but the screens will change after user feedback.', ans: 'H', why: 'Planned gates and a final audit are Waterfall features, while building in sprints with feedback is Agile. That mix is WAgile.' },
+        { text: 'A student game project has a teacher who needs a plan with milestones for marking, and the student expects to change features after testing with friends.', ans: 'H', why: 'The milestones and documents are planned in advance, and the building between them adapts to feedback.' },
+        { text: 'A small team builds a mobile game and wants player feedback after every release.', ans: 'A', why: 'Frequent releases and feedback are the strength of Agile.' },
+        { text: 'A control system has safety rules that are fully known before any code is written, and every stage must be reviewed and recorded.', ans: 'W', why: 'Known requirements and formal review at each stage point to Waterfall.' }
+      ],
+      closing: 'Waterfall plans everything first, Agile plans a little and learns constantly, and WAgile uses planned gates around Agile sprints.'
+    });
+  }
+
+  /* ---------- 5. Backup what-if ---------- */
+  function buildBackup(host) {
+    Labs.shell(host, 'sep-backup', 'Backup what-if: will this plan survive?', 'Choose how often the Library Loans database is backed up, where the copies are kept, and how many versions are kept. Then see what happens in each emergency. Times: the backup runs at 4 pm.');
+    const st = { freq: 'daily', where: 'usb', keep: 5, ev: 'disk', tested: false };
+    const pick = (title, id, opts, key) => { const box = el('div', 'lab-field'); box.append(el('span', 'lab-label', title)); seg(box, title, opts, st[key], v => { st[key] = v; draw(); }); return box; };
+    const r1 = el('div', 'lab-row'); r1.append(pick('How often', 'f', [['daily', 'Every weekday'], ['weekly', 'Every Friday'], ['updates', 'Only before updates']], 'freq'), pick('Where the copies are kept', 'w', [['same', 'Another folder on the same disk'], ['usb', 'Another folder and a USB drive in the office'], ['cloud', 'Folder, USB and an approved cloud copy']], 'where'));
+    const r2 = el('div', 'lab-row'); r2.append(pick('Versions kept', 'k', [[1, 'Latest 1'], [5, 'Latest 5'], [20, 'Latest 20']], 'keep'), pick('Restore tested', 't', [[false, 'Never tested'], [true, 'Tested each term']], 'tested'));
+    const r3 = el('div', 'lab-row'); r3.append(pick('Emergency', 'e', [['disk', 'The disk fails on Thursday at 2 pm'], ['delete', 'A table is deleted on Wednesday at 9 am and noticed on Friday at 9 am'], ['flood', 'A flood in the office after Thursday\'s backup']], 'ev'));
+    host.append(r1, r2, r3);
+    const stats = el('div', 'lab-stats'), out = el('div', 'lab-readout'); out.setAttribute('role', 'status'); host.append(stats, out);
+    host.append(el('p', 'lab-note', 'Assumptions: "before updates" means the last backup was three weeks ago. A copy on the same disk goes with the disk, and a USB drive kept in the office goes with the office. A deletion that is backed up becomes part of every later backup, so you need an older version from before the mistake.'));
+    const span = h => h < 48 ? 'about ' + h + ' hours' : h < 24 * 14 ? 'about ' + Math.round(h / 24) + ' days' : 'about ' + Math.round(h / 168) + ' weeks';
+    function draw() {
+      stats.replaceChildren();
+      let survives = true, why = '', age = 0, needV = 1;
+      if (st.ev === 'disk' && st.where === 'same') { survives = false; why = 'Every copy was on the disk that failed.'; }
+      if (st.ev === 'flood' && st.where !== 'cloud') { survives = false; why = st.where === 'same' ? 'Every copy was on the disk in the flooded office.' : 'The USB drive was kept in the office, so it was lost with the computer.'; }
+      if (st.ev === 'disk') age = { daily: 22, weekly: 142, updates: 504 }[st.freq];
+      else if (st.ev === 'flood') age = { daily: 10, weekly: 154, updates: 504 }[st.freq];
+      else { age = { daily: 17, weekly: 113, updates: 456 }[st.freq]; needV = { daily: 3, weekly: 1, updates: 1 }[st.freq]; }
+      const enough = st.ev !== 'delete' || st.keep >= needV;
+      if (st.ev === 'delete' && !enough) why = 'Every kept version was made after the mistake, so each one already has the table missing. The clean version had been deleted to save space.';
+      let kind, msg;
+      if (!survives) { kind = 'is-bad'; msg = 'The data cannot be recovered. ' + why + ' Keep at least one copy somewhere the same accident cannot reach.'; }
+      else if (!enough) { kind = 'is-bad'; msg = 'The data cannot be recovered from this backup plan. ' + why + ' Keep more versions, so an older clean copy is still there.'; }
+      else if (age > 48) { kind = 'is-warn'; msg = 'The data survives, but ' + span(age) + ' of loans would have to be re-entered. The plan needs a more frequent backup if the client cannot accept that loss.'; }
+      else { kind = 'is-good'; msg = 'The data survives and ' + span(age) + ' of loans would be lost, which meets the aim of losing at most one day.'; }
+      msg += st.tested ? ' You restored a copy on another computer this term, so you know it opens.' : ' The restore has never been tested, so you would only find out that a backup is empty or unreadable when you needed it.';
+      stat(stats, 'Copy that survives', survives && enough ? (st.ev === 'delete' ? 'An older version' : st.where === 'same' ? 'Same-disk folder' : st.where === 'usb' ? (st.ev === 'flood' ? '–' : 'USB drive') : 'Cloud copy') : 'None');
+      stat(stats, 'Work to re-enter', survives && enough ? span(age) : 'Everything');
+      stat(stats, 'Versions needed', st.ev === 'delete' ? String(needV) + (st.keep >= needV ? ' (you keep ' + st.keep + ')' : ' (you keep only ' + st.keep + ')') : 'Latest');
+      out.className = 'lab-readout ' + kind; out.textContent = msg;
+    }
+    draw();
+  }
+
+  function init() {
+    const builders = { reqs: buildReqs, impl: buildImpl, matrix: buildMatrix, methods: buildMethods, backup: buildBackup };
+    document.querySelectorAll('[data-projlab]').forEach(host => {
+      const kind = host.getAttribute('data-projlab');
+      try {
+        if (kind === 'git') GitLab.build(host, { title: 'Git sandbox: branches, merges and conflicts', lead: 'Make commits, create a branch for a feature, switch back and merge. Change the same file on two branches to see a merge conflict, then resolve it by deciding which version is right.', files: ['library.py', 'tests.py', 'README.md'] });
+        else if (builders[kind]) builders[kind](host);
+      } catch (e) { /* leave the static description in place */ }
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
