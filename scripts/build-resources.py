@@ -382,6 +382,9 @@ def build():
     # Resource pages carry no diagrams or reading progress
     page = re.sub(r'  <script src="\.\./js/nesa-diagram[^\n]*\n', '', page)
     page = re.sub(r'\n  <div class="lightbox-modal"[\s\S]*?\n  </div>\n', '\n', page)
+    # ...nor the practice tools that the SDLC page loads
+    page = re.sub(r'  <link rel="stylesheet" href="\.\./css/labs\.css[^\n]*\n', '', page)
+    page = re.sub(r'  <script src="\.\./js/(labs|pages/sdlc)\.js[^\n]*\n', '', page)
     page = page.replace('© 2026 HSC SoftEng Notes · SDLC Guide', '© 2026 HSC SoftEng Notes · Certified Resources')
     out = os.path.join(ROOT, 'topics', 'resources.html')
     open(out, 'w', encoding='utf-8').write(page)
