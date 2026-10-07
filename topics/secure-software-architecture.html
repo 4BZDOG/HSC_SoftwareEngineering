@@ -51,8 +51,9 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=5e89f790" />
   <link rel="stylesheet" href="../css/paper.css?v=83aab05f" />
-  <link rel="stylesheet" href="../css/anim.css?v=2548fe75" />
-  <link rel="stylesheet" href="../css/pages/secure-software-architecture.css?v=9cf6fb48" />
+  <link rel="stylesheet" href="../css/anim.css?v=a45ef57a" />
+  <link rel="stylesheet" href="../css/labs.css?v=4b2dbc74" />
+  <link rel="stylesheet" href="../css/pages/secure-software-architecture.css?v=8dcbc2e8" />
 </head>
 <body>
 
@@ -620,6 +621,12 @@ tampering detected at entry 1</code></pre>
           <div class="callout assessor"><strong>Exam tip: "Explore" the six concepts</strong> A matching or "complete every item" question, like the 3-mark item on these concepts in NESA's 2025 HSC marking guidelines (Q23 (c), where every item had to be correct), rewards precise wording: authentication is <em>who you are</em>, authorisation is <em>what you may do</em>, accountability is <em>proof of what you did</em>. In a written answer, give each concept a one-line definition <em>and</em> a control from the scenario. The most common confusion is swapping authentication and authorisation, followed by treating availability as "backup" (backups support recovery; availability is about the service being usable now). This is one exam, so treat it as an example of the style, not a promise of what will be asked.</div>
 
           <div class="callout success"><strong>HSC writing sample</strong> <em>"Authentication confirms who a user is, for example through a password and an authenticator code, while authorisation decides what that user may do, such as allowing only teachers to edit marks. Accountability links every action to a user through audit logs, so misuse can be traced."</em></div>
+
+          <div data-ssalab="concepts" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Which security concept?</h4>
+            <p class="lab-lead">Practise naming confidentiality, integrity, availability, authentication, authorisation and accountability. Enable JavaScript to use this tool. In short: authentication is who you are, authorisation is what you may do, and accountability is proof of what you did.</p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -826,6 +833,12 @@ False
 886f9ea01a9435fd</code></pre>
           </div>
           <p>The tampered order fails verification even though the attacker kept the original tag. The comparison uses <code>hmac.compare_digest</code> so the check itself does not leak information through timing (see the side channel section).</p>
+
+          <div data-ssalab="hash" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Hashing and salting</h4>
+            <p class="lab-lead">Compute SHA-256 hashes, change one letter, and see why a unique salt protects passwords. Enable JavaScript to use this tool. In short: a hash is a one-way fingerprint, any change gives a completely different hash, and a unique salt stops equal passwords having equal hashes.</p>
+          </div>
 
 <h3>Sandboxing in Security by Design</h3>
           <p><strong>Sandboxing</strong> executes potentially untrusted code in a strictly isolated, restricted environment that has no access to the host operating system, filesystem, network, or other running processes unless explicitly permitted. If the sandboxed code is malicious or compromised, it cannot escape the sandbox to cause broader harm. Security-by-design embeds sandboxing as an architectural decision for any component that handles untrusted external input.</p>
@@ -1968,6 +1981,12 @@ after 15 minutes: True</code></pre>
           </div>
           <p>Attempts 6 and 7 are refused without even checking the password, and after 15 minutes the account works again. There is a trade-off to evaluate: an attacker can deliberately lock a victim out by failing on purpose (a denial of service against one user). Designers reduce this with a temporary rather than permanent lock, rate limiting by client as well as by account, and multi-factor authentication, which makes password guessing pointless.</p>
 
+          <div data-ssalab="access" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Who is allowed to do what?</h4>
+            <p class="lab-lead">Send requests as different users and see 401, 403 and 200 responses and an audit log. Enable JavaScript to use this tool. In short: 401 means the user is not authenticated, 403 means authenticated but not authorised, and the server must check on every request.</p>
+          </div>
+
           <h3>Cross-site scripting: vulnerable and fixed</h3>
           <p>XSS comes in three kinds. In <strong>stored</strong> XSS the malicious script is saved (in a comment, say) and runs for every visitor. In <strong>reflected</strong> XSS it is bounced straight back from a link's parameters. In <strong>DOM-based</strong> XSS the page's own JavaScript writes untrusted data into the page. All three are fixed by the same idea: treat untrusted data as text, never as markup.</p>
           <div class="code-block">
@@ -2105,6 +2124,12 @@ print(db.execute(<span class="str">"SELECT balance FROM accounts"</span>).fetcho
           <p>The first withdrawal succeeds and the second is refused because the balance is now 100. Because <code>WHERE balance &gt;= ?</code> is part of the same statement as the subtraction, it cannot be interleaved. On a database with concurrent connections, the same principle is applied with transactions and row locks. Inside one Python program, a <code>threading.Lock</code> protects shared variables in the same way, but it does not help when several servers share one database.</p>
 
           <div class="callout assessor"><strong>Exam tip: "Design, develop and implement" secure user action controls</strong> For each vulnerability, use the same four-part pattern: <em>name it</em>, <em>say how the attack works in this scenario</em>, <em>give the specific fix</em> and <em>say why the fix works</em>. For example: <em>"XSS: an attacker posts a comment containing a script. Encoding the comment with html.escape before display means the browser shows it as text instead of running it."</em> Keep the pairs straight: XSS is fixed by output encoding, CSRF by anti-forgery tokens and <code>SameSite</code>, open redirects by an allowlist, race conditions by atomic operations or locks, broken authentication by hashing, lockout, MFA and secure sessions. Frequent errors are swapping XSS and CSRF, saying "validate the input" as the only fix for every vulnerability, and describing an attack without saying which part of the code allowed it.</div>
+
+          <div data-ssalab="vulns" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Which vulnerability is it?</h4>
+            <p class="lab-lead">Practise naming SQL injection, XSS, CSRF, broken authentication, race conditions and invalid redirects. Enable JavaScript to use this tool. In short: look at where input is trusted, where actions happen without a token, and where a check and an update are separate steps.</p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -2480,7 +2505,8 @@ False False</code></pre>
   <script src="../js/paper.js?v=942669ea" defer></script>
   <script src="../js/progress.js?v=4cd84c12" defer></script>
   <script src="../js/topic-header.js?v=af48f2c4" defer></script>
-  <script src="../js/anim.js?v=a5602e8e" defer></script>
-  <script src="../js/pages/secure-software-architecture.js?v=48a157d1" defer></script>
+  <script src="../js/anim.js?v=46a77ce0" defer></script>
+  <script src="../js/labs.js?v=aaf76492" defer></script>
+  <script src="../js/pages/secure-software-architecture.js?v=ca923e50" defer></script>
 </body>
 </html>

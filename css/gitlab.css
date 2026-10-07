@@ -1,0 +1,13 @@
+/* Git sandbox (js/gitlab.js): the history graph. Built on the shared lab kit (css/labs.css); load both. */
+.git-stage { overflow-x: auto; }
+.lab-stage.git-stage svg { width: auto; height: auto; max-width: none; }
+.git-edge { fill: none; stroke: var(--text-secondary); stroke-width: 2; }
+.git-edge.is-second { stroke-dasharray: 5 3; }
+.git-node { stroke: var(--surface); stroke-width: 2; fill: #3a8fd6; }
+.git-node.lane-0 { fill: #0a7c86; } .git-node.lane-1 { fill: #d9a020; } .git-node.lane-2 { fill: #8b6fd9; } .git-node.lane-3 { fill: #d9534a; } .git-node.lane-4 { fill: #3f9d6a; }
+.git-node.is-merge { stroke: var(--text-primary); stroke-width: 2.5; }
+.git-id { fill: var(--text-secondary); font: 400 12px var(--font-mono); }
+.git-lane { fill: var(--text-secondary); font: 700 12px var(--font-mono); }
+.git-tag rect { fill: var(--surface); stroke: var(--text-secondary); stroke-width: 1.5; }
+.git-tag.is-head rect { fill: var(--lab-warn); stroke: var(--lab-warn-line); }
+.git-tag text { fill: var(--text-primary); font: 700 11.5px var(--font-mono); }

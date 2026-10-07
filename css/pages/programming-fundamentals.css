@@ -104,3 +104,46 @@
 /* The eight-column data dictionary tables are wide: tighten them so they fit more often. */
 #data-dictionaries .table-wrap table { font-size: .8rem; }
 #data-dictionaries .table-wrap th, #data-dictionaries .table-wrap td { padding: .45rem .5rem; }
+
+/* Labs built on the shared kit (css/labs.css) */
+.pf-snip { margin: .6rem 0 0; font-size: .82rem; max-width: 32rem; }
+.pf-fl-bits { display: flex; flex-wrap: wrap; gap: .5rem .9rem; margin: .8rem 0; }
+.pf-fl-group { display: grid; gap: .2rem; }
+.pf-fl-name { font: 700 .72rem var(--font-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--text-secondary); }
+.pf-fl-b { display: flex; flex-wrap: wrap; gap: 2px; }
+.pf-fl-b span { width: 1.15rem; height: 1.6rem; display: grid; place-items: center; font: 700 .8rem var(--font-mono); border-radius: 3px; border: 1px solid var(--border-strong); }
+.pf-fl-group.is-sign .pf-fl-b span { background: var(--lab-bad); color: var(--lab-bad-ink); }
+.pf-fl-group.is-exp .pf-fl-b span { background: var(--lab-warn); color: var(--lab-warn-ink); }
+.pf-fl-group.is-frac .pf-fl-b span { background: var(--lab-info); color: var(--lab-info-ink); }
+.pf-stack { display: flex; flex-direction: column; gap: 3px; min-height: 5rem; max-width: 18rem; }
+.pf-stack-item { position: relative; padding: .45rem .8rem; border: 2px solid var(--border-strong); border-radius: var(--radius-sm); background: var(--bg-tertiary); font-family: var(--font-mono); font-size: .9rem; }
+.pf-stack-item.is-top { border-color: var(--primary); background: var(--lab-info); color: var(--lab-info-ink); }
+.pf-stack-item small { position: absolute; right: .5rem; top: .5rem; font: 700 .68rem var(--font-mono); text-transform: uppercase; }
+.pf-stack-empty { padding: 1rem; border: 2px dashed var(--border-strong); border-radius: var(--radius-sm); color: var(--text-secondary); text-align: center; }
+.pf-ht { display: grid; gap: 3px; }
+.pf-ht-row { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr); gap: .5rem; align-items: center; padding: .25rem .4rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--bg-tertiary); min-height: 2.2rem; }
+.pf-ht-row.is-hl { border-color: var(--primary); background: var(--lab-info); }
+.pf-ht-idx { font: 700 .85rem var(--font-mono); text-align: center; color: var(--text-secondary); }
+.pf-ht-chain { display: flex; flex-wrap: wrap; gap: .3rem; }
+.pf-ht-key { padding: .1rem .55rem; border-radius: 999px; background: var(--primary); color: var(--bg-tertiary); font: 600 .8rem var(--font-mono); }
+[data-theme="dark"] .pf-ht-key { color: #0d0d12; }
+.pf-ds-stage .lab-stage { overflow-x: auto; }
+.pf-ds-stage svg { width: auto; max-width: none; }
+.pf-tr-edge { stroke: var(--text-secondary); stroke-width: 2; }
+.pf-tr-node circle { fill: var(--surface); stroke: var(--text-secondary); stroke-width: 2.5; }
+.pf-tr-node text { fill: var(--text-primary); font: 700 13px var(--font-mono); }
+.pf-tr-node.is-path circle { fill: var(--lab-warn); stroke: var(--lab-warn-line); }
+.pf-tr-node.is-end circle { fill: var(--lab-good); stroke: var(--lab-good-line); }
+.pf-tr-txt { fill: var(--text-secondary); font: 400 14px var(--font-body); }
+.pf-dbg-code { border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: #14141c; color: #e8e8f2; padding: .5rem 0; overflow-x: auto; font: .86rem/1.7 var(--font-mono); }
+.pf-dbg-line { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); align-items: center; white-space: pre; }
+:root[data-theme] .lab .pf-dbg-line code { background: none; color: inherit; padding: 0 .5rem; border: 0; border-radius: 0; box-shadow: none; font: inherit; font-variant-ligatures: none; }
+.pf-dbg-line.is-now { background: rgba(245, 184, 61, .28); }
+.pf-dbg-no { border: 0; background: none; color: #9aa0b4; font: inherit; cursor: pointer; text-align: right; padding: 0 .6rem 0 0; min-height: 1.7em; position: relative; }
+.pf-dbg-no:hover { color: #fff; }
+.pf-dbg-no.is-bp { color: #fff; }
+.pf-dbg-no.is-bp::before { content: ''; position: absolute; left: .5rem; top: 50%; width: .7rem; height: .7rem; margin-top: -.35rem; border-radius: 50%; background: #e0453a; }
+.pf-dbg-vars { display: grid; gap: .3rem; }
+.pf-dbg-var { display: flex; justify-content: space-between; gap: 1rem; padding: .25rem .5rem; border-radius: var(--radius-sm); background: var(--surface); border: 1px solid var(--border); font: .85rem var(--font-mono); }
+.pf-dbg-var.is-changed { background: var(--lab-warn); color: var(--lab-warn-ink); border-color: var(--lab-warn-line); }
+.pf-dbg-out { margin: 0; min-height: 1.5rem; font: .85rem var(--font-mono); white-space: pre-wrap; }

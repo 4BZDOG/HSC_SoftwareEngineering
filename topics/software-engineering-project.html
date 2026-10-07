@@ -51,8 +51,10 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=5e89f790" />
   <link rel="stylesheet" href="../css/paper.css?v=83aab05f" />
-  <link rel="stylesheet" href="../css/anim.css?v=2548fe75" />
-  <link rel="stylesheet" href="../css/pages/software-engineering-project.css?v=f982e8f6" />
+  <link rel="stylesheet" href="../css/anim.css?v=a45ef57a" />
+  <link rel="stylesheet" href="../css/labs.css?v=4b2dbc74" />
+  <link rel="stylesheet" href="../css/gitlab.css?v=bae8f05c" />
+  <link rel="stylesheet" href="../css/pages/software-engineering-project.css?v=c597e21f" />
 </head>
 <body>
 
@@ -447,6 +449,12 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+
+          <div data-projlab="reqs" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Requirement, constraint or boundary?</h4>
+            <p class="lab-lead">Classify nine Library Loans statements. Enable JavaScript to use this tool. In short: a functional requirement is what the system does, a non-functional requirement is how well, a constraint limits the project and a boundary sets what is out of scope.</p>
           </div>
 
           <h3>Defining data structures and data types</h3>
@@ -970,6 +978,12 @@ python main.py</code></pre>
             </details>
           </div>
 
+          <div data-projlab="impl" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Which implementation method?</h4>
+            <p class="lab-lead">Choose direct, phased, parallel or pilot for six situations. Enable JavaScript to use this tool. In short: parallel runs old and new together, pilot tries the whole system with a small group, phased brings in parts in stages and direct switches over at once.</p>
+          </div>
+
           <h3>Comparing the methods against criteria</h3>
           <p>To <strong>investigate</strong> the methods, compare them against the same criteria every time. The differences below follow from how each method is built: what runs at the same time, and how many people are exposed to a fault.</p>
           <div class="table-wrap">
@@ -1321,9 +1335,21 @@ print(round(velocity, 1), remaining, math.ceil(remaining / velocity))</code></pr
           </div>
           <p>Each total is the sum of weight &times; rating. For Waterfall: 3&times;2 + 2&times;2 + 3&times;5 + 2&times;5 + 1&times;4 = 39. WAgile scores highest because the school needs sign-offs and a fixed deadline, yet Mrs Chen can still steer the build. The totals are close, and different weights could change the answer. What earns marks is the <strong>reasoning behind each rating</strong>, not the arithmetic.</p>
 
+          <div data-projlab="matrix" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Decision matrix: change what matters</h4>
+            <p class="lab-lead">Adjust the weights and see which approach scores highest. Enable JavaScript to use this tool. In short: the total for each approach is the sum of weight multiplied by rating, so changing what matters can change the winner.</p>
+          </div>
+
           <div class="callout success"><strong>HSC writing sample</strong> <em>"WAgile is a hybrid model, so intervention is applied at planned gates rather than continuously. For the council permit system, requirements and the final security audit were Waterfall gates because the council must approve them, while the forms and dashboard were built in Agile sprints so staff feedback could shape them."</em></div>
 
           <div class="callout assessor"><strong>Exam tip: "Research" WAgile</strong> WAgile is a <em>hybrid</em>: say which parts are Waterfall (planned gates, sign-offs, fixed early planning) and which are Agile (sprints, feedback between gates). Questions may ask you to <em>identify</em> a stage that would be a gate, or to <em>compare</em> the three approaches for a scenario. A strong answer names the gate, when it happens and who approves it, then names the sprint work between gates. The most common mistake is defining WAgile as "a bit of both" without saying where each half applies.</div>
+
+          <div data-projlab="methods" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Waterfall, Agile or WAgile?</h4>
+            <p class="lab-lead">Choose the approach that best fits six projects. Enable JavaScript to use this tool. In short: Waterfall plans first, Agile adapts constantly and WAgile uses planned gates around sprints.</p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -2358,6 +2384,12 @@ programmed_backup(<span class="str">'app_data.sqlite3'</span>, <span class="str"
             </table>
           </div>
 
+          <div data-projlab="backup" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Backup what-if: will this plan survive?</h4>
+            <p class="lab-lead">Choose a backup plan and test it against three emergencies. Enable JavaScript to use this tool. In short: keep a copy away from the disk and the office, keep enough versions to go back before a mistake, and test a restore.</p>
+          </div>
+
           <h3>A more robust backup program</h3>
           <p>Copying a database file with <code>shutil.copy2</code> can produce a damaged copy if the application is writing at that moment. SQLite has a built-in backup method that is safe on a live database. This version also checks the copy and prunes old backups.</p>
           <div class="code-block">
@@ -2542,6 +2574,12 @@ MAX_LOANS = 6
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/limit-six</code></pre>
           </div>
           <p>Resolve it by <em>deciding</em>, not by picking a side automatically. The requirement (FR3) says the limit is 5, so neither is right. Edit the file to <code>MAX_LOANS = 5</code>, delete the three marker lines, then run <code>git add rules.py</code> and <code>git commit</code>. The <a href="programming-for-the-web.html">Programming for the Web</a> page covers this in more depth.</p>
+
+          <div data-projlab="git" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Git sandbox: branches, merges and conflicts</h4>
+            <p class="lab-lead">Make commits, branch, merge and resolve a conflict. Enable JavaScript to use this tool. In short: a branch lets you work on a feature without touching main, and a conflict happens when two branches change the same lines.</p>
+          </div>
 
           <h3>What not to commit, and how to write commits</h3>
           <ul>
@@ -3589,10 +3627,12 @@ FAILED (failures=1)</code></pre></div>
       </div>
     </div>
   </div>
-  <script src="../js/pages/software-engineering-project.js?v=e04afa79" defer></script>
+  <script src="../js/labs.js?v=aaf76492" defer></script>
+  <script src="../js/gitlab.js?v=651701c7" defer></script>
+  <script src="../js/pages/software-engineering-project.js?v=9737e93c" defer></script>
   <script src="../js/paper.js?v=942669ea" defer></script>
   <script src="../js/progress.js?v=4cd84c12" defer></script>
   <script src="../js/topic-header.js?v=af48f2c4" defer></script>
-  <script src="../js/anim.js?v=a5602e8e" defer></script>
+  <script src="../js/anim.js?v=46a77ce0" defer></script>
 </body>
 </html>

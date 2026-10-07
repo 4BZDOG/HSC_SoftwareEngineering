@@ -51,8 +51,9 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=5e89f790" />
   <link rel="stylesheet" href="../css/paper.css?v=83aab05f" />
-  <link rel="stylesheet" href="../css/anim.css?v=2548fe75" />
-  <link rel="stylesheet" href="../css/pages/object-oriented-paradigm.css?v=480fdf6a" />
+  <link rel="stylesheet" href="../css/anim.css?v=a45ef57a" />
+  <link rel="stylesheet" href="../css/labs.css?v=4b2dbc74" />
+  <link rel="stylesheet" href="../css/pages/object-oriented-paradigm.css?v=7927e714" />
 </head>
 <body>
 
@@ -342,6 +343,12 @@ False True</code></pre>
           </div>
         </figure>
 
+          <div data-ooplab="objects" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Objects and encapsulation: the Member class</h4>
+            <p class="lab-lead">Send messages to Member objects and see why encapsulation protects the rules of a class. Enable JavaScript to use this tool. In short: borrow() checks the loan limit before changing the private list of loans, and code that reaches inside can break the rule.</p>
+          </div>
+
           <h3>Abstraction</h3>
           <p><strong>Abstraction</strong> means modelling only the details that matter for the problem and hiding the rest behind a simple interface. A <code>Member</code> class for a library needs a name and an email address; it does not need height or favourite colour. A user of the class calls <code>borrow(item)</code> without knowing how the loan list is stored, and the developer can change the storage from a list to a database later without breaking any calling code. This is why abstraction reduces complexity and allows the internal implementation to change without affecting the parts of the program that use it.</p>
           <p>An <strong>abstract class</strong> takes this further. It defines a method that every subclass must provide, but does not say how, and it cannot be instantiated itself. Python provides this through the <code>abc</code> module.</p>
@@ -570,6 +577,11 @@ Van: Riverbend Mobile Library -&gt; 3 days</code></pre>
             <p class="video-box-note">A clear, hands-on introduction to <strong>classes</strong> and <strong>objects</strong> — the core idea behind object-oriented programming.</p>
           </div>
 
+          <div data-ooplab="features" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Which feature of OOP?</h4>
+            <p class="lab-lead">Practise naming encapsulation, abstraction, inheritance, polymorphism and generalisation. Enable JavaScript to use this tool. In short: encapsulation hides data behind methods, abstraction shows only what is needed, inheritance reuses a parent class, polymorphism answers one message in different ways, and generalisation moves shared features into a parent.</p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -2247,6 +2259,12 @@ print(<span class="str">"System test passed:"</span>, len(lines), <span class="s
             <li><strong>Re-run after every change.</strong> <strong>Regression testing</strong> means running the old tests again to prove new code did not break old behaviour. This is what makes refactoring safe.</li>
           </ul>
 
+          <div data-ooplab="tests" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Which kind of testing?</h4>
+            <p class="lab-lead">Practise naming levels and approaches of testing. Enable JavaScript to use this tool. In short: unit, subsystem and system testing describe what is tested; black, white and grey box describe how much of the code the tester can see.</p>
+          </div>
+
           <h3>Quality Assurance Process</h3>
           <p>Quality Assurance (QA) is the systematic process of ensuring software meets specified engineering standards and quality criteria. It looks at the whole process, not just at running tests. QA includes:</p>
           <ul>
@@ -2348,10 +2366,11 @@ print(<span class="str">"System test passed:"</span>, len(lines), <span class="s
       </div>
     </div>
   </div>
-  <script src="../js/pages/object-oriented-paradigm.js?v=ad0a94be" defer></script>
+  <script src="../js/labs.js?v=aaf76492" defer></script>
+  <script src="../js/pages/object-oriented-paradigm.js?v=c85ffbfb" defer></script>
   <script src="../js/paper.js?v=942669ea" defer></script>
   <script src="../js/progress.js?v=4cd84c12" defer></script>
   <script src="../js/topic-header.js?v=af48f2c4" defer></script>
-  <script src="../js/anim.js?v=a5602e8e" defer></script>
+  <script src="../js/anim.js?v=46a77ce0" defer></script>
 </body>
 </html>

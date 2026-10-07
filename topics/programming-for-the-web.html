@@ -51,8 +51,10 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=5e89f790" />
   <link rel="stylesheet" href="../css/paper.css?v=83aab05f" />
-  <link rel="stylesheet" href="../css/anim.css?v=2548fe75" />
-  <link rel="stylesheet" href="../css/pages/programming-for-the-web.css?v=d059ac90" />
+  <link rel="stylesheet" href="../css/anim.css?v=a45ef57a" />
+  <link rel="stylesheet" href="../css/labs.css?v=4b2dbc74" />
+  <link rel="stylesheet" href="../css/gitlab.css?v=bae8f05c" />
+  <link rel="stylesheet" href="../css/pages/programming-for-the-web.css?v=e636e664" />
 </head>
 <body>
 
@@ -382,6 +384,12 @@ box.addEventListener(<span class="str">'input'</span>, () =&gt; {              <
 <p>The second address is private because 172.16 to 172.31 is a private block, not just 172.16. This is a common trap in questions that ask which address could belong to a school network.</p>
 
 
+          <div data-weblab="ip" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">IPv4 address explorer</h4>
+            <p class="lab-lead">Read an IPv4 address as four octets and as 32 bits, and see its network and host parts. Enable JavaScript to use this tool. In short: an IPv4 address is four numbers from 0 to 255, which are 32 bits, and some of the first bits name the network.</p>
+          </div>
+
 <h3>Domain Name System (DNS)</h3>
           <p>The <strong>Domain Name System (DNS)</strong> translates human-readable domain names (e.g., <code>www.google.com</code>) into machine-readable IP addresses (e.g., <code>142.250.70.142</code>). When a user types a URL, the browser queries a <strong>DNS resolver</strong> (usually provided by their ISP), which traverses a hierarchy of DNS servers (Root → TLD → Authoritative) to resolve the domain. The resolved IP address is then cached locally (for a duration defined by TTL — Time To Live) to speed up future requests.</p>
 
@@ -653,6 +661,12 @@ Content-Length: 103
     </tbody>
   </table>
 </div>
+
+          <div data-weblab="protocols" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Which protocol?</h4>
+            <p class="lab-lead">Practise pairing a job with its protocol and port. Enable JavaScript to use this tool. In short: HTTP 80, HTTPS 443, FTP 21, SFTP 22, SMTP 25, POP3 110, IMAP 143 and DNS 53.</p>
+          </div>
 
 <div class="callout assessor"><strong>Exam tip: "Investigate and describe" protocols</strong> NESA's published familiarisation questions include items that ask you to match features to protocols so learn each protocol as a pair: its job and its port. A full-mark description says what the protocol does, its port, and whether it is secure. Questions often hinge on a detail: SMTP sends but does not retrieve; POP3 downloads and IMAP synchronises; SFTP is not FTP over TLS; 401 and 403 are different. Do not describe TLS as a port or as a website feature: it is a protocol that secures a connection.</div>
         </section>
@@ -1481,6 +1495,12 @@ h1 {
           <h3>Flexibility with Browsers and Display Devices</h3>
           <p><strong>Responsive web design</strong> ensures a single codebase adapts to any screen size — from a 27-inch desktop monitor to a 375px mobile screen. CSS <strong>media queries</strong> apply different styles at defined breakpoints. <strong>Flexbox</strong> and <strong>CSS Grid</strong> provide flexible layout systems that redistribute space and reflow content automatically. The <code>viewport</code> meta tag instructs the browser to scale the page to the device's width, preventing the "zoomed-out desktop site" appearance on mobile.</p>
 
+          <div data-weblab="responsive" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Responsive layout explorer</h4>
+            <p class="lab-lead">Change the screen width and see which media queries apply. Enable JavaScript to use this tool. In short: base rules fit a phone and min-width media queries add columns and a sidebar as the screen gets wider.</p>
+          </div>
+
 <h3>Worked example: one layout, three screen sizes</h3>
 <p>Without the viewport meta tag, phones pretend to be about 980px wide and shrink the page. With it, the layout can respond to the real width. This code puts three cards in a row on wide screens and stacks them on narrow ones. It uses flexbox, relative units and one media query, with no separate mobile site.</p>
 <div class="code-block">
@@ -1689,6 +1709,12 @@ Automatic merge failed; fix conflicts and then commit the result.</code></pre>
   <li>They run <code>git add index.html</code>, then <code>git commit</code> to finish the merge. <code>git status</code> shows the file as unmerged (<code>UU</code>) until this is done.</li>
 </ol>
 <p>Conflicts are normal, and small, frequent merges keep them small. They are a human decision, not a failure of the tool, and the fix is a conversation as much as an edit.</p>
+
+          <div data-weblab="git" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Git sandbox</h4>
+            <p class="lab-lead">Commit, branch and merge, and see a merge conflict. Enable JavaScript to use this tool. In short: a branch is a label on a commit, a merge joins two branches, and a conflict happens when both changed the same file.</p>
+          </div>
 
 <h3>Working with a remote and other habits</h3>
 <div class="table-wrap">
@@ -1980,6 +2006,12 @@ Content-Encoding: br</code></pre>
 </div>
 <p>To find out which method to apply, measure first: run Lighthouse, read the Network waterfall for the biggest files and the longest waits, and change the largest cost first. Re-measure afterwards, because a change that does not improve the numbers is only added complexity.</p>
 <div class="callout assessor"><strong>Exam tip: "Investigate" load times</strong> NESA's 2025 online paper included a load-times item within a weather-app scenario (one published exam). Good answers name two or three methods, say what each one reduces (bytes, requests, distance or blocking) and link them to the stimulus: for a page full of photos, resizing images and lazy loading matter more than minifying a small script. Mention that caching helps repeat visits but not the first one. Avoid a bare list of techniques with no reasons.</div>
+
+          <div data-weblab="perf" class="lab">
+            <p class="lab-kicker">Try it</p>
+            <h4 class="lab-title">Page load explorer</h4>
+            <p class="lab-lead">Turn on performance techniques and watch a waterfall of requests shrink. Enable JavaScript to use this tool. In short: compress and resize files, cache them, serve them from nearby and lazy-load what is below the fold.</p>
+          </div>
         </section>
 
         <hr class="divider" />
@@ -3351,10 +3383,12 @@ self.addEventListener(<span class="str">'fetch'</span>, event =&gt; {
       </div>
     </div>
   </div>
-  <script src="../js/pages/programming-for-the-web.js?v=208224cc" defer></script>
+  <script src="../js/labs.js?v=aaf76492" defer></script>
+  <script src="../js/gitlab.js?v=651701c7" defer></script>
+  <script src="../js/pages/programming-for-the-web.js?v=191aa2fd" defer></script>
   <script src="../js/paper.js?v=942669ea" defer></script>
   <script src="../js/progress.js?v=4cd84c12" defer></script>
   <script src="../js/topic-header.js?v=af48f2c4" defer></script>
-  <script src="../js/anim.js?v=a5602e8e" defer></script>
+  <script src="../js/anim.js?v=46a77ce0" defer></script>
 </body>
 </html>

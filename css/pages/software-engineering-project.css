@@ -120,3 +120,9 @@
 /* Compact tables on this page (many columns) */
 .table-wrap table.sep-compact th, .table-wrap table.sep-compact td { padding: .38rem .38rem; font-size: .8rem; line-height: 1.4; vertical-align: top; }
 .table-wrap table.sep-compact td strong { display: inline; }
+
+/* Labs built on the shared kit (css/labs.css) */
+.sep-bar-line { display: grid; grid-template-columns: 5.2rem minmax(0, 1fr) 3rem; gap: .5rem; align-items: center; margin: .35rem 0; font-size: .9rem; }
+.sep-bar-line b { text-align: right; font-variant-numeric: tabular-nums; }
+.sep-matrix-bars { margin: .8rem 0; }
+.lab-row.sep-matrix-sliders { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: .6rem 1.4rem; }
