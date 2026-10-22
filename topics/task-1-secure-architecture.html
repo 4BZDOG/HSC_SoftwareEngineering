@@ -188,7 +188,7 @@
         <aside class="topic-breakout" aria-label="How to use this page">
           <span class="breakout-label">How to use this page</span>
           <p>This is a jumping-off point for Assessment Task #1, not a model answer. It shows how to plan the task, how to research an incident, and how to set out a DFD, a structure chart, a flowchart and a data dictionary in NESA notation. The worked example is a starting point. Your analysis, design choices and evaluation must be your own.</p>
-          <p class="breakout-question"><span class="bq-lead">Before you start, ask</span> Which part of my analysis will a reader have to take on trust, and what evidence would convince them?</p>
+          <p class="breakout-question"><span class="bq-lead">Before you start, ask</span> Which of my claims would a reader have to take on trust, and what evidence would convince them?</p>
         </aside>
 
         <!-- ════════════════════════════════════════════════════ -->
@@ -202,7 +202,7 @@
         <section id="start">
           <h2>The task at a glance</h2>
           <p class="outcome-subtitle">🎯 <em>(SE-12-03, SE-12-04, SE-12-05, SE-12-07)</em></p>
-          <p>You will analyse one real, documented security breach. You will trace its failures, explain how emerging technology and legacy systems shaped it, and design a layered, secure redesign. You will then evaluate the privacy, resilience, ethical and legal implications. You act as the <strong>Security Architect</strong>.</p>
+          <p>You will analyse one real, documented security breach. You will trace its failures, explain how emerging technology and legacy systems shaped it, and design a more secure version of the system with several layers of protection. You will then evaluate the privacy, resilience, ethical and legal implications. You act as the <strong>Security Architect</strong>.</p>
 
           <div class="table-wrap">
             <table>
@@ -228,7 +228,7 @@
         <!-- ════════════════════════════════════════════════════ -->
         <section id="rubric">
           <h2>How you will be marked</h2>
-          <p>Each section is marked against two criteria. <strong>Knowledge</strong> is what you understand and can explain. <strong>Application</strong> is what you do with that understanding in your analysis, design and evaluation of your incident. Each criterion is placed in one of six bands, and each band shows its mark range. The band descriptions use the NESA performance band language for Software Engineering. A criterion with no evidence in your work scores 0.</p>
+          <p>Each section is marked against two criteria, <strong>Knowledge</strong> and <strong>Application</strong> (defined below). For each criterion, your work is placed in one of six bands. The band descriptions use NESA's performance band wording for Software Engineering. A criterion with no evidence in your work scores 0.</p>
 
           <div class="key-terms">
             <div class="key-term-item"><strong>Knowledge</strong><span>What you understand and can explain, such as the causes of an incident or how a security control works.</span></div>
@@ -329,7 +329,7 @@
           </ul>
 
           <h3>The evidence rule</h3>
-          <p>Your incident must be documented in at least three reliable sources. At least one must be <strong>primary</strong>: an official investigation, a regulator's finding, a vendor advisory or a CVE record. Secondary news reports are useful for context, but they can't carry the whole analysis on their own. Hypothetical examples are not accepted.</p>
+          <p>Your incident must be documented in at least three reliable sources. At least one must be <strong>primary</strong>: an official investigation, a regulator's finding, a vendor advisory or a CVE record. Secondary sources such as news reports are useful for context, but your analysis can't rely on them alone. Made-up (hypothetical) incidents are not accepted.</p>
 
           <div class="table-wrap">
             <table>
@@ -343,7 +343,7 @@
           </div>
 
           <div class="callout warning">
-            <strong>Check dates and version numbers.</strong> Many reports change after release, and some incidents are still being investigated. Record the date you read each source, and note any facts that are still disputed.
+            <strong>Check dates and version numbers.</strong> Many reports are updated after they are first published, and some incidents are still being investigated. Record the date you read each source, and note any facts that are still disputed.
           </div>
         </section>
 
@@ -467,12 +467,12 @@ flowchart TD
           <ul>
             <li><strong>Check every fact</strong> in the starter against a primary source, and cite the source in your report.</li>
             <li><strong>Find the vulnerability</strong> that allowed the move into Active Directory, if a source identifies it.</li>
-            <li><strong>Redesign the failures.</strong> The detection gap, the unpatched vulnerability and the flat network are your starting points for Section 2.</li>
+            <li><strong>Fix the failures in your redesign.</strong> Start Section 2 with the three main failures: alerts that were not acted on, the unpatched vulnerability, and a flat network that let the attackers move freely.</li>
             <li><strong>Add your own analysis</strong> of the emerging-technology and legacy-system factors in Section 1, and make it specific to this incident.</li>
           </ul>
 
           <h3>Exam-style practice: sample answers from identify to explain</h3>
-          <p>These four items use the Conti attack as their stimulus, and move from the least demanding verb to the most demanding. They are written for this page, not taken from an HSC paper. The NESA glossary does not define these command terms, so the meanings used here are the usual HSC meanings: identify names, outline gives the main steps in order, describe gives features and what they do, and explain gives causes and their effects. Attempt each item before you read its sample answer.</p>
+          <p>These four items use the Conti attack as their stimulus. They move from the easiest verb (identify) to the hardest (explain). They were written for this page and are not from an HSC paper. NESA's Software Engineering glossary does not define these verbs, so this page uses their usual HSC meanings: <strong>identify</strong> names, <strong>outline</strong> gives the main steps in order, <strong>describe</strong> gives features and what they do, and <strong>explain</strong> gives causes and their effects. Try each item before you read its sample answer.</p>
 
           <div class="callout info exam-item">
             <strong>Item 1: Identify (2 marks)</strong>
@@ -504,7 +504,7 @@ flowchart TD
             <p class="exam-q">Describe how the attackers used compromised credentials to move the ransomware onto other computers.</p>
             <div class="exam-answer">
               <span class="exam-label">Sample answer</span>
-              <p>The attackers used psexec.exe, a remote-execution tool, to run the Conti v3 executable on endpoints where they held compromised user credentials. Because the credentials were valid, the payload could start on machines the attackers had not themselves broken into. The NCSC's analysis suggests that Cobalt Strike beacons on systems point to its use for lateral movement before the payload ran.</p>
+              <p>The attackers used psexec.exe, a remote-execution tool, to run the Conti v3 executable on endpoints where they held compromised user credentials. Because the credentials were valid, the payload could start on machines the attackers had not themselves broken into. The NCSC's analysis suggests that the Cobalt Strike beacons found on systems show it was used for lateral movement (moving from one computer to the next) before the payload ran.</p>
             </div>
             <p class="exam-note"><span class="exam-label">Marker's note</span> A describe answer gives the feature (psexec, valid credentials) and what it achieved (the payload started on other endpoints). A list of tool names with no link to the attack scores low.</p>
           </div>
@@ -520,7 +520,7 @@ flowchart TD
           </div>
 
           <div class="callout assessor">
-            <strong>Exam tip: match the depth to the verb</strong> A one-word verb such as identify needs precise facts and no reasoning. Outline needs the steps in order, with a short point for each. Describe needs the feature and what it achieved. Explain needs a cause, the link between cause and effect, and evidence. Writing a long explanation for an identify item wastes time, and writing a list for an explain item loses most of the marks.
+            <strong>Exam tip: match the depth to the verb</strong> Identify needs precise facts and no reasoning. Outline needs the steps in order, with a short point for each. Describe needs the feature and what it achieved. Explain needs a cause, the link between cause and effect, and evidence. Writing a long explanation for an identify item wastes time, and writing a list for an explain item loses most of the marks.
           </div>
         </section>
 
@@ -711,7 +711,7 @@ Attack input rejected: Invalid username</code></pre>
           <p>This is a teacher-led example, not a required scenario. It shows how a live vulnerability is reported, and how facts can be confirmed or left open. Information is current as at 22 October 2026, and it may change.</p>
 
           <div class="callout info">
-            <strong>Confirmed by the advisory</strong> CERT-EU Security Advisory 2026-018, published 21 October 2026, reports two critical flaws in PHP. Both are rated CVSS 9.2. CVE-2026-109618 allows unauthenticated remote code execution through memory corruption during out-of-memory handling. CVE-2026-109619 allows unauthenticated remote code execution through stale global state, where internal request state can survive after its memory has been freed. The advisory also says that only an update fully fixes these vulnerabilities; settings reduce exposure but do not make an installation safe. Fixed versions are PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35. PHP 8.1 and earlier are end-of-life, with minimal backports available for some versions.
+            <strong>Confirmed by the advisory</strong> CERT-EU Security Advisory 2026-018, published 21 October 2026, reports two critical flaws in PHP. Both are rated CVSS 9.2 out of 10. In plain terms, an attacker who has not logged in could run their own code on a server running an affected version of PHP. CVE-2026-109618 allows unauthenticated remote code execution through memory corruption during out-of-memory handling. CVE-2026-109619 allows unauthenticated remote code execution through stale global state, where internal request state can survive after its memory has been freed. The advisory also says that only an update fully fixes these vulnerabilities; settings reduce exposure but do not make an installation safe. Fixed versions are PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35. PHP 8.1 and earlier are end-of-life (no longer supported), and only limited fixes exist for some of those versions.
           </div>
 
           <div class="callout warning">
@@ -723,7 +723,7 @@ Attack input rejected: Invalid username</code></pre>
             <li>Which facts in the advisory are confirmed, and which are only likely?</li>
             <li>Why does the advisory say that "only an update fully fixes these vulnerabilities", and what does that say about relying on temporary settings?</li>
             <li>Which kinds of software are affected, and how would a developer find out whether their application relies on PHP?</li>
-            <li>Which parts of the secure architecture in this notes site would reduce the harm from a remote code execution flaw?</li>
+            <li>Which secure design ideas from the <a href="secure-software-architecture.html">Secure Software Architecture notes</a>, such as sandboxing, would reduce the harm from a remote code execution flaw?</li>
           </ol>
         </section>
 
