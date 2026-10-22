@@ -137,7 +137,7 @@ window.HSC_NESA_DIAGRAMS = {
   'conti-dfd-level0': {
     type: 'dfd',
     size: [820, 420],
-    alt: 'Level 0 data flow diagram of the HSE IT systems as one process. The Conti attack group sends a phishing email with a malicious attachment and remote access commands. HSE staff send logins and requests and receive system responses. The system sends incident reports to the NCSC and the Department of Health, which send back advice and alerts.',
+    alt: 'Level 0 data flow diagram of the HSE IT systems as one process. The Conti attack group sends a phishing email with a malicious attachment. HSE staff send logins and requests and receive system responses. The system sends incident reports to the NCSC and the Department of Health, which send back advice and alerts.',
     nodes: {
       attacker: { type: 'entity', x: 110, y: 90, label: 'Conti attack\ngroup' },
       sys: { type: 'process', x: 410, y: 210, r: 80, label: 'HSE IT\nsystems' },
