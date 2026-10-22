@@ -171,6 +171,7 @@
         <li><a href="#conti">Conti ransomware and the HSE</a></li>
         <li class="sidebar-label">Tools</li>
         <li><a href="#templates">Templates you can adapt</a></li>
+        <li><a href="#code-samples">Secure and insecure code</a></li>
         <li class="sidebar-label">Context</li>
         <li><a href="#current-event">Current event: PHP vulnerability</a></li>
         <li><a href="#syllabus-map">How the task covers the syllabus</a></li>
@@ -539,6 +540,111 @@ flowchart TD
             <li>Class diagram: classes with attributes and methods, and labelled relationships with multiplicity.</li>
             <li>Check each diagram against the NESA Software Engineering Course Specifications (updated February 2025) before you submit it.</li>
           </ul>
+        </section>
+
+        <!-- ════════════════════════════════════════════════════ -->
+        <!--  CODE SAMPLES                                        -->
+        <!-- ════════════════════════════════════════════════════ -->
+        <section id="code-samples">
+          <h2>Secure and insecure code side by side</h2>
+          <p>Section 2 of the task asks for code that prevents the Section 1 vulnerability. This example shows one common case: <strong>SQL injection</strong> through a username lookup. Each version is shown in Python, with NESA pseudocode alongside. The pseudocode follows the Course Specifications: capitalised keywords, paired structures such as IF and ENDIF, and indentation.</p>
+
+          <h3>The insecure version</h3>
+          <p>The input is pasted straight into the SQL text, so the input can change what the query does.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python: insecure</span></div>
+            <pre><code class="language-python"><span class="kw">import</span> sqlite3
+
+<span class="kw">def</span> find_user(conn, username):
+    query = "SELECT id, username FROM users WHERE username = '" + username + "'"
+    <span class="kw">return</span> conn.execute(query).fetchall()
+
+conn = sqlite3.connect(":memory:")
+conn.execute("CREATE TABLE users (id INTEGER, username TEXT)")
+conn.executemany("INSERT INTO users VALUES (?, ?)", [(1, "alice"), (2, "bob_smith")])
+
+print("Normal input:", find_user(conn, "alice"))
+print("Attack input:", find_user(conn, "' OR '1'='1"))</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Expected output</span></div>
+            <pre><code>Normal input: [(1, 'alice')]
+Attack input: [(1, 'alice'), (2, 'bob_smith')]</code></pre>
+          </div>
+
+          <h3>The secure version</h3>
+          <p>The input is checked first, and the query uses a placeholder. The database then treats the value as data, never as SQL.</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Python: secure</span></div>
+            <pre><code class="language-python"><span class="kw">import</span> re
+<span class="kw">import</span> sqlite3
+
+USERNAME_PATTERN = re.compile(r"^[A-Za-z0-9_]{3,20}$")
+
+<span class="kw">def</span> find_user(conn, username):
+    <span class="kw">if not</span> USERNAME_PATTERN.fullmatch(username):
+        <span class="kw">raise</span> ValueError("Invalid username")
+    query = "SELECT id, username FROM users WHERE username = ?"
+    <span class="kw">return</span> conn.execute(query, (username,)).fetchall()
+
+conn = sqlite3.connect(":memory:")
+conn.execute("CREATE TABLE users (id INTEGER, username TEXT)")
+conn.executemany("INSERT INTO users VALUES (?, ?)", [(1, "alice"), (2, "bob_smith")])
+
+print("Normal input:", find_user(conn, "alice"))
+<span class="kw">try</span>:
+    find_user(conn, "' OR '1'='1")
+<span class="kw">except</span> ValueError <span class="kw">as</span> error:
+    print("Attack input rejected:", error)</code></pre>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">Expected output</span></div>
+            <pre><code>Normal input: [(1, 'alice')]
+Attack input rejected: Invalid username</code></pre>
+          </div>
+
+          <h3>The same logic in NESA pseudocode</h3>
+          <p>Insecure:</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">NESA pseudocode: insecure</span></div>
+            <pre><code><span class="kw">BEGIN</span> FindUser (username)
+    query = "SELECT id, username FROM users WHERE username = '" + username + "'"
+    <span class="kw">RETURN</span> the rows that query finds
+<span class="kw">END</span> FindUser (username)</code></pre>
+          </div>
+          <p>Secure:</p>
+          <div class="code-block">
+            <div class="code-header"><span class="code-lang">NESA pseudocode: secure</span></div>
+            <pre><code><span class="kw">BEGIN</span> FindUser (username)
+    <span class="kw">IF</span> username is not 3 to 20 letters, digits or underscores <span class="kw">THEN</span>
+        Raise an error: "Invalid username"
+    <span class="kw">ENDIF</span>
+    query = "SELECT id, username FROM users WHERE username = ?"
+    <span class="kw">RETURN</span> the rows that query finds, using username as the parameter
+<span class="kw">END</span> FindUser (username)</code></pre>
+          </div>
+
+          <h3>What to notice</h3>
+          <ul>
+            <li><strong>Validation</strong> rejects any input that is not a valid username, before it reaches the database.</li>
+            <li><strong>The parameterised query</strong> uses <code>?</code> as a placeholder. The value is passed separately, so it is never read as SQL.</li>
+            <li><strong>Error handling</strong> returns one short message. It does not show the query or the database's own error.</li>
+          </ul>
+
+          <h3>Test both versions</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Test</th><th>Input</th><th>Insecure result</th><th>Secure result</th></tr></thead>
+              <tbody>
+                <tr><td>Normal username</td><td>alice</td><td>Returns alice</td><td>Returns alice</td></tr>
+                <tr><td>SQL injection</td><td><code>' OR '1'='1</code></td><td>Returns every user</td><td>Rejected: Invalid username</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout tip">
+            <strong>In your report.</strong> Show the insecure code and the attack input with its result. Then show the secure code, and name the line that stops the attack. Name each control: validation, parameterised query and error handling.
+          </div>
         </section>
 
         <!-- ════════════════════════════════════════════════════ -->
