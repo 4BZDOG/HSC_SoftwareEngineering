@@ -36,7 +36,7 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=5e89f790" />
   <link rel="stylesheet" href="../css/paper.css?v=f391725a" />
-  <link rel="stylesheet" href="../css/pages/task-1-secure-architecture.css?v=9b840c41" />
+  <link rel="stylesheet" href="../css/pages/task-1-secure-architecture.css?v=23f99339" />
 </head>
 <body>
 
@@ -208,12 +208,12 @@
             <table>
               <thead><tr><th>Section</th><th>Weight</th><th>Marks</th><th>Main task</th><th>Outcome</th></tr></thead>
               <tbody>
-                <tr><td>1. Technical post-mortem and emerging tech</td><td>20%</td><td>20</td><td>Trace the root cause; DFD (Level 0 and Level 1)</td><td>SE-12-03</td></tr>
-                <tr><td>2. Secure redesign and code hardening</td><td>30%</td><td>30</td><td>Structure chart; class diagram; CIA and AAA; code or pseudocode; testing protocol</td><td>SE-12-07, SE-12-04</td></tr>
-                <tr><td>3. Privacy by design and data protection</td><td>15%</td><td>15</td><td>Privacy workflow; Level 1 DFD of sensitive data; data dictionary; compliance map</td><td>SE-12-04, SE-12-05</td></tr>
-                <tr><td>4. Resilience and business continuity</td><td>15%</td><td>15</td><td>Incident response playbook; flowchart or decision tree; RTO and RPO; patching</td><td>SE-12-07</td></tr>
-                <tr><td>5. Social, ethical and legal impact</td><td>10%</td><td>10</td><td>Impact on people, society and the environment; ethical tension; accountability</td><td>SE-12-05</td></tr>
-                <tr><td>6. Project management and documentation</td><td>10%</td><td>10</td><td>Gantt chart; process diary; collaboration and cost-benefit of shift-left</td><td>SE-12-07</td></tr>
+                <tr><td data-label="Section">1. Technical post-mortem and emerging tech</td><td data-label="Weight">20%</td><td data-label="Marks">20</td><td data-label="Main task">Trace the root cause; DFD (Level 0 and Level 1)</td><td data-label="Outcome">SE-12-03</td></tr>
+                <tr><td data-label="Section">2. Secure redesign and code hardening</td><td data-label="Weight">30%</td><td data-label="Marks">30</td><td data-label="Main task">Structure chart; class diagram; CIA and AAA; code or pseudocode; testing protocol</td><td data-label="Outcome">SE-12-07, SE-12-04</td></tr>
+                <tr><td data-label="Section">3. Privacy by design and data protection</td><td data-label="Weight">15%</td><td data-label="Marks">15</td><td data-label="Main task">Privacy workflow; Level 1 DFD of sensitive data; data dictionary; compliance map</td><td data-label="Outcome">SE-12-04, SE-12-05</td></tr>
+                <tr><td data-label="Section">4. Resilience and business continuity</td><td data-label="Weight">15%</td><td data-label="Marks">15</td><td data-label="Main task">Incident response playbook; flowchart or decision tree; RTO and RPO; patching</td><td data-label="Outcome">SE-12-07</td></tr>
+                <tr><td data-label="Section">5. Social, ethical and legal impact</td><td data-label="Weight">10%</td><td data-label="Marks">10</td><td data-label="Main task">Impact on people, society and the environment; ethical tension; accountability</td><td data-label="Outcome">SE-12-05</td></tr>
+                <tr><td data-label="Section">6. Project management and documentation</td><td data-label="Weight">10%</td><td data-label="Marks">10</td><td data-label="Main task">Gantt chart; process diary; collaboration and cost-benefit of shift-left</td><td data-label="Outcome">SE-12-07</td></tr>
               </tbody>
             </table>
           </div>
@@ -268,14 +268,14 @@
           </div>
 
           <div class="callout assessor">
-            <strong>Band 6 or Band 4?</strong> The two responses below answer the same question. The example is illustrative and is not taken from any real incident.
+            <strong>Band 6 or Band 4?</strong> Both responses below answer the same question: "Explain how the attacker moved from one computer to the rest of the network." The example is illustrative and is not taken from any real incident.
           </div>
           <div class="table-wrap">
             <table>
-              <thead><tr><th>Band</th><th>Response to: "Explain how the attacker moved from one computer to the rest of the network."</th></tr></thead>
+              <thead><tr><th>Band</th><th>Response</th></tr></thead>
               <tbody>
-                <tr><td data-label="Band"><strong>Band 4</strong></td><td data-label="Response to: "Explain how the attacker moved from one computer to the rest of the network."">The attacker sent a phishing email, then spread through the network.</td></tr>
-                <tr><td data-label="Band"><strong>Band 6</strong></td><td data-label="Response to: "Explain how the attacker moved from one computer to the rest of the network."">A phishing email gave the attacker a foothold on one laptop. Because that laptop's account could reach a shared server, the attacker used it to move to the server and copy its files.</td></tr>
+                <tr><td data-label="Band"><strong>Band 4</strong></td><td data-label="Response">The attacker sent a phishing email, then spread through the network.</td></tr>
+                <tr><td data-label="Band"><strong>Band 6</strong></td><td data-label="Response">A phishing email gave the attacker a foothold on one laptop. Because that laptop's account could reach a shared server, the attacker used it to move to the server and copy its files.</td></tr>
               </tbody>
             </table>
           </div>
@@ -297,12 +297,12 @@
             <table>
               <thead><tr><th>Week</th><th>Focus</th><th>Output to finish</th></tr></thead>
               <tbody>
-                <tr><td>1</td><td>Choose an incident; find three sources, one of them primary</td><td>Source list; one-paragraph summary of the incident</td></tr>
-                <tr><td>2</td><td>Section 1: timeline, root cause, emerging-tech analysis</td><td>Level 0 and Level 1 DFDs; first draft of Section 1</td></tr>
-                <tr><td>3</td><td>Section 2: architecture, CIA and AAA, cryptography, end-user design</td><td>Structure chart; class diagram; control table</td></tr>
-                <tr><td>4</td><td>Section 2: code hardening and testing; Section 3: privacy and data</td><td>Code or pseudocode with test cases; data dictionary; privacy DFD</td></tr>
-                <tr><td>5</td><td>Section 4: resilience; Section 5: ethics and law; Section 6: plan and diary</td><td>Flowchart or decision tree; RTO and RPO; Gantt chart; process diary</td></tr>
-                <tr><td>6</td><td>Edit, check diagrams against the specifications, reference list, AI disclosure log</td><td>Final submission, with the submission checklist completed</td></tr>
+                <tr><td data-label="Week">1</td><td data-label="Focus">Choose an incident; find three sources, one of them primary</td><td data-label="Output to finish">Source list; one-paragraph summary of the incident</td></tr>
+                <tr><td data-label="Week">2</td><td data-label="Focus">Section 1: timeline, root cause, emerging-tech analysis</td><td data-label="Output to finish">Level 0 and Level 1 DFDs; first draft of Section 1</td></tr>
+                <tr><td data-label="Week">3</td><td data-label="Focus">Section 2: architecture, CIA and AAA, cryptography, end-user design</td><td data-label="Output to finish">Structure chart; class diagram; control table</td></tr>
+                <tr><td data-label="Week">4</td><td data-label="Focus">Section 2: code hardening and testing; Section 3: privacy and data</td><td data-label="Output to finish">Code or pseudocode with test cases; data dictionary; privacy DFD</td></tr>
+                <tr><td data-label="Week">5</td><td data-label="Focus">Section 4: resilience; Section 5: ethics and law; Section 6: plan and diary</td><td data-label="Output to finish">Flowchart or decision tree; RTO and RPO; Gantt chart; process diary</td></tr>
+                <tr><td data-label="Week">6</td><td data-label="Focus">Edit, check diagrams against the specifications, reference list, AI disclosure log</td><td data-label="Output to finish">Final submission, with the submission checklist completed</td></tr>
               </tbody>
             </table>
           </div>
@@ -335,9 +335,9 @@
             <table>
               <thead><tr><th>Source type</th><th>Examples</th><th>Use it for</th></tr></thead>
               <tbody>
-                <tr><td>Primary</td><td>Government alerts, regulator findings, post-incident reviews, vendor advisories, CVE records</td><td>Facts, root cause, remediation</td></tr>
-                <tr><td>Secondary</td><td>News reports and specialist security journalism</td><td>Context, timelines, reactions</td></tr>
-                <tr><td>Avoid</td><td>Blogs with no sources, AI-generated summaries, sites you can't date</td><td>Nothing that the analysis depends on</td></tr>
+                <tr><td data-label="Source type">Primary</td><td data-label="Examples">Government alerts, regulator findings, post-incident reviews, vendor advisories, CVE records</td><td data-label="Use it for">Facts, root cause, remediation</td></tr>
+                <tr><td data-label="Source type">Secondary</td><td data-label="Examples">News reports and specialist security journalism</td><td data-label="Use it for">Context, timelines, reactions</td></tr>
+                <tr><td data-label="Source type">Avoid</td><td data-label="Examples">Blogs with no sources, AI-generated summaries, sites you can't date</td><td data-label="Use it for">Nothing that the analysis depends on</td></tr>
               </tbody>
             </table>
           </div>
@@ -364,11 +364,11 @@
             <table>
               <thead><tr><th>Date</th><th>Event</th><th>Source</th></tr></thead>
               <tbody>
-                <tr><td>16 March 2021</td><td>A phishing email carrying a malicious Excel file reaches the HSE. A user opens it on the "Patient Zero" workstation.</td><td>HSE post-incident review, as summarised by The Register (10 December 2021)</td></tr>
-                <tr><td>March to May 2021</td><td>The attackers move through the network and reach Active Directory. The review, written by PwC, says the attackers probably exploited an unpatched known vulnerability. The full report does not identify it.</td><td>The Register (10 December 2021)</td></tr>
-                <tr><td>Date not given, before 14 May 2021</td><td>Antivirus detects Cobalt Strike and Mimikatz on the Patient Zero workstation. On 10 May, Hospital C asks its external security provider about Cobalt Strike alerts and is told the risk is low. Hospital C does not start a cyber incident response investigation.</td><td>The Register (10 December 2021)</td></tr>
-                <tr><td>13 May 2021</td><td>The National Cyber Security Centre (NCSC) is alerted to suspicious activity on the Department of Health network. A Cobalt Strike beacon is suspected.</td><td>NCSC alert, updated 16 May 2021</td></tr>
-                <tr><td>14 May 2021</td><td>The Conti payload runs, launched with psexec.exe on endpoints where the attackers had compromised user credentials. At about 07:00 the NCSC learns of a significant incident affecting HSE systems. The HSE decides to shut down all its IT systems as a precaution.</td><td>NCSC alert; The Register</td></tr>
+                <tr><td data-label="Date">16 March 2021</td><td data-label="Event">A phishing email carrying a malicious Excel file reaches the HSE. A user opens it on the "Patient Zero" workstation.</td><td data-label="Source">HSE post-incident review, as summarised by The Register (10 December 2021)</td></tr>
+                <tr><td data-label="Date">March to May 2021</td><td data-label="Event">The attackers move through the network and reach Active Directory. The review, written by PwC, says the attackers probably exploited an unpatched known vulnerability. The full report does not identify it.</td><td data-label="Source">The Register (10 December 2021)</td></tr>
+                <tr><td data-label="Date">Date not given, before 14 May 2021</td><td data-label="Event">Antivirus detects Cobalt Strike and Mimikatz on the Patient Zero workstation. On 10 May, Hospital C asks its external security provider about Cobalt Strike alerts and is told the risk is low. Hospital C does not start a cyber incident response investigation.</td><td data-label="Source">The Register (10 December 2021)</td></tr>
+                <tr><td data-label="Date">13 May 2021</td><td data-label="Event">The National Cyber Security Centre (NCSC) is alerted to suspicious activity on the Department of Health network. A Cobalt Strike beacon is suspected.</td><td data-label="Source">NCSC alert, updated 16 May 2021</td></tr>
+                <tr><td data-label="Date">14 May 2021</td><td data-label="Event">The Conti payload runs, launched with psexec.exe on endpoints where the attackers had compromised user credentials. At about 07:00 the NCSC learns of a significant incident affecting HSE systems. The HSE decides to shut down all its IT systems as a precaution.</td><td data-label="Source">NCSC alert; The Register</td></tr>
               </tbody>
             </table>
           </div>
@@ -458,7 +458,7 @@ flowchart TD
 </div>
             </div>
             <div class="figure-notes">
-              <div><h5>What to notice</h5><ul><li>Every diamond has a labelled branch for each answer.</li><li>Both paths for "Are offsite backups confirmed clean?" end the flowchart.</li></ul></div>
+              <div><h5>What to notice</h5><ul><li>Every diamond has a labelled branch for each answer.</li><li>Both paths from "Backups confirmed clean?" end the flowchart.</li></ul></div>
               <p class="figure-try"><strong>Try this</strong>Add an RTO and an RPO check to the flowchart. Which decision uses the RPO, and which uses the RTO?</p>
             </div>
           </figure>
@@ -474,38 +474,49 @@ flowchart TD
           <h3>Exam-style practice: sample answers from identify to explain</h3>
           <p>These four items use the Conti attack as their stimulus, and move from the least demanding verb to the most demanding. They are written for this page, not taken from an HSC paper. The NESA glossary does not define these command terms, so the meanings used here are the usual HSC meanings: identify names, outline gives the main steps in order, describe gives features and what they do, and explain gives causes and their effects. Attempt each item before you read its sample answer.</p>
 
-          <div class="callout info">
+          <div class="callout info exam-item">
             <strong>Item 1: Identify (2 marks)</strong>
-            <p>Identify two actions that the HSE or the NCSC took or recommended to contain the attack.</p>
-            <p><em>Sample answer:</em> (1) The HSE shut down all of its IT systems as a precaution on 14 May 2021. (2) The NCSC recommended isolating the domain controllers.</p>
-            <p><em>Marker's note:</em> two named, specific actions are enough. "Responded to the attack" or "told people about it" does not earn a mark, because it is not a containment action.</p>
+            <p class="exam-q">Identify two actions that the HSE or the NCSC took or recommended to contain the attack.</p>
+            <div class="exam-answer">
+              <span class="exam-label">Sample answer</span>
+              <p>(1) The HSE shut down all of its IT systems as a precaution on 14 May 2021. (2) The NCSC recommended isolating the domain controllers.</p>
+            </div>
+            <p class="exam-note"><span class="exam-label">Marker's note</span> Two named, specific actions are enough. "Responded to the attack" or "told people about it" does not earn a mark, because it is not a containment action.</p>
           </div>
 
-          <div class="callout info">
+          <div class="callout info exam-item">
             <strong>Item 2: Outline (3 marks)</strong>
-            <p>Outline the sequence of events from the phishing email to the Conti payload running.</p>
-            <p><em>Sample answer:</em></p>
-            <ol>
-              <li>On 16 March 2021 a phishing email carrying a malicious Excel file reached the HSE, and a user opened it on the Patient Zero workstation.</li>
-              <li>The attackers deployed tools such as Cobalt Strike and Mimikatz. Antivirus detected them on Patient Zero, but Hospital C did not start an incident response investigation.</li>
-              <li>The attackers moved through the network to Active Directory, probably using an unpatched known vulnerability.</li>
-              <li>On 14 May 2021 the Conti payload ran, launched with psexec.exe using compromised user credentials.</li>
-            </ol>
-            <p><em>Marker's note:</em> the order is part of the answer. Each step needs its date or its effect, and the steps should be the main ones only.</p>
+            <p class="exam-q">Outline the sequence of events from the phishing email to the Conti payload running.</p>
+            <div class="exam-answer">
+              <span class="exam-label">Sample answer</span>
+              <ol>
+                <li>On 16 March 2021 a phishing email carrying a malicious Excel file reached the HSE, and a user opened it on the Patient Zero workstation.</li>
+                <li>The attackers deployed tools such as Cobalt Strike and Mimikatz. Antivirus detected them on Patient Zero, but Hospital C did not start an incident response investigation.</li>
+                <li>The attackers moved through the network to Active Directory, probably using an unpatched known vulnerability.</li>
+                <li>On 14 May 2021 the Conti payload ran, launched with psexec.exe using compromised user credentials.</li>
+              </ol>
+            </div>
+            <p class="exam-note"><span class="exam-label">Marker's note</span> The order is part of the answer. Each step needs its date or its effect, and the steps should be the main ones only.</p>
           </div>
 
-          <div class="callout info">
+          <div class="callout info exam-item">
             <strong>Item 3: Describe (3 marks)</strong>
-            <p>Describe how the attackers used compromised credentials to move the ransomware onto other computers.</p>
-            <p><em>Sample answer:</em> The attackers used psexec.exe, a remote-execution tool, to run the Conti v3 executable on endpoints where they held compromised user credentials. Because the credentials were valid, the payload could start on machines the attackers had not themselves broken into. The NCSC's analysis suggests that Cobalt Strike beacons on systems point to its use for lateral movement before the payload ran.</p>
-            <p><em>Marker's note:</em> a describe answer gives the feature (psexec, valid credentials) and what it achieved (the payload started on other endpoints). A list of tool names with no link to the attack scores low.</p>
+            <p class="exam-q">Describe how the attackers used compromised credentials to move the ransomware onto other computers.</p>
+            <div class="exam-answer">
+              <span class="exam-label">Sample answer</span>
+              <p>The attackers used psexec.exe, a remote-execution tool, to run the Conti v3 executable on endpoints where they held compromised user credentials. Because the credentials were valid, the payload could start on machines the attackers had not themselves broken into. The NCSC's analysis suggests that Cobalt Strike beacons on systems point to its use for lateral movement before the payload ran.</p>
+            </div>
+            <p class="exam-note"><span class="exam-label">Marker's note</span> A describe answer gives the feature (psexec, valid credentials) and what it achieved (the payload started on other endpoints). A list of tool names with no link to the attack scores low.</p>
           </div>
 
-          <div class="callout info">
+          <div class="callout info exam-item">
             <strong>Item 4: Explain (5 marks)</strong>
-            <p>Explain why the attack was able to spread across the HSE network before it was contained.</p>
-            <p><em>Sample answer:</em> The attack spread because the attackers had time and room to move, and the warning signs were not acted on. Antivirus detected Cobalt Strike and Mimikatz on Patient Zero, but when Hospital C asked its external provider about the alerts on 10 May, the risk was judged low and no investigation began. This gave the attackers time to reach Active Directory, which PwC's review says they probably did by exploiting an unpatched known vulnerability. Once there, they could run the payload with compromised credentials. The effect was severe: the HSE shut down all its IT systems as a precaution on 14 May, and non-emergency procedures were postponed while hospitals used their business continuity plans.</p>
-            <p><em>Marker's note:</em> a full answer links each cause to an effect, and uses the scenario's own evidence. The "why" must be explained, not just stated: "the attackers were skilled" is a claim, but "the alert was dismissed, so nothing stopped the next step" is an explanation.</p>
+            <p class="exam-q">Explain why the attack was able to spread across the HSE network before it was contained.</p>
+            <div class="exam-answer">
+              <span class="exam-label">Sample answer</span>
+              <p>The attack spread because the attackers had time and room to move, and the warning signs were not acted on. Antivirus detected Cobalt Strike and Mimikatz on Patient Zero, but when Hospital C asked its external provider about the alerts on 10 May, the risk was judged low and no investigation began. This gave the attackers time to reach Active Directory, which PwC's review says they probably did by exploiting an unpatched known vulnerability. Once there, they could run the payload with compromised credentials. The effect was severe: the HSE shut down all its IT systems as a precaution on 14 May, and non-emergency procedures were postponed while hospitals used their business continuity plans.</p>
+            </div>
+            <p class="exam-note"><span class="exam-label">Marker's note</span> A full answer links each cause to an effect, and uses the scenario's own evidence. The "why" must be explained, not just stated: "the attackers were skilled" is a claim, but "the alert was dismissed, so nothing stopped the next step" is an explanation.</p>
           </div>
 
           <div class="callout assessor">
@@ -517,8 +528,8 @@ flowchart TD
         <!--  TEMPLATES                                           -->
         <!-- ════════════════════════════════════════════════════ -->
         <div class="part-block">
-          <span class="part-number">Templates</span>
-          <span class="part-name">Blank tools for your own incident</span>
+          <span class="part-number">Tools</span>
+          <span class="part-name">Templates and code for your own incident</span>
         </div>
 
         <section id="templates">
@@ -531,7 +542,7 @@ flowchart TD
             <table>
               <thead><tr><th>Variable</th><th>Data type</th><th>Format for display</th><th>Size in bytes</th><th>Size for display</th><th>Description</th><th>Example</th><th>Validation</th></tr></thead>
               <tbody>
-                <tr><td>[name]</td><td>[e.g. String]</td><td>[e.g. XXNNN]</td><td>[n]</td><td>[n]</td><td>[purpose of the field]</td><td>[sample value]</td><td>[rule]</td></tr>
+                <tr><td data-label="Variable">[name]</td><td data-label="Data type">[e.g. String]</td><td data-label="Format for display">[e.g. XXNNN]</td><td data-label="Size in bytes">[n]</td><td data-label="Size for display">[n]</td><td data-label="Description">[purpose of the field]</td><td data-label="Example">[sample value]</td><td data-label="Validation">[rule]</td></tr>
               </tbody>
             </table>
           </div>
@@ -541,7 +552,7 @@ flowchart TD
             <table>
               <thead><tr><th>Test</th><th>Input</th><th>Expected result</th><th>Result</th><th>Tool or method</th></tr></thead>
               <tbody>
-                <tr><td>[e.g. oversized input]</td><td>[value]</td><td>[rejected with a safe error message]</td><td>[pass or fail]</td><td>[DAST, code review or manual]</td></tr>
+                <tr><td data-label="Test">[e.g. oversized input]</td><td data-label="Input">[value]</td><td data-label="Expected result">[rejected with a safe error message]</td><td data-label="Result">[pass or fail]</td><td data-label="Tool or method">[DAST, code review or manual]</td></tr>
               </tbody>
             </table>
           </div>
@@ -551,13 +562,13 @@ flowchart TD
             <table>
               <thead><tr><th>Field</th><th>Entry</th></tr></thead>
               <tbody>
-                <tr><td>Date and author</td><td>[date; your name]</td></tr>
-                <tr><td>Progress since last entry</td><td>[what changed]</td></tr>
-                <tr><td>Tasks achieved</td><td>[list]</td></tr>
-                <tr><td>Problems and how you managed them</td><td>[issue; action taken]</td></tr>
-                <tr><td>Possible approaches for upcoming tasks</td><td>[options]</td></tr>
-                <tr><td>Reflective comments</td><td>[what you learnt; what you would change]</td></tr>
-                <tr><td>Resources used</td><td>[sources; tools]</td></tr>
+                <tr><td data-label="Field">Date and author</td><td data-label="Entry">[date; your name]</td></tr>
+                <tr><td data-label="Field">Progress since last entry</td><td data-label="Entry">[what changed]</td></tr>
+                <tr><td data-label="Field">Tasks achieved</td><td data-label="Entry">[list]</td></tr>
+                <tr><td data-label="Field">Problems and how you managed them</td><td data-label="Entry">[issue; action taken]</td></tr>
+                <tr><td data-label="Field">Possible approaches for upcoming tasks</td><td data-label="Entry">[options]</td></tr>
+                <tr><td data-label="Field">Reflective comments</td><td data-label="Entry">[what you learnt; what you would change]</td></tr>
+                <tr><td data-label="Field">Resources used</td><td data-label="Entry">[sources; tools]</td></tr>
               </tbody>
             </table>
           </div>
@@ -568,13 +579,13 @@ flowchart TD
             <table>
               <thead><tr><th>Task</th><th>Start</th><th>Finish</th><th>Estimated days</th><th>Actual days</th><th>Depends on</th><th>Milestone</th></tr></thead>
               <tbody>
-                <tr><td>[task]</td><td>[date]</td><td>[date]</td><td>[n]</td><td>[n]</td><td>[task]</td><td>[yes or no]</td></tr>
+                <tr><td data-label="Task">[task]</td><td data-label="Start">[date]</td><td data-label="Finish">[date]</td><td data-label="Estimated days">[n]</td><td data-label="Actual days">[n]</td><td data-label="Depends on">[task]</td><td data-label="Milestone">[yes or no]</td></tr>
               </tbody>
             </table>
           </div>
 
           <h3>Diagram checklist</h3>
-          <ul>
+          <ul class="t1-checklist">
             <li>DFD: circles for processes, open-ended rectangles or two parallel lines for data stores, rectangles for external entities, labelled curved arrows for flows.</li>
             <li>Structure chart: open circles for data, filled circles for flags, a small diamond for an optional call, curved arrows for repetition.</li>
             <li>Flowchart: BEGIN and END terminators, process boxes, decision diamonds with labelled branches, and I/O and subprogram symbols where needed.</li>
@@ -592,7 +603,7 @@ flowchart TD
 
           <h3>The insecure version</h3>
           <p>The input is pasted straight into the SQL text, so the input can change what the query does.</p>
-          <div class="code-block">
+          <div class="code-block code-block--insecure">
             <div class="code-header"><span class="code-lang">Python: insecure</span></div>
             <pre><code class="language-python"><span class="kw">import</span> sqlite3
 
@@ -607,7 +618,7 @@ conn.executemany("INSERT INTO users VALUES (?, ?)", [(1, "alice"), (2, "bob_smit
 print("Normal input:", find_user(conn, "alice"))
 print("Attack input:", find_user(conn, "' OR '1'='1"))</code></pre>
           </div>
-          <div class="code-block">
+          <div class="code-block code-block--output">
             <div class="code-header"><span class="code-lang">Expected output</span></div>
             <pre><code>Normal input: [(1, 'alice')]
 Attack input: [(1, 'alice'), (2, 'bob_smith')]</code></pre>
@@ -615,7 +626,7 @@ Attack input: [(1, 'alice'), (2, 'bob_smith')]</code></pre>
 
           <h3>The secure version</h3>
           <p>The input is checked first, and the query uses a placeholder. The database then treats the value as data, never as SQL.</p>
-          <div class="code-block">
+          <div class="code-block code-block--secure">
             <div class="code-header"><span class="code-lang">Python: secure</span></div>
             <pre><code class="language-python"><span class="kw">import</span> re
 <span class="kw">import</span> sqlite3
@@ -638,23 +649,22 @@ print("Normal input:", find_user(conn, "alice"))
 <span class="kw">except</span> ValueError <span class="kw">as</span> error:
     print("Attack input rejected:", error)</code></pre>
           </div>
-          <div class="code-block">
+          <div class="code-block code-block--output">
             <div class="code-header"><span class="code-lang">Expected output</span></div>
             <pre><code>Normal input: [(1, 'alice')]
 Attack input rejected: Invalid username</code></pre>
           </div>
 
           <h3>The same logic in NESA pseudocode</h3>
-          <p>Insecure:</p>
-          <div class="code-block">
+          <p>The pseudocode follows the same two steps as the Python: check the input, then pass it as a parameter.</p>
+          <div class="code-block code-block--insecure">
             <div class="code-header"><span class="code-lang">NESA pseudocode: insecure</span></div>
             <pre><code><span class="kw">BEGIN</span> FindUser (username)
     query = "SELECT id, username FROM users WHERE username = '" + username + "'"
     <span class="kw">RETURN</span> the rows that query finds
 <span class="kw">END</span> FindUser (username)</code></pre>
           </div>
-          <p>Secure:</p>
-          <div class="code-block">
+          <div class="code-block code-block--secure">
             <div class="code-header"><span class="code-lang">NESA pseudocode: secure</span></div>
             <pre><code><span class="kw">BEGIN</span> FindUser (username)
     <span class="kw">IF</span> username is not 3 to 20 letters, digits or underscores <span class="kw">THEN</span>
@@ -677,8 +687,8 @@ Attack input rejected: Invalid username</code></pre>
             <table>
               <thead><tr><th>Test</th><th>Input</th><th>Insecure result</th><th>Secure result</th></tr></thead>
               <tbody>
-                <tr><td>Normal username</td><td>alice</td><td>Returns alice</td><td>Returns alice</td></tr>
-                <tr><td>SQL injection</td><td><code>' OR '1'='1</code></td><td>Returns every user</td><td>Rejected: Invalid username</td></tr>
+                <tr><td data-label="Test">Normal username</td><td data-label="Input">alice</td><td data-label="Insecure result">Returns alice</td><td data-label="Secure result">Returns alice</td></tr>
+                <tr><td data-label="Test">SQL injection</td><td data-label="Input"><code>' OR '1'='1</code></td><td data-label="Insecure result">Returns every user</td><td data-label="Secure result">Rejected: Invalid username</td></tr>
               </tbody>
             </table>
           </div>
@@ -691,16 +701,21 @@ Attack input rejected: Invalid username</code></pre>
         <!-- ════════════════════════════════════════════════════ -->
         <!--  CURRENT EVENT                                       -->
         <!-- ════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Context</span>
+          <span class="part-name">A live vulnerability and the syllabus</span>
+        </div>
+
         <section id="current-event">
           <h2>Current event: a PHP vulnerability (October 2026)</h2>
           <p>This is a teacher-led example, not a required scenario. It shows how a live vulnerability is reported, and how facts can be confirmed or left open. Information is current as at 22 October 2026, and it may change.</p>
 
-          <div class="callout warning">
-            <strong>Confirmed by the advisory:</strong> CERT-EU Security Advisory 2026-018, published 21 October 2026, reports two critical flaws in PHP. Both are rated CVSS 9.2. CVE-2026-109618 allows unauthenticated remote code execution through memory corruption during out-of-memory handling. CVE-2026-109619 allows unauthenticated remote code execution through stale global state, where internal request state can survive after its memory has been freed. The advisory also says that only an update fully fixes these vulnerabilities; settings reduce exposure but do not make an installation safe. Fixed versions are PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35. PHP 8.1 and earlier are end-of-life, with minimal backports available for some versions.
+          <div class="callout info">
+            <strong>Confirmed by the advisory</strong> CERT-EU Security Advisory 2026-018, published 21 October 2026, reports two critical flaws in PHP. Both are rated CVSS 9.2. CVE-2026-109618 allows unauthenticated remote code execution through memory corruption during out-of-memory handling. CVE-2026-109619 allows unauthenticated remote code execution through stale global state, where internal request state can survive after its memory has been freed. The advisory also says that only an update fully fixes these vulnerabilities; settings reduce exposure but do not make an installation safe. Fixed versions are PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35. PHP 8.1 and earlier are end-of-life, with minimal backports available for some versions.
           </div>
 
-          <div class="callout assessor">
-            <strong>Not yet confirmed:</strong> the advisory says exploitation is not confirmed. It says public technical details and proofs of concept are circulating, which "raises the likelihood that attackers are already exploiting the vulnerabilities". Some media reporting uses the name "PHP2Shell". That name does not appear in the CERT-EU advisory, and this review could not find a primary source for it or for claims of active exploitation. Do not cite either without a primary source. Report the difference between confirmed and reported facts.
+          <div class="callout warning">
+            <strong>Not yet confirmed</strong> The advisory says exploitation is not confirmed. It says public technical details and proofs of concept are circulating, which "raises the likelihood that attackers are already exploiting the vulnerabilities". Some media reporting uses the name "PHP2Shell". That name does not appear in the CERT-EU advisory, and this review could not find a primary source for it or for claims of active exploitation. Do not cite either without a primary source. Report the difference between confirmed and reported facts.
           </div>
 
           <h3>Discussion questions</h3>
@@ -723,23 +738,23 @@ Attack input rejected: Invalid username</code></pre>
             <table>
               <thead><tr><th>NESA dot point (Year 12, Secure software architecture)</th><th>Notes</th><th>Task section</th></tr></thead>
               <tbody>
-                <tr><td>Describe the benefits of developing secure software</td><td><a href="secure-software-architecture.html#benefits">Benefits of developing secure software</a></td><td>1 (context)</td></tr>
-                <tr><td>Interpret and apply fundamental software development steps to develop secure code</td><td><a href="secure-software-architecture.html#sdlc">Software development steps</a></td><td>2</td></tr>
-                <tr><td>Describe how the capabilities and experience of end users influence the secure design features of software</td><td><a href="secure-software-architecture.html#end-users">How end users influence secure design</a></td><td>2</td></tr>
-                <tr><td>Explore fundamental software design security concepts when developing programming code</td><td><a href="secure-software-architecture.html#security-concepts">Security concepts</a></td><td>2</td></tr>
-                <tr><td>Apply security features incorporated into software including data protection, security, privacy and regulatory compliance</td><td><a href="secure-software-architecture.html#security-features">Security features</a></td><td>2, 3</td></tr>
-                <tr><td>Use and explain the contribution of cryptography and sandboxing to the ‘security by design’ approach in the development of software solutions</td><td><a href="secure-software-architecture.html#by-design">Security by design</a></td><td>2</td></tr>
-                <tr><td>Use and explain the ‘privacy by design’ approach in the development of software solutions</td><td><a href="secure-software-architecture.html#privacy-design">Privacy by design</a></td><td>3</td></tr>
-                <tr><td>Test and evaluate the security and resilience of software by determining vulnerabilities, hardening systems, handling breaches, maintaining business continuity and conducting disaster recovery</td><td><a href="secure-software-architecture.html#resilience">Testing security and resilience</a></td><td>4</td></tr>
-                <tr><td>Apply and evaluate strategies used by software developers to manage the security of programming code</td><td><a href="secure-software-architecture.html#testing-strategies">Strategies to manage code security</a></td><td>2 (testing protocol)</td></tr>
-                <tr><td>Design, develop and implement code using defensive data input handling practices, including input validation, sanitisation and error handling</td><td><a href="secure-software-architecture.html#defensive-coding">Defensive data input handling</a></td><td>2 (code)</td></tr>
-                <tr><td>Design, develop and implement a safe application programming interface (API) to minimise software vulnerabilities</td><td><a href="secure-software-architecture.html#safe-api">Designing a safe API</a></td><td>2</td></tr>
-                <tr><td>Design, develop and implement code considering efficient execution for the user</td><td><a href="secure-software-architecture.html#efficient-execution">Efficient execution</a></td><td>2</td></tr>
-                <tr><td>Design, develop and implement secure code to minimise vulnerabilities in user action controls</td><td><a href="secure-software-architecture.html#user-controls">Secure user action controls</a></td><td>2 (code)</td></tr>
-                <tr><td>Design, develop and implement secure code to protect user file and hardware vulnerabilities from file attacks and side channel attacks</td><td><a href="secure-software-architecture.html#file-hardware">File and side channel attacks</a></td><td>1 or 2</td></tr>
-                <tr><td>Apply and describe the benefits of collaboration to develop safe and secure software</td><td><a href="secure-software-architecture.html#collaboration">Benefits of collaboration</a></td><td>6</td></tr>
-                <tr><td>Investigate and explain the benefits to an enterprise of the implementation of safe and secure development practices</td><td><a href="secure-software-architecture.html#enterprise">Benefits to an enterprise</a></td><td>6</td></tr>
-                <tr><td>Evaluate the social, ethical and legal issues and ramifications that affect people and enterprises resulting from the development and implementation of safe and secure software</td><td><a href="secure-software-architecture.html#ramifications">Social, ethical and legal ramifications</a></td><td>5</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Describe the benefits of developing secure software</td><td data-label="Notes"><a href="secure-software-architecture.html#benefits">Benefits of developing secure software</a></td><td data-label="Task section">1 (context)</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Interpret and apply fundamental software development steps to develop secure code</td><td data-label="Notes"><a href="secure-software-architecture.html#sdlc">Software development steps</a></td><td data-label="Task section">2</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Describe how the capabilities and experience of end users influence the secure design features of software</td><td data-label="Notes"><a href="secure-software-architecture.html#end-users">How end users influence secure design</a></td><td data-label="Task section">2</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Explore fundamental software design security concepts when developing programming code</td><td data-label="Notes"><a href="secure-software-architecture.html#security-concepts">Security concepts</a></td><td data-label="Task section">2</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Apply security features incorporated into software including data protection, security, privacy and regulatory compliance</td><td data-label="Notes"><a href="secure-software-architecture.html#security-features">Security features</a></td><td data-label="Task section">2, 3</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Use and explain the contribution of cryptography and sandboxing to the ‘security by design’ approach in the development of software solutions</td><td data-label="Notes"><a href="secure-software-architecture.html#by-design">Security by design</a></td><td data-label="Task section">2</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Use and explain the ‘privacy by design’ approach in the development of software solutions</td><td data-label="Notes"><a href="secure-software-architecture.html#privacy-design">Privacy by design</a></td><td data-label="Task section">3</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Test and evaluate the security and resilience of software by determining vulnerabilities, hardening systems, handling breaches, maintaining business continuity and conducting disaster recovery</td><td data-label="Notes"><a href="secure-software-architecture.html#resilience">Testing security and resilience</a></td><td data-label="Task section">4</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Apply and evaluate strategies used by software developers to manage the security of programming code</td><td data-label="Notes"><a href="secure-software-architecture.html#testing-strategies">Strategies to manage code security</a></td><td data-label="Task section">2 (testing protocol)</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Design, develop and implement code using defensive data input handling practices, including input validation, sanitisation and error handling</td><td data-label="Notes"><a href="secure-software-architecture.html#defensive-coding">Defensive data input handling</a></td><td data-label="Task section">2 (code)</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Design, develop and implement a safe application programming interface (API) to minimise software vulnerabilities</td><td data-label="Notes"><a href="secure-software-architecture.html#safe-api">Designing a safe API</a></td><td data-label="Task section">2</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Design, develop and implement code considering efficient execution for the user</td><td data-label="Notes"><a href="secure-software-architecture.html#efficient-execution">Efficient execution</a></td><td data-label="Task section">2</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Design, develop and implement secure code to minimise vulnerabilities in user action controls</td><td data-label="Notes"><a href="secure-software-architecture.html#user-controls">Secure user action controls</a></td><td data-label="Task section">2 (code)</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Design, develop and implement secure code to protect user file and hardware vulnerabilities from file attacks and side channel attacks</td><td data-label="Notes"><a href="secure-software-architecture.html#file-hardware">File and side channel attacks</a></td><td data-label="Task section">1 or 2</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Apply and describe the benefits of collaboration to develop safe and secure software</td><td data-label="Notes"><a href="secure-software-architecture.html#collaboration">Benefits of collaboration</a></td><td data-label="Task section">6</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Investigate and explain the benefits to an enterprise of the implementation of safe and secure development practices</td><td data-label="Notes"><a href="secure-software-architecture.html#enterprise">Benefits to an enterprise</a></td><td data-label="Task section">6</td></tr>
+                <tr><td data-label="NESA dot point (Year 12, Secure software architecture)">Evaluate the social, ethical and legal issues and ramifications that affect people and enterprises resulting from the development and implementation of safe and secure software</td><td data-label="Notes"><a href="secure-software-architecture.html#ramifications">Social, ethical and legal ramifications</a></td><td data-label="Task section">5</td></tr>
               </tbody>
             </table>
           </div>
@@ -750,6 +765,11 @@ Attack input rejected: Invalid username</code></pre>
         <!-- ════════════════════════════════════════════════════ -->
         <!--  AI USE                                              -->
         <!-- ════════════════════════════════════════════════════ -->
+        <div class="part-block">
+          <span class="part-number">Rules and submission</span>
+          <span class="part-name">AI use, checklist and sources</span>
+        </div>
+
         <section id="ai-use">
           <h2>Using AI tools</h2>
           <p>Your teacher's brief sets the rules. Read the Responsible AI Use Policy in the brief before you start.</p>
@@ -764,7 +784,7 @@ Attack input rejected: Invalid username</code></pre>
             <table>
               <thead><tr><th>Section used in</th><th>AI tool</th><th>Date used</th><th>Prompt used</th><th>Summary of output and what you changed</th></tr></thead>
               <tbody>
-                <tr><td>[e.g. Section 2 code]</td><td>[tool and version]</td><td>[date]</td><td>[prompt]</td><td>[what it gave you; what you checked, adapted or rejected]</td></tr>
+                <tr><td data-label="Section used in">[e.g. Section 2 code]</td><td data-label="AI tool">[tool and version]</td><td data-label="Date used">[date]</td><td data-label="Prompt used">[prompt]</td><td data-label="Summary of output and what you changed">[what it gave you; what you checked, adapted or rejected]</td></tr>
               </tbody>
             </table>
           </div>
@@ -775,7 +795,7 @@ Attack input rejected: Invalid username</code></pre>
         <!-- ════════════════════════════════════════════════════ -->
         <section id="submission">
           <h2>Submission checklist</h2>
-          <ul>
+          <ul class="t1-checklist">
             <li>Submitted through the LMS, by the due date in your brief. Email submissions are not accepted.</li>
             <li>All six sections are present, each with the deliverables listed for it.</li>
             <li>Every diagram follows NESA notation, and you have checked each one against the Course Specifications.</li>

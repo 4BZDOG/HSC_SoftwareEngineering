@@ -1,14 +1,14 @@
-/* Task 1 companion: rubric tables read as labelled blocks on phones.
-   Desktop keeps the normal table. Scoped to #rubric so nothing else changes. */
+/* Task 1 companion: tables read as labelled blocks on phones.
+   Desktop keeps the normal table. Scoped to this page's .content-body so nothing else changes. */
 @media (max-width: 640px) {
-  #rubric .table-wrap table,
-  #rubric .table-wrap tbody,
-  #rubric .table-wrap tr,
-  #rubric .table-wrap td {
+  .content-body .table-wrap table,
+  .content-body .table-wrap tbody,
+  .content-body .table-wrap tr,
+  .content-body .table-wrap td {
     display: block;
     width: 100%;
   }
-  #rubric .table-wrap thead {
+  .content-body .table-wrap thead {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -16,18 +16,19 @@
     clip: rect(0 0 0 0);
     white-space: nowrap;
   }
-  #rubric .table-wrap tr {
+  .content-body .table-wrap tr {
     padding: .6rem .75rem;
     border-bottom: 1px solid var(--border-strong);
   }
-  #rubric .table-wrap tr:last-child { border-bottom: 0; }
-  #rubric .table-wrap td {
+  .content-body .table-wrap tr:last-child { border-bottom: 0; }
+  .content-body .table-wrap td {
     border: 0;
     padding: .15rem 0;
     text-align: left;
   }
-  #rubric .table-wrap td:empty { display: none; }
-  #rubric .table-wrap td[data-label]::before {
+  .content-body .table-wrap td:empty { display: none; }
+  .content-body .table-wrap td:first-child { font-weight: 600; }
+  .content-body .table-wrap td[data-label]::before {
     content: attr(data-label);
     display: block;
     font-size: .74rem;
@@ -36,4 +37,89 @@
     text-transform: uppercase;
     color: var(--text-secondary);
   }
+}
+
+/* Keep band labels such as "Band 6" on one line. Limited to the Band column:
+   a nowrap on the Section column forces the Mark summary table to scroll sideways at tablet width. */
+#rubric td[data-label="Band"] { white-space: nowrap; }
+
+/* Exam-style practice items */
+.exam-item .exam-q {
+  font-family: var(--font-display);
+  font-size: 1.06rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--pc-ink);
+  margin: .1rem 0 .8rem;
+}
+.exam-item .exam-answer {
+  background: var(--pc-sheet);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: .75rem 1rem .8rem;
+  margin: 0 0 .75rem;
+}
+.exam-item .exam-answer > p,
+.exam-item .exam-answer > ol { margin-top: 0; }
+.exam-item .exam-answer > p:last-child,
+.exam-item .exam-answer > ol:last-child { margin-bottom: 0; }
+.exam-item .exam-answer ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+.exam-item .exam-answer li + li { margin-top: .35rem; }
+.exam-item .exam-label {
+  display: block;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: .3rem;
+}
+.exam-item .exam-note {
+  font-size: .92rem;
+  color: var(--pc-ink-soft);
+  border-top: 1px dashed var(--border-strong);
+  padding-top: .6rem;
+  margin: 0;
+}
+.exam-item .exam-note .exam-label {
+  display: inline;
+  margin-right: .35rem;
+}
+
+/* Code tone: the coloured rule sits on the header, so the card's own shadow stays */
+:root[data-theme] .code-block--insecure .code-header { box-shadow: inset 0 3px 0 var(--pc-terracotta); }
+:root[data-theme] .code-block--secure .code-header { box-shadow: inset 0 3px 0 var(--pc-sage); }
+.code-block--insecure .code-lang::before,
+.code-block--secure .code-lang::before {
+  content: '';
+  display: inline-block;
+  width: .55rem;
+  height: .55rem;
+  border-radius: 50%;
+  margin-right: .45rem;
+  vertical-align: .05em;
+  background: var(--pc-terracotta);
+}
+.code-block--secure .code-lang::before { background: var(--pc-sage); }
+
+/* Expected output sits closer to the code it belongs to, and reads a little smaller */
+.code-block + .code-block--output { margin-top: -.5rem; }
+.code-block--output pre code { font-size: .78rem; }
+
+/* Checklists: a tick box in place of the bullet */
+.t1-checklist { list-style: none; padding-left: 0; }
+.t1-checklist li { position: relative; padding-left: 1.9rem; margin-bottom: .55rem; }
+.t1-checklist li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: .2em;
+  width: 1.05rem;
+  height: 1.05rem;
+  border: 2px solid var(--pc-teal);
+  border-radius: 4px;
+  background: var(--pc-sheet);
 }
