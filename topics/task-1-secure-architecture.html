@@ -365,10 +365,10 @@
               <thead><tr><th>Date</th><th>Event</th><th>Source</th></tr></thead>
               <tbody>
                 <tr><td>16 March 2021</td><td>A phishing email carrying a malicious Excel file reaches the HSE. A user opens it on the "Patient Zero" workstation.</td><td>HSE post-incident review, as summarised by The Register (10 December 2021)</td></tr>
-                <tr><td>March to May 2021</td><td>The attackers move through the network and reach Active Directory. The post-incident review states the attackers probably exploited an unpatched known vulnerability. It doesn't identify the vulnerability in the summary.</td><td>The Register (10 December 2021)</td></tr>
-                <tr><td>Before 14 May 2021</td><td>Antivirus detects Cobalt Strike and Mimikatz on the Patient Zero workstation. On 10 May, one hospital asks its security provider about Cobalt Strike alerts and is told the risk is low. No investigation is started.</td><td>The Register (10 December 2021)</td></tr>
+                <tr><td>March to May 2021</td><td>The attackers move through the network and reach Active Directory. The review, written by PwC, says the attackers probably exploited an unpatched known vulnerability. The full report does not identify it.</td><td>The Register (10 December 2021)</td></tr>
+                <tr><td>Date not given, before 14 May 2021</td><td>Antivirus detects Cobalt Strike and Mimikatz on the Patient Zero workstation. On 10 May, Hospital C asks its external security provider about Cobalt Strike alerts and is told the risk is low. Hospital C does not start a cyber incident response investigation.</td><td>The Register (10 December 2021)</td></tr>
                 <tr><td>13 May 2021</td><td>The National Cyber Security Centre (NCSC) is alerted to suspicious activity on the Department of Health network. A Cobalt Strike beacon is suspected.</td><td>NCSC alert, updated 16 May 2021</td></tr>
-                <tr><td>14 May 2021</td><td>The Conti payload runs. The NCSC is told of a significant incident affecting HSE systems. The HSE decides to shut down all its IT systems as a precaution.</td><td>NCSC alert; The Register</td></tr>
+                <tr><td>14 May 2021</td><td>The Conti payload runs, launched with psexec.exe on endpoints where the attackers had compromised user credentials. At about 07:00 the NCSC learns of a significant incident affecting HSE systems. The HSE decides to shut down all its IT systems as a precaution.</td><td>NCSC alert; The Register</td></tr>
               </tbody>
             </table>
           </div>
@@ -470,6 +470,47 @@ flowchart TD
             <li><strong>Redesign the failures.</strong> The detection gap, the unpatched vulnerability and the flat network are your starting points for Section 2.</li>
             <li><strong>Add your own analysis</strong> of the emerging-technology and legacy-system factors in Section 1, and make it specific to this incident.</li>
           </ul>
+
+          <h3>Exam-style practice: sample answers from identify to explain</h3>
+          <p>These four items use the Conti attack as their stimulus, and move from the least demanding verb to the most demanding. They are written for this page, not taken from an HSC paper. The NESA glossary does not define these command terms, so the meanings used here are the usual HSC meanings: identify names, outline gives the main steps in order, describe gives features and what they do, and explain gives causes and their effects. Attempt each item before you read its sample answer.</p>
+
+          <div class="callout info">
+            <strong>Item 1: Identify (2 marks)</strong>
+            <p>Identify two actions that the HSE or the NCSC took or recommended to contain the attack.</p>
+            <p><em>Sample answer:</em> (1) The HSE shut down all of its IT systems as a precaution on 14 May 2021. (2) The NCSC recommended isolating the domain controllers.</p>
+            <p><em>Marker's note:</em> two named, specific actions are enough. "Responded to the attack" or "told people about it" does not earn a mark, because it is not a containment action.</p>
+          </div>
+
+          <div class="callout info">
+            <strong>Item 2: Outline (3 marks)</strong>
+            <p>Outline the sequence of events from the phishing email to the Conti payload running.</p>
+            <p><em>Sample answer:</em></p>
+            <ol>
+              <li>On 16 March 2021 a phishing email carrying a malicious Excel file reached the HSE, and a user opened it on the Patient Zero workstation.</li>
+              <li>The attackers deployed tools such as Cobalt Strike and Mimikatz. Antivirus detected them on Patient Zero, but Hospital C did not start an incident response investigation.</li>
+              <li>The attackers moved through the network to Active Directory, probably using an unpatched known vulnerability.</li>
+              <li>On 14 May 2021 the Conti payload ran, launched with psexec.exe using compromised user credentials.</li>
+            </ol>
+            <p><em>Marker's note:</em> the order is part of the answer. Each step needs its date or its effect, and the steps should be the main ones only.</p>
+          </div>
+
+          <div class="callout info">
+            <strong>Item 3: Describe (3 marks)</strong>
+            <p>Describe how the attackers used compromised credentials to move the ransomware onto other computers.</p>
+            <p><em>Sample answer:</em> The attackers used psexec.exe, a remote-execution tool, to run the Conti v3 executable on endpoints where they held compromised user credentials. Because the credentials were valid, the payload could start on machines the attackers had not themselves broken into. The NCSC's analysis suggests that Cobalt Strike beacons on systems point to its use for lateral movement before the payload ran.</p>
+            <p><em>Marker's note:</em> a describe answer gives the feature (psexec, valid credentials) and what it achieved (the payload started on other endpoints). A list of tool names with no link to the attack scores low.</p>
+          </div>
+
+          <div class="callout info">
+            <strong>Item 4: Explain (5 marks)</strong>
+            <p>Explain why the attack was able to spread across the HSE network before it was contained.</p>
+            <p><em>Sample answer:</em> The attack spread because the attackers had time and room to move, and the warning signs were not acted on. Antivirus detected Cobalt Strike and Mimikatz on Patient Zero, but when Hospital C asked its external provider about the alerts on 10 May, the risk was judged low and no investigation began. This gave the attackers time to reach Active Directory, which PwC's review says they probably did by exploiting an unpatched known vulnerability. Once there, they could run the payload with compromised credentials. The effect was severe: the HSE shut down all its IT systems as a precaution on 14 May, and non-emergency procedures were postponed while hospitals used their business continuity plans.</p>
+            <p><em>Marker's note:</em> a full answer links each cause to an effect, and uses the scenario's own evidence. The "why" must be explained, not just stated: "the attackers were skilled" is a claim, but "the alert was dismissed, so nothing stopped the next step" is an explanation.</p>
+          </div>
+
+          <div class="callout assessor">
+            <strong>Exam tip: match the depth to the verb</strong> A one-word verb such as identify needs precise facts and no reasoning. Outline needs the steps in order, with a short point for each. Describe needs the feature and what it achieved. Explain needs a cause, the link between cause and effect, and evidence. Writing a long explanation for an identify item wastes time, and writing a list for an explain item loses most of the marks.
+          </div>
         </section>
 
         <!-- ════════════════════════════════════════════════════ -->
@@ -655,11 +696,11 @@ Attack input rejected: Invalid username</code></pre>
           <p>This is a teacher-led example, not a required scenario. It shows how a live vulnerability is reported, and how facts can be confirmed or left open. Information is current as at 22 October 2026, and it may change.</p>
 
           <div class="callout warning">
-            <strong>Confirmed by the advisory:</strong> CERT-EU Security Advisory 2026-018, published 21 October 2026, reports two critical flaws in PHP. Both are rated CVSS 9.2. CVE-2026-109618 allows remote code execution through memory corruption during out-of-memory handling. CVE-2026-109619 allows remote code execution through stale global state, where request data can survive after its memory is freed. Fixed versions are PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35. PHP 8.1 and earlier are end-of-life, with minimal backports available for some versions.
+            <strong>Confirmed by the advisory:</strong> CERT-EU Security Advisory 2026-018, published 21 October 2026, reports two critical flaws in PHP. Both are rated CVSS 9.2. CVE-2026-109618 allows unauthenticated remote code execution through memory corruption during out-of-memory handling. CVE-2026-109619 allows unauthenticated remote code execution through stale global state, where internal request state can survive after its memory has been freed. The advisory also says that only an update fully fixes these vulnerabilities; settings reduce exposure but do not make an installation safe. Fixed versions are PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35. PHP 8.1 and earlier are end-of-life, with minimal backports available for some versions.
           </div>
 
           <div class="callout assessor">
-            <strong>Not yet confirmed:</strong> the advisory says exploitation is not confirmed. It says public technical details and proofs of concept are circulating, which "raises the likelihood that attackers are already exploiting the vulnerabilities". Some security-vendor reporting describes the flaws as actively exploited, under the name "PHP2Shell". The name doesn't appear in the CERT-EU advisory. Report the difference between confirmed and reported facts.
+            <strong>Not yet confirmed:</strong> the advisory says exploitation is not confirmed. It says public technical details and proofs of concept are circulating, which "raises the likelihood that attackers are already exploiting the vulnerabilities". Some media reporting uses the name "PHP2Shell". That name does not appear in the CERT-EU advisory, and this review could not find a primary source for it or for claims of active exploitation. Do not cite either without a primary source. Report the difference between confirmed and reported facts.
           </div>
 
           <h3>Discussion questions</h3>
