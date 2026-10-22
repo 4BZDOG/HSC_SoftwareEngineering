@@ -1,0 +1,39 @@
+/* Task 1 companion: rubric tables read as labelled blocks on phones.
+   Desktop keeps the normal table. Scoped to #rubric so nothing else changes. */
+@media (max-width: 640px) {
+  #rubric .table-wrap table,
+  #rubric .table-wrap tbody,
+  #rubric .table-wrap tr,
+  #rubric .table-wrap td {
+    display: block;
+    width: 100%;
+  }
+  #rubric .table-wrap thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  #rubric .table-wrap tr {
+    padding: .6rem .75rem;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  #rubric .table-wrap tr:last-child { border-bottom: 0; }
+  #rubric .table-wrap td {
+    border: 0;
+    padding: .15rem 0;
+    text-align: left;
+  }
+  #rubric .table-wrap td:empty { display: none; }
+  #rubric .table-wrap td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    font-size: .74rem;
+    font-weight: 700;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+}

@@ -36,6 +36,7 @@
   <script>(function(){try{var t=localStorage.getItem('hsc-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}})()</script>
   <link rel="stylesheet" href="../css/styles.css?v=5e89f790" />
   <link rel="stylesheet" href="../css/paper.css?v=f391725a" />
+  <link rel="stylesheet" href="../css/pages/task-1-secure-architecture.css?v=9b840c41" />
 </head>
 <body>
 
@@ -147,7 +148,7 @@
       </nav>
       <div class="topic-title-row"><span class="topic-hero-icon ti-core" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M9 4h6l4 4v11a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3z"/><path d="M9 13h6M9 17h4"/></svg></span><h1>Task 1 Companion: Secure Software Architecture</h1></div>
       <p class="text-muted-dark max-w-600 mt-2 fs-sm lh-base">
-        A jumping-off point for <strong>Assessment Task #1 (20%)</strong>: how to plan, research and structure your analysis, a worked starter on the <strong>Conti ransomware attack on the HSE (2021)</strong>, and templates in NESA notation.
+        A jumping-off point for <strong>Assessment Task #1 (20%)</strong>: how to plan, research and structure your analysis, how the six-band rubric works, a worked starter on the <strong>Conti ransomware attack on the HSE (2021)</strong>, and templates in NESA notation.
       </p>
       <div class="topic-header-meta">
         <span class="meta-pill year12">Year 12 · Task 1</span>
@@ -163,6 +164,7 @@
       <ul class="toc-list">
         <li class="sidebar-label">Start here</li>
         <li><a href="#start">The task at a glance</a></li>
+        <li><a href="#rubric">How you will be marked</a></li>
         <li><a href="#plan">Plan your five to six weeks</a></li>
         <li><a href="#choose">Choose and check your incident</a></li>
         <li class="sidebar-label">Worked starter</li>
@@ -203,20 +205,83 @@
 
           <div class="table-wrap">
             <table>
-              <thead><tr><th>Section</th><th>Weight</th><th>Main task</th><th>Outcome</th></tr></thead>
+              <thead><tr><th>Section</th><th>Weight</th><th>Marks</th><th>Main task</th><th>Outcome</th></tr></thead>
               <tbody>
-                <tr><td>1. Technical post-mortem and emerging tech</td><td>20%</td><td>Trace the root cause; DFD (Level 0 and Level 1)</td><td>SE-12-03</td></tr>
-                <tr><td>2. Secure redesign and code hardening</td><td>30%</td><td>Structure chart; class diagram; CIA and AAA; code or pseudocode; testing protocol</td><td>SE-12-07, SE-12-04</td></tr>
-                <tr><td>3. Privacy by design and data protection</td><td>15%</td><td>Privacy workflow; Level 1 DFD of sensitive data; data dictionary; compliance map</td><td>SE-12-04, SE-12-05</td></tr>
-                <tr><td>4. Resilience and business continuity</td><td>15%</td><td>Incident response playbook; flowchart or decision tree; RTO and RPO</td><td>SE-12-07</td></tr>
-                <tr><td>5. Social, ethical and legal impact</td><td>10%</td><td>Impact on people, society and the environment; ethical tension; accountability</td><td>SE-12-05</td></tr>
-                <tr><td>6. Project management and documentation</td><td>10%</td><td>Gantt chart; process diary; collaboration and cost-benefit of shift-left</td><td>SE-12-07, SE-12-05</td></tr>
+                <tr><td>1. Technical post-mortem and emerging tech</td><td>20%</td><td>20</td><td>Trace the root cause; DFD (Level 0 and Level 1)</td><td>SE-12-03</td></tr>
+                <tr><td>2. Secure redesign and code hardening</td><td>30%</td><td>30</td><td>Structure chart; class diagram; CIA and AAA; code or pseudocode; testing protocol</td><td>SE-12-07, SE-12-04</td></tr>
+                <tr><td>3. Privacy by design and data protection</td><td>15%</td><td>15</td><td>Privacy workflow; Level 1 DFD of sensitive data; data dictionary; compliance map</td><td>SE-12-04, SE-12-05</td></tr>
+                <tr><td>4. Resilience and business continuity</td><td>15%</td><td>15</td><td>Incident response playbook; flowchart or decision tree; RTO and RPO; patching</td><td>SE-12-07</td></tr>
+                <tr><td>5. Social, ethical and legal impact</td><td>10%</td><td>10</td><td>Impact on people, society and the environment; ethical tension; accountability</td><td>SE-12-05</td></tr>
+                <tr><td>6. Project management and documentation</td><td>10%</td><td>10</td><td>Gantt chart; process diary; collaboration and cost-benefit of shift-left</td><td>SE-12-07</td></tr>
               </tbody>
             </table>
           </div>
 
           <div class="callout info">
             <strong>Two formats, one standard.</strong> You can submit a technical report (PDF or DOCX) or an interactive website. Both must cover all six sections. Both must use NESA notation for every diagram. Your teacher's brief sets out the exact requirements.
+          </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════════════ -->
+        <!--  RUBRIC                                              -->
+        <!-- ════════════════════════════════════════════════════ -->
+        <section id="rubric">
+          <h2>How you will be marked</h2>
+          <p>Each section is marked against two criteria. <strong>Knowledge</strong> is what you understand and can explain. <strong>Application</strong> is what you do with that understanding in your analysis, design and evaluation of your incident. Each criterion is placed in one of six bands, and each band shows its mark range. The band descriptions use the NESA performance band language for Software Engineering. A criterion with no evidence in your work scores 0.</p>
+
+          <div class="key-terms">
+            <div class="key-term-item"><strong>Knowledge</strong><span>What you understand and can explain, such as the causes of an incident or how a security control works.</span></div>
+            <div class="key-term-item"><strong>Application</strong><span>What you do with that understanding: your diagrams, design, code, testing and evaluation.</span></div>
+            <div class="key-term-item"><strong>Communication</strong><span>How logically and clearly you present your work, using correct terms, conventions and methods. It is judged across your whole submission.</span></div>
+          </div>
+
+          <h3>Mark summary</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Section</th><th>Outcomes</th><th>Marks</th><th>Knowledge</th><th>Application</th></tr></thead>
+              <tbody>
+                <tr><td data-label="Section">1. Technical post-mortem and emerging tech</td><td data-label="Outcomes">SE-12-03</td><td data-label="Marks">20</td><td data-label="Knowledge">10</td><td data-label="Application">10</td></tr>
+                <tr><td data-label="Section">2. Secure redesign and hardening</td><td data-label="Outcomes">SE-12-07, SE-12-04</td><td data-label="Marks">30</td><td data-label="Knowledge">10</td><td data-label="Application">20</td></tr>
+                <tr><td data-label="Section">3. Privacy by design and data protection</td><td data-label="Outcomes">SE-12-04, SE-12-05</td><td data-label="Marks">15</td><td data-label="Knowledge">10</td><td data-label="Application">5</td></tr>
+                <tr><td data-label="Section">4. Resilience and business continuity</td><td data-label="Outcomes">SE-12-07</td><td data-label="Marks">15</td><td data-label="Knowledge">5</td><td data-label="Application">10</td></tr>
+                <tr><td data-label="Section">5. Social, ethical and legal impact</td><td data-label="Outcomes">SE-12-05</td><td data-label="Marks">10</td><td data-label="Knowledge">10</td><td data-label="Application">0 (Knowledge only)</td></tr>
+                <tr><td data-label="Section">6. Project management and documentation</td><td data-label="Outcomes">SE-12-07</td><td data-label="Marks">10</td><td data-label="Knowledge">5</td><td data-label="Application">5</td></tr>
+                <tr><td data-label="Section"><strong>Total</strong></td><td data-label="Outcomes"></td><td data-label="Marks"><strong>100</strong></td><td data-label="Knowledge"><strong>50</strong></td><td data-label="Application"><strong>50</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>The six bands</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Band</th><th>NESA wording</th><th>What it looks like in your work</th></tr></thead>
+              <tbody>
+                <tr><td data-label="Band"><strong>Band 6</strong></td><td data-label="NESA wording">Comprehensive, extensive, sophisticated</td><td data-label="What it looks like in your work">Complete and precise. Decisions are justified, and evidence is specific to your incident.</td></tr>
+                <tr><td data-label="Band"><strong>Band 5</strong></td><td data-label="NESA wording">Broad, thorough, high-level</td><td data-label="What it looks like in your work">Mostly complete, with minor gaps. Reasoning is clear, with occasional lapses.</td></tr>
+                <tr><td data-label="Band"><strong>Band 4</strong></td><td data-label="NESA wording">Sound</td><td data-label="What it looks like in your work">Correct and relevant. Some points are underdeveloped, or some choices are not fully justified.</td></tr>
+                <tr><td data-label="Band"><strong>Band 3</strong></td><td data-label="NESA wording">Basic</td><td data-label="What it looks like in your work">Some correct material, mostly describing rather than explaining.</td></tr>
+                <tr><td data-label="Band"><strong>Band 2</strong></td><td data-label="NESA wording">Limited</td><td data-label="What it looks like in your work">Little beyond the basics, with several errors or omissions.</td></tr>
+                <tr><td data-label="Band"><strong>Band 1</strong></td><td data-label="NESA wording">Minimum standard not demonstrated</td><td data-label="What it looks like in your work">Does not reach the minimum standard for the criterion.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout assessor">
+            <strong>Band 6 or Band 4?</strong> The two responses below answer the same question. The example is illustrative and is not taken from any real incident.
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Band</th><th>Response to: "Explain how the attacker moved from one computer to the rest of the network."</th></tr></thead>
+              <tbody>
+                <tr><td data-label="Band"><strong>Band 4</strong></td><td data-label="Response to: "Explain how the attacker moved from one computer to the rest of the network."">The attacker sent a phishing email, then spread through the network.</td></tr>
+                <tr><td data-label="Band"><strong>Band 6</strong></td><td data-label="Response to: "Explain how the attacker moved from one computer to the rest of the network."">A phishing email gave the attacker a foothold on one laptop. Because that laptop's account could reach a shared server, the attacker used it to move to the server and copy its files.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>The Band 6 response names the mechanism at each step and links it to the account rights that made the next step possible. The Band 4 response describes what happened, but not why it worked.</p>
+
+          <div class="callout tip">
+            <strong>Check the mark ranges.</strong> The mark range for each band, for each criterion, is set out in full in your task brief. Aim for the band that matches your evidence, not the length of your report.
           </div>
         </section>
 
@@ -543,6 +608,8 @@ flowchart TD
           <p>Your teacher's brief sets the rules. Read the Responsible AI Use Policy in the brief before you start.</p>
           <ul>
             <li><strong>Allowed, if disclosed:</strong> brainstorming, explaining a concept, checking grammar, summarising a long source, suggesting a diagram structure, and syntax help for small utility code.</li>
+            <li><strong>Diagrams:</strong> AI may suggest a structure for a diagram. You must draw the final diagram yourself in NESA notation, and check it against the Course Specifications.</li>
+            <li><strong>Code:</strong> AI may help with utility functions and syntax. Your defensive design and your test cases must be your own.</li>
             <li><strong>Not allowed:</strong> writing your analysis, your design or your evaluation; generating the core code or pseudocode; or copying AI text into your report without changing and checking it.</li>
           </ul>
           <p>Record every substantial use in the AI Assistance Disclosure Log, placed before your reference list.</p>
@@ -562,11 +629,14 @@ flowchart TD
         <section id="submission">
           <h2>Submission checklist</h2>
           <ul>
-            <li>Submitted through the LMS, before the deadline. Email submissions are not accepted.</li>
-            <li>All six sections are present, each with the required diagrams and evidence.</li>
-            <li>Every diagram uses NESA notation, and each has been checked against the Course Specifications.</li>
-            <li>At least three reliable sources are cited, including one primary source.</li>
-            <li>The AI Assistance Disclosure Log is complete, and placed before the reference list.</li>
+            <li>Submitted through the LMS, by the due date in your brief. Email submissions are not accepted.</li>
+            <li>All six sections are present, each with the deliverables listed for it.</li>
+            <li>Every diagram follows NESA notation, and you have checked each one against the Course Specifications.</li>
+            <li>Every claim about the incident is backed by a cited source. You have at least three sources, and at least one is primary.</li>
+            <li>Every control in Section 2 links back to a vulnerability from Section 1.</li>
+            <li>Your testing protocol includes at least one test case with its expected result.</li>
+            <li>Your process diary has at least three dated entries.</li>
+            <li>Your AI Assistance Disclosure Log is complete, and sits before your references.</li>
             <li>Website only: a direct link to the public site, plus a PDF backup of the full site (all six sections).</li>
             <li>Website only: a timestamped screenshot or video taken immediately before the due date.</li>
             <li>Website only: the site collects no personal data. It has no forms that ask for personal information and no third-party trackers.</li>
@@ -639,7 +709,7 @@ flowchart TD
   </footer>
 
   <script src="../js/glossary-data.js?v=77ba7864"></script>
-  <script src="../js/nesa-diagram-data.js?v=8eeed211"></script>
+  <script src="../js/nesa-diagram-data.js?v=dfecdffa"></script>
   <script src="../js/nesa-diagrams.js?v=3b8f31bf" defer></script>
   <script src="../js/main.js?v=c964d00c"></script>
 
